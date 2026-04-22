@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 04 Interactives: Systems of ODEs</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --card: #ffffff;
+      --ink: #162033;
+      --muted: #5d6879;
+      --line: #d9e1eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef5ff 0, var(--bg) 260px);
+    }
+    header, main, footer {
+      max-width: 1460px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    header { padding-top: 40px; padding-bottom: 24px; }
+    header h1 { margin: 0 0 10px; font-size: clamp(2rem, 3vw, 3rem); }
+    header p { max-width: 980px; margin: 0; color: var(--muted); line-height: 1.6; }
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .toc a {
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(37,99,235,0.12);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .topic { margin-bottom: 42px; scroll-margin-top: 20px; }
+    .topic h2 { margin: 0 0 10px; font-size: 1.5rem; }
+    .topic > p { margin: 0 0 18px; color: var(--muted); max-width: 940px; line-height: 1.6; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 18px;
+    }
+    .demo {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .demo h3 { margin: 0; font-size: 1.08rem; }
+    .spec {
+      display: grid;
+      gap: 8px;
+      font-size: 0.96rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .spec strong { color: var(--ink); }
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid #edf2f7;
+    }
+    .control { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .control label { font-size: 0.82rem; color: var(--muted); }
+    .control input, .control select { width: 100%; }
+    .control span { font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+    .plot {
+      width: 100%;
+      min-height: 300px;
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+    }
+    .status {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    footer { padding-top: 8px; padding-bottom: 30px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 640px) {
+      header, main, footer { padding-left: 14px; padding-right: 14px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 04 Interactives</h1>
+    <p>
+      This standalone gallery proposes two runnable JavaScript illustrations for each topic in Chapter 04,
+      Systems of Ordinary Differential Equations. The emphasis is on matrix form, eigenvectors, phase portraits,
+      matrix exponentials, forcing, and system-level applications such as coupled oscillators and compartment models.
+    </p>
+    <nav class="toc">
+      <a href="#topic-1">04-01 Introduction</a>
+      <a href="#topic-2">04-02 Matrices</a>
+      <a href="#topic-3">04-03 Real Distinct</a>
+      <a href="#topic-4">04-04 Complex</a>
+      <a href="#topic-5">04-05 Repeated</a>
+      <a href="#topic-6">04-06 Matrix Exponential</a>
+      <a href="#topic-7">04-07 Phase Portraits</a>
+      <a href="#topic-8">04-08 Nonhomogeneous</a>
+      <a href="#topic-9">04-09 Coupled Oscillators</a>
+      <a href="#topic-10">04-10 Compartment Models</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="topic" id="topic-1">
+      <h2>04-01 Introduction to Systems</h2>
+      <p>These opening illustrations show why systems package multiple state variables together and why a phase-plane view matters.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>From Second-Order Equation to First-Order System</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how a single higher-order equation becomes a first-order vector system by introducing state variables.</div>
+            <div><strong>Mathematical idea shown.</strong> A second-order equation such as $$y'' + y = 0$$ can be rewritten with $$x_1 = y$$ and $$x_2 = y'$$.</div>
+            <div><strong>User interactions.</strong> Sliders for initial position and initial velocity.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="sys-y0">Initial position</label><input id="sys-y0" type="range" min="-3" max="3" step="0.1" value="1.5"><span id="sys-y0-value"></span></div>
+            <div class="control"><label for="sys-v0">Initial velocity</label><input id="sys-v0" type="range" min="-4" max="4" step="0.1" value="0.2"><span id="sys-v0-value"></span></div>
+          </div>
+          <div id="intro-system-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Time Trace and Phase Curve Together</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that a system trajectory can be viewed either in time coordinates or in state space.</div>
+            <div><strong>Mathematical idea shown.</strong> The same solution becomes a curve in the phase plane and two time traces for the state components.</div>
+            <div><strong>User interactions.</strong> Reuses the initial-condition sliders.</div>
+          </div>
+          <div id="intro-phase-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-2">
+      <h2>04-02 Matrices and Linear Systems</h2>
+      <p>The focus here is the compact matrix form $$\mathbf{x}' = A\mathbf{x}$$ and its geometric meaning as a vector field.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Vector Field from a Matrix</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that the matrix determines a linear vector field over the plane.</div>
+            <div><strong>Mathematical idea shown.</strong> For $$\mathbf{x}' = A\mathbf{x}$$, the arrow at each state is simply the matrix acting on that state.</div>
+            <div><strong>User interactions.</strong> Sliders for the four matrix entries.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="mat-a11">a11</label><input id="mat-a11" type="range" min="-2" max="2" step="0.1" value="0"><span id="mat-a11-value"></span></div>
+            <div class="control"><label for="mat-a12">a12</label><input id="mat-a12" type="range" min="-2" max="2" step="0.1" value="1"><span id="mat-a12-value"></span></div>
+            <div class="control"><label for="mat-a21">a21</label><input id="mat-a21" type="range" min="-2" max="2" step="0.1" value="-1"><span id="mat-a21-value"></span></div>
+            <div class="control"><label for="mat-a22">a22</label><input id="mat-a22" type="range" min="-2" max="2" step="0.1" value="0"><span id="mat-a22-value"></span></div>
+          </div>
+          <div id="matrix-field-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Trace and Determinant Explorer</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Connect matrix coefficients to classification tools used later in phase portraits.</div>
+            <div><strong>Mathematical idea shown.</strong> The trace and determinant of a 2x2 matrix constrain stability and eigenvalue type.</div>
+            <div><strong>User interactions.</strong> Reuses the matrix-entry sliders.</div>
+          </div>
+          <div id="matrix-invariants-plot" class="plot"></div>
+          <div id="matrix-invariants-note" class="status"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-3">
+      <h2>04-03 Eigenvalue Method: Real Distinct</h2>
+      <p>These illustrations focus on eigen-directions and the way distinct real modes combine into a trajectory.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Distinct Real Eigenmodes</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how two distinct real eigenvalues generate two independent modal directions.</div>
+            <div><strong>Mathematical idea shown.</strong> The solution is a linear combination of eigenvectors scaled by exponentials.</div>
+            <div><strong>User interactions.</strong> Sliders for the two eigenvalues and for the initial point.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="real-l1">Lambda 1</label><input id="real-l1" type="range" min="-2.5" max="2" step="0.1" value="-1.5"><span id="real-l1-value"></span></div>
+            <div class="control"><label for="real-l2">Lambda 2</label><input id="real-l2" type="range" min="-2.5" max="2" step="0.1" value="0.6"><span id="real-l2-value"></span></div>
+            <div class="control"><label for="real-x0">Initial x1</label><input id="real-x0" type="range" min="-3" max="3" step="0.1" value="1.2"><span id="real-x0-value"></span></div>
+            <div class="control"><label for="real-y0">Initial x2</label><input id="real-y0" type="range" min="-3" max="3" step="0.1" value="0.7"><span id="real-y0-value"></span></div>
+          </div>
+          <div id="real-eigen-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Eigendirections as Invariant Lines</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that trajectories launched exactly on an eigenvector stay on that line.</div>
+            <div><strong>Mathematical idea shown.</strong> Eigenvectors define invariant one-dimensional solution subspaces.</div>
+            <div><strong>User interactions.</strong> Reuses the eigenvalue sliders.</div>
+          </div>
+          <div id="real-invariant-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-4">
+      <h2>04-04 Eigenvalue Method: Complex</h2>
+      <p>These illustrations emphasize spirals, centers, and the link between real part and rotational damping.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Spiral and Center Phase Portrait</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how the real part of a complex eigenvalue controls inward or outward spiral behavior.</div>
+            <div><strong>Mathematical idea shown.</strong> Systems with complex eigenvalues rotate, with the real part setting growth or decay.</div>
+            <div><strong>User interactions.</strong> Sliders for real part, imaginary part, and initial point.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="cx-alpha">Real part alpha</label><input id="cx-alpha" type="range" min="-1.5" max="1.5" step="0.1" value="-0.3"><span id="cx-alpha-value"></span></div>
+            <div class="control"><label for="cx-beta">Imaginary part beta</label><input id="cx-beta" type="range" min="0.5" max="4" step="0.1" value="2"><span id="cx-beta-value"></span></div>
+            <div class="control"><label for="cx-x0">Initial x1</label><input id="cx-x0" type="range" min="-3" max="3" step="0.1" value="1"><span id="cx-x0-value"></span></div>
+            <div class="control"><label for="cx-y0">Initial x2</label><input id="cx-y0" type="range" min="-3" max="3" step="0.1" value="0.4"><span id="cx-y0-value"></span></div>
+          </div>
+          <div id="complex-phase-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Rotation and Amplitude in Time</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Connect the spiral picture in phase space to oscillatory time traces.</div>
+            <div><strong>Mathematical idea shown.</strong> Complex eigenvalues produce sinusoidal coordinates modulated by an exponential envelope.</div>
+            <div><strong>User interactions.</strong> Reuses the real and imaginary part sliders.</div>
+          </div>
+          <div id="complex-time-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-5">
+      <h2>04-05 Eigenvalue Method: Repeated</h2>
+      <p>These visuals focus on defective systems and the geometric role of generalized eigenvectors.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Repeated Eigenvalue with Shear</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how a repeated eigenvalue can still create nontrivial geometry when the matrix is not diagonalizable.</div>
+            <div><strong>Mathematical idea shown.</strong> A Jordan block produces solutions with an extra polynomial factor in time.</div>
+            <div><strong>User interactions.</strong> Sliders for repeated eigenvalue, shear parameter, and initial point.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="rep-l">Repeated lambda</label><input id="rep-l" type="range" min="-2" max="1.5" step="0.1" value="-0.5"><span id="rep-l-value"></span></div>
+            <div class="control"><label for="rep-k">Jordan shear</label><input id="rep-k" type="range" min="0" max="2" step="0.1" value="1"><span id="rep-k-value"></span></div>
+            <div class="control"><label for="rep-x0">Initial x1</label><input id="rep-x0" type="range" min="-3" max="3" step="0.1" value="1"><span id="rep-x0-value"></span></div>
+            <div class="control"><label for="rep-y0">Initial x2</label><input id="rep-y0" type="range" min="-3" max="3" step="0.1" value="1"><span id="rep-y0-value"></span></div>
+          </div>
+          <div id="repeated-phase-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Generalized Eigenvector Contribution</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show the extra $$t e^{\lambda t}$$-type contribution created by the generalized direction.</div>
+            <div><strong>Mathematical idea shown.</strong> Defective systems need generalized eigenvectors to complete the solution basis.</div>
+            <div><strong>User interactions.</strong> Reuses the repeated-eigenvalue sliders.</div>
+          </div>
+          <div id="repeated-time-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-6">
+      <h2>04-06 Matrix Exponentials</h2>
+      <p>These illustrations show that $$e^{At}$$ is the propagator taking an initial state to the state at time $$t$$.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Flow Map from e^(At)</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how the matrix exponential transports an initial state through time.</div>
+            <div><strong>Mathematical idea shown.</strong> The state at time $$t$$ is $$\mathbf{x}(t)=e^{At}\mathbf{x}(0)$$.</div>
+            <div><strong>User interactions.</strong> Sliders for diagonal matrix entries, one off-diagonal coupling, and a time value.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="exp-a">a11</label><input id="exp-a" type="range" min="-2" max="2" step="0.1" value="-0.6"><span id="exp-a-value"></span></div>
+            <div class="control"><label for="exp-d">a22</label><input id="exp-d" type="range" min="-2" max="2" step="0.1" value="0.4"><span id="exp-d-value"></span></div>
+            <div class="control"><label for="exp-b">Upper coupling</label><input id="exp-b" type="range" min="-2" max="2" step="0.1" value="1"><span id="exp-b-value"></span></div>
+            <div class="control"><label for="exp-t">Time t</label><input id="exp-t" type="range" min="0" max="5" step="0.1" value="1.5"><span id="exp-t-value"></span></div>
+          </div>
+          <div id="matrix-exp-flow-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Columns of the Fundamental Matrix</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that the columns of $$e^{At}$$ are the solutions started from basis vectors.</div>
+            <div><strong>Mathematical idea shown.</strong> The fundamental matrix is built from independent solution columns.</div>
+            <div><strong>User interactions.</strong> Reuses the matrix and time sliders.</div>
+          </div>
+          <div id="matrix-exp-columns-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-7">
+      <h2>04-07 Phase Portraits for Linear Systems</h2>
+      <p>These illustrations summarize the chapter’s qualitative classification viewpoint.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Trace-Determinant Classification Map</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how trace and determinant organize planar linear systems into nodes, saddles, spirals, and centers.</div>
+            <div><strong>Mathematical idea shown.</strong> The discriminant $$\tau^2-4\Delta$$ and the sign of $$\Delta$$ classify the equilibrium.</div>
+            <div><strong>User interactions.</strong> Sliders for trace and determinant.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="pd-tr">Trace</label><input id="pd-tr" type="range" min="-4" max="4" step="0.1" value="-1"><span id="pd-tr-value"></span></div>
+            <div class="control"><label for="pd-det">Determinant</label><input id="pd-det" type="range" min="-2" max="6" step="0.1" value="1.2"><span id="pd-det-value"></span></div>
+          </div>
+          <div id="phase-map-plot" class="plot"></div>
+          <div id="phase-map-note" class="status"></div>
+        </article>
+        <article class="demo">
+          <h3>Representative Phase Portrait</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show a concrete phase portrait corresponding to the chosen trace-determinant location.</div>
+            <div><strong>Mathematical idea shown.</strong> Classification is not just algebraic; it predicts geometry of trajectories.</div>
+            <div><strong>User interactions.</strong> Reuses the trace and determinant sliders.</div>
+          </div>
+          <div id="phase-representative-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-8">
+      <h2>04-08 Nonhomogeneous Systems</h2>
+      <p>These illustrations show how forcing adds a driven response on top of homogeneous dynamics.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Forced Linear System Response</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how a constant or oscillatory input bends trajectories away from pure homogeneous motion.</div>
+            <div><strong>Mathematical idea shown.</strong> A nonhomogeneous system has a total solution equal to homogeneous plus particular response.</div>
+            <div><strong>User interactions.</strong> Dropdown for forcing type and slider for forcing amplitude.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="nh-kind">Forcing</label><select id="nh-kind"><option value="constant">Constant</option><option value="oscillatory">Oscillatory</option></select></div>
+            <div class="control"><label for="nh-a">Amplitude</label><input id="nh-a" type="range" min="0.5" max="3" step="0.1" value="1.2"><span id="nh-a-value"></span></div>
+          </div>
+          <div id="nonhom-system-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Particular Equilibrium Shift</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that a constant forcing shifts the equilibrium location of a stable system.</div>
+            <div><strong>Mathematical idea shown.</strong> The particular solution can be a constant vector when the forcing is constant.</div>
+            <div><strong>User interactions.</strong> Reuses the forcing amplitude slider.</div>
+          </div>
+          <div id="nonhom-equilibrium-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-9">
+      <h2>04-09 Applications: Coupled Oscillators</h2>
+      <p>The emphasis here is on normal modes and beat phenomena.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Normal Mode Comparison</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show the in-phase and out-of-phase modes of a two-mass coupled oscillator.</div>
+            <div><strong>Mathematical idea shown.</strong> Coupled systems can be decomposed into simpler normal modes with distinct frequencies.</div>
+            <div><strong>User interactions.</strong> Sliders for coupling strength and amplitude mixing.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="co-k">Coupling strength</label><input id="co-k" type="range" min="0.2" max="3" step="0.1" value="1"><span id="co-k-value"></span></div>
+            <div class="control"><label for="co-mix">Mode mixing</label><input id="co-mix" type="range" min="0" max="1" step="0.05" value="0.5"><span id="co-mix-value"></span></div>
+          </div>
+          <div id="coupled-modes-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Beat Phenomenon</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that nearby frequencies create slow amplitude modulation.</div>
+            <div><strong>Mathematical idea shown.</strong> Superposing close normal frequencies produces beats in the observed coordinates.</div>
+            <div><strong>User interactions.</strong> Reuses the coupling-strength slider.</div>
+          </div>
+          <div id="coupled-beats-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-10">
+      <h2>04-10 Applications: Compartment Models</h2>
+      <p>These illustrations show how system language models transport and exchange among connected compartments.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Two-Compartment Exchange</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how material flows between compartments and gradually redistributes.</div>
+            <div><strong>Mathematical idea shown.</strong> Linear systems naturally model exchange, inflow, and decay across connected reservoirs.</div>
+            <div><strong>User interactions.</strong> Sliders for transfer rates and initial amount in the first compartment.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="comp-k12">Rate 1 to 2</label><input id="comp-k12" type="range" min="0.1" max="2" step="0.1" value="0.7"><span id="comp-k12-value"></span></div>
+            <div class="control"><label for="comp-k21">Rate 2 to 1</label><input id="comp-k21" type="range" min="0.1" max="2" step="0.1" value="0.3"><span id="comp-k21-value"></span></div>
+            <div class="control"><label for="comp-a0">Initial amount A1</label><input id="comp-a0" type="range" min="0" max="10" step="0.2" value="8"><span id="comp-a0-value"></span></div>
+          </div>
+          <div id="compartment-time-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Conservation and Redistribution</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that exchange redistributes total mass even when the total stays fixed.</div>
+            <div><strong>Mathematical idea shown.</strong> The sum of compartment amounts can remain invariant under pure exchange.</div>
+            <div><strong>User interactions.</strong> Reuses the transfer-rate sliders.</div>
+          </div>
+          <div id="compartment-balance-plot" class="plot"></div>
+          <div id="compartment-balance-note" class="status"></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    The page is self-contained so it can be opened directly in a browser or served as a static file from the repository.
+  </footer>
+
+  <script>
+    const fmt = (value, digits = 2) => Number(value).toFixed(digits).replace(/\.00$/, '');
+
+    function bindValue(id, digits = 2) {
+      const input = document.getElementById(id);
+      const output = document.getElementById(`${id}-value`);
+      const refresh = () => { if (output) output.textContent = fmt(input.value, digits); };
+      input.addEventListener('input', refresh);
+      input.addEventListener('change', refresh);
+      refresh();
+    }
+
+    function bindControls(ids, render) {
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        el.addEventListener('input', render);
+        el.addEventListener('change', render);
+      });
+      render();
+    }
+
+    function linspace(min, max, count) {
+      return Array.from({ length: count }, (_, i) => min + (max - min) * i / (count - 1));
+    }
+
+    function plotSeries(divId, traces, layout = {}) {
+      Plotly.react(divId, traces, {
+        margin: { l: 46, r: 18, t: 24, b: 42 },
+        paper_bgcolor: '#ffffff',
+        plot_bgcolor: '#ffffff',
+        legend: { orientation: 'h' },
+        xaxis: { gridcolor: '#e5e7eb', zerolinecolor: '#cbd5e1' },
+        yaxis: { gridcolor: '#e5e7eb', zerolinecolor: '#cbd5e1' },
+        ...layout,
+      }, { responsive: true, displayModeBar: false });
+    }
+
+    function eigenvalues2x2(a, b, c, d) {
+      const tr = a + d;
+      const det = a * d - b * c;
+      const disc = tr * tr - 4 * det;
+      if (disc >= 0) {
+        return { tr, det, disc, real: true, l1: 0.5 * (tr + Math.sqrt(disc)), l2: 0.5 * (tr - Math.sqrt(disc)) };
+      }
+      return { tr, det, disc, real: false, alpha: 0.5 * tr, beta: 0.5 * Math.sqrt(-disc) };
+    }
+
+    function eigenvectorFor(a, b, c, d, lambda) {
+      if (Math.abs(b) > 1e-8) return [1, (lambda - a) / b];
+      if (Math.abs(c) > 1e-8) return [(lambda - d) / c, 1];
+      return [1, 0];
+    }
+
+    function simulateLinearSystem(A, x0, tMax, steps, forcing = null) {
+      const dt = tMax / steps;
+      let x = x0[0];
+      let y = x0[1];
+      const out = [];
+      for (let i = 0; i <= steps; i += 1) {
+        const t = i * dt;
+        out.push({ t, x, y });
+        const f = (tt, xx, yy) => {
+          const force = forcing ? forcing(tt) : [0, 0];
+          return [A[0][0] * xx + A[0][1] * yy + force[0], A[1][0] * xx + A[1][1] * yy + force[1]];
+        };
+        const k1 = f(t, x, y);
+        const k2 = f(t + dt / 2, x + dt * k1[0] / 2, y + dt * k1[1] / 2);
+        const k3 = f(t + dt / 2, x + dt * k2[0] / 2, y + dt * k2[1] / 2);
+        const k4 = f(t + dt, x + dt * k3[0], y + dt * k3[1]);
+        x += dt * (k1[0] + 2 * k2[0] + 2 * k3[0] + k4[0]) / 6;
+        y += dt * (k1[1] + 2 * k2[1] + 2 * k3[1] + k4[1]) / 6;
+      }
+      return out;
+    }
+
+    function buildFieldTraces(A, range = 3) {
+      const xs = [];
+      const ys = [];
+      for (let x = -range; x <= range; x += 0.75) {
+        for (let y = -range; y <= range; y += 0.75) {
+          const u = A[0][0] * x + A[0][1] * y;
+          const v = A[1][0] * x + A[1][1] * y;
+          const norm = Math.max(1e-6, Math.hypot(u, v));
+          xs.push({ x0: x, y0: y, x1: x + 0.35 * u / norm, y1: y + 0.35 * v / norm });
+        }
+      }
+      return xs.map((seg) => ({
+        x: [seg.x0, seg.x1],
+        y: [seg.y0, seg.y1],
+        mode: 'lines',
+        line: { color: 'rgba(37,99,235,0.45)', width: 1 },
+        hoverinfo: 'skip',
+        showlegend: false,
+      }));
+    }
+
+    function renderIntroSystem() {
+      const y0 = Number(document.getElementById('sys-y0').value);
+      const v0 = Number(document.getElementById('sys-v0').value);
+      const t = linspace(0, 12, 400);
+      const x1 = t.map((tt) => y0 * Math.cos(tt) + v0 * Math.sin(tt));
+      const x2 = t.map((tt) => -y0 * Math.sin(tt) + v0 * Math.cos(tt));
+      plotSeries('intro-system-plot', [
+        { x: t, y: x1, mode: 'lines', name: 'x1 = y', line: { color: '#2563eb', width: 3 } },
+        { x: t, y: x2, mode: 'lines', name: 'x2 = y\'', line: { color: '#dc2626', width: 2 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'State value' } });
+    }
+
+    function renderIntroPhase() {
+      const y0 = Number(document.getElementById('sys-y0').value);
+      const v0 = Number(document.getElementById('sys-v0').value);
+      const t = linspace(0, 12, 400);
+      const x1 = t.map((tt) => y0 * Math.cos(tt) + v0 * Math.sin(tt));
+      const x2 = t.map((tt) => -y0 * Math.sin(tt) + v0 * Math.cos(tt));
+      plotSeries('intro-phase-plot', [
+        { x: x1, y: x2, mode: 'lines', name: 'Phase curve', line: { color: '#0891b2', width: 3 } },
+        { x: [x1[0]], y: [x2[0]], mode: 'markers', name: 'Initial state', marker: { color: '#dc2626', size: 9 } },
+      ], { xaxis: { title: 'x1 = y' }, yaxis: { title: 'x2 = y\'', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function renderMatrixField() {
+      const a = Number(document.getElementById('mat-a11').value);
+      const b = Number(document.getElementById('mat-a12').value);
+      const c = Number(document.getElementById('mat-a21').value);
+      const d = Number(document.getElementById('mat-a22').value);
+      const A = [[a, b], [c, d]];
+      const traces = buildFieldTraces(A, 3);
+      plotSeries('matrix-field-plot', traces, { xaxis: { title: 'x1' }, yaxis: { title: 'x2', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function renderMatrixInvariants() {
+      const a = Number(document.getElementById('mat-a11').value);
+      const b = Number(document.getElementById('mat-a12').value);
+      const c = Number(document.getElementById('mat-a21').value);
+      const d = Number(document.getElementById('mat-a22').value);
+      const eig = eigenvalues2x2(a, b, c, d);
+      plotSeries('matrix-invariants-plot', [
+        { x: [eig.tr], y: [eig.det], mode: 'markers', name: 'Current matrix', marker: { color: '#2563eb', size: 11 } },
+        { x: linspace(-4, 4, 200), y: linspace(-4, 4, 200).map((tr) => tr * tr / 4), mode: 'lines', name: 'Discriminant = 0', line: { color: '#94a3b8', dash: 'dash' } },
+      ], { xaxis: { title: 'Trace' }, yaxis: { title: 'Determinant' } });
+      let kind;
+      if (eig.det < 0) kind = 'saddle-type matrix';
+      else if (eig.real && eig.disc > 0) kind = 'real eigenvalue matrix';
+      else if (eig.real) kind = 'repeated-eigenvalue matrix';
+      else kind = 'complex-eigenvalue matrix';
+      document.getElementById('matrix-invariants-note').textContent = `Trace = ${fmt(eig.tr, 2)}, determinant = ${fmt(eig.det, 2)}. This is a ${kind}.`;
+    }
+
+    function renderRealEigen() {
+      const l1 = Number(document.getElementById('real-l1').value);
+      let l2 = Number(document.getElementById('real-l2').value);
+      if (Math.abs(l1 - l2) < 0.1) {
+        l2 = l1 + 0.1;
+        document.getElementById('real-l2').value = l2;
+        document.getElementById('real-l2-value').textContent = fmt(l2, 1);
+      }
+      const x0 = Number(document.getElementById('real-x0').value);
+      const y0 = Number(document.getElementById('real-y0').value);
+      const A = [[l1, 0], [0, l2]];
+      const sol = simulateLinearSystem(A, [x0, y0], 8, 500);
+      plotSeries('real-eigen-plot', [
+        ...buildFieldTraces(A, 3),
+        { x: sol.map((p) => p.x), y: sol.map((p) => p.y), mode: 'lines', name: 'Trajectory', line: { color: '#dc2626', width: 3 } },
+      ], { xaxis: { title: 'x1' }, yaxis: { title: 'x2', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function renderRealInvariant() {
+      const l1 = Number(document.getElementById('real-l1').value);
+      const l2 = Number(document.getElementById('real-l2').value);
+      const t = linspace(0, 8, 300);
+      const e1 = t.map((tt) => Math.exp(l1 * tt));
+      const e2 = t.map((tt) => Math.exp(l2 * tt));
+      plotSeries('real-invariant-plot', [
+        { x: t, y: e1, mode: 'lines', name: 'Mode on eigenvector 1', line: { color: '#2563eb', width: 3 } },
+        { x: t, y: e2, mode: 'lines', name: 'Mode on eigenvector 2', line: { color: '#b45309', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Amplitude on eigendirection' } });
+    }
+
+    function renderComplexPhase() {
+      const alpha = Number(document.getElementById('cx-alpha').value);
+      const beta = Number(document.getElementById('cx-beta').value);
+      const x0 = Number(document.getElementById('cx-x0').value);
+      const y0 = Number(document.getElementById('cx-y0').value);
+      const A = [[alpha, -beta], [beta, alpha]];
+      const sol = simulateLinearSystem(A, [x0, y0], 12, 700);
+      plotSeries('complex-phase-plot', [
+        ...buildFieldTraces(A, 3),
+        { x: sol.map((p) => p.x), y: sol.map((p) => p.y), mode: 'lines', name: 'Trajectory', line: { color: '#dc2626', width: 3 } },
+      ], { xaxis: { title: 'x1' }, yaxis: { title: 'x2', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function renderComplexTime() {
+      const alpha = Number(document.getElementById('cx-alpha').value);
+      const beta = Number(document.getElementById('cx-beta').value);
+      const x0 = Number(document.getElementById('cx-x0').value);
+      const y0 = Number(document.getElementById('cx-y0').value);
+      const A = [[alpha, -beta], [beta, alpha]];
+      const sol = simulateLinearSystem(A, [x0, y0], 12, 700);
+      plotSeries('complex-time-plot', [
+        { x: sol.map((p) => p.t), y: sol.map((p) => p.x), mode: 'lines', name: 'x1(t)', line: { color: '#2563eb', width: 3 } },
+        { x: sol.map((p) => p.t), y: sol.map((p) => p.y), mode: 'lines', name: 'x2(t)', line: { color: '#dc2626', width: 2 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'State value' } });
+    }
+
+    function renderRepeatedPhase() {
+      const l = Number(document.getElementById('rep-l').value);
+      const k = Number(document.getElementById('rep-k').value);
+      const x0 = Number(document.getElementById('rep-x0').value);
+      const y0 = Number(document.getElementById('rep-y0').value);
+      const A = [[l, k], [0, l]];
+      const sol = simulateLinearSystem(A, [x0, y0], 10, 600);
+      plotSeries('repeated-phase-plot', [
+        ...buildFieldTraces(A, 3),
+        { x: sol.map((p) => p.x), y: sol.map((p) => p.y), mode: 'lines', name: 'Trajectory', line: { color: '#dc2626', width: 3 } },
+      ], { xaxis: { title: 'x1' }, yaxis: { title: 'x2', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function renderRepeatedTime() {
+      const l = Number(document.getElementById('rep-l').value);
+      const k = Number(document.getElementById('rep-k').value);
+      const t = linspace(0, 8, 300);
+      const g = t.map((tt) => tt * Math.exp(l * tt));
+      const e = t.map((tt) => Math.exp(l * tt));
+      plotSeries('repeated-time-plot', [
+        { x: t, y: e, mode: 'lines', name: 'e^(lambda t)', line: { color: '#2563eb', width: 3 } },
+        { x: t, y: g.map((v) => k * v), mode: 'lines', name: 't e^(lambda t) contribution', line: { color: '#dc2626', width: 2 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Mode size' } });
+    }
+
+    function renderMatrixExpFlow() {
+      const a = Number(document.getElementById('exp-a').value);
+      const d = Number(document.getElementById('exp-d').value);
+      const b = Number(document.getElementById('exp-b').value);
+      const t = Number(document.getElementById('exp-t').value);
+      const xs = [-1, 1, 0.5, -0.7];
+      const ys = [1, 0.5, -1, -0.8];
+      const xEnd = xs.map((x, i) => Math.exp(a * t) * x + (Math.abs(a - d) < 1e-8 ? b * t * Math.exp(a * t) : b * (Math.exp(a * t) - Math.exp(d * t)) / (a - d)) * ys[i]);
+      const yEnd = ys.map((y) => Math.exp(d * t) * y);
+      plotSeries('matrix-exp-flow-plot', xs.map((x, i) => ({ x: [x, xEnd[i]], y: [ys[i], yEnd[i]], mode: 'lines+markers', name: `Basis point ${i + 1}`, marker: { size: 7 } })), {
+        xaxis: { title: 'x1' },
+        yaxis: { title: 'x2', scaleanchor: 'x', scaleratio: 1 },
+      });
+    }
+
+    function renderMatrixExpColumns() {
+      const a = Number(document.getElementById('exp-a').value);
+      const d = Number(document.getElementById('exp-d').value);
+      const b = Number(document.getElementById('exp-b').value);
+      const t = linspace(0, 5, 280);
+      const phi11 = t.map((tt) => Math.exp(a * tt));
+      const phi22 = t.map((tt) => Math.exp(d * tt));
+      const phi12 = t.map((tt) => Math.abs(a - d) < 1e-8 ? b * tt * Math.exp(a * tt) : b * (Math.exp(a * tt) - Math.exp(d * tt)) / (a - d));
+      plotSeries('matrix-exp-columns-plot', [
+        { x: t, y: phi11, mode: 'lines', name: 'Column 1, component 1', line: { color: '#2563eb', width: 3 } },
+        { x: t, y: phi12, mode: 'lines', name: 'Column 2, component 1', line: { color: '#dc2626', width: 2 } },
+        { x: t, y: phi22, mode: 'lines', name: 'Column 2, component 2', line: { color: '#0891b2', width: 2 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Fundamental matrix entries' } });
+    }
+
+    function representativeMatrix(trace, det) {
+      if (det < 0) return [[trace, 1], [-det, 0]];
+      const disc = trace * trace - 4 * det;
+      if (disc > 0) return [[trace / 2 + Math.sqrt(disc) / 2, 0], [0, trace / 2 - Math.sqrt(disc) / 2]];
+      if (Math.abs(disc) < 1e-8) return [[trace / 2, 1], [0, trace / 2]];
+      const alpha = trace / 2;
+      const beta = Math.sqrt(-disc) / 2;
+      return [[alpha, -beta], [beta, alpha]];
+    }
+
+    function renderPhaseMap() {
+      const tr = Number(document.getElementById('pd-tr').value);
+      const det = Number(document.getElementById('pd-det').value);
+      const xs = linspace(-4, 4, 220);
+      plotSeries('phase-map-plot', [
+        { x: xs, y: xs.map((x) => x * x / 4), mode: 'lines', name: 'Discriminant = 0', line: { color: '#94a3b8', dash: 'dash' } },
+        { x: [tr], y: [det], mode: 'markers', name: 'Chosen point', marker: { color: '#2563eb', size: 12 } },
+      ], { xaxis: { title: 'Trace' }, yaxis: { title: 'Determinant' } });
+      const disc = tr * tr - 4 * det;
+      let label;
+      if (det < 0) label = 'saddle';
+      else if (disc > 0 && tr < 0) label = 'stable node';
+      else if (disc > 0 && tr > 0) label = 'unstable node';
+      else if (Math.abs(disc) < 1e-8) label = 'repeated eigenvalue case';
+      else if (Math.abs(tr) < 0.1) label = 'center';
+      else if (tr < 0) label = 'stable spiral';
+      else label = 'unstable spiral';
+      document.getElementById('phase-map-note').textContent = `With trace ${fmt(tr, 2)} and determinant ${fmt(det, 2)}, the representative equilibrium is ${label}.`;
+    }
+
+    function renderPhaseRepresentative() {
+      const tr = Number(document.getElementById('pd-tr').value);
+      const det = Number(document.getElementById('pd-det').value);
+      const A = representativeMatrix(tr, det);
+      const traces = buildFieldTraces(A, 3);
+      [[2, 1], [-1.5, 1], [1, -2], [-2, -1.2]].forEach((seed, idx) => {
+        const sol = simulateLinearSystem(A, seed, 8, 450);
+        traces.push({ x: sol.map((p) => p.x), y: sol.map((p) => p.y), mode: 'lines', name: `Trajectory ${idx + 1}`, line: { width: 2 } });
+      });
+      plotSeries('phase-representative-plot', traces, { xaxis: { title: 'x1' }, yaxis: { title: 'x2', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function renderNonhomSystem() {
+      const kind = document.getElementById('nh-kind').value;
+      const amp = Number(document.getElementById('nh-a').value);
+      const A = [[-1, 0], [0, -0.5]];
+      const forcing = kind === 'constant'
+        ? () => [amp, 0.4 * amp]
+        : (t) => [amp * Math.cos(1.5 * t), 0.5 * amp * Math.sin(1.5 * t)];
+      const sol = simulateLinearSystem(A, [0, 0], 12, 700, forcing);
+      plotSeries('nonhom-system-plot', [
+        { x: sol.map((p) => p.t), y: sol.map((p) => p.x), mode: 'lines', name: 'x1(t)', line: { color: '#2563eb', width: 3 } },
+        { x: sol.map((p) => p.t), y: sol.map((p) => p.y), mode: 'lines', name: 'x2(t)', line: { color: '#dc2626', width: 2 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'State value' } });
+    }
+
+    function renderNonhomEquilibrium() {
+      const amp = Number(document.getElementById('nh-a').value);
+      const eq1 = amp;
+      const eq2 = 0.8 * amp;
+      plotSeries('nonhom-equilibrium-plot', [
+        { x: [0, 1], y: [eq1, eq1], mode: 'lines', name: 'Shifted x1 equilibrium', line: { color: '#2563eb', width: 3 } },
+        { x: [0, 1], y: [eq2, eq2], mode: 'lines', name: 'Shifted x2 equilibrium', line: { color: '#dc2626', width: 2 } },
+      ], { xaxis: { title: 'Parameterized axis' }, yaxis: { title: 'Equilibrium component' } });
+    }
+
+    function renderCoupledModes() {
+      const k = Number(document.getElementById('co-k').value);
+      const mix = Number(document.getElementById('co-mix').value);
+      const w1 = 1;
+      const w2 = Math.sqrt(1 + 2 * k);
+      const t = linspace(0, 20, 600);
+      const x1 = t.map((tt) => mix * Math.cos(w1 * tt) + (1 - mix) * Math.cos(w2 * tt));
+      const x2 = t.map((tt) => mix * Math.cos(w1 * tt) - (1 - mix) * Math.cos(w2 * tt));
+      plotSeries('coupled-modes-plot', [
+        { x: t, y: x1, mode: 'lines', name: 'Mass 1', line: { color: '#2563eb', width: 3 } },
+        { x: t, y: x2, mode: 'lines', name: 'Mass 2', line: { color: '#dc2626', width: 2 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Displacement' } });
+    }
+
+    function renderCoupledBeats() {
+      const k = Number(document.getElementById('co-k').value);
+      const w1 = 1;
+      const w2 = Math.sqrt(1 + 2 * k);
+      const t = linspace(0, 30, 700);
+      const beat = t.map((tt) => Math.cos(w1 * tt) + Math.cos(w2 * tt));
+      plotSeries('coupled-beats-plot', [
+        { x: t, y: beat, mode: 'lines', name: 'Observed superposition', line: { color: '#0891b2', width: 3 } },
+        { x: t, y: t.map((tt) => 2 * Math.cos((w2 - w1) * tt / 2)), mode: 'lines', name: 'Envelope', line: { color: '#94a3b8', dash: 'dash' } },
+        { x: t, y: t.map((tt) => -2 * Math.cos((w2 - w1) * tt / 2)), mode: 'lines', name: '- envelope', line: { color: '#94a3b8', dash: 'dash' } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Amplitude' } });
+    }
+
+    function compartmentData() {
+      const k12 = Number(document.getElementById('comp-k12').value);
+      const k21 = Number(document.getElementById('comp-k21').value);
+      const a0 = Number(document.getElementById('comp-a0').value);
+      const A = [[-k12, k21], [k12, -k21]];
+      const sol = simulateLinearSystem(A, [a0, 0], 12, 700);
+      return { sol, total: a0 };
+    }
+
+    function renderCompartmentTime() {
+      const { sol } = compartmentData();
+      plotSeries('compartment-time-plot', [
+        { x: sol.map((p) => p.t), y: sol.map((p) => p.x), mode: 'lines', name: 'Compartment 1', line: { color: '#2563eb', width: 3 } },
+        { x: sol.map((p) => p.t), y: sol.map((p) => p.y), mode: 'lines', name: 'Compartment 2', line: { color: '#dc2626', width: 2 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Amount' } });
+    }
+
+    function renderCompartmentBalance() {
+      const { sol, total } = compartmentData();
+      const sum = sol.map((p) => p.x + p.y);
+      plotSeries('compartment-balance-plot', [
+        { x: sol.map((p) => p.t), y: sum, mode: 'lines', name: 'Total amount', line: { color: '#0891b2', width: 3 } },
+        { x: [0, sol[sol.length - 1].t], y: [total, total], mode: 'lines', name: 'Initial total', line: { color: '#94a3b8', dash: 'dash' } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Total mass' } });
+      document.getElementById('compartment-balance-note').textContent = `Under pure exchange, the total stays approximately constant at ${fmt(total, 2)} while the distribution changes.`;
+    }
+
+    [
+      ['sys-y0', 1], ['sys-v0', 1], ['mat-a11', 1], ['mat-a12', 1], ['mat-a21', 1], ['mat-a22', 1],
+      ['real-l1', 1], ['real-l2', 1], ['real-x0', 1], ['real-y0', 1],
+      ['cx-alpha', 1], ['cx-beta', 1], ['cx-x0', 1], ['cx-y0', 1],
+      ['rep-l', 1], ['rep-k', 1], ['rep-x0', 1], ['rep-y0', 1],
+      ['exp-a', 1], ['exp-d', 1], ['exp-b', 1], ['exp-t', 1],
+      ['pd-tr', 1], ['pd-det', 1], ['nh-a', 1], ['co-k', 1], ['co-mix', 2],
+      ['comp-k12', 1], ['comp-k21', 1], ['comp-a0', 1],
+    ].forEach(([id, digits]) => bindValue(id, digits));
+
+    bindControls(['sys-y0', 'sys-v0'], () => { renderIntroSystem(); renderIntroPhase(); });
+    bindControls(['mat-a11', 'mat-a12', 'mat-a21', 'mat-a22'], () => { renderMatrixField(); renderMatrixInvariants(); });
+    bindControls(['real-l1', 'real-l2', 'real-x0', 'real-y0'], () => { renderRealEigen(); renderRealInvariant(); });
+    bindControls(['cx-alpha', 'cx-beta', 'cx-x0', 'cx-y0'], () => { renderComplexPhase(); renderComplexTime(); });
+    bindControls(['rep-l', 'rep-k', 'rep-x0', 'rep-y0'], () => { renderRepeatedPhase(); renderRepeatedTime(); });
+    bindControls(['exp-a', 'exp-d', 'exp-b', 'exp-t'], () => { renderMatrixExpFlow(); renderMatrixExpColumns(); });
+    bindControls(['pd-tr', 'pd-det'], () => { renderPhaseMap(); renderPhaseRepresentative(); });
+    bindControls(['nh-kind', 'nh-a'], () => { renderNonhomSystem(); renderNonhomEquilibrium(); });
+    bindControls(['co-k', 'co-mix'], () => { renderCoupledModes(); renderCoupledBeats(); });
+    bindControls(['comp-k12', 'comp-k21', 'comp-a0'], () => { renderCompartmentTime(); renderCompartmentBalance(); });
+  </script>
+</body>
+</html>

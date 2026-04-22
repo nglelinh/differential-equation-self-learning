@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sai Phân Hữu Hạn Cho PDE</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    body { font-family: Inter, Arial, sans-serif; margin: 0; padding: 18px; background: #f8fafc; color: #111827; }
+    h2 { margin: 0 0 12px; font-size: 1.35rem; }
+    .controls { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+    label { font-size: 14px; color: #374151; }
+    #plot { width: 100%; max-width: 960px; height: 560px; background: white; border: 1px solid #d1d5db; border-radius: 10px; }
+    .note { color: #4b5563; max-width: 960px; font-size: 14px; margin-top: 8px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h2>Sai Phân Hữu Hạn Cho Phương Trình Nhiệt</h2>
+  <div class="controls">
+    <label>hệ số r = dt / dx²: <input id="r" type="range" min="0.05" max="0.80" step="0.01" value="0.40"> <span id="rVal">0.40</span></label>
+    <label>số bước thời gian: <input id="steps" type="range" min="20" max="180" step="10" value="80"> <span id="stepsVal">80</span></label>
+  </div>
+  <div id="plot"></div>
+  <div class="note">Heatmap thời gian-không gian cho sơ đồ nhiệt explicit 1D. Khi r quá lớn, lược đồ không còn chỉ làm mượt mà bắt đầu mất ổn định.</div>
+  <script>
+    const rEl = document.getElementById('r');
+    const stepsEl = document.getElementById('steps');
+    const rVal = document.getElementById('rVal');
+    const stepsVal = document.getElementById('stepsVal');
+    function simulate(r, steps) {
+      const nx = 60;
+      const x = Array.from({ length: nx }, (_, i) => i / (nx - 1));
+      let u = x.map(v => Math.sin(Math.PI * v));
+      const z = [u.slice()];
+      for (let n = 0; n < steps; n++) {
+        const next = u.slice();
+        for (let j = 1; j < nx - 1; j++) next[j] = u[j] + r * (u[j + 1] - 2 * u[j] + u[j - 1]);
+        next[0] = 0; next[nx - 1] = 0;
+        u = next;
+        z.push(u.slice());
+      }
+      return { x, z };
+    }
+    function render() {
+      const r = Number(rEl.value), steps = Number(stepsEl.value);
+      rVal.textContent = r.toFixed(2); stepsVal.textContent = steps.toFixed(0);
+      const { x, z } = simulate(r, steps);
+      Plotly.newPlot('plot', [{ z, x, y: Array.from({ length: z.length }, (_, i) => i), type: 'heatmap', colorscale: 'Viridis' }], {
+        title: 'Heatmap thời gian-không gian của sơ đồ nhiệt explicit',
+        xaxis: { title: 'x' }, yaxis: { title: 'bước thời gian n' },
+        annotations: [{ x: 0.98, y: 0.95, xref: 'paper', yref: 'paper', text: r <= 0.5 ? 'r trong vùng ổn định điển hình' : 'r quá lớn: dễ mất ổn định', showarrow: false }],
+        margin: { t: 60, l: 60, r: 20, b: 50 }
+      }, { responsive: true });
+    }
+    [rEl, stepsEl].forEach(el => el.addEventListener('input', render));
+    render();
+  </script>
+</body>
+</html>

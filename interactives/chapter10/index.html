@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 10 Illustration Gallery: Phương Trình Sóng</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #18212f;
+      --muted: #5a6472;
+      --line: #d9e0ea;
+      --accent: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 240px);
+    }
+
+    header, main, footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    header {
+      padding-top: 40px;
+      padding-bottom: 24px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.1;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 980px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .toc a {
+      text-decoration: none;
+      background: rgba(255,255,255,0.78);
+      color: var(--ink);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding-bottom: 40px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.97rem;
+    }
+
+    .figure-wrap {
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+      overflow: hidden;
+    }
+
+    .figure-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: white;
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .meta strong {
+      color: var(--ink);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid #cbd5e1;
+      background: white;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    footer {
+      padding-bottom: 30px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      header, main, footer {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 10 Illustration Gallery</h1>
+    <p>
+      Trang này gom toàn bộ bộ minh họa của Chương 10 về phương trình sóng. Các hình được sắp để làm rõ
+      hình học trung tâm của sóng: suy ra mô hình từ cân bằng lực, lan truyền với tốc độ hữu hạn, sóng dừng trên miền hữu hạn,
+      ảnh hưởng của hình học trong nhiều chiều, bảo toàn năng lượng, tương tác với biên, các hiệu ứng tán sắc và hấp thụ,
+      cùng những ứng dụng lớn trong âm học và điện từ học.
+    </p>
+    <nav class="toc">
+      <a href="#lesson-1">10-01 Suy ra phương trình</a>
+      <a href="#lesson-2">10-02 d'Alembert</a>
+      <a href="#lesson-3">10-03 Tách biến</a>
+      <a href="#lesson-4">10-04 Nhiều chiều</a>
+      <a href="#lesson-5">10-05 Năng lượng</a>
+      <a href="#lesson-6">10-06 Phản xạ</a>
+      <a href="#lesson-7">10-07 Tán sắc</a>
+      <a href="#lesson-8">10-08 Ứng dụng</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <article class="card" id="lesson-1">
+        <h2>10-01 Suy Ra Phương Trình Sóng</h2>
+        <p>Hình mở đầu chuyển cân bằng lực, lực căng và quán tính thành mô hình PDE, đồng thời làm nổi bật sự tương phản giữa lan truyền sóng và khuếch tán nhiệt.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter10/01_derivation_wave_equation.svg" alt="Minh họa suy ra phương trình sóng">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Lực hồi phục, quán tính và lan truyền hữu hạn tốc độ.</div>
+          <div><strong>Dùng trong lớp.</strong> Nhấn mạnh vì sao đạo hàm bậc hai theo thời gian biểu diễn vận chuyển dao động chứ không phải làm mượt.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter10/10_01_Derivation_Wave_Equation/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-2">
+        <h2>10-02 Nghiệm d'Alembert</h2>
+        <p>Minh họa này làm cho sóng truyền sang trái và sang phải trở nên trực quan, biến công thức d'Alembert thành một quy luật lan truyền theo đặc trưng.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter10/02_dalembert_solution.svg" alt="Minh họa nghiệm d'Alembert">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Sóng chạy và miền ảnh hưởng.</div>
+          <div><strong>Dùng trong lớp.</strong> Cho thấy dữ liệu vị trí và vận tốc ban đầu được tách thành các cấu trúc truyền ngược chiều nhau.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter10/10_02_dAlembert_Solution/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-3">
+        <h2>10-03 Phương Pháp Tách Biến Cho Sóng</h2>
+        <p>Cấu trúc của sóng dừng hiện ra qua các mode riêng và tần số riêng, làm rõ cách điều kiện biên lượng tử hóa dao động.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter10/03_separation_of_variables_wave.svg" alt="Minh họa tách biến cho phương trình sóng">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Sóng dừng và các mode chuẩn.</div>
+          <div><strong>Dùng trong lớp.</strong> Nối dao động trên miền hữu hạn với bài toán trị riêng và chuỗi sine Fourier.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter10/10_03_Separation_of_Variables_Wave/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-4">
+        <h2>10-04 Phương Trình Sóng Trong Chiều Cao Hơn</h2>
+        <p>Hình này mở rộng câu chuyện từ dây rung sang màng rung và môi trường ba chiều, nhấn mạnh vai trò của hình học miền và lựa chọn hệ tọa độ.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter10/04_wave_higher_dimensions.svg" alt="Minh họa phương trình sóng trong chiều cao hơn">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Hình học miền, cấu trúc xuyên tâm và lan truyền nhiều chiều.</div>
+          <div><strong>Dùng trong lớp.</strong> Chuẩn bị cho các mode Bessel, cầu và hành vi phụ thuộc miền.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter10/10_04_Wave_Higher_Dimensions/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-5">
+        <h2>10-05 Năng Lượng và Tính Duy Nhất</h2>
+        <p>Hình năng lượng cho thấy sóng vận chuyển năng lượng thay vì phá hủy nó, và vì sao các đồng nhất thức bảo toàn trở thành công cụ chứng minh tính duy nhất.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter10/05_energy_uniqueness.svg" alt="Minh họa năng lượng và tính duy nhất của phương trình sóng">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Năng lượng bảo toàn và bài toán đặt chỉnh.</div>
+          <div><strong>Dùng trong lớp.</strong> So sánh tính bảo toàn của sóng với tính tiêu tán của phương trình nhiệt.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter10/10_05_Energy_Uniqueness/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-6">
+        <h2>10-06 Phản Xạ và Truyền Qua</h2>
+        <p>Hình này mô tả trực quan những gì xảy ra khi sóng gặp biên hoặc mặt phân cách, giúp giải thích phản xạ, truyền qua và vai trò của trở kháng.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter10/06_reflection_transmission.svg" alt="Minh họa phản xạ và truyền qua">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Phản ứng của sóng với biên và mặt ghép.</div>
+          <div><strong>Dùng trong lớp.</strong> Giải thích cách năng lượng được chia giữa phần phản xạ và phần truyền.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter10/10_06_Reflection_Transmission/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-7">
+        <h2>10-07 Tán Sắc và Hấp Thụ</h2>
+        <p>Sự đối lập giữa tán sắc và tắt dần được thể hiện qua gói sóng và sự suy giảm biên độ, giúp phân biệt hai cơ chế vốn rất dễ bị lẫn với nhau.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter10/07_dispersion_dissipation.svg" alt="Minh họa tán sắc và hấp thụ">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Vận tốc pha thay đổi so với mất năng lượng thật sự.</div>
+          <div><strong>Dùng trong lớp.</strong> Phân biệt sự biến dạng dạng sóng với suy giảm năng lượng thực.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter10/10_07_Dispersion_Dissipation/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-8">
+        <h2>10-08 Ứng Dụng: Âm Thanh và Điện Từ</h2>
+        <p>Hình cuối mở rộng chương từ dây rung cơ học sang âm thanh và điện từ, cho thấy cùng một khung PDE có thể mang nhiều diễn giải vật lý khác nhau.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter10/08_applications_acoustics_em.svg" alt="Minh họa ứng dụng trong âm học và điện từ">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Mô hình sóng trong nhiều ngành.</div>
+          <div><strong>Dùng trong lớp.</strong> Kết thúc chương bằng cách nhấn mạnh rằng phương trình sóng là cả một họ mô hình lan truyền.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter10/10_08_Applications_Acoustics_EM/">Mở bài học</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    Có thể dùng gallery này như một cầu nối trực quan từ dây rung cổ điển sang sóng nhiều chiều, âm học, điện từ và các ý tưởng hyperbolic PDE về sau.
+  </footer>
+</body>
+</html>

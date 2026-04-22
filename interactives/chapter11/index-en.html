@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 11 Illustration Gallery: Laplace and Poisson Equations</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #18212f;
+      --muted: #5a6472;
+      --line: #d9e0ea;
+      --accent: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 240px);
+    }
+
+    header, main, footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    header {
+      padding-top: 40px;
+      padding-bottom: 24px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.1;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 980px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .toc a {
+      text-decoration: none;
+      background: rgba(255,255,255,0.78);
+      color: var(--ink);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding-bottom: 40px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.97rem;
+    }
+
+    .figure-wrap {
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+      overflow: hidden;
+    }
+
+    .figure-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: white;
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .meta strong {
+      color: var(--ink);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid #cbd5e1;
+      background: white;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    footer {
+      padding-bottom: 30px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      header, main, footer {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 11 Illustration Gallery</h1>
+    <p>
+      This page gathers the visual assets for Chapter 11 on Laplace and Poisson equations. The figures are arranged
+      to emphasize the central elliptic viewpoint: equilibrium without time evolution, the controlling role of boundary
+      data, geometry-adapted harmonic expansions, sourced balance laws, qualitative principles for harmonic functions,
+      Green-function representation, and the major application languages of electrostatics and ideal fluid flow.
+    </p>
+    <nav class="toc">
+      <a href="#lesson-1">11-01 Laplace</a>
+      <a href="#lesson-2">11-02 Rectangles</a>
+      <a href="#lesson-3">11-03 Polar</a>
+      <a href="#lesson-4">11-04 Poisson</a>
+      <a href="#lesson-5">11-05 Mean Value</a>
+      <a href="#lesson-6">11-06 Green</a>
+      <a href="#lesson-7">11-07 Electrostatics</a>
+      <a href="#lesson-8">11-08 Fluid Flow</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <article class="card" id="lesson-1">
+        <h2>11-01 Laplace's Equation: Introduction</h2>
+        <p>The opening figure frames Laplace's equation as the prototype equilibrium PDE, highlighting harmonic behavior and the absence of interior sources.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter11/01_laplace_equation_introduction.svg" alt="Laplace equation introduction illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Harmonic functions and steady-state balance.</div>
+          <div><strong>Use in class.</strong> Contrast elliptic equilibrium with the time-dependent logic of heat and wave equations.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter11/11_01_Laplace_Equation_Introduction/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-2">
+        <h2>11-02 Separation of Variables in Rectangles</h2>
+        <p>This figure shows how rectangular geometry and boundary data produce harmonic expansions with trigonometric behavior in one direction and hyperbolic behavior in the other.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter11/02_separation_variables_rectangles.svg" alt="Separation of variables in rectangles illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Boundary-driven mode structure in Cartesian domains.</div>
+          <div><strong>Use in class.</strong> Explain how edge data are propagated into the interior through harmonic modes.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter11/11_02_Separation_of_Variables_Rectangles/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-3">
+        <h2>11-03 Laplace's Equation in Polar Coordinates</h2>
+        <p>The circular-domain figure makes angular modes and radial behavior visible, clarifying why polar coordinates are the natural language for disks and annuli.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter11/03_laplace_polar_coordinates.svg" alt="Laplace equation in polar coordinates illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Geometry-adapted separation on circular domains.</div>
+          <div><strong>Use in class.</strong> Show how finite behavior at the origin selects the physically relevant harmonic branches.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter11/11_03_Laplace_Polar_Coordinates/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-4">
+        <h2>11-04 Poisson's Equation</h2>
+        <p>This figure adds source structure to the elliptic picture, making the shift from pure equilibrium to forced equilibrium visually and conceptually clear.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter11/04_poisson_equation.svg" alt="Poisson equation illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Internal forcing and sourced balance laws.</div>
+          <div><strong>Use in class.</strong> Compare the geometric meaning of Laplace's and Poisson's equations through source-free versus sourced interiors.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter11/11_04_Poisson_Equation/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-5">
+        <h2>11-05 Mean Value Property and Maximum Principle</h2>
+        <p>The qualitative figure encodes one of the chapter's deepest ideas: harmonic values are controlled by surrounding data, so strict interior extrema cannot arise without triviality.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter11/05_mean_value_maximum_principle.svg" alt="Mean value property and maximum principle illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Qualitative rigidity of harmonic functions.</div>
+          <div><strong>Use in class.</strong> Support uniqueness arguments with a geometric understanding of averaging and extremum control.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter11/11_05_Mean_Value_Maximum_Principle/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-6">
+        <h2>11-06 Green's Functions for Laplace</h2>
+        <p>The Green-function figure shows how point-source responses and boundary corrections turn elliptic PDEs into integral representation formulas with strong geometric meaning.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter11/06_greens_functions_laplace.svg" alt="Green's functions for Laplace illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Fundamental solutions, boundary correction, and representation.</div>
+          <div><strong>Use in class.</strong> Help students see Green functions as structured responses of the domain, not just technical kernels.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter11/11_06_Greens_Functions_Laplace/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-7">
+        <h2>11-07 Applications: Electrostatics</h2>
+        <p>This figure translates harmonic and Poisson potentials into electrostatic language, connecting charge, potential, and field lines through elliptic structure.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter11/07_applications_electrostatics.svg" alt="Electrostatics application illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Potential theory in physics.</div>
+          <div><strong>Use in class.</strong> Reinforce that Laplace and Poisson equations are not abstract curiosities but core physical models.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter11/11_07_Applications_Electrostatics/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-8">
+        <h2>11-08 Applications: Fluid Flow</h2>
+        <p>The final figure reinterprets harmonic functions as velocity potentials and stream structures, closing the chapter with a second major application family.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter11/08_applications_fluid_flow.svg" alt="Fluid flow application illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Potential flow and incompressible irrotational motion.</div>
+          <div><strong>Use in class.</strong> Show how the same elliptic PDE framework serves both electrostatic fields and fluid velocity potentials.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter11/11_08_Applications_Fluid_Flow/">Open lesson</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    Use this gallery as a visual bridge from classical harmonic functions to electrostatics, fluid flow, and later functional-analytic treatments of elliptic PDEs.
+  </footer>
+</body>
+</html>

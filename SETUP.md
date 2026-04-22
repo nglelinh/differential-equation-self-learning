@@ -19,9 +19,9 @@ Mở file `_config.yml` và thay đổi các thông tin sau:
 # Setup
 title:               "Your Course Title"          # Tên khóa học của bạn
 description:         'Your Course Description'    # Mô tả khóa học
-url:                 https://your-username.github.io
-baseurl:             '/your-repo-name'            # Tên repository của bạn
-imgurl:              https://your-username.github.io/your-repo-name/img
+url:                 https://nglelinh.github.io
+baseurl:             '/differential-equation-self-learning'            # Tên repository của bạn
+imgurl:              https://nglelinh.github.io/differential-equation-self-learning/img
 
 # Language-specific configurations
 t:
@@ -43,10 +43,10 @@ author:
 Mở file `_layouts/default.html` và tìm dòng 24:
 
 ```html
-<a class="github-logo__wrapper" target="_blank" href="https://github.com/your-username/your-repo-name" title="Github">
+<a class="github-logo__wrapper" target="_blank" href="https://github.com/nglelinh/differential-equation-self-learning" title="Github">
 ```
 
-Thay `your-username/your-repo-name` bằng username và tên repository thực tế của bạn.
+Thay `nglelinh/differential-equation-self-learning` bằng username và tên repository thực tế của bạn.
 
 ### 2.3. Cập nhật Thông tin Tác giả
 
@@ -127,7 +127,7 @@ bundle install
 bundle exec jekyll serve
 
 # Mở browser tại
-http://127.0.0.1:4000/your-repo-name/
+http://127.0.0.1:4000/differential-equation-self-learning/
 ```
 
 ## 📋 Checklist

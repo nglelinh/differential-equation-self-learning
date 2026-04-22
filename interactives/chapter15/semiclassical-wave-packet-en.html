@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Semiclassical Limit</title>
+  <style>
+    body { font-family: Inter, Arial, sans-serif; margin: 0; padding: 18px; background: #f8fafc; color: #111827; }
+    h2 { margin: 0 0 12px; font-size: 1.35rem; }
+    .controls { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+    label { font-size: 14px; color: #374151; }
+    canvas { border: 1px solid #d1d5db; background: white; border-radius: 10px; width: 100%; max-width: 920px; height: auto; }
+    .note { color: #4b5563; max-width: 920px; font-size: 14px; margin-top: 8px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h2>Semiclassical Limit: Wave Packet and Classical Orbit</h2>
+  <div class="controls">
+    <label>h: <input id="h" type="range" min="0.02" max="1.00" step="0.01" value="0.25" /> <span id="hVal">0.25</span></label>
+    <label>x0: <input id="x0" type="range" min="-2.5" max="2.5" step="0.1" value="1.8" /> <span id="x0Val">1.8</span></label>
+    <label>p0: <input id="p0" type="range" min="-2.5" max="2.5" step="0.1" value="0.0" /> <span id="p0Val">0.0</span></label>
+    <button id="toggle">Play</button>
+  </div>
+  <canvas id="canvas" width="920" height="460"></canvas>
+  <div class="note">As h becomes smaller, the packet narrows and its center follows the classical harmonic-oscillator orbit more closely. This is the geometric intuition behind the semiclassical limit.</div>
+  <script>
+    const canvas = document.getElementById("canvas"), ctx = canvas.getContext("2d");
+    const hSlider = document.getElementById("h"), x0Slider = document.getElementById("x0"), p0Slider = document.getElementById("p0");
+    const hVal = document.getElementById("hVal"), x0Val = document.getElementById("x0Val"), p0Val = document.getElementById("p0Val"), toggleBtn = document.getElementById("toggle");
+    let playing = false, t = 0;
+    toggleBtn.onclick = () => { playing = !playing; toggleBtn.textContent = playing ? "Pause" : "Play"; };
+    function xToCanvas(x) { return 80 + ((x + 3) / 6) * 760; }
+    function yToCanvas(y) { return 380 - y * 180; }
+    function gaussian(x, mu, sigma) { return Math.exp(-0.5 * ((x - mu) / sigma) ** 2); }
+    function draw() {
+      const h = Number(hSlider.value), x0 = Number(x0Slider.value), p0 = Number(p0Slider.value);
+      hVal.textContent = h.toFixed(2); x0Val.textContent = x0.toFixed(1); p0Val.textContent = p0.toFixed(1);
+      if (playing) t += 0.02;
+      const xc = x0 * Math.cos(t) + p0 * Math.sin(t), sigma = 0.18 + 0.75 * Math.sqrt(h);
+      ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#222"; ctx.font = "16px Arial"; ctx.fillText("Wave packet in a harmonic potential and its classical orbit", 16, 24);
+      ctx.strokeStyle = "#bbb"; ctx.beginPath(); ctx.moveTo(80, 380); ctx.lineTo(840, 380); ctx.moveTo(80, 380); ctx.lineTo(80, 60); ctx.stroke();
+      ctx.strokeStyle = "#5a9"; ctx.lineWidth = 2; ctx.beginPath();
+      for (let i = 0; i <= 500; i++) { const x = -3 + 6 * i / 500, V = 0.11 * x * x, X = xToCanvas(x), Y = yToCanvas(V); if (i === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y); }
+      ctx.stroke();
+      ctx.strokeStyle = "#2563eb"; ctx.lineWidth = 3; ctx.beginPath();
+      for (let i = 0; i <= 600; i++) { const x = -3 + 6 * i / 600, rho = 0.95 * gaussian(x, xc, sigma), X = xToCanvas(x), Y = yToCanvas(rho); if (i === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y); }
+      ctx.stroke();
+      const Xc = xToCanvas(xc), Yc = yToCanvas(0.11 * xc * xc);
+      ctx.fillStyle = "#dc2626"; ctx.beginPath(); ctx.arc(Xc, Yc, 6, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = "#dc2626"; ctx.lineWidth = 2; ctx.beginPath();
+      for (let j = 0; j <= 250; j++) { const s = t - 5 + 5 * j / 250, xj = x0 * Math.cos(s) + p0 * Math.sin(s), X = xToCanvas(xj); if (j === 0) ctx.moveTo(X, 410); else ctx.lineTo(X, 410); }
+      ctx.stroke();
+      ctx.fillStyle = "#333"; ctx.font = "14px Arial"; ctx.fillText(`packet center x(t) = ${xc.toFixed(2)}`, 620, 60); ctx.fillText(`width ~ sqrt(h), h = ${h.toFixed(2)}`, 620, 82); ctx.fillText("blue: |psi|^2", 620, 104); ctx.fillText("red: classical orbit", 620, 126);
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>

@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 02 Interactives: Higher-Order Linear ODEs</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #162033;
+      --muted: #5d6879;
+      --line: #d9e1eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #edf4ff 0, var(--bg) 260px);
+    }
+    header, main, footer {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    header { padding-top: 40px; padding-bottom: 24px; }
+    header h1 { margin: 0 0 10px; font-size: clamp(2rem, 3vw, 3rem); }
+    header p { max-width: 960px; margin: 0; color: var(--muted); line-height: 1.6; }
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .toc a {
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(37,99,235,0.12);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .topic { margin-bottom: 42px; scroll-margin-top: 20px; }
+    .topic h2 { margin: 0 0 10px; font-size: 1.5rem; }
+    .topic > p { margin: 0 0 18px; color: var(--muted); max-width: 920px; line-height: 1.6; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+      gap: 18px;
+    }
+    .demo {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .demo h3 { margin: 0; font-size: 1.08rem; }
+    .spec {
+      display: grid;
+      gap: 8px;
+      font-size: 0.96rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .spec strong { color: var(--ink); }
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid #edf2f7;
+    }
+    .control { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .control label { font-size: 0.82rem; color: var(--muted); }
+    .control input, .control select, .control button { width: 100%; }
+    .control button {
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      background: white;
+      padding: 10px 12px;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .control span { font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+    .plot {
+      width: 100%;
+      min-height: 300px;
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+    }
+    .status {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    footer { padding-top: 8px; padding-bottom: 30px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 640px) {
+      header, main, footer { padding-left: 14px; padding-right: 14px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 02 Interactives</h1>
+    <p>
+      This standalone gallery proposes two runnable JavaScript illustrations for each topic in Chapter 02,
+      Higher-Order Linear ODEs. The emphasis shifts from local direction fields to mode decomposition,
+      characteristic roots, oscillation regimes, forcing, and basis construction.
+    </p>
+    <nav class="toc">
+      <a href="#topic-1">02-01 Overview</a>
+      <a href="#topic-2">02-02 Real Roots</a>
+      <a href="#topic-3">02-03 Complex Roots</a>
+      <a href="#topic-4">02-04 Reduction of Order</a>
+      <a href="#topic-5">02-05 Undetermined Coefficients</a>
+      <a href="#topic-6">02-06 Variation of Parameters</a>
+      <a href="#topic-7">02-07 Higher-Order</a>
+      <a href="#topic-8">02-08 Vibrations</a>
+      <a href="#topic-9">02-09 RLC</a>
+      <a href="#topic-10">02-10 Wronskian</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="topic" id="topic-1">
+      <h2>02-01 Second-Order Linear Equations: Overview</h2>
+      <p>These opening illustrations emphasize that second-order models need two initial conditions and that the total response splits into natural and forced parts.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Two Initial Conditions, One Trajectory</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show why position and velocity are both needed to select one solution of a second-order equation.</div>
+            <div><strong>Mathematical idea shown.</strong> For $$y''+\omega^2y=0$$, the two-dimensional homogeneous solution space is fixed by $$y(0)$$ and $$y'(0)$$.</div>
+            <div><strong>User interactions.</strong> Sliders for angular frequency, initial displacement, and initial velocity.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="ov-w">Angular frequency</label><input id="ov-w" type="range" min="0.5" max="3" step="0.1" value="1.4"><span id="ov-w-value"></span></div>
+            <div class="control"><label for="ov-y0">Initial displacement</label><input id="ov-y0" type="range" min="-3" max="3" step="0.1" value="1.5"><span id="ov-y0-value"></span></div>
+            <div class="control"><label for="ov-v0">Initial velocity</label><input id="ov-v0" type="range" min="-4" max="4" step="0.1" value="0.5"><span id="ov-v0-value"></span></div>
+          </div>
+          <div id="overview-ivp-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Natural Response Plus Forcing</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Make the homogeneous and particular parts visible in the full solution of a nonhomogeneous equation.</div>
+            <div><strong>Mathematical idea shown.</strong> For $$y''+2\zeta\omega y'+\omega^2 y = A$$, the total response is transient plus equilibrium offset.</div>
+            <div><strong>User interactions.</strong> Sliders for damping ratio, frequency, forcing level, and initial displacement.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="ov-zeta">Damping ratio</label><input id="ov-zeta" type="range" min="0.1" max="1.5" step="0.05" value="0.35"><span id="ov-zeta-value"></span></div>
+            <div class="control"><label for="ov-omega">Frequency</label><input id="ov-omega" type="range" min="0.5" max="3" step="0.1" value="1.2"><span id="ov-omega-value"></span></div>
+            <div class="control"><label for="ov-a">Constant forcing A</label><input id="ov-a" type="range" min="-4" max="4" step="0.2" value="2"><span id="ov-a-value"></span></div>
+            <div class="control"><label for="ov-x0">Initial displacement</label><input id="ov-x0" type="range" min="-4" max="4" step="0.1" value="-1"><span id="ov-x0-value"></span></div>
+          </div>
+          <div id="overview-forced-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-2">
+      <h2>02-02 Constant Coefficients: Distinct Real Roots</h2>
+      <p>These illustrations focus on exponential mode mixing and the special structure of repeated roots.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Distinct Real Mode Mixer</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how two exponential modes combine and how one mode eventually dominates.</div>
+            <div><strong>Mathematical idea shown.</strong> For roots $$r_1 \neq r_2$$, the solution is $$c_1e^{r_1t}+c_2e^{r_2t}$$.</div>
+            <div><strong>User interactions.</strong> Sliders for roots and coefficients.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="real-r1">Root r1</label><input id="real-r1" type="range" min="-3" max="2" step="0.1" value="-1.8"><span id="real-r1-value"></span></div>
+            <div class="control"><label for="real-r2">Root r2</label><input id="real-r2" type="range" min="-3" max="2" step="0.1" value="-0.4"><span id="real-r2-value"></span></div>
+            <div class="control"><label for="real-c1">Coefficient c1</label><input id="real-c1" type="range" min="-3" max="3" step="0.1" value="1"><span id="real-c1-value"></span></div>
+            <div class="control"><label for="real-c2">Coefficient c2</label><input id="real-c2" type="range" min="-3" max="3" step="0.1" value="1.6"><span id="real-c2-value"></span></div>
+          </div>
+          <div id="real-modes-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Repeated Root Builder</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Explain why a repeated root needs a second basis function $$te^{rt}$$ instead of another copy of $$e^{rt}$$.</div>
+            <div><strong>Mathematical idea shown.</strong> When the characteristic root has multiplicity two, the solution basis becomes $$e^{rt}$$ and $$te^{rt}$$.</div>
+            <div><strong>User interactions.</strong> Sliders for repeated root and the two coefficients.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="rep-r">Repeated root r</label><input id="rep-r" type="range" min="-2.5" max="1.5" step="0.1" value="-0.8"><span id="rep-r-value"></span></div>
+            <div class="control"><label for="rep-c1">Coefficient c1</label><input id="rep-c1" type="range" min="-3" max="3" step="0.1" value="1"><span id="rep-c1-value"></span></div>
+            <div class="control"><label for="rep-c2">Coefficient c2</label><input id="rep-c2" type="range" min="-3" max="3" step="0.1" value="1"><span id="rep-c2-value"></span></div>
+          </div>
+          <div id="repeated-root-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-3">
+      <h2>02-03 Constant Coefficients: Complex Roots</h2>
+      <p>The main visual shift here is from exponentials to oscillatory envelopes and root geometry.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Damped Oscillation Envelope</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Separate the roles of the real and imaginary parts of the characteristic roots.</div>
+            <div><strong>Mathematical idea shown.</strong> With roots $$\alpha \pm i\beta$$, the solution has envelope $$e^{\alpha t}$$ and oscillation rate $$\beta$$.</div>
+            <div><strong>User interactions.</strong> Sliders for $$\alpha$$, $$\beta$$, and the basis coefficients.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="cx-a">Alpha</label><input id="cx-a" type="range" min="-1.5" max="0.8" step="0.05" value="-0.25"><span id="cx-a-value"></span></div>
+            <div class="control"><label for="cx-b">Beta</label><input id="cx-b" type="range" min="0.5" max="4" step="0.1" value="2"><span id="cx-b-value"></span></div>
+            <div class="control"><label for="cx-c1">Coefficient c1</label><input id="cx-c1" type="range" min="-3" max="3" step="0.1" value="1"><span id="cx-c1-value"></span></div>
+            <div class="control"><label for="cx-c2">Coefficient c2</label><input id="cx-c2" type="range" min="-3" max="3" step="0.1" value="0.5"><span id="cx-c2-value"></span></div>
+          </div>
+          <div id="complex-envelope-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Characteristic Roots in the Complex Plane</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Connect equation coefficients to the location of roots and the corresponding time-domain regime.</div>
+            <div><strong>Mathematical idea shown.</strong> For $$y'' + by' + cy = 0$$, the discriminant determines whether roots are real, repeated, or complex.</div>
+            <div><strong>User interactions.</strong> Sliders for coefficients $$b$$ and $$c$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="root-b">Coefficient b</label><input id="root-b" type="range" min="-1" max="6" step="0.1" value="1.4"><span id="root-b-value"></span></div>
+            <div class="control"><label for="root-c">Coefficient c</label><input id="root-c" type="range" min="0.1" max="9" step="0.1" value="4"><span id="root-c-value"></span></div>
+          </div>
+          <div id="complex-roots-plot" class="plot"></div>
+          <div id="complex-roots-note" class="status"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-4">
+      <h2>02-04 Reduction of Order</h2>
+      <p>These visuals emphasize basis completion and linearly independent structure rather than raw algebraic manipulation.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Known Solution and New Independent Solution</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that reduction of order turns one known solution into a full basis.</div>
+            <div><strong>Mathematical idea shown.</strong> For the Cauchy-Euler equation with repeated root 1, one solution is $$y_1=x$$ and the second is $$y_2=x\ln x$$.</div>
+            <div><strong>User interactions.</strong> Sliders for basis coefficients.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="red-c1">Coefficient c1</label><input id="red-c1" type="range" min="-3" max="3" step="0.1" value="1"><span id="red-c1-value"></span></div>
+            <div class="control"><label for="red-c2">Coefficient c2</label><input id="red-c2" type="range" min="-3" max="3" step="0.1" value="1"><span id="red-c2-value"></span></div>
+          </div>
+          <div id="reduction-basis-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Why a Constant Multiple Is Not Enough</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Contrast a genuine second solution with a mere rescaling of the known one.</div>
+            <div><strong>Mathematical idea shown.</strong> The ansatz $$y_2=v(x)y_1(x)$$ must use a nonconstant factor to create independence.</div>
+            <div><strong>User interactions.</strong> Slider for the constant multiple and a slider for the nonconstant factor scale.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="red-k">Constant multiple k</label><input id="red-k" type="range" min="-3" max="3" step="0.1" value="2"><span id="red-k-value"></span></div>
+            <div class="control"><label for="red-v">Scale on ln(x)</label><input id="red-v" type="range" min="0.2" max="3" step="0.1" value="1"><span id="red-v-value"></span></div>
+          </div>
+          <div id="reduction-compare-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-5">
+      <h2>02-05 Nonhomogeneous Equations: Undetermined Coefficients</h2>
+      <p>Here the key visual idea is choosing a trial family that stays closed under differentiation and noticing when resonance forces an extra factor of time.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Forcing Family Explorer</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Help students match forcing functions to the right trial family.</div>
+            <div><strong>Mathematical idea shown.</strong> Polynomial, exponential, and sine-cosine forcing remain in manageable function families after differentiation.</div>
+            <div><strong>User interactions.</strong> Dropdown for forcing type and slider for forcing strength.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="uc-kind">Forcing type</label><select id="uc-kind"><option value="poly">Polynomial</option><option value="exp">Exponential</option><option value="trig">Sine-Cosine</option></select></div>
+            <div class="control"><label for="uc-a">Strength</label><input id="uc-a" type="range" min="0.5" max="3" step="0.1" value="1.5"><span id="uc-a-value"></span></div>
+          </div>
+          <div id="uc-family-plot" class="plot"></div>
+          <div id="uc-family-note" class="status"></div>
+        </article>
+        <article class="demo">
+          <h3>Resonance Multiplier Demo</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show why the naive particular guess fails when it overlaps with a homogeneous mode.</div>
+            <div><strong>Mathematical idea shown.</strong> For $$y''-2y'+y=e^t$$, the root $$r=1$$ repeats in the homogeneous solution, so the particular trial must be multiplied by a power of $$t$$.</div>
+            <div><strong>User interactions.</strong> Checkbox to toggle resonance and slider for forcing scale.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="uc-resonant">Resonant forcing</label><input id="uc-resonant" type="checkbox" checked></div>
+            <div class="control"><label for="uc-scale">Forcing scale</label><input id="uc-scale" type="range" min="0.5" max="3" step="0.1" value="1"><span id="uc-scale-value"></span></div>
+          </div>
+          <div id="uc-resonance-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-6">
+      <h2>02-06 Variation of Parameters</h2>
+      <p>These illustrations show how forcing changes the time-dependent weights of a homogeneous basis.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Changing Basis Weights u1 and u2</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Let students see the new coefficient functions evolve under forcing.</div>
+            <div><strong>Mathematical idea shown.</strong> For $$y''+y=g(t)$$ with basis $$\cos t,\sin t$$, variation of parameters produces time-dependent coefficients $$u_1,u_2$$.</div>
+            <div><strong>User interactions.</strong> Slider for forcing decay rate.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="vop-decay">Forcing decay</label><input id="vop-decay" type="range" min="0.2" max="2" step="0.1" value="0.8"><span id="vop-decay-value"></span></div>
+          </div>
+          <div id="vop-weights-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Particular Solution Built from the Basis</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that the particular solution is assembled from the same homogeneous directions.</div>
+            <div><strong>Mathematical idea shown.</strong> The forcing steers the coefficients, and their mixture reconstructs $$y_p(t)$$.</div>
+            <div><strong>User interactions.</strong> Slider for forcing decay rate.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="vop-decay-2">Forcing decay</label><input id="vop-decay-2" type="range" min="0.2" max="2" step="0.1" value="0.8"><span id="vop-decay-2-value"></span></div>
+          </div>
+          <div id="vop-solution-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-7">
+      <h2>02-07 Higher-Order Equations</h2>
+      <p>These demos generalize the second-order picture to three modes and to asymptotic dominance.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Third-Order Mode Mixer</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Extend characteristic-root thinking from two modes to three.</div>
+            <div><strong>Mathematical idea shown.</strong> A third-order constant-coefficient equation can combine three exponential modes.</div>
+            <div><strong>User interactions.</strong> Sliders for three roots and three coefficients.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="ho-r1">Root r1</label><input id="ho-r1" type="range" min="-3" max="1.5" step="0.1" value="-2"><span id="ho-r1-value"></span></div>
+            <div class="control"><label for="ho-r2">Root r2</label><input id="ho-r2" type="range" min="-3" max="1.5" step="0.1" value="-0.9"><span id="ho-r2-value"></span></div>
+            <div class="control"><label for="ho-r3">Root r3</label><input id="ho-r3" type="range" min="-3" max="1.5" step="0.1" value="0.2"><span id="ho-r3-value"></span></div>
+            <div class="control"><label for="ho-c1">c1</label><input id="ho-c1" type="range" min="-2" max="2" step="0.1" value="1"><span id="ho-c1-value"></span></div>
+            <div class="control"><label for="ho-c2">c2</label><input id="ho-c2" type="range" min="-2" max="2" step="0.1" value="1"><span id="ho-c2-value"></span></div>
+            <div class="control"><label for="ho-c3">c3</label><input id="ho-c3" type="range" min="-2" max="2" step="0.1" value="1"><span id="ho-c3-value"></span></div>
+          </div>
+          <div id="higher-order-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Dominant Mode Over Time</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show why long-term behavior is usually governed by the least negative or most positive root.</div>
+            <div><strong>Mathematical idea shown.</strong> The largest real part eventually dominates asymptotic growth or decay.</div>
+            <div><strong>User interactions.</strong> Reuses the same root sliders as the mode mixer.</div>
+          </div>
+          <div id="higher-dominance-plot" class="plot"></div>
+          <div id="higher-dominance-note" class="status"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-8">
+      <h2>02-08 Mechanical Vibrations</h2>
+      <p>The central application chapter is about reading damping regimes and resonance directly from the parameters.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Damping Regime Explorer</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Compare overdamped, critically damped, and underdamped motion on one parameter family.</div>
+            <div><strong>Mathematical idea shown.</strong> The discriminant $$c^2-4mk$$ governs the oscillation regime of $$mx''+cx'+kx=0$$.</div>
+            <div><strong>User interactions.</strong> Sliders for mass, damping, spring constant, initial displacement, and initial velocity.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="mech-m">Mass m</label><input id="mech-m" type="range" min="0.5" max="5" step="0.1" value="1"><span id="mech-m-value"></span></div>
+            <div class="control"><label for="mech-c">Damping c</label><input id="mech-c" type="range" min="0" max="8" step="0.1" value="1.2"><span id="mech-c-value"></span></div>
+            <div class="control"><label for="mech-k">Spring k</label><input id="mech-k" type="range" min="0.5" max="10" step="0.1" value="4"><span id="mech-k-value"></span></div>
+            <div class="control"><label for="mech-x0">Initial x</label><input id="mech-x0" type="range" min="-3" max="3" step="0.1" value="1"><span id="mech-x0-value"></span></div>
+            <div class="control"><label for="mech-v0">Initial v</label><input id="mech-v0" type="range" min="-4" max="4" step="0.1" value="0"><span id="mech-v0-value"></span></div>
+          </div>
+          <div id="mechanical-regime-plot" class="plot"></div>
+          <div id="mechanical-regime-note" class="status"></div>
+        </article>
+        <article class="demo">
+          <h3>Steady-State Resonance Curve</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how forcing frequency controls the steady-state amplitude of a damped oscillator.</div>
+            <div><strong>Mathematical idea shown.</strong> The frequency response curve peaks near the natural frequency when damping is small.</div>
+            <div><strong>User interactions.</strong> Sliders for mass, damping, spring constant, and forcing amplitude.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="res-m">Mass m</label><input id="res-m" type="range" min="0.5" max="5" step="0.1" value="1"><span id="res-m-value"></span></div>
+            <div class="control"><label for="res-c">Damping c</label><input id="res-c" type="range" min="0.1" max="5" step="0.1" value="0.8"><span id="res-c-value"></span></div>
+            <div class="control"><label for="res-k">Spring k</label><input id="res-k" type="range" min="0.5" max="10" step="0.1" value="4"><span id="res-k-value"></span></div>
+            <div class="control"><label for="res-f">Forcing amplitude</label><input id="res-f" type="range" min="0.5" max="4" step="0.1" value="1"><span id="res-f-value"></span></div>
+          </div>
+          <div id="mechanical-resonance-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-9">
+      <h2>02-09 RLC Circuits</h2>
+      <p>These illustrations parallel the mechanical vibration models, now in electrical language.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Free RLC Response</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show the circuit analogy to damped oscillation in charge space.</div>
+            <div><strong>Mathematical idea shown.</strong> The free equation $$Lq''+Rq'+\frac{1}{C}q=0$$ has the same regime structure as a damped spring.</div>
+            <div><strong>User interactions.</strong> Sliders for inductance, resistance, capacitance, initial charge, and initial current.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="rlc-l">Inductance L</label><input id="rlc-l" type="range" min="0.5" max="5" step="0.1" value="1"><span id="rlc-l-value"></span></div>
+            <div class="control"><label for="rlc-r">Resistance R</label><input id="rlc-r" type="range" min="0" max="8" step="0.1" value="1.5"><span id="rlc-r-value"></span></div>
+            <div class="control"><label for="rlc-c">Capacitance C</label><input id="rlc-c" type="range" min="0.2" max="3" step="0.1" value="0.8"><span id="rlc-c-value"></span></div>
+            <div class="control"><label for="rlc-q0">Initial charge</label><input id="rlc-q0" type="range" min="-3" max="3" step="0.1" value="1"><span id="rlc-q0-value"></span></div>
+            <div class="control"><label for="rlc-i0">Initial current</label><input id="rlc-i0" type="range" min="-4" max="4" step="0.1" value="0"><span id="rlc-i0-value"></span></div>
+          </div>
+          <div id="rlc-free-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>RLC Frequency Response</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Visualize resonance in circuit current amplitude under sinusoidal forcing.</div>
+            <div><strong>Mathematical idea shown.</strong> The steady-state current amplitude depends on impedance and peaks near the resonant frequency.</div>
+            <div><strong>User interactions.</strong> Sliders for inductance, resistance, capacitance, and source amplitude.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="rlc-l2">Inductance L</label><input id="rlc-l2" type="range" min="0.5" max="5" step="0.1" value="1"><span id="rlc-l2-value"></span></div>
+            <div class="control"><label for="rlc-r2">Resistance R</label><input id="rlc-r2" type="range" min="0.1" max="6" step="0.1" value="1"><span id="rlc-r2-value"></span></div>
+            <div class="control"><label for="rlc-c2">Capacitance C</label><input id="rlc-c2" type="range" min="0.2" max="3" step="0.1" value="0.8"><span id="rlc-c2-value"></span></div>
+            <div class="control"><label for="rlc-e">Source amplitude</label><input id="rlc-e" type="range" min="0.5" max="4" step="0.1" value="1"><span id="rlc-e-value"></span></div>
+          </div>
+          <div id="rlc-response-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-10">
+      <h2>02-10 Wronskian and Linear Independence</h2>
+      <p>The chapter ends by turning “independent solutions” into something students can compute and see.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Function Pair and Wronskian</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Let students compare dependent and independent function pairs.</div>
+            <div><strong>Mathematical idea shown.</strong> The Wronskian detects whether two candidate solutions form a basis locally.</div>
+            <div><strong>User interactions.</strong> Dropdown for function pair.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="wr-pair">Function pair</label><select id="wr-pair"><option value="dependent">e^t and 2e^t</option><option value="independent">e^t and te^t</option><option value="oscillatory">sin t and cos t</option></select></div>
+          </div>
+          <div id="wronskian-pair-plot" class="plot"></div>
+          <div id="wronskian-pair-note" class="status"></div>
+        </article>
+        <article class="demo">
+          <h3>Abel Formula Explorer</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how the coefficient of $$y'$$ controls the evolution of the Wronskian.</div>
+            <div><strong>Mathematical idea shown.</strong> For $$y''+p(t)y'+q(t)y=0$$, Abel's formula gives $$W(t)=Ce^{-\int p(t)dt}$$.</div>
+            <div><strong>User interactions.</strong> Sliders for constant $$p$$ and the integration constant $$C$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="abel-p">Constant p</label><input id="abel-p" type="range" min="-2" max="3" step="0.1" value="0.8"><span id="abel-p-value"></span></div>
+            <div class="control"><label for="abel-c">Constant C</label><input id="abel-c" type="range" min="-3" max="3" step="0.1" value="1.5"><span id="abel-c-value"></span></div>
+          </div>
+          <div id="abel-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    The page is self-contained so it can be opened directly in a browser or served as a static file from the repository.
+  </footer>
+
+  <script>
+    const fmt = (value, digits = 2) => Number(value).toFixed(digits).replace(/\.00$/, '');
+    function bindValue(id, digits = 2) {
+      const input = document.getElementById(id);
+      const output = document.getElementById(`${id}-value`);
+      const refresh = () => { if (output) output.textContent = fmt(input.value, digits); };
+      input.addEventListener('input', refresh);
+      input.addEventListener('change', refresh);
+      refresh();
+    }
+    function bindControls(ids, render) {
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        el.addEventListener('input', render);
+        el.addEventListener('change', render);
+      });
+      render();
+    }
+    function linspace(min, max, count) {
+      return Array.from({ length: count }, (_, i) => min + (max - min) * i / (count - 1));
+    }
+    function plotSeries(divId, traces, layout = {}) {
+      Plotly.react(divId, traces, {
+        margin: { l: 46, r: 18, t: 24, b: 42 },
+        paper_bgcolor: '#ffffff',
+        plot_bgcolor: '#ffffff',
+        legend: { orientation: 'h' },
+        xaxis: { gridcolor: '#e5e7eb', zerolinecolor: '#cbd5e1' },
+        yaxis: { gridcolor: '#e5e7eb', zerolinecolor: '#cbd5e1' },
+        ...layout,
+      }, { responsive: true, displayModeBar: false });
+    }
+    function integrateSecondOrder(accel, y0, v0, tMax, steps) {
+      const h = tMax / steps;
+      let t = 0;
+      let y = y0;
+      let v = v0;
+      const out = [];
+      for (let i = 0; i <= steps; i += 1) {
+        out.push({ t, y, v });
+        const a1 = accel(t, y, v);
+        const k1y = v;
+        const k1v = a1;
+        const a2 = accel(t + h / 2, y + h * k1y / 2, v + h * k1v / 2);
+        const k2y = v + h * k1v / 2;
+        const k2v = a2;
+        const a3 = accel(t + h / 2, y + h * k2y / 2, v + h * k2v / 2);
+        const k3y = v + h * k2v / 2;
+        const k3v = a3;
+        const a4 = accel(t + h, y + h * k3y, v + h * k3v);
+        const k4y = v + h * k3v;
+        const k4v = a4;
+        y += h * (k1y + 2 * k2y + 2 * k3y + k4y) / 6;
+        v += h * (k1v + 2 * k2v + 2 * k3v + k4v) / 6;
+        t += h;
+      }
+      return out;
+    }
+    function cumulativeIntegral(x, y) {
+      const out = [0];
+      for (let i = 1; i < x.length; i += 1) {
+        out.push(out[i - 1] + 0.5 * (y[i] + y[i - 1]) * (x[i] - x[i - 1]));
+      }
+      return out;
+    }
+
+    function renderOverviewIVP() {
+      const w = Number(document.getElementById('ov-w').value);
+      const y0 = Number(document.getElementById('ov-y0').value);
+      const v0 = Number(document.getElementById('ov-v0').value);
+      const t = linspace(0, 14, 400);
+      const y = t.map((time) => y0 * Math.cos(w * time) + (v0 / w) * Math.sin(w * time));
+      plotSeries('overview-ivp-plot', [
+        { x: t, y, mode: 'lines', name: 'Solution y(t)', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'y(t)' } });
+    }
+    function renderOverviewForced() {
+      const z = Number(document.getElementById('ov-zeta').value);
+      const w = Number(document.getElementById('ov-omega').value);
+      const A = Number(document.getElementById('ov-a').value);
+      const x0 = Number(document.getElementById('ov-x0').value);
+      const eq = A / (w * w);
+      const sol = integrateSecondOrder((t, y, v) => A - 2 * z * w * v - w * w * y, x0, 0, 18, 800);
+      plotSeries('overview-forced-plot', [
+        { x: sol.map((p) => p.t), y: sol.map((p) => p.y), mode: 'lines', name: 'Total response', line: { color: '#0891b2', width: 3 } },
+        { x: [0, 18], y: [eq, eq], mode: 'lines', name: 'Particular equilibrium', line: { color: '#b45309', dash: 'dash' } },
+        { x: sol.map((p) => p.t), y: sol.map((p) => p.y - eq), mode: 'lines', name: 'Homogeneous transient', line: { color: '#dc2626', dash: 'dot' } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'y(t)' } });
+    }
+    function renderRealModes() {
+      let r1 = Number(document.getElementById('real-r1').value);
+      let r2 = Number(document.getElementById('real-r2').value);
+      if (Math.abs(r1 - r2) < 0.1) {
+        r2 = r1 + 0.1;
+        document.getElementById('real-r2').value = r2;
+        document.getElementById('real-r2-value').textContent = fmt(r2, 1);
+      }
+      const c1 = Number(document.getElementById('real-c1').value);
+      const c2 = Number(document.getElementById('real-c2').value);
+      const t = linspace(0, 6, 300);
+      const m1 = t.map((x) => c1 * Math.exp(r1 * x));
+      const m2 = t.map((x) => c2 * Math.exp(r2 * x));
+      const y = t.map((_, i) => m1[i] + m2[i]);
+      plotSeries('real-modes-plot', [
+        { x: t, y: m1, mode: 'lines', name: 'c1 e^(r1 t)', line: { color: '#94a3b8', dash: 'dot' } },
+        { x: t, y: m2, mode: 'lines', name: 'c2 e^(r2 t)', line: { color: '#b45309', dash: 'dot' } },
+        { x: t, y, mode: 'lines', name: 'Total', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'y(t)' } });
+    }
+    function renderRepeatedRoot() {
+      const r = Number(document.getElementById('rep-r').value);
+      const c1 = Number(document.getElementById('rep-c1').value);
+      const c2 = Number(document.getElementById('rep-c2').value);
+      const t = linspace(0, 6, 300);
+      const y1 = t.map((x) => Math.exp(r * x));
+      const y2 = t.map((x) => x * Math.exp(r * x));
+      const y = t.map((x) => (c1 + c2 * x) * Math.exp(r * x));
+      plotSeries('repeated-root-plot', [
+        { x: t, y: y1, mode: 'lines', name: 'e^(rt)', line: { color: '#94a3b8', dash: 'dot' } },
+        { x: t, y: y2, mode: 'lines', name: 't e^(rt)', line: { color: '#b45309', dash: 'dot' } },
+        { x: t, y, mode: 'lines', name: 'Combined solution', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'y(t)' } });
+    }
+    function renderComplexEnvelope() {
+      const a = Number(document.getElementById('cx-a').value);
+      const b = Number(document.getElementById('cx-b').value);
+      const c1 = Number(document.getElementById('cx-c1').value);
+      const c2 = Number(document.getElementById('cx-c2').value);
+      const t = linspace(0, 12, 500);
+      const envelope = t.map((x) => Math.sqrt(c1 * c1 + c2 * c2) * Math.exp(a * x));
+      const y = t.map((x) => Math.exp(a * x) * (c1 * Math.cos(b * x) + c2 * Math.sin(b * x)));
+      plotSeries('complex-envelope-plot', [
+        { x: t, y: envelope, mode: 'lines', name: '+ envelope', line: { color: '#94a3b8', dash: 'dash' } },
+        { x: t, y: envelope.map((v) => -v), mode: 'lines', name: '- envelope', line: { color: '#94a3b8', dash: 'dash' } },
+        { x: t, y, mode: 'lines', name: 'Solution', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'y(t)' } });
+    }
+    function renderComplexRoots() {
+      const b = Number(document.getElementById('root-b').value);
+      const c = Number(document.getElementById('root-c').value);
+      const disc = b * b - 4 * c;
+      let roots;
+      let note;
+      if (disc > 0) {
+        roots = [
+          { x: [(-b + Math.sqrt(disc)) / 2, (-b - Math.sqrt(disc)) / 2], y: [0, 0] },
+        ];
+        note = 'Distinct real roots: the time-domain response is built from two exponential modes.';
+      } else if (Math.abs(disc) < 1e-8) {
+        roots = [{ x: [-b / 2], y: [0] }];
+        note = 'Repeated real root: the second basis function must include a factor of t.';
+      } else {
+        roots = [{ x: [-b / 2, -b / 2], y: [Math.sqrt(-disc) / 2, -Math.sqrt(-disc) / 2] }];
+        note = 'Complex conjugate roots: the real part controls damping and the imaginary part controls oscillation frequency.';
+      }
+      plotSeries('complex-roots-plot', roots.map((r) => ({ x: r.x, y: r.y, mode: 'markers', name: 'Roots', marker: { size: 11, color: '#2563eb' } })), {
+        xaxis: { title: 'Real part' },
+        yaxis: { title: 'Imaginary part', scaleanchor: 'x', scaleratio: 1 },
+      });
+      document.getElementById('complex-roots-note').textContent = note;
+    }
+    function renderReductionBasis() {
+      const c1 = Number(document.getElementById('red-c1').value);
+      const c2 = Number(document.getElementById('red-c2').value);
+      const x = linspace(0.5, 6, 300);
+      const y1 = x.map((v) => v);
+      const y2 = x.map((v) => v * Math.log(v));
+      const y = x.map((v) => c1 * v + c2 * v * Math.log(v));
+      plotSeries('reduction-basis-plot', [
+        { x, y: y1, mode: 'lines', name: 'y1 = x', line: { color: '#94a3b8', dash: 'dot' } },
+        { x, y: y2, mode: 'lines', name: 'y2 = x ln x', line: { color: '#b45309', dash: 'dot' } },
+        { x, y, mode: 'lines', name: 'General combination', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'y(x)' } });
+    }
+    function renderReductionCompare() {
+      const k = Number(document.getElementById('red-k').value);
+      const s = Number(document.getElementById('red-v').value);
+      const x = linspace(0.5, 6, 300);
+      const y1 = x.map((v) => v);
+      const ky1 = x.map((v) => k * v);
+      const good = x.map((v) => s * v * Math.log(v));
+      plotSeries('reduction-compare-plot', [
+        { x, y: y1, mode: 'lines', name: 'Known solution y1', line: { color: '#2563eb', width: 3 } },
+        { x, y: ky1, mode: 'lines', name: 'Constant multiple k y1', line: { color: '#94a3b8', dash: 'dash' } },
+        { x, y: good, mode: 'lines', name: 'Nonconstant factor v(x) y1', line: { color: '#dc2626' } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Function value' } });
+    }
+    function renderUCFamily() {
+      const kind = document.getElementById('uc-kind').value;
+      const a = Number(document.getElementById('uc-a').value);
+      const t = linspace(0, 10, 300);
+      let g;
+      let note;
+      if (kind === 'poly') {
+        g = t.map((x) => a * (1 + 0.4 * x + 0.08 * x * x));
+        note = 'Polynomial forcing suggests a polynomial trial of the same degree.';
+      } else if (kind === 'exp') {
+        g = t.map((x) => a * Math.exp(0.35 * x));
+        note = 'Exponential forcing suggests an exponential trial, unless it overlaps with a homogeneous mode.';
+      } else {
+        g = t.map((x) => a * Math.sin(1.6 * x));
+        note = 'Sine-cosine forcing suggests a sine-cosine trial family.';
+      }
+      plotSeries('uc-family-plot', [
+        { x: t, y: g, mode: 'lines', name: 'Forcing g(t)', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'g(t)' } });
+      document.getElementById('uc-family-note').textContent = note;
+    }
+    function renderUCResonance() {
+      const resonant = document.getElementById('uc-resonant').checked;
+      const scale = Number(document.getElementById('uc-scale').value);
+      const t = linspace(0, 8, 300);
+      const forcing = t.map((x) => scale * Math.exp((resonant ? 1 : 2) * x));
+      const trial = t.map((x) => resonant ? scale * x * x * Math.exp(x) : scale * Math.exp(2 * x));
+      const mode = t.map((x) => Math.exp(x));
+      plotSeries('uc-resonance-plot', [
+        { x: t, y: forcing, mode: 'lines', name: 'Forcing', line: { color: '#94a3b8', dash: 'dash' } },
+        { x: t, y: mode, mode: 'lines', name: 'Homogeneous mode e^t', line: { color: '#b45309', dash: 'dot' } },
+        { x: t, y: trial, mode: 'lines', name: resonant ? 'Correct resonant trial ~ t^2 e^t' : 'Nonresonant trial ~ e^(2t)', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Amplitude' } });
+    }
+    function computeVOP(decay) {
+      const t = linspace(0, 14, 500);
+      const g = t.map((x) => Math.exp(-decay * x));
+      const u1p = t.map((x, i) => -Math.sin(x) * g[i]);
+      const u2p = t.map((x, i) => Math.cos(x) * g[i]);
+      const u1 = cumulativeIntegral(t, u1p);
+      const u2 = cumulativeIntegral(t, u2p);
+      const yp = t.map((x, i) => u1[i] * Math.cos(x) + u2[i] * Math.sin(x));
+      return { t, g, u1, u2, yp };
+    }
+    function renderVOPWeights() {
+      const decay = Number(document.getElementById('vop-decay').value);
+      const data = computeVOP(decay);
+      plotSeries('vop-weights-plot', [
+        { x: data.t, y: data.u1, mode: 'lines', name: 'u1(t)', line: { color: '#2563eb', width: 3 } },
+        { x: data.t, y: data.u2, mode: 'lines', name: 'u2(t)', line: { color: '#dc2626', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Coefficient value' } });
+    }
+    function renderVOPSolution() {
+      const decay = Number(document.getElementById('vop-decay-2').value);
+      const data = computeVOP(decay);
+      plotSeries('vop-solution-plot', [
+        { x: data.t, y: data.g, mode: 'lines', name: 'Forcing g(t)', line: { color: '#94a3b8', dash: 'dash' } },
+        { x: data.t, y: data.yp, mode: 'lines', name: 'Particular solution y_p', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Value' } });
+    }
+    function getHigherData() {
+      const r1 = Number(document.getElementById('ho-r1').value);
+      const r2 = Number(document.getElementById('ho-r2').value);
+      const r3 = Number(document.getElementById('ho-r3').value);
+      const c1 = Number(document.getElementById('ho-c1').value);
+      const c2 = Number(document.getElementById('ho-c2').value);
+      const c3 = Number(document.getElementById('ho-c3').value);
+      const t = linspace(0, 8, 350);
+      const m1 = t.map((x) => c1 * Math.exp(r1 * x));
+      const m2 = t.map((x) => c2 * Math.exp(r2 * x));
+      const m3 = t.map((x) => c3 * Math.exp(r3 * x));
+      const y = t.map((_, i) => m1[i] + m2[i] + m3[i]);
+      return { t, r1, r2, r3, m1, m2, m3, y };
+    }
+    function renderHigherOrder() {
+      const d = getHigherData();
+      plotSeries('higher-order-plot', [
+        { x: d.t, y: d.m1, mode: 'lines', name: 'Mode 1', line: { color: '#94a3b8', dash: 'dot' } },
+        { x: d.t, y: d.m2, mode: 'lines', name: 'Mode 2', line: { color: '#b45309', dash: 'dot' } },
+        { x: d.t, y: d.m3, mode: 'lines', name: 'Mode 3', line: { color: '#15803d', dash: 'dot' } },
+        { x: d.t, y: d.y, mode: 'lines', name: 'Total', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'y(t)' } });
+    }
+    function renderHigherDominance() {
+      const d = getHigherData();
+      const abs1 = d.m1.map((v) => Math.abs(v));
+      const abs2 = d.m2.map((v) => Math.abs(v));
+      const abs3 = d.m3.map((v) => Math.abs(v));
+      const dominant = Math.max(d.r1, d.r2, d.r3);
+      plotSeries('higher-dominance-plot', [
+        { x: d.t, y: abs1, mode: 'lines', name: '|Mode 1|', line: { color: '#94a3b8' } },
+        { x: d.t, y: abs2, mode: 'lines', name: '|Mode 2|', line: { color: '#b45309' } },
+        { x: d.t, y: abs3, mode: 'lines', name: '|Mode 3|', line: { color: '#15803d' } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Absolute mode size' } });
+      document.getElementById('higher-dominance-note').textContent = `The dominant long-time root is the one with largest real part, here approximately ${fmt(dominant, 1)}.`;
+    }
+    function renderMechanicalRegime() {
+      const m = Number(document.getElementById('mech-m').value);
+      const c = Number(document.getElementById('mech-c').value);
+      const k = Number(document.getElementById('mech-k').value);
+      const x0 = Number(document.getElementById('mech-x0').value);
+      const v0 = Number(document.getElementById('mech-v0').value);
+      const sol = integrateSecondOrder((t, x, v) => (-c * v - k * x) / m, x0, v0, 18, 900);
+      const disc = c * c - 4 * m * k;
+      const regime = disc > 0 ? 'overdamped' : Math.abs(disc) < 1e-8 ? 'critically damped' : 'underdamped';
+      plotSeries('mechanical-regime-plot', [
+        { x: sol.map((p) => p.t), y: sol.map((p) => p.y), mode: 'lines', name: 'Displacement', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'x(t)' } });
+      document.getElementById('mechanical-regime-note').textContent = `Discriminant c^2 - 4mk = ${fmt(disc, 2)}, so the motion is ${regime}.`;
+    }
+    function renderMechanicalResonance() {
+      const m = Number(document.getElementById('res-m').value);
+      const c = Number(document.getElementById('res-c').value);
+      const k = Number(document.getElementById('res-k').value);
+      const F = Number(document.getElementById('res-f').value);
+      const w = linspace(0.1, 4.5, 260);
+      const amp = w.map((omega) => F / Math.sqrt((k - m * omega * omega) ** 2 + (c * omega) ** 2));
+      plotSeries('mechanical-resonance-plot', [
+        { x: w, y: amp, mode: 'lines', name: 'Steady-state amplitude', line: { color: '#0891b2', width: 3 } },
+      ], { xaxis: { title: 'Driving frequency' }, yaxis: { title: 'Amplitude' } });
+    }
+    function renderRLCFree() {
+      const L = Number(document.getElementById('rlc-l').value);
+      const R = Number(document.getElementById('rlc-r').value);
+      const C = Number(document.getElementById('rlc-c').value);
+      const q0 = Number(document.getElementById('rlc-q0').value);
+      const i0 = Number(document.getElementById('rlc-i0').value);
+      const sol = integrateSecondOrder((t, q, i) => (-R * i - q / C) / L, q0, i0, 18, 900);
+      plotSeries('rlc-free-plot', [
+        { x: sol.map((p) => p.t), y: sol.map((p) => p.y), mode: 'lines', name: 'Charge q(t)', line: { color: '#2563eb', width: 3 } },
+        { x: sol.map((p) => p.t), y: sol.map((p) => p.v), mode: 'lines', name: 'Current i(t)', line: { color: '#dc2626', width: 2 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'State value' } });
+    }
+    function renderRLCResponse() {
+      const L = Number(document.getElementById('rlc-l2').value);
+      const R = Number(document.getElementById('rlc-r2').value);
+      const C = Number(document.getElementById('rlc-c2').value);
+      const E = Number(document.getElementById('rlc-e').value);
+      const w = linspace(0.1, 5, 260);
+      const currentAmp = w.map((omega) => E / Math.sqrt(R * R + (omega * L - 1 / (omega * C)) ** 2));
+      plotSeries('rlc-response-plot', [
+        { x: w, y: currentAmp, mode: 'lines', name: 'Current amplitude', line: { color: '#0891b2', width: 3 } },
+      ], { xaxis: { title: 'Driving frequency' }, yaxis: { title: 'Amplitude' } });
+    }
+    function renderWPair() {
+      const pair = document.getElementById('wr-pair').value;
+      const t = linspace(0, 6, 300);
+      let y1; let y2; let dy1; let dy2; let note;
+      if (pair === 'dependent') {
+        y1 = t.map((x) => Math.exp(x));
+        y2 = t.map((x) => 2 * Math.exp(x));
+        dy1 = t.map((x) => Math.exp(x));
+        dy2 = t.map((x) => 2 * Math.exp(x));
+        note = 'The second function is just a constant multiple of the first, so the Wronskian stays zero.';
+      } else if (pair === 'independent') {
+        y1 = t.map((x) => Math.exp(x));
+        y2 = t.map((x) => x * Math.exp(x));
+        dy1 = t.map((x) => Math.exp(x));
+        dy2 = t.map((x) => (1 + x) * Math.exp(x));
+        note = 'These two functions are independent, and the Wronskian never vanishes on the interval.';
+      } else {
+        y1 = t.map((x) => Math.sin(x));
+        y2 = t.map((x) => Math.cos(x));
+        dy1 = t.map((x) => Math.cos(x));
+        dy2 = t.map((x) => -Math.sin(x));
+        note = 'The oscillatory basis sin t and cos t has constant nonzero Wronskian.';
+      }
+      const W = t.map((_, i) => y1[i] * dy2[i] - dy1[i] * y2[i]);
+      plotSeries('wronskian-pair-plot', [
+        { x: t, y: y1, mode: 'lines', name: 'y1', line: { color: '#2563eb', width: 3 } },
+        { x: t, y: y2, mode: 'lines', name: 'y2', line: { color: '#dc2626', width: 3 } },
+        { x: t, y: W, mode: 'lines', name: 'W(y1,y2)', line: { color: '#15803d', dash: 'dash' } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Value' } });
+      document.getElementById('wronskian-pair-note').textContent = note;
+    }
+    function renderAbel() {
+      const p = Number(document.getElementById('abel-p').value);
+      const C = Number(document.getElementById('abel-c').value);
+      const t = linspace(0, 8, 300);
+      const W = t.map((x) => C * Math.exp(-p * x));
+      plotSeries('abel-plot', [
+        { x: t, y: W, mode: 'lines', name: 'W(t)=C e^{-pt}', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Wronskian' } });
+    }
+
+    [
+      ['ov-w', 1], ['ov-y0', 1], ['ov-v0', 1], ['ov-zeta', 2], ['ov-omega', 1], ['ov-a', 1], ['ov-x0', 1],
+      ['real-r1', 1], ['real-r2', 1], ['real-c1', 1], ['real-c2', 1], ['rep-r', 1], ['rep-c1', 1], ['rep-c2', 1],
+      ['cx-a', 2], ['cx-b', 1], ['cx-c1', 1], ['cx-c2', 1], ['root-b', 1], ['root-c', 1],
+      ['red-c1', 1], ['red-c2', 1], ['red-k', 1], ['red-v', 1],
+      ['uc-a', 1], ['uc-scale', 1], ['vop-decay', 1], ['vop-decay-2', 1],
+      ['ho-r1', 1], ['ho-r2', 1], ['ho-r3', 1], ['ho-c1', 1], ['ho-c2', 1], ['ho-c3', 1],
+      ['mech-m', 1], ['mech-c', 1], ['mech-k', 1], ['mech-x0', 1], ['mech-v0', 1],
+      ['res-m', 1], ['res-c', 1], ['res-k', 1], ['res-f', 1],
+      ['rlc-l', 1], ['rlc-r', 1], ['rlc-c', 1], ['rlc-q0', 1], ['rlc-i0', 1], ['rlc-l2', 1], ['rlc-r2', 1], ['rlc-c2', 1], ['rlc-e', 1],
+      ['abel-p', 1], ['abel-c', 1],
+    ].forEach(([id, digits]) => bindValue(id, digits));
+
+    bindControls(['ov-w', 'ov-y0', 'ov-v0'], renderOverviewIVP);
+    bindControls(['ov-zeta', 'ov-omega', 'ov-a', 'ov-x0'], renderOverviewForced);
+    bindControls(['real-r1', 'real-r2', 'real-c1', 'real-c2'], renderRealModes);
+    bindControls(['rep-r', 'rep-c1', 'rep-c2'], renderRepeatedRoot);
+    bindControls(['cx-a', 'cx-b', 'cx-c1', 'cx-c2'], renderComplexEnvelope);
+    bindControls(['root-b', 'root-c'], renderComplexRoots);
+    bindControls(['red-c1', 'red-c2'], renderReductionBasis);
+    bindControls(['red-k', 'red-v'], renderReductionCompare);
+    bindControls(['uc-kind', 'uc-a'], renderUCFamily);
+    bindControls(['uc-resonant', 'uc-scale'], renderUCResonance);
+    bindControls(['vop-decay'], renderVOPWeights);
+    bindControls(['vop-decay-2'], renderVOPSolution);
+    bindControls(['ho-r1', 'ho-r2', 'ho-r3', 'ho-c1', 'ho-c2', 'ho-c3'], () => { renderHigherOrder(); renderHigherDominance(); });
+    bindControls(['mech-m', 'mech-c', 'mech-k', 'mech-x0', 'mech-v0'], renderMechanicalRegime);
+    bindControls(['res-m', 'res-c', 'res-k', 'res-f'], renderMechanicalResonance);
+    bindControls(['rlc-l', 'rlc-r', 'rlc-c', 'rlc-q0', 'rlc-i0'], renderRLCFree);
+    bindControls(['rlc-l2', 'rlc-r2', 'rlc-c2', 'rlc-e'], renderRLCResponse);
+    bindControls(['wr-pair'], renderWPair);
+    bindControls(['abel-p', 'abel-c'], renderAbel);
+  </script>
+</body>
+</html>

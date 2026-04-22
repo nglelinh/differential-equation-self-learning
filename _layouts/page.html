@@ -6,31 +6,82 @@ layout: default
 
 {% assign full_name = page.chapter | prepend: "chapter" %}
 {% assign current_lang = page.lang | default: site.default_lang %}
-{% assign all_posts = site.categories[full_name] | sort_natural %}
+{% assign empty_list = "" | split: "" %}
+{% assign all_posts = site.categories[full_name] | default: empty_list %}
+{% assign all_posts = all_posts | sort: "order" %}
 {% assign post_list = all_posts | where: "lang", current_lang %}
 
 {% if page.chapter == "26" %}
   {% assign full_name = "reference" %}
-  {% assign all_posts = site.categories[full_name] | sort_natural %}
+  {% assign all_posts = site.categories[full_name] | default: empty_list %}
+  {% assign all_posts = all_posts | sort: "order" %}
   {% assign post_list = all_posts | where: "lang", current_lang %}
 {% endif %}
 
-<!-- Get first post and show it -->
-{% assign first_post = post_list | first %}
-{{first_post.content}}
+{% if page.chapter == "26" %}
+  {% assign first_post = post_list | first %}
+  {{ first_post.content }}
 
-<!-- Remove first element from post_list which is already shown above. -->
-{% assign post_list = post_list | shift %}  
+  {% assign post_list = post_list | shift %}
 
-<!-- List up the posts in the chapter -->
-<ul style="list-style: none;">
-{% for post in post_list %}
-  {% assign title_parts = post.title | split: " " %}
-  {% assign subchapter = title_parts | first %}
-  {% assign subchapter_level = subchapter | split: "-" %}
-  {% if subchapter_level.size < 3 %}
-    <li style="text-align:left; vertical-align: middle; margin-left: -2em; margin-top: 5px;" >
-      <a href="{{ post.url | absolute_url }}">{{post.title}}</a>
+  <ul style="list-style: none;">
+  {% for post in post_list %}
+    {% assign title_parts = post.title | split: " " %}
+    {% assign subchapter = title_parts | first %}
+    {% assign subchapter_level = subchapter | split: "-" %}
+    {% if subchapter_level.size < 3 %}
+      <li style="text-align:left; vertical-align: middle; margin-left: -2em; margin-top: 5px;">
+        <a href="{{ post.url | absolute_url }}">{{ post.title }}</a>
+      </li>
+    {% endif %}
+    {% if subchapter_level.size >= 3 %}
+      <li style="text-align:left; vertical-align: middle; margin-left: 0em;">
+        <a href="{{ post.url | absolute_url }}">{{ post.title }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+{% else %}
+  {% assign first_post = post_list | first %}
+  {% assign last_post = post_list | last %}
+  {% assign chapter_intro = content | strip %}
+  {% assign has_custom_intro = false %}
+  {% if page.custom_intro == true and chapter_intro != "" %}
+    {% assign has_custom_intro = true %}
+  {% endif %}
+
+  <div style="margin: 1.25rem 0; padding: 1rem 1.25rem; background-color: #f8f9fa; border-left: 4px solid #268bd2;">
+    {% if has_custom_intro %}
+      {{ content }}
+    {% else %}
+      {% if current_lang == "vi" %}
+        <p><strong>Tổng quan chương.</strong> Đây là bài giới thiệu ngắn cho chương {{ page.chapter }}. Chương này tập trung vào {{ page.title }} và hiện có {{ post_list.size }} bài học theo lộ trình từ nền tảng đến ứng dụng.</p>
+      {% else %}
+        <p><strong>Chapter overview.</strong> This is a short introduction to Chapter {{ page.chapter }}. The chapter focuses on {{ page.title }} and currently contains {{ post_list.size }} lessons arranged from foundations to applications.</p>
+      {% endif %}
+    {% endif %}
+
+    {% if first_post and last_post %}
+      {% if current_lang == "vi" %}
+        <p>Bạn có thể bắt đầu từ <a href="{{ first_post.url | absolute_url }}">{{ first_post.title }}</a> và học tuần tự đến <a href="{{ last_post.url | absolute_url }}">{{ last_post.title }}</a>.</p>
+      {% else %}
+        <p>You can start with <a href="{{ first_post.url | absolute_url }}">{{ first_post.title }}</a> and continue in order through <a href="{{ last_post.url | absolute_url }}">{{ last_post.title }}</a>.</p>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  {% assign trimmed_content = content | strip %}
+  {% if trimmed_content != "" %}
+    <div class="chapter-page-content" style="margin: 1.25rem 0;">
+      {{ content }}
+    </div>
+  {% endif %}
+
+  <h2>{% if current_lang == "vi" %}Các Bài Trong Chương{% else %}Lessons in This Chapter{% endif %}</h2>
+  <ul style="list-style: none; padding-left: 0;">
+  {% for post in post_list %}
+    <li style="text-align:left; vertical-align: middle; margin-top: 8px;">
+      <a href="{{ post.url | absolute_url }}">{{ post.order }}. {{ post.title }}</a>
       {% if post.lesson_type %}
         {% if post.lesson_type == 'required' %}
           <span class="lesson-badge required">{% t required %}</span>
@@ -39,18 +90,16 @@ layout: default
         {% endif %}
       {% endif %}
     </li>
-  {% endif %}
-  {% if subchapter_level.size >= 3 %}
-    <li style="text-align:left; vertical-align: middle;  margin-left: 0em;" >
-      <a href="{{ post.url | absolute_url }}"> {{ post.title }}</a>
-      {% if post.lesson_type %}
-        {% if post.lesson_type == 'required' %}
-          <span class="lesson-badge required">{% t required %}</span>
-        {% elsif post.lesson_type == 'optional' %}
-          <span class="lesson-badge optional">{% t optional %}</span>
-        {% endif %}
-      {% endif %}
+  {% endfor %}
+  </ul>
+
+  <h2>{% if current_lang == "vi" %}Danh Sách URL Các Bài{% else %}Lesson URLs{% endif %}</h2>
+  <ul style="list-style: none; padding-left: 0;">
+  {% for post in post_list %}
+    <li style="margin-top: 10px;">
+      <a href="{{ post.url | absolute_url }}">{{ post.title }}</a><br>
+      <code>{{ post.url | absolute_url }}</code>
     </li>
-  {% endif %}
-{% endfor %}
-</ul>
+  {% endfor %}
+  </ul>
+{% endif %}

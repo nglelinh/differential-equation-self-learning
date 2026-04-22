@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 03 Interactives: The Laplace Transform</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --card: #ffffff;
+      --ink: #162033;
+      --muted: #5d6879;
+      --line: #d9e1eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef5ff 0, var(--bg) 260px);
+    }
+    header, main, footer {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    header { padding-top: 40px; padding-bottom: 24px; }
+    header h1 { margin: 0 0 10px; font-size: clamp(2rem, 3vw, 3rem); }
+    header p { max-width: 980px; margin: 0; color: var(--muted); line-height: 1.6; }
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .toc a {
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(37,99,235,0.12);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .topic { margin-bottom: 42px; scroll-margin-top: 20px; }
+    .topic h2 { margin: 0 0 10px; font-size: 1.5rem; }
+    .topic > p { margin: 0 0 18px; color: var(--muted); max-width: 920px; line-height: 1.6; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+      gap: 18px;
+    }
+    .demo {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .demo h3 { margin: 0; font-size: 1.08rem; }
+    .spec {
+      display: grid;
+      gap: 8px;
+      font-size: 0.96rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .spec strong { color: var(--ink); }
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid #edf2f7;
+    }
+    .control { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .control label { font-size: 0.82rem; color: var(--muted); }
+    .control input, .control select, .control button { width: 100%; }
+    .control span { font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+    .plot {
+      width: 100%;
+      min-height: 300px;
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+    }
+    .status {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    footer { padding-top: 8px; padding-bottom: 30px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 640px) {
+      header, main, footer { padding-left: 14px; padding-right: 14px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 03 Interactives</h1>
+    <p>
+      This standalone gallery proposes two runnable JavaScript illustrations for each topic in Chapter 03,
+      The Laplace Transform. The emphasis is on how time-domain signals are encoded into the Laplace domain,
+      how inverse transforms recover familiar behavior, and how step, impulse, convolution, and transfer-function ideas fit together.
+    </p>
+    <nav class="toc">
+      <a href="#topic-1">03-01 Definition</a>
+      <a href="#topic-2">03-02 Elementary</a>
+      <a href="#topic-3">03-03 Inverse</a>
+      <a href="#topic-4">03-04 IVPs</a>
+      <a href="#topic-5">03-05 Step</a>
+      <a href="#topic-6">03-06 Impulse</a>
+      <a href="#topic-7">03-07 Convolution</a>
+      <a href="#topic-8">03-08 Transfer</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="topic" id="topic-1">
+      <h2>03-01 Definition and Basic Properties</h2>
+      <p>These opening illustrations make the transform feel like a weighted view of signal history rather than a table lookup.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Exponential Weighting Lens</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how the factor $$e^{-st}$$ changes which part of the signal matters in the integral.</div>
+            <div><strong>Mathematical idea shown.</strong> The Laplace transform is the weighted area $$\int_0^\infty e^{-st}f(t)\,dt$$, with larger $$s$$ suppressing the tail more strongly.</div>
+            <div><strong>User interactions.</strong> Dropdown for signal type and slider for $$s$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="def-kind">Signal</label><select id="def-kind"><option value="poly">1 + t</option><option value="exp">e^(0.5 t)</option><option value="osc">sin(2t)</option></select></div>
+            <div class="control"><label for="def-s">s value</label><input id="def-s" type="range" min="0.2" max="4" step="0.1" value="1.2"><span id="def-s-value"></span></div>
+          </div>
+          <div id="def-weight-plot" class="plot"></div>
+          <div id="def-weight-note" class="status"></div>
+        </article>
+        <article class="demo">
+          <h3>Linearity in the Laplace Domain</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that combining time-domain signals combines their transforms with the same coefficients.</div>
+            <div><strong>Mathematical idea shown.</strong> $$\mathcal{L}\{af+bg\}=aF+bG$$ is a structural property, not just a table shortcut.</div>
+            <div><strong>User interactions.</strong> Sliders for coefficients $$a$$ and $$b$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="lin-a">Coefficient a</label><input id="lin-a" type="range" min="-2" max="3" step="0.1" value="1"><span id="lin-a-value"></span></div>
+            <div class="control"><label for="lin-b">Coefficient b</label><input id="lin-b" type="range" min="-2" max="3" step="0.1" value="1.5"><span id="lin-b-value"></span></div>
+          </div>
+          <div id="def-linearity-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-2">
+      <h2>03-02 Laplace Transform of Elementary Functions</h2>
+      <p>These illustrations are about building table intuition from patterns, poles, and simple families.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Elementary Function Table Builder</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Connect a familiar time-domain function to its Laplace-domain graph.</div>
+            <div><strong>Mathematical idea shown.</strong> Constants, polynomials, exponentials, and trig functions map to simple rational expressions in $$s$$.</div>
+            <div><strong>User interactions.</strong> Dropdown for function family and slider for parameter.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="el-kind">Function</label><select id="el-kind"><option value="const">1</option><option value="power">t</option><option value="exp">e^(at)</option><option value="sin">sin(bt)</option><option value="cos">cos(bt)</option></select></div>
+            <div class="control"><label for="el-param">Parameter</label><input id="el-param" type="range" min="0.5" max="3" step="0.1" value="1.5"><span id="el-param-value"></span></div>
+          </div>
+          <div id="elementary-table-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Pole Shift Explorer</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how exponential growth or decay shifts the pole location in the Laplace domain.</div>
+            <div><strong>Mathematical idea shown.</strong> $$\mathcal{L}\{e^{at}\}=1/(s-a)$$ moves the singular feature from $$s=0$$ to $$s=a$$.</div>
+            <div><strong>User interactions.</strong> Slider for shift parameter $$a$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="pole-a">Shift a</label><input id="pole-a" type="range" min="-2" max="2.5" step="0.1" value="0.8"><span id="pole-a-value"></span></div>
+          </div>
+          <div id="elementary-pole-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-3">
+      <h2>03-03 Inverse Laplace Transform</h2>
+      <p>These visuals show inverse Laplace as reading time behavior back out of a rational expression in $$s$$.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Partial Fraction to Time Modes</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Help students see partial fractions as mode separation rather than bookkeeping.</div>
+            <div><strong>Mathematical idea shown.</strong> Terms like $$A/(s-a)$$ and $$B/(s-b)$$ decode into exponentials $$Ae^{at}$$ and $$Be^{bt}$$.</div>
+            <div><strong>User interactions.</strong> Sliders for coefficients and pole locations.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="inv-a1">Pole a</label><input id="inv-a1" type="range" min="-2" max="2" step="0.1" value="-0.5"><span id="inv-a1-value"></span></div>
+            <div class="control"><label for="inv-a2">Pole b</label><input id="inv-a2" type="range" min="-2" max="2" step="0.1" value="1"><span id="inv-a2-value"></span></div>
+            <div class="control"><label for="inv-c1">A</label><input id="inv-c1" type="range" min="-3" max="3" step="0.1" value="1"><span id="inv-c1-value"></span></div>
+            <div class="control"><label for="inv-c2">B</label><input id="inv-c2" type="range" min="-3" max="3" step="0.1" value="-0.8"><span id="inv-c2-value"></span></div>
+          </div>
+          <div id="inverse-partial-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Quadratic Pattern Decoder</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how quadratic denominators encode oscillatory behavior.</div>
+            <div><strong>Mathematical idea shown.</strong> Expressions of the form $$(Cs+D)/(s^2+\omega^2)$$ invert to combinations of cosine and sine.</div>
+            <div><strong>User interactions.</strong> Sliders for $$C$$, $$D$$, and $$\omega$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="inv-qc">C</label><input id="inv-qc" type="range" min="-3" max="3" step="0.1" value="1"><span id="inv-qc-value"></span></div>
+            <div class="control"><label for="inv-qd">D</label><input id="inv-qd" type="range" min="-5" max="5" step="0.1" value="2"><span id="inv-qd-value"></span></div>
+            <div class="control"><label for="inv-w">Omega</label><input id="inv-w" type="range" min="0.5" max="4" step="0.1" value="2"><span id="inv-w-value"></span></div>
+          </div>
+          <div id="inverse-quadratic-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-4">
+      <h2>03-04 Solving Initial Value Problems with Laplace</h2>
+      <p>These demos emphasize the algebraic workflow and the way initial conditions enter immediately in the transform of derivatives.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Derivative Transform with Initial Conditions</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Make the formula $$\mathcal{L}\{y'\}=sY-y(0)$$ and its second-order analogue feel operational.</div>
+            <div><strong>Mathematical idea shown.</strong> Initial data become algebraic correction terms in the Laplace domain.</div>
+            <div><strong>User interactions.</strong> Sliders for $$y(0)$$ and $$y'(0)$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="ivp-y0">y(0)</label><input id="ivp-y0" type="range" min="-3" max="3" step="0.1" value="1"><span id="ivp-y0-value"></span></div>
+            <div class="control"><label for="ivp-v0">y'(0)</label><input id="ivp-v0" type="range" min="-4" max="4" step="0.1" value="0.5"><span id="ivp-v0-value"></span></div>
+          </div>
+          <div id="ivp-derivative-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Laplace Solution of a Second-Order IVP</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show the full time response for a classic transform-solvable IVP.</div>
+            <div><strong>Mathematical idea shown.</strong> For $$y''+3y'+2y=0$$, the Laplace-domain solution is algebraic and inverts to a sum of exponentials set by initial data.</div>
+            <div><strong>User interactions.</strong> Reuses sliders for $$y(0)$$ and $$y'(0)$$.</div>
+          </div>
+          <div id="ivp-solution-plot" class="plot"></div>
+          <div id="ivp-solution-note" class="status"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-5">
+      <h2>03-05 Step Functions and Discontinuous Forcing</h2>
+      <p>These illustrations show that delayed and piecewise signals can be handled as one algebraic object rather than many separate intervals.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Heaviside Shift and the Factor e^(-as)</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Connect a time delay in the signal to exponential shifting in the Laplace domain.</div>
+            <div><strong>Mathematical idea shown.</strong> $$u(t-a)f(t-a)$$ is a right shift in time and produces the factor $$e^{-as}F(s)$$.</div>
+            <div><strong>User interactions.</strong> Slider for delay time $$a$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="step-a">Delay a</label><input id="step-a" type="range" min="0.5" max="5" step="0.1" value="2"><span id="step-a-value"></span></div>
+          </div>
+          <div id="step-shift-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>First-Order Response to a Switched Input</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show why Laplace is convenient for systems that turn on suddenly.</div>
+            <div><strong>Mathematical idea shown.</strong> The switched input creates a delayed transient in a stable first-order system.</div>
+            <div><strong>User interactions.</strong> Sliders for delay and input height.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="step-delay">Delay</label><input id="step-delay" type="range" min="0.5" max="5" step="0.1" value="2"><span id="step-delay-value"></span></div>
+            <div class="control"><label for="step-height">Input height</label><input id="step-height" type="range" min="0.5" max="4" step="0.1" value="2"><span id="step-height-value"></span></div>
+          </div>
+          <div id="step-response-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-6">
+      <h2>03-06 Impulse Functions and the Delta Distribution</h2>
+      <p>These visuals make the limiting pulse intuition and impulse response idea explicit.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Narrow Pulse Approaching Delta</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show the delta distribution as the limit of pulses with shrinking width and fixed area.</div>
+            <div><strong>Mathematical idea shown.</strong> Height grows as width shrinks so the total area stays constant.</div>
+            <div><strong>User interactions.</strong> Slider for pulse width.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="imp-width">Pulse width</label><input id="imp-width" type="range" min="0.1" max="2" step="0.05" value="0.4"><span id="imp-width-value"></span></div>
+          </div>
+          <div id="impulse-pulse-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Impulse Response of a Stable First-Order System</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that a delta input creates an immediate state jump that then decays according to system dynamics.</div>
+            <div><strong>Mathematical idea shown.</strong> For $$y'+y=\delta(t-a)$$, the response is zero before the impulse and exponential after it.</div>
+            <div><strong>User interactions.</strong> Sliders for impulse time and impulse strength.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="imp-a">Impulse time</label><input id="imp-a" type="range" min="0.5" max="5" step="0.1" value="1.5"><span id="imp-a-value"></span></div>
+            <div class="control"><label for="imp-k">Impulse strength</label><input id="imp-k" type="range" min="0.5" max="4" step="0.1" value="1.5"><span id="imp-k-value"></span></div>
+          </div>
+          <div id="impulse-response-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-7">
+      <h2>03-07 The Convolution Theorem</h2>
+      <p>These illustrations shift the chapter from solving equations to thinking in the language of systems and memory.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Sliding Overlap in Convolution</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that convolution measures weighted overlap of past input with shifted response memory.</div>
+            <div><strong>Mathematical idea shown.</strong> $$(f*g)(t)=\int_0^t f(\tau)g(t-\tau)\,d\tau$$ accumulates delayed influence.</div>
+            <div><strong>User interactions.</strong> Slider for observation time $$t$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="conv-t">Observation time</label><input id="conv-t" type="range" min="0.2" max="6" step="0.1" value="2.5"><span id="conv-t-value"></span></div>
+          </div>
+          <div id="convolution-overlap-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Time Convolution vs Laplace Product</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that convolution in time becomes multiplication in the Laplace domain.</div>
+            <div><strong>Mathematical idea shown.</strong> For simple exponentials, the computed convolution matches the inverse transform of the product $$F(s)G(s)$$.</div>
+            <div><strong>User interactions.</strong> Sliders for decay rates of $$f$$ and $$g$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="conv-a">Decay of f</label><input id="conv-a" type="range" min="0.3" max="3" step="0.1" value="1"><span id="conv-a-value"></span></div>
+            <div class="control"><label for="conv-b">Decay of g</label><input id="conv-b" type="range" min="0.3" max="3" step="0.1" value="1.8"><span id="conv-b-value"></span></div>
+          </div>
+          <div id="convolution-product-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-8">
+      <h2>03-08 Transfer Functions and Systems</h2>
+      <p>These final illustrations connect the Laplace chapter to filtering, poles, and system behavior.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Low-Pass Transfer Function Magnitude</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how a transfer function acts as a frequency-dependent filter.</div>
+            <div><strong>Mathematical idea shown.</strong> For $$H(s)=1/(\tau s+1)$$, high frequencies are attenuated more strongly than low frequencies.</div>
+            <div><strong>User interactions.</strong> Slider for time constant $$\tau$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="tf-tau">Time constant tau</label><input id="tf-tau" type="range" min="0.2" max="3" step="0.1" value="1"><span id="tf-tau-value"></span></div>
+          </div>
+          <div id="transfer-mag-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Impulse Response and Step Response</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that the transfer function, impulse response, and step response are three views of the same system.</div>
+            <div><strong>Mathematical idea shown.</strong> For a first-order stable system, the impulse response decays exponentially and the step response accumulates it.</div>
+            <div><strong>User interactions.</strong> Reuses the time-constant slider.</div>
+          </div>
+          <div id="transfer-time-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    The page is self-contained so it can be opened directly in a browser or served as a static file from the repository.
+  </footer>
+
+  <script>
+    const fmt = (value, digits = 2) => Number(value).toFixed(digits).replace(/\.00$/, '');
+    function bindValue(id, digits = 2) {
+      const input = document.getElementById(id);
+      const output = document.getElementById(`${id}-value`);
+      const refresh = () => { if (output) output.textContent = fmt(input.value, digits); };
+      input.addEventListener('input', refresh);
+      input.addEventListener('change', refresh);
+      refresh();
+    }
+    function bindControls(ids, render) {
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        el.addEventListener('input', render);
+        el.addEventListener('change', render);
+      });
+      render();
+    }
+    function linspace(min, max, count) {
+      return Array.from({ length: count }, (_, i) => min + (max - min) * i / (count - 1));
+    }
+    function plotSeries(divId, traces, layout = {}) {
+      Plotly.react(divId, traces, {
+        margin: { l: 46, r: 18, t: 24, b: 42 },
+        paper_bgcolor: '#ffffff',
+        plot_bgcolor: '#ffffff',
+        legend: { orientation: 'h' },
+        xaxis: { gridcolor: '#e5e7eb', zerolinecolor: '#cbd5e1' },
+        yaxis: { gridcolor: '#e5e7eb', zerolinecolor: '#cbd5e1' },
+        ...layout,
+      }, { responsive: true, displayModeBar: false });
+    }
+    function trapz(x, y) {
+      let total = 0;
+      for (let i = 1; i < x.length; i += 1) {
+        total += 0.5 * (y[i] + y[i - 1]) * (x[i] - x[i - 1]);
+      }
+      return total;
+    }
+    function convolveSameGrid(t, f, g) {
+      const dt = t[1] - t[0];
+      return t.map((time, i) => {
+        let sum = 0;
+        for (let k = 0; k <= i; k += 1) {
+          sum += f[k] * g[i - k] * dt;
+        }
+        return sum;
+      });
+    }
+
+    function renderDefinitionWeight() {
+      const kind = document.getElementById('def-kind').value;
+      const s = Number(document.getElementById('def-s').value);
+      const t = linspace(0, 8, 400);
+      let f;
+      if (kind === 'poly') f = t.map((x) => 1 + x);
+      else if (kind === 'exp') f = t.map((x) => Math.exp(0.5 * x));
+      else f = t.map((x) => Math.sin(2 * x));
+      const weighted = t.map((x, i) => Math.exp(-s * x) * f[i]);
+      const approx = trapz(t, weighted);
+      plotSeries('def-weight-plot', [
+        { x: t, y: f, mode: 'lines', name: 'f(t)', line: { color: '#94a3b8' } },
+        { x: t, y: t.map((x) => Math.exp(-s * x)), mode: 'lines', name: 'e^(-st)', line: { color: '#b45309', dash: 'dot' } },
+        { x: t, y: weighted, mode: 'lines', name: 'e^(-st) f(t)', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Value' } });
+      document.getElementById('def-weight-note').textContent = `Approximate weighted area over [0,8] is ${fmt(approx, 3)}. Increasing s makes the tail contribute less.`;
+    }
+
+    function renderDefinitionLinearity() {
+      const a = Number(document.getElementById('lin-a').value);
+      const b = Number(document.getElementById('lin-b').value);
+      const s = linspace(0.4, 6, 220);
+      const F = s.map((x) => 1 / x);
+      const G = s.map((x) => 1 / (x + 1));
+      const combo = s.map((x, i) => a * F[i] + b * G[i]);
+      plotSeries('def-linearity-plot', [
+        { x: s, y: F, mode: 'lines', name: 'F(s)=L{1}', line: { color: '#94a3b8' } },
+        { x: s, y: G, mode: 'lines', name: 'G(s)=L{e^(-t)}', line: { color: '#b45309' } },
+        { x: s, y: combo, mode: 'lines', name: 'aF+bG', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 's' }, yaxis: { title: 'Transform value' } });
+    }
+
+    function renderElementaryTable() {
+      const kind = document.getElementById('el-kind').value;
+      const p = Number(document.getElementById('el-param').value);
+      const t = linspace(0, 8, 320);
+      const s = linspace(0.3, 6, 220);
+      let time; let lap;
+      if (kind === 'const') {
+        time = t.map(() => 1);
+        lap = s.map((x) => 1 / x);
+      } else if (kind === 'power') {
+        time = t.map((x) => x);
+        lap = s.map((x) => 1 / (x * x));
+      } else if (kind === 'exp') {
+        time = t.map((x) => Math.exp(p * x / 2));
+        lap = s.map((x) => 1 / Math.max(0.05, x - p / 2));
+      } else if (kind === 'sin') {
+        time = t.map((x) => Math.sin(p * x));
+        lap = s.map((x) => p / (x * x + p * p));
+      } else {
+        time = t.map((x) => Math.cos(p * x));
+        lap = s.map((x) => x / (x * x + p * p));
+      }
+      plotSeries('elementary-table-plot', [
+        { x: t, y: time, mode: 'lines', name: 'Time-domain f(t)', xaxis: 'x', yaxis: 'y', line: { color: '#2563eb', width: 3 } },
+        { x: s, y: lap, mode: 'lines', name: 'Laplace F(s)', xaxis: 'x2', yaxis: 'y2', line: { color: '#0891b2', width: 3 } },
+      ], {
+        grid: { rows: 1, columns: 2, pattern: 'independent' },
+        xaxis: { title: 't', gridcolor: '#e5e7eb' },
+        yaxis: { title: 'f(t)', gridcolor: '#e5e7eb' },
+        xaxis2: { title: 's', gridcolor: '#e5e7eb' },
+        yaxis2: { title: 'F(s)', gridcolor: '#e5e7eb' },
+      });
+    }
+
+    function renderPoleShift() {
+      const a = Number(document.getElementById('pole-a').value);
+      const sMin = Math.max(-0.5, a + 0.15);
+      const s = linspace(sMin, 6, 240);
+      const y = s.map((x) => 1 / (x - a));
+      plotSeries('elementary-pole-plot', [
+        { x: s, y, mode: 'lines', name: '1/(s-a)', line: { color: '#2563eb', width: 3 } },
+        { x: [a, a], y: [0, Math.min(10, y[0])], mode: 'lines', name: 'Pole location', line: { color: '#dc2626', dash: 'dash' } },
+      ], { xaxis: { title: 's' }, yaxis: { title: 'Transform value' } });
+    }
+
+    function renderInversePartial() {
+      const a = Number(document.getElementById('inv-a1').value);
+      const b = Number(document.getElementById('inv-a2').value);
+      const A = Number(document.getElementById('inv-c1').value);
+      const B = Number(document.getElementById('inv-c2').value);
+      const t = linspace(0, 8, 320);
+      const y1 = t.map((x) => A * Math.exp(a * x));
+      const y2 = t.map((x) => B * Math.exp(b * x));
+      const y = t.map((_, i) => y1[i] + y2[i]);
+      plotSeries('inverse-partial-plot', [
+        { x: t, y: y1, mode: 'lines', name: 'A e^(at)', line: { color: '#94a3b8', dash: 'dot' } },
+        { x: t, y: y2, mode: 'lines', name: 'B e^(bt)', line: { color: '#b45309', dash: 'dot' } },
+        { x: t, y, mode: 'lines', name: 'Inverse transform', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'f(t)' } });
+    }
+
+    function renderInverseQuadratic() {
+      const C = Number(document.getElementById('inv-qc').value);
+      const D = Number(document.getElementById('inv-qd').value);
+      const w = Number(document.getElementById('inv-w').value);
+      const t = linspace(0, 10, 400);
+      const y = t.map((x) => C * Math.cos(w * x) + (D / w) * Math.sin(w * x));
+      plotSeries('inverse-quadratic-plot', [
+        { x: t, y: t.map((x) => C * Math.cos(w * x)), mode: 'lines', name: 'Cosine part', line: { color: '#94a3b8', dash: 'dot' } },
+        { x: t, y: t.map((x) => (D / w) * Math.sin(w * x)), mode: 'lines', name: 'Sine part', line: { color: '#b45309', dash: 'dot' } },
+        { x: t, y, mode: 'lines', name: 'Inverse transform', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'f(t)' } });
+    }
+
+    function renderIVPDerivative() {
+      const y0 = Number(document.getElementById('ivp-y0').value);
+      const v0 = Number(document.getElementById('ivp-v0').value);
+      const s = linspace(0.3, 6, 220);
+      const Y = s.map((x) => (y0 * x + v0 + 3 * y0) / ((x + 1) * (x + 2)));
+      const LY1 = s.map((x, i) => x * Y[i] - y0);
+      const LY2 = s.map((x, i) => x * x * Y[i] - x * y0 - v0);
+      plotSeries('ivp-derivative-plot', [
+        { x: s, y: Y, mode: 'lines', name: 'Y(s)', line: { color: '#2563eb', width: 3 } },
+        { x: s, y: LY1, mode: 'lines', name: 'L{y\'} = sY - y(0)', line: { color: '#b45309', width: 2 } },
+        { x: s, y: LY2, mode: 'lines', name: 'L{y\'\'} = s^2Y - s y(0) - y\'(0)', line: { color: '#dc2626', width: 2 } },
+      ], { xaxis: { title: 's' }, yaxis: { title: 'Transform value' } });
+    }
+
+    function renderIVPSolution() {
+      const y0 = Number(document.getElementById('ivp-y0').value);
+      const v0 = Number(document.getElementById('ivp-v0').value);
+      const c1 = v0 + 2 * y0;
+      const c2 = -(v0 + y0);
+      const t = linspace(0, 8, 320);
+      const y = t.map((x) => c1 * Math.exp(-x) + c2 * Math.exp(-2 * x));
+      plotSeries('ivp-solution-plot', [
+        { x: t, y, mode: 'lines', name: 'y(t)', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Solution' } });
+      document.getElementById('ivp-solution-note').textContent = `For y'' + 3y' + 2y = 0, the solution is (${fmt(c1, 2)})e^{-t} + (${fmt(c2, 2)})e^{-2t}.`;
+    }
+
+    function renderStepShift() {
+      const a = Number(document.getElementById('step-a').value);
+      const t = linspace(0, 8, 320);
+      const shifted = t.map((x) => x < a ? 0 : x - a);
+      const base = t.map((x) => x);
+      plotSeries('step-shift-plot', [
+        { x: t, y: base, mode: 'lines', name: 'f(t)=t', line: { color: '#94a3b8' } },
+        { x: t, y: shifted, mode: 'lines', name: 'u(t-a)f(t-a)', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Signal value' } });
+    }
+
+    function renderStepResponse() {
+      const a = Number(document.getElementById('step-delay').value);
+      const h = Number(document.getElementById('step-height').value);
+      const t = linspace(0, 10, 400);
+      const input = t.map((x) => x < a ? 0 : h);
+      const y = t.map((x) => x < a ? 0 : h * (1 - Math.exp(-(x - a))));
+      plotSeries('step-response-plot', [
+        { x: t, y: input, mode: 'lines', name: 'Input', line: { color: '#94a3b8', shape: 'hv' } },
+        { x: t, y, mode: 'lines', name: 'System response', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Value' } });
+    }
+
+    function renderImpulsePulse() {
+      const width = Number(document.getElementById('imp-width').value);
+      const t = linspace(0, 5, 500);
+      const start = 1.5 - width / 2;
+      const end = 1.5 + width / 2;
+      const height = 1 / width;
+      const pulse = t.map((x) => x >= start && x <= end ? height : 0);
+      plotSeries('impulse-pulse-plot', [
+        { x: t, y: pulse, mode: 'lines', name: 'Approximate delta pulse', line: { color: '#2563eb', width: 3, shape: 'hv' } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Pulse value' } });
+    }
+
+    function renderImpulseResponse() {
+      const a = Number(document.getElementById('imp-a').value);
+      const k = Number(document.getElementById('imp-k').value);
+      const t = linspace(0, 8, 400);
+      const y = t.map((x) => x < a ? 0 : k * Math.exp(-(x - a)));
+      plotSeries('impulse-response-plot', [
+        { x: t, y, mode: 'lines', name: 'Impulse response', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'y(t)' } });
+    }
+
+    function renderConvolutionOverlap() {
+      const T = Number(document.getElementById('conv-t').value);
+      const tau = linspace(0, 6, 400);
+      const f = tau.map((x) => Math.exp(-x));
+      const shifted = tau.map((x) => (x <= T ? Math.exp(-(T - x)) : 0));
+      const product = tau.map((x, i) => f[i] * shifted[i]);
+      plotSeries('convolution-overlap-plot', [
+        { x: tau, y: f, mode: 'lines', name: 'f(tau)=e^(-tau)', line: { color: '#94a3b8' } },
+        { x: tau, y: shifted, mode: 'lines', name: 'g(T-tau)', line: { color: '#b45309' } },
+        { x: tau, y: product, mode: 'lines', name: 'Overlap product', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 'tau' }, yaxis: { title: 'Value' } });
+    }
+
+    function renderConvolutionProduct() {
+      const a = Number(document.getElementById('conv-a').value);
+      const b = Number(document.getElementById('conv-b').value);
+      const t = linspace(0, 8, 400);
+      const f = t.map((x) => Math.exp(-a * x));
+      const g = t.map((x) => Math.exp(-b * x));
+      const conv = convolveSameGrid(t, f, g);
+      plotSeries('convolution-product-plot', [
+        { x: t, y: conv, mode: 'lines', name: '(f*g)(t)', line: { color: '#2563eb', width: 3 } },
+        { x: t, y: t.map((x) => Math.abs(a - b) < 1e-8 ? x * Math.exp(-a * x) : (Math.exp(-a * x) - Math.exp(-b * x)) / (b - a)), mode: 'lines', name: 'Inverse of F(s)G(s)', line: { color: '#dc2626', dash: 'dash' } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Output value' } });
+    }
+
+    function renderTransferMag() {
+      const tau = Number(document.getElementById('tf-tau').value);
+      const w = linspace(0, 8, 260);
+      const mag = w.map((x) => 1 / Math.sqrt(1 + (tau * x) * (tau * x)));
+      plotSeries('transfer-mag-plot', [
+        { x: w, y: mag, mode: 'lines', name: '|H(iw)|', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 'Frequency w' }, yaxis: { title: 'Magnitude' } });
+    }
+
+    function renderTransferTime() {
+      const tau = Number(document.getElementById('tf-tau').value);
+      const t = linspace(0, 8, 320);
+      const impulse = t.map((x) => (1 / tau) * Math.exp(-x / tau));
+      const step = t.map((x) => 1 - Math.exp(-x / tau));
+      plotSeries('transfer-time-plot', [
+        { x: t, y: impulse, mode: 'lines', name: 'Impulse response', line: { color: '#dc2626', width: 2 } },
+        { x: t, y: step, mode: 'lines', name: 'Step response', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Response value' } });
+    }
+
+    [
+      ['def-s', 1], ['lin-a', 1], ['lin-b', 1], ['el-param', 1], ['pole-a', 1], ['inv-a1', 1], ['inv-a2', 1], ['inv-c1', 1], ['inv-c2', 1],
+      ['inv-qc', 1], ['inv-qd', 1], ['inv-w', 1], ['ivp-y0', 1], ['ivp-v0', 1], ['step-a', 1], ['step-delay', 1], ['step-height', 1], ['imp-width', 2],
+      ['imp-a', 1], ['imp-k', 1], ['conv-t', 1], ['conv-a', 1], ['conv-b', 1], ['tf-tau', 1],
+    ].forEach(([id, digits]) => bindValue(id, digits));
+
+    bindControls(['def-kind', 'def-s'], renderDefinitionWeight);
+    bindControls(['lin-a', 'lin-b'], renderDefinitionLinearity);
+    bindControls(['el-kind', 'el-param'], renderElementaryTable);
+    bindControls(['pole-a'], renderPoleShift);
+    bindControls(['inv-a1', 'inv-a2', 'inv-c1', 'inv-c2'], renderInversePartial);
+    bindControls(['inv-qc', 'inv-qd', 'inv-w'], renderInverseQuadratic);
+    bindControls(['ivp-y0', 'ivp-v0'], () => { renderIVPDerivative(); renderIVPSolution(); });
+    bindControls(['step-a'], renderStepShift);
+    bindControls(['step-delay', 'step-height'], renderStepResponse);
+    bindControls(['imp-width'], renderImpulsePulse);
+    bindControls(['imp-a', 'imp-k'], renderImpulseResponse);
+    bindControls(['conv-t'], renderConvolutionOverlap);
+    bindControls(['conv-a', 'conv-b'], renderConvolutionProduct);
+    bindControls(['tf-tau'], () => { renderTransferMag(); renderTransferTime(); });
+  </script>
+</body>
+</html>

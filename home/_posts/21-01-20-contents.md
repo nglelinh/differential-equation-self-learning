@@ -64,3 +64,8 @@ The course is divided into the following chapters:
 - Video lectures (if available)
 - Practice problems and solutions
 - Community forums and discussion groups
+
+## Interactive Galleries
+
+- [Chapter 13 Interactive Gallery]({{ '/interactives/chapter13/' | relative_url }})
+- [Chapter 15 Interactive Gallery]({{ '/interactives/chapter15/' | relative_url }})

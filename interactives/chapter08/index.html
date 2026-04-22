@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 08 Illustration Gallery: Chuỗi Fourier và Khai Triển Trực Giao</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #18212f;
+      --muted: #5a6472;
+      --line: #d9e0ea;
+      --accent: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 240px);
+    }
+
+    header, main, footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    header {
+      padding-top: 40px;
+      padding-bottom: 24px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.1;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 980px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .toc a {
+      text-decoration: none;
+      background: rgba(255,255,255,0.78);
+      color: var(--ink);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding-bottom: 40px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.97rem;
+    }
+
+    .figure-wrap {
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+      overflow: hidden;
+    }
+
+    .figure-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: white;
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .meta strong {
+      color: var(--ink);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid #cbd5e1;
+      background: white;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    footer {
+      padding-bottom: 30px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      header, main, footer {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 08 Illustration Gallery</h1>
+    <p>
+      Trang này gom toàn bộ bộ minh họa mới của Chapter 08 về chuỗi Fourier và khai triển trực giao.
+      Các hình đều là minh họa tĩnh nhưng được thiết kế để làm nổi bật bức tranh toán học cốt lõi của từng bài:
+      phân rã điều hòa, phổ hệ số, dao động Gibbs, tính chẵn lẻ, half-range extensions, đồng nhất thức Parseval,
+      dạng phức, và bước chuyển từ phổ rời rạc sang phổ liên tục của biến đổi Fourier.
+    </p>
+    <nav class="toc">
+      <a href="#lesson-1">08-01 Hàm tuần hoàn</a>
+      <a href="#lesson-2">08-02 Hệ số Fourier</a>
+      <a href="#lesson-3">08-03 Hội tụ</a>
+      <a href="#lesson-4">08-04 Chẵn / Lẻ</a>
+      <a href="#lesson-5">08-05 Half-Range</a>
+      <a href="#lesson-6">08-06 Parseval</a>
+      <a href="#lesson-7">08-07 Dạng phức</a>
+      <a href="#lesson-8">08-08 Biến đổi Fourier</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <article class="card" id="lesson-1">
+        <h2>08-01 Hàm Tuần Hoàn và Chuỗi Fourier</h2>
+        <p>Hình mở đầu đặt hàm tuần hoàn mục tiêu bên cạnh các tổng riêng, đồng thời cho thấy sóng vuông được xây từ các harmonic lẻ như thế nào.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter08/01_periodic_functions_fourier_series.svg" alt="Minh họa hàm tuần hoàn và chuỗi Fourier">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Phân rã điều hòa và tổng riêng.</div>
+          <div><strong>Dùng trong lớp.</strong> Đối chiếu hình dạng trong không gian vật lý với phổ mode rời rạc.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter08/08_01_Periodic_Functions_Fourier_Series/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-2">
+        <h2>08-02 Hệ Số Fourier</h2>
+        <p>Minh họa này xem hệ số Fourier như phép chiếu: một phía là hàm gốc, phía kia là phổ hệ số được tách ra nhờ trực giao.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter08/02_fourier_coefficients.svg" alt="Minh họa hệ số Fourier">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Chiếu lên các mode điều hòa.</div>
+          <div><strong>Dùng trong lớp.</strong> Nối công thức tích phân với ý tưởng tọa độ trong không gian hàm.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter08/08_02_Fourier_Coefficients/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-3">
+        <h2>08-03 Hội Tụ của Chuỗi Fourier</h2>
+        <p>Bố cục hai panel vừa cho thấy hội tụ tốt xa điểm nhảy, vừa phóng to Gibbs phenomenon gần gián đoạn.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter08/03_convergence_fourier_series.svg" alt="Minh họa hội tụ chuỗi Fourier">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Hội tụ điểm và hành vi gần bước nhảy.</div>
+          <div><strong>Dùng trong lớp.</strong> Giải thích vì sao chuỗi Fourier vẫn đúng về mặt giải tích dù overshoot không biến mất hoàn toàn.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter08/08_03_Convergence_Fourier_Series/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-4">
+        <h2>08-04 Hàm Chẵn và Hàm Lẻ</h2>
+        <p>Hình đối xứng làm cho mối liên hệ “cosine-even, sine-odd” trở nên gần như nhìn thấy ngay bằng mắt.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter08/04_even_odd_functions.svg" alt="Minh họa hàm chẵn và hàm lẻ">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Tính đối xứng và lựa chọn cơ sở.</div>
+          <div><strong>Dùng trong lớp.</strong> Chỉ ra vì sao có thể biết trước một nửa hệ số bằng 0 mà chưa cần tính tích phân.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter08/08_04_Even_Odd_Functions/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-5">
+        <h2>08-05 Half-Range Expansions</h2>
+        <p>Ba panel đi từ dữ liệu trên [0, L] sang mở rộng chẵn và mở rộng lẻ trên [-L, L], giúp sinh viên thấy việc chọn extension chính là mã hóa điều kiện biên.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter08/05_half_range_expansions.svg" alt="Minh họa half-range expansions">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Mở rộng chẵn và lẻ.</div>
+          <div><strong>Dùng trong lớp.</strong> Liên kết trực tiếp chuỗi sine / cosine với điều kiện biên của PDE.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter08/08_05_Half_Range_Expansions/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-6">
+        <h2>08-06 Định Lý Parseval</h2>
+        <p>Minh họa này ghép tín hiệu trong không gian vật lý với biểu đồ năng lượng theo mode để nhấn mạnh Parseval như một định luật cân bằng năng lượng.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter08/06_parsevals_theorem.svg" alt="Minh họa định lý Parseval">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Bảo toàn năng lượng giữa không gian hàm và không gian hệ số.</div>
+          <div><strong>Dùng trong lớp.</strong> Trình bày Parseval như định lý Pythagore vô hạn chiều.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter08/08_06_Parsevals_Theorem/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-7">
+        <h2>08-07 Chuỗi Fourier Dạng Phức</h2>
+        <p>Gallery card này đặt vòng tròn đơn vị cạnh phổ hai phía theo số nguyên dương và âm, để dạng phức nhìn gọn và có ý nghĩa hình học hơn.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter08/07_complex_fourier_series.svg" alt="Minh họa chuỗi Fourier dạng phức">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Exponential modes và chỉ số tần số có dấu.</div>
+          <div><strong>Dùng trong lớp.</strong> Cho thấy vì sao dạng phức gộp sine và cosine thành một ký hiệu đối xứng hơn.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter08/08_07_Complex_Fourier_Series/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-8">
+        <h2>08-08 Giới Thiệu Biến Đổi Fourier</h2>
+        <p>Hình cuối đặt tín hiệu cục bộ cạnh phổ tần số liên tục, để bước chuyển từ harmonic rời rạc sang phổ liên tục trở nên trực quan.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter08/08_fourier_transform_introduction.svg" alt="Minh họa giới thiệu biến đổi Fourier">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Góc nhìn tần số liên tục.</div>
+          <div><strong>Dùng trong lớp.</strong> Động viên biến đổi Fourier như giới hạn toàn trục của chuỗi Fourier.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter08/08_08_Fourier_Transform_Introduction/">Mở bài học</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    Gallery này dành cho việc điều hướng nhanh trong lớp học và xem lại trực quan. Phần trình bày toán học đầy đủ vẫn nằm ở từng lesson.
+  </footer>
+</body>
+</html>

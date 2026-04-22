@@ -32,9 +32,9 @@ Chỉnh sửa file `_config.yml`:
 # Setup
 title:               "Tên Khóa Học Của Bạn"
 description:         'Mô tả khóa học'
-url:                 https://your-username.github.io
-baseurl:             '/your-repo-name'
-imgurl:              https://your-username.github.io/your-repo-name/img
+url:                 https://nglelinh.github.io
+baseurl:             '/differential-equation-self-learning'
+imgurl:              https://nglelinh.github.io/differential-equation-self-learning/img
 
 # About/contact
 author:

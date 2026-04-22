@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 13 Interactives: Phương pháp số cho ODE, PDE và SDE</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #18212f;
+      --muted: #5a6472;
+      --line: #d9e0ea;
+      --accent: #2563eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink); background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 240px);
+    }
+    header, main, footer { max-width: 1400px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
+    header { padding-top: 40px; padding-bottom: 24px; }
+    header h1 { margin: 0 0 10px; font-size: clamp(2rem, 3vw, 3rem); line-height: 1.1; }
+    header p { margin: 0; max-width: 940px; color: var(--muted); line-height: 1.7; }
+    main { padding-bottom: 40px; }
+    .toc { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin: 18px 0 34px; }
+    .toc a { text-decoration: none; background: rgba(255,255,255,0.78); color: var(--ink); padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(37, 99, 235, 0.12); font-size: 0.95rem; }
+    .topic { margin: 0 0 42px; scroll-margin-top: 20px; }
+    .topic > h2 { margin: 0 0 10px; font-size: 1.55rem; }
+    .topic > p { margin: 0 0 18px; color: var(--muted); max-width: 960px; line-height: 1.65; }
+    .demo { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06); display: flex; flex-direction: column; gap: 14px; }
+    .demo h3 { margin: 0; font-size: 1.15rem; }
+    .spec { display: grid; gap: 8px; color: var(--muted); font-size: 0.97rem; line-height: 1.6; }
+    .spec strong { color: var(--ink); }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 14px; border-radius: 10px; text-decoration: none; border: 1px solid #cbd5e1; background: white; color: var(--ink); font-weight: 600; }
+    .button.primary { background: var(--accent); border-color: var(--accent); color: white; }
+    iframe { width: 100%; min-height: 620px; border: 1px solid #edf2f7; border-radius: 14px; background: white; }
+    footer { padding-bottom: 30px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 640px) { header, main, footer { padding-left: 14px; padding-right: 14px; } iframe { min-height: 540px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 13 Interactives</h1>
+    <p>Trang này gom các minh họa tương tác quan trọng nhất cho chương 13: Euler, Runge-Kutta, phương pháp đa bước, phương trình cứng, sai phân hữu hạn cho PDE, điều kiện CFL, FEM 1D, và Euler-Maruyama cho SDE. Mỗi minh họa được chọn để làm rõ trực giác số học trước khi đi vào công thức và lý thuyết chi tiết.</p>
+    <nav class="toc">
+      <a href="#topic-1">13-01 Euler</a>
+      <a href="#topic-2">13-02 Runge-Kutta</a>
+      <a href="#topic-3">13-03 Multistep</a>
+      <a href="#topic-4">13-04 Stiff Equations</a>
+      <a href="#topic-5">13-05 Finite Differences</a>
+      <a href="#topic-6">13-06 Stability, Convergence, CFL</a>
+      <a href="#topic-7">13-07 Finite Elements</a>
+      <a href="#topic-8">13-08 SDE</a>
+    </nav>
+  </header>
+  <main>
+    <section class="topic" id="topic-1">
+      <h2>13-01 Phương Pháp Euler</h2>
+      <p>Đây là cửa ngõ vào tư duy số học: nghiệm vi phân được thay bằng các bước cập nhật rời rạc. Minh họa tập trung vào mối liên hệ giữa bước h, sai số toàn cục, và trực giác tiếp tuyến.</p>
+      <article class="demo">
+        <h3>Euler Tiến: So Sánh Với Nghiệm Đúng</h3>
+        <div class="spec">
+          <div><strong>Mục tiêu sư phạm.</strong> Thấy trực tiếp ảnh hưởng của bước h lên chất lượng xấp xỉ.</div>
+          <div><strong>Ý tưởng toán học.</strong> Euler dùng tiếp tuyến đầu bước để thay cho quỹ đạo cong thật.</div>
+          <div><strong>Tương tác.</strong> Điều chỉnh lambda, bước h, và giá trị đầu y(0).</div>
+        </div>
+        <div class="actions"><a class="button primary" href="./euler-method-vi.html" target="_blank" rel="noopener noreferrer">Mở riêng</a></div>
+        <iframe src="./euler-method-vi.html" title="Euler Tiến" loading="lazy"></iframe>
+      </article>
+    </section>
+    <section class="topic" id="topic-2">
+      <h2>13-02 Runge-Kutta</h2>
+      <p>Runge-Kutta cho thấy rằng có thể cải thiện độ chính xác đáng kể chỉ bằng cách lấy thêm thông tin độ dốc bên trong cùng một bước thời gian.</p>
+      <article class="demo">
+        <h3>RK4 So Với Euler</h3>
+        <div class="spec">
+          <div><strong>Mục tiêu sư phạm.</strong> Nhìn thấy lợi ích thực tế của nhiều stage trong một bước.</div>
+          <div><strong>Ý tưởng toán học.</strong> RK4 trộn các slope trung gian để khớp tốt hơn động lực học cục bộ.</div>
+          <div><strong>Tương tác.</strong> Điều chỉnh hệ số a, bước h, và giá trị đầu.</div>
+        </div>
+        <div class="actions"><a class="button primary" href="./runge-kutta-vi.html" target="_blank" rel="noopener noreferrer">Mở riêng</a></div>
+        <iframe src="./runge-kutta-vi.html" title="RK4 So Với Euler" loading="lazy"></iframe>
+      </article>
+    </section>
+    <section class="topic" id="topic-3">
+      <h2>13-03 Phương Pháp Đa Bước</h2>
+      <p>Phương pháp đa bước làm nổi bật ý tưởng dùng lại lịch sử gần của hệ thay vì luôn lấy mới nhiều slope trong mỗi bước. Đây là triết lý khác hẳn Runge-Kutta.</p>
+      <article class="demo">
+        <h3>Adams-Bashforth 2 Bước</h3>
+        <div class="spec">
+          <div><strong>Mục tiêu sư phạm.</strong> Thấy trực tiếp “ký ức” số học xuất hiện trong công thức cập nhật.</div>
+          <div><strong>Ý tưởng toán học.</strong> Bước mới dùng slope hiện tại và slope ở bước trước để xấp xỉ tích phân của vector trường.</div>
+          <div><strong>Tương tác.</strong> Điều chỉnh hệ số a, bước h và giá trị đầu.</div>
+        </div>
+        <div class="actions"><a class="button primary" href="./multistep-methods-vi.html" target="_blank" rel="noopener noreferrer">Mở riêng</a></div>
+        <iframe src="./multistep-methods-vi.html" title="Phương Pháp Đa Bước" loading="lazy"></iframe>
+      </article>
+    </section>
+    <section class="topic" id="topic-4">
+      <h2>13-04 Phương Trình Cứng</h2>
+      <p>Phương trình cứng là nơi sinh viên thấy rõ rằng độ chính xác không phải tiêu chuẩn duy nhất; miền ổn định của lược đồ mới là yếu tố quyết định bước thời gian.</p>
+      <article class="demo">
+        <h3>Euler Tiến và Euler Lùi Trên Bài Toán Cứng</h3>
+        <div class="spec">
+          <div><strong>Mục tiêu sư phạm.</strong> So sánh trực tiếp explicit và implicit trong môi trường cứng.</div>
+          <div><strong>Ý tưởng toán học.</strong> Hệ số khuếch đại của Euler tiến có thể vượt ngoài miền ổn định dù nghiệm thật vẫn tắt mượt.</div>
+          <div><strong>Tương tác.</strong> Điều chỉnh lambda âm và bước h.</div>
+        </div>
+        <div class="actions"><a class="button primary" href="./stiff-equations-vi.html" target="_blank" rel="noopener noreferrer">Mở riêng</a></div>
+        <iframe src="./stiff-equations-vi.html" title="Phương Trình Cứng" loading="lazy"></iframe>
+      </article>
+    </section>
+    <section class="topic" id="topic-5">
+      <h2>13-05 Sai Phân Hữu Hạn Cho PDE</h2>
+      <p>Ở đây bài toán liên tục được thay bằng một lưới rời rạc. Heatmap thời gian-không gian giúp sinh viên thấy trực tiếp cách profile nhiệt lan và làm mượt trên lưới.</p>
+      <article class="demo">
+        <h3>Sơ Đồ Nhiệt Explicit Trên Lưới 1D</h3>
+        <div class="spec">
+          <div><strong>Mục tiêu sư phạm.</strong> Liên hệ stencil sai phân với tiến hóa số trên cả lưới thời gian-không gian.</div>
+          <div><strong>Ý tưởng toán học.</strong> Mỗi giá trị mới tại một nút chỉ phụ thuộc vào các nút lân cận, nhưng ổn định vẫn phụ thuộc mạnh vào hệ số r.</div>
+          <div><strong>Tương tác.</strong> Điều chỉnh hệ số r và số bước thời gian.</div>
+        </div>
+        <div class="actions"><a class="button primary" href="./finite-differences-pde-vi.html" target="_blank" rel="noopener noreferrer">Mở riêng</a></div>
+        <iframe src="./finite-differences-pde-vi.html" title="Sai Phân Hữu Hạn Cho PDE" loading="lazy"></iframe>
+      </article>
+    </section>
+    <section class="topic" id="topic-6">
+      <h2>13-06 Ổn Định, Hội Tụ và CFL</h2>
+      <p>Điều kiện CFL là trực giác nền tảng cho mô phỏng sóng, dòng chảy, và đối lưu. Hình dưới cho phép thay đổi số CFL để quan sát sự chuyển từ vùng ổn định sang vùng méo hoặc mất ổn định.</p>
+      <article class="demo">
+        <h3>Điều Kiện CFL Trong Sơ Đồ Upwind</h3>
+        <div class="spec">
+          <div><strong>Mục tiêu sư phạm.</strong> Gắn định nghĩa CFL với một profile số thật sự.</div>
+          <div><strong>Ý tưởng toán học.</strong> Khi CFL vượt ngưỡng, thông tin số không còn bám đúng nhịp với propagation vật lý.</div>
+          <div><strong>Tương tác.</strong> Điều chỉnh trực tiếp số CFL.</div>
+        </div>
+        <div class="actions"><a class="button primary" href="./cfl-condition-vi.html" target="_blank" rel="noopener noreferrer">Mở riêng</a></div>
+        <iframe src="./cfl-condition-vi.html" title="Điều Kiện CFL" loading="lazy"></iframe>
+      </article>
+    </section>
+    <section class="topic" id="topic-7">
+      <h2>13-07 Giới Thiệu Phần Tử Hữu Hạn</h2>
+      <p>FEM khác finite differences ở chỗ nó bắt đầu từ không gian xấp xỉ và hàm cơ sở cục bộ. Minh họa này tập trung vào trực giác của các hàm hat trong 1D.</p>
+      <article class="demo">
+        <h3>Hàm Cơ Sở Mũ Chóp Trong FEM 1D</h3>
+        <div class="spec">
+          <div><strong>Mục tiêu sư phạm.</strong> Hiểu vì sao basis functions cục bộ dẫn đến ma trận thưa.</div>
+          <div><strong>Ý tưởng toán học.</strong> Mỗi hàm basis chỉ khác 0 trên một vùng rất nhỏ quanh nút của nó.</div>
+          <div><strong>Tương tác.</strong> Điều chỉnh số nút lưới và chọn basis đang xét.</div>
+        </div>
+        <div class="actions"><a class="button primary" href="./finite-element-basis-vi.html" target="_blank" rel="noopener noreferrer">Mở riêng</a></div>
+        <iframe src="./finite-element-basis-vi.html" title="Hàm Cơ Sở FEM" loading="lazy"></iframe>
+      </article>
+    </section>
+    <section class="topic" id="topic-8">
+      <h2>13-08 Phương Trình Vi Phân Ngẫu Nhiên</h2>
+      <p>Minh họa này cho thấy điều quan trọng nhất của SDE: cùng điều kiện đầu nhưng có nhiều quỹ đạo mẫu khác nhau. Đây là điểm tách hẳn khỏi thế giới ODE xác định.</p>
+      <article class="demo">
+        <h3>Euler-Maruyama Cho Geometric Brownian Motion</h3>
+        <div class="spec">
+          <div><strong>Mục tiêu sư phạm.</strong> Phân biệt quỹ đạo đơn lẻ với hành vi trung bình.</div>
+          <div><strong>Ý tưởng toán học.</strong> Thành phần nhiễu Brown làm cho nghiệm trở thành một họ quỹ đạo ngẫu nhiên thay vì một đường duy nhất.</div>
+          <div><strong>Tương tác.</strong> Điều chỉnh mu, sigma, số quỹ đạo, và sinh lại nhiễu.</div>
+        </div>
+        <div class="actions"><a class="button primary" href="./sde-euler-maruyama-vi.html" target="_blank" rel="noopener noreferrer">Mở riêng</a></div>
+        <iframe src="./sde-euler-maruyama-vi.html" title="Euler-Maruyama" loading="lazy"></iframe>
+      </article>
+    </section>
+  </main>
+  <footer>Các minh họa này được đóng gói như các trang độc lập để có thể mở riêng trong lớp học hoặc nhúng lại vào từng bài giảng.</footer>
+</body>
+</html>

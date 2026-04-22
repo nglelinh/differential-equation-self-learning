@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 09 Illustration Gallery: Phương Trình Nhiệt</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #18212f;
+      --muted: #5a6472;
+      --line: #d9e0ea;
+      --accent: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 240px);
+    }
+
+    header, main, footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    header {
+      padding-top: 40px;
+      padding-bottom: 24px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.1;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 980px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .toc a {
+      text-decoration: none;
+      background: rgba(255,255,255,0.78);
+      color: var(--ink);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding-bottom: 40px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.97rem;
+    }
+
+    .figure-wrap {
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+      overflow: hidden;
+    }
+
+    .figure-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: white;
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .meta strong {
+      color: var(--ink);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid #cbd5e1;
+      background: white;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    footer {
+      padding-bottom: 30px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      header, main, footer {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 09 Illustration Gallery</h1>
+    <p>
+      Trang này gom toàn bộ bộ minh họa của Chương 09 về phương trình nhiệt. Các hình được sắp để làm rõ
+      câu chuyện trung tâm của lý thuyết khuếch tán: suy ra mô hình từ bảo toàn và định luật Fourier,
+      phân rã theo mode riêng, vai trò của điều kiện biên, phép giảm bài toán non-thuần nhất, sự lan rộng Gaussian
+      trên miền vô hạn, trực giác hạt nhân Green, hình học của nguyên lý cực đại, ổn định số, và các ứng dụng khuếch tán
+      trong nhiều ngành khoa học.
+    </p>
+    <nav class="toc">
+      <a href="#lesson-1">09-01 Suy ra phương trình</a>
+      <a href="#lesson-2">09-02 Tách biến</a>
+      <a href="#lesson-3">09-03 Điều kiện biên</a>
+      <a href="#lesson-4">09-04 Non-thuần nhất</a>
+      <a href="#lesson-5">09-05 Miền vô hạn</a>
+      <a href="#lesson-6">09-06 Nghiệm cơ bản</a>
+      <a href="#lesson-7">09-07 Cực đại</a>
+      <a href="#lesson-8">09-08 Sai phân hữu hạn</a>
+      <a href="#lesson-9">09-09 Ứng dụng khuếch tán</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <article class="card" id="lesson-1">
+        <h2>09-01 Suy Ra Phương Trình Nhiệt</h2>
+        <p>Hình mở đầu biến bảo toàn năng lượng và định luật dẫn nhiệt Fourier thành một chuỗi lập mô hình trực quan, giúp sinh viên thấy vì sao khuếch tán dẫn tự nhiên đến đạo hàm bậc hai theo không gian.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/01_derivation_heat_equation.svg" alt="Minh họa suy ra phương trình nhiệt">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Cân bằng thông lượng và định luật vật liệu.</div>
+          <div><strong>Dùng trong lớp.</strong> Nối trực giác vận chuyển nhiệt với dạng giải tích $$u_t=\alpha^2 u_{xx}$$.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter09/09_01_Derivation_Heat_Equation/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-2">
+        <h2>09-02 Tách Biến Cho Phương Trình Nhiệt</h2>
+        <p>Minh họa này làm rõ góc nhìn mode: profile nhiệt được tách thành các mode riêng theo không gian, còn biên độ của từng mode thì suy giảm độc lập theo thời gian.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/02_separation_of_variables_heat.svg" alt="Minh họa tách biến cho phương trình nhiệt">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Nghiệm tích và mode suy giảm.</div>
+          <div><strong>Dùng trong lớp.</strong> Cho thấy vì sao phương trình nhiệt thích sự suy giảm mũ hơn là dao động kéo dài.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter09/09_02_Separation_of_Variables/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-3">
+        <h2>09-03 Điều Kiện Biên Thuần Nhất</h2>
+        <p>Hình về điều kiện biên nhấn mạnh rằng Dirichlet và Neumann chọn các họ hàm riêng khác nhau, đồng thời mã hóa những ràng buộc vật lý khác nhau ở biên.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/03_homogeneous_bcs_heat.svg" alt="Minh họa điều kiện biên thuần nhất cho phương trình nhiệt">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Điều kiện biên như cơ chế chọn phổ.</div>
+          <div><strong>Dùng trong lớp.</strong> Khẳng định rằng biên không phải dữ kiện phụ mà là một phần của bản thân toán tử.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter09/09_03_Homogeneous_Boundary_Conditions/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-4">
+        <h2>09-04 Bài Toán Nhiệt Non-Thuần Nhất</h2>
+        <p>Minh họa tách nghiệm thành phần cân bằng và phần quá độ, giúp người học thấy rõ vì sao bài toán non-thuần nhất thường được đưa về một bài toán thuần nhất dễ xử lý hơn.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/04_nonhomogeneous_heat.svg" alt="Minh họa bài toán nhiệt non-thuần nhất">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Thành phần dừng cộng với hiệu chỉnh quá độ.</div>
+          <div><strong>Dùng trong lớp.</strong> Giải thích chiến lược chuẩn hóa dữ liệu rồi mới áp dụng khai triển theo hàm riêng.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter09/09_04_Nonhomogeneous_Problems/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-5">
+        <h2>09-05 Phương Trình Nhiệt Trên Miền Vô Hạn</h2>
+        <p>Hình này đánh dấu bước chuyển từ chuỗi Fourier rời rạc sang phân tích Fourier liên tục, làm cho cơ chế làm mượt Gaussian trên toàn trục trở nên cụ thể bằng hình ảnh.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/05_heat_infinite_domain.svg" alt="Minh họa phương trình nhiệt trên miền vô hạn">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Phổ tần số liên tục và sự lan rộng Gaussian.</div>
+          <div><strong>Dùng trong lớp.</strong> Đối chiếu mode riêng trên miền hữu hạn với phương pháp biến đổi trên $$\mathbb{R}$$.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter09/09_05_Heat_Infinite_Domain/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-6">
+        <h2>09-06 Nghiệm Cơ Bản và Hàm Green</h2>
+        <p>Hạt nhân nhiệt xuất hiện ở đây như phản ứng đối với một nguồn điểm, từ đó làm cho nguyên lý chồng chập và phép chập trở nên dễ hiểu hơn như các cơ chế lan truyền vật lý.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/06_fundamental_solution_greens_functions.svg" alt="Minh họa nghiệm cơ bản và hàm Green">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Phản ứng nguồn điểm và biểu diễn bằng kernel.</div>
+          <div><strong>Dùng trong lớp.</strong> Giúp sinh viên đọc hàm Green như quy luật truyền thông tin chứ không chỉ là một công thức hình thức.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter09/09_06_Fundamental_Solution_Greens_Functions/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-7">
+        <h2>09-07 Nguyên Lý Cực Đại</h2>
+        <p>Hình này mã hóa hình học định tính của khuếch tán: đỉnh bị san phẳng, đáy được lấp dần, và cực trị nội không thể tự lớn lên nếu không có cơ chế cưỡng bức.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/07_maximum_principles.svg" alt="Minh họa nguyên lý cực đại cho phương trình nhiệt">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Tính làm mượt và kiểm soát định tính.</div>
+          <div><strong>Dùng trong lớp.</strong> Hỗ trợ các lập luận duy nhất nghiệm bằng trực giác rất mạnh về chuyển động của cực trị.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter09/09_07_Maximum_Principles/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-8">
+        <h2>09-08 Phương Pháp Số: Sai Phân Hữu Hạn</h2>
+        <p>Minh họa số học so sánh các cập nhật khuếch tán trên lưới và làm cho điều kiện ổn định của sơ đồ tường minh trở nên dễ bàn bằng hành vi nhìn thấy được, thay vì chỉ còn là biến đổi đại số.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/08_numerical_methods_heat_fd.svg" alt="Minh họa sai phân hữu hạn cho phương trình nhiệt">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Khuếch tán rời rạc và ổn định số.</div>
+          <div><strong>Dùng trong lớp.</strong> Nối chương PDE này với các chủ đề giải tích số như điều kiện CFL và sơ đồ implicit.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter09/09_08_Numerical_Methods_Finite_Differences/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-9">
+        <h2>09-09 Ứng Dụng: Quá Trình Khuếch Tán</h2>
+        <p>Hình cuối mở rộng câu chuyện từ nhiệt độ sang vận chuyển tổng quát, cho thấy cùng một cấu trúc khuếch tán xuất hiện trong sinh học, vật liệu, tài chính và mô hình ngẫu nhiên.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/09_applications_diffusion.svg" alt="Minh họa các ứng dụng của quá trình khuếch tán">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Trực giác khuếch tán liên ngành.</div>
+          <div><strong>Dùng trong lớp.</strong> Kết thúc chương bằng cách nhấn mạnh rằng phương trình nhiệt là một lớp mô hình chứ không chỉ là công thức cho nhiệt độ.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter09/09_09_Applications_Diffusion_Processes/">Mở bài học</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    Có thể dùng gallery này như một bản ôn tập trực quan trước khi chuyển sang phương trình sóng, phương trình Laplace hoặc các phương pháp số cho PDE.
+  </footer>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propagation of Singularities Along Rays</title>
+  <style>
+    body { font-family: Inter, Arial, sans-serif; margin: 0; padding: 18px; background: #f8fafc; color: #111827; }
+    h2 { margin: 0 0 12px; font-size: 1.35rem; }
+    .controls { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+    label { font-size: 14px; color: #374151; }
+    canvas { border: 1px solid #d1d5db; background: white; border-radius: 10px; cursor: crosshair; width: 100%; max-width: 900px; height: auto; }
+    .note { color: #4b5563; max-width: 900px; font-size: 14px; margin-top: 8px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h2>Propagation of Singularities Along Rays</h2>
+  <div class="controls">
+    <label>Time: <input id="time" type="range" min="0" max="10" step="0.01" value="2.5" /> <span id="timeVal">2.50</span></label>
+    <label>Wave speed c: <input id="speed" type="range" min="20" max="120" value="60" /> <span id="speedVal">60</span></label>
+    <label><input id="wall" type="checkbox" /> Reflecting wall at x = 500</label>
+    <button id="toggle">Play</button>
+  </div>
+  <canvas id="canvas" width="900" height="460"></canvas>
+  <div class="note">Drag the source point to change the origin. The picture emphasizes that singularities travel along geometric ray families and can reflect at a boundary.</div>
+  <script>
+    const canvas = document.getElementById("canvas"), ctx = canvas.getContext("2d");
+    const timeSlider = document.getElementById("time"), speedSlider = document.getElementById("speed"), wallBox = document.getElementById("wall");
+    const timeVal = document.getElementById("timeVal"), speedVal = document.getElementById("speedVal"), toggleBtn = document.getElementById("toggle");
+    let src = { x: 250, y: 230 }, dragging = false, playing = false;
+    canvas.addEventListener("mousedown", e => { const r = canvas.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top, dx = x - src.x, dy = y - src.y; if (dx * dx + dy * dy < 16 * 16) dragging = true; });
+    canvas.addEventListener("mousemove", e => { if (!dragging) return; const r = canvas.getBoundingClientRect(); src.x = e.clientX - r.left; src.y = e.clientY - r.top; });
+    window.addEventListener("mouseup", () => dragging = false);
+    toggleBtn.onclick = () => { playing = !playing; toggleBtn.textContent = playing ? "Pause" : "Play"; };
+    function drawRayFamily(cx, cy, radius, color, alpha = 1) {
+      ctx.save(); ctx.globalAlpha = alpha; ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(cx, cy, radius, 0, 2 * Math.PI); ctx.stroke(); ctx.lineWidth = 1.1;
+      for (let k = 0; k < 18; k++) { const th = 2 * Math.PI * k / 18; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + radius * Math.cos(th), cy + radius * Math.sin(th)); ctx.stroke(); }
+      ctx.restore();
+    }
+    function draw() {
+      const t = Number(timeSlider.value), c = Number(speedSlider.value), R = c * t;
+      timeVal.textContent = t.toFixed(2); speedVal.textContent = c;
+      ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#222"; ctx.font = "16px Arial"; ctx.fillText("Propagation of singularities in a constant-speed medium", 16, 24);
+      if (wallBox.checked) {
+        ctx.strokeStyle = "#444"; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(500, 40); ctx.lineTo(500, 420); ctx.stroke(); ctx.fillStyle = "#444"; ctx.fillText("Reflecting wall", 515, 60);
+        if (src.x < 500) { drawRayFamily(src.x, src.y, R, "#2d5be3", 0.9); drawRayFamily(1000 - src.x, src.y, R, "#d22", 0.35); } else { drawRayFamily(src.x, src.y, R, "#2d5be3", 0.9); }
+      } else { drawRayFamily(src.x, src.y, R, "#2d5be3", 0.9); }
+      ctx.fillStyle = "#111"; ctx.beginPath(); ctx.arc(src.x, src.y, 7, 0, 2 * Math.PI); ctx.fill(); ctx.fillText("source", src.x + 10, src.y - 10);
+      ctx.fillStyle = "#333"; ctx.font = "14px Arial"; ctx.fillText(`radius = c t = ${R.toFixed(1)}`, 16, 445);
+      if (playing) { let next = Number(timeSlider.value) + 0.015; if (next > 10) next = 0; timeSlider.value = next; }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>

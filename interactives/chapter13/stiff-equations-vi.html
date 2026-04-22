@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phương Trình Cứng</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    body { font-family: Inter, Arial, sans-serif; margin: 0; padding: 18px; background: #f8fafc; color: #111827; }
+    h2 { margin: 0 0 12px; font-size: 1.35rem; }
+    .controls { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+    label { font-size: 14px; color: #374151; }
+    #plot { width: 100%; max-width: 960px; height: 540px; background: white; border: 1px solid #d1d5db; border-radius: 10px; }
+    .note { color: #4b5563; max-width: 960px; font-size: 14px; margin-top: 8px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h2>Phương Trình Cứng: Euler Tiến và Euler Lùi</h2>
+  <div class="controls">
+    <label>lambda âm: <input id="lam" type="range" min="-40" max="-1" step="1" value="-15"> <span id="lamVal">-15</span></label>
+    <label>bước h: <input id="h" type="range" min="0.01" max="0.4" step="0.01" value="0.12"> <span id="hVal">0.12</span></label>
+  </div>
+  <div id="plot"></div>
+  <div class="note">Euler tiến có thể mất ổn định dù nghiệm đúng chỉ tắt dần rất êm. Euler lùi ổn định hơn nhiều trên bài toán test cứng y' = lambda y với lambda âm lớn.</div>
+  <script>
+    const lamEl = document.getElementById('lam');
+    const hEl = document.getElementById('h');
+    const lamVal = document.getElementById('lamVal');
+    const hVal = document.getElementById('hVal');
+    function render() {
+      const lam = Number(lamEl.value), h = Number(hEl.value);
+      lamVal.textContent = lam.toFixed(0); hVal.textContent = h.toFixed(2);
+      const n = 20; const t = Array.from({ length: n + 1 }, (_, i) => i * h);
+      const forward = [1], backward = [1], exact = t.map(v => Math.exp(lam * v));
+      for (let i = 0; i < n; i++) {
+        forward.push((1 + h * lam) * forward[i]);
+        backward.push(backward[i] / (1 - h * lam));
+      }
+      Plotly.newPlot('plot', [
+        { x: t, y: exact, mode: 'lines', name: 'Nghiệm đúng', line: { color: '#111827', width: 3 } },
+        { x: t, y: forward, mode: 'lines+markers', name: 'Euler tiến', line: { color: '#ef4444', width: 2 }, marker: { size: 6 } },
+        { x: t, y: backward, mode: 'lines+markers', name: 'Euler lùi', line: { color: '#2563eb', width: 3 }, marker: { size: 6 } }
+      ], {
+        title: `Bài toán test cứng y' = ${lam} y`,
+        xaxis: { title: 't' }, yaxis: { title: 'y(t)' }, legend: { orientation: 'h' },
+        annotations: [{ x: 0.98, y: 0.95, xref: 'paper', yref: 'paper', text: `|1 + h lambda| = ${Math.abs(1 + h * lam).toFixed(2)}`, showarrow: false }],
+        margin: { t: 60, l: 60, r: 20, b: 50 }
+      }, { responsive: true });
+    }
+    [lamEl, hEl].forEach(el => el.addEventListener('input', render));
+    render();
+  </script>
+</body>
+</html>

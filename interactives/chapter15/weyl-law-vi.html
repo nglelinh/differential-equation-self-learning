@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tiệm Cận Phổ và Định Luật Weyl</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    body { font-family: Inter, Arial, sans-serif; margin: 0; padding: 18px; background: #f8fafc; color: #111827; }
+    h2 { margin: 0 0 12px; font-size: 1.35rem; }
+    .controls { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+    label { font-size: 14px; color: #374151; }
+    #plot { width: 100%; max-width: 960px; height: 560px; background: white; border: 1px solid #d1d5db; border-radius: 10px; }
+    .note { color: #4b5563; max-width: 960px; font-size: 14px; margin-top: 8px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h2>Tiệm Cận Phổ và Định Luật Weyl</h2>
+  <div class="controls">
+    <label>Miền:
+      <select id="domain">
+        <option value="1d">Đoạn 1D [0,L]</option>
+        <option value="2d">Hình chữ nhật 2D [0,a] x [0,b]</option>
+      </select>
+    </label>
+    <label>L hoặc a: <input id="a" type="range" min="0.5" max="4.0" step="0.1" value="1.0" /> <span id="aVal">1.0</span></label>
+    <label>b: <input id="b" type="range" min="0.5" max="4.0" step="0.1" value="1.5" /> <span id="bVal">1.5</span></label>
+    <label>lambda tối đa: <input id="lamMax" type="range" min="20" max="800" step="10" value="250" /> <span id="lamVal">250</span></label>
+  </div>
+  <div id="plot"></div>
+  <div class="note">Thay đổi số chiều và kích thước miền để quan sát tốc độ tăng của hàm đếm trị riêng và sự khớp dần với đường tiệm cận Weyl.</div>
+  <script>
+    const domain = document.getElementById("domain"), a = document.getElementById("a"), b = document.getElementById("b"), lamMax = document.getElementById("lamMax");
+    const aVal = document.getElementById("aVal"), bVal = document.getElementById("bVal"), lamVal = document.getElementById("lamVal");
+    function compute1D(L, maxLam) {
+      const eigs = []; for (let n = 1;; n++) { const lam = (n * Math.PI / L) ** 2; if (lam > maxLam) break; eigs.push(lam); }
+      const grid = [], N = [], asymp = [];
+      for (let i = 1; i <= 350; i++) { const lam = maxLam * i / 350; grid.push(lam); N.push(eigs.filter(x => x <= lam).length); asymp.push((L / Math.PI) * Math.sqrt(lam)); }
+      return { grid, N, asymp, title: `Laplacian Dirichlet trên [0, ${L.toFixed(1)}]` };
+    }
+    function compute2D(A, B, maxLam) {
+      const eigs = [], mMax = Math.ceil(Math.sqrt(maxLam) * A / Math.PI) + 2, nMax = Math.ceil(Math.sqrt(maxLam) * B / Math.PI) + 2;
+      for (let m = 1; m <= mMax; m++) for (let n = 1; n <= nMax; n++) { const lam = Math.PI ** 2 * ((m / A) ** 2 + (n / B) ** 2); if (lam <= maxLam) eigs.push(lam); }
+      eigs.sort((x, y) => x - y);
+      const grid = [], N = [], asymp = []; let idx = 0;
+      for (let i = 1; i <= 350; i++) { const lam = maxLam * i / 350; grid.push(lam); while (idx < eigs.length && eigs[idx] <= lam) idx++; N.push(idx); asymp.push((A * B / (4 * Math.PI)) * lam); }
+      return { grid, N, asymp, title: `Laplacian Dirichlet trên hình chữ nhật ${A.toFixed(1)} x ${B.toFixed(1)}` };
+    }
+    function render() {
+      const A = Number(a.value), B = Number(b.value), maxLam = Number(lamMax.value);
+      aVal.textContent = A.toFixed(1); bVal.textContent = B.toFixed(1); lamVal.textContent = maxLam.toFixed(0);
+      const dataObj = domain.value === "1d" ? compute1D(A, maxLam) : compute2D(A, B, maxLam);
+      Plotly.newPlot("plot", [
+        { x: dataObj.grid, y: dataObj.N, mode: "lines", name: "Hàm đếm chính xác N(lambda)", line: { color: "#2d5be3", width: 3, shape: "hv" } },
+        { x: dataObj.grid, y: dataObj.asymp, mode: "lines", name: "Đường tiệm cận Weyl", line: { color: "#d22", width: 3, dash: "dash" } }
+      ], { title: dataObj.title, xaxis: { title: "lambda" }, yaxis: { title: "N(lambda)" }, legend: { orientation: "h" }, margin: { t: 60, l: 70, r: 20, b: 60 } }, { responsive: true });
+      b.disabled = domain.value === "1d";
+    }
+    [domain, a, b, lamMax].forEach(el => el.addEventListener("input", render));
+    render();
+  </script>
+</body>
+</html>

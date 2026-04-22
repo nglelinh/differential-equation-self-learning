@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title>04-05 Phương pháp Trị riêng: Trùng</title>
+  <desc>Schematic concept card for chapter 04: 04-05 Phương pháp Trị riêng: Trùng</desc>
+  <rect width="1600" height="900" fill="#eef5fd"/>
+  <rect x="70" y="70" width="1460" height="760" rx="36" fill="white" stroke="#1565c0" stroke-width="8"/>
+  <rect x="110" y="110" width="300" height="66" rx="20" fill="#1565c0"/>
+  <text x="260" y="154" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" fill="white" font-weight="700">CHAPTER 04</text>
+  <text x="120" y="240" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1565c0" font-weight="700">HE PHUONG TRINH</text>
+  <text x="120" y="330" font-family="Georgia, Times New Roman, serif" font-size="56" fill="#111827" font-weight="700">04-05 Phương pháp Trị riêng: Trùng</text>
+  <text x="120" y="408" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#475569">05 • TRI RIENG • REPEATED</text>
+  <rect x="120" y="470" width="1360" height="170" rx="24" fill="#1565c0" opacity="0.08"/>
+  <text x="160" y="535" font-family="Georgia, Times New Roman, serif" font-size="34" fill="#0f172a" font-weight="700">Cong thuc trung tam</text>
+  <text x="160" y="600" font-family="Courier New, monospace" font-size="30" fill="#111827">\mathbf{w}</text>
+  <text x="120" y="735" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#334155">Y tuong cot loi: mo hinh hoa, cau truc, va dien giai hinh hoc cua he phuong trinh.</text>
+</svg>

@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 01 Interactives: First-Order ODEs</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #18212f;
+      --muted: #5a6472;
+      --line: #d9e0ea;
+      --accent: #2563eb;
+      --accent-2: #0891b2;
+      --good: #15803d;
+      --warn: #b45309;
+      --bad: #b91c1c;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 240px);
+    }
+
+    header {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 20px 24px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.1;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 900px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px 40px;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin: 18px 0 34px;
+    }
+
+    .toc a {
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(12px);
+      color: var(--ink);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      font-size: 0.95rem;
+    }
+
+    .topic {
+      margin: 0 0 42px;
+      scroll-margin-top: 20px;
+    }
+
+    .topic > h2 {
+      margin: 0 0 14px;
+      font-size: 1.55rem;
+    }
+
+    .topic > p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      max-width: 900px;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+      gap: 18px;
+    }
+
+    .demo {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .demo h3 {
+      margin: 0;
+      font-size: 1.08rem;
+    }
+
+    .spec {
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.5;
+    }
+
+    .spec strong {
+      color: var(--ink);
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid #edf2f7;
+    }
+
+    .control {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .control label {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .control input,
+    .control select,
+    .control button {
+      width: 100%;
+    }
+
+    .control button {
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      background: white;
+      padding: 10px 12px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .control span {
+      font-size: 0.82rem;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+
+    canvas,
+    .plot {
+      width: 100%;
+      min-height: 290px;
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+    }
+
+    .mini-note {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .status {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px 30px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      header,
+      main,
+      footer {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 01 Interactives</h1>
+    <p>
+      This standalone gallery proposes two JavaScript-based illustrations for each topic in Chapter 01,
+      First-Order Ordinary Differential Equations. Each card includes the teaching brief requested for the
+      lesson and a runnable visualization built with Plotly.js or plain HTML canvas.
+    </p>
+    <nav class="toc">
+      <a href="#topic-1">01-01 Introduction</a>
+      <a href="#topic-2">01-02 Separable</a>
+      <a href="#topic-3">01-03 Linear First-Order</a>
+      <a href="#topic-4">01-04 Exact Equations</a>
+      <a href="#topic-5">01-05 Substitution Methods</a>
+      <a href="#topic-6">01-06 Existence and Uniqueness</a>
+      <a href="#topic-7">01-07 Population and Mixing</a>
+      <a href="#topic-8">01-08 Mechanics and Circuits</a>
+      <a href="#topic-9">01-09 Autonomous Equations</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="topic" id="topic-1">
+      <h2>01-01 Introduction to Differential Equations</h2>
+      <p>These two opening illustrations focus on the core idea that an ODE prescribes a local law of change and that numerical methods approximate the resulting global curve.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Slope Field and Initial Value Picker</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Connect the symbolic equation $$y' = f(t,y)$$ to a visual field of local directions and a single solution selected by an initial condition.</div>
+            <div><strong>Mathematical idea shown.</strong> A differential equation gives slope information point-by-point, and a chosen point $$\left(t_0,y_0\right)$$ generates a solution curve.</div>
+            <div><strong>User interactions.</strong> Sliders for growth rate, forcing, and initial value.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="intro-a">Growth rate a</label><input id="intro-a" type="range" min="-2" max="2" step="0.1" value="0.9"><span id="intro-a-value"></span></div>
+            <div class="control"><label for="intro-b">Constant forcing b</label><input id="intro-b" type="range" min="-2" max="2" step="0.1" value="0.5"><span id="intro-b-value"></span></div>
+            <div class="control"><label for="intro-y0">Initial value y(0)</label><input id="intro-y0" type="range" min="-3" max="3" step="0.1" value="0.8"><span id="intro-y0-value"></span></div>
+          </div>
+          <canvas id="intro-slope-canvas" width="760" height="360"></canvas>
+        </article>
+
+        <article class="demo">
+          <h3>Exact Solution vs Euler Approximation</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that a numerical method follows the same local slope logic but introduces step-size dependent error.</div>
+            <div><strong>Mathematical idea shown.</strong> For $$y' = \lambda y$$, the exact exponential curve and the Euler polygon agree locally but diverge as the step size grows.</div>
+            <div><strong>User interactions.</strong> Sliders for $$\lambda$$, step size, and initial value.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="euler-lambda">Lambda</label><input id="euler-lambda" type="range" min="-3" max="3" step="0.1" value="1"><span id="euler-lambda-value"></span></div>
+            <div class="control"><label for="euler-h">Step size h</label><input id="euler-h" type="range" min="0.05" max="1" step="0.05" value="0.35"><span id="euler-h-value"></span></div>
+            <div class="control"><label for="euler-y0">Initial value y(0)</label><input id="euler-y0" type="range" min="0.2" max="2.5" step="0.1" value="1"><span id="euler-y0-value"></span></div>
+          </div>
+          <div id="intro-euler-plot" class="plot"></div>
+          <div id="intro-euler-status" class="status"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-2">
+      <h2>01-02 Separable Equations</h2>
+      <p>The chapter’s first major solution method benefits from visuals that separate model behavior by parameter and by initial condition.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Exponential vs Logistic Growth</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Contrast unrestricted growth with saturation under the logistic model.</div>
+            <div><strong>Mathematical idea shown.</strong> Both models are separable, but the logistic factor $$1-P/K$$ creates an attracting carrying capacity.</div>
+            <div><strong>User interactions.</strong> Dropdown for model type, sliders for rate, carrying capacity, and initial population.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="sep-model">Model</label><select id="sep-model"><option value="exponential">Exponential</option><option value="logistic" selected>Logistic</option></select></div>
+            <div class="control"><label for="sep-r">Rate r</label><input id="sep-r" type="range" min="0.1" max="2" step="0.1" value="0.7"><span id="sep-r-value"></span></div>
+            <div class="control"><label for="sep-k">Carrying capacity K</label><input id="sep-k" type="range" min="20" max="200" step="5" value="100"><span id="sep-k-value"></span></div>
+            <div class="control"><label for="sep-p0">Initial population</label><input id="sep-p0" type="range" min="1" max="180" step="1" value="18"><span id="sep-p0-value"></span></div>
+          </div>
+          <div id="sep-growth-plot" class="plot"></div>
+        </article>
+
+        <article class="demo">
+          <h3>Separable Direction Field</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Make the product form $$y' = g(t)h(y)$$ visible so students see how time and state influence the slope independently.</div>
+            <div><strong>Mathematical idea shown.</strong> The sign pattern comes from factors in time and state, while equilibria appear where $$h(y)=0$$.</div>
+            <div><strong>User interactions.</strong> Sliders for amplitude, carrying capacity, and initial value.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="sep-field-a">Amplitude</label><input id="sep-field-a" type="range" min="0.4" max="2" step="0.1" value="1.1"><span id="sep-field-a-value"></span></div>
+            <div class="control"><label for="sep-field-k">Equilibrium level K</label><input id="sep-field-k" type="range" min="1" max="4" step="0.1" value="2.4"><span id="sep-field-k-value"></span></div>
+            <div class="control"><label for="sep-field-y0">Initial value</label><input id="sep-field-y0" type="range" min="-1.5" max="3.5" step="0.1" value="0.6"><span id="sep-field-y0-value"></span></div>
+          </div>
+          <canvas id="sep-field-canvas" width="760" height="360"></canvas>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-3">
+      <h2>01-03 Linear First-Order Equations</h2>
+      <p>These illustrations emphasize transient versus steady behavior and the effect of forcing on a stable linear system.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Transient and Steady-State Decomposition</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Help students read a linear first-order solution as the sum of a decaying transient and a long-time response.</div>
+            <div><strong>Mathematical idea shown.</strong> For $$y' + py = q$$ with constants, the equilibrium is $$q/p$$ and the transient decays like $$e^{-pt}$$ when $$p&gt;0$$.</div>
+            <div><strong>User interactions.</strong> Sliders for $$p$$, $$q$$, and initial value, plus a checkbox to show the equilibrium line.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="lin-p">Damping p</label><input id="lin-p" type="range" min="0.2" max="3" step="0.1" value="1.2"><span id="lin-p-value"></span></div>
+            <div class="control"><label for="lin-q">Forcing q</label><input id="lin-q" type="range" min="-4" max="4" step="0.2" value="2"><span id="lin-q-value"></span></div>
+            <div class="control"><label for="lin-y0">Initial value</label><input id="lin-y0" type="range" min="-5" max="5" step="0.1" value="-2"><span id="lin-y0-value"></span></div>
+            <div class="control"><label for="lin-show-eq">Show equilibrium</label><input id="lin-show-eq" type="checkbox" checked></div>
+          </div>
+          <div id="lin-constant-plot" class="plot"></div>
+        </article>
+
+        <article class="demo">
+          <h3>Sinusoidal Forcing Response</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that a first-order linear equation smooths and delays an oscillatory input rather than copying it exactly.</div>
+            <div><strong>Mathematical idea shown.</strong> The equation $$y' + py = A\sin(\omega t)$$ produces a lagging response whose amplitude depends on the relative size of $$p$$ and $$\omega$$.</div>
+            <div><strong>User interactions.</strong> Sliders for damping, forcing amplitude, forcing frequency, and initial value.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="lin-force-p">Damping p</label><input id="lin-force-p" type="range" min="0.2" max="3" step="0.1" value="1"><span id="lin-force-p-value"></span></div>
+            <div class="control"><label for="lin-force-a">Amplitude A</label><input id="lin-force-a" type="range" min="0.5" max="4" step="0.1" value="2"><span id="lin-force-a-value"></span></div>
+            <div class="control"><label for="lin-force-w">Frequency w</label><input id="lin-force-w" type="range" min="0.5" max="4" step="0.1" value="1.8"><span id="lin-force-w-value"></span></div>
+            <div class="control"><label for="lin-force-y0">Initial value</label><input id="lin-force-y0" type="range" min="-3" max="3" step="0.1" value="0"><span id="lin-force-y0-value"></span></div>
+          </div>
+          <div id="lin-forcing-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-4">
+      <h2>01-04 Exact Equations</h2>
+      <p>Exactness becomes much clearer when students can see solution curves as level sets of a potential function.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Potential Function Level Curves</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that solving an exact equation is equivalent to finding a potential whose contours are the solution family.</div>
+            <div><strong>Mathematical idea shown.</strong> When $$dF = F_x dx + F_y dy = 0$$, every solution lies on a contour $$F(x,y)=C$$.</div>
+            <div><strong>User interactions.</strong> Sliders for cross-coupling and the chosen level constant.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="exact-alpha">Cross-coupling alpha</label><input id="exact-alpha" type="range" min="-0.9" max="0.9" step="0.1" value="0.4"><span id="exact-alpha-value"></span></div>
+            <div class="control"><label for="exact-level">Selected level C</label><input id="exact-level" type="range" min="0.5" max="8" step="0.1" value="3.5"><span id="exact-level-value"></span></div>
+          </div>
+          <div id="exact-contour-plot" class="plot"></div>
+        </article>
+
+        <article class="demo">
+          <h3>Exact vs Non-Exact Field Comparison</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Contrast a gradient-type field that comes from a potential with a swirling field that does not.</div>
+            <div><strong>Mathematical idea shown.</strong> Exactness is tied to path-independent structure and zero curl in this planar analogy.</div>
+            <div><strong>User interactions.</strong> Dropdown for field type and a slider for field intensity.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="exact-kind">Field type</label><select id="exact-kind"><option value="exact">Exact gradient field</option><option value="nonexact">Non-exact swirling field</option></select></div>
+            <div class="control"><label for="exact-strength">Strength</label><input id="exact-strength" type="range" min="0.5" max="2" step="0.1" value="1"><span id="exact-strength-value"></span></div>
+          </div>
+          <canvas id="exact-compare-canvas" width="760" height="360"></canvas>
+          <div id="exact-compare-note" class="status"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-5">
+      <h2>01-05 Substitution Methods</h2>
+      <p>Substitution is easier to teach when students can see the original equation and the transformed variable changing together.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Bernoulli Equation Transformation</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how a nonlinear Bernoulli equation becomes linear after the power substitution.</div>
+            <div><strong>Mathematical idea shown.</strong> For $$y' + py = qy^n$$, the substitution $$u = y^{1-n}$$ converts the equation into a first-order linear equation in $$u$$.</div>
+            <div><strong>User interactions.</strong> Sliders for $$p$$, $$q$$, exponent $$n$$, and initial value.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="bern-p">p</label><input id="bern-p" type="range" min="0.2" max="2.5" step="0.1" value="1"><span id="bern-p-value"></span></div>
+            <div class="control"><label for="bern-q">q</label><input id="bern-q" type="range" min="0.2" max="2.5" step="0.1" value="1.3"><span id="bern-q-value"></span></div>
+            <div class="control"><label for="bern-n">Exponent n</label><input id="bern-n" type="range" min="1.2" max="3.5" step="0.1" value="2"><span id="bern-n-value"></span></div>
+            <div class="control"><label for="bern-y0">Initial value</label><input id="bern-y0" type="range" min="0.3" max="3" step="0.1" value="1.2"><span id="bern-y0-value"></span></div>
+          </div>
+          <div id="bernoulli-plot" class="plot"></div>
+          <div id="bernoulli-note" class="mini-note"></div>
+        </article>
+
+        <article class="demo">
+          <h3>Homogeneous Equation and Ratio Variable</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Help students see why the ratio $$v=y/x$$ is the natural variable for a first-order homogeneous equation.</div>
+            <div><strong>Mathematical idea shown.</strong> If $$y' = F(y/x)$$, then the direction depends only on the ray from the origin, not on absolute position.</div>
+            <div><strong>User interactions.</strong> Sliders for parameter c and the starting point on the line $$x=1$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="hom-c">Parameter c</label><input id="hom-c" type="range" min="-1.5" max="1.5" step="0.1" value="0.4"><span id="hom-c-value"></span></div>
+            <div class="control"><label for="hom-y0">Initial y at x=1</label><input id="hom-y0" type="range" min="-2.5" max="3" step="0.1" value="1.5"><span id="hom-y0-value"></span></div>
+          </div>
+          <div id="homogeneous-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-6">
+      <h2>01-06 Existence and Uniqueness</h2>
+      <p>These visuals are designed to make the abstract language of local existence and Lipschitz continuity feel concrete.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Unique and Non-Unique Initial Value Problems</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show the memorable contrast between a well-posed IVP and one with multiple solutions through the same point.</div>
+            <div><strong>Mathematical idea shown.</strong> The model $$y' = y^{1/3}, y(0)=0$$ admits many solutions, unlike smooth Lipschitz examples such as $$y'=y$$.</div>
+            <div><strong>User interactions.</strong> Dropdown for scenario and a slider that changes the waiting time before a non-unique branch departs from zero.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="uniq-mode">Scenario</label><select id="uniq-mode"><option value="unique">Unique: y' = y</option><option value="nonunique">Non-unique: y' = y^(1/3)</option></select></div>
+            <div class="control"><label for="uniq-delay">Delay before leaving 0</label><input id="uniq-delay" type="range" min="0" max="4" step="0.1" value="1.5"><span id="uniq-delay-value"></span></div>
+          </div>
+          <div id="uniq-plot" class="plot"></div>
+          <div id="uniq-note" class="status"></div>
+        </article>
+
+        <article class="demo">
+          <h3>Lipschitz Threshold Explorer</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Let students experiment with a family of right-hand sides and see when uniqueness at the origin becomes fragile.</div>
+            <div><strong>Mathematical idea shown.</strong> For $$f(y)=|y|^\alpha$$, the graph is continuous for every $$\alpha&gt;0$$, but local Lipschitz behavior near zero changes at $$\alpha=1$$.</div>
+            <div><strong>User interactions.</strong> Slider for exponent $$\alpha$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="lipschitz-alpha">Exponent alpha</label><input id="lipschitz-alpha" type="range" min="0.2" max="2" step="0.05" value="0.75"><span id="lipschitz-alpha-value"></span></div>
+          </div>
+          <div id="lipschitz-plot" class="plot"></div>
+          <div id="lipschitz-note" class="status"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-7">
+      <h2>01-07 Applications: Population and Mixing</h2>
+      <p>These applications turn the formal solution methods into interpretable models with equilibrium and balance-law language.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Logistic Growth with Harvesting</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how a small model modification can change long-term population behavior dramatically.</div>
+            <div><strong>Mathematical idea shown.</strong> The equation $$P' = rP(1-P/K)-H$$ adds a constant harvest term that can shift or remove equilibria.</div>
+            <div><strong>User interactions.</strong> Sliders for growth rate, carrying capacity, harvest level, and initial population.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="pop-r">Rate r</label><input id="pop-r" type="range" min="0.2" max="1.8" step="0.1" value="0.8"><span id="pop-r-value"></span></div>
+            <div class="control"><label for="pop-k">Carrying capacity K</label><input id="pop-k" type="range" min="50" max="250" step="5" value="150"><span id="pop-k-value"></span></div>
+            <div class="control"><label for="pop-h">Harvest H</label><input id="pop-h" type="range" min="0" max="25" step="0.5" value="6"><span id="pop-h-value"></span></div>
+            <div class="control"><label for="pop-p0">Initial population</label><input id="pop-p0" type="range" min="1" max="220" step="1" value="40"><span id="pop-p0-value"></span></div>
+          </div>
+          <div id="population-plot" class="plot"></div>
+          <div id="population-note" class="mini-note"></div>
+        </article>
+
+        <article class="demo">
+          <h3>Mixing Tank Balance Law</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Reinforce the phrase “rate in minus rate out” with a visual tank model and a concentration graph.</div>
+            <div><strong>Mathematical idea shown.</strong> For a constant-volume tank, the amount of dissolved salt satisfies a first-order linear ODE with an equilibrium concentration.</div>
+            <div><strong>User interactions.</strong> Sliders for inflow concentration, flow rate, tank volume, initial concentration, and a play or pause button.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="mix-cin">Input concentration</label><input id="mix-cin" type="range" min="0" max="10" step="0.2" value="6"><span id="mix-cin-value"></span></div>
+            <div class="control"><label for="mix-q">Flow rate</label><input id="mix-q" type="range" min="0.5" max="4" step="0.1" value="1.6"><span id="mix-q-value"></span></div>
+            <div class="control"><label for="mix-v">Tank volume</label><input id="mix-v" type="range" min="20" max="120" step="5" value="60"><span id="mix-v-value"></span></div>
+            <div class="control"><label for="mix-c0">Initial concentration</label><input id="mix-c0" type="range" min="0" max="10" step="0.2" value="1"><span id="mix-c0-value"></span></div>
+            <div class="control"><label>Animation</label><button id="mix-toggle">Pause</button></div>
+          </div>
+          <canvas id="mix-canvas" width="760" height="360"></canvas>
+          <div id="mix-note" class="status"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-8">
+      <h2>01-08 Applications: Mechanics and Circuits</h2>
+      <p>These illustrations link the first-order linear framework to physical parameters such as drag, terminal velocity, and time constants.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Falling Body with Linear Drag</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how drag creates a stable terminal velocity rather than indefinite acceleration.</div>
+            <div><strong>Mathematical idea shown.</strong> The velocity equation $$mv' = mg-cv$$ is linear and approaches the equilibrium velocity $$v_T = mg/c$$.</div>
+            <div><strong>User interactions.</strong> Sliders for mass, drag coefficient, gravity, and a play or pause button.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="fall-m">Mass m</label><input id="fall-m" type="range" min="0.5" max="5" step="0.1" value="1.5"><span id="fall-m-value"></span></div>
+            <div class="control"><label for="fall-c">Drag c</label><input id="fall-c" type="range" min="0.2" max="4" step="0.1" value="1"><span id="fall-c-value"></span></div>
+            <div class="control"><label for="fall-g">Gravity g</label><input id="fall-g" type="range" min="4" max="15" step="0.5" value="9.8"><span id="fall-g-value"></span></div>
+            <div class="control"><label>Animation</label><button id="fall-toggle">Pause</button></div>
+          </div>
+          <canvas id="fall-canvas" width="760" height="360"></canvas>
+          <div id="fall-note" class="status"></div>
+        </article>
+
+        <article class="demo">
+          <h3>RC Step Response</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Tie the general first-order linear solution to the familiar charging curve of a capacitor.</div>
+            <div><strong>Mathematical idea shown.</strong> The equation $$RCV' + V = V_{in}$$ has the characteristic time scale $$\tau = RC$$ and approaches the source voltage asymptotically.</div>
+            <div><strong>User interactions.</strong> Sliders for resistance, capacitance, source voltage, initial capacitor voltage, and a play or pause button.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="rc-r">Resistance R</label><input id="rc-r" type="range" min="0.5" max="6" step="0.1" value="2"><span id="rc-r-value"></span></div>
+            <div class="control"><label for="rc-c">Capacitance C</label><input id="rc-c" type="range" min="0.2" max="4" step="0.1" value="1.5"><span id="rc-c-value"></span></div>
+            <div class="control"><label for="rc-vin">Input voltage</label><input id="rc-vin" type="range" min="1" max="12" step="0.5" value="8"><span id="rc-vin-value"></span></div>
+            <div class="control"><label for="rc-v0">Initial capacitor voltage</label><input id="rc-v0" type="range" min="0" max="10" step="0.2" value="0"><span id="rc-v0-value"></span></div>
+            <div class="control"><label>Animation</label><button id="rc-toggle">Pause</button></div>
+          </div>
+          <div id="rc-plot" class="plot"></div>
+          <div id="rc-note" class="status"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-9">
+      <h2>01-09 Autonomous Equations and Phase Lines</h2>
+      <p>These optional chapter-ending interactives push students toward qualitative reasoning without requiring explicit solutions.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Phase Line and Time Trace</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Connect the sign of $$f(y)$$ on the phase line to the time evolution of a solution.</div>
+            <div><strong>Mathematical idea shown.</strong> Equilibria partition the phase line, and arrows determined by the sign of $$f(y)$$ predict long-term motion.</div>
+            <div><strong>User interactions.</strong> Sliders for equilibrium locations, growth rate, and initial value.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="phase-a">Lower equilibrium a</label><input id="phase-a" type="range" min="-2.5" max="1.5" step="0.1" value="-1"><span id="phase-a-value"></span></div>
+            <div class="control"><label for="phase-b">Upper equilibrium b</label><input id="phase-b" type="range" min="-0.5" max="3.5" step="0.1" value="2"><span id="phase-b-value"></span></div>
+            <div class="control"><label for="phase-r">Rate r</label><input id="phase-r" type="range" min="0.3" max="2" step="0.1" value="1"><span id="phase-r-value"></span></div>
+            <div class="control"><label for="phase-y0">Initial value</label><input id="phase-y0" type="range" min="-3" max="4" step="0.1" value="3"><span id="phase-y0-value"></span></div>
+          </div>
+          <canvas id="phase-canvas" width="760" height="360"></canvas>
+          <div id="phase-trace" class="plot"></div>
+        </article>
+
+        <article class="demo">
+          <h3>Parameter Sensitivity and Stability Change</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how a parameter can create or destroy equilibria in an autonomous ODE.</div>
+            <div><strong>Mathematical idea shown.</strong> For $$y' = \mu - y^2$$, the number and stability of equilibria depend directly on the sign of $$\mu$$.</div>
+            <div><strong>User interactions.</strong> Slider for parameter $$\mu$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="auto-mu">Parameter mu</label><input id="auto-mu" type="range" min="-2" max="4" step="0.1" value="1.5"><span id="auto-mu-value"></span></div>
+          </div>
+          <div id="auto-bifurcation-plot" class="plot"></div>
+          <div id="auto-note" class="status"></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    The page is intentionally self-contained so it can be opened directly in a browser or served from a static site folder.
+  </footer>
+
+  <script>
+    const fmt = (value, digits = 2) => Number(value).toFixed(digits).replace(/\.00$/, '');
+
+    function bindValue(id, digits = 2) {
+      const input = document.getElementById(id);
+      const output = document.getElementById(`${id}-value`);
+      const refresh = () => {
+        if (output) output.textContent = fmt(input.value, digits);
+      };
+      input.addEventListener('input', refresh);
+      refresh();
+      return input;
+    }
+
+    function bindControls(ids, render) {
+      ids.forEach((id) => {
+        const element = document.getElementById(id);
+        element.addEventListener('input', render);
+        element.addEventListener('change', render);
+      });
+      render();
+    }
+
+    function linspace(min, max, count) {
+      return Array.from({ length: count }, (_, i) => min + (max - min) * i / (count - 1));
+    }
+
+    function rk4Scalar(f, t0, y0, t1, steps) {
+      const h = (t1 - t0) / steps;
+      const points = [];
+      let t = t0;
+      let y = y0;
+      for (let i = 0; i <= steps; i += 1) {
+        points.push({ t, y });
+        const k1 = f(t, y);
+        const k2 = f(t + 0.5 * h, y + 0.5 * h * k1);
+        const k3 = f(t + 0.5 * h, y + 0.5 * h * k2);
+        const k4 = f(t + h, y + h * k3);
+        y += (h / 6) * (k1 + 2 * k2 + 2 * k3 + k4);
+        t += h;
+      }
+      return points;
+    }
+
+    function integrateAround(f, t0, y0, tMin, tMax, stepsEachSide) {
+      const backward = rk4Scalar(f, t0, y0, tMin, stepsEachSide).reverse();
+      const forward = rk4Scalar(f, t0, y0, tMax, stepsEachSide).slice(1);
+      return backward.concat(forward);
+    }
+
+    function eulerScalar(f, t0, y0, t1, h) {
+      const points = [];
+      let t = t0;
+      let y = y0;
+      while (t <= t1 + 1e-9) {
+        points.push({ t, y });
+        y += h * f(t, y);
+        t += h;
+      }
+      return points;
+    }
+
+    function plotSeries(divId, traces, layout = {}) {
+      Plotly.react(divId, traces, {
+        margin: { l: 46, r: 18, t: 24, b: 42 },
+        paper_bgcolor: '#ffffff',
+        plot_bgcolor: '#ffffff',
+        legend: { orientation: 'h' },
+        xaxis: { gridcolor: '#e5e7eb', zerolinecolor: '#cbd5e1' },
+        yaxis: { gridcolor: '#e5e7eb', zerolinecolor: '#cbd5e1' },
+        ...layout,
+      }, { responsive: true, displayModeBar: false });
+    }
+
+    function canvasMap(value, min, max, start, end) {
+      return start + (value - min) * (end - start) / (max - min);
+    }
+
+    function drawAxes(ctx, xMin, xMax, yMin, yMax, pad, width, height) {
+      ctx.strokeStyle = '#94a3b8';
+      ctx.lineWidth = 1;
+      const x0 = canvasMap(0, xMin, xMax, pad, width - pad);
+      const y0 = canvasMap(0, yMin, yMax, height - pad, pad);
+      ctx.beginPath();
+      ctx.moveTo(pad, y0);
+      ctx.lineTo(width - pad, y0);
+      ctx.moveTo(x0, pad);
+      ctx.lineTo(x0, height - pad);
+      ctx.stroke();
+    }
+
+    function drawSlopeField(canvas, opts) {
+      const ctx = canvas.getContext('2d');
+      const { xMin, xMax, yMin, yMax, f, curve, emphasisY = [] } = opts;
+      const width = canvas.width;
+      const height = canvas.height;
+      const pad = 30;
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, width, height);
+      drawAxes(ctx, xMin, xMax, yMin, yMax, pad, width, height);
+
+      emphasisY.forEach((yLevel) => {
+        const py = canvasMap(yLevel, yMin, yMax, height - pad, pad);
+        ctx.strokeStyle = '#e2e8f0';
+        ctx.beginPath();
+        ctx.moveTo(pad, py);
+        ctx.lineTo(width - pad, py);
+        ctx.stroke();
+      });
+
+      for (let ix = 0; ix < 22; ix += 1) {
+        const x = xMin + (xMax - xMin) * ix / 21;
+        for (let iy = 0; iy < 18; iy += 1) {
+          const y = yMin + (yMax - yMin) * iy / 17;
+          const slope = f(x, y);
+          const scale = 0.23;
+          const dx = scale / Math.sqrt(1 + slope * slope);
+          const dy = slope * dx;
+          const x1 = canvasMap(x - dx, xMin, xMax, pad, width - pad);
+          const y1 = canvasMap(y - dy, yMin, yMax, height - pad, pad);
+          const x2 = canvasMap(x + dx, xMin, xMax, pad, width - pad);
+          const y2 = canvasMap(y + dy, yMin, yMax, height - pad, pad);
+          ctx.strokeStyle = 'rgba(37, 99, 235, 0.48)';
+          ctx.lineWidth = 1.2;
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.stroke();
+        }
+      }
+
+      if (curve && curve.length) {
+        ctx.strokeStyle = '#dc2626';
+        ctx.lineWidth = 2.4;
+        ctx.beginPath();
+        curve.forEach((point, idx) => {
+          const px = canvasMap(point.t, xMin, xMax, pad, width - pad);
+          const py = canvasMap(point.y, yMin, yMax, height - pad, pad);
+          if (idx === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        });
+        ctx.stroke();
+
+        const start = curve.find((point) => Math.abs(point.t) < 1e-6) || curve[0];
+        const px = canvasMap(start.t, xMin, xMax, pad, width - pad);
+        const py = canvasMap(start.y, yMin, yMax, height - pad, pad);
+        ctx.fillStyle = '#dc2626';
+        ctx.beginPath();
+        ctx.arc(px, py, 5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function drawVectorField(canvas, vectorFn, xMin, xMax, yMin, yMax, color) {
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width;
+      const height = canvas.height;
+      const pad = 30;
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, width, height);
+      drawAxes(ctx, xMin, xMax, yMin, yMax, pad, width, height);
+      for (let ix = 0; ix < 18; ix += 1) {
+        const x = xMin + (xMax - xMin) * ix / 17;
+        for (let iy = 0; iy < 14; iy += 1) {
+          const y = yMin + (yMax - yMin) * iy / 13;
+          const [u, v] = vectorFn(x, y);
+          const norm = Math.max(1e-6, Math.sqrt(u * u + v * v));
+          const dx = 0.35 * u / norm;
+          const dy = 0.35 * v / norm;
+          const x1 = canvasMap(x, xMin, xMax, pad, width - pad);
+          const y1 = canvasMap(y, yMin, yMax, height - pad, pad);
+          const x2 = canvasMap(x + dx, xMin, xMax, pad, width - pad);
+          const y2 = canvasMap(y + dy, yMin, yMax, height - pad, pad);
+          ctx.strokeStyle = color;
+          ctx.lineWidth = 1.3;
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.stroke();
+        }
+      }
+    }
+
+    function renderIntroSlope() {
+      const a = Number(document.getElementById('intro-a').value);
+      const b = Number(document.getElementById('intro-b').value);
+      const y0 = Number(document.getElementById('intro-y0').value);
+      const curve = integrateAround((t, y) => a * y + b, 0, y0, -2, 2, 240);
+      drawSlopeField(document.getElementById('intro-slope-canvas'), {
+        xMin: -2,
+        xMax: 2,
+        yMin: -4,
+        yMax: 4,
+        f: (t, y) => a * y + b,
+        curve,
+      });
+    }
+
+    function renderIntroEuler() {
+      const lambda = Number(document.getElementById('euler-lambda').value);
+      const h = Number(document.getElementById('euler-h').value);
+      const y0 = Number(document.getElementById('euler-y0').value);
+      const t = linspace(0, 4, 240);
+      const exact = t.map((x) => y0 * Math.exp(lambda * x));
+      const approx = eulerScalar((time, y) => lambda * y, 0, y0, 4, h);
+      const err = Math.abs(approx[approx.length - 1].y - y0 * Math.exp(lambda * 4));
+      plotSeries('intro-euler-plot', [
+        { x: t, y: exact, mode: 'lines', name: 'Exact', line: { color: '#2563eb', width: 3 } },
+        { x: approx.map((p) => p.t), y: approx.map((p) => p.y), mode: 'lines+markers', name: 'Euler', line: { color: '#dc2626', width: 2 }, marker: { size: 6 } },
+      ], {
+        xaxis: { title: 't', gridcolor: '#e5e7eb' },
+        yaxis: { title: 'y(t)', gridcolor: '#e5e7eb' },
+      });
+      document.getElementById('intro-euler-status').textContent = `Global error at t = 4 is about ${fmt(err, 3)}. Smaller h keeps the Euler polygon closer to the exact exponential.`;
+    }
+
+    function renderSeparableGrowth() {
+      const model = document.getElementById('sep-model').value;
+      const r = Number(document.getElementById('sep-r').value);
+      const K = Number(document.getElementById('sep-k').value);
+      const P0 = Number(document.getElementById('sep-p0').value);
+      const t = linspace(0, 12, 300);
+      const y = t.map((time) => {
+        if (model === 'exponential') return P0 * Math.exp(r * time / 6);
+        const c = (K - P0) / Math.max(P0, 1e-6);
+        return K / (1 + c * Math.exp(-r * time / 2));
+      });
+      const traces = [{ x: t, y, mode: 'lines', name: model === 'exponential' ? 'Exponential' : 'Logistic', line: { color: '#0891b2', width: 3 } }];
+      if (model === 'logistic') {
+        traces.push({ x: [0, 12], y: [K, K], mode: 'lines', name: 'Carrying capacity', line: { color: '#b45309', dash: 'dash' } });
+      }
+      plotSeries('sep-growth-plot', traces, { xaxis: { title: 't' }, yaxis: { title: 'Population' } });
+    }
+
+    function renderSeparableField() {
+      const a = Number(document.getElementById('sep-field-a').value);
+      const K = Number(document.getElementById('sep-field-k').value);
+      const y0 = Number(document.getElementById('sep-field-y0').value);
+      const f = (t, y) => a * (1 + 0.3 * Math.sin(t)) * y * (1 - y / K);
+      const curve = integrateAround(f, 0, y0, -4, 4, 320);
+      drawSlopeField(document.getElementById('sep-field-canvas'), {
+        xMin: -4,
+        xMax: 4,
+        yMin: -2,
+        yMax: 4.5,
+        f,
+        curve,
+        emphasisY: [0, K],
+      });
+    }
+
+    function renderLinearConstant() {
+      const p = Number(document.getElementById('lin-p').value);
+      const q = Number(document.getElementById('lin-q').value);
+      const y0 = Number(document.getElementById('lin-y0').value);
+      const showEq = document.getElementById('lin-show-eq').checked;
+      const t = linspace(0, 8, 280);
+      const eq = q / p;
+      const y = t.map((time) => eq + (y0 - eq) * Math.exp(-p * time));
+      const transient = t.map((time) => (y0 - eq) * Math.exp(-p * time));
+      const traces = [
+        { x: t, y, mode: 'lines', name: 'Solution', line: { color: '#2563eb', width: 3 } },
+        { x: t, y: transient, mode: 'lines', name: 'Transient only', line: { color: '#dc2626', dash: 'dot' } },
+      ];
+      if (showEq) traces.push({ x: [0, 8], y: [eq, eq], mode: 'lines', name: 'Equilibrium q/p', line: { color: '#15803d', dash: 'dash' } });
+      plotSeries('lin-constant-plot', traces, { xaxis: { title: 't' }, yaxis: { title: 'y(t)' } });
+    }
+
+    function renderLinearForcing() {
+      const p = Number(document.getElementById('lin-force-p').value);
+      const A = Number(document.getElementById('lin-force-a').value);
+      const w = Number(document.getElementById('lin-force-w').value);
+      const y0 = Number(document.getElementById('lin-force-y0').value);
+      const sol = rk4Scalar((t, y) => A * Math.sin(w * t) - p * y, 0, y0, 16, 700);
+      const x = sol.map((pt) => pt.t);
+      const y = sol.map((pt) => pt.y);
+      const forcing = x.map((t) => A * Math.sin(w * t));
+      plotSeries('lin-forcing-plot', [
+        { x, y: forcing, mode: 'lines', name: 'Forcing A sin(wt)', line: { color: '#94a3b8', dash: 'dash' } },
+        { x, y, mode: 'lines', name: 'Response y(t)', line: { color: '#0891b2', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Amplitude' } });
+    }
+
+    function renderExactContours() {
+      const alpha = Number(document.getElementById('exact-alpha').value);
+      const level = Number(document.getElementById('exact-level').value);
+      const x = linspace(-3, 3, 80);
+      const y = linspace(-3, 3, 80);
+      const z = y.map((yy) => x.map((xx) => 0.5 * xx * xx + 0.5 * yy * yy + alpha * xx * yy));
+      plotSeries('exact-contour-plot', [
+        {
+          x,
+          y,
+          z,
+          type: 'contour',
+          contours: { coloring: 'lines' },
+          line: { width: 1.2 },
+          colorscale: 'Blues',
+          showscale: false,
+          name: 'F(x,y)',
+        },
+        {
+          x,
+          y: x.map((xx) => {
+            const A = 0.5;
+            const B = alpha * xx;
+            const C = 0.5 * xx * xx - level;
+            const disc = Math.max(0, B * B - 4 * A * C);
+            return (-B + Math.sqrt(disc)) / (2 * A);
+          }),
+          mode: 'lines',
+          name: `Selected level C=${fmt(level, 1)}`,
+          line: { color: '#dc2626', width: 3 },
+        },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'y', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function renderExactCompare() {
+      const kind = document.getElementById('exact-kind').value;
+      const strength = Number(document.getElementById('exact-strength').value);
+      const vectorFn = kind === 'exact'
+        ? (x, y) => [strength * (x + 0.4 * y), strength * (y + 0.4 * x)]
+        : (x, y) => [strength * (-y), strength * x];
+      drawVectorField(document.getElementById('exact-compare-canvas'), vectorFn, -3, 3, -3, 3, kind === 'exact' ? 'rgba(8, 145, 178, 0.72)' : 'rgba(185, 28, 28, 0.72)');
+      document.getElementById('exact-compare-note').textContent = kind === 'exact'
+        ? 'The arrows point like a gradient field, so level sets of a potential can organize the solutions.'
+        : 'The arrows circulate around the origin, which is a useful visual cue that no global potential is organizing the field in the same exact-equation sense.';
+    }
+
+    function renderBernoulli() {
+      const p = Number(document.getElementById('bern-p').value);
+      const q = Number(document.getElementById('bern-q').value);
+      const n = Number(document.getElementById('bern-n').value);
+      const y0 = Number(document.getElementById('bern-y0').value);
+      const t = linspace(0, 6, 300);
+      const c = Math.pow(y0, 1 - n) - q / p;
+      const u = t.map((time) => q / p + c * Math.exp(-(1 - n) * p * time));
+      const y = u.map((value) => Math.pow(Math.max(value, 1e-6), 1 / (1 - n)));
+      plotSeries('bernoulli-plot', [
+        { x: t, y, mode: 'lines', name: 'Original variable y(t)', line: { color: '#2563eb', width: 3 } },
+        { x: t, y: u, mode: 'lines', name: 'Transformed variable u(t)', line: { color: '#b45309', dash: 'dash' } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Value' } });
+      document.getElementById('bernoulli-note').textContent = `With u = y^(1-n), the transformed equation is u' + ${(fmt((1 - n) * p, 2))}u = ${(fmt((1 - n) * q, 2))}.`;
+    }
+
+    function renderHomogeneous() {
+      const c = Number(document.getElementById('hom-c').value);
+      const y0 = Number(document.getElementById('hom-y0').value);
+      const sol = [];
+      let x = 1;
+      let y = y0;
+      const h = 0.01;
+      while (x <= 6) {
+        sol.push({ x, y, v: y / x });
+        const F = (xx, yy) => yy / xx + c - Math.pow(yy / xx, 2);
+        const k1 = F(x, y);
+        const k2 = F(x + h / 2, y + h * k1 / 2);
+        const k3 = F(x + h / 2, y + h * k2 / 2);
+        const k4 = F(x + h, y + h * k3);
+        y += (h / 6) * (k1 + 2 * k2 + 2 * k3 + k4);
+        x += h;
+      }
+      plotSeries('homogeneous-plot', [
+        { x: sol.map((pt) => pt.x), y: sol.map((pt) => pt.y), mode: 'lines', name: 'Solution y(x)', line: { color: '#0891b2', width: 3 } },
+        { x: sol.map((pt) => pt.x), y: sol.map((pt) => pt.v), mode: 'lines', name: 'Ratio v(x)=y/x', line: { color: '#dc2626', dash: 'dot' } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Value' } });
+    }
+
+    function renderUniqueness() {
+      const mode = document.getElementById('uniq-mode').value;
+      const delay = Number(document.getElementById('uniq-delay').value);
+      const t = linspace(0, 6, 300);
+      if (mode === 'unique') {
+        const y = t.map(() => 0);
+        plotSeries('uniq-plot', [
+          { x: t, y, mode: 'lines', name: 'Unique solution through (0,0)', line: { color: '#2563eb', width: 3 } },
+        ], { xaxis: { title: 't' }, yaxis: { title: 'y(t)' } });
+        document.getElementById('uniq-note').textContent = 'For the smooth right-hand side y\' = y, one initial point determines one local trajectory.';
+      } else {
+        const yZero = t.map(() => 0);
+        const shifted = t.map((time) => {
+          if (time <= delay) return 0;
+          return Math.pow((2 / 3) * (time - delay), 1.5);
+        });
+        const immediate = t.map((time) => Math.pow((2 / 3) * time, 1.5));
+        plotSeries('uniq-plot', [
+          { x: t, y: yZero, mode: 'lines', name: 'Stay at zero', line: { color: '#15803d', width: 3 } },
+          { x: t, y: immediate, mode: 'lines', name: 'Leave immediately', line: { color: '#2563eb', width: 3 } },
+          { x: t, y: shifted, mode: 'lines', name: `Leave after t=${fmt(delay, 1)}`, line: { color: '#dc2626', width: 3, dash: 'dash' } },
+        ], { xaxis: { title: 't' }, yaxis: { title: 'y(t)' } });
+        document.getElementById('uniq-note').textContent = 'All three curves satisfy the same initial data at the origin, which is the visual signature of non-uniqueness.';
+      }
+    }
+
+    function renderLipschitz() {
+      const alpha = Number(document.getElementById('lipschitz-alpha').value);
+      const y = linspace(-2, 2, 300);
+      const f = y.map((value) => Math.pow(Math.abs(value), alpha));
+      const tangentScale = y.map((value) => value === 0 ? 0 : alpha * Math.pow(Math.abs(value), alpha - 1));
+      plotSeries('lipschitz-plot', [
+        { x: y, y: f, mode: 'lines', name: '|y|^alpha', line: { color: '#2563eb', width: 3 } },
+        { x: y, y: tangentScale, mode: 'lines', name: 'Derivative magnitude proxy', line: { color: '#dc2626', dash: 'dot' } },
+      ], { xaxis: { title: 'y' }, yaxis: { title: 'Value' } });
+      document.getElementById('lipschitz-note').textContent = alpha >= 1
+        ? 'At alpha >= 1 the slope change near zero is controlled, so local Lipschitz behavior is plausible.'
+        : 'At alpha < 1 the graph develops a sharp cusp near zero, which is the usual classroom warning sign for possible uniqueness failure.';
+    }
+
+    function renderPopulation() {
+      const r = Number(document.getElementById('pop-r').value);
+      const K = Number(document.getElementById('pop-k').value);
+      const H = Number(document.getElementById('pop-h').value);
+      const P0 = Number(document.getElementById('pop-p0').value);
+      const sol = rk4Scalar((t, P) => r * P * (1 - P / K) - H, 0, P0, 20, 600);
+      const discr = 1 - 4 * H / (r * K);
+      const traces = [
+        { x: sol.map((p) => p.t), y: sol.map((p) => Math.max(p.y, 0)), mode: 'lines', name: 'Population', line: { color: '#0891b2', width: 3 } },
+      ];
+      let note = 'Harvesting shifts the balance between growth and saturation.';
+      if (discr >= 0) {
+        const e1 = 0.5 * K * (1 - Math.sqrt(discr));
+        const e2 = 0.5 * K * (1 + Math.sqrt(discr));
+        traces.push({ x: [0, 20], y: [e1, e1], mode: 'lines', name: 'Lower equilibrium', line: { color: '#b45309', dash: 'dot' } });
+        traces.push({ x: [0, 20], y: [e2, e2], mode: 'lines', name: 'Upper equilibrium', line: { color: '#15803d', dash: 'dash' } });
+        note = `Two equilibria exist at about ${fmt(e1, 1)} and ${fmt(e2, 1)}. The lower one is the threshold to watch.`;
+      } else {
+        note = 'The harvest level is too large for positive equilibria, so the model predicts collapse.';
+      }
+      plotSeries('population-plot', traces, { xaxis: { title: 't' }, yaxis: { title: 'Population' } });
+      document.getElementById('population-note').textContent = note;
+    }
+
+    const mixState = { running: true, time: 0 };
+
+    function renderMix() {
+      const canvas = document.getElementById('mix-canvas');
+      const ctx = canvas.getContext('2d');
+      const cin = Number(document.getElementById('mix-cin').value);
+      const q = Number(document.getElementById('mix-q').value);
+      const V = Number(document.getElementById('mix-v').value);
+      const c0 = Number(document.getElementById('mix-c0').value);
+      const t = mixState.time;
+      const c = cin + (c0 - cin) * Math.exp(-(q / V) * t);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#1e293b';
+      ctx.font = '16px Inter, sans-serif';
+      ctx.fillText('Mixing Tank', 30, 30);
+
+      const left = 120;
+      const top = 70;
+      const tankW = 230;
+      const tankH = 210;
+      ctx.strokeStyle = '#334155';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(left, top, tankW, tankH);
+
+      const mixRatio = Math.min(1, Math.max(0, c / 10));
+      const fillH = 150;
+      const fillY = top + tankH - fillH;
+      ctx.fillStyle = `rgba(${40 + 120 * mixRatio}, ${130 - 70 * mixRatio}, ${220 - 120 * mixRatio}, 0.82)`;
+      ctx.fillRect(left + 3, fillY, tankW - 6, fillH - 3);
+
+      ctx.strokeStyle = '#0f172a';
+      ctx.lineWidth = 5;
+      ctx.beginPath();
+      ctx.moveTo(60, 110);
+      ctx.lineTo(left, 110);
+      ctx.moveTo(left + tankW, 170);
+      ctx.lineTo(left + tankW + 70, 170);
+      ctx.stroke();
+
+      ctx.fillStyle = '#0f172a';
+      ctx.fillText(`Input concentration: ${fmt(cin, 1)}`, 30, 102);
+      ctx.fillText(`Current concentration: ${fmt(c, 2)}`, 30, 320);
+      ctx.fillText(`Equilibrium concentration: ${fmt(cin, 1)}`, 30, 342);
+
+      const graphX = 410;
+      const graphY = 70;
+      const graphW = 300;
+      const graphH = 220;
+      ctx.strokeStyle = '#94a3b8';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(graphX, graphY, graphW, graphH);
+      ctx.beginPath();
+      const steps = 140;
+      for (let i = 0; i <= steps; i += 1) {
+        const time = 12 * i / steps;
+        const cc = cin + (c0 - cin) * Math.exp(-(q / V) * time);
+        const px = graphX + graphW * time / 12;
+        const py = graphY + graphH * (1 - cc / 10);
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.strokeStyle = '#2563eb';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+      const liveX = graphX + graphW * Math.min(t, 12) / 12;
+      const liveY = graphY + graphH * (1 - c / 10);
+      ctx.fillStyle = '#dc2626';
+      ctx.beginPath();
+      ctx.arc(liveX, liveY, 5, 0, Math.PI * 2);
+      ctx.fill();
+
+      document.getElementById('mix-note').textContent = `The solution approaches the inflow concentration ${fmt(cin, 1)} with time constant V/Q = ${fmt(V / q, 2)}.`;
+    }
+
+    function animateMix() {
+      if (mixState.running) {
+        mixState.time += 0.03;
+        if (mixState.time > 12) mixState.time = 0;
+      }
+      renderMix();
+      requestAnimationFrame(animateMix);
+    }
+
+    const fallState = { running: true, time: 0 };
+
+    function renderFall() {
+      const canvas = document.getElementById('fall-canvas');
+      const ctx = canvas.getContext('2d');
+      const m = Number(document.getElementById('fall-m').value);
+      const c = Number(document.getElementById('fall-c').value);
+      const g = Number(document.getElementById('fall-g').value);
+      const vT = m * g / c;
+      const t = fallState.time;
+      const v = vT * (1 - Math.exp(-(c / m) * t));
+      const y = 40 + 230 * (1 - Math.exp(-t / 4));
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#dbeafe';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#1f2937';
+      ctx.font = '16px Inter, sans-serif';
+      ctx.fillText('Falling body with drag', 28, 30);
+
+      ctx.strokeStyle = '#64748b';
+      ctx.beginPath();
+      ctx.moveTo(160, 50);
+      ctx.lineTo(160, 320);
+      ctx.stroke();
+
+      ctx.fillStyle = '#1d4ed8';
+      ctx.beginPath();
+      ctx.arc(160, y, 16, 0, Math.PI * 2);
+      ctx.fill();
+
+      const graphX = 280;
+      const graphY = 60;
+      const graphW = 400;
+      const graphH = 220;
+      ctx.strokeStyle = '#94a3b8';
+      ctx.strokeRect(graphX, graphY, graphW, graphH);
+      ctx.beginPath();
+      for (let i = 0; i <= 160; i += 1) {
+        const time = 10 * i / 160;
+        const vv = vT * (1 - Math.exp(-(c / m) * time));
+        const px = graphX + graphW * time / 10;
+        const py = graphY + graphH * (1 - vv / Math.max(vT * 1.15, 1));
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.strokeStyle = '#0891b2';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+      const px = graphX + graphW * Math.min(t, 10) / 10;
+      const py = graphY + graphH * (1 - v / Math.max(vT * 1.15, 1));
+      ctx.fillStyle = '#dc2626';
+      ctx.beginPath();
+      ctx.arc(px, py, 5, 0, Math.PI * 2);
+      ctx.fill();
+
+      document.getElementById('fall-note').textContent = `Terminal velocity is v_T = mg/c ≈ ${fmt(vT, 2)}. Increasing drag lowers the plateau and shortens the transient time scale m/c.`;
+    }
+
+    function animateFall() {
+      if (fallState.running) {
+        fallState.time += 0.03;
+        if (fallState.time > 10) fallState.time = 0;
+      }
+      renderFall();
+      requestAnimationFrame(animateFall);
+    }
+
+    const rcState = { running: true, time: 0 };
+
+    function renderRC() {
+      const R = Number(document.getElementById('rc-r').value);
+      const C = Number(document.getElementById('rc-c').value);
+      const Vin = Number(document.getElementById('rc-vin').value);
+      const V0 = Number(document.getElementById('rc-v0').value);
+      const tau = R * C;
+      const t = linspace(0, 20, 300);
+      const V = t.map((time) => Vin + (V0 - Vin) * Math.exp(-time / tau));
+      plotSeries('rc-plot', [
+        { x: [0, 20], y: [Vin, Vin], mode: 'lines', name: 'Input step', line: { color: '#94a3b8', dash: 'dash' } },
+        { x: t, y: V, mode: 'lines', name: 'Capacitor voltage', line: { color: '#2563eb', width: 3 } },
+        { x: [rcState.time, rcState.time], y: [0, Vin], mode: 'lines', name: 'Animation time', line: { color: '#dc2626', width: 2, dash: 'dot' } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Voltage' } });
+      document.getElementById('rc-note').textContent = `The time constant is tau = RC = ${fmt(tau, 2)}. After one tau, the capacitor has completed about 63% of the remaining jump.`;
+    }
+
+    function animateRC() {
+      if (rcState.running) {
+        rcState.time += 0.06;
+        if (rcState.time > 20) rcState.time = 0;
+      }
+      renderRC();
+      requestAnimationFrame(animateRC);
+    }
+
+    function renderPhaseLine() {
+      let a = Number(document.getElementById('phase-a').value);
+      let b = Number(document.getElementById('phase-b').value);
+      if (b <= a + 0.2) {
+        b = a + 0.2;
+        document.getElementById('phase-b').value = b;
+        document.getElementById('phase-b-value').textContent = fmt(b, 1);
+      }
+      const r = Number(document.getElementById('phase-r').value);
+      const y0 = Number(document.getElementById('phase-y0').value);
+      const f = (y) => r * (y - a) * (b - y);
+      const sol = rk4Scalar((t, y) => f(y), 0, y0, 10, 600);
+
+      const canvas = document.getElementById('phase-canvas');
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#111827';
+      ctx.font = '16px Inter, sans-serif';
+      ctx.fillText('Phase line', 34, 28);
+      const xLine = 170;
+      const yTop = 50;
+      const yBottom = 320;
+      ctx.strokeStyle = '#0f172a';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(xLine, yTop);
+      ctx.lineTo(xLine, yBottom);
+      ctx.stroke();
+
+      const mapY = (value) => canvasMap(value, -3.5, 4.5, yBottom, yTop);
+      [a, b].forEach((eq, idx) => {
+        const py = mapY(eq);
+        ctx.fillStyle = idx === 0 ? '#b45309' : '#15803d';
+        ctx.beginPath();
+        ctx.arc(xLine, py, 7, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillText(`y=${fmt(eq, 1)}`, xLine + 18, py + 5);
+      });
+      const samples = [-3, (a - 3) / 2, (a + b) / 2, (b + 4) / 2, 4];
+      samples.forEach((yy) => {
+        const dir = Math.sign(f(yy));
+        const py = mapY(yy);
+        ctx.strokeStyle = '#2563eb';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        if (dir > 0) {
+          ctx.moveTo(xLine - 36, py + 10);
+          ctx.lineTo(xLine - 36, py - 10);
+          ctx.lineTo(xLine - 42, py - 2);
+          ctx.moveTo(xLine - 36, py - 10);
+          ctx.lineTo(xLine - 30, py - 2);
+        } else {
+          ctx.moveTo(xLine + 36, py - 10);
+          ctx.lineTo(xLine + 36, py + 10);
+          ctx.lineTo(xLine + 30, py + 2);
+          ctx.moveTo(xLine + 36, py + 10);
+          ctx.lineTo(xLine + 42, py + 2);
+        }
+        ctx.stroke();
+      });
+
+      const trajectoryX = 320;
+      const trajectoryW = 390;
+      const trajectoryH = 240;
+      const trajectoryY = 60;
+      ctx.strokeStyle = '#94a3b8';
+      ctx.strokeRect(trajectoryX, trajectoryY, trajectoryW, trajectoryH);
+      ctx.beginPath();
+      sol.forEach((pt, idx) => {
+        const px = trajectoryX + trajectoryW * pt.t / 10;
+        const py = canvasMap(pt.y, -3.5, 4.5, trajectoryY + trajectoryH, trajectoryY);
+        if (idx === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      });
+      ctx.strokeStyle = '#dc2626';
+      ctx.lineWidth = 2.4;
+      ctx.stroke();
+
+      plotSeries('phase-trace', [
+        { x: sol.map((pt) => pt.t), y: sol.map((pt) => pt.y), mode: 'lines', name: 'y(t)', line: { color: '#dc2626', width: 3 } },
+        { x: [0, 10], y: [a, a], mode: 'lines', name: 'Equilibrium a', line: { color: '#b45309', dash: 'dot' } },
+        { x: [0, 10], y: [b, b], mode: 'lines', name: 'Equilibrium b', line: { color: '#15803d', dash: 'dash' } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'y(t)' } });
+    }
+
+    function renderAutoSensitivity() {
+      const mu = Number(document.getElementById('auto-mu').value);
+      const y = linspace(-3, 3, 300);
+      const f = y.map((value) => mu - value * value);
+      const traces = [{ x: y, y: f, mode: 'lines', name: 'f(y)=mu-y^2', line: { color: '#2563eb', width: 3 } }];
+      let note;
+      if (mu > 0) {
+        const root = Math.sqrt(mu);
+        traces.push({ x: [root, -root], y: [0, 0], mode: 'markers', name: 'Equilibria', marker: { color: '#dc2626', size: 10 } });
+        note = `Two equilibria appear at y = ±${fmt(root, 2)}. The positive one is stable and the negative one is unstable.`;
+      } else if (Math.abs(mu) < 1e-9) {
+        traces.push({ x: [0], y: [0], mode: 'markers', name: 'Double equilibrium', marker: { color: '#b45309', size: 11 } });
+        note = 'At mu = 0 the equilibria merge into a semistable point at the origin.';
+      } else {
+        note = 'For mu < 0 there are no real equilibria, so all arrows point downward on the phase line.';
+      }
+      plotSeries('auto-bifurcation-plot', traces, { xaxis: { title: 'y' }, yaxis: { title: 'f(y)' } });
+      document.getElementById('auto-note').textContent = note;
+    }
+
+    [
+      ['intro-a', 1], ['intro-b', 1], ['intro-y0', 1],
+      ['euler-lambda', 1], ['euler-h', 2], ['euler-y0', 1],
+      ['sep-r', 1], ['sep-k', 0], ['sep-p0', 0],
+      ['sep-field-a', 1], ['sep-field-k', 1], ['sep-field-y0', 1],
+      ['lin-p', 1], ['lin-q', 1], ['lin-y0', 1],
+      ['lin-force-p', 1], ['lin-force-a', 1], ['lin-force-w', 1], ['lin-force-y0', 1],
+      ['exact-alpha', 1], ['exact-level', 1], ['exact-strength', 1],
+      ['bern-p', 1], ['bern-q', 1], ['bern-n', 1], ['bern-y0', 1],
+      ['hom-c', 1], ['hom-y0', 1],
+      ['uniq-delay', 1], ['lipschitz-alpha', 2],
+      ['pop-r', 1], ['pop-k', 0], ['pop-h', 1], ['pop-p0', 0],
+      ['mix-cin', 1], ['mix-q', 1], ['mix-v', 0], ['mix-c0', 1],
+      ['fall-m', 1], ['fall-c', 1], ['fall-g', 1],
+      ['rc-r', 1], ['rc-c', 1], ['rc-vin', 1], ['rc-v0', 1],
+      ['phase-a', 1], ['phase-b', 1], ['phase-r', 1], ['phase-y0', 1],
+      ['auto-mu', 1],
+    ].forEach(([id, digits]) => bindValue(id, digits));
+
+    bindControls(['intro-a', 'intro-b', 'intro-y0'], renderIntroSlope);
+    bindControls(['euler-lambda', 'euler-h', 'euler-y0'], renderIntroEuler);
+    bindControls(['sep-model', 'sep-r', 'sep-k', 'sep-p0'], renderSeparableGrowth);
+    bindControls(['sep-field-a', 'sep-field-k', 'sep-field-y0'], renderSeparableField);
+    bindControls(['lin-p', 'lin-q', 'lin-y0', 'lin-show-eq'], renderLinearConstant);
+    bindControls(['lin-force-p', 'lin-force-a', 'lin-force-w', 'lin-force-y0'], renderLinearForcing);
+    bindControls(['exact-alpha', 'exact-level'], renderExactContours);
+    bindControls(['exact-kind', 'exact-strength'], renderExactCompare);
+    bindControls(['bern-p', 'bern-q', 'bern-n', 'bern-y0'], renderBernoulli);
+    bindControls(['hom-c', 'hom-y0'], renderHomogeneous);
+    bindControls(['uniq-mode', 'uniq-delay'], renderUniqueness);
+    bindControls(['lipschitz-alpha'], renderLipschitz);
+    bindControls(['pop-r', 'pop-k', 'pop-h', 'pop-p0'], renderPopulation);
+    bindControls(['mix-cin', 'mix-q', 'mix-v', 'mix-c0'], () => { mixState.time = 0; renderMix(); });
+    bindControls(['fall-m', 'fall-c', 'fall-g'], () => { fallState.time = 0; renderFall(); });
+    bindControls(['rc-r', 'rc-c', 'rc-vin', 'rc-v0'], () => { rcState.time = 0; renderRC(); });
+    bindControls(['phase-a', 'phase-b', 'phase-r', 'phase-y0'], renderPhaseLine);
+    bindControls(['auto-mu'], renderAutoSensitivity);
+
+    document.getElementById('mix-toggle').addEventListener('click', () => {
+      mixState.running = !mixState.running;
+      document.getElementById('mix-toggle').textContent = mixState.running ? 'Pause' : 'Play';
+    });
+    document.getElementById('fall-toggle').addEventListener('click', () => {
+      fallState.running = !fallState.running;
+      document.getElementById('fall-toggle').textContent = fallState.running ? 'Pause' : 'Play';
+    });
+    document.getElementById('rc-toggle').addEventListener('click', () => {
+      rcState.running = !rcState.running;
+      document.getElementById('rc-toggle').textContent = rcState.running ? 'Pause' : 'Play';
+    });
+
+    animateMix();
+    animateFall();
+    animateRC();
+  </script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 14 Illustration Gallery: Introduction to Pseudo-Differential Operators</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #18212f;
+      --muted: #5a6472;
+      --line: #d9e0ea;
+      --accent: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 240px);
+    }
+
+    header, main, footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    header {
+      padding-top: 40px;
+      padding-bottom: 24px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.1;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 980px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .toc a {
+      text-decoration: none;
+      background: rgba(255,255,255,0.78);
+      color: var(--ink);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding-bottom: 40px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.97rem;
+    }
+
+    .figure-wrap {
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+      overflow: hidden;
+    }
+
+    .figure-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: white;
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .meta strong {
+      color: var(--ink);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid #cbd5e1;
+      background: white;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    footer {
+      padding-bottom: 30px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      header, main, footer {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 14 Illustration Gallery</h1>
+    <p>
+      This page gathers the visual assets for Chapter 14 on pseudo-differential operators. The gallery is organized
+      to make the chapter's conceptual transition visible: from Fourier multipliers and symbol intuition to operator
+      definition, symbolic calculus, parametrices, manifold extensions, and modern elliptic regularity. Lesson 14.00
+      remains the conceptual prerequisite, while the figures here track the main illustrated sequence from 14.01 onward.
+    </p>
+    <nav class="toc">
+      <a href="#lesson-1">14-01 Motivation</a>
+      <a href="#lesson-2">14-02 Fourier & Symbol</a>
+      <a href="#lesson-3">14-03 Symbol Classes</a>
+      <a href="#lesson-4">14-04 Definition</a>
+      <a href="#lesson-5">14-05 Composition</a>
+      <a href="#lesson-6">14-06 Parametrices</a>
+      <a href="#lesson-7">14-07 Manifolds</a>
+      <a href="#lesson-8">14-08 Elliptic Regularity</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <article class="card" id="lesson-1">
+        <h2>14-01 Motivation: Beyond Differential Operators</h2>
+        <p>The opening figure makes the conceptual leap visible: differential operators are too rigid for many modern PDE problems, while symbol-based analysis captures frequency behavior more flexibly.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter14/01_motivation_beyond.svg" alt="Motivation beyond differential operators illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Why classical differential operators are not enough.</div>
+          <div><strong>Use in class.</strong> Frame the chapter as a change of language from local formulas to phase-frequency descriptions.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter14/14_01_Motivation_Beyond_Differential_Operators/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-2">
+        <h2>14-02 Fourier Transform and Symbol Calculus</h2>
+        <p>This figure shows the Fourier side of operators, making symbols feel like the natural data that encode action on oscillations rather than a purely formal invention.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter14/02_fourier_transform_symbol.svg" alt="Fourier transform and symbol calculus illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Operators viewed through frequency response.</div>
+          <div><strong>Use in class.</strong> Connect differentiation, multiplication in frequency, and symbolic representation in one picture.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter14/14_02_Fourier_Transform_Symbol_Calculus/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-3">
+        <h2>14-03 Symbol Classes</h2>
+        <p>The symbol-class figure organizes growth and derivative control across position and frequency, clarifying why pseudo-differential calculus needs structured function classes rather than arbitrary symbols.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter14/03_symbol_classes.svg" alt="Symbol classes illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Order, growth, and derivative control.</div>
+          <div><strong>Use in class.</strong> Show why symbolic analysis depends on tracking behavior in both x and xi simultaneously.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter14/14_03_Symbol_Classes/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-4">
+        <h2>14-04 Pseudo-Differential Operators: Definition</h2>
+        <p>This figure turns the operator definition into a map from symbol to action, helping students see oscillatory integrals as constructive rather than opaque.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter14/04_pdo_definition.svg" alt="Pseudo-differential operator definition illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Quantization from symbols to operators.</div>
+          <div><strong>Use in class.</strong> Emphasize that differential operators and multipliers both sit inside the same broader mechanism.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter14/14_04_Pseudo_Differential_Operators_Definition/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-5">
+        <h2>14-05 Composition and Adjoints</h2>
+        <p>The calculus figure illustrates how symbolic asymptotics support operator algebra, making composition and adjoints feel like controlled transformations of symbols.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter14/05_composition_adjoints.svg" alt="Composition and adjoints illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Symbolic rules behind operator algebra.</div>
+          <div><strong>Use in class.</strong> Show how asymptotic expansions encode the structure of composition and adjoint formation.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter14/14_05_Composition_Adjoints/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-6">
+        <h2>14-06 Elliptic Operators and Parametrices</h2>
+        <p>This figure captures the heart of the chapter: ellipticity leads to approximate inversion, and that parametrix viewpoint drives solvability and regularity.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter14/06_elliptic_operators_parametrices.svg" alt="Elliptic operators and parametrices illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> High-frequency invertibility and approximate inverses.</div>
+          <div><strong>Use in class.</strong> Make the parametrix idea geometrically intuitive before entering symbolic proofs.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter14/14_06_Elliptic_Operators_Parametrices/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-7">
+        <h2>14-07 PsiDOs on Manifolds</h2>
+        <p>The manifold figure shows how local symbolic constructions are patched globally, helping students see that the calculus is geometric rather than merely Euclidean.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter14/07_manifolds.svg" alt="Pseudo-differential operators on manifolds illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Local charts, patching, and coordinate invariance.</div>
+          <div><strong>Use in class.</strong> Connect symbolic calculus to the geometric PDE setting of manifolds and local models.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter14/14_07_PDOs_on_Manifolds/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-8">
+        <h2>14-08 Applications: Elliptic Regularity Revisited</h2>
+        <p>The closing figure returns to elliptic regularity through the pseudo-differential lens, showing how symbolic inversion reframes earlier PDE theory in a more modern calculus.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter14/08_elliptic_regularity_review.svg" alt="Elliptic regularity revisited illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Regularity seen through symbols and parametrices.</div>
+          <div><strong>Use in class.</strong> Show that the chapter culminates in a more conceptual proof strategy, not only new notation.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter14/14_08_Elliptic_Regularity_Revisited/">Open lesson</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    Use this gallery as a visual bridge from classical elliptic PDE intuition to the symbolic and microlocal language that drives the next chapters.
+  </footer>
+</body>
+</html>

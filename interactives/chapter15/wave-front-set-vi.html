@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wave Front Set: Vị Trí và Hướng Kỳ Dị</title>
+  <style>
+    body { font-family: Inter, Arial, sans-serif; margin: 0; padding: 18px; background: #f8fafc; color: #111827; }
+    h2 { margin: 0 0 12px; font-size: 1.35rem; }
+    .controls { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+    label { font-size: 14px; color: #374151; }
+    canvas { border: 1px solid #d1d5db; background: white; border-radius: 10px; width: 100%; max-width: 920px; height: auto; }
+    .note { color: #4b5563; max-width: 920px; font-size: 14px; margin-top: 8px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h2>Wave Front Set: Vị Trí và Hướng Kỳ Dị</h2>
+  <div class="controls">
+    <label>Loại singularity:
+      <select id="type">
+        <option value="edge">Cạnh nhảy</option>
+        <option value="point">Nguồn điểm</option>
+        <option value="corner">Góc nhọn</option>
+      </select>
+    </label>
+    <label>Góc cạnh:
+      <input id="angle" type="range" min="0" max="180" value="35" />
+      <span id="angleVal">35°</span>
+    </label>
+    <label><input id="showDirs" type="checkbox" checked /> Hiện hướng kỳ dị</label>
+    <label><input id="animateProbe" type="checkbox" /> Tự quay tia dò</label>
+  </div>
+  <canvas id="canvas" width="920" height="430"></canvas>
+  <div class="note">Bên trái là không gian vật lý, bên phải là năng lượng theo hướng trong không gian tần số. Các đỉnh nổi bật ở hình bên phải cho trực giác trực tiếp về hướng kỳ dị trong wave front set.</div>
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const typeSel = document.getElementById("type");
+    const angleSlider = document.getElementById("angle");
+    const angleVal = document.getElementById("angleVal");
+    const showDirs = document.getElementById("showDirs");
+    const animateProbe = document.getElementById("animateProbe");
+    let probe = 0;
+    function wrapAngle(a) { while (a < -Math.PI) a += 2 * Math.PI; while (a > Math.PI) a -= 2 * Math.PI; return a; }
+    function gaussianPeak(theta, center, width = 0.28) { const d = wrapAngle(theta - center); return Math.exp(-(d * d) / (2 * width * width)); }
+    function energy(theta, type, alpha) {
+      if (type === "point") return 1.0;
+      if (type === "edge") {
+        const normal = alpha + Math.PI / 2;
+        return 0.08 + 0.95 * gaussianPeak(theta, normal) + 0.95 * gaussianPeak(theta, normal + Math.PI);
+      }
+      const normal1 = alpha + Math.PI / 2;
+      const normal2 = alpha - Math.PI / 4;
+      return 0.06 + 0.75 * gaussianPeak(theta, normal1, 0.22) + 0.75 * gaussianPeak(theta, normal1 + Math.PI, 0.22) + 0.75 * gaussianPeak(theta, normal2, 0.22) + 0.75 * gaussianPeak(theta, normal2 + Math.PI, 0.22);
+    }
+    function drawLeftPanel(type, alpha) {
+      const w = 430, h = 430;
+      ctx.save();
+      ctx.fillStyle = "#fdfdfd"; ctx.fillRect(0, 0, w, h); ctx.strokeStyle = "#ddd"; ctx.strokeRect(0, 0, w, h);
+      ctx.fillStyle = "#222"; ctx.font = "16px Arial"; ctx.fillText("Không gian vật lý", 16, 24);
+      const cx = 215, cy = 220;
+      if (type === "edge") {
+        const dx = Math.cos(alpha), dy = Math.sin(alpha), nx = -dy, ny = dx;
+        ctx.fillStyle = "#dde7ff"; ctx.fillRect(0, 0, w, h);
+        ctx.strokeStyle = "#111"; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx - 260 * dx, cy - 260 * dy); ctx.lineTo(cx + 260 * dx, cy + 260 * dy); ctx.stroke();
+        if (showDirs.checked) {
+          ctx.strokeStyle = "#d22"; ctx.lineWidth = 2;
+          for (const s of [-1, 1]) { ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + s * 90 * nx, cy + s * 90 * ny); ctx.stroke(); }
+        }
+      } else if (type === "point") {
+        ctx.fillStyle = "#111"; ctx.beginPath(); ctx.arc(cx, cy, 8, 0, 2 * Math.PI); ctx.fill();
+        if (showDirs.checked) {
+          ctx.strokeStyle = "#d22";
+          for (let k = 0; k < 16; k++) { const th = 2 * Math.PI * k / 16; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + 90 * Math.cos(th), cy + 90 * Math.sin(th)); ctx.stroke(); }
+        }
+      } else {
+        const a1 = alpha, a2 = alpha + 3 * Math.PI / 4;
+        ctx.strokeStyle = "#111"; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + 180 * Math.cos(a1), cy + 180 * Math.sin(a1)); ctx.moveTo(cx, cy); ctx.lineTo(cx + 180 * Math.cos(a2), cy + 180 * Math.sin(a2)); ctx.stroke();
+        if (showDirs.checked) {
+          ctx.strokeStyle = "#d22";
+          [a1 + Math.PI / 2, a2 + Math.PI / 2].forEach(n => { for (const s of [-1, 1]) { ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + s * 80 * Math.cos(n), cy + s * 80 * Math.sin(n)); ctx.stroke(); } });
+        }
+      }
+      ctx.restore();
+    }
+    function drawRightPanel(type, alpha) {
+      ctx.save(); ctx.translate(460, 0);
+      ctx.fillStyle = "#fdfdfd"; ctx.fillRect(0, 0, 460, 430); ctx.strokeStyle = "#ddd"; ctx.strokeRect(0, 0, 460, 430);
+      ctx.fillStyle = "#222"; ctx.font = "16px Arial"; ctx.fillText("Năng lượng theo hướng tần số", 16, 24);
+      const cx = 230, cy = 220, R = 120;
+      ctx.strokeStyle = "#bbb"; [40, 80, 120].forEach(r => { ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.stroke(); });
+      ctx.strokeStyle = "#888";
+      for (let k = 0; k < 8; k++) { const th = k * Math.PI / 4; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + R * Math.cos(th), cy + R * Math.sin(th)); ctx.stroke(); }
+      ctx.beginPath();
+      for (let i = 0; i <= 360; i++) {
+        const th = i * Math.PI / 180, e = energy(th, type, alpha), r = 20 + 95 * e, x = cx + r * Math.cos(th), y = cy + r * Math.sin(th);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.closePath(); ctx.fillStyle = "rgba(45,91,227,0.25)"; ctx.fill(); ctx.strokeStyle = "#2d5be3"; ctx.lineWidth = 2; ctx.stroke();
+      const pr = 20 + 95 * energy(probe, type, alpha);
+      ctx.strokeStyle = "#d22"; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + pr * Math.cos(probe), cy + pr * Math.sin(probe)); ctx.stroke();
+      ctx.fillStyle = "#333"; ctx.font = "13px Arial"; ctx.fillText("tia dò", 330, 210); ctx.fillText("Đỉnh lớn = hướng kỳ dị", 135, 390);
+      ctx.restore();
+    }
+    function draw() {
+      const alpha = Number(angleSlider.value) * Math.PI / 180;
+      angleVal.textContent = `${angleSlider.value}°`;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawLeftPanel(typeSel.value, alpha);
+      drawRightPanel(typeSel.value, alpha);
+      if (animateProbe.checked) probe += 0.02;
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>

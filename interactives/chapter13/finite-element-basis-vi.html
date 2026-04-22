@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hàm Cơ Sở FEM</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    body { font-family: Inter, Arial, sans-serif; margin: 0; padding: 18px; background: #f8fafc; color: #111827; }
+    h2 { margin: 0 0 12px; font-size: 1.35rem; }
+    .controls { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+    label { font-size: 14px; color: #374151; }
+    #plot { width: 100%; max-width: 960px; height: 520px; background: white; border: 1px solid #d1d5db; border-radius: 10px; }
+    .note { color: #4b5563; max-width: 960px; font-size: 14px; margin-top: 8px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h2>Hàm Cơ Sở Mũ Chóp Trong FEM 1D</h2>
+  <div class="controls">
+    <label>số nút: <input id="nodes" type="range" min="4" max="9" step="1" value="6"> <span id="nodesVal">6</span></label>
+    <label>basis đang chọn: <input id="basis" type="range" min="1" max="4" step="1" value="2"> <span id="basisVal">2</span></label>
+  </div>
+  <div id="plot"></div>
+  <div class="note">Mỗi hàm basis chỉ khác 0 trên một vùng nhỏ quanh nút của nó. Chính tính cục bộ đó khiến ma trận của FEM thường thưa và tính toán hiệu quả hơn.</div>
+  <script>
+    const nodesEl = document.getElementById('nodes');
+    const basisEl = document.getElementById('basis');
+    const nodesVal = document.getElementById('nodesVal');
+    const basisVal = document.getElementById('basisVal');
+    function hat(i, grid, x) {
+      const y = new Array(x.length).fill(0);
+      for (let k = 0; k < x.length; k++) {
+        const s = x[k];
+        if (i > 0 && s >= grid[i - 1] && s <= grid[i]) y[k] = (s - grid[i - 1]) / (grid[i] - grid[i - 1]);
+        else if (i < grid.length - 1 && s >= grid[i] && s <= grid[i + 1]) y[k] = (grid[i + 1] - s) / (grid[i + 1] - grid[i]);
+      }
+      return y;
+    }
+    function render() {
+      const nNodes = Number(nodesEl.value);
+      const grid = Array.from({ length: nNodes }, (_, i) => i / (nNodes - 1));
+      basisEl.max = Math.max(1, nNodes - 2);
+      if (Number(basisEl.value) > nNodes - 2) basisEl.value = nNodes - 2;
+      const idx = Number(basisEl.value);
+      nodesVal.textContent = nNodes.toFixed(0);
+      basisVal.textContent = idx.toFixed(0);
+      const x = Array.from({ length: 500 }, (_, i) => i / 499);
+      const traces = [];
+      for (let i = 1; i < nNodes - 1; i++) {
+        traces.push({ x, y: hat(i, grid, x), mode: 'lines', name: `phi_${i}`, line: { width: i === idx ? 4 : 2, color: i === idx ? '#2563eb' : '#94a3b8' } });
+      }
+      traces.push({ x: grid, y: new Array(grid.length).fill(0), mode: 'markers', name: 'nút lưới', marker: { color: '#111827', size: 8 } });
+      Plotly.newPlot('plot', traces, {
+        title: 'Các hàm cơ sở tuyến tính cục bộ trên lưới 1D',
+        xaxis: { title: 'x' }, yaxis: { title: 'giá trị basis' }, legend: { orientation: 'h' },
+        margin: { t: 60, l: 60, r: 20, b: 50 }
+      }, { responsive: true });
+    }
+    [nodesEl, basisEl].forEach(el => el.addEventListener('input', render));
+    render();
+  </script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 09 Illustration Gallery: The Heat Equation</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #18212f;
+      --muted: #5a6472;
+      --line: #d9e0ea;
+      --accent: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 240px);
+    }
+
+    header, main, footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    header {
+      padding-top: 40px;
+      padding-bottom: 24px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.1;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 980px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .toc a {
+      text-decoration: none;
+      background: rgba(255,255,255,0.78);
+      color: var(--ink);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding-bottom: 40px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.97rem;
+    }
+
+    .figure-wrap {
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+      overflow: hidden;
+    }
+
+    .figure-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: white;
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .meta strong {
+      color: var(--ink);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid #cbd5e1;
+      background: white;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    footer {
+      padding-bottom: 30px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      header, main, footer {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 09 Illustration Gallery</h1>
+    <p>
+      This page gathers the visual assets for Chapter 09 on the heat equation. The figures are organized to
+      emphasize the central narrative of diffusion theory: physical derivation, modal decomposition, the role
+      of boundary conditions, reduction of nonhomogeneous data, Gaussian spreading on unbounded domains,
+      Green-kernel intuition, maximum-principle geometry, numerical stability, and applications across science.
+    </p>
+    <nav class="toc">
+      <a href="#lesson-1">09-01 Derivation</a>
+      <a href="#lesson-2">09-02 Separation</a>
+      <a href="#lesson-3">09-03 Boundary Conditions</a>
+      <a href="#lesson-4">09-04 Nonhomogeneous</a>
+      <a href="#lesson-5">09-05 Infinite Domain</a>
+      <a href="#lesson-6">09-06 Fundamental Solution</a>
+      <a href="#lesson-7">09-07 Maximum Principle</a>
+      <a href="#lesson-8">09-08 Finite Differences</a>
+      <a href="#lesson-9">09-09 Diffusion Applications</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <article class="card" id="lesson-1">
+        <h2>09-01 Derivation of the Heat Equation</h2>
+        <p>The opening figure turns conservation of energy and Fourier's law into a visible modeling pipeline, showing why diffusion leads naturally to a second spatial derivative.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/01_derivation_heat_equation.svg" alt="Derivation of the heat equation illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Flux balance and constitutive law.</div>
+          <div><strong>Use in class.</strong> Connect physical transport intuition to the analytic form $$u_t=\alpha^2 u_{xx}$$.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter09/09_01_Derivation_Heat_Equation/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-2">
+        <h2>09-02 Separation of Variables</h2>
+        <p>This figure makes the modal viewpoint explicit: a temperature profile is resolved into spatial eigenmodes whose amplitudes decay independently in time.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/02_separation_of_variables_heat.svg" alt="Separation of variables for the heat equation illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Product solutions and decaying modes.</div>
+          <div><strong>Use in class.</strong> Show why the heat equation prefers exponential decay rather than oscillatory persistence.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter09/09_02_Separation_of_Variables/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-3">
+        <h2>09-03 Homogeneous Boundary Conditions</h2>
+        <p>The boundary-condition figure highlights how Dirichlet and Neumann data select different eigenfunction families and encode different physical constraints at the endpoints.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/03_homogeneous_bcs_heat.svg" alt="Homogeneous boundary conditions for the heat equation illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Boundary data as spectral selection.</div>
+          <div><strong>Use in class.</strong> Reinforce that the boundary is not accessory data but part of the operator itself.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter09/09_03_Homogeneous_Boundary_Conditions/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-4">
+        <h2>09-04 Nonhomogeneous Problems</h2>
+        <p>The visual decomposition separates steady-state structure from transient decay, helping students see why nonhomogeneous problems are often reduced rather than solved from scratch.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/04_nonhomogeneous_heat.svg" alt="Nonhomogeneous heat equation illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Steady component plus transient correction.</div>
+          <div><strong>Use in class.</strong> Explain the strategy of homogenizing the data before applying eigenfunction expansions.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter09/09_04_Nonhomogeneous_Problems/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-5">
+        <h2>09-05 Heat Equation on Infinite Domain</h2>
+        <p>This image shifts the chapter from discrete Fourier series to continuous Fourier analysis, making the Gaussian smoothing mechanism on the whole line visually concrete.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/05_heat_infinite_domain.svg" alt="Heat equation on an infinite domain illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Continuous frequency spectrum and Gaussian spreading.</div>
+          <div><strong>Use in class.</strong> Contrast bounded-domain eigenmodes with transform methods on $$\mathbb{R}$$.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter09/09_05_Heat_Infinite_Domain/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-6">
+        <h2>09-06 Fundamental Solution and Green's Functions</h2>
+        <p>The heat kernel appears here as the response to a concentrated source, making superposition and convolution easier to interpret as physical spreading mechanisms.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/06_fundamental_solution_greens_functions.svg" alt="Fundamental solution and Green's function illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Point-source response and kernel representation.</div>
+          <div><strong>Use in class.</strong> Help students read the Green function as a transfer law rather than a formal object.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter09/09_06_Fundamental_Solution_Greens_Functions/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-7">
+        <h2>09-07 Maximum Principles</h2>
+        <p>This figure encodes the qualitative geometry of diffusion: peaks flatten, valleys fill, and interior extremes cannot spontaneously grow without a forcing mechanism.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/07_maximum_principles.svg" alt="Maximum principle for the heat equation illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Smoothing and qualitative control.</div>
+          <div><strong>Use in class.</strong> Support uniqueness arguments with a strong visual intuition about the flow of extrema.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter09/09_07_Maximum_Principles/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-8">
+        <h2>09-08 Numerical Methods: Finite Differences</h2>
+        <p>The numerical figure compares grid-based diffusion updates and makes the stability restriction of explicit schemes easy to discuss in terms of visible behavior rather than only algebra.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/08_numerical_methods_heat_fd.svg" alt="Finite differences for the heat equation illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Discrete diffusion and stability.</div>
+          <div><strong>Use in class.</strong> Link the PDE chapter to later numerical-analysis topics such as CFL-style restrictions and implicit smoothing.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter09/09_08_Numerical_Methods_Finite_Differences/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-9">
+        <h2>09-09 Applications: Diffusion Processes</h2>
+        <p>The closing figure broadens the narrative from temperature to transport, showing how the same diffusion structure appears in biology, materials, finance, and stochastic modeling.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter09/09_applications_diffusion.svg" alt="Applications of diffusion illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Cross-disciplinary diffusion intuition.</div>
+          <div><strong>Use in class.</strong> End the chapter by emphasizing that the heat equation is a model class, not only a thermal formula.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter09/09_09_Applications_Diffusion_Processes/">Open lesson</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    Use this gallery as a visual review before moving from classical heat flow to wave motion, Laplace problems, or numerical PDE methods.
+  </footer>
+</body>
+</html>

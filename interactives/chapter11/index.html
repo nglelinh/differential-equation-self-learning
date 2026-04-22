@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 11 Illustration Gallery: Phương Trình Laplace và Poisson</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #18212f;
+      --muted: #5a6472;
+      --line: #d9e0ea;
+      --accent: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 240px);
+    }
+
+    header, main, footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    header {
+      padding-top: 40px;
+      padding-bottom: 24px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.1;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 980px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .toc a {
+      text-decoration: none;
+      background: rgba(255,255,255,0.78);
+      color: var(--ink);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding-bottom: 40px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.97rem;
+    }
+
+    .figure-wrap {
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+      overflow: hidden;
+    }
+
+    .figure-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: white;
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .meta strong {
+      color: var(--ink);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid #cbd5e1;
+      background: white;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    footer {
+      padding-bottom: 30px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      header, main, footer {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 11 Illustration Gallery</h1>
+    <p>
+      Trang này gom toàn bộ bộ minh họa của Chương 11 về phương trình Laplace và Poisson. Các hình được sắp để nhấn mạnh
+      góc nhìn elliptic trung tâm của chương: trạng thái cân bằng không có tiến hóa theo thời gian, vai trò chi phối của dữ liệu biên,
+      các khai triển điều hòa thích nghi với hình học miền, phương trình cân bằng có nguồn, các tính chất định tính của hàm điều hòa,
+      công thức biểu diễn bằng hàm Green, và hai ngôn ngữ ứng dụng lớn là tĩnh điện học và dòng chảy thế.
+    </p>
+    <nav class="toc">
+      <a href="#lesson-1">11-01 Laplace</a>
+      <a href="#lesson-2">11-02 Hình chữ nhật</a>
+      <a href="#lesson-3">11-03 Tọa độ cực</a>
+      <a href="#lesson-4">11-04 Poisson</a>
+      <a href="#lesson-5">11-05 Trung bình</a>
+      <a href="#lesson-6">11-06 Green</a>
+      <a href="#lesson-7">11-07 Tĩnh điện</a>
+      <a href="#lesson-8">11-08 Dòng chảy</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <article class="card" id="lesson-1">
+        <h2>11-01 Phương Trình Laplace: Giới Thiệu</h2>
+        <p>Hình mở đầu đặt phương trình Laplace như mô hình chuẩn của cân bằng, đồng thời làm nổi bật bản chất điều hòa và sự vắng mặt của nguồn nội tại.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter11/01_laplace_equation_introduction.svg" alt="Minh họa giới thiệu phương trình Laplace">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Hàm điều hòa và cân bằng ổn định.</div>
+          <div><strong>Dùng trong lớp.</strong> Đối chiếu trạng thái elliptic cân bằng với logic có thời gian của phương trình nhiệt và sóng.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter11/11_01_Laplace_Equation_Introduction/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-2">
+        <h2>11-02 Tách Biến Trong Hình Chữ Nhật</h2>
+        <p>Hình này cho thấy hình học hình chữ nhật cùng dữ liệu biên tạo ra các khai triển điều hòa với dạng lượng giác theo một phương và hyperbolic theo phương còn lại.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter11/02_separation_variables_rectangles.svg" alt="Minh họa tách biến trong hình chữ nhật">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Cấu trúc mode do biên quyết định trong miền Descartes.</div>
+          <div><strong>Dùng trong lớp.</strong> Giải thích cách dữ liệu ở biên lan vào miền trong thông qua các mode điều hòa.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter11/11_02_Separation_Variables_Rectangles/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-3">
+        <h2>11-03 Phương Trình Laplace Trong Tọa Độ Cực</h2>
+        <p>Minh họa miền tròn giúp các mode theo góc và hành vi theo bán kính trở nên trực quan, cho thấy vì sao tọa độ cực là ngôn ngữ tự nhiên của đĩa và vành khăn.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter11/03_laplace_polar_coordinates.svg" alt="Minh họa phương trình Laplace trong tọa độ cực">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Tách biến thích nghi với hình học tròn.</div>
+          <div><strong>Dùng trong lớp.</strong> Chỉ ra vì sao điều kiện hữu hạn tại tâm loại bỏ các nhánh điều hòa không phù hợp vật lý.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter11/11_03_Laplace_Polar_Coordinates/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-4">
+        <h2>11-04 Phương Trình Poisson</h2>
+        <p>Hình này bổ sung cấu trúc nguồn vào bức tranh elliptic, làm cho bước chuyển từ cân bằng thuần túy sang cân bằng có cưỡng bức trở nên rõ ràng cả về hình học lẫn ý niệm.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter11/04_poisson_equation.svg" alt="Minh họa phương trình Poisson">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Nguồn nội và các định luật cân bằng có cưỡng bức.</div>
+          <div><strong>Dùng trong lớp.</strong> So sánh ý nghĩa hình học của Laplace và Poisson qua miền không nguồn và miền có nguồn.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter11/11_04_Poisson_Equation/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-5">
+        <h2>11-05 Tính Chất Trung Bình và Cực Đại</h2>
+        <p>Hình định tính này mã hóa một ý tưởng sâu của chương: giá trị điều hòa bị chi phối bởi dữ liệu xung quanh, nên cực trị nghiêm ngặt trong nội thất không thể tự sinh ra.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter11/05_mean_value_maximum_principle.svg" alt="Minh họa tính chất trung bình và nguyên lý cực đại">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Tính cứng định tính của hàm điều hòa.</div>
+          <div><strong>Dùng trong lớp.</strong> Hỗ trợ lập luận duy nhất nghiệm bằng trực giác hình học về trung bình và kiểm soát cực trị.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter11/11_05_Mean_Value_Maximum_Principle/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-6">
+        <h2>11-06 Hàm Green Cho Phương Trình Laplace</h2>
+        <p>Hình hàm Green cho thấy cách phản ứng với nguồn điểm và hiệu chỉnh do biên biến PDE elliptic thành công thức tích phân với ý nghĩa hình học rất mạnh.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter11/06_greens_functions_laplace.svg" alt="Minh họa hàm Green cho phương trình Laplace">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Nghiệm cơ bản, hiệu chỉnh biên và công thức biểu diễn.</div>
+          <div><strong>Dùng trong lớp.</strong> Giúp sinh viên thấy hàm Green là phản ứng có cấu trúc của miền chứ không chỉ là một kernel kỹ thuật.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter11/11_06_Greens_Functions_Laplace/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-7">
+        <h2>11-07 Ứng Dụng: Tĩnh Điện Học</h2>
+        <p>Hình này dịch ngôn ngữ điều hòa và Poisson sang tĩnh điện học, nối điện tích, điện thế và đường sức bằng cùng một cấu trúc elliptic.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter11/07_applications_electrostatics.svg" alt="Minh họa ứng dụng trong tĩnh điện học">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Lý thuyết thế trong vật lý.</div>
+          <div><strong>Dùng trong lớp.</strong> Khẳng định rằng Laplace và Poisson là các mô hình vật lý trung tâm chứ không chỉ là bài toán trừu tượng.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter11/11_07_Applications_Electrostatics/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-8">
+        <h2>11-08 Ứng Dụng: Dòng Chảy Chất Lỏng</h2>
+        <p>Hình cuối diễn giải lại hàm điều hòa như thế vận tốc và cấu trúc dòng, khép lại chương bằng một họ ứng dụng lớn thứ hai của phương trình elliptic.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter11/08_applications_fluid_flow.svg" alt="Minh họa ứng dụng trong dòng chảy chất lỏng">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Dòng chảy thế và chuyển động không nén không xoáy.</div>
+          <div><strong>Dùng trong lớp.</strong> Cho thấy cùng một khung PDE elliptic phục vụ cả điện trường tĩnh và thế vận tốc của chất lỏng.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter11/11_08_Applications_Fluid_Flow/">Mở bài học</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    Có thể dùng gallery này như một cầu nối trực quan từ hàm điều hòa cổ điển sang tĩnh điện học, dòng chảy thế và các cách tiếp cận elliptic hiện đại bằng giải tích hàm.
+  </footer>
+</body>
+</html>

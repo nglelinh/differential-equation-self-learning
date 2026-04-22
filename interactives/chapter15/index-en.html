@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 15 Interactives: Microlocal Analysis and Advanced Applications</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #18212f;
+      --muted: #5a6472;
+      --line: #d9e0ea;
+      --accent: #2563eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink); background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 240px);
+    }
+    header, main, footer { max-width: 1400px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
+    header { padding-top: 40px; padding-bottom: 24px; }
+    header h1 { margin: 0 0 10px; font-size: clamp(2rem, 3vw, 3rem); line-height: 1.1; }
+    header p { margin: 0; max-width: 940px; color: var(--muted); line-height: 1.7; }
+    main { padding-bottom: 40px; }
+    .toc { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin: 18px 0 34px; }
+    .toc a { text-decoration: none; background: rgba(255,255,255,0.78); color: var(--ink); padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(37, 99, 235, 0.12); font-size: 0.95rem; }
+    .topic { margin: 0 0 42px; scroll-margin-top: 20px; }
+    .topic > h2 { margin: 0 0 10px; font-size: 1.55rem; }
+    .topic > p { margin: 0 0 18px; color: var(--muted); max-width: 960px; line-height: 1.65; }
+    .demo { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06); display: flex; flex-direction: column; gap: 14px; }
+    .demo h3 { margin: 0; font-size: 1.15rem; }
+    .spec { display: grid; gap: 8px; color: var(--muted); font-size: 0.97rem; line-height: 1.6; }
+    .spec strong { color: var(--ink); }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 14px; border-radius: 10px; text-decoration: none; border: 1px solid #cbd5e1; background: white; color: var(--ink); font-weight: 600; }
+    .button.primary { background: var(--accent); border-color: var(--accent); color: white; }
+    iframe { width: 100%; min-height: 620px; border: 1px solid #edf2f7; border-radius: 14px; background: white; }
+    footer { padding-bottom: 30px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 640px) { header, main, footer { padding-left: 14px; padding-right: 14px; } iframe { min-height: 540px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 15 Interactives</h1>
+    <p>This page gathers the interactive illustrations for Chapter 15, focusing on microlocal analysis, propagation of singularities, the semiclassical limit, and spectral asymptotics. Each section moves from teaching objective to mathematical idea to a runnable browser-based demonstration.</p>
+    <nav class="toc">
+      <a href="#topic-1">15-01 Wave Front Set</a>
+      <a href="#topic-2">15-02 Propagation of Singularities</a>
+      <a href="#topic-4">15-04 Semiclassical Analysis</a>
+      <a href="#topic-5">15-05 Spectral Asymptotics</a>
+    </nav>
+  </header>
+  <main>
+    <section class="topic" id="topic-1">
+      <h2>15-01 Wave Front Set</h2>
+      <p>This illustration highlights the main refinement beyond singular support: a singularity has not only a location, but also preferred directions in frequency space.</p>
+      <article class="demo">
+        <h3>Wave Front Set: Position and Direction</h3>
+        <div class="spec">
+          <div><strong>Teaching objective.</strong> Distinguish a jump edge, a point source, and a corner by their directional singular structure.</div>
+          <div><strong>Mathematical idea.</strong> Local Fourier energy concentrates in normal or otherwise distinguished directions, giving the intuition behind the wave front set.</div>
+          <div><strong>Interactions.</strong> Choose the singularity type, rotate the edge, toggle singular directions, and rotate a probe ray.</div>
+        </div>
+        <div class="actions"><a class="button primary" href="./wave-front-set-en.html" target="_blank" rel="noopener noreferrer">Open standalone</a></div>
+        <iframe src="./wave-front-set-en.html" title="Wave Front Set: Position and Direction" loading="lazy"></iframe>
+      </article>
+    </section>
+    <section class="topic" id="topic-2">
+      <h2>15-02 Propagation of Singularities</h2>
+      <p>This demo emphasizes the geometric intuition behind propagation: singularities travel along rays rather than diffusing arbitrarily.</p>
+      <article class="demo">
+        <h3>Propagation of Singularities Along Rays</h3>
+        <div class="spec">
+          <div><strong>Teaching objective.</strong> Show that singularities move along ray families and may reflect from boundaries.</div>
+          <div><strong>Mathematical idea.</strong> In a constant-speed model, the wave front expands with radius ct, representing the simplest bicharacteristic geometry.</div>
+          <div><strong>Interactions.</strong> Drag the source point, adjust time, adjust wave speed, toggle a reflecting wall, and play the animation.</div>
+        </div>
+        <div class="actions"><a class="button primary" href="./propagation-singularities-en.html" target="_blank" rel="noopener noreferrer">Open standalone</a></div>
+        <iframe src="./propagation-singularities-en.html" title="Propagation of Singularities Along Rays" loading="lazy"></iframe>
+      </article>
+    </section>
+    <section class="topic" id="topic-4">
+      <h2>15-04 Semiclassical Analysis</h2>
+      <p>The semiclassical picture becomes much clearer when students can see a packet concentrate as h becomes small and its center track a classical trajectory.</p>
+      <article class="demo">
+        <h3>Semiclassical Limit: Wave Packet and Classical Orbit</h3>
+        <div class="spec">
+          <div><strong>Teaching objective.</strong> Make the correspondence between high-frequency quantum dynamics and classical Hamiltonian motion visible.</div>
+          <div><strong>Mathematical idea.</strong> In a harmonic potential, the packet center follows the classical trajectory while the packet width shrinks as h decreases.</div>
+          <div><strong>Interactions.</strong> Adjust h, the initial position, the initial momentum, and the time evolution.</div>
+        </div>
+        <div class="actions"><a class="button primary" href="./semiclassical-wave-packet-en.html" target="_blank" rel="noopener noreferrer">Open standalone</a></div>
+        <iframe src="./semiclassical-wave-packet-en.html" title="Semiclassical Limit: Wave Packet and Classical Orbit" loading="lazy"></iframe>
+      </article>
+    </section>
+    <section class="topic" id="topic-5">
+      <h2>15-05 Spectral Asymptotics</h2>
+      <p>Students can compare the exact eigenvalue counting function to the Weyl asymptotic law while changing dimension and domain size to see the geometric dependence directly.</p>
+      <article class="demo">
+        <h3>Spectral Asymptotics and Weyl's Law</h3>
+        <div class="spec">
+          <div><strong>Teaching objective.</strong> Show Weyl's law as a geometric growth principle rather than a purely formal asymptotic statement.</div>
+          <div><strong>Mathematical idea.</strong> The counting function N(lambda) grows according to dimension and volume, and approaches the Weyl asymptotic law at high energy.</div>
+          <div><strong>Interactions.</strong> Switch between 1D and 2D, vary domain size, and change lambda max.</div>
+        </div>
+        <div class="actions"><a class="button primary" href="./weyl-law-en.html" target="_blank" rel="noopener noreferrer">Open standalone</a></div>
+        <iframe src="./weyl-law-en.html" title="Spectral Asymptotics and Weyl's Law" loading="lazy" style="min-height: 700px;"></iframe>
+      </article>
+    </section>
+  </main>
+  <footer>These interactives are packaged as standalone pages so they can be opened separately in class or embedded directly into lesson notes.</footer>
+</body>
+</html>

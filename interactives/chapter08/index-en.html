@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 08 Illustration Gallery: Fourier Series and Orthogonal Expansions</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #18212f;
+      --muted: #5a6472;
+      --line: #d9e0ea;
+      --accent: #2563eb;
+      --accent-2: #0f766e;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 240px);
+    }
+
+    header, main, footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    header {
+      padding-top: 40px;
+      padding-bottom: 24px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.1;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 980px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .toc a {
+      text-decoration: none;
+      background: rgba(255,255,255,0.78);
+      color: var(--ink);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding-bottom: 40px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.97rem;
+    }
+
+    .figure-wrap {
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+      overflow: hidden;
+    }
+
+    .figure-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: white;
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .meta strong {
+      color: var(--ink);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid #cbd5e1;
+      background: white;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    footer {
+      padding-bottom: 30px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      header, main, footer {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 08 Illustration Gallery</h1>
+    <p>
+      This page gathers the new visual assets for Chapter 08 on Fourier series and orthogonal expansions.
+      The illustrations are static, but they are designed to surface the main mathematical picture of each lesson:
+      harmonic decomposition, coefficient spectra, Gibbs oscillation, parity, half-range extensions, energy identities,
+      complex exponentials, and the shift from discrete harmonics to a continuous frequency spectrum.
+    </p>
+    <nav class="toc">
+      <a href="#lesson-1">08-01 Periodic Functions</a>
+      <a href="#lesson-2">08-02 Coefficients</a>
+      <a href="#lesson-3">08-03 Convergence</a>
+      <a href="#lesson-4">08-04 Even / Odd</a>
+      <a href="#lesson-5">08-05 Half-Range</a>
+      <a href="#lesson-6">08-06 Parseval</a>
+      <a href="#lesson-7">08-07 Complex Form</a>
+      <a href="#lesson-8">08-08 Fourier Transform</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <article class="card" id="lesson-1">
+        <h2>08-01 Periodic Functions and Fourier Series</h2>
+        <p>The opening figure compares a periodic target with successive partial sums and shows how odd harmonics build a square-wave profile.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter08/01_periodic_functions_fourier_series.svg" alt="Periodic functions and Fourier series illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Harmonic decomposition and partial sums.</div>
+          <div><strong>Use in class.</strong> Contrast geometric shape in physical space with discrete mode content.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter08/08_01_Periodic_Functions_Fourier_Series/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-2">
+        <h2>08-02 Fourier Coefficients</h2>
+        <p>This illustration frames coefficients as projections: one side shows the function, the other shows the spectrum isolated by orthogonality.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter08/02_fourier_coefficients.svg" alt="Fourier coefficients illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Projection onto harmonic modes.</div>
+          <div><strong>Use in class.</strong> Connect integral formulas to geometric coordinates in function space.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter08/08_02_Fourier_Coefficients/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-3">
+        <h2>08-03 Convergence of Fourier Series</h2>
+        <p>The two-panel layout shows good global convergence away from jumps and the localized overshoot of the Gibbs phenomenon near a discontinuity.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter08/03_convergence_fourier_series.svg" alt="Convergence of Fourier series illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Pointwise convergence versus jump behavior.</div>
+          <div><strong>Use in class.</strong> Explain why Fourier series remain valid even when overshoot never completely disappears.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter08/08_03_Convergence_Fourier_Series/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-4">
+        <h2>08-04 Even and Odd Functions</h2>
+        <p>The figure uses symmetry overlays to make the cosine-even and sine-odd correspondence visually immediate.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter08/04_even_odd_functions.svg" alt="Even and odd functions illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Parity and basis selection.</div>
+          <div><strong>Use in class.</strong> Show why half the coefficients vanish before any integration is done.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter08/08_04_Even_Odd_Functions/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-5">
+        <h2>08-05 Half-Range Expansions</h2>
+        <p>The three panels move from data on [0, L] to even and odd extensions on [-L, L], emphasizing why the choice of extension encodes boundary structure.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter08/05_half_range_expansions.svg" alt="Half-range expansions illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Even and odd extension strategy.</div>
+          <div><strong>Use in class.</strong> Tie sine and cosine series directly to PDE boundary conditions.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter08/08_05_Half_Range_Expansions/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-6">
+        <h2>08-06 Parseval's Theorem</h2>
+        <p>This illustration pairs a signal in physical space with a bar chart of mode energies to highlight Parseval as an energy balance law.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter08/06_parsevals_theorem.svg" alt="Parseval theorem illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Energy conservation between function space and coefficient space.</div>
+          <div><strong>Use in class.</strong> Present Parseval as the infinite-dimensional Pythagorean theorem.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter08/08_06_Parsevals_Theorem/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-7">
+        <h2>08-07 Complex Fourier Series</h2>
+        <p>The gallery card combines the unit-circle view of complex exponentials with a two-sided coefficient spectrum indexed by positive and negative integers.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter08/07_complex_fourier_series.svg" alt="Complex Fourier series illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Exponential modes and signed frequency indexing.</div>
+          <div><strong>Use in class.</strong> Show why the complex form compresses sine and cosine into one cleaner notation.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter08/08_07_Complex_Fourier_Series/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-8">
+        <h2>08-08 Fourier Transform: Introduction</h2>
+        <p>The final figure compares a localized physical-space signal with its continuous spectrum, making the transition from discrete harmonics to a frequency continuum concrete.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter08/08_fourier_transform_introduction.svg" alt="Fourier transform introduction illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Continuous-frequency viewpoint.</div>
+          <div><strong>Use in class.</strong> Motivate the Fourier transform as the whole-line limit of Fourier series.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter08/08_08_Fourier_Transform_Introduction/">Open lesson</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    This gallery is meant for lecture navigation and quick visual reference. The lesson pages remain the canonical location for the full mathematical exposition.
+  </footer>
+</body>
+</html>

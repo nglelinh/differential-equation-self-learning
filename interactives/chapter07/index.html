@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 07 Interactives: Boundary Value Problems and Sturm-Liouville Theory</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --card: #ffffff;
+      --ink: #162033;
+      --muted: #5d6879;
+      --line: #d9e1eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef5ff 0, var(--bg) 260px);
+    }
+    header, main, footer {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    header { padding-top: 40px; padding-bottom: 24px; }
+    header h1 { margin: 0 0 10px; font-size: clamp(2rem, 3vw, 3rem); }
+    header p { max-width: 980px; margin: 0; color: var(--muted); line-height: 1.6; }
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .toc a {
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(37,99,235,0.12);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .topic { margin-bottom: 42px; scroll-margin-top: 20px; }
+    .topic h2 { margin: 0 0 10px; font-size: 1.5rem; }
+    .topic > p { margin: 0 0 18px; color: var(--muted); max-width: 940px; line-height: 1.6; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+      gap: 18px;
+    }
+    .demo {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .demo h3 { margin: 0; font-size: 1.08rem; }
+    .spec {
+      display: grid;
+      gap: 8px;
+      font-size: 0.96rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .spec strong { color: var(--ink); }
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid #edf2f7;
+    }
+    .control { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .control label { font-size: 0.82rem; color: var(--muted); }
+    .control input, .control select { width: 100%; }
+    .control span { font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+    .plot {
+      width: 100%;
+      min-height: 300px;
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+    }
+    .status {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    footer { padding-top: 8px; padding-bottom: 30px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 640px) {
+      header, main, footer { padding-left: 14px; padding-right: 14px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 07 Interactives</h1>
+    <p>
+      This standalone gallery proposes two runnable JavaScript illustrations for each topic in Chapter 07,
+      Boundary Value Problems and Sturm-Liouville Theory. The emphasis is on boundary-condition geometry,
+      eigenvalue selection, orthogonality, eigenfunction expansions, Green's kernels, and classical physical mode shapes.
+    </p>
+    <nav class="toc">
+      <a href="#topic-1">07-01 Two-Point BVPs</a>
+      <a href="#topic-2">07-02 Eigenvalue Problems</a>
+      <a href="#topic-3">07-03 Sturm-Liouville</a>
+      <a href="#topic-4">07-04 Expansions</a>
+      <a href="#topic-5">07-05 Green's Functions</a>
+      <a href="#topic-6">07-06 Vibrating Strings</a>
+      <a href="#topic-7">07-07 Heat Conduction</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="topic" id="topic-1">
+      <h2>07-01 Two-Point Boundary Value Problems</h2>
+      <p>These illustrations emphasize the global nature of BVPs and the role of endpoint constraints.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Endpoint Constraints vs Initial Launch</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show why a BVP cannot be treated like a simple initial launch problem.</div>
+            <div><strong>Mathematical idea shown.</strong> Two-point conditions constrain the whole solution shape across the interval.</div>
+            <div><strong>User interactions.</strong> Sliders for left and right boundary values.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="bvp-yl">Left boundary</label><input id="bvp-yl" type="range" min="-2" max="2" step="0.1" value="1"><span id="bvp-yl-value"></span></div>
+            <div class="control"><label for="bvp-yr">Right boundary</label><input id="bvp-yr" type="range" min="-2" max="2" step="0.1" value="-0.5"><span id="bvp-yr-value"></span></div>
+          </div>
+          <div id="bvp-endpoint-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Dirichlet, Neumann, and Robin Comparison</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that different boundary conditions impose different geometric behavior at the ends.</div>
+            <div><strong>Mathematical idea shown.</strong> Fixing value, slope, or a linear combination changes the admissible family of solutions.</div>
+            <div><strong>User interactions.</strong> Dropdown for boundary-condition type.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="bvp-type">Boundary type</label><select id="bvp-type"><option value="dirichlet">Dirichlet</option><option value="neumann">Neumann</option><option value="robin">Robin</option></select></div>
+          </div>
+          <div id="bvp-types-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-2">
+      <h2>07-02 Eigenvalue Problems</h2>
+      <p>These illustrations show how boundary conditions select special parameter values and corresponding mode shapes.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Allowed Frequencies for a Fixed String</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that only special frequencies satisfy the endpoint constraints.</div>
+            <div><strong>Mathematical idea shown.</strong> Nontrivial solutions exist only for discrete eigenvalues.</div>
+            <div><strong>User interactions.</strong> Slider for the trial frequency.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="eig-k">Trial frequency k</label><input id="eig-k" type="range" min="0.5" max="15" step="0.1" value="3.1"><span id="eig-k-value"></span></div>
+          </div>
+          <div id="eigenvalue-string-plot" class="plot"></div>
+          <div id="eigenvalue-string-note" class="status"></div>
+        </article>
+        <article class="demo">
+          <h3>Eigenfunction Nodal Count</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how higher modes gain more nodes and oscillations.</div>
+            <div><strong>Mathematical idea shown.</strong> The mode index orders the eigenfunctions by spatial complexity.</div>
+            <div><strong>User interactions.</strong> Slider for eigenmode number.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="eig-n">Mode number n</label><input id="eig-n" type="range" min="1" max="6" step="1" value="2"><span id="eig-n-value"></span></div>
+          </div>
+          <div id="eigenvalue-mode-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-3">
+      <h2>07-03 Sturm-Liouville Theory</h2>
+      <p>These illustrations emphasize self-adjoint structure, weight functions, and orthogonality.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Weighted Orthogonality Explorer</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that orthogonality depends on the correct weight, not just on visual shape.</div>
+            <div><strong>Mathematical idea shown.</strong> Distinct eigenfunctions become orthogonal in the weighted inner product natural to the operator.</div>
+            <div><strong>User interactions.</strong> Sliders for two mode numbers.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="sl-m">Mode m</label><input id="sl-m" type="range" min="1" max="6" step="1" value="2"><span id="sl-m-value"></span></div>
+            <div class="control"><label for="sl-n">Mode n</label><input id="sl-n" type="range" min="1" max="6" step="1" value="3"><span id="sl-n-value"></span></div>
+          </div>
+          <div id="sl-ortho-plot" class="plot"></div>
+          <div id="sl-ortho-note" class="status"></div>
+        </article>
+        <article class="demo">
+          <h3>Self-Adjoint Weight Comparison</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how changing the weight changes the geometry of function space.</div>
+            <div><strong>Mathematical idea shown.</strong> The weighted inner product is part of the problem structure, not an arbitrary convention.</div>
+            <div><strong>User interactions.</strong> Dropdown for weight type.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="sl-w">Weight</label><select id="sl-w"><option value="uniform">w(x)=1</option><option value="center">w(x)=1+x</option><option value="edge">w(x)=1/(1+x)</option></select></div>
+          </div>
+          <div id="sl-weight-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-4">
+      <h2>07-04 Eigenfunction Expansions</h2>
+      <p>These illustrations show how arbitrary shapes are projected onto mode bases.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Generalized Fourier Expansion Build-Up</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how partial mode sums reconstruct a target function.</div>
+            <div><strong>Mathematical idea shown.</strong> Expansion coefficients measure how much of each eigenmode is present.</div>
+            <div><strong>User interactions.</strong> Dropdown for target function and slider for number of modes.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="exp-target">Target</label><select id="exp-target"><option value="hat">Hat profile</option><option value="parabola">Parabola</option></select></div>
+            <div class="control"><label for="exp-modes">Number of modes</label><input id="exp-modes" type="range" min="1" max="12" step="1" value="4"><span id="exp-modes-value"></span></div>
+          </div>
+          <div id="eigenexpansion-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Coefficient Magnitude Spectrum</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how smoothness of the target affects how fast modal coefficients decay.</div>
+            <div><strong>Mathematical idea shown.</strong> More regular functions generally have faster decaying expansion coefficients.</div>
+            <div><strong>User interactions.</strong> Reuses the target selector.</div>
+          </div>
+          <div id="eigenexpansion-coeffs-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-5">
+      <h2>07-05 Green's Functions for Boundary Value Problems</h2>
+      <p>These illustrations emphasize Green's functions as point-source responses and integral kernels.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Kernel Shape for a Point Source</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how the Green's function changes when the source point moves.</div>
+            <div><strong>Mathematical idea shown.</strong> The kernel is piecewise-defined, continuous, and changes slope across the source point.</div>
+            <div><strong>User interactions.</strong> Slider for source location $$\xi$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="green-xi">Source location xi</label><input id="green-xi" type="range" min="0.1" max="0.9" step="0.01" value="0.4"><span id="green-xi-value"></span></div>
+          </div>
+          <div id="greens-kernel-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Solution from the Integral Formula</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how a distributed source is reconstructed by integrating point-source effects.</div>
+            <div><strong>Mathematical idea shown.</strong> The inverse operator is represented as an integral kernel.</div>
+            <div><strong>User interactions.</strong> Dropdown for forcing profile.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="green-f">Forcing</label><select id="green-f"><option value="constant">Constant</option><option value="triangle">Triangular</option></select></div>
+          </div>
+          <div id="greens-solution-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-6">
+      <h2>07-06 Applications: Vibrating Strings</h2>
+      <p>These illustrations show standing-wave modes and superposition on a fixed string.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Standing-Wave Mode Selector</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show the spatial shapes of the first few fixed-end string modes.</div>
+            <div><strong>Mathematical idea shown.</strong> Boundary conditions quantize mode shapes and frequencies.</div>
+            <div><strong>User interactions.</strong> Slider for the mode number.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="str-n">Mode number</label><input id="str-n" type="range" min="1" max="6" step="1" value="2"><span id="str-n-value"></span></div>
+          </div>
+          <div id="string-mode-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Superposition of String Modes</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that an arbitrary string shape is usually a combination of multiple standing modes.</div>
+            <div><strong>Mathematical idea shown.</strong> Mode amplitudes oscillate in time while spatial basis functions stay fixed.</div>
+            <div><strong>User interactions.</strong> Slider for time and a slider for the mixing ratio.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="str-t">Time</label><input id="str-t" type="range" min="0" max="6.28" step="0.05" value="0"><span id="str-t-value"></span></div>
+            <div class="control"><label for="str-mix">Mode mix</label><input id="str-mix" type="range" min="0" max="1" step="0.05" value="0.5"><span id="str-mix-value"></span></div>
+          </div>
+          <div id="string-superpose-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-7">
+      <h2>07-07 Applications: Heat Conduction</h2>
+      <p>These illustrations focus on steady temperature profiles and how boundary conditions shape them.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Steady Temperature Profile with Source</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how forcing and boundary data determine the equilibrium temperature shape.</div>
+            <div><strong>Mathematical idea shown.</strong> A steady-state BVP describes the spatial profile after transients have vanished.</div>
+            <div><strong>User interactions.</strong> Sliders for left and right boundary temperature and source strength.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="heat-tl">Left temperature</label><input id="heat-tl" type="range" min="0" max="10" step="0.5" value="2"><span id="heat-tl-value"></span></div>
+            <div class="control"><label for="heat-tr">Right temperature</label><input id="heat-tr" type="range" min="0" max="10" step="0.5" value="6"><span id="heat-tr-value"></span></div>
+            <div class="control"><label for="heat-q">Source strength</label><input id="heat-q" type="range" min="-8" max="8" step="0.5" value="2"><span id="heat-q-value"></span></div>
+          </div>
+          <div id="heat-profile-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Boundary Condition Comparison</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how fixed temperature, insulated ends, and mixed exchange alter the steady profile.</div>
+            <div><strong>Mathematical idea shown.</strong> Boundary conditions carry the physical meaning of heat exchange with the environment.</div>
+            <div><strong>User interactions.</strong> Dropdown for boundary type.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="heat-bc">Boundary type</label><select id="heat-bc"><option value="dirichlet">Dirichlet</option><option value="neumann">Neumann</option><option value="robin">Robin</option></select></div>
+          </div>
+          <div id="heat-bc-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    The page is self-contained so it can be opened directly in a browser or served as a static file from the repository.
+  </footer>
+
+  <script>
+    const fmt = (value, digits = 2) => Number(value).toFixed(digits).replace(/\.00$/, '');
+
+    function bindValue(id, digits = 2) {
+      const input = document.getElementById(id);
+      const output = document.getElementById(`${id}-value`);
+      const refresh = () => { if (output) output.textContent = fmt(input.value, digits); };
+      input.addEventListener('input', refresh);
+      input.addEventListener('change', refresh);
+      refresh();
+    }
+
+    function bindControls(ids, render) {
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        el.addEventListener('input', render);
+        el.addEventListener('change', render);
+      });
+      render();
+    }
+
+    function linspace(min, max, count) {
+      return Array.from({ length: count }, (_, i) => min + (max - min) * i / (count - 1));
+    }
+
+    function plotSeries(divId, traces, layout = {}) {
+      Plotly.react(divId, traces, {
+        margin: { l: 46, r: 18, t: 24, b: 42 },
+        paper_bgcolor: '#ffffff',
+        plot_bgcolor: '#ffffff',
+        legend: { orientation: 'h' },
+        xaxis: { gridcolor: '#e5e7eb', zerolinecolor: '#cbd5e1' },
+        yaxis: { gridcolor: '#e5e7eb', zerolinecolor: '#cbd5e1' },
+        ...layout,
+      }, { responsive: true, displayModeBar: false });
+    }
+
+    function sineMode(n, x) {
+      return Math.sin(n * Math.PI * x);
+    }
+
+    function integrateTrapz(x, y) {
+      let sum = 0;
+      for (let i = 1; i < x.length; i += 1) sum += 0.5 * (y[i - 1] + y[i]) * (x[i] - x[i - 1]);
+      return sum;
+    }
+
+    function renderBVPEndpoint() {
+      const yl = Number(document.getElementById('bvp-yl').value);
+      const yr = Number(document.getElementById('bvp-yr').value);
+      const x = linspace(0, 1, 320);
+      const y = x.map((xx) => yl * (1 - xx) + yr * xx + 0.8 * xx * (1 - xx));
+      plotSeries('bvp-endpoint-plot', [
+        { x, y, mode: 'lines', name: 'BVP-compatible curve', line: { color: '#2563eb', width: 3 } },
+        { x: [0, 1], y: [yl, yr], mode: 'markers', name: 'Boundary values', marker: { color: '#dc2626', size: 10 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'y(x)' } });
+    }
+
+    function renderBVPTypes() {
+      const type = document.getElementById('bvp-type').value;
+      const x = linspace(0, 1, 320);
+      let y;
+      if (type === 'dirichlet') y = x.map((xx) => xx * (1 - xx));
+      else if (type === 'neumann') y = x.map((xx) => 0.5 + Math.cos(Math.PI * xx));
+      else y = x.map((xx) => Math.exp(-2 * xx) + 0.3 * xx);
+      plotSeries('bvp-types-plot', [
+        { x, y, mode: 'lines', name: `${type} example`, line: { color: '#0891b2', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Representative solution' } });
+    }
+
+    function renderEigenvalueString() {
+      const k = Number(document.getElementById('eig-k').value);
+      const x = linspace(0, 1, 320);
+      const y = x.map((xx) => Math.sin(k * xx));
+      const mismatch = Math.sin(k);
+      plotSeries('eigenvalue-string-plot', [
+        { x, y, mode: 'lines', name: 'sin(kx)', line: { color: '#2563eb', width: 3 } },
+        { x: [1], y: [mismatch], mode: 'markers', name: 'Value at x=1', marker: { color: '#dc2626', size: 10 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Mode candidate' } });
+      document.getElementById('eigenvalue-string-note').textContent = `To satisfy y(1)=0, k must be close to nπ. Current mismatch at x=1 is ${fmt(mismatch, 3)}.`;
+    }
+
+    function renderEigenvalueMode() {
+      const n = Number(document.getElementById('eig-n').value);
+      const x = linspace(0, 1, 320);
+      plotSeries('eigenvalue-mode-plot', [
+        { x, y: x.map((xx) => sineMode(n, xx)), mode: 'lines', name: `Mode ${n}`, line: { color: '#0891b2', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Eigenfunction shape' } });
+    }
+
+    function renderSLOrtho() {
+      const m = Number(document.getElementById('sl-m').value);
+      const n = Number(document.getElementById('sl-n').value);
+      const x = linspace(0, 1, 320);
+      const prod = x.map((xx) => sineMode(m, xx) * sineMode(n, xx));
+      const area = integrateTrapz(x, prod);
+      plotSeries('sl-ortho-plot', [
+        { x, y: prod, mode: 'lines', name: `phi_${m} phi_${n}`, line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Weighted product' } });
+      document.getElementById('sl-ortho-note').textContent = m === n
+        ? `Same mode: the weighted inner product is positive, approximately ${fmt(area, 3)}.`
+        : `Different modes: the weighted inner product is near zero, approximately ${fmt(area, 3)}.`;
+    }
+
+    function renderSLWeight() {
+      const type = document.getElementById('sl-w').value;
+      const x = linspace(0, 1, 320);
+      const w = x.map((xx) => type === 'uniform' ? 1 : type === 'center' ? 1 + xx : 1 / (1 + xx));
+      plotSeries('sl-weight-plot', [
+        { x, y: w, mode: 'lines', name: 'Weight w(x)', line: { color: '#0891b2', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Weight' } });
+    }
+
+    function targetFunction(kind, x) {
+      return kind === 'hat' ? (x < 0.5 ? 2 * x : 2 * (1 - x)) : 4 * x * (1 - x);
+    }
+
+    function coeffForTarget(kind, n) {
+      const xs = linspace(0, 1, 600);
+      const vals = xs.map((xx) => targetFunction(kind, xx) * sineMode(n, xx));
+      return 2 * integrateTrapz(xs, vals);
+    }
+
+    function renderEigenExpansion() {
+      const kind = document.getElementById('exp-target').value;
+      const modes = Number(document.getElementById('exp-modes').value);
+      const x = linspace(0, 1, 320);
+      const target = x.map((xx) => targetFunction(kind, xx));
+      const approx = x.map((xx) => {
+        let sum = 0;
+        for (let n = 1; n <= modes; n += 1) sum += coeffForTarget(kind, n) * sineMode(n, xx);
+        return sum;
+      });
+      plotSeries('eigenexpansion-plot', [
+        { x, y: target, mode: 'lines', name: 'Target', line: { color: '#94a3b8', width: 3 } },
+        { x, y: approx, mode: 'lines', name: `Partial expansion (${modes} modes)`, line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Function value' } });
+    }
+
+    function renderEigenCoeffs() {
+      const kind = document.getElementById('exp-target').value;
+      const ns = Array.from({ length: 12 }, (_, i) => i + 1);
+      const coeffs = ns.map((n) => Math.abs(coeffForTarget(kind, n)));
+      plotSeries('eigenexpansion-coeffs-plot', [
+        { x: ns, y: coeffs, mode: 'lines+markers', name: '|c_n|', line: { color: '#0891b2', width: 3 } },
+      ], { xaxis: { title: 'Mode number n' }, yaxis: { title: 'Coefficient magnitude' } });
+    }
+
+    function greenKernel(x, xi) {
+      return x <= xi ? x * (1 - xi) : xi * (1 - x);
+    }
+
+    function renderGreensKernel() {
+      const xi = Number(document.getElementById('green-xi').value);
+      const x = linspace(0, 1, 320);
+      plotSeries('greens-kernel-plot', [
+        { x, y: x.map((xx) => greenKernel(xx, xi)), mode: 'lines', name: `G(x, ${fmt(xi, 2)})`, line: { color: '#2563eb', width: 3 } },
+        { x: [xi, xi], y: [0, Math.max(...x.map((xx) => greenKernel(xx, xi)))], mode: 'lines', name: 'Source point', line: { color: '#dc2626', dash: 'dash' } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Kernel value' } });
+    }
+
+    function renderGreensSolution() {
+      const forcing = document.getElementById('green-f').value;
+      const x = linspace(0, 1, 220);
+      const f = x.map((xx) => forcing === 'constant' ? 1 : xx < 0.5 ? 2 * xx : 2 * (1 - xx));
+      const y = x.map((xx) => integrateTrapz(x, x.map((xi, i) => greenKernel(xx, xi) * f[i])));
+      plotSeries('greens-solution-plot', [
+        { x, y: f, mode: 'lines', name: 'Forcing f(x)', line: { color: '#94a3b8', dash: 'dash' } },
+        { x, y: y.map((v) => -v), mode: 'lines', name: 'Solution y(x)', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Value' } });
+    }
+
+    function renderStringMode() {
+      const n = Number(document.getElementById('str-n').value);
+      const x = linspace(0, 1, 320);
+      plotSeries('string-mode-plot', [
+        { x, y: x.map((xx) => sineMode(n, xx)), mode: 'lines', name: `Mode ${n}`, line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Displacement shape' } });
+    }
+
+    function renderStringSuperpose() {
+      const t = Number(document.getElementById('str-t').value);
+      const mix = Number(document.getElementById('str-mix').value);
+      const x = linspace(0, 1, 320);
+      const y = x.map((xx) => mix * Math.cos(t) * sineMode(1, xx) + (1 - mix) * Math.cos(2 * t) * sineMode(2, xx));
+      plotSeries('string-superpose-plot', [
+        { x, y, mode: 'lines', name: 'String profile', line: { color: '#0891b2', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Displacement' } });
+    }
+
+    function renderHeatProfile() {
+      const Tl = Number(document.getElementById('heat-tl').value);
+      const Tr = Number(document.getElementById('heat-tr').value);
+      const q = Number(document.getElementById('heat-q').value);
+      const x = linspace(0, 1, 320);
+      const T = x.map((xx) => Tl * (1 - xx) + Tr * xx + 0.5 * q * xx * (1 - xx));
+      plotSeries('heat-profile-plot', [
+        { x, y: T, mode: 'lines', name: 'Steady profile', line: { color: '#dc2626', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Temperature' } });
+    }
+
+    function renderHeatBC() {
+      const bc = document.getElementById('heat-bc').value;
+      const x = linspace(0, 1, 320);
+      let T;
+      if (bc === 'dirichlet') T = x.map((xx) => 2 + 4 * xx + xx * (1 - xx));
+      else if (bc === 'neumann') T = x.map((xx) => 3 + 0.5 * (xx - 0.5) * (xx - 0.5));
+      else T = x.map((xx) => 2 + 2 * (1 - Math.exp(-2 * xx)));
+      plotSeries('heat-bc-plot', [
+        { x, y: T, mode: 'lines', name: `${bc} profile`, line: { color: '#dc2626', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Temperature' } });
+    }
+
+    [
+      ['bvp-yl', 1], ['bvp-yr', 1], ['eig-k', 1], ['eig-n', 0], ['sl-m', 0], ['sl-n', 0],
+      ['exp-modes', 0], ['green-xi', 2], ['str-n', 0], ['str-t', 2], ['str-mix', 2],
+      ['heat-tl', 1], ['heat-tr', 1], ['heat-q', 1],
+    ].forEach(([id, digits]) => bindValue(id, digits));
+
+    bindControls(['bvp-yl', 'bvp-yr'], renderBVPEndpoint);
+    bindControls(['bvp-type'], renderBVPTypes);
+    bindControls(['eig-k'], renderEigenvalueString);
+    bindControls(['eig-n'], renderEigenvalueMode);
+    bindControls(['sl-m', 'sl-n'], renderSLOrtho);
+    bindControls(['sl-w'], renderSLWeight);
+    bindControls(['exp-target', 'exp-modes'], renderEigenExpansion);
+    bindControls(['exp-target'], renderEigenCoeffs);
+    bindControls(['green-xi'], renderGreensKernel);
+    bindControls(['green-f'], renderGreensSolution);
+    bindControls(['str-n'], renderStringMode);
+    bindControls(['str-t', 'str-mix'], renderStringSuperpose);
+    bindControls(['heat-tl', 'heat-tr', 'heat-q'], renderHeatProfile);
+    bindControls(['heat-bc'], renderHeatBC);
+  </script>
+</body>
+</html>

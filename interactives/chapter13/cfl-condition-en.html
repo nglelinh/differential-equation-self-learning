@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CFL Condition</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    body { font-family: Inter, Arial, sans-serif; margin: 0; padding: 18px; background: #f8fafc; color: #111827; }
+    h2 { margin: 0 0 12px; font-size: 1.35rem; }
+    .controls { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+    label { font-size: 14px; color: #374151; }
+    #plot { width: 100%; max-width: 960px; height: 540px; background: white; border: 1px solid #d1d5db; border-radius: 10px; }
+    .note { color: #4b5563; max-width: 960px; font-size: 14px; margin-top: 8px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h2>CFL Condition in the Upwind Scheme</h2>
+  <div class="controls">
+    <label>CFL = c dt / dx: <input id="nu" type="range" min="0" max="1.5" step="0.01" value="0.8"> <span id="nuVal">0.80</span></label>
+  </div>
+  <div id="plot"></div>
+  <div class="note">When the CFL number exceeds the usual stability threshold, the numerical profile starts to distort or become unstable. This is the basic intuition that the numerical grid must keep up with physical information flow.</div>
+  <script>
+    const nuEl = document.getElementById('nu');
+    const nuVal = document.getElementById('nuVal');
+    function simulate(nu) {
+      const n = 121, x = Array.from({ length: n }, (_, i) => i / (n - 1));
+      let u = x.map(v => Math.exp(-250 * (v - 0.25) ** 2));
+      const steps = 70;
+      for (let k = 0; k < steps; k++) {
+        const next = [...u];
+        for (let j = 1; j < n; j++) next[j] = u[j] - nu * (u[j] - u[j - 1]);
+        next[0] = 0;
+        u = next;
+      }
+      return { x, u };
+    }
+    function render() {
+      const nu = Number(nuEl.value); nuVal.textContent = nu.toFixed(2);
+      const x = Array.from({ length: 121 }, (_, i) => i / 120);
+      const initial = x.map(v => Math.exp(-250 * (v - 0.25) ** 2));
+      const result = simulate(nu);
+      Plotly.newPlot('plot', [
+        { x, y: initial, mode: 'lines', name: 'initial', line: { color: '#111827', width: 2, dash: 'dot' } },
+        { x: result.x, y: result.u, mode: 'lines', name: 'after many steps', line: { color: nu <= 1 ? '#2563eb' : '#ef4444', width: 3 } }
+      ], {
+        title: '1D transport with explicit upwind scheme',
+        xaxis: { title: 'x' }, yaxis: { title: 'u(x)' }, legend: { orientation: 'h' },
+        annotations: [{ x: 0.98, y: 0.95, xref: 'paper', yref: 'paper', text: nu <= 1 ? 'typical stable regime' : 'CFL threshold exceeded', showarrow: false }],
+        margin: { t: 60, l: 60, r: 20, b: 50 }
+      }, { responsive: true });
+    }
+    nuEl.addEventListener('input', render);
+    render();
+  </script>
+</body>
+</html>

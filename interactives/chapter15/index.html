@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 15 Interactives: Vi địa phương và ứng dụng hiện đại</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #18212f;
+      --muted: #5a6472;
+      --line: #d9e0ea;
+      --accent: #2563eb;
+      --accent-2: #0891b2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 240px);
+    }
+
+    header {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 20px 24px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.1;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 940px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px 40px;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin: 18px 0 34px;
+    }
+
+    .toc a {
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(12px);
+      color: var(--ink);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      font-size: 0.95rem;
+    }
+
+    .topic {
+      margin: 0 0 42px;
+      scroll-margin-top: 20px;
+    }
+
+    .topic > h2 {
+      margin: 0 0 10px;
+      font-size: 1.55rem;
+    }
+
+    .topic > p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      max-width: 960px;
+      line-height: 1.65;
+    }
+
+    .demo {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .demo h3 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .spec {
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.97rem;
+      line-height: 1.6;
+    }
+
+    .spec strong {
+      color: var(--ink);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid #cbd5e1;
+      background: white;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    iframe {
+      width: 100%;
+      min-height: 620px;
+      border: 1px solid #edf2f7;
+      border-radius: 14px;
+      background: white;
+    }
+
+    footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px 30px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      header,
+      main,
+      footer {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      iframe {
+        min-height: 540px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 15 Interactives</h1>
+    <p>
+      Trang này gom các minh họa tương tác cho chương 15, tập trung vào giải tích vi địa phương,
+      propagation of singularities, giới hạn bán cổ điển, và tiệm cận phổ. Mỗi mục đều đi từ mục tiêu sư phạm,
+      ý tưởng toán học, rồi đến bản minh họa chạy trực tiếp trong trình duyệt.
+    </p>
+    <nav class="toc">
+      <a href="#topic-1">15-01 Wave Front Set</a>
+      <a href="#topic-2">15-02 Propagation of Singularities</a>
+      <a href="#topic-4">15-04 Semiclassical Analysis</a>
+      <a href="#topic-5">15-05 Spectral Asymptotics</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="topic" id="topic-1">
+      <h2>15-01 Wave Front Set</h2>
+      <p>
+        Minh họa này giúp sinh viên thấy rõ điểm mới của wave front set so với singular support:
+        singularity không chỉ có vị trí, mà còn có hướng trong không gian tần số.
+      </p>
+      <article class="demo">
+        <h3>Wave Front Set: Vị Trí và Hướng Kỳ Dị</h3>
+        <div class="spec">
+          <div><strong>Mục tiêu sư phạm.</strong> Làm rõ tại sao một cạnh nhảy, một nguồn điểm, và một góc nhọn có cấu trúc kỳ dị khác nhau dù có thể cùng xuất hiện trong cùng một vùng hình học.</div>
+          <div><strong>Ý tưởng toán học.</strong> Năng lượng Fourier cục bộ tập trung theo các hướng pháp tuyến hoặc nhiều hướng đặc biệt, phản ánh trực giác của wave front set.</div>
+          <div><strong>Tương tác.</strong> Chọn loại singularity, xoay góc cạnh, bật/tắt hướng kỳ dị, và cho tia dò quay tự động.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="./wave-front-set-vi.html" target="_blank" rel="noopener noreferrer">Mở riêng</a>
+        </div>
+        <iframe src="./wave-front-set-vi.html" title="Wave Front Set: Vị Trí và Hướng Kỳ Dị" loading="lazy"></iframe>
+      </article>
+    </section>
+
+    <section class="topic" id="topic-2">
+      <h2>15-02 Propagation of Singularities</h2>
+      <p>
+        Mục này nhấn mạnh trực giác hình học của định lý lan truyền kỳ dị: singularity đi theo tia,
+        không lan ngẫu nhiên như trong mô hình khuếch tán.
+      </p>
+      <article class="demo">
+        <h3>Lan Truyền Singularity Theo Tia</h3>
+        <div class="spec">
+          <div><strong>Mục tiêu sư phạm.</strong> Cho sinh viên thấy singularity di chuyển theo họ tia hình học và có thể phản xạ trên biên.</div>
+          <div><strong>Ý tưởng toán học.</strong> Với mô hình tốc độ hằng, mặt sóng mở rộng theo bán kính $$ct$$, tương ứng với propagation theo bicharacteristics đơn giản nhất.</div>
+          <div><strong>Tương tác.</strong> Kéo nguồn phát, thay đổi thời gian, vận tốc truyền, bật/tắt tường phản xạ, và chạy hoạt ảnh.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="./propagation-singularities-vi.html" target="_blank" rel="noopener noreferrer">Mở riêng</a>
+        </div>
+        <iframe src="./propagation-singularities-vi.html" title="Lan Truyền Singularity Theo Tia" loading="lazy"></iframe>
+      </article>
+    </section>
+
+    <section class="topic" id="topic-4">
+      <h2>15-04 Semiclassical Analysis</h2>
+      <p>
+        Minh họa bán cổ điển này làm nổi bật thông điệp: khi tham số $$h$$ nhỏ, gói sóng trở nên tập trung hơn
+        và tâm của nó tiến gần quỹ đạo cổ điển trong không gian pha.
+      </p>
+      <article class="demo">
+        <h3>Giới Hạn Bán Cổ Điển: Gói Sóng và Quỹ Đạo Cổ Điển</h3>
+        <div class="spec">
+          <div><strong>Mục tiêu sư phạm.</strong> Trực quan hóa nguyên lý tương ứng giữa động lực học lượng tử tần số cao và quỹ đạo Hamilton cổ điển.</div>
+          <div><strong>Ý tưởng toán học.</strong> Trong thế điều hòa, tâm gói sóng đi theo quỹ đạo cổ điển còn độ rộng gói sóng co lại khi $$h$$ giảm.</div>
+          <div><strong>Tương tác.</strong> Điều chỉnh $$h$$, vị trí đầu $$x_0$$, động lượng đầu $$p_0$$, và bật/tắt hoạt ảnh theo thời gian.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="./semiclassical-wave-packet-vi.html" target="_blank" rel="noopener noreferrer">Mở riêng</a>
+        </div>
+        <iframe src="./semiclassical-wave-packet-vi.html" title="Giới Hạn Bán Cổ Điển: Gói Sóng và Quỹ Đạo Cổ Điển" loading="lazy"></iframe>
+      </article>
+    </section>
+
+    <section class="topic" id="topic-5">
+      <h2>15-05 Spectral Asymptotics</h2>
+      <p>
+        Ở đây sinh viên có thể so sánh trực tiếp hàm đếm trị riêng với đường tiệm cận Weyl,
+        đồng thời thay đổi số chiều và kích thước miền để thấy vai trò của hình học.
+      </p>
+      <article class="demo">
+        <h3>Tiệm Cận Phổ và Định Luật Weyl</h3>
+        <div class="spec">
+          <div><strong>Mục tiêu sư phạm.</strong> Giúp sinh viên nhìn định luật Weyl như một quy luật tăng trưởng hình học chứ không chỉ là công thức lý thuyết.</div>
+          <div><strong>Ý tưởng toán học.</strong> Hàm đếm $$N(\lambda)$$ tăng theo quy luật phụ thuộc số chiều và thể tích miền, và dần bám tiệm cận Weyl khi $$\lambda$$ lớn.</div>
+          <div><strong>Tương tác.</strong> Chọn miền 1D hay 2D, đổi kích thước miền, đổi $$\lambda_{\max}$$, và quan sát sự thay đổi của đồ thị.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="./weyl-law-vi.html" target="_blank" rel="noopener noreferrer">Mở riêng</a>
+        </div>
+        <iframe src="./weyl-law-vi.html" title="Tiệm Cận Phổ và Định Luật Weyl" loading="lazy" style="min-height: 700px;"></iframe>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    Các minh họa này được đóng gói như các trang độc lập để có thể nhúng lại vào lecture notes hoặc mở riêng trong lớp học.
+  </footer>
+</body>
+</html>

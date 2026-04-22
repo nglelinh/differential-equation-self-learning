@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Runge-Kutta</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    body { font-family: Inter, Arial, sans-serif; margin: 0; padding: 18px; background: #f8fafc; color: #111827; }
+    h2 { margin: 0 0 12px; font-size: 1.35rem; }
+    .controls { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+    label { font-size: 14px; color: #374151; }
+    #plot { width: 100%; max-width: 960px; height: 520px; background: white; border: 1px solid #d1d5db; border-radius: 10px; }
+    .note { color: #4b5563; max-width: 960px; font-size: 14px; margin-top: 8px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h2>RK4 vs Euler</h2>
+  <div class="controls">
+    <label>a: <input id="a" type="range" min="-2" max="2" step="0.1" value="1.0"> <span id="aVal">1.0</span></label>
+    <label>step h: <input id="h" type="range" min="0.1" max="1.0" step="0.05" value="0.5"> <span id="hVal">0.50</span></label>
+    <label>y(0): <input id="y0" type="range" min="0.2" max="2.5" step="0.1" value="1.0"> <span id="y0Val">1.0</span></label>
+  </div>
+  <div id="plot"></div>
+  <div class="note">RK4 samples several slopes inside one step, so it often tracks the exact solution much better than Euler on smooth nonstiff problems.</div>
+  <script>
+    const aEl = document.getElementById('a');
+    const hEl = document.getElementById('h');
+    const y0El = document.getElementById('y0');
+    const aVal = document.getElementById('aVal');
+    const hVal = document.getElementById('hVal');
+    const y0Val = document.getElementById('y0Val');
+    function render() {
+      const a = Number(aEl.value), h = Number(hEl.value), y0 = Number(y0El.value);
+      aVal.textContent = a.toFixed(1); hVal.textContent = h.toFixed(2); y0Val.textContent = y0.toFixed(1);
+      const tMax = 4, n = Math.floor(tMax / h);
+      const t = Array.from({ length: n + 1 }, (_, i) => i * h);
+      const euler = [y0], rk4 = [y0];
+      for (let i = 0; i < n; i++) {
+        euler.push(euler[i] + h * a * euler[i]);
+        const y = rk4[i];
+        const k1 = a * y;
+        const k2 = a * (y + h * k1 / 2);
+        const k3 = a * (y + h * k2 / 2);
+        const k4 = a * (y + h * k3);
+        rk4.push(y + h * (k1 + 2 * k2 + 2 * k3 + k4) / 6);
+      }
+      const tFine = Array.from({ length: 500 }, (_, i) => tMax * i / 499);
+      const exact = tFine.map(v => y0 * Math.exp(a * v));
+      Plotly.newPlot('plot', [
+        { x: tFine, y: exact, mode: 'lines', name: 'Exact solution', line: { color: '#111827', width: 3 } },
+        { x: t, y: euler, mode: 'lines+markers', name: 'Euler', line: { color: '#ef4444', width: 2 }, marker: { size: 6 } },
+        { x: t, y: rk4, mode: 'lines+markers', name: 'RK4', line: { color: '#2563eb', width: 3 }, marker: { size: 6 } }
+      ], {
+        title: "Comparing Euler and RK4 on y' = a y",
+        xaxis: { title: 't' }, yaxis: { title: 'y(t)' }, legend: { orientation: 'h' },
+        margin: { t: 60, l: 60, r: 20, b: 50 }
+      }, { responsive: true });
+    }
+    [aEl, hEl, y0El].forEach(el => el.addEventListener('input', render));
+    render();
+  </script>
+</body>
+</html>

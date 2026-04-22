@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 10 Illustration Gallery: The Wave Equation</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #18212f;
+      --muted: #5a6472;
+      --line: #d9e0ea;
+      --accent: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 240px);
+    }
+
+    header, main, footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    header {
+      padding-top: 40px;
+      padding-bottom: 24px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.1;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 980px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .toc a {
+      text-decoration: none;
+      background: rgba(255,255,255,0.78);
+      color: var(--ink);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding-bottom: 40px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.97rem;
+    }
+
+    .figure-wrap {
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+      overflow: hidden;
+    }
+
+    .figure-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: white;
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .meta strong {
+      color: var(--ink);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid #cbd5e1;
+      background: white;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    footer {
+      padding-bottom: 30px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      header, main, footer {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 10 Illustration Gallery</h1>
+    <p>
+      This page gathers the visual assets for Chapter 10 on the wave equation. The figures are arranged to
+      highlight the central geometry of wave motion: physical derivation from force balance, finite-speed propagation,
+      standing modes on bounded domains, multidimensional geometry, energy conservation, boundary interaction,
+      dispersive and dissipative effects, and major applications in acoustics and electromagnetics.
+    </p>
+    <nav class="toc">
+      <a href="#lesson-1">10-01 Derivation</a>
+      <a href="#lesson-2">10-02 d'Alembert</a>
+      <a href="#lesson-3">10-03 Separation</a>
+      <a href="#lesson-4">10-04 Higher Dimensions</a>
+      <a href="#lesson-5">10-05 Energy</a>
+      <a href="#lesson-6">10-06 Reflection</a>
+      <a href="#lesson-7">10-07 Dispersion</a>
+      <a href="#lesson-8">10-08 Applications</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <article class="card" id="lesson-1">
+        <h2>10-01 Derivation of the Wave Equation</h2>
+        <p>The opening figure translates force balance, tension, and inertia into the PDE model, making the contrast with heat diffusion visually immediate.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter10/01_derivation_wave_equation.svg" alt="Derivation of the wave equation illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Restoring force, inertia, and finite-speed propagation.</div>
+          <div><strong>Use in class.</strong> Emphasize why the second time derivative encodes oscillatory transport rather than smoothing.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter10/10_01_Derivation_Wave_Equation/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-2">
+        <h2>10-02 d'Alembert's Solution</h2>
+        <p>This figure makes left- and right-moving waves visible and turns the abstract formula into a propagation law governed by characteristics.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter10/02_dalembert_solution.svg" alt="d'Alembert solution illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Traveling waves and domain of dependence.</div>
+          <div><strong>Use in class.</strong> Show how initial position and velocity split into counterpropagating structures.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter10/10_02_DAlembert_Solution/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-3">
+        <h2>10-03 Separation of Variables</h2>
+        <p>The visual structure of standing waves appears here through mode shapes and normal frequencies, clarifying how boundaries quantize oscillation.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter10/03_separation_of_variables_wave.svg" alt="Separation of variables for the wave equation illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Standing waves and normal modes.</div>
+          <div><strong>Use in class.</strong> Connect bounded-domain vibration to eigenvalue problems and Fourier sine expansions.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter10/10_03_Separation_of_Variables/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-4">
+        <h2>10-04 Wave Equation in Higher Dimensions</h2>
+        <p>This image broadens the discussion from strings to membranes and three-dimensional media, highlighting the role of geometry and coordinate choice.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter10/04_wave_higher_dimensions.svg" alt="Wave equation in higher dimensions illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Geometry, radial structure, and higher-dimensional propagation.</div>
+          <div><strong>Use in class.</strong> Prepare students for Bessel, spherical, and domain-dependent mode behavior.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter10/10_04_Wave_Higher_Dimensions/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-5">
+        <h2>10-05 Energy and Uniqueness</h2>
+        <p>The energy figure shows why wave motion transports energy rather than destroying it, and why conservation identities become rigorous tools for uniqueness.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter10/05_energy_uniqueness.svg" alt="Energy and uniqueness for the wave equation illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Conserved energy and well-posedness.</div>
+          <div><strong>Use in class.</strong> Compare the conservative character of waves with the dissipative character of the heat equation.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter10/10_05_Energy_Uniqueness/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-6">
+        <h2>10-06 Reflection and Transmission</h2>
+        <p>This figure visualizes what happens when a wave meets a boundary or an interface, making impedance mismatch and boundary effects easier to interpret physically.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter10/06_reflection_transmission.svg" alt="Reflection and transmission illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Boundary response and interface splitting.</div>
+          <div><strong>Use in class.</strong> Explain how energy divides between reflected and transmitted components.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter10/10_06_Reflection_Transmission/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-7">
+        <h2>10-07 Dispersion and Dissipation</h2>
+        <p>The contrast between dispersive spreading and true damping is encoded here through wave packets and amplitude loss, which helps separate two commonly confused mechanisms.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter10/07_dispersion_dissipation.svg" alt="Dispersion and dissipation illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Phase speed variation versus energy decay.</div>
+          <div><strong>Use in class.</strong> Distinguish deformation of shape from genuine attenuation of energy.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter10/10_07_Dispersion_Dissipation/">Open lesson</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-8">
+        <h2>10-08 Applications: Acoustics and Electromagnetics</h2>
+        <p>The final figure broadens the chapter from mechanical strings to sound and electromagnetic fields, showing how the same PDE architecture supports multiple physical interpretations.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter10/08_applications_acoustics_em.svg" alt="Applications to acoustics and electromagnetics illustration">
+        </div>
+        <div class="meta">
+          <div><strong>Focus.</strong> Cross-disciplinary wave modeling.</div>
+          <div><strong>Use in class.</strong> End the chapter by emphasizing that wave equations form a whole family of propagation models.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/en/chapter10/10_08_Applications_Acoustics_Electromagnetics/">Open lesson</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    Use this gallery as a visual bridge from classical string vibration to multidimensional waves, acoustics, electromagnetics, and later hyperbolic PDE ideas.
+  </footer>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multistep Methods</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    body { font-family: Inter, Arial, sans-serif; margin: 0; padding: 18px; background: #f8fafc; color: #111827; }
+    h2 { margin: 0 0 12px; font-size: 1.35rem; }
+    .controls { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+    label { font-size: 14px; color: #374151; }
+    #plot { width: 100%; max-width: 960px; height: 520px; background: white; border: 1px solid #d1d5db; border-radius: 10px; }
+    .note { color: #4b5563; max-width: 960px; font-size: 14px; margin-top: 8px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h2>Adams-Bashforth 2: Numerical Memory</h2>
+  <div class="controls">
+    <label>a: <input id="a" type="range" min="-2" max="2" step="0.1" value="1.0"> <span id="aVal">1.0</span></label>
+    <label>step h: <input id="h" type="range" min="0.05" max="0.5" step="0.05" value="0.2"> <span id="hVal">0.20</span></label>
+    <label>y(0): <input id="y0" type="range" min="0.2" max="2.5" step="0.1" value="1.0"> <span id="y0Val">1.0</span></label>
+  </div>
+  <div id="plot"></div>
+  <div class="note">This illustration shows how a multistep scheme uses both the current slope and the previous slope. That is the core intuition behind numerical memory.</div>
+  <script>
+    const aEl = document.getElementById('a');
+    const hEl = document.getElementById('h');
+    const y0El = document.getElementById('y0');
+    const aVal = document.getElementById('aVal');
+    const hVal = document.getElementById('hVal');
+    const y0Val = document.getElementById('y0Val');
+    function render() {
+      const a = Number(aEl.value), h = Number(hEl.value), y0 = Number(y0El.value);
+      aVal.textContent = a.toFixed(1); hVal.textContent = h.toFixed(2); y0Val.textContent = y0.toFixed(1);
+      const tMax = 3, n = Math.floor(tMax / h);
+      const t = Array.from({ length: n + 1 }, (_, i) => i * h);
+      const ab2 = Array(n + 1).fill(0), euler = Array(n + 1).fill(0);
+      ab2[0] = y0; euler[0] = y0;
+      ab2[1] = y0 * Math.exp(a * h);
+      euler[1] = euler[0] + h * a * euler[0];
+      for (let k = 1; k < n; k++) {
+        ab2[k + 1] = ab2[k] + h * (1.5 * a * ab2[k] - 0.5 * a * ab2[k - 1]);
+        euler[k + 1] = euler[k] + h * a * euler[k];
+      }
+      const tFine = Array.from({ length: 500 }, (_, i) => tMax * i / 499);
+      const exact = tFine.map(v => y0 * Math.exp(a * v));
+      Plotly.newPlot('plot', [
+        { x: tFine, y: exact, mode: 'lines', name: 'Exact solution', line: { color: '#111827', width: 3 } },
+        { x: t, y: euler, mode: 'lines+markers', name: 'Euler', line: { color: '#ef4444', width: 2 }, marker: { size: 6 } },
+        { x: t, y: ab2, mode: 'lines+markers', name: 'Adams-Bashforth 2', line: { color: '#2563eb', width: 3 }, marker: { size: 6 } }
+      ], {
+        title: 'Euler versus Adams-Bashforth 2',
+        xaxis: { title: 't' }, yaxis: { title: 'y(t)' }, legend: { orientation: 'h' },
+        margin: { t: 60, l: 60, r: 20, b: 50 }
+      }, { responsive: true });
+    }
+    [aEl, hEl, y0El].forEach(el => el.addEventListener('input', render));
+    render();
+  </script>
+</body>
+</html>

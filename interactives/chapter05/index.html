@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 05 Interactives: Nonlinear Dynamics and Stability</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --card: #ffffff;
+      --ink: #162033;
+      --muted: #5d6879;
+      --line: #d9e1eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef5ff 0, var(--bg) 260px);
+    }
+    header, main, footer {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    header { padding-top: 40px; padding-bottom: 24px; }
+    header h1 { margin: 0 0 10px; font-size: clamp(2rem, 3vw, 3rem); }
+    header p { max-width: 980px; margin: 0; color: var(--muted); line-height: 1.6; }
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .toc a {
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(37,99,235,0.12);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .topic { margin-bottom: 42px; scroll-margin-top: 20px; }
+    .topic h2 { margin: 0 0 10px; font-size: 1.5rem; }
+    .topic > p { margin: 0 0 18px; color: var(--muted); max-width: 940px; line-height: 1.6; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+      gap: 18px;
+    }
+    .demo {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .demo h3 { margin: 0; font-size: 1.08rem; }
+    .spec {
+      display: grid;
+      gap: 8px;
+      font-size: 0.96rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .spec strong { color: var(--ink); }
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid #edf2f7;
+    }
+    .control { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .control label { font-size: 0.82rem; color: var(--muted); }
+    .control input, .control select { width: 100%; }
+    .control span { font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+    .plot {
+      width: 100%;
+      min-height: 300px;
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+    }
+    .status {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    footer { padding-top: 8px; padding-bottom: 30px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 640px) {
+      header, main, footer { padding-left: 14px; padding-right: 14px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 05 Interactives</h1>
+    <p>
+      This standalone gallery proposes two runnable JavaScript illustrations for each topic in Chapter 05,
+      Nonlinear Dynamics and Stability. The emphasis is geometric: nullclines, trajectories, local linearization,
+      Lyapunov landscapes, limit cycles, bifurcation diagrams, ecological models, chaos sensitivity, and SIR thresholds.
+    </p>
+    <nav class="toc">
+      <a href="#topic-1">05-01 Phase Plane</a>
+      <a href="#topic-2">05-02 Linearization</a>
+      <a href="#topic-3">05-03 Stability</a>
+      <a href="#topic-4">05-04 Lyapunov</a>
+      <a href="#topic-5">05-05 Limit Cycles</a>
+      <a href="#topic-6">05-06 Bifurcations</a>
+      <a href="#topic-7">05-07 Predator-Prey</a>
+      <a href="#topic-8">05-08 Competition</a>
+      <a href="#topic-9">05-09 Chaos</a>
+      <a href="#topic-10">05-10 SIR</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="topic" id="topic-1">
+      <h2>05-01 Autonomous Systems and the Phase Plane</h2>
+      <p>These opening illustrations shift the focus from explicit formulas to geometry of flow, nullclines, and regions of motion.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Nonlinear Vector Field and Nullclines</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how nullclines divide the phase plane into regions with different motion directions.</div>
+            <div><strong>Mathematical idea shown.</strong> For a planar autonomous system, local arrows depend only on state, not explicitly on time.</div>
+            <div><strong>User interactions.</strong> Sliders for the nonlinear parameters.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="pp-a">Parameter a</label><input id="pp-a" type="range" min="0.5" max="3" step="0.1" value="1.5"><span id="pp-a-value"></span></div>
+            <div class="control"><label for="pp-b">Parameter b</label><input id="pp-b" type="range" min="0.5" max="3" step="0.1" value="1"><span id="pp-b-value"></span></div>
+          </div>
+          <div id="phaseplane-field-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Trajectories from Different Initial Conditions</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that the same nonlinear field can guide nearby initial conditions into very different regions.</div>
+            <div><strong>Mathematical idea shown.</strong> Phase-plane structure organizes families of trajectories even when no explicit formula is available.</div>
+            <div><strong>User interactions.</strong> Sliders for two initial coordinates.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="pp-x0">Initial x</label><input id="pp-x0" type="range" min="-2" max="3" step="0.1" value="1"><span id="pp-x0-value"></span></div>
+            <div class="control"><label for="pp-y0">Initial y</label><input id="pp-y0" type="range" min="-2" max="3" step="0.1" value="0.5"><span id="pp-y0-value"></span></div>
+          </div>
+          <div id="phaseplane-traj-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-2">
+      <h2>05-02 Equilibria and Linearization</h2>
+      <p>These illustrations show how a nonlinear field becomes approximately linear under magnification near an equilibrium.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Zooming Near an Equilibrium</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that local nonlinear geometry becomes nearly linear close to an equilibrium.</div>
+            <div><strong>Mathematical idea shown.</strong> The Jacobian gives the first-order approximation to the vector field near the steady state.</div>
+            <div><strong>User interactions.</strong> Slider for zoom scale.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="lin-zoom">Zoom radius</label><input id="lin-zoom" type="range" min="0.4" max="3" step="0.1" value="1.4"><span id="lin-zoom-value"></span></div>
+          </div>
+          <div id="linearization-zoom-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Nonlinear vs Linearized Trajectory</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Compare the true nonlinear trajectory to the trajectory predicted by the Jacobian.</div>
+            <div><strong>Mathematical idea shown.</strong> Linearization is accurate locally but can drift away from the true orbit farther out.</div>
+            <div><strong>User interactions.</strong> Sliders for initial perturbation size.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="lin-pert">Perturbation size</label><input id="lin-pert" type="range" min="0.1" max="1.5" step="0.05" value="0.5"><span id="lin-pert-value"></span></div>
+          </div>
+          <div id="linearization-compare-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-3">
+      <h2>05-03 Stability Classification</h2>
+      <p>These illustrations connect Jacobian spectra to local geometry while keeping the nonlinear caveat in view.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Jacobian Spectrum Classifier</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how eigenvalues of the Jacobian determine local node, saddle, spiral, or center-type behavior.</div>
+            <div><strong>Mathematical idea shown.</strong> Real parts control attraction or repulsion, while imaginary parts create rotation.</div>
+            <div><strong>User interactions.</strong> Sliders for real part and imaginary part.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="stab-alpha">Real part</label><input id="stab-alpha" type="range" min="-2" max="2" step="0.1" value="-0.6"><span id="stab-alpha-value"></span></div>
+            <div class="control"><label for="stab-beta">Imaginary part</label><input id="stab-beta" type="range" min="0" max="3" step="0.1" value="1.5"><span id="stab-beta-value"></span></div>
+          </div>
+          <div id="stability-spectrum-plot" class="plot"></div>
+          <div id="stability-spectrum-note" class="status"></div>
+        </article>
+        <article class="demo">
+          <h3>Representative Local Phase Portrait</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show the geometric motion corresponding to the chosen spectral type.</div>
+            <div><strong>Mathematical idea shown.</strong> Local classification translates eigenvalue information into orbit shapes.</div>
+            <div><strong>User interactions.</strong> Reuses the spectral sliders.</div>
+          </div>
+          <div id="stability-portrait-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-4">
+      <h2>05-04 Lyapunov Stability</h2>
+      <p>These visuals make Lyapunov functions feel like geometric energy landscapes rather than only symbolic inequalities.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Lyapunov Landscape and Descent</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how a scalar function decreases along trajectories without solving the system explicitly.</div>
+            <div><strong>Mathematical idea shown.</strong> A positive function with nonpositive derivative along trajectories acts as a stability certificate.</div>
+            <div><strong>User interactions.</strong> Sliders for damping and initial state.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="lya-c">Damping</label><input id="lya-c" type="range" min="0.2" max="3" step="0.1" value="1"><span id="lya-c-value"></span></div>
+            <div class="control"><label for="lya-x0">Initial x</label><input id="lya-x0" type="range" min="-2" max="2" step="0.1" value="1"><span id="lya-x0-value"></span></div>
+            <div class="control"><label for="lya-y0">Initial y</label><input id="lya-y0" type="range" min="-2" max="2" step="0.1" value="1.2"><span id="lya-y0-value"></span></div>
+          </div>
+          <div id="lyapunov-landscape-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>V(t) Along the Trajectory</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show the monotone decay of a Lyapunov candidate along a solution.</div>
+            <div><strong>Mathematical idea shown.</strong> If $$\dot V < 0$$ away from equilibrium, the system is driven toward lower-energy states.</div>
+            <div><strong>User interactions.</strong> Reuses the damping and initial-condition sliders.</div>
+          </div>
+          <div id="lyapunov-time-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-5">
+      <h2>05-05 Limit Cycles</h2>
+      <p>These illustrations distinguish isolated periodic orbits from ordinary families of closed curves.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Stable Limit Cycle in a Radial Normal Form</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show a phase portrait where nearby trajectories are drawn to an isolated periodic orbit.</div>
+            <div><strong>Mathematical idea shown.</strong> In polar form, an attracting radius can create a stable limit cycle.</div>
+            <div><strong>User interactions.</strong> Slider for target cycle radius.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="lc-r">Target radius</label><input id="lc-r" type="range" min="0.5" max="3" step="0.1" value="1.6"><span id="lc-r-value"></span></div>
+          </div>
+          <div id="limit-cycle-phase-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Closed Orbit Family vs Isolated Cycle</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Contrast a nonlinear limit cycle with a linear center that has many closed orbits.</div>
+            <div><strong>Mathematical idea shown.</strong> Isolation, not merely periodicity, is what defines a limit cycle.</div>
+            <div><strong>User interactions.</strong> Dropdown between center and isolated-cycle model.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="lc-kind">Model</label><select id="lc-kind"><option value="center">Linear center</option><option value="limit" selected>Isolated limit cycle</option></select></div>
+          </div>
+          <div id="limit-cycle-compare-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-6">
+      <h2>05-06 Bifurcations</h2>
+      <p>These illustrations make parameter thresholds visible as branch creation, destruction, and stability exchange.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>One-Parameter Normal Form Explorer</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Let students move the parameter through a local bifurcation and watch equilibrium branches change.</div>
+            <div><strong>Mathematical idea shown.</strong> Saddle-node, transcritical, and pitchfork normal forms show different regime changes.</div>
+            <div><strong>User interactions.</strong> Dropdown for bifurcation type and slider for parameter $$\mu$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="bif-type">Type</label><select id="bif-type"><option value="saddle">Saddle-node</option><option value="transcritical">Transcritical</option><option value="pitchfork">Pitchfork</option></select></div>
+            <div class="control"><label for="bif-mu">Parameter mu</label><input id="bif-mu" type="range" min="-2" max="2" step="0.1" value="0.5"><span id="bif-mu-value"></span></div>
+          </div>
+          <div id="bifurcation-diagram-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Vector Field Before and After Threshold</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that a bifurcation is a structural change in the underlying dynamics, not just a graph decoration.</div>
+            <div><strong>Mathematical idea shown.</strong> The sign pattern of the one-dimensional flow changes as equilibria are created or lose stability.</div>
+            <div><strong>User interactions.</strong> Reuses the type and parameter controls.</div>
+          </div>
+          <div id="bifurcation-flow-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-7">
+      <h2>05-07 Predator-Prey Models</h2>
+      <p>These illustrations focus on nullclines, positive equilibrium, and cyclic interaction.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Lotka-Volterra Phase Portrait</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how the interaction geometry produces cyclical predator-prey motion.</div>
+            <div><strong>Mathematical idea shown.</strong> Nullclines and the positive equilibrium organize the cycle in the positive quadrant.</div>
+            <div><strong>User interactions.</strong> Sliders for prey growth and predator death rates.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="pp2-a">Prey growth a</label><input id="pp2-a" type="range" min="0.5" max="3" step="0.1" value="1.4"><span id="pp2-a-value"></span></div>
+            <div class="control"><label for="pp2-c">Predator death c</label><input id="pp2-c" type="range" min="0.5" max="3" step="0.1" value="1"><span id="pp2-c-value"></span></div>
+          </div>
+          <div id="predprey-phase-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Predator and Prey Time Traces</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show the time lag between prey peaks and predator peaks.</div>
+            <div><strong>Mathematical idea shown.</strong> Coupled nonlinear feedback creates oscillations with a biologically meaningful phase lag.</div>
+            <div><strong>User interactions.</strong> Reuses the parameter sliders.</div>
+          </div>
+          <div id="predprey-time-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-8">
+      <h2>05-08 Competing Species</h2>
+      <p>These illustrations emphasize nullcline geometry and the balance between coexistence and exclusion.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Competition Nullclines and Flow</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how nullcline placement predicts coexistence or exclusion outcomes.</div>
+            <div><strong>Mathematical idea shown.</strong> The competition coefficients determine whether the interior equilibrium exists and is attracting.</div>
+            <div><strong>User interactions.</strong> Sliders for cross-competition coefficients $$\alpha$$ and $$\beta$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="comp-alpha">Alpha</label><input id="comp-alpha" type="range" min="0.2" max="2" step="0.1" value="0.8"><span id="comp-alpha-value"></span></div>
+            <div class="control"><label for="comp-beta">Beta</label><input id="comp-beta" type="range" min="0.2" max="2" step="0.1" value="0.9"><span id="comp-beta-value"></span></div>
+          </div>
+          <div id="competition-phase-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Outcome Regions</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how the same model can lead to coexistence, bistability, or exclusion depending on parameters.</div>
+            <div><strong>Mathematical idea shown.</strong> Competitive outcomes are encoded geometrically before solving trajectories in detail.</div>
+            <div><strong>User interactions.</strong> Reuses the competition sliders.</div>
+          </div>
+          <div id="competition-outcome-plot" class="plot"></div>
+          <div id="competition-outcome-note" class="status"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-9">
+      <h2>05-09 Introduction to Chaos</h2>
+      <p>These illustrations are introductory by design: sensitivity, boundedness, and the distinction between determinism and predictability.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Sensitive Dependence Toy Model</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how tiny initial differences can grow dramatically even under deterministic rules.</div>
+            <div><strong>Mathematical idea shown.</strong> Positive effective Lyapunov growth causes nearby trajectories to separate exponentially for a time.</div>
+            <div><strong>User interactions.</strong> Slider for initial separation and slider for growth exponent.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="chaos-d0">Initial gap</label><input id="chaos-d0" type="range" min="0.001" max="0.2" step="0.001" value="0.02"><span id="chaos-d0-value"></span></div>
+            <div class="control"><label for="chaos-l">Lyapunov exponent</label><input id="chaos-l" type="range" min="0.1" max="1.5" step="0.05" value="0.6"><span id="chaos-l-value"></span></div>
+          </div>
+          <div id="chaos-separation-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Logistic Map Bifurcation Preview</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Give an accessible first look at how deterministic iteration can create complex long-run behavior.</div>
+            <div><strong>Mathematical idea shown.</strong> Period-doubling and irregular attractor-like structure appear as the parameter increases.</div>
+            <div><strong>User interactions.</strong> Slider for the logistic map parameter.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="chaos-r">Map parameter r</label><input id="chaos-r" type="range" min="2.5" max="4" step="0.01" value="3.5"><span id="chaos-r-value"></span></div>
+          </div>
+          <div id="chaos-map-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-10">
+      <h2>05-10 Applications: SIR Epidemiology</h2>
+      <p>These illustrations center the threshold idea $$\mathcal{R}_0$$ and the flow among compartments.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>SIR Compartment Trajectories</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show the standard epidemic curve: susceptible down, infected up then down, removed up.</div>
+            <div><strong>Mathematical idea shown.</strong> Transmission and recovery rates determine whether infections initially grow and when they peak.</div>
+            <div><strong>User interactions.</strong> Sliders for transmission $$\beta$$ and recovery $$\gamma$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="sir-beta">Transmission beta</label><input id="sir-beta" type="range" min="0.1" max="1.5" step="0.05" value="0.5"><span id="sir-beta-value"></span></div>
+            <div class="control"><label for="sir-gamma">Recovery gamma</label><input id="sir-gamma" type="range" min="0.05" max="1" step="0.05" value="0.2"><span id="sir-gamma-value"></span></div>
+          </div>
+          <div id="sir-time-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Threshold and Effective Growth</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how $$\mathcal{R}_0$$ and the current susceptible pool determine whether infections rise or fall.</div>
+            <div><strong>Mathematical idea shown.</strong> Growth depends on the sign of $$\dot I = I(\beta S - \gamma)$$.</div>
+            <div><strong>User interactions.</strong> Reuses the transmission and recovery sliders.</div>
+          </div>
+          <div id="sir-threshold-plot" class="plot"></div>
+          <div id="sir-threshold-note" class="status"></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    The page is self-contained so it can be opened directly in a browser or served as a static file from the repository.
+  </footer>
+
+  <script>
+    const fmt = (value, digits = 2) => Number(value).toFixed(digits).replace(/\.00$/, '');
+
+    function bindValue(id, digits = 2) {
+      const input = document.getElementById(id);
+      const output = document.getElementById(`${id}-value`);
+      const refresh = () => { if (output) output.textContent = fmt(input.value, digits); };
+      input.addEventListener('input', refresh);
+      input.addEventListener('change', refresh);
+      refresh();
+    }
+
+    function bindControls(ids, render) {
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        el.addEventListener('input', render);
+        el.addEventListener('change', render);
+      });
+      render();
+    }
+
+    function linspace(min, max, count) {
+      return Array.from({ length: count }, (_, i) => min + (max - min) * i / (count - 1));
+    }
+
+    function plotSeries(divId, traces, layout = {}) {
+      Plotly.react(divId, traces, {
+        margin: { l: 46, r: 18, t: 24, b: 42 },
+        paper_bgcolor: '#ffffff',
+        plot_bgcolor: '#ffffff',
+        legend: { orientation: 'h' },
+        xaxis: { gridcolor: '#e5e7eb', zerolinecolor: '#cbd5e1' },
+        yaxis: { gridcolor: '#e5e7eb', zerolinecolor: '#cbd5e1' },
+        ...layout,
+      }, { responsive: true, displayModeBar: false });
+    }
+
+    function simulate2D(f, x0, y0, tMax, steps) {
+      const dt = tMax / steps;
+      let x = x0;
+      let y = y0;
+      const out = [];
+      for (let i = 0; i <= steps; i += 1) {
+        const t = i * dt;
+        out.push({ t, x, y });
+        const k1 = f(x, y, t);
+        const k2 = f(x + dt * k1[0] / 2, y + dt * k1[1] / 2, t + dt / 2);
+        const k3 = f(x + dt * k2[0] / 2, y + dt * k2[1] / 2, t + dt / 2);
+        const k4 = f(x + dt * k3[0], y + dt * k3[1], t + dt);
+        x += dt * (k1[0] + 2 * k2[0] + 2 * k3[0] + k4[0]) / 6;
+        y += dt * (k1[1] + 2 * k2[1] + 2 * k3[1] + k4[1]) / 6;
+      }
+      return out;
+    }
+
+    function buildField(f, xMin, xMax, yMin, yMax, step = 0.6) {
+      const traces = [];
+      for (let x = xMin; x <= xMax; x += step) {
+        for (let y = yMin; y <= yMax; y += step) {
+          const [u, v] = f(x, y, 0);
+          const norm = Math.max(1e-6, Math.hypot(u, v));
+          traces.push({
+            x: [x, x + 0.28 * u / norm],
+            y: [y, y + 0.28 * v / norm],
+            mode: 'lines',
+            line: { color: 'rgba(37,99,235,0.45)', width: 1 },
+            hoverinfo: 'skip',
+            showlegend: false,
+          });
+        }
+      }
+      return traces;
+    }
+
+    function renderPhasePlaneField() {
+      const a = Number(document.getElementById('pp-a').value);
+      const b = Number(document.getElementById('pp-b').value);
+      const f = (x, y) => [a - x * x - y, x - b * y];
+      const traces = [
+        ...buildField(f, -2, 3, -2, 3, 0.7),
+        { x: linspace(-2, 3, 200), y: linspace(-2, 3, 200).map((x) => a - x * x), mode: 'lines', name: 'x-dot = 0', line: { color: '#dc2626', dash: 'dash' } },
+        { x: linspace(-2, 3, 200), y: linspace(-2, 3, 200).map((x) => x / b), mode: 'lines', name: 'y-dot = 0', line: { color: '#0891b2', dash: 'dash' } },
+      ];
+      plotSeries('phaseplane-field-plot', traces, { xaxis: { title: 'x' }, yaxis: { title: 'y', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function renderPhasePlaneTraj() {
+      const a = Number(document.getElementById('pp-a').value);
+      const b = Number(document.getElementById('pp-b').value);
+      const x0 = Number(document.getElementById('pp-x0').value);
+      const y0 = Number(document.getElementById('pp-y0').value);
+      const f = (x, y) => [a - x * x - y, x - b * y];
+      const sol = simulate2D(f, x0, y0, 12, 900);
+      plotSeries('phaseplane-traj-plot', [
+        ...buildField(f, -2, 3, -2, 3, 0.7),
+        { x: sol.map((p) => p.x), y: sol.map((p) => p.y), mode: 'lines', name: 'Trajectory', line: { color: '#dc2626', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'y', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function renderLinearizationZoom() {
+      const z = Number(document.getElementById('lin-zoom').value);
+      const xs = linspace(-z, z, 200);
+      const nonlinear = xs.map((x) => x - x * x);
+      const linear = xs.map((x) => x);
+      plotSeries('linearization-zoom-plot', [
+        { x: xs, y: nonlinear, mode: 'lines', name: 'Nonlinear term x - x^2', line: { color: '#2563eb', width: 3 } },
+        { x: xs, y: linear, mode: 'lines', name: 'Linearization at 0', line: { color: '#dc2626', dash: 'dash' } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'f(x)' } });
+    }
+
+    function renderLinearizationCompare() {
+      const p = Number(document.getElementById('lin-pert').value);
+      const fNon = (x, y) => [x - y - x * x, x + y - y * y];
+      const fLin = (x, y) => [x - y, x + y];
+      const non = simulate2D(fNon, p, p / 2, 3, 500);
+      const lin = simulate2D(fLin, p, p / 2, 3, 500);
+      plotSeries('linearization-compare-plot', [
+        { x: non.map((q) => q.x), y: non.map((q) => q.y), mode: 'lines', name: 'Nonlinear', line: { color: '#2563eb', width: 3 } },
+        { x: lin.map((q) => q.x), y: lin.map((q) => q.y), mode: 'lines', name: 'Linearized', line: { color: '#dc2626', dash: 'dash' } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'y', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function renderStabilitySpectrum() {
+      const alpha = Number(document.getElementById('stab-alpha').value);
+      const beta = Number(document.getElementById('stab-beta').value);
+      const traces = [{ x: [alpha], y: [beta], mode: 'markers', name: 'Eigenvalue', marker: { color: '#2563eb', size: 12 } }];
+      if (beta > 0.01) traces.push({ x: [alpha], y: [-beta], mode: 'markers', name: 'Conjugate', marker: { color: '#2563eb', size: 12 } });
+      plotSeries('stability-spectrum-plot', traces, { xaxis: { title: 'Real part' }, yaxis: { title: 'Imaginary part', scaleanchor: 'x', scaleratio: 1 } });
+      let label;
+      if (beta < 0.05) label = alpha < 0 ? 'node-type stable' : alpha > 0 ? 'node-type unstable' : 'neutral boundary';
+      else label = alpha < 0 ? 'stable spiral' : alpha > 0 ? 'unstable spiral' : 'center candidate';
+      document.getElementById('stability-spectrum-note').textContent = `With real part ${fmt(alpha, 2)} and imaginary magnitude ${fmt(beta, 2)}, the linearized type is ${label}.`;
+    }
+
+    function renderStabilityPortrait() {
+      const alpha = Number(document.getElementById('stab-alpha').value);
+      const beta = Number(document.getElementById('stab-beta').value);
+      const f = beta < 0.05 ? (x, y) => [alpha * x, alpha * y] : (x, y) => [alpha * x - beta * y, beta * x + alpha * y];
+      const traces = buildField(f, -3, 3, -3, 3, 0.7);
+      [[2, 0.5], [1.2, -1.5], [-2, 1], [-1, -1.2]].forEach((seed, idx) => {
+        const sol = simulate2D(f, seed[0], seed[1], 8, 500);
+        traces.push({ x: sol.map((p) => p.x), y: sol.map((p) => p.y), mode: 'lines', name: `Trajectory ${idx + 1}`, line: { width: 2 } });
+      });
+      plotSeries('stability-portrait-plot', traces, { xaxis: { title: 'x' }, yaxis: { title: 'y', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function lyapunovSystem(c) {
+      return (x, y) => [y, -x - c * y];
+    }
+
+    function renderLyapunovLandscape() {
+      const c = Number(document.getElementById('lya-c').value);
+      const x0 = Number(document.getElementById('lya-x0').value);
+      const y0 = Number(document.getElementById('lya-y0').value);
+      const f = lyapunovSystem(c);
+      const sol = simulate2D(f, x0, y0, 14, 700);
+      const x = linspace(-2.5, 2.5, 80);
+      const y = linspace(-2.5, 2.5, 80);
+      const z = y.map((yy) => x.map((xx) => 0.5 * (xx * xx + yy * yy)));
+      plotSeries('lyapunov-landscape-plot', [
+        { x, y, z, type: 'contour', contours: { coloring: 'lines' }, colorscale: 'Blues', showscale: false, name: 'V(x,y)' },
+        { x: sol.map((p) => p.x), y: sol.map((p) => p.y), mode: 'lines', name: 'Trajectory', line: { color: '#dc2626', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'y', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function renderLyapunovTime() {
+      const c = Number(document.getElementById('lya-c').value);
+      const x0 = Number(document.getElementById('lya-x0').value);
+      const y0 = Number(document.getElementById('lya-y0').value);
+      const f = lyapunovSystem(c);
+      const sol = simulate2D(f, x0, y0, 14, 700);
+      const V = sol.map((p) => 0.5 * (p.x * p.x + p.y * p.y));
+      plotSeries('lyapunov-time-plot', [
+        { x: sol.map((p) => p.t), y: V, mode: 'lines', name: 'V(t)', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Lyapunov value' } });
+    }
+
+    function limitCycleField(R) {
+      return (x, y) => {
+        const r2 = x * x + y * y;
+        const radial = R * R - r2;
+        return [radial * x - y, radial * y + x];
+      };
+    }
+
+    function renderLimitCyclePhase() {
+      const R = Number(document.getElementById('lc-r').value);
+      const f = limitCycleField(R);
+      const traces = buildField(f, -3, 3, -3, 3, 0.75);
+      [[0.5, 0], [2.5, 0.4], [0.3, 1.8], [-2, 0.7]].forEach((seed, idx) => {
+        const sol = simulate2D(f, seed[0], seed[1], 18, 1200);
+        traces.push({ x: sol.map((p) => p.x), y: sol.map((p) => p.y), mode: 'lines', name: `Trajectory ${idx + 1}`, line: { width: 2 } });
+      });
+      plotSeries('limit-cycle-phase-plot', traces, { xaxis: { title: 'x' }, yaxis: { title: 'y', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function renderLimitCycleCompare() {
+      const kind = document.getElementById('lc-kind').value;
+      const traces = [];
+      if (kind === 'center') {
+        [[0.6, 0], [1.2, 0.2], [2, -0.3]].forEach((seed, idx) => {
+          const sol = simulate2D((x, y) => [-y, x], seed[0], seed[1], 18, 1000);
+          traces.push({ x: sol.map((p) => p.x), y: sol.map((p) => p.y), mode: 'lines', name: `Closed orbit ${idx + 1}`, line: { width: 2 } });
+        });
+      } else {
+        const f = limitCycleField(1.6);
+        [[0.4, 0], [2.5, 0.1], [-1.1, 2]].forEach((seed, idx) => {
+          const sol = simulate2D(f, seed[0], seed[1], 18, 1000);
+          traces.push({ x: sol.map((p) => p.x), y: sol.map((p) => p.y), mode: 'lines', name: `Trajectory ${idx + 1}`, line: { width: 2 } });
+        });
+      }
+      plotSeries('limit-cycle-compare-plot', traces, { xaxis: { title: 'x' }, yaxis: { title: 'y', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function normalForm(type, mu, x) {
+      if (type === 'saddle') return mu + x * x;
+      if (type === 'transcritical') return mu * x - x * x;
+      return mu * x - x * x * x;
+    }
+
+    function renderBifurcationDiagram() {
+      const type = document.getElementById('bif-type').value;
+      const mu = Number(document.getElementById('bif-mu').value);
+      const ms = linspace(-2, 2, 320);
+      const stable = [];
+      const unstable = [];
+      ms.forEach((m) => {
+        if (type === 'saddle') {
+          if (m <= 0) {
+            stable.push({ x: m, y: Math.sqrt(-m) });
+            unstable.push({ x: m, y: -Math.sqrt(-m) });
+          }
+        } else if (type === 'transcritical') {
+          (m > 0 ? stable : unstable).push({ x: m, y: 0 });
+          (m > 0 ? unstable : stable).push({ x: m, y: m });
+        } else {
+          (m < 0 ? stable : unstable).push({ x: m, y: 0 });
+          if (m >= 0) {
+            stable.push({ x: m, y: Math.sqrt(m) });
+            stable.push({ x: m, y: -Math.sqrt(m) });
+          }
+        }
+      });
+      plotSeries('bifurcation-diagram-plot', [
+        { x: stable.map((p) => p.x), y: stable.map((p) => p.y), mode: 'markers', name: 'Stable branch', marker: { color: '#2563eb', size: 5 } },
+        { x: unstable.map((p) => p.x), y: unstable.map((p) => p.y), mode: 'markers', name: 'Unstable branch', marker: { color: '#dc2626', size: 5, symbol: 'circle-open' } },
+        { x: [mu], y: [0], mode: 'markers', name: 'Chosen parameter', marker: { color: '#111827', size: 11 } },
+      ], { xaxis: { title: 'mu' }, yaxis: { title: 'Equilibrium x*' } });
+    }
+
+    function renderBifurcationFlow() {
+      const type = document.getElementById('bif-type').value;
+      const mu = Number(document.getElementById('bif-mu').value);
+      const x = linspace(-2.5, 2.5, 400);
+      plotSeries('bifurcation-flow-plot', [
+        { x, y: x.map((xx) => normalForm(type, mu, xx)), mode: 'lines', name: 'x-dot = f(x, mu)', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Flow function' } });
+    }
+
+    function predatorPreyField(a, c) {
+      const b = 1;
+      const d = 1;
+      return (x, y) => [a * x - b * x * y, -c * y + d * x * y];
+    }
+
+    function renderPredPreyPhase() {
+      const a = Number(document.getElementById('pp2-a').value);
+      const c = Number(document.getElementById('pp2-c').value);
+      const f = predatorPreyField(a, c);
+      const traces = buildField(f, 0.1, 3.2, 0.1, 3.2, 0.45);
+      const sol = simulate2D(f, 1.3, 0.8, 20, 1200);
+      traces.push({ x: [c, c], y: [0, 3.2], mode: 'lines', name: 'x-dot = 0', line: { color: '#dc2626', dash: 'dash' } });
+      traces.push({ x: [0, 3.2], y: [a, a], mode: 'lines', name: 'y-dot = 0', line: { color: '#0891b2', dash: 'dash' } });
+      traces.push({ x: sol.map((p) => p.x), y: sol.map((p) => p.y), mode: 'lines', name: 'Trajectory', line: { color: '#111827', width: 3 } });
+      plotSeries('predprey-phase-plot', traces, { xaxis: { title: 'Prey' }, yaxis: { title: 'Predator', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function renderPredPreyTime() {
+      const a = Number(document.getElementById('pp2-a').value);
+      const c = Number(document.getElementById('pp2-c').value);
+      const sol = simulate2D(predatorPreyField(a, c), 1.3, 0.8, 20, 1200);
+      plotSeries('predprey-time-plot', [
+        { x: sol.map((p) => p.t), y: sol.map((p) => p.x), mode: 'lines', name: 'Prey', line: { color: '#2563eb', width: 3 } },
+        { x: sol.map((p) => p.t), y: sol.map((p) => p.y), mode: 'lines', name: 'Predator', line: { color: '#dc2626', width: 2 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Population' } });
+    }
+
+    function competitionField(alpha, beta) {
+      return (x, y) => [x * (1 - x - alpha * y), y * (1 - y - beta * x)];
+    }
+
+    function renderCompetitionPhase() {
+      const alpha = Number(document.getElementById('comp-alpha').value);
+      const beta = Number(document.getElementById('comp-beta').value);
+      const f = competitionField(alpha, beta);
+      const traces = buildField(f, 0, 1.4, 0, 1.4, 0.2);
+      traces.push({ x: linspace(0, 1.4, 160), y: linspace(0, 1.4, 160).map((x) => (1 - x) / alpha), mode: 'lines', name: 'x-dot = 0', line: { color: '#dc2626', dash: 'dash' } });
+      traces.push({ x: linspace(0, 1.4, 160).map((x) => (1 - x) / beta), y: linspace(0, 1.4, 160), mode: 'lines', name: 'y-dot = 0', line: { color: '#0891b2', dash: 'dash' } });
+      const sol = simulate2D(f, 0.8, 0.6, 20, 1200);
+      traces.push({ x: sol.map((p) => p.x), y: sol.map((p) => p.y), mode: 'lines', name: 'Trajectory', line: { color: '#111827', width: 3 } });
+      plotSeries('competition-phase-plot', traces, { xaxis: { title: 'Species x' }, yaxis: { title: 'Species y', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function renderCompetitionOutcome() {
+      const alpha = Number(document.getElementById('comp-alpha').value);
+      const beta = Number(document.getElementById('comp-beta').value);
+      let note;
+      if (alpha < 1 && beta < 1) note = 'Stable coexistence is expected because cross-competition is weaker than self-limitation.';
+      else if (alpha > 1 && beta > 1) note = 'Bistability or competitive exclusion is likely: the winner depends strongly on initial conditions.';
+      else if (alpha > 1) note = 'Species y tends to dominate because x feels stronger pressure from y.';
+      else note = 'Species x tends to dominate because y feels stronger pressure from x.';
+      plotSeries('competition-outcome-plot', [
+        { x: [alpha], y: [beta], mode: 'markers', name: 'Current parameters', marker: { color: '#2563eb', size: 12 } },
+        { x: [0, 2], y: [1, 1], mode: 'lines', name: 'beta = 1', line: { color: '#94a3b8', dash: 'dash' } },
+        { x: [1, 1], y: [0, 2], mode: 'lines', name: 'alpha = 1', line: { color: '#94a3b8', dash: 'dash' } },
+      ], { xaxis: { title: 'alpha' }, yaxis: { title: 'beta' } });
+      document.getElementById('competition-outcome-note').textContent = note;
+    }
+
+    function renderChaosSeparation() {
+      const d0 = Number(document.getElementById('chaos-d0').value);
+      const l = Number(document.getElementById('chaos-l').value);
+      const t = linspace(0, 12, 300);
+      const d = t.map((tt) => d0 * Math.exp(l * tt));
+      plotSeries('chaos-separation-plot', [
+        { x: t, y: d, mode: 'lines', name: 'Separation', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Distance between trajectories' } });
+    }
+
+    function renderChaosMap() {
+      const r = Number(document.getElementById('chaos-r').value);
+      let x = 0.3;
+      const pts = [];
+      for (let i = 0; i < 200; i += 1) {
+        x = r * x * (1 - x);
+        if (i > 100) pts.push({ n: i, x });
+      }
+      plotSeries('chaos-map-plot', [
+        { x: pts.map((p) => p.n), y: pts.map((p) => p.x), mode: 'markers', name: 'Iterates after transients', marker: { color: '#2563eb', size: 5 } },
+      ], { xaxis: { title: 'Iteration n' }, yaxis: { title: 'x_n' } });
+    }
+
+    function sirData() {
+      const beta = Number(document.getElementById('sir-beta').value);
+      const gamma = Number(document.getElementById('sir-gamma').value);
+      const dt = 0.02;
+      let S = 0.98;
+      let I = 0.02;
+      let R = 0;
+      const out = [];
+      for (let i = 0; i <= 900; i += 1) {
+        const t = i * dt;
+        out.push({ t, S, I, R });
+        const dS = -beta * S * I;
+        const dI = beta * S * I - gamma * I;
+        const dR = gamma * I;
+        S += dt * dS;
+        I += dt * dI;
+        R += dt * dR;
+      }
+      return { beta, gamma, out };
+    }
+
+    function renderSIRTime() {
+      const { out } = sirData();
+      plotSeries('sir-time-plot', [
+        { x: out.map((p) => p.t), y: out.map((p) => p.S), mode: 'lines', name: 'S', line: { color: '#2563eb', width: 3 } },
+        { x: out.map((p) => p.t), y: out.map((p) => p.I), mode: 'lines', name: 'I', line: { color: '#dc2626', width: 3 } },
+        { x: out.map((p) => p.t), y: out.map((p) => p.R), mode: 'lines', name: 'R', line: { color: '#0891b2', width: 2 } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Population fraction' } });
+    }
+
+    function renderSIRThreshold() {
+      const { beta, gamma, out } = sirData();
+      const threshold = gamma / beta;
+      plotSeries('sir-threshold-plot', [
+        { x: out.map((p) => p.t), y: out.map((p) => p.S), mode: 'lines', name: 'S(t)', line: { color: '#2563eb', width: 3 } },
+        { x: [0, out[out.length - 1].t], y: [threshold, threshold], mode: 'lines', name: 'Growth threshold gamma/beta', line: { color: '#dc2626', dash: 'dash' } },
+      ], { xaxis: { title: 't' }, yaxis: { title: 'Susceptible fraction' } });
+      const R0 = beta * out[0].S / gamma;
+      document.getElementById('sir-threshold-note').textContent = `Initial effective reproduction threshold is beta*S0/gamma = ${fmt(R0, 2)}. Infection grows initially when S > gamma/beta = ${fmt(threshold, 2)}.`;
+    }
+
+    [
+      ['pp-a', 1], ['pp-b', 1], ['pp-x0', 1], ['pp-y0', 1], ['lin-zoom', 1], ['lin-pert', 2],
+      ['stab-alpha', 1], ['stab-beta', 1], ['lya-c', 1], ['lya-x0', 1], ['lya-y0', 1],
+      ['lc-r', 1], ['bif-mu', 1], ['pp2-a', 1], ['pp2-c', 1], ['comp-alpha', 1], ['comp-beta', 1],
+      ['chaos-d0', 3], ['chaos-l', 2], ['chaos-r', 2], ['sir-beta', 2], ['sir-gamma', 2],
+    ].forEach(([id, digits]) => bindValue(id, digits));
+
+    bindControls(['pp-a', 'pp-b'], renderPhasePlaneField);
+    bindControls(['pp-a', 'pp-b', 'pp-x0', 'pp-y0'], renderPhasePlaneTraj);
+    bindControls(['lin-zoom'], renderLinearizationZoom);
+    bindControls(['lin-pert'], renderLinearizationCompare);
+    bindControls(['stab-alpha', 'stab-beta'], () => { renderStabilitySpectrum(); renderStabilityPortrait(); });
+    bindControls(['lya-c', 'lya-x0', 'lya-y0'], () => { renderLyapunovLandscape(); renderLyapunovTime(); });
+    bindControls(['lc-r'], renderLimitCyclePhase);
+    bindControls(['lc-kind'], renderLimitCycleCompare);
+    bindControls(['bif-type', 'bif-mu'], () => { renderBifurcationDiagram(); renderBifurcationFlow(); });
+    bindControls(['pp2-a', 'pp2-c'], () => { renderPredPreyPhase(); renderPredPreyTime(); });
+    bindControls(['comp-alpha', 'comp-beta'], () => { renderCompetitionPhase(); renderCompetitionOutcome(); });
+    bindControls(['chaos-d0', 'chaos-l'], renderChaosSeparation);
+    bindControls(['chaos-r'], renderChaosMap);
+    bindControls(['sir-beta', 'sir-gamma'], () => { renderSIRTime(); renderSIRThreshold(); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 00 Illustration Gallery: Nền Tảng Toán Học</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #18212f;
+      --muted: #5a6472;
+      --line: #d9e0ea;
+      --accent: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 240px);
+    }
+
+    header, main, footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    header {
+      padding-top: 40px;
+      padding-bottom: 24px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.1;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 980px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .toc a {
+      text-decoration: none;
+      background: rgba(255,255,255,0.78);
+      color: var(--ink);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding-bottom: 40px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.97rem;
+    }
+
+    .figure-wrap {
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+      overflow: hidden;
+    }
+
+    .figure-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: white;
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .meta strong {
+      color: var(--ink);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid #cbd5e1;
+      background: white;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    footer {
+      padding-bottom: 30px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      header, main, footer {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 00 Illustration Gallery</h1>
+    <p>
+      Trang này gom các minh họa hiện đang có của Chapter 00 về nền tảng toán học. Trọng tâm ở đây là ngôn ngữ
+      cơ sở của toàn bộ khóa học: giải tích thực, liên tục đều, giải tích đa biến, đại số tuyến tính, số phức,
+      không gian metric, không gian chuẩn, không gian tích vô hướng, lý thuyết tích phân, giải tích vector và hàm đặc biệt.
+      Các hình được thiết kế để làm cho những ý niệm nền tảng này trở nên hình học và thao tác được trước khi chúng quay lại trong ODE, PDE và giải tích hàm.
+    </p>
+    <nav class="toc">
+      <a href="#lesson-1">00-01 Giải tích thực</a>
+      <a href="#lesson-2">00-02 Liên tục đều</a>
+      <a href="#lesson-3">00-03 Đa biến</a>
+      <a href="#lesson-4">00-04 Đại số tuyến tính</a>
+      <a href="#lesson-5">00-05 Số phức</a>
+      <a href="#lesson-6">00-06 Metric</a>
+      <a href="#lesson-7">00-07 Chuẩn</a>
+      <a href="#lesson-8">00-08 Tích vô hướng</a>
+      <a href="#lesson-9">00-09 Tích phân</a>
+      <a href="#lesson-10">00-10 Vector calculus</a>
+      <a href="#lesson-11">00-11 Hàm đặc biệt</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <article class="card" id="lesson-1">
+        <h2>00-01 Ôn tập Giải tích Thực</h2>
+        <p>Hình mở đầu đặt các ý niệm tồn tại, compactness và hành vi cực trị làm ngôn ngữ nền cho các định lý về nghiệm sau này.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter00/01_00_real_analysis_review.svg" alt="Minh họa ôn tập giải tích thực">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Tồn tại, compactness và kiểm soát định tính của hàm.</div>
+          <div><strong>Dùng trong lớp.</strong> Nhắc sinh viên rằng giải tích đi vào phương trình vi phân trước hết qua các câu hỏi định tính về nghiệm.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter00/00_01_00_Real_Analysis_Review/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-2">
+        <h2>00-02 Tính liên tục và Tính liên tục đều</h2>
+        <p>Hình này phân biệt liên tục cục bộ với kiểm soát đều toàn cục, chuẩn bị cho ý tưởng rằng compactness có thể nâng tính chất điểm-một thành tính chất đồng đều.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter00/01_01_continuity_and_uniform_continuity.svg" alt="Minh họa tính liên tục và tính liên tục đều">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Hành vi cục bộ so với hành vi đồng đều của hàm.</div>
+          <div><strong>Dùng trong lớp.</strong> Cho thấy vì sao nhiều ước lượng toàn cục cần giả thiết mạnh hơn liên tục thông thường.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter00/00_01_01_Continuity_and_Uniform_Continuity/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-3">
+        <h2>00-03 Đạo hàm và Giải tích đa biến</h2>
+        <p>Hình đa biến biến gradient, Jacobian và phép tuyến tính hóa cục bộ thành một ngôn ngữ trực quan cho động lực học nhiều chiều.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter00/01_02_derivatives_and_multivariable_calculus.svg" alt="Minh họa đạo hàm và giải tích đa biến">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Tuyến tính hóa cục bộ trong nhiều biến.</div>
+          <div><strong>Dùng trong lớp.</strong> Chuẩn bị cho hệ ODE, Jacobian và quan điểm trường vector.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter00/00_01_02_Derivatives_and_Multivariable_Calculus/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-4">
+        <h2>00-04 Đại số Tuyến tính Cơ bản</h2>
+        <p>Hình này diễn giải ma trận, vector riêng và các hướng bất biến như xương sống đại số của hệ phương trình vi phân tuyến tính.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter00/03_00_linear_algebra_essentials.svg" alt="Minh họa đại số tuyến tính cơ bản">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Cấu trúc trị riêng và động học ma trận.</div>
+          <div><strong>Dùng trong lớp.</strong> Nối đại số tuyến tính trừu tượng với hành vi của các hệ vi phân ghép.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter00/00_03_00_Linear_Algebra_Essentials/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-5">
+        <h2>00-05 Số Phức và Hàm Mũ</h2>
+        <p>Hình mặt phẳng phức nhấn mạnh dao động, phép quay, công thức Euler và ý nghĩa hình học của hàm mũ phức.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter00/04_00_complex_numbers_and_exponentials.svg" alt="Minh họa số phức và hàm mũ">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Phép quay, dao động và biểu diễn bằng hàm mũ.</div>
+          <div><strong>Dùng trong lớp.</strong> Nối ngôn ngữ số phức với nghiệm lượng giác của phương trình vi phân tuyến tính.</div>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-6">
+        <h2>00-06 Không Gian Metric</h2>
+        <p>Hình này tổng quát hóa khái niệm khoảng cách, chuẩn bị cho hội tụ, tính đầy đủ và các không gian hàm của giải tích hiện đại.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter00/06_00_metric_spaces.svg" alt="Minh họa không gian metric">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Khoảng cách tổng quát và cấu trúc hội tụ.</div>
+          <div><strong>Dùng trong lớp.</strong> Làm cầu nối từ hình học Euclid sang các không gian trừu tượng dùng trong PDE và giải tích hàm.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter00/00_06_00_Metric_Spaces/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-7">
+        <h2>00-07 Không Gian Chuẩn</h2>
+        <p>Hình chuẩn làm rõ việc chuyển từ khoảng cách sang độ lớn của vector và hàm, qua đó đưa người học vào thế giới Banach.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter00/07_00_normed_spaces.svg" alt="Minh họa không gian chuẩn">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Độ lớn, chuẩn và cấu trúc Banach.</div>
+          <div><strong>Dùng trong lớp.</strong> So sánh các chuẩn quen thuộc và gắn chúng với bài toán ổn định và hội tụ.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter00/00_07_00_Normed_Spaces/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-8">
+        <h2>00-08 Không Gian Tích Vô Hướng</h2>
+        <p>Hình này mở rộng hình học Euclid sang không gian hàm, với trực giao, chiếu trực giao và ngôn ngữ Hilbert.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter00/08_00_inner_product_spaces.svg" alt="Minh họa không gian tích vô hướng">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Góc, trực giao và cấu trúc Hilbert.</div>
+          <div><strong>Dùng trong lớp.</strong> Chuẩn bị cho chuỗi Fourier, khai triển trực giao và lý thuyết phổ.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter00/00_08_00_Inner_Product_Spaces/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-9">
+        <h2>00-09 Lý thuyết Tích phân</h2>
+        <p>Hình tích phân nhấn mạnh tích lũy, hội tụ và các công cụ chuyển đổi sẽ đi cùng sinh viên suốt phần ODE và PDE.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter00/09_00_integration_theory.svg" alt="Minh họa lý thuyết tích phân">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Tích lũy, hội tụ và tích phân nhiều lớp.</div>
+          <div><strong>Dùng trong lớp.</strong> Liên kết trực tiếp với nghiệm tích phân, biến đổi Laplace và PDE nhiều biến.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter00/00_09_00_Integration_Theory/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-10">
+        <h2>00-10 Giải tích Vector</h2>
+        <p>Hình này gom gradient, divergence, curl và các định lý tích phân thành ngôn ngữ trường mà PDE vật lý sẽ dùng liên tục.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter00/10_00_vector_calculus.svg" alt="Minh họa giải tích vector">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Trường vô hướng, trường vector và các định lý tích phân.</div>
+          <div><strong>Dùng trong lớp.</strong> Chuẩn bị cho phương trình nhiệt, sóng, Laplace và các mô hình vật lý liên tục.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter00/00_10_00_Vector_Calculus/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-11">
+        <h2>00-11 Hàm Đặc biệt</h2>
+        <p>Hình cuối giới thiệu các họ hàm đặc biệt như những đối tượng sẽ quay trở lại trong phương pháp chuỗi, tọa độ đặc biệt và PDE cổ điển.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter00/11_00_special_functions.svg" alt="Minh họa hàm đặc biệt">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Gamma, Bessel, Legendre và các họ hàm kinh điển.</div>
+          <div><strong>Dùng trong lớp.</strong> Đặt nền cho các chương về phương pháp chuỗi, Fourier và PDE trên miền có hình học đặc biệt.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter00/00_11_00_Special_Functions/">Mở bài học</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    Có thể dùng gallery này như một phần khởi động trực quan trước khi đi từ nền tảng toán học sang ODE, PDE và giải tích hàm trong toàn bộ khóa học.
+  </footer>
+</body>
+</html>

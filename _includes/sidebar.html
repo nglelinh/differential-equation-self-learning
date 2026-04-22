@@ -12,36 +12,89 @@
     <a class="sidebar-nav-item{% if page.title == 'Home' %} active{% endif %}" href="{{ '/' | absolute_url }}">{% t home %}</a>
 
     {% comment %}
-      The code below dynamically generates a sidebar nav of pages with
-      `layout: page` in the front-matter. See readme for usage.
+      The code below dynamically generates a sidebar nav with chapters as
+      expandable menu items and lessons as submenu items.
     {% endcomment %}
 
     {% assign current_lang = page.lang | default: site.default_lang %}
-    {% assign pages_list = site.pages | where: "lang", current_lang | sort: "chapter" %}
+
+    {% assign chapter_numbers = "00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15" | split: "," %}
+    {% assign chapter_titles_en = "Mathematical Foundations|First-Order ODEs|Higher-Order Linear ODEs|Laplace Transforms|Systems of ODEs|Nonlinear Dynamics & Stability|Series Solutions & Special Functions|Boundary Value Problems & Sturm-Liouville|Fourier Series & Orthogonal Expansions|The Heat Equation|The Wave Equation|Laplace & Poisson Equations|Functional Analysis for PDEs|Numerical Methods|Introduction to Pseudo-Differential Operators|Advanced Topics & Microlocal Analysis" | split: "|" %}
+    {% assign chapter_titles_vi = "Các Khái Niệm Toán Học Cơ Bản|Phương Trình Vi Phân Cấp Một|Phương Trình Vi Phân Tuyến Tính Cấp Cao|Biến Đổi Laplace|Hệ Phương Trình Vi Phân|Động Lực Học Phi Tuyến và Ổn Định|Nghiệm Chuỗi và Hàm Đặc Biệt|Bài Toán Biên và Lý Thuyết Sturm-Liouville|Chuỗi Fourier và Khai Triển Trực Giao|Phương Trình Nhiệt|Phương Trình Sóng|Phương Trình Laplace và Poisson|Giải Tích Hàm cho PDE|Phương Pháp Số|Nhập Môn Toán Tử Giả Vi Phân|Chuyên Đề Nâng Cao và Giải Tích Vi Địa Phương" | split: "|" %}
+    {% assign chapter_pages = site.pages | where: "lang", current_lang | where: "layout", "page" %}
+    {% assign has_sidebar_content = false %}
     
-    <!-- Hiển thị các chương có sẵn cho ngôn ngữ hiện tại -->
-    {% for node in pages_list %}
-      {% if node.title != null and node.chapter %}
-        {% if node.layout == "page" %}
-          {% assign is_hidden = node.hidden | default: false %}
-          {% unless is_hidden %}
-            <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url | absolute_url }}">
-              {{node.chapter}}. {{ node.title }}
-              {% if node.lesson_type %}
-                {% if node.lesson_type == 'required' %}
-                  <span class="lesson-badge required">{% t required %}</span>
-                {% elsif node.lesson_type == 'optional' %}
-                  <span class="lesson-badge optional">{% t optional %}</span>
-                {% endif %}
+    <!-- Display chapters with expandable lesson submenus -->
+    {% for chapter_num in chapter_numbers %}
+      {% assign cat_name = "chapter" | append: chapter_num %}
+      {% assign cat_posts = site.categories[cat_name] %}
+      {% if cat_posts %}
+        {% assign chapter_posts = cat_posts | where: "lang", current_lang | sort: "order" %}
+      {% else %}
+        {% assign chapter_posts = "" | split: "" %}
+      {% endif %}
+      {% assign chapter_page = chapter_pages | where: "chapter", chapter_num | first %}
+      {% assign is_hidden = chapter_page.hidden | default: false %}
+
+      {% if chapter_page or chapter_posts.size > 0 or chapter_num < "10" %}
+        {% unless is_hidden %}
+          {% assign has_sidebar_content = true %}
+          {% assign chapter_title = chapter_page.title %}
+          {% if chapter_title == nil or chapter_title == "" %}
+            {% if current_lang == "vi" %}
+              {% assign chapter_title = chapter_titles_vi[forloop.index0] %}
+            {% else %}
+              {% assign chapter_title = chapter_titles_en[forloop.index0] %}
+            {% endif %}
+          {% endif %}
+
+          {% assign chapter_url = chapter_page.url %}
+          {% if chapter_url == nil or chapter_url == "" %}
+            {% assign chapter_url = chapter_posts.first.url %}
+          {% endif %}
+
+          {% assign is_current_chapter = false %}
+          {% if page.chapter == chapter_num %}
+            {% assign is_current_chapter = true %}
+          {% endif %}
+
+          <div class="sidebar-chapter{% if is_current_chapter %} expanded{% endif %}">
+            <div class="sidebar-chapter-header{% if chapter_page and page.url == chapter_page.url %} active{% endif %}" data-chapter="{{ chapter_num }}">
+              <a class="sidebar-chapter-link" href="{{ chapter_url | absolute_url }}">
+                {{ chapter_num }}. {{ chapter_title }}
+              </a>
+              {% if chapter_posts.size > 0 %}
+                <span class="sidebar-chapter-toggle">
+                  <svg class="chevron-icon" viewBox="0 0 24 24" width="16" height="16">
+                    <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                  </svg>
+                </span>
               {% endif %}
-            </a>
-          {% endunless %}
-        {% endif %}
+            </div>
+
+            {% if chapter_posts.size > 0 %}
+              <div class="sidebar-submenu{% if is_current_chapter %} open{% endif %}">
+                {% for post in chapter_posts %}
+                  <a class="sidebar-submenu-item{% if page.url == post.url %} active{% endif %}" href="{{ post.url | absolute_url }}">
+                    {{ post.order }}. {{ post.title }}
+                    {% if post.lesson_type %}
+                      {% if post.lesson_type == 'required' %}
+                        <span class="lesson-badge required small">{% t required %}</span>
+                      {% elsif post.lesson_type == 'optional' %}
+                        <span class="lesson-badge optional small">{% t optional %}</span>
+                      {% endif %}
+                    {% endif %}
+                  </a>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endunless %}
       {% endif %}
     {% endfor %}
     
-    <!-- Nếu không có nội dung cho ngôn ngữ hiện tại, hiển thị thông báo -->
-    {% if pages_list.size == 0 %}
+    <!-- If no content for current language, show message -->
+    {% unless has_sidebar_content %}
       <div class="sidebar-nav-item" style="color: #999; font-style: italic;">
         {% if current_lang == 'vi' %}
           Nội dung tiếng Việt đang được cập nhật...
@@ -50,7 +103,7 @@
         {% endif %}
       </div>
       
-      <!-- Hiển thị link chuyển sang ngôn ngữ có nội dung -->
+      <!-- Show link to switch to language with content -->
       {% assign other_lang = current_lang == 'en' ? 'vi' : 'en' %}
       {% assign other_pages = site.pages | where: "lang", other_lang | sort: "chapter" %}
       {% if other_pages.size > 0 %}
@@ -64,7 +117,7 @@
           </a>
         </div>
       {% endif %}
-    {% endif %}
+    {% endunless %}
     
     <span class="sidebar-nav-item">Currently v{{ site.version }}</span>
   </nav>

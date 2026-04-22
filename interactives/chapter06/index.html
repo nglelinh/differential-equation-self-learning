@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 06 Interactives: Series Solutions and Special Functions</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --card: #ffffff;
+      --ink: #162033;
+      --muted: #5d6879;
+      --line: #d9e1eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef5ff 0, var(--bg) 260px);
+    }
+    header, main, footer {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    header { padding-top: 40px; padding-bottom: 24px; }
+    header h1 { margin: 0 0 10px; font-size: clamp(2rem, 3vw, 3rem); }
+    header p { max-width: 980px; margin: 0; color: var(--muted); line-height: 1.6; }
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .toc a {
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(37,99,235,0.12);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .topic { margin-bottom: 42px; scroll-margin-top: 20px; }
+    .topic h2 { margin: 0 0 10px; font-size: 1.5rem; }
+    .topic > p { margin: 0 0 18px; color: var(--muted); max-width: 940px; line-height: 1.6; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+      gap: 18px;
+    }
+    .demo {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .demo h3 { margin: 0; font-size: 1.08rem; }
+    .spec {
+      display: grid;
+      gap: 8px;
+      font-size: 0.96rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .spec strong { color: var(--ink); }
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid #edf2f7;
+    }
+    .control { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .control label { font-size: 0.82rem; color: var(--muted); }
+    .control input, .control select { width: 100%; }
+    .control span { font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+    .plot {
+      width: 100%;
+      min-height: 300px;
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+    }
+    .status {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    footer { padding-top: 8px; padding-bottom: 30px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 640px) {
+      header, main, footer { padding-left: 14px; padding-right: 14px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 06 Interactives</h1>
+    <p>
+      This standalone gallery proposes two runnable JavaScript illustrations for each topic in Chapter 06,
+      Series Solutions and Special Functions. The emphasis is on recurrence relations, truncation behavior,
+      singular-point structure, and the geometry of classical special functions such as Bessel and Legendre families.
+    </p>
+    <nav class="toc">
+      <a href="#topic-1">06-01 Power Series</a>
+      <a href="#topic-2">06-02 Ordinary Points</a>
+      <a href="#topic-3">06-03 Euler</a>
+      <a href="#topic-4">06-04 Frobenius</a>
+      <a href="#topic-5">06-05 Bessel</a>
+      <a href="#topic-6">06-06 Legendre</a>
+      <a href="#topic-7">06-07 Other Special</a>
+      <a href="#topic-8">06-08 Physics</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="topic" id="topic-1">
+      <h2>06-01 Power Series Review</h2>
+      <p>These illustrations focus on convergence, truncation, and how finite partial sums build analytic functions locally.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Partial Sums of a Power Series</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how higher partial sums improve approximation near the expansion point.</div>
+            <div><strong>Mathematical idea shown.</strong> A power series behaves like an infinite polynomial whose partial sums capture local structure progressively.</div>
+            <div><strong>User interactions.</strong> Dropdown for function and slider for truncation order.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="ps-kind">Function</label><select id="ps-kind"><option value="exp">e^x</option><option value="sin">sin x</option><option value="geom">1/(1-x)</option></select></div>
+            <div class="control"><label for="ps-n">Truncation N</label><input id="ps-n" type="range" min="0" max="12" step="1" value="4"><span id="ps-n-value"></span></div>
+          </div>
+          <div id="series-partial-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Radius of Convergence Explorer</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that convergence depends on distance from the expansion center and coefficient growth.</div>
+            <div><strong>Mathematical idea shown.</strong> The ratio test translates coefficient behavior into a radius of convergence.</div>
+            <div><strong>User interactions.</strong> Slider for the effective radius and movable test point.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="rc-r">Radius R</label><input id="rc-r" type="range" min="0.5" max="4" step="0.1" value="1.5"><span id="rc-r-value"></span></div>
+            <div class="control"><label for="rc-x">Test point x</label><input id="rc-x" type="range" min="-4" max="4" step="0.1" value="1"><span id="rc-x-value"></span></div>
+          </div>
+          <div id="series-radius-plot" class="plot"></div>
+          <div id="series-radius-note" class="status"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-2">
+      <h2>06-02 Series Solutions Near Ordinary Points</h2>
+      <p>These illustrations show how substitution into an ODE produces recurrences and how those recurrences generate solution shapes.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Recurrence Coefficients from a Series Ansatz</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how the ODE turns the unknown coefficients into a recurrence rule.</div>
+            <div><strong>Mathematical idea shown.</strong> At an ordinary point, a power-series substitution gives algebraic conditions on coefficients.</div>
+            <div><strong>User interactions.</strong> Slider for the number of computed coefficients.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="ord-n">Number of coefficients</label><input id="ord-n" type="range" min="3" max="14" step="1" value="8"><span id="ord-n-value"></span></div>
+          </div>
+          <div id="ordinary-coeff-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Series Solution Approximation</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how the recurrence-generated coefficients build an approximate solution curve.</div>
+            <div><strong>Mathematical idea shown.</strong> The local solution is determined term-by-term once initial coefficients are fixed.</div>
+            <div><strong>User interactions.</strong> Reuses the truncation slider.</div>
+          </div>
+          <div id="ordinary-solution-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-3">
+      <h2>06-03 Euler Equations</h2>
+      <p>These illustrations emphasize scale invariance and the special role of power-law trial solutions.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Indicial Roots and Power-Law Modes</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how the indicial equation selects admissible power-law behaviors.</div>
+            <div><strong>Mathematical idea shown.</strong> Euler equations reduce to algebra in the exponent $$r$$ when we try $$y=x^r$$.</div>
+            <div><strong>User interactions.</strong> Sliders for the Euler coefficients $$a$$ and $$b$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="eu-a">Coefficient a</label><input id="eu-a" type="range" min="-2" max="4" step="0.1" value="1"><span id="eu-a-value"></span></div>
+            <div class="control"><label for="eu-b">Coefficient b</label><input id="eu-b" type="range" min="-2" max="4" step="0.1" value="-1"><span id="eu-b-value"></span></div>
+          </div>
+          <div id="euler-roots-plot" class="plot"></div>
+          <div id="euler-roots-note" class="status"></div>
+        </article>
+        <article class="demo">
+          <h3>Scale-Invariant Solution Shapes</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show the contrast between distinct-root, repeated-root, and complex-root Euler behavior.</div>
+            <div><strong>Mathematical idea shown.</strong> The same indicial structure generates powers, log-corrections, or oscillations in $$\ln x$$.</div>
+            <div><strong>User interactions.</strong> Reuses the Euler coefficient sliders.</div>
+          </div>
+          <div id="euler-solutions-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-4">
+      <h2>06-04 The Frobenius Method</h2>
+      <p>These illustrations show why the extra factor $$x^r$$ is necessary at a regular singular point.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Regular Singular Point Detector</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how multiplying coefficients by powers of $$x$$ reveals whether a singularity is regular.</div>
+            <div><strong>Mathematical idea shown.</strong> Regular singular points are weak enough for a Frobenius series to work.</div>
+            <div><strong>User interactions.</strong> Dropdown for model coefficient type.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="fro-kind">Coefficient type</label><select id="fro-kind"><option value="regular">Regular singular</option><option value="irregular">Irregular singular</option></select></div>
+          </div>
+          <div id="frobenius-singularity-plot" class="plot"></div>
+          <div id="frobenius-singularity-note" class="status"></div>
+        </article>
+        <article class="demo">
+          <h3>Effect of the Leading Power x^r</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how changing the indicial root changes the leading behavior near the singular point.</div>
+            <div><strong>Mathematical idea shown.</strong> The Frobenius exponent sets the dominant local asymptotics before the series corrections appear.</div>
+            <div><strong>User interactions.</strong> Slider for the indicial exponent $$r$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="fro-r">Indicial root r</label><input id="fro-r" type="range" min="-1" max="3" step="0.1" value="0.5"><span id="fro-r-value"></span></div>
+          </div>
+          <div id="frobenius-leading-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-5">
+      <h2>06-05 Bessel's Equation</h2>
+      <p>These illustrations focus on oscillation, zeros, and the radial geometry behind Bessel functions.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Bessel-Like Oscillations and Zeros</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how Bessel-type oscillations differ from sine waves and why zeros matter in applications.</div>
+            <div><strong>Mathematical idea shown.</strong> Solutions for cylindrical symmetry have nonuniform oscillation spacing and amplitude behavior.</div>
+            <div><strong>User interactions.</strong> Slider for order $$\nu$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="bes-nu">Order nu</label><input id="bes-nu" type="range" min="0" max="3" step="1" value="0"><span id="bes-nu-value"></span></div>
+          </div>
+          <div id="bessel-zeros-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Radial Mode on a Disk</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Connect zeros of Bessel functions to nodal rings in circular domains.</div>
+            <div><strong>Mathematical idea shown.</strong> Boundary conditions on a disk quantize radial modes through Bessel zeros.</div>
+            <div><strong>User interactions.</strong> Dropdown for radial mode number.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="bes-mode">Radial mode</label><select id="bes-mode"><option value="1">First mode</option><option value="2">Second mode</option><option value="3">Third mode</option></select></div>
+          </div>
+          <div id="bessel-radial-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-6">
+      <h2>06-06 Legendre's Equation</h2>
+      <p>These illustrations emphasize polynomial structure, oscillation count, and orthogonality on $$[-1,1]$$.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Legendre Polynomial Family</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how degree controls oscillation count and shape on the interval $$[-1,1]$$.</div>
+            <div><strong>Mathematical idea shown.</strong> Legendre polynomials form a structured family adapted to spherical symmetry.</div>
+            <div><strong>User interactions.</strong> Slider for degree $$\ell$$.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="leg-l">Degree l</label><input id="leg-l" type="range" min="0" max="6" step="1" value="3"><span id="leg-l-value"></span></div>
+          </div>
+          <div id="legendre-family-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Orthogonality Demonstration</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show visually why distinct Legendre polynomials cancel under the orthogonality integral.</div>
+            <div><strong>Mathematical idea shown.</strong> Orthogonality underlies expansion of functions in Legendre bases.</div>
+            <div><strong>User interactions.</strong> Sliders for two polynomial degrees.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="leg-m">Degree m</label><input id="leg-m" type="range" min="0" max="6" step="1" value="2"><span id="leg-m-value"></span></div>
+            <div class="control"><label for="leg-n">Degree n</label><input id="leg-n" type="range" min="0" max="6" step="1" value="3"><span id="leg-n-value"></span></div>
+          </div>
+          <div id="legendre-ortho-plot" class="plot"></div>
+          <div id="legendre-ortho-note" class="status"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-7">
+      <h2>06-07 Other Special Functions</h2>
+      <p>These illustrations treat the chapter’s survey functions as a map of families rather than an isolated list.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Hermite, Laguerre, and Chebyshev Snapshot</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show the distinct natural domains and oscillation patterns of several classical polynomial families.</div>
+            <div><strong>Mathematical idea shown.</strong> Different special functions are adapted to different weights, domains, and physical symmetries.</div>
+            <div><strong>User interactions.</strong> Dropdown for family and slider for degree.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="sp-family">Family</label><select id="sp-family"><option value="hermite">Hermite</option><option value="laguerre">Laguerre</option><option value="chebyshev">Chebyshev</option></select></div>
+            <div class="control"><label for="sp-n">Degree</label><input id="sp-n" type="range" min="0" max="6" step="1" value="3"><span id="sp-n-value"></span></div>
+          </div>
+          <div id="special-family-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Orthogonality Weight Comparison</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that orthogonality depends on the correct weight and interval, not only on the polynomial shape.</div>
+            <div><strong>Mathematical idea shown.</strong> Each family carries its own natural weighted inner product.</div>
+            <div><strong>User interactions.</strong> Reuses the family selector.</div>
+          </div>
+          <div id="special-weight-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="topic" id="topic-8">
+      <h2>06-08 Applications in Physics</h2>
+      <p>These illustrations gather the physical intuition behind why special functions appear in separation-of-variables problems.</p>
+      <div class="grid">
+        <article class="demo">
+          <h3>Circular Membrane Mode Profile</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show how Bessel-type radial behavior translates into nodal structure on a drumhead.</div>
+            <div><strong>Mathematical idea shown.</strong> Special functions are mode shapes, not just symbolic solutions.</div>
+            <div><strong>User interactions.</strong> Dropdown for mode family.</div>
+          </div>
+          <div class="controls">
+            <div class="control"><label for="phys-mode">Mode</label><select id="phys-mode"><option value="bessel">Drum radial mode</option><option value="legendre">Angular mode</option></select></div>
+          </div>
+          <div id="physics-mode-plot" class="plot"></div>
+        </article>
+        <article class="demo">
+          <h3>Quantized Modes from Boundary Conditions</h3>
+          <div class="spec">
+            <div><strong>Teaching objective.</strong> Show that boundary conditions select only discrete allowed mode indices or zeros.</div>
+            <div><strong>Mathematical idea shown.</strong> Physical systems often convert continuous equations into discrete spectra.</div>
+            <div><strong>User interactions.</strong> Reuses the mode selector.</div>
+          </div>
+          <div id="physics-spectrum-plot" class="plot"></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    The page is self-contained so it can be opened directly in a browser or served as a static file from the repository.
+  </footer>
+
+  <script>
+    const fmt = (value, digits = 2) => Number(value).toFixed(digits).replace(/\.00$/, '');
+
+    function bindValue(id, digits = 2) {
+      const input = document.getElementById(id);
+      const output = document.getElementById(`${id}-value`);
+      const refresh = () => { if (output) output.textContent = fmt(input.value, digits); };
+      input.addEventListener('input', refresh);
+      input.addEventListener('change', refresh);
+      refresh();
+    }
+
+    function bindControls(ids, render) {
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        el.addEventListener('input', render);
+        el.addEventListener('change', render);
+      });
+      render();
+    }
+
+    function linspace(min, max, count) {
+      return Array.from({ length: count }, (_, i) => min + (max - min) * i / (count - 1));
+    }
+
+    function factorial(n) {
+      let out = 1;
+      for (let i = 2; i <= n; i += 1) out *= i;
+      return out;
+    }
+
+    function plotSeries(divId, traces, layout = {}) {
+      Plotly.react(divId, traces, {
+        margin: { l: 46, r: 18, t: 24, b: 42 },
+        paper_bgcolor: '#ffffff',
+        plot_bgcolor: '#ffffff',
+        legend: { orientation: 'h' },
+        xaxis: { gridcolor: '#e5e7eb', zerolinecolor: '#cbd5e1' },
+        yaxis: { gridcolor: '#e5e7eb', zerolinecolor: '#cbd5e1' },
+        ...layout,
+      }, { responsive: true, displayModeBar: false });
+    }
+
+    function taylor(kind, x, N) {
+      let sum = 0;
+      for (let n = 0; n <= N; n += 1) {
+        if (kind === 'exp') sum += Math.pow(x, n) / factorial(n);
+        else if (kind === 'sin') {
+          if (n % 2 === 1) sum += Math.pow(-1, (n - 1) / 2) * Math.pow(x, n) / factorial(n);
+        } else {
+          sum += Math.pow(x, n);
+        }
+      }
+      return sum;
+    }
+
+    function legendreP(n, x) {
+      if (n === 0) return 1;
+      if (n === 1) return x;
+      let p0 = 1;
+      let p1 = x;
+      for (let k = 1; k < n; k += 1) {
+        const p2 = ((2 * k + 1) * x * p1 - k * p0) / (k + 1);
+        p0 = p1;
+        p1 = p2;
+      }
+      return p1;
+    }
+
+    function hermiteH(n, x) {
+      if (n === 0) return 1;
+      if (n === 1) return 2 * x;
+      let h0 = 1;
+      let h1 = 2 * x;
+      for (let k = 1; k < n; k += 1) {
+        const h2 = 2 * x * h1 - 2 * k * h0;
+        h0 = h1;
+        h1 = h2;
+      }
+      return h1;
+    }
+
+    function laguerreL(n, x) {
+      if (n === 0) return 1;
+      if (n === 1) return 1 - x;
+      let l0 = 1;
+      let l1 = 1 - x;
+      for (let k = 1; k < n; k += 1) {
+        const l2 = ((2 * k + 1 - x) * l1 - k * l0) / (k + 1);
+        l0 = l1;
+        l1 = l2;
+      }
+      return l1;
+    }
+
+    function chebyshevT(n, x) {
+      return Math.cos(n * Math.acos(Math.max(-1, Math.min(1, x))));
+    }
+
+    function besselLike(nu, x) {
+      if (nu === 0) return Math.cos(x) / Math.sqrt(1 + 0.3 * x);
+      if (nu === 1) return Math.sin(x) / Math.sqrt(1 + 0.3 * x);
+      if (nu === 2) return Math.cos(x - 1) / Math.sqrt(1 + 0.35 * x);
+      return Math.sin(x - 1.5) / Math.sqrt(1 + 0.4 * x);
+    }
+
+    function renderSeriesPartial() {
+      const kind = document.getElementById('ps-kind').value;
+      const N = Number(document.getElementById('ps-n').value);
+      const x = linspace(-2, 2, 320);
+      const exact = x.map((xx) => {
+        if (kind === 'exp') return Math.exp(xx);
+        if (kind === 'sin') return Math.sin(xx);
+        return Math.abs(xx) < 0.98 ? 1 / (1 - xx) : null;
+      });
+      const approx = x.map((xx) => taylor(kind, xx, N));
+      plotSeries('series-partial-plot', [
+        { x, y: exact, mode: 'lines', name: 'Exact function', line: { color: '#2563eb', width: 3 } },
+        { x, y: approx, mode: 'lines', name: `Partial sum N=${N}`, line: { color: '#dc2626', dash: 'dash' } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Value' } });
+    }
+
+    function renderSeriesRadius() {
+      const R = Number(document.getElementById('rc-r').value);
+      const x = Number(document.getElementById('rc-x').value);
+      plotSeries('series-radius-plot', [
+        { x: [-4, 4], y: [0, 0], mode: 'lines', name: 'Number line', line: { color: '#94a3b8', width: 2 } },
+        { x: [-R, -R], y: [-0.2, 0.2], mode: 'lines', name: '-R', line: { color: '#2563eb', width: 3 } },
+        { x: [R, R], y: [-0.2, 0.2], mode: 'lines', name: 'R', line: { color: '#2563eb', width: 3 } },
+        { x: [x], y: [0], mode: 'markers', name: 'Test point', marker: { color: '#dc2626', size: 12 } },
+      ], { xaxis: { title: 'x' }, yaxis: { visible: false, range: [-0.5, 0.5] } });
+      document.getElementById('series-radius-note').textContent = Math.abs(x) < R
+        ? `The test point lies inside the radius of convergence |x| < R, so absolute convergence is expected.`
+        : `The test point lies on or outside the radius boundary, so convergence is not guaranteed by the radius alone.`;
+    }
+
+    function ordinaryCoefficients(N) {
+      const coeffs = [1, 0];
+      for (let n = 0; n < N; n += 1) {
+        coeffs[n + 2] = -coeffs[n] / ((n + 2) * (n + 1));
+      }
+      return coeffs;
+    }
+
+    function renderOrdinaryCoeff() {
+      const N = Number(document.getElementById('ord-n').value);
+      const coeffs = ordinaryCoefficients(N);
+      plotSeries('ordinary-coeff-plot', [
+        { x: coeffs.map((_, i) => i), y: coeffs, mode: 'lines+markers', name: 'a_n', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 'Index n' }, yaxis: { title: 'Coefficient value' } });
+    }
+
+    function renderOrdinarySolution() {
+      const N = Number(document.getElementById('ord-n').value);
+      const coeffs = ordinaryCoefficients(N);
+      const x = linspace(-4, 4, 320);
+      const approx = x.map((xx) => coeffs.reduce((sum, a, n) => sum + a * Math.pow(xx, n), 0));
+      plotSeries('ordinary-solution-plot', [
+        { x, y: approx, mode: 'lines', name: 'Series approximation', line: { color: '#0891b2', width: 3 } },
+        { x, y: x.map((xx) => Math.cos(xx)), mode: 'lines', name: 'Reference cos x', line: { color: '#94a3b8', dash: 'dash' } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'y(x)' } });
+    }
+
+    function renderEulerRoots() {
+      const a = Number(document.getElementById('eu-a').value);
+      const b = Number(document.getElementById('eu-b').value);
+      const disc = (a - 1) * (a - 1) - 4 * b;
+      const traces = [];
+      if (disc >= 0) {
+        const r1 = (-(a - 1) + Math.sqrt(disc)) / 2;
+        const r2 = (-(a - 1) - Math.sqrt(disc)) / 2;
+        traces.push({ x: [r1, r2], y: [0, 0], mode: 'markers', name: 'Indicial roots', marker: { color: '#2563eb', size: 12 } });
+        document.getElementById('euler-roots-note').textContent = Math.abs(disc) < 1e-8
+          ? `Repeated root at r = ${fmt(r1, 2)}.`
+          : `Distinct real roots at r = ${fmt(r1, 2)} and r = ${fmt(r2, 2)}.`;
+      } else {
+        const alpha = -(a - 1) / 2;
+        const beta = Math.sqrt(-disc) / 2;
+        traces.push({ x: [alpha, alpha], y: [beta, -beta], mode: 'markers', name: 'Complex roots', marker: { color: '#2563eb', size: 12 } });
+        document.getElementById('euler-roots-note').textContent = `Complex roots r = ${fmt(alpha, 2)} ± ${fmt(beta, 2)}i.`;
+      }
+      plotSeries('euler-roots-plot', traces, { xaxis: { title: 'Real part' }, yaxis: { title: 'Imaginary part', scaleanchor: 'x', scaleratio: 1 } });
+    }
+
+    function renderEulerSolutions() {
+      const a = Number(document.getElementById('eu-a').value);
+      const b = Number(document.getElementById('eu-b').value);
+      const disc = (a - 1) * (a - 1) - 4 * b;
+      const x = linspace(0.2, 5, 320);
+      let y;
+      if (disc > 0) {
+        const r1 = (-(a - 1) + Math.sqrt(disc)) / 2;
+        const r2 = (-(a - 1) - Math.sqrt(disc)) / 2;
+        y = x.map((xx) => Math.pow(xx, r1) + 0.4 * Math.pow(xx, r2));
+      } else if (Math.abs(disc) < 1e-8) {
+        const r = -(a - 1) / 2;
+        y = x.map((xx) => Math.pow(xx, r) * (1 + 0.4 * Math.log(xx)));
+      } else {
+        const alpha = -(a - 1) / 2;
+        const beta = Math.sqrt(-disc) / 2;
+        y = x.map((xx) => Math.pow(xx, alpha) * Math.cos(beta * Math.log(xx)));
+      }
+      plotSeries('euler-solutions-plot', [
+        { x, y, mode: 'lines', name: 'Representative Euler solution', line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'y(x)' } });
+    }
+
+    function renderFroSingularity() {
+      const kind = document.getElementById('fro-kind').value;
+      const x = linspace(0.05, 2, 300);
+      const p = x.map((xx) => kind === 'regular' ? 1 / xx : 1 / (xx * xx));
+      const xp = x.map((xx, i) => xx * p[i]);
+      const x2p = x.map((xx, i) => xx * xp[i]);
+      plotSeries('frobenius-singularity-plot', [
+        { x, y: p, mode: 'lines', name: 'p(x)', line: { color: '#94a3b8' } },
+        { x, y: xp, mode: 'lines', name: 'x p(x)', line: { color: '#2563eb', width: 3 } },
+        { x, y: x2p, mode: 'lines', name: 'x^2 p(x)', line: { color: '#dc2626', dash: 'dash' } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Coefficient transform' } });
+      document.getElementById('frobenius-singularity-note').textContent = kind === 'regular'
+        ? 'Here the singularity is mild enough that multiplying by x (or x^2 for q) regularizes the coefficient.'
+        : 'Here the singularity is too strong, so Frobenius behavior is not guaranteed by the regular singular criterion.';
+    }
+
+    function renderFroLeading() {
+      const r = Number(document.getElementById('fro-r').value);
+      const x = linspace(0.05, 2, 320);
+      const y = x.map((xx) => Math.pow(xx, r) * (1 + 0.3 * xx + 0.1 * xx * xx));
+      plotSeries('frobenius-leading-plot', [
+        { x, y, mode: 'lines', name: 'x^r times series', line: { color: '#2563eb', width: 3 } },
+        { x, y: x.map((xx) => Math.pow(xx, r)), mode: 'lines', name: 'Leading power x^r', line: { color: '#dc2626', dash: 'dash' } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Local behavior' } });
+    }
+
+    function renderBesselZeros() {
+      const nu = Number(document.getElementById('bes-nu').value);
+      const x = linspace(0, 15, 500);
+      const y = x.map((xx) => besselLike(nu, xx));
+      plotSeries('bessel-zeros-plot', [
+        { x, y, mode: 'lines', name: `Bessel-like J_${nu}(x)`, line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Function value' } });
+    }
+
+    function renderBesselRadial() {
+      const mode = Number(document.getElementById('bes-mode').value);
+      const r = linspace(0, 1, 320);
+      const y = r.map((rr) => Math.sin(mode * Math.PI * rr) / Math.sqrt(1 + 2 * rr));
+      plotSeries('bessel-radial-plot', [
+        { x: r, y, mode: 'lines', name: `Radial mode ${mode}`, line: { color: '#0891b2', width: 3 } },
+      ], { xaxis: { title: 'Radius r' }, yaxis: { title: 'Mode amplitude' } });
+    }
+
+    function renderLegendreFamily() {
+      const l = Number(document.getElementById('leg-l').value);
+      const x = linspace(-1, 1, 320);
+      plotSeries('legendre-family-plot', [
+        { x, y: x.map((xx) => legendreP(l, xx)), mode: 'lines', name: `P_${l}(x)`, line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Polynomial value' } });
+    }
+
+    function renderLegendreOrtho() {
+      const m = Number(document.getElementById('leg-m').value);
+      const n = Number(document.getElementById('leg-n').value);
+      const x = linspace(-1, 1, 320);
+      const prod = x.map((xx) => legendreP(m, xx) * legendreP(n, xx));
+      const area = prod.reduce((sum, v, i) => i === 0 ? 0 : sum + 0.5 * (prod[i - 1] + v) * (x[i] - x[i - 1]), 0);
+      plotSeries('legendre-ortho-plot', [
+        { x, y: prod, mode: 'lines', name: `P_${m}(x) P_${n}(x)`, line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Product value' } });
+      document.getElementById('legendre-ortho-note').textContent = m === n
+        ? `Same degree: the weighted inner product is positive, approximately ${fmt(area, 3)} on this grid.`
+        : `Different degrees: cancellation drives the integral near zero, approximately ${fmt(area, 3)} on this grid.`;
+    }
+
+    function renderSpecialFamily() {
+      const fam = document.getElementById('sp-family').value;
+      const n = Number(document.getElementById('sp-n').value);
+      let x;
+      let y;
+      if (fam === 'hermite') {
+        x = linspace(-3, 3, 320);
+        y = x.map((xx) => hermiteH(n, xx));
+      } else if (fam === 'laguerre') {
+        x = linspace(0, 8, 320);
+        y = x.map((xx) => laguerreL(n, xx));
+      } else {
+        x = linspace(-1, 1, 320);
+        y = x.map((xx) => chebyshevT(n, xx));
+      }
+      plotSeries('special-family-plot', [
+        { x, y, mode: 'lines', name: `${fam} degree ${n}`, line: { color: '#2563eb', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Function value' } });
+    }
+
+    function renderSpecialWeight() {
+      const fam = document.getElementById('sp-family').value;
+      let x;
+      let w;
+      if (fam === 'hermite') {
+        x = linspace(-3, 3, 320);
+        w = x.map((xx) => Math.exp(-xx * xx));
+      } else if (fam === 'laguerre') {
+        x = linspace(0, 8, 320);
+        w = x.map((xx) => Math.exp(-xx));
+      } else {
+        x = linspace(-0.99, 0.99, 320);
+        w = x.map((xx) => 1 / Math.sqrt(1 - xx * xx));
+      }
+      plotSeries('special-weight-plot', [
+        { x, y: w, mode: 'lines', name: 'Orthogonality weight', line: { color: '#0891b2', width: 3 } },
+      ], { xaxis: { title: 'x' }, yaxis: { title: 'Weight' } });
+    }
+
+    function renderPhysicsMode() {
+      const mode = document.getElementById('phys-mode').value;
+      if (mode === 'bessel') {
+        const r = linspace(0, 1, 320);
+        plotSeries('physics-mode-plot', [
+          { x: r, y: r.map((rr) => Math.sin(Math.PI * rr) / Math.sqrt(1 + rr)), mode: 'lines', name: 'Drum radial mode', line: { color: '#2563eb', width: 3 } },
+        ], { xaxis: { title: 'Radius r' }, yaxis: { title: 'Mode amplitude' } });
+      } else {
+        const x = linspace(-1, 1, 320);
+        plotSeries('physics-mode-plot', [
+          { x, y: x.map((xx) => legendreP(3, xx)), mode: 'lines', name: 'Angular Legendre mode', line: { color: '#2563eb', width: 3 } },
+        ], { xaxis: { title: 'cos(theta)' }, yaxis: { title: 'Angular amplitude' } });
+      }
+    }
+
+    function renderPhysicsSpectrum() {
+      const mode = document.getElementById('phys-mode').value;
+      if (mode === 'bessel') {
+        plotSeries('physics-spectrum-plot', [
+          { x: [1, 2, 3, 4], y: [2.4, 5.5, 8.7, 11.8], mode: 'markers+lines', name: 'Allowed radial zeros', line: { color: '#0891b2', width: 3 } },
+        ], { xaxis: { title: 'Mode index n' }, yaxis: { title: 'Quantized zero / frequency' } });
+      } else {
+        plotSeries('physics-spectrum-plot', [
+          { x: [0, 1, 2, 3, 4, 5], y: [0, 2, 6, 12, 20, 30], mode: 'markers+lines', name: 'l(l+1) spectrum', line: { color: '#0891b2', width: 3 } },
+        ], { xaxis: { title: 'Angular index l' }, yaxis: { title: 'Separation eigenvalue' } });
+      }
+    }
+
+    [
+      ['ps-n', 0], ['rc-r', 1], ['rc-x', 1], ['ord-n', 0], ['eu-a', 1], ['eu-b', 1],
+      ['fro-r', 1], ['bes-nu', 0], ['leg-l', 0], ['leg-m', 0], ['leg-n', 0], ['sp-n', 0],
+    ].forEach(([id, digits]) => bindValue(id, digits));
+
+    bindControls(['ps-kind', 'ps-n'], renderSeriesPartial);
+    bindControls(['rc-r', 'rc-x'], renderSeriesRadius);
+    bindControls(['ord-n'], () => { renderOrdinaryCoeff(); renderOrdinarySolution(); });
+    bindControls(['eu-a', 'eu-b'], () => { renderEulerRoots(); renderEulerSolutions(); });
+    bindControls(['fro-kind'], renderFroSingularity);
+    bindControls(['fro-r'], renderFroLeading);
+    bindControls(['bes-nu'], renderBesselZeros);
+    bindControls(['bes-mode'], renderBesselRadial);
+    bindControls(['leg-l'], renderLegendreFamily);
+    bindControls(['leg-m', 'leg-n'], renderLegendreOrtho);
+    bindControls(['sp-family', 'sp-n'], renderSpecialFamily);
+    bindControls(['sp-family'], renderSpecialWeight);
+    bindControls(['phys-mode'], () => { renderPhysicsMode(); renderPhysicsSpectrum(); });
+  </script>
+</body>
+</html>

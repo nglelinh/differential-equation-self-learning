@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Euler-Maruyama</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    body { font-family: Inter, Arial, sans-serif; margin: 0; padding: 18px; background: #f8fafc; color: #111827; }
+    h2 { margin: 0 0 12px; font-size: 1.35rem; }
+    .controls { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+    label { font-size: 14px; color: #374151; }
+    #plot { width: 100%; max-width: 960px; height: 560px; background: white; border: 1px solid #d1d5db; border-radius: 10px; }
+    .note { color: #4b5563; max-width: 960px; font-size: 14px; margin-top: 8px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h2>Euler-Maruyama for Geometric Brownian Motion</h2>
+  <div class="controls">
+    <label>mu: <input id="mu" type="range" min="-0.5" max="1.0" step="0.05" value="0.3"> <span id="muVal">0.30</span></label>
+    <label>sigma: <input id="sigma" type="range" min="0.1" max="1.2" step="0.05" value="0.6"> <span id="sigmaVal">0.60</span></label>
+    <label>number of paths: <input id="paths" type="range" min="3" max="20" step="1" value="8"> <span id="pathsVal">8</span></label>
+    <button id="reroll">Regenerate noise</button>
+  </div>
+  <div id="plot"></div>
+  <div class="note">Each time you regenerate the noise, the sample paths change. That is the key difference from deterministic ODEs: the same initial condition does not produce a single trajectory.</div>
+  <script>
+    const muEl = document.getElementById('mu');
+    const sigmaEl = document.getElementById('sigma');
+    const pathsEl = document.getElementById('paths');
+    const muVal = document.getElementById('muVal');
+    const sigmaVal = document.getElementById('sigmaVal');
+    const pathsVal = document.getElementById('pathsVal');
+    const reroll = document.getElementById('reroll');
+    function randn() {
+      let u = 0, v = 0;
+      while (u === 0) u = Math.random();
+      while (v === 0) v = Math.random();
+      return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+    }
+    function render() {
+      const mu = Number(muEl.value), sigma = Number(sigmaEl.value), m = Number(pathsEl.value);
+      muVal.textContent = mu.toFixed(2); sigmaVal.textContent = sigma.toFixed(2); pathsVal.textContent = m.toFixed(0);
+      const T = 1, N = 300, dt = T / N;
+      const t = Array.from({ length: N + 1 }, (_, i) => i * dt);
+      const traces = [];
+      const mean = Array(N + 1).fill(0);
+      for (let p = 0; p < m; p++) {
+        const x = [1];
+        for (let n = 0; n < N; n++) {
+          const dW = Math.sqrt(dt) * randn();
+          x.push(x[n] + mu * x[n] * dt + sigma * x[n] * dW);
+        }
+        x.forEach((v, i) => mean[i] += v / m);
+        traces.push({ x: t, y: x, mode: 'lines', line: { width: 1.4 }, opacity: 0.55, name: `path ${p + 1}`, showlegend: false });
+      }
+      traces.push({ x: t, y: mean, mode: 'lines', name: 'sample mean', line: { color: '#111827', width: 4 } });
+      Plotly.newPlot('plot', traces, {
+        title: 'Geometric Brownian motion with Euler-Maruyama',
+        xaxis: { title: 't' }, yaxis: { title: 'X(t)' }, legend: { orientation: 'h' },
+        margin: { t: 60, l: 60, r: 20, b: 50 }
+      }, { responsive: true });
+    }
+    [muEl, sigmaEl, pathsEl].forEach(el => el.addEventListener('input', render));
+    reroll.addEventListener('click', render);
+    render();
+  </script>
+</body>
+</html>

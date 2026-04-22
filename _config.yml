@@ -1,9 +1,9 @@
 # Setup
-title:               "Your Course Title"
-description:         'Your Course Description'
-url:                 https://your-username.github.io
-baseurl:             '/your-repo-name'
-imgurl:              https://your-username.github.io/your-repo-name/img
+title:               "Differential Equation Self-Learning"
+description:         'Differential Equation Self-Learning Course by Your Name'
+url:                 https://nglelinh.github.io
+baseurl:             '/differential-equation-self-learning'
+imgurl:              https://nglelinh.github.io/differential-equation-self-learning/img
 paginate:            5
 permalink:           pretty
 
@@ -16,8 +16,8 @@ parallel_localization: true
 # Language-specific configurations
 t:
   en:
-    title: "Your Course Title"
-    description: "Your Course Description"
+    title: "Differential Equation Self-Learning"
+    description: "Differential Equation Self-Learning Course by Your Name"
     home: "Home"
     chapters: "Chapters"
     language: "Language"
@@ -25,8 +25,8 @@ t:
     required: "Required"
     optional: "Optional"
   vi:
-    title: "Tiêu đề Khóa học của bạn"
-    description: "Mô tả khóa học của bạn"
+    title: "Khóa học Tự học Phương trình Vi phân"
+    description: "Khóa học Tự học Phương trình Vi phân bởi Your Name"
     home: "Trang chủ"
     chapters: "Các chương"
     language: "Ngôn ngữ"

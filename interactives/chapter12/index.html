@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 12 Illustration Gallery: Giải Tích Hàm cho PDE</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #18212f;
+      --muted: #5a6472;
+      --line: #d9e0ea;
+      --accent: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 240px);
+    }
+
+    header, main, footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    header {
+      padding-top: 40px;
+      padding-bottom: 24px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.1;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 980px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .toc a {
+      text-decoration: none;
+      background: rgba(255,255,255,0.78);
+      color: var(--ink);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding-bottom: 40px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.97rem;
+    }
+
+    .figure-wrap {
+      border-radius: 14px;
+      border: 1px solid #edf2f7;
+      background: white;
+      overflow: hidden;
+    }
+
+    .figure-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: white;
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .meta strong {
+      color: var(--ink);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid #cbd5e1;
+      background: white;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    footer {
+      padding-bottom: 30px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      header, main, footer {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chapter 12 Illustration Gallery</h1>
+    <p>
+      Trang này gom toàn bộ bộ minh họa của Chương 12 về giải tích hàm cho PDE. Các hình được sắp để làm rõ
+      tiến trình khái niệm của chương: đo hàm trong các không gian Lp, mở rộng phép vi phân vượt khỏi tính trơn cổ điển,
+      xây dựng Sobolev spaces, chuyển sang dạng yếu, chứng minh tồn tại bằng phương pháp biến phân, nâng cấp regularity,
+      rồi nối sang phổ, phân phối và hình học của các bất đẳng thức.
+    </p>
+    <nav class="toc">
+      <a href="#lesson-1">12-01 Lp</a>
+      <a href="#lesson-2">12-02 Đạo hàm yếu</a>
+      <a href="#lesson-3">12-03 Sobolev</a>
+      <a href="#lesson-4">12-04 Nghiệm yếu</a>
+      <a href="#lesson-5">12-05 Lax-Milgram</a>
+      <a href="#lesson-6">12-06 Regularity</a>
+      <a href="#lesson-7">12-07 Phổ</a>
+      <a href="#lesson-8">12-08 Phân phối</a>
+      <a href="#lesson-9">12-09 Minkowski</a>
+      <a href="#lesson-10">12-10 Sobolev theory</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <article class="card" id="lesson-1">
+        <h2>12-01 Không Gian Lp</h2>
+        <p>Hình mở đầu so sánh các chuẩn hàm khác nhau và giúp sinh viên thấy rằng thay đổi p đồng nghĩa với thay đổi cách ta đo độ lớn, mức độ tập trung và năng lượng.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter12/01_lp_spaces.svg" alt="Minh họa không gian Lp">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Hình học của chuẩn và kích thước của hàm.</div>
+          <div><strong>Dùng trong lớp.</strong> Đặt cạnh nhau cách đo theo diện tích, theo năng lượng và theo đỉnh cực đại.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter12/12_01_Lp_Spaces/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-2">
+        <h2>12-02 Đạo Hàm Yếu</h2>
+        <p>Hình này biến tích phân từng phần thành cây cầu hình học nối đạo hàm cổ điển với phép vi phân yếu.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter12/02_weak_derivatives.svg" alt="Minh họa đạo hàm yếu">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Vi phân thông qua hàm thử.</div>
+          <div><strong>Dùng trong lớp.</strong> Cho thấy các đối tượng không trơn vẫn mang thông tin đạo hàm ở dạng tích phân.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter12/12_02_Weak_Derivatives/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-3">
+        <h2>12-03 Không Gian Sobolev</h2>
+        <p>Minh họa Sobolev làm rõ ý tưởng trung tâm của PDE hiện đại: regularity không chỉ là tính trơn điểm-một mà còn là khả năng kiểm soát biến thiên yếu.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter12/03_sobolev_spaces.svg" alt="Minh họa không gian Sobolev">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Đo đồng thời hàm và các đạo hàm yếu.</div>
+          <div><strong>Dùng trong lớp.</strong> Giải thích vì sao energy space trở thành nơi tự nhiên của nghiệm yếu PDE.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter12/12_03_Sobolev_Spaces/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-4">
+        <h2>12-04 Nghiệm Yếu Của PDE</h2>
+        <p>Hình này viết lại PDE thông qua hàm thử và tích phân từng phần, giúp bước chuyển từ phương trình mạnh sang dạng yếu trở nên nhìn thấy được.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter12/04_weak_solutions_pdes.svg" alt="Minh họa nghiệm yếu của PDE">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Viết lại cấu trúc PDE theo dạng biến phân.</div>
+          <div><strong>Dùng trong lớp.</strong> Giúp sinh viên thấy dạng yếu là sự ổn định hóa của PDE chứ không phải giản lược nội dung.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter12/12_04_Weak_Solutions_PDEs/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-5">
+        <h2>12-05 Định Lý Lax-Milgram</h2>
+        <p>Hình học của định lý được mã hóa qua liên tục và coercive, làm rõ vì sao tồn tại và duy nhất có thể xuất hiện từ các bất đẳng thức năng lượng.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter12/05_lax_milgram_theorem.svg" alt="Minh họa định lý Lax-Milgram">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Coercivity và khả giải biến phân.</div>
+          <div><strong>Dùng trong lớp.</strong> Chuyển một định lý trừu tượng trong Hilbert space thành cơ chế tồn tại rất cụ thể cho bài toán elliptic.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter12/12_05_Lax_Milgram_Theorem/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-6">
+        <h2>12-06 Tính Trơn Của Nghiệm Elliptic</h2>
+        <p>Hình này nắm bắt trực giác regularity cốt lõi: dữ liệu elliptic đủ tốt thường buộc nghiệm yếu trở nên trơn hơn dự kiến.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter12/06_elliptic_regularity.svg" alt="Minh họa tính trơn của nghiệm elliptic">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Nâng bậc regularity và hiệu ứng làm mịn.</div>
+          <div><strong>Dùng trong lớp.</strong> Phân biệt bước tồn tại nghiệm yếu với câu hỏi sâu hơn về khả vi và diễn giải cổ điển.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter12/12_06_Elliptic_Regularity/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-7">
+        <h2>12-07 Lý Thuyết Phổ</h2>
+        <p>Hình phổ nối toán tử với các mode riêng của nó, cho thấy giải tích vô hạn chiều kế thừa trực tiếp triết lý chéo hóa của đại số tuyến tính.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter12/07_spectral_theory.svg" alt="Minh họa lý thuyết phổ">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Cấu trúc trị riêng của toán tử tự liên hợp.</div>
+          <div><strong>Dùng trong lớp.</strong> Nối giải tích Hilbert với quan điểm Fourier và phân rã theo mode trong PDE.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter12/12_07_Spectral_Theory/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-8">
+        <h2>12-08 Phân Phối</h2>
+        <p>Hình này cho thấy các đối tượng kỳ dị như nguồn điểm và đạo hàm của hàm bước đi vào PDE tự nhiên ra sao khi ta thay hàm bởi phân phối.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter12/08_distributions.svg" alt="Minh họa phân phối">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Hàm suy rộng và dữ liệu kỳ dị.</div>
+          <div><strong>Dùng trong lớp.</strong> Khiến delta Dirac và đạo hàm phân phối trở nên tự nhiên hơn là các khái niệm trừu tượng tách rời.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter12/12_08_Distributions/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-9">
+        <h2>12-09 Bất Đẳng Thức Minkowski</h2>
+        <p>Hình học của không gian Lp xuất hiện ở đây qua bất đẳng thức tam giác, nhấn mạnh rằng giải tích hàm cũng là nghiên cứu về cách so sánh phi tuyến giữa các độ lớn.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter12/09_minkowski_inequality.svg" alt="Minh họa bất đẳng thức Minkowski">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Hình học của chuẩn và kiểm soát phép cộng.</div>
+          <div><strong>Dùng trong lớp.</strong> Cho thấy các bất đẳng thức là cấu trúc nền chứ không chỉ là mẹo ước lượng kỹ thuật.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter12/12_09_Minkowski_Inequality/">Mở bài học</a>
+        </div>
+      </article>
+
+      <article class="card" id="lesson-10">
+        <h2>12-10 Lý Thuyết Sobolev</h2>
+        <p>Hình kết thúc mở rộng các ý tưởng Sobolev sang nhúng, compactness và trace, làm rõ chính xác đạo hàm yếu mua lại được điều gì về mặt giải tích.</p>
+        <div class="figure-wrap">
+          <img src="../../img/chapter_img/chapter12/10_sobolev_theory.svg" alt="Minh họa lý thuyết Sobolev">
+        </div>
+        <div class="meta">
+          <div><strong>Trọng tâm.</strong> Nhúng, compactness và giá trị biên.</div>
+          <div><strong>Dùng trong lớp.</strong> Tóm tắt vì sao Sobolev theory trở thành xương sống của các lập luận tồn tại và regularity hiện đại.</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../../contents/vi/chapter12/12_10_Sobolev_Theory/">Mở bài học</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    Có thể dùng gallery này như một cây cầu trực quan từ công thức PDE cổ điển sang ngôn ngữ giải tích hàm cần thiết cho nghiệm yếu, phổ của toán tử và giải tích elliptic hiện đại.
+  </footer>
+</body>
+</html>
