@@ -59,6 +59,7 @@ Each phase builds on the previous, with theory and applications interwoven throu
 | 10 | Vector Calculus | required | Gradient, divergence, curl, theorems |
 | 11 | Special Functions | optional | Gamma, Bessel, Legendre |
 | 12 | Illustration Gallery | optional | Visual synthesis of Chapter 00 mathematical foundations |
+| 13 | Modern Applications: Scientific Machine Learning Foundations | optional | Autodiff, PINNs, neural operators, and function-space SciML (2022–2026) |
 
 **References**: Boyce & DiPrima (Appendices), Brezis (Chapter 1)
 
@@ -78,6 +79,7 @@ Each phase builds on the previous, with theory and applications interwoven throu
 | 7 | Applications: Population & Mixing | required | Logistic growth, tank problems |
 | 8 | Applications: Mechanics & Circuits | required | Newton's law, RC/RL circuits |
 | 9 | Autonomous Equations & Phase Lines | optional | Equilibria, stability via phase line |
+| 11 | Modern Applications: Neural ODEs and Continuous-Depth Networks | optional | Continuous-depth nets, adjoints, torchdiffeq/Diffrax (2022–2026) |
 
 **References**: Boyce & DiPrima (Ch. 1-2), Zill (Ch. 1-2), Ross
 
@@ -98,6 +100,7 @@ Each phase builds on the previous, with theory and applications interwoven throu
 | 8 | Mechanical Vibrations | required | Free, damped, forced oscillations |
 | 9 | Electrical Circuits: RLC | required | Series circuits, resonance |
 | 10 | Wronskian & Linear Independence | optional | Theoretical foundations |
+| 12 | Modern Applications: Hamiltonian and Second-Order Neural Models | optional | HNN/LNN, symplectic priors, learned oscillators (2019–2024) |
 
 **References**: Boyce & DiPrima (Ch. 3-4), Zill (Ch. 3-4)
 
@@ -116,6 +119,7 @@ Each phase builds on the previous, with theory and applications interwoven throu
 | 6 | Impulse Functions & Delta Distribution | required | Dirac delta, impulse response |
 | 7 | Convolution Theorem | required | Convolution integral, applications |
 | 8 | Transfer Functions & Systems | optional | Input-output, frequency response |
+| 10 | Modern Applications: Laplace Neural Operators and Learned Transfer Functions | optional | LNO pole-residue layers, causal operator learning (2023–2024) |
 
 **References**: Boyce & DiPrima (Ch. 6), Zill (Ch. 7)
 
@@ -136,6 +140,7 @@ Each phase builds on the previous, with theory and applications interwoven throu
 | 8 | Nonhomogeneous Systems | required | Variation of parameters for systems |
 | 9 | Applications: Coupled Oscillators | required | Normal modes, beats |
 | 10 | Applications: Compartment Models | optional | Pharmacokinetics, epidemiology |
+| 12 | Modern Applications: Latent ODEs and Learned Linear Systems | optional | Latent ODEs, Neural CDEs, spectral identification (2019–2022) |
 
 **References**: Boyce & DiPrima (Ch. 7), Arnold (Ch. 1-3)
 
@@ -156,6 +161,7 @@ Each phase builds on the previous, with theory and applications interwoven throu
 | 8 | Competing Species | required | Coexistence, competitive exclusion |
 | 9 | Introduction to Chaos | optional | Lorenz system, sensitivity |
 | 10 | Applications: Epidemiology (SIR) | optional | Basic reproduction number |
+| 12 | Modern Applications: Neural Lyapunov Functions and Learned Certificates | optional | Neural Lyapunov/barrier certificates and verification (2019–2023) |
 
 **References**: Strogatz (primary), Arnold (geometric perspective)
 
@@ -174,6 +180,7 @@ Each phase builds on the previous, with theory and applications interwoven throu
 | 6 | Legendre's Equation | required | Legendre polynomials, orthogonality |
 | 7 | Other Special Functions | optional | Hermite, Laguerre, Chebyshev |
 | 8 | Applications in Physics | optional | Vibrating membranes, quantum mechanics |
+| 10 | Modern Applications: Spectral Bases and Operator Learning | optional | DeepONet trunks, spectral PINNs, special-function priors (2021–2024) |
 
 **References**: Boyce & DiPrima (Ch. 5), Haberman
 
@@ -191,6 +198,7 @@ Each phase builds on the previous, with theory and applications interwoven throu
 | 5 | Green's Functions for BVPs | required | Construction, applications |
 | 6 | Applications: Vibrating Strings | required | Normal modes |
 | 7 | Applications: Heat Conduction | required | Steady-state problems |
+| 9 | Modern Applications: PINNs for Boundary Value Problems | optional | PINN BVP losses, eigenproblems, Green inverses (2021–2024) |
 
 **References**: Boyce & DiPrima (Ch. 10-11), Haberman (Ch. 5)
 
@@ -210,6 +218,7 @@ Each phase builds on the previous, with theory and applications interwoven throu
 | 7 | Complex Fourier Series | required | Exponential form |
 | 8 | Fourier Transform: Introduction | optional | From series to transform |
 | 9 | Illustration Gallery | optional | Visual synthesis of Chapter 08 concepts |
+| 10 | Modern Applications: Fourier Neural Operators | optional | FNO, FourCastNet, spherical/deformed Fourier operators (2021–2024) |
 
 **References**: Haberman (Ch. 3), Evans (Appendix)
 
@@ -230,6 +239,7 @@ Each phase builds on the previous, with theory and applications interwoven throu
 | 8 | Numerical Methods: Finite Differences | optional | Explicit, implicit schemes |
 | 9 | Applications: Diffusion Processes | optional | Biology, finance |
 | 10 | Illustration Gallery | optional | Visual synthesis of Chapter 09 heat-equation ideas |
+| 11 | Modern Applications: Neural Solvers for Diffusion and Score-Based Models | optional | Heat PINNs/operators and score-based diffusion SDEs (2021–2024) |
 
 **References**: Evans (Ch. 2), Haberman (Ch. 1-2)
 
@@ -249,6 +259,7 @@ Each phase builds on the previous, with theory and applications interwoven throu
 | 7 | Dispersion & Dissipation | optional | Wave packets, damping |
 | 8 | Applications: Acoustics & Electromagnetics | optional | Sound waves, Maxwell's equations |
 | 9 | Illustration Gallery | optional | Visual synthesis of Chapter 10 wave-equation ideas |
+| 10 | Modern Applications: Neural Wave Propagation and Seismic Imaging | optional | Wave PINNs, FBPINNs, neural inverse operators (2022–2024) |
 
 **References**: Evans (Ch. 2), Haberman (Ch. 4)
 
@@ -268,6 +279,7 @@ Each phase builds on the previous, with theory and applications interwoven throu
 | 7 | Applications: Electrostatics | required | Potential theory |
 | 8 | Applications: Fluid Flow | optional | Irrotational, incompressible flow |
 | 9 | Illustration Gallery | optional | Visual synthesis of Chapter 11 elliptic ideas |
+| 10 | Modern Applications: Neural Operators for Elliptic Problems | optional | Darcy/Poisson operator learning, PINO, maximum-principle tests (2021–2024) |
 
 **References**: Evans (Ch. 2, 6), Haberman (Ch. 6-7)
 
@@ -289,6 +301,7 @@ Each phase builds on the previous, with theory and applications interwoven throu
 | 9 | Minkowski Inequality & $$L^p$$ Geometry | optional | Triangle inequality in function spaces |
 | 10 | Sobolev Theory | optional | Embeddings, compactness, traces |
 | 11 | Illustration Gallery | optional | Visual synthesis of Chapter 12 functional-analytic ideas |
+| 12 | Modern Applications: Operator Learning in Sobolev Spaces | optional | Neural operators as maps on Banach/Sobolev spaces (2022–2024) |
 
 **References**: Brezis (primary), Adams & Fournier (Sobolev spaces)
 
@@ -309,6 +322,7 @@ Each phase builds on the previous, with theory and applications interwoven throu
 | 7 | Finite Element Introduction | optional | Weak form, mesh discretization |
 | 8 | Stochastic Differential Equations | optional | Euler-Maruyama, applications |
 | 9 | Interactive Gallery | optional | Visual synthesis of Chapter 13 numerical methods |
+| 10 | Modern Applications: Differentiable Solvers and Neural SDEs | optional | torchdiffeq, Diffrax, adjoints, neural/score SDEs (2021–2024) |
 
 **References**: Ascher & Petzold (ODEs), Kloeden & Platen (SDEs)
 
@@ -329,6 +343,7 @@ Each phase builds on the previous, with theory and applications interwoven throu
 | 7 | ΨDOs on Manifolds | optional | Coordinate invariance |
 | 8 | Applications: Elliptic Regularity Revisited | optional | Modern proofs |
 | 9 | Illustration Gallery | optional | Visual synthesis of Chapter 14 pseudo-differential ideas |
+| 10 | Modern Applications: Neural Operators as Learned Symbols | optional | FNO/spectral operators as learned ΨDO symbols (2022–2024) |
 
 **References**: Trèves (primary), Shubin, Taylor
 
@@ -350,6 +365,7 @@ Each phase builds on the previous, with theory and applications interwoven throu
 | 8 | Current Research Directions | optional | Open problems |
 | 9 | Microlocal Elliptic Theory | optional | Elliptic set, parametrix, regularity |
 | 10 | Interactive Gallery | optional | Visual synthesis of Chapter 15 microlocal themes |
+| 11 | Modern Applications: Learned Inverse Problems and Microlocal Priors | optional | Neural inverse operators, score-based imaging, visibility (2022–2024) |
 
 **References**: Hörmander (Vol III-IV), Grigis & Sjöstrand, Zworski
 
