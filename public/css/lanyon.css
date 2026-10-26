@@ -688,42 +688,52 @@ a.pagination-item:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: .5rem;
+  min-height: 44px;
   padding: .5rem 1rem;
   cursor: pointer;
+  list-style: none;
+  color: #fff;
   transition: background-color 0.2s ease;
 }
 
-.sidebar-chapter-header:hover {
-  background-color: rgba(255,255,255,.1);
+.sidebar-chapter-header::-webkit-details-marker {
+  display: none;
 }
 
+.sidebar-chapter-header::marker {
+  content: "";
+}
+
+.sidebar-chapter-header:hover,
 .sidebar-chapter-header.active {
   background-color: rgba(255,255,255,.1);
 }
 
-.sidebar-chapter-link {
-  flex: 1;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
+.sidebar-chapter-header:focus {
+  outline: 2px solid rgba(255,255,255,.45);
+  outline-offset: -2px;
 }
 
-.sidebar-chapter-link:hover {
-  text-decoration: none;
+.sidebar-chapter-label {
+  flex: 1;
+  color: #fff;
+  font-weight: 500;
+  line-height: 1.35;
 }
 
 .sidebar-chapter-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  margin-left: 8px;
+  flex: 0 0 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
   color: rgba(255,255,255,.6);
   transition: transform 0.2s ease;
 }
 
-.sidebar-chapter.expanded .sidebar-chapter-toggle {
+.sidebar-chapter[open] .sidebar-chapter-toggle {
   transform: rotate(180deg);
 }
 
@@ -731,27 +741,27 @@ a.pagination-item:hover {
   pointer-events: none;
 }
 
-/* Submenu styles */
+/* Submenu styles. Native details hides closed chapters; open lists use the
+   sidebar's own scroll instead of a max-height cap. */
 .sidebar-submenu {
-  max-height: 0;
-  overflow: hidden;
   background-color: rgba(0,0,0,.2);
-  transition: max-height 0.3s ease-out;
-}
-
-.sidebar-submenu.open {
-  max-height: 2000px;
-  transition: max-height 0.5s ease-in;
 }
 
 .sidebar-submenu-item {
   display: block;
-  padding: .4rem 1rem .4rem 1.75rem;
+  padding: .55rem 1rem .55rem 1.75rem;
   color: rgba(255,255,255,.7);
   font-size: 0.85em;
+  line-height: 1.35;
   text-decoration: none;
+  overflow-wrap: anywhere;
   border-left: 3px solid transparent;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.sidebar-submenu-overview {
+  font-weight: 600;
+  color: rgba(255,255,255,.9);
 }
 
 .sidebar-submenu-item:hover {
