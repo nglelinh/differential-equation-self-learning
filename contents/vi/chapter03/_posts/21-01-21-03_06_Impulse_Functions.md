@@ -215,6 +215,12 @@ Nghiệm thể hiện đúng trực giác vật lý: hệ không chuyển độn
 
 **Bậc sau đại học.** Liên hệ delta với đạo hàm yếu của Heaviside và với đáp ứng xung trong lý thuyết hệ thống.
 
+## Video tham khảo
+
+- xem trước: [Step and Delta Functions | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=q0PxCQWG3ic) — MIT OpenCourseWare, tiếng Anh. Xung delta như đạo hàm hình thức của một bậc nhảy, và biến đổi của nó.
+- [Unit Step and Impulse Response | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=LjqUV6vqwkg) — MIT OpenCourseWare, tiếng Anh. Đáp ứng xung đặt cạnh đáp ứng bậc.
+- [Dirac Delta: Not a Function but a Distribution](https://www.youtube.com/watch?v=XZKf1G5ATkM) — Scintropy, tiếng Anh. Vì sao delta không phải hàm thông thường mà là một phân phối.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: giải thích delta theo tinh thần ứng dụng rất phù hợp.
 - Zill — *Differential Equations with Boundary-Value Problems*: nhiều ví dụ tốt về impulse response.

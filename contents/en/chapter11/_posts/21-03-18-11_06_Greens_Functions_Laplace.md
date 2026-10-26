@@ -194,6 +194,12 @@ This compact example is an excellent first model for Green's function thinking b
 
 **Graduate level.** Connect to distributions, fundamental solutions, and boundary integral representations for elliptic operators.
 
+## Video tham khảo
+
+- xem trước: [Introducing Green's Functions for Partial Differential Equations (PDEs)](https://www.youtube.com/watch?v=xNqLZnM-PPY) — Faculty of Khan, English. Faculty of Khan builds a Green's function for a PDE.
+- [mod08lec73 - The Poisson's Equation: Green's function solution](https://www.youtube.com/watch?v=hiHWwZb2AVU) — NPTEL-NOC IITM, English. The Green's function solution of Poisson's equation.
+- [Green's functions: the genius way to solve DEs](https://www.youtube.com/watch?v=ism2SfZgFJg) — Mathemaniac, English. The point-source idea behind that kernel.
+
 ## References
 
 - Evans, Chapter 2.

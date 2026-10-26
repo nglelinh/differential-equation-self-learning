@@ -107,6 +107,12 @@ Several limitations should be stated clearly. Automatic differentiation through 
 
 A reflective question is therefore: if two networks achieve the same residual, which function-space norm should decide which one is closer to the true solution? Another: what does completeness buy us once the unknown is a probability measure over trajectories rather than a single curve?
 
+## Video tham khảo
+
+- xem trước: [Physics Informed Neural Networks (PINNs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=-zrY7P2dVC4) — Steve Brunton, English. How a PDE residual is added to a neural loss, the scientific-machine-learning idea of this lesson.
+- [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, English. Neural ODEs as continuous-depth models, the other foundation named in this modern-applications lesson.
+- [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, English. Fourier neural operators learn a map between functions, the operator-learning picture of the lesson.
+
 ## Exercises
 
 1. **Chain rule and autodiff.** Let $$y=\sin(e^{x^2})$$. Compute $$y'$$ by hand and check the result with automatic differentiation. What quantity is being stored on the computational graph at each elementary operation?

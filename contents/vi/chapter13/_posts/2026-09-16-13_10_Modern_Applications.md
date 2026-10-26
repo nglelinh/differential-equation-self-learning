@@ -95,6 +95,12 @@ Liên hợp của quỹ đạo hỗn loạn dài không ổn định; shadowing 
 
 Câu hỏi: nếu liên hợp liên tục và liên hợp rời rạc lệch $$10\%$$, cái nào bạn nên tin cho tối ưu bạn thực sự đang chạy? Câu trả lời của chương là liên hợp rời rạc, vì đó là gradient của phương pháp bạn đã triển khai.
 
+## Video tham khảo
+
+- xem trước: [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, tiếng Anh. Các bộ giải neural ODE khả vi, chủ đề hiện đại của bài.
+- [Latent Stochastic Differential Equations for Irregularly-Sampled Time Series - David Duvenaud](https://www.youtube.com/watch?v=93wr5vhI0F4) — Institute for Advanced Study, tiếng Anh. Phương trình vi phân ngẫu nhiên ẩn là mở rộng có nhiễu.
+- [On Neural Differential Equations](https://www.youtube.com/watch?v=TGfGiBhDEi0) — Patrick Kidger, tiếng Anh. Patrick Kidger về việc huấn luyện xuyên qua các bộ giải phương trình vi phân.
+
 ## Bài tập
 
 1. **Miền ổn định và bước học được.** Với $$y'=\lambda y$$, viết hệ số khuếch đại của RK4. Với $$h\lambda$$ nào stepper phần dư nơ-ron được phép dùng RK4 làm sơ đồ trong?

@@ -225,6 +225,12 @@ $$
 
 **Graduate level.** Emphasize the $$ L^2 $$ Hilbert-space picture and the spectral viewpoint on periodic operators.
 
+## Video tham khảo
+
+- xem trước: [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, English. From heat flow to drawing with circles: what a Fourier series is doing.
+- [Intro to FOURIER SERIES: The Big Idea](https://www.youtube.com/watch?v=wmCIrpLBFds) — Dr. Trefor Bazett, English. Trefor Bazett on the big idea before the coefficient formulas.
+- [TTV: Chuỗi Fourier - Chuỗi có thể vẽ bất kỳ hình dạng gì mà bạn muốn](https://www.youtube.com/watch?v=Ya-feoX0Qkk) — Toán Thú Vị, Vietnamese. Toán Thú Vị shows, in Vietnamese, that a Fourier series can draw a shape.
+
 ## References
 
 - Haberman, Chapter 3: standard introduction to Fourier series and periodic expansions.

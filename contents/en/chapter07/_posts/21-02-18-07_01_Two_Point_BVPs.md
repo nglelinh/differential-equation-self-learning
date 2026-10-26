@@ -216,6 +216,12 @@ This very simple example already shows the distinctive logic of a BVP: the const
 
 ![Two-point BVP]({{ site.imgurl }}/chapter_img/chapter07/01_two_point_bvps.svg)
 
+## Video tham khảo
+
+- xem trước: [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, English. Jason Bramburger sets up a Sturm-Liouville boundary-value problem against an initial-value problem.
+- [Sturm-Liouville Theory](https://www.youtube.com/watch?v=12d15vI52b8) — Nathan Kutz, English. Nathan Kutz's introduction to Sturm-Liouville theory from the boundary conditions.
+- [Green's functions: the genius way to solve DEs](https://www.youtube.com/watch?v=ism2SfZgFJg) — Mathemaniac, English. Green's functions as the other way a two-point problem is solved.
+
 ## References
 
 - Boyce & DiPrima, Chapters 10-11: classical introduction to boundary value problems.

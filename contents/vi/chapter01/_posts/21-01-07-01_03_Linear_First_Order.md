@@ -251,6 +251,12 @@ Phần $$ 80 $$ là cân bằng lâu dài; phần $$ -58e^{-0.4t} $$ là trí nh
 
 **Bậc sau đại học.** Mở rộng sang công thức biến thiên hằng số, nhân tử tích phân ma trận ở chương hệ ODE, và quan điểm toán tử giải. Đây cũng là nơi thích hợp để nhấn mạnh Green function của bài toán tuyến tính cấp một.
 
+## Video tham khảo
+
+- xem trước: [Phương trình vi phân Tuyến tính cấp 1 (Bài 13.2) | Vi tích phân 2/Toán C](https://www.youtube.com/watch?v=m8BFHJQrLSM) — Nguyễn Văn Thùy, Tiếng Việt. Bài giảng tiếng Việt về phương trình tuyến tính cấp một và nhân tử tích phân.
+- [Linear Differential Equations & the Method of Integrating Factors](https://www.youtube.com/watch?v=2H6BZHlD_3g) — Dr. Trefor Bazett, tiếng Anh. Vì sao nhân tử e^{∫p} biến phương trình tuyến tính thành một đạo hàm đúng.
+- [The Method of Integrating Factors for Linear 1st Order ODEs **full example**](https://www.youtube.com/watch?v=20x2dNVztlU) — Dr. Trefor Bazett, tiếng Anh. Một ví dụ trọn vẹn của công thức nhân tử tích phân, từ đầu đến điều kiện đầu.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: giải thích rất rõ nhân tử tích phân và các mô hình ứng dụng đầu tiên.
 - Zill — *Differential Equations with Boundary-Value Problems*: có nhiều bài tập tốt về dạng chuẩn và điều kiện đầu.

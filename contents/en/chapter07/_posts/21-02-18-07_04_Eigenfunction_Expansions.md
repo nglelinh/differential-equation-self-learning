@@ -207,6 +207,12 @@ This is the classical example of an eigenfunction expansion and the template for
 
 ![Eigenfunction expansions]({{ site.imgurl }}/chapter_img/chapter07/04_eigenfunction_expansions.svg)
 
+## Video tham khảo
+
+- xem trước: [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, English. Fourier series as the model eigenfunction expansion, born from the heat equation.
+- [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, English. Why Sturm-Liouville eigenfunctions are the right basis for the expansion.
+- [Computing Fourier Series | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=jzzpxqVohhI) — MIT OpenCourseWare, English. MIT computes Fourier coefficients, the prototype of a generalized coefficient.
+
 ## References
 
 - Boyce & DiPrima, Chapter 11: classical eigenfunction expansion methods.

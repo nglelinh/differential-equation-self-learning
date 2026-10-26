@@ -238,3 +238,9 @@ $$ u \in H^1(0,1). $$
 **Bậc đại học.** Làm quen với $$ H^1 $$ như không gian hàm hữu hạn năng lượng.
 
 **Bậc sau đại học.** Kết nối với trace theorem, compact embeddings và Rellich-Kondrachov.
+
+## Video tham khảo
+
+- xem trước: [UPB Math 237 LEC5A Sobolev Spaces](https://www.youtube.com/watch?v=GhBM6L-avYU) — Gilbert Peralta, tiếng Anh. Một bài đại học định nghĩa không gian Sobolev từ đạo hàm yếu.
+- [Sobolev Spaces Explained | Weak Derivatives, W¹ᵖ and H¹](https://www.youtube.com/watch?v=bUIZGQ7T0rU) — Sciwords, tiếng Anh. Đạo hàm yếu, W^{1,p} và H^1 trong một bài giải thích.
+- [Index Theory Lecture 7: Sobolev space theory](https://www.youtube.com/watch?v=Q1JecioLurc) — Masoud Khalkhali, tiếng Anh. Bài của Masoud Khalkhali về lý thuyết không gian Sobolev.

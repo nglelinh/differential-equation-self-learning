@@ -207,6 +207,12 @@ $$ \mu=\frac{n\pi}{L}. $$
 
 ![Eigenvalue problems]({{ site.imgurl }}/chapter_img/chapter07/02_eigenvalue_problems.svg)
 
+## Video tham khảo
+
+- xem trước: [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, English. Eigenvalues and eigenfunctions of a differential operator with boundary conditions.
+- [Sturm-Liouville Theorem and Proof](https://www.youtube.com/watch?v=_F0ck1JncLE) — Faculty of Khan, English. Faculty of Khan states and proves the Sturm-Liouville theorem.
+- [Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra](https://www.youtube.com/watch?v=PFDu9oVAE-g) — 3Blue1Brown, English. The finite-dimensional eigenvalue picture this differential problem extends.
+
 ## References
 
 - Boyce & DiPrima, Chapter 10: standard model eigenvalue problems.

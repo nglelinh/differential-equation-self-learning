@@ -281,3 +281,9 @@ thỏa đẳng thức này, nên chính là nghiệm yếu.
 **Bậc đại học.** Hiểu cách tích phân từng phần sinh ra dạng yếu.
 
 **Bậc sau đại học.** Kết nối với Galerkin, compactness và tồn tại nghiệm cho PDE phi tuyến.
+
+## Video tham khảo
+
+- xem trước: [Lax-Milgram, application to Poisson equation.](https://www.youtube.com/watch?v=s5P3e1FhpTk) — Learn Maths with Dr Alex, tiếng Anh. Lax-Milgram áp vào phương trình Poisson, cho ra một nghiệm yếu.
+- [Sobolev Spaces Explained | Weak Derivatives, W¹ᵖ and H¹](https://www.youtube.com/watch?v=bUIZGQ7T0rU) — Sciwords, tiếng Anh. Không gian Sobolev H^1 mà nghiệm yếu ấy sống trong đó.
+- [Lax-Milgram lemma](https://www.youtube.com/watch?v=w8QjyVug78M) — Numerical Analysis by Julian Roth, tiếng Anh. Một trình bày thiên về chứng minh của bổ đề Lax-Milgram.

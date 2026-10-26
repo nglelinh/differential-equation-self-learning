@@ -268,6 +268,12 @@ So the fundamental frequency is set by the first Bessel zero.
 
 ![Bessel equation]({{ site.imgurl }}/chapter_img/chapter06/06_05_bessel_equation.svg)
 
+## Video tham khảo
+
+- xem trước: [Advanced Engineering Mathematics, Lecture 2.7: Bessel's equation](https://www.youtube.com/watch?v=lcvWAgrdFn0) — Professor Macauley, English. Professor Macauley's lecture on Bessel's equation.
+- [Bessel Functions and the Frobenius Method](https://www.youtube.com/watch?v=uLORiAWe63A) — Faculty of Khan, English. Faculty of Khan derives Bessel functions by Frobenius.
+- [Bessel's Equation - Ordinary Differential Equations | Lecture 29](https://www.youtube.com/watch?v=HoV5MiyYO3M) — Jason Bramburger, English. Jason Bramburger's lecture devoted to Bessel's equation.
+
 ## References
 
 - Boyce & DiPrima, Section 5.5: Bessel equation

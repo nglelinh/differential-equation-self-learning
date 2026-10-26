@@ -342,3 +342,9 @@ Its singularity lies on the line $$ x_1=0 $$, but only in directions normal to t
 **Undergraduate level.** Compare singular support and wave front set through delta, jump, and smooth examples.
 
 **Graduate level.** Connect to the conic definition, pullback/pushforward, and coordinate invariance.
+
+## Video tham khảo
+
+- xem trước: [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, English. Wavefront sets appear as Vasy explains where a distribution is singular in phase space.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 2)](https://www.youtube.com/watch?v=3DN6bKJnlXc) — Institut Fourier, English. Part 2 continues the microlocal description of singularities.
+- [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), English. Maciej Zworski's lecture on microlocal methods.

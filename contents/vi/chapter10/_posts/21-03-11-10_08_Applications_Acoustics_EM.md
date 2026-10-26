@@ -125,6 +125,12 @@ Có thể mời sinh viên khá giỏi tìm hiểu sâu hơn về suy ra phươn
 
 Âm thanh và điện từ đều là những biểu hiện của cùng một ngôn ngữ toán học: phương trình sóng cộng với mode riêng và điều kiện biên. Hình học miền quyết định cộng hưởng, còn mode quyết định cách năng lượng lan truyền và được quan sát trong thực tế.
 
+## Video tham khảo
+
+- xem trước: [Divergence and curl:  The language of Maxwell's equations, fluid flow, and more](https://www.youtube.com/watch?v=rB83DpBJQsE) — 3Blue1Brown, tiếng Anh. Divergence và curl là ngôn ngữ của các phương trình Maxwell.
+- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, tiếng Anh. Phương trình sóng mà các mô hình âm và điện từ quy về.
+- [8.03 - Lect 12 - Dispersion, Phase Velocity, Group Velocity](https://www.youtube.com/watch?v=YEDUCl9t1m0) — Lectures by Walter Lewin. They will make you ♥ Physics., tiếng Anh. Tán sắc trong một sóng thật, hiệu chỉnh đối với một tín hiệu điện từ hoặc âm lý tưởng.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - phát triển chặt chẽ phương trình sóng, năng lượng, và tính duy nhất.

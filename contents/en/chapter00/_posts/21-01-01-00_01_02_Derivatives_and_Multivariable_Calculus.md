@@ -128,3 +128,9 @@ $$h'(x) = \frac{\partial f}{\partial x} \cdot 1 + \frac{\partial f}{\partial y} 
 Setting $$ h'(x) = 0 $$ gives $$ x = 1/2 $$, so the optimal point is $$ (1/2, 1/2) $$.
 
 This demonstrates how multivariable calculus concepts work together to solve optimization problems systematically.
+
+## Video tham khảo
+
+- xem trước: [Visualizing the chain rule and product rule | Chapter 4, Essence of calculus](https://www.youtube.com/watch?v=YG15m2VwSjA) — 3Blue1Brown, English. The chain rule picture is the tool used when an ODE right-hand side depends on several variables.
+- [The essence of calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM) — 3Blue1Brown, English. Start here for the derivative as instantaneous rate of change, the meaning of y' in every later model.
+- [Calculus Review: The Derivative (and the Power Law and Chain Rule)](https://www.youtube.com/watch?v=-NhgElcA3K8) — Steve Brunton, English. A short calculus review of the derivative rules used when checking that a formula solves an ODE.

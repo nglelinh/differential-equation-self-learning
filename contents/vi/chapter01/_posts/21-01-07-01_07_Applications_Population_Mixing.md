@@ -212,6 +212,12 @@ Nghiệm chỉ ra bể sẽ tiến về 10 kg muối, tức là tiến về nồ
 
 **Bậc sau đại học.** Bàn thêm về tính dương của nghiệm, ước lượng tham số từ dữ liệu, nondimensionalization, và tính nhận dạng mô hình. Đây là nơi rất tốt để bắt đầu thảo luận "mọi mô hình đều sai, nhưng có mô hình hữu ích".
 
+## Video tham khảo
+
+- xem trước: [The Logistic Growth Differential Equation](https://www.youtube.com/watch?v=aP4YXOo-Uko) — Dr. Trefor Bazett, tiếng Anh. Phương trình logistic, sức chứa và các cân bằng của mô hình quần thể.
+- [❖ Mixing Problems and Separable Differential Equations ❖](https://www.youtube.com/watch?v=6wk9zWa-Fww) — Patrick J, tiếng Anh. Cân bằng bể trộn viết thành phương trình cấp một tách biến hoặc tuyến tính.
+- [Newton's Law of Cooling  // Separable ODE Example](https://www.youtube.com/watch?v=_bAjWNsNrQA) — Dr. Trefor Bazett, tiếng Anh. Sự nguội đi là một cân bằng cấp một cùng kiểu với bài toán trộn.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: rất mạnh ở các mô hình dân số, pha trộn và diễn giải vật lý.
 - Zill — *Differential Equations with Boundary-Value Problems*: có nhiều bài tập thực hành mô hình hóa bằng ngôn ngữ đời sống.

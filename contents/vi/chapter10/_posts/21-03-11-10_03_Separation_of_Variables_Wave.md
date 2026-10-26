@@ -184,6 +184,12 @@ Có thể mời sinh viên khá giỏi so sánh nghiệm d'Alembert với khai t
 
 Tách biến cho phương trình sóng trên đoạn hữu hạn sinh ra một bài toán trị riêng không gian và một ODE dao động theo thời gian. Các mode không gian là sóng dừng, còn tần số của chúng là các tần số riêng của hệ. Dữ liệu đầu quyết định cách pha trộn các họa âm đó.
 
+## Video tham khảo
+
+- xem trước: [Solving the Wave Equation with Separation of Variables... and Guitar String Physics](https://www.youtube.com/watch?v=ywrgWRSQ3PY) — Steve Brunton, tiếng Anh. Tách biến trên một dây hữu hạn, với các mode âm nhạc.
+- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, tiếng Anh. Phương trình đang được tách, được suy ra trước chuỗi.
+- [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, tiếng Anh. Chuỗi Fourier đóng gói các mode không gian ấy.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - phát triển chặt chẽ phương trình sóng, năng lượng, và tính duy nhất.

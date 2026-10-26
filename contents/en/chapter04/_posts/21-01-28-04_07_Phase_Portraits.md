@@ -253,6 +253,12 @@ A negative determinant means the origin is a saddle. The first axis is repelling
 
 ![Phase portraits classification]({{ site.imgurl }}/chapter_img/chapter04/04_07_phase_portraits.svg)
 
+## Video tham khảo
+
+- xem trước: [Phase Portraits | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=zmzyW1rP-hk) — MIT OpenCourseWare, English. MIT's gallery of linear phase portraits.
+- [Trace-Determinant Diagram | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=oEskbXrhkkk) — MIT OpenCourseWare, English. The trace-determinant plane that classifies those portraits.
+- [MAE5790-5 Two dimensional linear systems](https://www.youtube.com/watch?v=QrHRaA93Nrg) — Cornell MAE, English. Strogatz draws the same classification from the eigenvalues.
+
 ## References
 
 - Boyce & DiPrima, Chapter 7: good discussion of planar linear systems and phase portraits.

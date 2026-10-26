@@ -221,6 +221,12 @@ $$ T(x)=\frac{x(1-x)}{2}. $$
 
 **Bậc sau đại học.** Kết nối với toán tử elliptic một chiều, nguyên lý cực đại và chuẩn bị cho PDE elliptic ở các chương sau.
 
+## Video tham khảo
+
+- xem trước: [Deriving the Heat Equation: A Parabolic Partial Differential Equation for Heat Energy Conservation](https://www.youtube.com/watch?v=9d8PwnKVA-U) — Steve Brunton, tiếng Anh. Brunton suy phương trình nhiệt từ bảo toàn năng lượng.
+- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. 3Blue1Brown giải phương trình nhiệt bằng các mode Fourier.
+- [The Heat Equation and the Steady State Heat Distribution via Laplace's Equation](https://www.youtube.com/watch?v=OoRwXVIXpL0) — Steve Brunton, tiếng Anh. Trạng thái dừng của phương trình nhiệt là phương trình Laplace, cân bằng của ứng dụng này.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 10: các ví dụ BVP dẫn nhiệt trạng thái dừng.

@@ -192,6 +192,12 @@ Với hệ van der Pol khi $$ \mu>0 $$, nghiệm gần gốc bị đẩy ra như
 
 **Bậc sau đại học.** Dùng định lý Poincare-Bendixson, bản đồ Poincare và phân nhánh Hopf để giải thích sự xuất hiện chu trình giới hạn.
 
+## Video tham khảo
+
+- xem trước: [MAE5790-8 Index theory and introduction to limit cycles](https://www.youtube.com/watch?v=O2fcpxLT5wk) — Cornell MAE, tiếng Anh. Lý thuyết chỉ số và lần xuất hiện đầu của chu trình giới hạn trong khóa của Strogatz.
+- [MAE5790-9 Testing for closed orbits](https://www.youtube.com/watch?v=nWO74rlr58Y) — Cornell MAE, tiếng Anh. Các phép thử cho quỹ đạo đóng.
+- [MAE5790-10 van der Pol oscillator](https://www.youtube.com/watch?v=O1lQrHemPsw) — Cornell MAE, tiếng Anh. Dao động van der Pol là chu trình hút tiêu chuẩn.
+
 ## Tài liệu tham khảo
 
 - Strogatz, Chương 7: trình bày rất trực quan về chu trình giới hạn và van der Pol.

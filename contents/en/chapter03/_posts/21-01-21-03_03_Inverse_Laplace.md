@@ -247,6 +247,12 @@ This is a classic damped oscillatory response.
 
 ![Inverse Laplace transform]({{ site.imgurl }}/chapter_img/chapter03/03_03_inverse_laplace.svg)
 
+## Video tham khảo
+
+- xem trước: [Partial Fractions and Laplace Inverse | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=D6Rd1K93nSA) — MIT OpenCourseWare, English. Partial fractions and the inverse Laplace transform, the computational heart of this lesson.
+- [Laplace: Solving ODE's | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=5av3kiejazQ) — MIT OpenCourseWare, English. See the inverse used immediately to recover y(t) from an algebraic equation.
+- [Laplace Transform: Basics | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=BniJM-ireXQ) — MIT OpenCourseWare, English. The forward table this inversion is reading backwards.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: very good for learning inverse Laplace through partial fractions.
 - Zill — *Differential Equations with Boundary-Value Problems*: many exercises right at the core of this lesson.

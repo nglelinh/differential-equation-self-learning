@@ -87,6 +87,12 @@ Hệ phi tuyến không có một hàm truyền duy nhất. LNO, như tuyến t�
 
 Học $$G(s)$$ nghĩa là gì nếu hệ thật chỉ gần tuyến tính? Định lý tích chập gợi một phép thử: nếu mô hình học được không biến tích trong $$s$$ thành tích chập trong $$t$$, nó không phải hàm truyền, dù lỗi huấn luyện nhỏ đến đâu.
 
+## Video tham khảo
+
+- xem trước: [Control Systems Lectures - Transfer Functions](https://www.youtube.com/watch?v=RJleGwXorUk) — Brian Douglas, tiếng Anh. Hàm truyền cổ điển, đối tượng mà một lớp học được trên miền Laplace đang bắt chước.
+- [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, tiếng Anh. Fourier neural operator là bài giảng công khai gần nhất về việc học một toán tử vào-ra.
+- [The Laplace Transform and the Important Role it Plays](https://www.youtube.com/watch?v=VJ9phDRys_I) — Brian Douglas, tiếng Anh. Chính biến đổi Laplace, để mô hình học được còn gắn với một hệ tuyến tính nhân quả.
+
 ## Bài tập
 
 1. **Đảo cực–thặng dư.** Cho $$G(s)=(s+3)/((s+1)(s+2))$$. Đảo bằng phân thức và phác đáp ứng xung. Lớp Laplace học được phải lấy lại những đặc trưng nào?

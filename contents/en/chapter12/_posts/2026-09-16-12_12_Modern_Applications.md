@@ -97,6 +97,12 @@ Nonlinear operators, time-dependent maps, and measure-valued outputs leave the H
 
 A question worth asking of every paper: in which Banach space is the claim stated, and is that space the one in which the PDE is well-posed?
 
+## Video tham khảo
+
+- xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, English. Operator learning in function space, the modern use of the Sobolev setting.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, English. DeepONet as a map between function spaces.
+- [Sobolev Spaces Explained | Weak Derivatives, W¹ᵖ and H¹](https://www.youtube.com/watch?v=bUIZGQ7T0rU) — Sciwords, English. The Sobolev space those operator-learning error estimates are stated in.
+
 ## Exercises
 
 1. **Norm dictionary.** For the Dirichlet Poisson map $$f\mapsto u$$, state continuity $$H^{-1}\to H^1_0$$ and $$L^2\to H^2\cap H^1_0$$ (on a smooth domain). Which one should a neural operator advertise if it only saw noisy $$f$$?

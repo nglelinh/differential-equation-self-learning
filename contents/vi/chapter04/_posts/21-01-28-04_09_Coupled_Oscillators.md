@@ -237,6 +237,12 @@ Mode thứ nhất là cùng pha, mode thứ hai là ngược pha. Nếu kích ho
 
 **Bậc sau đại học.** Lập đầy đủ ma trận $$ M,K $$ và phân tích mode chuẩn như một bài toán trị riêng tổng quát.
 
+## Video tham khảo
+
+- xem trước: [Coupled oscillators | Lecture 46 | Differential Equations for Engineers](https://www.youtube.com/watch?v=-pXnfzQfupE) — Jeffrey Chasnov, tiếng Anh. Jeffrey Chasnov suy ra các mode chuẩn của hai dao động tử ghép.
+- [4. Coupled Oscillators, Normal Modes](https://www.youtube.com/watch?v=BX4QPdP7fT8) — MIT OpenCourseWare, tiếng Anh. MIT 8.03 về dao động tử ghép và mode chuẩn.
+- [Solving Systems of Differential Equations with Eigenvalues and Eigenvectors](https://www.youtube.com/watch?v=Zwb5eiYcL8w) — Steve Brunton, tiếng Anh. Bước trị riêng biến hệ ghép thành các mode độc lập.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 7: nhiều ví dụ tốt về mode chuẩn và dao động liên kết.

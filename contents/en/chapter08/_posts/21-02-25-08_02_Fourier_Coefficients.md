@@ -217,6 +217,12 @@ $$
 
 **Graduate level.** Interpret the coefficients as orthogonal projections in Hilbert space and connect them to spectral energy content.
 
+## Video tham khảo
+
+- xem trước: [Computing Fourier Series | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=jzzpxqVohhI) — MIT OpenCourseWare, English. MIT computes the Fourier coefficients from the integral formulas.
+- [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, English. Why those integrals are inner products against sines and cosines.
+- [Manipulating Fourier Series | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=v4YcejwdQC0) — MIT OpenCourseWare, English. How to manipulate a series once the coefficients are known.
+
 ## References
 
 - Haberman, Chapter 3: clear derivation and many computational examples.

@@ -240,6 +240,12 @@ while $$ u_1 $$ follows from integration. Even though the integrals are less ele
 
 ![Variation of parameters concept]({{ site.imgurl }}/chapter_img/chapter02/02_06_variation_of_parameters.svg)
 
+## Video tham khảo
+
+- xem trước: [Variation of Parameters || How to solve non-homogeneous ODEs](https://www.youtube.com/watch?v=wSMad7QpaqE) — Dr. Trefor Bazett, English. Variation of parameters when undetermined coefficients do not apply.
+- [Differential Equations with Forcing: Method of Variation of Parameters](https://www.youtube.com/watch?v=wCeDUbZQ_zA) — Steve Brunton, English. Brunton's derivation of the formula for a particular solution from a fundamental set.
+- [Undetermined Coefficients: Solving non-homogeneous ODEs](https://www.youtube.com/watch?v=AgyeJEO2a-k) — Dr. Trefor Bazett, English. Contrast this with undetermined coefficients, the method the lesson is generalizing.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: presents the formula and motivation of the method very clearly.
 - Zill — *Differential Equations with Boundary-Value Problems*: many non-standard forcing problems to practice variation of parameters.

@@ -320,3 +320,9 @@ Nó dùng slope hiện tại và slope trước đó để ước lượng tích
 **Bậc đại học.** Làm quen với Adams-Bashforth và Adams-Moulton qua ví dụ bậc thấp.
 
 **Bậc sau đại học.** Kết nối với root condition, Dahlquist theory và BDF families.
+
+## Video tham khảo
+
+- xem trước: [Numerical methods for ODEs - Multistep methods - Adams Bashforth](https://www.youtube.com/watch?v=fp6n7x55tkQ) — The Math Guy, tiếng Anh. The Math Guy suy các phương pháp đa bước Adams-Bashforth.
+- [Examples of Adams-Bashforth Methods](https://www.youtube.com/watch?v=JVKBe_vYdg0) — Melvin Leok, tiếng Anh. Melvin Leok giải ví dụ Adams-Bashforth.
+- [Runge-Kutta Integrator Overview:  All Purpose Numerical Integration of Differential Equations](https://www.youtube.com/watch?v=HOWJp8NV5xU) — Steve Brunton, tiếng Anh. Runge-Kutta một bước, phương pháp mà các lược đồ đa bước đang được so với.

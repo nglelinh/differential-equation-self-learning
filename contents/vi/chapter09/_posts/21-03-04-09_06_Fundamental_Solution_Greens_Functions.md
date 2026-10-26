@@ -161,6 +161,12 @@ Có thể yêu cầu sinh viên khá giỏi suy ra công thức Green bằng bi�
 
 Nghiệm cơ bản của phương trình nhiệt là phản ứng của hệ với một xung nhiệt điểm, và nó có dạng Gaussian. Hàm Green tổng quát hóa ý tưởng đó để ta biểu diễn nghiệm của bài toán với dữ liệu hoặc nguồn bất kỳ bằng công thức tích phân chập.
 
+## Video tham khảo
+
+- xem trước: [Introducing Green's Functions for Partial Differential Equations (PDEs)](https://www.youtube.com/watch?v=xNqLZnM-PPY) — Faculty of Khan, tiếng Anh. Faculty of Khan giới thiệu hàm Green cho một PDE.
+- [Solving the Heat Equation with the Fourier Transform](https://www.youtube.com/watch?v=7haZCrQDHpA) — Steve Brunton, tiếng Anh. Nghiệm cơ bản Gauss xuất hiện như biến đổi ngược của bộ nhân nhiệt.
+- [Green's functions: the genius way to solve DEs](https://www.youtube.com/watch?v=ism2SfZgFJg) — Mathemaniac, tiếng Anh. Một nguồn điểm và đáp ứng chính là nghiệm cơ bản.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - nền tảng chuẩn cho phương trình nhiệt, nguyên lý cực đại, và hàm Green.

@@ -101,6 +101,12 @@ Latent dimension is a hyperparameter with no analogue of a computed Jordan form:
 
 A useful prompt: if two latent systems share eigenvalues but not eigenvectors, which scientific conclusions remain valid? The chapter’s answer is: those that depend on the similarity class of $$A$$, not on a preferred basis.
 
+## Video tham khảo
+
+- xem trước: [Latent Stochastic Differential Equations for Irregularly-Sampled Time Series - David Duvenaud](https://www.youtube.com/watch?v=93wr5vhI0F4) — Institute for Advanced Study, English. David Duvenaud on latent stochastic differential equations for irregular time series.
+- [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, English. Neural ODEs, the deterministic latent-dynamics model this lesson is extending.
+- [Solving Systems of Differential Equations with Eigenvalues and Eigenvectors](https://www.youtube.com/watch?v=Zwb5eiYcL8w) — Steve Brunton, English. Classical linear systems, the structure a learned linear latent model is trying to recover.
+
 ## Exercises
 
 1. **Similarity invariance.** Show that $$A$$ and $$PAP^{-1}$$ generate equivalent trajectories up to the change of coordinates $$\mathbf{w}=P\mathbf{z}$$. Which quantities in a latent-ODE paper should therefore be reported?

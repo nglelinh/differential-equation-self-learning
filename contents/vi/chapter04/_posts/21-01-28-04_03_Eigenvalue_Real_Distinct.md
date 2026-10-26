@@ -312,6 +312,12 @@ Hướng $$ x_1 $$ là hướng đẩy, còn hướng $$ x_2 $$ là hướng hú
 
 **Bậc sau đại học.** Đọc mode trội, ổn định và cấu trúc yên ngựa trực tiếp từ phổ của ma trận.
 
+## Video tham khảo
+
+- xem trước: [Phương trình vi phân - Phương pháp giá trị riêng giải hệ phương trình vi phân tuyến thuần nhất](https://www.youtube.com/watch?v=LVbsb6mAFZ4) — MATH KEY, Tiếng Việt. Bài tiếng Việt về phương pháp trị riêng cho hệ tuyến tính thuần nhất.
+- [Solving Systems of Differential Equations with Eigenvalues and Eigenvectors](https://www.youtube.com/watch?v=Zwb5eiYcL8w) — Steve Brunton, tiếng Anh. Dựng nghiệm tổng quát từ các cặp trị riêng-vector riêng thực phân biệt.
+- [2x2 Systems of ODEs: Sources and Sinks](https://www.youtube.com/watch?v=NaNdkCPLftc) — Steve Brunton, tiếng Anh. Nguồn và hố: dấu của hai trị riêng thực làm gì với chân dung pha.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 7: trình bày chuẩn về phương pháp trị riêng thực.

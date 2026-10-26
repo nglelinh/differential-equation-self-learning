@@ -273,6 +273,12 @@ $$ t^2y+ty^2=C. $$
 
 **Bậc sau đại học.** Kết nối với vi phân 1-dạng, miền đơn liên, tích phân đường, và integrating factor cho phương trình không exact. Đây là tiền đề tốt cho cách nhìn hình học của cơ học và PDE.
 
+## Video tham khảo
+
+- xem trước: [Giải tích 6.2 PTVP Cấp 1: Phương trình Vi phân Toàn phần - Phần 1](https://www.youtube.com/watch?v=KrJzMAG3wUU) — Eureka! Uni, Tiếng Việt. Bài tiếng Việt của Eureka Uni về phương trình vi phân toàn phần cấp một.
+- [Exact equations intuition 1 (proofy) | First order differential equations | Khan Academy](https://www.youtube.com/watch?v=iEpqcdaJNTQ) — Khan Academy, tiếng Anh. Điều kiện chính xác ∂M/∂y=∂N/∂x và hàm thế năng đứng sau nó.
+- [Exact equations example 1 | First order differential equations | Khan Academy](https://www.youtube.com/watch?v=Pb04ntcDJcQ) — Khan Academy, tiếng Anh. Một phương trình chính xác được giải mẫu, đi cạnh phép thử hình thức.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: có phần exact equations rất phù hợp cho buổi học đầu tiên.
 - Zill — *Differential Equations with Boundary-Value Problems*: hữu ích để luyện thao tác dựng hàm thế và xử lý điều kiện đầu.

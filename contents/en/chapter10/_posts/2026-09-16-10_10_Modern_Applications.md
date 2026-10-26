@@ -99,6 +99,12 @@ Dispersion error is more damaging than amplitude error for imaging. Absorbing bo
 
 A question to keep: if a network conserves energy but moves singularities at the wrong speed, which identity has it failed? The chapter’s answer is the characteristic relation, not the energy identity.
 
+## Video tham khảo
+
+- xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, English. Fourier neural operators are trained on wave-like PDE solution maps, the method of this lesson.
+- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, English. The classical wave equation those networks are learning to propagate.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, English. DeepONet as an alternative architecture for the same solution operator.
+
 ## Exercises
 
 1. **Light cone.** From d’Alembert, prove that compactly supported initial data remain inside $$|x|\le R+ct$$. Design a numerical test for a learned solver.

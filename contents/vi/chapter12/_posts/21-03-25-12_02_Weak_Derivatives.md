@@ -258,3 +258,9 @@ với mọi $$ \varphi \in C_c^\infty(-1,1) $$.
 **Bậc đại học.** Hiểu vì sao các hàm có chỗ gãy vẫn có thể có đạo hàm yếu.
 
 **Bậc sau đại học.** Kết nối với phân bố, hàm BV, trace và compactness.
+
+## Video tham khảo
+
+- xem trước: [Sobolev Spaces Explained | Weak Derivatives, W¹ᵖ and H¹](https://www.youtube.com/watch?v=bUIZGQ7T0rU) — Sciwords, tiếng Anh. Đạo hàm yếu, W^{1,p} và H^1 được giải thích trong một bài.
+- [UPB Math 237 LEC5A Sobolev Spaces](https://www.youtube.com/watch?v=GhBM6L-avYU) — Gilbert Peralta, tiếng Anh. Một bài đại học xây không gian Sobolev từ đạo hàm yếu.
+- [Lec 36 Sobolev lemma](https://www.youtube.com/watch?v=ln4N51019qk) — NPTEL - Indian Institute of Science, Bengaluru, tiếng Anh. NPTEL về bổ đề Sobolev, mức tăng chính quy mà đạo hàm yếu có thể cho.

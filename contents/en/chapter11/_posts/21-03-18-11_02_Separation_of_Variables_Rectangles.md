@@ -201,6 +201,12 @@ The solution shows how a single boundary mode penetrates into the domain.
 
 **Graduate level.** Analyze series convergence, completeness of eigenfunctions, and stability with respect to boundary data.
 
+## Video tham khảo
+
+- xem trước: [PDE 101: Separation of Variables! ...or how I learned to stop worrying and solve Laplace's equation](https://www.youtube.com/watch?v=VjWtMl6vQ3Q) — Steve Brunton, English. Brunton separates variables for Laplace's equation on a rectangle.
+- [Laplace’s Equation: Separation of Variables](https://www.youtube.com/watch?v=8jOqXM8OFh8) — Professor Dave Explains, English. Professor Dave Explains the same separation on a rectangle.
+- [Separation of Variables - Laplace Eq Part 1](https://www.youtube.com/watch?v=-FNkz01Ksvw) — Dr. Underwood's Physics YouTube Page, English. A first worked rectangular problem with one nonhomogeneous side.
+
 ## References
 
 - Haberman, Chapters 6-7.

@@ -485,3 +485,9 @@ $$ \dot x = \xi, \qquad \dot \xi = 0. $$
 **Bậc đại học.** Hiểu ansatz WKB và trực giác sóng ngắn.
 
 **Bậc sau đại học.** Kết nối với semiclassical pseudodifferential calculus, Egorov va semiclassical measures.
+
+## Video tham khảo
+
+- xem trước: [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Zworski giảng trong truyền thống vi địa phương mà công trình bán cổ điển của ông thuộc về.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Khung vi địa phương mà một tham số bán cổ điển sau này tinh chỉnh.
+- [Math of QM: 5.7. Spectral Theorem for Unbounded Selfadjoint Operators](https://www.youtube.com/watch?v=cdOkiNIONSc) — Roland Speicher, tiếng Anh. Một định lý phổ cho toán tử không bị chặn, họ hàng cơ học lượng tử của cùng phép phân tích.

@@ -48,3 +48,9 @@ The page is also a useful bridge into Chapter 15, where the symbolic viewpoint b
 - [14.06 Elliptic Operators and Parametrices]({{ site.baseurl }}/contents/en/chapter14/14_06_Elliptic_Operators_Parametrices/)
 - [14.07 PsiDOs on Manifolds]({{ site.baseurl }}/contents/en/chapter14/14_07_PDOs_on_Manifolds/)
 - [14.08 Applications: Elliptic Regularity Revisited]({{ site.baseurl }}/contents/en/chapter14/14_08_Elliptic_Regularity_Revisited/)
+
+## Video tham khảo
+
+- xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Vietnamese. The symbol picture the gallery is trying to draw.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, English. Fourier space, the screen those symbols act on.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, English. A research lecture to show what the pictures are preparing for.

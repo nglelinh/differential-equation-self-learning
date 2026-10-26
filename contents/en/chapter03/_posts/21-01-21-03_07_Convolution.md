@@ -217,6 +217,12 @@ From a systems perspective, this says a unit-step input filtered by an exponenti
 
 ![Convolution]({{ site.imgurl }}/chapter_img/chapter03/03_07_convolution.svg)
 
+## Video tham khảo
+
+- xem trước: [Lec 21 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=3ejfkMHr_DE) — MIT OpenCourseWare, English. Mattuck's lecture on the convolution formula for the Laplace transform.
+- [Laplace Transforms and Convolution](https://www.youtube.com/watch?v=WZMQdLW4COQ) — MIT OpenCourseWare, English. MIT OpenCourseWare on Laplace transforms and convolution.
+- [Convolution and Green's Formula | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=IGk-7EKR35A) — MIT OpenCourseWare, English. Convolution written as Green's formula for a linear initial-value problem.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: the convolution section is very suitable for transitioning to systems language.
 - Zill — *Differential Equations with Boundary-Value Problems*: many examples connecting convolution with practical forcing.

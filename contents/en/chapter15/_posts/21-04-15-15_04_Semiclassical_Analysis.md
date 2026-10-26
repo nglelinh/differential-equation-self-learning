@@ -309,3 +309,9 @@ This is the basic mechanism behind the classical limit as $$ h \to 0 $$.
 **Undergraduate level.** Understand the WKB ansatz and the short-wavelength picture.
 
 **Graduate level.** Connect to semiclassical pseudodifferential calculus, Egorov, and semiclassical measures.
+
+## Video tham khảo
+
+- xem trước: [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), English. Zworski lectures in the microlocal tradition his semiclassical work belongs to.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, English. The microlocal setup a semiclassical parameter later refines.
+- [Math of QM: 5.7. Spectral Theorem for Unbounded Selfadjoint Operators](https://www.youtube.com/watch?v=cdOkiNIONSc) — Roland Speicher, English. A spectral theorem for unbounded operators, the quantum-mechanical cousin of the same analysis.

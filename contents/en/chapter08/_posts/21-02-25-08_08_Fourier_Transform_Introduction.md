@@ -199,6 +199,12 @@ under a suitable normalization convention. The Gaussian is therefore stable unde
 
 **Graduate level.** Connect to Schwartz space, Plancherel theory, distributions, and PDEs on unbounded domains.
 
+## Video tham khảo
+
+- xem trước: [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, English. 3Blue1Brown's visual introduction to the Fourier transform.
+- [Solving the Heat Equation with the Fourier Transform](https://www.youtube.com/watch?v=7haZCrQDHpA) — Steve Brunton, English. Brunton uses the transform to solve the heat equation on the line.
+- [The more general uncertainty principle, regarding Fourier transforms](https://www.youtube.com/watch?v=MBnnXbOM5S4) — 3Blue1Brown, English. The uncertainty principle as a property of the transform introduced here.
+
 ## References
 
 - Haberman, Chapter 3: bridge from Fourier series to Fourier transforms.

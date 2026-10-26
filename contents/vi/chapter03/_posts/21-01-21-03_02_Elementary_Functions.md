@@ -206,6 +206,12 @@ $$ \mathcal{L}\{e^{-2t}t\}=\frac{1}{(s+2)^2}. $$
 
 **Bậc sau đại học.** Dùng tham số hóa và đạo hàm theo tham số để suy ra họ công thức rộng hơn từ vài biến đổi gốc.
 
+## Video tham khảo
+
+- xem trước: [Laplace Transform: Basics | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=BniJM-ireXQ) — MIT OpenCourseWare, tiếng Anh. Biến đổi của các hàm sơ cấp lấp đầy bảng được dùng trong bài.
+- [But what is a Laplace Transform?](https://www.youtube.com/watch?v=j0wJBEZdwLs) — 3Blue1Brown, tiếng Anh. Định nghĩa tích phân mà ta đạo hàm theo tham số để ra các mục trong bảng.
+- [Why Laplace transforms are so useful](https://www.youtube.com/watch?v=FE-hM1kRK4Y) — 3Blue1Brown, tiếng Anh. Vì sao biến đổi trở nên hữu ích về tính toán khi đã có công thức sơ cấp.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: tốt cho việc xây bảng Laplace một cách có lý do.
 - Zill — *Differential Equations with Boundary-Value Problems*: nhiều bài luyện trực tiếp từ định nghĩa.

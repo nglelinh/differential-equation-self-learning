@@ -216,6 +216,12 @@ $$ y(x)=\frac{x(1-x)}{2}. $$
 
 ![Green's functions for BVPs]({{ site.imgurl }}/chapter_img/chapter07/05_greens_functions_bvp.svg)
 
+## Video tham khảo
+
+- xem trước: [Green's functions: the genius way to solve DEs](https://www.youtube.com/watch?v=ism2SfZgFJg) — Mathemaniac, English. Mathemaniac's visual account of a Green's function as the response to a point source.
+- [Introducing Green's Functions for Partial Differential Equations (PDEs)](https://www.youtube.com/watch?v=xNqLZnM-PPY) — Faculty of Khan, English. Faculty of Khan introduces Green's functions for PDEs and boundary-value problems.
+- [Green's function for Sturm-Liouville problems](https://www.youtube.com/watch?v=8l4VsNSX_kw) — Nathan Kutz, English. Nathan Kutz constructs the Green's function of a Sturm-Liouville problem.
+
 ## References
 
 - Boyce & DiPrima, Chapter 11: introductory Green's function construction.

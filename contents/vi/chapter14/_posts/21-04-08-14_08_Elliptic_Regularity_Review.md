@@ -298,3 +298,9 @@ Nghĩa là nghịch đảo elliptic thêm hai bậc trơn tích phân. Phiên b�
 **Bậc đại học.** Liên hệ với kết quả làm trơn elliptic đã biết từ chương trước.
 
 **Bậc sau đại học.** Kết nối với wavefront sets, propagation of singularities và parametrix constructions.
+
+## Video tham khảo
+
+- xem trước: [Sketch of Elliptic regularity](https://www.youtube.com/watch?v=wecQr1yruVY) — Calculus is pictures., tiếng Anh. Tính chính quy elliptic trên thang Sobolev.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Ước lượng elliptic vi địa phương kéo theo tính chính quy ấy.
+- [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, tiếng Anh. Parametrix mà sự tồn tại của nó là dạng toán tử của cùng sự kiện.

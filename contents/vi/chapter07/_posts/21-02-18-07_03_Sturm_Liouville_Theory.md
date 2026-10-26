@@ -253,6 +253,12 @@ $$ \int_0^L \phi_m(x)\phi_n(x)\,dx=0\qquad (m\ne n). $$
 
 **Bậc sau đại học.** Bàn về toán tử tự liên hợp, không gian Hilbert có trọng số và định lý phổ.
 
+## Video tham khảo
+
+- xem trước: [Sturm-Liouville Theorem and Proof](https://www.youtube.com/watch?v=_F0ck1JncLE) — Faculty of Khan, tiếng Anh. Dạng tự liên hợp, trị riêng thực và hàm riêng trực giao.
+- [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, tiếng Anh. Một bài đầy đủ phát triển lý thuyết từ biểu thức vi phân.
+- [Sturm-Liouville Theory](https://www.youtube.com/watch?v=12d15vI52b8) — Nathan Kutz, tiếng Anh. Tổng quan tính toán và lý thuyết của Nathan Kutz.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 11: trình bày khung Sturm-Liouville, trọng số và trực giao hàm riêng.

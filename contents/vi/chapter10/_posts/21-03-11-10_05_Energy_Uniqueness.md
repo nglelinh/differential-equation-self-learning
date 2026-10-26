@@ -149,6 +149,12 @@ Có thể mời sinh viên khá giỏi thảo luận không gian năng lượng 
 
 Phương trình sóng thuần nhất bảo toàn năng lượng. Năng lượng gồm phần vận tốc và phần biến dạng không gian. Chính cấu trúc này cho ta công cụ mạnh để chứng minh tính duy nhất và hiểu vì sao sóng khác căn bản với nhiệt.
 
+## Video tham khảo
+
+- xem trước: [Energy Methods for the Wave Equation](https://www.youtube.com/watch?v=fOmON6ubkTM) — Mike, the Mathematician, tiếng Anh. Phương pháp năng lượng cho phương trình sóng.
+- [Lecture 5.4: Qualitative analysis of Wave equation - Uniqueness by Energy method](https://www.youtube.com/watch?v=Sq7DQpaVFbc) — NPTEL IIT Bombay, tiếng Anh. NPTEL dùng đẳng thức năng lượng để chứng minh tính duy nhất.
+- [Energy Method](https://www.youtube.com/watch?v=-8_nuZFVAMQ) — Dr Peyam, tiếng Anh. Dr Peyam về phương pháp năng lượng như một lập luận duy nhất.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - phát triển chặt chẽ phương trình sóng, năng lượng, và tính duy nhất.

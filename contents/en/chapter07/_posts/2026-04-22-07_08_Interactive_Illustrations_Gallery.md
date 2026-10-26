@@ -28,3 +28,9 @@ This supplementary lesson collects the interactive JavaScript illustrations for 
   path="interactives/chapter07/index.html"
   height="920px"
 %}
+
+## Video tham khảo
+
+- xem trước: [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, English. Heat modes decaying, a picture the gallery is making interactive.
+- [Solving the Wave Equation with Separation of Variables... and Guitar String Physics](https://www.youtube.com/watch?v=ywrgWRSQ3PY) — Steve Brunton, English. String modes to set beside the vibrating-string frames.
+- [Green's functions: the genius way to solve DEs](https://www.youtube.com/watch?v=ism2SfZgFJg) — Mathemaniac, English. The Green's function impulse the boundary-value frames are illustrating.

@@ -186,6 +186,12 @@ For the van der Pol system with $$ \mu>0 $$, trajectories near the origin are pu
 
 ![Limit cycles]({{ site.imgurl }}/chapter_img/chapter05/05_05_limit_cycles.svg)
 
+## Video tham khảo
+
+- xem trước: [MAE5790-8 Index theory and introduction to limit cycles](https://www.youtube.com/watch?v=O2fcpxLT5wk) — Cornell MAE, English. Index theory and the first appearance of a limit cycle in Strogatz's course.
+- [MAE5790-9 Testing for closed orbits](https://www.youtube.com/watch?v=nWO74rlr58Y) — Cornell MAE, English. Tests for closed orbits.
+- [MAE5790-10 van der Pol oscillator](https://www.youtube.com/watch?v=O1lQrHemPsw) — Cornell MAE, English. The van der Pol oscillator as the standard attracting cycle.
+
 ## References
 
 - Strogatz, Chapter 7: excellent first introduction to periodic orbits and limit cycles.

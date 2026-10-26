@@ -230,6 +230,12 @@ away from the origin. Therefore the origin is asymptotically stable. This is a m
 
 ![Lyapunov stability]({{ site.imgurl }}/chapter_img/chapter05/05_04_lyapunov_stability.svg)
 
+## Video tham khảo
+
+- xem trước: [What is a Lyapunov function](https://www.youtube.com/watch?v=uXAx_641FPM) — richard pates, English. What a Lyapunov function is and how its decrease proves stability.
+- [A Visual Explanation of Lyapunov Stability](https://www.youtube.com/watch?v=W8YpgG0KuOo) — Prof Gio | Giordano Scarciotti, English. A visual account of Lyapunov stability.
+- [MAE5790-7 Conservative Systems](https://www.youtube.com/watch?v=3s2lmZspEU8) — Cornell MAE, English. Strogatz on conservative systems, where energy itself is a Lyapunov function.
+
 ## References
 
 - Strogatz, Chapter 7: intuitive introduction to Lyapunov ideas.

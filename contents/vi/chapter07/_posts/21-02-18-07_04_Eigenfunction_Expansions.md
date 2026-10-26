@@ -277,6 +277,12 @@ $$
 
 **Bậc sau đại học.** Nói về completeness, hội tụ trong chuẩn $$ L^2_w $$ và lý thuyết phổ của toán tử tự liên hợp.
 
+## Video tham khảo
+
+- xem trước: [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, tiếng Anh. Chuỗi Fourier là khai triển hàm riêng mẫu, sinh ra từ phương trình nhiệt.
+- [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, tiếng Anh. Vì sao hàm riêng Sturm-Liouville là cơ sở đúng cho khai triển.
+- [Computing Fourier Series | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=jzzpxqVohhI) — MIT OpenCourseWare, tiếng Anh. MIT tính hệ số Fourier, nguyên mẫu của một hệ số suy rộng.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 11: xây dựng khai triển theo hàm riêng từ tính trực giao và bài toán biên.

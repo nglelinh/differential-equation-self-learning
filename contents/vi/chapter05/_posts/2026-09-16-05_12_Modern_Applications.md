@@ -101,6 +101,12 @@ Kiểm chứng kém mở rộng theo chiều; mã hóa mixed-integer của mạn
 
 Câu hỏi phản tư: nếu chứng chỉ nơ-ron được kiểm trên tập compact, nó nói gì về quỹ đạo xuất phát ngoài tập ấy? Mặt pha đã trả lời: không gì, trừ việc chúng có thể vào tập hoặc thoát sang hấp dẫn khác.
 
+## Video tham khảo
+
+- xem trước: [Safe Nonlinear Control using Robust Neural Lyapunov Functions](https://www.youtube.com/watch?v=ZEsQZeBOMDI) — Charles Dawson, tiếng Anh. Một bài nói về việc học hàm Lyapunov nơ-ron bền cho điều khiển an toàn.
+- [Arash Mehrjou:  Neural Lyapunov Redesign](https://www.youtube.com/watch?v=ylRDhiFcujs) — Machine Learning and Dynamical Systems Seminar, tiếng Anh. Arash Mehrjou về thiết kế lại Lyapunov bằng mạng nơ-ron.
+- [What is a Lyapunov function](https://www.youtube.com/watch?v=uXAx_641FPM) — richard pates, tiếng Anh. Hàm Lyapunov cổ điển mà các chứng chỉ học được đang bắt chước.
+
 ## Bài tập
 
 1. **Cản tuyến tính.** Cho $$x'=Ax$$ với $$A$$ có trị riêng phần thực dương. Chứng minh không hàm Lyapunov $$C^1$$ nào thỏa $$\dot V<0$$ quanh gốc. Thuật toán huấn luyện phải làm gì?

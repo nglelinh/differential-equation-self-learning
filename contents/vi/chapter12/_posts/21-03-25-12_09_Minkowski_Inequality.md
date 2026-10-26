@@ -323,3 +323,9 @@ Bất đẳng thức Minkowski được kiểm chứng trực tiếp.
 **Bậc đại học.** Dùng Minkowski để chứng minh $$ L^p $$ thật sự là không gian chuẩn.
 
 **Bậc sau đại học.** Kết nối với tính lồi, bất đẳng thức tam giác trong Banach spaces và các định lý nội suy.
+
+## Video tham khảo
+
+- xem trước: [Young's, Hölder's and Minkowski's Inequality. l^p sequence spaces.](https://www.youtube.com/watch?v=Gp47SlY25WA) — Sukumar Daniel, tiếng Anh. Young, Hölder và Minkowski được chứng minh cùng nhau cho không gian dãy.
+- [Holder's Inequality](https://www.youtube.com/watch?v=XgspUqrgOaA) — Mike, the Mathematician, tiếng Anh. Hölder trước, vì Minkowski được chứng minh từ đó.
+- [Lecture 13: Lp Space Theory](https://www.youtube.com/watch?v=BYR1fXW95zY) — MIT OpenCourseWare, tiếng Anh. Các không gian L^p mà bất đẳng thức tam giác của chúng là Minkowski.

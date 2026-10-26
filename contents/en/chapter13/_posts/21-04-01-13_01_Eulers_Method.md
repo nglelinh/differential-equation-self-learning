@@ -215,6 +215,12 @@ Meanwhile the exact value at $$ t=1 $$ is $$ e \approx 2.718 $$. This clearly sh
 
 **Graduate level.** Connect to consistency, absolute stability, and modified equations.
 
+## Video tham khảo
+
+- xem trước: [Deriving Forward Euler and Backward/Implicit Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=MstPeOTCVzQ) — Steve Brunton, English. Brunton derives forward Euler and implicit Euler.
+- [Numerical Integration of ODEs with Forward Euler and Backward Euler in Python and Matlab](https://www.youtube.com/watch?v=ITFolyl_66U) — Steve Brunton, English. The same two schemes coded and compared.
+- [Euler's Method | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=X5-ucBtneVM) — MIT OpenCourseWare, English. MIT's short lecture on Euler's method for y'=f(x,y).
+
 ## References
 
 - Ascher & Petzold: introductory discussion of one-step ODE methods.

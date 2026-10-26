@@ -197,6 +197,12 @@ The even extension leads instead to a cosine series with completely different co
 
 **Graduate level.** Connect half-range expansions to the eigenfunction bases of Dirichlet and Neumann Laplacians on finite intervals.
 
+## Video tham khảo
+
+- xem trước: [Fourier sine and cosine series | Lecture 50 | Differential Equations for Engineers](https://www.youtube.com/watch?v=v5aithNXpE0) — Jeffrey Chasnov, English. Half-range sine and cosine expansions on an interval of length L.
+- [Half Range Fourier sine series and cosine series](https://www.youtube.com/watch?v=liAPB8gVL5o) — MEXAMS, English. A worked half-range sine series and cosine series.
+- [Introduction To Half Range Fourier Series | Sine And Cosine Series](https://www.youtube.com/watch?v=kc8e6IZoYIo) — DrAvitech, English. The choice between a sine extension and a cosine extension.
+
 ## References
 
 - Haberman, Chapter 3: classical treatment of half-range sine and cosine series.

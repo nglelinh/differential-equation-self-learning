@@ -310,3 +310,9 @@ has increasing instantaneous frequency as $$ t $$ grows. A global Fourier transf
 **Undergraduate level.** Treat this as a map of advanced applications and project ideas.
 
 **Graduate level.** Connect microlocal tools to survey papers, current literature, and specific open questions.
+
+## Video tham khảo
+
+- xem trước: [Andras Vasy - Microlocal analysis and wave propagation (Part 4)](https://www.youtube.com/watch?v=mqRbYzxLTHM) — Institut Fourier, English. Vasy's later lecture on applications, including quasilinear waves.
+- [Semyon Dyatlov - Microlocal analysis of internal waves in 2D aquaria](https://www.youtube.com/watch?v=2fGu0QHRszY) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), English. Semyon Dyatlov on microlocal analysis of internal waves, a current research talk.
+- [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), English. Zworski on microlocal methods still in active use.

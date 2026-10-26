@@ -49,3 +49,9 @@ Trang này cũng rất hữu ích để ôn tập trước các chương sau v�
 - [12.08 Phân phối]({{ site.baseurl }}/contents/vi/chapter12/12_08_Distributions/)
 - [12.09 Bất đẳng thức Minkowski]({{ site.baseurl }}/contents/vi/chapter12/12_09_Minkowski_Inequality/)
 - [12.10 Lý thuyết Sobolev]({{ site.baseurl }}/contents/vi/chapter12/12_10_Sobolev_Theory/)
+
+## Video tham khảo
+
+- xem trước: [Dirac Delta: Not a Function but a Distribution](https://www.youtube.com/watch?v=XZKf1G5ATkM) — Scintropy, tiếng Anh. Phân phối delta, hình mà bộ minh họa giải tích hàm này bắt đầu.
+- [Sobolev Spaces Explained | Weak Derivatives, W¹ᵖ and H¹](https://www.youtube.com/watch?v=bUIZGQ7T0rU) — Sciwords, tiếng Anh. Tính chính quy Sobolev như một mức tăng đạo hàm yếu.
+- [Peter Lax - Lax-Milgram Theorem](https://www.youtube.com/watch?v=d6lx6kKV9-E) — Simons Foundation, tiếng Anh. Lax-Milgram từ chính tác giả, định lý mà các khung nói tới.

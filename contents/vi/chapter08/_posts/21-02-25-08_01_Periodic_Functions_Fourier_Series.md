@@ -242,6 +242,12 @@ $$
 
 **Bậc sau đại học.** Nhấn mạnh không gian $$ L^2 $$, trực giao Hilbert và quan điểm phổ của toán tử đạo hàm bậc hai trên vòng tròn.
 
+## Video tham khảo
+
+- xem trước: [TTV: Chuỗi Fourier - Chuỗi có thể vẽ bất kỳ hình dạng gì mà bạn muốn](https://www.youtube.com/watch?v=Ya-feoX0Qkk) — Toán Thú Vị, Tiếng Việt. Toán Thú Vị cho thấy, bằng tiếng Việt, một chuỗi Fourier có thể vẽ một hình.
+- [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, tiếng Anh. Từ dòng nhiệt đến vẽ bằng các đường tròn: một chuỗi Fourier đang làm gì.
+- [Intro to FOURIER SERIES: The Big Idea](https://www.youtube.com/watch?v=wmCIrpLBFds) — Dr. Trefor Bazett, tiếng Anh. Trefor Bazett về ý lớn trước các công thức hệ số.
+
 ## Tài liệu tham khảo
 
 - Haberman, *Applied Partial Differential Equations* - trực giác tốt về chuỗi Fourier, hội tụ, và các ví dụ vật lý.

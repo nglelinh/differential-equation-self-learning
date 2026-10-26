@@ -214,6 +214,12 @@ $$
 
 **Graduate level.** Interpret the solution through semigroups and the generator of heat flow.
 
+## Video tham khảo
+
+- xem trước: [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, English. 3Blue1Brown separates variables and watches the Fourier modes of temperature decay.
+- [PDE 101: Separation of Variables! ...or how I learned to stop worrying and solve Laplace's equation](https://www.youtube.com/watch?v=VjWtMl6vQ3Q) — Steve Brunton, English. Brunton's separation-of-variables method, practiced here on the heat equation.
+- [(PT đạo hàm riêng) Bài 2: Phương Trình Truyền Nhiệt](https://www.youtube.com/watch?v=fFyhBMbUhLQ) — Học Toán Cùng Hải Sơn, Vietnamese. Học Toán Cùng Hải Sơn introduces the heat equation in Vietnamese.
+
 ## References
 
 - Evans, Chapter 2.

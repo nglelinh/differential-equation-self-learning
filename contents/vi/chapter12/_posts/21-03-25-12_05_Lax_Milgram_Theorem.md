@@ -252,3 +252,9 @@ với mọi $$ v $$. Đây là khuôn mẫu chuẩn cho nhiều PDE elliptic tuy
 **Bậc đại học.** So sánh với hệ tuyến tính đối xứng xác định dương.
 
 **Bậc sau đại học.** Kết nối với Riesz representation, bài toán yên ngựa và điều kiện inf-sup.
+
+## Video tham khảo
+
+- xem trước: [Peter Lax - Lax-Milgram Theorem](https://www.youtube.com/watch?v=d6lx6kKV9-E) — Simons Foundation, tiếng Anh. Chính Peter Lax bàn về định lý Lax-Milgram, trong một bài của Simons Foundation.
+- [Lax-Milgram lemma](https://www.youtube.com/watch?v=w8QjyVug78M) — Numerical Analysis by Julian Roth, tiếng Anh. Bổ đề được phát biểu với tính cưỡng bức và tính liên tục.
+- [Lax-Milgram, application to Poisson equation.](https://www.youtube.com/watch?v=s5P3e1FhpTk) — Learn Maths with Dr Alex, tiếng Anh. Phương trình Poisson là ứng dụng đầu tiên.

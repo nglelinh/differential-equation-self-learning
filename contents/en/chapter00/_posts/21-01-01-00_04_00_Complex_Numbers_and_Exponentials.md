@@ -312,6 +312,12 @@ Groups compute residues and contour integrals:
 
 ---
 
+## Video tham khảo
+
+- xem trước: [Taylor Series of the Exponential Function and Euler's Formula!](https://www.youtube.com/watch?v=H0Zbg_CqMCs) — Steve Brunton, English. Euler's formula is derived from the exponential series, the identity behind complex characteristic roots.
+- [What's so special about Euler's number e? | Chapter 5, Essence of calculus](https://www.youtube.com/watch?v=m2MIpDrF7Es) — 3Blue1Brown, English. Why the base e is the function that reproduces itself under differentiation.
+- [Complex Numbers and Euler's Formula | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=sn3orkHWqUQ) — MIT OpenCourseWare, English. MIT's short lecture on complex numbers and Euler's formula as used in 18.03.
+
 ## References
 
 - Saff & Snider — *Fundamentals of Complex Analysis*

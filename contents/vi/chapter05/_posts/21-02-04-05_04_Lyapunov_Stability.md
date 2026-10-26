@@ -234,6 +234,12 @@ ngoài gốc. Vì vậy gốc ổn định tiệm cận. Đây là ví dụ mẫ
 
 **Bậc sau đại học.** Bàn về định lý Lyapunov trực tiếp, nguyên lý bất biến LaSalle và tính toàn cục của ổn định.
 
+## Video tham khảo
+
+- xem trước: [What is a Lyapunov function](https://www.youtube.com/watch?v=uXAx_641FPM) — richard pates, tiếng Anh. Hàm Lyapunov là gì và sự giảm của nó chứng minh ổn định như thế nào.
+- [A Visual Explanation of Lyapunov Stability](https://www.youtube.com/watch?v=W8YpgG0KuOo) — Prof Gio | Giordano Scarciotti, tiếng Anh. Một diễn giải trực quan về ổn định Lyapunov.
+- [MAE5790-7 Conservative Systems](https://www.youtube.com/watch?v=3s2lmZspEU8) — Cornell MAE, tiếng Anh. Strogatz về hệ bảo toàn, nơi năng lượng chính là một hàm Lyapunov.
+
 ## Tài liệu tham khảo
 
 - Strogatz, Chương 7: giới thiệu rất trực quan phương pháp Lyapunov.

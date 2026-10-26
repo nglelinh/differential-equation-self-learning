@@ -196,6 +196,12 @@ Có thể mời sinh viên khá giỏi khảo sát các cấu hình dữ liệu 
 
 Trên hình chữ nhật, phương trình Laplace được giải bằng tách biến thành sine modes theo một chiều và hàm hyperbolic theo chiều kia. Dữ liệu biên được biến thành phổ Fourier, rồi mỗi mode được kéo vào trong miền theo quy luật elliptic tương ứng.
 
+## Video tham khảo
+
+- xem trước: [PDE 101: Separation of Variables! ...or how I learned to stop worrying and solve Laplace's equation](https://www.youtube.com/watch?v=VjWtMl6vQ3Q) — Steve Brunton, tiếng Anh. Brunton tách biến cho phương trình Laplace trên một hình chữ nhật.
+- [Laplace’s Equation: Separation of Variables](https://www.youtube.com/watch?v=8jOqXM8OFh8) — Professor Dave Explains, tiếng Anh. Professor Dave Explains cùng phép tách trên một hình chữ nhật.
+- [Separation of Variables - Laplace Eq Part 1](https://www.youtube.com/watch?v=-FNkz01Ksvw) — Dr. Underwood's Physics YouTube Page, tiếng Anh. Một bài chữ nhật được giải, với một cạnh không thuần nhất.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - khuôn khổ chuẩn cho hàm điều hòa, phương trình Poisson, và hàm Green.

@@ -110,6 +110,12 @@ The formula predicts rapid early recovery followed by slow saturation, which is 
 
 **Graduate level.** Discuss finite-time blow-up, invariant regions, monotonicity, and the link between separated ODE and separation ideas later used in PDE.
 
+## Video tham khảo
+
+- xem trước: [Separation of Variables //  Differential Equations](https://www.youtube.com/watch?v=7Y-frhf-1Zk) — Dr. Trefor Bazett, English. The separation step dy/g(y)=f(x)dx and when the method is legitimate.
+- [Newton's Law of Cooling  // Separable ODE Example](https://www.youtube.com/watch?v=_bAjWNsNrQA) — Dr. Trefor Bazett, English. Newton's law of cooling as a fully worked separable model.
+- [17. Phương trình vi phân tách biến | Phương trình vi phân | Khan Academy](https://www.youtube.com/watch?v=_A1F5ygjdKk) — Khan Academy Vietnam, Vietnamese. Khan Academy Vietnam walks through separable first-order equations in Vietnamese.
+
 ## References
 
 - Boyce & DiPrima, Section 2.2

@@ -108,6 +108,12 @@ Xét $$ y' = \sqrt{1 - y^2} $$, $$ y(0) = 0 $$. Để chứng minh nghiệm tồ
 **Compact**: Đóng + bị chặn $$ = $$ kiểm soát toàn bộ.
 Giải tích thực là "xây khung" để ta chứng minh ODE có nghiệm và nghiệm đó "ngoan ngoãn".
 
+## Video tham khảo
+
+- xem trước: [The essence of calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM) — 3Blue1Brown, tiếng Anh. Xem bức tranh lớn về đạo hàm và giới hạn trước khi dùng chúng như ngôn ngữ của sự biến thiên ở các chương ODE.
+- [Limits, L'Hôpital's rule, and epsilon delta definitions | Chapter 7, Essence of calculus](https://www.youtube.com/watch?v=kfF40MiS7zA) — 3Blue1Brown, Tiếng Việt. Đoạn epsilon-delta chính là nghĩa chặt của định nghĩa giới hạn được ôn trong bài.
+- [Cauchy sequences and complete metric spaces, Real Analysis II](https://www.youtube.com/watch?v=m2iG0vR-7fM) — Dr. Bevin Maultsby, tiếng Anh. Dãy Cauchy và tính đầy đủ trong không gian metric, khung sau này dùng cho ánh xạ co.
+
 ## Tài liệu tham khảo
 - Bartle & Sherbert — *Introduction to Real Analysis*: chương 2-3 trình bày chi tiết các định lý cơ bản.
 - Ross — *Elementary Analysis*: nền tảng vững chắc về giới hạn và liên tục.

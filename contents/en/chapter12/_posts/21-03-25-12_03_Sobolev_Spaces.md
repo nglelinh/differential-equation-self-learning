@@ -225,3 +225,9 @@ This is a standard example of a finite-energy function with a sharp corner.
 **Undergraduate level.** Treat $$ H^1 $$ as the space of finite-energy functions.
 
 **Graduate level.** Connect to trace theorems, compact embeddings, and Rellich-Kondrachov.
+
+## Video tham khảo
+
+- xem trước: [UPB Math 237 LEC5A Sobolev Spaces](https://www.youtube.com/watch?v=GhBM6L-avYU) — Gilbert Peralta, English. A university lecture that defines Sobolev spaces from weak derivatives.
+- [Sobolev Spaces Explained | Weak Derivatives, W¹ᵖ and H¹](https://www.youtube.com/watch?v=bUIZGQ7T0rU) — Sciwords, English. Weak derivatives, W^{1,p}, and H^1 in one explanatory lecture.
+- [Index Theory Lecture 7: Sobolev space theory](https://www.youtube.com/watch?v=Q1JecioLurc) — Masoud Khalkhali, English. Masoud Khalkhali's lecture on Sobolev space theory.

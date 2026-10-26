@@ -324,3 +324,9 @@ These states are the most concrete example of discrete energy levels appearing a
 **Undergraduate level.** Relate one-dimensional quantum mechanics to familiar eigenvalue problems.
 
 **Graduate level.** Connect to self-adjointness, scattering, resonances, and semiclassical concentration.
+
+## Video tham khảo
+
+- xem trước: [Math of QM: 5.7. Spectral Theorem for Unbounded Selfadjoint Operators](https://www.youtube.com/watch?v=cdOkiNIONSc) — Roland Speicher, English. Roland Speicher on the spectral theorem for unbounded self-adjoint operators.
+- [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), English. The microlocal analysis used to study those quantum operators.
+- [Spectral Theorem For Dummies - 3Blue1Brown Summer of Math Exposition #SoME1](https://www.youtube.com/watch?v=4zD8Kd3HgJA) — Jacqueline Doan, English. A geometric spectral theorem as the finite-dimensional analogy.

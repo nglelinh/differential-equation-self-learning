@@ -209,6 +209,12 @@ Có thể mời sinh viên khá giỏi so sánh tách biến của phương trì
 
 Tách biến biến phương trình nhiệt thành một bài toán trị riêng theo không gian và một ODE theo thời gian. Mỗi mode không gian tắt theo hàm mũ, và nghiệm tổng quát là tổng của các mode với hệ số lấy từ khai triển Fourier của dữ liệu ban đầu.
 
+## Video tham khảo
+
+- xem trước: [(PT đạo hàm riêng) Bài 2: Phương Trình Truyền Nhiệt](https://www.youtube.com/watch?v=fFyhBMbUhLQ) — Học Toán Cùng Hải Sơn, Tiếng Việt. Học Toán Cùng Hải Sơn giới thiệu phương trình nhiệt bằng tiếng Việt.
+- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. 3Blue1Brown tách biến và theo dõi các mode Fourier của nhiệt độ tắt dần.
+- [PDE 101: Separation of Variables! ...or how I learned to stop worrying and solve Laplace's equation](https://www.youtube.com/watch?v=VjWtMl6vQ3Q) — Steve Brunton, tiếng Anh. Phương pháp tách biến của Brunton, thực hành ở đây trên phương trình nhiệt.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - nền tảng chuẩn cho phương trình nhiệt, nguyên lý cực đại, và hàm Green.

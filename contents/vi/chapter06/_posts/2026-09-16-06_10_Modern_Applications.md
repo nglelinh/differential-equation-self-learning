@@ -88,6 +88,12 @@ Phương pháp phổ ghét bất liên tục; hiện tượng Gibbs tái xuất 
 
 Câu hỏi hay: trunk nơ-ron là hàm đặc biệt mới, hay xấp xỉ số của hàm cũ? Câu trả lời phụ thuộc việc trunk có còn thỏa truy hồi có cấu trúc hoặc đồng nhất thức Sturm–Liouville sau huấn luyện hay không.
 
+## Video tham khảo
+
+- xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, tiếng Anh. Fourier neural operator dùng các hàm cơ sở phổ làm thân, đúng ý của bài.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, tiếng Anh. DeepONet, mạng toán tử nhánh-thân được nêu cùng các cơ sở phổ.
+- [Taylor series | Chapter 11, Essence of calculus](https://www.youtube.com/watch?v=3d6DsjIBzJ4) — 3Blue1Brown, tiếng Anh. Chuỗi cổ điển là cơ sở phổ dựng tay mà các mạng ấy tổng quát hóa.
+
 ## Bài tập
 
 1. **Bán kính hội tụ.** Khớp chuỗi lũy thừa và chuỗi Chebyshev với $$1/(1+25x^2)$$ trên $$[-1,1]$$. Vì sao cái thứ nhất phân kỳ ở đầu mút trong giới hạn bậc cao còn cái thứ hai thì không nhất thiết?

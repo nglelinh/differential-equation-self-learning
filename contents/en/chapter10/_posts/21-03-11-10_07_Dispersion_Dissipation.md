@@ -191,6 +191,12 @@ where $$ \omega_d $$ is the damping-adjusted frequency. The exponential factor s
 
 **Graduate level.** Connect to group velocity, damped semigroups, and models such as KdV or the linear Schrödinger equation.
 
+## Video tham khảo
+
+- xem trước: [Phase Velocity versus Group Velocity:  Wave Dispersion](https://www.youtube.com/watch?v=EIqKG5TiSYs) — Physics Videos by Eugene Khutoryansky, English. Phase velocity versus group velocity, the picture of dispersion.
+- [13. Dispersive Medium, Phase Velocity, Group Velocity](https://www.youtube.com/watch?v=QxemLb8-5AA) — MIT OpenCourseWare, English. MIT OpenCourseWare on a dispersive medium.
+- [8.03 - Lect 12 - Dispersion, Phase Velocity, Group Velocity](https://www.youtube.com/watch?v=YEDUCl9t1m0) — Lectures by Walter Lewin. They will make you ♥ Physics., English. Walter Lewin on dispersion, phase velocity, and group velocity.
+
 ## References
 
 - Evans, Chapter 2.

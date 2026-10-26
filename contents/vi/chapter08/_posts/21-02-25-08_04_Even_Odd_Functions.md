@@ -208,6 +208,12 @@ Ví dụ này cho thấy đối xứng giảm đáng kể công việc tính to�
 
 **Bậc sau đại học.** Liên hệ với biểu diễn theo nhóm đối xứng và cách đối xứng lọc phổ trong bài toán PDE.
 
+## Video tham khảo
+
+- xem trước: [Fourier sine and cosine series | Lecture 50 | Differential Equations for Engineers](https://www.youtube.com/watch?v=v5aithNXpE0) — Jeffrey Chasnov, tiếng Anh. Jeffrey Chasnov về chuỗi sin và cos, phép đơn giản hóa chẵn-lẻ.
+- [Manipulating Fourier Series | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=v4YcejwdQC0) — MIT OpenCourseWare, tiếng Anh. MIT về biến đổi chuỗi, gồm tính chẵn lẻ xóa một nửa hệ số.
+- [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, tiếng Anh. Xem các phần chẵn và lẻ bên trong một chuỗi tổng quát.
+
 ## Tài liệu tham khảo
 
 - Haberman, *Applied Partial Differential Equations* - trực giác tốt về chuỗi Fourier, hội tụ, và các ví dụ vật lý.

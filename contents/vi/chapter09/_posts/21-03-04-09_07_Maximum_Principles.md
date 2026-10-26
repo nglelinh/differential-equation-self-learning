@@ -137,6 +137,12 @@ Có thể mời sinh viên khá giỏi thảo luận nguyên lý cực đại m�
 
 Nguyên lý cực đại nói rằng nghiệm của phương trình nhiệt bị kiểm soát bởi biên parabolic và thời điểm ban đầu. Nhiệt không tự tạo ra cực đại hay cực tiểu mới trong nội thất. Từ đó kéo theo tính duy nhất và ổn định rất mạnh của bài toán.
 
+## Video tham khảo
+
+- xem trước: [Lecture 7.4: Maximum principle for heat equation](https://www.youtube.com/watch?v=JbBt6mPAqLM) — NPTEL IIT Bombay, tiếng Anh. NPTEL IIT Bombay về nguyên lý cực đại cho phương trình nhiệt.
+- [Lecture 6: The maximum principle for the diffusion equation](https://www.youtube.com/watch?v=zO6D-2ER6oY) — math 442 f20, tiếng Anh. Một bài giảng về nguyên lý cực đại cho phương trình khuếch tán.
+- [Maximum Principle](https://www.youtube.com/watch?v=PMjzGEPkQt8) — Dr Peyam, tiếng Anh. Dr Peyam về nguyên lý cực đại và điều nó cấm bên trong miền.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - nền tảng chuẩn cho phương trình nhiệt, nguyên lý cực đại, và hàm Green.

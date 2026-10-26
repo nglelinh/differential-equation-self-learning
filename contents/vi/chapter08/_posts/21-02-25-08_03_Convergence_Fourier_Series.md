@@ -252,6 +252,12 @@ tại điểm gián đoạn $$ x=0 $$, nên giá trị hội tụ là $$ 0 $$ th
 
 **Bậc sau đại học.** Bàn về hội tụ trong $$ L^2 $$, định lý Carleson, và quan hệ giữa độ trơn với tốc độ suy giảm hệ số Fourier.
 
+## Video tham khảo
+
+- xem trước: [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, tiếng Anh. Xem các tổng riêng và dao động Gibbs, bức tranh hội tụ của bài.
+- [Lec 16 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=xWa5_OXI6VM) — MIT OpenCourseWare, tiếng Anh. Mattuck tiếp chuỗi Fourier với chu kỳ tổng quát hơn và các câu hỏi hội tụ.
+- [Lec 15 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=EWWw0jryj1A) — MIT OpenCourseWare, tiếng Anh. Bài MIT giới thiệu chuỗi mà tính hội tụ đang được xét.
+
 ## Tài liệu tham khảo
 
 - Haberman, *Applied Partial Differential Equations* - trực giác tốt về chuỗi Fourier, hội tụ, và các ví dụ vật lý.

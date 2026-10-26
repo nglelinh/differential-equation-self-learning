@@ -359,6 +359,12 @@ $$
 
 **Bậc sau đại học.** Liên hệ với khối Jordan, đa thức tối tiểu và động học của ma trận không chéo hóa được.
 
+## Video tham khảo
+
+- xem trước: [Repeated Eigenvalues and Secular Terms: Transient Growth in Non-Normal Systems](https://www.youtube.com/watch?v=9xWqNPXRl7o) — Steve Brunton, tiếng Anh. Trị riêng lặp, thừa số t, và tăng trưởng tạm thời.
+- [Lec 26 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=hEtWqTPPXuc) — MIT OpenCourseWare, tiếng Anh. Mattuck đi tiếp vào trường hợp trị riêng lặp.
+- [Systems of Differential Equations: Diagonalization and Jordan Canonical Form](https://www.youtube.com/watch?v=SsCiQym5yQU) — Steve Brunton, tiếng Anh. Dạng Jordan khi chỉ có một vector riêng độc lập.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 7: phần trị riêng lặp và vector suy rộng rất phù hợp để học kỹ thuật.

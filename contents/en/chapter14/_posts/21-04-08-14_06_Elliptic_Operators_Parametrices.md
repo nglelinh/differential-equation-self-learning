@@ -193,6 +193,12 @@ giving the simplest model of an elliptic parametrix.
 
 **Graduate level.** Connect to elliptic estimates, Fredholm theory, and microlocal invertibility.
 
+## Video tham khảo
+
+- xem trước: [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, English. Ellipticity inside the pseudodifferential algebra and the parametrix it allows.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, English. András Vasy's first microlocal lecture, including elliptic estimates.
+- [Sketch of Elliptic regularity](https://www.youtube.com/watch?v=wecQr1yruVY) — Calculus is pictures., English. The regularity consequence of an elliptic parametrix.
+
 ## References
 
 - Trèves: ellipticity and parametrix construction.

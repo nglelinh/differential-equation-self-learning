@@ -333,3 +333,9 @@ Lược đồ ổn định khi $$ 0\le \nu \le 1 $$. Đây chính là ràng bu�
 **Bậc đại học.** Hiểu trực giác của CFL và mối liên hệ giữa consistency, stability, convergence.
 
 **Bậc sau đại học.** Kết nối với von Neumann analysis, energy methods và nonlinear stability notions.
+
+## Video tham khảo
+
+- xem trước: [Harvard AM205 video 3.18 - CFL condition & upwinding](https://www.youtube.com/watch?v=GsilBPN8Ew4) — Chris Rycroft, tiếng Anh. Chris Rycroft về điều kiện CFL và upwind.
+- [Von Neumann analysis: derivation of the CFL criterion](https://www.youtube.com/watch?v=5_VtrWGaEGM) — LMU Seismology, tiếng Anh. Phân tích Von Neumann dẫn tới một ràng buộc CFL.
+- [Stability of Forward Euler and Backward Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=RdXCGnTT6UY) — Steve Brunton, tiếng Anh. Phiên bản ODE của cùng ràng buộc ổn định, cho Euler.

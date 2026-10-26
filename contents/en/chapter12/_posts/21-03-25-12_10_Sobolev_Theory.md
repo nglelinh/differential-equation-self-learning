@@ -276,3 +276,9 @@ diverges, so it does not belong to $$ H^2 $$. This shows how Sobolev regularity 
 **Undergraduate level.** View Sobolev theory as a toolkit for measuring integrated smoothness.
 
 **Graduate level.** Connect to embedding theorems, trace theorems, interpolation, and modern nonlinear PDE.
+
+## Video tham khảo
+
+- xem trước: [Lec 36 Sobolev lemma](https://www.youtube.com/watch?v=ln4N51019qk) — NPTEL - Indian Institute of Science, Bengaluru, English. NPTEL's Sobolev lemma, one of the deeper facts this theory lecture organizes.
+- [PDE, Sobolev spaces: Lecture of Sobolev inequalities.](https://www.youtube.com/watch?v=oQaErD9DeWA) — Yifu Wang, English. A lecture on Sobolev inequalities.
+- [Sobolev Spaces Explained | Weak Derivatives, W¹ᵖ and H¹](https://www.youtube.com/watch?v=bUIZGQ7T0rU) — Sciwords, English. W^{1,p} and H^1 as the concrete spaces the inequalities refer to.

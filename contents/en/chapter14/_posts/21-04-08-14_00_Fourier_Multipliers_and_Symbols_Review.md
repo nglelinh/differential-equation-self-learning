@@ -275,6 +275,12 @@ The logical progression into Chapter 14 is now straightforward.
 
 Lesson 14.01 uses this picture to motivate the larger class, while Lesson 14.02 begins to formalize the Fourier and symbol viewpoint. The aim of this preparatory lesson is not to replace those lessons, but to make their logic mathematically inevitable.
 
+## Video tham khảo
+
+- xem trước: [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, English. The Fourier transform, the coordinate in which a multiplier is just a product.
+- [Complex Fourier Series](https://www.youtube.com/watch?v=4cfctnaHyFM) — Steve Brunton, English. Complex Fourier modes, the functions a multiplier rescales.
+- [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Vietnamese. Xuwen Zhu's first lecture on pseudodifferential operators, starting from that symbol picture.
+
 ## References
 
 - M. Taylor, *Pseudodifferential Operators and Nonlinear PDE*

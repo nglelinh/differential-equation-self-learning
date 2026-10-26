@@ -246,6 +246,12 @@ This is the simplest example of the chapter's core idea: calculus on the functio
 
 ![Power series]({{ site.imgurl }}/chapter_img/chapter06/06_01_power_series_review.svg)
 
+## Video tham khảo
+
+- xem trước: [Taylor series | Chapter 11, Essence of calculus](https://www.youtube.com/watch?v=3d6DsjIBzJ4) — 3Blue1Brown, English. Taylor series as the local polynomial that a series solution is building.
+- [Taylor Series and Power Series Made Easy (with Pictures): Review of Calculus](https://www.youtube.com/watch?v=ebfOSDj4j3I) — Steve Brunton, English. Brunton reviews power series with pictures before using them on ODEs.
+- [Taylor Series of the Exponential Function and Euler's Formula!](https://www.youtube.com/watch?v=H0Zbg_CqMCs) — Steve Brunton, English. The exponential series, the example every later recurrence is compared with.
+
 ## References
 
 - Boyce & DiPrima, Chapter 5: power series in ODE context

@@ -277,6 +277,12 @@ Then $$ H $$ satisfies a Hermite-type equation. Requiring $$ \psi $$ not to blow
 
 ![Physics applications]({{ site.imgurl }}/chapter_img/chapter06/06_08_physics_applications.svg)
 
+## Video tham khảo
+
+- xem trước: [Vibrating Circular Membranes - Partial Differential Equations | Lecture 31](https://www.youtube.com/watch?v=DeG6dq4vlO4) — Jason Bramburger, English. The vibrating circular membrane, where Bessel functions are the radial eigenfunctions.
+- [Advanced Engineering Mathematics, Lecture 2.7: Bessel's equation](https://www.youtube.com/watch?v=lcvWAgrdFn0) — Professor Macauley, English. Bessel's equation as it is used in those radial problems.
+- [Intro to Legendre Polynomials](https://www.youtube.com/watch?v=djlUmwbPw20) — Physics and Math Lectures, English. Legendre polynomials as the angular part of a spherical problem.
+
 ## References
 
 - Jackson, *Classical Electrodynamics*: multipole expansions

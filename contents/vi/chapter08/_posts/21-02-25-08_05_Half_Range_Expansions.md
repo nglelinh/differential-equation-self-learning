@@ -267,6 +267,12 @@ Nếu kéo dài chẵn thì ta thu được chuỗi cos khác hẳn. Điều nà
 
 **Bậc sau đại học.** Liên hệ với cơ sở riêng của toán tử Laplace trên các miền hữu hạn và điều kiện biên Dirichlet-Neumann.
 
+## Video tham khảo
+
+- xem trước: [Fourier sine and cosine series | Lecture 50 | Differential Equations for Engineers](https://www.youtube.com/watch?v=v5aithNXpE0) — Jeffrey Chasnov, tiếng Anh. Khai triển sin và cos nửa khoảng trên một đoạn dài L.
+- [Half Range Fourier sine series and cosine series](https://www.youtube.com/watch?v=liAPB8gVL5o) — MEXAMS, tiếng Anh. Một chuỗi sin nửa khoảng và chuỗi cos nửa khoảng được giải mẫu.
+- [Introduction To Half Range Fourier Series | Sine And Cosine Series](https://www.youtube.com/watch?v=kc8e6IZoYIo) — DrAvitech, tiếng Anh. Sự lựa chọn giữa thác triển sin và thác triển cos.
+
 ## Tài liệu tham khảo
 
 - Haberman, *Applied Partial Differential Equations* - trực giác tốt về chuỗi Fourier, hội tụ, và các ví dụ vật lý.

@@ -221,6 +221,12 @@ Từ đây sinh viên thấy ngưỡng bùng phát xuất hiện trực tiếp t
 
 **Bậc sau đại học.** Mở rộng sang SEIR, mô hình có tiêm chủng, ma trận thế hệ kế tiếp và ổn định của cân bằng không bệnh.
 
+## Video tham khảo
+
+- xem trước: [The MATH of Pandemics | Intro to the SIR Model](https://www.youtube.com/watch?v=Qrp40ck3WpI) — Dr. Trefor Bazett, tiếng Anh. Trefor Bazett suy mô hình SIR và số tái sinh cơ bản.
+- [Oxford Mathematician explains SIR Disease Model for COVID-19 (Coronavirus)](https://www.youtube.com/watch?v=NKMHhm2Zbkw) — Tom Rocks Maths, tiếng Anh. Tom Crawford giải thích cùng hệ SIR cho một dịch bệnh.
+- [SIR Model for Epidemiology, Ordinary Differential Equations](https://www.youtube.com/watch?v=f1Ewm1hyPWY) — Dr. Bevin Maultsby, tiếng Anh. Một bài giảng bám sát các phương trình vi phân của SIR.
+
 ## Tài liệu tham khảo
 
 - Strogatz, Chương 6: rất tốt cho trực giác ngưỡng dịch và mặt phẳng pha của mô hình dân số.

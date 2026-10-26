@@ -206,6 +206,12 @@ Nếu đây là một mô hình ba mode của hệ điều khiển, thì chỉ c
 
 **Bậc sau đại học.** Liên hệ với dạng Jordan, ma trận companion, và phổ của hệ tuyến tính nhiều chiều.
 
+## Video tham khảo
+
+- xem trước: [Higher Order Constant Coefficient Differential Equations: y'''+y'=0 and y''''-3y'''+3y''-y'=0](https://www.youtube.com/watch?v=is0F0u62IbY) — Dr. Trefor Bazett, tiếng Anh. Đa thức đặc trưng cho phương trình hệ số hằng cấp ba và cấp bốn.
+- [Solving General High-Order, Linear Ordinary Differential Equations (ODEs)](https://www.youtube.com/watch?v=vA3MjD0cfS4) — Steve Brunton, tiếng Anh. Brunton về phương trình tuyến tính hệ số hằng bậc cao tổng quát.
+- [The Theory of Higher Order Differential Equations](https://www.youtube.com/watch?v=7vwDp94wEhg) — Dr. Trefor Bazett, tiếng Anh. Lý thuyết cấu trúc: chiều của không gian nghiệm và một hệ nghiệm cơ bản.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: phần mở rộng lên bậc cao rất rõ ràng.
 - Zill — *Differential Equations with Boundary-Value Problems*: nhiều bài tập tốt về bội nghiệm và mode chi phối.

@@ -320,6 +320,12 @@ Trong ngôn ngữ mô hình hóa, đây là ví dụ cơ bản cho thấy các p
 
 **Bậc sau đại học.** Nhấn mạnh tính giải tích, miền hội tụ trong mặt phức và vai trò của điểm kỳ dị trong việc quyết định $$ R $$.
 
+## Video tham khảo
+
+- xem trước: [Taylor series | Chapter 11, Essence of calculus](https://www.youtube.com/watch?v=3d6DsjIBzJ4) — 3Blue1Brown, tiếng Anh. Chuỗi Taylor là đa thức địa phương mà một nghiệm chuỗi đang xây.
+- [Taylor Series and Power Series Made Easy (with Pictures): Review of Calculus](https://www.youtube.com/watch?v=ebfOSDj4j3I) — Steve Brunton, tiếng Anh. Brunton ôn chuỗi lũy thừa bằng hình trước khi dùng cho ODE.
+- [Taylor Series of the Exponential Function and Euler's Formula!](https://www.youtube.com/watch?v=H0Zbg_CqMCs) — Steve Brunton, tiếng Anh. Chuỗi hàm mũ, ví dụ mà mọi hệ thức truy hồi sau được so với.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 5: ôn tập chuỗi lũy thừa và chuỗi Taylor trong bối cảnh phương trình vi phân.

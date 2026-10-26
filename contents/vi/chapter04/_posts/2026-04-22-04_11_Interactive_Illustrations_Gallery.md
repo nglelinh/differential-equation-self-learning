@@ -27,3 +27,9 @@ Bài bổ sung này tập hợp toàn bộ minh họa JavaScript của Chương 
   path="interactives/chapter04/index.html"
   height="920px"
 %}
+
+## Video tham khảo
+
+- xem trước: [Phase Portraits | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=zmzyW1rP-hk) — MIT OpenCourseWare, tiếng Anh. Các chân dung pha mà bộ minh họa muốn sinh viên nhận ra.
+- [Trace-Determinant Diagram | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=oEskbXrhkkk) — MIT OpenCourseWare, tiếng Anh. Vết và định thức là các tham số điều khiển đứng sau các hình ấy.
+- [How (and why) to raise e to the power of a matrix | DE6](https://www.youtube.com/watch?v=O85OWBJ2ayo) — 3Blue1Brown, tiếng Anh. Lũy thừa ma trận là chuyển động vẽ nên một quỹ đạo tuyến tính.

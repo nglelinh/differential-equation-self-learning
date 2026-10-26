@@ -270,3 +270,9 @@ The solution shows bounded long-term behavior rather than explosive exponential 
 ## Quick Summary
 
 Substitution methods work by revealing hidden structure. The right new variable can turn a difficult-looking ODE into a separable, linear, or exact equation that students already know how to solve.
+
+## Video tham khảo
+
+- xem trước: [The Bernoulli Equation // Substitutions in Differential Equations](https://www.youtube.com/watch?v=iCN8nGXE29o) — Dr. Trefor Bazett, English. The Bernoulli substitution that reduces the equation to a linear one.
+- [Separation of Variables //  Differential Equations](https://www.youtube.com/watch?v=7Y-frhf-1Zk) — Dr. Trefor Bazett, English. Separation is the method you fall back to after a homogeneous or Bernoulli substitution.
+- [Linear Differential Equations & the Method of Integrating Factors](https://www.youtube.com/watch?v=2H6BZHlD_3g) — Dr. Trefor Bazett, English. After the substitution, the integrating factor finishes a Bernoulli equation.

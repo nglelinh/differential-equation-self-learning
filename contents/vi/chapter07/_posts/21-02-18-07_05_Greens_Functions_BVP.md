@@ -256,6 +256,12 @@ $$ y(x)=\frac{x(1-x)}{2}. $$
 
 **Bậc sau đại học.** Nhấn mạnh Green như kernel của toán tử nghịch đảo, tính đối xứng và liên hệ với resolvent.
 
+## Video tham khảo
+
+- xem trước: [Green's functions: the genius way to solve DEs](https://www.youtube.com/watch?v=ism2SfZgFJg) — Mathemaniac, tiếng Anh. Bài trực quan của Mathemaniac về hàm Green như đáp ứng của một nguồn điểm.
+- [Introducing Green's Functions for Partial Differential Equations (PDEs)](https://www.youtube.com/watch?v=xNqLZnM-PPY) — Faculty of Khan, tiếng Anh. Faculty of Khan giới thiệu hàm Green cho PDE và bài toán biên.
+- [Green's function for Sturm-Liouville problems](https://www.youtube.com/watch?v=8l4VsNSX_kw) — Nathan Kutz, tiếng Anh. Nathan Kutz dựng hàm Green của một bài toán Sturm-Liouville.
+
 ## Tài liệu tham khảo
 
 - Haberman, Chương 9: trình bày hàm Green cho bài toán biên một chiều và cách xây dựng công thức nghiệm.

@@ -102,6 +102,12 @@ PINN vẫn nhạy với trọng số mất mát, lấy mẫu và kiến trúc. H
 
 Câu hỏi phản tư: nếu phần dư PINN nhỏ nhưng đồng nhất thức Green rời rạc thất bại, lỗi nào quan trọng hơn? Chương gợi ý đồng nhất thức, vì nó mã hóa tính tự liên hợp và bảo toàn.
 
+## Video tham khảo
+
+- xem trước: [Physics Informed Neural Networks (PINNs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=-zrY7P2dVC4) — Steve Brunton, tiếng Anh. Mạng có thông tin vật lý ép phần dư của bài toán biên, đúng phương pháp của bài.
+- [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, tiếng Anh. Bài toán Sturm-Liouville cổ điển mà các mạng ấy được yêu cầu tôn trọng.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, tiếng Anh. Mạng toán tử là một cách khác để học ánh xạ nghiệm của bài toán biên.
+
 ## Bài tập
 
 1. **Không gian hàm trước.** Giải thích vì sao ansatz $$u=x(1-x)n(x)$$ mã hóa cứng Dirichlet nhưng không phải Neumann. Đề xuất ansatz cho $$u'(0)=u'(1)=0$$.

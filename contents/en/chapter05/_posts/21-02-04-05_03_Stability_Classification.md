@@ -224,6 +224,12 @@ so the eigenvalues are $$ -1 $$ and $$ -2 $$. Since both are negative, the equil
 
 ![Stability classification]({{ site.imgurl }}/chapter_img/chapter05/05_03_stability_classification.svg)
 
+## Video tham khảo
+
+- xem trước: [Stability and Eigenvalues: What does it mean to be a "stable" eigenvalue?](https://www.youtube.com/watch?v=XXjoh8L1HkE) — Steve Brunton, English. What a stable eigenvalue means for the long-term fate of a trajectory.
+- [Trace-Determinant Diagram | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=oEskbXrhkkk) — MIT OpenCourseWare, English. Nodes, saddles, spirals, and centers on the trace-determinant diagram.
+- [MAE5790-5 Two dimensional linear systems](https://www.youtube.com/watch?v=QrHRaA93Nrg) — Cornell MAE, English. Strogatz's classification lecture for planar linear systems.
+
 ## References
 
 - Strogatz, Chapters 5-6: concise and geometric explanation of local stability types.

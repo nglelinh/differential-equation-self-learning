@@ -204,6 +204,12 @@ Có thể yêu cầu sinh viên khá giỏi khảo sát trường hợp nguồn 
 
 Với bài toán nhiệt không thuần nhất, ta thường tách nghiệm thành phần cân bằng và phần quá độ. Phần cân bằng xử lý biên hoặc nguồn tĩnh, còn phần quá độ quay về biên thuần nhất và được giải bằng các mode riêng. Đây là chiến lược chuẩn cho hầu hết các bài toán nhiệt thực tế.
 
+## Video tham khảo
+
+- xem trước: [Solving PDEs with the Laplace Transform: The Heat Equation](https://www.youtube.com/watch?v=xuBJFSh6Bu4) — Steve Brunton, tiếng Anh. Brunton giải một bài toán nhiệt bằng biến đổi Laplace, một lối cho dữ liệu không thuần nhất.
+- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Nghiệm thuần nhất mà bài này hiệu chỉnh bằng trạng thái dừng hoặc khai triển hàm riêng.
+- [The Heat Equation and the Steady State Heat Distribution via Laplace's Equation](https://www.youtube.com/watch?v=OoRwXVIXpL0) — Steve Brunton, tiếng Anh. Profile dừng mang một điều kiện biên không thuần nhất.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - nền tảng chuẩn cho phương trình nhiệt, nguyên lý cực đại, và hàm Green.

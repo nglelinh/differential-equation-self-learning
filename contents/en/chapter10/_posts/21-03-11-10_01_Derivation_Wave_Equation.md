@@ -209,6 +209,12 @@ Physically, greater tension makes waves faster, while greater density makes them
 
 **Graduate level.** Connect to multidimensional elasticity, hyperbolicity, and finite speed of propagation.
 
+## Video tham khảo
+
+- xem trước: [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, English. Brunton derives the wave equation from a string.
+- [Partial Differential Equations Overview](https://www.youtube.com/watch?v=pvrIagjEk4c) — Steve Brunton, English. The three canonical linear PDEs, so the wave equation sits next to heat and Laplace.
+- [Solving the Wave Equation with Separation of Variables... and Guitar String Physics](https://www.youtube.com/watch?v=ywrgWRSQ3PY) — Steve Brunton, English. The guitar-string reading of the equation just derived.
+
 ## References
 
 - Evans, Chapter 2.

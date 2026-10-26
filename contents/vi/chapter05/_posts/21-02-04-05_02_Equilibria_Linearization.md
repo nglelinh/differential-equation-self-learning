@@ -332,6 +332,12 @@ Trị riêng có phần thực âm nên cân bằng ổn định tiệm cận v�
 
 **Bậc sau đại học.** Nói về định lý Hartman-Grobman, điểm hyperbolic và những thất bại của tuyến tính hóa tại điểm không hyperbolic.
 
+## Video tham khảo
+
+- xem trước: [Linearizing Nonlinear Differential Equations Near a Fixed Point](https://www.youtube.com/watch?v=RCWkzzLgwf0) — Steve Brunton, tiếng Anh. Tuyến tính hóa một trường phi tuyến tại điểm cân bằng và tin Jacobian ở lân cận.
+- [Linearization | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=UCpMao94iFg) — MIT OpenCourseWare, tiếng Anh. Bài ngắn của MIT về tuyến tính hóa.
+- [MAE5790-6 Two dimensional nonlinear systems   fixed points](https://www.youtube.com/watch?v=9yh9DmNqdk4) — Cornell MAE, tiếng Anh. Strogatz về điểm cân bằng của hệ phi tuyến hai chiều.
+
 ## Tài liệu tham khảo
 
 - Strogatz, Chương 6: trình bày rất rõ Jacobian và tuyến tính hóa.

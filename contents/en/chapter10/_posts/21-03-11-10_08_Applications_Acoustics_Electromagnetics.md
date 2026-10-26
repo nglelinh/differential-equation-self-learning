@@ -196,6 +196,12 @@ This gives phase speed $$ c $$ and wavelength $$ \lambda=2\pi/k $$. The same str
 
 **Graduate level.** Connect to the full Maxwell system, acoustic stress relations, and wave propagation in heterogeneous media.
 
+## Video tham khảo
+
+- xem trước: [Divergence and curl:  The language of Maxwell's equations, fluid flow, and more](https://www.youtube.com/watch?v=rB83DpBJQsE) — 3Blue1Brown, English. Divergence and curl as the language of Maxwell's equations.
+- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, English. The wave equation those acoustic and electromagnetic models reduce to.
+- [8.03 - Lect 12 - Dispersion, Phase Velocity, Group Velocity](https://www.youtube.com/watch?v=YEDUCl9t1m0) — Lectures by Walter Lewin. They will make you ♥ Physics., English. Dispersion in a real wave, the correction to an ideal electromagnetic or acoustic signal.
+
 ## References
 
 - Haberman, Chapter 4.

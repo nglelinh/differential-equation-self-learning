@@ -194,6 +194,12 @@ with respect to time and integrate by parts. The boundary terms vanish, so $$ E'
 
 **Graduate level.** Extend to energy estimates, weak stability, and hyperbolic equations with variable coefficients.
 
+## Video tham khảo
+
+- xem trước: [Energy Methods for the Wave Equation](https://www.youtube.com/watch?v=fOmON6ubkTM) — Mike, the Mathematician, English. The energy method for the wave equation.
+- [Lecture 5.4: Qualitative analysis of Wave equation - Uniqueness by Energy method](https://www.youtube.com/watch?v=Sq7DQpaVFbc) — NPTEL IIT Bombay, English. NPTEL uses the energy identity to prove uniqueness.
+- [Energy Method](https://www.youtube.com/watch?v=-8_nuZFVAMQ) — Dr Peyam, English. Dr Peyam on the energy method as a uniqueness argument.
+
 ## References
 
 - Evans, Chapter 2.

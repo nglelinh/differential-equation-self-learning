@@ -210,6 +210,12 @@ If $$ u(0)=T_0 $$ and $$ u(L)=T_L $$, the solution is the linear interpolation b
 
 **Graduate level.** Connect to ellipticity, regularity, and the maximum principle.
 
+## Video tham khảo
+
+- xem trước: [Laplace's Equation and Poisson's Equation](https://www.youtube.com/watch?v=nmvs0vrBT18) — Steve Brunton, English. Brunton places Laplace's equation next to Poisson's equation.
+- [Laplace's Equation and Potential Flow](https://www.youtube.com/watch?v=zN0zDrQimXU) — Steve Brunton, English. Laplace's equation as the potential of an incompressible flow.
+- [PDE 101: Separation of Variables! ...or how I learned to stop worrying and solve Laplace's equation](https://www.youtube.com/watch?v=VjWtMl6vQ3Q) — Steve Brunton, English. Separation of variables as the first solution method for the equation.
+
 ## References
 
 - Evans, Chapters 2 and 6.

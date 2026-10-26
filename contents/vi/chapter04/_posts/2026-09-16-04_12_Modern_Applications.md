@@ -93,6 +93,12 @@ Chiều ẩn là siêu tham số không có analogue của dạng Jordan tính �
 
 Câu hỏi hữu ích: nếu hai hệ ẩn chia sẻ trị riêng nhưng không chia sẻ vector riêng, kết luận khoa học nào còn đúng? Câu trả lời của chương: những kết luận phụ thuộc lớp đồng dạng của $$A$$, không phụ thuộc một cơ sở ưa thích.
 
+## Video tham khảo
+
+- xem trước: [Latent Stochastic Differential Equations for Irregularly-Sampled Time Series - David Duvenaud](https://www.youtube.com/watch?v=93wr5vhI0F4) — Institute for Advanced Study, tiếng Anh. David Duvenaud về phương trình vi phân ngẫu nhiên ẩn cho chuỗi thời gian không đều.
+- [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, tiếng Anh. Neural ODE, mô hình động lực ẩn tất định mà bài này đang mở rộng.
+- [Solving Systems of Differential Equations with Eigenvalues and Eigenvectors](https://www.youtube.com/watch?v=Zwb5eiYcL8w) — Steve Brunton, tiếng Anh. Hệ tuyến tính cổ điển, cấu trúc mà một mô hình ẩn tuyến tính học được đang cố khôi phục.
+
 ## Bài tập
 
 1. **Bất biến đồng dạng.** Chỉ ra $$A$$ và $$PAP^{-1}$$ sinh quỹ đạo tương đương sau đổi tọa độ $$\mathbf{w}=P\mathbf{z}$$. Bài báo latent ODE nên báo những đại lượng nào?

@@ -311,3 +311,9 @@ Vì vậy đạo hàm chính là một toán tử nhân Fourier với symbol $$ 
 **Bậc đại học.** Hiểu ΨDO như bộ lọc tần số mở rộng ý tưởng đạo hàm.
 
 **Bậc sau đại học.** Kết nối với lượng tử hóa, microlocal analysis và mô hình truyền sóng.
+
+## Video tham khảo
+
+- xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Tiếng Việt. Vì sao đi từ toán tử vi phân sang toán tử giả vi phân.
+- [Ps d o’s lecture 2 (Xuwen Zhu)](https://www.youtube.com/watch?v=0OBoX9_-ndQ) — Mathematics video VAROQUI Hervé, Tiếng Việt. Bài thứ hai của Xuwen Zhu, tiếp cùng động cơ.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Biến đổi biến một toán tử vi phân thành một symbol đa thức.

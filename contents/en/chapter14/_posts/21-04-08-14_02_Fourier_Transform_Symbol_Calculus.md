@@ -196,6 +196,12 @@ Its symbol is therefore $$ \xi^2 $$. This explains why high frequencies are pena
 
 **Graduate level.** Connect to full symbols, principal symbols, and quantization choices.
 
+## Video tham khảo
+
+- xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Vietnamese. The symbol a(x,ξ) as the Fourier multiplier of an operator.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, English. The transform inside that definition.
+- [Introduction to Fourier Integral operators 1 (Allan Greenleaf)](https://www.youtube.com/watch?v=4O_oC9kFFWQ) — Mathematics video VAROQUI Hervé, Vietnamese. Allan Greenleaf's introduction to Fourier integral operators, the next object after symbols.
+
 ## References
 
 - Trèves: symbolic framework and oscillatory-integral motivation.

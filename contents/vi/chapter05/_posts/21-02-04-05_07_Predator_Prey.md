@@ -213,6 +213,12 @@ Tại đó, tốc độ tăng tự nhiên của con mồi được cân bằng b
 
 **Bậc sau đại học.** Nghiên cứu tích phân bảo toàn, mô hình Rosenzweig-MacArthur và các cơ chế tạo limit cycle ổn định.
 
+## Video tham khảo
+
+- xem trước: [Predator-Prey Population Models || Lotka-Volterra Equations](https://www.youtube.com/watch?v=DDEvlLa9z_U) — Exploring Maths, tiếng Anh. Các phương trình Lotka-Volterra và quỹ đạo đóng của một cặp săn mồi-con mồi.
+- [Predator-Prey Model (Lotka-Volterra)](https://www.youtube.com/watch?v=Tc05IbqTsFM) — Mike Saint-Antoine, tiếng Anh. Một lượt giải khác của cùng mô hình, gồm hình mặt phẳng pha.
+- [Lotka-Volterra Equation and Their Periodic Solutions](https://www.youtube.com/watch?v=WPck8AhuOsc) — Mike, the Mathematician, tiếng Anh. Vì sao các nghiệm tuần hoàn Lotka-Volterra dễ vỡ về mặt cấu trúc.
+
 ## Tài liệu tham khảo
 
 - Strogatz, Chương 6: rất mạnh về nullcline, quỹ đạo và trực giác sinh thái.

@@ -254,3 +254,9 @@ với mọi test function $$ \varphi $$. Đây là lý do xung điểm xuất hi
 **Bậc đại học.** Dùng delta và Heaviside như công cụ mô hình hóa.
 
 **Bậc sau đại học.** Kết nối với Schwartz distributions, Fourier transform và nghiệm cơ bản của PDE.
+
+## Video tham khảo
+
+- xem trước: [Dirac Delta: Not a Function but a Distribution](https://www.youtube.com/watch?v=XZKf1G5ATkM) — Scintropy, tiếng Anh. Vì sao Dirac delta là một phân phối chứ không phải một hàm.
+- [MM51: Dirac delta distributions](https://www.youtube.com/watch?v=uTSKsWGWpIQ) — Learn Physics with Dr. Viv!, tiếng Anh. Phân phối Dirac delta như tác động tuyến tính mà bài này định nghĩa.
+- [The Dirac Delta 'Function': How to model an impulse or infinite spike](https://www.youtube.com/watch?v=SxNVcCVj-3c) — Dr. Trefor Bazett, tiếng Anh. Trefor Bazett về delta như mô hình một xung, trước định nghĩa phiếm hàm.

@@ -223,6 +223,12 @@ ta thu được phương trình Hermite cho $$ H $$. Điều kiện nghiệm kh�
 
 **Bậc sau đại học.** Nói về toán tử tự liên hợp, tính trực giao của mode và liên hệ với lý thuyết phổ trong PDE.
 
+## Video tham khảo
+
+- xem trước: [Vibrating Circular Membranes - Partial Differential Equations | Lecture 31](https://www.youtube.com/watch?v=DeG6dq4vlO4) — Jason Bramburger, tiếng Anh. Màng tròn rung, nơi hàm Bessel là các hàm riêng hướng kính.
+- [Advanced Engineering Mathematics, Lecture 2.7: Bessel's equation](https://www.youtube.com/watch?v=lcvWAgrdFn0) — Professor Macauley, tiếng Anh. Phương trình Bessel đúng cách nó được dùng trong các bài toán hướng kính.
+- [Intro to Legendre Polynomials](https://www.youtube.com/watch?v=djlUmwbPw20) — Physics and Math Lectures, tiếng Anh. Đa thức Legendre là phần góc của một bài toán cầu.
+
 ## Tài liệu tham khảo
 
 - Haberman, Chương 7: khai thác Bessel, Legendre và tách biến trong các bài toán vật lý cổ điển.

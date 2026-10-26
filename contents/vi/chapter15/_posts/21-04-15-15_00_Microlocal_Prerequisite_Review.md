@@ -271,6 +271,12 @@ Giờ ta có thể tóm tắt lộ trình logic dẫn đến wave front set.
 
 Nếu có suy giảm nhanh trong nón ấy, thì $$ u $$ microlocally smooth tại $$ \left(x_0,\xi_0\right) $$. Nếu không, cặp đó thuộc wave front set. Vì vậy, wave front set không phải là một đối tượng hoàn toàn mới xuất hiện bất ngờ. Nó là sự tổng hợp tự nhiên của cục bộ hóa, suy giảm Fourier, singular support và hình học theo hướng.
 
+## Video tham khảo
+
+- xem trước: [MM51: Dirac delta distributions](https://www.youtube.com/watch?v=uTSKsWGWpIQ) — Learn Physics with Dr. Viv!, tiếng Anh. Phân phối, bắt đầu từ Dirac delta, các đối tượng mà giải tích vi địa phương định vị kỳ dị.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Biến đổi Fourier phát hiện hướng của một kỳ dị.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Bài mở đầu của Vasy, liệt kê các kiến thức nền đang được dùng.
+
 ## Tài liệu tham khảo
 
 - L. Hormander, *The Analysis of Linear Partial Differential Operators I*

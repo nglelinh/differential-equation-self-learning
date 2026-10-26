@@ -119,6 +119,12 @@ Neural ODEs can be slower to train than discrete residual nets, especially when 
 
 A good question to carry forward is: which properties of $$f$$ (Lipschitz constant, one-sided Lipschitz, monotonicity) should be constrained during learning if we want the same comparison theorems that make first-order scalar equations so transparent?
 
+## Video tham khảo
+
+- xem trước: [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, English. Brunton's introduction to neural ODEs: a network as the vector field of a continuous-depth model.
+- [David Duvenaud | Reflecting on Neural ODEs | NeurIPS 2019](https://www.youtube.com/watch?v=YZ-_E7A3V2w) — Preserve Knowledge, English. David Duvenaud reflects on the Neural ODE paper and what the adjoint method is for.
+- [On Neural Differential Equations](https://www.youtube.com/watch?v=TGfGiBhDEi0) — Patrick Kidger, English. Patrick Kidger's lecture on neural differential equations as a modeling framework.
+
 ## Exercises
 
 1. **From residual blocks to ODEs.** Write the residual update $$h_{n+1}=h_n+h\,f(h_n)$$ and take $$h\to 0$$. Recover $$h'=f(h)$$ and state the precise meaning of the limit on a finite interval.

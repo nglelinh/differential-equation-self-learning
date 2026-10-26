@@ -212,6 +212,12 @@ In the region $$ x>1,\ y<1 $$ we have $$ \dot{x}>0 $$ and $$ \dot{y}>0 $$, so tr
 
 ![Phase plane trajectories]({{ site.imgurl }}/chapter_img/chapter05/05_01_autonomous_phase_plane.svg)
 
+## Video tham khảo
+
+- xem trước: [MAE5790-1 Course introduction and overview](https://www.youtube.com/watch?v=ycJEoqmQvwg) — Cornell MAE, English. Strogatz opens the course: phase space instead of formulas.
+- [MAE5790-2 One dimensional Systems](https://www.youtube.com/watch?v=YNIm2Op7UPg) — Cornell MAE, English. One-dimensional phase lines as the warm-up for the plane.
+- [Drawing Phase Portraits for Nonlinear Systems](https://www.youtube.com/watch?v=vBwyD4JJlSs) — Steve Brunton, English. Brunton on how to sketch a nonlinear phase portrait from the vector field.
+
 ## References
 
 - Strogatz, Chapters 5-6: an excellent intuitive introduction to phase-plane reasoning.

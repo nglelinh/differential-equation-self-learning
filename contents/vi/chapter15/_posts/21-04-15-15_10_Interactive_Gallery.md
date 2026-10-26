@@ -49,3 +49,9 @@ Trang này cũng đóng vai trò cầu nối giữa bài giảng cao học và v
 - [15.07 Cơ học lượng tử]({{ site.baseurl }}/contents/vi/chapter15/15_07_Quantum_Mechanics/)
 - [15.08 Các hướng nghiên cứu hiện nay]({{ site.baseurl }}/contents/vi/chapter15/15_08_Current_Research_Directions/)
 - [15.09 Microlocal elliptic theory]({{ site.baseurl }}/contents/vi/chapter15/15_09_Microlocal_Elliptic_Theory/)
+
+## Video tham khảo
+
+- xem trước: [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Bài giảng mà các hình không gian pha của bộ minh họa đang phác.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Không gian Fourier, tọa độ thứ hai của một tập mặt sóng.
+- [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Một bài nghiên cứu cho thấy các hình đang được dùng.

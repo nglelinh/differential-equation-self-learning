@@ -249,3 +249,9 @@ for all $$ v $$. This is the standard template for linear elliptic PDEs.
 **Undergraduate level.** Compare the theorem with symmetric positive definite matrices.
 
 **Graduate level.** Connect to the Riesz representation theorem, saddle-point problems, and inf-sup conditions.
+
+## Video tham khảo
+
+- xem trước: [Peter Lax - Lax-Milgram Theorem](https://www.youtube.com/watch?v=d6lx6kKV9-E) — Simons Foundation, English. Peter Lax himself discusses the Lax-Milgram theorem, in a Simons Foundation interview lecture.
+- [Lax-Milgram lemma](https://www.youtube.com/watch?v=w8QjyVug78M) — Numerical Analysis by Julian Roth, English. The lemma stated with coercivity and continuity.
+- [Lax-Milgram, application to Poisson equation.](https://www.youtube.com/watch?v=s5P3e1FhpTk) — Learn Maths with Dr Alex, English. The Poisson equation as the first application.

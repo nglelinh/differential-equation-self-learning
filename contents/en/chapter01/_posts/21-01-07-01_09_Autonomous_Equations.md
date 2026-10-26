@@ -256,3 +256,9 @@ Sign analysis shows that $$ x=0.2 $$ is unstable and $$ x=0.8 $$ is stable. In a
 ## Quick Summary
 
 For autonomous first-order equations, the sign of $$ f(y) $$ often reveals the full qualitative dynamics. Phase lines show where solutions move, which equilibria are stable, and what long-term behavior to expect even without an explicit formula.
+
+## Video tham khảo
+
+- xem trước: [Autonomous Equations, Equilibrium Solutions, and Stability](https://www.youtube.com/watch?v=pZOmToxx-R8) — Dr. Trefor Bazett, English. Equilibrium solutions and stability read off a phase line.
+- [Autonomous Equations and Phase Lines | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=elMskF8Uzmg) — MIT OpenCourseWare, English. MIT's short lecture on autonomous equations and phase lines.
+- [MAE5790-2 One dimensional Systems](https://www.youtube.com/watch?v=YNIm2Op7UPg) — Cornell MAE, English. Strogatz on one-dimensional flows, the geometric version of the phase line.

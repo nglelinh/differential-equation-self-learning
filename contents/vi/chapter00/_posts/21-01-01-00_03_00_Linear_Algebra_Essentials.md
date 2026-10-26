@@ -123,6 +123,12 @@ nên $$ \lambda = -1, -3 $$. Cả hai đều âm, nên điểm cân bằng ổn 
 **Ổn định**: Tất cả $$ \operatorname{Re}(\lambda_i) < 0 $$ $$ \Rightarrow $$ ổn định; có một $$ \operatorname{Re}(\lambda_i) > 0 $$ $$ \Rightarrow $$ không ổn định.
 Đại số tuyến tính cho ta "thấu kính" để phân tích hệ ODE: nhìn vào phổ là thấy toàn bộ hành vi nghiệm.
 
+## Video tham khảo
+
+- xem trước: [Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra](https://www.youtube.com/watch?v=PFDu9oVAE-g) — 3Blue1Brown, tiếng Anh. Vector riêng là hướng hệ tuyến tính kéo giãn, đúng cách giải x'=Ax.
+- [Vectors | Chapter 1, Essence of linear algebra](https://www.youtube.com/watch?v=fNk_zzaMoSs) — 3Blue1Brown, tiếng Anh. Vector và tổ hợp tuyến tính là ngôn ngữ của vector trạng thái trong hệ cấp một.
+- [How (and why) to raise e to the power of a matrix | DE6](https://www.youtube.com/watch?v=O85OWBJ2ayo) — 3Blue1Brown, tiếng Anh. Vì sao lũy thừa ma trận là dạng đóng của hệ tuyến tính hệ số hằng.
+
 ## Tài liệu tham khảo
 - Axler — *Linear Algebra Done Right*: tiếp cận trừu tượng nhưng rõ ràng.
 - Lay — *Linear Algebra and Its Applications*: nhiều ví dụ và ứng dụng.

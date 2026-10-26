@@ -103,6 +103,12 @@ Spectral methods hate discontinuities; Gibbs phenomena reappear in learned Fouri
 
 A good question: is a neural trunk a new special function, or a numerical approximation of an old one? The answer depends on whether the trunk continues to satisfy a structured recurrence or Sturm–Liouville identity after training.
 
+## Video tham khảo
+
+- xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, English. A Fourier neural operator uses spectral basis functions as its trunk, the idea of this lesson.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, English. DeepONet, the branch-trunk operator network named alongside spectral bases.
+- [Taylor series | Chapter 11, Essence of calculus](https://www.youtube.com/watch?v=3d6DsjIBzJ4) — 3Blue1Brown, English. Classical series as the hand-built spectral basis those networks generalize.
+
 ## Exercises
 
 1. **Radius of convergence.** Fit a power series and a Chebyshev series to $$1/(1+25x^2)$$ on $$[-1,1]$$. Why does the first diverge at the endpoints in the high-degree limit while the second need not?

@@ -218,6 +218,12 @@ So the system itself is captured by $$ H(s) $$, while the chosen input determine
 
 ![Transfer functions]({{ site.imgurl }}/chapter_img/chapter03/03_08_transfer_functions.svg)
 
+## Video tham khảo
+
+- xem trước: [Control Systems Lectures - Transfer Functions](https://www.youtube.com/watch?v=RJleGwXorUk) — Brian Douglas, English. Brian Douglas on transfer functions as the input-output map of a linear system.
+- [Pole Diagrams | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=pUFSXhoazY8) — MIT OpenCourseWare, English. Pole diagrams: how the poles of a transfer function set growth, decay, and oscillation.
+- [The Laplace Transform and the Important Role it Plays](https://www.youtube.com/watch?v=VJ9phDRys_I) — Brian Douglas, English. Why the Laplace transform is the natural language of those transfer functions.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: the transfer function section is very suitable for students first encountering systems language.
 - Zill — *Differential Equations with Boundary-Value Problems*: has many examples connecting Laplace with circuits and systems.

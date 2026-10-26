@@ -216,6 +216,12 @@ $$ \mathcal{L}\{e^{2t}\}=\frac{1}{s-2}. $$
 
 **Bậc sau đại học.** Nhấn mạnh miền hội tụ, quan điểm không gian tín hiệu, và sự nối kết với lý thuyết hệ tuyến tính bất biến theo thời gian.
 
+## Video tham khảo
+
+- xem trước: [(GT3) Chương 3 (Phần 1): Phép biến đổi Laplace và Laplace ngược](https://www.youtube.com/watch?v=qQ7cP5BmPPE) — CLB Hỗ trợ Học tập, Tiếng Việt. Bài giảng tiếng Việt giới thiệu biến đổi Laplace và biến đổi ngược.
+- [But what is a Laplace Transform?](https://www.youtube.com/watch?v=j0wJBEZdwLs) — 3Blue1Brown, tiếng Anh. Biến đổi Laplace là gì và vì sao một tích phân theo thời gian thành đại số theo s.
+- [Laplace Transform: Basics | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=BniJM-ireXQ) — MIT OpenCourseWare, tiếng Anh. Bài ngắn của MIT về định nghĩa và các tính chất đầu tiên.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: giới thiệu Laplace rất phù hợp cho sinh viên mới tiếp cận.
 - Zill — *Differential Equations with Boundary-Value Problems*: nhiều ví dụ cơ bản tốt để luyện định nghĩa và hội tụ.

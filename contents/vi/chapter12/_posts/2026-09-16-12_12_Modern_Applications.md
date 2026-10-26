@@ -95,6 +95,12 @@ Toán tử phi tuyến, ánh xạ phụ thuộc thời gian, và đầu ra giá 
 
 Câu hỏi đáng hỏi mọi bài báo: tuyên bố được nêu trong không gian Banach nào, và đó có phải không gian trong đó PDE đặt chỉnh?
 
+## Video tham khảo
+
+- xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, tiếng Anh. Học toán tử trong không gian hàm, cách dùng hiện đại của khung Sobolev.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, tiếng Anh. DeepONet như một ánh xạ giữa các không gian hàm.
+- [Sobolev Spaces Explained | Weak Derivatives, W¹ᵖ and H¹](https://www.youtube.com/watch?v=bUIZGQ7T0rU) — Sciwords, tiếng Anh. Không gian Sobolev mà các ước lượng sai số học toán tử ấy được phát biểu trong đó.
+
 ## Bài tập
 
 1. **Từ điển chuẩn.** Với ánh xạ Poisson Dirichlet $$f\mapsto u$$, nêu tính liên tục $$H^{-1}\to H^1_0$$ và $$L^2\to H^2\cap H^1_0$$ (trên miền trơn). Neural operator nên quảng cáo cái nào nếu nó chỉ thấy $$f$$ nhiễu?

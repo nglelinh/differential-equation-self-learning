@@ -233,6 +233,12 @@ Nếu dùng forcing này trong ODE tuyến tính, ta không cần giải trên h
 
 **Bậc sau đại học.** Làm việc với nhiều công tắc, nhiều mức, và so sánh các biểu diễn Heaviside tương đương của cùng một tín hiệu.
 
+## Video tham khảo
+
+- xem trước: [Step and Delta Functions | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=q0PxCQWG3ic) — MIT OpenCourseWare, tiếng Anh. Hàm bậc đơn vị và cách viết một lực ngoài gián đoạn bằng hàm Heaviside.
+- [Unit Step and Impulse Response | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=LjqUV6vqwkg) — MIT OpenCourseWare, tiếng Anh. Đáp ứng bậc của một hệ tuyến tính, đúng đối tượng bài này tính.
+- [Laplace: Solving ODE's | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=5av3kiejazQ) — MIT OpenCourseWare, tiếng Anh. Các quy tắc biến đổi vẫn dùng được sau khi vế phải được viết bằng hàm bậc.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: giải thích rất rõ định lý dịch thời gian.
 - Zill — *Differential Equations with Boundary-Value Problems*: nhiều ví dụ kỹ thuật hay về tín hiệu gián đoạn.

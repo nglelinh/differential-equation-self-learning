@@ -157,6 +157,12 @@ Có thể mời sinh viên khá giỏi thảo luận điều gì thay đổi n�
 
 Phương trình sóng xuất hiện từ cân bằng giữa quán tính và lực phục hồi. Độ cong không gian tạo ra gia tốc, còn tốc độ truyền $$ c $$ được quyết định bởi lực căng và mật độ môi trường. Sóng truyền nhiễu loạn với tốc độ hữu hạn thay vì làm mượt ngay như nhiệt.
 
+## Video tham khảo
+
+- xem trước: [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, tiếng Anh. Brunton suy phương trình sóng từ một sợi dây.
+- [Partial Differential Equations Overview](https://www.youtube.com/watch?v=pvrIagjEk4c) — Steve Brunton, tiếng Anh. Ba PDE tuyến tính chính tắc, để phương trình sóng đứng cạnh nhiệt và Laplace.
+- [Solving the Wave Equation with Separation of Variables... and Guitar String Physics](https://www.youtube.com/watch?v=ywrgWRSQ3PY) — Steve Brunton, tiếng Anh. Cách đọc dây đàn của phương trình vừa được suy ra.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - phát triển chặt chẽ phương trình sóng, năng lượng, và tính duy nhất.

@@ -207,6 +207,12 @@ also decays to zero. Physically, energy oscillates between the inductor and capa
 
 ![RLC response analysis]({{ site.imgurl }}/chapter_img/chapter02/02_09_rlc_response.svg)
 
+## Video tham khảo
+
+- xem trước: [PHYS 102 | RLC Circuits 1 - The Differential Equation for the RLC Circuit](https://www.youtube.com/watch?v=gmjyBJ9nyZU) — Professor Hafner, English. The series RLC circuit written as the same second-order equation as a damped oscillator.
+- [Lecture 20 - RLC circuits and resonance](https://www.youtube.com/watch?v=JSiTC1tCLBg) — Thomas Carr - Math Lectures, English. RLC resonance from the circuit equations.
+- [Forced Oscillations | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=xJz3NZap1lw) — MIT OpenCourseWare, English. Forced oscillations and the steady periodic response, the circuit analogue of a driven spring.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: the RLC circuit section is very suitable for seeing the analogy with mechanics.
 - Zill — *Differential Equations with Boundary-Value Problems*: many exercises on transient and forced response.

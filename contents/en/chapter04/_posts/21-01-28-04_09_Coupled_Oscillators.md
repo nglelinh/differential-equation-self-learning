@@ -250,6 +250,12 @@ The first mode is in phase and the second is out of phase. Any real motion is a 
 
 ![Coupled oscillators]({{ site.imgurl }}/chapter_img/chapter04/04_09_coupled_oscillators.svg)
 
+## Video tham khảo
+
+- xem trước: [Coupled oscillators | Lecture 46 | Differential Equations for Engineers](https://www.youtube.com/watch?v=-pXnfzQfupE) — Jeffrey Chasnov, English. Jeffrey Chasnov derives the normal modes of two coupled oscillators.
+- [4. Coupled Oscillators, Normal Modes](https://www.youtube.com/watch?v=BX4QPdP7fT8) — MIT OpenCourseWare, English. MIT 8.03 on coupled oscillators and normal modes.
+- [Solving Systems of Differential Equations with Eigenvalues and Eigenvectors](https://www.youtube.com/watch?v=Zwb5eiYcL8w) — Steve Brunton, English. The eigenvalue step that turns the coupled system into independent modes.
+
 ## References
 
 - Boyce & DiPrima, Chapter 7: standard examples of coupled oscillation and normal modes.

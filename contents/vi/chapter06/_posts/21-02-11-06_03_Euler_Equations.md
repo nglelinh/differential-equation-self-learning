@@ -273,6 +273,12 @@ $$ y=C_1 x^2+C_2 x^2\ln x. $$
 
 **Bậc sau đại học.** Nhấn mạnh đối xứng co giãn, phép đổi biến $$ x=e^t $$ và liên hệ với nhóm tự đồng dạng.
 
+## Video tham khảo
+
+- xem trước: [Cauchy Euler Differential Equation (equidimensional equation)](https://www.youtube.com/watch?v=zXZ4qmDpblE) — blackpenredpen, tiếng Anh. Phương trình Cauchy-Euler và nghiệm thử x^r.
+- [Cauchy-Euler Differential Equations (2nd Order)](https://www.youtube.com/watch?v=ep7xoctAlEY) — Houston Math Prep, tiếng Anh. Một phương trình Cauchy-Euler cấp hai được giải trọn.
+- [Introduction to Cauchy Euler Differential Equations](https://www.youtube.com/watch?v=oqpc89Lfx-E) — The Math Sorcerer, tiếng Anh. Vì sao phương trình đẳng thứ nguyên là phương trình kỳ dị mẫu.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 5: phương trình Euler và các trường hợp nghiệm đặc biệt.

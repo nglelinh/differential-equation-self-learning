@@ -216,6 +216,12 @@ Ví dụ này cho thấy rất rõ luồng tư duy: hàm truyền mô tả hộp
 
 **Bậc sau đại học.** Đi tiếp sang cực, zero, đáp ứng tần số và ổn định nội tại của hệ.
 
+## Video tham khảo
+
+- xem trước: [Control Systems Lectures - Transfer Functions](https://www.youtube.com/watch?v=RJleGwXorUk) — Brian Douglas, tiếng Anh. Brian Douglas về hàm truyền như ánh xạ vào-ra của một hệ tuyến tính.
+- [Pole Diagrams | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=pUFSXhoazY8) — MIT OpenCourseWare, tiếng Anh. Giản đồ cực: các cực của hàm truyền quyết định tăng, tắt và dao động.
+- [The Laplace Transform and the Important Role it Plays](https://www.youtube.com/watch?v=VJ9phDRys_I) — Brian Douglas, tiếng Anh. Vì sao biến đổi Laplace là ngôn ngữ tự nhiên của các hàm truyền ấy.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: phần hàm truyền rất phù hợp cho sinh viên lần đầu gặp ngôn ngữ hệ thống.
 - Zill — *Differential Equations with Boundary-Value Problems*: có nhiều ví dụ nối Laplace với mạch điện và hệ thống.

@@ -263,6 +263,12 @@ Vì định thức âm nên gốc là một yên ngựa. Trục thứ nhất là
 
 **Bậc sau đại học.** Nối với tuyến tính hóa hệ phi tuyến và ý nghĩa cục bộ của chân dung pha.
 
+## Video tham khảo
+
+- xem trước: [Phase Portraits | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=zmzyW1rP-hk) — MIT OpenCourseWare, tiếng Anh. Bộ chân dung pha tuyến tính của MIT.
+- [Trace-Determinant Diagram | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=oEskbXrhkkk) — MIT OpenCourseWare, tiếng Anh. Mặt phẳng vết-định thức phân loại các chân dung ấy.
+- [MAE5790-5 Two dimensional linear systems](https://www.youtube.com/watch?v=QrHRaA93Nrg) — Cornell MAE, tiếng Anh. Strogatz vẽ cùng sự phân loại từ các trị riêng.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 7: rất tốt cho phân loại hệ phẳng.

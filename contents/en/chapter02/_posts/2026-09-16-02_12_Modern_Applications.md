@@ -101,6 +101,12 @@ Coordinate choice remains delicate. Hamiltonian structure is not invariant under
 
 A reflective prompt: if a learned model conserves a quantity that is not the physical energy, have we succeeded or failed? The Wronskian suggests an answer: structural invariants are valuable only when they correspond to the linear independence or conservation laws of the true system.
 
+## Video tham khảo
+
+- xem trước: [Hamiltonian Neural Networks (HNN) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=AEOcss20nDA) — Steve Brunton, English. Brunton on Hamiltonian neural networks: learn a Hamiltonian so the vector field stays symplectic.
+- [Second-Order Ordinary Differential Equations: Solving the Harmonic Oscillator Four Ways](https://www.youtube.com/watch?v=8ePqqZXSMQs) — Steve Brunton, English. The classical oscillator this lesson is teaching a network to respect.
+- [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, English. Neural ODEs as the continuous model that a Hamiltonian prior is refining.
+
 ## Exercises
 
 1. **Energy identity.** For $$y''+\gamma y'+\omega^2 y=0$$, multiply by $$y'$$ and derive the energy-dissipation law. How would you turn that identity into a training constraint?

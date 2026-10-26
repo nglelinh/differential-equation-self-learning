@@ -256,6 +256,12 @@ The model says: oscillation persists, but the amplitude decays like $$ e^{-t} $$
 
 ![Complex plane visualization]({{ site.imgurl }}/chapter_img/chapter02/02_03_complex_plane.svg)
 
+## Video tham khảo
+
+- xem trước: [Constant Coefficient ODEs: Real & Distinct vs Real & Repeated vs Complex Pair](https://www.youtube.com/watch?v=r8Uk4tbuxVE) — Dr. Trefor Bazett, English. Watch the complex-pair case: real and imaginary parts become the oscillatory solution.
+- [Lec 10 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=YQ7HEE8-OfA) — MIT OpenCourseWare, English. Mattuck's lecture continuing into complex characteristic roots.
+- [Taylor Series of the Exponential Function and Euler's Formula!](https://www.youtube.com/watch?v=H0Zbg_CqMCs) — Steve Brunton, English. Euler's formula, the step that turns e^{(a±ib)t} into sines and cosines.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: excellent presentation of the dynamic meaning of complex roots.
 - Zill — *Differential Equations with Boundary-Value Problems*: many exercises converting between complex and real solutions.

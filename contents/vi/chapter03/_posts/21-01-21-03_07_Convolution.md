@@ -215,6 +215,12 @@ Từ góc nhìn hệ thống, nếu đầu vào là bước đơn vị và kerne
 
 **Bậc sau đại học.** Chứng minh định lý bằng đổi thứ tự tích phân, rồi nối với đáp ứng xung và hệ LTI tổng quát.
 
+## Video tham khảo
+
+- xem trước: [Lec 21 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=3ejfkMHr_DE) — MIT OpenCourseWare, tiếng Anh. Bài của Mattuck về công thức tích chập của biến đổi Laplace.
+- [Laplace Transforms and Convolution](https://www.youtube.com/watch?v=WZMQdLW4COQ) — MIT OpenCourseWare, tiếng Anh. MIT OpenCourseWare về biến đổi Laplace và tích chập.
+- [Convolution and Green's Formula | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=IGk-7EKR35A) — MIT OpenCourseWare, tiếng Anh. Tích chập viết như công thức Green cho một bài toán giá trị đầu tuyến tính.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: phần tích chập rất phù hợp cho bước chuyển sang ngôn ngữ hệ thống.
 - Zill — *Differential Equations with Boundary-Value Problems*: nhiều ví dụ kết nối tích chập với forcing thực tế.

@@ -270,6 +270,12 @@ $$
 
 **Bậc sau đại học.** Diễn giải hệ số như phép chiếu trong không gian Hilbert và liên hệ với phổ năng lượng của tín hiệu.
 
+## Video tham khảo
+
+- xem trước: [Computing Fourier Series | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=jzzpxqVohhI) — MIT OpenCourseWare, tiếng Anh. MIT tính các hệ số Fourier từ các công thức tích phân.
+- [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, tiếng Anh. Vì sao các tích phân ấy là tích vô hướng với sin và cos.
+- [Manipulating Fourier Series | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=v4YcejwdQC0) — MIT OpenCourseWare, tiếng Anh. Cách biến đổi một chuỗi khi đã biết các hệ số.
+
 ## Tài liệu tham khảo
 
 - Haberman, *Applied Partial Differential Equations* - trực giác tốt về chuỗi Fourier, hội tụ, và các ví dụ vật lý.

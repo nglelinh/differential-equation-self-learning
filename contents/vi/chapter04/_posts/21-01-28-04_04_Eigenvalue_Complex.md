@@ -278,6 +278,12 @@ Quỹ đạo là các đường tròn quanh gốc. Đây là ví dụ nền tả
 
 **Bậc sau đại học.** Nối với dạng chuẩn quay - co giãn và các tiêu điểm trong phân loại điểm cân bằng.
 
+## Video tham khảo
+
+- xem trước: [2x2 Systems of ODEs: Imaginary Eigenvalues and Center Fixed Points](https://www.youtube.com/watch?v=b7389fIVey0) — Steve Brunton, tiếng Anh. Một cặp thuần ảo và tâm mà nó tạo ra trên mặt phẳng pha.
+- [Linear Systems: Complex Roots | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=TRVS5Wo9LoM) — MIT OpenCourseWare, tiếng Anh. Bài ngắn của MIT về hệ tuyến tính có trị riêng phức.
+- [MAE5790-5 Two dimensional linear systems](https://www.youtube.com/watch?v=QrHRaA93Nrg) — Cornell MAE, tiếng Anh. Strogatz phân loại hệ tuyến tính hai chiều, gồm các xoắn ốc.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 7: trình bày rất rõ cách chuyển nghiệm phức sang nghiệm thực.

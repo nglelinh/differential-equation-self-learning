@@ -224,6 +224,12 @@ Lời giải cho thấy hệ tiến về trạng thái ổn định $$ 1 $$, cò
 
 **Bậc sau đại học.** So sánh Laplace với phương pháp cổ điển và đọc rõ phần quá độ, phần ổn định, cùng ý nghĩa của dữ kiện đầu trong miền $$ s $$.
 
+## Video tham khảo
+
+- xem trước: [Laplace: Solving ODE's | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=5av3kiejazQ) — MIT OpenCourseWare, tiếng Anh. MIT giải bài toán giá trị đầu bằng cách biến đổi ODE, kể cả dữ liệu đầu.
+- [Why Laplace transforms are so useful](https://www.youtube.com/watch?v=FE-hM1kRK4Y) — 3Blue1Brown, tiếng Anh. Vì sao biến đổi biến bài toán giá trị đầu vi phân thành đại số.
+- [Partial Fractions and Laplace Inverse | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=D6Rd1K93nSA) — MIT OpenCourseWare, tiếng Anh. Bước phân thức kết thúc nghiệm sau phần đại số theo s.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: phần giải IVP bằng Laplace rất rõ ràng và mạch lạc.
 - Zill — *Differential Equations with Boundary-Value Problems*: nhiều ví dụ luyện đúng kiểu bài trọng tâm của chương.

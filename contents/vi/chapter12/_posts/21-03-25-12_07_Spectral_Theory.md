@@ -219,3 +219,9 @@ $$ \lambda_n=n^2\pi^2, \qquad u_n(x)=\sin(n\pi x). $$
 **Bậc đại học.** Hiểu spectral theory qua ví dụ eigenvalue quen thuộc.
 
 **Bậc sau đại học.** Kết nối với toán tử compact, resolvent, phổ liên tục và functional calculus.
+
+## Video tham khảo
+
+- xem trước: [Lecture 22: The Spectral Theorem for a Compact Self-Adjoint Operator](https://www.youtube.com/watch?v=-sfaHVFWBU8) — MIT OpenCourseWare, tiếng Anh. Bài của MIT về định lý phổ cho toán tử compact tự liên hợp.
+- [Lecture 20: Compact Operators and the Spectrum of a Bounded Linear Operator on a Hilbert Space](https://www.youtube.com/watch?v=SFDMFbzCsH0) — MIT OpenCourseWare, tiếng Anh. MIT về toán tử compact và phổ của một toán tử bị chặn.
+- [Spectral Theorem For Dummies - 3Blue1Brown Summer of Math Exposition #SoME1](https://www.youtube.com/watch?v=4zD8Kd3HgJA) — Jacqueline Doan, tiếng Anh. Một diễn giải hình học dễ của định lý phổ.

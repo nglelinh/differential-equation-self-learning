@@ -96,6 +96,12 @@ Nonlinear systems do not have a single transfer function. LNO, like classical ha
 
 What does it mean, then, to “learn $$G(s)$$” if the true system is only approximately linear? The chapter’s convolution theorem suggests a test: if the learned model fails to turn products in $$s$$ into convolutions in $$t$$, it is not a transfer function, however small the training error.
 
+## Video tham khảo
+
+- xem trước: [Control Systems Lectures - Transfer Functions](https://www.youtube.com/watch?v=RJleGwXorUk) — Brian Douglas, English. Classical transfer functions, the object a learned Laplace-domain layer is imitating.
+- [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, English. A Fourier neural operator is the closest public lecture on learning an input-output operator.
+- [The Laplace Transform and the Important Role it Plays](https://www.youtube.com/watch?v=VJ9phDRys_I) — Brian Douglas, English. The Laplace transform itself, so the learned model stays tied to a causal linear system.
+
 ## Exercises
 
 1. **Pole-residue inversion.** Let $$G(s)=(s+3)/((s+1)(s+2))$$. Invert by partial fractions and sketch the impulse response. Which features should a learned Laplace layer recover?

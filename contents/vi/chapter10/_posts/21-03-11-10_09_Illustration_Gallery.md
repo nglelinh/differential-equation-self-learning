@@ -47,3 +47,9 @@ Bài này cũng là một bản ôn tập tốt trước khi sang Chương 11, v
 - [10.06 Phản xạ và truyền qua]({{ site.baseurl }}/contents/vi/chapter10/10_06_Reflection_Transmission/)
 - [10.07 Tán sắc và hấp thụ]({{ site.baseurl }}/contents/vi/chapter10/10_07_Dispersion_Dissipation/)
 - [10.08 Ứng dụng: âm thanh và điện từ]({{ site.baseurl }}/contents/vi/chapter10/10_08_Applications_Acoustics_EM/)
+
+## Video tham khảo
+
+- xem trước: [Solving the Wave Equation with Separation of Variables... and Guitar String Physics](https://www.youtube.com/watch?v=ywrgWRSQ3PY) — Steve Brunton, tiếng Anh. Hoạt hình dây mà bộ minh họa đang trình bày.
+- [PDE 10 | Wave equation: d'Alembert's formula](https://www.youtube.com/watch?v=j2G91naZ8bo) — commutant, tiếng Anh. Các sóng chạy của công thức d'Alembert.
+- [Phase Velocity versus Group Velocity:  Wave Dispersion](https://www.youtube.com/watch?v=EIqKG5TiSYs) — Physics Videos by Eugene Khutoryansky, tiếng Anh. Một bó sóng tán sắc để so với các khung sóng lý tưởng.

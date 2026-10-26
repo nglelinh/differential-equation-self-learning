@@ -196,6 +196,12 @@ The mode numbers and the geometry together determine the frequency.
 
 **Graduate level.** Connect to spectral geometry, Laplacian eigenfunctions, and domain-dependent spectra.
 
+## Video tham khảo
+
+- xem trước: [Vibrating Circular Membranes - Partial Differential Equations | Lecture 31](https://www.youtube.com/watch?v=DeG6dq4vlO4) — Jason Bramburger, English. A circular membrane: Bessel functions in the radial wave eigenvalue problem.
+- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, English. The one-dimensional derivation this higher-dimensional equation extends.
+- [Deriving the Heat Equation in 2D & 3D (& in N Dimensions!) with Control Volumes and Vector Calculus](https://www.youtube.com/watch?v=lBZIxv1bZDo) — Steve Brunton, English. Brunton's control-volume derivation in 2D and 3D, the same balance in higher dimension.
+
 ## References
 
 - Evans, Chapter 2.

@@ -254,6 +254,12 @@ Vật lý của lời giải rất rõ: hệ vẫn rung với tần số gần 3
 $$ Re^{\alpha t}\cos(\beta t-\phi) $$
 và nối với giá trị riêng phức của ma trận hệ tuyến tính.
 
+## Video tham khảo
+
+- xem trước: [Constant Coefficient ODEs: Real & Distinct vs Real & Repeated vs Complex Pair](https://www.youtube.com/watch?v=r8Uk4tbuxVE) — Dr. Trefor Bazett, tiếng Anh. Xem trường hợp cặp phức: phần thực và phần ảo thành nghiệm dao động.
+- [Lec 10 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=YQ7HEE8-OfA) — MIT OpenCourseWare, tiếng Anh. Bài của Mattuck đi tiếp vào nghiệm đặc trưng phức.
+- [Taylor Series of the Exponential Function and Euler's Formula!](https://www.youtube.com/watch?v=H0Zbg_CqMCs) — Steve Brunton, tiếng Anh. Công thức Euler, bước biến e^{(a±ib)t} thành sin và cos.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: trình bày rất tốt ý nghĩa động học của nghiệm phức.
 - Zill — *Differential Equations with Boundary-Value Problems*: có nhiều bài tập chuyển đổi giữa nghiệm phức và nghiệm thực.

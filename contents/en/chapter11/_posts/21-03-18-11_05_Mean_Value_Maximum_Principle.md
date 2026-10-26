@@ -188,6 +188,12 @@ This gives a fast uniqueness proof without constructing the solution explicitly.
 
 **Graduate level.** Connect to Harnack inequalities, unique continuation, and weak maximum principles.
 
+## Video tham khảo
+
+- xem trước: [Harmonic functions: Mean value theorem](https://www.youtube.com/watch?v=p60dU_62KcQ) — Dr Chris Tisdell, English. Chris Tisdell proves the mean-value property of a harmonic function.
+- [Properties of harmonic functions part 2: the mean value property](https://www.youtube.com/watch?v=_bC91Xqirgs) — William Nesse, English. The mean-value property stated and used.
+- [Qualitative Properties of Laplace's Equation - Partial Differential Equations | Lecture 12](https://www.youtube.com/watch?v=Mi25YqpsxlM) — Jason Bramburger, English. Jason Bramburger on qualitative properties of Laplace's equation, including the maximum principle.
+
 ## References
 
 - Evans, Chapter 2.

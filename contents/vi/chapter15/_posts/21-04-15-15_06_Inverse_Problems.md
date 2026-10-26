@@ -315,3 +315,9 @@ $$
 **Bậc đại học.** Phân biệt bài toán thuận và ngược qua ví dụ deblurring đơn giản.
 
 **Bậc sau đại học.** Kết nối với normal operators, visibility, regularization va microlocal reconstruction theorems.
+
+## Video tham khảo
+
+- xem trước: [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Bài vi địa phương của Zworski, bộ công cụ của các bài toán biên và phổ ngược.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Vasy về tán xạ và các bài toán toàn cục kiểu ngược cho toán tử sóng.
+- [Introduction to Fourier Integral operators 1 (Allan Greenleaf)](https://www.youtube.com/watch?v=4O_oC9kFFWQ) — Mathematics video VAROQUI Hervé, Tiếng Việt. Toán tử tích phân Fourier, thứ mô tả phép đo trong nhiều bài toán ngược.

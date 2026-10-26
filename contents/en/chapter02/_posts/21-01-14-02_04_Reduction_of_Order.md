@@ -257,6 +257,12 @@ and connect it to Abel's identity.
 
 ![Method visualization]({{ site.imgurl }}/chapter_img/chapter02/02_04_method.svg)
 
+## Video tham khảo
+
+- xem trước: [❖ Reduction of Order: Basic Example in Differential Equations ❖](https://www.youtube.com/watch?v=oQSFW8BIrY0) — Patrick J, English. A basic reduction of order: look for y2=v(x)y1 once one solution is known.
+- [Reduction of orders, 2nd order differential equations with variable coefficients](https://www.youtube.com/watch?v=qw7lsWSkfGA) — blackpenredpen, English. Reduction of order for a second-order equation with variable coefficients.
+- [Reduction of Order (Introduction)](https://www.youtube.com/watch?v=dtZjxolpzqM) — Houston Math Prep, English. The setup of the method before the algebra of a specific example.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: presents reduction of order very clearly in variable-coefficient problems.
 - Zill — *Differential Equations with Boundary-Value Problems*: many good exercises for practicing differentiation and simplification.

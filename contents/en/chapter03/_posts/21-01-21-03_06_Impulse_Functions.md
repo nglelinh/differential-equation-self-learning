@@ -217,6 +217,12 @@ The physical interpretation is clean: the system is inactive until the strike, t
 
 ![Impulse functions]({{ site.imgurl }}/chapter_img/chapter03/03_06_impulse_functions.svg)
 
+## Video tham khảo
+
+- xem trước: [Step and Delta Functions | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=q0PxCQWG3ic) — MIT OpenCourseWare, English. The delta impulse as the formal derivative of a step, and its transform.
+- [Unit Step and Impulse Response | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=LjqUV6vqwkg) — MIT OpenCourseWare, English. Impulse response next to step response.
+- [Dirac Delta: Not a Function but a Distribution](https://www.youtube.com/watch?v=XZKf1G5ATkM) — Scintropy, English. Why the delta is not an ordinary function but a distribution.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: explains delta in the spirit of applications very appropriately.
 - Zill — *Differential Equations with Boundary-Value Problems*: many good examples of impulse response.

@@ -260,3 +260,9 @@ Long-term behavior is just as important as the formula: the tank approaches the 
 ## Quick Summary
 
 Population and mixing models show how first-order ODE emerge naturally from balance laws. The real skill is not only solving the resulting equation, but also choosing the right state variable, building the rate law, and interpreting the meaning of the solution.
+
+## Video tham khảo
+
+- xem trước: [The Logistic Growth Differential Equation](https://www.youtube.com/watch?v=aP4YXOo-Uko) — Dr. Trefor Bazett, English. The logistic equation, carrying capacity, and the equilibria of a population model.
+- [❖ Mixing Problems and Separable Differential Equations ❖](https://www.youtube.com/watch?v=6wk9zWa-Fww) — Patrick J, English. A mixing-tank balance written as a separable or linear first-order equation.
+- [Newton's Law of Cooling  // Separable ODE Example](https://www.youtube.com/watch?v=_bAjWNsNrQA) — Dr. Trefor Bazett, English. Cooling as a first-order balance of the same kind as a mixing problem.

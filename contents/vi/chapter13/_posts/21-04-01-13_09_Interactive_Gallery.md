@@ -48,3 +48,9 @@ Trang này cũng phù hợp để ôn tập trước khi chuyển từ ODE số 
 - [13.06 Ổn định và hội tụ (CFL)]({{ site.baseurl }}/contents/vi/chapter13/13_06_Stability_Convergence_CFL/)
 - [13.07 Nhập môn phần tử hữu hạn]({{ site.baseurl }}/contents/vi/chapter13/13_07_Finite_Element_Introduction/)
 - [13.08 Phương trình vi phân ngẫu nhiên]({{ site.baseurl }}/contents/vi/chapter13/13_08_Stochastic_Differential_Equations/)
+
+## Video tham khảo
+
+- xem trước: [Runge-Kutta Integrator Overview:  All Purpose Numerical Integration of Differential Equations](https://www.youtube.com/watch?v=HOWJp8NV5xU) — Steve Brunton, tiếng Anh. Runge-Kutta, một trong các lược đồ bộ minh họa đang so sánh.
+- [Deriving Forward Euler and Backward/Implicit Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=MstPeOTCVzQ) — Steve Brunton, tiếng Anh. Các bước Euler, lược đồ kia trên cùng các hình.
+- [Chaotic Dynamical Systems](https://www.youtube.com/watch?v=PDeN3iCtyNY) — Steve Brunton, tiếng Anh. Động lực hỗn loạn, nơi một lược đồ ổn định vẫn không dự đoán được xa.

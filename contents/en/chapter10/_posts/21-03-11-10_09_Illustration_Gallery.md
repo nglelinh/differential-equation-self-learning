@@ -47,3 +47,9 @@ The lesson is also a good review before Chapter 11, because it clarifies which f
 - [10.06 Reflection and Transmission]({{ site.baseurl }}/contents/en/chapter10/10_06_Reflection_Transmission/)
 - [10.07 Dispersion and Dissipation]({{ site.baseurl }}/contents/en/chapter10/10_07_Dispersion_Dissipation/)
 - [10.08 Applications: Acoustics and Electromagnetics]({{ site.baseurl }}/contents/en/chapter10/10_08_Applications_Acoustics_Electromagnetics/)
+
+## Video tham khảo
+
+- xem trước: [Solving the Wave Equation with Separation of Variables... and Guitar String Physics](https://www.youtube.com/watch?v=ywrgWRSQ3PY) — Steve Brunton, English. The string animation this gallery is showing.
+- [PDE 10 | Wave equation: d'Alembert's formula](https://www.youtube.com/watch?v=j2G91naZ8bo) — commutant, English. Traveling waves of d'Alembert's formula.
+- [Phase Velocity versus Group Velocity:  Wave Dispersion](https://www.youtube.com/watch?v=EIqKG5TiSYs) — Physics Videos by Eugene Khutoryansky, English. A dispersive packet to compare with the ideal wave frames.

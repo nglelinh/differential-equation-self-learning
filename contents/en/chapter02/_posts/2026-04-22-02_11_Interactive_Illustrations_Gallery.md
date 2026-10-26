@@ -27,3 +27,9 @@ This supplementary lesson collects the interactive JavaScript illustrations for 
   path="interactives/chapter02/index.html"
   height="920px"
 %}
+
+## Video tham khảo
+
+- xem trước: [Mechanical Vibrations: Underdamped vs Overdamped vs Critically Damped](https://www.youtube.com/watch?v=CTd1uVq5-l8) — Dr. Trefor Bazett, English. Damping cases to compare with the vibration applets in this gallery.
+- [Second-Order Ordinary Differential Equations: Solving the Harmonic Oscillator Four Ways](https://www.youtube.com/watch?v=8ePqqZXSMQs) — Steve Brunton, English. Four solution methods for one oscillator, a map of the interactive models.
+- [Undamped Mechanical Vibrations & Hooke's Law // Simple Harmonic Motion](https://www.youtube.com/watch?v=Z52emur7Rko) — Dr. Trefor Bazett, English. Simple harmonic motion as the undamped reference picture.

@@ -363,3 +363,9 @@ rất gần $$ e^{0.5}\approx 1.6487 $$.
 **Bậc đại học.** So sánh Euler, midpoint và RK4 trên cùng một ODE.
 
 **Bậc sau đại học.** Kết nối với order conditions, Butcher tableaux và SSP methods.
+
+## Video tham khảo
+
+- xem trước: [Runge-Kutta Integrator Overview:  All Purpose Numerical Integration of Differential Equations](https://www.youtube.com/watch?v=HOWJp8NV5xU) — Steve Brunton, tiếng Anh. Tổng quan của Brunton về Runge-Kutta như một bộ tích phân một bước đa dụng.
+- [Coding a Fourth-Order Runge-Kutta Integrator in Python and Matlab](https://www.youtube.com/watch?v=vNoFdtcPFdk) — Steve Brunton, tiếng Anh. Một bước Runge-Kutta bậc bốn viết thành mã.
+- [Understanding Runge-Kutta](https://www.youtube.com/watch?v=t48a2M27kjM) — ThatMathThing, tiếng Anh. ThatMathThing giải thích các tầng Runge-Kutta đến từ đâu.

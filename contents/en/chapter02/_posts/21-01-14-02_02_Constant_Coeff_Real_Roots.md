@@ -228,6 +228,12 @@ The slower mode $$ e^{-t} $$ governs the long-term decay.
 
 ![Characteristic equation visualization]({{ site.imgurl }}/chapter_img/chapter02/02_02_characteristic.svg)
 
+## Video tham khảo
+
+- xem trước: [How to Solve Constant Coefficient Homogeneous Differential Equations](https://www.youtube.com/watch?v=znO6v-8pvXo) — Dr. Trefor Bazett, English. The characteristic equation and the exponential solutions for constant coefficients.
+- [Homogeneous Constant Coefficient Equations: Real Roots | MIT 18.03SC Differential Equations](https://www.youtube.com/watch?v=zNPK_t03zds) — MIT OpenCourseWare, English. MIT's short lecture restricted to real roots of the characteristic polynomial.
+- [Constant Coefficient ODEs: Real & Distinct vs Real & Repeated vs Complex Pair](https://www.youtube.com/watch?v=r8Uk4tbuxVE) — Dr. Trefor Bazett, English. How distinct real roots differ from repeated roots and from a complex pair.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: very strong on characteristic equation techniques.
 - Zill — *Differential Equations with Boundary-Value Problems*: many exercises on distinct and repeated roots.

@@ -48,3 +48,9 @@ The page is also useful as a review sheet before students move from ODE solvers 
 - [13.06 Stability and Convergence (CFL)]({{ site.baseurl }}/contents/en/chapter13/13_06_Stability_Convergence_CFL/)
 - [13.07 Finite Element Introduction]({{ site.baseurl }}/contents/en/chapter13/13_07_Finite_Element_Introduction/)
 - [13.08 Stochastic Differential Equations]({{ site.baseurl }}/contents/en/chapter13/13_08_Stochastic_Differential_Equations/)
+
+## Video tham khảo
+
+- xem trước: [Runge-Kutta Integrator Overview:  All Purpose Numerical Integration of Differential Equations](https://www.youtube.com/watch?v=HOWJp8NV5xU) — Steve Brunton, English. Runge-Kutta, one of the schemes the gallery is comparing.
+- [Deriving Forward Euler and Backward/Implicit Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=MstPeOTCVzQ) — Steve Brunton, English. Euler steps, the other scheme on the same pictures.
+- [Chaotic Dynamical Systems](https://www.youtube.com/watch?v=PDeN3iCtyNY) — Steve Brunton, English. Chaotic dynamics, where a stable scheme still cannot predict far ahead.

@@ -47,3 +47,9 @@ Students can also use this page for review before moving into the heat equation,
 - [08.06 Parseval's Theorem]({{ site.baseurl }}/contents/en/chapter08/08_06_Parsevals_Theorem/)
 - [08.07 Complex Fourier Series]({{ site.baseurl }}/contents/en/chapter08/08_07_Complex_Fourier_Series/)
 - [08.08 Fourier Transform: Introduction]({{ site.baseurl }}/contents/en/chapter08/08_08_Fourier_Transform_Introduction/)
+
+## Video tham khảo
+
+- xem trước: [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, English. The circle-drawing animation this gallery is echoing.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, English. The transform pictures to set beside the gallery frames.
+- [Complex Fourier Series](https://www.youtube.com/watch?v=4cfctnaHyFM) — Steve Brunton, English. The complex series as rotating phasors, another gallery picture.

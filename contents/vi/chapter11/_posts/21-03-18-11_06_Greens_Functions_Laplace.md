@@ -143,6 +143,12 @@ Có thể mời sinh viên khá giỏi liên hệ Green với nghịch đảo c�
 
 Hàm Green cho Laplace là phản ứng của miền đối với một nguồn điểm. Nó được xây từ nghiệm cơ bản và phần hiệu chỉnh để thỏa biên. Nhờ Green, bài toán Poisson và Dirichlet có thể được viết lại dưới dạng tích phân rất giàu ý nghĩa hình học và vật lý.
 
+## Video tham khảo
+
+- xem trước: [Introducing Green's Functions for Partial Differential Equations (PDEs)](https://www.youtube.com/watch?v=xNqLZnM-PPY) — Faculty of Khan, tiếng Anh. Faculty of Khan dựng một hàm Green cho một PDE.
+- [mod08lec73 - The Poisson's Equation: Green's function solution](https://www.youtube.com/watch?v=hiHWwZb2AVU) — NPTEL-NOC IITM, tiếng Anh. Nghiệm hàm Green của phương trình Poisson.
+- [Green's functions: the genius way to solve DEs](https://www.youtube.com/watch?v=ism2SfZgFJg) — Mathemaniac, tiếng Anh. Ý tưởng nguồn điểm đứng sau nhân ấy.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - khuôn khổ chuẩn cho hàm điều hòa, phương trình Poisson, và hàm Green.

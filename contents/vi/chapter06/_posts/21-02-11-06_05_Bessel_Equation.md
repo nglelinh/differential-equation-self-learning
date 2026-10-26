@@ -233,6 +233,12 @@ $$ \sqrt{\lambda}=\frac{j_{0,1}}{a}. $$
 
 **Bậc sau đại học.** Khai thác tính trực giao, công thức tiệm cận và các bài toán Sturm-Liouville kiểu Bessel.
 
+## Video tham khảo
+
+- xem trước: [Advanced Engineering Mathematics, Lecture 2.7: Bessel's equation](https://www.youtube.com/watch?v=lcvWAgrdFn0) — Professor Macauley, tiếng Anh. Bài giảng của Professor Macauley về phương trình Bessel.
+- [Bessel Functions and the Frobenius Method](https://www.youtube.com/watch?v=uLORiAWe63A) — Faculty of Khan, tiếng Anh. Faculty of Khan suy hàm Bessel bằng Frobenius.
+- [Bessel's Equation - Ordinary Differential Equations | Lecture 29](https://www.youtube.com/watch?v=HoV5MiyYO3M) — Jason Bramburger, tiếng Anh. Bài của Jason Bramburger dành riêng cho phương trình Bessel.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 5: dẫn nhập phương trình Bessel bằng phương pháp Frobenius.

@@ -193,6 +193,12 @@ is conserved in the ideal no-source, no-loss model. This is a defining qualitati
 
 **Graduate level.** Connect to Brownian motion, Fokker-Planck equations, and diffusion-reaction systems.
 
+## Video tham khảo
+
+- xem trước: [Deriving the Heat Equation: A Parabolic Partial Differential Equation for Heat Energy Conservation](https://www.youtube.com/watch?v=9d8PwnKVA-U) — Steve Brunton, English. Heat and diffusion as the same conservation law with a different density.
+- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, English. Smoothing and the loss of high frequencies, the qualitative fact of diffusion.
+- [Solving the Heat Equation with the Fourier Transform](https://www.youtube.com/watch?v=7haZCrQDHpA) — Steve Brunton, English. The explicit Gaussian kernel of diffusion on the line.
+
 ## References
 
 - Haberman, Chapters 1-2.

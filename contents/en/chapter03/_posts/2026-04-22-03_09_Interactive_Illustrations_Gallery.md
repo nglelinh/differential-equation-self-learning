@@ -27,3 +27,9 @@ This supplementary lesson collects the interactive JavaScript illustrations for 
   path="interactives/chapter03/index.html"
   height="920px"
 %}
+
+## Video tham khảo
+
+- xem trước: [But what is a Laplace Transform?](https://www.youtube.com/watch?v=j0wJBEZdwLs) — 3Blue1Brown, English. A visual introduction to the transform before using the chapter's interactive frames.
+- [The Laplace Transform - A Graphical Approach](https://www.youtube.com/watch?v=ZGPtPkTft8g) — Brian Douglas, English. Brian Douglas draws the Laplace transform, a picture to set beside the gallery.
+- [Pole Diagrams | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=pUFSXhoazY8) — MIT OpenCourseWare, English. Poles and zeros as the graphic the gallery is helping students read.

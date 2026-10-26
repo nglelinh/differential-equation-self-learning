@@ -321,6 +321,12 @@ In this form we can read:
 
 ![Matrices and linear systems]({{ site.imgurl }}/chapter_img/chapter04/04_02_matrices_linear_systems.svg)
 
+## Video tham khảo
+
+- xem trước: [Matrix Systems of Differential Equations](https://www.youtube.com/watch?v=Vtijyyo5fKI) — Steve Brunton, English. The matrix system and why the columns of a fundamental matrix are solutions.
+- [Linear Systems of Equations | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=_Fo3Jq1blKk) — MIT OpenCourseWare, English. MIT's short lecture on linear systems of equations in this chapter of 18.03.
+- [Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra](https://www.youtube.com/watch?v=PFDu9oVAE-g) — 3Blue1Brown, English. Eigenvectors as the geometric reason a matrix system decouples.
+
 ## References
 
 - Boyce & DiPrima, Chapter 7: clear presentation of matrix form and fundamental matrix solution.

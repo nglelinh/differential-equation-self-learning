@@ -206,6 +206,12 @@ with $$ \lambda>0 $$, then after moderate time the two forecasts become macrosco
 
 ![Chaos introduction]({{ site.imgurl }}/chapter_img/chapter05/05_09_introduction_chaos.svg)
 
+## Video tham khảo
+
+- xem trước: [MAE5790-16 waterwheel equations and Lorenz equations](https://www.youtube.com/watch?v=U-bWDtbB4qY) — Cornell MAE, English. Strogatz derives the Lorenz equations from the chaotic waterwheel.
+- [MAE5790-17 Chaos in the Lorenz equations](https://www.youtube.com/watch?v=gscKcPAm-H0) — Cornell MAE, English. Chaos in the Lorenz equations themselves.
+- [MAE5790-15 Chaotic waterwheel](https://www.youtube.com/watch?v=HljJv7Hf6Zo) — Cornell MAE, English. The waterwheel demonstration that makes sensitive dependence visible.
+
 ## References
 
 - Strogatz, Chapter 9: strong introductory discussion of Lorenz dynamics and chaos.

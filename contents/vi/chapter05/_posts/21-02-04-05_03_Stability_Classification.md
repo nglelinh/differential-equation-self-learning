@@ -222,6 +222,12 @@ nên có trị riêng $$ -1 $$ và $$ -2 $$. Vì cả hai đều âm, cân bằn
 
 **Bậc sau đại học.** Liên hệ với stable manifold, unstable manifold và sự bền vững cấu trúc của điểm hyperbolic.
 
+## Video tham khảo
+
+- xem trước: [Stability and Eigenvalues: What does it mean to be a "stable" eigenvalue?](https://www.youtube.com/watch?v=XXjoh8L1HkE) — Steve Brunton, tiếng Anh. Một trị riêng ổn định có nghĩa gì với số phận dài hạn của một quỹ đạo.
+- [Trace-Determinant Diagram | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=oEskbXrhkkk) — MIT OpenCourseWare, tiếng Anh. Nút, yên, xoắn và tâm trên giản đồ vết-định thức.
+- [MAE5790-5 Two dimensional linear systems](https://www.youtube.com/watch?v=QrHRaA93Nrg) — Cornell MAE, tiếng Anh. Bài phân loại của Strogatz cho hệ tuyến tính phẳng.
+
 ## Tài liệu tham khảo
 
 - Strogatz, Chương 5-6: rất tốt cho trực giác phân loại ổn định.

@@ -212,6 +212,12 @@ Giao điểm nằm trong góc phần tư dương, nên về mặt hình học c�
 
 **Bậc sau đại học.** Phân tích điều kiện cùng tồn tại bền vững, kéo theo tập hấp dẫn và liên hệ với lý thuyết cạnh tranh trong sinh thái học toán.
 
+## Video tham khảo
+
+- xem trước: [Lotka-Volterra Competition Explained: Rabbits vs. Sheep | Phase Plane Analysis](https://www.youtube.com/watch?v=07V_UNLz0qs) — Dr. Shane Ross, tiếng Anh. Shane Ross về cạnh tranh Lotka-Volterra, đường không và loại trừ cạnh tranh.
+- [Competition Explained by Lotka-Volterra Model](https://www.youtube.com/watch?v=8GxwFrAyD9Q) — EcologyTalks, tiếng Anh. Cạnh tranh được giải thích qua cùng mô hình mặt phẳng pha.
+- [V7-4e Two Competing Species, critical points, stability, phase portrait. Elem Differential Equations](https://www.youtube.com/watch?v=btQVm3PGT4k) — wenshenpsu, tiếng Anh. Điểm tới hạn và chân dung pha của hai loài cạnh tranh.
+
 ## Tài liệu tham khảo
 
 - Strogatz, Chương 6: rất tốt cho phân tích nullcline và đồng tồn tại.

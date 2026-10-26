@@ -208,6 +208,12 @@ với $$ \lambda>0 $$, thì sau thời gian vừa đủ dài hai dự báo sẽ 
 
 **Bậc sau đại học.** Giới thiệu số mũ Lyapunov, hấp dẫn lạ, lát cắt Poincare và entropy tôpô.
 
+## Video tham khảo
+
+- xem trước: [MAE5790-16 waterwheel equations and Lorenz equations](https://www.youtube.com/watch?v=U-bWDtbB4qY) — Cornell MAE, tiếng Anh. Strogatz suy các phương trình Lorenz từ bánh xe nước hỗn loạn.
+- [MAE5790-17 Chaos in the Lorenz equations](https://www.youtube.com/watch?v=gscKcPAm-H0) — Cornell MAE, tiếng Anh. Hỗn loạn ngay trong các phương trình Lorenz.
+- [MAE5790-15 Chaotic waterwheel](https://www.youtube.com/watch?v=HljJv7Hf6Zo) — Cornell MAE, tiếng Anh. Thí nghiệm bánh xe nước làm hiện sự phụ thuộc nhạy vào điều kiện đầu.
+
 ## Tài liệu tham khảo
 
 - Strogatz, Chương 9: giới thiệu Lorenz và trực giác hỗn loạn rất tốt.

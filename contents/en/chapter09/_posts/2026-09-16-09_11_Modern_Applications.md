@@ -96,6 +96,12 @@ Long-time diffusion on fine grids is expensive to simulate for training data, so
 
 What does it mean physically if a learned heat solver violates the maximum principle but wins a benchmark? It means the benchmark is measuring the wrong quantity.
 
+## Video tham khảo
+
+- xem trước: [Diffusion and Score-Based Generative Models](https://www.youtube.com/watch?v=wMmqCMwuM2Q) — MITCBMM, English. MIT CBMM on diffusion and score-based generative models, the modern topic of this lesson.
+- [Physics Informed Neural Networks (PINNs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=-zrY7P2dVC4) — Steve Brunton, English. A physics-informed network for a diffusion PDE, the scientific-computing cousin of those models.
+- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, English. The classical heat equation those learned diffusion models are built from.
+
 ## Exercises
 
 1. **Variance of the kernel.** From the fundamental solution, show that a delta mass at the origin has variance $$2\alpha^2 t$$ at time $$t$$. How would you estimate $$\alpha$$ from a learned Green’s function?

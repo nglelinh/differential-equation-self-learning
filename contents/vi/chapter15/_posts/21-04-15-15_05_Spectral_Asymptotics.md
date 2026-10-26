@@ -289,3 +289,9 @@ $$ N(\lambda)\sim \frac{\sqrt{\lambda}}{\pi}. $$
 **Bậc đại học.** Đếm mode trong các miền đơn giản và so sánh với quy luật tăng trưởng.
 
 **Bậc sau đại học.** Kết nối với Weyl law, trace formulas, remainder estimates va spectral geometry.
+
+## Video tham khảo
+
+- xem trước: [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Các phương pháp vi địa phương nhằm vào các câu hỏi phổ.
+- [Lecture 22: The Spectral Theorem for a Compact Self-Adjoint Operator](https://www.youtube.com/watch?v=-sfaHVFWBU8) — MIT OpenCourseWare, tiếng Anh. Định lý phổ compact, bức tranh trị riêng mà tiệm cận phổ đang tinh chỉnh.
+- [Lecture 20: Compact Operators and the Spectrum of a Bounded Linear Operator on a Hilbert Space](https://www.youtube.com/watch?v=SFDMFbzCsH0) — MIT OpenCourseWare, tiếng Anh. Phổ của một toán tử bị chặn, đối tượng mà các tiệm cận ấy đếm.

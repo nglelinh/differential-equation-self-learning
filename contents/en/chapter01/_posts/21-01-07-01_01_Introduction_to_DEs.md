@@ -115,6 +115,12 @@ The formula shows that short-term growth is driven largely by deposits, while lo
 
 **Graduate level.** Emphasize state-space language, well-posedness, and the difference between deterministic ODE models and more realistic delayed or stochastic models.
 
+## Video tham khảo
+
+- xem trước: [Differential equations, a tourist's guide | DE1](https://www.youtube.com/watch?v=p_di4Zn4wz4) — 3Blue1Brown, English. The tour of what an ODE is, from falling bodies to the idea that laws are written as rates.
+- [What is a DIFFERENTIAL EQUATION??   **Intro to my full ODE course**](https://www.youtube.com/watch?v=B5IjsTONKkw) — Dr. Trefor Bazett, English. Order, solution, and initial condition, the vocabulary of the opening classification.
+- [Lec 1 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=XDhJ8lVGbl8) — MIT OpenCourseWare, English. Mattuck's first MIT lecture: direction fields when a closed form is unavailable.
+
 ## References
 
 - Boyce & DiPrima, Chapter 1

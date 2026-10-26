@@ -206,6 +206,12 @@ This is a good reminder that a small set of base formulas can generate many usef
 
 ![Elementary functions Laplace transform]({{ site.imgurl }}/chapter_img/chapter03/03_02_elementary_functions.svg)
 
+## Video tham khảo
+
+- xem trước: [Laplace Transform: Basics | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=BniJM-ireXQ) — MIT OpenCourseWare, English. The transforms of the elementary functions that fill the table used in this lesson.
+- [But what is a Laplace Transform?](https://www.youtube.com/watch?v=j0wJBEZdwLs) — 3Blue1Brown, English. The integral definition you differentiate under the parameter to get those table entries.
+- [Why Laplace transforms are so useful](https://www.youtube.com/watch?v=FE-hM1kRK4Y) — 3Blue1Brown, English. Why the transform is computationally useful once the elementary formulas are known.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: good for building the Laplace table with reasoning.
 - Zill — *Differential Equations with Boundary-Value Problems*: many exercises directly from the definition.

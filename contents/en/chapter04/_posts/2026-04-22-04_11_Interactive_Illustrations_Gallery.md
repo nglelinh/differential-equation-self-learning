@@ -27,3 +27,9 @@ This supplementary lesson collects the interactive JavaScript illustrations for 
   path="interactives/chapter04/index.html"
   height="920px"
 %}
+
+## Video tham khảo
+
+- xem trước: [Phase Portraits | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=zmzyW1rP-hk) — MIT OpenCourseWare, English. The phase portraits this gallery is asking students to recognize.
+- [Trace-Determinant Diagram | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=oEskbXrhkkk) — MIT OpenCourseWare, English. Trace and determinant as the controls behind those pictures.
+- [How (and why) to raise e to the power of a matrix | DE6](https://www.youtube.com/watch?v=O85OWBJ2ayo) — 3Blue1Brown, English. The matrix exponential as the motion that draws a linear trajectory.

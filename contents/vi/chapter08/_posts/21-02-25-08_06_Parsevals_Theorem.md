@@ -271,6 +271,12 @@ $$ \sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6}. $$
 
 **Bậc sau đại học.** Nhấn mạnh chuẩn $$ L^2 $$, đẳng cự của biến đổi Fourier và quan điểm Hilbert-space.
 
+## Video tham khảo
+
+- xem trước: [Parseval's Theorem](https://www.youtube.com/watch?v=ML0eYMyhqOs) — Steve Brunton, tiếng Anh. Steve Brunton về định lý Parseval và năng lượng trong các hệ số.
+- [Parseval's Identity, Fourier Series, and Solving this Classic Pi Formula](https://www.youtube.com/watch?v=WPeU34jndSw) — Dr. Trefor Bazett, tiếng Anh. Trefor Bazett dùng đẳng thức Parseval trên một chuỗi cổ điển của pi.
+- [Parseval's Theorem (Fourier series engineering mathematics)](https://www.youtube.com/watch?v=1qkqCTwYoqU) — blackpenredpen, tiếng Anh. Một phép tính trực tiếp hệ thức Parseval cho một chuỗi Fourier.
+
 ## Tài liệu tham khảo
 
 - Haberman, *Applied Partial Differential Equations* - trực giác tốt về chuỗi Fourier, hội tụ, và các ví dụ vật lý.

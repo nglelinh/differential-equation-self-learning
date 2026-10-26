@@ -328,3 +328,9 @@ This is the standard model of instability in inverse problems.
 **Undergraduate level.** Distinguish forward and inverse problems through a simple deblurring example.
 
 **Graduate level.** Connect to normal operators, visibility, regularization, and microlocal reconstruction theorems.
+
+## Video tham khảo
+
+- xem trước: [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), English. Zworski's microlocal lecture, the toolkit of boundary and inverse spectral problems.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, English. Vasy on scattering and inverse-type global problems for wave operators.
+- [Introduction to Fourier Integral operators 1 (Allan Greenleaf)](https://www.youtube.com/watch?v=4O_oC9kFFWQ) — Mathematics video VAROQUI Hervé, Vietnamese. Fourier integral operators, which describe the measurements in many inverse problems.

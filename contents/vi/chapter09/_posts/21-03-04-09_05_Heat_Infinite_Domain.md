@@ -154,6 +154,12 @@ Có thể mời sinh viên khá giỏi tự suy ra nhân nhiệt bằng cách l�
 
 Trên miền vô hạn, phương trình nhiệt được giải tự nhiên bằng biến đổi Fourier. Mỗi tần số suy giảm theo $$ e^{-\alpha^2\xi^2 t} $$, nên tần số cao chết nhanh. Nghiệm trong miền không gian là chập của dữ liệu ban đầu với một Gaussian, vì thế nhiệt luôn có xu hướng làm mượt.
 
+## Video tham khảo
+
+- xem trước: [Solving the Heat Equation with the Fourier Transform](https://www.youtube.com/watch?v=7haZCrQDHpA) — Steve Brunton, tiếng Anh. Biến đổi Fourier giải phương trình nhiệt trên cả đường thẳng.
+- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Cùng sự tắt của các tần số, giờ không còn một thanh hữu hạn các mode.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Biến đổi được dùng như phép đổi tọa độ trong phép tính ấy.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - nền tảng chuẩn cho phương trình nhiệt, nguyên lý cực đại, và hàm Green.

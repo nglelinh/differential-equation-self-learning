@@ -28,3 +28,9 @@ This supplementary lesson collects the interactive JavaScript illustrations for 
   path="interactives/chapter06/index.html"
   height="920px"
 %}
+
+## Video tham khảo
+
+- xem trước: [Taylor series | Chapter 11, Essence of calculus](https://www.youtube.com/watch?v=3d6DsjIBzJ4) — 3Blue1Brown, English. Taylor polynomials as the pictures a series gallery is approximating.
+- [Advanced Engineering Mathematics, Lecture 2.7: Bessel's equation](https://www.youtube.com/watch?v=lcvWAgrdFn0) — Professor Macauley, English. Bessel functions to compare with the special-function frames.
+- [Intro to Legendre Polynomials](https://www.youtube.com/watch?v=djlUmwbPw20) — Physics and Math Lectures, English. Legendre polynomials as the other family drawn in the gallery.

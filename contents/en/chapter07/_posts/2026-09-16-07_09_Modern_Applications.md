@@ -104,6 +104,12 @@ PINNs remain sensitive to loss weights, sampling, and architecture. High-frequen
 
 A reflective prompt: if a PINN residual is small but the discrete Green’s identity fails, which error is more important? The chapter suggests the identity, because it encodes self-adjointness and conservation.
 
+## Video tham khảo
+
+- xem trước: [Physics Informed Neural Networks (PINNs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=-zrY7P2dVC4) — Steve Brunton, English. Physics-informed networks enforce a boundary-value residual, the method of this lesson.
+- [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, English. The classical Sturm-Liouville problem those networks are being asked to respect.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, English. Operator networks as another way to learn a boundary-value solution map.
+
 ## Exercises
 
 1. **Function space first.** Explain why the ansatz $$u=x(1-x)n(x)$$ is a hard encoding of Dirichlet data but not of Neumann data. Propose an ansatz for $$u'(0)=u'(1)=0$$.

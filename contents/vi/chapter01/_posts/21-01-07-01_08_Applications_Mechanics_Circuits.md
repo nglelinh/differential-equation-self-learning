@@ -223,6 +223,12 @@ Sau khoảng bốn giây, vận tốc đã đạt khoảng 63 phần trăm vận
 
 **Bậc sau đại học.** Kết nối với hàm truyền, đáp ứng xung, năng lượng tiêu tán, và mô hình phi tuyến hơn như lực cản bậc hai hay mạch có phần tử phi lý tưởng. Đây cũng là bước đệm cho lý thuyết điều khiển.
 
+## Video tham khảo
+
+- xem trước: [Second-Order Ordinary Differential Equations: Solving the Harmonic Oscillator Four Ways](https://www.youtube.com/watch?v=8ePqqZXSMQs) — Steve Brunton, tiếng Anh. Dao động điều hòa được suy ra theo bốn cách, đúng mô hình cơ học bài này bắt đầu.
+- [Example Second-Order ODE: Spring-Mass-Damper](https://www.youtube.com/watch?v=r1eWerqrcqo) — Steve Brunton, tiếng Anh. Hệ lò xo-khối lượng-cản được viết và giải như phương trình cấp hai từ định luật Newton.
+- [Differential equations, a tourist's guide | DE1](https://www.youtube.com/watch?v=p_di4Zn4wz4) — 3Blue1Brown, tiếng Anh. Rơi tự do dưới trọng lực hằng là ODE cơ học đơn giản nhất trong bài hướng dẫn.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: rất mạnh ở các mô hình cơ học, mạch điện và diễn giải tham số.
 - Zill — *Differential Equations with Boundary-Value Problems*: có nhiều ví dụ vật lý cấp một phù hợp cho bài giảng.

@@ -213,6 +213,12 @@ $$ \omega_n=c\frac{n\pi}{L}. $$
 
 ![Vibrating strings]({{ site.imgurl }}/chapter_img/chapter07/06_vibrating_strings.svg)
 
+## Video tham khảo
+
+- xem trước: [Solving the Wave Equation with Separation of Variables... and Guitar String Physics](https://www.youtube.com/watch?v=ywrgWRSQ3PY) — Steve Brunton, English. Brunton separates variables on a guitar string and reads the normal modes.
+- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, English. The derivation of the wave equation those modes satisfy.
+- [D'Alembert Solution to the Wave Equation](https://www.youtube.com/watch?v=Sc21aPg2RyE) — Faculty of Khan, English. d'Alembert's formula as the other closed form for the same string.
+
 ## References
 
 - Boyce & DiPrima, Chapters 10-11: standing-wave derivation and mode expansion.

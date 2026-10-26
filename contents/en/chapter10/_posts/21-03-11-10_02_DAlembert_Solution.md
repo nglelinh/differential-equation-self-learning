@@ -198,6 +198,12 @@ A symmetric initial pulse splits into two identical pulses traveling in opposite
 
 **Graduate level.** Connect to fundamental solutions of hyperbolic operators and domains of dependence.
 
+## Video tham khảo
+
+- xem trước: [PDE 10 | Wave equation: d'Alembert's formula](https://www.youtube.com/watch?v=j2G91naZ8bo) — commutant, English. commutant derives d'Alembert's formula for the infinite string.
+- [D'Alembert Solution to the Wave Equation](https://www.youtube.com/watch?v=Sc21aPg2RyE) — Faculty of Khan, English. Faculty of Khan on the same d'Alembert solution.
+- [The Method of Characteristics and the Wave Equation](https://www.youtube.com/watch?v=eI2x99SxJgU) — Steve Brunton, English. The method of characteristics, which is where d'Alembert's formula comes from.
+
 ## References
 
 - Evans, Chapter 2.

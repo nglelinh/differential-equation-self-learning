@@ -263,6 +263,12 @@ So $$ r=0 $$ is a repeated root, indicating that one Frobenius series solution e
 
 ![Frobenius method]({{ site.imgurl }}/chapter_img/chapter06/06_04_frobenius_method.svg)
 
+## Video tham khảo
+
+- xem trước: [The Frobenius Method - Ordinary Differential Equations | Lecture 28](https://www.youtube.com/watch?v=saPepQrIjqM) — Jason Bramburger, English. Jason Bramburger on the Frobenius method at a regular singular point.
+- [When can you use Series to solve ODEs? Ordinary vs Singular Points](https://www.youtube.com/watch?v=nCT3P8EsoPw) — Dr. Trefor Bazett, English. The test that distinguishes an ordinary point from a regular singular point.
+- [Lecture-15-16: Regular Singular Point, Frobenius Series Solution, Indicial Equation](https://www.youtube.com/watch?v=1eAr1XYYEto) — iTMK, English. The indicial equation inside a Frobenius series.
+
 ## References
 
 - Boyce & DiPrima, Section 5.4: Frobenius method

@@ -48,3 +48,9 @@ Trang này cũng rất hữu ích để ôn tập trước khi sang Chương 10 
 - [09.07 Nguyên lý cực đại]({{ site.baseurl }}/contents/vi/chapter09/09_07_Maximum_Principles/)
 - [09.08 Phương pháp số: sai phân hữu hạn]({{ site.baseurl }}/contents/vi/chapter09/09_08_Numerical_Methods_Finite_Differences/)
 - [09.09 Ứng dụng: quá trình khuếch tán]({{ site.baseurl }}/contents/vi/chapter09/09_09_Applications_Diffusion_Processes/)
+
+## Video tham khảo
+
+- xem trước: [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Hoạt hình nhiệt mà bộ minh họa được dựng quanh.
+- [But what is a partial differential equation?  | DE2](https://www.youtube.com/watch?v=ly4S0oi3Yz8) — 3Blue1Brown, tiếng Anh. Bản thân PDE trông như thế nào trước các khung hình.
+- [Deriving the Heat Equation: A Parabolic Partial Differential Equation for Heat Energy Conservation](https://www.youtube.com/watch?v=9d8PwnKVA-U) — Steve Brunton, tiếng Anh. Phép suy diễn cần giữ trong đầu khi xem các hình.

@@ -48,3 +48,9 @@ Trang này cũng là một chiếc cầu rất tự nhiên sang Chương 15, nơ
 - [14.06 Toán tử elliptic và parametrix]({{ site.baseurl }}/contents/vi/chapter14/14_06_Elliptic_Operators_Parametrices/)
 - [14.07 ΨDOs trên đa tạp]({{ site.baseurl }}/contents/vi/chapter14/14_07_Manifolds/)
 - [14.08 Ứng dụng: tính chính quy elliptic]({{ site.baseurl }}/contents/vi/chapter14/14_08_Elliptic_Regularity_Review/)
+
+## Video tham khảo
+
+- xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Tiếng Việt. Bức tranh symbol mà bộ minh họa đang cố vẽ.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Không gian Fourier, màn hình mà các symbol tác động lên.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Một bài nghiên cứu cho thấy các hình đang chuẩn bị cho điều gì.

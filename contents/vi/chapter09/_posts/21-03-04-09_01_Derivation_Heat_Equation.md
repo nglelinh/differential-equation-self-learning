@@ -159,6 +159,12 @@ Có thể yêu cầu sinh viên khá giỏi tự suy ra dạng nhiều chiều b
 
 Phương trình nhiệt xuất phát từ bảo toàn năng lượng cộng với định luật Fourier. Dòng nhiệt đi từ nóng sang lạnh, nên tốc độ thay đổi nhiệt độ tại một điểm được quyết định bởi độ cong không gian của nhiệt độ. Vì vậy phương trình nhiệt có bản chất khuếch tán và làm mượt dữ liệu theo thời gian.
 
+## Video tham khảo
+
+- xem trước: [(PHƯƠNG TRÌNH ĐẠO HÀM RIÊNG) PHƯƠNG TRÌNH TRUYỀN NHIỆT](https://www.youtube.com/watch?v=LJ6rd2EGVEI) — Đặng Pete, Tiếng Việt. Bài tiếng Việt suy ra và giới thiệu phương trình truyền nhiệt.
+- [Deriving the Heat Equation: A Parabolic Partial Differential Equation for Heat Energy Conservation](https://www.youtube.com/watch?v=9d8PwnKVA-U) — Steve Brunton, tiếng Anh. Brunton suy phương trình nhiệt một chiều từ bảo toàn.
+- [But what is a partial differential equation?  | DE2](https://www.youtube.com/watch?v=ly4S0oi3Yz8) — 3Blue1Brown, tiếng Anh. 3Blue1Brown về phương trình đạo hàm riêng là gì, với nhiệt làm ví dụ.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - nền tảng chuẩn cho phương trình nhiệt, nguyên lý cực đại, và hàm Green.

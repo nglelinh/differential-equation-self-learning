@@ -90,6 +90,12 @@ Tương phản cao, dị hướng và elliptic suy biến phá ước lượng �
 
 Nếu thế học được thỏa nguyên lý cực đại nhưng không liên tục thông lượng qua giao diện, đồng nhất thức biến phân nào đã thất bại? Các đồng nhất thức Green của chương cho câu trả lời.
 
+## Video tham khảo
+
+- xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, tiếng Anh. Fourier neural operator học các ánh xạ nghiệm elliptic đúng kiểu bài này bàn.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, tiếng Anh. DeepONet là toán tử nghiệm học được kia cho một bài toán elliptic.
+- [Physics Informed Neural Networks (PINNs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=-zrY7P2dVC4) — Steve Brunton, tiếng Anh. Một phần dư có thông tin vật lý cho Poisson hoặc Laplace, phương án ép phương trình.
+
 ## Bài tập
 
 1. **Phép thử trung bình.** Với đa thức điều hòa trên đĩa, viết đồng nhất thức trung bình và biến nó thành phép nhận mô hình học được.

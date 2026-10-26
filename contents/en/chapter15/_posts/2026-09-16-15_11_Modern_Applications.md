@@ -96,6 +96,12 @@ Generative priors can dominate the data. Acquisition geometries change, and a ne
 
 The existing research-directions lesson asked how much of a shape is audible or visible. The present lesson adds: how much of a shape is a network allowed to draw? The honest answer is still given by the wavefront set of the data, plus a clearly labeled prior.
 
+## Video tham khảo
+
+- xem trước: [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), English. Microlocal priors are the classical structure this lesson wants learned inverse models to keep.
+- [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, English. A learned operator for an inverse or forward map, the computational half of the lesson.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, English. Wavefront geometry, the constraint those priors encode.
+
 ## Exercises
 
 1. **Missing cone.** Sketch the visible wavefronts for limited-angle tomography and explain why an $$\ell^2$$ residual can be small while an invisible edge is wrong.

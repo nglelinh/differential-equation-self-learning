@@ -48,3 +48,9 @@ The page is also useful as a review before Chapter 10 and Chapter 11, since the 
 - [09.07 Maximum Principles]({{ site.baseurl }}/contents/en/chapter09/09_07_Maximum_Principles/)
 - [09.08 Numerical Methods: Finite Differences]({{ site.baseurl }}/contents/en/chapter09/09_08_Numerical_Methods_Finite_Differences/)
 - [09.09 Applications: Diffusion Processes]({{ site.baseurl }}/contents/en/chapter09/09_09_Applications_Diffusion_Processes/)
+
+## Video tham khảo
+
+- xem trước: [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, English. The heat animation this gallery is built around.
+- [But what is a partial differential equation?  | DE2](https://www.youtube.com/watch?v=ly4S0oi3Yz8) — 3Blue1Brown, English. What the PDE itself looks like before the frames.
+- [Deriving the Heat Equation: A Parabolic Partial Differential Equation for Heat Energy Conservation](https://www.youtube.com/watch?v=9d8PwnKVA-U) — Steve Brunton, English. The derivation to keep in mind while watching the pictures.

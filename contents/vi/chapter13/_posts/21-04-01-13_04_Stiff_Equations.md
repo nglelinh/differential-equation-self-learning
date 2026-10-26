@@ -308,3 +308,9 @@ tức là $$ 0<h<\frac{2}{15} $$. Dù nghiệm thật chỉ tắt mượt về $
 **Bậc đại học.** Nhận diện stiffness qua test equation và so sánh explicit/implicit.
 
 **Bậc sau đại học.** Kết nối với A-stability, L-stability và singular perturbations.
+
+## Video tham khảo
+
+- xem trước: [Stability of Forward Euler and Backward Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=RdXCGnTT6UY) — Steve Brunton, tiếng Anh. Vì sao Euler thuận sụp trên một phân rã cứng trong khi Euler lùi thì không.
+- [Deriving Forward Euler and Backward/Implicit Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=MstPeOTCVzQ) — Steve Brunton, tiếng Anh. Bước ẩn mà tính cứng buộc phải dùng.
+- [Numerical Integration of ODEs with Forward Euler and Backward Euler in Python and Matlab](https://www.youtube.com/watch?v=ITFolyl_66U) — Steve Brunton, tiếng Anh. Một so sánh số của lược đồ Euler hiện và ẩn.

@@ -171,6 +171,12 @@ Vì vậy hai nghiệm thực độc lập là $$ e^{-t}\cos 2t,\qquad e^{-t}\si
 
 Số phức là ngôn ngữ của quay và dao động. Dạng đại số giúp tính cộng và nhân trực tiếp, dạng cực giúp nhìn hình học và làm lũy thừa, còn công thức Euler $$ e^{i\theta}=\cos\theta+i\sin\theta $$ là cầu nối mạnh nhất giữa đại số, lượng giác, và nghiệm dao động của phương trình vi phân.
 
+## Video tham khảo
+
+- xem trước: [Taylor Series of the Exponential Function and Euler's Formula!](https://www.youtube.com/watch?v=H0Zbg_CqMCs) — Steve Brunton, tiếng Anh. Công thức Euler được suy từ chuỗi hàm mũ, đúng đẳng thức đứng sau nghiệm đặc trưng phức.
+- [What's so special about Euler's number e? | Chapter 5, Essence of calculus](https://www.youtube.com/watch?v=m2MIpDrF7Es) — 3Blue1Brown, tiếng Anh. Vì sao cơ số e là hàm tái tạo chính nó khi lấy đạo hàm.
+- [Complex Numbers and Euler's Formula | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=sn3orkHWqUQ) — MIT OpenCourseWare, tiếng Anh. Bài ngắn của MIT về số phức và công thức Euler đúng cách dùng trong 18.03.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, *Elementary Differential Equations*.

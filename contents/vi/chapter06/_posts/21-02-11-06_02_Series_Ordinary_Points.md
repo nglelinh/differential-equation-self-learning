@@ -267,6 +267,12 @@ $$
 
 **Bậc sau đại học.** Nói về định lý tồn tại nghiệm giải tích tại điểm thường và bán kính hội tụ gắn với điểm kỳ dị gần nhất.
 
+## Video tham khảo
+
+- xem trước: [How to solve ODEs with infinite series | Intro & Easiest Example: y'=y](https://www.youtube.com/watch?v=xeeM3TT4Zgg) — Dr. Trefor Bazett, tiếng Anh. Nghiệm chuỗi của y'=y tại một điểm thường, khuôn của phương pháp.
+- [When can you use Series to solve ODEs? Ordinary vs Singular Points](https://www.youtube.com/watch?v=nCT3P8EsoPw) — Dr. Trefor Bazett, tiếng Anh. Điểm thường đối với điểm kỳ dị: khi nào chuỗi lũy thừa thường được phép.
+- [Solving Differential Equations with Power Series: A Simple Example](https://www.youtube.com/watch?v=3icbG3geC60) — Steve Brunton, tiếng Anh. Brunton giải một ODE đơn giản bằng chuỗi lũy thừa và một hệ thức truy hồi.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 5: phương pháp nghiệm chuỗi tại điểm thường và các truy hồi hệ số.

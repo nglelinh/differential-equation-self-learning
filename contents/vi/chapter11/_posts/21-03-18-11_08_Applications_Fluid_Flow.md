@@ -133,6 +133,12 @@ Có thể mời sinh viên khá giỏi liên hệ dòng chảy thế hai chiều
 
 Dòng chảy thế của chất lỏng không nén được và không xoáy dẫn đến thế vận tốc điều hòa. Laplace vì thế không chỉ là phương trình của điện thế, mà còn là ngôn ngữ hình học của dòng chảy lý tưởng. Nó rất mạnh để mô tả cấu trúc trường, nhưng không thay thế hoàn toàn mô hình chất lỏng thật có độ nhớt.
 
+## Video tham khảo
+
+- xem trước: [Laplace's Equation and Potential Flow](https://www.youtube.com/watch?v=zN0zDrQimXU) — Steve Brunton, tiếng Anh. Dòng thế và phương trình Laplace cho thế vận tốc.
+- [Potential Flow Part 2: Details and Examples](https://www.youtube.com/watch?v=Xfjs31WcY04) — Steve Brunton, tiếng Anh. Các ví dụ dòng thế và hàm dòng của Brunton.
+- [Are all vector fields the gradient of a potential?  ... and the Helmholtz Decomposition](https://www.youtube.com/watch?v=xa5xornH2ok) — Steve Brunton, tiếng Anh. Trường vector nào là gradient, điều kiện làm một dòng có thế.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - khuôn khổ chuẩn cho hàm điều hòa, phương trình Poisson, và hàm Green.

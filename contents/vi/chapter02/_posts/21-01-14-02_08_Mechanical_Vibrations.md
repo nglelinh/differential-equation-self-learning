@@ -217,6 +217,12 @@ Hệ vẫn rung nhưng biên độ giảm dần. Về mặt cơ học, điều n
 
 **Bậc sau đại học.** Đi sâu vào biên độ steady-state dưới forcing tuần hoàn, cộng hưởng có cản, và hàm truyền cơ học.
 
+## Video tham khảo
+
+- xem trước: [Undamped Mechanical Vibrations & Hooke's Law // Simple Harmonic Motion](https://www.youtube.com/watch?v=Z52emur7Rko) — Dr. Trefor Bazett, tiếng Anh. Dao động Hooke không cản và nghĩa của tần số riêng.
+- [Mechanical Vibrations: Underdamped vs Overdamped vs Critically Damped](https://www.youtube.com/watch?v=CTd1uVq5-l8) — Dr. Trefor Bazett, tiếng Anh. Dao động tự do dưới tắt, trên tắt và tắt tới hạn.
+- [Damped Harmonic Oscillators | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=2-5oq-igwtU) — MIT OpenCourseWare, tiếng Anh. Bài ngắn của MIT về dao động điều hòa có cản.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: phần dao động cơ học rất giàu trực giác.
 - Zill — *Differential Equations with Boundary-Value Problems*: có nhiều ví dụ cơ-lò-xo và cộng hưởng.
