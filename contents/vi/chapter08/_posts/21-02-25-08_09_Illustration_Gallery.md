@@ -47,3 +47,9 @@ Trang này cũng rất hữu ích để ôn tập trước khi chuyển sang ph�
 - [08.06 Định lý Parseval]({{ site.baseurl }}/contents/vi/chapter08/08_06_Parsevals_Theorem/)
 - [08.07 Chuỗi Fourier phức]({{ site.baseurl }}/contents/vi/chapter08/08_07_Complex_Fourier_Series/)
 - [08.08 Giới thiệu biến đổi Fourier]({{ site.baseurl }}/contents/vi/chapter08/08_08_Fourier_Transform_Introduction/)
+
+## Video tham khảo
+
+- xem trước: [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, tiếng Anh. Hoạt hình vẽ bằng đường tròn mà bộ minh họa đang vọng lại.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Các hình biến đổi Fourier để đặt cạnh các khung minh họa.
+- [Complex Fourier Series](https://www.youtube.com/watch?v=4cfctnaHyFM) — Steve Brunton, tiếng Anh. Chuỗi phức như các pha quay, một hình khác của bộ minh họa.

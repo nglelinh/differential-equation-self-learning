@@ -139,6 +139,12 @@ Có thể mời sinh viên khá giỏi thảo luận nguyên lý cực đại m�
 
 Hàm điều hòa có giá trị tại một điểm bằng trung bình của nó xung quanh điểm đó. Vì thế nó không thể có cực trị nội tại nghiêm ngặt trừ khi là hằng. Đây là lý do bài toán Dirichlet cho Laplace có tính duy nhất rất mạnh và nghiệm bị biên kiểm soát hoàn toàn.
 
+## Video tham khảo
+
+- xem trước: [Harmonic functions: Mean value theorem](https://www.youtube.com/watch?v=p60dU_62KcQ) — Dr Chris Tisdell, tiếng Anh. Chris Tisdell chứng minh tính chất trung bình của một hàm điều hòa.
+- [Properties of harmonic functions part 2: the mean value property](https://www.youtube.com/watch?v=_bC91Xqirgs) — William Nesse, tiếng Anh. Tính chất trung bình được phát biểu và sử dụng.
+- [Qualitative Properties of Laplace's Equation - Partial Differential Equations | Lecture 12](https://www.youtube.com/watch?v=Mi25YqpsxlM) — Jason Bramburger, tiếng Anh. Jason Bramburger về các tính chất định tính của phương trình Laplace, gồm nguyên lý cực đại.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - khuôn khổ chuẩn cho hàm điều hòa, phương trình Poisson, và hàm Green.

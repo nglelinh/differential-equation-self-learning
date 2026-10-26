@@ -91,6 +91,12 @@ Lớp phi tuyến rời phép tính ΨDO. Bối cảnh hệ số biến thiên v
 
 Câu hỏi phản tư: nếu hai ký hiệu học được khớp ở tần số cao nhưng lệch một hàm Schwartz, chúng có định nghĩa cùng toán tử modulo làm mượt không? Câu trả lời của chương là có, và đó là vì sao phép thử tần số cao là phép thử đúng.
 
+## Video tham khảo
+
+- xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, tiếng Anh. Fourier neural operator là một bộ nhân Fourier học được, họ hàng số của một symbol.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, tiếng Anh. DeepONet học một toán tử mà không viết symbol bằng tay.
+- [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Tiếng Việt. Symbol giả vi phân cổ điển mà các lớp ấy đang bắt chước một cách nới lỏng.
+
 ## Bài tập
 
 1. **Cấp của nhân tử.** Chỉ ra $$a(\xi)=(1+|\xi|^2)^{m/2}$$ nằm trong $$S^{m}$$. Nghịch đảo học được của $$I-\Delta$$ phải có cấp nào?

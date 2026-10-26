@@ -205,6 +205,12 @@ It uses the current slope and the previous slope to approximate the integral of 
 
 **Graduate level.** Connect to root conditions, Dahlquist theory, and BDF families.
 
+## Video tham khảo
+
+- xem trước: [Numerical methods for ODEs - Multistep methods - Adams Bashforth](https://www.youtube.com/watch?v=fp6n7x55tkQ) — The Math Guy, English. The Math Guy derives Adams-Bashforth multistep methods.
+- [Examples of Adams-Bashforth Methods](https://www.youtube.com/watch?v=JVKBe_vYdg0) — Melvin Leok, English. Melvin Leok works examples of Adams-Bashforth.
+- [Runge-Kutta Integrator Overview:  All Purpose Numerical Integration of Differential Equations](https://www.youtube.com/watch?v=HOWJp8NV5xU) — Steve Brunton, English. One-step Runge-Kutta, the method multistep schemes are being compared with.
+
 ## References
 
 - Ascher & Petzold: standard treatment of linear multistep methods.

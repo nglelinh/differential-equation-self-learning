@@ -223,6 +223,12 @@ Nghiệm cho thấy về ngắn hạn, phần đóng góp đều thống trị; 
 
 **Bậc sau đại học.** Nhấn mạnh khái niệm không gian trạng thái, tính đặt bài toán tốt, và sự khác nhau giữa mô hình xác định, mô hình có trễ, và mô hình ngẫu nhiên. Đây cũng là nơi thích hợp để gợi ý rằng không phải mọi động lực học đều được mô tả đủ tốt bằng một ODE cấp một.
 
+## Video tham khảo
+
+- xem trước: [Differential equations, a tourist's guide | DE1](https://www.youtube.com/watch?v=p_di4Zn4wz4) — 3Blue1Brown, tiếng Anh. Chuyến tham quan về ODE là gì, từ vật rơi đến ý tưởng định luật được viết bằng tốc độ biến thiên.
+- [What is a DIFFERENTIAL EQUATION??   **Intro to my full ODE course**](https://www.youtube.com/watch?v=B5IjsTONKkw) — Dr. Trefor Bazett, tiếng Anh. Bậc, nghiệm và điều kiện đầu, đúng vốn từ của phần phân loại mở đầu.
+- [Lec 1 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=XDhJ8lVGbl8) — MIT OpenCourseWare, tiếng Anh. Bài giảng MIT đầu tiên của Mattuck: trường hướng khi không có dạng đóng.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: giới thiệu rất tốt về ngôn ngữ mô hình và phân loại ODE.
 - Zill — *Differential Equations with Boundary-Value Problems*: nhiều ví dụ ngắn, phù hợp để luyện nhận dạng cấu trúc phương trình.

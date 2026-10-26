@@ -196,6 +196,12 @@ This shows explicitly how a box-shaped initial profile becomes instantly smooth 
 
 **Graduate level.** Connect to semigroup theory, immediate regularization, and Green's functions on bounded domains.
 
+## Video tham khảo
+
+- xem trước: [Introducing Green's Functions for Partial Differential Equations (PDEs)](https://www.youtube.com/watch?v=xNqLZnM-PPY) — Faculty of Khan, English. Faculty of Khan introduces the Green's function for a PDE.
+- [Solving the Heat Equation with the Fourier Transform](https://www.youtube.com/watch?v=7haZCrQDHpA) — Steve Brunton, English. The Gaussian fundamental solution appears as the inverse transform of the heat multiplier.
+- [Green's functions: the genius way to solve DEs](https://www.youtube.com/watch?v=ism2SfZgFJg) — Mathemaniac, English. A point source and the response that is the fundamental solution.
+
 ## References
 
 - Evans, Chapter 2.

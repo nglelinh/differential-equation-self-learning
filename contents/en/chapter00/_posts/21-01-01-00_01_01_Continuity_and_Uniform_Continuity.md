@@ -109,3 +109,9 @@ The three types of continuity form a hierarchy of increasingly strong conditions
 **Example 4: $$ f(x) = \sqrt{x} $$**
 - **On $$ [0,1] $$**: Continuous and uniformly continuous, but not Lipschitz (derivative unbounded near $$ x = 0 $$)
 - **On $$ [a,1] $$ for $$ a > 0 $$**: Lipschitz with $$ L = 1/(2\sqrt{a}) $$
+
+## Video tham khảo
+
+- xem trước: [This is the Epsilon Delta Definition of Continuity | Real Analysis](https://www.youtube.com/watch?v=O98eOlHyWmQ) — Wrath of Math, English. A worked epsilon-delta proof of continuity, which is the definition this lesson asks students to use.
+- [Limits, L'Hôpital's rule, and epsilon delta definitions | Chapter 7, Essence of calculus](https://www.youtube.com/watch?v=kfF40MiS7zA) — 3Blue1Brown, Vietnamese. See how a limit, and therefore continuity, is a statement about controlling error with delta.
+- [Metric Spaces 8: Cauchy Sequences](https://www.youtube.com/watch?v=UhEaX-uctnM) — Math at Andrews University, English. Cauchy sequences in a metric space, the uniform control of distance behind uniform continuity.

@@ -219,6 +219,12 @@ which is very close to $$ e^{0.5}\approx 1.6487 $$.
 
 **Graduate level.** Connect to order conditions, Butcher tableaux, and SSP methods.
 
+## Video tham khảo
+
+- xem trước: [Runge-Kutta Integrator Overview:  All Purpose Numerical Integration of Differential Equations](https://www.youtube.com/watch?v=HOWJp8NV5xU) — Steve Brunton, English. Brunton's overview of Runge-Kutta as an all-purpose one-step integrator.
+- [Coding a Fourth-Order Runge-Kutta Integrator in Python and Matlab](https://www.youtube.com/watch?v=vNoFdtcPFdk) — Steve Brunton, English. A fourth-order Runge-Kutta step written in code.
+- [Understanding Runge-Kutta](https://www.youtube.com/watch?v=t48a2M27kjM) — ThatMathThing, English. ThatMathThing explains where the Runge-Kutta stages come from.
+
 ## References
 
 - Ascher & Petzold: strong treatment of one-step and Runge-Kutta methods.

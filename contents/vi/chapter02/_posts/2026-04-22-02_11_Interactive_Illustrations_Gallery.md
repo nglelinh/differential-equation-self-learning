@@ -27,3 +27,9 @@ Bài bổ sung này tập hợp toàn bộ minh họa JavaScript của Chương 
   path="interactives/chapter02/index.html"
   height="920px"
 %}
+
+## Video tham khảo
+
+- xem trước: [Mechanical Vibrations: Underdamped vs Overdamped vs Critically Damped](https://www.youtube.com/watch?v=CTd1uVq5-l8) — Dr. Trefor Bazett, tiếng Anh. Các trường hợp tắt dần để so với applet dao động trong bộ minh họa.
+- [Second-Order Ordinary Differential Equations: Solving the Harmonic Oscillator Four Ways](https://www.youtube.com/watch?v=8ePqqZXSMQs) — Steve Brunton, tiếng Anh. Bốn phương pháp cho một dao động tử, bản đồ các mô hình tương tác.
+- [Undamped Mechanical Vibrations & Hooke's Law // Simple Harmonic Motion](https://www.youtube.com/watch?v=Z52emur7Rko) — Dr. Trefor Bazett, tiếng Anh. Dao động điều hòa đơn giản như hình tham chiếu không cản.

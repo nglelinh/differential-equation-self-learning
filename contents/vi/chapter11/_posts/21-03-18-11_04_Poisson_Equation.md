@@ -153,6 +153,12 @@ Có thể mời sinh viên khá giỏi thảo luận vai trò của nghiệm cơ
 
 Phương trình Poisson là phương trình của cân bằng có nguồn. Laplace mô tả trường không nguồn, còn Poisson cho biết nguồn nội tại uốn cong nghiệm như thế nào. Dù có nguồn, bài toán vẫn bị biên chi phối mạnh và vẫn thuộc thế giới elliptic.
 
+## Video tham khảo
+
+- xem trước: [mod08lec73 - The Poisson's Equation: Green's function solution](https://www.youtube.com/watch?v=hiHWwZb2AVU) — NPTEL-NOC IITM, tiếng Anh. NPTEL giải phương trình Poisson bằng một hàm Green.
+- [Laplace's Equation and Poisson's Equation](https://www.youtube.com/watch?v=nmvs0vrBT18) — Steve Brunton, tiếng Anh. Phương trình Poisson khác Laplace ở một số hạng nguồn như thế nào.
+- [Lecture 4: Electrostatic potential, Poisson's Equation, Laplace's Equation, Green's functions](https://www.youtube.com/watch?v=Z0-AkSfMJYU) — rkingery, tiếng Anh. Thế tĩnh điện, Poisson và Laplace trong một bài giảng.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - khuôn khổ chuẩn cho hàm điều hòa, phương trình Poisson, và hàm Green.

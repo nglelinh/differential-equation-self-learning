@@ -196,6 +196,12 @@ which proves uniqueness.
 
 **Graduate level.** Extend to weak maximum principles, higher dimensions, and general parabolic operators.
 
+## Video tham khảo
+
+- xem trước: [Lecture 7.4: Maximum principle for heat equation](https://www.youtube.com/watch?v=JbBt6mPAqLM) — NPTEL IIT Bombay, English. NPTEL IIT Bombay on the maximum principle for the heat equation.
+- [Lecture 6: The maximum principle for the diffusion equation](https://www.youtube.com/watch?v=zO6D-2ER6oY) — math 442 f20, English. A lecture on the maximum principle for the diffusion equation.
+- [Maximum Principle](https://www.youtube.com/watch?v=PMjzGEPkQt8) — Dr Peyam, English. Dr Peyam on the maximum principle and what it forbids inside the domain.
+
 ## References
 
 - Evans, Chapter 2.

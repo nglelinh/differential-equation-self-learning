@@ -109,6 +109,12 @@ The main interpretation is geometric: the dynamics are trapped on a level set of
 
 **Graduate level.** Connect exact equations to differential forms, simply connected domains, path independence, and integrating factors for non-exact equations.
 
+## Video tham khảo
+
+- xem trước: [Exact equations intuition 1 (proofy) | First order differential equations | Khan Academy](https://www.youtube.com/watch?v=iEpqcdaJNTQ) — Khan Academy, English. The exactness test ∂M/∂y=∂N/∂x and the potential function it comes from.
+- [Exact equations example 1 | First order differential equations | Khan Academy](https://www.youtube.com/watch?v=Pb04ntcDJcQ) — Khan Academy, English. A first worked exact equation, useful beside the formal test.
+- [Giải tích 6.2 PTVP Cấp 1: Phương trình Vi phân Toàn phần - Phần 1](https://www.youtube.com/watch?v=KrJzMAG3wUU) — Eureka! Uni, Vietnamese. Eureka Uni's Vietnamese lecture on exact first-order equations.
+
 ## References
 
 - Boyce & DiPrima, Section 2.6

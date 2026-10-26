@@ -28,3 +28,9 @@ Bài bổ sung này tập hợp toàn bộ minh họa JavaScript của Chương 
   path="interactives/chapter07/index.html"
   height="920px"
 %}
+
+## Video tham khảo
+
+- xem trước: [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Các mode nhiệt tắt dần, hình mà bộ minh họa đang làm cho tương tác.
+- [Solving the Wave Equation with Separation of Variables... and Guitar String Physics](https://www.youtube.com/watch?v=ywrgWRSQ3PY) — Steve Brunton, tiếng Anh. Các mode dây để đặt cạnh các khung dây rung.
+- [Green's functions: the genius way to solve DEs](https://www.youtube.com/watch?v=ism2SfZgFJg) — Mathemaniac, tiếng Anh. Xung hàm Green mà các khung bài toán biên đang minh họa.

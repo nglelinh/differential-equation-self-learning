@@ -194,6 +194,12 @@ $$ r\le \frac12, $$
 
 implicit ổn định hơn nhưng tốn công giải hệ, còn Crank-Nicolson cân bằng giữa ổn định và độ chính xác. Sơ đồ số tốt phải tôn trọng tính làm mượt của phương trình nhiệt.
 
+## Video tham khảo
+
+- xem trước: [PDE | Finite differences: introduction](https://www.youtube.com/watch?v=g3Xw1r7QGOE) — commutant, tiếng Anh. commutant giới thiệu sai phân hữu hạn cho PDE.
+- [Finite Difference Method for PDES: Solution of Heat Equation](https://www.youtube.com/watch?v=ACduEf-K9qk) — Easy Mathematics, tiếng Anh. Một lược đồ sai phân viết cho phương trình nhiệt.
+- [Deriving Forward Euler and Backward/Implicit Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=MstPeOTCVzQ) — Steve Brunton, tiếng Anh. Euler thuận và Euler lùi, các phép rời rạc thời gian mà các lược đồ nhiệt dùng.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - nền tảng chuẩn cho phương trình nhiệt, nguyên lý cực đại, và hàm Green.

@@ -271,6 +271,12 @@ We can now summarize the logical progression that leads to the wave front set.
 
 If rapid decay occurs in that cone, then $$ u $$ is microlocally smooth at $$ \left(x_0,\xi_0\right) $$. If it fails, then that pair belongs to the wave front set. This is why wave front sets are not an abrupt new object. They are the natural synthesis of localization, Fourier decay, singular support, and directional geometry.
 
+## Video tham khảo
+
+- xem trước: [MM51: Dirac delta distributions](https://www.youtube.com/watch?v=uTSKsWGWpIQ) — Learn Physics with Dr. Viv!, English. Distributions, starting from the Dirac delta, the objects whose singularities microlocal analysis locates.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, English. The Fourier transform that detects the direction of a singularity.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, English. Vasy's opening lecture, which lists the prerequisites in use.
+
 ## References
 
 - L. Hormander, *The Analysis of Linear Partial Differential Operators I*

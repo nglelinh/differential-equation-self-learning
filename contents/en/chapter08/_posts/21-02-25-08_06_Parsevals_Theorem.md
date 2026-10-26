@@ -209,6 +209,12 @@ $$ \sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6}. $$
 
 **Graduate level.** Emphasize $$ L^2 $$ isometry, Plancherel theory, and Hilbert-space geometry.
 
+## Video tham khảo
+
+- xem trước: [Parseval's Theorem](https://www.youtube.com/watch?v=ML0eYMyhqOs) — Steve Brunton, English. Steve Brunton on Parseval's theorem and the energy in the coefficients.
+- [Parseval's Identity, Fourier Series, and Solving this Classic Pi Formula](https://www.youtube.com/watch?v=WPeU34jndSw) — Dr. Trefor Bazett, English. Trefor Bazett uses Parseval's identity on a classical series for pi.
+- [Parseval's Theorem (Fourier series engineering mathematics)](https://www.youtube.com/watch?v=1qkqCTwYoqU) — blackpenredpen, English. A direct computation of Parseval's relation for a Fourier series.
+
 ## References
 
 - Haberman, Chapter 3: energy interpretation and examples.

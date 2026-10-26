@@ -27,3 +27,9 @@ Bài bổ sung này tập hợp toàn bộ minh họa JavaScript của Chương 
   path="interactives/chapter03/index.html"
   height="920px"
 %}
+
+## Video tham khảo
+
+- xem trước: [But what is a Laplace Transform?](https://www.youtube.com/watch?v=j0wJBEZdwLs) — 3Blue1Brown, tiếng Anh. Giới thiệu trực quan về phép biến đổi trước khi dùng các khung tương tác của chương.
+- [The Laplace Transform - A Graphical Approach](https://www.youtube.com/watch?v=ZGPtPkTft8g) — Brian Douglas, tiếng Anh. Brian Douglas vẽ biến đổi Laplace, một hình để đặt cạnh bộ minh họa.
+- [Pole Diagrams | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=pUFSXhoazY8) — MIT OpenCourseWare, tiếng Anh. Cực và không điểm là đồ thị mà bộ minh họa giúp sinh viên đọc.

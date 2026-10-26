@@ -276,3 +276,9 @@ không hội tụ, nên không thuộc $$ H^2 $$. Ví dụ này cho thấy regul
 **Bậc đại học.** Nhìn Sobolev theory như bộ công cụ để đo độ trơn tích phân.
 
 **Bậc sau đại học.** Kết nối với embedding theorem, trace theorem, interpolation và PDE phi tuyến hiện đại.
+
+## Video tham khảo
+
+- xem trước: [Lec 36 Sobolev lemma](https://www.youtube.com/watch?v=ln4N51019qk) — NPTEL - Indian Institute of Science, Bengaluru, tiếng Anh. Bổ đề Sobolev của NPTEL, một sự kiện sâu mà bài lý thuyết này sắp xếp.
+- [PDE, Sobolev spaces: Lecture of Sobolev inequalities.](https://www.youtube.com/watch?v=oQaErD9DeWA) — Yifu Wang, tiếng Anh. Một bài giảng về các bất đẳng thức Sobolev.
+- [Sobolev Spaces Explained | Weak Derivatives, W¹ᵖ and H¹](https://www.youtube.com/watch?v=bUIZGQ7T0rU) — Sciwords, tiếng Anh. W^{1,p} và H^1 là các không gian cụ thể mà các bất đẳng thức nói tới.

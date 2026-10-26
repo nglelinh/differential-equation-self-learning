@@ -27,3 +27,9 @@ This supplementary lesson collects the interactive JavaScript illustrations for 
   path="interactives/chapter05/index.html"
   height="920px"
 %}
+
+## Video tham khảo
+
+- xem trước: [MAE5790-1 Course introduction and overview](https://www.youtube.com/watch?v=ycJEoqmQvwg) — Cornell MAE, English. The phase-space point of view the gallery is visualizing.
+- [MAE5790-10 van der Pol oscillator](https://www.youtube.com/watch?v=O1lQrHemPsw) — Cornell MAE, English. A limit cycle to compare with the gallery's nonlinear portraits.
+- [MAE5790-15 Chaotic waterwheel](https://www.youtube.com/watch?v=HljJv7Hf6Zo) — Cornell MAE, English. The Lorenz waterwheel as the chaotic picture in the set.

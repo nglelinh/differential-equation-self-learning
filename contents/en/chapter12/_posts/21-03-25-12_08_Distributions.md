@@ -232,3 +232,9 @@ for every test function $$ \varphi $$. That is why point impulses naturally appe
 **Undergraduate level.** Use delta and Heaviside as modeling tools.
 
 **Graduate level.** Connect to Schwartz distributions, Fourier transform, and fundamental solutions of PDEs.
+
+## Video tham khảo
+
+- xem trước: [Dirac Delta: Not a Function but a Distribution](https://www.youtube.com/watch?v=XZKf1G5ATkM) — Scintropy, English. Why the Dirac delta is a distribution rather than a function.
+- [MM51: Dirac delta distributions](https://www.youtube.com/watch?v=uTSKsWGWpIQ) — Learn Physics with Dr. Viv!, English. Dirac delta distributions as the linear action this lesson defines.
+- [The Dirac Delta 'Function': How to model an impulse or infinite spike](https://www.youtube.com/watch?v=SxNVcCVj-3c) — Dr. Trefor Bazett, English. Trefor Bazett on the delta as a model of an impulse, before the functional definition.

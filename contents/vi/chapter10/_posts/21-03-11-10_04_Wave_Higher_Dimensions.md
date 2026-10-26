@@ -160,6 +160,12 @@ Có thể mời sinh viên khá giỏi thảo luận các mode suy biến, vai t
 
 Trong nhiều chiều, phương trình sóng vẫn giữ cùng dạng nhưng hình học miền quyết định hệ mode riêng. Hình chữ nhật dẫn đến tích các sin, đĩa tròn dẫn đến Bessel, còn quả cầu dẫn đến các mode cầu. Cùng một PDE nhưng hình học khác thì sóng cũng khác về bản chất.
 
+## Video tham khảo
+
+- xem trước: [Vibrating Circular Membranes - Partial Differential Equations | Lecture 31](https://www.youtube.com/watch?v=DeG6dq4vlO4) — Jason Bramburger, tiếng Anh. Một màng tròn: hàm Bessel trong bài toán trị riêng sóng hướng kính.
+- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, tiếng Anh. Phép suy một chiều mà phương trình nhiều chiều này mở rộng.
+- [Deriving the Heat Equation in 2D & 3D (& in N Dimensions!) with Control Volumes and Vector Calculus](https://www.youtube.com/watch?v=lBZIxv1bZDo) — Steve Brunton, tiếng Anh. Phép suy bằng thể tích kiểm soát của Brunton trong 2D và 3D, cùng một cân bằng ở chiều cao hơn.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - phát triển chặt chẽ phương trình sóng, năng lượng, và tính duy nhất.

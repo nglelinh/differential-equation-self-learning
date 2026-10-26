@@ -209,6 +209,12 @@ The physical message is simple: heat flux follows the negative temperature gradi
 
 **Graduate level.** Emphasize the parabolic nature of the equation, instantaneous smoothing, and comparison with wave and elliptic equations.
 
+## Video tham khảo
+
+- xem trước: [Deriving the Heat Equation: A Parabolic Partial Differential Equation for Heat Energy Conservation](https://www.youtube.com/watch?v=9d8PwnKVA-U) — Steve Brunton, English. Brunton derives the one-dimensional heat equation from conservation.
+- [But what is a partial differential equation?  | DE2](https://www.youtube.com/watch?v=ly4S0oi3Yz8) — 3Blue1Brown, English. 3Blue1Brown on what a partial differential equation is, with heat as the example.
+- [(PHƯƠNG TRÌNH ĐẠO HÀM RIÊNG) PHƯƠNG TRÌNH TRUYỀN NHIỆT](https://www.youtube.com/watch?v=LJ6rd2EGVEI) — Đặng Pete, Vietnamese. A Vietnamese lecture deriving and introducing the heat equation.
+
 ## References
 
 - Evans, Chapter 2: physical and mathematical derivation of diffusion equations.

@@ -314,6 +314,12 @@ The $$ x_1 $$-axis is repelling and the $$ x_2 $$-axis is attracting, so the ori
 
 ![Real distinct eigenvalues]({{ site.imgurl }}/chapter_img/chapter04/04_03_eigenvalue_real_distinct.svg)
 
+## Video tham khảo
+
+- xem trước: [Solving Systems of Differential Equations with Eigenvalues and Eigenvectors](https://www.youtube.com/watch?v=Zwb5eiYcL8w) — Steve Brunton, English. Build the general solution from real, distinct eigenpairs.
+- [2x2 Systems of ODEs: Sources and Sinks](https://www.youtube.com/watch?v=NaNdkCPLftc) — Steve Brunton, English. Sources and sinks: what the signs of two real eigenvalues do to the phase portrait.
+- [Phương trình vi phân - Phương pháp giá trị riêng giải hệ phương trình vi phân tuyến thuần nhất](https://www.youtube.com/watch?v=LVbsb6mAFZ4) — MATH KEY, Vietnamese. A Vietnamese lecture on the eigenvalue method for a homogeneous linear system.
+
 ## References
 
 - Boyce & DiPrima, Chapter 7: standard presentation of real eigenvalue method.

@@ -260,6 +260,12 @@ Trong điện tĩnh, đó là mode quadrupole chuẩn.
 
 **Bậc sau đại học.** Nói về tính trực giao trên $$ [-1,1] $$, toán tử tự liên hợp và hàm cầu điều hòa.
 
+## Video tham khảo
+
+- xem trước: [Intro to Legendre Polynomials](https://www.youtube.com/watch?v=djlUmwbPw20) — Physics and Math Lectures, tiếng Anh. Đa thức Legendre là gì và vì sao phương trình cho một đa thức ở các bậc đặc biệt.
+- [Lecture 42 part 3 (Orthogonality of Legendre Polynomials)](https://www.youtube.com/watch?v=gwTmJN8mucE) — Daniel Maxin, tiếng Anh. Tính trực giao của các đa thức Legendre trên [-1,1].
+- [Legendre Polynomial | Orthogonal Properties of Legendre Polynomial](https://www.youtube.com/watch?v=RDU7FTqgx7s) — Dr.Gajendra Purohit, tiếng Anh. Một bài tiếp về các hệ thức trực giao dùng trong khai triển.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 5: giới thiệu phương trình Legendre, truy hồi và các tính chất cơ bản.

@@ -344,3 +344,9 @@ $$ r=\frac{\alpha \Delta t}{\Delta x^2}. $$
 **Bậc đại học.** Dựng stencil sai phân và lập trình lược đồ đơn giản.
 
 **Bậc sau đại học.** Kết nối với consistency, matrix form và dispersion/dissipation số.
+
+## Video tham khảo
+
+- xem trước: [PDE | Finite differences: introduction](https://www.youtube.com/watch?v=g3Xw1r7QGOE) — commutant, tiếng Anh. commutant giới thiệu lưới sai phân cho PDE.
+- [Finite Difference Method for PDES: Solution of Heat Equation](https://www.youtube.com/watch?v=ACduEf-K9qk) — Easy Mathematics, tiếng Anh. Phương trình nhiệt được rời rạc theo không gian và thời gian.
+- [Numerical Differentiation with Finite Difference Derivatives](https://www.youtube.com/watch?v=9fGaTU1-f-0) — Steve Brunton, tiếng Anh. Đạo hàm sai phân, viên gạch của các lưới ấy.

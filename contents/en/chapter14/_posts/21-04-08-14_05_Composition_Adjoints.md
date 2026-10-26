@@ -198,6 +198,12 @@ This is the easiest case. Once symbols depend on both $$ x $$ and $$ \xi $$, der
 
 **Graduate level.** Connect to the Moyal product, symbolic expansions, and adjoint formulas on manifolds.
 
+## Video tham khảo
+
+- xem trước: [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, English. Products and adjoints in the pseudodifferential algebra.
+- [Ps d o’s lecture 2 (Xuwen Zhu)](https://www.youtube.com/watch?v=0OBoX9_-ndQ) — Mathematics video VAROQUI Hervé, Vietnamese. Zhu's second lecture, which reaches the composition calculus.
+- [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Vietnamese. The symbol product that composition is correcting by lower-order terms.
+
 ## References
 
 - Trèves: symbolic composition and adjoint theory.

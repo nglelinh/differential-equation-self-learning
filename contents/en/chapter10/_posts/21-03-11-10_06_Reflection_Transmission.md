@@ -189,6 +189,12 @@ When $$ Z_2=Z_1 $$, we get $$ R=0 $$, so there is no reflection. Large impedance
 
 **Graduate level.** Connect to scattering theory, multilayer transmission, and transfer matrices.
 
+## Video tham khảo
+
+- xem trước: [Strings: reflection and transmission of an incoming wave at a discontinuity.](https://www.youtube.com/watch?v=Zokrkuc2EgU) — Mooc Bogazici, English. Reflection and transmission of a wave at a discontinuity in the string.
+- [Reflection and Transmission of Transverse Waves](https://www.youtube.com/watch?v=L5-RuMtXDyo) — Physics Ninja, English. Physics Ninja on reflection and transmission of a transverse wave.
+- [PDE 10 | Wave equation: d'Alembert's formula](https://www.youtube.com/watch?v=j2G91naZ8bo) — commutant, English. d'Alembert's right- and left-going waves, the objects that reflect.
+
 ## References
 
 - Haberman, Chapter 4.

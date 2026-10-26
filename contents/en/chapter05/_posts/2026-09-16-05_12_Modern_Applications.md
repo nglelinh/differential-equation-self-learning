@@ -104,6 +104,12 @@ Verification scales poorly with dimension; mixed-integer encodings of neural net
 
 A reflective question: if a neural certificate is verified on a compact set, what does it say about trajectories that start outside that set? The phase plane already answers: nothing, except that they may enter the set or escape to another attractor.
 
+## Video tham khảo
+
+- xem trước: [Safe Nonlinear Control using Robust Neural Lyapunov Functions](https://www.youtube.com/watch?v=ZEsQZeBOMDI) — Charles Dawson, English. A research talk on learning a robust neural Lyapunov function for safe control.
+- [Arash Mehrjou:  Neural Lyapunov Redesign](https://www.youtube.com/watch?v=ylRDhiFcujs) — Machine Learning and Dynamical Systems Seminar, English. Arash Mehrjou on neural Lyapunov redesign.
+- [What is a Lyapunov function](https://www.youtube.com/watch?v=uXAx_641FPM) — richard pates, English. The classical Lyapunov function these learned certificates are imitating.
+
 ## Exercises
 
 1. **Linear obstruction.** Let $$x'=Ax$$ with $$A$$ having an eigenvalue of positive real part. Prove that no $$C^1$$ Lyapunov function can satisfy $$\dot V<0$$ on a neighborhood of the origin. What, then, should a training algorithm do?

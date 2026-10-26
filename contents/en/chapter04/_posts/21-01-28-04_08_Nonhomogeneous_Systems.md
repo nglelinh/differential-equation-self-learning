@@ -272,6 +272,12 @@ Thus the forcing shifts the attracting state from the origin to a new location.
 
 ![Nonhomogeneous systems]({{ site.imgurl }}/chapter_img/chapter04/04_08_nonhomogeneous_systems.svg)
 
+## Video tham khảo
+
+- xem trước: [Systems of Differential Equations with Forcing: Example in Control Theory](https://www.youtube.com/watch?v=vKgbYRw21xA) — Steve Brunton, English. Variation of parameters for a forced linear system, with a control example.
+- [Linear Systems of Differential Equations with Forcing: Convolution and the Dirac Delta Function](https://www.youtube.com/watch?v=q1phVuNCuf0) — Steve Brunton, English. Convolution against the impulse response, including the Dirac delta.
+- [Differential Equations with Forcing: Method of Variation of Parameters](https://www.youtube.com/watch?v=wCeDUbZQ_zA) — Steve Brunton, English. The scalar variation-of-parameters formula this system method extends.
+
 ## References
 
 - Boyce & DiPrima, Chapter 7: clear examples of forced linear systems.

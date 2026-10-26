@@ -296,3 +296,9 @@ và đây là ví dụ đơn giản nhất của parametrix elliptic.
 **Bậc đại học.** Hiểu parametrix như nghịch đảo gần đúng trong miền tần số.
 
 **Bậc sau đại học.** Kết nối với elliptic estimates, Fredholm theory và microlocal invertibility.
+
+## Video tham khảo
+
+- xem trước: [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, tiếng Anh. Tính elliptic trong đại số giả vi phân và parametrix mà nó cho phép.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Bài vi địa phương đầu của András Vasy, gồm các ước lượng elliptic.
+- [Sketch of Elliptic regularity](https://www.youtube.com/watch?v=wecQr1yruVY) — Calculus is pictures., tiếng Anh. Hệ quả chính quy của một parametrix elliptic.

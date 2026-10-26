@@ -198,6 +198,12 @@ This classical example shows how the first angular mode on the boundary propagat
 
 **Graduate level.** Connect to the Poisson kernel on the disk and Fourier representations of harmonic functions.
 
+## Video tham khảo
+
+- xem trước: [Laplace PDE on circular domain solved in polar coordinates](https://www.youtube.com/watch?v=Yybsq8qiK9I) — Daniel An, English. Laplace's equation on a disk, solved in polar coordinates.
+- [10.1 General solution to Laplace's equation in polar coordinates](https://www.youtube.com/watch?v=fNSMMy9Q8Ls) — Daniel Nino, English. The general polar solution, including the logarithmic term.
+- [The Laplacian in Polar Coordinates](https://www.youtube.com/watch?v=wlbZxa66ncg) — Mike, the Mathematician, English. The Laplacian written in polar coordinates before separation.
+
 ## References
 
 - Evans, Chapter 2.

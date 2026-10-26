@@ -207,6 +207,12 @@ so $$ 0<h<\frac{2}{15} $$. Even though the exact solution decays smoothly to zer
 
 **Graduate level.** Connect to A-stability, L-stability, and singular perturbations.
 
+## Video tham khảo
+
+- xem trước: [Stability of Forward Euler and Backward Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=RdXCGnTT6UY) — Steve Brunton, English. Why forward Euler collapses on a stiff decay while backward Euler does not.
+- [Deriving Forward Euler and Backward/Implicit Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=MstPeOTCVzQ) — Steve Brunton, English. The implicit step that stiffness forces you to take.
+- [Numerical Integration of ODEs with Forward Euler and Backward Euler in Python and Matlab](https://www.youtube.com/watch?v=ITFolyl_66U) — Steve Brunton, English. A numerical comparison of the explicit and implicit Euler schemes.
+
 ## References
 
 - Ascher & Petzold: classic reference for stiffness and implicit methods.

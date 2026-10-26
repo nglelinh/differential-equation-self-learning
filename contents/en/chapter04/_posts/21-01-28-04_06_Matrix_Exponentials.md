@@ -321,6 +321,12 @@ The example shows how matrix exponentials preserve mode structure while giving a
 
 ![Matrix exponentials]({{ site.imgurl }}/chapter_img/chapter04/04_06_matrix_exponentials.svg)
 
+## Video tham khảo
+
+- xem trước: [How (and why) to raise e to the power of a matrix | DE6](https://www.youtube.com/watch?v=O85OWBJ2ayo) — 3Blue1Brown, English. Grant Sanderson on why e^{At} solves x'=Ax and how to compute it.
+- [Matrix Exponentials | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=qbyeQum8qTE) — MIT OpenCourseWare, English. MIT's short lecture on the matrix exponential.
+- [Lec 29 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=zreI4HllD80) — MIT OpenCourseWare, English. Mattuck's full lecture deriving the matrix exponential.
+
 ## References
 
 - Boyce & DiPrima, Chapter 7: useful computational examples and introduction to matrix methods.

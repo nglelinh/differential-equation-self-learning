@@ -172,6 +172,12 @@ Có thể mời sinh viên khá giỏi suy ra công thức Poisson cho đĩa ho�
 
 Trong miền tròn, Laplace nên được giải bằng tọa độ cực. Nghiệm được tách thành Fourier theo góc và lũy thừa theo bán kính. Dữ liệu biên trên vòng tròn quyết định các mode góc, còn điều kiện hữu hạn tại tâm loại các nghiệm kỳ dị.
 
+## Video tham khảo
+
+- xem trước: [Laplace PDE on circular domain solved in polar coordinates](https://www.youtube.com/watch?v=Yybsq8qiK9I) — Daniel An, tiếng Anh. Phương trình Laplace trên một đĩa, giải trong tọa độ cực.
+- [10.1 General solution to Laplace's equation in polar coordinates](https://www.youtube.com/watch?v=fNSMMy9Q8Ls) — Daniel Nino, tiếng Anh. Nghiệm cực tổng quát, gồm số hạng logarit.
+- [The Laplacian in Polar Coordinates](https://www.youtube.com/watch?v=wlbZxa66ncg) — Mike, the Mathematician, tiếng Anh. Laplacian viết trong tọa độ cực trước khi tách biến.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - khuôn khổ chuẩn cho hàm điều hòa, phương trình Poisson, và hàm Green.

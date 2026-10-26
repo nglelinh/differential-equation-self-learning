@@ -191,6 +191,12 @@ So differentiation itself is already a Fourier multiplier with symbol $$ a(\xi)=
 
 **Graduate level.** Connect to quantization, microlocal analysis, and wave propagation.
 
+## Video tham khảo
+
+- xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Vietnamese. Why one passes from differential operators to pseudodifferential operators.
+- [Ps d o’s lecture 2 (Xuwen Zhu)](https://www.youtube.com/watch?v=0OBoX9_-ndQ) — Mathematics video VAROQUI Hervé, Vietnamese. Xuwen Zhu's second lecture, continuing the same motivation.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, English. The transform that makes a differential operator a polynomial symbol.
+
 ## References
 
 - Trèves: primary motivation and conceptual framework.

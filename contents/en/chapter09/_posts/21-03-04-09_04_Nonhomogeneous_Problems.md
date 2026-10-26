@@ -201,6 +201,12 @@ so the standard separation-of-variables machinery applies to $$ v $$.
 
 **Graduate level.** Connect to Duhamel's principle, superposition, and semigroup formulations with forcing.
 
+## Video tham khảo
+
+- xem trước: [Solving PDEs with the Laplace Transform: The Heat Equation](https://www.youtube.com/watch?v=xuBJFSh6Bu4) — Steve Brunton, English. Brunton solves a heat problem with the Laplace transform, a route for nonhomogeneous data.
+- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, English. The homogeneous solution this lesson corrects by a steady state or an eigenfunction expansion.
+- [The Heat Equation and the Steady State Heat Distribution via Laplace's Equation](https://www.youtube.com/watch?v=OoRwXVIXpL0) — Steve Brunton, English. The steady profile that carries a nonhomogeneous boundary condition.
+
 ## References
 
 - Haberman, Chapters 1-2.

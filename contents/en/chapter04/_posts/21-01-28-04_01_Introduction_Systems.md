@@ -290,6 +290,12 @@ The example shows that passing to system form does not lose information; it clar
 
 ![Introduction to systems]({{ site.imgurl }}/chapter_img/chapter04/04_01_introduction_systems.svg)
 
+## Video tham khảo
+
+- xem trước: [Systems of Differential Equations // Part 1: Linear Systems and the Eigenvalue Method](https://www.youtube.com/watch?v=aTMNQtzU0rU) — Dr. Trefor Bazett, English. How a higher-order equation becomes a first-order system, and how a linear system is written.
+- [Matrix Systems of Differential Equations](https://www.youtube.com/watch?v=Vtijyyo5fKI) — Steve Brunton, English. Brunton's matrix form x'=Ax of a system of differential equations.
+- [Lec 24 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=MCrDzhpu3-s) — MIT OpenCourseWare, English. Mattuck introduces first-order systems in the MIT course.
+
 ## References
 
 - Boyce & DiPrima, Chapter 7: excellent introduction to converting higher-order ODEs to state-space systems.

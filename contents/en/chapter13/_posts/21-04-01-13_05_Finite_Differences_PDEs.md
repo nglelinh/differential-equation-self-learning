@@ -208,6 +208,12 @@ Physically, the new temperature at node $$ j $$ equals the old value plus a diff
 
 **Graduate level.** Connect to consistency, matrix form, and numerical dissipation/dispersion.
 
+## Video tham khảo
+
+- xem trước: [PDE | Finite differences: introduction](https://www.youtube.com/watch?v=g3Xw1r7QGOE) — commutant, English. commutant introduces finite-difference grids for PDEs.
+- [Finite Difference Method for PDES: Solution of Heat Equation](https://www.youtube.com/watch?v=ACduEf-K9qk) — Easy Mathematics, English. The heat equation discretized in space and time.
+- [Numerical Differentiation with Finite Difference Derivatives](https://www.youtube.com/watch?v=9fGaTU1-f-0) — Steve Brunton, English. Finite-difference derivatives, the building block of those grids.
+
 ## References
 
 - Ascher & Petzold: numerical discretization principles for differential equations.

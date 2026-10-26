@@ -225,6 +225,12 @@ The constant term is the steady state, and the exponential term is memory of the
 
 ![Solving IVPs with Laplace]({{ site.imgurl }}/chapter_img/chapter03/03_04_solving_ivps.svg)
 
+## Video tham khảo
+
+- xem trước: [Laplace: Solving ODE's | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=5av3kiejazQ) — MIT OpenCourseWare, English. MIT solves an initial-value problem by transforming the ODE, including the initial data.
+- [Why Laplace transforms are so useful](https://www.youtube.com/watch?v=FE-hM1kRK4Y) — 3Blue1Brown, English. Why the transform turns a differential initial-value problem into algebra.
+- [Partial Fractions and Laplace Inverse | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=D6Rd1K93nSA) — MIT OpenCourseWare, English. The partial-fraction step that finishes the solution after the algebra in s.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: the section on solving IVPs with Laplace is very clear and coherent.
 - Zill — *Differential Equations with Boundary-Value Problems*: many examples practicing exactly the core problems of this chapter.

@@ -224,6 +224,12 @@ $$ \frac{d}{dt}(x_1+x_2)=-k_{01}x_1. $$
 
 **Bậc sau đại học.** So sánh mô hình ngăn tuyến tính và phi tuyến, phân tích ổn định và ý nghĩa sinh học của từng tham số.
 
+## Video tham khảo
+
+- xem trước: [The MATH of Pandemics | Intro to the SIR Model](https://www.youtube.com/watch?v=Qrp40ck3WpI) — Dr. Trefor Bazett, tiếng Anh. Mô hình SIR của Trefor Bazett là một hệ khoang đúng kiểu bài này nghiên cứu.
+- [SIR Model for Epidemiology, Ordinary Differential Equations](https://www.youtube.com/watch?v=f1Ewm1hyPWY) — Dr. Bevin Maultsby, tiếng Anh. Các phương trình SIR được viết và đọc như một cân bằng khoang.
+- [❖ Mixing Problems and Separable Differential Equations ❖](https://www.youtube.com/watch?v=6wk9zWa-Fww) — Patrick J, tiếng Anh. Cân bằng một bể trộn, phiên bản một khoang của cùng ý tưởng.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 7: nhiều ứng dụng tốt về mô hình ngăn và hệ tuyến tính.

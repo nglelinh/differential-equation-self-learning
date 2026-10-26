@@ -193,6 +193,12 @@ This Gaussian is the fundamental spreading profile of heat on an unbounded domai
 
 **Graduate level.** Emphasize the heat semigroup on $$ \mathbb{R}^n $$ and the role of the Fourier transform.
 
+## Video tham khảo
+
+- xem trước: [Solving the Heat Equation with the Fourier Transform](https://www.youtube.com/watch?v=7haZCrQDHpA) — Steve Brunton, English. The Fourier transform solves the heat equation on the whole line.
+- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, English. The same decay of frequencies, now without a finite bar of modes.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, English. The transform used as the change of coordinate in that calculation.
+
 ## References
 
 - Evans, Chapter 2.

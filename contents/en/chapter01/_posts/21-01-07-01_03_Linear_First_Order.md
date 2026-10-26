@@ -105,6 +105,12 @@ The constant term is the target equilibrium and the exponential term is memory o
 
 **Graduate level.** Connect to variation of constants, Green functions, and linear operator viewpoints that reappear in systems and PDE.
 
+## Video tham khảo
+
+- xem trước: [Linear Differential Equations & the Method of Integrating Factors](https://www.youtube.com/watch?v=2H6BZHlD_3g) — Dr. Trefor Bazett, English. Why the integrating factor e^{∫p} turns a linear equation into an exact derivative.
+- [The Method of Integrating Factors for Linear 1st Order ODEs **full example**](https://www.youtube.com/watch?v=20x2dNVztlU) — Dr. Trefor Bazett, English. A complete example of the integrating-factor formula from start to the initial condition.
+- [Phương trình vi phân Tuyến tính cấp 1 (Bài 13.2) | Vi tích phân 2/Toán C](https://www.youtube.com/watch?v=m8BFHJQrLSM) — Nguyễn Văn Thùy, Vietnamese. A Vietnamese lecture on the first-order linear equation and its integrating factor.
+
 ## References
 
 - Boyce & DiPrima, Section 2.1

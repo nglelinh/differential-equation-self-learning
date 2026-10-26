@@ -226,6 +226,12 @@ So total mass is not conserved because compartment 1 leaks to the outside. This 
 
 ![Compartment models]({{ site.imgurl }}/chapter_img/chapter04/04_10_compartment_models.svg)
 
+## Video tham khảo
+
+- xem trước: [The MATH of Pandemics | Intro to the SIR Model](https://www.youtube.com/watch?v=Qrp40ck3WpI) — Dr. Trefor Bazett, English. Trefor Bazett's SIR model is a compartment system of the kind this lesson studies.
+- [SIR Model for Epidemiology, Ordinary Differential Equations](https://www.youtube.com/watch?v=f1Ewm1hyPWY) — Dr. Bevin Maultsby, English. The SIR equations written and interpreted as a compartment balance.
+- [❖ Mixing Problems and Separable Differential Equations ❖](https://www.youtube.com/watch?v=6wk9zWa-Fww) — Patrick J, English. A single-tank mixing balance, the one-compartment version of the same idea.
+
 ## References
 
 - Boyce & DiPrima, Chapter 7: several useful applications involving compartment models.

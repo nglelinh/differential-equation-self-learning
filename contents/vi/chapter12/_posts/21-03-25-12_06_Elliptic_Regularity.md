@@ -225,3 +225,9 @@ trên $$ 0<x<1 $$ với $$ u(0)=u(1)=0 $$. Vế phải chỉ là hàm bậc than
 **Bậc đại học.** Quan sát hiện tượng làm trơn qua các ví dụ một chiều.
 
 **Bậc sau đại học.** Kết nối với ước lượng Schauder, ước lượng $$ H^k $$ và regularity cục bộ/toàn cục.
+
+## Video tham khảo
+
+- xem trước: [Sketch of Elliptic regularity](https://www.youtube.com/watch?v=wecQr1yruVY) — Calculus is pictures., tiếng Anh. Một phác thảo tính chính quy elliptic: nghiệm yếu của phương trình elliptic trơn thì trơn hơn.
+- [Index Theory Lecture 7: Sobolev space theory](https://www.youtube.com/watch?v=Q1JecioLurc) — Masoud Khalkhali, tiếng Anh. Thang Sobolev đo độ trơn thêm ấy.
+- [Peter Lax - Lax-Milgram Theorem](https://www.youtube.com/watch?v=d6lx6kKV9-E) — Simons Foundation, tiếng Anh. Lax-Milgram, thứ mới chỉ cho nghiệm H^1 rồi tính chính quy nâng lên.

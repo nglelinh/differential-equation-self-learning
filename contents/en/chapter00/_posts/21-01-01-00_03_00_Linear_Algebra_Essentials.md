@@ -29,6 +29,12 @@ The matrix exponential is defined as:
 
 $$ e^{At} = \sum_{k=0}^{\infty} \frac{(At)^k}{k!} $$
 
+## Video tham khảo
+
+- xem trước: [Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra](https://www.youtube.com/watch?v=PFDu9oVAE-g) — 3Blue1Brown, English. Eigenvectors are the directions a linear system stretches, which is exactly how x'=Ax is solved.
+- [Vectors | Chapter 1, Essence of linear algebra](https://www.youtube.com/watch?v=fNk_zzaMoSs) — 3Blue1Brown, English. Vectors and linear combinations are the language of the state vector in a first-order system.
+- [How (and why) to raise e to the power of a matrix | DE6](https://www.youtube.com/watch?v=O85OWBJ2ayo) — 3Blue1Brown, English. Why the matrix exponential is the closed form of a linear system with constant coefficients.
+
 ## References
 
 - Boyce & DiPrima, Chapter 7 (Appendix)

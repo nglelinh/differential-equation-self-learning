@@ -179,6 +179,12 @@ Có thể mời sinh viên khá giỏi khảo sát sơ bộ phương trình siê
 
 Điều kiện biên thuần nhất quyết định hệ mode riêng của phương trình nhiệt. Dirichlet dẫn đến sine, Neumann dẫn đến cosine kèm mode hằng, còn Robin mô tả trao đổi với môi trường và cho phổ riêng tinh tế hơn. Cùng một PDE nhưng biên khác thì nghiệm cũng khác về bản chất.
 
+## Video tham khảo
+
+- xem trước: [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Điều kiện đầu mút thuần nhất là thứ cho các mode sin khớp thanh trong nghiệm này.
+- [Deriving the Heat Equation: A Parabolic Partial Differential Equation for Heat Energy Conservation](https://www.youtube.com/watch?v=9d8PwnKVA-U) — Steve Brunton, tiếng Anh. Phép suy diễn, gồm các số hạng biên trở thành các điều kiện thuần nhất ấy.
+- [PDE 101: Separation of Variables! ...or how I learned to stop worrying and solve Laplace's equation](https://www.youtube.com/watch?v=VjWtMl6vQ3Q) — Steve Brunton, tiếng Anh. Tách biến với điều kiện biên áp lên bài toán trị riêng không gian.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - nền tảng chuẩn cho phương trình nhiệt, nguyên lý cực đại, và hàm Green.

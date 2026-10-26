@@ -308,3 +308,9 @@ Các trạng thái này là ví dụ cụ thể nhất cho việc mức năng l�
 **Bậc đại học.** Liên hệ cơ học lượng tử 1D với bài toán trị riêng đã biết.
 
 **Bậc sau đại học.** Kết nối với self-adjointness, scattering, resonances va semiclassical concentration.
+
+## Video tham khảo
+
+- xem trước: [Math of QM: 5.7. Spectral Theorem for Unbounded Selfadjoint Operators](https://www.youtube.com/watch?v=cdOkiNIONSc) — Roland Speicher, tiếng Anh. Roland Speicher về định lý phổ cho toán tử tự liên hợp không bị chặn.
+- [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Giải tích vi địa phương dùng để nghiên cứu các toán tử lượng tử ấy.
+- [Spectral Theorem For Dummies - 3Blue1Brown Summer of Math Exposition #SoME1](https://www.youtube.com/watch?v=4zD8Kd3HgJA) — Jacqueline Doan, tiếng Anh. Một định lý phổ hình học như phép tương tự hữu hạn chiều.

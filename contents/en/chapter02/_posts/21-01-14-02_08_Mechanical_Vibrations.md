@@ -221,6 +221,12 @@ The system still oscillates, but the envelope decays exponentially, which is exa
 
 ![Resonance and beats]({{ site.imgurl }}/chapter_img/chapter02/02_08_resonance.svg)
 
+## Video tham khảo
+
+- xem trước: [Undamped Mechanical Vibrations & Hooke's Law // Simple Harmonic Motion](https://www.youtube.com/watch?v=Z52emur7Rko) — Dr. Trefor Bazett, English. Undamped Hooke's-law motion and the meaning of the natural frequency.
+- [Mechanical Vibrations: Underdamped vs Overdamped vs Critically Damped](https://www.youtube.com/watch?v=CTd1uVq5-l8) — Dr. Trefor Bazett, English. Underdamped, overdamped, and critically damped free motion.
+- [Damped Harmonic Oscillators | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=2-5oq-igwtU) — MIT OpenCourseWare, English. MIT's short lecture on damped harmonic oscillators.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: the mechanical vibration section is very rich in intuition.
 - Zill — *Differential Equations with Boundary-Value Problems*: many mass-spring and resonance examples.

@@ -231,6 +231,12 @@ Nếu muốn dự đoán nhanh trong quản lý thủy sản, nghiệm này cho 
 
 **Bậc sau đại học.** Thảo luận thêm về thời gian nổ hữu hạn, bất biến miền, và tính đơn điệu của nghiệm. Đây cũng là chỗ thích hợp để nối với kỹ thuật tách biến trong PDE, nơi ta tách không phải hai biến của cùng một hàm mà là các nhân tử của một nghiệm giả định.
 
+## Video tham khảo
+
+- xem trước: [17. Phương trình vi phân tách biến | Phương trình vi phân | Khan Academy](https://www.youtube.com/watch?v=_A1F5ygjdKk) — Khan Academy Vietnam, Tiếng Việt. Khan Academy Việt Nam giải phương trình cấp một tách biến bằng tiếng Việt.
+- [Separation of Variables //  Differential Equations](https://www.youtube.com/watch?v=7Y-frhf-1Zk) — Dr. Trefor Bazett, tiếng Anh. Bước tách dy/g(y)=f(x)dx và khi nào phương pháp hợp lệ.
+- [Newton's Law of Cooling  // Separable ODE Example](https://www.youtube.com/watch?v=_bAjWNsNrQA) — Dr. Trefor Bazett, tiếng Anh. Định luật nguội của Newton như một mô hình tách biến được giải trọn.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: trình bày rất rõ phương pháp tách biến và logistic.
 - Zill — *Differential Equations with Boundary-Value Problems*: có nhiều bài luyện nhận dạng và phân tích hằng số tích phân.

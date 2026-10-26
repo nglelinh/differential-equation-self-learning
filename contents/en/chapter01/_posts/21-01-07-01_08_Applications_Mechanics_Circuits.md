@@ -265,3 +265,9 @@ The time constant is four seconds, so after about three time constants the veloc
 ## Quick Summary
 
 Mechanics and circuit models show how physical balance laws naturally produce first-order ODE. The mathematics is important, but the deeper lesson is that parameters, steady states, and response times all carry concrete physical meaning.
+
+## Video tham khảo
+
+- xem trước: [Second-Order Ordinary Differential Equations: Solving the Harmonic Oscillator Four Ways](https://www.youtube.com/watch?v=8ePqqZXSMQs) — Steve Brunton, English. The harmonic oscillator derived four ways, the mechanical model this lesson starts from.
+- [Example Second-Order ODE: Spring-Mass-Damper](https://www.youtube.com/watch?v=r1eWerqrcqo) — Steve Brunton, English. A spring-mass-damper written and solved as a second-order equation from Newton's law.
+- [Differential equations, a tourist's guide | DE1](https://www.youtube.com/watch?v=p_di4Zn4wz4) — 3Blue1Brown, English. Free fall under constant gravity is the simplest mechanics ODE in the tourist's guide.

@@ -288,6 +288,12 @@ $$
 
 **Bậc sau đại học.** Kết nối với Riccati equation, bất biến đối xứng, và tư duy đổi tọa độ trong động lực học. Đây cũng là bước đệm tự nhiên cho chuẩn hóa hệ tuyến tính ở các chương sau.
 
+## Video tham khảo
+
+- xem trước: [The Bernoulli Equation // Substitutions in Differential Equations](https://www.youtube.com/watch?v=iCN8nGXE29o) — Dr. Trefor Bazett, tiếng Anh. Phép thế Bernoulli đưa phương trình về dạng tuyến tính.
+- [Separation of Variables //  Differential Equations](https://www.youtube.com/watch?v=7Y-frhf-1Zk) — Dr. Trefor Bazett, tiếng Anh. Tách biến là phương pháp dùng lại sau phép thế đẳng cấp hoặc Bernoulli.
+- [Linear Differential Equations & the Method of Integrating Factors](https://www.youtube.com/watch?v=2H6BZHlD_3g) — Dr. Trefor Bazett, tiếng Anh. Sau phép thế, nhân tử tích phân kết thúc một phương trình Bernoulli.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: có các ví dụ Bernoulli và phương trình thuần nhất rất nền tảng.
 - Zill — *Differential Equations with Boundary-Value Problems*: hữu ích để luyện nhận dạng phép thế qua nhiều mẫu bài.

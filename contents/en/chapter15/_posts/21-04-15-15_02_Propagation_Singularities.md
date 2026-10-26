@@ -311,3 +311,9 @@ The initial jump at $$ x=0 $$ moves to the jump $$ x=ct $$. This is the simplest
 **Undergraduate level.** Track singularities along characteristics in 1D examples.
 
 **Graduate level.** Connect to Hamilton vector fields, principal type operators, and Hormander's propagation theorem.
+
+## Video tham khảo
+
+- xem trước: [Andras Vasy - Microlocal analysis and wave propagation (Part 2)](https://www.youtube.com/watch?v=3DN6bKJnlXc) — Institut Fourier, English. Vasy on propagation of singularities for non-elliptic operators, especially waves.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 4)](https://www.youtube.com/watch?v=mqRbYzxLTHM) — Institut Fourier, English. Part 4 of the same course, on global propagation and applications.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, English. The elliptic case, where singularities do not propagate, as the contrast.

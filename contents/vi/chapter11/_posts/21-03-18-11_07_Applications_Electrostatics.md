@@ -143,6 +143,12 @@ Có thể mời sinh viên khá giỏi thảo luận sâu hơn về phương ph�
 
 Tĩnh điện học là một ứng dụng tự nhiên của Laplace và Poisson. Điện thế thỏa PDE elliptic, điện trường là gradient của điện thế, và năng lượng trường được đo bằng bình phương gradient. Biên của vật dẫn cùng phân bố điện tích quyết định toàn bộ cấu trúc trường.
 
+## Video tham khảo
+
+- xem trước: [Lecture 4: Electrostatic potential, Poisson's Equation, Laplace's Equation, Green's functions](https://www.youtube.com/watch?v=Z0-AkSfMJYU) — rkingery, tiếng Anh. Thế tĩnh điện là nghiệm của phương trình Poisson.
+- [Divergence and curl:  The language of Maxwell's equations, fluid flow, and more](https://www.youtube.com/watch?v=rB83DpBJQsE) — 3Blue1Brown, tiếng Anh. Bức tranh tĩnh điện của Maxwell: trường không xoáy và một thế.
+- [Laplace's Equation and Poisson's Equation](https://www.youtube.com/watch?v=nmvs0vrBT18) — Steve Brunton, tiếng Anh. Laplace đối với Poisson tùy theo có điện tích hay không.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - khuôn khổ chuẩn cho hàm điều hòa, phương trình Poisson, và hàm Green.

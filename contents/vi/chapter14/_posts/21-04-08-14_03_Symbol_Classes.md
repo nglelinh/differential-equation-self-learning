@@ -316,3 +316,9 @@ Với $$ m>0 $$, nó khuếch đại tần số cao; với $$ m<0 $$, nó làm t
 **Bậc đại học.** Nhìn symbol class như cách gắn "bậc tần số" cho toán tử.
 
 **Bậc sau đại học.** Kết nối với seminorms trên $$ S^m $$, asymptotic expansions và polyhomogeneous symbols.
+
+## Video tham khảo
+
+- xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Tiếng Việt. Các ước lượng symbol của bài đầu, khởi đầu của các lớp symbol.
+- [Ps d o’s lecture 2 (Xuwen Zhu)](https://www.youtube.com/watch?v=0OBoX9_-ndQ) — Mathematics video VAROQUI Hervé, Tiếng Việt. Bài thứ hai, nơi các lớp ấy được dùng.
+- [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, tiếng Anh. Masoud Khalkhali về đại số các toán tử giả vi phân.

@@ -296,3 +296,9 @@ $$ N(\lambda)\sim \frac{\sqrt{\lambda}}{\pi}. $$
 **Undergraduate level.** Count modes in simple domains and compare with growth laws.
 
 **Graduate level.** Connect to Weyl's law, trace formulas, remainder estimates, and spectral geometry.
+
+## Video tham khảo
+
+- xem trước: [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), English. Microlocal methods aimed at spectral questions.
+- [Lecture 22: The Spectral Theorem for a Compact Self-Adjoint Operator](https://www.youtube.com/watch?v=-sfaHVFWBU8) — MIT OpenCourseWare, English. The compact spectral theorem, the eigenvalue picture spectral asymptotics refine.
+- [Lecture 20: Compact Operators and the Spectrum of a Bounded Linear Operator on a Hilbert Space](https://www.youtube.com/watch?v=SFDMFbzCsH0) — MIT OpenCourseWare, English. The spectrum of a bounded operator, the object those asymptotics count.

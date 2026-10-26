@@ -122,6 +122,12 @@ Biến đổi Laplace của $$ f(t) = 1 $$ là $$ \mathcal{L}\{1\} = \int_0^\inf
 **Fubini**: Tích phân kép = tích phân lặp nếu hàm khả tích.
 Trong ODE, tích phân là "trí nhớ" của hệ—nó ghi lại toàn bộ lịch sử để xác định trạng thái hiện tại.
 
+## Video tham khảo
+
+- xem trước: [Integration and the fundamental theorem of calculus | Chapter 8, Essence of calculus](https://www.youtube.com/watch?v=rfG8ce4nNh0) — 3Blue1Brown, tiếng Anh. Định lý cơ bản của giải tích, lý do giải y'=f thường quy về một tích phân.
+- [Numerical Integration: Discrete Riemann Integrals and Trapezoid Rule](https://www.youtube.com/watch?v=Xw6W3Ph3Wzc) — Steve Brunton, tiếng Anh. Tổng Riemann và hình thang, tích phân rời rạc đứng sau các bộ giải ODE đơn giản.
+- [The essence of calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM) — 3Blue1Brown, tiếng Anh. Diện tích và sự tích lũy như phép ngược của đạo hàm, trực giác cho biến thiên hằng số về sau.
+
 ## Tài liệu tham khảo
 - Bartle & Sherbert — *Introduction to Real Analysis*: chương 7 chi tiết về tích phân Riemann.
 - Apostol — *Calculus, Vol. 1 & 2*: nhiều ví dụ về tích phân suy rộng.

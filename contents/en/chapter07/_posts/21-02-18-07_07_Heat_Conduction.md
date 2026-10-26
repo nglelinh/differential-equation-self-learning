@@ -209,6 +209,12 @@ $$ T(x)=\frac{x(1-x)}{2}. $$
 
 ![Heat conduction]({{ site.imgurl }}/chapter_img/chapter07/07_heat_conduction.svg)
 
+## Video tham khảo
+
+- xem trước: [Deriving the Heat Equation: A Parabolic Partial Differential Equation for Heat Energy Conservation](https://www.youtube.com/watch?v=9d8PwnKVA-U) — Steve Brunton, English. Brunton derives the heat equation from energy conservation.
+- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, English. 3Blue1Brown solves the heat equation by Fourier modes.
+- [The Heat Equation and the Steady State Heat Distribution via Laplace's Equation](https://www.youtube.com/watch?v=OoRwXVIXpL0) — Steve Brunton, English. The steady state of the heat equation is Laplace's equation, the equilibrium of this application.
+
 ## References
 
 - Boyce & DiPrima, Chapter 10: boundary-value treatment of equilibrium conduction models.

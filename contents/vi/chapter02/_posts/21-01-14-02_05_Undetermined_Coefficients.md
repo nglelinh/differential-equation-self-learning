@@ -233,6 +233,12 @@ Hệ số $$ t $$ là dấu hiệu rất quan trọng: lực kích đúng tần 
 
 **Bậc sau đại học.** Giải thích phương pháp bằng ngôn ngữ không gian bất biến dưới phép đạo hàm và liên hệ với toán tử annihilator.
 
+## Video tham khảo
+
+- xem trước: [Undetermined Coefficients: Solving non-homogeneous ODEs](https://www.youtube.com/watch?v=AgyeJEO2a-k) — Dr. Trefor Bazett, tiếng Anh. Cách đoán nghiệm riêng cho vế phải đa thức, mũ và lượng giác.
+- [Undetermined Coefficients | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=pGECDB15L9o) — MIT OpenCourseWare, tiếng Anh. Bài ngắn của MIT về hệ số bất định.
+- [Differential Equations with Forcing: Method of Undetermined Coefficients](https://www.youtube.com/watch?v=Jvmb2jeRaGE) — Steve Brunton, tiếng Anh. Brunton suy ra cùng phương pháp đoán từ phương trình tuyến tính có lực ngoài.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: rất mạnh ở phương pháp hệ số bất định và cộng hưởng.
 - Zill — *Differential Equations with Boundary-Value Problems*: có nhiều bài luyện chọn ansatz.

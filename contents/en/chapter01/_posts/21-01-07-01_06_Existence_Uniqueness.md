@@ -246,3 +246,9 @@ This makes the theorem constructive rather than purely abstract.
 ## Quick Summary
 
 Existence asks whether a solution curve can be drawn through the initial point. Uniqueness asks whether exactly one such curve exists. Continuity often supports existence, while Lipschitz control in the state variable supports uniqueness.
+
+## Video tham khảo
+
+- xem trước: [The Big Theorem of Differential Equations: Existence & Uniqueness](https://www.youtube.com/watch?v=_WpncZ3RkTg) — Dr. Trefor Bazett, English. Picard-Lindelöf: local existence and uniqueness when f is Lipschitz in y.
+- [Picard Iteration: An Example](https://www.youtube.com/watch?v=00DTrCST-zA) — Mike, the Mathematician, English. One Picard iteration written out, so the abstract contraction becomes a sequence of functions.
+- [The Geometric Meaning of Differential Equations // Slope Fields, Integral Curves & Isoclines](https://www.youtube.com/watch?v=ccDMpj2UK_M) — Dr. Trefor Bazett, English. Slope fields show the uniqueness picture: one integral curve through each regular point.

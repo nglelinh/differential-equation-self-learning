@@ -191,6 +191,12 @@ In other words, the elliptic inverse gains two orders of Sobolev regularity. The
 
 **Graduate level.** Connect to wavefront sets, propagation of singularities, and parametrix constructions.
 
+## Video tham khảo
+
+- xem trước: [Sketch of Elliptic regularity](https://www.youtube.com/watch?v=wecQr1yruVY) — Calculus is pictures., English. Elliptic regularity in the Sobolev scale.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, English. The microlocal elliptic estimate that implies that regularity.
+- [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, English. The parametrix whose existence is the operator form of the same fact.
+
 ## References
 
 - Trèves: elliptic regularity through symbolic calculus.

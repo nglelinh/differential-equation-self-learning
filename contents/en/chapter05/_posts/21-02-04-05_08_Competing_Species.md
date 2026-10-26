@@ -207,6 +207,12 @@ Their intersection lies in the positive quadrant, so there is a candidate coexis
 
 ![Competing species]({{ site.imgurl }}/chapter_img/chapter05/05_08_competing_species.svg)
 
+## Video tham khảo
+
+- xem trước: [Lotka-Volterra Competition Explained: Rabbits vs. Sheep | Phase Plane Analysis](https://www.youtube.com/watch?v=07V_UNLz0qs) — Dr. Shane Ross, English. Shane Ross on Lotka-Volterra competition, nullclines, and competitive exclusion.
+- [Competition Explained by Lotka-Volterra Model](https://www.youtube.com/watch?v=8GxwFrAyD9Q) — EcologyTalks, English. Competition explained through the same phase-plane model.
+- [V7-4e Two Competing Species, critical points, stability, phase portrait. Elem Differential Equations](https://www.youtube.com/watch?v=btQVm3PGT4k) — wenshenpsu, English. Critical points and the phase portrait of two competing species.
+
 ## References
 
 - Strogatz, Chapter 6: qualitative analysis of biological competition models.

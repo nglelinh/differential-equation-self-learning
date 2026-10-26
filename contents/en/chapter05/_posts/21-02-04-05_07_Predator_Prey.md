@@ -206,6 +206,12 @@ There, prey birth is balanced by predation and predator death is balanced by fee
 
 ![Predator-prey model]({{ site.imgurl }}/chapter_img/chapter05/05_07_predator_prey.svg)
 
+## Video tham khảo
+
+- xem trước: [Predator-Prey Population Models || Lotka-Volterra Equations](https://www.youtube.com/watch?v=DDEvlLa9z_U) — Exploring Maths, English. The Lotka-Volterra equations and the closed orbits of a predator-prey pair.
+- [Predator-Prey Model (Lotka-Volterra)](https://www.youtube.com/watch?v=Tc05IbqTsFM) — Mike Saint-Antoine, English. A second walkthrough of the same model, including the phase-plane picture.
+- [Lotka-Volterra Equation and Their Periodic Solutions](https://www.youtube.com/watch?v=WPck8AhuOsc) — Mike, the Mathematician, English. Why the periodic solutions of Lotka-Volterra are structurally fragile.
+
 ## References
 
 - Strogatz, Chapter 6: accessible analysis of predator-prey dynamics.

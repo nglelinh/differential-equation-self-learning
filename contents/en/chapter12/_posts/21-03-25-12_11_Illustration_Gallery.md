@@ -49,3 +49,9 @@ The page is also a useful review before the later chapters on numerical analysis
 - [12.08 Distributions]({{ site.baseurl }}/contents/en/chapter12/12_08_Distributions/)
 - [12.09 Minkowski Inequality]({{ site.baseurl }}/contents/en/chapter12/12_09_Minkowski_Inequality/)
 - [12.10 Sobolev Theory]({{ site.baseurl }}/contents/en/chapter12/12_10_Sobolev_Theory/)
+
+## Video tham khảo
+
+- xem trước: [Dirac Delta: Not a Function but a Distribution](https://www.youtube.com/watch?v=XZKf1G5ATkM) — Scintropy, English. The delta distribution, the picture this functional-analysis gallery starts from.
+- [Sobolev Spaces Explained | Weak Derivatives, W¹ᵖ and H¹](https://www.youtube.com/watch?v=bUIZGQ7T0rU) — Sciwords, English. Sobolev regularity as a gain of weak derivatives.
+- [Peter Lax - Lax-Milgram Theorem](https://www.youtube.com/watch?v=d6lx6kKV9-E) — Simons Foundation, English. Lax-Milgram from its author, the theorem the frames are about.

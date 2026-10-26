@@ -202,6 +202,12 @@ If $$ r $$ is chosen too large, the numerical solution can blow up even though t
 
 **Graduate level.** Use von Neumann analysis, compare explicit and implicit methods, and connect consistency-stability-convergence.
 
+## Video tham khảo
+
+- xem trước: [PDE | Finite differences: introduction](https://www.youtube.com/watch?v=g3Xw1r7QGOE) — commutant, English. commutant introduces finite differences for PDEs.
+- [Finite Difference Method for PDES: Solution of Heat Equation](https://www.youtube.com/watch?v=ACduEf-K9qk) — Easy Mathematics, English. A finite-difference scheme written for the heat equation.
+- [Deriving Forward Euler and Backward/Implicit Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=MstPeOTCVzQ) — Steve Brunton, English. Forward and backward Euler, the time discretizations those heat schemes use.
+
 ## References
 
 - Evans, Chapter 2.

@@ -275,6 +275,12 @@ Giờ đây lộ trình vào Chương 14 khá tự nhiên.
 
 Bài 14.01 dùng bức tranh này để động viên lớp toán tử rộng hơn, còn Bài 14.02 bắt đầu hình thức hóa góc nhìn Fourier và symbol. Mục tiêu của bài hỗ trợ này không phải thay thế các bài đó, mà làm cho logic của chúng trở nên gần như tất yếu về mặt toán học.
 
+## Video tham khảo
+
+- xem trước: [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Biến đổi Fourier, hệ tọa độ mà một bộ nhân chỉ là một phép nhân.
+- [Complex Fourier Series](https://www.youtube.com/watch?v=4cfctnaHyFM) — Steve Brunton, tiếng Anh. Các mode Fourier phức, các hàm mà một bộ nhân co giãn.
+- [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Tiếng Việt. Bài đầu của Xuwen Zhu về toán tử giả vi phân, bắt đầu từ bức tranh symbol ấy.
+
 ## Tài liệu tham khảo
 
 - M. Taylor, *Pseudodifferential Operators and Nonlinear PDE*

@@ -196,6 +196,12 @@ This shows that an initial shape matching an eigenfunction oscillates without ch
 
 **Graduate level.** Connect to Sturm-Liouville theory, orthogonality, and eigenfunction expansion convergence.
 
+## Video tham khảo
+
+- xem trước: [Solving the Wave Equation with Separation of Variables... and Guitar String Physics](https://www.youtube.com/watch?v=ywrgWRSQ3PY) — Steve Brunton, English. Separation of variables on a finite string, with the musical modes.
+- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, English. The equation being separated, derived before the series.
+- [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, English. The Fourier series that packages those spatial modes.
+
 ## References
 
 - Haberman, Chapter 4.

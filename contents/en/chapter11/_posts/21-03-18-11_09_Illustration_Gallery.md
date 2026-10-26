@@ -47,3 +47,9 @@ The lesson also serves as a good review before Chapter 12, because it clarifies 
 - [11.06 Green's Functions for Laplace]({{ site.baseurl }}/contents/en/chapter11/11_06_Greens_Functions_Laplace/)
 - [11.07 Applications: Electrostatics]({{ site.baseurl }}/contents/en/chapter11/11_07_Applications_Electrostatics/)
 - [11.08 Applications: Fluid Flow]({{ site.baseurl }}/contents/en/chapter11/11_08_Applications_Fluid_Flow/)
+
+## Video tham khảo
+
+- xem trước: [PDE 101: Separation of Variables! ...or how I learned to stop worrying and solve Laplace's equation](https://www.youtube.com/watch?v=VjWtMl6vQ3Q) — Steve Brunton, English. A rectangular Laplace solution to compare with the gallery.
+- [Laplace's Equation and Potential Flow](https://www.youtube.com/watch?v=zN0zDrQimXU) — Steve Brunton, English. Potential-flow pictures.
+- [Divergence and curl:  The language of Maxwell's equations, fluid flow, and more](https://www.youtube.com/watch?v=rB83DpBJQsE) — 3Blue1Brown, English. The vector-calculus fields the frames are drawing.

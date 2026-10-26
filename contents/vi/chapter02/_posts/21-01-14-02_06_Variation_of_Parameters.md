@@ -238,6 +238,12 @@ và $$ u_1 $$ nhận được qua tích phân. Dù tích phân của $$ u_1 $$ k
 
 **Bậc sau đại học.** Kết nối với công thức Cramer, Green function, và biểu diễn tích phân của toán tử nghịch đảo.
 
+## Video tham khảo
+
+- xem trước: [Variation of Parameters || How to solve non-homogeneous ODEs](https://www.youtube.com/watch?v=wSMad7QpaqE) — Dr. Trefor Bazett, tiếng Anh. Biến thiên hằng số khi hệ số bất định không dùng được.
+- [Differential Equations with Forcing: Method of Variation of Parameters](https://www.youtube.com/watch?v=wCeDUbZQ_zA) — Steve Brunton, tiếng Anh. Brunton suy công thức nghiệm riêng từ một hệ nghiệm cơ bản.
+- [Undetermined Coefficients: Solving non-homogeneous ODEs](https://www.youtube.com/watch?v=AgyeJEO2a-k) — Dr. Trefor Bazett, tiếng Anh. Đặt cạnh hệ số bất định, phương pháp mà bài này đang tổng quát hóa.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: trình bày rất rõ công thức và động lực của phương pháp.
 - Zill — *Differential Equations with Boundary-Value Problems*: có nhiều bài forcing không chuẩn để luyện biến thiên hằng số.

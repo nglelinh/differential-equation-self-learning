@@ -151,6 +151,12 @@ Xét phương trình dy/dx = g(x)h(y). Viết F(x,y) = g(x)h(y) - y'. Để tìm
 **Jacobian**: Ma trận tổng quát hóa đạo hàm cho ánh xạ nhiều biến.
 Trong ODE nhiều chiều, gradient và Jacobian cho ta "bản đồ" cục bộ của trường vector.
 
+## Video tham khảo
+
+- xem trước: [Visualizing the chain rule and product rule | Chapter 4, Essence of calculus](https://www.youtube.com/watch?v=YG15m2VwSjA) — 3Blue1Brown, tiếng Anh. Hình ảnh quy tắc dây chuyền là công cụ khi vế phải ODE phụ thuộc nhiều biến.
+- [The essence of calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM) — 3Blue1Brown, tiếng Anh. Bắt đầu ở đây với đạo hàm như tốc độ tức thời, đúng nghĩa của y' trong mọi mô hình sau.
+- [Calculus Review: The Derivative (and the Power Law and Chain Rule)](https://www.youtube.com/watch?v=-NhgElcA3K8) — Steve Brunton, tiếng Anh. Ôn nhanh các quy tắc đạo hàm dùng khi kiểm tra một công thức có phải nghiệm ODE hay không.
+
 ## Tài liệu tham khảo
 - Marsden & Tromba — *Vector Calculus*: giáo trình chuẩn về giải tích đa biến.
 - Apostol — *Calculus, Vol. 2*: chi tiết về đạo hàm riêng và ứng dụng.

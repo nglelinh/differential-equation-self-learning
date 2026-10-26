@@ -280,6 +280,12 @@ Trajectories are circles around the origin, so the origin is a center in the lin
 
 ![Complex eigenvalues]({{ site.imgurl }}/chapter_img/chapter04/04_04_eigenvalue_complex.svg)
 
+## Video tham khảo
+
+- xem trước: [2x2 Systems of ODEs: Imaginary Eigenvalues and Center Fixed Points](https://www.youtube.com/watch?v=b7389fIVey0) — Steve Brunton, English. A purely imaginary pair and the center it produces in the phase plane.
+- [Linear Systems: Complex Roots | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=TRVS5Wo9LoM) — MIT OpenCourseWare, English. MIT's short lecture on linear systems with complex eigenvalues.
+- [MAE5790-5 Two dimensional linear systems](https://www.youtube.com/watch?v=QrHRaA93Nrg) — Cornell MAE, English. Strogatz classifies two-dimensional linear systems, including spirals.
+
 ## References
 
 - Boyce & DiPrima, Chapter 7: very clear on converting complex solutions to real solutions.

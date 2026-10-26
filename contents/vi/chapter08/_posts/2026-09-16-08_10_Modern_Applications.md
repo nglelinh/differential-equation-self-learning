@@ -92,6 +92,12 @@ FNO giả định hình học có FFT hoặc biến đổi điều hòa cầu. M
 
 Câu hỏi phản tư: nếu ký hiệu học được $$R_n$$ không suy giảm, toán tử bạn đang học có thực sự liên tục trên $$L^2$$? Parseval cộng định lý nhân tử bị chặn gợi câu trả lời.
 
+## Video tham khảo
+
+- xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, tiếng Anh. Brunton giải thích Fourier neural operator mà bài này nói tới.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Biến đổi cổ điển mà các mode của lớp toán tử đang dùng.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, tiếng Anh. DeepONet là kiến trúc toán tử kia được nêu cạnh FNO.
+
 ## Bài tập
 
 1. **Nhân tử Helmholtz.** Viết ký hiệu của $$(-\Delta+\kappa^2)^{-1}$$ trên đường tròn. Bạn sẽ giữ bao nhiêu mode thấp trong lớp FNO, và vì sao?

@@ -268,3 +268,9 @@ satisfies this identity, so it is the weak solution.
 **Undergraduate level.** Learn how integration by parts generates the weak form.
 
 **Graduate level.** Connect to Galerkin methods, compactness, and existence for nonlinear PDEs.
+
+## Video tham khảo
+
+- xem trước: [Lax-Milgram, application to Poisson equation.](https://www.youtube.com/watch?v=s5P3e1FhpTk) — Learn Maths with Dr Alex, English. Lax-Milgram applied to the Poisson equation, producing a weak solution.
+- [Sobolev Spaces Explained | Weak Derivatives, W¹ᵖ and H¹](https://www.youtube.com/watch?v=bUIZGQ7T0rU) — Sciwords, English. The Sobolev space H^1 in which that weak solution lives.
+- [Lax-Milgram lemma](https://www.youtube.com/watch?v=w8QjyVug78M) — Numerical Analysis by Julian Roth, English. A short proof-oriented account of the Lax-Milgram lemma.

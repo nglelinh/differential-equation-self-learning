@@ -288,6 +288,12 @@ Ví dụ này cho thấy một ODE bậc hai không mất đi nội dung khi chu
 
 **Bậc sau đại học.** Nhấn mạnh không gian trạng thái, dòng chảy động lực học và quan điểm hệ như một toán tử tiến hóa trên $$ \mathbb{R}^n $$.
 
+## Video tham khảo
+
+- xem trước: [Systems of Differential Equations // Part 1: Linear Systems and the Eigenvalue Method](https://www.youtube.com/watch?v=aTMNQtzU0rU) — Dr. Trefor Bazett, tiếng Anh. Cách một phương trình bậc cao thành hệ cấp một, và cách viết một hệ tuyến tính.
+- [Matrix Systems of Differential Equations](https://www.youtube.com/watch?v=Vtijyyo5fKI) — Steve Brunton, tiếng Anh. Dạng ma trận x'=Ax của Brunton cho một hệ phương trình vi phân.
+- [Lec 24 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=MCrDzhpu3-s) — MIT OpenCourseWare, tiếng Anh. Mattuck giới thiệu hệ cấp một trong khóa MIT.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 7: phần mở đầu rất tốt cho việc chuyển từ ODE bậc cao sang hệ trạng thái.

@@ -277,6 +277,12 @@ Trong miền $$ x>1,\ y<1 $$ ta có $$ \dot{x}>0,\ \dot{y}>0 $$ nên quỹ đạ
 
 **Bậc sau đại học.** Nhấn mạnh dòng chảy, tập bất biến, cấu trúc tôpô của quỹ đạo và tính duy nhất của nghiệm.
 
+## Video tham khảo
+
+- xem trước: [MAE5790-1 Course introduction and overview](https://www.youtube.com/watch?v=ycJEoqmQvwg) — Cornell MAE, tiếng Anh. Strogatz mở khóa: không gian pha thay cho công thức.
+- [MAE5790-2 One dimensional Systems](https://www.youtube.com/watch?v=YNIm2Op7UPg) — Cornell MAE, tiếng Anh. Đường pha một chiều là bước khởi động trước mặt phẳng.
+- [Drawing Phase Portraits for Nonlinear Systems](https://www.youtube.com/watch?v=vBwyD4JJlSs) — Steve Brunton, tiếng Anh. Brunton về cách phác chân dung pha phi tuyến từ trường vector.
+
 ## Tài liệu tham khảo
 
 - Strogatz, Chương 5-6: trực giác rất mạnh về hệ tự trị và mặt phẳng pha.

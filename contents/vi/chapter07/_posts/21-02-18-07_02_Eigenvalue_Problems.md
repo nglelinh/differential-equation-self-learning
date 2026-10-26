@@ -247,6 +247,12 @@ $$ \mu=\frac{n\pi}{L}. $$
 
 **Bậc sau đại học.** Kết nối với lý thuyết phổ của toán tử tự liên hợp trên không gian hàm.
 
+## Video tham khảo
+
+- xem trước: [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, tiếng Anh. Trị riêng và hàm riêng của một toán tử vi phân với điều kiện biên.
+- [Sturm-Liouville Theorem and Proof](https://www.youtube.com/watch?v=_F0ck1JncLE) — Faculty of Khan, tiếng Anh. Faculty of Khan phát biểu và chứng minh định lý Sturm-Liouville.
+- [Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra](https://www.youtube.com/watch?v=PFDu9oVAE-g) — 3Blue1Brown, tiếng Anh. Bức tranh trị riêng hữu hạn chiều mà bài toán vi phân này mở rộng.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 10: bài toán trị riêng và dây rung hai đầu.

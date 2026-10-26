@@ -197,6 +197,12 @@ This is the model example of orthogonality in Sturm-Liouville theory.
 
 ![Sturm-Liouville theory]({{ site.imgurl }}/chapter_img/chapter07/03_sturm_liouville_theory.svg)
 
+## Video tham khảo
+
+- xem trước: [Sturm-Liouville Theorem and Proof](https://www.youtube.com/watch?v=_F0ck1JncLE) — Faculty of Khan, English. Self-adjoint form, real eigenvalues, and orthogonal eigenfunctions.
+- [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, English. A full lecture developing the theory from the differential expression.
+- [Sturm-Liouville Theory](https://www.youtube.com/watch?v=12d15vI52b8) — Nathan Kutz, English. Nathan Kutz's computational and theoretical overview.
+
 ## References
 
 - Boyce & DiPrima, Chapters 10-11: standard development of Sturm-Liouville theory.

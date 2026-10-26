@@ -308,3 +308,9 @@ có tần số tức thời tăng theo $$ t $$. Fourier transform toàn cục kh
 **Bậc đại học.** Xem phần này như bản đồ các ứng dụng và đề tài nhỏ khả thi.
 
 **Bậc sau đại học.** Liên hệ các công cụ vi địa phương với papers, survey va bai toan mo cu the.
+
+## Video tham khảo
+
+- xem trước: [Andras Vasy - Microlocal analysis and wave propagation (Part 4)](https://www.youtube.com/watch?v=mqRbYzxLTHM) — Institut Fourier, tiếng Anh. Bài sau của Vasy về ứng dụng, gồm sóng tựa tuyến tính.
+- [Semyon Dyatlov - Microlocal analysis of internal waves in 2D aquaria](https://www.youtube.com/watch?v=2fGu0QHRszY) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Semyon Dyatlov về giải tích vi địa phương của sóng nội, một bài nghiên cứu hiện tại.
+- [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Zworski về các phương pháp vi địa phương vẫn đang được dùng.

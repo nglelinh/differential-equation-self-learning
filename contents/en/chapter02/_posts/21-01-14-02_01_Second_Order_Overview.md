@@ -224,6 +224,12 @@ The equation shows that the same natural frequency persists for every initial co
 
 ![Homogeneous vs particular solutions]({{ site.imgurl }}/chapter_img/chapter02/02_01_general_solution.svg)
 
+## Video tham khảo
+
+- xem trước: [The Theory of 2nd Order ODEs // Existence & Uniqueness, Superposition, & Linear Independence](https://www.youtube.com/watch?v=VpZOuOJ_ob4) — Dr. Trefor Bazett, English. Existence, superposition, and linear independence for second-order linear equations.
+- [Second-Order Ordinary Differential Equations: Solving the Harmonic Oscillator Four Ways](https://www.youtube.com/watch?v=8ePqqZXSMQs) — Steve Brunton, English. Four ways to solve the harmonic oscillator, a map of the chapter's methods.
+- [38. Phương Trình Vi Phân Tuyến Tính Thuần Nhất Cấp 2 (Phần 1) | Phương Trình Vi Phân | KHAN ACADEMY](https://www.youtube.com/watch?v=csE5tFTVzGU) — Khan Academy Vietnam, Vietnamese. Khan Academy Vietnam on homogeneous second-order linear equations.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: excellent introductory section on second-order ODE structure.
 - Zill — *Differential Equations with Boundary-Value Problems*: useful for practicing the ideas of solution basis and initial conditions.

@@ -198,6 +198,12 @@ stability holds when $$ 0\le \nu \le 1 $$. This is the familiar CFL restriction 
 
 **Graduate level.** Connect to von Neumann analysis, energy methods, and nonlinear stability concepts.
 
+## Video tham khảo
+
+- xem trước: [Harvard AM205 video 3.18 - CFL condition & upwinding](https://www.youtube.com/watch?v=GsilBPN8Ew4) — Chris Rycroft, English. Chris Rycroft on the CFL condition and upwinding.
+- [Von Neumann analysis: derivation of the CFL criterion](https://www.youtube.com/watch?v=5_VtrWGaEGM) — LMU Seismology, English. Von Neumann analysis leading to a CFL restriction.
+- [Stability of Forward Euler and Backward Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=RdXCGnTT6UY) — Steve Brunton, English. The ODE version of the same stability restriction, for Euler.
+
 ## References
 
 - Ascher & Petzold: foundational treatment of numerical stability and convergence.

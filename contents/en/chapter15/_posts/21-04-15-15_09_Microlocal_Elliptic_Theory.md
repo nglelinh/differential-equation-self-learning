@@ -306,3 +306,9 @@ Microlocally, if the symbol $$ 1+\lvert \xi\rvert^2 $$ does not vanish at a dire
 **Undergraduate level.** Reconnect this with the elliptic smoothing ideas from earlier PDE chapters.
 
 **Graduate level.** Connect to parametrices, wave front sets, and microlocal inclusion theorems.
+
+## Video tham khảo
+
+- xem trước: [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, English. Microlocal ellipticity as Vasy defines it.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 2)](https://www.youtube.com/watch?v=3DN6bKJnlXc) — Institut Fourier, English. The non-elliptic contrast: propagation when ellipticity fails.
+- [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, English. The elliptic parametrix in the pseudodifferential algebra.

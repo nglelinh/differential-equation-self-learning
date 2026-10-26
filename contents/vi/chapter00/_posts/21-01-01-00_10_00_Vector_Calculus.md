@@ -203,6 +203,12 @@ Hàm điều hòa thỏa mãn $$ \nabla^2 f = 0 $$, với $$\nabla^2 = \partial^
 **Gauss**: $$ \iiint_V = \iint_{\partial S} F\cdot n $$.
 Ba định lý nối biên với miền: "Tổng trên biên = tích phân bên trong nhân với độ cong."
 
+## Video tham khảo
+
+- xem trước: [Div, Grad, and Curl: Vector Calculus Building Blocks for PDEs (Divergence, Gradient, and Curl)](https://www.youtube.com/watch?v=lKXW7DRyyro) — Steve Brunton, tiếng Anh. Gradient, divergence và curl là ba viên gạch của các phép suy diễn PDE về sau.
+- [Divergence and curl:  The language of Maxwell's equations, fluid flow, and more](https://www.youtube.com/watch?v=rB83DpBJQsE) — 3Blue1Brown, tiếng Anh. Divergence và curl đo cái gì trong một chất lưu hoặc một trường điện từ.
+- [Gauss's Divergence Theorem](https://www.youtube.com/watch?v=TORt20_HjMY) — Steve Brunton, tiếng Anh. Định lý divergence, đẳng thức tích phân dùng để đi từ thông lượng sang một PDE.
+
 ## Tài liệu tham khảo
 - Marsden & Tromba — *Vector Calculus*: giáo trình chuẩn về giải tích vector.
 - Griffiths — *Introduction to Electrodynamics*: ứng dụng điện từ học.

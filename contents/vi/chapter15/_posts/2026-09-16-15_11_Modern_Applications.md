@@ -93,6 +93,12 @@ Prior sinh có thể át dữ liệu. Hình học thu thập đổi, và mạng 
 
 Bài hướng nghiên cứu hiện có đã hỏi bao nhiêu hình dạng nghe được hoặc nhìn thấy được. Bài này thêm: mạng được phép vẽ bao nhiêu hình dạng? Câu trả lời trung thực vẫn do tập sóng trước của dữ liệu cho, cộng một prior được dán nhãn rõ.
 
+## Video tham khảo
+
+- xem trước: [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Tiên nghiệm vi địa phương là cấu trúc cổ điển mà bài này muốn các mô hình ngược học được giữ lại.
+- [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, tiếng Anh. Một toán tử học được cho một ánh xạ ngược hoặc thuận, nửa tính toán của bài.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Hình học mặt sóng, ràng buộc mà các tiên nghiệm ấy mã hóa.
+
 ## Bài tập
 
 1. **Nón thiếu.** Phác sóng trước nhìn thấy cho chụp cắt lớp góc hạn chế và giải thích vì sao phần dư $$\ell^2$$ có thể nhỏ trong khi cạnh không nhìn thấy sai.

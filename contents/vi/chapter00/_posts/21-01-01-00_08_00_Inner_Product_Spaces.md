@@ -179,6 +179,12 @@ Ví dụ này cho thấy tích vô hướng dẫn trực tiếp tới xấp xỉ
 
 Không gian tích vô hướng mở rộng hình học Euclid sang không gian tổng quát. Nhờ inner product, ta có thể nói về góc, trực giao, phép chiếu, và từ đó xây dựng chuỗi trực giao, xấp xỉ tốt nhất, và không gian Hilbert cho giải tích hàm.
 
+## Video tham khảo
+
+- xem trước: [Inner Products and Inner Product Spaces | Linear Algebra](https://www.youtube.com/watch?v=RWLhjq2rfcw) — Wrath of Math, tiếng Anh. Các tiên đề tích vô hướng và chuẩn mà chúng cảm sinh.
+- [Proof of the Cauchy-Schwarz inequality | Vectors and spaces | Linear Algebra | Khan Academy](https://www.youtube.com/watch?v=r2PogGDl8_U) — Khan Academy, tiếng Anh. Chứng minh Cauchy-Schwarz của Khan Academy, bất đẳng thức đứng sau góc và hệ số Fourier.
+- [Dot products and duality | Chapter 9, Essence of linear algebra](https://www.youtube.com/watch?v=LyGKycYT2v0) — 3Blue1Brown, tiếng Anh. Cách nhìn hình học của tích vô hướng và đối ngẫu, hữu ích trước tích vô hướng trừu tượng.
+
 ## Tài liệu tham khảo
 
 - Kreyszig, *Introductory Functional Analysis with Applications*.

@@ -319,6 +319,12 @@ Ngay khi viết theo dạng này, ta đọc được:
 
 **Bậc sau đại học.** Nhấn mạnh ma trận nghiệm cơ bản, không gian nghiệm và dòng chảy tuyến tính.
 
+## Video tham khảo
+
+- xem trước: [Matrix Systems of Differential Equations](https://www.youtube.com/watch?v=Vtijyyo5fKI) — Steve Brunton, tiếng Anh. Hệ ma trận và vì sao các cột của ma trận cơ bản là các nghiệm.
+- [Linear Systems of Equations | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=_Fo3Jq1blKk) — MIT OpenCourseWare, tiếng Anh. Bài ngắn của MIT về hệ tuyến tính trong phần này của 18.03.
+- [Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra](https://www.youtube.com/watch?v=PFDu9oVAE-g) — 3Blue1Brown, tiếng Anh. Vector riêng là lý do hình học để một hệ ma trận tách được.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 7: trình bày rõ dạng ma trận và ma trận nghiệm cơ bản.

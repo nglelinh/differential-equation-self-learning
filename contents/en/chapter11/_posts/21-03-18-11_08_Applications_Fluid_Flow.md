@@ -192,6 +192,12 @@ This is uniform flow in the $$ x $$ direction. The example shows how a harmonic 
 
 **Graduate level.** Connect to analytic functions, complex potentials, and free-boundary problems.
 
+## Video tham khảo
+
+- xem trước: [Laplace's Equation and Potential Flow](https://www.youtube.com/watch?v=zN0zDrQimXU) — Steve Brunton, English. Potential flow and Laplace's equation for the velocity potential.
+- [Potential Flow Part 2: Details and Examples](https://www.youtube.com/watch?v=Xfjs31WcY04) — Steve Brunton, English. Brunton's examples of potential flow and the stream function.
+- [Are all vector fields the gradient of a potential?  ... and the Helmholtz Decomposition](https://www.youtube.com/watch?v=xa5xornH2ok) — Steve Brunton, English. Which vector fields are gradients, the condition that makes a flow potential.
+
 ## References
 
 - Haberman, Chapters 6-7.

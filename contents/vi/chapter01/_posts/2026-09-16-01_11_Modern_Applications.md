@@ -119,6 +119,12 @@ Neural ODE có thể huấn luyện chậm hơn residual net rời rạc, nhất
 
 Câu hỏi mang theo: tính chất nào của $$f$$ (Lipschitz, Lipschitz một phía, đơn điệu) nên bị ràng buộc khi học nếu ta muốn cùng những định lý so sánh làm cho phương trình cấp một vô hướng trở nên trong suốt?
 
+## Video tham khảo
+
+- xem trước: [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, tiếng Anh. Bài của Brunton về neural ODE: một mạng là trường vector của mô hình độ sâu liên tục.
+- [David Duvenaud | Reflecting on Neural ODEs | NeurIPS 2019](https://www.youtube.com/watch?v=YZ-_E7A3V2w) — Preserve Knowledge, tiếng Anh. David Duvenaud nhìn lại bài Neural ODE và phương pháp liên hợp dùng để làm gì.
+- [On Neural Differential Equations](https://www.youtube.com/watch?v=TGfGiBhDEi0) — Patrick Kidger, tiếng Anh. Bài giảng của Patrick Kidger về phương trình vi phân nơ-ron như một khung mô hình.
+
 ## Bài tập
 
 1. **Từ khối residual đến ODE.** Viết $$h_{n+1}=h_n+h\,f(h_n)$$ và lấy $$h\to 0$$. Thu lại $$h'=f(h)$$ và nêu nghĩa chính xác của giới hạn trên một khoảng hữu hạn.

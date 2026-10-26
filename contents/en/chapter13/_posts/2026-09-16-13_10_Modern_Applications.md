@@ -97,6 +97,12 @@ Adjoints of long chaotic trajectories are unstable; shadowing and least-squares 
 
 A question: if the continuous adjoint and the discrete adjoint disagree by $$10\%$$, which one should you trust for the optimization you are actually running? The chapter’s answer is the discrete adjoint, because that is the gradient of the method you deployed.
 
+## Video tham khảo
+
+- xem trước: [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, English. Differentiable neural ODE solvers, the modern topic of this lesson.
+- [Latent Stochastic Differential Equations for Irregularly-Sampled Time Series - David Duvenaud](https://www.youtube.com/watch?v=93wr5vhI0F4) — Institute for Advanced Study, English. Latent stochastic differential equations as the noisy extension.
+- [On Neural Differential Equations](https://www.youtube.com/watch?v=TGfGiBhDEi0) — Patrick Kidger, English. Patrick Kidger on training through differential-equation solvers.
+
 ## Exercises
 
 1. **Stability region and a learned step.** For $$y'=\lambda y$$, write the amplification factor of RK4. For which $$h\lambda$$ is a neural residual stepper allowed to use RK4 as its inner scheme?

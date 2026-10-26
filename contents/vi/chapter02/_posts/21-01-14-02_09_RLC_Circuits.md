@@ -203,6 +203,12 @@ cũng tắt dần về 0. Về mặt kỹ thuật, đây là một đáp ứng q
 
 **Bậc sau đại học.** Nối với hàm truyền, đáp ứng tần số, và thiết kế chọn lọc băng thông.
 
+## Video tham khảo
+
+- xem trước: [PHYS 102 | RLC Circuits 1 - The Differential Equation for the RLC Circuit](https://www.youtube.com/watch?v=gmjyBJ9nyZU) — Professor Hafner, tiếng Anh. Mạch RLC nối tiếp viết thành cùng phương trình cấp hai với dao động có cản.
+- [Lecture 20 - RLC circuits and resonance](https://www.youtube.com/watch?v=JSiTC1tCLBg) — Thomas Carr - Math Lectures, tiếng Anh. Cộng hưởng RLC từ các phương trình mạch.
+- [Forced Oscillations | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=xJz3NZap1lw) — MIT OpenCourseWare, tiếng Anh. Dao động cưỡng bức và đáp ứng tuần hoàn dừng, tương tự lò xo chịu lực ngoài trong mạch.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: phần mạch RLC rất phù hợp để thấy sự tương đồng với cơ học.
 - Zill — *Differential Equations with Boundary-Value Problems*: nhiều bài luyện về đáp ứng quá độ và cưỡng bức.

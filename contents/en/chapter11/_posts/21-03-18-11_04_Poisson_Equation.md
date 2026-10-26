@@ -193,6 +193,12 @@ The graph bends upward because of the positive uniform source. This is the simpl
 
 **Graduate level.** Connect to weak formulations, elliptic regularity, and maximum principles with forcing.
 
+## Video tham khảo
+
+- xem trước: [mod08lec73 - The Poisson's Equation: Green's function solution](https://www.youtube.com/watch?v=hiHWwZb2AVU) — NPTEL-NOC IITM, English. NPTEL solves Poisson's equation with a Green's function.
+- [Laplace's Equation and Poisson's Equation](https://www.youtube.com/watch?v=nmvs0vrBT18) — Steve Brunton, English. How Poisson's equation differs from Laplace's by a source term.
+- [Lecture 4: Electrostatic potential, Poisson's Equation, Laplace's Equation, Green's functions](https://www.youtube.com/watch?v=Z0-AkSfMJYU) — rkingery, English. Electrostatic potential, Poisson, and Laplace in one lecture.
+
 ## References
 
 - Evans, Chapters 2 and 6.

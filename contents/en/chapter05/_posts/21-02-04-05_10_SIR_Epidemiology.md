@@ -212,6 +212,12 @@ This lets students see the outbreak threshold directly from the equations.
 
 ![SIR epidemiology]({{ site.imgurl }}/chapter_img/chapter05/05_10_sir_epidemiology.svg)
 
+## Video tham khảo
+
+- xem trước: [The MATH of Pandemics | Intro to the SIR Model](https://www.youtube.com/watch?v=Qrp40ck3WpI) — Dr. Trefor Bazett, English. Trefor Bazett derives the SIR model and the basic reproduction number.
+- [Oxford Mathematician explains SIR Disease Model for COVID-19 (Coronavirus)](https://www.youtube.com/watch?v=NKMHhm2Zbkw) — Tom Rocks Maths, English. Tom Crawford explains the same SIR system for an epidemic.
+- [SIR Model for Epidemiology, Ordinary Differential Equations](https://www.youtube.com/watch?v=f1Ewm1hyPWY) — Dr. Bevin Maultsby, English. A lecture that stays close to the differential equations of SIR.
+
 ## References
 
 - Strogatz, Chapter 3 and later biological examples: threshold interpretation in simple nonlinear models.

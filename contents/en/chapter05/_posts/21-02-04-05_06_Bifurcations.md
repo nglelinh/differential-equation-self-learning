@@ -201,6 +201,12 @@ When $$ \mu<0 $$, only $$ x=0 $$ remains and it is stable. When $$ \mu>0 $$, the
 
 ![Bifurcations]({{ site.imgurl }}/chapter_img/chapter05/05_06_bifurcations.svg)
 
+## Video tham khảo
+
+- xem trước: [MAE5790-12 Bifurcations in two dimensional systems](https://www.youtube.com/watch?v=oqKAVqe71vw) — Cornell MAE, English. Strogatz on bifurcations of two-dimensional systems.
+- [MAE5790-13 Hopf bifurcations in aeroelastic instabilities and chemical oscillators](https://www.youtube.com/watch?v=qV0tCroLOHk) — Cornell MAE, English. Hopf bifurcations in aeroelastic and chemical oscillators.
+- [MAE5790-4 Model of an insect outbreak](https://www.youtube.com/watch?v=P_YCvTabMO4) — Cornell MAE, English. The insect-outbreak model as a saddle-node bifurcation with a biological reading.
+
 ## References
 
 - Strogatz, Chapters 3 and 8: clear normal-form treatment of bifurcations.

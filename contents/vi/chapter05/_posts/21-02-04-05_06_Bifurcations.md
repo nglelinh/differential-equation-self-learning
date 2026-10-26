@@ -206,6 +206,12 @@ Khi $$ \mu<0 $$, chỉ còn $$ x=0 $$ và nó ổn định. Khi $$ \mu>0 $$, g�
 
 **Bậc sau đại học.** Học center manifold, normal form và phân nhánh Hopf cho hệ nhiều chiều.
 
+## Video tham khảo
+
+- xem trước: [MAE5790-12 Bifurcations in two dimensional systems](https://www.youtube.com/watch?v=oqKAVqe71vw) — Cornell MAE, tiếng Anh. Strogatz về phân nhánh của hệ hai chiều.
+- [MAE5790-13 Hopf bifurcations in aeroelastic instabilities and chemical oscillators](https://www.youtube.com/watch?v=qV0tCroLOHk) — Cornell MAE, tiếng Anh. Phân nhánh Hopf trong dao động khí đàn hồi và hóa học.
+- [MAE5790-4 Model of an insect outbreak](https://www.youtube.com/watch?v=P_YCvTabMO4) — Cornell MAE, tiếng Anh. Mô hình bùng phát côn trùng như phân nhánh yên-nút với cách đọc sinh học.
+
 ## Tài liệu tham khảo
 
 - Strogatz, Chương 3 và 8: rất tốt cho các phân nhánh chuẩn và trực giác hình học.

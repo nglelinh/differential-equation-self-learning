@@ -133,6 +133,12 @@ Có thể mời sinh viên khá giỏi thảo luận sự khác nhau giữa khu�
 
 Phương trình nhiệt là mô hình chuẩn của khuếch tán, không chỉ của truyền nhiệt. Từ sinh học, vật liệu, xác suất đến tài chính, cùng một cấu trúc PDE xuất hiện khi một đại lượng lan từ nơi đậm sang nơi loãng và làm phẳng chênh lệch theo thời gian.
 
+## Video tham khảo
+
+- xem trước: [Deriving the Heat Equation: A Parabolic Partial Differential Equation for Heat Energy Conservation](https://www.youtube.com/watch?v=9d8PwnKVA-U) — Steve Brunton, tiếng Anh. Nhiệt và khuếch tán là cùng một định luật bảo toàn với mật độ khác.
+- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Làm trơn và mất các tần số cao, sự kiện định tính của khuếch tán.
+- [Solving the Heat Equation with the Fourier Transform](https://www.youtube.com/watch?v=7haZCrQDHpA) — Steve Brunton, tiếng Anh. Nhân Gauss tường minh của khuếch tán trên đường thẳng.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - nền tảng chuẩn cho phương trình nhiệt, nguyên lý cực đại, và hàm Green.

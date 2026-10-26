@@ -199,6 +199,12 @@ This is the direct discrete version of weak-solution thinking.
 
 **Graduate level.** Connect to Cea's lemma, adaptive refinement, and mixed methods.
 
+## Video tham khảo
+
+- xem trước: [MIT Numerical Methods for PDEs Lecture 17: FEM Error Analysis in Sobolev and L2 norms](https://www.youtube.com/watch?v=nj0fpJUOl64) — Aerodynamic CFD, English. An MIT numerical-PDE lecture on finite-element error in Sobolev and L^2 norms.
+- [Lax-Milgram, application to Poisson equation.](https://www.youtube.com/watch?v=s5P3e1FhpTk) — Learn Maths with Dr Alex, English. The weak form of Poisson's equation that a finite-element method discretizes.
+- [Lax-Milgram lemma](https://www.youtube.com/watch?v=w8QjyVug78M) — Numerical Analysis by Julian Roth, English. Lax-Milgram, the existence theorem behind that weak form.
+
 ## References
 
 - Ascher & Petzold: useful entry point from numerical differential equations to broader discretization themes.

@@ -150,6 +150,12 @@ $$
 **Hermite**: Giải phương trình $$ y'' - 2xy' + 2ny = 0 $$, mô tả dao động tử điều hòa.
 Các hàm đặc biệt là "ngôn ngữ" của tự nhiên khi có đối xứng—tròn, cầu, hay điều hòa.
 
+## Video tham khảo
+
+- xem trước: [The Gamma Function, its Properties, and Application to Bessel Functions](https://www.youtube.com/watch?v=PwCl7vVyXwY) — Faculty of Khan, tiếng Anh. Hàm gamma và cách nó đi vào chuỗi của hàm Bessel.
+- [Intro to the Gamma Function](https://www.youtube.com/watch?v=c7_F4P71E2E) — Physics and Math Lectures, tiếng Anh. Giới thiệu ngắn về cách mở rộng giai thừa bằng tích phân gamma.
+- [Introduction to the Gamma function & the Pi function (extending the factorial!)](https://www.youtube.com/watch?v=L4Trz6pFut4) — blackpenredpen, tiếng Anh. Một góc nhìn cẩn thận khác về hàm gamma như thác triển giải tích của giai thừa.
+
 ## Tài liệu tham khảo
 
 - Arfken & Weber — *Mathematical Methods for Physicists*: chương 10-14 trình bày chi tiết các hàm đặc biệt.

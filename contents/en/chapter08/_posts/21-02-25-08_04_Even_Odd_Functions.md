@@ -199,6 +199,12 @@ Symmetry removes half the coefficient work immediately.
 
 **Graduate level.** Connect symmetry to group actions and mode selection in PDE problems.
 
+## Video tham khảo
+
+- xem trước: [Fourier sine and cosine series | Lecture 50 | Differential Equations for Engineers](https://www.youtube.com/watch?v=v5aithNXpE0) — Jeffrey Chasnov, English. Jeffrey Chasnov on sine and cosine series, the even-odd simplification.
+- [Manipulating Fourier Series | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=v4YcejwdQC0) — MIT OpenCourseWare, English. MIT on manipulating series, including the parity that kills half the coefficients.
+- [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, English. See even and odd pieces inside a general series.
+
 ## References
 
 - Haberman, Chapter 3: symmetry arguments in Fourier computation.

@@ -47,3 +47,9 @@ Bài này cũng là một bản ôn tập tốt trước Chương 12, vì nó l�
 - [11.06 Hàm Green cho phương trình Laplace]({{ site.baseurl }}/contents/vi/chapter11/11_06_Greens_Functions_Laplace/)
 - [11.07 Ứng dụng: tĩnh điện học]({{ site.baseurl }}/contents/vi/chapter11/11_07_Applications_Electrostatics/)
 - [11.08 Ứng dụng: dòng chảy chất lỏng]({{ site.baseurl }}/contents/vi/chapter11/11_08_Applications_Fluid_Flow/)
+
+## Video tham khảo
+
+- xem trước: [PDE 101: Separation of Variables! ...or how I learned to stop worrying and solve Laplace's equation](https://www.youtube.com/watch?v=VjWtMl6vQ3Q) — Steve Brunton, tiếng Anh. Một nghiệm Laplace chữ nhật để so với bộ minh họa.
+- [Laplace's Equation and Potential Flow](https://www.youtube.com/watch?v=zN0zDrQimXU) — Steve Brunton, tiếng Anh. Các hình dòng thế.
+- [Divergence and curl:  The language of Maxwell's equations, fluid flow, and more](https://www.youtube.com/watch?v=rB83DpBJQsE) — 3Blue1Brown, tiếng Anh. Các trường giải tích vector mà các khung đang vẽ.

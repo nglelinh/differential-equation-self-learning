@@ -316,6 +316,12 @@ Ví dụ này cho thấy ma trận mũ vừa giữ được cấu trúc mode, v�
 
 **Bậc sau đại học.** Chứng minh các tính chất toán tử và nối với semigroup của hệ tuyến tính.
 
+## Video tham khảo
+
+- xem trước: [How (and why) to raise e to the power of a matrix | DE6](https://www.youtube.com/watch?v=O85OWBJ2ayo) — 3Blue1Brown, tiếng Anh. Grant Sanderson về vì sao e^{At} giải x'=Ax và cách tính nó.
+- [Matrix Exponentials | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=qbyeQum8qTE) — MIT OpenCourseWare, tiếng Anh. Bài ngắn của MIT về lũy thừa ma trận.
+- [Lec 29 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=zreI4HllD80) — MIT OpenCourseWare, tiếng Anh. Bài đầy đủ của Mattuck suy ra lũy thừa ma trận.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 7: trình bày ma trận mũ như công cụ giải hệ rất rõ ràng.

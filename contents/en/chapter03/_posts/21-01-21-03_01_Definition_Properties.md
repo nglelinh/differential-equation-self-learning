@@ -218,6 +218,12 @@ The formula matters, but so does the region of convergence: the growth rate of t
 
 ![Exponential shifting]({{ site.imgurl }}/chapter_img/chapter03/03_01_shifting.svg)
 
+## Video tham khảo
+
+- xem trước: [But what is a Laplace Transform?](https://www.youtube.com/watch?v=j0wJBEZdwLs) — 3Blue1Brown, English. What the Laplace transform is and why an integral in time becomes algebra in s.
+- [Laplace Transform: Basics | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=BniJM-ireXQ) — MIT OpenCourseWare, English. MIT's short lecture on the definition and the first properties.
+- [(GT3) Chương 3 (Phần 1): Phép biến đổi Laplace và Laplace ngược](https://www.youtube.com/watch?v=qQ7cP5BmPPE) — CLB Hỗ trợ Học tập, Vietnamese. A Vietnamese lecture introducing the Laplace transform and its inverse.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: introduces Laplace very appropriately for students first encountering it.
 - Zill — *Differential Equations with Boundary-Value Problems*: many good basic examples for practicing definition and convergence.

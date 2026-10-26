@@ -149,6 +149,12 @@ Có thể mời sinh viên khá giỏi thực hiện khai triển quanh một s�
 
 Tán sắc là hiện tượng các tần số khác nhau truyền với tốc độ khác nhau, làm gói sóng méo dạng. Hấp thụ là hiện tượng biên độ và năng lượng sóng giảm dần theo thời gian. Một bên làm lệch pha, một bên làm mất năng lượng, và cả hai đều rất phổ biến trong sóng thực tế.
 
+## Video tham khảo
+
+- xem trước: [Phase Velocity versus Group Velocity:  Wave Dispersion](https://www.youtube.com/watch?v=EIqKG5TiSYs) — Physics Videos by Eugene Khutoryansky, tiếng Anh. Vận tốc pha đối với vận tốc nhóm, bức tranh của tán sắc.
+- [13. Dispersive Medium, Phase Velocity, Group Velocity](https://www.youtube.com/watch?v=QxemLb8-5AA) — MIT OpenCourseWare, tiếng Anh. MIT OpenCourseWare về một môi trường tán sắc.
+- [8.03 - Lect 12 - Dispersion, Phase Velocity, Group Velocity](https://www.youtube.com/watch?v=YEDUCl9t1m0) — Lectures by Walter Lewin. They will make you ♥ Physics., tiếng Anh. Walter Lewin về tán sắc, vận tốc pha và vận tốc nhóm.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - phát triển chặt chẽ phương trình sóng, năng lượng, và tính duy nhất.

@@ -94,6 +94,12 @@ FNO assumes a geometry on which an FFT or a spherical harmonic transform is avai
 
 A reflective question: if the learned symbol $$R_n$$ does not decay, is the operator you are learning actually continuous on $$L^2$$? Parseval plus a bounded-multiplier theorem suggests the answer.
 
+## Video tham khảo
+
+- xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, English. Brunton explains the Fourier neural operator this lesson is about.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, English. The classical transform whose modes the operator layer is using.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, English. DeepONet as the other operator architecture named next to FNO.
+
 ## Exercises
 
 1. **Multiplier for the Helmholtz operator.** Write the symbol of $$(-\Delta+\kappa^2)^{-1}$$ on the circle. How many low modes would you keep in an FNO layer, and why?

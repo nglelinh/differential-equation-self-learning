@@ -293,6 +293,12 @@ In quantum mechanics, the degree is directly tied to the energy level.
 
 ![Special functions]({{ site.imgurl }}/chapter_img/chapter06/06_07_other_special_functions.svg)
 
+## Video tham khảo
+
+- xem trước: [The Gamma Function, its Properties, and Application to Bessel Functions](https://www.youtube.com/watch?v=PwCl7vVyXwY) — Faculty of Khan, English. The gamma function, which normalizes several of the families in this lesson.
+- [Hermite and Laguerre Polynomials | Differential Equations](https://www.youtube.com/watch?v=1WlTe-DzO5E) — The Cynical Philosopher, English. Hermite and Laguerre polynomials as the other classical orthogonal families.
+- [Intro to the Gamma Function](https://www.youtube.com/watch?v=c7_F4P71E2E) — Physics and Math Lectures, English. The gamma integral that appears in the coefficients of those families.
+
 ## References
 
 - Abramowitz & Stegun: *Handbook of Mathematical Functions*—the bible

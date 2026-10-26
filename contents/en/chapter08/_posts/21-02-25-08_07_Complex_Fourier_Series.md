@@ -210,6 +210,12 @@ $$
 
 **Graduate level.** Use the complex form naturally in PDE, convolution, and frequency-domain operator calculations.
 
+## Video tham khảo
+
+- xem trước: [Complex Fourier Series](https://www.youtube.com/watch?v=4cfctnaHyFM) — Steve Brunton, English. Steve Brunton derives the complex form c_n e^{in t}.
+- [Complex Fourier Series (fourier series engineering mathematics)](https://www.youtube.com/watch?v=aC0j8CW58AM) — blackpenredpen, English. blackpenredpen computes a complex Fourier series.
+- [MM41: Complex Fourier series](https://www.youtube.com/watch?v=3n36uTz0Qso) — Learn Physics with Dr. Viv!, English. The complex coefficients next to the real sine and cosine form.
+
 ## References
 
 - Haberman, Chapter 3: standard complex-series presentation.

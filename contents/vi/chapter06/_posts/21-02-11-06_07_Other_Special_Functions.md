@@ -217,6 +217,12 @@ Trong cơ học lượng tử, số bậc của Hermite gắn trực tiếp vớ
 
 **Bậc sau đại học.** Kết nối với bài toán Sturm-Liouville, cơ sở trực giao có trọng số và phương pháp phổ.
 
+## Video tham khảo
+
+- xem trước: [The Gamma Function, its Properties, and Application to Bessel Functions](https://www.youtube.com/watch?v=PwCl7vVyXwY) — Faculty of Khan, tiếng Anh. Hàm gamma, hàm chuẩn hóa nhiều họ trong bài này.
+- [Hermite and Laguerre Polynomials | Differential Equations](https://www.youtube.com/watch?v=1WlTe-DzO5E) — The Cynical Philosopher, tiếng Anh. Đa thức Hermite và Laguerre là các họ trực giao cổ điển còn lại.
+- [Intro to the Gamma Function](https://www.youtube.com/watch?v=c7_F4P71E2E) — Physics and Math Lectures, tiếng Anh. Tích phân gamma xuất hiện trong hệ số của các họ ấy.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 5: giới thiệu các họ hàm đặc biệt như kết quả của phương trình vi phân cổ điển.

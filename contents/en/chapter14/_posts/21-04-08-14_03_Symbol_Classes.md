@@ -199,6 +199,12 @@ For $$ m>0 $$, it amplifies high frequencies; for $$ m<0 $$, it smooths them. Th
 
 **Graduate level.** Connect to seminorms on $$ S^m $$, asymptotic expansions, and polyhomogeneous symbols.
 
+## Video tham khảo
+
+- xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Vietnamese. The first lecture's symbol estimates, the start of the symbol classes.
+- [Ps d o’s lecture 2 (Xuwen Zhu)](https://www.youtube.com/watch?v=0OBoX9_-ndQ) — Mathematics video VAROQUI Hervé, Vietnamese. The second lecture, where those classes are used.
+- [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, English. Masoud Khalkhali on the algebra of pseudodifferential operators.
+
 ## References
 
 - Trèves: symbol-class foundations.

@@ -486,3 +486,9 @@ Mặt nhảy ban đầu tại $$ x=0 $$ di chuyển thành mặt nhảy $$ x=ct 
 **Bậc đại học.** Theo dõi singularities bằng đặc tuyến trong các bài toán 1D.
 
 **Bậc sau đại học.** Kết nối với Hamilton vector field, principal type operators và dinh ly propagation cua Hormander.
+
+## Video tham khảo
+
+- xem trước: [Andras Vasy - Microlocal analysis and wave propagation (Part 2)](https://www.youtube.com/watch?v=3DN6bKJnlXc) — Institut Fourier, tiếng Anh. Vasy về lan truyền kỳ dị của toán tử không elliptic, đặc biệt là sóng.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 4)](https://www.youtube.com/watch?v=mqRbYzxLTHM) — Institut Fourier, tiếng Anh. Phần 4 của cùng khóa, về lan truyền toàn cục và ứng dụng.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Trường hợp elliptic, nơi kỳ dị không lan truyền, để đối chiếu.

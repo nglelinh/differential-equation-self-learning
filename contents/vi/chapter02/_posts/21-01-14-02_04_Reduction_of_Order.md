@@ -253,6 +253,12 @@ Ví dụ này rất tốt vì sinh viên thấy nghiệm thứ hai được "sin
 **Bậc sau đại học.** Dẫn ra công thức tích phân kín cho nghiệm thứ hai và liên hệ với Abel:
 $$ y_2=y_1\int \frac{e^{-\int p(t)\,dt}}{y_1^2}\,dt. $$
 
+## Video tham khảo
+
+- xem trước: [❖ Reduction of Order: Basic Example in Differential Equations ❖](https://www.youtube.com/watch?v=oQSFW8BIrY0) — Patrick J, tiếng Anh. Giảm bậc cơ bản: tìm y2=v(x)y1 khi đã biết một nghiệm.
+- [Reduction of orders, 2nd order differential equations with variable coefficients](https://www.youtube.com/watch?v=qw7lsWSkfGA) — blackpenredpen, tiếng Anh. Giảm bậc cho phương trình cấp hai hệ số biến thiên.
+- [Reduction of Order (Introduction)](https://www.youtube.com/watch?v=dtZjxolpzqM) — Houston Math Prep, tiếng Anh. Cách dựng phương pháp trước phần đại số của một ví dụ cụ thể.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: trình bày rất rõ hạ bậc trong các bài hệ số biến thiên.
 - Zill — *Differential Equations with Boundary-Value Problems*: nhiều bài tập tốt để luyện đạo hàm và rút gọn.

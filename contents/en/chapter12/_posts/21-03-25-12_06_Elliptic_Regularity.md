@@ -244,3 +244,9 @@ on $$ 0<x<1 $$ with $$ u(0)=u(1)=0 $$. The right-hand side is only a step functi
 **Undergraduate level.** Observe the smoothing effect in one-dimensional examples.
 
 **Graduate level.** Connect to Schauder estimates, $$ H^k $$ estimates, and local versus global regularity.
+
+## Video tham khảo
+
+- xem trước: [Sketch of Elliptic regularity](https://www.youtube.com/watch?v=wecQr1yruVY) — Calculus is pictures., English. A sketch of elliptic regularity: a weak solution of a smooth elliptic equation is smoother.
+- [Index Theory Lecture 7: Sobolev space theory](https://www.youtube.com/watch?v=Q1JecioLurc) — Masoud Khalkhali, English. The Sobolev scale that measures that extra smoothness.
+- [Peter Lax - Lax-Milgram Theorem](https://www.youtube.com/watch?v=d6lx6kKV9-E) — Simons Foundation, English. Lax-Milgram, which only gives the H^1 solution regularity then improves.

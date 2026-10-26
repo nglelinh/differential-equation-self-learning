@@ -93,6 +93,12 @@ Nonlinear layers leave the ΨDO calculus. Variable-coefficient and manifold sett
 
 A reflective question: if two learned symbols agree at high frequency but differ by a Schwartz function, do they define the same operator modulo smoothing? The chapter’s answer is yes, and that is why high-frequency tests are the right tests.
 
+## Video tham khảo
+
+- xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, English. A Fourier neural operator is a learned Fourier multiplier, the numerical cousin of a symbol.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, English. DeepONet learns an operator without writing its symbol by hand.
+- [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Vietnamese. The classical pseudodifferential symbol those layers are loosely imitating.
+
 ## Exercises
 
 1. **Order of a multiplier.** Show that $$a(\xi)=(1+|\xi|^2)^{m/2}$$ lies in $$S^{m}$$. What order should a learned inverse of $$I-\Delta$$ have?

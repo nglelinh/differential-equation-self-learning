@@ -105,6 +105,12 @@ Cần nói rõ vài giới hạn. Đạo hàm tự động trên chân trời th
 
 Câu hỏi để suy nghĩ: nếu hai mạng đạt cùng phần dư, chuẩn không gian hàm nào quyết định mạng nào gần nghiệm thật hơn? Và: tính đủ cho ta điều gì khi ẩn số là một độ đo xác suất trên các quỹ đạo thay vì một đường cong?
 
+## Video tham khảo
+
+- xem trước: [Physics Informed Neural Networks (PINNs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=-zrY7P2dVC4) — Steve Brunton, tiếng Anh. Cách phần dư PDE được đưa vào hàm mất mát nơ-ron, đúng ý tưởng học máy khoa học của bài.
+- [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, tiếng Anh. Neural ODE như mô hình độ sâu liên tục, nền tảng kia được nêu trong bài ứng dụng hiện đại.
+- [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, tiếng Anh. Fourier neural operator học một ánh xạ giữa các hàm, đúng bức tranh học toán tử của bài.
+
 ## Bài tập
 
 1. **Quy tắc chuỗi và autodiff.** Cho $$y=\sin(e^{x^2})$$. Tính $$y'$$ bằng tay và kiểm tra bằng đạo hàm tự động. Đại lượng nào được lưu trên đồ thị tính toán ở mỗi phép toán sơ cấp?

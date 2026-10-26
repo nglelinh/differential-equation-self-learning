@@ -251,3 +251,9 @@ for every $$ \varphi \in C_c^\infty(-1,1) $$.
 **Undergraduate level.** Understand why cornered functions can still have weak derivatives.
 
 **Graduate level.** Connect to distributions, BV functions, traces, and compactness arguments.
+
+## Video tham khảo
+
+- xem trước: [Sobolev Spaces Explained | Weak Derivatives, W¹ᵖ and H¹](https://www.youtube.com/watch?v=bUIZGQ7T0rU) — Sciwords, English. Weak derivatives, W^{1,p}, and H^1 explained in one lecture.
+- [UPB Math 237 LEC5A Sobolev Spaces](https://www.youtube.com/watch?v=GhBM6L-avYU) — Gilbert Peralta, English. A university lecture developing Sobolev spaces from the weak derivative.
+- [Lec 36 Sobolev lemma](https://www.youtube.com/watch?v=ln4N51019qk) — NPTEL - Indian Institute of Science, Bengaluru, English. NPTEL on the Sobolev lemma, the regularity gain weak derivatives can give.

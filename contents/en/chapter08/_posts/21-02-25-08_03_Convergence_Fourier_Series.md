@@ -206,6 +206,12 @@ not to either one-sided value $$ \pm 1 $$. This is the standard example of Diric
 
 **Graduate level.** Discuss convergence in $$ L^2 $$, smoothness versus coefficient decay, and advanced convergence theorems.
 
+## Video tham khảo
+
+- xem trước: [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, English. Watch the partial sums and the Gibbs ringing, the convergence picture of this lesson.
+- [Lec 16 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=xWa5_OXI6VM) — MIT OpenCourseWare, English. Mattuck continues the Fourier series with more general periods and convergence questions.
+- [Lec 15 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=EWWw0jryj1A) — MIT OpenCourseWare, English. The MIT lecture that introduces the series whose convergence is at stake.
+
 ## References
 
 - Haberman, Chapter 3: standard convergence results with illustrations.

@@ -91,6 +91,12 @@ Khuếch tán thời gian dài trên lưới mịn đắt để mô phỏng cho 
 
 Nếu bộ giải nhiệt học được phá nguyên lý cực đại nhưng thắng benchmark, điều ấy nghĩa là gì về mặt vật lý? Nghĩa là benchmark đang đo đại lượng sai.
 
+## Video tham khảo
+
+- xem trước: [Diffusion and Score-Based Generative Models](https://www.youtube.com/watch?v=wMmqCMwuM2Q) — MITCBMM, tiếng Anh. MIT CBMM về khuếch tán và mô hình sinh dựa trên score, chủ đề hiện đại của bài.
+- [Physics Informed Neural Networks (PINNs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=-zrY7P2dVC4) — Steve Brunton, tiếng Anh. Một mạng có thông tin vật lý cho PDE khuếch tán, họ hàng tính toán khoa học của các mô hình ấy.
+- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Phương trình nhiệt cổ điển mà các mô hình khuếch tán học được được xây từ đó.
+
 ## Bài tập
 
 1. **Phương sai của nhân.** Từ nghiệm cơ bản, chỉ ra khối delta tại gốc có phương sai $$2\alpha^2 t$$ tại thời $$t$$. Làm sao ước lượng $$\alpha$$ từ hàm Green học được?

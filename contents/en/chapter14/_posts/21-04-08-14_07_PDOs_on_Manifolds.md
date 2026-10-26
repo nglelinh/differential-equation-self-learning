@@ -188,6 +188,12 @@ On the sphere, the Laplace-Beltrami operator plays the role of the usual Laplaci
 
 **Graduate level.** Connect to cotangent bundles, invariant symbols, and geometric microlocal analysis.
 
+## Video tham khảo
+
+- xem trước: [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, English. Vasy sets pseudodifferential operators on manifolds, including manifolds with boundary.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 2)](https://www.youtube.com/watch?v=3DN6bKJnlXc) — Institut Fourier, English. Part 2 of the same lectures, still on manifolds and propagation.
+- [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Vietnamese. The Euclidean definition being transplanted to charts.
+
 ## References
 
 - Taylor: geometric operator viewpoint.

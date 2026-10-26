@@ -129,6 +129,12 @@ Có thể mời sinh viên khá giỏi thảo luận quan hệ giữa phương t
 
 Phương trình Laplace là phương trình của cân bằng không nguồn. Hàm điều hòa không có động lực nội tại để tạo cực trị mới bên trong, nên nghiệm bị biên chi phối mạnh. Đây là mô hình nền của tĩnh điện, nhiệt ổn định và dòng chảy thế.
 
+## Video tham khảo
+
+- xem trước: [Laplace's Equation and Poisson's Equation](https://www.youtube.com/watch?v=nmvs0vrBT18) — Steve Brunton, tiếng Anh. Brunton đặt phương trình Laplace cạnh phương trình Poisson.
+- [Laplace's Equation and Potential Flow](https://www.youtube.com/watch?v=zN0zDrQimXU) — Steve Brunton, tiếng Anh. Phương trình Laplace như thế của một dòng không nén.
+- [PDE 101: Separation of Variables! ...or how I learned to stop worrying and solve Laplace's equation](https://www.youtube.com/watch?v=VjWtMl6vQ3Q) — Steve Brunton, tiếng Anh. Tách biến là phương pháp giải đầu tiên cho phương trình.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - khuôn khổ chuẩn cho hàm điều hòa, phương trình Poisson, và hàm Green.

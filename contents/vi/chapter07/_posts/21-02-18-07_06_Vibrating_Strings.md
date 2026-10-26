@@ -220,6 +220,12 @@ $$ \omega_n=c\frac{n\pi}{L}. $$
 
 **Bậc sau đại học.** Liên hệ với lý thuyết phổ của toán tử sóng, năng lượng và cơ sở trực giao trong không gian Hilbert.
 
+## Video tham khảo
+
+- xem trước: [Solving the Wave Equation with Separation of Variables... and Guitar String Physics](https://www.youtube.com/watch?v=ywrgWRSQ3PY) — Steve Brunton, tiếng Anh. Brunton tách biến trên một dây đàn và đọc các mode chuẩn.
+- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, tiếng Anh. Phép suy ra phương trình sóng mà các mode ấy thỏa.
+- [D'Alembert Solution to the Wave Equation](https://www.youtube.com/watch?v=Sc21aPg2RyE) — Faculty of Khan, tiếng Anh. Công thức d'Alembert là dạng đóng khác cho cùng một dây.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 10-11: mô hình dây rung và mode đứng.

@@ -334,3 +334,9 @@ Nếu $$ a(x,\xi)=i\xi $$, ta thu lại đạo hàm bậc nhất. Nếu $$ a(x,\
 **Bậc đại học.** Hiểu định nghĩa qua hai ví dụ: đạo hàm và bộ lọc làm trơn.
 
 **Bậc sau đại học.** Kết nối với Kohn-Nirenberg, Weyl quantization và kernels dao động.
+
+## Video tham khảo
+
+- xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Tiếng Việt. Định nghĩa bằng tích phân dao động của một toán tử giả vi phân.
+- [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, tiếng Anh. Đại số thu được và các tính chất ánh xạ của nó.
+- [Ps d o’s lecture 2 (Xuwen Zhu)](https://www.youtube.com/watch?v=0OBoX9_-ndQ) — Mathematics video VAROQUI Hervé, Tiếng Việt. Một lượt thứ hai qua định nghĩa.

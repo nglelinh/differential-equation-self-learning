@@ -202,6 +202,12 @@ This is the clearest example of the boundary determining the spectral family.
 
 **Graduate level.** Connect to self-adjoint realizations of the Laplacian under different domains.
 
+## Video tham khảo
+
+- xem trước: [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, English. Homogeneous endpoint conditions are what let the sine modes fit the bar in this solution.
+- [Deriving the Heat Equation: A Parabolic Partial Differential Equation for Heat Energy Conservation](https://www.youtube.com/watch?v=9d8PwnKVA-U) — Steve Brunton, English. The derivation, including the boundary terms that become those homogeneous conditions.
+- [PDE 101: Separation of Variables! ...or how I learned to stop worrying and solve Laplace's equation](https://www.youtube.com/watch?v=VjWtMl6vQ3Q) — Steve Brunton, English. Separation with boundary conditions imposed on the spatial eigenvalue problem.
+
 ## References
 
 - Evans, Chapter 2.

@@ -27,3 +27,9 @@ Bài bổ sung này tập hợp toàn bộ minh họa JavaScript của Chương 
   path="interactives/chapter05/index.html"
   height="920px"
 %}
+
+## Video tham khảo
+
+- xem trước: [MAE5790-1 Course introduction and overview](https://www.youtube.com/watch?v=ycJEoqmQvwg) — Cornell MAE, tiếng Anh. Quan điểm không gian pha mà bộ minh họa đang hình dung.
+- [MAE5790-10 van der Pol oscillator](https://www.youtube.com/watch?v=O1lQrHemPsw) — Cornell MAE, tiếng Anh. Một chu trình giới hạn để so với các chân dung phi tuyến của bộ minh họa.
+- [MAE5790-15 Chaotic waterwheel](https://www.youtube.com/watch?v=HljJv7Hf6Zo) — Cornell MAE, tiếng Anh. Bánh xe nước Lorenz là hình hỗn loạn trong bộ.

@@ -93,6 +93,12 @@ Chọn tọa độ vẫn tế nhị. Cấu trúc Hamiltonian không bất biến
 
 Câu hỏi phản tư: nếu mô hình học được bảo toàn một đại lượng không phải năng lượng vật lý, ta thành công hay thất bại? Wronskian gợi ý câu trả lời: bất biến cấu trúc chỉ có giá khi chúng tương ứng với độc lập tuyến tính hoặc luật bảo toàn của hệ thật.
 
+## Video tham khảo
+
+- xem trước: [Hamiltonian Neural Networks (HNN) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=AEOcss20nDA) — Steve Brunton, tiếng Anh. Brunton về Hamiltonian neural network: học một Hamiltonian để trường vector còn symplectic.
+- [Second-Order Ordinary Differential Equations: Solving the Harmonic Oscillator Four Ways](https://www.youtube.com/watch?v=8ePqqZXSMQs) — Steve Brunton, tiếng Anh. Dao động tử cổ điển mà bài này muốn mạng nơ-ron tôn trọng.
+- [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, tiếng Anh. Neural ODE là mô hình liên tục mà một tiên nghiệm Hamiltonian đang tinh chỉnh.
+
 ## Bài tập
 
 1. **Đẳng thức năng lượng.** Với $$y''+\gamma y'+\omega^2 y=0$$, nhân $$y'$$ và suy ra luật tiêu tán năng lượng. Làm sao biến đẳng thức ấy thành ràng buộc huấn luyện?

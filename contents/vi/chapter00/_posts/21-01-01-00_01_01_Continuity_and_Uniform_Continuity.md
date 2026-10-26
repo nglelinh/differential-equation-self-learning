@@ -115,6 +115,12 @@ Xét phương trình $$ y' = f(y) $$ với $$ f $$ liên tục đều trên $$ \
 **Phản chứng**: Thường dùng hai dãy với $$ \lvert x_n - y_n \rvert \to 0 $$ nhưng $$ \lvert f(x_n) - f(y_n) \rvert \not\to 0 $$.
 Trong ODE, liên tục đều giúp kiểm soát sai số không bị khuếch đại.
 
+## Video tham khảo
+
+- xem trước: [This is the Epsilon Delta Definition of Continuity | Real Analysis](https://www.youtube.com/watch?v=O98eOlHyWmQ) — Wrath of Math, tiếng Anh. Một chứng minh epsilon-delta cho tính liên tục, đúng định nghĩa bài này yêu cầu dùng.
+- [Limits, L'Hôpital's rule, and epsilon delta definitions | Chapter 7, Essence of calculus](https://www.youtube.com/watch?v=kfF40MiS7zA) — 3Blue1Brown, Tiếng Việt. Xem giới hạn, và do đó tính liên tục, là phát biểu về việc khống chế sai số bằng delta.
+- [Metric Spaces 8: Cauchy Sequences](https://www.youtube.com/watch?v=UhEaX-uctnM) — Math at Andrews University, tiếng Anh. Dãy Cauchy trong không gian metric, cách khống chế khoảng cách đứng sau tính liên tục đều.
+
 ## Tài liệu tham khảo
 - Rudin — *Principles of Mathematical Analysis*: chương 4 trình bày chi tiết về liên tục đều.
 - Apostol — *Mathematical Analysis*: nhiều ví dụ và bài tập.

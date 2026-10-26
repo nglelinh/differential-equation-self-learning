@@ -189,6 +189,12 @@ The electric field is obtained from $$ E_r=-\phi_r $$. The logarithmic form is t
 
 **Graduate level.** Connect to capacitance, mixed boundary conditions, and inverse conductivity problems.
 
+## Video tham khảo
+
+- xem trước: [Lecture 4: Electrostatic potential, Poisson's Equation, Laplace's Equation, Green's functions](https://www.youtube.com/watch?v=Z0-AkSfMJYU) — rkingery, English. Electrostatic potential as the solution of Poisson's equation.
+- [Divergence and curl:  The language of Maxwell's equations, fluid flow, and more](https://www.youtube.com/watch?v=rB83DpBJQsE) — 3Blue1Brown, English. Maxwell's electrostatic picture: curl-free fields and a potential.
+- [Laplace's Equation and Poisson's Equation](https://www.youtube.com/watch?v=nmvs0vrBT18) — Steve Brunton, English. Laplace versus Poisson according to whether charge is present.
+
 ## References
 
 - Haberman, Chapters 6-7.

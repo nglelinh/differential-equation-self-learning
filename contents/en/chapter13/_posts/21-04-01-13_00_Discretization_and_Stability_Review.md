@@ -201,6 +201,12 @@ The logic of the chapter now becomes clear.
 
 Lesson 13.01 begins with Euler's method because it is the first complete realization of all these ideas in a single scheme. Later lessons then refine the same framework for higher-order methods, multistep methods, stiff equations, and numerical PDEs.
 
+## Video tham khảo
+
+- xem trước: [Differential Equations and Dynamical Systems: Overview](https://www.youtube.com/watch?v=9fQkLQZe3u8) — Steve Brunton, English. Brunton's overview of differential equations before the numerical chapters.
+- [Error Analysis of Euler Integration Scheme for Differential Equations Using Taylor Series](https://www.youtube.com/watch?v=h2i550iaEv0) — Steve Brunton, English. The Taylor expansion that measures the local error of a one-step method.
+- [Stability of Forward Euler and Backward Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=RdXCGnTT6UY) — Steve Brunton, English. Stability of forward and backward Euler, the intuition this review is after.
+
 ## References
 
 - U. Ascher and L. Petzold, *Computer Methods for Ordinary Differential Equations and Differential-Algebraic Equations*

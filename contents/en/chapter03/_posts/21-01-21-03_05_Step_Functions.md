@@ -235,6 +235,12 @@ If this forcing is inserted into a linear ODE, the usual Laplace workflow still 
 
 ![Step functions]({{ site.imgurl }}/chapter_img/chapter03/03_05_step_functions.svg)
 
+## Video tham khảo
+
+- xem trước: [Step and Delta Functions | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=q0PxCQWG3ic) — MIT OpenCourseWare, English. The unit step and how a discontinuous forcing is written with Heaviside functions.
+- [Unit Step and Impulse Response | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=LjqUV6vqwkg) — MIT OpenCourseWare, English. The step response of a linear system, the object this lesson computes.
+- [Laplace: Solving ODE's | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=5av3kiejazQ) — MIT OpenCourseWare, English. The transform rules that still apply after the forcing has been written with steps.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: explains the time-shifting theorem very clearly.
 - Zill — *Differential Equations with Boundary-Value Problems*: many good technical examples of discontinuous signals.

@@ -93,6 +93,12 @@ High contrast, anisotropy, and vanishing ellipticity break uniform estimates and
 
 If a learned potential satisfies the maximum principle but not flux continuity across an interface, which variational identity has failed? The chapter’s Green’s identities give the answer.
 
+## Video tham khảo
+
+- xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, English. Fourier neural operators learn elliptic solution maps of the kind this lesson discusses.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, English. DeepONet as the other learned solution operator for an elliptic problem.
+- [Physics Informed Neural Networks (PINNs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=-zrY7P2dVC4) — Steve Brunton, English. A physics-informed residual for Poisson or Laplace, the equation-enforced alternative.
+
 ## Exercises
 
 1. **Mean-value test.** For a harmonic polynomial on the disk, write the mean-value identity and turn it into a numerical acceptance test for a learned model.

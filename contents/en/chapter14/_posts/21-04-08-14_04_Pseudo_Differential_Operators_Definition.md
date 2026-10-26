@@ -195,6 +195,12 @@ If $$ a(x,\xi)=i\xi $$, we recover the first derivative. If $$ a(x,\xi)=1/(1+\xi
 
 **Graduate level.** Connect to Kohn-Nirenberg quantization, Weyl quantization, and oscillatory kernels.
 
+## Video tham khảo
+
+- xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Vietnamese. The oscillatory-integral definition of a pseudodifferential operator.
+- [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, English. The resulting algebra and its mapping properties.
+- [Ps d o’s lecture 2 (Xuwen Zhu)](https://www.youtube.com/watch?v=0OBoX9_-ndQ) — Mathematics video VAROQUI Hervé, Vietnamese. A second pass through the definition.
+
 ## References
 
 - Trèves: core definition and interpretation.

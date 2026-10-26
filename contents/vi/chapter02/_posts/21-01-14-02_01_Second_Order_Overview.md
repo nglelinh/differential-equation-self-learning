@@ -222,6 +222,12 @@ Biểu thức này cho thấy hệ dao động điều hòa với cùng tần s�
 
 **Bậc sau đại học.** Nhấn mạnh không gian nghiệm hai chiều, viết lại thành hệ cấp một, và quan điểm toán tử tuyến tính làm nền cho lý thuyết phổ ở các chương sau.
 
+## Video tham khảo
+
+- xem trước: [38. Phương Trình Vi Phân Tuyến Tính Thuần Nhất Cấp 2 (Phần 1) | Phương Trình Vi Phân | KHAN ACADEMY](https://www.youtube.com/watch?v=csE5tFTVzGU) — Khan Academy Vietnam, Tiếng Việt. Khan Academy Việt Nam về phương trình tuyến tính cấp hai thuần nhất.
+- [The Theory of 2nd Order ODEs // Existence & Uniqueness, Superposition, & Linear Independence](https://www.youtube.com/watch?v=VpZOuOJ_ob4) — Dr. Trefor Bazett, tiếng Anh. Tồn tại, chồng chất và độc lập tuyến tính cho phương trình tuyến tính cấp hai.
+- [Second-Order Ordinary Differential Equations: Solving the Harmonic Oscillator Four Ways](https://www.youtube.com/watch?v=8ePqqZXSMQs) — Steve Brunton, tiếng Anh. Bốn cách giải dao động điều hòa, một bản đồ các phương pháp của chương.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: phần nhập môn rất tốt về cấu trúc của ODE cấp hai.
 - Zill — *Differential Equations with Boundary-Value Problems*: hữu ích để luyện ý tưởng cơ sở nghiệm và điều kiện đầu.

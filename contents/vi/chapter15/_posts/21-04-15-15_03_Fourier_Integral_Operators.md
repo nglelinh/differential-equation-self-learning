@@ -498,3 +498,9 @@ có thể viết như một FIO với phase tuyến tính. Nó không chỉ thay
 **Bậc đại học.** Hiểu FIO như toán tử vận chuyển singularities.
 
 **Bậc sau đại học.** Kết nối với canonical relations, nondegenerate phases va dinh ly anh xa wave front set.
+
+## Video tham khảo
+
+- xem trước: [Introduction to Fourier Integral operators 1 (Allan Greenleaf)](https://www.youtube.com/watch?v=4O_oC9kFFWQ) — Mathematics video VAROQUI Hervé, Tiếng Việt. Bài nhập môn của Allan Greenleaf về toán tử tích phân Fourier.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Các toán tử ấy dịch chuyển tập mặt sóng như thế nào, trong bài đầu của Vasy.
+- [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Các phương pháp vi địa phương của Zworski, dựa trên cùng các toán tử.

@@ -315,3 +315,9 @@ $$
 **Bậc đại học.** Hiểu composition qua trường hợp multiplier chỉ phụ thuộc tần số.
 
 **Bậc sau đại học.** Kết nối với Moyal product, symbolic expansions và adjoint formulas trên manifold.
+
+## Video tham khảo
+
+- xem trước: [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, tiếng Anh. Tích và liên hợp trong đại số giả vi phân.
+- [Ps d o’s lecture 2 (Xuwen Zhu)](https://www.youtube.com/watch?v=0OBoX9_-ndQ) — Mathematics video VAROQUI Hervé, Tiếng Việt. Bài thứ hai của Zhu, đi tới phép tính hợp thành.
+- [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Tiếng Việt. Tích symbol mà phép hợp thành đang hiệu chỉnh bằng các số hạng bậc thấp hơn.

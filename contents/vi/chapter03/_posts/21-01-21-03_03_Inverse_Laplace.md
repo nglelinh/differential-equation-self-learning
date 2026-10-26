@@ -245,6 +245,12 @@ $$ f(t)=2e^{-2t}\cos 3t+\frac{1}{3}e^{-2t}\sin 3t. $$
 
 **Bậc sau đại học.** Đi xa hơn sang cực lặp, cực phức, và cách đọc ổn định hay mode từ vị trí pole.
 
+## Video tham khảo
+
+- xem trước: [Partial Fractions and Laplace Inverse | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=D6Rd1K93nSA) — MIT OpenCourseWare, tiếng Anh. Phân thức và biến đổi Laplace ngược, phần tính toán trung tâm của bài.
+- [Laplace: Solving ODE's | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=5av3kiejazQ) — MIT OpenCourseWare, tiếng Anh. Xem biến đổi ngược được dùng ngay để lấy lại y(t) từ một phương trình đại số.
+- [Laplace Transform: Basics | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=BniJM-ireXQ) — MIT OpenCourseWare, tiếng Anh. Bảng thuận mà phép nghịch đảo đang đọc ngược.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: rất tốt cho việc học Laplace ngược bằng phân thức đơn.
 - Zill — *Differential Equations with Boundary-Value Problems*: nhiều bài luyện đúng trọng tâm của bài học này.

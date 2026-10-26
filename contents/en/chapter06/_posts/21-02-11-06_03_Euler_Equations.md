@@ -231,6 +231,12 @@ $$ y=C_1 x^2+C_2 x^2\ln x. $$
 
 ![Euler equations]({{ site.imgurl }}/chapter_img/chapter06/06_03_euler_equations.svg)
 
+## Video tham khảo
+
+- xem trước: [Cauchy Euler Differential Equation (equidimensional equation)](https://www.youtube.com/watch?v=zXZ4qmDpblE) — blackpenredpen, English. The Cauchy-Euler equation and the trial solution x^r.
+- [Cauchy-Euler Differential Equations (2nd Order)](https://www.youtube.com/watch?v=ep7xoctAlEY) — Houston Math Prep, English. A second-order Cauchy-Euler equation worked in full.
+- [Introduction to Cauchy Euler Differential Equations](https://www.youtube.com/watch?v=oqpc89Lfx-E) — The Math Sorcerer, English. Why the equidimensional equation is the model singular equation.
+
 ## References
 
 - Boyce & DiPrima, Section 5.3: Euler equation as Frobenius special case

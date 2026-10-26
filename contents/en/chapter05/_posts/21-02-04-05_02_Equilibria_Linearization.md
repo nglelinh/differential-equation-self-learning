@@ -245,6 +245,12 @@ Its eigenvalues have negative real part, so the equilibrium is locally asymptoti
 
 ![Equilibria and linearization]({{ site.imgurl }}/chapter_img/chapter05/05_02_equilibria_linearization.svg)
 
+## Video tham khảo
+
+- xem trước: [Linearizing Nonlinear Differential Equations Near a Fixed Point](https://www.youtube.com/watch?v=RCWkzzLgwf0) — Steve Brunton, English. Linearize a nonlinear field at a fixed point and trust the Jacobian nearby.
+- [Linearization | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=UCpMao94iFg) — MIT OpenCourseWare, English. MIT's short lecture on linearization.
+- [MAE5790-6 Two dimensional nonlinear systems   fixed points](https://www.youtube.com/watch?v=9yh9DmNqdk4) — Cornell MAE, English. Strogatz on fixed points of two-dimensional nonlinear systems.
+
 ## References
 
 - Strogatz, Chapter 6: clear treatment of linearization and local behavior.

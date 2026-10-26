@@ -227,6 +227,12 @@ Nên $$ r=0 $$ là nghiệm kép. Đây là tín hiệu rằng một nghiệm Fr
 
 **Bậc sau đại học.** Bàn về singularity chính quy/không chính quy, monodromy và cấu trúc local của nghiệm quanh điểm kỳ dị.
 
+## Video tham khảo
+
+- xem trước: [The Frobenius Method - Ordinary Differential Equations | Lecture 28](https://www.youtube.com/watch?v=saPepQrIjqM) — Jason Bramburger, tiếng Anh. Jason Bramburger về phương pháp Frobenius tại điểm kỳ dị chính quy.
+- [When can you use Series to solve ODEs? Ordinary vs Singular Points](https://www.youtube.com/watch?v=nCT3P8EsoPw) — Dr. Trefor Bazett, tiếng Anh. Phép thử phân biệt điểm thường với điểm kỳ dị chính quy.
+- [Lecture-15-16: Regular Singular Point, Frobenius Series Solution, Indicial Equation](https://www.youtube.com/watch?v=1eAr1XYYEto) — iTMK, tiếng Anh. Phương trình chỉ số bên trong một chuỗi Frobenius.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 5: giới thiệu đầy đủ phương pháp Frobenius và các trường hợp suy biến.

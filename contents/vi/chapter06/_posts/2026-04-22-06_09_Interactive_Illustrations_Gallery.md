@@ -28,3 +28,9 @@ Bài bổ sung này tập hợp toàn bộ minh họa JavaScript của Chương 
   path="interactives/chapter06/index.html"
   height="920px"
 %}
+
+## Video tham khảo
+
+- xem trước: [Taylor series | Chapter 11, Essence of calculus](https://www.youtube.com/watch?v=3d6DsjIBzJ4) — 3Blue1Brown, tiếng Anh. Đa thức Taylor là các hình mà một bộ minh họa chuỗi đang xấp xỉ.
+- [Advanced Engineering Mathematics, Lecture 2.7: Bessel's equation](https://www.youtube.com/watch?v=lcvWAgrdFn0) — Professor Macauley, tiếng Anh. Hàm Bessel để so với các khung hàm đặc biệt.
+- [Intro to Legendre Polynomials](https://www.youtube.com/watch?v=djlUmwbPw20) — Physics and Math Lectures, tiếng Anh. Đa thức Legendre là họ kia được vẽ trong bộ minh họa.

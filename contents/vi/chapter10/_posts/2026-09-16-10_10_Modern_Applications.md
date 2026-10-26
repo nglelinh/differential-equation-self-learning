@@ -97,6 +97,12 @@ Lỗi tán sắc hại hơn lỗi biên độ cho ảnh hóa. Điều kiện bi�
 
 Câu hỏi giữ lại: nếu mạng bảo toàn năng lượng nhưng di chuyển kỳ dị với tốc độ sai, đồng nhất thức nào đã thất bại? Câu trả lời của chương là hệ thức đặc trưng, không phải đẳng thức năng lượng.
 
+## Video tham khảo
+
+- xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, tiếng Anh. Fourier neural operator được huấn luyện trên các ánh xạ nghiệm PDE dạng sóng, phương pháp của bài.
+- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, tiếng Anh. Phương trình sóng cổ điển mà các mạng ấy đang học cách lan truyền.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, tiếng Anh. DeepONet là một kiến trúc thay thế cho cùng toán tử nghiệm.
+
 ## Bài tập
 
 1. **Nón ánh sáng.** Từ d’Alembert, chứng minh dữ liệu đầu giá compact ở lại trong $$|x|\le R+ct$$. Thiết kế phép thử số cho bộ giải học được.

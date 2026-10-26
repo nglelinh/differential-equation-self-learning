@@ -323,3 +323,9 @@ This directly verifies Minkowski's inequality.
 **Undergraduate level.** Use Minkowski to prove that $$ L^p $$ is a normed space.
 
 **Graduate level.** Connect to convexity, Banach-space geometry, and interpolation theory.
+
+## Video tham khảo
+
+- xem trước: [Young's, Hölder's and Minkowski's Inequality. l^p sequence spaces.](https://www.youtube.com/watch?v=Gp47SlY25WA) — Sukumar Daniel, English. Young, Hölder, and Minkowski proved together for sequence spaces.
+- [Holder's Inequality](https://www.youtube.com/watch?v=XgspUqrgOaA) — Mike, the Mathematician, English. Hölder first, because Minkowski is proved from it.
+- [Lecture 13: Lp Space Theory](https://www.youtube.com/watch?v=BYR1fXW95zY) — MIT OpenCourseWare, English. The L^p spaces whose triangle inequality is Minkowski's.

@@ -237,6 +237,12 @@ The factor $$ t $$ records cumulative energy injection at resonance.
 
 ![Trial forms visualization]({{ site.imgurl }}/chapter_img/chapter02/02_05_trial_forms.svg)
 
+## Video tham khảo
+
+- xem trước: [Undetermined Coefficients: Solving non-homogeneous ODEs](https://www.youtube.com/watch?v=AgyeJEO2a-k) — Dr. Trefor Bazett, English. How to guess a particular solution for polynomial, exponential, and trigonometric forcing.
+- [Undetermined Coefficients | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=pGECDB15L9o) — MIT OpenCourseWare, English. MIT's short lecture on undetermined coefficients.
+- [Differential Equations with Forcing: Method of Undetermined Coefficients](https://www.youtube.com/watch?v=Jvmb2jeRaGE) — Steve Brunton, English. Brunton derives the same guessing method from the forced linear equation.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: very strong on undetermined coefficients method and resonance.
 - Zill — *Differential Equations with Boundary-Value Problems*: many exercises on choosing ansatz forms.

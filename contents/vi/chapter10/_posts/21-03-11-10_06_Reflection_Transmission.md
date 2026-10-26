@@ -145,6 +145,12 @@ Có thể mời sinh viên khá giỏi suy ra công thức $$ R,\ T $$ từ các
 
 Khi sóng gặp biên hoặc mặt phân cách, nó thường tách thành phần phản xạ và phần truyền qua. Pha phản xạ phụ thuộc loại biên, còn cường độ phản xạ phụ thuộc vào độ khớp trở kháng giữa các môi trường. Năng lượng tới được chia ra chứ không tự mất đi.
 
+## Video tham khảo
+
+- xem trước: [Strings: reflection and transmission of an incoming wave at a discontinuity.](https://www.youtube.com/watch?v=Zokrkuc2EgU) — Mooc Bogazici, tiếng Anh. Phản xạ và truyền qua của một sóng tại một điểm gián đoạn của dây.
+- [Reflection and Transmission of Transverse Waves](https://www.youtube.com/watch?v=L5-RuMtXDyo) — Physics Ninja, tiếng Anh. Physics Ninja về phản xạ và truyền qua của một sóng ngang.
+- [PDE 10 | Wave equation: d'Alembert's formula](https://www.youtube.com/watch?v=j2G91naZ8bo) — commutant, tiếng Anh. Các sóng phải và trái của d'Alembert, các đối tượng bị phản xạ.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - phát triển chặt chẽ phương trình sóng, năng lượng, và tính duy nhất.

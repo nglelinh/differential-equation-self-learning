@@ -226,3 +226,9 @@ This is the model example of decomposition into orthogonal modes.
 **Undergraduate level.** Learn spectral theory through familiar eigenvalue problems.
 
 **Graduate level.** Connect to compact operators, resolvents, continuous spectrum, and functional calculus.
+
+## Video tham khảo
+
+- xem trước: [Lecture 22: The Spectral Theorem for a Compact Self-Adjoint Operator](https://www.youtube.com/watch?v=-sfaHVFWBU8) — MIT OpenCourseWare, English. MIT's lecture on the spectral theorem for a compact self-adjoint operator.
+- [Lecture 20: Compact Operators and the Spectrum of a Bounded Linear Operator on a Hilbert Space](https://www.youtube.com/watch?v=SFDMFbzCsH0) — MIT OpenCourseWare, English. MIT on compact operators and the spectrum of a bounded operator.
+- [Spectral Theorem For Dummies - 3Blue1Brown Summer of Math Exposition #SoME1](https://www.youtube.com/watch?v=4zD8Kd3HgJA) — Jacqueline Doan, English. A gentle geometric account of the spectral theorem.

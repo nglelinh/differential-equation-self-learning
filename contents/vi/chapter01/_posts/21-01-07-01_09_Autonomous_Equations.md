@@ -232,6 +232,12 @@ Phân tích dấu cho thấy $$ x=0.2 $$ là cân bằng không ổn định cò
 
 **Bậc sau đại học.** Kết nối với tiêu chuẩn $$ f'(y_*) $$, bifurcation một tham số, ổn định cấu trúc, và tư duy Lyapunov một chiều. Đây là cánh cửa mở sang động lực học phi tuyến hiện đại.
 
+## Video tham khảo
+
+- xem trước: [Autonomous Equations, Equilibrium Solutions, and Stability](https://www.youtube.com/watch?v=pZOmToxx-R8) — Dr. Trefor Bazett, tiếng Anh. Nghiệm cân bằng và tính ổn định đọc từ đường pha.
+- [Autonomous Equations and Phase Lines | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=elMskF8Uzmg) — MIT OpenCourseWare, tiếng Anh. Bài ngắn của MIT về phương trình tự trị và đường pha.
+- [MAE5790-2 One dimensional Systems](https://www.youtube.com/watch?v=YNIm2Op7UPg) — Cornell MAE, tiếng Anh. Strogatz về dòng một chiều, phiên bản hình học của đường pha.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: có phần rất rõ về autonomous equations và phase lines.
 - Zill — *Differential Equations with Boundary-Value Problems*: hữu ích để luyện kỹ năng phân tích dấu và ổn định một chiều.

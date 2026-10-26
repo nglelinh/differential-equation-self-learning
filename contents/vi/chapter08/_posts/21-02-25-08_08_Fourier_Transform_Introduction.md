@@ -228,6 +228,12 @@ theo quy ước chuẩn hóa thích hợp. Gaussian là hàm ổn định dướ
 
 **Bậc sau đại học.** Bàn về các không gian Schwartz, định lý Plancherel, phân phối và vai trò trong PDE trên miền vô hạn.
 
+## Video tham khảo
+
+- xem trước: [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Bài giới thiệu trực quan của 3Blue1Brown về biến đổi Fourier.
+- [Solving the Heat Equation with the Fourier Transform](https://www.youtube.com/watch?v=7haZCrQDHpA) — Steve Brunton, tiếng Anh. Brunton dùng biến đổi để giải phương trình nhiệt trên đường thẳng.
+- [The more general uncertainty principle, regarding Fourier transforms](https://www.youtube.com/watch?v=MBnnXbOM5S4) — 3Blue1Brown, tiếng Anh. Nguyên lý bất định như một tính chất của biến đổi được giới thiệu ở đây.
+
 ## Tài liệu tham khảo
 
 - Haberman, *Applied Partial Differential Equations* - trực giác tốt về chuỗi Fourier, hội tụ, và các ví dụ vật lý.

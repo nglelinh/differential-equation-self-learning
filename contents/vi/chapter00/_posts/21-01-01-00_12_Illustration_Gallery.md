@@ -50,3 +50,9 @@ Mục tiêu là làm cho Chapter 00 không còn là “chương phụ trợ”, 
 - [00.09 Lý thuyết Tích phân]({{ site.baseurl }}/contents/vi/chapter00/00_09_00_Integration_Theory/)
 - [00.10 Giải tích Vector]({{ site.baseurl }}/contents/vi/chapter00/00_10_00_Vector_Calculus/)
 - [00.11 Hàm Đặc biệt]({{ site.baseurl }}/contents/vi/chapter00/00_11_00_Special_Functions/)
+
+## Video tham khảo
+
+- xem trước: [Differential equations, a tourist's guide | DE1](https://www.youtube.com/watch?v=p_di4Zn4wz4) — 3Blue1Brown, tiếng Anh. Chuyến tham quan trực quan về phương trình vi phân, khớp với các hình trong bộ minh họa.
+- [The essence of calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM) — 3Blue1Brown, tiếng Anh. Giải tích hoạt hình giúp đọc các hình đạo hàm và tích phân trong bộ minh họa.
+- [Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra](https://www.youtube.com/watch?v=PFDu9oVAE-g) — 3Blue1Brown, tiếng Anh. Vector riêng được vẽ như hướng kéo giãn, hình đứng sau phần đại số tuyến tính của chương.

@@ -257,6 +257,12 @@ In electrostatics, this is the standard quadrupole angular mode.
 
 ![Legendre equation]({{ site.imgurl }}/chapter_img/chapter06/06_06_legendre_equation.svg)
 
+## Video tham khảo
+
+- xem trước: [Intro to Legendre Polynomials](https://www.youtube.com/watch?v=djlUmwbPw20) — Physics and Math Lectures, English. What Legendre polynomials are and why the equation produces a polynomial for special degrees.
+- [Lecture 42 part 3 (Orthogonality of Legendre Polynomials)](https://www.youtube.com/watch?v=gwTmJN8mucE) — Daniel Maxin, English. Orthogonality of the Legendre polynomials on [-1,1].
+- [Legendre Polynomial | Orthogonal Properties of Legendre Polynomial](https://www.youtube.com/watch?v=RDU7FTqgx7s) — Dr.Gajendra Purohit, English. A further lecture on the orthogonality relations used in expansions.
+
 ## References
 
 - Boyce & DiPrima, Section 5.6: Legendre polynomials

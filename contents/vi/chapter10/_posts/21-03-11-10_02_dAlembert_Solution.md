@@ -165,6 +165,12 @@ Có thể mời sinh viên khá giỏi dùng công thức d'Alembert để phân
 
 Nghiệm d'Alembert nói rằng nghiệm của phương trình sóng một chiều là tổng của một sóng đi sang phải và một sóng đi sang trái. Thông tin lan theo đặc trưng $$ x\pm ct $$, nên sóng có tốc độ truyền hữu hạn và miền ảnh hưởng rõ ràng.
 
+## Video tham khảo
+
+- xem trước: [PDE 10 | Wave equation: d'Alembert's formula](https://www.youtube.com/watch?v=j2G91naZ8bo) — commutant, tiếng Anh. commutant suy công thức d'Alembert cho dây vô hạn.
+- [D'Alembert Solution to the Wave Equation](https://www.youtube.com/watch?v=Sc21aPg2RyE) — Faculty of Khan, tiếng Anh. Faculty of Khan về cùng nghiệm d'Alembert.
+- [The Method of Characteristics and the Wave Equation](https://www.youtube.com/watch?v=eI2x99SxJgU) — Steve Brunton, tiếng Anh. Phương pháp đường đặc trưng, nơi công thức d'Alembert xuất phát.
+
 ## Tài liệu tham khảo
 
 - Evans, *Partial Differential Equations* - phát triển chặt chẽ phương trình sóng, năng lượng, và tính duy nhất.

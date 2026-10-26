@@ -233,6 +233,12 @@ $$
 
 **Bậc sau đại học.** Đi vào ánh xạ co Banach, lặp Picard, điều kiện Caratheodory, và các phản ví dụ nơi duy nhất vẫn đúng dù không Lipschitz. Đây là nền cho tư duy well-posedness của PDE.
 
+## Video tham khảo
+
+- xem trước: [The Big Theorem of Differential Equations: Existence & Uniqueness](https://www.youtube.com/watch?v=_WpncZ3RkTg) — Dr. Trefor Bazett, tiếng Anh. Picard-Lindelöf: tồn tại và duy nhất địa phương khi f Lipschitz theo y.
+- [Picard Iteration: An Example](https://www.youtube.com/watch?v=00DTrCST-zA) — Mike, the Mathematician, tiếng Anh. Một vòng lặp Picard viết tường minh, để ánh xạ co trừu tượng thành một dãy hàm.
+- [The Geometric Meaning of Differential Equations // Slope Fields, Integral Curves & Isoclines](https://www.youtube.com/watch?v=ccDMpj2UK_M) — Dr. Trefor Bazett, tiếng Anh. Trường hướng cho thấy bức tranh duy nhất: một đường tích phân qua mỗi điểm chính quy.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: có phần rất chuẩn về Picard-Lindelof và các phản ví dụ kinh điển.
 - Zill — *Differential Equations with Boundary-Value Problems*: phù hợp để luyện phân tích giả thiết định lý qua các ví dụ cụ thể.

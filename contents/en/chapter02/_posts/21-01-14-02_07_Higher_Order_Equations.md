@@ -208,6 +208,12 @@ In a three-mode engineering model, the mode $$ e^{3t} $$ dominates rapidly whene
 
 ![Higher order characteristic roots]({{ site.imgurl }}/chapter_img/chapter02/02_07_higher_order_equations.svg)
 
+## Video tham khảo
+
+- xem trước: [Higher Order Constant Coefficient Differential Equations: y'''+y'=0 and y''''-3y'''+3y''-y'=0](https://www.youtube.com/watch?v=is0F0u62IbY) — Dr. Trefor Bazett, English. The characteristic polynomial for third- and fourth-order constant-coefficient equations.
+- [Solving General High-Order, Linear Ordinary Differential Equations (ODEs)](https://www.youtube.com/watch?v=vA3MjD0cfS4) — Steve Brunton, English. Brunton on the general linear constant-coefficient equation of high order.
+- [The Theory of Higher Order Differential Equations](https://www.youtube.com/watch?v=7vwDp94wEhg) — Dr. Trefor Bazett, English. The structural theory: dimension of the solution space and a fundamental set.
+
 ## References
 - Boyce & DiPrima — *Elementary Differential Equations*: the extension to higher order is very clear.
 - Zill — *Differential Equations with Boundary-Value Problems*: many good exercises on repeated roots and dominant modes.

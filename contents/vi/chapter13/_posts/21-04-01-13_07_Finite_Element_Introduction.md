@@ -318,3 +318,9 @@ $$ KU=F. $$
 **Bậc đại học.** Hiểu lưới, hàm hat và ma trận stiffness trong 1D.
 
 **Bậc sau đại học.** Kết nối với Cea's lemma, adaptive refinement và mixed methods.
+
+## Video tham khảo
+
+- xem trước: [MIT Numerical Methods for PDEs Lecture 17: FEM Error Analysis in Sobolev and L2 norms](https://www.youtube.com/watch?v=nj0fpJUOl64) — Aerodynamic CFD, tiếng Anh. Một bài PDE số của MIT về sai số phần tử hữu hạn trong chuẩn Sobolev và L^2.
+- [Lax-Milgram, application to Poisson equation.](https://www.youtube.com/watch?v=s5P3e1FhpTk) — Learn Maths with Dr Alex, tiếng Anh. Dạng yếu của phương trình Poisson mà phương pháp phần tử hữu hạn rời rạc hóa.
+- [Lax-Milgram lemma](https://www.youtube.com/watch?v=w8QjyVug78M) — Numerical Analysis by Julian Roth, tiếng Anh. Lax-Milgram, định lý tồn tại đứng sau dạng yếu ấy.

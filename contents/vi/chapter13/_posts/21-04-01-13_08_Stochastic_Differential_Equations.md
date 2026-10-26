@@ -309,3 +309,9 @@ $$ \Delta W_n \sim \mathcal{N}(0,\Delta t). $$
 **Bậc đại học.** Hiểu quỹ đạo mẫu, nhiễu Brown và Euler-Maruyama.
 
 **Bậc sau đại học.** Kết nối với Ito formula, strong/weak convergence và Fokker-Planck equations.
+
+## Video tham khảo
+
+- xem trước: [21. Stochastic Differential Equations](https://www.youtube.com/watch?v=qdbkvD4N-us) — MIT OpenCourseWare, tiếng Anh. MIT 18.S096 giới thiệu phương trình vi phân ngẫu nhiên.
+- [Lecture 24: Stochastic Calculus](https://www.youtube.com/watch?v=5cruqmIF6l0) — MIT OpenCourseWare, tiếng Anh. Giải tích ngẫu nhiên mà các phương trình ấy được viết trong đó.
+- [Latent Stochastic Differential Equations for Irregularly-Sampled Time Series - David Duvenaud](https://www.youtube.com/watch?v=93wr5vhI0F4) — Institute for Advanced Study, tiếng Anh. Một bài nghiên cứu về SDE ẩn, cách dùng hướng dữ liệu của cùng đối tượng.

@@ -49,3 +49,9 @@ The page also serves as a bridge between the advanced chapter text and later res
 - [15.07 Quantum Mechanics]({{ site.baseurl }}/contents/en/chapter15/15_07_Quantum_Mechanics/)
 - [15.08 Current Research Directions]({{ site.baseurl }}/contents/en/chapter15/15_08_Current_Research_Directions/)
 - [15.09 Microlocal Elliptic Theory]({{ site.baseurl }}/contents/en/chapter15/15_09_Microlocal_Elliptic_Theory/)
+
+## Video tham khảo
+
+- xem trước: [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, English. The lecture whose phase-space pictures the gallery is sketching.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, English. Fourier space, the second coordinate of a wavefront set.
+- [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), English. A research talk to show the pictures in use.

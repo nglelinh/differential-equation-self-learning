@@ -308,6 +308,12 @@ $$
 
 **Bậc sau đại học.** Kết nối với công thức Duhamel, đáp ứng hệ thống và tác động dài hạn của forcing.
 
+## Video tham khảo
+
+- xem trước: [Systems of Differential Equations with Forcing: Example in Control Theory](https://www.youtube.com/watch?v=vKgbYRw21xA) — Steve Brunton, tiếng Anh. Biến thiên hằng số cho hệ tuyến tính có lực ngoài, kèm ví dụ điều khiển.
+- [Linear Systems of Differential Equations with Forcing: Convolution and the Dirac Delta Function](https://www.youtube.com/watch?v=q1phVuNCuf0) — Steve Brunton, tiếng Anh. Tích chập với đáp ứng xung, gồm hàm Dirac delta.
+- [Differential Equations with Forcing: Method of Variation of Parameters](https://www.youtube.com/watch?v=wCeDUbZQ_zA) — Steve Brunton, tiếng Anh. Công thức biến thiên hằng số vô hướng mà phương pháp hệ đang mở rộng.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 7: phần hệ không thuần nhất và biến thiên hằng số rất nền tảng.

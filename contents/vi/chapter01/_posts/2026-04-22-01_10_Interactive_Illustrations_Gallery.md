@@ -27,3 +27,9 @@ Bài bổ sung này tập hợp toàn bộ minh họa JavaScript của Chương 
   path="interactives/chapter01/index.html"
   height="920px"
 %}
+
+## Video tham khảo
+
+- xem trước: [The Geometric Meaning of Differential Equations // Slope Fields, Integral Curves & Isoclines](https://www.youtube.com/watch?v=ccDMpj2UK_M) — Dr. Trefor Bazett, tiếng Anh. Trường hướng và đường tích phân, đúng các hình bộ minh họa chương cho sinh viên xoay.
+- [Differential equations, a tourist's guide | DE1](https://www.youtube.com/watch?v=p_di4Zn4wz4) — 3Blue1Brown, tiếng Anh. Tổng quan trực quan các mô hình cấp một trước khi mở các khung tương tác.
+- [Direction Fields | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=jOBBwI4CYjM) — MIT OpenCourseWare, tiếng Anh. Buổi recitation của MIT về trường hướng, đi cùng applet trường hướng.

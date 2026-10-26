@@ -249,6 +249,12 @@ Ví dụ đơn giản này cho thấy BVP có thể hoàn toàn giải được 
 
 **Bậc sau đại học.** Nhấn mạnh toán tử biên, tính Fredholm, và mối liên hệ giữa tồn tại-duy nhất với cấu trúc phổ.
 
+## Video tham khảo
+
+- xem trước: [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, tiếng Anh. Jason Bramburger dựng một bài toán biên Sturm-Liouville đối lập với bài toán giá trị đầu.
+- [Sturm-Liouville Theory](https://www.youtube.com/watch?v=12d15vI52b8) — Nathan Kutz, tiếng Anh. Bài nhập môn của Nathan Kutz về lý thuyết Sturm-Liouville xuất phát từ điều kiện biên.
+- [Green's functions: the genius way to solve DEs](https://www.youtube.com/watch?v=ism2SfZgFJg) — Mathemaniac, tiếng Anh. Hàm Green là cách khác để giải một bài toán hai điểm.
+
 ## Tài liệu tham khảo
 
 - Boyce & DiPrima, Chương 10: trình bày bài toán giá trị biên, điều kiện biên và các phương pháp giải cơ bản.

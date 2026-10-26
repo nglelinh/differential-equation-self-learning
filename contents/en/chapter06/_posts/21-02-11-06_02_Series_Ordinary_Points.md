@@ -256,6 +256,12 @@ This is the standard pattern: the differential equation becomes a recurrence for
 
 ![Ordinary points]({{ site.imgurl }}/chapter_img/chapter06/06_02_series_ordinary_points.svg)
 
+## Video tham khảo
+
+- xem trước: [How to solve ODEs with infinite series | Intro & Easiest Example: y'=y](https://www.youtube.com/watch?v=xeeM3TT4Zgg) — Dr. Trefor Bazett, English. A series solution of y'=y at an ordinary point, the template for the method.
+- [When can you use Series to solve ODEs? Ordinary vs Singular Points](https://www.youtube.com/watch?v=nCT3P8EsoPw) — Dr. Trefor Bazett, English. Ordinary points versus singular points: when a plain power series is allowed.
+- [Solving Differential Equations with Power Series: A Simple Example](https://www.youtube.com/watch?v=3icbG3geC60) — Steve Brunton, English. Brunton solves a simple ODE by power series and a recurrence.
+
 ## References
 
 - Boyce & DiPrima, Section 5.2: series solutions at ordinary points

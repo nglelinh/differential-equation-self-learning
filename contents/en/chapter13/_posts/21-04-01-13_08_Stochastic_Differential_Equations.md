@@ -208,6 +208,12 @@ This is the stochastic analogue of forward Euler.
 
 **Graduate level.** Connect to Itô's formula, strong/weak convergence, and Fokker-Planck equations.
 
+## Video tham khảo
+
+- xem trước: [21. Stochastic Differential Equations](https://www.youtube.com/watch?v=qdbkvD4N-us) — MIT OpenCourseWare, English. MIT 18.S096 introduces stochastic differential equations.
+- [Lecture 24: Stochastic Calculus](https://www.youtube.com/watch?v=5cruqmIF6l0) — MIT OpenCourseWare, English. The stochastic calculus those equations are written in.
+- [Latent Stochastic Differential Equations for Irregularly-Sampled Time Series - David Duvenaud](https://www.youtube.com/watch?v=93wr5vhI0F4) — Institute for Advanced Study, English. A research lecture on latent SDEs, the data-driven use of the same object.
+
 ## References
 
 - Kloeden & Platen: standard reference for stochastic numerical methods.

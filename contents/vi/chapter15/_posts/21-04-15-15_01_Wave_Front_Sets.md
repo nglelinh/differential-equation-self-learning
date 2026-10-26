@@ -505,3 +505,9 @@ Singularity nằm trên đường $$ x_1=0 $$, nhưng chỉ theo các hướng p
 **Bậc đại học.** So sánh singular support với wave front set qua ví dụ delta, bước nhảy và hàm trơn.
 
 **Bậc sau đại học.** Kết nối với định nghĩa hình nón, pullback/pushforward và invariance theo đổi tọa độ.
+
+## Video tham khảo
+
+- xem trước: [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Tập mặt sóng xuất hiện khi Vasy giải thích một phân phối kỳ dị ở đâu trong không gian pha.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 2)](https://www.youtube.com/watch?v=3DN6bKJnlXc) — Institut Fourier, tiếng Anh. Phần 2 tiếp tục mô tả vi địa phương của các kỳ dị.
+- [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Bài của Maciej Zworski về các phương pháp vi địa phương.

@@ -225,6 +225,12 @@ Nghiệm cho thấy hệ không dao động, và về dài hạn thành phần $
 
 **Bậc sau đại học.** Kết nối với phổ của toán tử tuyến tính, chi phối lâu dài bởi phần thực lớn nhất, và tổng quát hóa sang ma trận companion.
 
+## Video tham khảo
+
+- xem trước: [How to Solve Constant Coefficient Homogeneous Differential Equations](https://www.youtube.com/watch?v=znO6v-8pvXo) — Dr. Trefor Bazett, tiếng Anh. Phương trình đặc trưng và các nghiệm mũ cho hệ số hằng.
+- [Homogeneous Constant Coefficient Equations: Real Roots | MIT 18.03SC Differential Equations](https://www.youtube.com/watch?v=zNPK_t03zds) — MIT OpenCourseWare, tiếng Anh. Bài ngắn của MIT chỉ về nghiệm thực của đa thức đặc trưng.
+- [Constant Coefficient ODEs: Real & Distinct vs Real & Repeated vs Complex Pair](https://www.youtube.com/watch?v=r8Uk4tbuxVE) — Dr. Trefor Bazett, tiếng Anh. Nghiệm thực phân biệt khác nghiệm lặp và cặp phức như thế nào.
+
 ## Tài liệu tham khảo
 - Boyce & DiPrima — *Elementary Differential Equations*: rất mạnh ở kỹ thuật phương trình đặc trưng.
 - Zill — *Differential Equations with Boundary-Value Problems*: nhiều bài luyện về nghiệm phân biệt và nghiệm kép.

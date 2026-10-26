@@ -341,3 +341,9 @@ Symbol chính là $$ \xi^2 $$. Điều này giải thích vì sao tần số cao
 **Bậc đại học.** Dùng Fourier transform để hiểu đạo hàm như phép nhân.
 
 **Bậc sau đại học.** Kết nối với full symbol, principal symbol và quantization choices.
+
+## Video tham khảo
+
+- xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Tiếng Việt. Symbol a(x,ξ) là bộ nhân Fourier của một toán tử.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Biến đổi nằm trong định nghĩa ấy.
+- [Introduction to Fourier Integral operators 1 (Allan Greenleaf)](https://www.youtube.com/watch?v=4O_oC9kFFWQ) — Mathematics video VAROQUI Hervé, Tiếng Việt. Bài nhập môn của Allan Greenleaf về toán tử tích phân Fourier, đối tượng kế tiếp sau symbol.

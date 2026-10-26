@@ -314,3 +314,9 @@ can be written as an FIO with linear phase. It moves singularities from $$ x_0 $
 **Undergraduate level.** Understand FIOs as operators that transport singularities.
 
 **Graduate level.** Connect to canonical relations, nondegenerate phase functions, and wave front set mapping theorems.
+
+## Video tham khảo
+
+- xem trước: [Introduction to Fourier Integral operators 1 (Allan Greenleaf)](https://www.youtube.com/watch?v=4O_oC9kFFWQ) — Mathematics video VAROQUI Hervé, Vietnamese. Allan Greenleaf's introduction to Fourier integral operators.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, English. How those operators move wavefront sets, in Vasy's first lecture.
+- [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), English. Zworski's microlocal methods, which rely on the same operators.

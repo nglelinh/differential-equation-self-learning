@@ -302,3 +302,9 @@ $$ u \in H^{s+2}. $$
 **Bậc đại học.** Nối lại với regularity elliptic quen thuộc từ các chương trước.
 
 **Bậc sau đại học.** Kết nối với parametrix, wave front sets va microlocal inclusion theorems.
+
+## Video tham khảo
+
+- xem trước: [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Tính elliptic vi địa phương như Vasy định nghĩa.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 2)](https://www.youtube.com/watch?v=3DN6bKJnlXc) — Institut Fourier, tiếng Anh. Đối chiếu không elliptic: lan truyền khi tính elliptic thất bại.
+- [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, tiếng Anh. Parametrix elliptic trong đại số giả vi phân.

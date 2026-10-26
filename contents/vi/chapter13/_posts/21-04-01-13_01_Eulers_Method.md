@@ -313,3 +313,9 @@ Trong khi nghiệm đúng tại $$ t=1 $$ là $$ e \approx 2.718 $$. Sai số n�
 **Bậc đại học.** Dựng công thức Euler từ tiếp tuyến và tính sai số bằng ví dụ đơn giản.
 
 **Bậc sau đại học.** Kết nối với consistency, absolute stability và modified equations.
+
+## Video tham khảo
+
+- xem trước: [Deriving Forward Euler and Backward/Implicit Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=MstPeOTCVzQ) — Steve Brunton, tiếng Anh. Brunton suy Euler thuận và Euler ẩn.
+- [Numerical Integration of ODEs with Forward Euler and Backward Euler in Python and Matlab](https://www.youtube.com/watch?v=ITFolyl_66U) — Steve Brunton, tiếng Anh. Cùng hai lược đồ được lập trình và so sánh.
+- [Euler's Method | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=X5-ucBtneVM) — MIT OpenCourseWare, tiếng Anh. Bài ngắn của MIT về phương pháp Euler cho y'=f(x,y).

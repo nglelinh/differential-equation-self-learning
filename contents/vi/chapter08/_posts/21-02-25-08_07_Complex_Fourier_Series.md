@@ -257,6 +257,12 @@ $$
 
 **Bậc sau đại học.** Khai thác chuỗi phức trong PDE, tích chập, và chuẩn bị cho Fourier transform.
 
+## Video tham khảo
+
+- xem trước: [Complex Fourier Series](https://www.youtube.com/watch?v=4cfctnaHyFM) — Steve Brunton, tiếng Anh. Steve Brunton suy dạng phức c_n e^{in t}.
+- [Complex Fourier Series (fourier series engineering mathematics)](https://www.youtube.com/watch?v=aC0j8CW58AM) — blackpenredpen, tiếng Anh. blackpenredpen tính một chuỗi Fourier phức.
+- [MM41: Complex Fourier series](https://www.youtube.com/watch?v=3n36uTz0Qso) — Learn Physics with Dr. Viv!, tiếng Anh. Các hệ số phức đặt cạnh dạng sin và cos thực.
+
 ## Tài liệu tham khảo
 
 - Haberman, *Applied Partial Differential Equations* - trực giác tốt về chuỗi Fourier, hội tụ, và các ví dụ vật lý.

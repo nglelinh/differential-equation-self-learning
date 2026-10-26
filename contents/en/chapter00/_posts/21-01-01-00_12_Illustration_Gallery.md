@@ -42,3 +42,9 @@ Work through the gallery in lesson order and ask what later differential-equatio
 - [00.03 Derivatives and Multivariable Calculus]({{ site.baseurl }}/contents/en/chapter00/00_01_02_Derivatives_and_Multivariable_Calculus/)
 - [00.04 Linear Algebra Essentials]({{ site.baseurl }}/contents/en/chapter00/00_03_00_Linear_Algebra_Essentials/)
 - [00.05 Complex Numbers and Exponentials]({{ site.baseurl }}/contents/en/chapter00/00_04_00_Complex_Numbers_and_Exponentials/)
+
+## Video tham khảo
+
+- xem trước: [Differential equations, a tourist's guide | DE1](https://www.youtube.com/watch?v=p_di4Zn4wz4) — 3Blue1Brown, English. The visual tour of what a differential equation is, matching the pictures this gallery is for.
+- [The essence of calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM) — 3Blue1Brown, English. Animated calculus that makes the derivative and integral pictures in the gallery easier to read.
+- [Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra](https://www.youtube.com/watch?v=PFDu9oVAE-g) — 3Blue1Brown, English. Eigenvectors drawn as stretching directions, the picture behind the linear-algebra frames of this chapter.

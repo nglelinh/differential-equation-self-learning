@@ -342,6 +342,12 @@ which explains the appearance of the extra time factor.
 
 ![Repeated eigenvalues]({{ site.imgurl }}/chapter_img/chapter04/04_05_eigenvalue_repeated.svg)
 
+## Video tham khảo
+
+- xem trước: [Repeated Eigenvalues and Secular Terms: Transient Growth in Non-Normal Systems](https://www.youtube.com/watch?v=9xWqNPXRl7o) — Steve Brunton, English. Repeated eigenvalues, the extra factor of t, and transient growth.
+- [Lec 26 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=hEtWqTPPXuc) — MIT OpenCourseWare, English. Mattuck continues into the repeated-eigenvalue case.
+- [Systems of Differential Equations: Diagonalization and Jordan Canonical Form](https://www.youtube.com/watch?v=SsCiQym5yQU) — Steve Brunton, English. Jordan form when there is only one independent eigenvector.
+
 ## References
 
 - Boyce & DiPrima, Chapter 7: section on repeated eigenvalues and generalized eigenvectors is very foundational for techniques.

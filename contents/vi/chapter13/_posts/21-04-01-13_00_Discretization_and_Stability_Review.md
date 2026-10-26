@@ -201,6 +201,12 @@ Giờ đây logic của chương đã khá rõ.
 
 Bài 13.01 bắt đầu bằng phương pháp Euler vì đó là hiện thân hoàn chỉnh đầu tiên của tất cả các ý trên trong một sơ đồ đơn lẻ. Các bài sau chỉ tinh chỉnh cùng khuôn khổ đó cho phương pháp bậc cao, multistep methods, phương trình cứng và PDE số.
 
+## Video tham khảo
+
+- xem trước: [Differential Equations and Dynamical Systems: Overview](https://www.youtube.com/watch?v=9fQkLQZe3u8) — Steve Brunton, tiếng Anh. Tổng quan của Brunton về phương trình vi phân trước các chương số.
+- [Error Analysis of Euler Integration Scheme for Differential Equations Using Taylor Series](https://www.youtube.com/watch?v=h2i550iaEv0) — Steve Brunton, tiếng Anh. Khai triển Taylor đo sai số địa phương của một phương pháp một bước.
+- [Stability of Forward Euler and Backward Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=RdXCGnTT6UY) — Steve Brunton, tiếng Anh. Ổn định của Euler thuận và Euler lùi, trực giác mà bài ôn này hướng tới.
+
 ## Tài liệu tham khảo
 
 - U. Ascher và L. Petzold, *Computer Methods for Ordinary Differential Equations and Differential-Algebraic Equations*
