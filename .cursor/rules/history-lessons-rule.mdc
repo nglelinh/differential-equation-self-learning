@@ -1,0 +1,79 @@
+---
+alwaysApply: true
+---
+
+When writing a history-themed lesson for this course, do not structure it as a dry chronology or a list of events. Treat the lesson as intellectual storytelling.
+
+## Required Story Frame
+
+Near the beginning of the lesson, include a concrete historical scene with:
+
+- a specific time
+- a specific place
+- a recognizable civilization, institution, or scientific setting
+- a main character who is either a mathematician or someone facing a practical problem
+- a conflict that creates pressure for new mathematics
+
+The story should make the topic feel born from necessity, not from abstract textbook planning.
+
+## What A Good History Lesson Must Feel Like
+
+- It should open with a vivid mathematical or physical problem, dispute, surprise, or limitation that made new ideas necessary.
+- It should introduce mathematicians as characters in a developing story, not as names in a timeline.
+- It should explain what was hard, controversial, counterintuitive, or unfinished at each stage.
+- It should show causality: what pressure forced the next conceptual move, and why the old tools were no longer enough.
+- It should make the reader feel that mathematics is alive, creative, human, and sometimes dramatic.
+
+## Required Writing Style
+
+- Favor paragraphs over lists.
+- Use lists only for discussion questions, compact reference highlights, or a short set of memorable milestones.
+- Avoid section titles that sound like archive labels such as "timeline", "event list", or "historical map" unless the prose beneath them is strongly narrative.
+- Prefer section titles with movement and tension, for example "The opening scene", "The turning point", "Why this changed everything", or equivalent titles in the lesson language.
+- Include at least one concrete image, scene, or motivating object: a cooling bar, a vibrating string, a planet, a circuit, a membrane, a noisy signal, a wave front.
+- Weave the mathematical concept directly into the scene instead of pausing the story for a detached theory dump.
+- Include a small mathematical example inside the story itself whenever possible.
+
+## What To Emphasize
+
+- The problem before the theorem.
+- The intuition before the formalism.
+- The conflict before the resolution.
+- The human motivation before the final polished notation.
+- Why the chapter becomes more fun, more surprising, or more beautiful once its history is known.
+- Near the beginning of the lesson, explicitly answer three questions in clear prose:
+  1. Where did this topic come from?
+  2. What problem was it trying to solve?
+  3. What difficulty, confusion, or limitation did earlier mathematicians run into?
+
+## Required Historical Clarity
+
+The reader should never have to infer the origin story indirectly. Make the causal chain explicit:
+
+- `Origin`: the physical, geometric, analytic, or scientific source of the topic
+- `Problem`: the concrete mathematical task or modeling pressure that made the topic necessary
+- `Difficulty`: the obstacle that older methods could not overcome, ideally tied to specific people when appropriate
+
+Whenever possible, state these three items in a dedicated early section or in unmistakably signposted prose.
+
+## Required Ending
+
+If the lesson includes a section equivalent to `Câu hỏi thảo luận` or `Discussion Prompts`, add a short answer section immediately after it.
+
+That answer section should:
+
+- respond directly to each prompt in the same order
+- stay interpretive and explanatory rather than sounding like an exam key
+- reconnect the question to the historical pressure, mathematical idea, and chapter theme
+
+Before the references, end the instructional part of the lesson with a short section equivalent to `Tóm tắt kiến thức toán học`.
+
+That closing section should briefly state:
+
+- what mathematical idea was introduced
+- what problem it helped solve
+- what example from the story illustrates it
+
+## Tone
+
+Write with warmth, narrative momentum, and intellectual excitement. The reader should come away thinking not "I memorized a few dates" but "I see why this idea had to be invented, and the story makes the mathematics more enjoyable."
