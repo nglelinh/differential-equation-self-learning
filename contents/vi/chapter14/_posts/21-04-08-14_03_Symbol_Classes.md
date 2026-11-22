@@ -14,37 +14,37 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài này giúp sinh viên hiểu rằng không phải symbol nào cũng “đủ tốt” để tạo thành một lý thuyết toán tử ổn định. Sau bài học, sinh viên cần đọc được ký hiệu $$ S^m_{\rho,\delta} $$, hiểu ý nghĩa của bậc $$ m $$, vai trò của các tham số $$ \rho,\delta $$, và vì sao việc kiểm soát các đạo hàm theo $$ x $$ và $$ \xi $$ lại quan trọng cho symbol calculus.
+Bài học này giải thích vì sao không phải ký hiệu (symbol) nào cũng đủ tốt để xây dựng một phép tính toán tử ổn định. Sau bài học, sinh viên cần đọc hiểu ký hiệu $$ S^m_{\rho,\delta} $$, nắm rõ ý nghĩa của bậc $$ m $$, vai trò của các tham số $$ \rho,\delta $$, và lý do cần kiểm soát các đạo hàm theo cả $$ x $$ lẫn $$ \xi $$ trong phép tính ký hiệu.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm khái niệm symbol tổng quát $$ a(x,\xi) $$, đạo hàm riêng nhiều biến, và trực giác rằng hành vi của toán tử ở tần số cao phụ thuộc vào cách symbol tăng hay giảm khi $$ \lvert \xi\rvert $$ lớn.
+Sinh viên nên nắm khái niệm ký hiệu tổng quát $$ a(x,\xi) $$, đạo hàm riêng nhiều biến, và trực giác rằng hành vi của toán tử ở tần số cao phụ thuộc vào tốc độ tăng hoặc giảm của ký hiệu khi $$ \lvert \xi\rvert $$ lớn.
 
 ## Dẫn nhập
 
-Một symbol tùy ý có thể quá hoang dã: nó có thể tăng quá nhanh, dao động quá mạnh, hoặc mất kiểm soát khi lấy đạo hàm. Nếu vậy, toán tử sinh ra từ nó sẽ khó ghép, khó lấy adjoint, và khó phân tích regularity. Vì thế, ta cần chia symbol thành những lớp có điều kiện tăng trưởng rõ ràng.
+Một ký hiệu tùy ý có thể biến thiên quá thất thường: tăng trưởng quá nhanh, dao động quá mạnh, hoặc mất kiểm soát khi lấy đạo hàm. Khi đó, toán tử tương ứng sẽ khó hợp thành, khó xác định toán tử liên hợp và khó khảo sát tính chính quy. Vì vậy, ta cần phân loại các ký hiệu thành những lớp có điều kiện tăng trưởng và độ trơn rõ ràng.
 
-Điểm quan trọng ở đây không phải học thuộc một định nghĩa kỹ thuật, mà hiểu rằng các lớp symbol chính là “môi trường sống ổn định” cho pseudodifferential calculus.
+Mục tiêu ở đây không phải là học thuộc một bất đẳng thức kỹ thuật, mà là hiểu rằng các lớp ký hiệu tạo nên khuôn khổ ổn định để phép tính giả vi phân vận hành nhất quán.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Hãy nghĩ đến một gia đình các bộ lọc tần số. Ta muốn chúng không phản ứng quá thất thường khi tần số thay đổi, và cũng không đổi tính chất đột ngột theo vị trí. Các lớp symbol chính là cách toán học hóa yêu cầu “đủ đều” đó.
+Hãy nghĩ đến một họ các bộ lọc tần số. Để sử dụng ổn định, các bộ lọc này không nên thay đổi thất thường khi tần số dịch chuyển, cũng không nên biến đổi đột ngột theo vị trí. Các lớp ký hiệu là cách diễn đạt chính xác yêu cầu “đều đặn có kiểm soát” đó bằng ngôn ngữ giải tích.
 
 ### Cách hình ảnh
 
-Nên vẽ vài đồ thị của hàm theo $$ \lvert \xi\rvert $$:
+Có thể vẽ so sánh đồ thị của một vài hàm theo $$ \lvert \xi\rvert $$:
 
 - một hàm tăng như $$ \lvert \xi\rvert^m $$;
-- một hàm giảm như $$ 1/(1+\lvert \xi\rvert^2) $$;
-- một hàm dao động quá mạnh.
+- một hàm suy giảm như $$ 1/(1+\lvert \xi\rvert^2) $$;
+- một hàm dao động quá mạnh khi $$ \lvert \xi\rvert $$ tăng.
 
-Từ đó, sinh viên sẽ thấy bậc $$ m $$ nói về xu hướng tăng trưởng tổng quát, còn điều kiện trên đạo hàm nói về độ ổn định của symbol khi ta vi phân theo biến vị trí và tần số.
+Qua đó, người học dễ thấy bậc $$ m $$ biểu thị xu hướng tăng trưởng tổng quát, còn các điều kiện trên đạo hàm kiểm soát độ ổn định của ký hiệu khi vi phân theo vị trí và tần số.
 
 ### Cách hình thức
 
-Ta nói $$ a(x,\xi)\in S^m_{\rho,\delta} $$ nếu với mọi multi-index $$ \alpha,\beta $$ tồn tại hằng số $$ C_{\alpha\beta} $$ sao cho
+Ta nói $$ a(x,\xi)\in S^m_{\rho,\delta} $$ nếu với mọi đa chỉ số $$ \alpha,\beta $$ tồn tại hằng số $$ C_{\alpha\beta} $$ sao cho
 
 $$
 \lvert \partial_x^\alpha\partial_\xi^\beta a(x,\xi)\rvert
@@ -52,13 +52,13 @@ $$
 C_{\alpha\beta}(1+\lvert \xi\rvert)^{m-\rho\lvert \beta\rvert+\delta\lvert \alpha\rvert}.
 $$
 
-Ý nghĩa:
+Ý nghĩa của các tham số:
 
 - $$ m $$ là bậc tăng trưởng cơ bản;
-- đạo hàm theo $$ \xi $$ thường làm giảm bậc đi $$ \rho $$ mỗi lần;
-- đạo hàm theo $$ x $$ có thể làm tăng bậc lên $$ \delta $$ mỗi lần.
+- mỗi lần lấy đạo hàm theo $$ \xi $$ làm giảm bậc đi $$ \rho $$;
+- mỗi lần lấy đạo hàm theo $$ x $$ có thể làm tăng bậc thêm $$ \delta $$.
 
-Trường hợp chuẩn trong nhiều bài nhập môn là
+Lớp tiêu chuẩn thường gặp nhất ở mức nhập môn là
 
 $$ S^m_{1,0}. $$
 
@@ -66,119 +66,119 @@ $$ S^m_{1,0}. $$
 
 ### “Bậc $$ m $$ chỉ là số mũ hình thức”
 
-Không. Nó quyết định toán tử khuếch đại hay làm mịn các mode cao.
+Không đúng. Bậc $$ m $$ quyết định trực tiếp việc toán tử khuếch đại hay làm trơn các thành phần tần số cao.
 
-### “Chỉ cần kiểm soát chính symbol, không cần các đạo hàm của nó”
+### “Chỉ cần kiểm soát bản thân ký hiệu, không cần xét đạo hàm của nó”
 
-Sai. Calculus của pseudodifferential operators phụ thuộc mạnh vào việc kiểm soát đạo hàm của symbol.
+Sai. Phép tính toán tử giả vi phân phụ thuộc chặt chẽ vào các ước lượng trên đạo hàm của ký hiệu.
 
-### “Nếu $$ m<0 $$ thì symbol nhỏ nên không quan trọng”
+### “Nếu $$ m<0 $$ thì ký hiệu nhỏ nên ít quan trọng”
 
-Sai. Chính các symbol bậc âm lại thường sinh ra toán tử làm mịn rất quan trọng.
+Sai. Chính các ký hiệu bậc âm lại sinh ra các toán tử làm trơn và các parametrix có vai trò thiết yếu.
 
-### “Các tham số $$ \rho,\delta $$ chỉ là kỹ thuật”
+### “Hai tham số $$ \rho,\delta $$ chỉ mang tính kỹ thuật”
 
-Không. Chúng đo mức độ đều của symbol theo hai hướng khác nhau và quyết định calculus có vận hành tốt hay không.
+Không phải. Chúng đo mức độ đều đặn của ký hiệu theo biến tần số và biến vị trí, đồng thời quyết định xem phép tính ký hiệu có đóng và ổn định hay không.
 
 ## Tiến trình học
 
 ### Bước 1: Bắt đầu từ bậc $$ m $$
 
-Sinh viên nên hiểu trước bậc dương, 0, âm.
+Cần nắm rõ sự khác biệt giữa các trường hợp bậc dương, bậc 0 và bậc âm.
 
-### Bước 2: Đưa vào các đạo hàm theo $$ \xi $$
+### Bước 2: Xét các đạo hàm theo $$ \xi $$
 
-Đây là nơi thấy tần số cao được kiểm soát thế nào.
+Quan sát cách hành vi ở tần số cao được kiểm soát sau mỗi lần vi phân theo $$ \xi $$.
 
-### Bước 3: Đưa vào các đạo hàm theo $$ x $$
+### Bước 3: Xét các đạo hàm theo $$ x $$
 
-Điều này giúp quản lý sự thay đổi theo vị trí.
+Hiểu cách kiểm soát sự phụ thuộc của ký hiệu vào vị trí không gian.
 
-### Bước 4: Tập trung vào lớp $$ S^m_{1,0} $$
+### Bước 4: Tập trung vào lớp chuẩn $$ S^m_{1,0} $$
 
-Đây là bối cảnh đơn giản và trực quan nhất cho giai đoạn đầu.
+Đây là lớp đơn giản, phổ biến và giàu trực giác nhất trong giai đoạn làm quen.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có giải thích được bậc âm và bậc dương bằng ngôn ngữ “làm mịn” hay “khuếch đại” không?
-- Sinh viên có đọc được định nghĩa $$ S^m_{\rho,\delta} $$ không?
-- Sinh viên có hiểu vì sao đạo hàm theo $$ \xi $$ làm giảm bậc không?
+- Sinh viên có giải thích được ý nghĩa của bậc âm và bậc dương thông qua khái niệm “làm trơn” và “khuếch đại” hay không?
+- Sinh viên có đọc hiểu được định nghĩa lớp $$ S^m_{\rho,\delta} $$ hay không?
+- Sinh viên có hiểu vì sao đạo hàm theo $$ \xi $$ thường làm giảm bậc của ký hiệu hay không?
 
 ## Ví dụ có lời giải
 
-### Ví dụ 1: Symbol bậc hai
+### Ví dụ 1: Ký hiệu bậc hai
 
-Xét $$ a(\xi)=1+\lvert \xi\rvert^2 $$. Với các đạo hàm theo $$ \xi $$, ta thấy mỗi lần vi phân làm giảm tốc độ tăng trưởng đi xấp xỉ một bậc. Vì vậy
+Xét $$ a(\xi)=1+\lvert \xi\rvert^2 $$. Mỗi lần lấy đạo hàm theo $$ \xi $$ làm giảm bậc tăng trưởng đi một đơn vị, còn đạo hàm theo $$ x $$ triệt tiêu. Vì vậy
 
 $$ a\in S^2_{1,0}. $$
 
-### Ví dụ 2: Symbol bậc âm
+### Ví dụ 2: Ký hiệu bậc âm
 
 Xét
 
 $$ a(\xi)=\frac{1}{1+\lvert \xi\rvert^2}. $$
 
-Khi $$ \lvert \xi\rvert $$ lớn, symbol cư xử như $$ \lvert \xi\rvert^{-2} $$. Các đạo hàm theo $$ \xi $$ tiếp tục làm nó giảm nhanh hơn, nên $$ a\in S^{-2}_{1,0} $$. Đây là ví dụ mẫu của symbol làm mịn.
+Khi $$ \lvert \xi\rvert $$ lớn, ký hiệu giảm như $$ \lvert \xi\rvert^{-2} $$, và mỗi lần vi phân theo $$ \xi $$ tiếp tục làm tốc độ giảm mạnh thêm một bậc, nên $$ a\in S^{-2}_{1,0} $$. Đây là ví dụ tiêu biểu của ký hiệu làm trơn.
 
-### Ví dụ 3: Symbol phụ thuộc vị trí
+### Ví dụ 3: Ký hiệu phụ thuộc vị trí
 
-Cho $$ a(x,\xi)=b(x)(1+\lvert \xi\rvert^2)^{m/2} $$, với $$ b(x) $$ trơn và bị chặn cùng mọi đạo hàm. Khi đó các đạo hàm theo $$ x $$ chỉ tác động lên $$ b(x) $$ và không làm phá vỡ cấu trúc bậc $$ m $$ theo $$ \xi $$. Do đó
+Cho $$ a(x,\xi)=b(x)(1+\lvert \xi\rvert^2)^{m/2} $$, với $$ b(x) $$ trơn và bị chặn cùng mọi đạo hàm. Khi đó, đạo hàm theo $$ x $$ chỉ tác động lên $$ b(x) $$ mà không làm thay đổi bậc tăng trưởng $$ m $$ theo $$ \xi $$. Do đó
 
 $$ a\in S^m_{1,0}. $$
 
-### Ví dụ 4: Symbol quá xấu
+### Ví dụ 4: Ký hiệu không thuộc lớp chuẩn
 
-Một hàm như $$ a(x,\xi)=e^{\lvert \xi\rvert^2} $$ tăng quá nhanh theo $$ \xi $$ nên không thuộc bất kỳ lớp $$ S^m_{1,0} $$ hữu hạn nào. Ví dụ này cho thấy không phải mọi symbol đều chấp nhận được trong calculus chuẩn.
+Hàm $$ a(x,\xi)=e^{\lvert \xi\rvert^2} $$ tăng nhanh hơn mọi lũy thừa của $$ \lvert \xi\rvert $$, nên không thuộc bất kỳ lớp $$ S^m_{1,0} $$ hữu hạn nào. Ví dụ này cho thấy không phải hàm trơn nào cũng sử dụng được trong phép tính ký hiệu tiêu chuẩn.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao bậc của symbol lại liên hệ trực tiếp với regularity của toán tử?
-2. Tại sao phải kiểm soát đồng thời cả symbol lẫn các đạo hàm của nó?
-3. Điều gì làm cho lớp $$ S^m_{1,0} $$ trở thành bối cảnh chuẩn trong nhập môn?
+1. Vì sao bậc của ký hiệu liên hệ trực tiếp với tính chính quy của toán tử?
+2. Tại sao cần kiểm soát đồng thời cả ký hiệu lẫn các đạo hàm của nó?
+3. Điều gì khiến lớp $$ S^m_{1,0} $$ trở thành lớp chuẩn trong phần nhập môn?
 
 ## Bài toán ứng dụng
 
-1. Nếu một bộ lọc làm suy giảm mạnh tần số cao, symbol của nó nên có bậc dương hay âm?
-2. Trong regularity elliptic, vì sao nghịch đảo xấp xỉ thường có symbol bậc âm?
-3. Trong xử lý ảnh, một toán tử làm mờ và một toán tử làm sắc nét sẽ khác nhau thế nào ở mức bậc symbol?
+1. Nếu một bộ lọc làm suy giảm mạnh các thành phần tần số cao, ký hiệu của nó có bậc dương hay âm?
+2. Trong lý thuyết chính quy elliptic, vì sao nghịch đảo xấp xỉ của toán tử vi phân thường có ký hiệu bậc âm?
+3. Trong xử lý ảnh, một toán tử làm mờ và một toán tử làm sắc nét khác nhau như thế nào về bậc ký hiệu?
 
 ## Chiến lược dạy học tương tác
 
-### Câu hỏi nên hỏi trên lớp
+### Câu hỏi nên đặt trên lớp
 
-- Một symbol tăng theo $$ \lvert \xi\rvert $$ nhanh thì tác động lên dao động cao thế nào?
-- Nếu lấy đạo hàm theo $$ \xi $$, em kỳ vọng bậc giảm hay tăng?
-- Vì sao một lý thuyết toán tử cần một “hệ sinh thái” các symbol tốt?
+- Một ký hiệu tăng nhanh theo $$ \lvert \xi\rvert $$ sẽ tác động như thế nào lên các dao động tần số cao?
+- Khi lấy đạo hàm theo $$ \xi $$, ta kỳ vọng bậc của ký hiệu giảm hay tăng?
+- Vì sao một phép tính toán tử cần một họ các ký hiệu thỏa điều kiện tăng trưởng chặt chẽ?
 
 ### Hoạt động gợi ý
 
-- Cho sinh viên phân loại một danh sách symbol vào các bậc khác nhau.
-- So sánh trên đồ thị hành vi của các symbol bậc $$ 2,0,-2 $$.
-- Thảo luận nhóm về ý nghĩa hình học của tham số $$ \rho,\delta $$.
+- Cho sinh viên phân loại một danh sách ký hiệu theo bậc tăng trưởng.
+- So sánh trực quan trên đồ thị các ký hiệu bậc $$ 2,0,-2 $$.
+- Thảo luận nhóm về ý nghĩa giải tích của hai tham số $$ \rho,\delta $$.
 
-### Cách tăng tham gia
+### Cách tăng mức độ tham gia
 
-- Dùng ngôn ngữ “gia đình bộ lọc” trước khi đưa định nghĩa.
-- Mời sinh viên ước lượng bậc trước khi tính chi tiết.
-- Cho mỗi nhóm chịu trách nhiệm một symbol cụ thể.
+- Bắt đầu từ hình ảnh “họ các bộ lọc tần số” trước khi viết bất đẳng thức định nghĩa.
+- Đề nghị sinh viên ước lượng bậc ký hiệu trước khi kiểm tra bằng tính toán.
+- Phân công mỗi nhóm phân tích một ký hiệu cụ thể rồi đối chiếu kết quả.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Tập trung vào lớp $$ S^m_{1,0} $$ trước.
-- Dùng các ví dụ không phụ thuộc $$ x $$ để giảm tải ký hiệu.
-- Nhấn mạnh thông điệp: bậc âm làm mịn, bậc dương khuếch đại cao tần.
+- Làm việc trước với lớp chuẩn $$ S^m_{1,0} $$.
+- Dùng các ký hiệu không phụ thuộc $$ x $$ để giảm bớt ký hiệu đa chỉ số.
+- Nhấn mạnh quy tắc trực quan: bậc âm làm trơn, bậc dương khuếch đại cao tần.
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Tìm hiểu sâu hơn vai trò của điều kiện $$ \delta<\rho $$.
-- Kiểm tra một số symbol không đẳng hướng.
-- Liên hệ lớp symbol với Sobolev mapping properties.
+- Tìm hiểu vai trò của điều kiện $$ \delta<\rho $$ trong phép tính ký hiệu.
+- Khảo sát một số lớp ký hiệu không đẳng hướng.
+- Liên hệ bậc của lớp ký hiệu với tính chất ánh xạ giữa các không gian Sobolev.
 
 ## Ghi nhớ nhanh
 
-Các lớp symbol cho ta một cách kiểm soát có hệ thống sự tăng trưởng và độ đều của symbol theo vị trí và tần số. Bậc $$ m $$ cho biết toán tử thiên về làm mịn hay khuếch đại cao tần, còn các tham số $$ \rho,\delta $$ bảo đảm symbol calculus hoạt động ổn định.
+Các lớp ký hiệu cung cấp khuôn khổ có hệ thống để kiểm soát tốc độ tăng trưởng và độ trơn của ký hiệu theo cả vị trí lẫn tần số. Bậc $$ m $$ cho biết toán tử làm trơn hay khuếch đại cao tần, còn hai tham số $$ \rho,\delta $$ bảo đảm phép tính ký hiệu vận hành ổn định.
 
 ---
 
@@ -186,29 +186,29 @@ Các lớp symbol cho ta một cách kiểm soát có hệ thống sự tăng tr
 
 ### 1. Mô hình bộ lọc làm mờ và làm sắc nét
 
-Một bộ lọc làm mờ thường có symbol bậc âm, ví dụ
+Một bộ lọc làm mờ thường có ký hiệu bậc âm, chẳng hạn
 
 $$ a(\xi)=\frac{1}{(1+\lvert \xi\rvert^2)^{1/2}}, $$
 
-trong khi một bộ lọc làm sắc nét thường khuếch đại cao tần và có bậc dương. Mô hình này giả định dữ liệu liên tục và không có giới hạn lấy mẫu. Diễn giải là: bậc của symbol cho biết ngay toán tử có xu hướng làm mịn hay khuếch đại chi tiết nhỏ.
+trong khi một bộ lọc làm sắc nét khuếch đại vùng cao tần và tương ứng với ký hiệu bậc dương. Mô hình này giả định dữ liệu liên tục và chưa xét giới hạn lấy mẫu; bậc của ký hiệu cho biết ngay xu hướng làm trơn hay nhấn mạnh chi tiết nhỏ của toán tử.
 
-### 2. Regularization trong bài toán ngược
+### 2. Chính quy hóa trong bài toán ngược
 
-Trong khử nhiễu hay deblurring, người ta thường không dùng nghịch đảo thô mà dùng multiplier bị chặn như
+Trong khử nhiễu và khử mờ ảnh, thay vì dùng phép nghịch đảo trực tiếp dễ làm nổ nhiễu cao tần, người ta thường sử dụng bộ nhân bị chặn dạng
 
 $$
-a_\alpha(\xi)=\frac{1}{1+\alpha \lvert \xi\rvert^2},
+a_\alpha(\xi)=\frac{1}{1+\alpha \lvert \xi\rvert^2}.
 $$
 
-để tránh nổ cao tần. Đây là một ví dụ điển hình của symbol bậc âm. Mô hình giả định nhiễu chủ yếu nằm ở cao tần. Giới hạn là regularization mạnh quá sẽ làm mất chi tiết quan trọng.
+Đây là một ký hiệu bậc âm điển hình. Mô hình giả định nhiễu tập trung chủ yếu ở miền tần số cao; nếu chọn hệ số chính quy hóa quá lớn, các chi tiết hữu ích của tín hiệu cũng sẽ bị làm mờ theo.
 
 ### 3. Toán tử phân số và vật lý nhiều thang
 
-Các toán tử kiểu $$ \lvert \xi\rvert^s $$ xuất hiện trong khuếch tán dị thường, động lực học chất lỏng, và học máy trên đồ thị liên tục hóa. Việc xếp chúng vào lớp symbol phù hợp giúp kiểm soát mapping property trên Sobolev spaces. Đây là ví dụ cho thấy ký hiệu $$ S^m_{\rho,\delta} $$ không chỉ là định nghĩa kỹ thuật mà là cách quản lý cả một họ mô hình nhiều thang.
+Các toán tử dạng $$ \lvert \xi\rvert^s $$ xuất hiện trong khuếch tán dị thường, cơ học chất lưu và học máy trên đồ thị ở giới hạn liên tục. Việc phân loại chúng vào các lớp ký hiệu thích hợp giúp kiểm soát tính chất ánh xạ trên các không gian Sobolev. Điều này cho thấy ký hiệu $$ S^m_{\rho,\delta} $$ không chỉ là quy ước hình thức mà là công cụ quản lý các mô hình đa thang.
 
 ## Trực giác sâu hơn
 
-Khi nói một symbol thuộc lớp tốt, điều đó nghĩa là không chỉ bản thân nó tăng trưởng có kiểm soát, mà cả mọi đạo hàm quan trọng của nó cũng cư xử tử tế. Nếu thiếu điều này, composition, adjoint, và parametrix sẽ rất dễ hỏng. Ngộ nhận thường gặp là nghĩ chỉ cần biết $$ a(x,\xi) $$ lớn hay nhỏ; thực ra độ đều của nó dưới phép vi phân mới là thứ làm calculus chạy được.
+Một ký hiệu thuộc lớp tốt không chỉ có độ lớn tăng trưởng có kiểm soát, mà mọi đạo hàm của nó theo $$ x $$ và $$ \xi $$ cũng phải thỏa mãn các ước lượng tương ứng. Nếu thiếu điều kiện trên đạo hàm, phép hợp thành, toán tử liên hợp và việc xây dựng parametrix sẽ mất tính ổn định.
 
 ## Trực quan hóa bằng Python
 
@@ -237,7 +237,7 @@ plt.show()
 
 ## Trực quan hóa bằng JavaScript
 
-Có thể dùng `Plotly.js` để sinh viên nhập một hàm symbol và quan sát trên thang log-log xem nó gần bậc nào khi $$ \lvert \xi\rvert $$ lớn.
+Có thể dùng `Plotly.js` để sinh viên nhập một hàm ký hiệu và quan sát đồ thị trên thang log-log nhằm ước lượng bậc tăng trưởng khi $$ \lvert \xi\rvert $$ lớn.
 
 ## Gợi ý tài nguyên ngoài
 
@@ -247,32 +247,32 @@ Tìm kiếm: `symbol class S m rho delta`, `pseudodifferential symbol order visu
 
 ### Mức đại học (Undergraduate)
 
-Tập trung vào ba bậc trực giác: dương, 0, âm; và liên hệ của chúng với khuếch đại, giữ nguyên, hay làm mịn cao tần.
+Tập trung vào ba trường hợp bậc trực quan — dương, bằng 0 và âm — cùng mối liên hệ với việc khuếch đại, giữ nguyên hay làm trơn thành phần cao tần.
 
 ### Mức sau đại học (Graduate)
 
-Đi sâu vào vai trò của $$ \rho,\delta $$, điều kiện $$ \delta<\rho $$, và cách các lớp symbol kiểm soát composition, adjoint, và ánh xạ Sobolev.
+Đi sâu vào vai trò của $$ \rho,\delta $$, điều kiện $$ \delta<\rho $$, và cách các lớp ký hiệu chi phối phép hợp thành, toán tử liên hợp cùng tính chất ánh xạ trên không gian Sobolev.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Mô hình hóa khuếch tán phân số
-- Bài toán: Một số môi trường có cơ chế lan truyền không chuẩn, cần toán tử bậc không nguyên.
-- Mô hình: Symbol kiểu
+- Bài toán: Một số môi trường có cơ chế lan truyền không chuẩn, đòi hỏi toán tử bậc không nguyên.
+- Mô hình: Ký hiệu có dạng
 $$ a(\xi)\sim (1+\lvert \xi\rvert^2)^{m/2}. $$
-- Giả thiết và giới hạn: Phù hợp với lớp symbol có kiểm soát đạo hàm theo $$ \xi $$.
-- Diễn giải: Symbol class mô tả bậc tăng trưởng hay suy giảm của toán tử ở tần số cao.
+- Giả thiết và giới hạn: Ký hiệu cần thỏa mãn các ước lượng đạo hàm theo $$ \xi $$ trong lớp tương ứng.
+- Diễn giải: Lớp ký hiệu xác định rõ tốc độ tăng trưởng hoặc suy giảm của toán tử ở tần số cao.
 
-#### Regularization trong bài toán nghịch
-- Bài toán: Ta muốn khuếch đại có kiểm soát một số dải tần nhưng triệt mạnh dải khác.
-- Mô hình: Chọn symbol trong lớp $$ S^m $$ để biết trước mức tăng/giảm theo tần số.
-- Giả thiết và giới hạn: Cần tránh khuếch đại quá mạnh nhiễu cao tần.
-- Diễn giải: Symbol classes cho phép phân loại toán tử theo "độ mạnh tần số".
+#### Chính quy hóa trong bài toán ngược
+- Bài toán: Cần khuếch đại có kiểm soát một số dải tần đồng thời triệt giảm mạnh các dải tần khác.
+- Mô hình: Lựa chọn ký hiệu trong lớp $$ S^m $$ để kiểm soát trước mức tăng giảm theo tần số.
+- Giả thiết và giới hạn: Phải tránh khuếch đại quá mức nhiễu cao tần.
+- Diễn giải: Các lớp ký hiệu cho phép phân loại toán tử theo cường độ tác động lên phổ tần số.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Khi nói một symbol thuộc $$ S^m $$, ta đang nói nó hành xử như bậc $$ m $$ ở tần số lớn, còn các đạo hàm của nó cũng suy giảm đúng mức. Điều này giống như gán "mức bậc đạo hàm" cho các toán tử không còn là đa thức hữu hạn theo $$ \xi $$. Bẫy phổ biến là chỉ nhìn vào bản thân $$ a(\xi) $$ mà quên kiểm soát các đạo hàm của nó.
+Khi nói một ký hiệu thuộc $$ S^m $$, ta hiểu rằng nó hành xử như bậc $$ m $$ ở tần số lớn và các đạo hàm của nó cũng suy giảm đúng quy luật. Cách phân loại này giống như gán một “bậc vi phân tổng quát” cho những toán tử không còn là đa thức hữu hạn theo $$ \xi $$. Một sai sót thường gặp là chỉ kiểm tra độ lớn của $$ a(\xi) $$ mà bỏ qua điều kiện trên các đạo hàm.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -307,18 +307,18 @@ plt.show()
 
 Toán tử
 $$ (I-\Delta)^{m/2} $$
-có symbol
+có ký hiệu
 $$ (1+\lvert \xi\rvert^2)^{m/2}. $$
-Với $$ m>0 $$, nó khuếch đại tần số cao; với $$ m<0 $$, nó làm trơn dữ liệu. Đây là ví dụ kinh điển để hiểu khái niệm bậc của ΨDO.
+Với $$ m>0 $$, toán tử khuếch đại các thành phần tần số cao; với $$ m<0 $$, toán tử làm trơn dữ liệu. Đây là ví dụ chuẩn mực để hình dung khái niệm bậc của ΨDO.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Nhìn symbol class như cách gắn "bậc tần số" cho toán tử.
+**Bậc đại học.** Xem lớp ký hiệu như cách gán “bậc tần số” cho toán tử.
 
-**Bậc sau đại học.** Kết nối với seminorms trên $$ S^m $$, asymptotic expansions và polyhomogeneous symbols.
+**Bậc sau đại học.** Kết nối với hệ nửa chuẩn (seminorms) trên $$ S^m $$, khai triển tiệm cận và các ký hiệu đa thuần nhất (polyhomogeneous symbols).
 
 ## Video tham khảo
 
-- xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Tiếng Việt. Các ước lượng symbol của bài đầu, khởi đầu của các lớp symbol.
-- [Ps d o’s lecture 2 (Xuwen Zhu)](https://www.youtube.com/watch?v=0OBoX9_-ndQ) — Mathematics video VAROQUI Hervé, Tiếng Việt. Bài thứ hai, nơi các lớp ấy được dùng.
-- [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, tiếng Anh. Masoud Khalkhali về đại số các toán tử giả vi phân.
+- Nên xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, tiếng Việt. Trình bày các ước lượng ký hiệu mở đầu cho định nghĩa lớp ký hiệu.
+- [Ps d o’s lecture 2 (Xuwen Zhu)](https://www.youtube.com/watch?v=0OBoX9_-ndQ) — Mathematics video VAROQUI Hervé, tiếng Việt. Bài giảng thứ hai vận dụng trực tiếp các lớp ký hiệu.
+- [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, tiếng Anh. Bài giảng của Masoud Khalkhali về đại số các toán tử giả vi phân.

@@ -11,72 +11,72 @@ lesson_type: required
 ---
 
 ## Mục tiêu
-Bài học này giúp sinh viên hiểu sâu sắc đạo hàm như phép tuyến tính hóa cục bộ, nắm vững các công cụ giải tích đa biến (gradient, Jacobian, Hessian), và vận dụng quy tắc dây chuyền, định lý hàm ẩn trong việc chuyển đổi và giải các phương trình vi phân. Đây là cầu nối từ giải tích một biến sang không gian nhiều chiều của hệ ODE.
+Bài học này giúp sinh viên hiểu đạo hàm theo nghĩa phép tuyến tính hóa cục bộ, nắm vững các công cụ của giải tích đa biến (gradient, ma trận Jacobi, ma trận Hessian), đồng thời vận dụng quy tắc dây chuyền và định lý hàm ẩn khi biến đổi hoặc giải phương trình vi phân. Đây là bước chuyển từ giải tích một biến sang không gian nhiều chiều của hệ ODE.
 
 ## Kiến thức nền
-Sinh viên cần thành thạo đạo hàm và vi phân cơ bản một biến, hiểu khái niệm hàm số và đồ thị, biết vận dụng quy tắc dây chuyền đơn giản. Kiến thức về ma trận và vector sẽ giúp ích nhưng không bắt buộc ở mức đầu.
+Sinh viên cần thành thạo đạo hàm và vi phân cơ bản của hàm một biến, hiểu khái niệm hàm số và đồ thị, cũng như biết áp dụng quy tắc dây chuyền một biến. Kiến thức cơ bản về ma trận và vector sẽ hỗ trợ tốt nhưng chưa bắt buộc ở mức sâu.
 
 ## Dẫn nhập
-Trong các bài trước, ta làm việc với hàm một biến $$ y = f(t) $$. Nhưng thế giới thực phong phú hơn nhiều: nhiệt độ phụ thuộc vào cả vị trí và thời gian $$ u(x,t) $$, hệ sinh thái có nhiều loài tương tác $$ P(t) $$, $$ Q(t) $$, hay mạch điện có nhiều dòng chảy $$ I_1(t) $$, $$ I_2(t) $$. Khi đó, ta cần "đạo hàm nhiều chiều."
+Ở các bài trước, ta chủ yếu xét hàm một biến $$ y = f(t) $$. Tuy nhiên, các mô hình thực tế thường phụ thuộc vào nhiều biến cùng lúc: nhiệt độ thay đổi theo cả vị trí và thời gian $$ u(x,t) $$, hệ sinh thái gồm nhiều quần thể tương tác $$ P(t) $$, $$ Q(t) $$, hay mạch điện có nhiều dòng điện nhánh $$ I_1(t) $$, $$ I_2(t) $$. Vì vậy, ta cần mở rộng khái niệm đạo hàm sang không gian nhiều chiều.
 
-Hãy hình dung ta đang đứng trên một ngọn núi. Độ dốc theo hướng đông-tây là $$ \partial z/\partial x $$, theo hướng bắc-nam là $$ \partial z/\partial y $$. Vector gradient $$\left(\partial z/\partial x,\partial z/\partial y\right)$$ chỉ hướng leo dốc nhất. Từ gradient, ta biết ngay lập tức hướng nào đi lên nhanh nhất, hướng nào đi xuống. Đây là thông tin quan trọng trong nhiều bài toán tối ưu và điều khiển ODE.
+Hãy hình dung bạn đang đứng trên một sườn núi mô tả bởi mặt $$ z = f(x,y) $$. Độ dốc theo phương đông–tây là $$ \partial z/\partial x $$, còn theo phương bắc–nam là $$ \partial z/\partial y $$. Vector gradient $$ \left(\partial z/\partial x, \partial z/\partial y\right) $$ chỉ hướng leo dốc nhanh nhất. Nhờ gradient, ta xác định được ngay hướng tăng nhanh nhất và hướng giảm nhanh nhất của hàm số—thông tin rất hữu ích trong tối ưu hóa và phân tích ODE.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
-Đạo hàm một biến $$ f'(a) $$ là hệ số góc của tiếp tuyến tại $$ \left(a, f(a)\right) $$. Nó cho ta xấp xỉ tuyến tính $$ f(a + h) \approx f(a) + f'(a)h $$. Với hàm hai biến, đạo hàm riêng $$ \partial f/\partial x(a,b) $$ là hệ số góc khi ta cố định $$ y = b $$ và chỉ di chuyển theo hướng $$ x $$. Còn gradient $$ \nabla f $$ là vector tổng hợp cả hai hướng, cho ta mặt phẳng tiếp xúc tại điểm.
+Đạo hàm một biến $$ f'(a) $$ là hệ số góc của tiếp tuyến tại điểm $$ \left(a, f(a)\right) $$, cho xấp xỉ tuyến tính $$ f(a + h) \approx f(a) + f'(a)h $$. Với hàm hai biến, đạo hàm riêng $$ \partial f/\partial x(a,b) $$ là hệ số góc khi cố định $$ y = b $$ và chỉ thay đổi $$ x $$. Kết hợp các đạo hàm riêng lại, ta thu được vector gradient $$ \nabla f $$, từ đó xây dựng được mặt phẳng tiếp xúc của đồ thị tại điểm đang xét.
 
 ### Cách nhìn hình ảnh
-Vẽ mặt $$ z = x^2 + y^2 $$, một paraboloid. Tại điểm $$ \left(1,1,2\right) $$, gradient là $$ \nabla f = (2x, 2y) = (2,2) $$, hướng lên trên theo đường chéo $$ 45^\circ $$. Mặt phẳng tiếp xúc tại đó có phương trình $$ z = 2 + 2(x-1) + 2(y-1) $$. Mọi vector tiếp tuyến đều nằm trong mặt phẳng này, và gradient là vector vuông góc với mặt phẳng đó.
+Xét mặt paraboloid $$ z = x^2 + y^2 $$. Tại điểm $$ \left(1,1,2\right) $$, gradient trong mặt phẳng $$ Oxy $$ là $$ \nabla f(1,1) = (2x, 2y)\big|_{(1,1)} = (2,2) $$, hướng theo đường phân giác góc $$ 45^\circ $$ và vuông góc với đường mức $$ x^2 + y^2 = 2 $$. Mặt phẳng tiếp xúc với mặt cong tại điểm này có phương trình $$ z = 2 + 2(x-1) + 2(y-1) $$, với vector pháp tuyến là $$ (2, 2, -1) $$; mọi vector tiếp tuyến với mặt cong tại $$ (1,1,2) $$ đều nằm trong mặt phẳng này.
 
 ### Cách nhìn hình thức
-**Đạo hàm riêng**: $$\frac{\partial f}{\partial x}(a,b) = \lim_{h \to 0} \frac{f(a+h,b) - f(a,b)}{h}$$, với các biến khác được giữ nguyên.
+**Đạo hàm riêng**: $$\frac{\partial f}{\partial x}(a,b) = \lim_{h \to 0} \frac{f(a+h,b) - f(a,b)}{h}$$, trong đó các biến khác được giữ cố định.
 
-**Gradient**: $$\nabla f = \left(\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \ldots, \frac{\partial f}{\partial x_n}\right)$$. Gradient chỉ hướng tăng nhanh nhất và vuông góc với các đường mức.
+**Gradient**: $$\nabla f = \left(\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \ldots, \frac{\partial f}{\partial x_n}\right)$$. Vector gradient chỉ hướng tăng nhanh nhất của hàm và vuông góc với các đường mức (hoặc mặt mức).
 
-**Jacobian**: Với $$ F:\mathbb{R}^n \to \mathbb{R}^m $$, ma trận Jacobi $$ DF $$ có các phần tử $$ \left(DF\right)_{ij} = \partial f_i/\partial x_j $$. Nó là ánh xạ tuyến tính xấp xỉ $$ F $$ tại mỗi điểm.
+**Ma trận Jacobi (Jacobian)**: Với ánh xạ $$ F:\mathbb{R}^n \to \mathbb{R}^m $$, ma trận Jacobi $$ DF $$ có các phần tử $$ \left(DF\right)_{ij} = \partial f_i/\partial x_j $$. Đây là ánh xạ tuyến tính xấp xỉ tốt nhất cho $$ F $$ trong lân cận mỗi điểm.
 
-**Quy tắc dây chuyền**: Nếu $$ x = x(t) $$ và $$ y = y(t) $$, với $$ z = f(x(t), y(t)) $$, thì
+**Quy tắc dây chuyền**: Nếu $$ x = x(t) $$, $$ y = y(t) $$ và $$ z = f(x(t), y(t)) $$, thì
 
 $$
 \frac{dz}{dt} = \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial y}\frac{dy}{dt}.
 $$
 
-**Định lý hàm ẩn**: Nếu $$ F(x,y) = 0 $$ và $$ \partial F/\partial y \neq 0 $$ tại $$ \left(a,b\right) $$, thì tồn tại hàm $$ y = f(x) $$ định bởi $$ F(x,f(x)) = 0 $$ trong lân cận của $$ a $$, với
+**Định lý hàm ẩn**: Nếu $$ F(x,y) = 0 $$ và $$ \partial F/\partial y \neq 0 $$ tại $$ \left(a,b\right) $$ (với $$ F $$ khả vi liên tục quanh $$ (a,b) $$), thì tồn tại hàm $$ y = f(x) $$ xác định bởi $$ F(x,f(x)) = 0 $$ trong một lân cận của $$ a $$, thỏa mãn
 
 $$
 f'(a) = -\frac{\partial F/\partial x(a,b)}{\partial F/\partial y(a,b)}.
 $$
 
 ## Những ngộ nhận thường gặp
-- "Đạo hàm riêng $$ \partial f/\partial x $$ và $$ \partial f/\partial y $$ là hai đạo hàm độc lập." Không đúng. Chúng là hai thành phần của cùng một vector gradient, và tại mỗi điểm, chúng xác định hoàn toàn mặt phẳng tiếp xúc.
-- "Gradient luôn chỉ hướng tăng nhanh nhất." Đúng về hướng, nhưng giá trị (độ dài) của gradient cho biết tốc độ tăng. Vector đơn vị gradient mới chỉ hướng.
-- "Nếu $$ \partial f/\partial x = 0 $$ và $$ \partial f/\partial y = 0 $$ thì đó là điểm cực trị." Sai. Điểm của đồ thị $$ y = x^3 $$ tại gốc cho ta ví dụ về điểm dừng không phải cực trị.
-- "Quy tắc dây chuyền chỉ áp dụng cho hàm hợp một biến." Sai. Nó tổng quát cho nhiều biến: $$ dz/dt = \nabla f \cdot r'(t) $$, trong đó $$ r'(t) $$ là vector đạo hàm của đường cong.
+- "Đạo hàm riêng $$ \partial f/\partial x $$ và $$ \partial f/\partial y $$ là hai đại lượng tách rời nhau." Không chính xác. Chúng là hai thành phần của cùng một vector gradient và cùng xác định mặt phẳng tiếp xúc của đồ thị tại điểm đang xét (khi hàm khả vi).
+- "Gradient chỉ mang thông tin về hướng tăng nhanh nhất." Chưa đủ. Hướng của gradient là hướng tăng nhanh nhất, còn độ dài $$ \lVert \nabla f \rVert $$ chính là tốc độ tăng cực đại theo hướng đó.
+- "Nếu $$ \partial f/\partial x = 0 $$ và $$ \partial f/\partial y = 0 $$ thì điểm đó chắc chắn là cực trị." Sai. Điều kiện đó chỉ cho biết điểm dừng; nó có thể là điểm yên ngựa (chẳng hạn $$ f(x,y) = x^2 - y^2 $$ tại $$ (0,0) $$), tương tự như điểm uốn nằm ngang của $$ y = x^3 $$ tại $$ x = 0 $$ trong trường hợp một biến.
+- "Quy tắc dây chuyền chỉ dùng cho hàm hợp một biến." Sai. Quy tắc này mở rộng tự nhiên cho nhiều biến dưới dạng tích vô hướng: $$ dz/dt = \nabla f \cdot r'(t) $$, với $$ r'(t) $$ là vector vận tốc của đường cong $$ r(t) $$.
 
 ## Tiến trình học tập đề xuất
 
 ### Bước 1: Từ đạo hàm một biến đến đạo hàm riêng
-Hiểu rằng đạo hàm riêch là "bóng" của đạo hàm thông thường khi ta chỉ di chuyển theo một hướng. Quan sát đồ thị để thấy ý nghĩa hình học.
+Xem đạo hàm riêng như đạo hàm một biến thông thường khi ta chỉ cho một tọa độ thay đổi và giữ cố định các tọa độ còn lại. Quan sát đồ thị mặt cong để thấy ý nghĩa hình học của từng lát cắt.
 
-### Bước 2: Hiểu gradient như vector
-Gradient không chỉ là ký hiệu toán mà mang ý nghĩa hình học rõ ràng: hướng tăng nhanh nhất, và gradient = 0 là điểm dừng (có thể là cực trị hoặc điểm yên ngựa).
+### Bước 2: Hiểu gradient như một vector
+Nhìn nhận gradient không chỉ là danh sách các đạo hàm riêng mà là một đối tượng hình học: nó chỉ hướng tăng nhanh nhất, vuông góc với đường mức, và điều kiện $$ \nabla f = 0 $$ xác định các điểm dừng (có thể là cực trị hoặc điểm yên ngựa).
 
-### Bước 3: Quy tắc dây chuyền và hàm ẩn
-Đây là hai công cụ trung tâm. Quy tắc dây chuyền cho phép tính đạo hàm của hàm hợp. Định lý hàm ẩn cho phép ta "giải" một phương trình để được hàm ẩn và tính đạo hàm của nó mà không cần tìm công thức tường minh.
+### Bước 3: Quy tắc dây chuyền và định lý hàm ẩn
+Nắm vững hai công cụ trung tâm này: quy tắc dây chuyền cho phép tính đạo hàm dọc theo đường cong (hoặc quỹ đạo nghiệm ODE), còn định lý hàm ẩn cho phép tính đạo hàm của hàm xác định bởi phương trình ẩn mà không cần giải tường minh $$ y $$ theo $$ x $$.
 
 ### Các checkpoint
-- Sinh viên có tính được gradient và hiểu ý nghĩa hình học không?
-- Sinh viên có vận dụng đúng quy tắc dây chuyền trong các tình huống khác nhau không?
-- Sinh viên có biết khi nào định lý hàm ẩn áp dụng được không?
+- Bạn có tính được gradient và giải thích ý nghĩa hình học của nó không?
+- Bạn có vận dụng đúng quy tắc dây chuyền trong các trường hợp nhiều biến không?
+- Bạn có xác định được khi nào định lý hàm ẩn áp dụng được không?
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Tính gradient và hiểu ý nghĩa
-Cho $$ f(x,y) = x^2 + xy + y^2 $$. Ta có $$ \partial f/\partial x = 2x + y $$, $$ \partial f/\partial y = x + 2y $$. Tại điểm $$ \left(1,2\right) $$, gradient là $$ \nabla f(1,2) = (4,5) $$. Vector này chỉ hướng tăng nhanh nhất. Đường mức $$ f(x,y) = 7 $$ đi qua $$ \left(1,2\right) $$ có pháp vector $$ \left(4,5\right) $$, nên đường tiếp tuyến tại đó có phương trình $$ 4(x-1) + 5(y-2) = 0 $$.
+### Ví dụ 1: Tính gradient và phương trình tiếp tuyến đường mức
+Cho $$ f(x,y) = x^2 + xy + y^2 $$. Ta có $$ \partial f/\partial x = 2x + y $$ và $$ \partial f/\partial y = x + 2y $$. Tại điểm $$ \left(1,2\right) $$, gradient là $$ \nabla f(1,2) = (4,5) $$, chỉ hướng tăng nhanh nhất của hàm số. Đường mức $$ f(x,y) = 7 $$ đi qua $$ \left(1,2\right) $$ có vector pháp tuyến là $$ \left(4,5\right) $$, nên tiếp tuyến của đường mức tại điểm này có phương trình $$ 4(x-1) + 5(y-2) = 0 $$.
 
 ### Ví dụ 2: Quy tắc dây chuyền
-Cho $$ z = f(x,y) = x^2 + y^2 $$, với $$ x = t^3 $$, $$ y = t^2 $$. Theo quy tắc dây chuyền,
+Cho $$ z = f(x,y) = x^2 + y^2 $$ với $$ x = t^3 $$ và $$ y = t^2 $$. Theo quy tắc dây chuyền,
 
 $$
 \frac{dz}{dt}
@@ -85,18 +85,18 @@ $$
 = 6t^5 + 4t^3.
 $$
 
-Kiểm tra bằng cách thay trực tiếp: $$ z = (t^3)^2 + (t^2)^2 = t^6 + t^4 $$, nên $$ dz/dt = 6t^5 + 4t^3 $$.
+Kiểm tra bằng cách thay trực tiếp: $$ z = (t^3)^2 + (t^2)^2 = t^6 + t^4 $$, suy ra $$ dz/dt = 6t^5 + 4t^3 $$.
 
 ### Ví dụ 3: Định lý hàm ẩn
-Từ phương trình $$ x^2 + y^2 = 1 $$, ta có $$ F(x,y) = x^2 + y^2 - 1 $$. Tính $$ \partial F/\partial y = 2y $$. Tại điểm $$ \left(0,1\right) $$, giá trị này khác $$ 0 $$, nên tồn tại hàm $$ y = f(x) $$ định bởi $$ x^2 + f(x)^2 = 1 $$ trong lân cận $$ x = 0 $$. Đạo hàm là
+Từ phương trình $$ x^2 + y^2 = 1 $$, đặt $$ F(x,y) = x^2 + y^2 - 1 $$. Ta có $$ \partial F/\partial y = 2y $$. Tại điểm $$ \left(0,1\right) $$, $$ \partial F/\partial y = 2 \neq 0 $$, nên tồn tại hàm $$ y = f(x) $$ thỏa mãn $$ x^2 + f(x)^2 = 1 $$ trong lân cận của $$ x = 0 $$. Đạo hàm của hàm ẩn là
 
 $$
 f'(x) = -\frac{\partial F/\partial x}{\partial F/\partial y} = -\frac{2x}{2y} = -\frac{x}{y}.
 $$
 
-Tại $$ x = 0 $$, $$ y = 1 $$, ta có $$ f'(0) = 0 $$.
+Tại $$ x = 0 $$, $$ y = 1 $$, ta thu được $$ f'(0) = 0 $$.
 
-### Ví dụ 4: Ma trận Jacobian cho hệ
+### Ví dụ 4: Ma trận Jacobi cho ánh xạ hai biến
 Cho $$ F(x,y) = (u(x,y), v(x,y)) = (x^2 + y, xy) $$. Khi đó
 
 $$
@@ -112,52 +112,52 @@ y & x
 \end{pmatrix}.
 $$
 
-Tại $$ \left(1,1\right) $$, Jacobian là $$\begin{pmatrix}2 & 1 \\ 1 & 1\end{pmatrix}$$. Đây là ánh xạ tuyến tính xấp xỉ $$ F $$ gần điểm đó.
+Tại $$ \left(1,1\right) $$, ma trận Jacobi là $$\begin{pmatrix}2 & 1 \\ 1 & 1\end{pmatrix}$$, biểu diễn ánh xạ tuyến tính xấp xỉ $$ F $$ gần điểm đó.
 
-### Ví dụ 5: Áp dụng trong ODE - phương trình phân ly
-Xét phương trình dy/dx = g(x)h(y). Viết F(x,y) = g(x)h(y) - y'. Để tìm nghiệm, ta "tách biến": 1/h(y) dy = g(x) dx. Đây là ứng dụng của tích phân riêng: ta tích phân theo từng biến riêng biệt. Đạo hàm riêng cho ta cách "tách" ảnh hưởng của x và y.
+### Ví dụ 5: Áp dụng trong ODE — phương trình tách biến và nghiệm ẩn
+Xét phương trình $$ \frac{dy}{dx} = g(x)h(y) $$ với $$ h(y) \neq 0 $$. Khi tách biến thành $$ \frac{1}{h(y)}\,dy = g(x)\,dx $$ và lấy nguyên hàm hai vế, ta thu được nghiệm ở dạng ẩn $$ H(y) - G(x) = C $$, trong đó $$ H'(y) = 1/h(y) $$ và $$ G'(x) = g(x) $$. Đặt $$ F(x,y) = H(y) - G(x) - C $$; theo quy tắc dây chuyền và định lý hàm ẩn, điều kiện $$ \frac{\partial F}{\partial x} + \frac{\partial F}{\partial y}\frac{dy}{dx} = 0 $$ khôi phục đúng phương trình vi phân ban đầu.
 
 ## Câu hỏi khái niệm
-1. Tại sao gradient vuông góc với đường mức? Ý nghĩa hình học của điều này là gì?
-2. Định lý hàm ẩn đảm bảo điều gì? Tại sao điều kiện $$ \partial F/\partial y \neq 0 $$ lại quan trọng?
-3. Jacobian tổng quát hóa đạo hàm một biến như thế nào? Khi nào nó đặc biệt quan trọng trong ODE?
+1. Vì sao gradient luôn vuông góc với đường mức? Ý nghĩa hình học của tính chất này là gì?
+2. Định lý hàm ẩn đảm bảo điều gì, và vì sao điều kiện $$ \partial F/\partial y \neq 0 $$ lại cần thiết?
+3. Ma trận Jacobi tổng quát hóa đạo hàm một biến như thế nào, và nó đóng vai trò gì trong nghiên cứu hệ ODE?
 
 ## Bài toán ứng dụng
-1. **Vật lý**: Trường nhiệt độ $$ T(x,y,z,t) $$. Gradient $$ -\nabla T $$ là vector dòng nhiệt. Giải thích ý nghĩa vật lý của mỗi thành phần.
-2. **Kinh tế**: Hàm sản xuất Cobb-Douglas $$ Y(L,K) = AL^\alpha K^\beta $$. Tính $$ \partial Y/\partial L $$ và $$ \partial Y/\partial K $$. Giải thích ý nghĩa kinh tế.
-3. **Sinh học**: Mô hình Lotka-Volterra $$ dP/dt = \alpha P - \beta PQ $$, $$ dQ/dt = \delta PQ - \gamma Q $$. Viết dưới dạng vector và nhận xét về Jacobian tại điểm cân bằng.
+1. **Vật lý**: Cho trường nhiệt độ $$ T(x,y,z,t) $$. Vector $$ -\nabla T $$ tỉ lệ với dòng nhiệt. Hãy giải thích ý nghĩa vật lý của dấu trừ và từng thành phần của vector này.
+2. **Kinh tế**: Xét hàm sản xuất Cobb–Douglas $$ Y(L,K) = AL^\alpha K^\beta $$. Hãy tính $$ \partial Y/\partial L $$, $$ \partial Y/\partial K $$ và giải thích ý nghĩa kinh tế của chúng.
+3. **Sinh học**: Xét mô hình Lotka–Volterra $$ dP/dt = \alpha P - \beta PQ $$, $$ dQ/dt = \delta PQ - \gamma Q $$. Hãy viết hệ dưới dạng vector và tính ma trận Jacobi tại các điểm cân bằng.
 
 ## Chiến lược giảng dạy tương tác
-- **Hoạt động "Vẽ gradient"**: Cho sinh viên vẽ đồ thị một số hàm hai biến đơn giản như $$ x^2+y^2 $$, $$ xy $$, $$ x^2-y^2 $$ và đánh dấu gradient tại nhiều điểm.
-- **Thảo luận nhóm**: Cho mỗi nhóm một hàm ẩn F(x,y)=0 và yêu cầu xác định xem có thể giải được y=f(x) hay không, tính f'(x). Các nhóm trình bày kết quả.
-- **Câu hỏi nhanh**: "Gradient của $$ f(x,y) = x^2 - y^2 $$ tại $$ \left(1,1\right) $$ chỉ hướng nào? Đây là điểm gì?".
+- **Hoạt động "Vẽ gradient"**: Cho sinh viên vẽ đường mức của các hàm hai biến đơn giản như $$ x^2+y^2 $$, $$ xy $$, $$ x^2-y^2 $$ rồi vẽ vector gradient tại một số điểm.
+- **Thảo luận nhóm**: Giao cho mỗi nhóm một phương trình ẩn $$ F(x,y)=0 $$ để kiểm tra điều kiện áp dụng định lý hàm ẩn và tính $$ f'(x) $$, sau đó trình bày trước lớp.
+- **Câu hỏi nhanh**: "Gradient của $$ f(x,y) = x^2 - y^2 $$ tại $$ \left(1,1\right) $$ hướng về đâu, và tại $$ \left(0,0\right) $$ đó là loại điểm gì?"
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
-- Bắt đầu từ đạo hàm một biến quen thuộc, sau đó mới thêm biến thứ hai.
-- Vẽ nhiều đồ thị 3D trực quan (có thể dùng phần mềm hoặc hình vẽ).
-- Luyện tập với các hàm đơn giản trước: $$ x+y $$, $$ xy $$, $$ x^2+y^2 $$.
+- Bắt đầu từ đạo hàm một biến quen thuộc trước khi mở rộng sang hàm hai biến.
+- Sử dụng hình vẽ hoặc phần mềm vẽ đồ thị 3D và đường mức để tạo trực giác hình học.
+- Luyện tập trên các hàm đơn giản như $$ x+y $$, $$ xy $$, $$ x^2+y^2 $$ trước khi sang các biểu thức phức tạp hơn.
 
 ### Thử thách cho sinh viên khá giỏi
-- Nghiên cứu và trình bày về định lý hàm ngược và ứng dụng.
-- So sánh gradient descent trong tối ưu hóa với phương pháp Euler trong ODE.
-- Tìm hiểu về ma trận Hessian và ứng dụng trong phân tích ổn định của hệ ODE.
+- Tìm hiểu và trình bày định lý hàm ngược cùng các ứng dụng liên quan.
+- So sánh phương pháp hạ gradient (gradient descent) trong tối ưu hóa với phương pháp Euler trong giải số ODE.
+- Tìm hiểu ma trận Hessian và vai trò của nó trong phân loại cực trị cũng như phân tích ổn định của hệ ODE.
 
 ## Tóm tắt dễ nhớ
-**Gradient $$ \nabla f $$**: Vector chỉ hướng tăng nhanh nhất, vuông góc với đường mức.
-**Quy tắc dây chuyền**: $$ dz/dt = \nabla f \cdot r'(t) $$.
-**Hàm ẩn**: $$ f'(x) = -F_x/F_y $$ khi $$ F_y \neq 0 $$.
-**Jacobian**: Ma trận tổng quát hóa đạo hàm cho ánh xạ nhiều biến.
-Trong ODE nhiều chiều, gradient và Jacobian cho ta "bản đồ" cục bộ của trường vector.
+- **Gradient $$ \nabla f $$**: Chỉ hướng tăng nhanh nhất và vuông góc với đường mức.
+- **Quy tắc dây chuyền**: $$ dz/dt = \nabla f \cdot r'(t) $$.
+- **Định lý hàm ẩn**: $$ f'(x) = -F_x/F_y $$ khi $$ F_y \neq 0 $$.
+- **Ma trận Jacobi**: Tổng quát hóa khái niệm đạo hàm cho ánh xạ nhiều biến.
+- Trong hệ ODE nhiều chiều, gradient và ma trận Jacobi cung cấp xấp xỉ tuyến tính cục bộ cho trường vector.
 
 ## Video tham khảo
 
-- xem trước: [Visualizing the chain rule and product rule | Chapter 4, Essence of calculus](https://www.youtube.com/watch?v=YG15m2VwSjA) — 3Blue1Brown, tiếng Anh. Hình ảnh quy tắc dây chuyền là công cụ khi vế phải ODE phụ thuộc nhiều biến.
-- [The essence of calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM) — 3Blue1Brown, tiếng Anh. Bắt đầu ở đây với đạo hàm như tốc độ tức thời, đúng nghĩa của y' trong mọi mô hình sau.
-- [Calculus Review: The Derivative (and the Power Law and Chain Rule)](https://www.youtube.com/watch?v=-NhgElcA3K8) — Steve Brunton, tiếng Anh. Ôn nhanh các quy tắc đạo hàm dùng khi kiểm tra một công thức có phải nghiệm ODE hay không.
+- Xem trước: [Visualizing the chain rule and product rule | Chapter 4, Essence of calculus](https://www.youtube.com/watch?v=YG15m2VwSjA) — 3Blue1Brown, tiếng Anh. Minh họa trực quan quy tắc dây chuyền, công cụ thiết yếu khi vế phải ODE phụ thuộc nhiều biến.
+- [The essence of calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM) — 3Blue1Brown, tiếng Anh. Giới thiệu đạo hàm như tốc độ biến thiên tức thời, đúng với ý nghĩa của $$ y' $$ trong các mô hình vi phân.
+- [Calculus Review: The Derivative (and the Power Law and Chain Rule)](https://www.youtube.com/watch?v=-NhgElcA3K8) — Steve Brunton, tiếng Anh. Ôn nhanh các quy tắc đạo hàm thường dùng khi kiểm tra nghiệm của ODE.
 
 ## Tài liệu tham khảo
 - Marsden & Tromba — *Vector Calculus*: giáo trình chuẩn về giải tích đa biến.
-- Apostol — *Calculus, Vol. 2*: chi tiết về đạo hàm riêng và ứng dụng.
-- Hirsch, Smale & Devaney — *Differential Equations*: liên hệ trực tiếp với hệ ODE.
+- Apostol — *Calculus, Vol. 2*: trình bày chi tiết về đạo hàm riêng và ứng dụng.
+- Hirsch, Smale & Devaney — *Differential Equations*: kết nối trực tiếp giải tích đa biến với hệ ODE.

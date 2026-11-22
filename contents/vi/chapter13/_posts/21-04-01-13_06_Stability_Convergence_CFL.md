@@ -14,187 +14,175 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giúp sinh viên hiểu ba khái niệm cốt lõi của phân tích sơ đồ số: consistency, stability, và convergence. Sau bài học, sinh viên cần giải thích được mối liên hệ giữa ba khái niệm đó, hiểu trực giác của điều kiện CFL, và nhận ra rằng một sơ đồ số tốt không chỉ gần đúng phương trình gốc mà còn phải kiểm soát được sai số khi tiến hóa.
+Bài học này trình bày ba khái niệm trụ cột trong phân tích lược đồ số: tính nhất quán (consistency), tính ổn định (stability) và sự hội tụ (convergence). Sau bài học, sinh viên cần giải thích được mối liên hệ giữa ba khái niệm này qua định lý tương đương Lax, nắm trực giác vật lý của điều kiện CFL, và hiểu vì sao một lược đồ số đáng tin cậy phải đồng thời xấp xỉ đúng phương trình và kiểm soát được sự lan truyền sai số.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm sai phân hữu hạn, Euler, và trực giác rằng sai số ban đầu hay sai số làm tròn có thể lan truyền trong thời gian. Bài này là bước phân tích “tính đáng tin” của các sơ đồ đã xây dựng.
+Sinh viên cần nắm sai phân hữu hạn, phương pháp Euler và nhận thức rằng sai số ban đầu hoặc sai số làm tròn có thể lan truyền theo thời gian. Bài học này đánh giá độ tin cậy của các lược đồ đã xây dựng ở các bài trước.
 
 ## Dẫn nhập
 
-Viết ra một sơ đồ số chỉ là bước đầu. Câu hỏi lớn hơn là: nếu đưa sơ đồ ấy vào máy tính, nó có bám nghiệm thật không? Một sơ đồ có thể trông rất hợp lý nhưng vẫn thất bại vì khuếch đại sai số quá nhanh. Vì vậy, trong giải tích số, xây sơ đồ và kiểm chứng sơ đồ là hai phần không thể tách rời.
+Xây dựng được một công thức sai phân mới chỉ là bước khởi đầu; câu hỏi then chốt là khi chạy trên máy tính, nghiệm số có thực sự bám sát nghiệm đúng hay không. Một lược đồ nhìn qua rất hợp lý vẫn có thể bùng nổ vì khuếch đại nhiễu quá nhanh. Do đó, thiết kế lược đồ và phân tích sai số–ổn định là hai phần gắn chặt với nhau.
 
-Ba ý tưởng nền tảng là:
+Ba tiêu chí nền tảng gồm:
 
-- consistency: sơ đồ có đúng là đang xấp xỉ phương trình gốc không;
-- stability: sai số có bị khuếch đại mất kiểm soát không;
-- convergence: khi lưới mịn dần, nghiệm số có tiến về nghiệm thật không.
+- **Tính nhất quán (consistency)**: lược đồ có thực sự xấp xỉ phương trình gốc khi bước lưới tiến về 0 hay không;
+- **Tính ổn định (stability)**: sai số có được chặn mà không bị khuếch đại vô hạn hay không;
+- **Sự hội tụ (convergence)**: khi làm mịn lưới, nghiệm số có tiến về nghiệm chính xác hay không.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Hãy tưởng tượng bạn chụp ảnh một vật đang chuyển động.
+Có thể ví việc giải số như chụp ảnh một vật thể đang chuyển động:
 
-- Nếu ống kính sai lệch với vật thật ngay từ đầu, đó là thiếu consistency.
-- Nếu rung máy làm ảnh mờ dần sau mỗi lần chụp, đó là thiếu stability.
-- Nếu tăng độ phân giải mà ảnh vẫn không giống vật thật, tức là không convergence.
+- Nếu ống kính lệch góc so với vật thể ngay từ đầu, đó là thiếu tính nhất quán.
+- Nếu rung máy làm nhiễu khuếch đại dần qua từng khung hình, đó là thiếu tính ổn định.
+- Nếu tăng độ phân giải mà ảnh vẫn không tiến gần tới hình dạng thật, đó là không hội tụ.
 
 ### Cách hình ảnh
 
-Giáo viên nên vẽ sơ đồ tam giác:
-
-- một đỉnh là consistency,
-- một đỉnh là stability,
-- đỉnh còn lại là convergence.
-
-Mũi tên mạnh nhất là
+Có thể biểu diễn mối liên hệ bằng sơ đồ tam giác với ba đỉnh là tính nhất quán, tính ổn định và sự hội tụ, trong đó mũi tên quan trọng nhất là:
 
 $$
 \text{consistency}+\text{stability}\Rightarrow \text{convergence}.
 $$
 
-Với điều kiện CFL, nên vẽ một nón truyền thông tin vật lý và bước nhảy lưới của sơ đồ để sinh viên thấy thông tin số không được “nhảy xa” hơn tốc độ vật lý cho phép.
+Đối với điều kiện CFL, vẽ song song nón phụ thuộc vật lý và miền phụ thuộc số trên lưới cho thấy trực quan rằng miền phụ thuộc của lược đồ số phải bao trùm miền phụ thuộc vật lý — nói cách khác, trong một bước thời gian, tín hiệu vật lý không được truyền vượt quá phạm vi mà mẫu sai phân trên lưới có thể nắm bắt.
 
 ### Cách hình thức
 
-Một sơ đồ được gọi là consistent nếu sai số cắt cụt địa phương tiến về 0 khi $$ \Delta t,\Delta x\to 0 $$. Nó được gọi là stable nếu các nhiễu nhỏ trong dữ liệu hay tính toán không bị khuếch đại vô hạn.
+Một lược đồ được gọi là **nhất quán** nếu sai số cắt cụt địa phương tiến về 0 khi $$ \Delta t,\Delta x\to 0 $$. Lược đồ được gọi là **ổn định** nếu các nhiễu nhỏ trong dữ liệu hoặc phép tính không bị khuếch đại vô hạn theo thời gian, và **hội tụ** nếu nghiệm số tiến về nghiệm chính xác khi làm mịn lưới.
 
-Nó converge nếu nghiệm số hội tụ về nghiệm đúng khi lưới mịn dần.
-
-Trong nhiều bài toán tuyến tính đặt chỉnh tốt, định lý Lax cho biết:
+Đối với các bài toán giá trị ban đầu tuyến tính đặt chỉnh tốt, định lý tương đương Lax khẳng định:
 
 $$
 \text{consistency}+\text{stability}\Rightarrow \text{convergence}.
 $$
 
-Điều kiện CFL thường có dạng
+Điều kiện CFL thường có dạng:
 
 $$ \frac{c\Delta t}{\Delta x}\le C, $$
 
-với $$ c $$ là tốc độ lan truyền đặc trưng.
+trong đó $$ c $$ là tốc độ lan truyền đặc trưng của bài toán.
 
 ## Ngộ nhận thường gặp
 
-### “Consistency là đủ”
+### “Chỉ cần tính nhất quán là đủ”
 
-Sai. Một sơ đồ có thể xấp xỉ phương trình đúng nhưng vẫn nổ do không ổn định.
+Sai. Một lược đồ nhất quán vẫn có thể bùng nổ hoàn toàn nếu không ổn định.
 
-### “Ổn định nghĩa là nghiệm số không thay đổi”
+### “Ổn định nghĩa là nghiệm số đứng yên không thay đổi”
 
-Không. Ổn định nghĩa là sai số không bị khuếch đại vô lý.
+Không đúng. Ổn định nghĩa là các nhiễu nhỏ và sai số làm tròn không bị khuếch đại vượt kiểm soát.
 
-### “CFL là định lý cho mọi bài toán”
+### “CFL là điều kiện đủ cho mọi loại PDE”
 
-Không. Đây là điều kiện điển hình cho nhiều bài toán tiến hóa, đặc biệt kiểu đối lưu hay sóng, chứ không phải công thức vạn năng.
+Không đúng. CFL là điều kiện cần đặc trưng cho các lược đồ tường minh của bài toán hyperbolic (đối lưu, sóng), không phải công thức duy nhất cho mọi phương trình.
 
-### “Nếu giảm lưới đủ nhỏ thì luôn hội tụ”
+### “Cứ chia lưới nhỏ hơn nữa thì chắc chắn hội tụ”
 
-Không hẳn. Nếu sơ đồ không ổn định, tinh chỉnh lưới chưa chắc cứu được.
+Không hẳn. Nếu lược đồ không ổn định (hoặc làm mịn $$ \Delta x $$ mà không giảm $$ \Delta t $$ tương ứng theo điều kiện ổn định), kết quả vẫn phân kỳ.
 
 ## Tiến trình học
 
-### Bước 1: Kiểm tra consistency
+### Bước 1: Kiểm tra tính nhất quán
 
-Thay nghiệm đúng vào sơ đồ và xem phần dư có tiến về 0 không.
+Thay nghiệm chính xác vào lược đồ và kiểm tra sai số cắt cụt có tiến về 0 khi bước lưới tiến về 0 hay không.
 
-### Bước 2: Phân tích stability
+### Bước 2: Phân tích tính ổn định
 
-Theo dõi sự lan truyền của sai số hoặc mode Fourier đơn giản.
+Theo dõi hệ số khuếch đại của sai số hoặc của từng mode Fourier (phân tích von Neumann).
 
-### Bước 3: Suy ra convergence
+### Bước 3: Suy ra sự hội tụ
 
-Trong lớp bài toán phù hợp, consistency cộng stability dẫn đến convergence.
+Áp dụng định lý Lax cho các bài toán tuyến tính đặt chỉnh: nhất quán cộng ổn định kéo theo hội tụ.
 
-### Bước 4: Hiểu CFL như một giới hạn tốc độ
+### Bước 4: Hiểu ý nghĩa vật lý của điều kiện CFL
 
-Thông tin vật lý và thông tin số phải “khớp nhịp” với nhau.
+Tốc độ truyền thông tin trên lưới số phải đủ lớn để bao trùm tốc độ truyền thông tin vật lý.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có diễn đạt được ba khái niệm bằng lời riêng không?
-- Sinh viên có thấy vì sao consistency không đủ không?
-- Sinh viên có giải thích được ý nghĩa vật lý của CFL không?
+- Sinh viên có diễn đạt được bằng lời ba khái niệm nhất quán, ổn định và hội tụ hay không?
+- Sinh viên có giải thích được vì sao tính nhất quán đơn lẻ là chưa đủ hay không?
+- Sinh viên có giải thích được ý nghĩa vật lý của điều kiện CFL hay không?
 
 ## Ví dụ có lời giải
 
-### Ví dụ 1: Consistency của Euler
+### Ví dụ 1: Tính nhất quán của phương pháp Euler
 
-Thay nghiệm đúng $$ y(t) $$ vào công thức Euler:
+Thay nghiệm đúng $$ y(t) $$ vào lược đồ Euler:
 
 $$ \frac{y(t+h)-y(t)}{h}-f(t,y(t)). $$
 
-Khai triển Taylor cho thấy biểu thức này là $$ O(h) $$, nên Euler nhất quán bậc một.
+Khai triển Taylor cho thấy phần dư này có bậc $$ O(h) $$, nên phương pháp Euler nhất quán bậc một.
 
-### Ví dụ 2: Ổn định của Euler tiến trên $$ y'=\lambda y $$
+### Ví dụ 2: Tính ổn định của Euler tiến trên $$ y'=\lambda y $$
 
-Sai số $$ e_n $$ thỏa $$ e_{n+1}=(1+h\lambda)e_n $$. Nếu $$ \lvert 1+h\lambda\rvert>1 $$, sai số tăng theo cấp số nhân. Đây là hình ảnh rõ nhất của mất ổn định.
+Sai số $$ e_n $$ thỏa mãn $$ e_{n+1}=(1+h\lambda)e_n $$. Khi $$ \lvert 1+h\lambda\rvert>1 $$, sai số tăng theo cấp số nhân — minh họa rõ nhất của sự mất ổn định.
 
-### Ví dụ 3: Điều kiện CFL cho đối lưu
+### Ví dụ 3: Điều kiện CFL cho phương trình đối lưu
 
-Xét $$ u_t+cu_x=0 $$. Với một sơ đồ tường minh đơn giản, điều kiện CFL có dạng
+Xét phương trình $$ u_t+cu_x=0 $$ (với $$ c>0 $$). Đối với lược đồ upwind tường minh, điều kiện CFL là:
 
 $$ \frac{c\Delta t}{\Delta x}\le 1. $$
 
-Nếu vi phạm điều kiện này, sóng số có thể khuếch đại sai lệch và tạo dao động phi thực.
+Nếu vi phạm điều kiện này, biên độ sai lệch sẽ khuếch đại nhanh và sinh dao động phi vật lý.
 
-### Ví dụ 4: Consistent nhưng không stable
+### Ví dụ 4: Nhất quán nhưng không ổn định
 
-Một sơ đồ có thể được xây sao cho sai số cắt cụt nhỏ, nhưng nếu mỗi bước khuếch đại sai số lên gấp đôi thì nghiệm số vẫn đi xa khỏi nghiệm thật. Ví dụ khái niệm này giúp sinh viên hiểu vì sao stability là mắt xích trung tâm.
+Một lược đồ có thể có sai số cắt cụt rất nhỏ trên từng bước, nhưng nếu mỗi bước khuếch đại sai số cũ lên gấp đôi thì sau nhiều bước nghiệm số vẫn lệch xa nghiệm thật. Điều này khẳng định tính ổn định là mắt xích không thể thiếu.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao consistency chỉ nói về sơ đồ trong một bước còn stability nói về cả quá trình?
-2. Tại sao CFL có thể được hiểu là giới hạn “tốc độ truyền tin” của lưới?
-3. Vì sao convergence là đích cuối nhưng không phải thứ nên kiểm tra đầu tiên?
+1. Vì sao tính nhất quán chỉ đánh giá lược đồ trên một bước đơn lẻ còn tính ổn định đánh giá cả quá trình tiến hóa?
+2. Vì sao điều kiện CFL có thể hiểu như một ràng buộc về tốc độ truyền thông tin trên lưới?
+3. Vì sao sự hội tụ là mục tiêu cuối cùng nhưng thường được chứng minh gián tiếp qua tính nhất quán và tính ổn định?
 
 ## Bài toán ứng dụng
 
-1. Trong dự báo thời tiết, vì sao bước thời gian không thể chọn chỉ dựa trên tốc độ máy tính?
-2. Trong mô phỏng giao thông, nếu xe di chuyển nhanh hơn khả năng “cập nhật” của lưới thì điều gì xảy ra với sơ đồ?
-3. Trong mô phỏng sóng nổ, vì sao vi phạm CFL có thể tạo ra kết quả hoàn toàn phi vật lý?
+1. Trong dự báo thời tiết, vì sao không thể chọn bước thời gian $$ \Delta t $$ độc lập với kích thước lưới không gian $$ \Delta x $$?
+2. Trong mô phỏng dòng giao thông, điều gì xảy ra với lược đồ tường minh nếu xe di chuyển qua nhiều hơn một ô lưới trong một bước thời gian?
+3. Trong mô phỏng sóng xung kích, vì sao vi phạm điều kiện CFL dẫn đến nghiệm hoàn toàn phi vật lý?
 
 ## Chiến lược dạy học tương tác
 
 ### Câu hỏi nên hỏi trên lớp
 
-- Nếu sơ đồ giống phương trình đúng trong một bước, tại sao vẫn có thể sai hoàn toàn sau nhiều bước?
-- Em hiểu “ổn định” là ổn định của cái gì?
-- CFL là ràng buộc kỹ thuật hay còn mang ý nghĩa vật lý?
+- Nếu một lược đồ xấp xỉ rất sát PDE trong một bước, vì sao nó vẫn có thể thất bại hoàn toàn sau nhiều bước?
+- "Tính ổn định" trong bài này nói về sự ổn định của đại lượng nào?
+- Điều kiện CFL chỉ là ràng buộc đại số hay còn phản ánh bản chất vật lý của bài toán?
 
 ### Hoạt động gợi ý
 
-- Cho sinh viên kiểm tra consistency bằng Taylor trên một sơ đồ đơn giản.
-- Dùng mô phỏng để thay đổi tỉ số
-
-$$ \frac{\Delta t}{\Delta x} $$
-
-và quan sát khi nào sơ đồ bắt đầu hỏng.
-- Tổ chức thảo luận nhóm: stability là “kìm hãm sai số” hay “bảo vệ vật lý”?
+- Cho sinh viên tự kiểm tra tính nhất quán bằng khai triển Taylor trên một lược đồ đơn giản.
+- Chạy mô phỏng thay đổi tỷ số $$ \frac{\Delta t}{\Delta x} $$ để quan sát chính xác ngưỡng mất ổn định.
+- Thảo luận nhóm về mối quan hệ giữa miền phụ thuộc vật lý và miền phụ thuộc số.
 
 ### Cách tăng tham gia
 
-- Bắt đầu bằng một ví dụ số bị nổ dù công thức trông hợp lý.
-- Cho sinh viên tự diễn đạt định lý Lax theo ngôn ngữ không hình thức.
-- Mời sinh viên dùng trực giác giao thông hoặc sóng để giải thích CFL.
+- Mở đầu bằng một mô phỏng bị bùng nổ dù công thức sai phân trông rất hợp lý.
+- Yêu cầu sinh viên diễn đạt lại định lý Lax bằng ngôn ngữ thông thường.
+- Khuyến khích dùng trực giác sóng hoặc giao thông để giải thích điều kiện CFL.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Tách riêng ba khái niệm và dùng ví dụ ngắn cho từng khái niệm.
-- Ưu tiên giải thích bằng hình hơn bằng chứng minh.
-- Dùng bài toán một chiều đơn giản trước.
+- Tách rõ từng khái niệm trong bộ ba nhất quán – ổn định – hội tụ bằng các ví dụ ngắn.
+- Ưu tiên sơ đồ hình học về miền phụ thuộc trước khi đi vào chứng minh đại số.
+- Khảo sát kỹ bài toán đối lưu một chiều trước.
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Tìm hiểu phân tích Von Neumann.
-- Chứng minh định lý Lax trong bối cảnh đơn giản.
-- So sánh CFL của các sơ đồ khác nhau cho phương trình đối lưu.
+- Thực hiện phân tích ổn định von Neumann cho lược đồ upwind và lược đồ Lax–Friedrichs.
+- Chứng minh định lý tương đương Lax trong trường hợp toán tử tuyến tính đơn giản.
+- So sánh điều kiện CFL của các lược đồ khác nhau cho phương trình đối lưu và phương trình sóng.
 
 ## Ghi nhớ nhanh
 
-Một sơ đồ số chỉ đáng tin khi vừa nhất quán với PDE gốc, vừa ổn định trước sai số, từ đó mới hội tụ về nghiệm thật. Điều kiện CFL là lời nhắc rằng tốc độ truyền thông tin của sơ đồ phải tương thích với tốc độ vật lý của bài toán.
+Một lược đồ số chỉ hội tụ về nghiệm chính xác khi vừa nhất quán với PDE gốc vừa ổn định trước sự lan truyền sai số. Điều kiện CFL đảm bảo tốc độ truyền thông tin trên lưới số bao trùm tốc độ lan truyền vật lý của hệ.
 
 ---
 
@@ -202,23 +190,19 @@ Một sơ đồ số chỉ đáng tin khi vừa nhất quán với PDE gốc, v�
 
 ### 1. Dự báo thời tiết và mô phỏng khí quyển
 
-Trong các mô hình khí quyển, sóng và đối lưu lan thông tin với tốc độ đặc trưng nhất định. Nếu bước thời gian quá lớn so với kích thước lưới, sơ đồ tường minh có thể vi phạm CFL và tạo dao động hoặc bùng nổ hoàn toàn phi vật lý. Mô hình thực tế còn phức tạp hơn nhiều, nhưng trực giác CFL vẫn là nguyên tắc cốt lõi trong mọi solver tiến hóa.
+Trong các mô hình khí quyển, sóng và dòng đối lưu lan truyền thông tin với vận tốc đặc trưng. Nếu chọn bước thời gian quá lớn so với kích thước lưới, lược đồ tường minh sẽ vi phạm điều kiện CFL và sinh dao động phân kỳ phi vật lý.
 
-### 2. Giao thông và đối lưu thông tin
+### 2. Dòng giao thông và đối lưu 1D
 
-Trong mô phỏng giao thông hoặc dòng chảy 1D, điều kiện
+Điều kiện $$ \frac{c\Delta t}{\Delta x}\le C $$ cho thấy trong mỗi bước thời gian, sóng mật độ không được vượt quá phạm vi mà mẫu sai phân trên lưới có thể tiếp nhận.
 
-$$ \frac{c\Delta t}{\Delta x}\le C $$
+### 3. Sóng nổ, thủy động lực học và CFD
 
-cho biết trong một bước thời gian, thông tin không nên nhảy qua quá nhiều ô lưới. Diễn giải vật lý rất rõ: lưới số phải đủ nhanh để “theo kịp” chuyển động của phương tiện hay sóng mật độ.
-
-### 3. Sóng nổ, thủy động lực và CFD
-
-Trong CFD, stability không chỉ là câu chuyện lý thuyết mà quyết định trực tiếp việc mô phỏng có cho ra shock profile hợp lý hay sụp đổ vì nhiễu số. Đây là nơi consistency, stability, và convergence đi từ khái niệm giáo khoa thành điều kiện sống còn của phần mềm tính toán.
+Trong tính toán động lực học chất lưu (CFD), tính ổn định quyết định trực tiếp việc mô phỏng có bắt đúng biên dạng sóng xung kích hay sụp đổ do nhiễu số. Bộ ba nhất quán – ổn định – hội tụ vì thế là tiêu chuẩn thiết yếu trong mọi phần mềm mô phỏng.
 
 ## Trực giác sâu hơn
 
-Consistency nói “mỗi bước đang mô phỏng đúng bài toán”; stability nói “những gì nhỏ không bị khuếch đại điên cuồng”; convergence nói “cả quá trình đi đúng nơi cần đến”. Ngộ nhận phổ biến là kiểm tra consistency xong là đủ. Thực ra rất nhiều sơ đồ thất bại không phải vì mô hình cục bộ sai, mà vì sai số nhỏ bị thổi phồng qua thời gian.
+Tính nhất quán đảm bảo mỗi bước mô phỏng đúng phương trình; tính ổn định đảm bảo nhiễu nhỏ không bị khuếch đại mất kiểm soát; và sự hội tụ khẳng định toàn bộ quá trình tiến về nghiệm thật. Nhiều lược đồ thất bại không phải do sai công thức cục bộ mà do khuếch đại sai số tích lũy qua thời gian.
 
 ## Trực quan hóa bằng Python
 
@@ -251,7 +235,7 @@ plt.show()
 
 ## Trực quan hóa bằng JavaScript
 
-Có thể dùng `Plotly.js` với thanh trượt tỉ số $$ \Delta t/\Delta x $$ để sinh viên quan sát ngay khi CFL vượt ngưỡng thì nghiệm số bắt đầu méo hoặc mất ổn định.
+Có thể dùng `Plotly.js` kèm thanh trượt tỷ số $$ \Delta t/\Delta x $$ để quan sát trực tiếp thời điểm số CFL vượt ngưỡng làm nghiệm số méo dạng và mất ổn định.
 
 ## Gợi ý tài nguyên ngoài
 
@@ -261,11 +245,11 @@ Tìm kiếm: `CFL condition visualization`, `Von Neumann stability animation`, h
 
 ### Mức đại học (Undergraduate)
 
-Tập trung vào ba khái niệm consistency, stability, convergence và ý nghĩa trực quan của CFL trong bài toán đối lưu, sóng.
+Tập trung vào bộ ba nhất quán – ổn định – hội tụ và ý nghĩa vật lý của điều kiện CFL cho phương trình đối lưu và phương trình sóng.
 
 ### Mức sau đại học (Graduate)
 
-Đi sâu vào phân tích Von Neumann, định lý Lax trong bối cảnh tuyến tính, phổ toán tử tiến hóa rời rạc, và các tiêu chuẩn stability tinh hơn cho PDE số.
+Đi sâu vào phân tích von Neumann, định lý tương đương Lax–Richtmyer, phổ của toán tử tiến hóa rời rạc và các tiêu chuẩn ổn định phi tuyến.
 
 > Xem toàn bộ minh họa tương tác của chương tại: [Bộ Minh họa tương tác Chương 13]({{ site.baseurl }}/contents/vi/chapter13/13_09_Interactive_Gallery/)
 
@@ -274,21 +258,20 @@ Tập trung vào ba khái niệm consistency, stability, convergence và ý ngh�
 ### 1. Ứng dụng thực tế
 
 #### Dự báo thời tiết và mô hình sóng
-- Bài toán: Bước thời gian phải liên hệ đúng với kích thước ô lưới và tốc độ lan truyền.
-- Mô hình: Điều kiện CFL cho phương trình vận chuyển hoặc sóng có dạng điển hình
-$$ \frac{c\Delta t}{\Delta x}\le C. $$
-- Giả thiết và giới hạn: Phụ thuộc lược đồ cụ thể; vi phạm CFL thường làm mô phỏng nổ số.
-- Diễn giải: Tín hiệu vật lý không được "đi nhanh hơn" khả năng truyền thông tin trên lưới.
+- Bài toán: Ràng buộc bước thời gian theo kích thước ô lưới và tốc độ lan truyền sóng.
+- Mô hình: Điều kiện CFL điển hình $$ \frac{c\Delta t}{\Delta x}\le C $$.
+- Giả thiết và giới hạn: Hằng số $$ C $$ phụ thuộc vào lược đồ cụ thể; vi phạm điều kiện thường gây bùng nổ số.
+- Diễn giải: Tín hiệu vật lý không được truyền nhanh hơn tốc độ lan truyền thông tin trên lưới.
 
-#### Mô phỏng giao thông hoặc dòng chảy
-- Bài toán: Các shock và front cần lưới phù hợp để ổn định và bắt đúng cấu trúc lan truyền.
-- Mô hình: Phân tích ổn định Fourier hay von Neumann cho lược đồ.
-- Giả thiết và giới hạn: Linearization thường chỉ phản ánh một phần hành vi phi tuyến.
-- Diễn giải: Stability và convergence không thể tách rời consistency.
+#### Mô phỏng giao thông và dòng chảy
+- Bài toán: Mô phỏng chính xác các mặt sóng và sóng xung kích mà không sinh dao động giả.
+- Mô hình: Phân tích ổn định Fourier (von Neumann) cho lược đồ sai phân.
+- Giả thiết và giới hạn: Tuyến tính hóa chỉ phản ánh cục bộ hành vi của hệ phi tuyến.
+- Diễn giải: Tính ổn định và sự hội tụ luôn gắn liền với tính nhất quán.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Consistency nói lược đồ gần PDE cục bộ; stability nói sai số không bị khuếch đại vô hạn; convergence nói nghiệm số tiến về nghiệm đúng. Định lý Lax-Richtmyer cho thấy consistency cộng stability sinh convergence trong bối cảnh tuyến tính thích hợp. Một bẫy phổ biến là kiểm tra consistency rồi mặc nhiên tin lược đồ hội tụ.
+Tính nhất quán kiểm tra độ khớp cục bộ với PDE, tính ổn định chặn sự khuếch đại sai số, còn sự hội tụ đảm bảo nghiệm số tiến về nghiệm đúng. Định lý Lax–Richtmyer liên kết cả ba khái niệm này trong khuôn khổ tuyến tính đặt chỉnh; do đó không thể chỉ kiểm tra tính nhất quán rồi mặc nhiên kết luận lược đồ hội tụ.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -320,22 +303,20 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Cho phương trình vận chuyển
-$$ u_t + c u_x = 0 $$
-và lược đồ upwind explicit,
+Cho phương trình vận chuyển $$ u_t + c u_x = 0 $$ (với $$ c>0 $$) và lược đồ upwind tường minh:
 $$
 u_j^{n+1}=u_j^n-\nu(u_j^n-u_{j-1}^n),\qquad \nu=\frac{c\Delta t}{\Delta x}.
 $$
-Lược đồ ổn định khi $$ 0\le \nu \le 1 $$. Đây chính là ràng buộc CFL quen thuộc trong mô phỏng sóng và dòng chảy.
+Lược đồ ổn định khi và chỉ khi $$ 0\le \nu \le 1 $$. Đây chính là ràng buộc CFL tiêu biểu trong mô phỏng sóng và dòng chảy.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Hiểu trực giác của CFL và mối liên hệ giữa consistency, stability, convergence.
+**Bậc đại học.** Nắm trực giác điều kiện CFL và mối liên hệ giữa tính nhất quán, ổn định và hội tụ.
 
-**Bậc sau đại học.** Kết nối với von Neumann analysis, energy methods và nonlinear stability notions.
+**Bậc sau đại học.** Kết nối với phân tích von Neumann, phương pháp năng lượng và các tiêu chuẩn ổn định cho PDE phi tuyến.
 
 ## Video tham khảo
 
-- xem trước: [Harvard AM205 video 3.18 - CFL condition & upwinding](https://www.youtube.com/watch?v=GsilBPN8Ew4) — Chris Rycroft, tiếng Anh. Chris Rycroft về điều kiện CFL và upwind.
-- [Von Neumann analysis: derivation of the CFL criterion](https://www.youtube.com/watch?v=5_VtrWGaEGM) — LMU Seismology, tiếng Anh. Phân tích Von Neumann dẫn tới một ràng buộc CFL.
-- [Stability of Forward Euler and Backward Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=RdXCGnTT6UY) — Steve Brunton, tiếng Anh. Phiên bản ODE của cùng ràng buộc ổn định, cho Euler.
+- xem trước: [Harvard AM205 video 3.18 - CFL condition & upwinding](https://www.youtube.com/watch?v=GsilBPN8Ew4) — Chris Rycroft, tiếng Anh. Giải thích điều kiện CFL và lược đồ upwind cho phương trình đối lưu.
+- [Von Neumann analysis: derivation of the CFL criterion](https://www.youtube.com/watch?v=5_VtrWGaEGM) — LMU Seismology, tiếng Anh. Dẫn xuất tiêu chuẩn CFL bằng phân tích ổn định von Neumann.
+- [Stability of Forward Euler and Backward Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=RdXCGnTT6UY) — Steve Brunton, tiếng Anh. Liên hệ với phiên bản ODE của điều kiện ổn định cho phương pháp Euler.

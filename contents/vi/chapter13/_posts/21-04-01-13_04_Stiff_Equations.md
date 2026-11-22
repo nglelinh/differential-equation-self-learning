@@ -14,177 +14,174 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giúp sinh viên hiểu stiffness như một khó khăn số học chứ không chỉ là một đặc điểm hình dạng của nghiệm. Sau bài học, sinh viên cần giải thích được vì sao bài toán có thể “dễ về mặt nghiệm” nhưng “khó về mặt số”, biết dùng phương trình kiểm tra $$ y'=\lambda y $$ để phân tích ổn định, và hiểu vì sao các phương pháp ngầm thường được ưu tiên cho bài toán cứng.
+Bài học này giúp sinh viên hiểu độ cứng (stiffness) như một thách thức giải tích số chứ không chỉ là đặc điểm hình dạng của nghiệm. Sau bài học, sinh viên cần giải thích được vì sao một bài toán có nghiệm trơn nhưng vẫn khó giải bằng sơ đồ tường minh, biết dùng phương trình kiểm thử $$ y'=\lambda y $$ để phân tích miền ổn định, và hiểu lý do các phương pháp ẩn được ưu tiên cho bài toán cứng.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm Euler tiến, Euler lùi, miền ổn định cơ bản, và khái niệm rằng phương pháp số có thể thất bại dù nghiệm thật suy giảm rất đẹp. Đây là bài nối trực tiếp giữa lý thuyết ổn định và thực hành tính toán.
+Sinh viên cần nắm Euler tiến, Euler lùi, khái niệm miền ổn định cơ bản và hiện tượng mất ổn định số ngay cả khi nghiệm thật suy giảm êm. Bài học này kết nối trực tiếp lý thuyết ổn định với thực hành lựa chọn bộ giải.
 
 ## Dẫn nhập
 
-Một trong những điều gây bối rối nhất cho sinh viên là: có những ODE mà nghiệm thật trông rất hiền, giảm nhanh về cân bằng, nhưng máy tính lại buộc dùng bước cực nhỏ mới không nổ. Tại sao? Câu trả lời là stiffness. Đó là khi phương pháp số bị điều khiển bởi ổn định nhiều hơn là bởi độ chính xác.
+Một tình huống thường gây ngạc nhiên khi mới học phương pháp số là có những ODE mà nghiệm chính xác rất trơn và suy giảm nhanh về trạng thái cân bằng, nhưng máy tính lại buộc phải dùng bước thời gian cực nhỏ để sơ đồ tường minh không bị bùng nổ. Hiện tượng đó gọi là độ cứng (stiffness): kích thước bước bị khống chế bởi điều kiện ổn định thay vì yêu cầu độ chính xác.
 
-Nói ngắn gọn, bài toán cứng thường chứa nhiều thang thời gian rất khác nhau. Một thành phần suy giảm cực nhanh có thể không còn quan trọng về mặt vật lý sau thời gian ngắn, nhưng vẫn ép sơ đồ tường minh đi từng bước tí hon.
+Bài toán cứng thường xuất hiện ở các hệ có nhiều thang thời gian chênh lệch nhau lớn: một thành phần suy giảm rất nhanh có thể không còn đáng kể sau thời gian ngắn, nhưng vẫn ép sơ đồ tường minh phải duy trì bước thời gian cực nhỏ trong suốt quá trình tính.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Hãy tưởng tượng đi xe trên một con đường rất dài nhưng ngay đầu đường có vài ổ gà cực nhỏ và rất gắt. Dù phần lớn con đường khá êm, bạn vẫn phải đi chậm nếu dùng một chiếc xe quá nhạy với ổ gà. Thành phần nhanh của hệ chính là những “ổ gà” đó: chúng ép phương pháp tường minh phải đi chậm.
+Hãy tưởng tượng lái xe trên một đoạn đường dài khá bằng phẳng nhưng ngay đầu đoạn có vài gờ rất gắt. Nếu phương tiện quá nhạy với dao động cục bộ, bạn vẫn bị ép chạy chậm suốt quãng đường. Các thành phần suy giảm nhanh trong hệ cứng đóng vai trò tương tự: chúng buộc sơ đồ tường minh phải dùng bước rất nhỏ.
 
 ### Cách hình ảnh
 
-Giáo viên nên vẽ hai đồ thị:
+Có thể đặt hai hình ảnh cạnh nhau:
 
-- nghiệm thật giảm nhanh rồi bám sát trạng thái chậm,
-- miền ổn định của Euler tiến trên trục thực âm.
+- đồ thị nghiệm thật suy giảm nhanh trong giai đoạn đầu rồi biến thiên chậm;
+- miền ổn định của Euler tiến trên mặt phẳng phức (hình tròn tâm $$-1$$ bán kính $$1$$).
 
-Điều sinh viên cần thấy là khó khăn không nằm ở hình dáng nghiệm tổng thể, mà nằm ở vị trí của các trị riêng so với miền ổn định của sơ đồ.
+Khó khăn số học không đến từ hình dáng phức tạp của nghiệm, mà từ việc tích $$ h\lambda $$ dễ rơi ra ngoài miền ổn định nếu $$ h $$ không đủ nhỏ.
 
 ### Cách hình thức
 
-Phương trình kiểm tra chuẩn là $$ y'=\lambda y,\qquad \Re(\lambda)<0 $$. Euler tiến cho $$ y_{n+1}=(1+h\lambda)y_n $$. Muốn ổn định, cần $$ \lvert 1+h\lambda\rvert\le 1 $$. Nếu $$ \lambda $$ âm lớn về trị tuyệt đối, điều kiện trên ép $$ h $$ rất nhỏ. Trong khi đó, Euler lùi cho
+Với phương trình kiểm thử chuẩn $$ y'=\lambda y,\qquad \Re(\lambda)<0 $$, Euler tiến cho $$ y_{n+1}=(1+h\lambda)y_n $$. Điều kiện ổn định là $$ \lvert 1+h\lambda\rvert\le 1 $$, buộc $$ h $$ phải rất nhỏ khi $$ \lvert\lambda\rvert $$ lớn. Ngược lại, Euler lùi cho:
 
 $$ y_{n+1}=\frac{1}{1-h\lambda}y_n, $$
 
-và ổn định với mọi $$ h>0 $$ khi $$ \Re(\lambda)<0 $$.
+ổn định với mọi $$ h>0 $$ bất cứ khi nào $$ \Re(\lambda)<0 $$.
 
 ## Ngộ nhận thường gặp
 
-### “Stiff nghĩa là nghiệm dao động rất nhanh”
+### “Phương trình cứng nghĩa là nghiệm dao động rất nhanh”
 
-Không nhất thiết. Nhiều bài toán cứng có nghiệm rất êm và còn suy giảm đơn điệu.
+Không nhất thiết. Nhiều phương trình cứng có nghiệm rất trơn và suy giảm đơn điệu.
 
-### “Nếu giảm bước đủ nhỏ thì không còn gì để bàn”
+### “Cứ giảm bước $$ h $$ đủ nhỏ là giải quyết xong”
 
-Thực tế, bước cần có thể nhỏ đến mức chi phí tính toán trở nên không chấp nhận được.
+Về lý thuyết thì đúng, nhưng trên thực tế bước $$ h $$ cần thiết có thể nhỏ đến mức thời gian tính toán và sai số làm tròn trở nên không chấp nhận được.
 
-### “Bài toán cứng là vấn đề của mô hình”
+### “Độ cứng chỉ là tính chất riêng của mô hình”
 
-Không hoàn toàn. Stiffness là quan hệ giữa mô hình và phương pháp giải.
+Chưa đầy đủ. Độ cứng là sự tương tác giữa thang thời gian của mô hình với miền ổn định của phương pháp số được chọn.
 
-### “Phương pháp bậc cao sẽ tự động giải quyết stiffness”
+### “Dùng phương pháp tường minh bậc cao sẽ hết cứng”
 
-Không. Nhiều phương pháp tường minh bậc cao vẫn bị giới hạn mạnh bởi ổn định.
+Sai. Các phương pháp tường minh bậc cao (như RK4) vẫn có miền ổn định hữu hạn nên vẫn bị ràng buộc bước chặt trên bài toán cứng.
 
 ## Tiến trình học
 
-### Bước 1: Phân tích phương trình kiểm tra
+### Bước 1: Phân tích phương trình kiểm thử
 
-Dùng $$ y'=\lambda y $$ để sinh viên nhìn thấy điều kiện ổn định rõ ràng.
+Dùng $$ y'=\lambda y $$ để dẫn xuất tường minh điều kiện ổn định.
 
-### Bước 2: Tách bạch độ chính xác và ổn định
+### Bước 2: Tách bạch yêu cầu độ chính xác và yêu cầu ổn định
 
-Nhấn mạnh rằng bước nhỏ đôi khi không phải để mô tả nghiệm đẹp hơn mà chỉ để tránh nổ số.
+Nhấn mạnh rằng trong bài toán cứng, bước nhỏ thường là để tránh bùng nổ chứ không phải để vẽ nghiệm trơn hơn.
 
-### Bước 3: Liên hệ với nhiều thang thời gian
+### Bước 3: Liên hệ với hệ đa thang thời gian
 
-Một thành phần nhanh có thể ép toàn bộ sơ đồ chậm lại.
+Chỉ ra cách một thành phần suy giảm nhanh khống chế bước thời gian của toàn hệ.
 
-### Bước 4: Đưa ra giải pháp
+### Bước 4: Giới thiệu giải pháp ẩn
 
-Các phương pháp ngầm, A-stability, và đôi khi L-stability là câu trả lời tự nhiên.
+Trình bày vai trò của phương pháp ẩn, tính A-ổn định (A-stability) và L-ổn định (L-stability).
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có giải thích được stiffness mà không nhầm với “nghiệm thay đổi nhanh” không?
-- Sinh viên có suy ra điều kiện ổn định của Euler tiến không?
-- Sinh viên có nói được vì sao Euler lùi phù hợp hơn không?
+- Sinh viên có giải thích được khái niệm độ cứng mà không nhầm với "nghiệm biến thiên nhanh" hay không?
+- Sinh viên có suy ra được điều kiện ổn định của Euler tiến trên $$ y'=\lambda y $$ hay không?
+- Sinh viên có giải thích được vì sao Euler lùi vượt trội hơn trên bài toán cứng hay không?
 
 ## Ví dụ có lời giải
 
-### Ví dụ 1: Phương trình kiểm tra cơ bản
+### Ví dụ 1: Phương trình kiểm thử cơ bản
 
-Xét $$ y'=-100y $$. Euler tiến cho $$ y_{n+1}=(1-100h)y_n $$. Muốn ổn định, cần $$ \lvert 1-100h\rvert\le 1 $$, tức là $$ 0\le h\le 0.02 $$. Điều này rất gắt dù nghiệm thật chỉ suy giảm êm về 0.
+Xét $$ y'=-100y $$. Euler tiến cho $$ y_{n+1}=(1-100h)y_n $$. Điều kiện ổn định $$ \lvert 1-100h\rvert\le 1 $$ đòi hỏi $$ 0\le h\le 0.02 $$, một ràng buộc rất chặt dù nghiệm thật chỉ suy giảm êm về 0.
 
 ### Ví dụ 2: Euler lùi trên cùng bài toán
 
-Euler lùi cho
+Áp dụng Euler lùi ta có:
 
 $$ y_{n+1}=\frac{1}{1+100h}y_n. $$
 
-Với mọi $$ h>0 $$, hệ số đều nhỏ hơn 1 về trị tuyệt đối. Đây là minh họa trực tiếp cho lợi thế ổn định của phương pháp ngầm.
+Với mọi $$ h>0 $$, hệ số khuếch đại luôn dương và nhỏ hơn 1 — minh họa trực tiếp ưu thế ổn định không điều kiện của lược đồ ẩn.
 
 ### Ví dụ 3: Hệ hai thang thời gian
 
-Xét hệ có hai nghiệm riêng suy giảm như $$ e^{-t}\quad \text{và}\quad e^{-1000t} $$. Về mặt quan sát dài hạn, thành phần $$ e^{-1000t} $$ gần như biến mất ngay. Nhưng nếu dùng Euler tiến, chính nó lại quyết định kích thước bước. Đây là hình ảnh cốt lõi của stiffness.
+Xét hệ có hai thành phần nghiệm suy giảm như $$ e^{-t} $$ và $$ e^{-1000t} $$. Sau một khoảng thời gian rất ngắn, thành phần $$ e^{-1000t} $$ hầu như bằng 0; tuy nhiên nếu dùng Euler tiến, chính thành phần này vẫn quyết định giới hạn bước thời gian $$ h $$.
 
-### Ví dụ 4: Bài toán cứng thực tế
+### Ví dụ 4: Động học phản ứng hóa học nhanh–chậm
 
-Trong mô hình phản ứng hóa học nhanh-chậm, một số phản ứng xảy ra gần như tức thì còn số khác diễn ra chậm hơn nhiều. Nếu dùng phương pháp tường minh, mô phỏng sẽ bị thành phần nhanh khống chế dù người dùng chủ yếu quan tâm động học chậm. Đây là lý do solver stiff rất quan trọng trong hóa học và sinh học.
+Trong các hệ phản ứng hóa học, một số phản ứng đạt cân bằng gần như tức thời trong khi các phản ứng khác diễn ra chậm hơn nhiều bậc độ lớn. Nếu dùng bộ giải tường minh, tốc độ tính bị ghìm chặt theo phản ứng nhanh nhất dù mục tiêu nghiên cứu là diễn biến chậm. Vì thế các bộ giải chuyên dụng cho hệ cứng đóng vai trò thiết yếu trong hóa học và sinh học tính toán.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao stiffness là khái niệm vừa thuộc về mô hình vừa thuộc về phương pháp?
-2. Điều gì khiến một bài toán có nghiệm đơn giản vẫn trở nên khó tính toán?
-3. Tại sao ổn định của phương pháp ngầm lại đặc biệt quan trọng trong bài toán cứng?
+1. Vì sao độ cứng phụ thuộc đồng thời vào mô hình toán học và phương pháp số sử dụng?
+2. Điều gì khiến một bài toán có nghiệm trơn, đơn giản vẫn trở nên khó tính bằng sơ đồ tường minh?
+3. Vì sao tính ổn định của phương pháp ẩn lại quan trọng đến vậy đối với bài toán cứng?
 
 ## Bài toán ứng dụng
 
-1. Trong mô hình phản ứng hóa học có phản ứng nhanh và chậm, vì sao stiffness xuất hiện tự nhiên?
-2. Trong mạch điện có linh kiện với hằng số thời gian rất khác nhau, bài toán số bị ảnh hưởng ra sao?
-3. Trong dược động học, nếu một chất bị hấp thụ nhanh nhưng đào thải chậm, solver số nên chú ý điều gì?
+1. Trong động học hóa học có cả phản ứng nhanh và phản ứng chậm, vì sao tính cứng xuất hiện tự nhiên?
+2. Trong mạch điện gồm các linh kiện có hằng số thời gian chênh lệch lớn, tính cứng ảnh hưởng đến mô phỏng số như thế nào?
+3. Trong dược động học, nếu thuốc hấp thụ rất nhanh nhưng đào thải chậm, bộ giải số cần lưu ý điều gì?
 
 ## Chiến lược dạy học tương tác
 
 ### Câu hỏi nên hỏi trên lớp
 
-- Có phải nghiệm giảm nhanh luôn là bài toán dễ?
-- Nếu mô hình ổn định nhưng nghiệm số nổ, lỗi nằm ở đâu?
-- Vì sao một mode rất nhanh nhưng ít quan trọng vẫn ép toàn bộ sơ đồ?
+- Một phương trình có nghiệm suy giảm nhanh về 0 có luôn dễ giải bằng máy tính không?
+- Khi mô hình liên tục hoàn toàn ổn định nhưng nghiệm số lại bùng nổ, nguyên nhân nằm ở đâu?
+- Vì sao một mode tắt gần như tức thời vẫn khống chế bước thời gian của sơ đồ tường minh?
 
 ### Hoạt động gợi ý
 
-- Cho sinh viên thử Euler tiến với nhiều giá trị $$ h $$ trên $$ y'=-100y $$.
-- Vẽ miền ổn định của Euler tiến và Euler lùi để so sánh.
-- Thảo luận nhóm về các hiện tượng nhiều thang thời gian trong thực tế.
+- Chạy thử Euler tiến với nhiều giá trị $$ h $$ khác nhau trên $$ y'=-100y $$ để quan sát ngưỡng mất ổn định.
+- Vẽ so sánh miền ổn định của Euler tiến và Euler lùi trên mặt phẳng phức.
+- Thảo luận nhóm các ví dụ hệ đa thang thời gian trong khoa học và kỹ thuật.
 
 ### Cách tăng tham gia
 
-- Bắt đầu bằng ví dụ máy tính “phát nổ” dù nghiệm thật hiền.
-- Cho sinh viên dự đoán bước lớn nhất chấp nhận được.
-- Khuyến khích giải thích stiffness bằng ngôn ngữ không công thức trước.
+- Mở đầu bằng biểu đồ nghiệm số bùng nổ dù nghiệm thật giảm rất êm.
+- Mời sinh viên tự tính bước thời gian lớn nhất cho phép trước khi chạy mô phỏng.
+- Yêu cầu diễn đạt khái niệm độ cứng bằng lời trước khi dùng trị riêng.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Chỉ dùng phương trình thử một chiều.
-- Làm thật kỹ điều kiện
-
-$$ \lvert 1+h\lambda\rvert\le 1. $$
-
-- Dùng bảng giá trị để thấy hiện tượng dao động và bùng nổ.
+- Bắt đầu từ phương trình kiểm thử một chiều $$ y'=\lambda y $$.
+- Luyện kỹ phép kiểm tra điều kiện $$ \lvert 1+h\lambda\rvert\le 1 $$.
+- Dùng bảng giá trị vài bước đầu để thấy rõ hiện tượng đổi dấu và bùng nổ biên độ.
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Tìm hiểu A-stability và L-stability.
-- Phân tích stiffness bằng trị riêng của hệ tuyến tính.
-- So sánh miền ổn định của Euler, RK4 và Euler lùi.
+- Tìm hiểu sâu khái niệm A-ổn định và L-ổn định.
+- Phân tích độ cứng của hệ tuyến tính thông qua tỷ số trị riêng (stiffness ratio).
+- So sánh miền ổn định của Euler tiến, RK4 và Euler lùi.
 
 ## Ghi nhớ nhanh
 
-Phương trình cứng là bài toán mà bước thời gian bị ép nhỏ bởi ổn định hơn là bởi độ chính xác. Thành phần nhanh của hệ có thể không quan trọng về mặt vật lý dài hạn, nhưng lại khống chế mạnh việc lựa chọn phương pháp số.
+Phương trình cứng là bài toán mà kích thước bước của sơ đồ tường minh bị khống chế bởi yêu cầu ổn định thay vì độ chính xác. Thành phần suy giảm nhanh dù không còn đáng kể về lâu dài vẫn buộc ta phải dùng phương pháp ẩn để giữ bước thời gian hợp lý.
 
 ---
 
 ## Ứng dụng thực tế
 
-### 1. Phản ứng hóa học nhanh-chậm
+### 1. Phản ứng hóa học nhanh–chậm
 
-Trong động học hóa học, một số phản ứng xảy ra gần như tức thời còn số khác diễn ra chậm hơn nhiều. Hệ ODE tương ứng thường có trị riêng âm rất lớn về độ lớn, khiến Euler tiến hoặc RK tường minh bị ép bước rất nhỏ. Mô hình phản ánh tốt hiện tượng nhiều thang thời gian, nhưng có thể còn phức tạp hơn do ràng buộc bảo toàn hay phi tuyến mạnh. Diễn giải là: stiffness xuất hiện vì solver phải tôn trọng mode nhanh dù người dùng thường chỉ quan tâm động học chậm.
+Hệ ODE mô tả động học hóa học thường có các trị riêng âm rất lớn về độ lớn, khiến Euler tiến hoặc RK tường minh bị ép bước cực nhỏ. Dù phản ánh đúng cấu trúc đa thang thời gian, bài toán đòi hỏi bộ giải ẩn để mô phỏng hiệu quả diễn biến chậm.
 
-### 2. Mạch điện với nhiều hằng số thời gian
+### 2. Mạch điện nhiều hằng số thời gian
 
-Trong mạch có điện trở, tụ, và cảm với thang phản ứng rất khác nhau, mô hình trạng thái thường dẫn tới hệ cứng. Dù điện áp hoặc dòng tổng thể thay đổi khá êm, phương pháp tường minh vẫn có thể nổ nếu không chọn bước nhỏ. Đây là ví dụ kỹ thuật điển hình cho việc stiffness là vấn đề của mô hình cộng phương pháp, không phải chỉ của nghiệm thật.
+Trong mạch gồm điện trở, tụ điện và cuộn cảm có thang đáp ứng chênh lệch mạnh, hệ phương trình trạng thái thường cứng. Ngay cả khi điện áp và dòng điện biến thiên êm, sơ đồ tường minh vẫn có thể bùng nổ nếu bước vượt ngưỡng ổn định.
 
 ### 3. Dược động học nhiều ngăn
 
-Một chất có thể hấp thụ nhanh vào máu nhưng đào thải chậm khỏi mô. Mô hình nhiều ngăn khi đó có các thang thời gian rất lệch nhau và dễ trở nên cứng. Euler lùi hay các solver stiff chuyên dụng thường phù hợp hơn nếu cần mô phỏng dài hạn.
+Khi tốc độ hấp thụ vào máu lớn hơn rất nhiều so với tốc độ đào thải khỏi mô, hệ phương trình nhiều ngăn trở nên cứng. Euler lùi hoặc các bộ giải BDF chuyên dụng giúp mô phỏng dài hạn ổn định và tiết kiệm chi phí.
 
 ## Trực giác sâu hơn
 
-Stiffness dạy sinh viên rằng “nghiệm hiền” chưa chắc là “bài toán dễ”. Một mode rất nhanh có thể biến mất gần như ngay lập tức trong nghiệm thật, nhưng phương pháp số vẫn phải đối phó với nó để không mất ổn định. Ngộ nhận phổ biến là chỉ cần tăng bậc phương pháp; thực ra chìa khóa thường nằm ở miền ổn định, không phải chỉ ở bậc chính xác.
+Độ cứng cho thấy nghiệm mượt không đồng nghĩa với bài toán số dễ. Khi một mode suy giảm rất nhanh ẩn trong hệ, yếu tố quyết định hiệu quả của bộ giải nằm ở độ rộng miền ổn định chứ không chỉ ở bậc chính xác.
 
 ## Trực quan hóa bằng Python
 
@@ -219,7 +216,7 @@ plt.show()
 
 ## Trực quan hóa bằng JavaScript
 
-Có thể dùng `Plotly.js` với thanh trượt trị riêng $$ \lambda $$ và bước $$ h $$ để sinh viên nhìn trực tiếp khi nào điểm $$ 1+h\lambda $$ rời khỏi miền ổn định của Euler tiến.
+Có thể dùng `Plotly.js` với thanh trượt điều chỉnh trị riêng $$ \lambda $$ và bước $$ h $$ để quan sát trực tiếp thời điểm $$ 1+h\lambda $$ vượt ra ngoài miền ổn định của Euler tiến.
 
 ## Gợi ý tài nguyên ngoài
 
@@ -229,11 +226,11 @@ Tìm kiếm: `stiff ODE visualization`, `A stability region`, hoặc `chemical k
 
 ### Mức đại học (Undergraduate)
 
-Giữ trọng tâm ở phương trình thử $$ y'=\lambda y $$, điều kiện ổn định của Euler tiến, và trực giác vì sao Euler lùi bền hơn.
+Tập trung vào phương trình kiểm thử $$ y'=\lambda y $$, điều kiện ổn định của Euler tiến và ưu thế của Euler lùi.
 
 ### Mức sau đại học (Graduate)
 
-Đi sâu vào A-stability, L-stability, BDF methods, và phân tích stiffness của hệ tuyến tính qua phổ trị riêng hoặc Jacobian.
+Đi sâu vào A-ổn định, L-ổn định, họ BDF và phân tích độ cứng của hệ ODE qua phổ trị riêng của ma trận Jacobian.
 
 > Xem toàn bộ minh họa tương tác của chương tại: [Bộ Minh họa tương tác Chương 13]({{ site.baseurl }}/contents/vi/chapter13/13_09_Interactive_Gallery/)
 
@@ -241,23 +238,21 @@ Giữ trọng tâm ở phương trình thử $$ y'=\lambda y $$, điều kiện 
 
 ### 1. Ứng dụng thực tế
 
-#### Phản ứng hóa học nhanh-chậm
-- Bài toán: Một số biến đổi rất nhanh còn đại lượng quan sát chính lại thay đổi chậm.
-- Mô hình: Trên test equation
-$$ y'=\lambda y,\qquad \Re(\lambda)\ll 0, $$
-Euler tiến đòi hỏi bước rất nhỏ để ổn định.
-- Giả thiết và giới hạn: Bài toán có thang thời gian tách biệt rõ.
-- Diễn giải: Stiffness không phải là sai số lớn, mà là yêu cầu ổn định làm bước bị bóp nhỏ quá mức.
+#### Phản ứng hóa học nhanh–chậm
+- Bài toán: Một số phản ứng diễn ra cực nhanh trong khi đại lượng quan sát chính thay đổi chậm.
+- Mô hình: Trên phương trình kiểm thử $$ y'=\lambda y,\qquad \Re(\lambda)\ll 0 $$, Euler tiến bị ép dùng bước rất nhỏ để giữ ổn định.
+- Giả thiết và giới hạn: Hệ có các thang thời gian tách biệt rõ rệt.
+- Diễn giải: Độ cứng không phải do sai số cục bộ lớn mà do ràng buộc ổn định ép bước quá nhỏ.
 
-#### Mạch điện có điện trở và tụ rất khác nhau
-- Bài toán: Hệ phương trình trạng thái có mode tắt nhanh và mode chậm cùng tồn tại.
-- Mô hình: Dùng Euler lùi hoặc BDF cho hệ tuyến tính cứng.
-- Giả thiết và giới hạn: Cần giải hệ implicit ở mỗi bước.
-- Diễn giải: Implicit methods tốn hơn mỗi bước nhưng cho phép bước lớn hơn rất nhiều.
+#### Mạch điện có hằng số thời gian chênh lệch lớn
+- Bài toán: Hệ phương trình trạng thái chứa đồng thời mode tắt nhanh và mode biến thiên chậm.
+- Mô hình: Dùng Euler lùi hoặc họ BDF cho hệ cứng.
+- Giả thiết và giới hạn: Mỗi bước cần giải một hệ phương trình ẩn.
+- Diễn giải: Phương pháp ẩn tốn chi phí hơn trên từng bước nhưng cho phép dùng bước lớn hơn rất nhiều.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Stiffness là hiện tượng số học, không chỉ là hiện tượng vật lý. Nghiệm thật có thể trơn và chậm, nhưng phương pháp explicit vẫn buộc phải dùng bước rất bé do một mode tắt nhanh "ẩn" trong hệ. Bẫy phổ biến là chẩn đoán stiffness chỉ bằng việc nhìn nghiệm; ổn định số mới là dấu hiệu quyết định.
+Độ cứng là hiện tượng xuất hiện trong tương tác giữa mô hình và thuật toán số. Nghiệm thật có thể trơn và biến thiên chậm, nhưng mode tắt nhanh ẩn trong hệ vẫn khống chế sơ đồ tường minh; do đó cần kiểm tra phổ trị riêng và miền ổn định thay vì chỉ nhìn hình dạng nghiệm.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -295,22 +290,16 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Với
-$$ y'=-15y,\qquad y(0)=1, $$
-Euler tiến cho hệ số khuếch đại
-$$ 1+h\lambda = 1-15h. $$
-Để ổn định cần
-$$ \lvert 1-15h\rvert<1, $$
-tức là $$ 0<h<\frac{2}{15} $$. Dù nghiệm thật chỉ tắt mượt về $$ 0 $$, bước số vẫn bị khống chế rất mạnh.
+Với $$ y'=-15y,\qquad y(0)=1 $$, Euler tiến có hệ số khuếch đại $$ 1+h\lambda = 1-15h $$. Điều kiện ổn định $$ \lvert 1-15h\rvert<1 $$ tương đương $$ 0<h<\frac{2}{15} $$. Dù nghiệm thật giảm êm về $$ 0 $$, bước thời gian vẫn bị giới hạn chặt.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Nhận diện stiffness qua test equation và so sánh explicit/implicit.
+**Bậc đại học.** Nhận diện độ cứng qua phương trình kiểm thử và đối chiếu sơ đồ tường minh với sơ đồ ẩn.
 
-**Bậc sau đại học.** Kết nối với A-stability, L-stability và singular perturbations.
+**Bậc sau đại học.** Kết nối với A-ổn định, L-ổn định và lý thuyết nhiễu loạn kỳ dị (singular perturbations).
 
 ## Video tham khảo
 
-- xem trước: [Stability of Forward Euler and Backward Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=RdXCGnTT6UY) — Steve Brunton, tiếng Anh. Vì sao Euler thuận sụp trên một phân rã cứng trong khi Euler lùi thì không.
-- [Deriving Forward Euler and Backward/Implicit Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=MstPeOTCVzQ) — Steve Brunton, tiếng Anh. Bước ẩn mà tính cứng buộc phải dùng.
-- [Numerical Integration of ODEs with Forward Euler and Backward Euler in Python and Matlab](https://www.youtube.com/watch?v=ITFolyl_66U) — Steve Brunton, tiếng Anh. Một so sánh số của lược đồ Euler hiện và ẩn.
+- xem trước: [Stability of Forward Euler and Backward Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=RdXCGnTT6UY) — Steve Brunton, tiếng Anh. Giải thích vì sao Euler tiến mất ổn định trên bài toán suy giảm cứng trong khi Euler lùi vẫn ổn định.
+- [Deriving Forward Euler and Backward/Implicit Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=MstPeOTCVzQ) — Steve Brunton, tiếng Anh. Dẫn xuất lược đồ ẩn dùng cho bài toán cứng.
+- [Numerical Integration of ODEs with Forward Euler and Backward Euler in Python and Matlab](https://www.youtube.com/watch?v=ITFolyl_66U) — Steve Brunton, tiếng Anh. So sánh thực nghiệm giữa Euler tiến và Euler lùi bằng mã nguồn.

@@ -13,27 +13,27 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài học này kết thúc chương bằng cách đặt Laplace vào bối cảnh dòng chảy thế của chất lỏng. Sau bài học, sinh viên cần hiểu khi nào tồn tại thế vận tốc, vì sao điều kiện không nén được và không xoáy dẫn đến phương trình Laplace, biết vai trò của hàm dòng trong hai chiều, và thấy được cả sức mạnh lẫn giới hạn của mô hình dòng chảy thế.
+Bài học này khép lại chương bằng việc đặt phương trình Laplace vào bối cảnh dòng chảy thế của chất lỏng. Sau bài học, sinh viên cần hiểu điều kiện tồn tại thế vận tốc, nắm vì sao giả thiết không nén được và không xoáy dẫn đến phương trình Laplace, biết vai trò của hàm dòng trong hai chiều, và nhận thức rõ cả hiệu lực lẫn giới hạn của mô hình dòng chảy thế.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm phương trình Laplace, gradient, divergence và trực giác về vận tốc trường. Đây là bài tổng kết rất tốt để cho thấy elliptic PDE không chỉ gắn với điện thế mà còn với hình học của dòng chảy.
+Sinh viên cần nắm phương trình Laplace, toán tử gradient, toán tử divergence và trực giác về trường vận tốc. Bài học này tổng kết chương bằng cách cho thấy PDE elliptic không chỉ xuất hiện trong tĩnh điện mà còn trong hình học của dòng chảy chất lưu.
 
 ## Dẫn nhập
 
-Trong dòng chảy chất lỏng thực, độ nhớt, xoáy và lớp biên làm cho bài toán rất phức tạp. Nhưng nếu ta xét một mô hình lý tưởng: chất lỏng không nén được và không xoáy, thì dòng chảy có thể được mô tả bằng một thế vận tốc điều hòa. Điều này đưa ta quay trở lại Laplace một cách rất tự nhiên.
+Trong dòng chảy chất lỏng thực, độ nhớt, chuyển động xoáy và lớp biên khiến bài toán trở nên phức tạp. Tuy nhiên, nếu xét mô hình lý tưởng gồm chất lỏng không nén được và không xoáy, trường vận tốc có thể biểu diễn qua một thế vận tốc điều hòa — đưa bài toán quay về phương trình Laplace.
 
-Đây là một ví dụ rất giàu ý nghĩa hình học. Thay vì theo dõi mọi phần tử chất lỏng riêng lẻ, ta mô tả cả trường vận tốc thông qua một hàm thế. Các đường dòng, vùng stagnation, và cách dòng chảy uốn quanh vật cản đều hiện ra từ nghiệm của một bài toán elliptic.
+Thay vì theo dõi chuyển động của từng phần tử chất lỏng riêng lẻ, ta mô tả toàn bộ trường vận tốc bằng một hàm vô hướng. Các đường dòng, điểm dừng (stagnation) và cách dòng chảy vòng quanh vật cản đều thể hiện trực tiếp qua nghiệm của bài toán elliptic này.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Nếu chất lỏng chảy đều và không có xoáy cục bộ, ta có thể nghĩ vận tốc tại mỗi điểm là "đi xuống dốc" của một hàm thế nào đó, giống như điện trường đi theo dốc của điện thế. Khi không có nén ép hay tích tụ khối lượng trong miền, hàm thế này phải điều hòa.
+Nếu chất lỏng chuyển động không có xoáy cục bộ, ta có thể hình dung vận tốc tại mỗi điểm tuân theo độ dốc của một hàm thế, tương tự cách điện trường suy ra từ điện thế. Khi chất lỏng không bị nén ép và không có nguồn hay giếng khối lượng bên trong miền, hàm thế đó phải là hàm điều hòa.
 
 ### Cách nhìn hình ảnh
 
-Đường dòng của chất lỏng quấn quanh vật cản như các đường mức của một hàm phụ. Trong hai chiều, hàm dòng cho phép ta vẽ ra quỹ đạo chất lỏng; thế vận tốc cho ta cấu trúc của trường vận tốc. Khi hai hàm này phối hợp, ta có một bức tranh rất đẹp của dòng chảy lý tưởng quanh vật.
+Trong hai chiều, đường dòng của chất lỏng uốn quanh vật cản trùng với các đường mức của hàm dòng, còn thế vận tốc mô tả cấu trúc trường vận tốc vuông góc với các đường đẳng thế. Kết hợp hai hàm này giúp hình dung rõ quỹ đạo của dòng chảy lý tưởng quanh vật cản.
 
 ### Cách nhìn hình thức
 
@@ -41,129 +41,125 @@ Nếu tồn tại thế vận tốc $$ \phi $$ sao cho $$ \mathbf v=\nabla \phi 
 
 $$ \nabla\cdot\mathbf v=0, $$
 
-thì $$ \Delta\phi=0 $$. Trong hai chiều, ta còn có hàm dòng $$ \psi $$ với các đường mức là đường dòng. Trong nhiều bài toán dòng chảy thế, cả $$ \phi $$ và $$ \psi $$ đều liên hệ chặt với cấu trúc điều hòa của bài toán.
+thì $$ \Delta\phi=0 $$. Trong hai chiều, ta còn có hàm dòng $$ \psi $$ mà các đường mức của nó là đường dòng. Trong nhiều bài toán dòng chảy thế, cả $$ \phi $$ và $$ \psi $$ đều gắn chặt với cấu trúc hàm điều hòa.
 
 ## Những ngộ nhận thường gặp
 
-- "Laplace chỉ liên quan điện thế và nhiệt." Sai. Dòng chảy thế cũng là một ứng dụng rất tự nhiên.
-- "Dòng chảy thế mô tả mọi loại dòng chảy." Không đúng; nó bỏ qua độ nhớt và lớp biên.
-- "Không nén được là đủ để có thế vận tốc." Chưa đủ; còn cần không xoáy.
-- "Nếu có Laplace thì mọi chi tiết vật lý thật đều được mô tả tốt." Không hẳn; mô hình thế rất mạnh nhưng có giới hạn rõ.
+- "Phương trình Laplace chỉ áp dụng cho điện thế và nhiệt độ." Sai; dòng chảy thế cũng là một ứng dụng quan trọng.
+- "Dòng chảy thế mô tả chính xác mọi loại dòng chảy." Không đúng; mô hình này bỏ qua độ nhớt và hiệu ứng lớp biên.
+- "Chỉ cần điều kiện không nén được là đủ để tồn tại thế vận tốc." Chưa đủ; dòng chảy còn phải không xoáy.
+- "Mô hình Laplace nắm bắt được mọi chi tiết của dòng chảy thực." Không hẳn; mô hình dòng chảy thế hữu ích về mặt trực giác và tính toán sơ bộ nhưng có giới hạn vật lý rõ ràng.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Nêu giả thiết vật lý
+### Bước 1: Nêu rõ giả thiết vật lý
 
-Không nén được và không xoáy là hai điều kiện trung tâm.
+Xác định hai điều kiện trung tâm là không nén được và không xoáy.
 
 ### Bước 2: Suy ra phương trình cho thế vận tốc
 
-Đây là chỗ Laplace xuất hiện.
+Kết hợp $$ \mathbf v=\nabla\phi $$ với $$ \nabla\cdot\mathbf v=0 $$ để thu được phương trình Laplace.
 
-### Bước 3: Đọc hình học của đường dòng
+### Bước 3: Phân tích hình học của đường dòng
 
-Liên hệ trực tiếp với hàm dòng trong hai chiều.
+Liên hệ trực tiếp với hàm dòng trong trường hợp hai chiều.
 
-### Bước 4: Nêu rõ giới hạn mô hình
+### Bước 4: Đánh giá giới hạn của mô hình
 
-Để tránh lý tưởng hóa quá mức.
+Phân biệt phạm vi áp dụng của dòng chảy lý tưởng với dòng chảy thực có độ nhớt.
 
 ### Các checkpoint
 
-- Sinh viên có giải thích được vì sao
-
-$$ \Delta\phi=0 $$
-
-xuất hiện hay không.
+- Sinh viên có giải thích được vì sao phương trình $$ \Delta\phi=0 $$ xuất hiện hay không.
 - Sinh viên có phân biệt được thế vận tốc và hàm dòng hay không.
-- Sinh viên có thấy giới hạn của mô hình dòng chảy thế hay không.
+- Sinh viên có nêu được giới hạn của mô hình dòng chảy thế hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Dòng đều
+### Ví dụ 1: Dòng chảy đều
 
-Với dòng đều theo trục $$ x $$, ta có $$ \phi=Ux $$. Đây là nghiệm điều hòa đơn giản nhất và là nền để xây dựng các bài toán có vật cản.
+Với dòng chảy đều song song trục $$ x $$, ta có $$ \phi=Ux $$. Đây là nghiệm điều hòa đơn giản nhất và là cơ sở để xây dựng các bài toán dòng chảy quanh vật cản.
 
-### Ví dụ 2: Dòng quanh trụ hoặc cầu
+### Ví dụ 2: Dòng chảy quanh trụ hoặc hình cầu
 
-Khi gặp vật cản, ta thêm một nghiệm điều hòa khác để ép điều kiện không xuyên qua biên. Ví dụ này cho sinh viên thấy bài toán biên elliptic bước vào thủy động lực học như thế nào.
+Khi có vật cản, ta cộng thêm một nghiệm điều hòa thích hợp để thỏa mãn điều kiện không thấm qua bề mặt vật. Ví dụ này minh họa cách bài toán biên elliptic xuất hiện trong thủy động lực học.
 
-### Ví dụ 3: Dòng quanh quả cầu
+### Ví dụ 3: Dòng chảy quanh hình cầu
 
-Một thế vận tốc điển hình có dạng
+Thế vận tốc của dòng chảy đều quanh hình cầu bán kính $$ a $$ có dạng:
 
-$$ \phi=Ur\left(1+\frac{a^3}{2r^3}\right)\cos\theta, $$
+$$ \phi=Ur\left(1+\frac{a^3}{2r^3}\right)\cos\theta. $$
 
-trong đó $$ a $$ là bán kính quả cầu. Ví dụ này rất mạnh vì nó cho thấy lời giải điều hòa thật sự mô tả hình học dòng chảy quanh vật.
+Ví dụ này cho thấy nghiệm điều hòa mô tả trực tiếp hình học dòng chảy vòng quanh vật thể.
 
 ### Ví dụ 4: Vai trò của hàm dòng
 
-Trong hai chiều, đường mức của $$ \psi $$ là các đường dòng. Ví dụ này giúp sinh viên thấy lời giải elliptic không chỉ cho trường số mà còn cho hình học chuyển động của chất lỏng.
+Trong hai chiều, các đường mức của $$ \psi $$ chính là các đường dòng. Nhờ đó, nghiệm elliptic không chỉ cung cấp giá trị trường vô hướng mà còn cho thấy trực tiếp quỹ đạo chuyển động của chất lỏng.
 
 ## Câu hỏi khái niệm
 
 1. Vì sao điều kiện không nén được và không xoáy dẫn đến thế vận tốc điều hòa?
-2. Hàm dòng giúp ta "nhìn thấy" gì trong dòng chảy mà thế vận tốc không biểu lộ trực tiếp?
-3. Vì sao dòng chảy thế vừa rất mạnh về trực giác nhưng vẫn có những giới hạn vật lý rõ rệt?
+2. Hàm dòng thể hiện thông tin hình học nào của dòng chảy mà thế vận tốc không bộc lộ trực tiếp?
+3. Vì sao mô hình dòng chảy thế vừa có giá trị phân tích cao vừa tồn tại những giới hạn vật lý rõ rệt?
 
 ## Bài toán ứng dụng
 
-1. Vì sao dòng đều quanh một vật cản có thể được mô tả bằng cách cộng một số nghiệm điều hòa thích hợp?
-2. Trong thiết kế khí động học, vì sao mô hình thế vẫn hữu ích dù không mô tả đầy đủ lực cản nhớt?
-3. Trong dòng chảy hai chiều, vì sao việc vẽ đường mức của hàm dòng lại là cách trực quan mạnh để hiểu quỹ đạo chất lỏng?
+1. Vì sao dòng chảy đều quanh một vật cản có thể được xây dựng bằng cách chồng chất các nghiệm điều hòa thích hợp?
+2. Trong khí động học, vì sao mô hình dòng chảy thế vẫn hữu ích dù không mô tả được lực cản nhớt?
+3. Trong dòng chảy hai chiều, vì sao vẽ các đường mức của hàm dòng là cách trực quan để khảo sát quỹ đạo chất lỏng?
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng câu hỏi: "Nếu chất lỏng không nén được và không xoáy, điều đó nói gì về trường vận tốc?"
-- Cho sinh viên so sánh điện trường từ điện thế với vận tốc từ thế vận tốc để thấy cấu trúc chung.
-- Hỏi cả lớp: "Mô hình dòng chảy thế bỏ qua điều gì so với chất lỏng thực?"
-- Khuyến khích sinh viên dùng hình vẽ đường dòng để giải thích trước khi viết công thức.
+- Bắt đầu bằng câu hỏi: "Nếu chất lỏng không nén được và không xoáy, điều đó nói lên điều gì về trường vận tốc?"
+- Cho sinh viên so sánh quan hệ điện trường–điện thế với quan hệ vận tốc–thế vận tốc để thấy cấu trúc toán học chung.
+- Hỏi cả lớp: "Mô hình dòng chảy thế đã bỏ qua yếu tố nào so với chất lỏng thực?"
+- Khuyến khích sinh viên sử dụng hình vẽ đường dòng để giải thích trước khi viết công thức.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên giữ trọng tâm ở ba ý cốt lõi: có thế vận tốc, không nén được dẫn đến Laplace, và hàm dòng biểu diễn hình học của dòng chảy. Ba ý này đủ để tạo nền rất tốt mà không làm bài quá nặng.
+Nên tập trung vào ba ý chính: điều kiện tồn tại thế vận tốc, giả thiết không nén được dẫn đến phương trình Laplace, và vai trò của hàm dòng trong việc biểu diễn hình học dòng chảy.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể mời sinh viên khá giỏi liên hệ dòng chảy thế hai chiều với giải tích phức, hoặc khảo sát sâu hơn giới hạn của mô hình thế so với Navier-Stokes có độ nhớt.
+Có thể gợi ý sinh viên khá giỏi liên hệ dòng chảy thế hai chiều với hàm giải tích phức, hoặc so sánh giới hạn của mô hình dòng chảy thế với phương trình Navier–Stokes có độ nhớt.
 
 ## Tóm tắt dễ nhớ
 
-Dòng chảy thế của chất lỏng không nén được và không xoáy dẫn đến thế vận tốc điều hòa. Laplace vì thế không chỉ là phương trình của điện thế, mà còn là ngôn ngữ hình học của dòng chảy lý tưởng. Nó rất mạnh để mô tả cấu trúc trường, nhưng không thay thế hoàn toàn mô hình chất lỏng thật có độ nhớt.
+Dòng chảy thế của chất lỏng không nén được và không xoáy dẫn đến thế vận tốc điều hòa. Như vậy, phương trình Laplace không chỉ mô tả điện thế mà còn là ngôn ngữ hình học của dòng chảy lý tưởng. Dù hữu ích để phân tích cấu trúc trường, mô hình này không thay thế hoàn toàn các mô hình chất lỏng thực có độ nhớt.
 
 ## Video tham khảo
 
-- xem trước: [Laplace's Equation and Potential Flow](https://www.youtube.com/watch?v=zN0zDrQimXU) — Steve Brunton, tiếng Anh. Dòng thế và phương trình Laplace cho thế vận tốc.
-- [Potential Flow Part 2: Details and Examples](https://www.youtube.com/watch?v=Xfjs31WcY04) — Steve Brunton, tiếng Anh. Các ví dụ dòng thế và hàm dòng của Brunton.
-- [Are all vector fields the gradient of a potential?  ... and the Helmholtz Decomposition](https://www.youtube.com/watch?v=xa5xornH2ok) — Steve Brunton, tiếng Anh. Trường vector nào là gradient, điều kiện làm một dòng có thế.
+- xem trước: [Laplace's Equation and Potential Flow](https://www.youtube.com/watch?v=zN0zDrQimXU) — Steve Brunton, tiếng Anh. Trình bày dòng chảy thế và phương trình Laplace cho thế vận tốc.
+- [Potential Flow Part 2: Details and Examples](https://www.youtube.com/watch?v=Xfjs31WcY04) — Steve Brunton, tiếng Anh. Minh họa chi tiết các ví dụ về dòng chảy thế và hàm dòng.
+- [Are all vector fields the gradient of a potential?  ... and the Helmholtz Decomposition](https://www.youtube.com/watch?v=xa5xornH2ok) — Steve Brunton, tiếng Anh. Giải thích điều kiện để một trường vector là gradient của một hàm thế.
 
 ## Tài liệu tham khảo
 
-- Evans, *Partial Differential Equations* - khuôn khổ chuẩn cho hàm điều hòa, phương trình Poisson, và hàm Green.
-- Haberman, *Applied Partial Differential Equations* - trình bày trực quan về tĩnh điện, dòng chảy thế, và phương pháp ảnh.
+- Evans, *Partial Differential Equations* — trình bày chuẩn về hàm điều hòa, phương trình Poisson và hàm Green.
+- Haberman, *Applied Partial Differential Equations* — trình bày trực quan về tĩnh điện, dòng chảy thế và phương pháp ảnh.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Dòng chảy thế không nén được
-- Bài toán: Trong chất lưu lý tưởng, không xoáy và không nén được, thế vận tốc thỏa Laplace.
+- Bài toán: Xác định trường vận tốc trong chất lưu lý tưởng không xoáy và không nén được.
 - Mô hình:
 $$ \Delta \phi=0, \qquad \mathbf{v}=\nabla \phi. $$
 - Giả thiết và giới hạn: Chất lưu lý tưởng, không nhớt, không xoáy.
-- Diễn giải: Dòng chảy được xây từ một hàm điều hòa.
+- Diễn giải: Trường dòng chảy được xây dựng trực tiếp từ một hàm điều hòa.
 
 #### Dòng thấm trong môi trường xốp
-- Bài toán: Áp suất hay thế thủy lực trong vùng thấm ổn định thường thỏa mô hình elliptic.
-- Mô hình: Trong trường hợp đồng nhất và không nguồn, thế thỏa Laplace.
-- Giả thiết và giới hạn: Hệ số thấm hằng, trạng thái dừng.
-- Diễn giải: Cấu trúc của bài toán chất lưu và điện thế rất gần nhau.
+- Bài toán: Xác định phân bố áp suất hoặc thế thủy lực trong vùng thấm ổn định.
+- Mô hình: Trong môi trường đồng nhất và không có nguồn, thế thủy lực thỏa mãn phương trình Laplace.
+- Giả thiết và giới hạn: Hệ số thấm không đổi, trạng thái dừng.
+- Diễn giải: Cấu trúc toán học của bài toán dòng thấm và bài toán tĩnh điện rất tương đồng.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Một trong những ý tưởng đẹp nhất của toán ứng dụng là cùng hàm điều hòa có thể là nhiệt độ, điện thế hay thế vận tốc. Điều thay đổi là cách ta diễn giải gradient của nó. Với chất lưu, gradient là vận tốc; với điện học, gradient cho điện trường.
+Một điểm thống nhất quan trọng của toán ứng dụng là cùng một hàm điều hòa có thể đại diện cho nhiệt độ, điện thế hoặc thế vận tốc; sự khác biệt nằm ở cách diễn giải gradient của nó — với chất lưu là vận tốc, còn với tĩnh điện là điện trường (sai khác dấu trừ).
 
 ### 3. Trực quan hóa bằng Python
 
@@ -197,10 +193,10 @@ Nếu
 $$ \phi(x,y)=Ux, $$
 thì
 $$ \Delta \phi=0, \qquad \nabla \phi=(U,0). $$
-Đây là dòng chảy đều theo phương $$ x $$. Ví dụ đơn giản này cho thấy một nghiệm điều hòa có thể được hiểu trực tiếp như một trường vận tốc vật lý.
+Đây là dòng chảy đều theo phương $$ x $$, minh họa trực tiếp cách một nghiệm điều hòa biểu diễn một trường vận tốc vật lý.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Diễn giải gradient của thế như vận tốc dòng chảy.
+**Bậc đại học.** Diễn giải gradient của thế vận tốc như trường vận tốc của dòng chảy.
 
-**Bậc sau đại học.** Kết nối với hàm giải tích, dòng xoáy-phức thế và bài toán biên tự do.
+**Bậc sau đại học.** Kết nối với hàm giải tích, thế phức của dòng chảy có xoáy và bài toán biên tự do.

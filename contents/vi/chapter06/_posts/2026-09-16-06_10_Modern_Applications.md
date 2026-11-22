@@ -12,55 +12,55 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài tùy chọn này nối chuỗi lũy thừa, nghiệm Frobenius và hàm đặc biệt cổ điển với thực hành 2021–2024 về PINN phổ và học toán tử. Sinh viên cần thấy Chebyshev, Legendre và Fourier như hơn cả họ sách giáo khoa: chúng là tọa độ không gian hàm trong đó các mô hình thay thế hiện đại ổn định nhất. Phương pháp Frobenius và các đồng nhất thức Bessel, Legendre không bị viết lại.
+Bài học tùy chọn này kết nối chuỗi lũy thừa, nghiệm Frobenius và các hàm đặc biệt cổ điển với thực hành nghiên cứu giai đoạn 2021–2024 về mạng nơ-ron tích hợp vật lý (PINN) theo miền phổ và học toán tử. Sinh viên cần nhìn nhận các họ Chebyshev, Legendre và Fourier không chỉ là bài học sách giáo khoa mà là những hệ tọa độ trong không gian hàm giúp các mô hình thay thế hiện đại đạt độ ổn định cao. Phương pháp Frobenius và các đồng nhất thức Bessel, Legendre vẫn giữ nguyên vai trò nền tảng.
 
 ## Kiến thức nền
 
-Sinh viên cần biết điểm thường và điểm kỳ dị chính quy, hệ thức truy hồi cho chuỗi lũy thừa, và tính chất sơ cấp của hàm Bessel, Legendre. Trực giao trên một khoảng là ý bổ sung hữu ích nhất.
+Sinh viên cần nắm khái niệm điểm thường, điểm kỳ dị chính quy, hệ thức truy hồi của chuỗi lũy thừa và các tính chất cơ bản của hàm Bessel, Legendre. Hiểu về tính trực giao trên một khoảng là nền tảng bổ trợ quan trọng nhất.
 
 ## Dẫn nhập
 
-Nghiệm chuỗi là khai triển hàm chưa biết trong một cơ sở mà chính phương trình vi phân gợi ý. Học máy khoa học phát hiện lại cùng chiến thuật. Một multilayer perceptron generic chuộng tần số thấp và khó với lớp biên mỏng hoặc hành vi hàm đặc biệt dao động mạnh; kiến trúc phổ khai triển ẩn số, hoặc toán tử, theo mode Chebyshev, Legendre hoặc Fourier và chỉ học hệ số. Lu, Jin, Pang, Zhang và Karniadakis đưa ra DeepONet trên *Nature Machine Intelligence* (2021) như nhân tử trunk–branch, về tinh thần là khai triển Fourier tổng quát học được. Kovachki và cộng sự (*JMLR* 2023) rồi đặt Fourier, hạng thấp và graph neural operator trên cùng nền Banach.
+Nghiệm chuỗi thực chất là phép khai triển hàm ẩn trong một cơ sở do chính phương trình vi phân gợi ý. Học máy khoa học (SciML) ngày nay tái khám phá chiến lược tương tự. Một mạng perceptron đa tầng thông thường có xu hướng ưu tiên học các thành phần tần số thấp và gặp khó khăn trước lớp biên mỏng hoặc các dao động nhanh kiểu hàm đặc biệt; ngược lại, kiến trúc phổ khai triển nghiệm (hoặc toán tử) theo các chế độ Chebyshev, Legendre hay Fourier rồi chỉ học các hệ số. Lu, Jin, Pang, Zhang và Karniadakis đã giới thiệu DeepONet trên *Nature Machine Intelligence* (2021) với cấu trúc tích nhánh–thân (branch–trunk), về tinh thần tương tự một khai triển Fourier tổng quát được học từ dữ liệu. Sau đó, Kovachki và cộng sự (*JMLR* 2023) đặt các kiến trúc toán tử nơ-ron Fourier, hạng thấp và đồ thị trên cùng một nền tảng không gian Banach.
 
-Ở phía PINN, Wang, Sankaran, Wang và Perdikaris thu thập lời khuyên phổ và kiến trúc trong “An expert’s guide to training physics-informed neural networks” ([arXiv:2308.08468](https://arxiv.org/abs/2308.08468), 2023). Hao và cộng sự (*PINNacle*, NeurIPS 2024; [arXiv:2306.08827](https://arxiv.org/abs/2306.08827)) cho thấy thiên kiến phổ, cấu trúc đa thang và hình học vẫn là chướng ngại bậc nhất trên hơn hai mươi bài PDE. Những chướng ngại ấy đúng là lý do chương này dành thời gian cho hàm đặc biệt: chúng là các cơ sở đã chéo hóa toán tử ta quan tâm.
+Ở nhánh PINN, Wang, Sankaran, Wang và Perdikaris tổng hợp các hướng dẫn thực hành về kiến trúc và phổ trong bài viết “An expert’s guide to training physics-informed neural networks” ([arXiv:2308.08468](https://arxiv.org/abs/2308.08468), 2023). Hao và cộng sự (*PINNacle*, NeurIPS 2024; [arXiv:2306.08827](https://arxiv.org/abs/2306.08827)) cũng cho thấy thiên kiến phổ, cấu trúc đa thang và hình học miền vẫn là những thách thức hàng đầu trên hơn hai mươi bài toán PDE chuẩn. Đây chính là lý do chương này dành nhiều thời lượng cho hàm đặc biệt: chúng là những hệ cơ sở chéo hóa sẵn các toán tử vi phân quan trọng.
 
 ## Khái niệm then chốt
 
-### Thiên kiến phổ và cơ sở cổ điển
+### Thiên kiến phổ và các hệ cơ sở cổ điển
 
-Mạng sâu huấn luyện bằng gradient descent khớp nội dung trơn, tần số thấp trước. Điều ấy hữu ích cho nghiệm giải tích quanh điểm thường và tai hại cho dao động Bessel hoặc lớp mỏng gần điểm kỳ dị chính quy. Khai triển $$u_N(x)=\sum c_n\phi_n(x)$$ với $$\phi_n$$ Chebyshev, Legendre, hoặc họ gợi ý Frobenius chuyển dao động vào cơ sở, nên mạng hoặc bộ giải tuyến tính chỉ thấy hệ số $$c_n$$ biến thiên chậm. Đó cùng lý do ta dùng ansatz Frobenius $$x^r\sum a_k x^k$$ thay vì chuỗi lũy thừa trần tại điểm kỳ dị.
+Mạng sâu huấn luyện bằng hạ gradient thường khớp các thành phần trơn, tần số thấp trước. Đặc tính này thuận lợi cho nghiệm giải tích quanh điểm thường nhưng bất lợi đối với dao động kiểu Bessel hoặc lớp biên mỏng gần điểm kỳ dị chính quy. Việc khai triển $$u_N(x)=\sum c_n\phi_n(x)$$ với cơ sở $$\phi_n$$ là đa thức Chebyshev, Legendre hoặc họ hàm gợi ý từ Frobenius giúp chuyển phần dao động vào bản thân hàm cơ sở, để mạng nơ-ron hay bộ giải tuyến tính chỉ cần tìm các hệ số $$c_n$$ biến thiên chậm. Điều này tương đồng với lý do ta chọn dạng thử Frobenius $$x^r\sum a_k x^k$$ thay cho chuỗi lũy thừa thông thường tại điểm kỳ dị.
 
 ### DeepONet như khai triển hàm đặc biệt học được
 
-DeepONet viết toán tử $$\mathcal{G}(a)(x)\approx\sum_k b_k(a)\,t_k(x)$$. Các trunk $$t_k$$ đóng vai hàm đặc biệt học được của biến độc lập; các branch $$b_k$$ đóng vai hệ số phụ thuộc hàm đầu vào $$a$$. Khi toán tử nghiệm thật compact hoặc có trị riêng suy giảm nhanh, cơ sở trunk ngắn đủ, cũng như vài đa thức Legendre đủ cho nghiệm trơn của bài Sturm–Liouville chính quy.
+DeepONet xấp xỉ toán tử theo dạng $$\mathcal{G}(a)(x)\approx\sum_k b_k(a)\,t_k(x)$$. Trong đó, các hàm thân (trunk) $$t_k$$ đóng vai trò như họ hàm đặc biệt học được của biến không gian, còn các hàm nhánh (branch) $$b_k$$ đóng vai trò các hệ số phụ thuộc vào hàm đầu vào $$a$$. Khi toán tử nghiệm thật là compact hoặc có trị riêng suy giảm nhanh, chỉ cần một số lượng nhỏ hàm thân là đủ — tương tự như chỉ cần vài đa thức Legendre để xấp xỉ tốt nghiệm trơn của bài toán Sturm–Liouville chính quy.
 
-### Truy hồi, ổn định, và đánh giá
+### Truy hồi, tính ổn định và đánh giá số
 
-Hàm đặc biệt cổ điển đi kèm truy hồi ổn định số nếu dùng đúng chiều. Mô hình phổ học được cần analogue: trực giao hóa, phạt suy giảm phổ, hoặc ràng buộc cứng hệ số mode cao phải nhỏ. Không kỷ luật ấy ta tái nhập phân kỳ mà chuỗi lũy thừa bất cẩn đã thể hiện ngoài bán kính hội tụ.
+Các hàm đặc biệt cổ điển đi kèm những hệ thức truy hồi ổn định về mặt số học khi được tính theo đúng chiều. Các mô hình phổ học được cũng cần cơ chế tương ứng: trực giao hóa, thêm số hạng phạt suy giảm phổ hoặc ràng buộc hệ số ở các bậc cao phải nhỏ. Nếu thiếu kỷ luật này, mô hình dễ rơi vào hiện tượng phân kỳ tương tự như khi sử dụng chuỗi lũy thừa ngoài bán kính hội tụ.
 
-### Ứng dụng vật lý như phép thử học toán tử
+### Ứng dụng vật lý làm bài toán kiểm chuẩn cho học toán tử
 
-Màng dao động và Schrödinger hướng kính của chương không chỉ là ứng dụng lịch sử. Chúng là benchmark sạch: thừa số Fourier góc nhân thừa số Bessel hoặc Legendre kính. Neural operator không lấy lại những tách ấy thì chưa tôn trọng hình học mà hàm đặc biệt mã hóa.
+Các bài toán màng dao động và phương trình Schrödinger hướng kính trong chương không chỉ mang ý nghĩa lịch sử mà còn là bài toán kiểm chuẩn rõ ràng: nghiệm có dạng tích giữa thành phần Fourier theo góc và thành phần Bessel hoặc Legendre theo hướng kính. Nếu một toán tử nơ-ron không tái hiện được cấu trúc tách biến đó, mô hình vẫn chưa tôn trọng đầy đủ hình học mà hàm đặc biệt đã mã hóa.
 
 ## Phương pháp và kỹ thuật
 
-- **PINN phổ.** Thay đầu ra mạng bằng khai triển trực giao cụt và huấn luyện hệ số, đôi khi với phần dư tính bằng quadrature.
-- **Trunk lai.** Đóng băng $$t_k$$ như Chebyshev hoặc hàm riêng và chỉ học hệ số branch — DeepONet với trunk cổ điển.
-- **Fourier / Laplace neural operator.** Học nhân tử trong miền phổ rồi đảo. Đây là nghiệm chuỗi ở cấp toán tử chứ không phải hàm.
+- **PINN phổ.** Thay đầu ra trực tiếp của mạng bằng một khai triển trực giao cắt cụt và huấn luyện các hệ số, thường kết hợp tính phần dư bằng cầu phương số (quadrature).
+- **Mạng thân lai.** Cố định các hàm thân $$t_k$$ là đa thức Chebyshev hoặc hàm riêng giải tích, chỉ huấn luyện các hệ số nhánh — tức là DeepONet với cơ sở thân cổ điển.
+- **Toán tử nơ-ron Fourier / Laplace.** Học trực tiếp phép nhân trong miền phổ rồi biến đổi ngược; đây là phiên bản ở cấp độ toán tử của phương pháp nghiệm chuỗi.
 
-Trong mỗi trường hợp, bán kính hội tụ, trọng số trực giao, và phân biệt điểm thường/kỳ dị vẫn là chẩn đoán đúng.
+Trong mọi cách tiếp cận trên, bán kính hội tụ, hàm trọng số trực giao và sự phân biệt giữa điểm thường với điểm kỳ dị vẫn là các tiêu chí chẩn đoán quan trọng.
 
 ## Ví dụ
 
-### Ví dụ 1: Hệ số Legendre như trunk học được
+### Ví dụ 1: Đa thức Legendre như cơ sở thân học được
 
-Nghiệm của $$(1-x^2)y''-2x y'+n(n+1)y=0$$ là $$P_n(x)$$. Nếu trunk DeepONet đủ khả năng trên $$[-1,1]$$ và họ huấn luyện gồm các bài hàm riêng ấy, một hàm trunk nên tương quan mạnh với $$P_n$$.
+Nghiệm của phương trình $$(1-x^2)y''-2x y'+n(n+1)y=0$$ là các đa thức Legendre $$P_n(x)$$. Nếu mạng thân của DeepONet có đủ năng lực biểu diễn trên $$[-1,1]$$ và tập huấn luyện gồm các bài toán hàm riêng dạng này, các hàm thân học được sẽ tương quan chặt với $$P_n$$.
 
-### Ví dụ 2: Số mũ Frobenius như đặc trưng
+### Ví dụ 2: Số mũ Frobenius như đặc trưng đầu vào
 
-Gần điểm kỳ dị chính quy, số mũ đầu $$r$$ là ẩn đại số. Mạng lấy $$\log x$$ hoặc $$x^r$$ làm đầu vào đang làm Frobenius bằng tay. Không đặc trưng ấy nó sẽ tốn dung lượng để bịa điểm rẽ nhánh, thường không thành công. Đây là một thất bại đa thang được tài liệu PINN 2023–2024 và PINNacle ghi nhận.
+Gần một điểm kỳ dị chính quy, số mũ đặc trưng đầu $$r$$ mang thông tin đại số cốt lõi của nghiệm. Một mạng nơ-ron đưa $$\log x$$ hoặc $$x^r$$ làm đặc trưng đầu vào thực chất đang tích hợp sẵn tư tưởng Frobenius. Nếu không có đặc trưng này, mạng phải tiêu tốn nhiều năng lực biểu diễn để cố xấp xỉ điểm rẽ nhánh và thường thất bại. Đây là một dạng thất bại đa thang đã được ghi nhận trong tài liệu PINN giai đoạn 2023–2024 và bộ kiểm chuẩn PINNacle.
 
-### Ví dụ 3: Phần dư Chebyshev
+### Ví dụ 3: Kiểm tra sai số xấp xỉ Chebyshev
 
 ```python
 import numpy as np
@@ -74,41 +74,41 @@ uu = np.polynomial.chebyshev.chebval(xx, c)
 print(np.max(np.abs(uu - np.exp(xx))))
 ```
 
-PINN phổ không thắng lỗi này trên mục tiêu giải tích đang lãng phí cơ sở mà chương đã cung cấp.
+Một PINN phổ không đạt được mức sai số tương đương trên một hàm mục tiêu giải tích như vậy cho thấy nó chưa tận dụng hiệu quả cơ sở hàm mà chương đã cung cấp.
 
 ## Ứng dụng
 
-Học toán tử phổ nay dùng cho PDE tham số trong chất lưu, truyền bức xạ và điện từ, nơi nghiệm thật là khai triển theo hàm điều hòa trụ hoặc cầu. Surrogate cơ lượng tử cho toán tử Schrödinger kính là tiếp nối trực tiếp các ứng dụng vật lý của chương. Trong kỹ thuật, PINN Chebyshev xuất hiện như bộ giải trong rẻ bên trong vòng thiết kế.
+Các phương pháp học toán tử phổ hiện được ứng dụng cho nhiều bài toán PDE có tham số trong cơ học chất lưu, truyền bức xạ và điện từ học — những lĩnh vực có nghiệm tự nhiên dưới dạng khai triển theo hàm điều hòa trụ hoặc cầu. Mô hình thay thế trong cơ học lượng tử cho toán tử Schrödinger hướng kính là sự nối tiếp trực tiếp các ứng dụng vật lý của chương. Trong kỹ thuật, PINN dùng cơ sở Chebyshev thường đóng vai trò bộ giải nội bộ chi phí thấp trong vòng lặp tối ưu thiết kế.
 
-Góc nhìn hàm đặc biệt cũng giúp giao tiếp giữa nhà giải tích và nhà tính toán. Nói “trunk học được cơ sở kính kiểu Bessel” giàu thông tin hơn “mạng tổng quát hóa”. Đó là đóng góp từ vựng của chương này cho tài liệu 2022–2026.
+Ngôn ngữ hàm đặc biệt cũng tạo cầu nối chính xác giữa nhà giải tích và nhà tính toán khoa học: nhận định “mạng thân đã học được một cơ sở hướng kính dạng Bessel” truyền đạt nhiều thông tin cấu trúc hơn hẳn nhận định chung chung “mạng tổng quát hóa tốt”.
 
 ## Thách thức và hướng mở rộng
 
-Phương pháp phổ ghét bất liên tục; hiện tượng Gibbs tái xuất trong mô hình Fourier và Chebyshev học được. Hình học là chướng ngại khác: cơ sở cho khoảng không tự chuyển sang vành khuyên hoặc mặt cầu, vì thế spherical FNO (Bonev và cộng sự, ICML 2023) phải được phát minh. Lý thuyết xấp xỉ DeepONet trong chiều vô hạn (Lanthaler, Mishra và Karniadakis, 2022) cho tốc độ theo độ rộng trunk và branch, nhưng các tốc độ ấy giả định độ trơn mà điểm kỳ dị chính quy có thể phá. Cơ sở học được mặc định không trực giao, nên độ lớn hệ số không đọc được như năng lượng trừ khi tái trực giao hóa.
+Phương pháp phổ gặp khó khăn trước các nghiệm có điểm gián đoạn; hiện tượng Gibbs vẫn tái xuất hiện trong các mô hình Fourier và Chebyshev học được. Hình học miền tính toán cũng là một thách thức lớn: cơ sở trên đoạn thẳng không tự động chuyển sang vành khuyên hay mặt cầu, dẫn tới sự ra đời của kiến trúc spherical FNO (Bonev và cộng sự, ICML 2023). Lý thuyết xấp xỉ cho DeepONet trong không gian vô hạn chiều (Lanthaler, Mishra và Karniadakis, 2022) đưa ra tốc độ hội tụ theo độ rộng mạng thân và mạng nhánh, nhưng các ước lượng này giả định độ trơn vốn có thể bị phá vỡ tại điểm kỳ dị chính quy. Ngoài ra, cơ sở học được mặc định không trực giao, nên độ lớn hệ số không thể diễn giải trực tiếp như phân bố năng lượng nếu không trực giao hóa lại.
 
-Câu hỏi hay: trunk nơ-ron là hàm đặc biệt mới, hay xấp xỉ số của hàm cũ? Câu trả lời phụ thuộc việc trunk có còn thỏa truy hồi có cấu trúc hoặc đồng nhất thức Sturm–Liouville sau huấn luyện hay không.
+Một câu hỏi mở đáng chú ý là: mạng thân nơ-ron có tạo ra hàm đặc biệt mới hay chỉ là xấp xỉ số của các hàm cổ điển? Câu trả lời phụ thuộc vào việc các hàm thân sau huấn luyện có còn thỏa mãn những hệ thức truy hồi có cấu trúc hoặc đồng nhất thức Sturm–Liouville hay không.
 
 ## Video tham khảo
 
-- xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, tiếng Anh. Fourier neural operator dùng các hàm cơ sở phổ làm thân, đúng ý của bài.
-- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, tiếng Anh. DeepONet, mạng toán tử nhánh-thân được nêu cùng các cơ sở phổ.
-- [Taylor series | Chapter 11, Essence of calculus](https://www.youtube.com/watch?v=3d6DsjIBzJ4) — 3Blue1Brown, tiếng Anh. Chuỗi cổ điển là cơ sở phổ dựng tay mà các mạng ấy tổng quát hóa.
+- Xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, tiếng Anh. Giới thiệu toán tử nơ-ron Fourier sử dụng cơ sở phổ, gắn trực tiếp với nội dung bài học.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, tiếng Anh. Giới thiệu DeepONet với kiến trúc nhánh–thân (branch–trunk) bên cạnh các cơ sở phổ.
+- [Taylor series | Chapter 11, Essence of calculus](https://www.youtube.com/watch?v=3d6DsjIBzJ4) — 3Blue1Brown, tiếng Anh. Chuỗi cổ điển đóng vai trò cơ sở phổ dựng tay mà các mạng học toán tử tổng quát hóa.
 
 ## Bài tập
 
-1. **Bán kính hội tụ.** Khớp chuỗi lũy thừa và chuỗi Chebyshev với $$1/(1+25x^2)$$ trên $$[-1,1]$$. Vì sao cái thứ nhất phân kỳ ở đầu mút trong giới hạn bậc cao còn cái thứ hai thì không nhất thiết?
+1. **Bán kính hội tụ.** So sánh khai triển chuỗi lũy thừa và khai triển Chebyshev của hàm $$1/(1+25x^2)$$ trên đoạn $$[-1,1]$$. Giải thích vì sao chuỗi lũy thừa phân kỳ gần hai đầu mút khi tăng bậc còn chuỗi Chebyshev vẫn hội tụ.
 
-2. **Nhận dạng trunk–branch.** Với toán tử ánh xạ $$f$$ sang nghiệm của $$y''=f$$, $$y(\pm 1)=0$$, đề xuất trunk cổ điển và nói branch phải tính gì.
+2. **Nhận dạng cấu trúc nhánh–thân (branch–trunk).** Xét toán tử ánh xạ hàm nguồn $$f$$ sang nghiệm của bài toán $$y''=f$$, $$y(\pm 1)=0$$. Hãy đề xuất một họ hàm thân cổ điển phù hợp và nêu rõ mạng nhánh cần tính đại lượng nào.
 
-3. **Đặc trưng Bessel.** Giải thích cách mã hóa số mũ Frobenius của phương trình Bessel cấp $$\nu$$ như đầu vào mạng. Điều gì sai nếu $$\nu$$ không nguyên và nghiệm thứ hai chứa $$\log x$$?
+3. **Đặc trưng Bessel.** Giải thích cách mã hóa số mũ Frobenius của phương trình Bessel bậc $$\nu$$ thành đặc trưng đầu vào cho mạng nơ-ron. Điều gì xảy ra nếu $$\nu$$ là số nguyên và nghiệm độc lập thứ hai chứa số hạng $$\log x$$?
 
-4. **Thí nghiệm tính toán.** Huấn luyện mô hình kiểu DeepONet nhỏ, hoặc surrogate phổ tuyến tính, ánh xạ nguồn $$f$$ sang nghiệm của $$-y''=f$$ trên $$[0,\pi]$$ với dữ liệu Dirichlet, dùng trunk sin. So hệ số với chuỗi sin Fourier đúng.
+4. **Thí nghiệm tính toán.** Huấn luyện một mô hình dạng DeepONet nhỏ, hoặc một mô hình thay thế phổ tuyến tính, ánh xạ nguồn $$f$$ sang nghiệm của $$-y''=f$$ trên $$[0,\pi]$$ với điều kiện biên Dirichlet bằng cách dùng cơ sở thân hàm sin. Đối chiếu các hệ số thu được với chuỗi sin Fourier chính xác.
 
-5. **Khám phá mở.** Đọc bài DeepONet (2021) và báo cáo PINNacle (2024) rồi viết ghi chú ngắn về khi nào trunk hàm đặc biệt cổ điển nên bị đóng băng chứ không học.
+5. **Khám phá mở.** Đọc bài báo DeepONet (2021) và báo cáo PINNacle (2024), sau đó viết một ghi chú ngắn phân tích trong trường hợp nào nên giữ cố định cơ sở thân bằng các hàm đặc biệt cổ điển thay vì huấn luyện tự do.
 
 ## Tài liệu
 
-- Boyce và DiPrima, Chương 5; Haberman, về ứng dụng Bessel và Legendre.
+- Boyce và DiPrima, Chương 5; Haberman, về ứng dụng hàm Bessel và Legendre.
 - Lu, L., và cộng sự. “Learning nonlinear operators via DeepONet.” *Nature Machine Intelligence* 3 (2021): 218–229.
 - Kovachki, N., và cộng sự. “Neural operator.” *JMLR* 24, số 89 (2023).
 - Wang, S., và cộng sự. “An expert’s guide to training physics-informed neural networks.” 2023. [arXiv:2308.08468](https://arxiv.org/abs/2308.08468).

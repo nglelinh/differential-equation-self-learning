@@ -12,15 +12,15 @@ lesson_type: optional
 
 ## Mục Đích Của Bài Hỗ Trợ
 
-Bài này gom toàn bộ minh họa của Chương 08 vào một không gian học trực quan chung để sinh viên có thể đi qua lại giữa lý thuyết Fourier và trực giác hình học. Thay vì chỉ gặp từng hình rời rạc bên trong từng bài, ở đây người học nhìn được trên cùng một trang các ý niệm về khai triển tuần hoàn, phổ hệ số, hội tụ, đối xứng, khai triển nửa khoảng, cân bằng năng lượng kiểu Parseval, mode phức, và bước chuyển từ chuỗi Fourier sang biến đổi Fourier.
+Bài học này tập hợp toàn bộ hình minh họa của Chương 08 vào một không gian trực quan chung, giúp sinh viên liên kết liền mạch giữa lý thuyết Fourier và trực giác hình học. Thay vì xem từng hình rời rạc trong từng bài riêng lẻ, người học có thể quan sát trên cùng một trang các khái niệm cốt lõi: khai triển tuần hoàn, phổ hệ số, sự hội tụ, tính đối xứng, khai triển nửa khoảng, bảo toàn năng lượng theo định lý Parseval, các mode phức và bước chuyển từ chuỗi Fourier sang biến đổi Fourier.
 
-Mục tiêu của bài không phải là thay thế các bài chính. Vai trò của nó là một phòng thí nghiệm trực quan cho Chương 08. Nhiều ý tưởng Fourier chỉ thật sự sáng lên khi ta đặt cạnh nhau đồ thị trong không gian vật lý, phổ trong không gian tần số, và các partial sums ở những mức xấp xỉ khác nhau.
+Bài hỗ trợ này không thay thế các bài học chính mà đóng vai trò như một không gian quan sát trực quan cho Chương 08. Nhiều ý tưởng của giải tích Fourier trở nên rõ ràng hơn khi đặt cạnh nhau đồ thị trong miền không gian, phổ trong miền tần số và các tổng riêng ở những bậc xấp xỉ khác nhau.
 
 ## Cách Sử Dụng Bộ Minh Họa
 
-Nên đi qua gallery theo đúng thứ tự các bài trong chương. Sau khi xem lại một hình, hãy quay về bài học tương ứng và tự hỏi phát biểu giải tích nào đang được mã hóa trong hình đó. Chẳng hạn, biểu đồ hệ số nên gợi tới trực giao và phép chiếu; còn hiện tượng vọt lố gần điểm gián đoạn nên dẫn tới câu hỏi về Gibbs phenomenon và hội tụ điểm.
+Nên xem bộ minh họa theo đúng thứ tự các bài học trong chương. Sau khi quan sát một hình, hãy đối chiếu lại với bài học tương ứng để xác định phát biểu giải tích nào đang được thể hiện. Chẳng hạn, biểu đồ hệ số gợi liên hệ tới tính trực giao và phép chiếu, còn hiện tượng vượt quá biên độ gần điểm gián đoạn dẫn tới hiện tượng Gibbs và vấn đề hội tụ từng điểm.
 
-Trang này cũng rất hữu ích để ôn tập trước khi chuyển sang phương trình nhiệt, phương trình sóng và các phương pháp biến đổi, vì những chương đó dùng lại gần như toàn bộ trực giác trực quan được xây dựng từ Chương 08.
+Trang này cũng thuận tiện để ôn tập trước khi chuyển sang phương trình nhiệt, phương trình sóng và các phương pháp biến đổi, vì các chương tiếp theo sử dụng lại phần lớn trực giác hình học xây dựng từ Chương 08.
 
 ## Gallery Nhúng Trực Tiếp
 
@@ -33,9 +33,9 @@ Trang này cũng rất hữu ích để ôn tập trước khi chuyển sang ph�
 
 ## Câu Hỏi Gợi Ý Khi Học
 
-1. Hình nào nhấn mạnh việc xấp xỉ trong không gian vị trí, và hình nào nhấn mạnh cách tổ chức trong không gian tần số?
-2. Trong những minh họa nào, giả thiết chẵn lẻ làm giảm đáng kể độ phức tạp tính toán?
-3. Ngôn ngữ hình ảnh của Chương 08 chuẩn bị như thế nào cho các chương PDE, nơi eigenfunctions và Fourier methods trở thành công cụ giải bài toán?
+1. Hình nào nhấn mạnh phép xấp xỉ trong miền không gian, và hình nào nhấn mạnh cấu trúc trong miền tần số?
+2. Trong những minh họa nào, tính đối xứng chẵn lẻ giúp giảm đáng kể khối lượng tính toán?
+3. Các hình ảnh trực quan của Chương 08 chuẩn bị như thế nào cho các chương PDE, nơi hàm riêng và phương pháp Fourier trở thành công cụ giải bài toán?
 
 ## Liên Kết Tới Các Bài Học Chính
 
@@ -50,6 +50,6 @@ Trang này cũng rất hữu ích để ôn tập trước khi chuyển sang ph�
 
 ## Video tham khảo
 
-- xem trước: [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, tiếng Anh. Hoạt hình vẽ bằng đường tròn mà bộ minh họa đang vọng lại.
-- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Các hình biến đổi Fourier để đặt cạnh các khung minh họa.
-- [Complex Fourier Series](https://www.youtube.com/watch?v=4cfctnaHyFM) — Steve Brunton, tiếng Anh. Chuỗi phức như các pha quay, một hình khác của bộ minh họa.
+- Xem trước: [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, tiếng Anh. Minh họa hoạt ảnh vẽ đường cong bằng các vòng tròn quay, tương ứng với trực giác trong bộ minh họa.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Minh họa trực quan biến đổi Fourier để đối chiếu cùng các khung hình trong bài.
+- [Complex Fourier Series](https://www.youtube.com/watch?v=4cfctnaHyFM) — Steve Brunton, tiếng Anh. Diễn giải chuỗi Fourier phức như các vectơ pha quay, bổ sung thêm một góc nhìn cho bộ minh họa.

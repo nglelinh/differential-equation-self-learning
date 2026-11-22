@@ -10,65 +10,65 @@ categories:
 ---
 
 ## Mục tiêu
-Bài này dựng lại lịch sử hình thành của phương trình vi phân thường cấp một từ cơ học, thiên văn học, dân số học và kỹ thuật điện. Sinh viên nên nhìn Chương 01 không phải như một danh sách mẹo giải, mà như câu trả lời có tổ chức đầu tiên của toán học cho bài toán mô hình hóa sự biến thiên.
+Bài lịch sử này tái hiện quá trình hình thành phương trình vi phân thường cấp một từ cơ học, thiên văn học, dân số học và kỹ thuật điện. Qua đó, sinh viên nhìn nhận Chương 01 không như một tập hợp mẹo giải rời rạc mà như câu trả lời có hệ thống đầu tiên của toán học cho bài toán mô hình hóa sự biến thiên.
 
 ## Kiến thức nền
-Sinh viên nên nắm ngôn ngữ toán học của Chương 00 và các phương pháp giải ở Chương 01. Mục tiêu ở đây là hiểu ai đã tạo ra các phương pháp ấy, vì sao chúng xuất hiện, và bằng cách nào các bài toán mô hình hóa đã thúc đẩy lý thuyết đi lên.
+Sinh viên nên đã nắm kiến thức nền của Chương 00 và các phương pháp giải ở Chương 01. Bài này bổ sung bối cảnh lịch sử về nguồn gốc các phương pháp và cách các bài toán thực tiễn thúc đẩy sự phát triển của lý thuyết.
 
 ## Câu chuyện mở màn
-Brussels, năm 1838. Pierre-Francois Verhulst nhìn vào các bảng dân số và thấy một điều rất đáng ngờ: nếu cứ tin hoàn toàn vào luật tăng trưởng mũ của Malthus, dân số sẽ tăng mãi như thể thức ăn, đất canh tác và bệnh tật không hề tồn tại. Xung đột ở đây rất thực tế. Nhà nước cần ước lượng lương thực, thuế và sức chứa đô thị; một mô hình đẹp trên giấy nhưng bỏ qua giới hạn vật chất sẽ dẫn đến dự báo vô nghĩa.
+Brussels, năm 1838. Khi đối chiếu các bảng số liệu dân số, Pierre-François Verhulst nhận ra hạn chế rõ rệt của quy luật tăng trưởng mũ của Malthus: mô hình đó dự báo dân số tăng mãi không giới hạn, bỏ qua nguồn lương thực, đất đai và dịch bệnh. Về mặt thực tiễn, việc dự báo nhu cầu lương thực và quy mô đô thị đòi hỏi một mô hình phản ánh được giới hạn tài nguyên.
 
-Verhulst không giải quyết chuyện đó bằng một khẩu hiệu xã hội học, mà bằng một phương trình cấp một. Ông sửa luật tăng trưởng quen thuộc $$y' = ry$$ thành $$y' = ry\left(1 - \frac{y}{K}\right)$$. Ngay trong công thức, toán học kể luôn câu chuyện: khi $$y$$ còn nhỏ so với sức chứa $$K$$, tốc độ tăng gần như là $$ry$$; nhưng khi $$y$$ tiến gần $$K$$, thừa số $$1 - \frac{y}{K}$$ kéo tốc độ tăng xuống gần $$0$$. Ví dụ, nếu $$K = 1000$$ và hiện có $$y = 900$$, thì tốc độ tăng chỉ còn khoảng $$0.1ry$$, nhỏ hơn rất nhiều so với mô hình mũ. Đó là khoảnh khắc phương trình vi phân cấp một hiện ra như một ngôn ngữ mô hình hóa thật sự: ngắn, cục bộ, nhưng đủ thông minh để phản ánh thế giới.
+Verhulst giải quyết vấn đề bằng một chỉnh sửa gọn gàng ở phương trình cấp một: thay luật tăng trưởng mũ $$y' = ry$$ bằng phương trình logistic $$y' = ry\left(1 - \frac{y}{K}\right)$$. Cấu trúc phương trình thể hiện trực tiếp cơ chế tự điều chỉnh: khi $$y$$ còn nhỏ so với sức chứa $$K$$, tốc độ tăng gần bằng $$ry$$; khi $$y$$ tiến gần $$K$$, nhân tử $$1 - \frac{y}{K}$$ kéo tốc độ tăng về gần $$0$$. Chẳng hạn, với $$K = 1000$$ và $$y = 900$$, tốc độ tăng chỉ còn $$0.1ry$$, thấp hơn nhiều so với tăng trưởng mũ. Phương trình vi phân cấp một hiện lên như một ngôn ngữ mô hình hóa cô đọng: chỉ từ một quy luật cục bộ đã phản ánh được hành vi bão hòa của hệ thực.
 
 ## Mạch truyện lớn
-Mạch truyện lớn của chương bắt đầu ở cuối thế kỷ XVII với Newton và Leibniz, khi đạo hàm còn gắn chặt với chuyển động. Sang thế kỷ XVIII, Bernoulli, Euler, Clairaut và Riccati lần lượt khám phá ra rằng có những dạng phương trình đủ đặc biệt để ta tách biến, nhân tử hóa hoặc đổi ẩn mà giải được. Từ đây, phương trình vi phân cấp một bắt đầu có “họ hàng”, có kiểu, có phương pháp riêng.
+Mạch phát triển của chương khởi đầu vào cuối thế kỷ XVII với Newton và Leibniz, khi đạo hàm gắn trực tiếp với chuyển động cơ học. Sang thế kỷ XVIII, anh em nhà Bernoulli, Euler, Clairaut và Riccati phát hiện nhiều lớp phương trình có cấu trúc đặc biệt giải được bằng tách biến, nhân tử tích phân hoặc đổi biến, từ đó hình thành hệ thống phân loại phương trình cấp một.
 
-Thế kỷ XIX thêm một tầng sâu hơn. Cauchy, Lipschitz, Picard và Lindelöf đặt câu hỏi khó hơn nhiều: không chỉ “giải thế nào” mà còn “khi nào nghiệm thực sự tồn tại, duy nhất và đáng tin”. Vì vậy, nếu phần kỹ thuật của Chương 01 là một hộp công cụ, thì phần lịch sử của nó là câu chuyện về việc loài người học cách biến một hiện tượng thành luật cục bộ, biến luật cục bộ thành phương pháp, rồi biến phương pháp thành lý thuyết.
+Đến thế kỷ XIX, trọng tâm nâng lên một bậc với Cauchy, Lipschitz, Picard và Lindelöf: thay vì chỉ hỏi "giải như thế nào?", toán học đặt câu hỏi nền tảng hơn là "khi nào nghiệm thực sự tồn tại và duy nhất?". Nhờ vậy, Chương 01 vừa là hộp công cụ giải tích vừa là tiến trình phát triển từ mô tả hiện tượng thành phương pháp rồi thành lý thuyết chặt chẽ.
 
 ## Chủ đề này phát sinh từ đâu, giải quyết vấn đề gì, và ai đã vướng ở đâu?
-**Nguồn gốc.** Phương trình vi phân cấp một sinh ra từ những hiện tượng rất gần đời sống: vật rơi có lực cản, cốc cà phê nguội đi, bể muối bị pha loãng, quần thể tăng trưởng, điện tích trên tụ điện suy giảm. Newton, Leibniz, Bernoulli và Euler không ngồi xuống để “phát minh một chapter trong giáo trình”; họ bị ép bởi những quá trình đang thay đổi theo thời gian và cần một luật cục bộ để ghi lại.
+**Nguồn gốc.** Phương trình vi phân cấp một xuất phát từ những quá trình quen thuộc trong tự nhiên và kỹ thuật: vật rơi có lực cản, vật nóng nguội dần, dung dịch trong bể pha loãng, quần thể tăng trưởng hay tụ điện phóng nạp. Newton, Leibniz, Bernoulli và Euler không soạn ra một chương giáo trình trừu tượng mà giải quyết nhu cầu mô tả các đại lượng biến đổi theo thời gian bằng một quy luật cục bộ.
 
-**Bài toán họ đang cố giải.** Họ muốn trả lời câu hỏi ngắn mà sâu: tại thời điểm này, tốc độ biến thiên phụ thuộc vào trạng thái hiện tại như thế nào? Từ đó mới xuất hiện các dạng tách biến, tuyến tính, exact, Bernoulli, logistic và các mô hình trộn chất hay mạch điện mà Chương 01 dạy ngày nay.
+**Bài toán họ đang giải quyết.** Câu hỏi trung tâm là: tại mỗi thời điểm, tốc độ biến thiên của trạng thái phụ thuộc vào chính trạng thái hiện tại như thế nào? Từ câu hỏi đó nảy sinh các lớp phương trình tách biến, tuyến tính, toàn phần, Bernoulli, logistic cùng các mô hình pha trộn và mạch điện của Chương 01.
 
-**Khó khăn và nút thắt.** Khó ở chỗ ban đầu các phương pháp xuất hiện rời rạc như những mẹo riêng. Bernoulli, Clairaut, Riccati và Euler mỗi người chạm vào một lớp phương trình khác nhau, nhưng chưa có một lý thuyết thống nhất. Sang thế kỷ XIX, Cauchy, Lipschitz, Picard và Lindelöf mới buộc toán học đối diện câu hỏi khó hơn: nếu mô hình đã viết ra, khi nào nó thực sự có nghiệm và nghiệm ấy có đáng tin là duy nhất hay không.
+**Khó khăn và nút thắt.** Ban đầu, các kỹ thuật giải xuất hiện khá rời rạc: Bernoulli, Clairaut, Riccati và Euler mỗi người xử lý một lớp phương trình riêng mà chưa có khung lý thuyết chung. Phải tới thế kỷ XIX, Cauchy, Lipschitz, Picard và Lindelöf mới thiết lập nền tảng lý thuyết để xác định rõ điều kiện tồn tại và duy nhất nghiệm cho bài toán giá trị đầu.
 
 ## Những bước ngoặt của câu chuyện
-1. **Giới thiệu phương trình vi phân.** Newton và Leibniz tạo ra khung khái niệm, nhưng các giáo trình của Euler mới làm cho việc phân loại theo bậc và kiểu trở nên có hệ thống. Ngay cả cụm từ “phương trình vi phân” cũng chỉ thực sự phổ biến khi vi tích phân trưởng thành.
-2. **Phương trình tách biến.** Đây là một trong những phương pháp cổ nhất vì các nhà giải tích đầu tiên thường có thể sắp xếp lại biến và tích phân trực tiếp. Các bài báo của gia đình Bernoulli và các trình bày của Euler giúp chuẩn hóa kỹ thuật này.
-3. **Phương trình tuyến tính cấp một.** Phương pháp nhân tử tích phân lớn lên từ công trình thế kỷ XVIII của Euler và Lagrange rồi trở thành thao tác kinh điển trong giáo trình. Nó cho thấy có những phương trình có thể giải nhờ biến đổi cấu trúc chứ không chỉ nhờ đoán.
-4. **Phương trình toàn phần chính xác.** Clairaut và sau đó là lý thuyết Pfaff làm rõ khi nào một biểu thức vi phân xuất phát từ một hàm thế ẩn. Khái niệm exact nối ODE với hình học và vi phân toàn phần, báo trước lý thuyết dạng vi phân sau này.
-5. **Các phép thế.** Phương trình Bernoulli, phương trình thuần nhất, phương trình Clairaut hay Riccati đều giữ lại một mẫu đại số có thể khai thác. Lịch sử của chúng cho thấy toán học học cách phân loại phương trình qua đối xứng và khả năng quy giảm.
-6. **Tồn tại và duy nhất.** Cauchy phát biểu rõ ràng bài toán giá trị đầu ở đầu thế kỷ XIX. Lipschitz đưa ra điều kiện mang tên mình, còn Picard và Lindelöf cho thấy phép lặp liên tiếp có thể chứng minh sự tồn tại và duy nhất.
-7. **Mô hình dân số và trộn chất.** Luật dân số năm 1798 của Malthus cho tăng trưởng mũ thuần túy, còn các bài báo năm 1838 và 1845 của Verhulst đưa vào phương trình logistic để mô tả bão hòa. Các bài toán trộn bể chứa lớn lên từ kỹ thuật hóa học và hệ thống dòng chảy thực tế.
-8. **Cơ học và mạch điện.** Các mô hình lực cản kiểu Newton cho ra ODE cấp một của vật rơi và làm nguội. Các định luật mạch của Kirchhoff trong thế kỷ XIX rồi kỹ thuật điện sau này biến phương trình tuyến tính cấp một thành trung tâm của các hệ RC và RL.
-9. **Phương trình tự trị và đường pha.** Lý thuyết định tính của Poincaré vào thập niên 1880 dạy các nhà toán học nghiên cứu cân bằng và hành vi dài hạn mà không cần công thức tường minh. Đó là một bước nhảy tư duy vượt xa việc chỉ thao tác ký hiệu.
+1. **Giới thiệu phương trình vi phân.** Newton và Leibniz đặt nền tảng khái niệm, còn các chuyên khảo của Euler hệ thống hóa cách phân loại theo bậc và dạng phương trình.
+2. **Phương trình tách biến.** Là một trong những kỹ thuật sớm nhất do cho phép gom biến và tích phân trực tiếp; các bài báo của gia đình Bernoulli và sách giáo khoa của Euler giúp chuẩn hóa phương pháp này.
+3. **Phương trình tuyến tính cấp một.** Kỹ thuật nhân tử tích phân phát triển từ các công trình thế kỷ XVIII của Euler và Lagrange, cho thấy cách biến đổi cấu trúc phương trình thay vì tìm nghiệm bằng phỏng đoán.
+4. **Phương trình toàn phần (exact).** Clairaut và sau đó là lý thuyết Pfaff làm rõ điều kiện để một biểu thức vi phân là vi phân toàn phần của một hàm thế ẩn, kết nối ODE với hình học vi phân và lý thuyết dạng vi phân sau này.
+5. **Các phép thế.** Phương trình Bernoulli, phương trình thuần nhất, phương trình Clairaut và phương trình Riccati khai thác các cấu trúc đại số và tính đối xứng để quy bài toán phi tuyến về dạng giải được.
+6. **Tồn tại và duy nhất.** Cauchy phát biểu chặt chẽ bài toán giá trị đầu vào đầu thế kỷ XIX; Lipschitz đưa ra điều kiện kiểm soát độ nhạy theo biến trạng thái; Picard và Lindelöf dùng phép lặp liên tiếp để chứng minh tồn tại và duy nhất cục bộ.
+7. **Mô hình dân số và pha trộn.** Mô hình tăng trưởng mũ năm 1798 của Malthus được Verhulst mở rộng bằng phương trình logistic (1838, 1845) để phản ánh giới hạn tài nguyên; các bài toán bể trộn phát triển cùng kỹ thuật hóa học và kỹ thuật dòng chảy.
+8. **Cơ học và mạch điện.** Mô hình lực cản và làm nguội kiểu Newton cùng các định luật mạch Kirchhoff thế kỷ XIX đưa phương trình tuyến tính cấp một vào trung tâm của cơ học ứng dụng và kỹ thuật điện (mạch RC, RL).
+9. **Phương trình tự trị và đường pha.** Phương pháp định tính do Poincaré khởi xướng vào thập niên 1880 cho phép khảo sát cân bằng và hành vi dài hạn mà không cần công thức nghiệm tường minh.
 
 ## Những cảnh đáng nhớ
-Câu chuyện cấp một mở ra cùng lúc với chính phép tính biến thiên. *Principia* của Newton năm 1687 và các bài báo vi phân của Leibniz tạo ra ngôn ngữ của tốc độ thay đổi, khiến người ta lần đầu viết được luật cục bộ thay vì chỉ mô tả một quan hệ tĩnh. Sang thế kỷ XVIII, các bài báo của Bernoulli và Euler tổ chức những phương pháp giải ban đầu, còn công trình của Riccati sinh ra một trong những phương trình phi tuyến cấp một kinh điển. Từ đây, ODE cấp một bắt đầu có họ hàng, có kiểu, và có mẹo giải riêng.
+Lịch sử ODE cấp một bắt đầu song hành với phép tính vi tích phân: *Principia* (1687) của Newton và các bài báo về vi phân của Leibniz tạo ra ngôn ngữ biểu diễn tốc độ biến thiên thay vì chỉ các quan hệ tĩnh. Trong thế kỷ XVIII, nhà Bernoulli, Euler và Riccati mở rộng các phương pháp giải tích đầu tiên cho nhiều lớp phương trình tuyến tính và phi tuyến.
 
-Thế kỷ XIX biến mẹo thành lý thuyết. Các bài giảng của Cauchy và phương pháp xấp xỉ của Picard biến bài toán giá trị đầu thành một đối tượng nghiêm ngặt: không chỉ hỏi “giải thế nào”, mà hỏi khi nào nghiệm tồn tại và có duy nhất hay không. Cùng lúc, mô hình logistic của Verhulst khiến ODE cấp một trở thành công cụ trung tâm của động lực dân số, cho thấy một phương trình ngắn vẫn có thể kể câu chuyện bão hòa, giới hạn tài nguyên và dự báo xã hội.
+Sang thế kỷ XIX, các công trình của Cauchy và phương pháp lặp Picard chuyển trọng tâm từ kỹ thuật tính sang lý thuyết chặt chẽ về tồn tại và duy nhất nghiệm. Song song đó, phương trình logistic của Verhulst minh họa sức mạnh mô hình hóa của ODE cấp một trong động lực học dân số khi đưa giới hạn tài nguyên trực tiếp vào phương trình.
 
 ## Vì sao biết lịch sử này làm toán bớt khô
-Chương 01 có thể trông “dễ” vì công thức ngắn. Nhưng về mặt lịch sử, đây là nơi toán học lần đầu học được cách mã hóa một định luật biến thiên thay vì chỉ mô tả một quan hệ tĩnh. Đó là khoảnh khắc mô hình bắt đầu thật sự chuyển động trên trang giấy.
+Chương 01 thường có hình thức công thức ngắn gọn, nhưng về mặt lịch sử đây là bước ngoặt khi toán học bắt đầu mô tả quy luật biến đổi theo thời gian thay vì chỉ các quan hệ tĩnh.
 
-Chương này cũng dạy một bài học bền vững: lý thuyết và ứng dụng phát triển cùng nhau. Các phương pháp giải không ra đời trong chân không; chúng được phát minh vì các bài toán cụ thể trong thiên văn, cơ học, dòng chảy, hóa học và dân số đã đòi hỏi chúng.
+Lịch sử chương này cũng cho thấy lý thuyết và ứng dụng luôn song hành: các phương pháp giải không xuất hiện tùy ý mà được thúc đẩy trực tiếp từ những bài toán cụ thể trong thiên văn học, cơ học, dòng chảy, hóa học và dân số học.
 
 ## Câu hỏi thảo luận
-1. Vì sao các phương trình cấp một lại xuất hiện gần như ngay sau khi vi tích phân được phát minh?
-2. Đâu là đột phá sâu hơn: giải được nhiều dạng phương trình hơn, hay chứng minh được sự tồn tại và duy nhất?
-3. Vì sao phương trình logistic là một bước tiến khái niệm so với tăng trưởng mũ đơn giản?
+1. Vì sao các phương trình vi phân cấp một xuất hiện gần như ngay sau khi phép tính vi tích phân ra đời?
+2. Bước tiến nào mang ý nghĩa sâu hơn về mặt lý thuyết: giải thêm được nhiều dạng phương trình, hay chứng minh định lý tồn tại và duy nhất nghiệm?
+3. Vì sao phương trình logistic được xem là bước tiến quan trọng về mặt mô hình hóa so với tăng trưởng mũ?
 
 ## Gợi ý trả lời câu hỏi thảo luận
-1. Vì ngay khi có đạo hàm, các nhà toán học đã có cách viết luật biến thiên cục bộ của chuyển động, làm nguội, pha trộn hay tăng trưởng. Phương trình cấp một là hình thức tự nhiên và tối giản nhất của ý tưởng “tốc độ thay đổi hiện tại phụ thuộc vào trạng thái hiện tại”.
-2. Giải được thêm nhiều dạng phương trình là một tiến bộ kỹ thuật lớn, nhưng tồn tại và duy nhất là bước sâu hơn về khái niệm. Nó trả lời câu hỏi liệu mô hình có thực sự xác định một diễn biến hay không, và liệu dữ liệu ban đầu có đủ để chọn ra đúng một quỹ đạo vật lý hay không.
-3. Phương trình logistic vượt lên trên tăng trưởng mũ vì nó đưa phản hồi và giới hạn tài nguyên vào ngay trong mô hình. Nhờ vậy, nó cho thấy tăng trưởng không phải lúc nào cũng tăng mãi, mà có thể tự điều chỉnh quanh một mức cân bằng.
+1. Vì ngay khi khái niệm đạo hàm hình thành, các nhà toán học có thể viết trực tiếp quy luật biến thiên cục bộ cho chuyển động, trao đổi nhiệt, pha trộn hay tăng trưởng—và phương trình cấp một là biểu thức tối giản nhất của quy luật "tốc độ thay đổi phụ thuộc vào trạng thái hiện tại".
+2. Mở rộng các lớp phương trình giải được là bước tiến lớn về kỹ thuật tính toán, nhưng định lý tồn tại và duy nhất tạo ra bước tiến sâu hơn về mặt nền tảng: nó xác định khi nào mô hình thực sự đặt chỉnh và liệu trạng thái ban đầu có quy định duy nhất một diễn biến hay không.
+3. Phương trình logistic vượt qua hạn chế của mô hình mũ bằng cách tích hợp trực tiếp cơ chế phản hồi âm và giới hạn tài nguyên, từ đó mô tả được sự bão hòa và trạng thái cân bằng.
 
 ## Tóm tắt kiến thức toán học
-- Phương trình vi phân cấp một ra đời từ nhu cầu mô tả luật biến thiên cục bộ của các hiện tượng như nguội đi, pha trộn, nạp xả điện và tăng trưởng dân số.
-- Ý tưởng trung tâm là viết tốc độ thay đổi hiện tại dưới dạng một hàm của trạng thái hiện tại, từ đó sinh ra các lớp phương trình tách biến, tuyến tính, exact và logistic.
-- Ví dụ trong câu chuyện là phương trình logistic $$y' = ry\left(1 - \frac{y}{K}\right)$$, cho thấy mô hình cấp một có thể tự điều chỉnh theo giới hạn tài nguyên.
+- Phương trình vi phân cấp một hình thành từ nhu cầu mô tả quy luật biến thiên cục bộ của các quá trình vật lý, hóa học và sinh học.
+- Tư tưởng trung tâm là liên hệ tốc độ biến thiên với trạng thái hiện tại, dẫn đến các lớp phương trình tách biến, tuyến tính, toàn phần và logistic.
+- Phương trình logistic $$y' = ry\left(1 - \frac{y}{K}\right)$$ là ví dụ tiêu biểu cho thấy một phương trình cấp một gọn nhẹ có thể phản ánh cơ chế tự điều chỉnh theo giới hạn tài nguyên.
 
 ## Tài liệu tham khảo
-- Boyce và DiPrima, *Elementary Differential Equations and Boundary Value Problems*. Hữu ích để nối Chương 01 hiện đại với các gốc cổ điển của nó.
-- Ross, *Differential Equations*. Ngắn gọn và rõ về các phương pháp cấp một cùng bối cảnh mô hình hóa.
-- Ivor Grattan-Guinness, *The Rainbow of Mathematics*. Cung cấp bối cảnh lịch sử cho giải tích thế kỷ XVIII và XIX.
+- Boyce và DiPrima, *Elementary Differential Equations and Boundary Value Problems*. Hữu ích để liên kết cấu trúc Chương 01 hiện đại với nguồn gốc cổ điển.
+- Ross, *Differential Equations*. Trình bày ngắn gọn, rõ ràng các phương pháp cấp một cùng bối cảnh mô hình hóa.
+- Ivor Grattan-Guinness, *The Rainbow of Mathematics*. Cung cấp bối cảnh lịch sử cho sự phát triển của giải tích thế kỷ XVIII và XIX.

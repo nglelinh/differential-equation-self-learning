@@ -14,98 +14,98 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài optional này khép chương bằng cách quay lại elliptic regularity dưới góc nhìn hiện đại của pseudodifferential operators. Sau bài học, sinh viên cần hiểu vì sao parametrix cho một chứng minh ngắn gọn và khái quát của regularity, thấy cách mapping giữa các Sobolev spaces được đọc từ bậc của toán tử, và so sánh được cách nhìn cổ điển với cách nhìn ΨDO.
+Bài học tùy chọn này khép lại chương bằng cách nhìn lại tính chính quy elliptic dưới góc độ hiện đại của toán tử giả vi phân. Sau bài học, sinh viên cần hiểu vì sao parametrix mang lại một chứng minh ngắn gọn và tổng quát cho tính chính quy, biết đọc tính chất ánh xạ giữa các không gian Sobolev từ bậc của toán tử, và so sánh được cách tiếp cận cổ điển với cách tiếp cận bằng ΨDO.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm Sobolev spaces, ellipticity, parametrix, và trực giác rằng toán tử bậc âm làm tăng regularity. Đây là bài tổng hợp, không nhằm thêm kỹ thuật mới nhiều bằng việc cho thấy toàn bộ chương quy tụ vào một kết luận lớn như thế nào.
+Sinh viên nên nắm vững không gian Sobolev, tính elliptic, khái niệm parametrix và nguyên tắc rằng toán tử bậc âm làm tăng độ chính quy. Đây là bài tổng hợp giúp kết nối toàn bộ nội dung của chương vào một kết quả thống nhất.
 
 ## Dẫn nhập
 
-Trong các chương trước, regularity elliptic xuất hiện qua ước lượng năng lượng, tích phân từng phần, bootstrap, và đôi khi các tính toán khá dài. Pseudodifferential calculus đem lại một điểm nhìn sạch hơn: nếu một toán tử elliptic có parametrix, thì nghiệm của phương trình elliptic chỉ khác ảnh của dữ liệu qua một toán tử bậc âm bởi một thành phần làm mịn. Regularity vì thế trở nên gần như hiển nhiên.
+Ở các chương trước, tính chính quy elliptic thường được chứng minh thông qua ước lượng năng lượng, tích phân từng phần và lập luận nâng bậc (bootstrap) khá dài. Phép tính giả vi phân mang lại một cách tiếp cận gọn gàng hơn: nếu một toán tử elliptic có parametrix, thì nghiệm của phương trình chỉ sai khác ảnh của vế phải qua một toán tử bậc âm đúng một thành phần làm trơn. Nhờ đó, tính chính quy hiện ra gần như trực tiếp.
 
-Đây là một trong những lý do quan trọng nhất khiến pseudodifferential operators được xem là ngôn ngữ tự nhiên của elliptic theory hiện đại.
+Đây là một trong những lý do chính khiến toán tử giả vi phân trở thành ngôn ngữ chuẩn của lý thuyết elliptic hiện đại.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Hãy nghĩ đến một máy khôi phục ảnh. Nếu tín hiệu đầu vào $$ f $$ đủ mượt, và máy nghịch đảo của ta thực chất là một bộ lọc làm mịn bậc âm, thì ảnh khôi phục $$ u $$ phải mượt hơn. Phần lỗi còn lại lại càng tốt hơn vì nó là smoothing. Toàn bộ logic của elliptic regularity qua parametrix là như vậy.
+Hãy liên tưởng đến một quy trình khôi phục ảnh: nếu dữ liệu đầu vào $$ f $$ đủ trơn và toán tử nghịch đảo xấp xỉ hoạt động như một bộ lọc làm trơn bậc âm, thì kết quả khôi phục $$ u $$ sẽ còn trơn hơn nữa, trong khi phần sai số còn lại là thành phần làm trơn vô hạn. Logic của tính chính quy elliptic qua parametrix vận hành theo đúng cơ chế đó.
 
 ### Cách hình ảnh
 
-Giáo viên nên vẽ sơ đồ:
+Có thể tóm tắt bằng sơ đồ:
 
 $$ Pu=f
 \quad\Longrightarrow\quad
 u=Qf-Ru. $$
 
-Sau đó gắn nhãn:
+Trong đó:
 
-- $$ Q $$ bậc $$ -m $$, tăng regularity;
-- $$ R $$ smoothing, làm mọi thứ mượt hơn nữa.
+- $$ Q $$ có bậc $$ -m $$, làm tăng độ chính quy;
+- $$ R $$ là toán tử làm trơn, tạo ra số hạng rất trơn.
 
-Hình này cực mạnh vì chỉ trong một dòng, sinh viên nhìn thấy vì sao $$ u $$ thừa hưởng và còn cải thiện độ trơn từ $$ f $$.
+Chỉ trong một dòng biểu thức, sơ đồ này cho thấy trực tiếp vì sao nghiệm $$ u $$ thừa hưởng và nâng cao độ trơn từ dữ liệu $$ f $$.
 
 ### Cách hình thức
 
-Nếu $$ P\in \Psi^m $$ là elliptic và $$ Q\in \Psi^{-m} $$ là parametrix, thì $$ QP=I+R $$, với $$ R $$ smoothing. Do đó, từ $$ Pu=f $$ ta suy ra $$ u=Qf-Ru $$. Nếu $$ f\in H^s $$ thì $$ Qf\in H^{s+m} $$, và $$ Ru\in C^\infty $$ trong bối cảnh đủ tốt. Vì vậy $$ u\in H^{s+m} $$, ít nhất cục bộ hoặc modulo các chi tiết biên thích hợp.
+Nếu $$ P\in \Psi^m $$ là toán tử elliptic và $$ Q\in \Psi^{-m} $$ là parametrix của nó, thì $$ QP=I+R $$ với $$ R $$ là toán tử làm trơn. Từ $$ Pu=f $$, ta suy ra $$ u=Qf-Ru $$. Nếu $$ f\in H^s $$ thì $$ Qf\in H^{s+m} $$ và $$ Ru\in C^\infty $$ trong bối cảnh phù hợp, kéo theo $$ u\in H^{s+m} $$ (ít nhất ở mức cục bộ hoặc với các điều kiện biên tương ứng).
 
 ## Ngộ nhận thường gặp
 
-### “Regularity đến từ phần dư nhỏ”
+### “Tính chính quy có được do phần dư có giá trị nhỏ”
 
-Không phải “nhỏ” theo nghĩa số học, mà “tốt” vì là smoothing.
+Không chính xác. Phần dư đóng vai trò thuận lợi không phải vì nhỏ về mặt số học, mà vì nó là một toán tử làm trơn.
 
-### “Nếu có parametrix thì mọi nghiệm đều trơn vô hạn”
+### “Hễ có parametrix thì mọi nghiệm đều trơn vô hạn”
 
-Sai. Độ trơn của nghiệm vẫn phụ thuộc vào độ trơn của dữ liệu và điều kiện biên.
+Sai. Độ trơn của nghiệm vẫn phụ thuộc vào độ trơn của vế phải $$ f $$ và điều kiện biên.
 
-### “Elliptic regularity chỉ là kết quả cho Laplacian”
+### “Tính chính quy elliptic chỉ áp dụng cho toán tử Laplace”
 
-Không. Điểm mạnh của ΨDO là nó cho cùng một cơ chế cho cả họ toán tử elliptic.
+Không đúng. Ưu điểm của khuôn khổ ΨDO là cung cấp cùng một cơ chế chứng minh cho cả họ rộng các toán tử elliptic.
 
-### “Cách nhìn bằng parametrix thay thế hoàn toàn các cách cổ điển”
+### “Cách tiếp cận bằng parametrix thay thế hoàn toàn phương pháp cổ điển”
 
-Không. Các cách cổ điển vẫn rất quan trọng, nhưng pseudodifferential calculus cho một khuôn khổ thống nhất hơn.
+Không hẳn. Các phương pháp cổ điển vẫn rất cần thiết, nhất là với hệ số không trơn hoặc miền có biên phức tạp, còn phép tính giả vi phân cung cấp một khung lý thuyết thống nhất và khái quát hơn.
 
 ## Tiến trình học
 
-### Bước 1: Nhắc lại Sobolev mapping
+### Bước 1: Nhắc lại tính chất ánh xạ trên không gian Sobolev
 
-Toán tử bậc $$ m $$ thường giảm regularity đi $$ m $$ bậc, còn toán tử bậc $$ -m $$ tăng lại $$ m $$ bậc.
+Toán tử bậc $$ m $$ làm giảm độ chính quy đi $$ m $$ bậc, còn toán tử bậc $$ -m $$ làm tăng độ chính quy thêm $$ m $$ bậc.
 
-### Bước 2: Dùng parametrix
+### Bước 2: Áp dụng parametrix
 
-Viết phương trình thành
+Chuyển phương trình $$ Pu=f $$ thành dạng
 
 $$ u=Qf-Ru. $$
 
-### Bước 3: Đọc regularity từ từng vế
+### Bước 3: Đọc độ chính quy của từng số hạng
 
-$$ Qf $$ cho regularity chính, $$ Ru $$ còn tốt hơn.
+Số hạng $$ Qf $$ quyết định mức tăng chính quy chính, còn $$ Ru $$ thậm chí trơn hơn nữa.
 
-### Bước 4: Kết nối với các chứng minh trước
+### Bước 4: Đối chiếu với các chứng minh trước
 
-Cho sinh viên thấy đây là phiên bản khái quát và khái niệm hơn của cùng một hiện tượng.
+Nhận diện đây là phiên bản khái quát và thống nhất hơn của cùng hiện tượng elliptic đã học ở các chương trước.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có giải thích được vì sao toán tử bậc âm làm tăng độ trơn không?
-- Sinh viên có thấy vai trò riêng của $$ Q $$ và $$ R $$ trong công thức parametrix không?
-- Sinh viên có so sánh được cách nhìn cổ điển và cách nhìn ΨDO không?
+- Sinh viên có giải thích được vì sao toán tử bậc âm làm tăng độ trơn hay không?
+- Sinh viên có phân biệt rõ vai trò của $$ Q $$ và $$ R $$ trong công thức parametrix hay không?
+- Sinh viên có so sánh được cách tiếp cận cổ điển với cách tiếp cận ΨDO hay không?
 
 ## Ví dụ có lời giải
 
 ### Ví dụ 1: Toán tử $$ 1-\Delta $$
 
-Từ $$ (1-\Delta)u=f $$, parametrix $$ Q $$ có bậc $$ -2 $$. Nếu $$ f\in H^s $$, thì $$ Qf\in H^{s+2} $$. Vì phần dư làm mịn, ta thu được
+Từ phương trình $$ (1-\Delta)u=f $$, parametrix $$ Q $$ có bậc $$ -2 $$. Nếu $$ f\in H^s $$ thì $$ Qf\in H^{s+2} $$, và vì phần dư làm trơn nên ta thu được
 
 $$ u\in H^{s+2}. $$
 
-### Ví dụ 2: Laplacian trên miền không biên cục bộ
+### Ví dụ 2: Toán tử Laplace trong miền cục bộ
 
-Với $$ -\Delta u=f $$, symbol chính là $$ \lvert \xi\rvert^2 $$, nên toán tử là elliptic. Parametrix bậc $$ -2 $$ cho thấy ngay tính tăng hai đạo hàm ở mức Sobolev cục bộ. Đây là bản dịch ngắn gọn của elliptic regularity quen thuộc.
+Với $$ -\Delta u=f $$, ký hiệu chính là $$ \lvert \xi\rvert^2 $$ nên toán tử là elliptic. Parametrix bậc $$ -2 $$ lập tức cho thấy nghiệm tăng thêm hai bậc chính quy Sobolev cục bộ — cách diễn đạt ngắn gọn của định lý chính quy elliptic quen thuộc.
 
 ### Ví dụ 3: Toán tử elliptic tổng quát
 
@@ -115,66 +115,66 @@ $$
 P=\sum_{\lvert \alpha\rvert\le m}a_\alpha(x)\partial^\alpha
 $$
 
-có symbol chính elliptic, cùng một lập luận áp dụng mà không cần viết lại toàn bộ ước lượng từ đầu. Đây chính là sức mạnh khái quát của calculus.
+có ký hiệu chính elliptic, cùng một lập luận vẫn áp dụng được mà không phải thiết lập lại các ước lượng từ đầu. Điều này thể hiện sức mạnh tổng quát hóa của phép tính ký hiệu.
 
 ### Ví dụ 4: Vai trò của điều kiện biên
 
-Trên miền có biên, regularity toàn cục còn phụ thuộc điều kiện biên và hình học biên. Ví dụ này nhắc sinh viên rằng parametrix cục bộ rất mạnh, nhưng bài toán biên toàn cục vẫn có những tinh tế riêng.
+Trên miền có biên, tính chính quy toàn cục còn phụ thuộc vào điều kiện biên và độ trơn của biên. Điều này nhắc ta rằng parametrix cục bộ rất hữu hiệu ở phần trong miền, nhưng bài toán biên toàn cục vẫn đòi hỏi phân tích bổ sung.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao công thức $$ u=Qf-Ru $$ gần như đã “chứa sẵn” elliptic regularity?
-2. Điều gì làm cho smoothing remainder tốt hơn một sai số bậc thấp thông thường?
-3. Tại sao pseudodifferential calculus cho ta một chứng minh khái quát hơn cách tính trực tiếp từng toán tử?
+1. Vì sao đẳng thức $$ u=Qf-Ru $$ đã chứa đựng trực tiếp cơ chế của tính chính quy elliptic?
+2. Điều gì khiến phần dư làm trơn hữu ích hơn một sai số bậc thấp thông thường?
+3. Vì sao phép tính giả vi phân cho phép chứng minh tổng quát hơn so với tính toán trực tiếp trên từng toán tử riêng lẻ?
 
 ## Bài toán ứng dụng
 
-1. Trong giải phương trình elliptic bằng Sobolev spaces, việc đọc mapping property từ bậc toán tử giúp gì cho dự đoán regularity?
-2. Trong bài toán ảnh y học hay deblurring, vì sao một toán tử nghịch đảo bậc âm gợi trực giác làm mịn hay khôi phục độ trơn?
-3. Trong phổ học hình học, vì sao parametrix là công cụ quan trọng để nghiên cứu hạt nhân nhiệt và phân bố trị riêng?
+1. Khi giải phương trình elliptic trong không gian Sobolev, việc đọc tính chất ánh xạ từ bậc của toán tử giúp dự đoán độ chính quy của nghiệm như thế nào?
+2. Trong ảnh y học hoặc khử mờ, vì sao một toán tử nghịch đảo bậc âm gắn với trực giác làm trơn và khôi phục độ đều của tín hiệu?
+3. Trong hình học phổ, vì sao parametrix là công cụ quan trọng để nghiên cứu nhân nhiệt và phân bố trị riêng?
 
 ## Chiến lược dạy học tương tác
 
-### Câu hỏi nên hỏi trên lớp
+### Câu hỏi nên đặt trên lớp
 
-- Nếu $$ Q $$ là toán tử bậc âm, em mong nó làm gì với một hàm “thô”?
-- Tại sao phần dư làm mịn lại đủ để đóng vai trò sai số lý tưởng?
-- Em thấy cách nhìn bằng parametrix ngắn gọn hơn cách cổ điển ở điểm nào?
+- Nếu $$ Q $$ là một toán tử bậc âm, nó tác động lên một hàm ít trơn như thế nào?
+- Vì sao phần dư làm trơn lại là dạng sai số phù hợp để suy ra tính chính quy?
+- Cách chứng minh bằng parametrix có điểm nào ngắn gọn hơn cách cổ điển?
 
 ### Hoạt động gợi ý
 
-- Cho sinh viên tự suy luận regularity từ công thức parametrix trên một ví dụ cụ thể.
-- So sánh hai chứng minh ngắn: một bằng ước lượng cổ điển, một bằng ΨDO.
-- Thảo luận nhóm về ưu điểm của “ngôn ngữ thống nhất” trong toán học.
+- Cho sinh viên tự suy ra độ chính quy của nghiệm từ công thức parametrix trên một ví dụ cụ thể.
+- So sánh hai phác thảo chứng minh: một bằng ước lượng năng lượng cổ điển và một bằng ΨDO.
+- Thảo luận nhóm về lợi ích của việc xây dựng một ngôn ngữ toán học thống nhất.
 
-### Cách tăng tham gia
+### Cách tăng mức độ tham gia
 
-- Bắt đầu bằng câu hỏi “nếu đã có nghịch đảo xấp xỉ, em còn cần gì nữa?”.
-- Cho sinh viên điền chỗ trống trong chuỗi suy luận
+- Bắt đầu bằng câu hỏi: “Khi đã có nghịch đảo xấp xỉ, ta còn thiếu gì để kết luận về độ trơn của nghiệm?”
+- Cho sinh viên điền vào chuỗi suy luận
 
 $$ f\in H^s \Rightarrow Qf\in ? \Rightarrow u\in ? $$
 
-- Mời sinh viên tự kể lại chương bằng ba từ khóa: symbol, elliptic, parametrix.
+- Đề nghị sinh viên tóm tắt lại toàn bộ chương bằng ba từ khóa: ký hiệu, elliptic và parametrix.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Dùng lại ví dụ quen thuộc $$ 1-\Delta $$.
-- Giữ ở mức mapping property và trực giác, không sa sâu vào chứng minh.
-- Nhấn mạnh một dòng then chốt:
+- Sử dụng lại ví dụ quen thuộc $$ 1-\Delta $$.
+- Tập trung vào tính chất ánh xạ và trực giác, chưa đi sâu vào chi tiết chứng minh kỹ thuật.
+- Nhấn mạnh công thức trọng tâm:
 
 $$ u=Qf-Ru. $$
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Liên hệ với regularity microlocal.
-- Tìm hiểu cách parametrix dẫn tới Fredholm property.
-- So sánh các chứng minh elliptic regularity trong các bối cảnh khác nhau.
+- Liên hệ với tính chính quy vi địa phương.
+- Tìm hiểu cách parametrix dẫn tới tính chất Fredholm.
+- So sánh các chứng minh tính chính quy elliptic trong những bối cảnh khác nhau.
 
 ## Ghi nhớ nhanh
 
-Elliptic regularity qua pseudodifferential calculus được gói gọn trong ý tưởng: toán tử elliptic có parametrix bậc âm, nên nghiệm thu được bằng cách áp một toán tử làm tăng độ trơn lên dữ liệu, cộng với một phần dư còn mịn hơn nữa. Đó là cách nhìn hiện đại, ngắn gọn và rất tổng quát về regularity elliptic.
+Tính chính quy elliptic dưới góc nhìn phép tính giả vi phân có thể gói gọn trong một ý tưởng: toán tử elliptic có parametrix bậc âm, nên nghiệm thu được bằng cách áp một toán tử nâng bậc trơn lên dữ liệu nguồn cộng với một phần dư làm trơn vô hạn.
 
 ---
 
@@ -182,23 +182,23 @@ Elliptic regularity qua pseudodifferential calculus được gói gọn trong ý
 
 ### 1. Nhiệt độ và điện thế ở trạng thái cân bằng
 
-Các bài toán như $$ -\Delta u=f $$ hay $$ \nabla \cdot (k(x)\nabla u)=f $$ cho thấy nếu nguồn $$ f $$ trơn hơn thì nghiệm trạng thái dừng $$ u $$ cũng trơn hơn. Mô hình giả định không có suy biến hệ số và điều kiện biên phù hợp. Diễn giải là: regularity elliptic diễn tả chính xác trực giác vật lý rằng trạng thái cân bằng không tạo thêm gợn sắc mới ngoài những gì nguồn đã mang vào.
+Các phương trình như $$ -\Delta u=f $$ hay $$ \nabla \cdot (k(x)\nabla u)=f $$ cho thấy nếu nguồn $$ f $$ trơn hơn thì nghiệm trạng thái dừng $$ u $$ cũng trơn hơn (với hệ số không suy biến và điều kiện biên thích hợp). Tính chính quy elliptic diễn tả chính xác nhận định vật lý rằng trạng thái cân bằng không tự sinh thêm dao động sắc nhọn ngoài những gì nguồn đã đưa vào.
 
-### 2. Deblurring và bài toán phục hồi ảnh
+### 2. Khử mờ và bài toán phục hồi ảnh
 
-Trong nhiều mô hình ảnh hóa, ta giải một phương trình tuyến tính với toán tử elliptic hoặc gần elliptic để khôi phục tín hiệu ẩn. Parametrix cho thấy nghịch đảo bậc âm có tác dụng nâng regularity, nhưng dữ liệu nhiễu sẽ hạn chế chất lượng phục hồi. Mô hình này giúp nối trực giác Sobolev với thiết kế thuật toán regularization.
+Trong nhiều mô hình tái tạo ảnh, ta cần giải một phương trình tuyến tính với toán tử elliptic hoặc gần elliptic để khôi phục tín hiệu ẩn. Parametrix cho thấy nghịch đảo bậc âm giúp nâng độ chính quy, nhưng nhiễu đo sẽ giới hạn chất lượng khôi phục, từ đó nối trực giác Sobolev với việc thiết kế thuật toán chính quy hóa.
 
-### 3. Hạt nhân nhiệt và phổ học hình học
+### 3. Nhân nhiệt và hình học phổ
 
-Regularity elliptic là nền để nghiên cứu hạt nhân nhiệt, resolvent, và phân bố trị riêng của toán tử elliptic. Nói cách khác, định lý regularity không chỉ là chuyện “nghiệm trơn hơn”, mà còn là cửa ngõ vào phổ, trace formula, và hình học vi phân hiện đại.
+Tính chính quy elliptic là nền tảng để khảo sát nhân nhiệt (heat kernel), toán tử resolvent và phân bố trị riêng của toán tử elliptic. Vì thế, định lý chính quy không chỉ khẳng định độ trơn của nghiệm mà còn mở đường sang lý thuyết phổ, công thức vết và hình học vi phân hiện đại.
 
 ## Trực giác sâu hơn
 
-Điểm đẹp của bài tổng kết này là một định lý nhìn có vẻ phân tích tinh vi lại được nén vào công thức rất ngắn $$ u = Qf - Ru $$. Tất cả cấu trúc của regularity nằm ở chỗ $$ Q $$ là toán tử bậc âm còn $$ R $$ là smoothing. Ngộ nhận thường gặp là nghĩ regularity là một tập hợp kỹ thuật riêng lẻ cho từng toán tử; thật ra pseudodifferential calculus cho thấy đó là một cơ chế thống nhất.
+Điểm nổi bật của bài tổng kết này là một định lý giải tích sâu lại được cô đọng trong biểu thức ngắn gọn $$ u = Qf - Ru $$, nơi toàn bộ cơ chế chính quy nằm ở việc $$ Q $$ có bậc âm còn $$ R $$ là toán tử làm trơn. Thay vì là tập hợp các kỹ thuật rời rạc cho từng phương trình, phép tính giả vi phân cho thấy tính chính quy elliptic là một cơ chế thống nhất.
 
 ## Trực quan hóa bằng Python
 
-Đoạn code sau minh họa tác động làm mượt của nghịch đảo $$ 1-\Delta $$ trên tín hiệu 1D nhiều cao tần.
+Đoạn mã sau minh họa tác động làm trơn của toán tử nghịch đảo $$ (1-\Delta)^{-1} $$ lên một tín hiệu 1D chứa nhiều thành phần cao tần.
 
 ```python
 import numpy as np
@@ -225,7 +225,7 @@ plt.show()
 
 ## Trực quan hóa bằng JavaScript
 
-Có thể dùng `Plotly.js` với thanh trượt để tăng giảm bậc làm mịn của multiplier $$ 1/(1+\lvert \xi\rvert^2)^\alpha $$, từ đó quan sát khi $$ \alpha $$ tăng thì tín hiệu được làm trơn mạnh hơn ra sao.
+Có thể dùng `Plotly.js` kèm thanh trượt điều chỉnh bậc làm trơn của bộ nhân $$ 1/(1+\lvert \xi\rvert^2)^\alpha $$ để quan sát trực tiếp tín hiệu trở nên trơn hơn ra sao khi $$ \alpha $$ tăng.
 
 ## Gợi ý tài nguyên ngoài
 
@@ -235,31 +235,31 @@ Tìm kiếm: `elliptic regularity visualization`, `inverse elliptic operator smo
 
 ### Mức đại học (Undergraduate)
 
-Giữ trọng tâm ở thông điệp: toán tử bậc âm làm tăng độ trơn, nên nếu dữ liệu đủ tốt thì nghiệm elliptic sẽ tốt hơn.
+Giữ trọng tâm ở nhận định chính: toán tử bậc âm làm tăng độ trơn, nên khi dữ liệu nguồn đủ tốt thì nghiệm của phương trình elliptic còn trơn hơn nữa.
 
 ### Mức sau đại học (Graduate)
 
-Đi sâu vào Sobolev mapping, regularity cục bộ so với toàn cục, điều kiện biên, Fredholm theory, và cầu nối sang microlocal elliptic theory ở chapter 15.
+Đi sâu vào tính chất ánh xạ Sobolev, tính chính quy cục bộ so với toàn cục, điều kiện biên, lý thuyết Fredholm và cầu nối sang lý thuyết elliptic vi địa phương ở Chương 15.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Ảnh y học và khôi phục cạnh
-- Bài toán: Ta quan tâm singularities và cạnh của ảnh hơn là toàn bộ tín hiệu mượt.
-- Mô hình: Elliptic regularity theo microlocal nghĩa nói rằng elliptic operator không tạo singularity mới ở nơi symbol không suy biến.
-- Giả thiết và giới hạn: Phát biểu địa phương trong phase space.
-- Diễn giải: Ta có thể theo dõi nơi nào tín hiệu mượt lên và nơi nào singularity còn tồn tại.
+#### Ảnh y học và khôi phục biên cạnh
+- Bài toán: Trong nhiều ứng dụng ảnh, vị trí và hướng của các điểm kỳ dị hay biên cạnh quan trọng hơn phần nền trơn.
+- Mô hình: Tính chính quy elliptic theo nghĩa vi địa phương khẳng định toán tử elliptic không tạo thêm điểm kỳ dị mới tại nơi ký hiệu chính không suy biến.
+- Giả thiết và giới hạn: Phát biểu mang tính địa phương trên không gian pha.
+- Diễn giải: Nhờ đó ta theo dõi chính xác vùng nào tín hiệu được làm trơn và vùng nào điểm kỳ dị còn tồn tại.
 
-#### Bài toán nghịch và tán xạ
-- Bài toán: Cần biết cấu trúc bất liên tục của vật thể được khôi phục hay bị che mất.
-- Mô hình: Dùng parametrix và ellipticity để chứng minh khôi phục singularities.
-- Giả thiết và giới hạn: Chỉ đúng ở vùng phase space elliptic.
-- Diễn giải: Elliptic regularity revisited là phiên bản sắc hơn của chương elliptic cổ điển.
+#### Bài toán ngược và tán xạ
+- Bài toán: Xác định xem các cấu trúc bất liên tục của vật thể có được khôi phục hay bị che khuất.
+- Mô hình: Kết hợp parametrix và tính elliptic để chứng minh khả năng khôi phục điểm kỳ dị.
+- Giả thiết và giới hạn: Chỉ có hiệu lực tại vùng elliptic của không gian pha.
+- Diễn giải: Phiên bản hiện đại này là bước phát triển tinh tế hơn của lý thuyết elliptic cổ điển.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Thông điệp hiện đại là: elliptic operator không chỉ làm trơn nói chung, mà còn kiểm soát rất chính xác singularities trong phase space. Đây là bước chuyển từ "regularity toàn cục" sang "regularity microlocal". Một bẫy phổ biến là nghĩ kết quả chỉ nói về số lượng đạo hàm, trong khi thực ra nó nói về vị trí và hướng của singularity.
+Thông điệp hiện đại là toán tử elliptic không chỉ làm trơn theo nghĩa toàn cục mà còn kiểm soát chính xác các điểm kỳ dị trong không gian pha — đánh dấu bước chuyển từ “tính chính quy toàn cục” sang “tính chính quy vi địa phương”. Cần tránh hiểu rằng kết quả chỉ đếm số bậc đạo hàm, vì nó còn chỉ ra cả vị trí lẫn hướng của điểm kỳ dị.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -289,18 +289,18 @@ plt.show()
 
 Nếu
 $$ (I-\Delta)u=f $$
-và $$ f \in H^s $$, thì trực giác elliptic nói rằng
+và $$ f \in H^s $$, thì tính chính quy elliptic cho
 $$ u \in H^{s+2}. $$
-Nghĩa là nghịch đảo elliptic thêm hai bậc trơn tích phân. Phiên bản microlocal của phát biểu này còn chỉ ra nơi nào trong phase space sự cải thiện xảy ra.
+Nghĩa là nghịch đảo elliptic tăng thêm hai bậc chính quy Sobolev. Phiên bản vi địa phương của kết quả này còn chỉ rõ sự cải thiện độ trơn diễn ra tại những vị trí và hướng nào trên không gian pha.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Liên hệ với kết quả làm trơn elliptic đã biết từ chương trước.
+**Bậc đại học.** Liên hệ với kết quả làm trơn elliptic đã học ở các chương trước.
 
-**Bậc sau đại học.** Kết nối với wavefront sets, propagation of singularities và parametrix constructions.
+**Bậc sau đại học.** Kết nối với tập mặt sóng (wavefront sets), sự lan truyền điểm kỳ dị và quy trình xây dựng parametrix.
 
 ## Video tham khảo
 
-- xem trước: [Sketch of Elliptic regularity](https://www.youtube.com/watch?v=wecQr1yruVY) — Calculus is pictures., tiếng Anh. Tính chính quy elliptic trên thang Sobolev.
-- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Ước lượng elliptic vi địa phương kéo theo tính chính quy ấy.
-- [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, tiếng Anh. Parametrix mà sự tồn tại của nó là dạng toán tử của cùng sự kiện.
+- Nên xem trước: [Sketch of Elliptic regularity](https://www.youtube.com/watch?v=wecQr1yruVY) — Calculus is pictures., tiếng Anh. Minh họa tính chính quy elliptic trên thang không gian Sobolev.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Trình bày ước lượng elliptic vi địa phương dẫn đến tính chính quy.
+- [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, tiếng Anh. Giới thiệu parametrix như dạng toán tử của cùng kết quả này.

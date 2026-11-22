@@ -14,31 +14,31 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài này giới thiệu Fourier integral operators như lớp toán tử tự nhiên mô tả lan truyền sóng và biến đổi mặt sóng. Sau bài học, sinh viên cần hiểu FIO khác ΨDO ở đâu, vai trò của phase function và amplitude, và vì sao FIO là ngôn ngữ phù hợp cho propagation of singularities.
+Bài học này giới thiệu toán tử tích phân Fourier (FIO) như lớp toán tử tự nhiên để mô tả quá trình truyền sóng và biến đổi mặt sóng. Sau bài học, sinh viên cần phân biệt được FIO với ΨDO, nắm vai trò của hàm pha (phase function) và biên độ (amplitude), và hiểu vì sao FIO là công cụ phù hợp cho sự lan truyền kỳ dị.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm pseudodifferential operators, wave front set, và trực giác rằng propagation of singularities cần một lớp toán tử linh hoạt hơn phép nhân cục bộ trong miền tần số. Kiến thức về pha dao động và phương trình Hamilton-Jacobi cũng hữu ích ở mức trực giác.
+Sinh viên nên nắm toán tử giả vi phân, tập mặt sóng và trực giác rằng sự lan truyền kỳ dị đòi hỏi lớp toán tử tổng quát hơn phép lọc tần số cục bộ. Kiến thức trực giác về pha dao động và phương trình Hamilton–Jacobi cũng rất hữu ích.
 
 ## Dẫn nhập
 
-Pseudodifferential operators rất mạnh, nhưng về bản chất chúng vẫn hành xử như các bộ lọc tần số cục bộ. Trong nhiều bài toán sóng, điều đó chưa đủ. Sóng không chỉ bị lọc; nó còn bị vận chuyển, xoay pha, hội tụ, tán xạ, và biến đổi hình học. Để mô tả những hiện tượng này, ta cần một lớp toán tử rộng hơn: Fourier integral operators.
+Toán tử giả vi phân rất hiệu quả nhưng về bản chất vẫn hành xử như các bộ lọc tần số cục bộ (giữ nguyên vị trí của tập mặt sóng). Trong các bài toán truyền sóng, điều đó chưa đủ vì sóng còn bị dịch chuyển, xoay pha, hội tụ, tán xạ và biến đổi hình học. Để mô tả các quá trình này, ta mở rộng sang lớp toán tử tích phân Fourier (FIO).
 
-Nếu ΨDO là ngôn ngữ của “chỉnh biên độ theo tần số”, thì FIO là ngôn ngữ của “di chuyển và bẻ cong mặt sóng”.
+Nếu ΨDO là ngôn ngữ của việc “điều chỉnh biên độ theo tần số tại chỗ”, thì FIO là ngôn ngữ của việc “vận chuyển và biến dạng mặt sóng”.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Hãy nghĩ đến một chùm tia sáng đi qua thấu kính. Thấu kính không chỉ làm mạnh hay yếu tia sáng; nó còn thay đổi pha và hướng lan truyền của cả chùm tia. FIO làm việc tương tự với các thành phần dao động của nghiệm.
+Hãy tưởng tượng một chùm sáng đi qua thấu kính: thấu kính không chỉ làm thay đổi cường độ mà còn làm thay đổi pha và hướng truyền của cả chùm tia. FIO thực hiện vai trò tương tự đối với các thành phần dao động của nghiệm PDE.
 
 ### Cách hình ảnh
 
-Giáo viên nên vẽ một mặt sóng ban đầu rồi mặt sóng sau khi truyền. Với ΨDO, sinh viên quen nghĩ “mỗi tần số bị nhân bởi một hệ số”. Với FIO, nên nhấn mạnh rằng chính cấu trúc pha làm mặt sóng bị đẩy sang vị trí mới và hướng mới trong không gian pha.
+Có thể vẽ một mặt sóng ban đầu và mặt sóng sau khi lan truyền. Nếu với ΨDO mỗi tần số chỉ bị nhân bởi một hệ số cục bộ, thì với FIO cấu trúc hàm pha đẩy mặt sóng sang vị trí mới và hướng mới trong không gian pha.
 
 ### Cách hình thức
 
-Một FIO điển hình có dạng
+Một toán tử tích phân Fourier điển hình có dạng
 
 $$
 Tu(x)=\int e^{i\phi(x,\xi)}a(x,\xi)\widehat{u}(\xi)\,d\xi,
@@ -46,64 +46,64 @@ $$
 
 trong đó:
 
-- $$ \phi(x,\xi) $$ là phase function;
-- $$ a(x,\xi) $$ là amplitude.
+- $$ \phi(x,\xi) $$ là hàm pha (phase function);
+- $$ a(x,\xi) $$ là biên độ (amplitude).
 
-Khi phase là đơn giản $$ \phi(x,\xi)=x\cdot\xi $$, ta quay về lớp pseudodifferential operators quen thuộc. Vì vậy FIO thật sự là một mở rộng của ΨDO.
+Khi hàm pha có dạng chuẩn $$ \phi(x,\xi)=x\cdot\xi $$, công thức trên rút gọn về lớp toán tử giả vi phân quen thuộc. Do đó, FIO là sự mở rộng trực tiếp của ΨDO.
 
 ## Ngộ nhận thường gặp
 
-### “FIO chỉ là ΨDO với công thức viết dài hơn”
+### “FIO chỉ là cách viết phức tạp hơn của ΨDO”
 
-Không. Điểm khác biệt cốt lõi nằm ở phase function không tầm thường.
+Không đúng. Điểm khác biệt bản chất nằm ở hàm pha không tầm thường làm thay đổi vị trí và hướng trong không gian pha.
 
-### “Amplitude mới là phần quan trọng nhất”
+### “Biên độ luôn là thành phần quan trọng nhất”
 
-Không hẳn. Trong propagation, phase thường mang phần hình học quyết định.
+Không hẳn. Trong bài toán lan truyền, chính hàm pha mới quyết định hình học của quỹ đạo và mặt sóng.
 
 ### “FIO chỉ xuất hiện trong vật lý sóng”
 
-Sai. Chúng cũng quan trọng trong bài toán ngược, hình học, và phổ.
+Sai. Lớp toán tử này còn đóng vai trò quan trọng trong bài toán ngược, hình học vi phân và lý thuyết phổ.
 
-### “Nếu không hiểu hết phase function thì không thể hiểu trực giác của FIO”
+### “Phải nắm trọn lý thuyết hàm pha mới hiểu được trực giác của FIO”
 
-Không. Ngay từ đầu, sinh viên có thể hiểu FIO như toán tử vận chuyển mặt sóng.
+Không cần thiết ở bước đầu; người học có thể hình dung ngay FIO như toán tử vận chuyển mặt sóng.
 
 ## Tiến trình học
 
 ### Bước 1: Nhìn lại ΨDO
 
-Nhấn mạnh giới hạn: chúng chủ yếu mô tả lọc cục bộ.
+Nhận diện giới hạn của ΨDO: chủ yếu thực hiện lọc cục bộ mà không dịch chuyển tập mặt sóng.
 
-### Bước 2: Giới thiệu phase function
+### Bước 2: Đưa vào hàm pha
 
-Đây là phần sinh hình học cho toán tử.
+Hiểu hàm pha là thành phần tạo nên biến đổi hình học của toán tử.
 
-### Bước 3: Liên hệ với propagation of singularities
+### Bước 3: Kết nối với sự lan truyền kỳ dị
 
-FIO là công cụ tự nhiên để hiện thực hóa định lý propagation.
+Thấy rõ FIO là công cụ toán tử hiện thực hóa định lý lan truyền kỳ dị.
 
-### Bước 4: Đặt FIO trong bức tranh lớn
+### Bước 4: Đặt FIO trong bức tranh tổng thể
 
-Nêu rằng nghiệm của nhiều phương trình hyperbolic hay toán tử sóng có thể được biểu diễn bằng FIO.
+Ghi nhận rằng toán tử tiến hóa của nhiều phương trình hyperbolic được biểu diễn dưới dạng FIO.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có giải thích được FIO vượt quá ΨDO ở điểm nào không?
-- Sinh viên có thấy phase function điều khiển hình học của mặt sóng không?
-- Sinh viên có liên hệ được FIO với propagation of singularities không?
+- Sinh viên có giải thích được điểm mở rộng cốt lõi của FIO so với ΨDO hay không?
+- Sinh viên có thấy hàm pha chi phối hình học của mặt sóng hay không?
+- Sinh viên có liên hệ được FIO với định lý lan truyền kỳ dị hay không?
 
 ## Ví dụ có lời giải
 
-### Ví dụ 1: Trường hợp quay về ΨDO
+### Ví dụ 1: Trường hợp rút gọn về ΨDO
 
-Nếu $$ \phi(x,\xi)=x\cdot\xi $$, thì
+Khi $$ \phi(x,\xi)=x\cdot\xi $$, ta thu được
 
 $$
 Tu(x)=\int e^{ix\cdot\xi}a(x,\xi)\widehat{u}(\xi)\,d\xi,
 $$
 
-chính là dạng quen thuộc của một ΨDO. Ví dụ này cho thấy FIO thật sự chứa ΨDO như một trường hợp riêng.
+chính là biểu thức của một toán tử giả vi phân. Ví dụ này xác nhận ΨDO là trường hợp riêng của FIO.
 
 ### Ví dụ 2: Toán tử tịnh tiến
 
@@ -113,69 +113,69 @@ $$
 \widehat{Tu}(\xi)=e^{-ic\cdot\xi}\widehat{u}(\xi).
 $$
 
-Pha mới $$ (x-c)\cdot\xi $$ thể hiện phép dịch chuyển. Đây là ví dụ đơn giản nhất về phase làm thay đổi vị trí của singularity.
+Hàm pha $$ (x-c)\cdot\xi $$ tạo ra phép dịch chuyển không gian. Đây là ví dụ đơn giản nhất cho thấy hàm pha làm thay đổi vị trí của điểm kỳ dị.
 
 ### Ví dụ 3: Nghiệm sóng tự do
 
-Toán tử truyền nghiệm của phương trình sóng tự do thường có biểu diễn bằng FIO, với phase gắn với hành động cổ điển hay nghiệm phương trình eikonal. Sinh viên không cần công thức đầy đủ, nhưng nên hiểu rằng FIO là mô hình đúng cho evolution operator của sóng.
+Toán tử tiến hóa của phương trình sóng tự do có thể biểu diễn bằng FIO với hàm pha gắn liền với hàm tác dụng cổ điển hoặc nghiệm phương trình eikonal. Ở mức nhập môn, điều quan trọng là nhận ra FIO chính là dạng tự nhiên của toán tử tiến hóa sóng.
 
-### Ví dụ 4: Hình học mặt sóng
+### Ví dụ 4: Biến đổi hình học mặt sóng
 
-Nếu singularity của $$ u $$ nằm trên một mặt nhất định, FIO có thể đẩy mặt đó sang một mặt khác theo canonical transformation gắn với phase. Ví dụ này là phát biểu bằng lời của cơ chế “mang wave front set đi”.
+Nếu tập mặt sóng của $$ u $$ nằm trên một mặt nhất định, FIO sẽ đưa mặt đó sang vị trí và hướng mới theo phép biến đổi chính tắc (canonical transformation) sinh bởi hàm pha — đó chính là cơ chế “vận chuyển tập mặt sóng”.
 
 ### Ví dụ 5: Trực giác từ chụp cắt lớp
 
-Trong nhiều mô hình CT, dữ liệu đo được có thể xem như tích phân của hàm cần tái dựng dọc theo các đường thẳng hay tia. Toán tử biến đối tượng thành dữ liệu, và toán tử kéo ngược dữ liệu về ảnh, thường mang bản chất của FIO. Điều quan trọng ở đây không phải chi tiết công thức, mà là trực giác: FIO là lớp toán tử vừa đủ rộng để mang singularity từ vật thể thật sang tín hiệu đo và ngược lại.
+Trong nhiều mô hình chụp cắt lớp (CT), dữ liệu đo là tích phân của hàm mật độ dọc theo các đường thẳng hay tia chiếu. Cả toán tử thuận chuyển vật thể thành dữ liệu lẫn toán tử chiếu ngược (backprojection) kéo dữ liệu về ảnh đều mang bản chất FIO: chúng vận chuyển kỳ dị giữa vật thể thực và miền dữ liệu đo.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao phase function là phần mang thông tin hình học của FIO?
-2. Điều gì khiến FIO trở thành ngôn ngữ tự nhiên cho wave propagation?
-3. Ở mức trực giác, amplitude và phase khác nhau về vai trò như thế nào?
+1. Vì sao hàm pha là thành phần mang thông tin hình học của FIO?
+2. Điều gì khiến FIO trở thành ngôn ngữ tự nhiên cho quá trình truyền sóng?
+3. Ở mức trực giác, vai trò của biên độ và hàm pha khác nhau như thế nào?
 
 ## Bài toán ứng dụng
 
-1. Trong quang học hình học, thấu kính và phản xạ gương gợi trực giác gì về FIO?
-2. Trong chụp cắt lớp, vì sao toán tử biến dữ liệu đo thành singularity của vật thể thường là một FIO?
-3. Trong địa chấn học, việc sóng phản xạ đi theo các tia có thể được mô tả bằng phase function ra sao?
+1. Trong quang học hình học, thấu kính và gương phản xạ gợi trực giác gì về FIO?
+2. Trong chụp cắt lớp, vì sao toán tử liên kết dữ liệu đo với kỳ dị của vật thể thường là một FIO?
+3. Trong địa chấn học, sự lan truyền sóng phản xạ dọc theo các tia được mã hóa qua hàm pha như thế nào?
 
 ## Chiến lược dạy học tương tác
 
-### Câu hỏi nên hỏi trên lớp
+### Câu hỏi nên đặt trên lớp
 
-- Nếu một toán tử không chỉ lọc mà còn di chuyển mặt sóng, em nghĩ lớp toán tử đó phải có thêm dữ liệu gì?
-- Phase function đang mã hóa hình học nào?
-- Em thấy sự khác nhau giữa “đổi biên độ” và “đổi pha” ở mức vật lý ra sao?
+- Nếu một toán tử không chỉ lọc mà còn dịch chuyển mặt sóng, nó cần thêm thành phần dữ liệu nào so với ΨDO?
+- Hàm pha đang mã hóa cấu trúc hình học nào?
+- Sự khác nhau về mặt vật lý giữa “thay đổi biên độ” và “thay đổi pha” là gì?
 
 ### Hoạt động gợi ý
 
-- So sánh trực tiếp một ΨDO và một phép tịnh tiến dưới góc nhìn Fourier.
-- Vẽ mặt sóng trước và sau tác động của một FIO đơn giản.
-- Thảo luận nhóm về ví dụ ánh sáng qua thấu kính như một ẩn dụ cho FIO.
+- So sánh trực tiếp một ΨDO và toán tử tịnh tiến trong miền Fourier.
+- Vẽ minh họa mặt sóng trước và sau khi chịu tác động của một FIO đơn giản.
+- Thảo luận nhóm về phép tương tự giữa ánh sáng qua thấu kính và FIO.
 
-### Cách tăng tham gia
+### Cách tăng mức độ tham gia
 
-- Bắt đầu bằng hiện tượng sóng quen thuộc.
-- Cho sinh viên đoán phase của phép tịnh tiến.
-- Mời sinh viên mô tả FIO bằng một câu không dùng ký hiệu.
+- Bắt đầu từ các hiện tượng truyền sóng quen thuộc.
+- Đề nghị sinh viên tự suy ra hàm pha của phép tịnh tiến.
+- Mời sinh viên diễn đạt khái niệm FIO bằng một câu ngắn không dùng ký hiệu.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Bám sát ví dụ tịnh tiến và phase tuyến tính.
-- Chưa yêu cầu hiểu canonical relations đầy đủ.
-- Nhấn mạnh thông điệp: FIO = toán tử vận chuyển mặt sóng.
+- Tập trung vào ví dụ phép tịnh tiến và hàm pha tuyến tính.
+- Chưa cần đi sâu vào định nghĩa đầy đủ của quan hệ chính tắc ở lượt học đầu.
+- Nhấn mạnh trực giác: FIO là toán tử vận chuyển mặt sóng.
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Tìm hiểu canonical transformation gắn với phase.
-- Liên hệ FIO với nghiệm phương trình Hamilton-Jacobi.
-- Nghiên cứu cách FIO tác động lên wave front set.
+- Tìm hiểu phép biến đổi chính tắc sinh bởi hàm pha.
+- Liên hệ FIO với nghiệm của phương trình Hamilton–Jacobi.
+- Khảo sát định lý ánh xạ tập mặt sóng dưới tác động của FIO.
 
 ## Ghi nhớ nhanh
 
-Fourier integral operators mở rộng pseudodifferential operators bằng cách đưa thêm phase function để mô tả sự vận chuyển hình học của mặt sóng. Chúng là ngôn ngữ tự nhiên của lan truyền singularity và của nhiều bài toán sóng hiện đại.
+Toán tử tích phân Fourier mở rộng toán tử giả vi phân bằng cách bổ sung hàm pha tổng quát để mô tả sự dịch chuyển hình học của mặt sóng, trở thành ngôn ngữ tự nhiên cho lan truyền kỳ dị và nhiều bài toán sóng hiện đại.
 
 ---
 
@@ -183,27 +183,25 @@ Fourier integral operators mở rộng pseudodifferential operators bằng cách
 
 ### 1. Seismic Migration: Đưa ảnh địa chấn về đúng vị trí
 
-Bài toán cốt lõi của thăm dò địa chấn là: dữ liệu sóng phản xạ thu được ở mặt đất không hiển thị cấu trúc địa chất ở đúng vị trí vì sóng phải đi theo tia qua nhiều tầng địa chất khác nhau. *Seismic migration* là bước xử lý đưa dữ liệu về đúng vị trí không gian.
+Trong thăm dò địa chấn, dữ liệu sóng phản xạ ghi nhận trên mặt đất không phản ánh trực tiếp vị trí thật của tầng địa chất do sóng truyền dọc theo các tia qua nhiều lớp môi trường. Bước *seismic migration* đưa tín hiệu phản xạ về đúng tọa độ không gian của nó.
 
-Về mặt toán học, toán tử migration là một FIO: nó tích phân dữ liệu đo dọc theo các tia bicharacteristic và tái tổ hợp tín hiệu tại vị trí phản xạ. Phase function mã hóa thời gian đi của tia sóng từ nguồn đến điểm phản xạ và trở lại bề mặt. Amplitude bù trừ cho divergence của tia và tán xạ.
+Về mặt toán học, toán tử migration là một FIO: nó tích phân dữ liệu đo dọc theo các đường song đặc trưng để tái tổ hợp tín hiệu tại điểm phản xạ. Hàm pha mã hóa thời gian truyền sóng từ nguồn tới điểm phản xạ rồi trở về mặt đất, còn biên độ hiệu chỉnh độ phân kỳ của chùm tia và suy hao tán xạ.
 
-**Ý nghĩa thực hành:** Mỗi pixel của ảnh địa chấn sau migration tương ứng với tích phân FIO của dữ liệu thô. Chất lượng ảnh phụ thuộc trực tiếp vào độ chính xác của phase function (tức mô hình vận tốc địa chất).
+**Ý nghĩa thực hành:** Mỗi điểm ảnh địa chấn sau migration ứng với một tích phân FIO trên dữ liệu thô, nên độ chính xác của ảnh phụ thuộc trực tiếp vào hàm pha (tức mô hình vận tốc địa chất).
 
 ### 2. Xử lý Radar và SAR (Synthetic Aperture Radar)
 
-Radar khẩu độ tổng hợp thu nhận tín hiệu phản xạ từ bề mặt Trái Đất qua nhiều vị trí khác nhau của vệ tinh, rồi tổng hợp ảnh phân giải cao. Toán tử tổng hợp từ dữ liệu thô sang ảnh là một FIO với phase function gắn với khoảng cách từ vệ tinh đến mỗi điểm trên mặt đất tại mỗi thời điểm.
+Radar khẩu độ tổng hợp thu tín hiệu phản xạ từ bề mặt Trái Đất tại nhiều vị trí dọc quỹ đạo vệ tinh rồi tổng hợp thành ảnh độ phân giải cao. Toán tử tái tạo ảnh từ dữ liệu thô là một FIO có hàm pha phụ thuộc khoảng cách giữa vệ tinh và từng điểm mặt đất theo thời gian.
 
-Biên và cấu trúc của địa hình (singularity của hàm phản xạ) được tái dựng thông qua FIO. Chất lượng ảnh SAR — như độ sắc nét của biên, khả năng phân giải theo phạm vi và azimuth — trực tiếp phản ánh cách FIO xử lý wave front set của tín hiệu.
+Các đường biên và cấu trúc địa hình (kỳ dị của hàm phản xạ) được khôi phục thông qua FIO; độ sắc nét cũng như độ phân giải theo phương cự ly và phương vị phản ánh trực tiếp cách FIO ánh xạ tập mặt sóng.
 
 ### 3. Quang học hình học và thiết kế quang học
 
-Ánh sáng qua thấu kính hay gương là ví dụ vật lý trực tiếp nhất của FIO. Phase function mô tả sự dịch pha mà mỗi tia ánh sáng tích lũy khi đi qua môi trường quang học. Amplitude mô tả sự suy giảm hay khuếch đại cường độ.
+Sự truyền ánh sáng qua thấu kính hay gương là mô hình vật lý trực tiếp của FIO, trong đó hàm pha biểu diễn độ lệch pha tích lũy dọc mỗi tia sáng còn biên độ mô tả sự thay đổi cường độ. Trong thiết kế quang học tự do (freeform optics), bài toán dựng mặt thấu kính từ yêu cầu mặt sóng đầu ra chính là bài toán ngược xác định hàm pha phù hợp.
 
-Trong thiết kế quang học phi tuyến (freeform optics), bài toán tổng hợp thấu kính từ yêu cầu về mặt sóng đầu ra là bài toán ngược của FIO: biết amplitude và mặt sóng đầu ra, tìm phase function phù hợp.
+### 4. Lan truyền sóng đàn hồi trong môi trường không đồng nhất
 
-### 4. Lan truyền sóng đàn hồi trong vật liệu không đồng nhất
-
-Trong vật liệu composite hay cấu trúc địa chất phức tạp, vận tốc sóng thay đổi liên tục. Toán tử tiến hóa của phương trình sóng đàn hồi $$ u_{tt} = c(x)^2 \Delta u $$ sau một khoảng thời gian nhỏ có thể xấp xỉ bởi FIO với phase gắn với nghiệm phương trình eikonal $$ \lvert \nabla_x \phi\rvert^2 = 1/c(x)^2 $$. Đây là nền tảng của các phương pháp tính toán hiệu quả cho bài toán sóng trong môi trường phức tạp.
+Trong vật liệu composite hay môi trường địa chất có vận tốc biến thiên liên tục, toán tử tiến hóa của phương trình sóng $$ u_{tt} = c(x)^2 \Delta u $$ trong thời gian ngắn có thể xấp xỉ bởi một FIO có hàm pha thỏa phương trình eikonal $$ \lvert \nabla_x \phi\rvert^2 = 1/c(x)^2 $$, làm cơ sở cho nhiều phương pháp tính toán sóng cao tần hiệu quả.
 
 ---
 
@@ -306,7 +304,7 @@ plt.savefig("FIO_illustration.png", dpi=150)
 plt.show()
 ```
 
-### Mô phỏng tia địa chấn: Phase function và bicharacteristics
+### Mô phỏng tia địa chấn: Hàm pha và đường song đặc trưng
 
 ```python
 import numpy as np
@@ -406,27 +404,27 @@ plt.show()
 
 ### Mức đại học (Undergraduate)
 
-**Thông điệp chính:** FIO là toán tử vừa đủ mạnh để "di chuyển" mặt sóng, không chỉ "lọc" nó như ΨDO.
+**Thông điệp chính:** FIO là lớp toán tử đủ tổng quát để dịch chuyển mặt sóng thay vì chỉ lọc tại chỗ như ΨDO.
 
 **Điều cần nhớ:**
-- ΨDO: $$Tu(x) = \int e^{ix\cdot\xi} a(x,\xi) \hat{u}(\xi) d\xi$$ — phase đơn giản $$ \phi = x\cdot\xi $$.
-- FIO: thêm phase function tổng quát $$ \phi(x,\xi) $$ → mặt sóng bị vận chuyển theo hình học.
-- Phép tịnh tiến là FIO đơn giản nhất: phase $$ \phi(x,\xi) = (x-a)\cdot\xi $$.
+- ΨDO: $$Tu(x) = \int e^{ix\cdot\xi} a(x,\xi) \hat{u}(\xi) d\xi$$ ứng với hàm pha đơn giản $$ \phi = x\cdot\xi $$.
+- FIO: sử dụng hàm pha tổng quát $$ \phi(x,\xi) $$, làm mặt sóng di chuyển theo cấu trúc hình học.
+- Phép tịnh tiến là FIO đơn giản nhất với hàm pha $$ \phi(x,\xi) = (x-a)\cdot\xi $$.
 
-**Bài tập:** Kiểm chứng rằng phép tịnh tiến $$ Tu(x) = u(x-a) $$ là FIO với phase $$ (x-a)\cdot\xi $$. Tính tác động lên wave front set: singularity tại $$ x_0 $$ dịch chuyển đến $$ x_0 + a $$.
+**Bài tập:** Kiểm chứng rằng phép tịnh tiến $$ Tu(x) = u(x-a) $$ là FIO có hàm pha $$ (x-a)\cdot\xi $$, và tính tác động của nó lên tập mặt sóng: kỳ dị tại $$ x_0 $$ dịch chuyển tới $$ x_0 + a $$.
 
 ### Mức sau đại học (Graduate)
 
-**Cấu trúc chính tắc:** Phase function $$ \phi(x,\xi) $$ xác định một *canonical relation* $$ C \subset T^*X \times T^*Y $$: tập các cặp $$ (x, d_x\phi; y, -d_y\phi) $$. Đây là đối tượng trung tâm xác định cách FIO ánh xạ wave front set:
+**Cấu trúc chính tắc:** Hàm pha $$ \phi(x,\xi) $$ xác định một *quan hệ chính tắc* (canonical relation) $$ C \subset T^*X \times T^*Y $$ gồm các cặp $$ (x, d_x\phi; y, -d_y\phi) $$, chi phối cách FIO ánh xạ tập mặt sóng:
 $$ WF(Tu) \subset C \circ WF(u). $$
 
-**Lớp toán tử:**
-- ΨDO: canonical relation là đường chéo (identity) — không dịch chuyển wave front.
-- FIO tổng quát: canonical relation là canonical transformation tổng quát.
+**Phân loại toán tử:**
+- ΨDO: quan hệ chính tắc là đường chéo (ánh xạ đồng nhất) nên không dịch chuyển tập mặt sóng.
+- FIO tổng quát: quan hệ chính tắc là một phép biến đổi chính tắc (hoặc quan hệ chính tắc) tổng quát.
 
-**Định lý thành phần:** Nếu $$ A $$ là FIO với canonical relation $$ C_A $$ và $$ B $$ là FIO với $$ C_B $$, thì $$ AB $$ (nếu định nghĩa được) là FIO với canonical relation $$ C_A \circ C_B $$.
+**Định lý hợp thành:** Nếu $$ A $$ là FIO có quan hệ chính tắc $$ C_A $$ và $$ B $$ là FIO có quan hệ chính tắc $$ C_B $$, thì dưới các điều kiện cắt ngang thích hợp, hợp thành $$ AB $$ cũng là FIO với quan hệ chính tắc $$ C_A \circ C_B $$.
 
-**Ứng dụng trong lý thuyết:** Toán tử tiến hóa của phương trình sóng $$ e^{it\sqrt{-\Delta}} $$ là một FIO với canonical relation là *geodesic flow* — tia sóng cầu trong không gian phẳng. Đây là cầu nối trực tiếp với semiclassical analysis và phổ học.
+**Ứng dụng trong lý thuyết:** Toán tử tiến hóa của phương trình sóng $$ e^{it\sqrt{-\Delta}} $$ là một FIO có quan hệ chính tắc là *dòng trắc địa* (geodesic flow) — kết nối trực tiếp với giải tích bán cổ điển và hình học phổ.
 
 ---
 
@@ -434,11 +432,11 @@ $$ WF(Tu) \subset C \circ WF(u). $$
 
 | Khái niệm | Kết nối với FIO |
 |---|---|
-| ΨDO (Ch. 14) | ΨDO là trường hợp riêng của FIO (phase tuyến tính) |
-| Wave front set (bài 1) | FIO ánh xạ WF theo canonical relation của phase |
-| Propagation of singularities (bài 2) | Toán tử tiến hóa của PDE hyperbolic là FIO |
-| Phương trình Hamilton-Jacobi (Ch. 10 extension) | Phase function thỏa eikonal equation $$ \lvert \nabla\phi\rvert^2 = p(x,\xi) $$ |
-| Bài toán ngược (bài 6) | Backprojection operators trong CT/seismic là FIO |
+| ΨDO (Ch. 14) | ΨDO là trường hợp riêng của FIO với hàm pha tuyến tính |
+| Tập mặt sóng (Bài 15.01) | FIO ánh xạ tập mặt sóng theo quan hệ chính tắc của hàm pha |
+| Lan truyền kỳ dị (Bài 15.02) | Toán tử tiến hóa của PDE hyperbolic là FIO |
+| Phương trình Hamilton–Jacobi (Ch. 10) | Hàm pha thỏa phương trình eikonal $$ \lvert \nabla\phi\rvert^2 = p(x,\xi) $$ |
+| Bài toán ngược (Bài 15.06) | Toán tử chiếu ngược trong CT và địa chấn là FIO |
 
 > Xem toàn bộ minh họa tương tác của chương tại: [Bộ Minh họa tương tác Chương 15]({{ site.baseurl }}/contents/vi/chapter15/15_10_Interactive_Gallery/)
 
@@ -446,21 +444,21 @@ $$ WF(Tu) \subset C \circ WF(u). $$
 
 ### 1. Ứng dụng thực tế
 
-#### Chụp cắt lớp và backprojection
-- Bài toán: Toán tử đo kiểu Radon và toán tử tái dựng mang singularities từ vật thể sang dữ liệu rồi ngược lại.
-- Mô hình: Các toán tử này thường là Fourier integral operators (FIO), ánh xạ wave front set theo canonical relation.
-- Giả thiết và giới hạn: Phụ thuộc vào hình học đo và việc có đủ góc chiếu hay không.
-- Diễn giải: FIO là ngôn ngữ đúng cho việc "vận chuyển singularity" thay vì chỉ lọc nó.
+#### Chụp cắt lớp và chiếu ngược
+- Bài toán: Toán tử đo kiểu Radon và toán tử tái tạo vận chuyển kỳ dị giữa vật thể và dữ liệu đo.
+- Mô hình: Các toán tử này thuộc lớp toán tử tích phân Fourier (FIO), ánh xạ tập mặt sóng theo quan hệ chính tắc.
+- Giả thiết và giới hạn: Chất lượng tái tạo phụ thuộc vào hình học đo và độ đầy đủ của góc chiếu.
+- Diễn giải: FIO cung cấp ngôn ngữ đúng để mô tả sự dịch chuyển của kỳ dị thay vì chỉ lọc cục bộ.
 
 #### Toán tử tiến hóa của phương trình sóng
-- Bài toán: Nghiệm của phương trình sóng tại thời gian $$ t $$ thu được từ dữ liệu đầu qua một toán tử lan truyền.
-- Mô hình: Toán tử tiến hóa hyperbolic thường là FIO.
-- Giả thiết và giới hạn: Cần phase function không suy biến.
-- Diễn giải: FIO mô tả cách singularities di chuyển dọc canonical transformations.
+- Bài toán: Nghiệm phương trình sóng tại thời điểm $$ t $$ thu được từ dữ liệu ban đầu qua một toán tử lan truyền.
+- Mô hình: Toán tử tiến hóa hyperbolic có biểu diễn dạng FIO.
+- Giả thiết và giới hạn: Đòi hỏi hàm pha không suy biến.
+- Diễn giải: FIO mô tả cách kỳ dị di chuyển dọc theo các phép biến đổi chính tắc.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Pseudodifferential operators chủ yếu lọc cục bộ theo tần số; FIO thì còn vận chuyển singularities từ vị trí-hướng này sang vị trí-hướng khác. Có thể nghĩ FIO là "các toán tử theo luồng hình học". Một hiểu nhầm phổ biến là xem FIO chỉ là ΨDO phức tạp hơn; thật ra canonical relation của nó là điểm khác biệt bản chất.
+Toán tử giả vi phân chủ yếu lọc cục bộ theo tần số, còn FIO vận chuyển kỳ dị từ cặp vị trí–hướng này sang cặp vị trí–hướng khác theo luồng hình học. Chính quan hệ chính tắc tạo nên sự khác biệt căn bản giữa FIO và ΨDO.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -491,16 +489,16 @@ plt.show()
 
 Toán tử tịnh tiến
 $$ (Tu)(x)=u(x-a) $$
-có thể viết như một FIO với phase tuyến tính. Nó không chỉ thay đổi giá trị hàm mà còn mang singularities từ vị trí $$ x_0 $$ sang $$ x_0+a $$, giữ nguyên hướng tần số. Đây là ví dụ đơn giản nhất để thấy FIO "di chuyển" wave front set.
+là một FIO với hàm pha tuyến tính: nó dịch chuyển mọi kỳ dị từ vị trí $$ x_0 $$ sang $$ x_0+a $$ trong khi giữ nguyên hướng tần số. Đây là ví dụ đơn giản nhất minh họa cách FIO dịch chuyển tập mặt sóng.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Hiểu FIO như toán tử vận chuyển singularities.
+**Bậc đại học.** Nắm FIO như toán tử vận chuyển điểm kỳ dị.
 
-**Bậc sau đại học.** Kết nối với canonical relations, nondegenerate phases va dinh ly anh xa wave front set.
+**Bậc sau đại học.** Kết nối với quan hệ chính tắc, hàm pha không suy biến và định lý ánh xạ tập mặt sóng.
 
 ## Video tham khảo
 
-- xem trước: [Introduction to Fourier Integral operators 1 (Allan Greenleaf)](https://www.youtube.com/watch?v=4O_oC9kFFWQ) — Mathematics video VAROQUI Hervé, Tiếng Việt. Bài nhập môn của Allan Greenleaf về toán tử tích phân Fourier.
-- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Các toán tử ấy dịch chuyển tập mặt sóng như thế nào, trong bài đầu của Vasy.
-- [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Các phương pháp vi địa phương của Zworski, dựa trên cùng các toán tử.
+- Nên xem trước: [Introduction to Fourier Integral operators 1 (Allan Greenleaf)](https://www.youtube.com/watch?v=4O_oC9kFFWQ) — Mathematics video VAROQUI Hervé, tiếng Việt. Bài giảng nhập môn của Allan Greenleaf về toán tử tích phân Fourier.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Trình bày cách các toán tử dịch chuyển tập mặt sóng trong bài giảng đầu của András Vasy.
+- [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Các phương pháp vi địa phương của Maciej Zworski xây dựng trên lớp toán tử này.

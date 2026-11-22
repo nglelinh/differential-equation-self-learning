@@ -12,33 +12,29 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giúp sinh viên đọc và phác họa chân dung pha của hệ tuyến tính phẳng, phân loại điểm cân bằng bằng trị riêng hoặc bằng vết-định thức, và hiểu vì sao hình học pha cho ta thông tin định tính rất mạnh ngay cả khi không viết nghiệm tường minh.
+Bài học này hướng dẫn cách đọc và phác họa chân dung pha của hệ tuyến tính hai chiều, phân loại điểm cân bằng bằng trị riêng hoặc bằng cặp vết – định thức, và cho thấy sức mạnh của phân tích định tính ngay cả khi không viết công thức nghiệm tường minh.
 
 ## Kiến thức nền
 
-Sinh viên cần nắm trị riêng thực, trị riêng phức và các dạng nghiệm cơ bản của hệ tuyến tính 2 chiều. Trực giác về hướng trường vector và đường quỹ đạo từ chương phương trình tự trị sẽ là một nền rất tốt.
+Sinh viên cần nắm trị riêng thực, trị riêng phức và các dạng nghiệm cơ bản của hệ tuyến tính hai chiều. Trực giác về trường vector và đường quỹ đạo từ chương phương trình tự trị là nền tảng rất hữu ích.
 
 ## Dẫn nhập
 
 ![Chân dung pha của hệ tuyến tính hai chiều]({{ site.imgurl }}/chapter_img/chapter04/07_phase_portraits.svg)
 
-Một công thức nghiệm có thể rất chính xác, nhưng không phải lúc nào cũng nói cho ta bức tranh tổng thể dễ nhìn. Chân dung pha làm điều ngược lại: nó bỏ qua những chi tiết đại số để phóng to hình học của hệ. Ta nhìn thấy ngay quỹ đạo đi về đâu, trôi khỏi đâu, có xoắn hay không, có hướng bất biến nào nổi bật hay không.
+Một công thức nghiệm tường minh cho giá trị chính xác tại từng thời điểm nhưng không phải lúc nào cũng giúp hình dung nhanh bức tranh tổng thể. Chân dung pha làm điều ngược lại: bỏ qua chi tiết đại số để thể hiện trực tiếp hình học của chuyển động — quỹ đạo đi về đâu, rời khỏi đâu, có xoắn hay không và có những phương bất biến nào.
 
-Đây là bài học mà phương pháp định tính thật sự lên ngôi. Chỉ từ ma trận
-$$ A, $$
-ta có thể dự đoán gốc là yên ngựa, nút hút, nút đẩy, tâm hay tiêu điểm. Điều này rất quan trọng vì trong nhiều mô hình lớn hơn, chính trực giác pha mới là thứ giúp ta hiểu hệ trước khi đi sâu vào tính toán.
+Chỉ từ ma trận $$ A $$, ta đã có thể phân loại gốc tọa độ thành điểm yên ngựa, nút hút, nút đẩy, tâm hay tiêu điểm. Kỹ năng định tính này rất cần thiết vì trong nhiều mô hình phức tạp, việc đọc cấu trúc pha là bước mở đầu trước khi tính toán chi tiết.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Chân dung pha giống như bản đồ gió của hệ. Tại mỗi điểm trong không gian trạng thái, ta biết trạng thái sẽ bị kéo theo hướng nào. Quỹ đạo là đường mà hệ thật sự đi khi thả từ một trạng thái ban đầu.
+Chân dung pha giống như bản đồ dòng chảy của hệ: tại mỗi điểm trong mặt phẳng trạng thái, ta thấy ngay chiều dịch chuyển của trạng thái, còn mỗi quỹ đạo là con đường hệ đi qua khi xuất phát từ một điều kiện đầu cụ thể.
 
 ### Cách nhìn hình ảnh
 
-Trong hệ hai chiều
-$$ \mathbf{x}'=A\mathbf{x}, $$
-gốc là điểm cân bằng. Nếu quỹ đạo chạy tới gốc từ mọi phía, ta có điểm hút. Nếu chúng rời gốc, ta có điểm đẩy. Nếu có một hướng vào và một hướng ra, ta có yên ngựa. Nếu quỹ đạo quay quanh gốc, ta nghĩ tới trị riêng phức.
+Trong hệ hai chiều $$ \mathbf{x}'=A\mathbf{x} $$, gốc tọa độ luôn là một điểm cân bằng. Nếu mọi quỹ đạo hội tụ về gốc, đó là điểm hút; nếu rời xa gốc, đó là điểm đẩy; nếu có một phương hút và một phương đẩy, đó là điểm yên ngựa; nếu quỹ đạo quay quanh gốc, hệ có cặp trị riêng phức.
 
 ### Cách nhìn hình thức
 
@@ -50,64 +46,56 @@ a & b\\
 c & d
 \end{pmatrix},
 $$
-ta đặt
+đặt vết và định thức là
 $$
-\tau=\operatorname{tr}(A)=a+d,
-\qquad
-\Delta=\det(A)=ad-bc.
+\tau=\operatorname{tr}(A)=a+d,\qquad \Delta=\det(A)=ad-bc.
 $$
-Đa thức đặc trưng là
-$$ \lambda^2-\tau\lambda+\Delta=0. $$
-Từ dấu của $$ \Delta $$ và của
-$$ \tau^2-4\Delta $$
-ta phân loại được kiểu điểm cân bằng.
+Đa thức đặc trưng có dạng $$ \lambda^2-\tau\lambda+\Delta=0 $$. Dấu của $$ \Delta $$, dấu của $$ \tau $$ và dấu của biệt thức $$ \tau^2-4\Delta $$ xác định đầy đủ kiểu điểm cân bằng tại gốc.
 
 ## Những ngộ nhận thường gặp
 
-- "Muốn vẽ chân dung pha phải giải nghiệm tường minh." Sai. Nhiều kết luận đi trực tiếp từ trị riêng.
-- "Nếu quỹ đạo cong thì chắc chắn hệ phi tuyến." Sai. Hệ tuyến tính cũng cho quỹ đạo cong, xoắn hoặc hyperbol.
-- "Tâm và tiêu điểm đều chỉ là quỹ đạo quay nên giống nhau." Sai. Tâm có biên độ không đổi, tiêu điểm thì hút hoặc đẩy.
-- "Chỉ dấu của định thức là đủ để phân loại hoàn toàn." Không đúng. Cần thêm thông tin từ vết và biệt thức.
+- "Muốn vẽ chân dung pha phải giải nghiệm tường minh trước." Sai: phần lớn thông tin hình học rút ra trực tiếp từ trị riêng, vector riêng và cặp $$ (\tau,\Delta) $$.
+- "Quỹ đạo cong đồng nghĩa với hệ phi tuyến." Sai: hệ tuyến tính vẫn tạo ra quỹ đạo cong dạng hyperbol, parabol hoặc xoắn ốc.
+- "Tâm và tiêu điểm đều quay quanh gốc nên giống nhau." Sai: quanh tâm các quỹ đạo khép kín với biên độ không đổi, còn quanh tiêu điểm quỹ đạo xoắn vào hoặc xoắn ra.
+- "Chỉ cần biết dấu của định thức là phân loại được hoàn toàn." Không đủ: khi $$ \Delta>0 $$, cần xét thêm dấu của $$ \tau $$ và $$ \tau^2-4\Delta $$.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Tìm trị riêng hoặc tính $$ \tau,\Delta $$
+### Bước 1: Tính trị riêng hoặc cặp $$ (\tau,\Delta) $$
 
-Đây là cổng vào nhanh nhất.
+Đây là bước xác định nhanh kiểu cân bằng.
 
-### Bước 2: Phân loại kiểu cân bằng
+### Bước 2: Phân loại điểm cân bằng
 
-Yên ngựa, nút, tâm, tiêu điểm.
+Xác định gốc là yên ngựa, nút, tâm hay tiêu điểm.
 
-### Bước 3: Dùng vector riêng hoặc hướng quay để hoàn thiện hình
+### Bước 3: Xác định phương bất biến và chiều quay
 
-Đây là phần làm chân dung pha sống động.
+Dùng vector riêng (khi trị riêng thực) hoặc kiểm tra chiều quay tại một điểm mẫu (khi trị riêng phức).
 
-### Bước 4: Kiểm tra độ hợp lý bằng vài vector trường
+### Bước 4: Kiểm chứng bằng vài vector của trường
 
-Không nên chỉ tin vào tên phân loại.
+Tính $$ A\mathbf{x} $$ tại một vài điểm để chắc chắn chiều mũi tên trên hình vẽ là chính xác.
 
 ### Các checkpoint
 
-- Sinh viên có phân biệt được nút, yên ngựa, tâm và tiêu điểm hay không.
-- Sinh viên có dùng đúng $$ \tau,\Delta $$ hay không.
-- Sinh viên có nhìn được hướng bất biến trong chân dung pha hay không.
+- Sinh viên có phân biệt rõ nút, yên ngựa, tâm và tiêu điểm hay không.
+- Sinh viên có vận dụng chính xác tiêu chuẩn vết – định thức $$ (\tau,\Delta) $$ hay không.
+- Sinh viên có xác định được các phương bất biến trên chân dung pha hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Yên ngựa
+### Ví dụ 1: Điểm yên ngựa
 
-Xét
+Xét ma trận
 $$
 A=
 \begin{pmatrix}
 2 & 0\\
 0 & -1
-\end{pmatrix}.
+\end{pmatrix},
 $$
-Ta có
-$$ \Delta=-2<0. $$
-Do đó gốc là yên ngựa. Trục thứ nhất là hướng đẩy, trục thứ hai là hướng hút.
+có $$ \Delta=-2<0 $$. Do định thức âm, gốc tọa độ là điểm yên ngựa với trục thứ nhất là phương đẩy và trục thứ hai là phương hút.
 
 ### Ví dụ 2: Nút hút
 
@@ -119,7 +107,7 @@ A=
 0 & -3
 \end{pmatrix}.
 $$
-Hai trị riêng đều âm, nên gốc là nút ổn định. Mọi quỹ đạo không tầm thường tiến về gốc, thường bám theo hướng có tốc độ suy giảm chậm hơn khi $$ t $$ lớn.
+Hai trị riêng đều âm, nên gốc là nút ổn định (nút hút). Mọi quỹ đạo không tầm thường đều tiến về gốc và tiệm cận theo phương ứng với trị riêng suy giảm chậm hơn ($$ \lambda=-2 $$) khi $$ t\to\infty $$.
 
 ### Ví dụ 3: Tiêu điểm hút
 
@@ -129,15 +117,11 @@ A=
 \begin{pmatrix}
 -1 & -2\\
 2 & -1
-\end{pmatrix}.
+\end{pmatrix},
 $$
-Ta có
-$$ \tau=-2,\qquad \Delta=5. $$
-Vì
-$$ \tau^2-4\Delta=4-20<0, $$
-trị riêng là phức, và vì $$ \tau<0 $$ nên phần thực âm. Do đó gốc là tiêu điểm ổn định: quỹ đạo xoắn vào.
+có $$ \tau=-2 $$ và $$ \Delta=5 $$. Vì $$ \tau^2-4\Delta=4-20<0 $$ nên trị riêng là phức, và vì $$ \tau<0 $$ nên phần thực âm. Gốc tọa độ là tiêu điểm ổn định (xoắn ốc hút).
 
-### Ví dụ 4: Tâm
+### Ví dụ 4: Điểm tâm
 
 Với
 $$
@@ -147,72 +131,66 @@ A=
 1 & 0
 \end{pmatrix},
 $$
-ta có
-$$ \tau=0,\qquad \Delta=1,\qquad \tau^2-4\Delta<0. $$
-Trị riêng là $$ \pm i $$, nên gốc là tâm. Quỹ đạo quay quanh gốc với biên độ không đổi.
+ta có $$ \tau=0 $$, $$ \Delta=1 $$ và $$ \tau^2-4\Delta<0 $$. Trị riêng là $$ \pm i $$, nên gốc là điểm tâm với các quỹ đạo quay khép kín quanh gốc.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao chân dung pha cho ta cái nhìn tổng quát nhanh hơn công thức nghiệm?
-2. Vai trò của vết và định thức trong việc phân loại là gì?
-3. Vì sao hai hệ đều có trị riêng phức nhưng một hệ là tâm còn hệ kia là tiêu điểm?
+1. Vì sao chân dung pha mang lại cái nhìn tổng thể nhanh hơn công thức nghiệm tường minh?
+2. Vết $$ \tau $$ và định thức $$ \Delta $$ đóng vai trò gì trong phân loại điểm cân bằng?
+3. Vì sao cùng có cặp trị riêng phức nhưng có hệ cho điểm tâm, còn hệ khác cho tiêu điểm?
 
 ## Bài toán ứng dụng
 
-1. Một mô hình cơ học tuyến tính hóa quanh cân bằng cho quỹ đạo yên ngựa. Hãy giải thích vì sao cân bằng đó rất khó duy trì.
-2. Một hệ sinh học tuyến tính hóa quanh cân bằng cho tiêu điểm hút. Điều đó nói gì về dao động quanh mức cân bằng?
-3. Một hệ điều khiển cần tránh cực dương để không bị nút đẩy hoặc tiêu điểm đẩy. Hãy diễn giải điều này bằng ngôn ngữ chân dung pha.
+1. Một mô hình cơ học tuyến tính hóa quanh điểm cân bằng cho chân dung pha dạng yên ngựa. Vì sao trạng thái cân bằng này rất khó duy trì trong thực tế?
+2. Một hệ sinh học tuyến tính hóa quanh cân bằng cho tiêu điểm hút. Điều đó cho biết gì về cách quần thể quay về mức cân bằng?
+3. Trong điều khiển tự động, vì sao cần tránh cực có phần thực dương để không xuất hiện nút đẩy hay tiêu điểm đẩy?
 
 ## Chiến lược giảng dạy tương tác
 
-- Cho sinh viên đoán loại điểm cân bằng từ trị riêng trước khi vẽ.
-- Dùng bảng phân loại nhỏ dựa trên $$ \Delta $$ và $$ \tau $$ để lớp luyện phản xạ.
-- Cho các nhóm vẽ sơ bộ cùng một chân dung pha bằng hai cách: dùng trị riêng và dùng vết-định thức.
-- Yêu cầu sinh viên kiểm tra bằng vài vector trường tại các điểm mẫu để tránh vẽ "theo tên gọi".
+- Cho sinh viên dự đoán loại điểm cân bằng từ trị riêng trước khi phác họa.
+- Sử dụng bảng phân loại theo mặt phẳng $$ (\tau,\Delta) $$ để luyện phản xạ nhận diện.
+- Cho các nhóm phác họa cùng một chân dung pha theo hai cách: dùng trị riêng và dùng vết – định thức.
+- Yêu cầu sinh viên kiểm tra chiều mũi tên bằng cách tính trực tiếp $$ A\mathbf{x} $$ tại một vài điểm mẫu.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên cho sinh viên yếu bám vào bảng hai bước: trước hết nhìn dấu của $$ \Delta $$, sau đó nếu $$ \Delta>0 $$ thì xét tiếp biệt thức và dấu của $$ \tau $$. Việc có một sơ đồ quyết định rõ ràng giúp giảm nhầm lẫn rất nhiều.
+Áp dụng quy trình hai bước: kiểm tra dấu của $$ \Delta $$ trước ($$ \Delta<0 $$ là yên ngựa); nếu $$ \Delta>0 $$, xét tiếp dấu của $$ \tau^2-4\Delta $$ (nút hay xoắn ốc) và dấu của $$ \tau $$ (hút, đẩy hay tâm).
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể yêu cầu sinh viên khá giỏi giải thích tại sao mode suy giảm chậm nhất chi phối hình dạng quỹ đạo gần gốc, hoặc nối chân dung pha với nghiệm explicit trong vài ví dụ đặc biệt.
+Yêu cầu sinh viên chứng minh vì sao các quỹ đạo tiến về nút hút lại tiếp xúc với phương của trị riêng suy giảm chậm hơn gần gốc, và đối chiếu chân dung pha với nghiệm tường minh.
 
 ## Tóm tắt dễ nhớ
 
-Chân dung pha là bản đồ hình học của hệ tuyến tính. Với hệ 2 chiều, chỉ cần trị riêng hoặc cặp
-$$ (\tau,\Delta) $$
-là ta đọc được kiểu cân bằng. Đây là nơi đại số, hình học và trực giác động lực học gặp nhau rõ nhất.
+Chân dung pha là bản đồ hình học của hệ tuyến tính. Với hệ hai chiều, cặp vết – định thức $$ (\tau,\Delta) $$ hoặc các trị riêng cho phép phân loại nhanh điểm cân bằng tại gốc thành yên ngựa, nút, tâm hay tiêu điểm.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Tuyến tính hóa quanh cân bằng
-- Bài toán: Gần điểm cân bằng, ta chỉ cần biết hệ là yên ngựa, nút, tâm hay tiêu điểm để đoán hành vi.
-- Mô hình:
-$$ \mathbf{x}'=A\mathbf{x}. $$
-- Giả thiết và giới hạn: Chỉ đúng cục bộ nếu đến từ tuyến tính hóa hệ phi tuyến.
-- Diễn giải: Chân dung pha cho thông tin định tính rất mạnh mà không cần nghiệm tường minh.
+#### Tuyến tính hóa quanh điểm cân bằng
+- Bài toán: Dự đoán hành vi cục bộ quanh cân bằng của hệ phi tuyến thông qua dạng yên ngựa, nút, tâm hay tiêu điểm.
+- Mô hình: $$ \mathbf{x}'=A\mathbf{x} $$.
+- Giả thiết và giới hạn: Chỉ có hiệu lực cục bộ gần điểm cân bằng khi xuất phát từ tuyến tính hóa.
+- Diễn giải: Chân dung pha cung cấp thông tin định tính mạnh mà không cần giải nghiệm đóng.
 
-#### Điều khiển và ổn định
-- Bài toán: Kỹ sư muốn biết hệ có bị đẩy ra khỏi gốc hay bị hút về gốc.
-- Mô hình:
-$$ \tau=\operatorname{tr}(A),\qquad \Delta=\det(A). $$
-- Giả thiết và giới hạn: Hệ tuyến tính phẳng.
-- Diễn giải: Chỉ từ dấu của $$ \Delta $$ và quan hệ giữa $$ \tau^2 $$ với $$ 4\Delta $$ đã phân loại được kiểu cân bằng.
+#### Phân tích ổn định trong điều khiển
+- Bài toán: Xác định xem trạng thái có hội tụ về gốc hay phân kỳ khỏi gốc.
+- Mô hình: $$ \tau=\operatorname{tr}(A) $$ và $$ \Delta=\det(A) $$.
+- Giả thiết và giới hạn: Hệ tuyến tính hai chiều.
+- Diễn giải: Điều kiện ổn định tiệm cận tương đương $$ \tau<0 $$ và $$ \Delta>0 $$.
 
-#### Hóa học và sinh học
-- Bài toán: Hai biến có thể tiến về cân bằng bằng cách xoắn, trượt hoặc lao thẳng.
-- Mô hình: Chân dung pha của hệ 2 chiều.
-- Giả thiết và giới hạn: Gần cân bằng, mô hình tuyến tính cục bộ.
-- Diễn giải: Đây là ngôn ngữ hình học để đọc ổn định.
+#### Động học hai biến trong hóa học và sinh học
+- Bài toán: Xác định hai đại lượng tiến về cân bằng theo đường xoắn, đường trượt hay tiến thẳng.
+- Mô hình: Chân dung pha của hệ hai chiều.
+- Giả thiết và giới hạn: Xấp xỉ tuyến tính quanh điểm cân bằng.
+- Diễn giải: Cung cấp trực giác hình học rõ ràng về độ ổn định.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Chân dung pha là nơi hình học thực sự lên ngôi. Nó tổng hợp mọi thứ từ trị riêng, vector riêng và trường vector thành một bức tranh duy nhất. Bài này cũng chuẩn bị cho chương phi tuyến, nơi ta không phải lúc nào cũng có công thức nghiệm nhưng vẫn cần hiểu quỹ đạo.
+Chân dung pha tổng hợp trị riêng, vector riêng và trường vector vào một biểu diễn hình học thống nhất, đồng thời là cầu nối trực tiếp sang nghiên cứu hệ phi tuyến ở các chương sau — nơi nghiệm giải tích thường không tồn tại nhưng phân tích pha vẫn phát huy hiệu quả.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -245,7 +223,7 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Xét
+Xét ma trận
 $$
 A=
 \begin{pmatrix}
@@ -253,23 +231,21 @@ A=
 0 & -1
 \end{pmatrix}.
 $$
-Ta có
-$$ \Delta=-2<0. $$
-Vì định thức âm nên gốc là một yên ngựa. Trục thứ nhất là hướng đẩy, trục thứ hai là hướng hút. Không cần giải đầy đủ, ta đã biết đây là cân bằng rất không ổn định: chỉ một sai lệch nhỏ theo hướng đẩy sẽ làm hệ rời xa nhanh chóng.
+Vì $$ \Delta=-2<0 $$, gốc là điểm yên ngựa với trục $$ x_1 $$ là phương đẩy và trục $$ x_2 $$ là phương hút. Không cần giải chi tiết, ta thấy ngay điểm cân bằng này không ổn định vì chỉ một nhiễu nhỏ dọc phương đẩy sẽ kéo hệ rời xa gốc nhanh chóng.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Phân loại đúng các kiểu điểm cân bằng bằng trị riêng hoặc vết - định thức.
+**Bậc đại học.** Phân loại chính xác các dạng điểm cân bằng bằng trị riêng hoặc cặp vết – định thức.
 
-**Bậc sau đại học.** Nối với tuyến tính hóa hệ phi tuyến và ý nghĩa cục bộ của chân dung pha.
+**Bậc sau đại học.** Liên hệ với định lý Hartman–Grobman về tuyến tính hóa hệ phi tuyến và tính bền vững cấu trúc của chân dung pha.
 
 ## Video tham khảo
 
-- xem trước: [Phase Portraits | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=zmzyW1rP-hk) — MIT OpenCourseWare, tiếng Anh. Bộ chân dung pha tuyến tính của MIT.
-- [Trace-Determinant Diagram | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=oEskbXrhkkk) — MIT OpenCourseWare, tiếng Anh. Mặt phẳng vết-định thức phân loại các chân dung ấy.
-- [MAE5790-5 Two dimensional linear systems](https://www.youtube.com/watch?v=QrHRaA93Nrg) — Cornell MAE, tiếng Anh. Strogatz vẽ cùng sự phân loại từ các trị riêng.
+- Xem trước: [Phase Portraits | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=zmzyW1rP-hk) — MIT OpenCourseWare, tiếng Anh. Giới thiệu các dạng chân dung pha tuyến tính cơ bản.
+- [Trace-Determinant Diagram | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=oEskbXrhkkk) — MIT OpenCourseWare, tiếng Anh. Phân loại chân dung pha trên mặt phẳng vết – định thức.
+- [MAE5790-5 Two dimensional linear systems](https://www.youtube.com/watch?v=QrHRaA93Nrg) — Cornell MAE, tiếng Anh. Giáo sư Strogatz trình bày phân loại hệ tuyến tính hai chiều từ trị riêng.
 
 ## Tài liệu tham khảo
 
-- Boyce & DiPrima, Chương 7: rất tốt cho phân loại hệ phẳng.
-- Strogatz, *Nonlinear Dynamics and Chaos*: trực giác xuất sắc về chân dung pha và điểm cân bằng.
+- Boyce & DiPrima, Chương 7: trình bày hệ thống phân loại hệ tuyến tính phẳng.
+- Strogatz, *Nonlinear Dynamics and Chaos*: giàu trực giác hình học về chân dung pha và phân loại điểm cân bằng.

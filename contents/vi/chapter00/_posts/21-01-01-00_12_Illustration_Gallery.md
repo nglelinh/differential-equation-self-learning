@@ -12,15 +12,15 @@ lesson_type: optional
 
 ## Mục Đích Của Bài Hỗ Trợ
 
-Bài này gom các minh họa hiện đang có của Chapter 00 vào một không gian ôn tập trực quan chung. Nền tảng toán học thường bị học như những mảnh rời nhau, nhưng toàn bộ khóa học phương trình vi phân lại dựa vào chúng như một ngôn ngữ thống nhất. Gallery giúp người học thấy rằng giải tích thực, liên tục đều, giải tích đa biến, đại số tuyến tính, số phức, không gian metric, không gian chuẩn, tích vô hướng, tích phân, giải tích vector và hàm đặc biệt không phải là các phần phụ rời rạc. Chúng là bộ khung âm thầm của mọi định lý tồn tại, mọi phép tuyến tính hóa, mọi khai triển trực giao và mọi mô hình PDE ở các chương sau.
+Bài học này tập hợp toàn bộ các minh họa trực quan của Chương 00 vào một không gian ôn tập thống nhất. Các kiến thức nền tảng toán học thường dễ bị tiếp nhận như những mảng rời rạc, nhưng thực chất toàn bộ khóa học phương trình vi phân đều vận hành trên chúng như một ngôn ngữ chung. Bộ minh họa giúp người học nhận ra rằng giải tích thực, tính liên tục đều, giải tích đa biến, đại số tuyến tính, số phức, không gian metric, không gian định chuẩn, không gian tích vô hướng, lý thuyết tích phân, giải tích vector và hàm đặc biệt đều gắn kết chặt chẽ với nhau—tạo thành khung nền cho các định lý tồn tại nghiệm, phép tuyến tính hóa, khai triển trực giao và các mô hình PDE ở những chương tiếp theo.
 
-Vì vậy, bài này không chỉ đóng vai trò “xem lại hình cho đẹp”. Nó giúp sinh viên nối lại logic nội tại của toàn bộ phần nền tảng trước khi đi sâu hơn vào ODE, PDE và giải tích hàm.
+Vì vậy, bài này không chỉ dùng để xem lại hình vẽ mà còn giúp sinh viên kết nối mạch logic nội tại của toàn bộ phần kiến thức nền trước khi đi sâu vào ODE, PDE và giải tích hàm.
 
 ## Cách Sử Dụng Bài Này
 
-Nên đi qua gallery theo thứ tự bài học và tự hỏi mỗi khái niệm nền sẽ quay lại ở đâu trong các chương sau. Giải tích thực sẽ quay lại trong các định lý tồn tại và compactness; giải tích đa biến sẽ quay lại trong Jacobian và tuyến tính hóa; đại số tuyến tính sẽ quay lại trong hệ ODE và lý thuyết phổ; số phức sẽ quay lại trong dao động và nghiệm mũ; còn metric, norm, inner product sẽ mở ra cánh cửa sang giải tích hàm và PDE hiện đại.
+Bạn nên xem qua bộ minh họa theo đúng thứ tự các bài học và tự đặt câu hỏi mỗi khái niệm nền sẽ xuất hiện lại ở đâu trong khóa học. Giải tích thực quay lại trong các định lý tồn tại và tính compact; giải tích đa biến quay lại trong ma trận Jacobi và phép tuyến tính hóa; đại số tuyến tính quay lại trong hệ ODE và lý thuyết phổ; số phức quay lại trong dao động và nghiệm mũ; còn không gian metric, chuẩn và tích vô hướng mở đường sang giải tích hàm và lý thuyết PDE hiện đại.
 
-Mục tiêu là làm cho Chapter 00 không còn là “chương phụ trợ”, mà trở thành bộ xương thật sự của toàn khóa học.
+Cách tiếp cận này giúp Chương 00 trở thành khung kiến thức cốt lõi xuyên suốt toàn khóa học thay vì một chương ôn tập tách rời.
 
 ## Gallery Nhúng Trực Tiếp
 
@@ -33,9 +33,9 @@ Mục tiêu là làm cho Chapter 00 không còn là “chương phụ trợ”, 
 
 ## Câu Hỏi Gợi Ý Khi Học
 
-1. Khái niệm nền nào quay lại trực tiếp nhất trong các chương ODE, và khái niệm nào trở nên quan trọng hơn ở phần PDE và giải tích hàm?
-2. Các ý niệm định tính như compactness và liên tục đều đứng bên cạnh các ý niệm đại số như trị riêng và số phức như thế nào trong cùng một kiến trúc toán học?
-3. Những khái niệm ban đầu này đã thay đổi ý nghĩa ra sao khi chuyển từ ví dụ hữu hạn chiều sang không gian hàm ở các chương sau?
+1. Khái niệm nền nào xuất hiện trực tiếp nhiều nhất trong các chương ODE, và khái niệm nào đóng vai trò trung tâm hơn ở phần PDE và giải tích hàm?
+2. Các khái niệm giải tích (như tính compact, tính liên tục đều) phối hợp với các khái niệm đại số (như trị riêng, số phức) như thế nào trong cùng một hệ thống lý thuyết?
+3. Các khái niệm nền tảng này thay đổi cách diễn giải ra sao khi mở rộng từ không gian hữu hạn chiều sang không gian hàm ở các chương sau?
 
 ## Liên Kết Tới Các Bài Học Chính
 
@@ -53,6 +53,6 @@ Mục tiêu là làm cho Chapter 00 không còn là “chương phụ trợ”, 
 
 ## Video tham khảo
 
-- xem trước: [Differential equations, a tourist's guide | DE1](https://www.youtube.com/watch?v=p_di4Zn4wz4) — 3Blue1Brown, tiếng Anh. Chuyến tham quan trực quan về phương trình vi phân, khớp với các hình trong bộ minh họa.
-- [The essence of calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM) — 3Blue1Brown, tiếng Anh. Giải tích hoạt hình giúp đọc các hình đạo hàm và tích phân trong bộ minh họa.
-- [Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra](https://www.youtube.com/watch?v=PFDu9oVAE-g) — 3Blue1Brown, tiếng Anh. Vector riêng được vẽ như hướng kéo giãn, hình đứng sau phần đại số tuyến tính của chương.
+- Xem trước: [Differential equations, a tourist's guide | DE1](https://www.youtube.com/watch?v=p_di4Zn4wz4) — 3Blue1Brown, tiếng Anh. Giới thiệu trực quan về phương trình vi phân, phù hợp để đối chiếu với các hình trong bộ minh họa.
+- [The essence of calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM) — 3Blue1Brown, tiếng Anh. Chuỗi minh họa giải tích giúp đọc hiểu nhanh các hình về đạo hàm và tích phân trong bộ minh họa.
+- [Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra](https://www.youtube.com/watch?v=PFDu9oVAE-g) — 3Blue1Brown, tiếng Anh. Minh họa vector riêng theo phương kéo giãn, tương ứng với phần đại số tuyến tính của chương.

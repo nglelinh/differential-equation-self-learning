@@ -13,11 +13,11 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giúp sinh viên trả lời câu hỏi quan trọng nhất sau khi đã biết cách viết chuỗi Fourier: chuỗi đó hội tụ theo nghĩa nào, khi nào, và hội tụ đến cái gì. Sau bài học, sinh viên cần hiểu định lý Dirichlet ở mức trực giác và phát biểu, phân biệt hội tụ điểm, hội tụ đều và hội tụ trong $$ L^2 $$, biết hiện tượng Gibbs là gì, và hiểu vì sao trong PDE người ta thường quan tâm đặc biệt đến hội tụ năng lượng.
+Bài học này trả lời câu hỏi trọng tâm sau khi đã xây dựng được chuỗi Fourier: chuỗi đó hội tụ theo nghĩa nào, trong điều kiện nào và hội tụ về giá trị nào. Sau bài học, sinh viên cần nắm phát biểu và trực giác của định lý Dirichlet, phân biệt được hội tụ từng điểm, hội tụ đều và hội tụ trong $$ L^2 $$, hiểu hiện tượng Gibbs và nhận ra vì sao trong PDE người ta đặc biệt quan tâm đến hội tụ theo năng lượng.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm chuỗi Fourier, hệ số Fourier, và các loại hội tụ cơ bản của chuỗi hàm ở mức trực giác. Đây là một bài có tính khái niệm rất cao, nên cần giảm cảm giác "quá kỹ thuật" bằng nhiều hình ảnh và ví dụ.
+Sinh viên cần nắm chuỗi Fourier, cách tính hệ số Fourier và các khái niệm hội tụ cơ bản của chuỗi hàm ở mức trực giác. Vì đây là bài học giàu tính khái niệm, việc kết hợp hình ảnh minh họa và ví dụ cụ thể sẽ giúp giảm bớt cảm giác trừu tượng.
 
 ## Dẫn nhập
 
@@ -27,90 +27,66 @@ $$
 f(x)\sim \frac{a_0}{2}+\sum_{n=1}^{\infty}\bigl(a_n\cos(nx)+b_n\sin(nx)\bigr),
 $$
 
-ta ngầm đặt ra một câu hỏi rất tự nhiên: tổng vô hạn này có thật sự quay trở lại hàm ban đầu hay không? Nếu có, thì theo nghĩa nào? Từng điểm, trung bình, hay năng lượng? Đây không phải chỉ là câu hỏi kỹ thuật. Nó quyết định khi nào chuỗi Fourier là mô tả chính xác của tín hiệu, và khi nào ta nên hiểu nó như một phép xấp xỉ trong một chuẩn phù hợp.
+một câu hỏi tự nhiên được đặt ra: tổng vô hạn này có thực sự hội tụ về hàm ban đầu hay không, và nếu có thì theo nghĩa nào — từng điểm, đều hay theo năng lượng? Đây không chỉ là vấn đề kỹ thuật thuần túy, mà quyết định khi nào chuỗi Fourier là một biểu diễn chính xác của tín hiệu và khi nào cần hiểu nó như một phép xấp xỉ theo một chuẩn thích hợp.
 
-Bài này đặc biệt quan trọng vì nó dạy sinh viên cách nghĩ chín chắn hơn về biểu diễn hàm. Không phải mọi biểu diễn vô hạn đều hội tụ giống nhau, và trong Fourier, mỗi kiểu hội tụ kể một câu chuyện khác nhau.
+Bài học này giúp sinh viên hình thành tư duy chặt chẽ hơn về biểu diễn hàm. Không phải mọi chuỗi vô hạn đều hội tụ theo cùng một cách, và trong lý thuyết Fourier, mỗi kiểu hội tụ phản ánh một tính chất khác nhau của hàm.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Nếu ta dùng ngày càng nhiều mode để ghép lại hàm gốc, ta mong tổng riêng ngày càng giống hàm hơn. Nhưng "giống hơn" có thể hiểu theo nhiều cách. Có khi đồ thị nhìn gần như trùng ở hầu hết mọi nơi nhưng vẫn dao động ở chỗ nhảy. Có khi sai số điểm không nhỏ đều, nhưng năng lượng sai số lại rất nhỏ. Hội tụ Fourier là việc phân biệt rõ các kiểu "giống hơn" này.
+Khi sử dụng ngày càng nhiều mode để tái tạo hàm gốc, ta kỳ vọng tổng riêng sẽ ngày càng gần với hàm hơn. Tuy nhiên, "gần hơn" có thể được hiểu theo nhiều nghĩa. Có trường hợp đồ thị gần như trùng khớp ở hầu hết mọi điểm nhưng vẫn dao động mạnh tại chỗ có bước nhảy; có trường hợp sai số tại một số điểm không giảm đều nhưng năng lượng sai số tổng thể lại tiến về 0. Nghiên cứu sự hội tụ Fourier là việc phân biệt rạch ròi các kiểu tiệm cận này.
 
 ### Cách nhìn hình ảnh
 
-Với một hàm liên tục trơn, các tổng riêng Fourier thường bám vào đồ thị rất đẹp. Với một hàm có bước nhảy, các tổng riêng sẽ rung mạnh gần điểm gián đoạn. Dao động đó không biến mất hoàn toàn về biên độ mà chỉ dồn vào vùng ngày càng hẹp hơn. Hình ảnh này chính là hiện tượng Gibbs và là một bài học rất đáng nhớ về sự khác nhau giữa hội tụ điểm và hội tụ năng lượng.
+Với một hàm liên tục và trơn, các tổng riêng Fourier bám sát đồ thị gốc khá đều. Ngược lại, với hàm có bước nhảy, các tổng riêng sẽ dao động mạnh quanh điểm gián đoạn. Biên độ vượt quá của dao động này không triệt tiêu khi số hạng tăng lên mà chỉ co hẹp dần về sát điểm nhảy. Đây chính là hiện tượng Gibbs, minh họa rõ ràng sự khác biệt giữa hội tụ từng điểm và hội tụ theo năng lượng.
 
 ### Cách nhìn hình thức
 
-Nếu $$ S_N(x) $$ là tổng riêng Fourier bậc $$ N $$, ta có thể hỏi:
+Gọi $$ S_N(x) $$ là tổng riêng Fourier bậc $$ N $$. Ta đặt ba câu hỏi khác nhau:
 
-- Có phải
-
-$$ S_N(x)\to f(x) $$
-
-tại từng điểm hay không?
-- Có phải
-
-$$ \sup_x \lvert S_N(x)-f(x)\rvert\to 0 $$
-
-hay không?
-- Có phải
-
-$$ \lVert S_N-f\rVert_{L^2}\to 0 $$
-
-hay không?
+- Liệu $$ S_N(x)\to f(x) $$ tại từng điểm hay không?
+- Liệu $$ \sup_x \lvert S_N(x)-f(x)\rvert\to 0 $$ hay không?
+- Liệu $$ \lVert S_N-f\rVert_{L^2}\to 0 $$ hay không?
 
 Ba kiểu hội tụ này không tương đương nhau.
 
 ## Những ngộ nhận thường gặp
 
-- "Chuỗi Fourier mà tồn tại thì phải hội tụ đúng về hàm ở mọi điểm." Sai; tại điểm gián đoạn, tổng thường hội tụ về giá trị trung bình hai phía.
-- "Dao động Gibbs chứng minh Fourier thất bại." Không đúng; Fourier vẫn hội tụ đúng theo nhiều nghĩa rất quan trọng.
-- "Hội tụ điểm luôn quan trọng nhất." Không hẳn; trong PDE và cơ học, hội tụ trong
-
-$$ L^2 $$
-
-thường phù hợp hơn với năng lượng.
-- "Càng nhiều số hạng thì gần điểm nhảy sẽ càng hết rung." Sai; biên độ vượt quá không biến mất hoàn toàn, chỉ tập trung trong vùng hẹp hơn.
+- "Nếu chuỗi Fourier tồn tại thì nó phải hội tụ đúng về giá trị hàm tại mọi điểm." Sai; tại điểm gián đoạn, chuỗi thường hội tụ về trung bình cộng hai giới hạn một phía.
+- "Dao động Gibbs chứng tỏ chuỗi Fourier không hiệu quả." Không đúng; chuỗi Fourier vẫn hội tụ chính xác theo nhiều nghĩa quan trọng, đặc biệt là hội tụ trong $$ L^2 $$.
+- "Hội tụ từng điểm luôn là tiêu chuẩn quan trọng nhất." Không hẳn; trong PDE và cơ học, hội tụ trong $$ L^2 $$ thường phù hợp hơn với đại lượng năng lượng.
+- "Càng lấy nhiều số hạng thì vùng gần điểm nhảy càng hết dao động." Sai; độ vượt quá cực đại không tiến về 0 mà chỉ co hẹp vào một lân cận nhỏ hơn quanh điểm nhảy.
 
 ## Tiến trình học tập đề xuất
 
 ### Bước 1: Phân biệt các kiểu hội tụ
 
-Sinh viên cần hiểu rằng "hội tụ" không chỉ có một nghĩa.
+Sinh viên cần nhận thức rằng khái niệm "hội tụ" không chỉ có một nghĩa duy nhất.
 
-### Bước 2: Học định lý Dirichlet
+### Bước 2: Tìm hiểu định lý Dirichlet
 
-Đây là kết quả định hướng quan trọng nhất cho hội tụ điểm.
+Đây là kết quả định hướng cơ bản cho sự hội tụ từng điểm của chuỗi Fourier.
 
 ### Bước 3: Quan sát hiện tượng Gibbs
 
-Đây là phần trực quan hóa mạnh nhất của bài.
+Đây là nội dung mang tính trực quan rõ nét nhất của bài học.
 
-### Bước 4: Nối sang hội tụ
+### Bước 4: Liên hệ với hội tụ $$ L^2 $$ và năng lượng
 
-$$ L^2 $$
+Bước này giúp sinh viên hiểu vì sao chuỗi Fourier vẫn hữu ích trong PDE ngay cả khi xuất hiện dao động cục bộ.
 
-và năng lượng
+### Các điểm kiểm tra
 
-Giúp sinh viên thấy vì sao Fourier vẫn rất hữu ích trong PDE dù có dao động cục bộ.
-
-### Các checkpoint
-
-- Sinh viên có phân biệt được hội tụ điểm và hội tụ trong
-
-$$ L^2 $$
-
-hay không.
-- Sinh viên có biết chuỗi Fourier hội tụ đến gì tại điểm gián đoạn hay không.
-- Sinh viên có giải thích được Gibbs bằng lời hay không.
+- Sinh viên có phân biệt được hội tụ từng điểm và hội tụ trong $$ L^2 $$ hay không.
+- Sinh viên có biết chuỗi Fourier hội tụ về giá trị nào tại điểm gián đoạn hay không.
+- Sinh viên có giải thích được hiện tượng Gibbs bằng lời hay không.
 
 ## Ví dụ được giải chi tiết
 
 ### Ví dụ 1: Định lý Dirichlet cho hàm bước
 
-Xét hàm tuần hoàn được định nghĩa trên $$ (-\pi,\pi) $$ bởi
+Xét hàm tuần hoàn xác định trên $$ (-\pi,\pi) $$ bởi
 
 $$
 f(x)=
@@ -120,7 +96,7 @@ f(x)=
 \end{cases}
 $$
 
-Tại $$ x=0 $$, chuỗi Fourier hội tụ đến
+Tại $$ x=0 $$, chuỗi Fourier hội tụ về
 
 $$
 \frac{f(0^-)+f(0^+)}{2}
@@ -130,81 +106,79 @@ $$
 \frac{1}{2}.
 $$
 
-Ví dụ này là minh họa kinh điển cho việc Fourier "lấy trung bình hai phía" ở điểm gián đoạn.
+Ví dụ này minh họa quy tắc lấy trung bình hai phía của chuỗi Fourier tại điểm gián đoạn.
 
-### Ví dụ 2: Hàm liên tục trơn
+### Ví dụ 2: Hàm liên tục và trơn
 
 Nếu
 
 $$ f(x)=\cos x + \frac{1}{2}\sin 2x, $$
 
-thì chuỗi Fourier của hàm hữu hạn ngay từ đầu, nên hội tụ đúng đến $$ f(x) $$ ở mọi điểm. Ví dụ này dùng để nhấn mạnh rằng các vấn đề hội tụ không phải lúc nào cũng gây khó khăn; chúng nổi bật nhất khi hàm không trơn.
+thì chuỗi Fourier của hàm là một tổng hữu hạn ngay từ đầu, do đó hội tụ đúng về $$ f(x) $$ tại mọi điểm. Ví dụ này nhấn mạnh rằng các hiện tượng phức tạp về hội tụ chủ yếu phát sinh khi hàm không trơn hoặc có điểm gián đoạn.
 
 ### Ví dụ 3: Hàm trị tuyệt đối
 
-Với $$ f(x)=\lvert x\rvert $$ trên $$ (-\pi,\pi) $$, hàm liên tục nhưng không khả vi tại 0. Chuỗi Fourier vẫn hội tụ từng điểm về $$ \lvert x\rvert $$, nhưng hệ số giảm chậm hơn so với trường hợp hàm trơn hơn. Đây là ví dụ tốt để nói về mối quan hệ giữa độ trơn và tốc độ giảm hệ số.
+Với $$ f(x)=\lvert x\rvert $$ trên $$ (-\pi,\pi) $$, hàm liên tục nhưng không khả vi tại $$ x=0 $$. Chuỗi Fourier vẫn hội tụ từng điểm về $$ \lvert x\rvert $$, nhưng các hệ số giảm chậm hơn so với các hàm có bậc trơn cao hơn. Ví dụ này cho thấy mối liên hệ trực tiếp giữa độ trơn của hàm và tốc độ suy giảm của hệ số Fourier.
 
 ### Ví dụ 4: Hiện tượng Gibbs
 
-Xét lại sóng vuông. Khi vẽ các tổng riêng đầu tiên, ta sẽ thấy gần điểm nhảy xuất hiện vùng vượt quá. Khi số hạng tăng, vùng dao động hẹp lại nhưng độ vượt quá vẫn không về 0. Đây là ví dụ trực quan nhất để sinh viên nhớ rằng hội tụ điểm cục bộ gần gián đoạn có những sắc thái rất riêng.
+Xét lại hàm sóng vuông. Khi vẽ các tổng riêng đầu tiên, ta thấy xuất hiện các đỉnh vượt quá gần điểm nhảy. Khi tăng số hạng, vùng dao động co hẹp lại nhưng biên độ vượt quá không tiến về 0. Đây là minh họa trực quan cho thấy hội tụ từng điểm gần điểm gián đoạn có những đặc điểm riêng biệt.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao chuỗi Fourier tại điểm nhảy lại hội tụ đến trung bình hai phía thay vì chọn hẳn bên trái hoặc bên phải?
-2. Vì sao một chuỗi có thể hội tụ tốt trong $$ L^2 $$ nhưng vẫn có dao động cục bộ mạnh ở vài điểm?
-3. Độ trơn của hàm ảnh hưởng thế nào đến tốc độ giảm của các hệ số Fourier?
+1. Vì sao tại điểm gián đoạn, chuỗi Fourier lại hội tụ về trung bình hai phía thay vì chọn giá trị bên trái hoặc bên phải?
+2. Vì sao một chuỗi có thể hội tụ tốt trong $$ L^2 $$ nhưng vẫn có dao động cục bộ đáng kể tại một số điểm?
+3. Độ trơn của hàm ảnh hưởng như thế nào đến tốc độ suy giảm của các hệ số Fourier?
 
 ## Bài toán ứng dụng
 
-1. Trong xử lý tín hiệu số, vì sao tái tạo một tín hiệu có cạnh sắc thường sinh ra dao động gần cạnh?
-2. Trong PDE, vì sao hội tụ năng lượng thường quan trọng hơn hội tụ điểm?
-3. Trong mô hình nhiệt độ ban đầu có bước nhảy, vì sao chuỗi Fourier vẫn là công cụ hợp lý dù có Gibbs ở thời điểm đầu?
+1. Trong xử lý tín hiệu số, vì sao việc tái tạo một tín hiệu có cạnh sắc thường tạo ra dao động quanh cạnh?
+2. Trong PDE, vì sao hội tụ theo năng lượng thường được ưu tiên hơn hội tụ từng điểm?
+3. Trong bài toán truyền nhiệt với nhiệt độ ban đầu có bước nhảy, vì sao chuỗi Fourier vẫn là công cụ phù hợp dù có hiện tượng Gibbs tại thời điểm đầu?
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng câu hỏi: "Nếu hàm có bước nhảy, chuỗi Fourier sẽ chọn giá trị nào ngay tại chỗ nhảy?"
-- Vẽ hoặc mô tả liên tiếp các tổng riêng của sóng vuông để sinh viên thấy Gibbs bằng trực giác.
-- Cho lớp phân loại vài phát biểu thành hội tụ điểm, hội tụ đều, hoặc hội tụ
-
-$$ L^2. $$
-- Khuyến khích sinh viên nói bằng lời: "Fourier đúng theo nghĩa nào và không đúng theo nghĩa nào?"
+- Khởi đầu bằng câu hỏi: "Nếu hàm có bước nhảy, chuỗi Fourier sẽ nhận giá trị nào ngay tại điểm nhảy?"
+- Vẽ hoặc mô tả lần lượt các tổng riêng của sóng vuông để sinh viên quan sát hiện tượng Gibbs.
+- Cho lớp phân loại một số phát biểu thành hội tụ từng điểm, hội tụ đều hoặc hội tụ $$ L^2 $$.
+- Khuyến khích sinh viên diễn đạt bằng lời: chuỗi Fourier chính xác theo nghĩa nào và có hạn chế ở nghĩa nào.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên ưu tiên trực giác bằng đồ thị và ví dụ bước nhảy trước, rồi mới đưa phát biểu định lý Dirichlet. Với nhiều sinh viên, cảm giác hình học của Gibbs là điểm tựa rất mạnh để hiểu phần lý thuyết.
+Nên ưu tiên trực giác đồ thị và ví dụ hàm bước trước khi giới thiệu phát biểu định lý Dirichlet. Hình ảnh hình học của hiện tượng Gibbs thường là điểm tựa dễ nhớ để hiểu phần lý thuyết.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể giao cho sinh viên khá giỏi thảo luận vai trò của hạt nhân Dirichlet hoặc mối liên hệ giữa độ trơn và tốc độ suy giảm hệ số Fourier như một bước tiến về phía giải tích điều hòa.
+Có thể yêu cầu sinh viên tìm hiểu vai trò của hạt nhân Dirichlet hoặc phân tích định lượng mối liên hệ giữa độ trơn của hàm và tốc độ suy giảm của hệ số Fourier, qua đó mở hướng sang giải tích điều hòa.
 
 ## Tóm tắt dễ nhớ
 
-Chuỗi Fourier không chỉ có một kiểu hội tụ. Ở điểm liên tục, nó thường hội tụ về hàm; ở điểm nhảy, nó hội tụ về trung bình hai phía. Trong nhiều ứng dụng PDE, hội tụ trong $$ L^2 $$ và cấu trúc năng lượng mới là điều quan trọng nhất.
+Chuỗi Fourier có nhiều kiểu hội tụ khác nhau. Tại điểm liên tục, chuỗi thường hội tụ về đúng giá trị của hàm; tại điểm nhảy, chuỗi hội tụ về trung bình cộng hai giới hạn một phía. Trong nhiều bài toán PDE, hội tụ trong $$ L^2 $$ và cấu trúc năng lượng là tiêu chí trọng tâm.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Tái tạo tín hiệu không trơn
-- Bài toán: Một tín hiệu tuần hoàn có góc nhọn hoặc gián đoạn được xấp xỉ bằng tổng hữu hạn các mode.
+- Bài toán: Xấp xỉ một tín hiệu tuần hoàn có góc nhọn hoặc điểm gián đoạn bằng tổng hữu hạn các mode.
 - Mô hình:
 $$
 S_N(x)=\frac{a_0}{2}+\sum_{n=1}^{N}\left(a_n\cos(nx)+b_n\sin(nx)\right).
 $$
-- Giả thiết và giới hạn: Hội tụ điểm phụ thuộc độ trơn và loại gián đoạn.
-- Diễn giải: Chuỗi Fourier có thể hội tụ rất tốt trong năng lượng ngay cả khi hội tụ điểm chậm.
+- Giả thiết và giới hạn: Sự hội tụ từng điểm phụ thuộc vào độ trơn và bản chất điểm gián đoạn của hàm.
+- Diễn giải: Chuỗi Fourier có thể hội tụ tốt theo chuẩn năng lượng ngay cả khi hội tụ từng điểm diễn ra chậm.
 
 #### Xử lý ảnh và tín hiệu
-- Bài toán: Ta cần hiểu tại sao vùng biên hoặc cạnh sắc gây rung động phổ khi cắt chuỗi.
-- Mô hình: Phân tích hội tụ và hiện tượng Gibbs cho các tín hiệu nhảy.
-- Giả thiết và giới hạn: Mô hình một chiều là hình ảnh đơn giản hóa của trường hợp nhiều chiều.
-- Diễn giải: Gibbs cho thấy mode cao vẫn cần thiết gần chỗ gián đoạn.
+- Bài toán: Giải thích nguyên nhân vùng biên hoặc cạnh sắc sinh ra hiện tượng rung phổ khi cắt cụt chuỗi.
+- Mô hình: Phân tích sự hội tụ và hiện tượng Gibbs đối với tín hiệu có bước nhảy.
+- Giả thiết và giới hạn: Mô hình một chiều là phiên bản đơn giản hóa của bài toán nhiều chiều.
+- Diễn giải: Hiện tượng Gibbs cho thấy các mode tần số cao đóng vai trò cần thiết quanh điểm gián đoạn.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Hội tụ Fourier không chỉ là "có về lại đúng hàm hay không" mà còn là hội tụ theo nghĩa nào: điểm, đều, hay $$ L^2 $$. Một bẫy phổ biến là nghĩ chuỗi Fourier luôn hội tụ đều nếu hàm liên tục; điều đó không đúng nếu độ trơn không đủ. Bài này chuẩn bị cho Parseval và Fourier transform bằng cách làm rõ ý nghĩa phân tích trong không gian hàm.
+Nghiên cứu hội tụ Fourier không chỉ là kiểm tra xem chuỗi có tiến về hàm gốc hay không, mà còn phải xác định hội tụ theo chuẩn nào: từng điểm, đều hay $$ L^2 $$. Một nhầm lẫn thường gặp là cho rằng hàm liên tục thì chuỗi Fourier luôn hội tụ đều; điều này không đúng nếu hàm không đủ trơn. Bài học này chuẩn bị nền tảng cho định lý Parseval và biến đổi Fourier bằng cách làm rõ ý nghĩa hội tụ trong không gian hàm.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -242,23 +216,23 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Cho sóng vuông ở bài trước, chuỗi Fourier hội tụ đến
+Với sóng vuông ở bài trước, chuỗi Fourier hội tụ về
 $$ \frac{f(x^-)+f(x^+)}{2} $$
-tại điểm gián đoạn $$ x=0 $$, nên giá trị hội tụ là $$ 0 $$ thay vì $$ \pm 1 $$. Đây là ví dụ chuẩn cho định lý Dirichlet và cũng là nơi sinh viên thường lần đầu thấy hội tụ Fourier không giống hội tụ điểm đơn giản.
+tại điểm gián đoạn $$ x=0 $$, nên giá trị giới hạn là $$ 0 $$ thay vì $$ \pm 1 $$. Đây là ví dụ tiêu chuẩn cho định lý Dirichlet, giúp sinh viên thấy rõ sự hội tụ của chuỗi Fourier khác với hội tụ từng điểm đơn giản.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Hiểu định lý Dirichlet cơ bản, hội tụ tại điểm liên tục và trung bình hai phía tại gián đoạn.
+**Bậc đại học.** Nắm định lý Dirichlet cơ bản, hiểu sự hội tụ tại điểm liên tục và quy tắc trung bình hai phía tại điểm gián đoạn.
 
-**Bậc sau đại học.** Bàn về hội tụ trong $$ L^2 $$, định lý Carleson, và quan hệ giữa độ trơn với tốc độ suy giảm hệ số Fourier.
+**Bậc sau đại học.** Tìm hiểu sâu về hội tụ trong $$ L^2 $$, định lý Carleson và mối liên hệ giữa độ trơn của hàm với tốc độ suy giảm của hệ số Fourier.
 
 ## Video tham khảo
 
-- xem trước: [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, tiếng Anh. Xem các tổng riêng và dao động Gibbs, bức tranh hội tụ của bài.
-- [Lec 16 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=xWa5_OXI6VM) — MIT OpenCourseWare, tiếng Anh. Mattuck tiếp chuỗi Fourier với chu kỳ tổng quát hơn và các câu hỏi hội tụ.
-- [Lec 15 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=EWWw0jryj1A) — MIT OpenCourseWare, tiếng Anh. Bài MIT giới thiệu chuỗi mà tính hội tụ đang được xét.
+- Xem trước: [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, tiếng Anh. Minh họa các tổng riêng và dao động Gibbs, cung cấp bức tranh trực quan về sự hội tụ.
+- [Lec 16 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=xWa5_OXI6VM) — MIT OpenCourseWare, tiếng Anh. Arthur Mattuck mở rộng chuỗi Fourier cho chu kỳ tổng quát và thảo luận các vấn đề hội tụ.
+- [Lec 15 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=EWWw0jryj1A) — MIT OpenCourseWare, tiếng Anh. Bài giảng MIT giới thiệu cấu trúc chuỗi Fourier làm nền cho việc xét hội tụ.
 
 ## Tài liệu tham khảo
 
-- Haberman, *Applied Partial Differential Equations* - trực giác tốt về chuỗi Fourier, hội tụ, và các ví dụ vật lý.
-- Evans, *Partial Differential Equations* - khung chuẩn cho hội tụ $$ L^2 $$, trực giao, và không gian hàm.
+- Haberman, *Applied Partial Differential Equations* — trình bày trực giác rõ ràng về chuỗi Fourier, sự hội tụ và các ví dụ vật lý.
+- Evans, *Partial Differential Equations* — cung cấp khung lý thuyết chuẩn cho hội tụ $$ L^2 $$, tính trực giao và không gian hàm.

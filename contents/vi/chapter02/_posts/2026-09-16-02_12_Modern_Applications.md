@@ -12,57 +12,57 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài tùy chọn này nối phương trình hệ số hằng cấp hai, dao động cơ học và phương pháp năng lượng với tài liệu 2019–2024 về mạng Hamiltonian, Lagrangian và neural ODE cấp hai. Sinh viên cần thấy một dao động tử học được như phần dư có cấu trúc của $$y''+p y'+q y=g(t)$$, giải thích vì sao kiến trúc bảo toàn symplectic hoặc năng lượng vượt mạng generic trên hệ bảo toàn, và nối độc lập Wronskian với khả năng nhận dạng mode. Các kỹ thuật giải cổ điển không bị viết lại.
+Bài đọc tùy chọn này kết nối phương trình hệ số hằng cấp hai, dao động cơ học và phương pháp năng lượng với các nghiên cứu giai đoạn 2019–2024 về mạng nơ-ron Hamiltonian, Lagrangian và neural ODE cấp hai. Sinh viên sẽ nhìn nhận một bộ dao động được học từ dữ liệu như phần mở rộng có cấu trúc của $$y''+p y'+q y=g(t)$$, hiểu vì sao các kiến trúc bảo toàn cấu trúc symplectic hoặc năng lượng thường hoạt động ổn định hơn mạng thông thường trên hệ bảo toàn, và liên hệ tính độc lập theo Wronskian với khả năng nhận dạng các chế độ dao động. Bài không nhắc lại các kỹ thuật giải cổ điển.
 
 ## Kiến thức nền
 
-Sinh viên cần biết phương trình đặc trưng, dao động tắt dần và cưỡng bức, hạ bậc, và ý nghĩa Wronskian. Chỉ cần nhớ động năng và thế năng của dao động tử khối lượng đơn vị.
+Sinh viên cần nắm phương trình đặc trưng, dao động tắt dần và cưỡng bức, phương pháp hạ bậc và ý nghĩa của định thức Wronskian, đồng thời nhớ công thức động năng và thế năng của bộ dao động có khối lượng đơn vị.
 
 ## Dẫn nhập
 
-Phương trình $$y''+\omega^2 y=0$$ là dao động tử bảo toàn đơn giản nhất. Nghiệm quay trong mặt phẳng $$(y,y')$$ và bảo toàn năng lượng $$\tfrac12(y')^2+\tfrac12\omega^2 y^2$$. Khi cùng cấu trúc ẩn trong dữ liệu — chuyển động hành tinh, động lực phân tử, cánh tay robot, hoặc mạch LC — một mạng generic có thể khớp quỹ đạo ngắn rồi vẫn trôi thế tục vì không có gì buộc nó bảo toàn năng lượng hay dạng symplectic.
+Phương trình $$y''+\omega^2 y=0$$ là mô hình dao động bảo toàn đơn giản nhất. Nghiệm của nó quay trong mặt phẳng $$(y,y')$$ và bảo toàn năng lượng $$\tfrac12(y')^2+\tfrac12\omega^2 y^2$$. Khi cấu trúc tương tự ẩn trong dữ liệu thực tế — như chuyển động hành tinh, động lực học phân tử, cánh tay robot hay mạch LC — một mạng nơ-ron tổng quát có thể khớp tốt trên quỹ đạo ngắn nhưng vẫn xuất hiện sai số trôi tích lũy dài hạn, vì không có ràng buộc nào buộc mạng bảo toàn năng lượng hay cấu trúc symplectic.
 
-Greydanus, Dzamba và Yosinski đưa ra Hamiltonian neural networks tại NeurIPS 2019 bằng cách học một Hamiltonian vô hướng $$H_\theta(q,p)$$ rồi tích phân phương trình Hamilton thay vì một trường vector vô cấu trúc. Cranmer và cộng sự (*Lagrangian Neural Networks*, 2020; [arXiv:2003.04630](https://arxiv.org/abs/2003.04630)) áp phương trình Euler–Lagrange, thường tiện hơn khi dữ liệu là vị trí và vận tốc. Finzi, Wang và Wilson (*Simplifying Hamiltonian and Lagrangian Neural Networks*, NeurIPS 2020) rồi làm sạch ràng buộc và tọa độ. Các bài 2022 của Sosanya–Greydanus về mạng Hamiltonian tiêu tán và của Gruver, Finzi, Goldblum và Wilson (*Deconstructing the Inductive Biases of Hamiltonian Neural Networks*, ICLR 2022) làm rõ khi nào các prior ấy thực sự giúp.
+Greydanus, Dzamba và Yosinski đã đề xuất mạng nơ-ron Hamiltonian (Hamiltonian Neural Networks) tại NeurIPS 2019 bằng cách học một hàm Hamiltonian vô hướng $$H_\theta(q,p)$$ rồi tích phân phương trình Hamilton thay vì học trực tiếp một trường vector không có cấu trúc. Cranmer và cộng sự (*Lagrangian Neural Networks*, 2020; [arXiv:2003.04630](https://arxiv.org/abs/2003.04630)) áp dụng phương trình Euler–Lagrange, vốn thuận tiện hơn khi dữ liệu quan sát là vị trí và vận tốc. Tiếp đó, Finzi, Wang và Wilson (*Simplifying Hamiltonian and Lagrangian Neural Networks*, NeurIPS 2020) tinh gọn cách xử lý ràng buộc và hệ tọa độ. Các công trình năm 2022 của Sosanya và Greydanus về mạng Hamiltonian tiêu tán, cùng nghiên cứu của Gruver, Finzi, Goldblum và Wilson (*Deconstructing the Inductive Biases of Hamiltonian Neural Networks*, ICLR 2022), đã làm rõ điều kiện để các giả định cấu trúc này thực sự phát huy hiệu quả.
 
-Tất cả đều là cách đọc hiện đại của chương này: cấu trúc tuyến tính cấp hai, năng lượng, và độc lập tuyến tính của mode không chỉ là thiết bị giải, chúng là prior kiến trúc.
+Tất cả các hướng nghiên cứu trên đều cho thấy một cách nhìn hiện đại đối với Chương 02: cấu trúc tuyến tính cấp hai, năng lượng và tính độc lập tuyến tính của các chế độ dao động không chỉ là công cụ giải tích mà còn là định hướng thiết kế kiến trúc mô hình.
 
 ## Khái niệm then chốt
 
-### Từ nghiệm đặc trưng đến mode học được
+### Từ nghiệm đặc trưng đến chế độ dao động học được
 
-Phương trình hệ số hằng $$y''+a y'+b y=0$$ có không gian nghiệm hai chiều sinh bởi các mode do nghiệm đặc trưng quyết định. Một mô hình cấp hai học được nên lấy lại bức tranh modal chiều thấp nếu dữ liệu gần tuyến tính. Khi dữ liệu phi tuyến nhưng vẫn bảo toàn, hình ảnh Hamiltonian thay đa thức đặc trưng: ta học $$H_\theta$$ và để hình học các mặt mức tổ chức chuyển động. Zhong, Dey và Chakraborty (*Symplectic ODE-Net*, ICLR 2020) đi thêm bước tích phân trường học được bằng integrator symplectic.
+Phương trình hệ số hằng $$y''+a y'+b y=0$$ có không gian nghiệm hai chiều sinh bởi các thành phần cơ bản do nghiệm đặc trưng quyết định. Nếu dữ liệu gần tuyến tính, một mô hình cấp hai học từ dữ liệu cần khôi phục được bức tranh dao động chiều thấp này. Khi dữ liệu phi tuyến nhưng vẫn bảo toàn năng lượng, hàm Hamiltonian thay thế vai trò của đa thức đặc trưng: mô hình học $$H_\theta$$ để hình học các đường mức tổ chức quỹ đạo chuyển động. Zhong, Dey và Chakraborty (*Symplectic ODE-Net*, ICLR 2020) đi xa hơn khi kết hợp trường động lực học được với bộ tích phân symplectic.
 
-### Năng lượng như chẩn đoán kiểu Lyapunov
+### Năng lượng như công cụ chẩn đoán kiểu Lyapunov
 
-Với dao động không tắt dần năng lượng không đổi; với dao động tắt dần nó giảm. Mô hình nơ-ron chính xác về lỗi $$L^2$$ tức thời vẫn có thể tạo năng lượng, thấy ngay như biên độ tăng thế tục. Vẽ năng lượng học được dọc quỹ đạo vì thế giàu thông tin như vẽ Wronskian. Mạng Hamiltonian tiêu tán (Sosanya và Greydanus, 2022) tách trường vector thành phần bảo toàn và tiêu tán kiểu Rayleigh, vang vọng phân tích $$y''+\gamma y'+\omega^2 y=0$$.
+Với dao động không tắt dần, năng lượng được bảo toàn; với dao động tắt dần, năng lượng giảm dần theo thời gian. Một mô hình nơ-ron có sai số $$L^2$$ tức thời nhỏ vẫn có thể tự sinh thêm năng lượng giả tạo, biểu hiện ngay ở biên độ tăng dần theo thời gian. Do đó, theo dõi đồ thị năng lượng dọc theo quỹ đạo mang lại thông tin chẩn đoán quan trọng tương tự việc kiểm tra Wronskian. Mạng Hamiltonian tiêu tán (Sosanya và Greydanus, 2022) tách trường vector thành phần bảo toàn và phần tiêu tán kiểu Rayleigh, tương ứng trực tiếp với cấu trúc của phương trình $$y''+\gamma y'+\omega^2 y=0$$.
 
 ### Neural ODE cấp hai
 
-Ta cũng có thể học trực tiếp trường cấp hai $$q''=f_\theta(q,q',t)$$, dạng tự nhiên của hệ cơ học và tương đương hệ cấp một trong $$(q,q')$$. Ưu điểm của việc ở lại dạng cấp hai là có thể áp $$f_\theta=-\nabla V_\theta(q)-\gamma q'$$ và lấy lại mô hình cơ học tắt dần, cưỡng bức với thế học được.
+Ta cũng có thể học trực tiếp phương trình cấp hai $$q''=f_\theta(q,q',t)$$, vốn là dạng tự nhiên của các hệ cơ học và tương đương với hệ cấp một theo cặp biến $$(q,q')$$. Lợi thế của việc giữ nguyên dạng cấp hai là ta có thể đặt trực tiếp $$f_\theta=-\nabla V_\theta(q)-\gamma q'$$, qua đó tái hiện mô hình cơ học có tắt dần và lực cưỡng bức với hàm thế học từ dữ liệu.
 
-### Điều các phân tích 2022–2024 đã đổi
+### Những điều chỉnh từ các phân tích giai đoạn 2022–2024
 
-Gruver và cộng sự (ICLR 2022) cho thấy một số lợi ích được báo của mạng Hamiltonian đến từ việc tích phân dễ hơn hoặc chọn tọa độ tốt hơn, chứ không từ một prior năng lượng thần bí. Cảnh báo ấy có giá trị sư phạm. Học bảo toàn cấu trúc có ích khi dữ liệu thực sự gần Hamiltonian, cũng như hệ số bất định có ích khi lực cưỡng bức thực sự nằm trong họ UC.
+Gruver và cộng sự (ICLR 2022) chỉ ra rằng một phần lợi thế từng được ghi nhận của mạng Hamiltonian thực chất đến từ việc bài toán dễ tích phân hơn hoặc lựa chọn hệ tọa độ phù hợp hơn, chứ không hoàn toàn do bản thân giả định bảo toàn năng lượng. Nhận xét này có ý nghĩa sư phạm quan trọng: học bảo toàn cấu trúc chỉ hiệu quả khi dữ liệu thực sự gần với hệ Hamiltonian, cũng như phương pháp hệ số bất định chỉ áp dụng được khi hàm cưỡng bức thuộc đúng lớp hàm phù hợp.
 
 ## Phương pháp và kỹ thuật
 
-1. Quyết định dữ liệu bảo toàn, tiêu tán, hay cưỡng bức — cùng phân loại dùng cho dao động cơ học.
-2. Nếu bảo toàn, học $$H_\theta$$ hoặc Lagrangian $$L_\theta$$ và tích phân symplectic hoặc biến phân.
-3. Nếu tiêu tán, học năng lượng cộng thế tiêu tán, hoặc học số hạng Rayleigh.
-4. Nếu cưỡng bức và gần tuyến tính, so sánh đáp ứng học được với nghiệm riêng do hệ số bất định hoặc biến thiên tham số.
-5. Theo dõi chẩn đoán modal: tần số tức thời, bao biên độ, và một thước độc lập kiểu Wronskian khi có nhiều mode.
+1. Xác định xem dữ liệu thuộc hệ bảo toàn, tiêu tán hay chịu lực cưỡng bức — tương tự cách phân loại trong dao động cơ học.
+2. Nếu hệ bảo toàn, học hàm Hamiltonian $$H_\theta$$ hoặc Lagrangian $$L_\theta$$ và dùng bộ tích phân symplectic hoặc biến phân.
+3. Nếu hệ tiêu tán, học hàm năng lượng kết hợp thế tiêu tán hoặc số hạng Rayleigh.
+4. Nếu hệ chịu lực cưỡng bức và gần tuyến tính, đối chiếu đáp ứng học được với nghiệm riêng tìm bằng hệ số bất định hoặc biến thiên hằng số.
+5. Theo dõi các chỉ số chẩn đoán động học: tần số tức thời, đường bao biên độ và thước đo độc lập kiểu Wronskian khi hệ có nhiều chế độ dao động.
 
-Biến thiên tham số có bản sao học máy: đóng băng lõi bảo toàn tuyến tính $$y''+\omega^2 y$$ và chỉ học mạng lực $$g_\theta(t)$$.
+Phương pháp biến thiên hằng số cũng có dạng tương ứng trong học máy: giữ cố định lõi bảo toàn tuyến tính $$y''+\omega^2 y$$ và chỉ dùng mạng nơ-ron để học thành phần ngoại lực $$g_\theta(t)$$.
 
 ## Ví dụ
 
-### Ví dụ 1: Khớp dao động tử điều hòa nhiễu
+### Ví dụ 1: Khớp dao động điều hòa có nhiễu
 
-Mẫu $$y=\cos(\omega t)$$ có nhiễu nhỏ có thể được khớp bởi neural ODE vô cấu trúc, nhưng chu kỳ học được thường trôi. Mạng Hamiltonian với $$H_\theta=\tfrac12 p^2+V_\theta(q)$$ lấy lại chu kỳ không đổi vì các mặt mức của $$H_\theta$$ đóng. Đó là nội dung hình học của nghiệm đặc trưng phức, nay được gắn vào kiến trúc.
+Dữ liệu lấy mẫu từ $$y=\cos(\omega t)$$ kèm nhiễu nhỏ có thể được khớp bằng một neural ODE không có cấu trúc, nhưng chu kỳ dự đoán thường bị trôi dần. Ngược lại, mạng Hamiltonian với $$H_\theta=\tfrac12 p^2+V_\theta(q)$$ giữ được chu kỳ ổn định vì các đường mức của $$H_\theta$$ là đường cong đóng. Đây chính là ý nghĩa hình học của cặp nghiệm đặc trưng phức được đưa vào kiến trúc mạng.
 
-### Ví dụ 2: Cộng hưởng như chế độ thất bại khi học
+### Ví dụ 2: Cộng hưởng và hạn chế khi học trên cửa sổ ngắn
 
-Nếu huấn luyện dao động cưỡng bức gần cộng hưởng trên cửa sổ ngắn, mạng generic có thể nhớ biên độ tăng mà không phát hiện cơ chế $$y''+\omega^2 y=\cos(\omega t)$$. Mô hình có cấu trúc giữ toán tử tuyến tính và chỉ học lực cưỡng bức sẽ nhận ra khớp cộng hưởng ngay.
+Nếu huấn luyện mô hình cho dao động cưỡng bức gần cộng hưởng trên một khoảng thời gian ngắn, mạng nơ-ron thông thường có thể chỉ ghi nhớ xu hướng tăng biên độ mà không nắm được cơ chế $$y''+\omega^2 y=\cos(\omega t)$$. Một mô hình có cấu trúc giữ nguyên toán tử tuyến tính và chỉ học thành phần lực cưỡng bức sẽ nhận diện trực tiếp hiện tượng cộng hưởng này.
 
 ### Ví dụ 3: Giám sát năng lượng bằng Python
 
@@ -81,39 +81,39 @@ energy = 0.5 * p**2 + 0.5 * 9.0 * q**2
 print(energy.max() - energy.min())
 ```
 
-Mô hình học được bảo toàn cấu trúc phải giữ dao động năng lượng nhỏ tương đương. Mạng generic thường không.
+Một mô hình học máy bảo toàn cấu trúc cần giữ độ dao động năng lượng nhỏ ở mức tương đương, điều mà mạng nơ-ron thông thường khó đảm bảo.
 
 ## Ứng dụng
 
-Mô hình Hamiltonian và Lagrangian học được xuất hiện trong mô phỏng phân tử, cơ học thiên thể, robot và dao động lưới điện. Câu hỏi kỹ thuật là ổn định chân trời dài: bộ điều khiển hoặc surrogate từ từ bơm năng lượng thì không an toàn. Nhận dạng RLC là bản điện của cùng ý tưởng. Tài liệu 2022–2024 cũng nuôi SciML rộng hơn: một prior cấp hai có thể kết hợp với PINN hoặc neural operator để mô hình liên tục thừa hưởng bảo toàn từ kiến trúc chứ không chỉ từ phạt mềm.
+Các mô hình Hamiltonian và Lagrangian học từ dữ liệu được sử dụng trong mô phỏng phân tử, cơ học thiên thể, điều khiển robot và phân tích dao động lưới điện. Vấn đề kỹ thuật cốt lõi là độ ổn định trên khoảng thời gian dài: một bộ điều khiển hoặc mô hình thay thế tự tích lũy thêm năng lượng dần theo thời gian sẽ không an toàn khi vận hành. Bài toán nhận dạng mạch RLC là phiên bản điện học của cùng cách tiếp cận này. Các nghiên cứu giai đoạn 2022–2024 cũng bổ sung cho lĩnh vực học máy khoa học (SciML): giả định cấu trúc cấp hai có thể kết hợp với PINN hoặc toán tử nơ-ron để mô hình liên tục thừa hưởng tính chất bảo toàn ngay từ kiến trúc, thay vì chỉ dựa vào thành phần phạt mềm trong hàm mất mát.
 
 ## Thách thức và hướng mở rộng
 
-Chọn tọa độ vẫn tế nhị. Cấu trúc Hamiltonian không bất biến dưới mọi tái tham số hóa của $$q$$. Tiêu tán, tiếp xúc và chuyển mạch lai rời khỏi phạm trù Hamiltonian trơn. Khả năng nhận dạng là vấn đề khác: nhiều Hamiltonian sinh quỹ đạo ngắn giống nhau. Tích phân symplectic của một $$H_\theta$$ học kém sẽ trung thành bảo toàn năng lượng sai.
+Việc chọn hệ tọa độ vẫn đòi hỏi sự cẩn trọng, vì cấu trúc Hamiltonian không bất biến dưới mọi phép biến đổi tọa độ của $$q$$. Các hiện tượng tiêu tán mạnh, va chạm tiếp xúc và hệ chuyển mạch lai nằm ngoài phạm vi của cơ học Hamiltonian trơn. Ngoài ra còn có bài toán khả năng nhận dạng: nhiều hàm Hamiltonian khác nhau có thể sinh ra các quỹ đạo ngắn gần như trùng khớp. Nếu tích phân symplectic một hàm $$H_\theta$$ được học sai lệch, mô hình vẫn sẽ bảo toàn chính xác một đại lượng năng lượng không đúng.
 
-Câu hỏi phản tư: nếu mô hình học được bảo toàn một đại lượng không phải năng lượng vật lý, ta thành công hay thất bại? Wronskian gợi ý câu trả lời: bất biến cấu trúc chỉ có giá khi chúng tương ứng với độc lập tuyến tính hoặc luật bảo toàn của hệ thật.
+Câu hỏi gợi mở: nếu mô hình học được bảo toàn một đại lượng không phải năng lượng vật lý thực, kết quả đó nên được đánh giá là thành công hay thất bại? Định thức Wronskian gợi ra một cách nhìn rõ ràng: các bất biến cấu trúc chỉ thực sự có giá trị khi chúng gắn với tính độc lập tuyến tính hoặc định luật bảo toàn của hệ vật lý thật.
 
 ## Video tham khảo
 
-- xem trước: [Hamiltonian Neural Networks (HNN) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=AEOcss20nDA) — Steve Brunton, tiếng Anh. Brunton về Hamiltonian neural network: học một Hamiltonian để trường vector còn symplectic.
-- [Second-Order Ordinary Differential Equations: Solving the Harmonic Oscillator Four Ways](https://www.youtube.com/watch?v=8ePqqZXSMQs) — Steve Brunton, tiếng Anh. Dao động tử cổ điển mà bài này muốn mạng nơ-ron tôn trọng.
-- [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, tiếng Anh. Neural ODE là mô hình liên tục mà một tiên nghiệm Hamiltonian đang tinh chỉnh.
+- Xem trước: [Hamiltonian Neural Networks (HNN) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=AEOcss20nDA) — Steve Brunton, tiếng Anh. Giới thiệu mạng nơ-ron Hamiltonian: học hàm Hamiltonian để trường vector bảo toàn cấu trúc symplectic.
+- [Second-Order Ordinary Differential Equations: Solving the Harmonic Oscillator Four Ways](https://www.youtube.com/watch?v=8ePqqZXSMQs) — Steve Brunton, tiếng Anh. Trình bày mô hình dao động điều hòa cổ điển mà các kiến trúc mạng trong bài hướng tới bảo toàn.
+- [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, tiếng Anh. Trình bày mô hình neural ODE liên tục, nền tảng mà cấu trúc Hamiltonian bổ sung ràng buộc.
 
 ## Bài tập
 
-1. **Đẳng thức năng lượng.** Với $$y''+\gamma y'+\omega^2 y=0$$, nhân $$y'$$ và suy ra luật tiêu tán năng lượng. Làm sao biến đẳng thức ấy thành ràng buộc huấn luyện?
+1. **Đẳng thức năng lượng.** Với phương trình $$y''+\gamma y'+\omega^2 y=0$$, nhân hai vế với $$y'$$ để suy ra quy luật tiêu tán năng lượng. Làm thế nào để đưa đẳng thức này thành ràng buộc trong quá trình huấn luyện?
 
-2. **Đa thức đặc trưng học được.** Giả sử mạng cấp hai tuyến tính sinh hai mode phức. Khôi phục $$a,b$$ trong $$y''+a y'+b y=0$$ và bàn về tính duy nhất.
+2. **Đa thức đặc trưng học được.** Giả sử một mạng cấp hai tuyến tính sinh ra hai chế độ dao động phức. Hãy khôi phục các hệ số $$a,b$$ trong $$y''+a y'+b y=0$$ và thảo luận về tính duy nhất.
 
-3. **Chẩn đoán Wronskian.** Sinh hai nghiệm học được từ dữ liệu đầu gần nhau và tính Wronskian rời rạc. Wronskian triệt tiêu nói gì về không gian nghiệm học được?
+3. **Chẩn đoán bằng Wronskian.** Tạo hai nghiệm học được từ các điều kiện đầu gần nhau và tính Wronskian rời rạc. Việc Wronskian triệt tiêu cho biết điều gì về không gian nghiệm mà mô hình học được?
 
-4. **Thí nghiệm tính toán.** Khớp neural ODE vô cấu trúc và mạng Hamiltonian với mẫu $$y''+9y=0$$ trên $$[0,4]$$, rồi ngoại suy tới $$[0,40]$$. So sánh trôi biên độ.
+4. **Thử nghiệm tính toán.** Huấn luyện một neural ODE không có cấu trúc và một mạng Hamiltonian trên dữ liệu lấy mẫu của $$y''+9y=0$$ trong đoạn $$[0,4]$$, rồi ngoại suy sang $$[0,40]$$. So sánh mức độ trôi biên độ giữa hai mô hình.
 
-5. **Khám phá mở.** Đọc Gruver và cộng sự (ICLR 2022) và viết phê bình ngắn: khi nào lý thuyết tuyến tính của chương nên được gắn cứng vào mạng, và khi nào chỉ dùng như chẩn đoán?
+5. **Khám phá mở.** Đọc bài báo của Gruver và cộng sự (ICLR 2022) và viết nhận xét ngắn: khi nào nên gắn trực tiếp lý thuyết tuyến tính của chương vào kiến trúc mạng, và khi nào chỉ nên dùng nó làm công cụ chẩn đoán?
 
 ## Tài liệu
 
-- Boyce và DiPrima, Chương 3–4; Ross, về dao động cơ và điện.
+- Boyce và DiPrima, Chương 3–4; Ross, phần dao động cơ và điện.
 - Greydanus, S., Dzamba, M., và Yosinski, J. “Hamiltonian neural networks.” *NeurIPS* 2019. [arXiv:1906.01563](https://arxiv.org/abs/1906.01563).
 - Cranmer, M., và cộng sự. “Lagrangian neural networks.” 2020. [arXiv:2003.04630](https://arxiv.org/abs/2003.04630).
 - Gruver, N., và cộng sự. “Deconstructing the inductive biases of Hamiltonian neural networks.” *ICLR* 2022. [arXiv:2202.04836](https://arxiv.org/abs/2202.04836).

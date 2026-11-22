@@ -12,110 +12,116 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài học này giúp sinh viên nhận diện và hiểu các hàm đặc biệt quan trọng nhất trong lý thuyết phương trình vi phân (**Gamma, Beta, Bessel, Legendre, Hermite**), nắm vững các tính chất cơ bản và hệ thức truy hồi của mỗi hàm, đồng thời biết cách vận dụng chúng trong các bài toán vật lý toán. Đây là bài học mở rộng giúp sinh viên tiếp cận các công cụ nâng cao thường gặp trong các chương về phương trình đạo hàm riêng và phương pháp chuỗi.
+Bài học này giúp sinh viên nhận diện và nắm vững các hàm đặc biệt thường gặp trong lý thuyết phương trình vi phân (**Gamma, Beta, Bessel, Legendre, Hermite**), hiểu các tính chất cơ bản cùng hệ thức truy hồi của từng họ hàm, và biết cách vận dụng chúng trong các bài toán vật lý toán. Đây là bài học mở rộng làm nền tảng cho các chương về phương trình đạo hàm riêng và phương pháp chuỗi.
 
 ## Kiến thức nền
 
-Sinh viên cần nắm vững chuỗi lũy thừa và bán kính hội tụ, hiểu phương trình vi phân tuyến tính cấp hai và các phương pháp giải, biết cơ bản về tích phân Gamma và Beta từ bài trước. Kiến thức về phương trình đặc trưng và phương pháp Frobenius sẽ giúp ích nhưng không bắt buộc.
+Sinh viên cần nắm vững chuỗi lũy thừa và bán kính hội tụ, phương trình vi phân tuyến tính cấp hai cùng các phương pháp giải cơ bản, và khái niệm tích phân suy rộng từ bài trước. Kiến thức về phương trình đặc trưng và phương pháp Frobenius sẽ hỗ trợ thêm nhưng không bắt buộc ngay từ đầu.
 
 ## Dẫn nhập
 
-**Khi giải phương trình vi phân bằng phương pháp phân tách biến trên các miền có tính đối xứng đặc biệt (hình trụ, hình cầu), nghiệm thường không còn là các hàm sơ cấp quen thuộc như đa thức, hàm mũ hay lượng giác. Thay vào đó, ta gặp các hàm đặc biệt mang tên những nhà toán học lỗi lạc: Bessel, Legendre, Hermite**. Những hàm này tuy không quen thuộc nhưng có cấu trúc toán học đẹp và ứng dụng rộng rãi trong vật lý.
+**Khi giải phương trình đạo hàm riêng bằng phương pháp tách biến trên các miền có tính đối xứng hình học (hình trụ, hình cầu), nghiệm thường không thể biểu diễn bằng các hàm sơ cấp quen thuộc như đa thức, hàm mũ hay hàm lượng giác. Thay vào đó, ta gặp các hàm đặc biệt mang tên những nhà toán học đã nghiên cứu chúng: Bessel, Legendre, Hermite.** Các hàm này có cấu trúc giải tích chặt chẽ và xuất hiện thường xuyên trong vật lý toán.
 
-Hãy hình dung ta đang gảy một dây đàn guitar. Nếu dây đàn dao động tự do, các mode dao động là các hàm sin. Nhưng nếu dây được gắn vào một đầu cố định và một đầu tự do (như clarinet), các mode dao động được mô tả bởi các hàm Bessel. Tương tự, nếu ta nghiên cứu sóng trên mặt cầu (như sóng điện từ bao quanh Trái Đất), các hàm cầu Legendre xuất hiện tự nhiên. Các hàm đặc biệt chính là "ngôn ngữ" của các hiện tượng dao động và đối xứng trong tự nhiên.
+Chẳng hạn, khi gảy một dây đàn guitar một chiều, các mode dao động tự nhiên là các hàm sin. Nhưng khi gõ lên một màng trống tròn cố định ở vành biên, các mode dao động theo phương bán kính lại được mô tả bởi các hàm Bessel. Tương tự, khi khảo sát trường thế hoặc sóng trên mặt cầu (như thế hấp dẫn hay sóng điện từ quanh Trái Đất), các đa thức Legendre xuất hiện một cách tự nhiên. Hàm đặc biệt chính là ngôn ngữ toán học phù hợp với các bài toán có tính đối xứng hình học.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Hàm **Gamma** như một "máy tính giai thừa" cho số thực và số phức. Trong khi giai thừa chỉ định nghĩa cho số nguyên dương, chẳng hạn $$ 5! = 120 $$, Gamma cho phép ta tính "giai thừa" của $$ 5.5 $$ hay thậm chí của $$ i $$. Đây là sự mở rộng tự nhiên từ rời rạc sang liên tục.
+Hàm **Gamma** có thể hiểu như phép mở rộng liên tục của giai thừa sang số thực và số phức. Giai thừa thông thường chỉ xác định cho số nguyên không âm (chẳng hạn $$ 5! = 120 $$), còn hàm Gamma cho phép tính giá trị tương ứng tại các số không nguyên như $$ 5.5 $$ hay số phức $$ i $$.
 
-Hàm **Bessel** như "sóng tròn" trên mặt phẳng. Khi bạn ném một hòn đá xuống mặt nước tĩnh, sóng lan ra theo các vòng tròn đồng tâm. Nhưng nếu mặt nước bị giới hạn bởi một cái đĩa tròn, các vòng sóng bị phản xạ và giao thoa tạo thành các mẫu hình Bessel—những "vòng sóng bị giam".
+Hàm **Bessel** gắn với dao động trên miền tròn hoặc trụ. Khi thả một viên đá xuống mặt nước, sóng lan tỏa theo các vòng tròn đồng tâm; nếu mặt nước nằm trong một khung tròn có biên phản xạ, sự giao thoa của sóng tạo nên các biên dạng dao động tuân theo hàm Bessel.
 
-Hàm **Legendre** xuất hiện khi có tính đối xứng cầu. Trên mặt cầu, mọi hướng đều tương đương, và các đa thức Legendre $$ P_n(x) $$ mô tả sự phân bố "năng lượng" theo các mode khác nhau. Ví dụ, $$ P_0(x) = 1 $$ tương ứng với trạng thái đối xứng hoàn toàn, còn $$ P_1(x) = x $$ tương ứng với trạng thái có cực bắc và cực nam.
+Đa thức **Legendre** gắn với tính đối xứng cầu. Trên mặt cầu, các đa thức Legendre $$ P_n(\cos\theta) $$ mô tả sự phân bố theo góc cực ở từng bậc đối xứng: $$ P_0(x) = 1 $$ ứng với phân bố đều theo mọi hướng, còn $$ P_1(x) = x $$ ứng với phân bố lưỡng cực (bắc–nam).
 
 ### Cách nhìn hình ảnh
 
-Vẽ đồ thị các hàm Bessel $$ J_0(x) $$, $$ J_1(x) $$ trên $$ [0,20] $$. Chúng trông giống như các hàm sin suy giảm: dao động với biên độ giảm dần khi $$ x $$ tăng. So sánh với đồ thị các đa thức Legendre $$ P_0(x) $$ đến $$ P_4(x) $$ trên $$ [-1,1] $$.
+Khi vẽ đồ thị các hàm Bessel $$ J_0(x) $$ và $$ J_1(x) $$ trên $$ [0,20] $$, ta thấy chúng dao động tương tự hàm sin nhưng với biên độ giảm dần khi $$ x $$ tăng. Đối chiếu với đồ thị các đa thức Legendre $$ P_0(x) $$ đến $$ P_4(x) $$ trên đoạn $$ [-1,1] $$, ta nhận thấy số nghiệm của $$ P_n(x) $$ trong khoảng $$ (-1,1) $$ tăng đúng theo bậc $$ n $$.
 
 ### Cách nhìn hình thức
 
-**Hàm Gamma**: Định nghĩa bởi tích phân Euler $$ \Gamma(z) = \int_0^\infty t^{z-1} e^{-t}\,dt $$ cho $$ \operatorname{Re}(z) > 0 $$. Hệ thức Gamma là $$ \Gamma(z+1) = z\Gamma(z) $$. Với số nguyên $$ n $$, ta có $$ \Gamma(n+1) = n! $$.
+**Hàm Gamma**: Xác định bởi tích phân Euler $$ \Gamma(z) = \int_0^\infty t^{z-1} e^{-t}\,dt $$ với $$ \operatorname{Re}(z) > 0 $$, thỏa mãn hệ thức $$ \Gamma(z+1) = z\Gamma(z) $$. Với mọi số nguyên không âm $$ n $$, ta có $$ \Gamma(n+1) = n! $$.
 
-**Hàm Beta**: $$B(p,q) = \int_0^1 t^{p-1}(1-t)^{q-1}\,dt = \Gamma(p)\Gamma(q)/\Gamma(p+q)$$.
+**Hàm Beta**: $$B(p,q) = \int_0^1 t^{p-1}(1-t)^{q-1}\,dt = \Gamma(p)\Gamma(q)/\Gamma(p+q)$$ (với $$ \operatorname{Re}(p) > 0 $$, $$ \operatorname{Re}(q) > 0 $$).
 
-**Phương trình Bessel**: $$ x^2 y'' + xy' + (x^2 - \nu^2)y = 0 $$. Nghiệm điển hình là $$ J_n(x) $$ và $$ Y_n(x) $$.
+**Phương trình Bessel**: $$ x^2 y'' + xy' + (x^2 - \nu^2)y = 0 $$. Các nghiệm chuẩn (khi $$ \nu = n $$ nguyên) là hàm Bessel loại một $$ J_n(x) $$ và loại hai $$ Y_n(x) $$.
 
-**Phương trình Legendre**: $$ \left(1-x^2\right)y'' - 2xy' + n(n+1)y = 0 $$. Nghiệm là $$ P_n(x) $$ với $$ n $$ nguyên không âm.
+**Phương trình Legendre**: $$ \left(1-x^2\right)y'' - 2xy' + n(n+1)y = 0 $$. Nghiệm đa thức (với $$ n $$ nguyên không âm) là các đa thức Legendre $$ P_n(x) $$.
 
-**Phương trình Hermite**: $$ y'' - 2xy' + 2ny = 0 $$. Nghiệm là $$ H_n(x) $$.
+**Phương trình Hermite**: $$ y'' - 2xy' + 2ny = 0 $$. Nghiệm đa thức (với $$ n $$ nguyên không âm) là các đa thức Hermite $$ H_n(x) $$.
 
 ## Những ngộ nhận thường gặp
 
-- "$$ \Gamma(1) = 1 $$." Con số này đúng, nhưng điều quan trọng là quy tắc tổng quát phải viết là $$ \Gamma(n+1) = n! $$.
-- "Hàm Bessel chỉ có trong toán học thuần túy." Sai. Chúng xuất hiện rất nhiều trong vật lý: dao động màng tròn, truyền sóng trong trụ trụ, nhiệt trong đĩa tròn.
-- "Legendre chỉ dùng cho mặt cầu." Đúng về mặt lý thuyết, nhưng các đa thức Legendre còn dùng trong phương pháp bình phương tối thiểu, xấp xỉ hàm, và giải tích số.
-- "Các hàm đặc biệt không có tính chất gì đặc biệt." Ngược lại, chúng có rất nhiều tính chất đẹp: trực giao, hệ thức truy hồi, công thức cộng, và liên hệ chặt chẽ với nhau qua Gamma.
+- "Nhớ $$ \Gamma(1) = 1 $$ rồi suy ra $$ \Gamma(n) = n! $$." Sai. Quy tắc đúng bị dịch đi một đơn vị: $$ \Gamma(n+1) = n! $$, nên $$ \Gamma(1) = 0! = 1 $$, $$ \Gamma(2) = 1! = 1 $$, $$ \Gamma(3) = 2! = 2 $$.
+- "Hàm Bessel chỉ xuất hiện trong toán học thuần túy." Sai. Chúng xuất hiện phổ biến trong dao động màng tròn, truyền sóng trong ống dẫn hình trụ và bài toán truyền nhiệt trên đĩa tròn.
+- "Đa thức Legendre chỉ dùng cho bài toán hình cầu." Chưa đầy đủ. Bên cạnh đối xứng cầu, đa thức Legendre còn được dùng rộng rãi trong xấp xỉ bình phương tối thiểu và phương pháp cầu phương Gauss trong giải tích số.
+- "Các hàm đặc biệt chỉ là những công thức rời rạc, khó nhớ." Sai. Chúng chia sẻ nhiều tính chất chung như tính trực giao, hệ thức truy hồi, công thức sinh và mối liên hệ qua hàm Gamma.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Hiểu Gamma như mở rộng của giai thừa
+### Bước 1: Hiểu hàm Gamma như sự mở rộng của giai thừa
 
-Gamma mở rộng khái niệm giai thừa từ số nguyên sang số thực và số phức. Học công thức $$ \Gamma(z+1) = z\Gamma(z) $$ và cách sử dụng để tính các giá trị Gamma.
+Nắm vững hệ thức truy hồi $$ \Gamma(z+1) = z\Gamma(z) $$, giá trị đặc biệt $$ \Gamma(1/2) = \sqrt{\pi} $$ và cách tính giá trị hàm Gamma, hàm Beta.
 
-### Bước 2: Nhận diện các phương trình sinh ra hàm đặc biệt
+### Bước 2: Nhận diện các phương trình vi phân sinh ra hàm đặc biệt
 
-Mỗi hàm đặc biệt gắn với một phương trình vi phân riêng. Nhận diện phương trình Bessel, Legendre, Hermite và biết nghiệm của chúng.
+Ghi nhớ dạng phương trình Bessel, Legendre và Hermite cùng loại hình học hoặc bài toán vật lý gắn với từng phương trình.
 
-### Bước 3: Nắm các tính chất cơ bản
+### Bước 3: Nắm các tính chất cấu trúc cơ bản
 
-Học tính trực giao, hệ thức truy hồi, và công thức biểu diễn. Đây là công cụ để tính toán và chứng minh.
+Tập trung vào tính trực giao, hệ thức truy hồi và công thức Rodrigues để phục vụ tính toán và khai triển nghiệm.
 
 ### Các checkpoint
 
-- Sinh viên có nhận diện được các phương trình Bessel, Legendre, Hermite không?
-- Sinh viên có vận dụng được các hệ thức truy hồi để tính toán không?
-- Sinh viên có biết các ứng dụng vật lý cơ bản của mỗi hàm không?
+- Bạn có nhận diện đúng các phương trình Bessel, Legendre và Hermite không?
+- Bạn có vận dụng được hệ thức truy hồi để tính giá trị hoặc rút gọn biểu thức không?
+- Bạn có nêu được ứng dụng vật lý tiêu biểu của từng họ hàm không?
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Tính các giá trị Gamma
+### Ví dụ 1: Tính các giá trị của hàm Gamma
 
-Tính $$ \Gamma(5/2) $$, $$ \Gamma(1/2) $$, và $$ \Gamma(3) $$. Ta có $$ \Gamma(1/2) = \sqrt{\pi} $$. Dùng $$ \Gamma(z+1) = z\Gamma(z) $$, suy ra $$\Gamma(3/2) = \frac{1}{2}\Gamma(1/2) = \frac{\sqrt{\pi}}{2}$$ và $$\Gamma(5/2) = \frac{3}{2}\Gamma(3/2) = \frac{3\sqrt{\pi}}{4}$$. Ngoài ra $$ \Gamma(3) = 2! = 2 $$.
+Tính $$ \Gamma(5/2) $$, $$ \Gamma(1/2) $$ và $$ \Gamma(3) $$. Biết $$ \Gamma(1/2) = \sqrt{\pi} $$, áp dụng hệ thức $$ \Gamma(z+1) = z\Gamma(z) $$ ta có
+
+$$
+\Gamma(3/2) = \frac{1}{2}\Gamma(1/2) = \frac{\sqrt{\pi}}{2}, \qquad \Gamma(5/2) = \frac{3}{2}\Gamma(3/2) = \frac{3\sqrt{\pi}}{4}.
+$$
+
+Ngoài ra, $$ \Gamma(3) = 2! = 2 $$.
 
 ### Ví dụ 2: Tính tích phân Beta
 
-Tính $$ B(3,2) $$. Theo công thức $$ B(p,q) = \Gamma(p)\Gamma(q)/\Gamma(p+q) $$, ta có $$ \Gamma(3) = 2 $$, $$ \Gamma(2) = 1 $$, $$ \Gamma(5) = 24 $$. Vậy $$ B(3,2) = \frac{2\cdot 1}{24} = \frac{1}{12} $$. Kiểm tra trực tiếp cũng cho $$ \int_0^1 t^2(1-t)\,dt = 1/12 $$.
+Tính $$ B(3,2) $$. Áp dụng liên hệ $$ B(p,q) = \Gamma(p)\Gamma(q)/\Gamma(p+q) $$, với $$ \Gamma(3) = 2 $$, $$ \Gamma(2) = 1 $$ và $$ \Gamma(5) = 24 $$, ta thu được $$ B(3,2) = \frac{2\cdot 1}{24} = \frac{1}{12} $$. Tính trực tiếp bằng tích phân cũng cho $$ \int_0^1 t^2(1-t)\,dt = 1/12 $$.
 
 ### Ví dụ 3: Hệ thức truy hồi hàm Bessel
 
-Chứng minh $$ J_{n-1}(x) + J_{n+1}(x) = \frac{2n}{x}J_n(x) $$. Đây là hệ thức truy hồi quan trọng. Ví dụ với $$ n = 1 $$, ta có $$ J_0(x) + J_2(x) = \frac{2}{x}J_1(x) $$.
+Hệ thức truy hồi cơ bản của hàm Bessel là $$ J_{n-1}(x) + J_{n+1}(x) = \frac{2n}{x}J_n(x) $$. Chẳng hạn, với $$ n = 1 $$, ta có $$ J_0(x) + J_2(x) = \frac{2}{x}J_1(x) $$, cho phép tính $$ J_2(x) $$ trực tiếp từ $$ J_0(x) $$ và $$ J_1(x) $$.
 
 ### Ví dụ 4: Đa thức Legendre
 
-Tìm $$ P_2(x) $$ và $$ P_3(x) $$. Công thức Rodrigues là
+Tìm $$ P_2(x) $$ và $$ P_3(x) $$ bằng công thức Rodrigues:
 
 $$
 P_n(x) = \frac{1}{2^n n!}\frac{d^n}{dx^n}(x^2-1)^n.
 $$
 
-Từ đó suy ra $$ P_2(x) = \frac{3x^2-1}{2} $$ và $$ P_3(x) = \frac{5x^3-3x}{2} $$. Tính trực giao được viết là $$ \int_{-1}^{1} P_m(x)P_n(x)\,dx = 0 $$ nếu $$ m \neq n $$.
+Lấy đạo hàm trực tiếp, ta thu được $$ P_2(x) = \frac{3x^2-1}{2} $$ và $$ P_3(x) = \frac{5x^3-3x}{2} $$. Các đa thức Legendre trực giao trên $$ [-1,1] $$: $$ \int_{-1}^{1} P_m(x)P_n(x)\,dx = 0 $$ với mọi $$ m \neq n $$.
 
-### Ví dụ 5: Ứng dụng trong phương trình truyền nhiệt
+### Ví dụ 5: Ứng dụng trong phương trình truyền nhiệt trên đĩa tròn
 
-Giải phương trình truyền nhiệt trong đĩa tròn bán kính $$ a $$ với điều kiện biên $$ u(a,t) = 0 $$ và điều kiện đầu $$ u(r,0) = f(r) $$. Dùng phân tách biến $$ u(r,t) = R(r)T(t) $$, phần không gian cho phương trình Bessel $$ r^2 R'' + rR' + (\lambda r^2 - n^2)R = 0 $$, với nghiệm $$ R(r) = J_n(\sqrt{\lambda}\,r) $$. Các giá trị $$ \lambda $$ được xác định bởi các nghiệm của $$ J_n(\sqrt{\lambda}\,a) = 0 $$.
+Xét bài toán truyền nhiệt trên đĩa tròn bán kính $$ a $$ với điều kiện biên $$ u(a,t) = 0 $$ và điều kiện đầu $$ u(r,0) = f(r) $$. Khi tách biến $$ u(r,t) = R(r)T(t) $$ (và tách góc trong trường hợp tổng quát), phần bán kính dẫn tới phương trình Bessel $$ r^2 R'' + rR' + (\lambda r^2 - n^2)R = 0 $$, có nghiệm hữu hạn tại tâm là $$ R(r) = J_n(\sqrt{\lambda}\,r) $$. Điều kiện biên $$ u(a,t) = 0 $$ xác định các trị riêng $$ \lambda $$ thông qua các nghiệm của phương trình $$ J_n(\sqrt{\lambda}\,a) = 0 $$.
 
 ## Câu hỏi khái niệm
 
-1. Tại sao các hàm đặc biệt lại xuất hiện tự nhiên khi giải PDE trên các miền có tính đối xứng? Mối liên hệ giữa đối xứng và phương trình vi phân là gì?
-2. Tính trực giao của các hàm đặc biệt có ý nghĩa gì trong vật lý? Tại sao các mode dao động tự nhiên lại trực giao với nhau?
-3. Hàm Gamma mở rộng giai thừa, nhưng tại sao ta cần một "giai thừa liên tục"? Ứng dụng thực tế của Gamma là gì?
+1. Vì sao các hàm đặc biệt lại xuất hiện tự nhiên khi giải PDE trên miền có tính đối xứng hình học?
+2. Tính trực giao của các họ hàm đặc biệt mang ý nghĩa gì khi khai triển nghiệm của bài toán vật lý?
+3. Việc mở rộng giai thừa từ số nguyên sang số thực và số phức thông qua hàm Gamma đem lại lợi ích gì trong giải tích và ứng dụng?
 
 ## Bài toán ứng dụng
 
-1. **Vật lý - Dao động màng tròn**: Màng tròn bán kính $$ a $$ được gắn cố định ở biên. Các mode dao động tự nhiên có thể viết dưới dạng $$ u(r,t) = J_0(k_{0m}r)e^{i\omega t} $$ với $$ k_{0m}a $$ là các nghiệm của $$ J_0 $$.
-2. **Cơ học lượng tử**: Dao động tử điều hòa một chiều có các hàm sóng $$ \psi_n(x) = N_n H_n(x)e^{-x^2/2} $$. Năng lượng là $$ E_n = \hbar \omega \left(n + \frac{1}{2}\right) $$.
-3. **Trắc địa - Thế hấp dẫn**: Thế hấp dẫn bên ngoài một quả cầu có thể khai triển theo các đa thức Legendre:
+1. **Vật lý — Dao động màng tròn**: Một màng tròn bán kính $$ a $$ được cố định ở biên. Các mode dao động đối xứng trục có dạng $$ u(r,t) = J_0(k_{0m}r)e^{i\omega t} $$, trong đó $$ k_{0m}a $$ là các nghiệm dương của $$ J_0 $$.
+2. **Cơ học lượng tử**: Dao động tử điều hòa một chiều có các hàm sóng dừng $$ \psi_n(x) = N_n H_n(x)e^{-x^2/2} $$ ứng với các mức năng lượng rời rạc $$ E_n = \hbar \omega \left(n + \frac{1}{2}\right) $$.
+3. **Trắc địa — Thế hấp dẫn**: Thế hấp dẫn bên ngoài một thiên thể đối xứng trục có thể khai triển theo các đa thức Legendre:
 
 $$
 V(r,\theta) = -\frac{GM}{r}\sum_n \left(\frac{R}{r}\right)^n P_n(\cos\theta).
@@ -123,42 +129,41 @@ $$
 
 ## Chiến lược giảng dạy tương tác
 
-- **Hoạt động "Tìm pattern"**: Cho sinh viên quan sát các giá trị $$ \Gamma(1) $$, $$ \Gamma(2) $$, $$ \Gamma(3) $$, $$ \Gamma(4) $$ và nhận ra quy luật $$ \Gamma(n+1) = n! $$.
-- **Thảo luận nhóm**: Mỗi nhóm nghiên cứu một hàm đặc biệt (Gamma, Bessel, Legendre, Hermite): định nghĩa, tính chất, ứng dụng. Các nhóm trình bày cho nhau.
-- **Câu đố nhanh**: "Phương trình nào sinh ra hàm Bessel: $$ xy'' + y' + x^2 y = 0 $$ hay $$ x^2 y'' + xy' + (x^2 - n^2)y = 0 $$?".
+- **Hoạt động "Tìm quy luật"**: Cho sinh viên tính các giá trị $$ \Gamma(1) $$, $$ \Gamma(2) $$, $$ \Gamma(3) $$, $$ \Gamma(4) $$ để tự rút ra quy luật $$ \Gamma(n+1) = n! $$.
+- **Thảo luận nhóm**: Phân công mỗi nhóm tìm hiểu một họ hàm đặc biệt (Gamma, Bessel, Legendre, Hermite) theo khung định nghĩa–tính chất–ứng dụng rồi trình bày trước lớp.
+- **Câu hỏi nhanh**: "Trong hai phương trình $$ xy'' + y' + x^2 y = 0 $$ và $$ x^2 y'' + xy' + (x^2 - n^2)y = 0 $$, phương trình nào là phương trình Bessel?"
 
 ## Phân hóa học tập
 
-### Hỗ trợ sinh viên còn gặp khó khăn
+### Hỗ trợ sinh viên gặp khó khăn
 
-- Tập trung vào một hoặc hai hàm đặc biệt quan trọng nhất (Gamma và Bessel).
-- Vẽ đồ thị để trực quan hóa thay vì chứng minh.
-- Nhớ công thức cơ bản và hệ thức truy hồi, không cần chứng minh mọi thứ.
+- Tập trung trước vào hai họ hàm cơ bản nhất là Gamma và Bessel.
+- Dùng đồ thị để xây dựng trực giác trước khi đi sâu vào biểu thức chuỗi.
+- Ưu tiên nắm vững dạng phương trình và hệ thức truy hồi trước khi chứng minh chi tiết.
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Nghiên cứu và trình bày về hàm hypergeometric và mối liên hệ với các hàm đặc biệt khác.
-- Tìm hiểu về phương pháp WKB trong cơ học lượng tử và vai trò của các hàm đặc biệt.
-- Ứng dụng: giải phương trình Schrödinger cho nguyên tử hydro (hàm Laguerre).
+- Tìm hiểu hàm siêu bội (hypergeometric) và cách nhiều hàm đặc biệt là trường hợp riêng của nó.
+- Tìm hiểu phương pháp WKB trong cơ học lượng tử và vai trò của các hàm đặc biệt (như hàm Airy).
+- Khảo sát nghiệm phương trình Schrödinger cho nguyên tử hydro gắn với các đa thức Laguerre.
 
 ## Tóm tắt dễ nhớ
 
-**Gamma**: Mở rộng giai thừa, với $$ \Gamma(z+1) = z\Gamma(z) $$ và $$ \Gamma(1/2) = \sqrt{\pi} $$.
-**Beta**: $$ B(p,q) = \Gamma(p)\Gamma(q)/\Gamma(p+q) $$.
-**Bessel**: Giải phương trình $$ x^2 y'' + xy' + (x^2 - \nu^2)y = 0 $$, mô tả dao động tròn.
-**Legendre**: Giải phương trình $$ \left(1-x^2\right)y'' - 2xy' + n(n+1)y = 0 $$, mô tả đối xứng cầu.
-**Hermite**: Giải phương trình $$ y'' - 2xy' + 2ny = 0 $$, mô tả dao động tử điều hòa.
-Các hàm đặc biệt là "ngôn ngữ" của tự nhiên khi có đối xứng—tròn, cầu, hay điều hòa.
+- **Gamma**: Mở rộng giai thừa, với $$ \Gamma(z+1) = z\Gamma(z) $$ và $$ \Gamma(1/2) = \sqrt{\pi} $$.
+- **Beta**: $$ B(p,q) = \Gamma(p)\Gamma(q)/\Gamma(p+q) $$.
+- **Bessel**: Nghiệm của $$ x^2 y'' + xy' + (x^2 - \nu^2)y = 0 $$, gắn với đối xứng tròn và trụ.
+- **Legendre**: Nghiệm đa thức của $$ \left(1-x^2\right)y'' - 2xy' + n(n+1)y = 0 $$, gắn với đối xứng cầu.
+- **Hermite**: Nghiệm đa thức của $$ y'' - 2xy' + 2ny = 0 $$, gắn với dao động tử điều hòa lượng tử.
 
 ## Video tham khảo
 
-- xem trước: [The Gamma Function, its Properties, and Application to Bessel Functions](https://www.youtube.com/watch?v=PwCl7vVyXwY) — Faculty of Khan, tiếng Anh. Hàm gamma và cách nó đi vào chuỗi của hàm Bessel.
-- [Intro to the Gamma Function](https://www.youtube.com/watch?v=c7_F4P71E2E) — Physics and Math Lectures, tiếng Anh. Giới thiệu ngắn về cách mở rộng giai thừa bằng tích phân gamma.
-- [Introduction to the Gamma function & the Pi function (extending the factorial!)](https://www.youtube.com/watch?v=L4Trz6pFut4) — blackpenredpen, tiếng Anh. Một góc nhìn cẩn thận khác về hàm gamma như thác triển giải tích của giai thừa.
+- Xem trước: [The Gamma Function, its Properties, and Application to Bessel Functions](https://www.youtube.com/watch?v=PwCl7vVyXwY) — Faculty of Khan, tiếng Anh. Giới thiệu hàm Gamma và cách nó xuất hiện trong biểu diễn chuỗi của hàm Bessel.
+- [Intro to the Gamma Function](https://www.youtube.com/watch?v=c7_F4P71E2E) — Physics and Math Lectures, tiếng Anh. Giới thiệu ngắn gọn cách mở rộng giai thừa bằng tích phân Gamma.
+- [Introduction to the Gamma function & the Pi function (extending the factorial!)](https://www.youtube.com/watch?v=L4Trz6pFut4) — blackpenredpen, tiếng Anh. Trình bày chi tiết hàm Gamma như phép thác triển giải tích của giai thừa.
 
 ## Tài liệu tham khảo
 
-- Arfken & Weber — *Mathematical Methods for Physicists*: chương 10-14 trình bày chi tiết các hàm đặc biệt.
-- Watson — *A Treatise on the Theory of Bessel Functions*: tài liệu tham khảo chuẩn về hàm Bessel.
-- Abramowitz & Stegun — *Handbook of Mathematical Functions*: tài liệu tra cứu đầy đủ nhất.
-- Griffiths — *Introduction to Quantum Mechanics*: ứng dụng hàm Hermite và Laguerre.
+- Arfken & Weber — *Mathematical Methods for Physicists*: chương 10–14 trình bày hệ thống về các hàm đặc biệt.
+- Watson — *A Treatise on the Theory of Bessel Functions*: tài liệu chuyên khảo kinh điển về hàm Bessel.
+- Abramowitz & Stegun — *Handbook of Mathematical Functions*: sổ tay tra cứu chuẩn về hàm đặc biệt.
+- Griffiths — *Introduction to Quantum Mechanics*: trình bày ứng dụng của đa thức Hermite và Laguerre.

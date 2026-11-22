@@ -12,15 +12,15 @@ lesson_type: optional
 
 ## Mục Đích Của Bài Hỗ Trợ
 
-Bài này gom các minh họa tương tác của Chương 13 vào một không gian học tập thống nhất. Các bài chính trong chương lần lượt phát triển trực giác về rời rạc hóa, sai số cục bộ và toàn cục, độ cứng, miền ổn định, lưới sai phân cho PDE, trực giác phần tử hữu hạn và quỹ đạo ngẫu nhiên. Gallery giúp đặt các ý niệm đó cạnh nhau để người học thấy chúng thực sự thuộc về cùng một ngôn ngữ của giải tích số.
+Bài học này tập hợp toàn bộ các minh họa tương tác của Chương 13 vào một không gian học tập thống nhất. Các bài chính trong chương lần lượt phát triển trực giác về rời rạc hóa, sai số cục bộ và toàn cục, độ cứng, miền ổn định, lưới sai phân hữu hạn cho PDE, hàm cơ sở phần tử hữu hạn và quỹ đạo ngẫu nhiên. Bộ minh họa đặt các ý niệm đó cạnh nhau để người học thấy rõ chúng cùng thuộc một khuôn khổ thống nhất của giải tích số.
 
-Nội dung số thường khó nhớ nếu chỉ được học như công thức. Khi nhìn thấy nghiệm số nổ tung vì bước thời gian quá lớn, hoặc thấy ràng buộc CFL xuất hiện từ hình học của stencil, sinh viên sẽ dễ nối kết định lý với hành vi tính toán thực tế hơn nhiều. Đây là vai trò chính của bài bổ trợ này.
+Các khái niệm giải tích số thường khó ghi nhớ nếu chỉ học qua công thức. Khi trực tiếp quan sát nghiệm số bùng nổ do bước thời gian vượt ngưỡng ổn định, hoặc thấy ràng buộc CFL xuất phát từ hình học mẫu sai phân, sinh viên sẽ dễ dàng gắn kết lý thuyết với hành vi thực tế của thuật toán.
 
 ## Cách Sử Dụng Bài Này
 
-Một cách học tốt là quay lại gallery sau khi đọc xong từng phương pháp hoặc định lý trong bài chính. Hãy tự hỏi đại lượng nào đang được kiểm soát trong minh họa: sai số cắt cụt, hệ số khuếch đại, phản ứng với độ cứng, độ mịn của lưới, hay sự khác nhau giữa nhiễu ngẫu nhiên và xu hướng xác định. Khi làm như vậy, gallery trở thành cây cầu nối giữa công thức và hành vi mô phỏng.
+Nên quay lại bộ minh họa sau khi hoàn thành từng phương pháp hoặc định lý trong bài chính. Với mỗi minh họa, hãy xác định đại lượng đang được kiểm soát: sai số cắt cụt, hệ số khuếch đại, phản ứng trước độ cứng, độ mịn lưới hay sự khác biệt giữa thành phần ngẫu nhiên và xu hướng xác định. Nhờ đó, trang tổng hợp trở thành cầu nối giữa công thức toán học và hành vi mô phỏng.
 
-Trang này cũng phù hợp để ôn tập trước khi chuyển từ ODE số sang PDE số, vì nó gom lại trong một chỗ toàn bộ ngôn ngữ về consistency, convergence và stability.
+Trang này cũng phù hợp để ôn tập khi chuyển từ giải số ODE sang giải số PDE, vì nó hệ thống hóa cùng một chỗ các khái niệm nhất quán, ổn định và hội tụ.
 
 ## Gallery Tương Tác Nhúng Trực Tiếp
 
@@ -33,9 +33,9 @@ Trang này cũng phù hợp để ôn tập trước khi chuyển từ ODE số 
 
 ## Câu Hỏi Gợi Ý Khi Học
 
-1. Minh họa nào chủ yếu nói về độ chính xác, và minh họa nào chủ yếu nói về ổn định?
-2. Ở đâu ta thấy rõ sự khác nhau giữa trực giác hình học của ODE và hiện tượng thuần túy rời rạc của thuật toán số?
-3. Các ví dụ PDE và SDE đã mở rộng khái niệm "xấp xỉ số" vượt ra ngoài bài toán giá trị ban đầu cổ điển như thế nào?
+1. Minh họa nào chủ yếu làm nổi bật độ chính xác, và minh họa nào làm nổi bật tính ổn định?
+2. Ở những ví dụ nào ta thấy rõ sự khác biệt giữa tính chất của phương trình liên tục và hành vi thuần túy rời rạc của thuật toán số?
+3. Các ví dụ về PDE và SDE đã mở rộng khái niệm xấp xỉ số vượt ra ngoài bài toán giá trị ban đầu cổ điển như thế nào?
 
 ## Liên Kết Tới Các Bài Học Chính
 
@@ -51,6 +51,6 @@ Trang này cũng phù hợp để ôn tập trước khi chuyển từ ODE số 
 
 ## Video tham khảo
 
-- xem trước: [Runge-Kutta Integrator Overview:  All Purpose Numerical Integration of Differential Equations](https://www.youtube.com/watch?v=HOWJp8NV5xU) — Steve Brunton, tiếng Anh. Runge-Kutta, một trong các lược đồ bộ minh họa đang so sánh.
-- [Deriving Forward Euler and Backward/Implicit Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=MstPeOTCVzQ) — Steve Brunton, tiếng Anh. Các bước Euler, lược đồ kia trên cùng các hình.
-- [Chaotic Dynamical Systems](https://www.youtube.com/watch?v=PDeN3iCtyNY) — Steve Brunton, tiếng Anh. Động lực hỗn loạn, nơi một lược đồ ổn định vẫn không dự đoán được xa.
+- xem trước: [Runge-Kutta Integrator Overview:  All Purpose Numerical Integration of Differential Equations](https://www.youtube.com/watch?v=HOWJp8NV5xU) — Steve Brunton, tiếng Anh. Tổng quan về phương pháp Runge–Kutta được đối chiếu trong bộ minh họa.
+- [Deriving Forward Euler and Backward/Implicit Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=MstPeOTCVzQ) — Steve Brunton, tiếng Anh. Dẫn xuất lược đồ Euler tiến và Euler lùi tương ứng với các hình minh họa trong chương.
+- [Chaotic Dynamical Systems](https://www.youtube.com/watch?v=PDeN3iCtyNY) — Steve Brunton, tiếng Anh. Giới thiệu hệ động lực hỗn loạn — nơi ngay cả lược đồ ổn định cũng bị giới hạn về tầm dự báo dài hạn.

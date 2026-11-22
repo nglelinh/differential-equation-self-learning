@@ -14,27 +14,27 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài optional này kết nối các ý tưởng của chương với cơ học lượng tử. Sau bài học, sinh viên cần hiểu vai trò của Hamiltonian như một toán tử tự liên hợp, ý nghĩa vật lý của phổ năng lượng, và cách semiclassical analysis cùng spectral theory bước vào phương trình Schrödinger.
+Bài học tùy chọn này kết nối các ý tưởng của Chương 15 với cơ học lượng tử. Sau bài học, sinh viên cần hiểu vai trò của toán tử Hamilton như một toán tử tự liên hợp, nắm ý nghĩa vật lý của phổ năng lượng, và thấy rõ cách giải tích bán cổ điển cùng lý thuyết phổ vận hành trong phương trình Schrödinger.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm không gian Hilbert, trị riêng, toán tử tự liên hợp, và phương trình Schrödinger cơ bản. Kiến thức về semiclassical analysis và phổ từ các bài trước sẽ giúp tạo ra bức tranh thống nhất hơn.
+Sinh viên nên nắm không gian Hilbert, bài toán trị riêng, toán tử tự liên hợp và phương trình Schrödinger cơ bản. Kiến thức về giải tích bán cổ điển và tiệm cận phổ từ các bài trước sẽ giúp liên kết nội dung bài học thành một bức tranh thống nhất.
 
 ## Dẫn nhập
 
-Cơ học lượng tử là một trong những nơi hiếm hoi mà operator theory không chỉ là ngôn ngữ toán học, mà còn là ngôn ngữ vật lý trực tiếp. Trạng thái của hệ là hàm sóng, động lực là phương trình Schrödinger, còn năng lượng được mã hóa bởi phổ của Hamiltonian. Vì vậy, mọi thứ ta học về phổ, tự liên hợp, semiclassical limit, và singularity đều có một điểm gặp rất tự nhiên ở đây.
+Cơ học lượng tử là lĩnh vực mà lý thuyết toán tử không chỉ đóng vai trò công cụ toán học mà trực tiếp là ngôn ngữ diễn tả vật lý: trạng thái hệ được biểu diễn bởi hàm sóng, sự tiến hóa tuân theo phương trình Schrödinger, và các mức năng lượng được xác định bởi phổ của toán tử Hamilton. Nhờ vậy, lý thuyết phổ, tính tự liên hợp, giới hạn bán cổ điển và cấu trúc kỳ dị hội tụ rất tự nhiên tại đây.
 
-Bài này không nhằm dạy đầy đủ vật lý lượng tử, mà nhằm cho sinh viên thấy tại sao PDE hiện đại lại gắn chặt với quantum mechanics.
+Bài học này không nhằm trình bày toàn bộ vật lý lượng tử mà tập trung làm rõ mối liên hệ mật thiết giữa PDE hiện đại và cơ học lượng tử.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Trong cơ học cổ điển, ta theo dõi vị trí và vận tốc của hạt theo thời gian. Trong cơ học lượng tử, ta không còn làm vậy trực tiếp; thay vào đó, ta theo dõi hàm sóng và hỏi năng lượng nào được phép, xác suất phân bố ra sao, và điều gì xảy ra trong giới hạn bước sóng rất nhỏ. Các toán tử chính là bộ máy trả lời những câu hỏi ấy.
+Trong cơ học cổ điển, ta theo dõi trực tiếp vị trí và vận tốc của hạt theo thời gian. Trong cơ học lượng tử, ta theo dõi hàm sóng để xác định các mức năng lượng cho phép, phân bố xác suất và hành vi của hệ khi bước sóng rất nhỏ — tất cả đều được mô tả qua các toán tử tuyến tính.
 
 ### Cách hình ảnh
 
-Giáo viên nên vẽ một “giếng thế năng” và các mức năng lượng rời rạc nằm trong đó. Sau đó vẽ các eigenfunction tương ứng. Hình ảnh này rất quen thuộc và giúp sinh viên thấy ngay: phổ của toán tử không còn là khái niệm trừu tượng mà là các mức năng lượng quan sát được.
+Có thể vẽ một giếng thế năng cùng các mức năng lượng rời rạc nằm bên trong và các hàm riêng tương ứng. Hình ảnh quen thuộc này cho thấy ngay phổ của toán tử chính là các mức năng lượng quan sát được trong vật lý.
 
 ### Cách hình thức
 
@@ -46,127 +46,127 @@ i\hbar \partial_t\psi
 \left(-\frac{\hbar^2}{2m}\Delta+V(x)\right)\psi.
 $$
 
-Hamiltonian là
+Toán tử Hamilton là
 
 $$ H=-\frac{\hbar^2}{2m}\Delta+V(x). $$
 
-Nếu $$ H $$ tự liên hợp, toán tử tiến hóa $$ e^{-itH/\hbar} $$ là đơn vị, bảo toàn chuẩn $$ L^2 $$ của hàm sóng. Các trị riêng của $$ H $$ mang ý nghĩa mức năng lượng của hệ.
+Khi $$ H $$ là toán tử tự liên hợp, toán tử tiến hóa $$ e^{-itH/\hbar} $$ là toán tử đơn vị (unitary), bảo toàn chuẩn $$ L^2 $$ của hàm sóng (tức bảo toàn tổng xác suất). Các trị riêng của $$ H $$ tương ứng với các mức năng lượng của hệ.
 
 ## Ngộ nhận thường gặp
 
-### “Hàm sóng là một dao động vật lý như dây đàn”
+### “Hàm sóng là một dao động cơ học như dây đàn”
 
-Không hoàn toàn. Hàm sóng mang thông tin xác suất và pha, không phải một dịch chuyển cơ học trực tiếp.
+Không chính xác. Hàm sóng là hàm phức mang biên độ xác suất và pha, không phải độ lệch cơ học trực tiếp.
 
-### “Phổ chỉ là công cụ toán học để giải phương trình”
+### “Phổ chỉ là công cụ toán học hỗ trợ giải phương trình”
 
-Sai. Trong quantum mechanics, phổ có ý nghĩa vật lý trực tiếp là năng lượng.
+Sai. Trong cơ học lượng tử, phổ mang ý nghĩa vật lý trực tiếp là tập hợp các mức năng lượng khả dĩ.
 
-### “Tự liên hợp chỉ là điều kiện kỹ thuật”
+### “Tính tự liên hợp chỉ là điều kiện kỹ thuật phụ”
 
-Không. Nó bảo đảm năng lượng thực và tiến hóa đơn vị.
+Không đúng. Tính tự liên hợp bảo đảm năng lượng là số thực và sự tiến hóa theo thời gian có tính đơn vị.
 
-### “Semiclassical limit làm cơ học lượng tử biến hẳn thành cơ học cổ điển”
+### “Giới hạn bán cổ điển biến cơ học lượng tử thành cơ học cổ điển hoàn toàn”
 
-Không. Nó cho cầu nối mạnh, nhưng vẫn còn những hiệu ứng lượng tử tinh vi.
+Không. Giới hạn bán cổ điển cung cấp cầu nối định lượng mạnh mẽ, nhưng các hiệu ứng lượng tử tinh vi vẫn tồn tại.
 
 ## Tiến trình học
 
-### Bước 1: Viết Hamiltonian
+### Bước 1: Viết toán tử Hamilton
 
-Nhấn mạnh cấu trúc
+Nhấn mạnh cấu trúc cơ bản
 
 $$ -\hbar^2\Delta+V(x). $$
 
-### Bước 2: Nhắc vai trò của tự liên hợp
+### Bước 2: Hiểu vai trò của tính tự liên hợp
 
-Đây là chìa khóa cho năng lượng thực và bảo toàn xác suất.
+Khẳng định tính tự liên hợp là điều kiện bảo đảm trị riêng thực và bảo toàn xác suất.
 
-### Bước 3: Kết nối với trị riêng
+### Bước 3: Kết nối với bài toán trị riêng
 
-Mức năng lượng rời rạc xuất hiện như eigenvalues.
+Nhận diện các mức năng lượng rời rạc như các trị riêng của toán tử Hamilton.
 
-### Bước 4: Kết nối với semiclassical analysis
+### Bước 4: Liên hệ với giải tích bán cổ điển
 
-Cho sinh viên thấy tại sao quỹ đạo cổ điển xuất hiện khi $$ \hbar $$ nhỏ.
+Giải thích cơ chế quỹ đạo cổ điển xuất hiện khi $$ \hbar $$ nhỏ.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có giải thích được vì sao Hamiltonian phải tự liên hợp không?
-- Sinh viên có nêu được ý nghĩa vật lý của phổ không?
-- Sinh viên có thấy vai trò của semiclassical analysis trong việc nối lượng tử với cổ điển không?
+- Sinh viên có giải thích được vì sao toán tử Hamilton phải tự liên hợp hay không?
+- Sinh viên có nêu rõ ý nghĩa vật lý của phổ toán tử hay không?
+- Sinh viên có hiểu vai trò của giải tích bán cổ điển trong việc nối cơ học lượng tử với cơ học cổ điển hay không?
 
 ## Ví dụ có lời giải
 
 ### Ví dụ 1: Hạt tự do
 
-Nếu $$ V(x)=0 $$, thì Hamiltonian là
+Khi $$ V(x)=0 $$, toán tử Hamilton có dạng
 
 $$ H=-\frac{\hbar^2}{2m}\Delta. $$
 
-Phổ liên tục phản ánh việc hạt tự do không bị giam cầm và có thể mang nhiều mức động lượng.
+Phổ của toán tử là phổ liên tục, phản ánh việc hạt tự do không bị giam giữ và có thể nhận mọi mức năng lượng không âm.
 
 ### Ví dụ 2: Giếng thế năng vô hạn
 
-Trên một đoạn bị chặn với điều kiện biên Dirichlet, phổ của Hamiltonian trở thành rời rạc. Điều này cho ta các mức năng lượng lượng tử hóa, một trong những ví dụ kinh điển nhất của operator theory trong vật lý.
+Trên một đoạn hữu hạn với điều kiện biên Dirichlet, phổ của toán tử Hamilton trở nên rời rạc, tạo ra các mức năng lượng lượng tử hóa — một ví dụ kinh điển của lý thuyết toán tử trong vật lý.
 
-### Ví dụ 3: Dao động điều hòa
+### Ví dụ 3: Dao động tử điều hòa
 
-Với thế $$ V(x)=x^2 $$, phổ cũng rời rạc và có cấu trúc rất đều. Đây là ví dụ giúp sinh viên thấy phổ có thể mang nhiều thông tin hơn chỉ “có hay không có trị riêng”.
+Với thế năng $$ V(x)=x^2 $$, phổ cũng rời rạc và cách đều nhau, cho thấy cấu trúc phổ chứa nhiều thông tin định lượng hơn là chỉ sự tồn tại của trị riêng.
 
-### Ví dụ 4: Giới hạn semiclassical
+### Ví dụ 4: Giới hạn bán cổ điển
 
-Khi $$ \hbar $$ rất nhỏ, wave packets của phương trình Schrödinger thường bám theo quỹ đạo cổ điển trong thời gian thích hợp. Ví dụ này nối trực tiếp bài này với semiclassical analysis.
+Khi $$ \hbar $$ rất nhỏ, các gói sóng của phương trình Schrödinger bám sát quỹ đạo cổ điển trong một khoảng thời gian thích hợp, kết nối trực tiếp bài học này với giải tích bán cổ điển.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao tự liên hợp là điều kiện vật lý tự nhiên cho Hamiltonian?
-2. Tại sao mức năng lượng của hệ được đọc từ trị riêng của toán tử?
-3. Điều gì làm cho phương trình Schrödinger vừa gần với wave equation, vừa rất khác wave equation?
+1. Vì sao tính tự liên hợp là điều kiện vật lý tự nhiên đối với toán tử Hamilton?
+2. Vì sao các mức năng lượng của hệ được đọc trực tiếp từ phổ của toán tử?
+3. Phương trình Schrödinger có điểm gì gần gũi và điểm gì khác biệt so với phương trình sóng?
 
 ## Bài toán ứng dụng
 
-1. Trong vật lý nguyên tử, vì sao phổ rời rạc của Hamiltonian dẫn tới các vạch phổ quan sát được?
-2. Trong hóa học lượng tử, vì sao việc tính trị riêng của Hamiltonian lại gắn với cấu trúc phân tử?
-3. Trong thiết bị lượng tử, việc điều khiển thế năng $$ V(x) $$ có thể thay đổi mức năng lượng ra sao?
+1. Trong vật lý nguyên tử, vì sao phổ rời rạc của toán tử Hamilton dẫn tới các vạch phổ quang học?
+2. Trong hóa học lượng tử, việc tìm trị riêng của toán tử Hamilton gắn liền với cấu trúc phân tử như thế nào?
+3. Trong linh kiện lượng tử, việc thay đổi thế năng giam giữ $$ V(x) $$ tác động ra sao đến các mức năng lượng?
 
 ## Chiến lược dạy học tương tác
 
-### Câu hỏi nên hỏi trên lớp
+### Câu hỏi nên đặt trên lớp
 
-- Nếu năng lượng phải là số thực, toán tử năng lượng nên có tính chất gì?
-- Em hiểu “mức năng lượng rời rạc” bằng hình ảnh nào?
-- Tại sao cơ học lượng tử lại làm operator theory trở nên rất cụ thể?
+- Nếu năng lượng đo được phải là số thực, toán tử tương ứng cần thỏa tính chất nào?
+- Có thể hình dung “mức năng lượng rời rạc” qua hình ảnh trực quan nào?
+- Vì sao cơ học lượng tử làm cho lý thuyết toán tử trở nên rất cụ thể?
 
 ### Hoạt động gợi ý
 
-- Vẽ giếng thế và các eigenfunction đầu tiên.
-- So sánh Laplacian trên toàn trục và trên miền bị chặn để thấy phổ liên tục và rời rạc.
-- Thảo luận nhóm về sự khác nhau giữa mô hình hạt tự do và hạt bị giam cầm.
+- Vẽ giếng thế năng cùng các hàm riêng bậc thấp.
+- So sánh toán tử Laplace trên toàn trục thực và trên đoạn hữu hạn để phân biệt phổ liên tục với phổ rời rạc.
+- Thảo luận nhóm về sự khác biệt giữa hạt tự do và hạt bị giam giữ.
 
-### Cách tăng tham gia
+### Cách tăng mức độ tham gia
 
-- Bắt đầu từ hình ảnh các mức năng lượng.
-- Cho sinh viên kể lại bài toán trị riêng theo ngôn ngữ vật lý.
-- Mời sinh viên dự đoán điều gì xảy ra với phổ khi thay đổi thế năng.
+- Mở đầu bằng hình ảnh các mức năng lượng quen thuộc.
+- Đề nghị sinh viên diễn giải bài toán trị riêng bằng ngôn ngữ vật lý.
+- Mời sinh viên dự đoán sự thay đổi của phổ khi điều chỉnh hình dạng thế năng.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Bám vào giếng thế vô hạn như ví dụ quen thuộc.
-- Giải thích kỹ bằng hình thay vì formalism lượng tử sâu.
-- Nhấn mạnh ba ý chính: Hamiltonian, tự liên hợp, phổ năng lượng.
+- Bám sát ví dụ giếng thế năng vô hạn quen thuộc.
+- Ưu tiên minh họa hình học thay vì đi sâu vào hình thức hóa lượng tử trừu tượng.
+- Nhấn mạnh ba trụ cột: toán tử Hamilton, tính tự liên hợp và phổ năng lượng.
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Liên hệ với toán tử resolvent và Green function.
+- Liên hệ với toán tử resolvent và hàm Green.
 - Tìm hiểu nguyên lý bất định dưới góc nhìn không gian pha.
-- Khảo sát vai trò của semiclassical limit trong quantum chaos.
+- Khảo sát vai trò của giới hạn bán cổ điển trong hỗn loạn lượng tử.
 
 ## Ghi nhớ nhanh
 
-Cơ học lượng tử biến operator theory thành vật lý cụ thể: Hamiltonian là toán tử năng lượng, tính tự liên hợp bảo đảm tiến hóa hợp lý, còn phổ của Hamiltonian chính là các mức năng lượng của hệ. Vì vậy semiclassical analysis và spectral theory có vai trò trung tâm trong quantum mechanics.
+Cơ học lượng tử gắn trực tiếp lý thuyết toán tử với vật lý: toán tử Hamilton đại diện cho năng lượng, tính tự liên hợp bảo đảm tiến hóa đơn vị, và phổ của toán tử Hamilton chính là các mức năng lượng của hệ. Nhờ đó, giải tích bán cổ điển và lý thuyết phổ giữ vai trò trung tâm.
 
 ---
 
@@ -174,35 +174,35 @@ Cơ học lượng tử biến operator theory thành vật lý cụ thể: Hami
 
 ### 1. Giếng thế lượng tử và linh kiện bán dẫn
 
-Một mô hình giam cầm một chiều có dạng
+Mô hình giam giữ một chiều có dạng
 
 $$
 i h \partial_t \psi = \left(-\frac{h^2}{2m}\partial_x^2 + V(x)\right)\psi.
 $$
 
-Nếu $$ V(x) $$ tạo ra một giếng thế, bài toán dừng sẽ có các trạng thái liên kết với mức năng lượng rời rạc. Mô hình này giả định một hạt hiệu dụng duy nhất và thế năng lý tưởng hóa. Trong linh kiện thực, tương tác nhiều hạt và sai hỏng vật liệu cũng ảnh hưởng đáng kể. Diễn giải chính là: các trị riêng không chỉ là con số toán học, mà là các mức năng lượng chi phối dòng điện tử và chuyển mức quang học.
+Khi $$ V(x) $$ tạo thành giếng thế, bài toán dừng cho các trạng thái liên kết với mức năng lượng rời rạc (dưới giả thiết một hạt hiệu dụng và thế lý tưởng; linh kiện thực còn chịu tương tác nhiều hạt và khuyết tật tinh thể). Các trị riêng này chi phối trực tiếp chuyển mức quang học và dẫn điện trong linh kiện bán dẫn.
 
 ### 2. Bẫy điều hòa trong vật lý nguyên tử lạnh
 
-Nguyên tử lạnh trong bẫy từ hay bẫy quang học thường được gần đúng bởi Hamiltonian
+Nguyên tử lạnh trong bẫy từ hoặc bẫy quang học thường được mô hình hóa gần đúng bởi toán tử Hamilton
 
 $$
 H=-\frac{h^2}{2m}\Delta + \frac{1}{2}m\omega^2\lvert x\rvert^2.
 $$
 
-Mô hình này dẫn tới phổ đều đặn và các eigenfunction tập trung gần tâm bẫy. Giả định đơn giản nhất bỏ qua tương tác giữa các nguyên tử. Diễn giải là cấu trúc của toán tử dự đoán trực tiếp các tần số cộng hưởng quan sát được trong thí nghiệm.
+Mô hình (khi bỏ qua tương tác giữa các nguyên tử) cho phổ rời rạc cách đều và các hàm riêng định xứ quanh tâm bẫy, dự đoán trực tiếp các tần số cộng hưởng quan sát trong thí nghiệm.
 
 ### 3. Tán xạ và xuyên hầm ở thang nano
 
-Khi hạt gặp một rào thế, nghiệm dừng của phương trình Schrödinger cho biết biên độ truyền qua và phản xạ lại. Mô hình giả định vận chuyển coherent và decoherence không đáng kể. Ý nghĩa vật lý là xác suất xuyên hầm có thể khác 0 ngay cả khi cơ học cổ điển dự đoán hạt không vượt qua được rào thế. Đây là hiệu ứng cốt lõi trong nhiều thiết bị nano.
+Khi hạt gặp rào thế, nghiệm dừng của phương trình Schrödinger xác định biên độ truyền qua và phản xạ (trong chế độ vận chuyển kết hợp, bỏ qua mất kết hợp). Xác suất xuyên hầm có thể khác 0 ngay cả khi năng lượng thấp hơn đỉnh rào thế — hiệu ứng nền tảng trong nhiều linh kiện nano.
 
 ## Trực giác sâu hơn
 
-Hamiltonian không chỉ là một toán tử vi phân được chọn cho tiện. Nó gói thông tin về năng lượng, đối xứng, và định luật bảo toàn của hệ. Một ngộ nhận phổ biến là nghĩ rằng hàm sóng tự nó là đại lượng đo trực tiếp được; thực ra các đại lượng vật lý đi ra từ chuẩn, kỳ vọng, và phổ gắn với hàm sóng.
+Toán tử Hamilton không chỉ là một biểu thức vi phân tiện lợi mà mã hóa năng lượng, đối xứng và định luật bảo toàn của hệ. Cần lưu ý rằng bản thân hàm sóng không phải đại lượng đo trực tiếp; các đại lượng quan sát vật lý thu được từ chuẩn, giá trị kỳ vọng và phổ gắn với hàm sóng.
 
 ## Trực quan hóa bằng Python
 
-Đoạn code dưới đây tính gần đúng vài mức năng lượng đầu cho hạt trong giếng thế vô hạn bằng sai phân hữu hạn.
+Đoạn mã dưới đây tính xấp xỉ bốn mức năng lượng đầu tiên cho hạt trong giếng thế vô hạn bằng phương pháp sai phân hữu hạn.
 
 ```python
 import numpy as np
@@ -234,7 +234,7 @@ plt.show()
 
 ## Trực quan hóa bằng JavaScript
 
-Có thể dùng `Plotly.js` để vẽ đồng thời ba eigenfunction đầu của hạt trong giếng thế vô hạn, đặt chồng lên các mức năng lượng $$ E_1, E_2, E_3 $$ để sinh viên nhìn thấy ngay mối liên hệ giữa trị riêng và trạng thái riêng.
+Có thể dùng `Plotly.js` để vẽ đồng thời ba hàm riêng đầu tiên của hạt trong giếng thế vô hạn đặt chồng lên các mức năng lượng $$ E_1, E_2, E_3 $$, minh họa trực tiếp mối liên hệ giữa trị riêng và trạng thái riêng.
 
 ## Gợi ý tài nguyên ngoài
 
@@ -244,11 +244,11 @@ Tìm kiếm: `particle in a box energy levels animation`, `harmonic oscillator e
 
 ### Mức đại học (Undergraduate)
 
-Tập trung vào các trạng thái liên kết, mức năng lượng rời rạc, và bảo toàn xác suất. Sinh viên nên nối các ví dụ giếng thế và dao động điều hòa với bài toán trị riêng đã học.
+Tập trung vào các trạng thái liên kết, mức năng lượng rời rạc và bảo toàn xác suất, nối trực tiếp giếng thế và dao động tử điều hòa với bài toán trị riêng đã học.
 
 ### Mức sau đại học (Graduate)
 
-Đi sâu vào tự liên hợp của toán tử không bị chặn, miền xác định, spectral measures, semiclassical concentration, cùng các bài toán scattering hay resonance.
+Đi sâu vào tính tự liên hợp của toán tử không bị chặn, miền xác định, độ đo phổ (spectral measures), sự tập trung bán cổ điển cùng các bài toán tán xạ và cộng hưởng.
 
 > Xem toàn bộ minh họa tương tác của chương tại: [Bộ Minh họa tương tác Chương 15]({{ site.baseurl }}/contents/vi/chapter15/15_10_Interactive_Gallery/)
 
@@ -257,22 +257,22 @@ Tập trung vào các trạng thái liên kết, mức năng lượng rời rạ
 ### 1. Ứng dụng thực tế
 
 #### Giếng thế lượng tử
-- Bài toán: Hạt bị giam trong miền hữu hạn chỉ có các mức năng lượng rời rạc.
-- Mô hình: Giải bài toán riêng
+- Bài toán: Hạt bị giam trong miền hữu hạn chỉ nhận các mức năng lượng rời rạc.
+- Mô hình: Giải bài toán trị riêng
 $$ -\psi'' = E\psi $$
-với điều kiện biên phù hợp.
-- Giả thiết và giới hạn: Mô hình 1D lý tưởng, bỏ qua tương tác nhiều hạt.
-- Diễn giải: Quantum mechanics biến thành spectral theory của toán tử tự liên hợp.
+với điều kiện biên thích hợp.
+- Giả thiết và giới hạn: Mô hình 1D lý tưởng, chưa xét tương tác nhiều hạt.
+- Diễn giải: Cơ học lượng tử gắn trực tiếp với lý thuyết phổ của toán tử tự liên hợp.
 
-#### Hiệu ứng tunneling và semiclassical states
-- Bài toán: Trạng thái lượng tử có thể tập trung gần quỹ đạo cổ điển nhưng vẫn có rò xác suất qua vùng cấm cổ điển.
-- Mô hình: Dùng phân tích semiclassical cho toán tử Schrodinger.
-- Giả thiết và giới hạn: Đúng trong chế độ năng lượng và tỉ lệ phù hợp.
-- Diễn giải: Đây là nơi microlocal analysis và quantum mechanics gặp nhau trực tiếp.
+#### Hiệu ứng xuyên hầm và trạng thái bán cổ điển
+- Bài toán: Trạng thái lượng tử tập trung gần quỹ đạo cổ điển nhưng vẫn có xác suất xuyên qua vùng cấm cổ điển.
+- Mô hình: Áp dụng giải tích bán cổ điển cho toán tử Schrödinger.
+- Giả thiết và giới hạn: Có hiệu lực ở chế độ năng lượng và thang tham số phù hợp.
+- Diễn giải: Đây là giao điểm trực tiếp giữa giải tích vi địa phương và cơ học lượng tử.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Toán tử Schrödinger vừa là PDE, vừa là bài toán phổ, vừa là hệ động lực học bán cổ điển. Điều này làm quantum mechanics trở thành nơi hội tụ tự nhiên của cả khóa học. Một bẫy phổ biến là đồng nhất trị riêng với mọi hiện tượng lượng tử; thực ra tán xạ, cộng hưởng và lan truyền gói sóng cũng quan trọng không kém.
+Toán tử Schrödinger đồng thời là một PDE, một bài toán phổ và một hệ động lực học bán cổ điển, khiến cơ học lượng tử trở thành nơi hội tụ của nhiều chủ đề trong khóa học. Ngoài bài toán trị riêng, các hiện tượng tán xạ, cộng hưởng và lan truyền gói sóng cũng đóng vai trò quan trọng không kém.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -301,16 +301,16 @@ plt.show()
 
 Trong giếng thế vô hạn trên $$ [0,1] $$,
 $$ \psi_n(x)=\sin(n\pi x), \qquad E_n=n^2\pi^2. $$
-Các trạng thái này là ví dụ cụ thể nhất cho việc mức năng lượng rời rạc xuất hiện như phổ của toán tử tự liên hợp.
+Đây là ví dụ tường minh nhất cho thấy các mức năng lượng rời rạc xuất hiện như phổ của một toán tử tự liên hợp.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Liên hệ cơ học lượng tử 1D với bài toán trị riêng đã biết.
+**Bậc đại học.** Liên hệ cơ học lượng tử 1D với bài toán trị riêng quen thuộc.
 
-**Bậc sau đại học.** Kết nối với self-adjointness, scattering, resonances va semiclassical concentration.
+**Bậc sau đại học.** Kết nối với tính tự liên hợp, lý thuyết tán xạ, cộng hưởng và sự tập trung bán cổ điển.
 
 ## Video tham khảo
 
-- xem trước: [Math of QM: 5.7. Spectral Theorem for Unbounded Selfadjoint Operators](https://www.youtube.com/watch?v=cdOkiNIONSc) — Roland Speicher, tiếng Anh. Roland Speicher về định lý phổ cho toán tử tự liên hợp không bị chặn.
-- [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Giải tích vi địa phương dùng để nghiên cứu các toán tử lượng tử ấy.
-- [Spectral Theorem For Dummies - 3Blue1Brown Summer of Math Exposition #SoME1](https://www.youtube.com/watch?v=4zD8Kd3HgJA) — Jacqueline Doan, tiếng Anh. Một định lý phổ hình học như phép tương tự hữu hạn chiều.
+- Nên xem trước: [Math of QM: 5.7. Spectral Theorem for Unbounded Selfadjoint Operators](https://www.youtube.com/watch?v=cdOkiNIONSc) — Roland Speicher, tiếng Anh. Bài giảng của Roland Speicher về định lý phổ cho toán tử tự liên hợp không bị chặn.
+- [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Giải tích vi địa phương áp dụng cho các toán tử lượng tử.
+- [Spectral Theorem For Dummies - 3Blue1Brown Summer of Math Exposition #SoME1](https://www.youtube.com/watch?v=4zD8Kd3HgJA) — Jacqueline Doan, tiếng Anh. Giới thiệu trực quan định lý phổ trong trường hợp hữu hạn chiều làm bước đệm hình học.

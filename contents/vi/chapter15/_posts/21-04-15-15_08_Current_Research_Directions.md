@@ -14,188 +14,188 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài cuối này mở cánh cửa từ giáo trình sang nghiên cứu. Sau bài học, sinh viên cần nhìn thấy vài hướng nghiên cứu đương đại xuất phát từ vi địa phương, phổ, semiclassical analysis, và bài toán ngược; hiểu vì sao các chủ đề này còn rất sống động; và có một bản đồ tinh thần để tự đọc sâu hơn sau khóa học.
+Bài học này mở ra cầu nối từ giáo trình sang các hướng nghiên cứu đương đại. Sau bài học, sinh viên cần nhận diện được một số mảng nghiên cứu phát triển từ giải tích vi địa phương, lý thuyết phổ, giải tích bán cổ điển và bài toán ngược; hiểu vì sao các lĩnh vực này tiếp tục được quan tâm; và có một bản đồ khái niệm để tự tìm đọc sâu hơn sau khóa học.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm các chủ đề chính của chương: wave front set, propagation of singularities, FIO, semiclassical analysis, spectral asymptotics, inverse problems, và quantum mechanics. Bài này không nhằm tăng kỹ thuật mà nhằm gắn kết chúng thành một bức tranh nghiên cứu hiện đại.
+Sinh viên nên nắm các chủ đề chính của chương: tập mặt sóng, sự lan truyền kỳ dị, toán tử tích phân Fourier, giải tích bán cổ điển, tiệm cận phổ, bài toán ngược và cơ học lượng tử. Bài học tập trung liên kết các mảng này thành một bức tranh nghiên cứu tổng thể thay vì bổ sung kỹ thuật mới.
 
 ## Dẫn nhập
 
-Đến cuối chương, ta không còn chỉ hỏi “nghiệm có tồn tại không?” hay “có trơn không?”. Ta đã học cách hỏi những câu sâu hơn: singularity đi đâu, phổ tiết lộ gì, dữ liệu đo được nhìn thấy phần nào của cấu trúc ẩn, và giới hạn cao tần nối với động lực học cổ điển ra sao. Đó chính là nơi nghiên cứu hiện đại bắt đầu.
+Đến cuối chương, trọng tâm đã dịch chuyển vượt ra khỏi các câu hỏi truyền thống như “nghiệm có tồn tại hay trơn không?” sang những câu hỏi tinh hơn: kỳ dị lan truyền theo quỹ đạo nào, phổ tiết lộ những bất biến hình học gì, dữ liệu đo ghi nhận được phần nào của cấu trúc ẩn, và giới hạn tần số cao nối với động lực học cổ điển ra sao. Đó chính là điểm xuất phát của nhiều hướng nghiên cứu hiện nay.
 
-Vi địa phương không phải một ngăn riêng của toán học. Nó giao với hình học, vật lý lượng tử, khoa học dữ liệu hình ảnh, địa vật lý, và cả tính toán số cao cấp. Vì vậy, bức tranh nghiên cứu của chương này vừa rộng vừa rất đang phát triển.
+Giải tích vi địa phương không đứng tách biệt mà giao thoa trực tiếp với hình học vi phân, vật lý lượng tử, khoa học ảnh y sinh, địa vật lý và phương pháp số cao tần.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Nếu các chương đầu của khóa học dạy ta “giải phương trình”, thì chương này dạy ta “đọc cấu trúc ẩn đằng sau phương trình”. Nghiên cứu hiện đại đi xa hơn nữa: không chỉ đọc cấu trúc, mà còn hỏi cấu trúc ấy có thể quan sát, khôi phục, điều khiển, hoặc lượng tử hóa như thế nào.
+Nếu các chương đầu của khóa học tập trung vào kỹ thuật giải phương trình, thì Chương 15 hướng tới việc đọc cấu trúc ẩn đằng sau phương trình. Nghiên cứu hiện đại tiến thêm một bước: khảo sát cách quan sát, tái tạo, điều khiển và lượng tử hóa các cấu trúc đó.
 
 ### Cách hình ảnh
 
-Giáo viên nên vẽ một sơ đồ trung tâm với “Microlocal Analysis” ở giữa, rồi các nhánh:
+Có thể vẽ một sơ đồ trung tâm với “Giải tích vi địa phương” ở giữa, tỏa ra các nhánh chính:
 
-- inverse problems;
-- spectral geometry;
-- quantum chaos;
-- scattering theory;
-- nonlinear waves;
-- numerical high-frequency methods.
+- bài toán ngược (inverse problems);
+- hình học phổ (spectral geometry);
+- hỗn loạn lượng tử (quantum chaos);
+- lý thuyết tán xạ (scattering theory);
+- sóng phi tuyến (nonlinear waves);
+- phương pháp số cho bài toán cao tần.
 
-Các mũi tên giữa các nhánh sẽ giúp sinh viên thấy đây không phải những chủ đề tách rời mà là mạng lưới tương tác.
+Các mũi tên liên kết giữa những nhánh này cho thấy chúng tạo thành một mạng lưới tương tác thay vì các chuyên ngành tách rời.
 
 ### Cách hình thức
 
-Một vài hướng nghiên cứu tiêu biểu có thể được mô tả như sau:
+Một số hướng nghiên cứu tiêu biểu bao gồm:
 
-- dùng wave front set và FIO để hiểu bài toán ngược;
-- dùng semiclassical analysis để nghiên cứu phổ cao và quantum chaos;
-- dùng pseudodifferential calculus trên đa tạp để phân tích PDE hình học;
-- dùng microlocal tools để mô tả scattering, resonances, hay damping;
-- mở rộng phân tích vi địa phương sang bối cảnh phi tuyến hoặc ngẫu nhiên.
+- vận dụng tập mặt sóng và FIO để phân tích tính khả kiến trong bài toán ngược;
+- dùng giải tích bán cổ điển để khảo sát phổ năng lượng cao và hỗn loạn lượng tử;
+- phát triển phép tính giả vi phân trên đa tạp để nghiên cứu PDE hình học;
+- áp dụng công cụ vi địa phương cho tán xạ, cộng hưởng (resonances) và suy hao (damping);
+- mở rộng giải tích vi địa phương sang các bài toán phi tuyến hoặc có yếu tố ngẫu nhiên.
 
 ## Ngộ nhận thường gặp
 
-### “Nghiên cứu hiện đại chỉ là chứng minh các định lý khó hơn”
+### “Nghiên cứu hiện đại chỉ là chứng minh các định lý trừu tượng phức tạp hơn”
 
-Không. Nhiều câu hỏi mới đến từ ứng dụng, dữ liệu đo, hoặc vật lý mới.
+Không đúng. Rất nhiều bài toán mới nảy sinh trực tiếp từ dữ liệu đo, thiết bị ảnh học và hiện tượng vật lý mới.
 
-### “Microlocal analysis quá trừu tượng nên khó có ứng dụng”
+### “Giải tích vi địa phương quá trừu tượng nên ít ứng dụng”
 
-Sai. Đây là một trong những ngôn ngữ quan trọng nhất của imaging và wave propagation.
+Sai. Đây là một trong những nền tảng toán học quan trọng nhất của tái tạo ảnh và mô phỏng truyền sóng.
 
-### “Muốn đọc nghiên cứu thì phải nắm toàn bộ kỹ thuật sâu trước”
+### “Phải nắm trọn mọi kỹ thuật sâu trước mới đọc được tài liệu nghiên cứu”
 
-Không hẳn. Một bản đồ khái niệm tốt giúp đọc tài liệu hiệu quả hơn nhiều.
+Không hẳn. Có một bản đồ khái niệm rõ ràng giúp định hướng việc đọc tài liệu chuyên sâu hiệu quả hơn nhiều.
 
-### “Các chủ đề trong chương 15 tách biệt nhau”
+### “Các chủ đề trong Chương 15 đứng độc lập với nhau”
 
-Sai. Chính sức mạnh của chương này là sự kết nối giữa singularity, phổ, hình học và vật lý.
+Sai. Giá trị nổi bật của chương chính là mối liên kết chặt chẽ giữa kỳ dị, phổ, hình học và vật lý.
 
 ## Tiến trình học
 
-### Bước 1: Tóm tắt các công cụ
+### Bước 1: Hệ thống lại các công cụ chính
 
-Nhắc lại nhanh wave front set, FIO, semiclassical, spectral asymptotics.
+Tóm tắt vai trò của tập mặt sóng, FIO, giải tích bán cổ điển và tiệm cận phổ.
 
-### Bước 2: Ghép công cụ với câu hỏi
+### Bước 2: Ghép công cụ với câu hỏi nghiên cứu
 
-Mỗi công cụ trả lời loại câu hỏi nghiên cứu nào?
+Xác định mỗi công cụ giải quyết nhóm câu hỏi nào.
 
-### Bước 3: Nêu ví dụ cụ thể
+### Bước 3: Minh họa bằng ví dụ cụ thể
 
-Chẳng hạn CT, địa chấn, quantum chaos, spectral geometry.
+Liên hệ với chụp cắt lớp CT, địa chấn, hỗn loạn lượng tử và hình học phổ.
 
-### Bước 4: Chỉ đường đọc tiếp
+### Bước 4: Định hướng tài liệu đọc tiếp
 
-Nêu hướng tài liệu và cách sinh viên tự đào sâu.
+Xác định lộ trình tự học phù hợp với nền tảng hiện tại.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có nêu được ít nhất hai hướng nghiên cứu xuất phát từ chương này không?
-- Sinh viên có biết công cụ nào gắn với bài toán ngược, công cụ nào gắn với phổ cao không?
-- Sinh viên có nhìn thấy mối liên hệ giữa các hướng chứ không chỉ danh sách rời rạc không?
+- Sinh viên có nêu được ít nhất hai hướng nghiên cứu phát triển trực tiếp từ chương này hay không?
+- Sinh viên có phân biệt được công cụ chủ đạo của bài toán ngược với công cụ của phổ năng lượng cao hay không?
+- Sinh viên có thấy mối liên kết giữa các nhánh nghiên cứu thay vì chỉ ghi nhớ một danh sách rời rạc hay không?
 
 ## Ví dụ có lời giải
 
-### Ví dụ 1: Quantum chaos
+### Ví dụ 1: Hỗn loạn lượng tử (Quantum chaos)
 
-Khi hệ cổ điển có động lực hỗn loạn, các eigenfunction và phổ lượng tử cao tần thể hiện những mẫu gì? Đây là một câu hỏi lớn nối semiclassical analysis, phổ, và cơ học lượng tử.
+Khi hệ cơ học cổ điển có động lực hỗn loạn, các hàm riêng và phân bố phổ lượng tử ở năng lượng cao thể hiện những quy luật thống kê và hình học nào? Đây là câu hỏi lớn nối giải tích bán cổ điển, lý thuyết phổ và cơ học lượng tử.
 
-### Ví dụ 2: Spectral geometry
+### Ví dụ 2: Hình học phổ (Spectral geometry)
 
-Ta có thể nghe được bao nhiêu về hình dạng từ phổ? Đây là câu hỏi thúc đẩy rất nhiều nghiên cứu về trace formulas, sóng, và hình học vi địa phương.
+Phổ toán tử xác định được bao nhiêu đặc trưng hình học của đa tạp hay miền? Câu hỏi này thúc đẩy hàng loạt nghiên cứu về công thức vết, phương trình sóng và hình học vi địa phương.
 
-### Ví dụ 3: Inverse problems
+### Ví dụ 3: Bài toán ngược
 
-Trong CT hay địa chấn, singularity nào của vật thể thật sự được nhìn thấy từ dữ liệu? Đây là câu hỏi microlocal điển hình, nơi FIO và wave front set là công cụ chủ đạo.
+Trong CT và thăm dò địa chấn, những kỳ dị nào của vật thể thực sự được ghi nhận bởi dữ liệu đo? Đây là bài toán vi địa phương điển hình với công cụ chủ đạo là FIO và tập mặt sóng.
 
-### Ví dụ 4: Scattering và resonances
+### Ví dụ 4: Tán xạ và cộng hưởng
 
-Khi sóng gặp vật cản hay thế năng, năng lượng phân tán ra sao, và các resonance lưu lại dấu vết gì trong phổ? Đây là một nhánh nghiên cứu rất sống động nối PDE, phổ và vật lý.
+Khi sóng gặp vật cản hoặc thế năng, năng lượng phân tán ra sao và các cộng hưởng (resonances) để lại dấu vết gì trong phổ? Đây là nhánh nghiên cứu sôi động kết nối PDE, lý thuyết phổ và vật lý sóng.
 
 ## Lộ trình đọc tiếp gợi ý
 
-Nếu sinh viên muốn đi tiếp sau chương này, một lộ trình nhẹ nhưng hiệu quả là:
+Để tiếp cận tài liệu nghiên cứu một cách hiệu quả sau khóa học, có thể đi theo bốn bước:
 
-1. quay lại chắc ba khối nền: Fourier, Sobolev, phổ;
-2. đọc lại wave front set và propagation of singularities cho thật vững bằng ví dụ;
-3. chọn một nhánh ứng dụng gần với sở thích cá nhân, như imaging, spectral geometry, hay quantum;
-4. chỉ sau đó mới bước vào tài liệu khó như Hörmander hoặc Zworski.
+1. củng cố vững chắc ba nền tảng: biến đổi Fourier, không gian Sobolev và lý thuyết phổ;
+2. nắm chắc tập mặt sóng và sự lan truyền kỳ dị qua các ví dụ cụ thể;
+3. chọn một nhánh ứng dụng gần với mối quan tâm cá nhân như tái tạo ảnh, hình học phổ hoặc cơ học lượng tử;
+4. sau đó mới đọc các chuyên khảo nâng cao như Hörmander hoặc Zworski.
 
-Lộ trình này giúp tránh cảm giác “ngộp thuật ngữ”, vốn là trở ngại phổ biến khi sinh viên lần đầu chạm vào tài liệu nghiên cứu vi địa phương.
+Lộ trình này giúp tránh tình trạng quá tải thuật ngữ khi lần đầu tiếp cận tài liệu chuyên sâu về giải tích vi địa phương.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao nghiên cứu hiện đại thường bắt đầu từ việc tinh lọc đúng loại thông tin cần theo dõi, như singularity hay phổ, thay vì toàn bộ nghiệm?
-2. Điều gì làm cho vi địa phương trở thành ngôn ngữ chung của nhiều lĩnh vực khác nhau?
-3. Tại sao các câu hỏi về khả kiến, ổn định và tiệm cận lại tiếp tục là trung tâm của nghiên cứu PDE hiện đại?
+1. Vì sao nghiên cứu hiện đại thường tập trung theo dõi những cấu trúc chọn lọc (như kỳ dị hoặc phổ) thay vì toàn bộ nghiệm?
+2. Điều gì giúp giải tích vi địa phương trở thành ngôn ngữ chung của nhiều lĩnh vực khoa học khác nhau?
+3. Vì sao các câu hỏi về tính khả kiến, tính ổn định và hành vi tiệm cận vẫn giữ vị trí trung tâm trong nghiên cứu PDE?
 
 ## Bài toán ứng dụng
 
-1. Trong ảnh y học, hướng nghiên cứu nào quan trọng nhất để biến dữ liệu thô thành ảnh đáng tin?
-2. Trong vật lý lượng tử, spectral asymptotics và semiclassical analysis giúp gì cho việc hiểu hệ năng lượng cao?
-3. Trong khoa học khí quyển hay địa vật lý, propagation of singularities ảnh hưởng thế nào đến thiết kế cảm biến và chiến lược đo?
-4. Nếu muốn làm đồ án cuối kỳ từ Chapter 15, một đề tài nhỏ như “wave front set trong CT” hay “Weyl law trên miền đơn giản” sẽ cần những công cụ nào?
+1. Trong ảnh y học, hướng nghiên cứu nào đóng vai trò then chốt để chuyển dữ liệu đo thô thành ảnh tái tạo tin cậy?
+2. Trong vật lý lượng tử, tiệm cận phổ và giải tích bán cổ điển hỗ trợ ra sao cho việc phân tích hệ năng lượng cao?
+3. Trong khoa học khí quyển và địa vật lý, sự lan truyền kỳ dị ảnh hưởng thế nào đến thiết kế mạng cảm biến?
+4. Nếu thực hiện một đề tài cuối kỳ từ Chương 15 (như “tập mặt sóng trong CT” hoặc “định luật Weyl trên miền đơn giản”), cần vận dụng những công cụ nào?
 
 ## Chiến lược dạy học tương tác
 
-### Câu hỏi nên hỏi trên lớp
+### Câu hỏi nên đặt trên lớp
 
-- Trong các chủ đề đã học, em thấy chủ đề nào gắn với ứng dụng thực nhất?
-- Nếu muốn nghiên cứu tiếp, em sẽ chọn “đọc singularity”, “đọc phổ”, hay “đọc dữ liệu đo”, và vì sao?
-- Em thấy giữa imaging, quantum, và geometry, vi địa phương đang đóng vai trò chung nào?
+- Trong các chủ đề của chương, mảng nào gắn với ứng dụng thực tế rõ nét nhất?
+- Nếu chọn một hướng nghiên cứu tiếp theo — phân tích kỳ dị, phân tích phổ hay bài toán ngược từ dữ liệu đo — bạn sẽ chọn hướng nào và vì sao?
+- Giữa tái tạo ảnh, cơ học lượng tử và hình học, giải tích vi địa phương đóng vai trò cầu nối chung nào?
 
 ### Hoạt động gợi ý
 
-- Cho sinh viên chọn một hướng nghiên cứu và chuẩn bị tóm tắt 3 phút.
-- Vẽ mind map chung của Chapter 15 trên bảng.
-- Thảo luận nhóm về câu hỏi “công cụ nào của chương này có khả năng ứng dụng rộng nhất?”.
+- Mỗi nhóm chọn một hướng nghiên cứu và chuẩn bị phần trình bày tóm tắt trong 3 phút.
+- Vẽ sơ đồ tư duy tổng hợp toàn bộ Chương 15 trên bảng.
+- Thảo luận nhóm câu hỏi: công cụ nào của chương có phạm vi ứng dụng rộng nhất?
 
-### Cách tăng tham gia
+### Cách tăng mức độ tham gia
 
-- Bắt đầu bằng ví dụ ứng dụng thật trước khi nói tới nhánh nghiên cứu.
-- Khuyến khích sinh viên nối chủ đề toán với lĩnh vực họ quan tâm như vật lý, AI, y sinh, địa chất.
-- Mời sinh viên tự viết một câu hỏi nghiên cứu nhỏ xuất phát từ bài học.
+- Mở đầu bằng một ứng dụng thực tiễn cụ thể trước khi giới thiệu nhánh lý thuyết.
+- Khuyến khích sinh viên liên hệ kiến thức toán với lĩnh vực quan tâm như vật lý, học máy, y sinh hoặc địa chất.
+- Đề nghị sinh viên tự đặt một câu hỏi nghiên cứu nhỏ xuất phát từ nội dung bài học.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Giữ ở mức bản đồ ý tưởng, không đưa quá nhiều tên định lý.
-- Dùng ví dụ ứng dụng cụ thể để neo khái niệm.
-- Nhấn mạnh rằng bài này nhằm mở cửa, không nhằm kiểm tra kỹ thuật.
+- Duy trì ở mức bản đồ khái niệm, tránh liệt kê quá nhiều tên định lý kỹ thuật.
+- Sử dụng các ví dụ ứng dụng quen thuộc để làm điểm tựa.
+- Nhấn mạnh mục tiêu của bài là định hướng tổng quan chứ không kiểm tra kỹ thuật nặng.
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Chọn một sách như Zworski hay Hörmander và lập kế hoạch đọc.
-- Tìm hiểu sâu một chủ đề như quantum chaos hoặc inverse scattering.
-- Viết tiểu luận ngắn nối một chủ đề nghiên cứu với một công cụ của chương.
+- Chọn một chuyên khảo như Zworski hoặc Hörmander và lập kế hoạch tự đọc theo chương.
+- Tìm hiểu sâu một chủ đề cụ thể như hỗn loạn lượng tử hoặc tán xạ ngược.
+- Viết một tiểu luận ngắn liên kết một bài toán nghiên cứu với công cụ của chương.
 
 ## Ghi nhớ nhanh
 
-Chapter 15 mở ra một bức tranh nghiên cứu nơi singularity, phổ, hình học, và dữ liệu đo gặp nhau. Vi địa phương không chỉ là lý thuyết tinh tế của PDE, mà là ngôn ngữ đang tiếp tục định hình nhiều hướng nghiên cứu hiện đại.
+Chương 15 mở ra bức tranh nghiên cứu hiện đại nơi kỳ dị, phổ, hình học và dữ liệu đo gặp nhau. Giải tích vi địa phương không chỉ là lý thuyết chuyên sâu của PDE mà còn là công cụ nền tảng định hình nhiều lĩnh vực khoa học và kỹ thuật hiện nay.
 
 ---
 
 ## Ứng dụng thực tế và hướng nghiên cứu
 
-### 1. Ảnh hóa với dữ liệu không đầy đủ
+### 1. Tái tạo ảnh với dữ liệu không đầy đủ
 
-Các hệ ảnh hóa hiện đại hiếm khi thu được dữ liệu đủ góc, đủ sạch, và đủ dày như trong mô hình lý tưởng. Vì vậy nghiên cứu ngày nay xem xét các ánh xạ đo dạng $$ \mathcal{F}(m)=d+\eta $$, trong đó $$ m $$ là vật thể cần tìm và $$ \eta $$ là nhiễu. Diễn giải trung tâm là: câu hỏi nghiên cứu không chỉ còn là “có nghịch đảo được không”, mà là “khôi phục cái gì một cách ổn định dưới ràng buộc đo đạc thực tế?”.
+Các hệ đo thực tế hiếm khi thu được dữ liệu đủ góc, không nhiễu và lấy mẫu dày như mô hình lý tưởng. Do đó, nghiên cứu hiện nay xét bài toán dạng $$ \mathcal{F}(m)=d+\eta $$ với đối tượng ẩn $$ m $$ và nhiễu $$ \eta $$, chuyển câu hỏi từ “có khả nghịch lý thuyết hay không” sang “có thể khôi phục ổn định phần thông tin nào dưới ràng buộc đo đạc thực tế”.
 
-### 2. Quantum chaos và eigenfunction cao tần
+### 2. Hỗn loạn lượng tử và hàm riêng tần số cao
 
-Một nhánh lớn khác nghiên cứu cách động lực học cổ điển hỗn loạn ảnh hưởng tới nghiệm của $$ P_h \psi_h = E(h) \psi_h $$. Khi $$ h\to 0 $$, người ta hỏi các $$ \psi_h $$ phân bố ra sao, có tập trung vào vài quỹ đạo đặc biệt hay không, và thống kê phổ có phản ánh động lực học cổ điển không. Mô hình thường giả định đa tạp hay thế năng lý tưởng hóa. Diễn giải là: các công cụ vi địa phương của chương này tiếp tục trả lời những câu rất vật lý về sự tập trung và phân bố năng lượng.
+Một nhánh nghiên cứu lớn khảo sát ảnh hưởng của động lực học cổ điển hỗn loạn lên nghiệm của $$ P_h \psi_h = E(h) \psi_h $$ khi $$ h\to 0 $$: các hàm riêng $$ \psi_h $$ phân bố đều hay tập trung quanh những quỹ đạo đặc biệt, và thống kê phổ phản ánh tính hỗn loạn cổ điển ra sao (trên các đa tạp hoặc thế năng mô hình).
 
 ### 3. Lan truyền sóng trong môi trường phức tạp
 
-Địa vật lý, khí quyển, và vật liệu hiện đại đều đặt ra bài toán sóng trong môi trường dị hướng, ngẫu nhiên, hoặc nhiều thang. Ở đây các kết quả cổ điển về propagation, scattering, và effective media cần được mở rộng. Diễn giải là: ngôn ngữ hình học của Chapter 15 vẫn giữ vai trò trung tâm, nhưng canonical relation, symbol class, và các kỹ thuật microlocal trở nên tinh vi hơn nhiều.
+Địa vật lý, khí quyển và vật liệu hiện đại đặt ra bài toán truyền sóng trong môi trường dị hướng, ngẫu nhiên hoặc đa thang, đòi hỏi mở rộng các kết quả cổ điển về lan truyền, tán xạ và môi trường hiệu dụng. Ngôn ngữ hình học của Chương 15 vẫn giữ vai trò trung tâm với các lớp ký hiệu và quan hệ chính tắc ngày càng tinh vi hơn.
 
 ## Trực giác sâu hơn
 
-Nhiều hướng nghiên cứu hiện đại thực ra được tổ chức quanh câu hỏi: thông tin nào sống sót sau phép đo, sau lan truyền, hay sau giới hạn cao tần? Vì vậy cùng một bộ công cụ lại xuất hiện trong hình học, ảnh hóa, và vật lý. Một ngộ nhận thường gặp là phải nắm hết toàn bộ kỹ thuật trước mới đọc được nghiên cứu; thực ra một bản đồ khái niệm tốt thường là điểm khởi đầu quan trọng hơn.
+Nhiều hướng nghiên cứu đương đại cùng xoay quanh một câu hỏi chung: phần thông tin nào còn được bảo toàn sau phép đo, sau quá trình lan truyền hoặc trong giới hạn tần số cao? Đó là lý do cùng một bộ công cụ vi địa phương xuất hiện đồng thời trong hình học, tái tạo ảnh và vật lý.
 
 ## Trực quan hóa bằng Python
 
@@ -236,7 +236,7 @@ plt.show()
 
 ## Trực quan hóa bằng JavaScript
 
-Có thể dùng `p5.js` hoặc `Plotly.js` để làm sơ đồ tương tác: bấm vào từng nút như `Inverse problems` hay `Quantum chaos` để hiện ra mô hình PDE mẫu, ứng dụng thực tế, và lộ trình đọc tiếp.
+Có thể dùng `p5.js` hoặc `Plotly.js` để xây dựng sơ đồ tương tác: chọn từng nút như `Inverse problems` hoặc `Quantum chaos` để hiển thị mô hình PDE tiêu biểu, ứng dụng thực tế và tài liệu đọc tiếp.
 
 ## Gợi ý tài nguyên ngoài
 
@@ -246,11 +246,11 @@ Tìm kiếm: `quantum chaos survey`, `microlocal inverse problems review`, hoặ
 
 ### Mức đại học (Undergraduate)
 
-Xem phần này như bản đồ định hướng. Mục tiêu là nối các chủ đề của chương với các câu hỏi khoa học và đề tài đồ án khả thi.
+Sử dụng bài học như bản đồ định hướng để liên kết nội dung chương với các câu hỏi khoa học và đề tài đồ án phù hợp.
 
 ### Mức sau đại học (Graduate)
 
-Xem đây như bước vào nghiên cứu thực sự. Sinh viên nên bắt đầu nối từng công cụ, như FIO hay semiclassical measures, với các câu hỏi mở và các bài survey chuyên sâu.
+Tiếp cận như bước chuyển sang nghiên cứu chuyên sâu, kết nối trực tiếp từng công cụ (như FIO hay độ đo bán cổ điển) với các bài toán mở và bài tổng quan gần đây.
 
 > Xem toàn bộ minh họa tương tác của chương tại: [Bộ Minh họa tương tác Chương 15]({{ site.baseurl }}/contents/vi/chapter15/15_10_Interactive_Gallery/)
 
@@ -258,21 +258,21 @@ Xem đây như bước vào nghiên cứu thực sự. Sinh viên nên bắt đ�
 
 ### 1. Ứng dụng thực tế
 
-#### Ảnh quang âm và radar hiện đại
-- Bài toán: Nhiều kỹ thuật đo ảnh mới đòi hỏi vừa hiểu lan truyền sóng vừa hiểu visibility của singularities.
-- Mô hình: Dùng FIO, wave front set và regularization trong cùng một pipeline phân tích.
-- Giả thiết và giới hạn: Các bài toán thường mở, phi tuyến hoặc dữ liệu rất thiếu.
-- Diễn giải: Đây là ví dụ sống động của microlocal analysis trong nghiên cứu hiện nay.
+#### Ảnh quang–âm và radar hiện đại
+- Bài toán: Các kỹ thuật tạo ảnh mới đòi hỏi nắm đồng thời cơ chế truyền sóng và tính khả kiến của kỳ dị.
+- Mô hình: Kết hợp FIO, tập mặt sóng và chính quy hóa trong cùng một quy trình phân tích.
+- Giả thiết và giới hạn: Nhiều bài toán còn mở, mang tính phi tuyến hoặc có dữ liệu đo rất thưa.
+- Diễn giải: Minh họa rõ vai trò thực tiễn của giải tích vi địa phương trong nghiên cứu đương đại.
 
-#### Time-frequency analysis và khoa học dữ liệu
-- Bài toán: Tín hiệu thực tế thay đổi cả theo thời gian lẫn tần số, nên cần mô tả cục bộ hơn Fourier toàn cục.
-- Mô hình: Dùng cửa sổ cục bộ, spectrograms, wave packets hoặc các khái niệm phase-space hiện đại.
-- Giả thiết và giới hạn: Mô hình hóa vẫn phụ thuộc mạnh vào dữ liệu và mục tiêu khoa học.
-- Diễn giải: Nhiều hướng nghiên cứu hiện đại có thể được đọc như "microlocal analysis cho dữ liệu thực".
+#### Phân tích thời gian–tần số và khoa học dữ liệu
+- Bài toán: Tín hiệu thực thường có tần số thay đổi theo thời gian, nên cần công cụ cục bộ hơn biến đổi Fourier toàn cục.
+- Mô hình: Sử dụng cửa sổ cục bộ, phổ đồ (spectrogram), gói sóng và các biểu diễn không gian pha hiện đại.
+- Giả thiết và giới hạn: Cách mô hình hóa phụ thuộc chặt chẽ vào đặc trưng dữ liệu và mục tiêu ứng dụng.
+- Diễn giải: Nhiều công cụ phân tích tín hiệu hiện đại mang trực tiếp tinh thần của giải tích vi địa phương.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Nghiên cứu hiện đại không phải là một danh sách chủ đề rời rạc, mà là nơi nhiều ý tưởng trong khóa học gặp lại nhau: symbol, wave front set, FIO, inverse problems, spectral theory, semiclassical limits. Một bẫy phổ biến là nghĩ nghiên cứu chỉ là chứng minh trừu tượng; thực ra rất nhiều câu hỏi được kéo trực tiếp từ ảnh y sinh, khí hậu, vật liệu và lượng tử.
+Nghiên cứu hiện đại không phải danh sách các chủ đề rời rạc mà là nơi hội tụ của ký hiệu, tập mặt sóng, FIO, bài toán ngược, lý thuyết phổ và giới hạn bán cổ điển — nhiều câu hỏi xuất phát trực tiếp từ ảnh y sinh, khí hậu, vật liệu và vật lý lượng tử.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -301,16 +301,16 @@ plt.show()
 
 Tín hiệu chirp
 $$ u(t)=\sin\!\big(2\pi(20t+60t^2)\big) $$
-có tần số tức thời tăng theo $$ t $$. Fourier transform toàn cục không nói rõ điều đó, nhưng spectrogram cho thấy một ridge nghiêng trong mặt phẳng thời gian-tần số. Đây là ví dụ nhỏ về cách tư duy phase-space đi vào công cụ nghiên cứu hiện đại.
+có tần số tức thời tăng tuyến tính theo $$ t $$. Biến đổi Fourier toàn cục không thể hiện rõ sự thay đổi theo thời gian này, nhưng phổ đồ (spectrogram) hiển thị một dải cực đại nghiêng trên mặt phẳng thời gian–tần số — minh họa trực quan cho tư duy không gian pha trong thực hành nghiên cứu.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Xem phần này như bản đồ các ứng dụng và đề tài nhỏ khả thi.
+**Bậc đại học.** Dùng bài học như bản đồ định hướng các ứng dụng và đề tài nhỏ khả thi.
 
-**Bậc sau đại học.** Liên hệ các công cụ vi địa phương với papers, survey va bai toan mo cu the.
+**Bậc sau đại học.** Liên hệ các công cụ vi địa phương với các bài báo, bài tổng quan và bài toán mở cụ thể.
 
 ## Video tham khảo
 
-- xem trước: [Andras Vasy - Microlocal analysis and wave propagation (Part 4)](https://www.youtube.com/watch?v=mqRbYzxLTHM) — Institut Fourier, tiếng Anh. Bài sau của Vasy về ứng dụng, gồm sóng tựa tuyến tính.
-- [Semyon Dyatlov - Microlocal analysis of internal waves in 2D aquaria](https://www.youtube.com/watch?v=2fGu0QHRszY) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Semyon Dyatlov về giải tích vi địa phương của sóng nội, một bài nghiên cứu hiện tại.
-- [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Zworski về các phương pháp vi địa phương vẫn đang được dùng.
+- Nên xem trước: [Andras Vasy - Microlocal analysis and wave propagation (Part 4)](https://www.youtube.com/watch?v=mqRbYzxLTHM) — Institut Fourier, tiếng Anh. Bài giảng tiếp theo của András Vasy về các ứng dụng, bao gồm phương trình sóng tựa tuyến tính.
+- [Semyon Dyatlov - Microlocal analysis of internal waves in 2D aquaria](https://www.youtube.com/watch?v=2fGu0QHRszY) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Bài báo cáo nghiên cứu hiện đại của Semyon Dyatlov về giải tích vi địa phương cho sóng nội.
+- [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Bài giảng của Maciej Zworski về các phương pháp vi địa phương đang được sử dụng trong nghiên cứu.

@@ -12,59 +12,59 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài tùy chọn này đọc Fourier neural operator, spectral neural operator và các kiến trúc 2022–2024 liên quan như họ hàng tính toán của toán tử giả vi phân. Sinh viên cần khớp nhân tử Fourier học được với ký hiệu trong $$S^m$$, giải thích học toán tử không alias bằng ngôn ngữ Hörmander, và thấy parametrix elliptic như mô hình giải tích cho nghịch đảo học được. Phép tính ký hiệu của chương không bị viết lại.
+Bài học tùy chọn này trình bày cách nhìn nhận Fourier neural operator (FNO), spectral neural operator và các kiến trúc liên quan giai đoạn 2022–2024 như phiên bản tính toán của toán tử giả vi phân. Sau bài học, sinh viên cần biết cách đối chiếu bộ nhân Fourier học được với ký hiệu trong lớp $$S^m$$, giải thích bài toán học toán tử không aliasing bằng ngôn ngữ của Hörmander, và hiểu parametrix elliptic như mô hình giải tích cho toán tử nghịch đảo học được. Nội dung này bổ sung góc nhìn ứng dụng chứ không thay thế phép tính ký hiệu của chương.
 
 ## Kiến thức nền
 
-Sinh viên cần biết nhân tử Fourier, lớp ký hiệu, hợp thành ΨDO, và ý niệm parametrix elliptic. Bài ôn chuẩn bị về nhân tử là khởi động dự kiến.
+Sinh viên cần nắm vững bộ nhân Fourier, các lớp ký hiệu, phép hợp thành toán tử giả vi phân (ΨDO) và khái niệm parametrix elliptic. Bài ôn tập về bộ nhân Fourier ở đầu chương là phần chuẩn bị phù hợp.
 
 ## Dẫn nhập
 
-Toán tử giả vi phân cổ điển, ở xấp xỉ đầu, là nhân tử Fourier có ký hiệu $$a(x,\xi)$$ biến thiên chậm theo $$x$$ và tuân chặn đạo hàm theo $$\xi$$. Lớp Fourier neural operator là nhân tử Fourier có ký hiệu là mảng huấn luyện $$R_\xi$$, theo sau bởi phi tuyến từng điểm. Phép loại suy không hoàn hảo — phi tuyến và dải hữu hạn đưa ta ra ngoài phép tính ΨDO tuyến tính — nhưng đó là phép loại suy đúng. Nó giải thích vì sao FNO làm việc trên bài elliptic và parabolic bất biến tịnh tiến, vì sao nó khó với hệ số thô, và vì sao aliasing là vấn đề vi cục bộ chứ không chỉ số.
+Ở xấp xỉ bậc nhất, một toán tử giả vi phân cổ điển là một bộ nhân Fourier có ký hiệu $$a(x,\xi)$$ biến thiên chậm theo $$x$$ và có các đạo hàm theo $$\xi$$ được kiểm soát. Một lớp Fourier neural operator hoạt động như một bộ nhân Fourier với ký hiệu là mảng tham số huấn luyện $$R_\xi$$, theo sau bởi một phép biến đổi phi tuyến tác động từng điểm. Phép tương tự này không hoàn toàn đồng nhất — tính phi tuyến và dải tần hữu hạn đưa mô hình ra ngoài khuôn khổ phép tính ΨDO tuyến tính — nhưng đây là cách nhìn rất hữu ích. Nó giải thích vì sao FNO hoạt động hiệu quả trên các bài toán elliptic và parabolic bất biến tịnh tiến, vì sao mô hình gặp khó khăn với hệ số không trơn, và vì sao aliasing là một vấn đề mang bản chất vi cục bộ chứ không đơn thuần là lỗi số học.
 
-Kovachki và cộng sự (*JMLR* 2023) đã mô tả FNO như họ toán tử tích phân tham số hóa với nhân bất biến tịnh tiến. Fanaskov và Oseledets (*Spectral Neural Operators*, 2022–2023; [arXiv:2205.10573](https://arxiv.org/abs/2205.10573)) làm phép tính phổ còn tường minh hơn. Bartolucci, de Bézenac, Raonić, Molinaro, Mishra và Alaifari (*Representation Equivalent Neural Operators*, NeurIPS 2023; [arXiv:2305.19913](https://arxiv.org/abs/2305.19913)) cho khung học toán tử không alias: mô hình rời rạc phải là hạn chế đúng của toán tử liên tục, không phải ánh xạ lưới tình cờ. Raonić, Molinaro, Rohner, Mishra và de Bézenac (*Convolutional Neural Operators*, ICLR 2024; [arXiv:2302.01178](https://arxiv.org/abs/2302.01178)) theo đuổi nhân tích chập nhất quán liên tục.
+Kovachki và cộng sự (*JMLR* 2023) đã mô tả FNO như một họ toán tử tích phân tham số hóa với nhân bất biến tịnh tiến. Fanaskov và Oseledets (*Spectral Neural Operators*, 2022–2023; [arXiv:2205.10573](https://arxiv.org/abs/2205.10573)) trình bày phép tính phổ một cách tường minh hơn nữa. Bartolucci, de Bézenac, Raonić, Molinaro, Mishra và Alaifari (*Representation Equivalent Neural Operators*, NeurIPS 2023; [arXiv:2305.19913](https://arxiv.org/abs/2305.19913)) xây dựng khung lý thuyết cho việc học toán tử không aliasing: mô hình rời rạc phải là hạn chế đúng đắn của một toán tử liên tục, thay vì chỉ là một ánh xạ phụ thuộc vào lưới tính. Raonić, Molinaro, Rohner, Mishra và de Bézenac (*Convolutional Neural Operators*, ICLR 2024; [arXiv:2302.01178](https://arxiv.org/abs/2302.01178)) tiếp tục phát triển hướng sử dụng nhân tích chập nhất quán với bài toán liên tục.
 
-Những bài ấy trở nên dễ hơn một khi đã thấy $$S^m_{\rho,\delta}$$ và xây dựng parametrix. Nghịch đảo học được của toán tử elliptic là nỗ lực xây parametrix từ dữ liệu.
+Các công trình này trở nên dễ tiếp cận hơn nhiều khi người học đã nắm lớp ký hiệu $$S^m_{\rho,\delta}$$ và cách xây dựng parametrix. Về bản chất, việc học toán tử nghịch đảo của một toán tử elliptic từ dữ liệu chính là nỗ lực xấp xỉ một parametrix.
 
 ## Khái niệm then chốt
 
-### Ký hiệu và nhân tử học được
+### Ký hiệu và bộ nhân học được
 
-Toán tử $$Au=\mathcal{F}^{-1}\bigl(a(\xi)\hat u(\xi)\bigr)$$ là trường hợp hệ số hằng của ΨDO cấp $$m$$ khi $$a\in S^m$$. Lớp FNO cụt $$a$$ về hộp tần số thấp và cho nó phụ thuộc kênh. Huấn luyện $$a$$ trên cặp $$(u,Au)$$ là nhận dạng ký hiệu. Nếu toán tử mục tiêu là $$(-\Delta+1)^{-1}$$, ký hiệu học được phải trông như $$(|\xi|^2+1)^{-1}$$ trên dải đã phân giải và không được tăng như lũy thừa dương của $$|\xi|$$.
+Toán tử $$Au=\mathcal{F}^{-1}\bigl(a(\xi)\hat u(\xi)\bigr)$$ là trường hợp hệ số hằng của một ΨDO cấp $$m$$ khi $$a\in S^m$$. Một lớp FNO cắt cụt $$a$$ trên một miền tần số thấp và cho phép ký hiệu phụ thuộc theo kênh. Việc huấn luyện $$a$$ trên các cặp dữ liệu $$(u,Au)$$ chính là bài toán nhận dạng ký hiệu. Nếu toán tử mục tiêu là $$(-\Delta+1)^{-1}$$, ký hiệu học được cần có dạng xấp xỉ $$(|\xi|^2+1)^{-1}$$ trên dải tần đã phân giải và không được tăng như một lũy thừa dương của $$|\xi|$$.
 
-### Hợp thành và xếp lớp
+### Phép hợp thành và xếp chồng các lớp
 
-Định lý hợp thành nói ký hiệu của $$AB$$ là $$a\#b=ab$$ cộng số hạng cấp thấp. Xếp lớp FNO tuyến tính không phi tuyến vì thế là tích ký hiệu rời rạc. Kích hoạt phi tuyến giữa các lớp đưa ta ra ngoài phép tính, vừa là nguồn khả năng biểu diễn vừa là nguồn aliasing: tích từng điểm của hai hàm giới hạn dải không giới hạn dải.
+Định lý hợp thành chỉ ra rằng ký hiệu của $$AB$$ có dạng $$a\#b=ab$$ cộng với các số hạng bậc thấp hơn. Do đó, việc xếp chồng các lớp FNO tuyến tính (chưa có hàm kích hoạt phi tuyến) tương ứng với phép nhân ký hiệu rời rạc. Hàm kích hoạt phi tuyến đặt giữa các lớp đưa mô hình ra ngoài phép tính ΨDO tuyến tính; đây vừa là nguồn tạo nên khả năng biểu diễn phong phú, vừa là nguyên nhân gây ra aliasing, vì tích từng điểm của hai hàm giới hạn dải tần nói chung không còn giới hạn dải tần.
 
-### Parametrix elliptic như nghịch đảo học được
+### Parametrix elliptic như toán tử nghịch đảo học được
 
-Nếu $$A$$ elliptic, tồn tại ΨDO $$B$$ sao cho $$BA-I$$ và $$AB-I$$ làm mượt. Nghịch đảo nơ-ron ánh xạ $$Au$$ về $$u$$ trừ lỗi trơn đang hiện thực hóa câu ấy bằng số. Do đó ta nên thử nghịch đảo học được trên đầu vào dao động mạnh: ký hiệu tần số cao phải đảo ký hiệu chính, trong khi phần tần số thấp có thể học tự do hơn, cũng như parametrix chỉ duy nhất modulo toán tử làm mượt.
+Nếu $$A$$ là toán tử elliptic, tồn tại một ΨDO $$B$$ sao cho $$BA-I$$ và $$AB-I$$ là các toán tử làm trơn. Một mạng nơ-ron học toán tử nghịch đảo, ánh xạ $$Au$$ về $$u$$ sai khác một phần dư trơn, chính là cách hiện thực hóa ý tưởng này bằng phương pháp số. Vì vậy, ta nên kiểm tra toán tử nghịch đảo học được trên các đầu vào dao động mạnh: ở tần số cao, ký hiệu học được phải nghịch đảo đúng ký hiệu chính, trong khi ở tần số thấp nó có thể tự do hơn — hoàn toàn tương tự việc parametrix chỉ xác định duy nhất modulo các toán tử làm trơn.
 
-### Aliasing như lượng tử hóa sai
+### Aliasing như phép lượng tử hóa sai lệch
 
-Ánh xạ lưới gập mode cao lên mode thấp không phải ΨDO cấp dự kiến; nó là toán tử khác. Kiến trúc tương đương biểu diễn đòi đổi lưới không đổi toán tử, liên tục đang được rời rạc hóa. Đó là dạng tính toán của tuyên bố rằng ΨDO được định nghĩa trên hàm, không trên mảng.
+Một ánh xạ trên lưới làm gập các mode tần số cao lên mode tần số thấp không còn là một ΨDO cấp dự kiến mà đã trở thành một toán tử khác. Các kiến trúc tương đương biểu diễn đòi hỏi việc thay đổi lưới không làm thay đổi toán tử liên tục đang được rời rạc hóa. Đó chính là phiên bản tính toán của nguyên lý rằng ΨDO được định nghĩa trên không gian hàm chứ không phải trên mảng rời rạc.
 
 ## Phương pháp và kỹ thuật
 
-1. Xác định ký hiệu chính ứng viên (hành động tần số cao).
-2. Kiểm suy giảm hoặc tăng của nhân tử học được đối chiếu lớp $$S^m$$.
-3. Thử hợp thành: nghịch đảo học được của toán tử thuận học được có trông như đồng nhất modulo phần dư làm mượt không?
-4. Tinh lưới. Nếu toán tử đổi bản sắc, nó chưa bao giờ là ΨDO liên tục.
-5. Với hệ số biến thiên, hỏi kiến trúc có biểu diễn được ký hiệu phụ thuộc $$x$$ là $$a(x,\xi)$$ hay chỉ một tích chập.
+1. Xác định ký hiệu chính dự kiến (tức hành vi của toán tử ở tần số cao).
+2. Kiểm tra tốc độ suy giảm hoặc tăng trưởng của bộ nhân học được so với lớp ký hiệu $$S^m$$.
+3. Kiểm tra phép hợp thành: hợp thành của toán tử nghịch đảo học được với toán tử thuận có xấp xỉ toán tử đồng nhất modulo phần dư làm trơn hay không.
+4. Làm mịn lưới tính: nếu bản sắc của toán tử thay đổi khi tinh lưới, mô hình đó không đại diện cho một ΨDO liên tục.
+5. Với bài toán có hệ số biến thiên, cần xem xét kiến trúc có khả năng biểu diễn ký hiệu phụ thuộc vị trí $$a(x,\xi)$$ hay chỉ giới hạn ở một phép tích chập.
 
-Geo-FNO và convolutional neural operator là nỗ lực khôi phục phụ thuộc $$x$$ và bất biến hình học trong khi giữ nhân liên tục.
+Các kiến trúc như Geo-FNO và convolutional neural operator đều nhằm khôi phục sự phụ thuộc vào $$x$$ và tính bất biến hình học trong khi vẫn duy trì tính nhất quán với toán tử liên tục.
 
 ## Ví dụ
 
 ### Ví dụ 1: Ký hiệu thế Bessel
 
-Toán tử $$(I-\Delta)^{-s/2}$$ có ký hiệu $$(1+|\xi|^2)^{-s/2}\in S^{-s}$$. Lớp phổ tuyến tính từng huấn luyện trên ánh xạ này phải tái tạo profile kính ấy. Vẽ $$|R_\xi|$$ theo $$|\xi|$$ trên thang log-log là bài tập lớp ký hiệu.
+Toán tử $$(I-\Delta)^{-s/2}$$ có ký hiệu $$(1+|\xi|^2)^{-s/2}\in S^{-s}$$. Một lớp phổ tuyến tính được huấn luyện trên ánh xạ này cần tái tạo được dạng hàm hướng kính đó. Việc vẽ đồ thị $$|R_\xi|$$ theo $$|\xi|$$ trên thang log-log là một cách kiểm chứng trực quan thuộc bài tập về lớp ký hiệu.
 
-### Ví dụ 2: Thất bại trên hệ số thô
+### Ví dụ 2: Hạn chế trên hệ số không trơn
 
-Toán tử $$-\operatorname{div}(a(x)\nabla\cdot)$$ chỉ là ΨDO cấp $$2$$ nếu $$a$$ đủ trơn. Nếu $$a$$ chỉ bị chặn và elliptic, toán tử vẫn đặt chỉnh trong $$H^1$$ nhưng không còn là ΨDO cổ điển kiểu sách. FNO huấn luyện trên $$a$$ trơn sẽ không tự đảo độ thấm bàn cờ. Lời nhắc của chương rằng phép tính ký hiệu cần độ trơn là lời giải thích.
+Toán tử $$-\operatorname{div}(a(x)\nabla\cdot)$$ chỉ là một ΨDO cấp $$2$$ khi hệ số $$a$$ đủ trơn. Nếu $$a$$ chỉ bị chặn và thỏa điều kiện elliptic, bài toán vẫn đặt chỉnh trong $$H^1$$ nhưng toán tử không còn là một ΨDO cổ điển. Một mô hình FNO huấn luyện trên các hệ số $$a$$ trơn sẽ không tự động đảo tốt bài toán có hệ số thấm dạng bàn cờ. Điều này phản ánh trực tiếp yêu cầu về độ trơn của phép tính ký hiệu trong chương.
 
-### Ví dụ 3: Nhân tử rời rạc
+### Ví dụ 3: Bộ nhân rời rạc
 
 ```python
 import numpy as np
@@ -77,37 +77,37 @@ v = np.fft.ifft(symbol * np.fft.fft(u)).real
 print(v.max(), v.min())
 ```
 
-Đây là parametrix elliptic rời rạc cho $$I-\partial_{xx}$$ trên đường tròn. Lớp phổ học được phải so với đối tượng này trước khi so với chồng phi tuyến sâu.
+Đoạn mã trên biểu diễn một parametrix elliptic rời rạc cho toán tử $$I-\partial_{xx}$$ trên đường tròn. Trước khi so sánh với các mô hình phi tuyến nhiều lớp, một lớp phổ học được cần được kiểm chứng đối chiếu với đối tượng chuẩn này.
 
 ## Ứng dụng
 
-Nghĩ neural operator như ký hiệu học được làm rõ vài ứng dụng. Bộ giả lập thời tiết và khí hậu dùng xương sống Fourier đang học ký hiệu hiệu dụng cho hệ số biến thiên khổng lồ; ta không nên kỳ vọng tích chập thuần bắt địa hình nếu không có biến dạng hoặc kênh phụ thuộc vị trí. Bài elliptic và Helmholtz ngược là nỗ lực học parametrix từ dữ liệu. Khử mờ ảnh với hàm trải điểm đã biết đúng là đảo nhân tử Fourier, và mạng bỏ qua ký hiệu sẽ phát minh lại bộ lọc Wiener kém hơn.
+Góc nhìn xem neural operator như ký hiệu học được giúp làm rõ nhiều bài toán thực tế. Các mô hình giả lập thời tiết và khí hậu dùng kiến trúc nền Fourier thực chất đang học một ký hiệu hiệu dụng cho hệ có hệ số biến thiên phức tạp; do đó, không nên kỳ vọng phép tích chập thuần túy có thể mô phỏng tốt địa hình nếu thiếu biến đổi tọa độ hoặc kênh phụ thuộc vị trí. Các bài toán ngược cho phương trình elliptic và Helmholtz có thể hiểu như nỗ lực học parametrix từ dữ liệu. Tương tự, khử mờ ảnh với hàm lan truyền điểm (PSF) đã biết chính là bài toán đảo bộ nhân Fourier, và một mạng nơ-ron bỏ qua cấu trúc ký hiệu có nguy cơ học lại một bộ lọc Wiener kém hiệu quả hơn.
 
-Cùng góc nhìn nối Chương 08 (chuỗi Fourier) và Chương 12 (không gian hàm): ký hiệu trong $$S^{m}$$ ánh xạ $$H^{s}$$ sang $$H^{s-m}$$. Toán tử học được tuyên bố nghịch đảo elliptic vì thế phải cải thiện chính quy Sobolev khoảng hai đạo hàm — tuyên bố đo được.
+Cách tiếp cận này cũng kết nối trực tiếp Chương 08 (chuỗi Fourier) và Chương 12 (không gian hàm): một ký hiệu thuộc $$S^{m}$$ ánh xạ $$H^{s}$$ vào $$H^{s-m}$$. Do đó, một toán tử học được dùng để nghịch đảo toán tử elliptic bậc hai cần cải thiện độ chính quy Sobolev thêm khoảng hai bậc đạo hàm — đây là một tính chất có thể đo đạc và kiểm chứng được.
 
 ## Thách thức và hướng mở rộng
 
-Lớp phi tuyến rời phép tính ΨDO. Bối cảnh hệ số biến thiên và đa tạp cần ký hiệu đầy đủ $$a(x,\xi)$$, không chỉ $$a(\xi)$$. Aliasing rời rạc có thể sinh lỗi compact trông nhỏ trong $$L^2$$ và lớn trong $$H^{s}$$. Học parametrix từ dữ liệu không tự cho ước lượng phần dư mà lý thuyết Hörmander cung cấp. Trên đa tạp, FFT là giải tích điều hòa sai; analogue cầu và phổ-phần tử là bắt buộc.
+Các lớp phi tuyến nằm ngoài khuôn khổ phép tính ΨDO tuyến tính. Những bài toán có hệ số biến thiên hoặc đặt trên đa tạp đòi hỏi ký hiệu đầy đủ $$a(x,\xi)$$ thay vì chỉ $$a(\xi)$$. Ngoài ra, aliasing rời rạc có thể tạo ra sai số tưởng như nhỏ trong chuẩn $$L^2$$ nhưng lại lớn trong chuẩn $$H^{s}$$. Việc học parametrix từ dữ liệu cũng không tự động cung cấp các ước lượng phần dư chặt chẽ như lý thuyết Hörmander. Trên đa tạp cong, biến đổi Fourier nhanh (FFT) không còn là công cụ giải tích điều hòa phù hợp; khi đó cần đến các dạng tương tự trên mặt cầu hoặc phương pháp phần tử phổ.
 
-Câu hỏi phản tư: nếu hai ký hiệu học được khớp ở tần số cao nhưng lệch một hàm Schwartz, chúng có định nghĩa cùng toán tử modulo làm mượt không? Câu trả lời của chương là có, và đó là vì sao phép thử tần số cao là phép thử đúng.
+Câu hỏi suy ngẫm: nếu hai ký hiệu học được trùng khớp ở tần số cao và chỉ sai khác nhau một hàm Schwartz, liệu chúng có xác định cùng một toán tử modulo toán tử làm trơn hay không? Câu trả lời theo lý thuyết của chương là có, và đó cũng là lý do kiểm tra hành vi ở tần số cao là phép thử cốt lõi.
 
 ## Video tham khảo
 
-- xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, tiếng Anh. Fourier neural operator là một bộ nhân Fourier học được, họ hàng số của một symbol.
-- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, tiếng Anh. DeepONet học một toán tử mà không viết symbol bằng tay.
-- [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Tiếng Việt. Symbol giả vi phân cổ điển mà các lớp ấy đang bắt chước một cách nới lỏng.
+- Nên xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, tiếng Anh. Fourier neural operator như một bộ nhân Fourier học được, tương ứng về mặt số học với khái niệm ký hiệu.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, tiếng Anh. DeepONet học toán tử trực tiếp từ dữ liệu mà không cần viết ký hiệu tường minh.
+- [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, tiếng Việt. Bài giảng về ký hiệu giả vi phân cổ điển mà các lớp mạng trên đang mô phỏng theo nghĩa mở rộng.
 
 ## Bài tập
 
-1. **Cấp của nhân tử.** Chỉ ra $$a(\xi)=(1+|\xi|^2)^{m/2}$$ nằm trong $$S^{m}$$. Nghịch đảo học được của $$I-\Delta$$ phải có cấp nào?
+1. **Cấp của bộ nhân.** Chứng minh $$a(\xi)=(1+|\xi|^2)^{m/2}$$ thuộc lớp $$S^{m}$$. Từ đó suy ra toán tử nghịch đảo học được của $$I-\Delta$$ phải có cấp bao nhiêu?
 
-2. **Phần dư hợp thành.** Với hai ký hiệu kính $$a,b$$, tích $$ab$$ là ký hiệu hợp thành đúng. Làm sao thử FNO tuyến tính hai lớp đối chiếu sự thật này?
+2. **Phần dư hợp thành.** Với hai ký hiệu không phụ thuộc $$x$$ (chẳng hạn ký hiệu hướng kính) $$a,b$$, tích $$ab$$ là ký hiệu chính xác của phép hợp thành. Làm thế nào để kiểm nghiệm tính chất này trên một mô hình FNO tuyến tính hai lớp?
 
-3. **Aliasing.** Cho ví dụ một chiều trong đó nhân tử lưới cỡ chẵn đồng nhất $$k$$ với $$k-n$$. Vì sao toán tử sinh ra không phải rời rạc hóa nhất quán của nhân tử liên tục trong $$S^{0}$$?
+3. **Aliasing.** Xây dựng một ví dụ một chiều trong đó bộ nhân trên lưới cỡ chẵn đồng nhất tần số $$k$$ với $$k-n$$. Giải thích vì sao toán tử thu được không phải là rời rạc hóa nhất quán của một bộ nhân liên tục thuộc $$S^{0}$$.
 
-4. **Thí nghiệm tính toán.** Huấn luyện lớp phổ tuyến tính để đảo $$I-\partial_{xx}$$ trên đường tròn và vẽ ký hiệu học được đối chiếu $$(1+k^2)^{-1}$$. Rồi đánh giá cả hai toán tử trên sin tần số cao không nằm trong dải huấn luyện.
+4. **Thí nghiệm tính toán.** Huấn luyện một lớp phổ tuyến tính để nghịch đảo toán tử $$I-\partial_{xx}$$ trên đường tròn và vẽ đồ thị so sánh ký hiệu học được với $$(1+k^2)^{-1}$$. Sau đó, đánh giá cả hai toán tử trên các hàm sin tần số cao nằm ngoài dải huấn luyện.
 
-5. **Khám phá mở.** Đọc Bartolucci và cộng sự (NeurIPS 2023) hoặc Fanaskov và Oseledets (2022) và viết một trang dịch “tương đương biểu diễn” thành tuyên bố rằng ΨDO được định nghĩa độc lập với lưới.
+5. **Khám phá mở.** Đọc bài báo của Bartolucci và cộng sự (NeurIPS 2023) hoặc Fanaskov và Oseledets (2022) và viết một trang phân tích mối liên hệ giữa tính “tương đương biểu diễn” với phát biểu rằng ΨDO được định nghĩa độc lập với lưới rời rạc.
 
 ## Tài liệu
 

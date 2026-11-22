@@ -14,33 +14,33 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này xây chiếc cầu quan trọng nhất của chương: từ biến đổi Fourier đến khái niệm symbol của toán tử. Sau bài học, sinh viên cần hiểu cách Fourier biến đạo hàm thành phép nhân, cách differential operator được mã hóa bởi symbol, và vì sao symbol chính điều khiển hành vi tần số cao của toán tử.
+Bài học này thiết lập cầu nối quan trọng nhất của chương: từ biến đổi Fourier đến khái niệm ký hiệu (symbol) của toán tử. Sau bài học, sinh viên cần nắm rõ cách biến đổi Fourier chuyển đạo hàm thành phép nhân, cách toán tử vi phân được mã hóa bằng ký hiệu, và vì sao ký hiệu chính chi phối hành vi ở tần số cao của toán tử.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm biến đổi Fourier ở mức tính toán cơ bản, quy tắc đạo hàm dưới dấu tích phân, và các differential operators quen thuộc như $$ \partial_x $$ và $$ -\Delta $$. Cũng cần nhớ rằng trong không gian tần số, các mode dao động khác nhau được tách rời.
+Sinh viên nên nắm vững biến đổi Fourier ở mức tính toán cơ bản, quy tắc lấy đạo hàm dưới dấu tích phân, và các toán tử vi phân quen thuộc như $$ \partial_x $$ và $$ -\Delta $$. Đồng thời, cần ghi nhớ rằng trong không gian tần số, các mode dao động khác nhau được tách biệt rõ ràng.
 
 ## Dẫn nhập
 
-Biến đổi Fourier cho ta một góc nhìn kỳ diệu về PDE: thay vì xử lý đạo hàm trực tiếp, ta chuyển sang miền tần số nơi nhiều toán tử trở nên rất đơn giản. Với đạo hàm, điều kỳ diệu là nó biến thành phép nhân. Khi hiểu rõ điều này, khái niệm symbol gần như xuất hiện tự nhiên.
+Biến đổi Fourier mang lại một cách tiếp cận rất hiệu quả cho phương trình đạo hàm riêng (PDE): thay vì xử lý trực tiếp phép lấy đạo hàm, ta chuyển sang miền tần số nơi nhiều toán tử có dạng đại số đơn giản. Với phép lấy đạo hàm, biến đổi Fourier chuyển nó thành phép nhân theo biến tần số, và từ đó khái niệm ký hiệu xuất hiện một cách tự nhiên.
 
-Trong chương này, Fourier không chỉ là một công cụ tính tích phân. Nó là chiếc kính giúp ta đọc bản chất của toán tử qua cách nó tác động lên từng mode tần số.
+Trong chương này, biến đổi Fourier không chỉ là một công cụ tính tích phân mà còn là khung biểu diễn giúp ta đọc bản chất của toán tử thông qua tác động của nó lên từng mode tần số.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Hãy tưởng tượng một bản nhạc được tách thành các nốt đơn. Thao tác trên bản nhạc có thể được hiểu bằng cách ta tăng hay giảm từng nốt. Fourier làm điều tương tự với hàm: tách thành các dao động cơ bản. Khi đó, một toán tử được hiểu như cách nó xử lý từng tần số.
+Hãy liên tưởng đến việc phân tích một bản nhạc thành các nốt đơn: mọi thao tác xử lý âm thanh có thể được hiểu qua việc tăng hay giảm cường độ từng nốt. Biến đổi Fourier thực hiện vai trò tương tự đối với hàm số khi tách hàm thành các dao động cơ bản, từ đó cho phép mô tả toán tử qua cách nó tác động lên từng tần số.
 
 ### Cách hình ảnh
 
-Giáo viên nên vẽ quá trình:
+Có thể biểu diễn quá trình tác động của toán tử qua sơ đồ:
 
 $$
 u(x)\longrightarrow \widehat{u}(\xi)\longrightarrow p(x,\xi)\widehat{u}(\xi)\longrightarrow Pu(x).
 $$
 
-Sơ đồ này rất quan trọng vì nó cho thấy symbol là “luật nhân” trong miền tần số. Nếu hệ số không phụ thuộc vị trí, symbol chỉ phụ thuộc $$ \xi $$. Nếu hệ số thay đổi theo không gian, symbol phải phụ thuộc thêm $$ x $$.
+Sơ đồ này cho thấy ký hiệu đóng vai trò như “luật nhân” trong miền tần số. Khi toán tử có hệ số hằng, ký hiệu chỉ phụ thuộc vào $$ \xi $$; khi hệ số thay đổi theo không gian, ký hiệu phải phụ thuộc thêm biến vị trí $$ x $$.
 
 ### Cách hình thức
 
@@ -56,7 +56,7 @@ $$
 \widehat{\partial_{x_j}u}(\xi)=i\xi_j\widehat{u}(\xi).
 $$
 
-Do đó, với toán tử vi phân hệ số hằng
+Do đó, với toán tử vi phân hệ số hằng (dùng quy ước $$ D^\alpha=\partial_x^\alpha $$ trong công thức dưới đây)
 
 $$
 P(D)=\sum_{\lvert \alpha\rvert\le m}a_\alpha D^\alpha,
@@ -72,49 +72,49 @@ $$
 p(\xi)=\sum_{\lvert \alpha\rvert\le m}a_\alpha(i\xi)^\alpha.
 $$
 
-Đây chính là symbol của toán tử.
+Hàm $$ p(\xi) $$ chính là ký hiệu (symbol) của toán tử.
 
 ## Ngộ nhận thường gặp
 
-### “Fourier chỉ hữu ích cho hệ số hằng”
+### “Biến đổi Fourier chỉ hữu ích cho hệ số hằng”
 
-Không hoàn toàn. Với hệ số biến thiên, Fourier vẫn gợi ra dạng local symbol $$ p(x,\xi) $$.
+Không hoàn toàn đúng. Với hệ số biến thiên, biến đổi Fourier vẫn gợi ra dạng ký hiệu cục bộ $$ p(x,\xi) $$.
 
-### “Symbol chỉ là một công thức phụ”
+### “Ký hiệu chỉ là một công thức phụ trợ”
 
-Sai. Symbol là dữ liệu chính mã hóa hành vi của toán tử ở mức tần số cao.
+Sai. Ký hiệu là dữ liệu trung tâm mã hóa hành vi của toán tử, đặc biệt ở miền tần số cao.
 
-### “Nếu hai toán tử có cùng symbol chính thì chúng giống hệt nhau”
+### “Hai toán tử có cùng ký hiệu chính thì giống hệt nhau”
 
-Không. Chúng có thể khác ở các bậc thấp hơn, và sự khác biệt đó vẫn có ý nghĩa.
+Không đúng. Chúng vẫn có thể khác nhau ở các số hạng bậc thấp hơn, và phần sai khác đó vẫn mang thông tin giải tích quan trọng.
 
-### “Tần số cao luôn chỉ là chi tiết nhỏ”
+### “Tần số cao luôn chỉ là chi tiết thứ yếu”
 
-Sai. Regularity, singularity, và ellipticity thường được quyết định chính ở vùng tần số cao.
+Sai. Tính chính quy, điểm kỳ dị và tính elliptic thường được quyết định chủ yếu bởi hành vi ở vùng tần số cao.
 
 ## Tiến trình học
 
-### Bước 1: Ôn lại Fourier của đạo hàm
+### Bước 1: Ôn lại biến đổi Fourier của đạo hàm
 
-Đây là nền móng bắt buộc.
+Đây là nền tảng bắt buộc cho toàn bộ phần sau.
 
-### Bước 2: Nhìn differential operator như phép nhân
+### Bước 2: Xem toán tử vi phân như phép nhân
 
-Khi vào miền tần số, ODE và PDE tuyến tính hệ số hằng thường đơn giản hóa mạnh.
+Trong miền tần số, các phương trình vi phân thường (ODE) và PDE tuyến tính hệ số hằng được đơn giản hóa đáng kể.
 
-### Bước 3: Định nghĩa symbol
+### Bước 3: Định nghĩa ký hiệu
 
-Đi từ hệ số hằng tới hệ số phụ thuộc $$ x $$.
+Mở rộng từ trường hợp hệ số hằng sang trường hợp hệ số phụ thuộc vào $$ x $$.
 
-### Bước 4: Hiểu symbol chính
+### Bước 4: Hiểu vai trò của ký hiệu chính
 
-Trong nhiều định lý, phần bậc cao nhất của symbol là thứ điều khiển mọi chuyện chính.
+Trong nhiều định lý nền tảng, phần bậc cao nhất của ký hiệu là thành phần chi phối các tính chất chủ đạo.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có chứng minh được đạo hàm thành nhân bởi $$ i\xi $$ không?
-- Sinh viên có tìm được symbol của $$ -\Delta $$ không?
-- Sinh viên có giải thích được vì sao symbol chính quan trọng hơn ở tần số cao không?
+- Sinh viên có chứng minh được đạo hàm chuyển thành phép nhân với $$ i\xi $$ hay không?
+- Sinh viên có xác định được ký hiệu của $$ -\Delta $$ hay không?
+- Sinh viên có giải thích được vì sao ký hiệu chính đóng vai trò quyết định ở tần số cao hay không?
 
 ## Ví dụ có lời giải
 
@@ -124,11 +124,11 @@ Với $$ P=\partial_{x_j} $$, ta có
 
 $$ \widehat{Pu}(\xi)=i\xi_j\widehat{u}(\xi). $$
 
-Vậy symbol là
+Do đó ký hiệu của toán tử là
 
 $$ p(\xi)=i\xi_j. $$
 
-### Ví dụ 2: Laplacian
+### Ví dụ 2: Toán tử Laplace
 
 Với
 
@@ -140,65 +140,65 @@ $$
 \widehat{Pu}(\xi)=\lvert \xi\rvert^2\widehat{u}(\xi),
 $$
 
-nên symbol là $$ \lvert \xi\rvert^2 $$. Điều này phản ánh đúng trực giác rằng Laplacian mạnh tay với các dao động nhanh.
+nên ký hiệu là $$ \lvert \xi\rvert^2 $$. Kết quả này phản ánh trực tiếp việc toán tử Laplace khuếch đại mạnh các dao động tần số cao.
 
 ### Ví dụ 3: Toán tử parabolic
 
-Với $$ P=\partial_t-\Delta $$, nếu xét Fourier theo cả biến không gian-thời gian, symbol sẽ là $$ i\tau+\lvert \xi\rvert^2 $$. Ví dụ này cho thấy symbol có thể gắn với nhiều biến tần số khác nhau.
+Với $$ P=\partial_t-\Delta $$, nếu lấy biến đổi Fourier theo cả biến thời gian và không gian, ký hiệu thu được là $$ i\tau+\lvert \xi\rvert^2 $$. Ví dụ này cho thấy ký hiệu có thể gắn với nhiều loại biến tần số khác nhau.
 
-### Ví dụ 4: Symbol phụ thuộc vị trí
+### Ví dụ 4: Ký hiệu phụ thuộc vị trí
 
-Xét toán tử $$ P=a(x)\partial_x $$. Symbol tự nhiên là $$ p(x,\xi)=a(x)\,i\xi $$. Ví dụ này nhấn mạnh rằng khi môi trường thay đổi theo vị trí, cách toán tử xử lý cùng một tần số cũng thay đổi theo vị trí.
+Xét toán tử $$ P=a(x)\partial_x $$. Ký hiệu tương ứng là $$ p(x,\xi)=a(x)\,i\xi $$. Điều này cho thấy khi môi trường biến thiên theo không gian, tác động của toán tử lên cùng một tần số cũng thay đổi theo vị trí.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao Fourier transform lại là ngôn ngữ tự nhiên cho việc nghiên cứu symbol?
-2. Điều gì làm cho symbol chính đủ mạnh để dự đoán ellipticity?
-3. Tại sao hệ số phụ thuộc vị trí buộc ta chuyển từ $$ p(\xi) $$ sang $$ p(x,\xi) $$?
+1. Vì sao biến đổi Fourier là ngôn ngữ tự nhiên để nghiên cứu ký hiệu của toán tử?
+2. Điều gì khiến ký hiệu chính đủ để nhận diện tính elliptic?
+3. Vì sao hệ số phụ thuộc vị trí buộc ta chuyển từ $$ p(\xi) $$ sang $$ p(x,\xi) $$?
 
 ## Bài toán ứng dụng
 
-1. Trong xử lý tín hiệu, việc nhân với một hàm của $$ \xi $$ trong miền Fourier tương ứng với loại bộ lọc nào?
-2. Trong phương trình nhiệt, vì sao symbol $$ \lvert \xi\rvert^2 $$ giải thích hiện tượng làm mượt?
-3. Trong truyền sóng trong môi trường không đồng nhất, vì sao cần thông tin đồng thời về vị trí và tần số?
+1. Trong xử lý tín hiệu, phép nhân với một hàm của $$ \xi $$ trong miền Fourier tương ứng với loại bộ lọc nào?
+2. Trong phương trình nhiệt, vì sao ký hiệu $$ \lvert \xi\rvert^2 $$ giải thích được hiện tượng làm trơn nghiệm?
+3. Khi mô tả sự truyền sóng trong môi trường không đồng nhất, vì sao cần thông tin đồng thời về cả vị trí lẫn tần số?
 
 ## Chiến lược dạy học tương tác
 
-### Câu hỏi nên hỏi trên lớp
+### Câu hỏi nên đặt trên lớp
 
-- Nếu đạo hàm là phép nhân trong miền Fourier, vậy toán tử tổng quát hơn sẽ trông ra sao?
-- Tại sao tần số cao lại quan trọng trong regularity?
-- Cùng một mode $$ \xi $$ nhưng ở hai vị trí khác nhau, toán tử có thể tác động khác nhau không?
+- Nếu đạo hàm tương ứng với phép nhân trong miền Fourier, một toán tử tổng quát hơn sẽ có dạng như thế nào?
+- Vì sao vùng tần số cao lại giữ vai trò quyết định đối với tính chính quy?
+- Với cùng một mode $$ \xi $$ ở hai vị trí khác nhau, toán tử có thể tác động khác nhau hay không?
 
 ### Hoạt động gợi ý
 
-- Cho sinh viên tự tính symbol của vài toán tử đơn giản.
-- So sánh trực tiếp hành vi của symbol $$ \lvert \xi\rvert^2 $$ và $$ 1/(1+\lvert \xi\rvert^2) $$.
-- Dùng sơ đồ mũi tên từ không gian vật lý sang không gian tần số để thảo luận nhóm.
+- Cho sinh viên tự tính ký hiệu của một vài toán tử vi phân đơn giản.
+- So sánh trực tiếp hành vi của hai ký hiệu $$ \lvert \xi\rvert^2 $$ và $$ 1/(1+\lvert \xi\rvert^2) $$.
+- Sử dụng sơ đồ chuyển từ không gian vật lý sang không gian tần số để thảo luận nhóm.
 
-### Cách tăng tham gia
+### Cách tăng mức độ tham gia
 
-- Bắt đầu bằng sóng phẳng thay vì định nghĩa tổng quát.
-- Yêu cầu sinh viên dự đoán symbol rồi mới tính.
-- Mời sinh viên giải thích “symbol là gì” bằng một câu ngắn không ký hiệu.
+- Bắt đầu từ tác động lên sóng phẳng trước khi trình bày định nghĩa tổng quát.
+- Đề nghị sinh viên dự đoán ký hiệu trước khi thực hiện phép biến đổi.
+- Mời sinh viên giải thích khái niệm “ký hiệu (symbol)” bằng một câu ngắn không dùng công thức.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Chỉ làm việc với hệ số hằng ở giai đoạn đầu.
-- Dùng các ví dụ một chiều như $$ \partial_x $$ và $$ -\partial_x^2 $$.
-- Tập trung vào thông điệp: đạo hàm -> nhân bởi tần số.
+- Làm việc trước với các toán tử hệ số hằng.
+- Sử dụng các ví dụ một chiều quen thuộc như $$ \partial_x $$ và $$ -\partial_x^2 $$.
+- Nhấn mạnh nguyên tắc cốt lõi: lấy đạo hàm tương ứng với nhân theo tần số.
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Tìm hiểu symbol chính của toán tử cấp hai hệ số biến thiên.
-- So sánh convention Fourier khác nhau và ảnh hưởng của các hệ số $$ 2\pi $$.
-- Liên hệ symbol với hạt nhân cơ bản của toán tử.
+- Xác định ký hiệu chính của toán tử vi phân cấp hai có hệ số biến thiên.
+- So sánh các quy ước biến đổi Fourier khác nhau và ảnh hưởng của hệ số $$ 2\pi $$.
+- Liên hệ giữa ký hiệu và nhân tích phân cơ bản của toán tử.
 
 ## Ghi nhớ nhanh
 
-Biến đổi Fourier biến đạo hàm thành phép nhân bởi tần số, và từ đó sinh ra khái niệm symbol của toán tử. Symbol là bản mô tả tần số của toán tử, còn symbol chính là phần quyết định hành vi bậc cao và tính elliptic.
+Biến đổi Fourier chuyển phép lấy đạo hàm thành phép nhân theo tần số, từ đó hình thành khái niệm ký hiệu của toán tử. Ký hiệu mô tả hành vi tần số của toán tử, còn ký hiệu chính là phần quyết định hành vi bậc cao và tính elliptic.
 
 ---
 
@@ -206,31 +206,31 @@ Biến đổi Fourier biến đạo hàm thành phép nhân bởi tần số, v�
 
 ### 1. Phương trình nhiệt và sự tắt nhanh của cao tần
 
-Với phương trình nhiệt $$ u_t-\Delta u=0 $$, biến đổi Fourier theo biến không gian cho
+Với phương trình nhiệt $$ u_t-\Delta u=0 $$, lấy biến đổi Fourier theo biến không gian cho
 
 $$
 \partial_t \widehat{u}(t,\xi)+\lvert \xi\rvert^2\widehat{u}(t,\xi)=0.
 $$
 
-Do đó
+Suy ra
 
 $$
 \widehat{u}(t,\xi)=e^{-t\lvert \xi\rvert^2}\widehat{u}(0,\xi).
 $$
 
-Điều này cho thấy các mode tần số cao bị dập rất nhanh. Mô hình giả định môi trường khuếch tán đồng nhất. Diễn giải quan trọng là: symbol $$ \lvert \xi\rvert^2 $$ không chỉ là ký hiệu, mà giải thích trực tiếp hiện tượng làm mượt của phương trình nhiệt.
+Công thức này cho thấy các mode tần số cao suy giảm rất nhanh theo thời gian. Mô hình giả định môi trường khuếch tán đồng nhất; về mặt ý nghĩa, ký hiệu $$ \lvert \xi\rvert^2 $$ giải thích trực tiếp hiệu ứng làm trơn tức thời của phương trình nhiệt.
 
 ### 2. Bài toán truyền sóng và quan hệ tán sắc
 
-Trong phương trình sóng hay Maxwell tuyến tính hóa, symbol quyết định quan hệ giữa tần số thời gian và tần số không gian. Đây là cốt lõi của tốc độ truyền, tán sắc, và hướng lan sóng. Mô hình thường giả định tuyến tính và môi trường lý tưởng. Giới hạn là môi trường mạnh phi tuyến hoặc nhiều thang sẽ đòi hỏi ký hiệu phức tạp hơn.
+Trong phương trình sóng hay hệ phương trình Maxwell tuyến tính hóa, ký hiệu xác định quan hệ tán sắc giữa tần số thời gian và tần số không gian, từ đó quyết định tốc độ truyền, mức độ tán sắc và hướng lan truyền sóng. Mô hình thường giả định môi trường tuyến tính và đồng nhất cục bộ; với môi trường phi tuyến mạnh hoặc đa thang, cần đến các công cụ phân tích tinh vi hơn.
 
 ### 3. Thiết kế bộ lọc tín hiệu
 
-Trong kỹ thuật điện và xử lý âm thanh, việc nhân với một hàm của $$ \xi $$ trong miền Fourier chính là thiết kế bộ lọc: thông thấp, thông cao, hay thông dải. Ngôn ngữ symbol giúp sinh viên thấy sự thống nhất giữa PDE và DSP. Giới hạn là bộ lọc thực tế còn bị ràng buộc bởi lấy mẫu rời rạc và đáp ứng nhân quả.
+Trong kỹ thuật điện và xử lý âm thanh, phép nhân với một hàm của $$ \xi $$ trong miền Fourier chính là nguyên lý thiết kế bộ lọc thông thấp, thông cao và thông dải. Ngôn ngữ ký hiệu giúp người học thấy rõ sự thống nhất giữa PDE và xử lý tín hiệu số (DSP), dù bộ lọc thực tế còn chịu ràng buộc về lấy mẫu rời rạc và tính nhân quả.
 
 ## Trực giác sâu hơn
 
-Fourier transform quan trọng không phải chỉ vì nó làm công thức đẹp hơn, mà vì nó tách riêng từng dao động cơ bản để ta thấy toán tử thật sự đang làm gì với mỗi thang tần số. Ngộ nhận thường gặp là nghĩ symbol chỉ là một “đổi biến tiện lợi”; thực ra nó là dữ liệu động học của toán tử ở vùng cao tần.
+Biến đổi Fourier quan trọng không chỉ vì giúp công thức gọn hơn, mà vì nó phân tách tín hiệu thành các dao động cơ bản độc lập, cho phép quan sát trực tiếp cách toán tử tác động lên từng thang tần số. Ký hiệu không đơn thuần là một phép đổi biến thuận tiện, mà là dữ liệu cốt lõi phản ánh động học của toán tử ở miền cao tần.
 
 ## Trực quan hóa bằng Python
 
@@ -261,7 +261,7 @@ plt.show()
 
 ## Trực quan hóa bằng JavaScript
 
-Có thể dùng `Plotly.js` để tạo thanh trượt thời gian $$ t $$ trong hệ số $$ e^{-t\lvert \xi\rvert^2} $$ của phương trình nhiệt, giúp sinh viên quan sát trực tiếp việc tăng $$ t $$ sẽ dập cao tần nhanh như thế nào.
+Có thể dùng `Plotly.js` để tạo thanh trượt thay đổi thời gian $$ t $$ trong thừa số $$ e^{-t\lvert \xi\rvert^2} $$ của phương trình nhiệt, giúp sinh viên quan sát trực tiếp tốc độ suy giảm của các thành phần cao tần khi $$ t $$ tăng.
 
 ## Gợi ý tài nguyên ngoài
 
@@ -271,32 +271,32 @@ Tìm kiếm: `heat equation Fourier multiplier`, `dispersion relation visualizat
 
 ### Mức đại học (Undergraduate)
 
-Giữ trọng tâm ở việc đạo hàm thành nhân bởi $$ i\xi $$ và cách Laplacian tạo ra $$ \lvert \xi\rvert^2 $$.
+Tập trung vào việc đạo hàm chuyển thành phép nhân với $$ i\xi $$ và toán tử Laplace tương ứng với ký hiệu $$ \lvert \xi\rvert^2 $$.
 
 ### Mức sau đại học (Graduate)
 
-Nhấn mạnh symbol chính, hệ số biến thiên $$ p(x,\xi) $$, và vai trò của symbol trong ellipticity, tán sắc, và microlocal regularity.
+Nhấn mạnh vai trò của ký hiệu chính, ký hiệu phụ thuộc vị trí $$ p(x,\xi) $$, và mối liên hệ với tính elliptic, hiện tượng tán sắc và tính chính quy vi địa phương.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Lọc nhiễu trong xử lý tín hiệu
-- Bài toán: Muốn giữ tần số thấp và giảm tần số cao trong dữ liệu đo.
-- Mô hình: Chọn symbol $$ a(\xi) $$ và đặt
+- Bài toán: Giữ lại thành phần tần số thấp và giảm nhiễu ở vùng tần số cao trong dữ liệu đo.
+- Mô hình: Chọn ký hiệu $$ a(\xi) $$ và xác định toán tử lọc bởi
 $$ \widehat{Tu}(\xi)=a(\xi)\hat u(\xi). $$
-- Giả thiết và giới hạn: Hiệu quả phụ thuộc đúng loại nhiễu và cách chọn symbol.
-- Diễn giải: Symbol calculus là ngôn ngữ thiết kế bộ lọc theo miền tần số.
+- Giả thiết và giới hạn: Hiệu quả phụ thuộc vào đặc tính nhiễu và cách lựa chọn ký hiệu phù hợp.
+- Diễn giải: Phép tính ký hiệu là ngôn ngữ nền tảng để thiết kế bộ lọc theo miền tần số.
 
 #### Truyền sóng và quang học
-- Bài toán: Biến đổi pha và biên độ của sóng thường được hiểu rõ nhất trong miền Fourier.
-- Mô hình: Các toán tử lan truyền thường có symbol gần như một hàm của $$ \xi $$ hoặc của cặp $$ (x,\xi) $$.
+- Bài toán: Sự biến đổi pha và biên độ của sóng thường được phân tích thuận lợi nhất trong miền Fourier.
+- Mô hình: Các toán tử lan truyền thường có ký hiệu là hàm của $$ \xi $$ hoặc của cặp $$ (x,\xi) $$.
 - Giả thiết và giới hạn: Môi trường có thể được xấp xỉ cục bộ bởi mô hình tuyến tính.
-- Diễn giải: Fourier transform tách bài toán thành các mode tần số độc lập hoặc gần độc lập.
+- Diễn giải: Biến đổi Fourier tách bài toán thành các mode tần số độc lập hoặc gần độc lập.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Symbol là "bảng điều khiển tần số" của toán tử. Với toán tử vi phân hằng hệ số, mọi chuyện đặc biệt đơn giản vì mỗi mode Fourier chỉ bị nhân bởi một số. Một bẫy phổ biến là quên rằng khi symbol phụ thuộc vào $$ x $$, phép toán không còn chỉ là một bộ lọc toàn cục đơn giản.
+Ký hiệu có thể xem như “bảng điều khiển tần số” của toán tử. Với toán tử vi phân hệ số hằng, mỗi mode Fourier chỉ bị nhân bởi một hằng số tương ứng. Tuy nhiên, cần tránh nhầm lẫn khi ký hiệu phụ thuộc thêm vào $$ x $$, bởi lúc đó toán tử không còn là một bộ lọc toàn cục đơn giản nữa.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -332,18 +332,18 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Với toán tử Laplace một chiều,
+Với toán tử Laplace một chiều, ta có
 $$ \widehat{-\partial_x^2 u}(\xi)=\xi^2\hat u(\xi). $$
-Symbol chính là $$ \xi^2 $$. Điều này giải thích vì sao tần số cao bị phạt mạnh hơn: càng dao động nhanh thì càng bị nhân bởi hệ số lớn.
+Ký hiệu tương ứng là $$ \xi^2 $$, giải thích vì sao các thành phần tần số cao bị khuếch đại mạnh hơn: hàm dao động càng nhanh thì càng bị nhân với hệ số lớn hơn.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Dùng Fourier transform để hiểu đạo hàm như phép nhân.
+**Bậc đại học.** Dùng biến đổi Fourier để hiểu phép lấy đạo hàm như phép nhân.
 
-**Bậc sau đại học.** Kết nối với full symbol, principal symbol và quantization choices.
+**Bậc sau đại học.** Kết nối với ký hiệu đầy đủ (full symbol), ký hiệu chính (principal symbol) và các quy ước lượng tử hóa.
 
 ## Video tham khảo
 
-- xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Tiếng Việt. Symbol a(x,ξ) là bộ nhân Fourier của một toán tử.
-- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Biến đổi nằm trong định nghĩa ấy.
-- [Introduction to Fourier Integral operators 1 (Allan Greenleaf)](https://www.youtube.com/watch?v=4O_oC9kFFWQ) — Mathematics video VAROQUI Hervé, Tiếng Việt. Bài nhập môn của Allan Greenleaf về toán tử tích phân Fourier, đối tượng kế tiếp sau symbol.
+- Nên xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, tiếng Việt. Trình bày ký hiệu a(x,ξ) như bộ nhân Fourier của toán tử.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Giới thiệu phép biến đổi Fourier làm nền tảng cho định nghĩa ký hiệu.
+- [Introduction to Fourier Integral operators 1 (Allan Greenleaf)](https://www.youtube.com/watch?v=4O_oC9kFFWQ) — Mathematics video VAROQUI Hervé, tiếng Việt. Bài giảng nhập môn của Allan Greenleaf về toán tử tích phân Fourier, hướng mở rộng tiếp theo sau ký hiệu giả vi phân.

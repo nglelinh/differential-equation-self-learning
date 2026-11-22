@@ -14,105 +14,105 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài optional này giới thiệu phương pháp phần tử hữu hạn như con đường tự nhiên đi từ dạng yếu sang mô phỏng số. Sau bài học, sinh viên cần hiểu ý tưởng chia miền thành phần tử nhỏ, xây hàm cơ sở cục bộ, thiết lập hệ tuyến tính từ weak formulation, và nhận ra điểm mạnh của FEM đối với miền hình học phức tạp.
+Bài học tùy chọn này giới thiệu phương pháp phần tử hữu hạn (FEM) như bước chuyển tự nhiên từ dạng yếu của PDE sang tính toán số. Sau bài học, sinh viên cần hiểu ý tưởng chia miền thành các phần tử nhỏ, xây dựng hàm cơ sở có giá cục bộ, thiết lập hệ phương trình tuyến tính từ dạng yếu, và nhận ra ưu thế của FEM trên các miền hình học phức tạp.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm dạng yếu của PDE, không gian $$ H^1_0(\Omega) $$, và sơ bộ về sai phân hữu hạn. Khác với finite differences bắt đầu từ đạo hàm, FEM bắt đầu từ nguyên lý biến phân và không gian hàm.
+Sinh viên cần nắm dạng yếu của PDE, không gian $$ H^1_0(\Omega) $$ và kiến thức cơ bản về sai phân hữu hạn. Khác với sai phân hữu hạn xuất phát từ việc xấp xỉ trực tiếp đạo hàm, FEM xuất phát từ dạng biến phân và việc chọn không gian hàm xấp xỉ.
 
 ## Dẫn nhập
 
-Nếu finite differences hỏi “xấp xỉ đạo hàm bằng chênh lệch thế nào?”, thì finite elements hỏi “ta nên tìm nghiệm trong một không gian hữu hạn chiều nào để vẫn giữ cấu trúc năng lượng của bài toán?”. Đây là một thay đổi rất sâu về tư duy. Ta không rời rạc hóa trực tiếp đạo hàm, mà rời rạc hóa không gian nghiệm.
+Nếu sai phân hữu hạn đặt câu hỏi "xấp xỉ đạo hàm tại nút lưới bằng hiệu như thế nào?", thì phần tử hữu hạn đặt câu hỏi "chọn không gian con hữu hạn chiều nào để tìm nghiệm xấp xỉ mà vẫn bảo toàn cấu trúc biến phân và năng lượng của bài toán?". Thay vì rời rạc hóa trực tiếp toán tử vi phân, FEM rời rạc hóa không gian hàm.
 
-Phương pháp phần tử hữu hạn đặc biệt mạnh khi miền có hình học phức tạp hoặc khi dạng yếu là ngôn ngữ tự nhiên của bài toán, chẳng hạn trong đàn hồi, truyền nhiệt, và cơ học chất rắn.
+Cách tiếp cận này đặc biệt hiệu quả khi miền có hình học phức tạp (biên cong, lỗ khoét) hoặc khi mô hình vật lý được phát biểu tự nhiên qua nguyên lý năng lượng như trong cơ học đàn hồi, truyền nhiệt và cơ học vật rắn.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Hãy tưởng tượng muốn dựng một bề mặt cong bằng nhiều tấm nhỏ ghép lại. Mỗi tấm rất đơn giản, nhưng khi ghép đúng cách, toàn bộ bề mặt có thể xấp xỉ tốt hình dạng phức tạp. FEM làm điều đó với nghiệm của PDE: ghép từ các “mảnh” cục bộ đơn giản.
+Để dựng một bề mặt cong phức tạp, ta có thể ghép nhiều mảnh phẳng nhỏ lại với nhau: mỗi mảnh có hình dạng đơn giản, nhưng ghép khéo trên một lưới phù hợp sẽ xấp xỉ sát hình dạng toàn cục. FEM áp dụng đúng nguyên lý đó cho nghiệm PDE bằng cách tổ hợp các hàm đơn giản xác định cục bộ trên từng phần tử.
 
 ### Cách hình ảnh
 
-Giáo viên nên vẽ một đoạn thẳng được chia thành nhiều phần tử nhỏ, và tại mỗi nút vẽ một hàm “mũ chóp” bằng 1 tại nút đó, bằng 0 tại các nút lân cận xa hơn. Hình này rất quan trọng vì nó cho thấy nghiệm gần đúng là tổ hợp tuyến tính của các basis functions cục bộ.
+Chia một đoạn thẳng thành các đoạn con (phần tử) và tại mỗi nút gắn một hàm "mũ chóp" (hat function) nhận giá trị 1 tại nút đó, bằng 0 tại mọi nút khác và tuyến tính trên mỗi phần tử kề. Khi đó, nghiệm gần đúng là tổ hợp tuyến tính của các hàm cơ sở cục bộ này.
 
 ### Cách hình thức
 
-Với bài toán Poisson dạng yếu:
+Xuất phát từ dạng yếu của bài toán Poisson:
 
 $$
 \int_\Omega \nabla u\cdot\nabla v\,dx=\int_\Omega fv\,dx
 \qquad \forall v\in H^1_0(\Omega),
 $$
 
-ta chọn không gian con hữu hạn chiều $$ V_h\subset H^1_0(\Omega) $$ và tìm $$ u_h\in V_h $$ sao cho
+ta chọn một không gian con hữu hạn chiều $$ V_h\subset H^1_0(\Omega) $$ và tìm $$ u_h\in V_h $$ sao cho:
 
 $$
 \int_\Omega \nabla u_h\cdot\nabla v_h\,dx=\int_\Omega fv_h\,dx
 \qquad \forall v_h\in V_h.
 $$
 
-Nếu $$ V_h $$ được sinh bởi các hàm cơ sở $$ \phi_1,\dots,\phi_N $$, ta viết
+Nếu $$ \{\phi_1,\dots,\phi_N\} $$ là một cơ sở của $$ V_h $$, ta viết:
 
 $$ u_h=\sum_{j=1}^N U_j\phi_j, $$
 
-và thu được hệ tuyến tính cho các hệ số $$ U_j $$.
+rồi chọn lần lượt $$ v_h=\phi_i $$ để thu được hệ phương trình tuyến tính cho các ẩn số $$ U_j $$.
 
 ## Ngộ nhận thường gặp
 
-### “FEM chỉ là một phiên bản phức tạp của finite differences”
+### “FEM chỉ là một biến thể phức tạp hơn của sai phân hữu hạn”
 
-Không. Hai phương pháp xuất phát từ những triết lý khác nhau.
+Không đúng. Hai phương pháp xuất phát từ hai cơ sở toán học khác nhau: sai phân hữu hạn rời rạc hóa dạng mạnh, còn FEM rời rạc hóa dạng yếu trên không gian con hữu hạn chiều.
 
-### “Phần tử hữu hạn nghĩa là nghiệm bị chia thành các đoạn rời rạc”
+### “Phần tử hữu hạn nghĩa là nghiệm bị cắt rời thành các mảnh gián đoạn”
 
-Sai. Nghiệm gần đúng thường vẫn liên tục toàn cục, chỉ được xây từ các mảnh cục bộ.
+Sai. Trong FEM chuẩn (conforming FEM), nghiệm xấp xỉ $$ u_h $$ liên tục trên toàn miền dù được xây dựng từ các đa thức cục bộ trên từng phần tử.
 
-### “Hàm cơ sở phải toàn cục mới chính xác”
+### “Hàm cơ sở phải xác định trên toàn miền mới đạt độ chính xác cao”
 
-Không. Điểm mạnh của FEM là tính cục bộ của các basis functions.
+Không đúng. Chính giá cục bộ (local support) của hàm cơ sở tạo ra ma trận thưa và hiệu quả tính toán cao cho FEM.
 
-### “Miền phức tạp thì công thức phải xấu đi”
+### “Miền càng phức tạp thì công thức FEM càng rối”
 
-Ngược lại, FEM thường càng tỏa sáng ở miền hình học phức tạp.
+Ngược lại, FEM giữ nguyên cùng một quy trình lắp ghép trên các lưới tam giác hoặc tứ diện, nên đặc biệt thuận lợi cho miền có hình học phức tạp.
 
 ## Tiến trình học
 
-### Bước 1: Bắt đầu từ dạng yếu
+### Bước 1: Xuất phát từ dạng yếu
 
-Nhắc sinh viên rằng đây là nơi FEM khởi động.
+Nhắc lại dạng biến phân của bài toán Poisson làm điểm khởi đầu.
 
-### Bước 2: Chọn không gian con hữu hạn chiều
+### Bước 2: Chọn không gian con hữu hạn chiều $$ V_h $$
 
-Giải thích ý nghĩa của chỉ số $$ h $$ như kích thước lưới.
+Làm rõ ý nghĩa của tham số kích thước lưới $$ h $$.
 
-### Bước 3: Viết nghiệm gần đúng theo basis
+### Bước 3: Biểu diễn nghiệm theo cơ sở cục bộ
 
-Biến bài toán vô hạn chiều thành hệ tuyến tính hữu hạn chiều.
+Chuyển bài toán biến phân vô hạn chiều thành hệ đại số tuyến tính hữu hạn chiều.
 
-### Bước 4: Hiểu tính sparse
+### Bước 4: Nhận diện tính thưa (sparsity) của ma trận
 
-Vì basis functions có hỗ cục bộ nên ma trận thu được thường thưa.
+Vì các hàm cơ sở chỉ khác 0 trên các phần tử kề nút tương ứng, phần lớn phần tử của ma trận hệ số bằng 0.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có giải thích được vì sao FEM gắn tự nhiên với dạng yếu không?
-- Sinh viên có hiểu hàm cơ sở “mũ chóp” hoạt động ra sao không?
-- Sinh viên có thấy vì sao ma trận của FEM thường sparse không?
+- Sinh viên có giải thích được vì sao FEM gắn trực tiếp với dạng yếu hay không?
+- Sinh viên có nắm rõ định nghĩa và tính chất của hàm cơ sở mũ chóp hay không?
+- Sinh viên có giải thích được vì sao ma trận độ cứng của FEM thường là ma trận thưa hay không?
 
 ## Ví dụ có lời giải
 
-### Ví dụ 1: Hàm cơ sở trên một đoạn
+### Ví dụ 1: Hàm cơ sở mũ chóp trên đoạn $$ [0,1] $$
 
-Chia đoạn $$ [0,1] $$ thành các nút. Hàm cơ sở $$ \phi_i $$ bằng 1 tại nút $$ i $$, bằng 0 tại các nút còn lại, và tuyến tính trên mỗi phần tử lân cận. Đây là viên gạch cơ bản của FEM bậc một.
+Chia đoạn $$ [0,1] $$ bằng một dãy nút lưới. Hàm cơ sở $$ \phi_i $$ bằng 1 tại nút $$ i $$, bằng 0 tại mọi nút khác và biến thiên tuyến tính trên hai phần tử kề nút $$ i $$. Đây là hàm cơ sở tiêu chuẩn của FEM bậc nhất.
 
-### Ví dụ 2: Biểu diễn nghiệm gần đúng
+### Ví dụ 2: Biểu diễn nghiệm xấp xỉ
 
-Với ba nút nội, ta viết $$ u_h=U_1\phi_1+U_2\phi_2+U_3\phi_3 $$. Lúc này bài toán PDE được thay bằng việc tìm ba hệ số $$ U_1,U_2,U_3 $$.
+Với ba nút trong, ta viết $$ u_h=U_1\phi_1+U_2\phi_2+U_3\phi_3 $$. Bài toán PDE ban đầu được quy về tìm ba hệ số $$ U_1,U_2,U_3 $$ — cũng chính là giá trị xấp xỉ của nghiệm tại ba nút đó.
 
-### Ví dụ 3: Tạo ma trận độ cứng
+### Ví dụ 3: Thiết lập ma trận độ cứng
 
-Nếu chọn thử từng $$ v_h=\phi_i $$, ta thu được các phương trình
+Chọn từng hàm thử $$ v_h=\phi_i $$, ta thu được hệ phương trình:
 
 $$
 \sum_j U_j\int_\Omega \nabla \phi_j\cdot\nabla \phi_i\,dx
@@ -120,87 +120,85 @@ $$
 \int_\Omega f\phi_i\,dx.
 $$
 
-Đây chính là hệ ma trận
+Viết dưới dạng ma trận, đây là hệ $$ KU=F $$, trong đó $$ K $$ gọi là ma trận độ cứng (stiffness matrix).
 
-$$ KU=F. $$
+### Ví dụ 4: Nguồn gốc tính thưa của ma trận
 
-### Ví dụ 4: Vì sao ma trận sparse
+Hai hàm cơ sở gắn với hai nút không thuộc chung phần tử nào sẽ có giá không giao nhau, nên:
 
-Hai basis functions xa nhau thường không chồng lấp hỗ, nên
+$$ \int_\Omega \nabla \phi_j\cdot\nabla \phi_i\,dx=0. $$
 
-$$ \int_\Omega \nabla \phi_j\cdot\nabla \phi_i\,dx=0 $$
-
-khi $$ i $$ và $$ j $$ không kề nhau. Vì thế ma trận có rất nhiều phần tử bằng 0.
+Do đó phần lớn các phần tử của ma trận $$ K $$ bằng 0, giúp lưu trữ và giải hệ rất hiệu quả.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao FEM bắt đầu từ weak formulation thay vì đạo hàm điểm?
-2. Điều gì làm cho basis functions cục bộ trở nên hiệu quả?
-3. Tại sao hình học phức tạp lại là lợi thế tương đối của FEM?
+1. Vì sao FEM bắt đầu từ dạng yếu thay vì xấp xỉ đạo hàm từng điểm?
+2. Giá cục bộ của các hàm cơ sở mang lại lợi ích tính toán gì?
+3. Vì sao FEM có lợi thế nổi bật hơn sai phân hữu hạn trên lưới đều khi miền có hình học phức tạp?
 
 ## Bài toán ứng dụng
 
-1. Trong mô phỏng ứng suất của một khung máy có hình dạng phức tạp, vì sao FEM là lựa chọn tự nhiên?
-2. Trong truyền nhiệt trên một miền cong hoặc có lỗ, finite element giúp gì hơn finite differences?
-3. Trong cơ học sinh học, khi mô phỏng mô mềm có hình dạng không đều, việc dùng lưới tam giác hay tứ diện mang ý nghĩa gì?
+1. Trong phân tích ứng suất của khung máy có hình dạng phức tạp, vì sao FEM là công cụ tiêu chuẩn?
+2. Trong bài toán truyền nhiệt trên miền có biên cong hoặc lỗ khoét, FEM khắc phục hạn chế nào của sai phân hữu hạn?
+3. Trong cơ học sinh học, việc chia lưới tam giác hoặc tứ diện cho mô mềm có ý nghĩa gì?
 
 ## Chiến lược dạy học tương tác
 
 ### Câu hỏi nên hỏi trên lớp
 
-- Nếu không thể tìm nghiệm trong cả không gian vô hạn chiều, em sẽ thu hẹp nó thế nào?
-- Vì sao “ghép từ mảnh nhỏ” lại có thể xấp xỉ tốt bề mặt toàn cục?
-- Ta được gì khi basis chỉ sống cục bộ?
+- Nếu không thể tìm nghiệm trên toàn bộ không gian vô hạn chiều $$ H^1_0(\Omega) $$, ta thu hẹp bài toán bằng cách nào?
+- Vì sao tổ hợp các hàm tuyến tính từng khúc vẫn xấp xỉ tốt một nghiệm cong trơn?
+- Tính cục bộ của hàm cơ sở ảnh hưởng thế nào đến cấu trúc ma trận $$ K $$?
 
 ### Hoạt động gợi ý
 
-- Cho sinh viên tự vẽ ba hàm mũ chóp trên đoạn $$ [0,1] $$.
-- Dùng giấy cắt ghép để minh họa các phần tử và nút.
-- So sánh trực tiếp một bài toán đơn giản giữa finite differences và FEM.
+- Cho sinh viên tự vẽ ba hàm mũ chóp trên đoạn $$ [0,1] $$ và tính vài phần tử của ma trận $$ K $$.
+- Minh họa quá trình ghép các phần tử tam giác trên một miền 2D có lỗ khoét.
+- So sánh trực tiếp ma trận thu được từ sai phân hữu hạn và FEM trên cùng bài toán Poisson 1D.
 
 ### Cách tăng tham gia
 
-- Bắt đầu từ hình ảnh ghép các tấm nhỏ thành một bề mặt.
-- Cho sinh viên tự viết nghiệm gần đúng dưới dạng tổ hợp basis.
-- Mời sinh viên giải thích “ma trận sparse” bằng ngôn ngữ đồ thị hoặc mạng lưới.
+- Mở đầu bằng hình ảnh ghép bề mặt từ các mảnh phẳng nhỏ.
+- Mời sinh viên tự viết biểu thức tổ hợp tuyến tính của nghiệm xấp xỉ $$ u_h $$.
+- Liên hệ tính thưa của ma trận $$ K $$ với cấu trúc láng giềng trên đồ thị lưới.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Chỉ làm FEM một chiều.
-- Dùng rất ít basis functions trong ví dụ đầu.
-- Nhấn mạnh pipeline: dạng yếu -> không gian con -> basis -> hệ tuyến tính.
+- Tập trung hoàn toàn vào FEM một chiều trước khi sang hai chiều.
+- Chọn lưới ít nút (ví dụ 3 nút trong) để tính trực tiếp được cả ma trận $$ K $$.
+- Nhấn mạnh quy trình bốn bước: dạng yếu $$ \to $$ không gian con $$ V_h $$ $$ \to $$ hàm cơ sở $$ \to $$ hệ tuyến tính $$ KU=F $$.
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Tìm hiểu lemma Cea ở mức trực giác.
-- So sánh phần tử bậc một và bậc hai.
-- Phân tích sai số theo kích thước lưới $$ h $$.
+- Tìm hiểu trực giác và chứng minh bổ đề Céa (Céa's lemma).
+- So sánh phần tử bậc nhất ($$ P_1 $$) và phần tử bậc hai ($$ P_2 $$).
+- Phân tích tốc độ hội tụ sai số theo kích thước lưới $$ h $$ trong chuẩn $$ H^1 $$ và $$ L^2 $$.
 
 ## Ghi nhớ nhanh
 
-Phần tử hữu hạn không rời rạc hóa trực tiếp đạo hàm mà rời rạc hóa không gian nghiệm trong dạng yếu. Nhờ đó, FEM giữ được cấu trúc năng lượng và xử lý rất tốt các miền hình học phức tạp.
+Phương pháp phần tử hữu hạn rời rạc hóa không gian nghiệm trong dạng yếu bằng các hàm cơ sở có giá cục bộ, nhờ đó bảo toàn cấu trúc năng lượng, tạo ra hệ ma trận thưa và thích nghi tốt với miền hình học phức tạp.
 
 ---
 
 ## Ứng dụng thực tế
 
-### 1. Ứng suất và biến dạng trong kết cấu
+### 1. Phân tích ứng suất và biến dạng trong kết cấu
 
-Trong cơ học kết cấu, các bài toán đàn hồi thường được viết ở dạng yếu và giải bằng FEM trên lưới tam giác hoặc tứ diện. Hình học của chi tiết máy, cầu, hay xương sinh học thường quá phức tạp cho lưới sai phân đều. Mô hình giả định vật liệu và điều kiện biên được mô tả đủ chính xác. Diễn giải là FEM mạnh vì nó đi theo hình học thực của miền.
+Trong cơ học kết cấu, bài toán đàn hồi được viết dưới dạng yếu và giải bằng FEM trên lưới tam giác hoặc tứ diện, phù hợp với hình học phức tạp của chi tiết máy, cầu đường hay cấu trúc xương sinh học.
 
-### 2. Truyền nhiệt trên miền cong hoặc có lỗ
+### 2. Truyền nhiệt trên miền cong hoặc có lỗ khoét
 
-Miền vật lý thật hiếm khi là hình chữ nhật hoàn hảo. FEM cho phép chia miền thành phần tử nhỏ thích nghi với biên cong, lỗ khoan, hoặc vùng cần lưới mịn. Đây là lợi thế thực hành rất lớn so với finite differences truyền thống trên lưới đều.
+Miền kỹ thuật thực tế hiếm khi là hình chữ nhật đơn giản. FEM cho phép chia lưới không cấu trúc bám sát biên cong, lỗ khoan và làm mịn cục bộ tại những vùng cần độ chính xác cao.
 
-### 3. Dòng chảy và mô phỏng sinh học
+### 3. Dòng chảy và cơ học sinh học
 
-Trong mô phỏng dòng chảy máu, mô mềm, hay tăng trưởng mô sinh học, hình học phức tạp và điều kiện biên tinh tế làm FEM trở thành lựa chọn tự nhiên. Mô hình số thường còn phải kết hợp với thích nghi lưới và solver sparse lớn, cho thấy FEM là cửa ngõ vào tính toán khoa học hiện đại.
+Trong mô phỏng dòng máu hoặc biến dạng mô mềm, FEM kết hợp với làm mịn lưới thích nghi và các bộ giải hệ thưa kích thước lớn tạo thành công cụ chủ lực của tính toán khoa học hiện đại.
 
 ## Trực giác sâu hơn
 
-FEM không hỏi “đạo hàm tại điểm này là bao nhiêu?” trước tiên. Nó hỏi “nghiệm gần đúng nên sống trong không gian hữu hạn chiều nào để vẫn giữ cấu trúc yếu và năng lượng của bài toán?”. Ngộ nhận phổ biến là nghĩ FEM chỉ là finite differences viết cầu kỳ hơn; thực ra hai phương pháp đi từ hai triết lý hoàn toàn khác nhau.
+Điểm khác biệt cốt lõi của FEM là bắt đầu từ không gian hàm và dạng biến phân thay vì xấp xỉ đạo hàm từng điểm. Vì thế, FEM không phải là "sai phân hữu hạn viết phức tạp hơn" mà là hiện thực hóa trực tiếp lý thuyết nghiệm yếu và định lý Lax–Milgram trong không gian hữu hạn chiều.
 
 ## Trực quan hóa bằng Python
 
@@ -235,7 +233,7 @@ plt.show()
 
 ## Trực quan hóa bằng JavaScript
 
-Có thể dùng `p5.js` để cho sinh viên kéo các nút lưới trên đoạn hoặc tam giác đơn giản và xem các hàm cơ sở cục bộ thay đổi ra sao.
+Có thể dùng `p5.js` để cho phép kéo các nút lưới trên đoạn thẳng hoặc tam giác và quan sát trực tiếp sự thay đổi của các hàm cơ sở cục bộ.
 
 ## Gợi ý tài nguyên ngoài
 
@@ -249,11 +247,11 @@ Tìm kiếm: `finite element hat functions visualization`, `FEM mesh animation`,
 
 ### Mức đại học (Undergraduate)
 
-Tập trung vào FEM một chiều, hàm mũ chóp, dạng yếu, và ma trận thưa từ các basis functions cục bộ.
+Tập trung vào FEM một chiều, hàm cơ sở mũ chóp, thiết lập hệ từ dạng yếu và cấu trúc ma trận thưa.
 
 ### Mức sau đại học (Graduate)
 
-Đi sâu vào lemma Cea, ước lượng sai số theo $$ h $$, phần tử bậc cao, adaptivity, và so sánh FEM với spectral methods hoặc finite volumes.
+Đi sâu vào bổ đề Céa, ước lượng sai số tiên nghiệm và hậu nghiệm theo $$ h $$, phần tử bậc cao, làm mịn lưới thích nghi và so sánh FEM với phương pháp phổ và thể tích hữu hạn.
 
 > Xem toàn bộ minh họa tương tác của chương tại: [Bộ Minh họa tương tác Chương 13]({{ site.baseurl }}/contents/vi/chapter13/13_09_Interactive_Gallery/)
 
@@ -262,20 +260,20 @@ Tập trung vào FEM một chiều, hàm mũ chóp, dạng yếu, và ma trận 
 ### 1. Ứng dụng thực tế
 
 #### Kết cấu cơ học và đàn hồi
-- Bài toán: Hình học phức tạp của cầu, xương hay khung cơ khí khó xử lý bằng lưới sai phân đều.
-- Mô hình: Chia miền thành tam giác hoặc tứ diện rồi tìm nghiệm xấp xỉ trong không gian hữu hạn chiều.
-- Giả thiết và giới hạn: Cần sinh lưới và chọn hàm cơ sở phù hợp.
-- Diễn giải: FEM biến PDE thành bài toán năng lượng trên các phần tử nhỏ.
+- Bài toán: Xử lý hình học phức tạp của cầu, xương hay chi tiết cơ khí mà lưới sai phân đều khó đáp ứng.
+- Mô hình: Chia miền thành lưới tam giác hoặc tứ diện và tìm nghiệm xấp xỉ trong không gian hữu hạn chiều.
+- Giả thiết và giới hạn: Chất lượng sinh lưới và bậc hàm cơ sở ảnh hưởng trực tiếp tới sai số.
+- Diễn giải: FEM quy PDE về bài toán cân bằng năng lượng rời rạc trên các phần tử nhỏ.
 
 #### Truyền nhiệt trong chi tiết kỹ thuật
-- Bài toán: Miền có biên cong, lỗ hổng, hoặc vật liệu ghép khiến finite differences kém linh hoạt.
-- Mô hình: Dùng dạng yếu và không gian phần tử hữu hạn để xấp xỉ nghiệm.
-- Giả thiết và giới hạn: Chất lượng lưới ảnh hưởng trực tiếp sai số.
-- Diễn giải: FEM tận dụng cấu trúc weak solution của chương trước.
+- Bài toán: Mô phỏng truyền nhiệt trên miền có biên cong, lỗ khoét hoặc vật liệu ghép nhiều lớp.
+- Mô hình: Rời rạc hóa dạng yếu trên không gian phần tử hữu hạn.
+- Giả thiết và giới hạn: Cần kiểm soát chất lượng phần tử lưới để tránh suy biến ma trận.
+- Diễn giải: FEM khai thác trực tiếp khuôn khổ nghiệm yếu đã xây dựng ở Chương 12.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Finite element không bắt đầu từ đạo hàm rời rạc, mà bắt đầu từ dạng yếu và không gian xấp xỉ hữu hạn chiều. Đây là lý do nó hợp tự nhiên với Sobolev spaces và Lax-Milgram. Một bẫy phổ biến là chỉ xem FEM như kỹ thuật phần mềm; thật ra nền tảng giải tích của nó là cực kỳ sâu.
+FEM bắt đầu từ dạng yếu và không gian xấp xỉ hữu hạn chiều nên gắn kết trực tiếp với không gian Sobolev và định lý Lax–Milgram. Đằng sau các phần mềm mô phỏng thương mại là một nền tảng giải tích chặt chẽ về xấp xỉ tối ưu và hội tụ.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -305,22 +303,16 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Trên đoạn $$ [0,1] $$, nghiệm xấp xỉ phần tử hữu hạn bậc 1 có dạng
-$$ u_h(x)=\sum_{i=1}^N U_i \phi_i(x), $$
-trong đó các $$ \phi_i $$ là hàm hat. Thế vào dạng yếu của
-$$ -u''=f $$
-ta thu được hệ ma trận
-$$ KU=F. $$
-Đây là bản rời rạc trực tiếp của tư duy weak solution.
+Trên đoạn $$ [0,1] $$, nghiệm xấp xỉ phần tử hữu hạn bậc nhất có dạng $$ u_h(x)=\sum_{i=1}^N U_i \phi_i(x) $$, trong đó các $$ \phi_i $$ là hàm cơ sở mũ chóp. Thay vào dạng yếu của $$ -u''=f $$ thu được hệ phương trình tuyến tính $$ KU=F $$, là phiên bản rời rạc trực tiếp của bài toán nghiệm yếu.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Hiểu lưới, hàm hat và ma trận stiffness trong 1D.
+**Bậc đại học.** Nắm khái niệm lưới, hàm cơ sở mũ chóp và ma trận độ cứng trong một chiều.
 
-**Bậc sau đại học.** Kết nối với Cea's lemma, adaptive refinement và mixed methods.
+**Bậc sau đại học.** Kết nối với bổ đề Céa, làm mịn lưới thích nghi (adaptive refinement) và phương pháp phần tử hữu hạn hỗn hợp (mixed FEM).
 
 ## Video tham khảo
 
-- xem trước: [MIT Numerical Methods for PDEs Lecture 17: FEM Error Analysis in Sobolev and L2 norms](https://www.youtube.com/watch?v=nj0fpJUOl64) — Aerodynamic CFD, tiếng Anh. Một bài PDE số của MIT về sai số phần tử hữu hạn trong chuẩn Sobolev và L^2.
-- [Lax-Milgram, application to Poisson equation.](https://www.youtube.com/watch?v=s5P3e1FhpTk) — Learn Maths with Dr Alex, tiếng Anh. Dạng yếu của phương trình Poisson mà phương pháp phần tử hữu hạn rời rạc hóa.
-- [Lax-Milgram lemma](https://www.youtube.com/watch?v=w8QjyVug78M) — Numerical Analysis by Julian Roth, tiếng Anh. Lax-Milgram, định lý tồn tại đứng sau dạng yếu ấy.
+- xem trước: [MIT Numerical Methods for PDEs Lecture 17: FEM Error Analysis in Sobolev and L2 norms](https://www.youtube.com/watch?v=nj0fpJUOl64) — Aerodynamic CFD, tiếng Anh. Phân tích sai số của phương pháp phần tử hữu hạn theo chuẩn Sobolev và chuẩn L^2.
+- [Lax-Milgram, application to Poisson equation.](https://www.youtube.com/watch?v=s5P3e1FhpTk) — Learn Maths with Dr Alex, tiếng Anh. Dạng yếu của phương trình Poisson làm cơ sở rời rạc hóa cho FEM.
+- [Lax-Milgram lemma](https://www.youtube.com/watch?v=w8QjyVug78M) — Numerical Analysis by Julian Roth, tiếng Anh. Bổ đề Lax–Milgram đảm bảo tính đặt chỉnh cho cả bài toán liên tục lẫn bài toán rời rạc FEM.

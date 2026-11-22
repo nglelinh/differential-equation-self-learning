@@ -12,15 +12,15 @@ lesson_type: optional
 
 ## Mục Đích Của Bài Hỗ Trợ
 
-Bài này gom toàn bộ minh họa của Chương 09 vào một không gian ôn tập trực quan chung. Phương trình nhiệt thường là PDE đầu tiên mà sinh viên học một cách đầy đủ, nên tải khái niệm của chương rất lớn: suy ra mô hình từ vật lý, khai triển theo hàm riêng, tác động của điều kiện biên, hạt nhân Green, nguyên lý cực đại, và cả rời rạc hóa số đều xuất hiện trong cùng một chuỗi bài. Gallery giúp các ý đó gắn với nhau thay vì bị tách rời thành từng kỹ thuật riêng lẻ.
+Bài học này tập hợp toàn bộ hình minh họa của Chương 09 vào một không gian ôn tập trực quan chung. Phương trình nhiệt thường là PDE đầu tiên được học đầy đủ, nên khối lượng khái niệm của chương khá lớn: thiết lập phương trình từ nguyên lý vật lý, khai triển theo hàm riêng, tác động của điều kiện biên, nhân nhiệt và hàm Green, nguyên lý cực đại cũng như rời rạc hóa số. Bộ minh họa giúp kết nối các nội dung này thành một bức tranh thống nhất thay vì các kỹ thuật rời rạc.
 
-Một chương như thế này sẽ dễ nhớ hơn nhiều khi người học đi qua lại giữa công thức và hình ảnh. Hạt nhân nhiệt Gaussian không chỉ là một biểu thức mà còn là hình ảnh của sự lan rộng và làm mượt. Nguyên lý cực đại không chỉ là một chứng minh bất đẳng thức mà còn là một phát biểu hình học về cách các cực trị vận động dưới khuếch tán.
+Việc đối chiếu liên tục giữa công thức và hình ảnh giúp nắm vững bản chất bài toán hơn. Nhân nhiệt Gaussian không chỉ là một biểu thức giải tích mà còn thể hiện trực tiếp sự lan rộng và làm mượt; nguyên lý cực đại không chỉ là một chứng minh bất đẳng thức mà còn là tính chất hình học mô tả sự biến thiên của cực trị trong quá trình khuếch tán.
 
 ## Cách Sử Dụng Bài Này
 
-Nên đi qua gallery theo đúng thứ tự các bài trong chương. Sau mỗi hình, hãy quay lại bài học tương ứng và tự hỏi hình đó đang mã hóa ý tưởng toán học nào: định luật bảo toàn, phân rã phổ, lựa chọn mode bởi điều kiện biên, chuẩn hóa dữ liệu, phép chập, kiểm soát định tính, hay ổn định số. Khi đó gallery trở thành cây cầu nối giữa suy luận ký hiệu và ý nghĩa vật lý.
+Nên xem bộ minh họa theo đúng thứ tự các bài học trong chương. Sau mỗi hình, hãy đối chiếu lại bài học tương ứng để nhận diện ý tưởng toán học nào đang được thể hiện: định luật bảo toàn, phân rã phổ, lựa chọn mode theo điều kiện biên, chuẩn hóa bài toán không thuần nhất, phép tích chập, kiểm soát định tính hay điều kiện ổn định số. Nhờ vậy, bộ minh họa trở thành cầu nối giữa công thức ký hiệu và ý nghĩa vật lý.
 
-Trang này cũng rất hữu ích để ôn tập trước khi sang Chương 10 và Chương 11, vì phương trình nhiệt tạo nên nhiều thói quen cấu trúc sẽ được dùng lại trong phương trình sóng và lý thuyết elliptic.
+Trang này cũng thuận tiện để ôn tập trước khi chuyển sang Chương 10 và Chương 11, vì nhiều cấu trúc phương pháp từ phương trình nhiệt sẽ tiếp tục được dùng cho phương trình sóng và phương trình elliptic.
 
 ## Gallery Nhúng Trực Tiếp
 
@@ -33,9 +33,9 @@ Trang này cũng rất hữu ích để ôn tập trước khi sang Chương 10 
 
 ## Câu Hỏi Gợi Ý Khi Học
 
-1. Hình nào nhấn mạnh nguồn gốc vật lý của PDE, và hình nào nhấn mạnh cấu trúc giải tích của nghiệm?
-2. Ở đâu chương chuyển từ các công thức biểu diễn tường minh sang các kết quả kiểm soát định tính?
-3. Các minh họa trên miền hữu hạn và vô hạn chuẩn bị như thế nào cho bước chuyển từ chuỗi Fourier sang biến đổi Fourier?
+1. Hình nào nhấn mạnh nguồn gốc vật lý của phương trình nhiệt, và hình nào nhấn mạnh cấu trúc giải tích của nghiệm?
+2. Nội dung chương chuyển từ các công thức nghiệm tường minh sang các kết quả định tính ở điểm nào?
+3. Các minh họa trên miền hữu hạn và miền vô hạn chuẩn bị như thế nào cho bước chuyển từ chuỗi Fourier sang biến đổi Fourier?
 
 ## Liên Kết Tới Các Bài Học Chính
 
@@ -51,6 +51,6 @@ Trang này cũng rất hữu ích để ôn tập trước khi sang Chương 10 
 
 ## Video tham khảo
 
-- xem trước: [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Hoạt hình nhiệt mà bộ minh họa được dựng quanh.
-- [But what is a partial differential equation?  | DE2](https://www.youtube.com/watch?v=ly4S0oi3Yz8) — 3Blue1Brown, tiếng Anh. Bản thân PDE trông như thế nào trước các khung hình.
-- [Deriving the Heat Equation: A Parabolic Partial Differential Equation for Heat Energy Conservation](https://www.youtube.com/watch?v=9d8PwnKVA-U) — Steve Brunton, tiếng Anh. Phép suy diễn cần giữ trong đầu khi xem các hình.
+- Xem trước: [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Hoạt ảnh minh họa quá trình truyền nhiệt gắn trực tiếp với các hình trong bộ minh họa.
+- [But what is a partial differential equation?  | DE2](https://www.youtube.com/watch?v=ly4S0oi3Yz8) — 3Blue1Brown, tiếng Anh. Giới thiệu trực quan bản chất của phương trình đạo hàm riêng trước khi xem các khung minh họa chi tiết.
+- [Deriving the Heat Equation: A Parabolic Partial Differential Equation for Heat Energy Conservation](https://www.youtube.com/watch?v=9d8PwnKVA-U) — Steve Brunton, tiếng Anh. Trình bày cách thiết lập phương trình nhiệt từ định luật bảo toàn năng lượng để đối chiếu cùng các hình vẽ.

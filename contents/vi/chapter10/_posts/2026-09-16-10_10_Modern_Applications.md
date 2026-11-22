@@ -12,63 +12,63 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài tùy chọn này nối công thức d’Alembert, tốc độ hữu hạn và bảo toàn năng lượng với các mô hình vật lý-thông tin và học toán tử cho sóng, nhấn mạnh ứng dụng địa chấn và âm học 2022–2024. Sinh viên cần nói được những đồng nhất thức sóng nào bộ giải học được buộc phải tôn trọng, và vì sao bài ngược sóng vẫn vi cục bộ ngay cả sau khi đưa mạng vào. Lý thuyết đặt chỉnh cổ điển không bị viết lại.
+Bài tùy chọn này kết nối công thức d’Alembert, tính chất lan truyền hữu hạn tốc độ và định luật bảo toàn năng lượng với các mô hình mạng nơ-ron tích hợp vật lý (PINN) và học toán tử cho bài toán sóng, tập trung vào các ứng dụng địa chấn và âm học giai đoạn 2022–2024. Sau bài học, sinh viên cần chỉ ra được những đồng nhất thức sóng nào mà một bộ giải học được bắt buộc phải tôn trọng, và giải thích vì sao bài toán ngược sóng vẫn mang bản chất phân tích vi cục bộ ngay cả khi áp dụng mạng nơ-ron. Lý thuyết đặt chỉnh cổ điển của phương trình sóng vẫn giữ nguyên vai trò nền tảng.
 
 ## Kiến thức nền
 
-Sinh viên cần biết suy ra phương trình sóng, nghiệm d’Alembert, tách biến, và phương pháp năng lượng. Các bài tùy chọn về tán sắc và âm học hữu ích.
+Sinh viên cần nắm cách thiết lập phương trình sóng, nghiệm d’Alembert, phương pháp tách biến và phương pháp năng lượng. Các bài tùy chọn về tán sắc và ứng dụng âm học là tài liệu bổ trợ hữu ích.
 
 ## Dẫn nhập
 
-Sóng mang thông tin với tốc độ hữu hạn. Sự thật ấy phân biệt $$u_{tt}=c^2 u_{xx}$$ với phương trình nhiệt và là lý do ảnh địa chấn, âm học và điện từ thậm chí có thể được thử: kỳ dị để lại dấu trên biên sau một trễ tính được. Bộ giải học được bỏ qua tốc độ hữu hạn, năng lượng hoặc đặc trưng có thể trông chính xác trên phim ngắn vẫn vô dụng như động cơ ảnh hóa.
+Sóng truyền thông tin với tốc độ hữu hạn. Đặc tính này phân biệt phương trình $$u_{tt}=c^2 u_{xx}$$ với phương trình nhiệt và là cơ sở để các bài toán tạo ảnh địa chấn, âm học và điện từ có thể thực hiện được: các kỳ dị trong môi trường để lại dấu vết trên biên sau một khoảng thời gian trễ xác định. Một bộ giải học được nếu bỏ qua tốc độ lan truyền hữu hạn, bảo toàn năng lượng hoặc cấu trúc đường đặc trưng có thể trông chính xác trên các đoạn mô phỏng ngắn nhưng không đáng tin cậy trong bài toán tạo ảnh.
 
-Rasht-Behesht, de Hoop và cộng sự đã minh họa PINN cho đảo địa chấn và nhận dạng tốc độ sóng vào đầu những năm 2020, gồm công trình *Journal of Geophysical Research* 2022 về PINN kiểu full-waveform. Moseley, Markham và Nissen-Meyer (*Finite Basis Physics-Informed Neural Networks*, *Advances in Computational Mathematics* 2023; [arXiv:2109.09355](https://arxiv.org/abs/2109.09355)) đưa ra PINN phân rã miền thành công hơn nhiều trên sóng tần số cao so với một mạng toàn cục. Ở phía học toán tử, FNO và hậu duệ được huấn luyện như bộ lan truyền sóng rẻ, trong khi toán tử ngược nơ-ron và mô hình score (Molinaro, Yang, Li, Azizzadenesheli, Stuart và Anandkumar, 2023; [arXiv:2201.12904](https://arxiv.org/abs/2201.12904)) tấn công bài ngược khôi phục hệ số từ vết biên.
+Rasht-Behesht, de Hoop và cộng sự đã minh họa việc dùng PINN cho bài toán ngược địa chấn và nhận dạng vận tốc sóng vào đầu thập niên 2020, bao gồm công trình trên *Journal of Geophysical Research* năm 2022 về PINN theo hướng nghịch đảo toàn dạng sóng (full-waveform). Moseley, Markham và Nissen-Meyer (*Finite Basis Physics-Informed Neural Networks*, *Advances in Computational Mathematics* 2023; [arXiv:2109.09355](https://arxiv.org/abs/2109.09355)) đề xuất PINN phân rã miền, đạt hiệu quả cao hơn đáng kể trên sóng tần số cao so với một mạng toàn cục đơn lẻ. Ở hướng học toán tử, FNO và các biến thể được huấn luyện làm bộ lan truyền sóng tốc độ cao, trong khi các toán tử ngược nơ-ron và mô hình dựa trên score (Molinaro, Yang, Li, Azizzadenesheli, Stuart và Anandkumar, 2023; [arXiv:2201.12904](https://arxiv.org/abs/2201.12904)) giải quyết bài toán ngược khôi phục trường hệ số từ dữ liệu đo trên biên.
 
-Đẳng thức năng lượng và định lý miền phụ thuộc của chương là các phép kiểm đầu vào cho mọi mô hình ấy.
+Đẳng thức năng lượng và định lý miền phụ thuộc của chương đóng vai trò các phép kiểm chứng đầu vào cho mọi mô hình loại này.
 
 ## Khái niệm then chốt
 
-### Đặc trưng và miền phụ thuộc
+### Đường đặc trưng và miền phụ thuộc
 
-Công thức d’Alembert nói $$u(x,t)$$ chỉ phụ thuộc dữ liệu đầu trên $$[x-ct,x+ct]$$. Bộ lan truyền nơ-ron để xung định xứ ảnh hưởng một điểm ngoài khoảng ấy là siêu ánh sáng và do đó sai, bất kể điểm $$L^2$$. Kiểm miền phụ thuộc đơn giản: khởi tạo bump compact và vẽ nón ánh sáng.
+Công thức d’Alembert khẳng định $$u(x,t)$$ chỉ phụ thuộc vào dữ liệu ban đầu trên đoạn $$[x-ct,x+ct]$$. Một bộ lan truyền sóng bằng mạng nơ-ron nếu để một xung cục bộ gây ảnh hưởng ra ngoài khoảng này là vi phạm giới hạn tốc độ sóng (siêu ánh sáng) và do đó sai về mặt vật lý, bất kể sai số $$L^2$$ có nhỏ đến đâu. Phép kiểm tra miền phụ thuộc rất trực tiếp: khởi tạo một xung có giá compact và đối chiếu nghiệm với nón đặc trưng (nón ánh sáng).
 
 ### Bảo toàn năng lượng như ràng buộc huấn luyện
 
-Đẳng thức
+Đẳng thức bảo toàn năng lượng
 
 $$
 \frac{d}{dt}\int\Bigl(\tfrac12 u_t^2+\tfrac12 c^2 u_x^2\Bigr)\,dx=0
 $$
 
-cho dây hữu hạn với biên bảo toàn là unit test vô hướng. Phạt năng lượng mềm giúp, nhưng kiến trúc bảo toàn cấu trúc hoặc integrator symplectic trung thực hơn. PINN tần số cao thường tiêu tán năng lượng vì thiên kiến phổ giết phần dao động của $$u_t$$; đó là nhớt số mà phương trình liên tục không chứa.
+đối với dây hữu hạn có biên bảo toàn là một phép kiểm chứng vô hướng quan trọng. Việc bổ sung số hạng phạt mềm cho năng lượng có tác dụng hỗ trợ, nhưng các kiến trúc bảo toàn cấu trúc hoặc bộ tích phân symplectic mới đảm bảo tính nhất quán cao hơn. Các mạng PINN trên sóng tần số cao thường làm tiêu tán năng lượng do thiên kiến phổ (spectral bias) triệt tiêu các thành phần dao động nhanh của $$u_t$$ — tạo ra một dạng độ nhớt số không tồn tại trong phương trình liên tục.
 
-### Sóng ngược và kỳ dị nhìn thấy được
+### Bài toán ngược sóng và kỳ dị quan sát được
 
-Khôi phục $$c(x)$$ từ vết biên không phải BVP chuẩn. Phân tích vi cục bộ, được xem trước ở các chương sau, nói chỉ một số kỳ dị nhìn thấy được. Mạng “tái tạo” $$c$$ trơn từ dữ liệu không thể thấy nó đang ảo giác. Neural inverse operator và diffusion posterior sampling (Chung và cộng sự, ICLR 2023) đáng tin nhất khi bị hạn chế vào phần nhìn thấy của mặt sóng, hoặc khi chúng báo bất định trên phần không nhìn thấy.
+Bài toán khôi phục trường tốc độ sóng $$c(x)$$ từ dữ liệu đo trên biên không phải là bài toán biên thuận thông thường. Phân tích vi cục bộ cho thấy chỉ những kỳ dị có tia sóng phản xạ truyền tới vùng đặt cảm biến mới có thể quan sát được. Một mạng nơ-ron "tái tạo" chi tiết của $$c(x)$$ từ dữ liệu không mang thông tin tương ứng thực chất đang sinh ra chi tiết ảo. Toán tử ngược nơ-ron và phương pháp lấy mẫu hậu nghiệm khuếch tán (Chung và cộng sự, ICLR 2023) đáng tin cậy nhất khi giới hạn ở phần mặt sóng quan sát được hoặc khi báo cáo rõ độ bất định ở vùng không quan sát được.
 
-### Phân rã miền cho tần số cao
+### Phân rã miền cho sóng tần số cao
 
-Multilayer perceptron toàn cục không thích nhiều bước sóng. PINN cơ sở hữu hạn và các phân rã 2022–2024 liên quan gán mạng địa phương cho mỗi miền con và nối chúng bằng thông lượng hoặc phạt chồng. Đó là analogue nơ-ron của lưới phần tử hữu hạn hoặc phổ-phần tử, và là lý do PINN sóng trở nên khả thi ở tần số thực tế.
+Mạng perceptron đa tầng (MLP) toàn cục gặp nhiều khó khăn khi phải biểu diễn nhiều bước sóng cùng lúc. PINN cơ sở hữu hạn (FBPINN) và các phương pháp phân rã miền giai đoạn 2022–2024 gán từng mạng cục bộ cho mỗi miền con rồi ghép nối chúng bằng điều kiện thông lượng hoặc phạt chồng lấn. Đây là phiên bản mạng nơ-ron của phương pháp phần tử hữu hạn hoặc phần tử phổ, giúp PINN giải bài toán sóng trở nên khả thi ở dải tần số thực tế.
 
 ## Phương pháp và kỹ thuật
 
-1. Quyết định nhiệm vụ là thuận (lan truyền) hay ngược (ảnh hóa).
-2. Với nhiệm vụ thuận, ưu tiên mô hình toán tử hoặc PINN phân rã; kiểm nón ánh sáng và năng lượng.
-3. Với nhiệm vụ ngược, viết ánh xạ sóng thuận như bộ mô phỏng khả vi (cổ điển hoặc học được) và đảo với regularizer tôn trọng tầm nhìn.
-4. Dùng d’Alembert trên đường thẳng, hoặc nghiệm modal trên khoảng, như unit test trước mọi thí nghiệm quy mô hiện trường.
-5. Báo lỗi trên đặc trưng, không chỉ tại thời cuối: lỗi pha một phần bước sóng là lỗi ảnh hóa lớn.
+1. Xác định rõ bài toán là bài toán thuận (lan truyền sóng) hay bài toán ngược (tạo ảnh / khôi phục môi trường).
+2. Với bài toán thuận, ưu tiên mô hình học toán tử hoặc PINN phân rã miền; luôn kiểm chứng nón đặc trưng và định luật bảo toàn năng lượng.
+3. Với bài toán ngược, xây dựng ánh xạ sóng thuận dưới dạng bộ mô phỏng khả vi (cổ điển hoặc học được) và thực hiện nghịch đảo với hạng điều chuẩn tôn trọng vùng quan sát được.
+4. Dùng công thức d’Alembert trên trục thực hoặc nghiệm mode trên đoạn hữu hạn làm phép kiểm chứng cơ sở trước khi triển khai các thí nghiệm quy mô thực địa.
+5. Đánh giá sai số dọc theo các đường đặc trưng thay vì chỉ tại thời điểm cuối: sai lệch pha dù chỉ bằng một phần bước sóng cũng có thể gây sai số lớn trong tạo ảnh.
 
 ## Ví dụ
 
-### Ví dụ 1: Rò siêu ánh sáng
+### Ví dụ 1: Kiểm tra rò rỉ vượt tốc độ sóng
 
-Khởi tạo $$u(x,0)=\exp(-x^2/\varepsilon^2)$$, $$u_t=0$$, trên khoảng lớn và đánh giá bộ giải học được tại điểm có $$|x|>cT+\sqrt{\varepsilon}$$. Giá trị khác không là phá nón ánh sáng. Phép thử tốn một lượt thuận và không dùng gì ngoài chương này.
+Khởi tạo $$u(x,0)=\exp(-x^2/\varepsilon^2)$$, $$u_t(x,0)=0$$ trên một miền lớn và đánh giá bộ giải học được tại các điểm có $$|x|>cT+\sqrt{\varepsilon}$$. Giá trị khác 0 đáng kể tại vùng này cho thấy mô hình đã vi phạm nón đặc trưng. Phép kiểm chứng này chỉ cần một lượt chạy thuận và sử dụng trực tiếp kiến thức của chương.
 
-### Ví dụ 2: Trôi năng lượng của PINN
+### Ví dụ 2: Sự trôi năng lượng của PINN
 
-Trên $$[0,\pi]$$ với dữ liệu Dirichlet, năng lượng modal của $$\sin(nx)\cos(nct)$$ không đổi. PINN huấn luyện trên vài mode phải giữ từng năng lượng modal. Nếu $$n$$ cao tắt, mô hình là bộ lọc thông thấp, không phải bộ giải sóng.
+Trên đoạn $$[0,\pi]$$ với điều kiện biên Dirichlet, năng lượng của từng mode $$\sin(nx)\cos(nct)$$ phải không đổi theo thời gian. Một mạng PINN huấn luyện trên nhiều mode phải duy trì được năng lượng của từng mode riêng lẻ; nếu các mode bậc cao $$n$$ bị tắt dần, mô hình đang hoạt động như một bộ lọc thông thấp thay vì bộ giải sóng.
 
-### Ví dụ 3: Unit test d’Alembert
+### Ví dụ 3: Phép kiểm chứng d’Alembert
 
 ```python
 import numpy as np
@@ -83,37 +83,37 @@ def dAlembert(x, t):
 print(dAlembert(0.0, 0.5), dAlembert(2.0, 0.5))
 ```
 
-Mọi bộ lan truyền một chiều học được phải so với công thức này trước khi được yêu cầu làm địa chấn.
+Mọi bộ lan truyền sóng một chiều học được cần vượt qua phép đối chiếu với công thức này trước khi áp dụng cho các bài toán địa chấn phức tạp.
 
 ## Ứng dụng
 
-Đảo dạng sóng đầy đủ địa chấn, kiểm không phá hủy siêu âm, âm học phòng, và mô phỏng điện từ miền thời gian đều cần nhiều lần giải sóng thuận. Surrogate đáng tin biến các vòng ấy thành thiết kế tương tác hoặc prior cho ảnh hóa. Ảnh quang-âm y khoa và âm học đại dương đặt cùng ràng buộc đặc trưng. Các đảo PINN kiểu JGR 2022 và các bài neural inverse operator 2023 là dấu hiệu sớm nhưng cụ thể rằng chương sóng nay có thực hành học máy, không chỉ ẩn dụ.
+Nghịch đảo toàn dạng sóng địa chấn (full-waveform inversion), kiểm tra không phá hủy bằng siêu âm, âm học phòng và mô phỏng điện từ miền thời gian đều đòi hỏi giải bài toán sóng thuận lặp đi lặp lại nhiều lần. Các mô hình thay thế đáng tin cậy giúp tăng tốc thiết kế tương tác và đóng vai trò phân bố tiên nghiệm cho bài toán tạo ảnh. Tạo ảnh quang–âm y sinh và âm học đại dương cũng chịu các ràng buộc đặc trưng tương tự. Các công trình về PINN cho bài toán ngược địa chấn (JGR 2022) và toán tử ngược nơ-ron (2023) cho thấy lý thuyết phương trình sóng hiện có những ứng dụng học máy cụ thể và thực chất.
 
-Âm học và hệ Maxwell, đã bàn ở bài ứng dụng tùy chọn, thừa hưởng cùng cấu trúc năng lượng và tốc độ hữu hạn. Bộ giải Maxwell học được phá đồng nhất thức Poynting rời rạc là phiên bản vector của trôi năng lượng.
+Âm học và hệ phương trình Maxwell (được trình bày trong bài ứng dụng tùy chọn của chương) cũng mang cùng cấu trúc bảo toàn năng lượng và tốc độ lan truyền hữu hạn: một bộ giải Maxwell học được nếu vi phạm đồng nhất thức Poynting rời rạc chính là phiên bản vectơ của hiện tượng trôi năng lượng.
 
 ## Thách thức và hướng mở rộng
 
-Lỗi tán sắc hại hơn lỗi biên độ cho ảnh hóa. Điều kiện biên hấp thụ khó với PINN. Sóng đàn hồi ba chiều vẫn đắt để mô phỏng cho huấn luyện. Bài ngược không đặt chỉnh nặng tại khẩu độ thiếu. Prior sinh có thể khôi phục kết cấu hợp lý không có trong dữ liệu. Sóng phi tuyến (Burgers, KdV, Einstein) rời bức tranh đặc trưng tuyến tính.
+Sai số tán sắc số thường gây hại nghiêm trọng hơn sai số biên độ trong các bài toán tạo ảnh. Việc áp đặt điều kiện biên hấp thụ vẫn là thách thức lớn đối với PINN. Mô phỏng sóng đàn hồi ba chiều để tạo dữ liệu huấn luyện vẫn có chi phí tính toán cao. Bài toán ngược trở nên kém đặt chỉnh nghiêm trọng khi góc quan sát (khẩu độ thu nhận) bị hạn chế, trong khi các phân bố tiên nghiệm sinh có nguy cơ tạo ra các chi tiết bề ngoài hợp lý nhưng không có thật trong dữ liệu đo. Ngoài ra, các phương trình sóng phi tuyến (như Burgers, KdV hay phương trình Einstein) vượt ra ngoài bức tranh đường đặc trưng tuyến tính.
 
-Câu hỏi giữ lại: nếu mạng bảo toàn năng lượng nhưng di chuyển kỳ dị với tốc độ sai, đồng nhất thức nào đã thất bại? Câu trả lời của chương là hệ thức đặc trưng, không phải đẳng thức năng lượng.
+Câu hỏi suy ngẫm: nếu một mạng nơ-ron bảo toàn tốt năng lượng nhưng làm các điểm kỳ dị di chuyển sai vận tốc, tính chất toán học nào của bài toán đã bị vi phạm? Theo lý thuyết của chương, đó chính là hệ thức đường đặc trưng chứ không phải đẳng thức năng lượng.
 
 ## Video tham khảo
 
-- xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, tiếng Anh. Fourier neural operator được huấn luyện trên các ánh xạ nghiệm PDE dạng sóng, phương pháp của bài.
-- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, tiếng Anh. Phương trình sóng cổ điển mà các mạng ấy đang học cách lan truyền.
-- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, tiếng Anh. DeepONet là một kiến trúc thay thế cho cùng toán tử nghiệm.
+- Xem trước: [Fourier Neural Operator (FNO) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=W8PybqAk6Ik) — Steve Brunton, tiếng Anh. Giới thiệu kiến trúc Fourier neural operator dùng để học ánh xạ nghiệm cho các PDE dạng sóng.
+- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, tiếng Anh. Ôn lại phương trình sóng cổ điển làm đối tượng cho các mô hình lan truyền sóng học được.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, tiếng Anh. Trình bày DeepONet, một kiến trúc học toán tử song song với FNO cho cùng lớp bài toán nghiệm.
 
 ## Bài tập
 
-1. **Nón ánh sáng.** Từ d’Alembert, chứng minh dữ liệu đầu giá compact ở lại trong $$|x|\le R+ct$$. Thiết kế phép thử số cho bộ giải học được.
+1. **Nón đặc trưng (nón ánh sáng).** Từ công thức d’Alembert, hãy chứng minh dữ liệu ban đầu có giá compact nằm trong $$[-R,R]$$ sẽ giữ giá của nghiệm trong miền $$|x|\le R+ct$$. Thiết kế một phép kiểm chứng số tương ứng cho bộ giải học được.
 
-2. **Năng lượng của một mode.** Tính năng lượng của $$u=\sin(nx)\cos(nct)$$ trên $$[0,\pi]$$. Làm sao biến đẳng thức thành ràng buộc huấn luyện mà không phá chồng chất?
+2. **Năng lượng của một mode đơn lẻ.** Tính năng lượng của mode $$u=\sin(nx)\cos(nct)$$ trên đoạn $$[0,\pi]$$. Làm thế nào đưa đẳng thức bảo toàn năng lượng vào ràng buộc huấn luyện mà không phá vỡ nguyên lý chồng chất?
 
-3. **Nhảy nhìn thấy được.** Giả sử $$c(x)$$ có nhảy mà không tia phản xạ từ các thu có sẵn có thể chạm. Vì sao tái tạo không nên được tin gần nhảy ấy, dù mạng sinh ảnh sắc?
+3. **Bước nhảy quan sát được.** Giả sử trường vận tốc $$c(x)$$ có một bước nhảy mà không có tia sóng phản xạ nào từ đó truyền tới được các đầu thu hiện có. Vì sao không nên tin vào kết quả khôi phục gần bước nhảy đó ngay cả khi mạng sinh ra hình ảnh sắc nét?
 
-4. **Thí nghiệm tính toán.** Huấn luyện hoặc gắn cứng một bộ lan truyền tuyến tính và so với d’Alembert trên xung chuyển động. Báo cả lỗi $$L^2$$ lẫn rò giá ngoài nón ánh sáng.
+4. **Thí nghiệm tính toán.** Huấn luyện hoặc xây dựng một bộ lan truyền tuyến tính đơn giản và đối chiếu với công thức d’Alembert trên một xung di chuyển. Báo cáo đồng thời sai số $$L^2$$ và phần giá trị rò rỉ ra ngoài nón đặc trưng.
 
-5. **Khám phá mở.** Đọc Moseley và cộng sự (2023) hoặc Rasht-Behesht và cộng sự (2022) và viết một trang về vì sao sóng tần số cao buộc phân rã miền, chỉ dùng ý của chương này.
+5. **Tìm hiểu mở rộng.** Đọc công trình của Moseley và cộng sự (2023) hoặc Rasht-Behesht và cộng sự (2022) và viết một trang giải thích vì sao sóng tần số cao đòi hỏi phân rã miền, chỉ sử dụng các khái niệm đã học trong chương này.
 
 ## Tài liệu
 

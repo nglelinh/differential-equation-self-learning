@@ -12,43 +12,43 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này nối toàn bộ chương với mô hình dây rung cổ điển. Sau bài học, sinh viên cần hiểu vì sao điều kiện biên cố định hai đầu sinh ra bài toán trị riêng không gian, biết diễn giải các hàm riêng như các mode đứng, và thấy cách ghép các mode để mô tả dao động tổng quát của dây.
+Bài học này kết nối toàn bộ nội dung chương với mô hình dây rung cổ điển. Sau bài học, sinh viên cần giải thích được vì sao điều kiện biên cố định hai đầu dẫn tới bài toán trị riêng không gian, diễn giải các hàm riêng như những chế độ sóng đứng và hiểu cách chồng chất các chế độ để mô tả dao động tổng quát của dây.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm BVP hai điểm, bài toán trị riêng, trực giao của hàm riêng và khai triển theo hàm riêng. Một ít trực giác vật lý về sóng trên dây sẽ làm bài học trở nên rất tự nhiên.
+Sinh viên nên nắm vững BVP hai điểm, bài toán trị riêng, tính trực giao và khai triển theo hàm riêng. Một số trực giác vật lý cơ bản về sóng trên dây sẽ giúp tiếp thu bài học tự nhiên hơn.
 
 ## Dẫn nhập
 
 ![Các mode đứng của dây rung]({{ site.imgurl }}/chapter_img/chapter07/06_vibrating_strings.svg)
 
-Nếu có một ví dụ vật lý duy nhất để minh họa toàn bộ lý thuyết giá trị biên, trị riêng và khai triển theo hàm riêng, thì đó chính là dây rung. Một sợi dây bị giữ cố định ở hai đầu không thể dao động theo mọi hình dạng tùy ý nếu ta xét các mode tự nhiên của nó. Nó chỉ cho phép một họ hình dạng đặc biệt, và mỗi hình dạng đi kèm một tần số riêng. Chính ở đây, những khái niệm tưởng như trừu tượng của chương bỗng trở nên nhìn thấy, nghe thấy và cảm được.
+Dây rung là ví dụ vật lý tiêu biểu nhất minh họa trọn vẹn lý thuyết bài toán giá trị biên, trị riêng và khai triển theo hàm riêng. Một sợi dây cố định hai đầu chỉ duy trì được một họ rời rạc các hình dạng dao động tự nhiên, mỗi hình dạng gắn với một tần số riêng xác định.
 
-Điều quan trọng về mặt sư phạm là bài này hợp nhất nhiều lớp ý tưởng đã học. BVP xác định toán tử không gian. Bài toán trị riêng chọn ra các mode đứng. Tính trực giao cho phép tách dữ kiện ban đầu thành tổng các mode. Toàn bộ chương vì vậy hiện lên như một chuỗi logic thống nhất, không còn là các kỹ thuật rời rạc.
+Bài học này tổng hợp các khái niệm đã học thành một mạch logic thống nhất: BVP xác định toán tử không gian, bài toán trị riêng chọn ra các chế độ sóng đứng, còn tính trực giao cho phép khai triển điều kiện ban đầu thành tổng các chế độ đó.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Một dây đàn bị ghim ở hai đầu chỉ có thể rung tự nhiên theo những mẫu hình "vừa khít" với hai đầu cố định. Mẫu cơ bản có một bụng, mẫu tiếp theo có hai bụng, rồi ba bụng, và cứ thế tiếp tục. Mỗi mẫu là một mode đứng.
+Một sợi dây đàn cố định hai đầu chỉ có thể rung tự nhiên theo các dạng sóng khớp chính xác với hai đầu ghim cố định: chế độ cơ bản gồm một bụng sóng, chế độ tiếp theo gồm hai bụng sóng, rồi ba bụng sóng và tiếp tục tăng dần. Mỗi dạng hình học đó là một chế độ sóng đứng.
 
 ### Cách nhìn hình ảnh
 
-Khi nhìn hình dạng của các mode, ta thấy ngay số nút bên trong dây tăng dần theo mode. Mode bậc cao dao động nhanh hơn và có hoa văn không gian phức tạp hơn. Chính hình ảnh này làm rõ ý nghĩa của trị riêng như tần số riêng và hàm riêng như hình dạng riêng.
+Quan sát đồ thị các chế độ dao động cho thấy số điểm nút bên trong dây tăng đều theo bậc $$ n $$. Chế độ bậc càng cao thì số nút càng nhiều và tần số dao động càng lớn, minh họa trực quan mối liên hệ giữa trị riêng (tần số) và hàm riêng (hình dạng không gian).
 
 ### Cách nhìn hình thức
 
-Với phương trình sóng một chiều
+Xét phương trình sóng một chiều
 $$ u_{tt}=c^2u_{xx},
 \qquad 0<x<L, $$
-và điều kiện biên
-$$ u(0,t)=u(L,t)=0, $$
-tách biến
-$$ u(x,t)=X(x)T(t) $$
-cho bài toán không gian
+với điều kiện biên cố định hai đầu
+$$ u(0,t)=u(L,t)=0. $$
+Áp dụng phương pháp tách biến
+$$ u(x,t)=X(x)T(t), $$
+phần không gian dẫn đến bài toán trị riêng
 $$ X''+\lambda X=0,
-\qquad X(0)=X(L)=0. $$
-Do đó
+\qquad X(0)=X(L)=0, $$
+cho hệ hàm riêng và trị riêng:
 $$
 X_n(x)=\sin\left(\frac{n\pi x}{L}\right),
 \qquad
@@ -57,120 +57,120 @@ $$
 
 ## Những ngộ nhận thường gặp
 
-- "Một hình dạng ban đầu bất kỳ của dây chính là một mode riêng." Không đúng; thường đó là tổng của nhiều mode.
-- "Các hàm sin chỉ là công thức quen thuộc chứ không có nội dung vật lý riêng." Sai. Chúng chính là các mode đứng của bài toán biên cố định.
-- "Điều kiện biên chỉ dùng để tìm hằng số." Sai. Chúng quyết định toàn bộ phổ trị riêng.
-- "Phần thời gian mới là phần quan trọng." Trong bài toán tách biến, phần không gian mới là nơi cấu trúc phổ được sinh ra.
+- "Mọi hình dạng ban đầu của dây đều là một chế độ riêng đơn lẻ." Sai. Hình dạng ban đầu tổng quát là chồng chất của nhiều chế độ riêng.
+- "Các hàm sin chỉ là công thức lượng giác quen thuộc, không mang ý nghĩa vật lý đặc thù." Sai. Chúng chính là các chế độ sóng đứng của bài toán biên cố định hai đầu.
+- "Điều kiện biên chỉ dùng để tìm hằng số tích phân." Sai. Chính điều kiện biên quyết định tập trị riêng rời rạc.
+- "Thành phần thời gian mới quyết định cấu trúc phổ." Trong phép tách biến, chính bài toán biên theo không gian mới xác định phổ trị riêng.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Viết phương trình sóng và điều kiện biên
+### Bước 1: Thiết lập phương trình sóng và điều kiện biên
 
-Đây là bước mô hình hóa vật lý nền tảng.
+Xây dựng mô hình vật lý đầy đủ cho dây cố định hai đầu.
 
 ### Bước 2: Tách biến
 
-Sinh viên cần thấy rõ vì sao bài toán không gian trở thành bài toán trị riêng.
+Chuyển PDE thành hai ODE theo không gian và thời gian, làm rõ sự xuất hiện của bài toán trị riêng không gian.
 
-### Bước 3: Tìm mode đứng và tần số riêng
+### Bước 3: Xác định chế độ sóng đứng và tần số riêng
 
-Đây là phần đẹp nhất của bài.
+Tìm hệ hàm riêng $$ X_n(x) $$ và dãy tần số góc $$ \omega_n $$.
 
-### Bước 4: Ghép mode để mô tả dao động tổng quát
+### Bước 4: Tổng hợp nghiệm tổng quát
 
-Toàn bộ nội dung của khai triển theo hàm riêng được dùng ở đây.
+Vận dụng khai triển theo hàm riêng để xác định các hệ số từ hình dạng và vận tốc ban đầu của dây.
 
-### Các checkpoint
+### Các điểm kiểm tra
 
-- Sinh viên có giải được bài toán trị riêng không gian của dây hay không.
-- Sinh viên có diễn giải được mode đứng bằng ngôn ngữ vật lý hay không.
-- Sinh viên có thấy vì sao dữ kiện ban đầu phải được khai triển theo mode hay không.
+- Sinh viên có giải đúng bài toán trị riêng không gian của dây cố định hai đầu hay không.
+- Sinh viên có diễn giải được ý nghĩa vật lý của các chế độ sóng đứng hay không.
+- Sinh viên có giải thích được vì sao cần khai triển dữ kiện ban đầu theo hệ hàm riêng hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Ba mode đầu tiên
+### Ví dụ 1: Ba chế độ sóng đứng đầu tiên
 
-Với dây dài $$ L $$, ba mode đầu là
+Với dây chiều dài $$ L $$, ba chế độ đầu tiên là:
 $$ X_1(x)=\sin\left(\frac{\pi x}{L}\right), $$
 $$ X_2(x)=\sin\left(\frac{2\pi x}{L}\right), $$
 $$ X_3(x)=\sin\left(\frac{3\pi x}{L}\right). $$
-Mode thứ nhất có một bụng, mode thứ hai có hai bụng, và mode thứ ba có ba bụng.
+Chế độ thứ nhất có một bụng sóng, chế độ thứ hai có hai bụng sóng (một nút ở giữa dây) và chế độ thứ ba có ba bụng sóng (hai nút bên trong).
 
-### Ví dụ 2: Tần số riêng
+### Ví dụ 2: Dãy tần số riêng
 
 Từ trị riêng
 $$ \lambda_n=\left(\frac{n\pi}{L}\right)^2, $$
-ta được tần số góc
+phương trình theo thời gian cho dãy tần số góc riêng:
 $$ \omega_n=c\frac{n\pi}{L}. $$
-Ví dụ này cho thấy các harmonics xuất hiện tự nhiên từ điều kiện biên cố định.
+Điều này giải thích vì sao các họa âm (harmonics) xuất hiện dưới dạng bội nguyên của tần số cơ bản $$ \omega_1 $$ khi dây được cố định hai đầu.
 
 ### Ví dụ 3: Nghiệm tổng quát
 
-Nghiệm của dây rung có dạng
+Chồng chất mọi chế độ riêng, nghiệm tổng quát của dây rung có dạng:
 $$
 u(x,t)=\sum_{n=1}^{\infty}\left(A_n\cos(\omega_n t)+B_n\sin(\omega_n t)\right)\sin\left(\frac{n\pi x}{L}\right).
 $$
-Các hệ số $$ A_n,B_n $$ được xác định từ hình dạng và vận tốc ban đầu. Đây chính là chỗ khai triển theo hàm riêng được sử dụng một cách trọn vẹn.
+Các hệ số $$ A_n,B_n $$ được tính bằng khai triển Fourier sin từ li độ ban đầu $$ u(x,0) $$ và vận tốc ban đầu $$ u_t(x,0) $$.
 
-### Ví dụ 4: Ý nghĩa của mode chồng chập
+### Ví dụ 4: Ý nghĩa của sự chồng chất chế độ
 
-Nếu kích thích dây theo hình dạng không trùng với một mode đơn, dây không "chọn một công thức mới", mà chỉ trộn các mode sẵn có. Đây là ý nghĩa vật lý sâu nhất của tính đầy đủ của họ hàm riêng.
+Khi gảy dây theo một hình dạng ban đầu không trùng với một chế độ đơn lẻ nào, chuyển động của dây được biểu diễn bằng tổ hợp tuyến tính của các chế độ sẵn có. Đây là ý nghĩa vật lý trực tiếp của tính đầy đủ của hệ hàm riêng.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao dây cố định hai đầu chỉ cho phép một phổ rời rạc các tần số riêng?
-2. Tại sao một trạng thái ban đầu bất kỳ lại phải được viết như tổng các mode?
-3. Điều kiện biên tác động thế nào đến hình dạng và phổ của các mode đứng?
+1. Vì sao dây cố định hai đầu chỉ có một dãy rời rạc các tần số riêng?
+2. Vì sao một trạng thái ban đầu tùy ý cần được biểu diễn như tổng của các chế độ riêng?
+3. Điều kiện biên ảnh hưởng như thế nào đến hình dạng và phổ tần số của các chế độ sóng đứng?
 
 ## Bài toán ứng dụng
 
-1. Trong nhạc cụ dây, vì sao âm thanh chứa cả họa âm chứ không chỉ một tần số?
-2. Trong kỹ thuật cơ khí, vì sao biết trước các mode riêng lại quan trọng để tránh cộng hưởng nguy hiểm?
-3. Nếu một đầu dây tự do thay vì cố định, phổ tần số sẽ thay đổi như thế nào?
+1. Trong nhạc cụ dây, vì sao âm thanh phát ra luôn gồm cả âm cơ bản lẫn các họa âm bậc cao?
+2. Trong kỹ thuật cơ khí và kết cấu, vì sao việc xác định trước các tần số riêng là cần thiết để tránh hiện tượng cộng hưởng?
+3. Nếu một đầu dây được thả tự do (điều kiện Neumann) thay vì cố định, phổ tần số riêng sẽ thay đổi ra sao?
 
 ## Chiến lược giảng dạy tương tác
 
-- Cho sinh viên quan sát hoặc mô phỏng ba mode đầu trước khi viết công thức.
-- Yêu cầu lớp mô tả bằng lời sự khác nhau giữa mode cơ bản và các mode bậc cao.
-- So sánh hình dạng ban đầu bất kỳ với tổ hợp của các mode đứng để làm rõ ý tưởng khai triển.
-- Liên hệ trực tiếp với âm nhạc hoặc dao động cơ học để tăng trực giác.
+- Cho sinh viên quan sát mô phỏng ba chế độ sóng đứng đầu tiên trước khi viết nghiệm chuỗi.
+- Yêu cầu sinh viên mô tả bằng lời sự khác biệt về nút, bụng và tần số giữa chế độ cơ bản và các họa âm bậc cao.
+- Minh họa một hình dạng gảy dây bất kỳ được tổng hợp từ vài chế độ sóng đứng đầu tiên.
+- Liên hệ trực tiếp với âm học nhạc cụ và dao động kết cấu.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên để sinh viên yếu tập trung trước vào việc nhận diện các mode đầu và hiểu ý nghĩa của nút, bụng, tần số riêng. Khi trực giác vững, công thức tổng quát sẽ bớt khó hơn nhiều.
+Nên tập trung trước vào việc nhận diện ba chế độ đầu cùng các khái niệm nút, bụng và tần số riêng trước khi đi vào công thức tổng chuỗi đầy đủ.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể yêu cầu sinh viên khá giỏi so sánh các điều kiện biên khác nhau như cố định-tự do, hoặc tự suy ra cách tính hệ số từ dữ kiện ban đầu.
+Có thể yêu cầu sinh viên giải bài toán dây có một đầu cố định – một đầu tự do, hoặc tự suy ra công thức tích phân cho các hệ số $$ A_n, B_n $$ từ dữ kiện ban đầu.
 
 ## Tóm tắt dễ nhớ
 
-Dây rung là ví dụ vật lý mẫu của chương. Điều kiện biên chọn ra trị riêng, trị riêng sinh ra mode đứng, và khai triển theo hàm riêng cho phép ghép các mode thành dao động tổng quát. Đây là nơi toàn bộ chương hội tụ rất đẹp.
+Dây rung là ứng dụng tiêu biểu kết nối toàn bộ chương: điều kiện biên xác định phổ trị riêng, trị riêng sinh ra các chế độ sóng đứng và khai triển theo hàm riêng ghép các chế độ đó thành dao động tổng quát của dây.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Dây đàn cố định hai đầu
-- Bài toán: Tìm các mode dao động riêng và tần số tự nhiên của dây đàn.
+- Bài toán: Xác định các chế độ dao động riêng và dãy tần số tự nhiên của dây đàn.
 - Mô hình:
 $$ u_{tt}=c^2 u_{xx},\qquad u(0,t)=u(L,t)=0. $$
-Sau tách biến:
+Sau phép tách biến:
 $$ X''+\lambda X=0,\qquad X(0)=X(L)=0. $$
-- Giả thiết và giới hạn: Dây mảnh, lực căng đều, dao động nhỏ.
-- Diễn giải: Mode riêng là sin, còn trị riêng quyết định phổ tần số.
+- Giả thiết và giới hạn: Dây mảnh đồng nhất, lực căng không đổi, dao động biên độ nhỏ.
+- Diễn giải: Hàm riêng dạng sin mô tả hình dạng sóng đứng, còn trị riêng quyết định phổ tần số.
 
-#### Cột hay ống rung một chiều
-- Bài toán: Ống âm học hoặc thanh đàn hồi một chiều có các mode đứng phụ thuộc biên.
-- Mô hình: Cùng một bài toán Sturm-Liouville với điều kiện Dirichlet, Neumann hoặc hỗn hợp.
-- Giả thiết và giới hạn: Hình học một chiều, chưa xét damping.
-- Diễn giải: Điều kiện biên thay đổi trực tiếp họ hàm riêng và các cộng hưởng khả dĩ.
+#### Ống âm học và thanh đàn hồi một chiều
+- Bài toán: Dao động dọc của cột khí trong ống hoặc thanh đàn hồi một chiều tạo ra các chế độ sóng đứng phụ thuộc điều kiện ở hai đầu.
+- Mô hình: Cùng bài toán Sturm–Liouville một chiều với điều kiện biên Dirichlet, Neumann hoặc hỗn hợp.
+- Giả thiết và giới hạn: Hình học một chiều, bỏ qua lực cản (damping).
+- Diễn giải: Thay đổi điều kiện ở hai đầu ống làm thay đổi trực tiếp họ hàm riêng và các tần số cộng hưởng.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Bài toán dây rung là ví dụ vật lý mẫu cho toàn bộ chương: BVP tạo trị riêng, trị riêng sinh mode, và các mode ghép lại thành nghiệm tổng quát. Một bẫy phổ biến là xem sin-cos như công thức quen thuộc riêng lẻ; thật ra chúng là hệ hàm riêng của toán tử không gian với biên cố định.
+Bài toán dây rung cho thấy mạch liên kết trọn vẹn của chương: bài toán biên sinh ra trị riêng, trị riêng tạo nên các chế độ đứng và nguyên lý chồng chất ghép chúng thành nghiệm tổng quát. Các hàm sin không xuất hiện một cách tình cờ mà chính là hệ hàm riêng của toán tử không gian ứng với điều kiện biên cố định.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -200,33 +200,33 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Từ
+Từ bài toán không gian
 $$ X''+\lambda X=0,\qquad X(0)=X(L)=0, $$
-ta thu được
+ta tìm được
 $$
 \lambda_n=\left(\frac{n\pi}{L}\right)^2,\qquad
 X_n(x)=\sin\left(\frac{n\pi x}{L}\right).
 $$
-Do đó nghiệm tổng quát của dây rung có dạng
+Từ đó nghiệm tổng quát của dây rung là
 $$
 u(x,t)=\sum_{n=1}^{\infty}\left(A_n\cos(\omega_n t)+B_n\sin(\omega_n t)\right)X_n(x),
 $$
-với
+với tần số góc
 $$ \omega_n=c\frac{n\pi}{L}. $$
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Tập trung vào mode đứng, tần số riêng và cách ghép mode để khớp dữ kiện đầu.
+**Bậc đại học.** Nắm vững các chế độ sóng đứng, dãy tần số riêng và cách ghép chế độ khớp với điều kiện ban đầu.
 
-**Bậc sau đại học.** Liên hệ với lý thuyết phổ của toán tử sóng, năng lượng và cơ sở trực giao trong không gian Hilbert.
+**Bậc sau đại học.** Liên hệ với lý thuyết phổ của toán tử sóng, bảo toàn năng lượng và cơ sở trực giao trong không gian Hilbert.
 
 ## Video tham khảo
 
-- xem trước: [Solving the Wave Equation with Separation of Variables... and Guitar String Physics](https://www.youtube.com/watch?v=ywrgWRSQ3PY) — Steve Brunton, tiếng Anh. Brunton tách biến trên một dây đàn và đọc các mode chuẩn.
-- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, tiếng Anh. Phép suy ra phương trình sóng mà các mode ấy thỏa.
-- [D'Alembert Solution to the Wave Equation](https://www.youtube.com/watch?v=Sc21aPg2RyE) — Faculty of Khan, tiếng Anh. Công thức d'Alembert là dạng đóng khác cho cùng một dây.
+- Xem trước: [Solving the Wave Equation with Separation of Variables... and Guitar String Physics](https://www.youtube.com/watch?v=ywrgWRSQ3PY) — Steve Brunton, tiếng Anh. Giải phương trình sóng dây đàn bằng tách biến và diễn giải các chế độ riêng.
+- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, tiếng Anh. Xây dựng phương trình sóng một chiều từ cơ học dây căng.
+- [D'Alembert Solution to the Wave Equation](https://www.youtube.com/watch?v=Sc21aPg2RyE) — Faculty of Khan, tiếng Anh. Công thức d'Alembert như một biểu diễn nghiệm đóng khác cho bài toán dây rung.
 
 ## Tài liệu tham khảo
 
-- Boyce & DiPrima, Chương 10-11: mô hình dây rung và mode đứng.
-- Haberman, Chương 5: liên hệ rất tốt giữa BVP, trị riêng và phương trình sóng.
+- Boyce & DiPrima, Chương 10–11: mô hình dây rung và các chế độ sóng đứng.
+- Haberman, Chương 5: liên hệ chặt chẽ giữa BVP, bài toán trị riêng và phương trình sóng.

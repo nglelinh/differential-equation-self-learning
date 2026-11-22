@@ -12,85 +12,77 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giúp sinh viên dùng trị riêng và vector riêng để giải hệ tuyến tính khi ma trận có các trị riêng thực phân biệt, hiểu ý nghĩa của mỗi mode riêng như một hướng động học bất biến, và đọc được hành vi tăng, giảm hay yên ngựa của hệ từ dấu của các trị riêng.
+Bài học này hướng dẫn cách dùng trị riêng và vector riêng để giải hệ tuyến tính khi ma trận có các trị riêng thực phân biệt, hiểu ý nghĩa của từng thành phần nghiệm riêng như một phương động học bất biến, và nhận diện hành vi hút, đẩy hay yên ngựa từ dấu của các trị riêng.
 
 ## Kiến thức nền
 
-Sinh viên cần nắm phương trình đặc trưng của ODE hệ số hằng, vector riêng và ma trận. Đây là bài mà đại số tuyến tính bước vào trung tâm của giải ODE, nên trực giác về không gian vector rất quan trọng.
+Sinh viên cần nắm phương trình đặc trưng của ODE hệ số hằng, khái niệm trị riêng, vector riêng và ma trận. Đây là bài đưa đại số tuyến tính vào trung tâm quá trình giải hệ ODE, nên trực giác về không gian vector rất quan trọng.
 
 ## Dẫn nhập
 
 ![Nghiệm theo hai trị riêng thực phân biệt]({{ site.imgurl }}/chapter_img/chapter04/03_eigenvalue_real_distinct.svg)
 
-Nếu hệ tuyến tính được viết thành
-$$ \mathbf{x}'=A\mathbf{x}, $$
-thì câu hỏi tự nhiên là: có những hướng nào mà nếu hệ bắt đầu di chuyển đúng trên đó, nó sẽ không bị bẻ sang hướng khác? Câu trả lời chính là các vector riêng. Trên những hướng đặc biệt này, động lực học trở nên đơn giản nhất có thể: hệ chỉ bị co lại hoặc kéo giãn theo một hàm mũ.
+Với hệ tuyến tính $$ \mathbf{x}'=A\mathbf{x} $$, một câu hỏi tự nhiên là: tồn tại những phương nào mà khi hệ xuất phát dọc theo đó, quỹ đạo không bị bẻ lệch sang phương khác? Câu trả lời chính là các vector riêng của $$ A $$. Dọc theo những phương bất biến này, động lực học trở nên đơn giản nhất: trạng thái chỉ co lại hoặc giãn ra theo một hàm mũ.
 
-Đây là trường hợp đẹp nhất của chương. Khi ma trận có đủ các trị riêng thực phân biệt, toàn bộ hệ tách thành các mode độc lập rõ ràng. Mỗi mode có một tốc độ riêng, và nghiệm tổng là sự chồng chập của các mode ấy. Từ đây, sinh viên có thể thấy trực tiếp vì sao trị riêng không chỉ là công cụ đại số, mà là ngôn ngữ đọc động lực học.
+Khi ma trận có đủ các trị riêng thực phân biệt, toàn bộ hệ tách thành các thành phần nghiệm độc lập rõ ràng. Mỗi thành phần có tốc độ tiến hóa riêng, và nghiệm tổng quát là tổ hợp tuyến tính của chúng. Qua đó, trị riêng và vector riêng trở thành công cụ trực tiếp để đọc hành vi động học của hệ.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Một vector riêng là một hướng mà hệ không làm đổi hướng, chỉ làm đổi độ dài theo thời gian. Nếu đi dọc hướng ấy, quỹ đạo không bị bẻ cong mà chỉ tiến thẳng ra xa hoặc co thẳng về gốc.
+Vector riêng là phương mà toán tử $$ A $$ không làm đổi hướng, chỉ làm thay đổi độ dài theo thời gian. Xuất phát trên phương đó, quỹ đạo chỉ đi thẳng vào gốc hoặc đi thẳng ra xa gốc.
 
 ### Cách nhìn hình ảnh
 
-Trong mặt phẳng pha, hai vector riêng tạo ra hai đường thẳng bất biến. Các quỹ đạo khác thường cong để bám gần một trong hai hướng đó khi thời gian lớn. Nếu một trị riêng dương và một trị riêng âm, ta nhìn thấy hình yên ngựa: một hướng hút, một hướng đẩy.
+Trên mặt phẳng pha, hai vector riêng xác định hai đường thẳng bất biến đi qua gốc. Các quỹ đạo khác thường uốn cong để tiệm cận một trong hai đường thẳng này khi thời gian tăng. Nếu một trị riêng dương và một trị riêng âm, gốc tọa độ là điểm yên ngựa: một phương hút về gốc và một phương đẩy ra xa.
 
 ### Cách nhìn hình thức
 
-Ta thử nghiệm dạng
-$$ \mathbf{x}(t)=\mathbf{v}e^{\lambda t}. $$
-Thế vào hệ:
+Thử nghiệm dạng $$ \mathbf{x}(t)=\mathbf{v}e^{\lambda t} $$ vào hệ $$ \mathbf{x}'=A\mathbf{x} $$, ta được
 $$
-\lambda \mathbf{v}e^{\lambda t}=A\mathbf{v}e^{\lambda t}.
+\lambda \mathbf{v}e^{\lambda t}=A\mathbf{v}e^{\lambda t} \Rightarrow A\mathbf{v}=\lambda \mathbf{v}.
 $$
-Suy ra
-$$ A\mathbf{v}=\lambda \mathbf{v}. $$
-Vậy $$ \lambda $$ là trị riêng và $$ \mathbf{v} $$ là vector riêng. Nếu $$ A $$ có hai trị riêng thực phân biệt $$ \lambda_1,\lambda_2 $$ với các vector riêng độc lập $$ \mathbf{v}_1,\mathbf{v}_2 $$, thì nghiệm tổng quát là
+Như vậy $$ \lambda $$ là trị riêng và $$ \mathbf{v} $$ là vector riêng của $$ A $$. Nếu $$ A $$ có hai trị riêng thực phân biệt $$ \lambda_1,\lambda_2 $$ ứng với hai vector riêng độc lập $$ \mathbf{v}_1,\mathbf{v}_2 $$, thì nghiệm tổng quát là
 $$
 \mathbf{x}(t)=c_1\mathbf{v}_1e^{\lambda_1 t}+c_2\mathbf{v}_2e^{\lambda_2 t}.
 $$
 
 ## Những ngộ nhận thường gặp
 
-- "Trị riêng chỉ giúp giải hệ, không giúp hiểu hệ." Sai. Dấu của trị riêng quyết định trực tiếp ổn định.
-- "Vector riêng chỉ là công cụ kỹ thuật." Sai. Chúng là các hướng bất biến thật sự của trường vector.
-- "Nếu hai trị riêng đều âm thì mọi quỹ đạo giống hệt nhau." Không đúng. Chúng đều hút về gốc, nhưng theo những tốc độ và hướng khác nhau.
-- "Mode có hệ số đầu lớn hơn sẽ luôn chi phối lâu dài." Sai. Thường mode có trị riêng lớn hơn mới chi phối khi $$ t\to\infty $$.
+- "Trị riêng chỉ dùng để tính nghiệm, không giúp hiểu động học." Sai: dấu của trị riêng quyết định trực tiếp tính ổn định của điểm cân bằng.
+- "Vector riêng chỉ là bước trung gian đại số." Sai: chúng xác định các phương bất biến thực sự của trường vector.
+- "Hai trị riêng cùng âm thì mọi quỹ đạo đi vào gốc giống hệt nhau." Không đúng: tốc độ hút dọc theo hai phương riêng khác nhau, nên quỹ đạo cong và tiệm cận phương suy giảm chậm hơn.
+- "Thành phần có hệ số ban đầu lớn hơn sẽ luôn chi phối lâu dài." Sai: khi $$ t\to\infty $$, thành phần ứng với trị riêng lớn hơn mới chi phối hành vi dài hạn.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Tìm trị riêng
+### Bước 1: Tìm các trị riêng
 
-Giải phương trình
-$$ \det(A-\lambda I)=0. $$
+Giải phương trình đặc trưng $$ \det(A-\lambda I)=0 $$.
 
-### Bước 2: Tìm vector riêng
+### Bước 2: Tìm các vector riêng tương ứng
 
-Giải
-$$ (A-\lambda I)\mathbf{v}=0. $$
+Giải hệ thuần nhất $$ (A-\lambda I)\mathbf{v}=0 $$ cho từng trị riêng.
 
-### Bước 3: Viết các mode mũ
+### Bước 3: Lập các nghiệm riêng dạng hàm mũ
 
-Mỗi trị riêng sinh ra một mode.
+Mỗi cặp $$ (\lambda_i, \mathbf{v}_i) $$ sinh ra một thành phần nghiệm $$ \mathbf{v}_ie^{\lambda_i t} $$.
 
-### Bước 4: Ghép thành nghiệm tổng quát và đọc động học
+### Bước 4: Viết nghiệm tổng quát và diễn giải động học
 
-Đây là bước quan trọng nhất về ý nghĩa.
+Đọc hướng hút, hướng đẩy và thành phần chi phối dài hạn từ dấu và độ lớn của các trị riêng.
 
 ### Các checkpoint
 
-- Sinh viên có giải đúng trị riêng và vector riêng hay không.
-- Sinh viên có viết đúng nghiệm dạng $$ \mathbf{v}e^{\lambda t} $$ hay không.
-- Sinh viên có đọc được hướng hút và đẩy từ dấu của trị riêng hay không.
+- Sinh viên có tính đúng trị riêng và vector riêng hay không.
+- Sinh viên có viết chính xác dạng nghiệm $$ \mathbf{v}e^{\lambda t} $$ hay không.
+- Sinh viên có xác định được phương hút và phương đẩy từ dấu của trị riêng hay không.
 
 ## Ví dụ được giải chi tiết
 
 ### Ví dụ 1: Hệ chéo
 
-Xét
+Xét ma trận
 $$
 A=
 \begin{pmatrix}
@@ -98,9 +90,7 @@ A=
 0 & -2
 \end{pmatrix}.
 $$
-Các trị riêng là
-$$ \lambda_1=3,\qquad \lambda_2=-2, $$
-với vector riêng tương ứng
+Các trị riêng là $$ \lambda_1=3 $$ và $$ \lambda_2=-2 $$, với các vector riêng tương ứng
 $$
 \mathbf{v}_1=
 \begin{pmatrix}
@@ -114,7 +104,7 @@ $$
 1
 \end{pmatrix}.
 $$
-Nghiệm tổng quát:
+Nghiệm tổng quát là
 $$
 \mathbf{x}(t)=
 c_1e^{3t}
@@ -129,9 +119,9 @@ c_2e^{-2t}
 1
 \end{pmatrix}.
 $$
-Hệ có một hướng đẩy và một hướng hút, nên gốc là một yên ngựa.
+Hệ có một phương đẩy và một phương hút, nên gốc tọa độ là điểm yên ngựa.
 
-### Ví dụ 2: Ma trận không chéo nhưng có trị riêng thực phân biệt
+### Ví dụ 2: Ma trận không chéo có trị riêng thực phân biệt
 
 Xét
 $$
@@ -141,105 +131,90 @@ A=
 2 & 3
 \end{pmatrix}.
 $$
-Ta có
+Phương trình đặc trưng là
 $$
 \det(A-\lambda I)=
 \begin{vmatrix}
 4-\lambda & 1\\
 2 & 3-\lambda
 \end{vmatrix}
-=(4-\lambda)(3-\lambda)-2.
+=(4-\lambda)(3-\lambda)-2=\lambda^2-7\lambda+10=0,
 $$
-Suy ra
-$$ \lambda^2-7\lambda+10=0, $$
-nên
-$$ \lambda_1=5,\qquad \lambda_2=2. $$
-Hai trị riêng đều dương, nên mọi quỹ đạo không tầm thường đều đi ra xa gốc, dù theo hai tốc độ khác nhau.
+cho hai trị riêng $$ \lambda_1=5 $$ và $$ \lambda_2=2 $$. Vì cả hai trị riêng đều dương, mọi quỹ đạo không tầm thường đều đi ra xa gốc theo hai tốc độ khác nhau.
 
-### Ví dụ 3: Đọc mode chi phối
+### Ví dụ 3: Xác định thành phần chi phối dài hạn
 
-Nếu nghiệm có dạng
-$$
-\mathbf{x}(t)=c_1\mathbf{v}_1e^{2t}+c_2\mathbf{v}_2e^{-t},
-$$
-thì khi $$ t\to\infty $$, mode $$ e^{2t} $$ chi phối nếu $$ c_1\neq 0 $$. Điều này cho thấy hành vi dài hạn không do mọi mode quyết định như nhau.
+Với nghiệm $$ \mathbf{x}(t)=c_1\mathbf{v}_1e^{2t}+c_2\mathbf{v}_2e^{-t} $$, khi $$ t\to\infty $$, thành phần $$ e^{2t} $$ chi phối hoàn toàn nếu $$ c_1\neq 0 $$. Điều này cho thấy các thành phần nghiệm không đóng góp ngang nhau trong hành vi dài hạn.
 
-### Ví dụ 4: Điều kiện đầu chọn quỹ đạo
+### Ví dụ 4: Điều kiện đầu chọn tổ hợp các thành phần riêng
 
-Khi cho
-$$ \mathbf{x}(0)=\mathbf{x}_0, $$
-ta giải hệ
-$$ \mathbf{x}_0=c_1\mathbf{v}_1+c_2\mathbf{v}_2 $$
-để tìm $$ c_1,c_2 $$. Vì vậy điều kiện đầu đơn giản là cách chọn cách pha trộn các mode riêng.
+Khi cho điều kiện đầu $$ \mathbf{x}(0)=\mathbf{x}_0 $$, ta giải hệ tuyến tính $$ \mathbf{x}_0=c_1\mathbf{v}_1+c_2\mathbf{v}_2 $$ để tìm $$ c_1,c_2 $$. Điều kiện đầu thực chất là phép khai triển trạng thái ban đầu theo cơ sở vector riêng.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao vector riêng là những hướng đặc biệt của dòng chảy?
-2. Vì sao dấu của trị riêng quyết định ổn định cục bộ của gốc đối với hệ tuyến tính?
-3. Vì sao một mode có thể chi phối toàn bộ hành vi dài hạn của hệ?
+1. Vì sao các vector riêng là những phương bất biến đặc biệt của dòng chảy động lực học?
+2. Vì sao dấu của trị riêng quyết định tính ổn định cục bộ của gốc tọa độ trong hệ tuyến tính?
+3. Vì sao một thành phần nghiệm có thể chi phối toàn bộ hành vi dài hạn của hệ?
 
 ## Bài toán ứng dụng
 
-1. Một mô hình kinh tế có một hướng tăng trưởng và một hướng suy thoái. Hãy diễn giải điều đó bằng trị riêng trái dấu.
-2. Một hệ sinh học có hai mode thư giãn với tốc độ khác nhau. Hãy giải thích vì sao mode chậm hơn thường được quan sát lâu hơn.
-3. Một hệ cơ học tuyến tính hóa quanh cân bằng có hai trị riêng dương. Điều đó nói gì về khả năng giữ ổn định của hệ?
+1. Một mô hình kinh tế có một hướng tăng trưởng và một hướng suy thoái. Hãy diễn giải hiện tượng đó bằng cặp trị riêng trái dấu.
+2. Một hệ sinh học có hai quá trình thư giãn với tốc độ khác nhau. Vì sao thành phần suy giảm chậm hơn thường quan sát được lâu hơn?
+3. Một hệ cơ học tuyến tính hóa quanh điểm cân bằng có hai trị riêng dương. Kết quả này nói lên điều gì về tính ổn định của cân bằng đó?
 
 ## Chiến lược giảng dạy tương tác
 
-- Cho sinh viên dự đoán hình học quỹ đạo chỉ từ dấu của hai trị riêng.
-- Dùng một ma trận chéo trước, rồi một ma trận không chéo để sinh viên thấy trị riêng vẫn đọc động học như nhau.
-- Hỏi lớp: "Nếu ta khởi đầu đúng trên vector riêng, quỹ đạo sẽ trông thế nào?"
-- Cho sinh viên vẽ sơ bộ hai đường bất biến trước khi viết nghiệm tổng quát.
+- Cho sinh viên dự đoán hình thái quỹ đạo chỉ từ dấu của hai trị riêng trước khi giải chi tiết.
+- Xét một ma trận chéo trước rồi chuyển sang ma trận không chéo để thấy cách đọc động học từ trị riêng hoàn toàn thống nhất.
+- Hỏi lớp: "Nếu xuất phát đúng trên một vector riêng, quỹ đạo sẽ di chuyển ra sao?"
+- Yêu cầu sinh viên vẽ hai đường thẳng bất biến trước khi viết công thức nghiệm tổng quát.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên cho sinh viên yếu làm thật chắc hệ 2 chiều với ma trận nhỏ, vì ở đó trị riêng, vector riêng và chân dung pha vẫn nhìn được cùng lúc. Cần nhấn mạnh nhiều lần rằng $$ \mathbf{v}e^{\lambda t} $$ là một nghiệm vector.
+Luyện kỹ hệ hai chiều với ma trận hệ số nhỏ để sinh viên quan sát đồng thời trị riêng, vector riêng và chân dung pha, nhấn mạnh $$ \mathbf{v}e^{\lambda t} $$ là một hàm vector theo thời gian.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể yêu cầu sinh viên khá giỏi giải thích tại sao các vector riêng ứng với trị riêng phân biệt luôn độc lập tuyến tính, và liên hệ điều này với việc tồn tại cơ sở nghiệm.
+Yêu cầu sinh viên chứng minh rằng các vector riêng ứng với các trị riêng phân biệt luôn độc lập tuyến tính, từ đó suy ra chúng tạo thành một cơ sở nghiệm đầy đủ cho hệ.
 
 ## Tóm tắt dễ nhớ
 
-Khi ma trận có các trị riêng thực phân biệt, hệ tuyến tính tách thành các mode mũ độc lập:
+Khi ma trận có đủ trị riêng thực phân biệt, nghiệm tổng quát của hệ tuyến tính là tổ hợp các thành phần hàm mũ độc lập:
 $$
 \mathbf{x}(t)=\sum c_i\mathbf{v}_ie^{\lambda_i t}.
 $$
-Trị riêng cho tốc độ và dấu ổn định, vector riêng cho hướng chuyển động. Đây là trường hợp đơn giản nhất nhưng cũng là nền tảng nhất của chương.
+Trị riêng quyết định tốc độ và dấu ổn định, còn vector riêng xác định phương chuyển động bất biến.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Cạnh tranh hoặc hợp tác loài gần cân bằng
-- Bài toán: Gần trạng thái cân bằng, hai biến có thể tăng giảm theo hai mode độc lập.
-- Mô hình:
-$$ \mathbf{x}'=A\mathbf{x} $$
-với $$ A $$ có hai trị riêng thực phân biệt.
-- Giả thiết và giới hạn: Tuyến tính hóa cục bộ quanh cân bằng.
-- Diễn giải: Mỗi vector riêng là một hướng bất biến và mỗi trị riêng là tốc độ tiến hóa dọc hướng đó.
+#### Tương tác cạnh tranh hoặc hợp tác gần điểm cân bằng
+- Bài toán: Quanh trạng thái cân bằng, hai biến quần thể biến đổi theo hai phương độc lập.
+- Mô hình: $$ \mathbf{x}'=A\mathbf{x} $$ với $$ A $$ có hai trị riêng thực phân biệt.
+- Giả thiết và giới hạn: Xấp xỉ tuyến tính cục bộ gần điểm cân bằng.
+- Diễn giải: Mỗi vector riêng chỉ một phương bất biến và trị riêng tương ứng cho tốc độ tiến hóa dọc phương đó.
 
-#### Hệ cơ học yên ngựa
-- Bài toán: Một mode ổn định và một mode bất ổn cùng tồn tại trong cùng hệ.
-- Mô hình:
-$$ \lambda_1>0,\qquad \lambda_2<0. $$
+#### Hệ cơ học tại điểm yên ngựa
+- Bài toán: Một phương ổn định và một phương bất ổn cùng tồn tại quanh điểm cân bằng.
+- Mô hình: $$ \lambda_1>0 $$ và $$ \lambda_2<0 $$.
 - Giả thiết và giới hạn: Hệ tuyến tính hoặc tuyến tính hóa gần cân bằng.
-- Diễn giải: Yên ngựa là cấu trúc cực kỳ quan trọng vì nó vừa hút vừa đẩy tùy hướng.
+- Diễn giải: Điểm yên ngựa không ổn định nhưng có đường phân cách hút về gốc dọc theo phương trị riêng âm.
 
-#### Tín hiệu quá độ hai tốc độ
-- Bài toán: Một hệ kỹ thuật có hai time scale suy giảm khác nhau.
+#### Đáp ứng quá độ hai thang thời gian
+- Bài toán: Một hệ kỹ thuật có hai hằng số thời gian suy giảm khác nhau.
 - Mô hình:
 $$
 \mathbf{x}(t)=c_1\mathbf{v}_1e^{\lambda_1 t}+c_2\mathbf{v}_2e^{\lambda_2 t}.
 $$
-- Giả thiết và giới hạn: Hai vector riêng độc lập.
-- Diễn giải: Mode với trị riêng lớn hơn chi phối dài hạn.
+- Giả thiết và giới hạn: Hai vector riêng độc lập tuyến tính.
+- Diễn giải: Thành phần ứng với trị riêng lớn hơn (ít âm hơn) chi phối hành vi dài hạn.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Phương pháp trị riêng cho hệ là phiên bản nhiều chiều của phương trình đặc trưng ở các chương trước. Mỗi trị riêng cho một mode, mỗi vector riêng cho một hướng. Đây là một trong những nơi đẹp nhất để sinh viên thấy đại số tuyến tính và động lực học là cùng một câu chuyện bằng hai ngôn ngữ.
+Phương pháp trị riêng cho hệ tuyến tính là phiên bản nhiều chiều của phương trình đặc trưng ở Chương 02: mỗi trị riêng tương ứng một tốc độ mũ và mỗi vector riêng xác định một phương bất biến, kết nối trực tiếp đại số tuyến tính với động lực học.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -277,7 +252,7 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Xét
+Xét ma trận
 $$
 A=
 \begin{pmatrix}
@@ -285,9 +260,7 @@ A=
 0 & -2
 \end{pmatrix}.
 $$
-Hai trị riêng:
-$$ \lambda_1=3,\qquad \lambda_2=-2, $$
-với vector riêng tương ứng là các trục tọa độ. Nghiệm tổng quát:
+Hai trị riêng $$ \lambda_1=3 $$ và $$ \lambda_2=-2 $$ có các vector riêng là hai trục tọa độ. Nghiệm tổng quát là
 $$
 \mathbf{x}(t)=
 c_1
@@ -304,21 +277,21 @@ c_2
 \end{pmatrix}
 e^{-2t}.
 $$
-Hướng $$ x_1 $$ là hướng đẩy, còn hướng $$ x_2 $$ là hướng hút. Đây là yên ngựa điển hình.
+Trục $$ x_1 $$ là phương đẩy ra xa gốc, còn trục $$ x_2 $$ là phương hút về gốc — hình ảnh điển hình của điểm yên ngựa.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Tìm đúng trị riêng, vector riêng và ghép nghiệm tổng quát.
+**Bậc đại học.** Tính đúng trị riêng, vector riêng và lập nghiệm tổng quát.
 
-**Bậc sau đại học.** Đọc mode trội, ổn định và cấu trúc yên ngựa trực tiếp từ phổ của ma trận.
+**Bậc sau đại học.** Đọc nhanh thành phần chi phối, tính ổn định và cấu trúc yên ngựa trực tiếp từ phổ của ma trận.
 
 ## Video tham khảo
 
-- xem trước: [Phương trình vi phân - Phương pháp giá trị riêng giải hệ phương trình vi phân tuyến thuần nhất](https://www.youtube.com/watch?v=LVbsb6mAFZ4) — MATH KEY, Tiếng Việt. Bài tiếng Việt về phương pháp trị riêng cho hệ tuyến tính thuần nhất.
-- [Solving Systems of Differential Equations with Eigenvalues and Eigenvectors](https://www.youtube.com/watch?v=Zwb5eiYcL8w) — Steve Brunton, tiếng Anh. Dựng nghiệm tổng quát từ các cặp trị riêng-vector riêng thực phân biệt.
-- [2x2 Systems of ODEs: Sources and Sinks](https://www.youtube.com/watch?v=NaNdkCPLftc) — Steve Brunton, tiếng Anh. Nguồn và hố: dấu của hai trị riêng thực làm gì với chân dung pha.
+- Xem trước: [Phương trình vi phân - Phương pháp giá trị riêng giải hệ phương trình vi phân tuyến thuần nhất](https://www.youtube.com/watch?v=LVbsb6mAFZ4) — MATH KEY, tiếng Việt. Hướng dẫn phương pháp trị riêng cho hệ tuyến tính thuần nhất.
+- [Solving Systems of Differential Equations with Eigenvalues and Eigenvectors](https://www.youtube.com/watch?v=Zwb5eiYcL8w) — Steve Brunton, tiếng Anh. Xây dựng nghiệm tổng quát từ các cặp trị riêng và vector riêng thực phân biệt.
+- [2x2 Systems of ODEs: Sources and Sinks](https://www.youtube.com/watch?v=NaNdkCPLftc) — Steve Brunton, tiếng Anh. Phân tích điểm nguồn và điểm hút dựa trên dấu của hai trị riêng thực.
 
 ## Tài liệu tham khảo
 
-- Boyce & DiPrima, Chương 7: trình bày chuẩn về phương pháp trị riêng thực.
-- Arnold, *Ordinary Differential Equations*: rất tốt cho trực giác về hướng bất biến và yên ngựa.
+- Boyce & DiPrima, Chương 7: trình bày chuẩn mực phương pháp trị riêng thực.
+- Arnold, *Ordinary Differential Equations*: giàu trực giác hình học về phương bất biến và điểm yên ngựa.

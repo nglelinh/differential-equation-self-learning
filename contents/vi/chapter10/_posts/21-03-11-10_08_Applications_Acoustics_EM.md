@@ -13,150 +13,150 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài học này kết thúc chương bằng cách đưa phương trình sóng vào hai bối cảnh ứng dụng lớn: âm học và điện từ học. Sau bài học, sinh viên cần nhận ra phương trình sóng là ngôn ngữ chung cho lan truyền áp suất âm và trường điện từ, hiểu vai trò của mode, cộng hưởng, điều kiện biên và hình học miền, và thấy cách cùng một cấu trúc PDE xuất hiện dưới nhiều lớp nghĩa vật lý khác nhau.
+Bài học này khép lại chương bằng việc đặt phương trình sóng vào hai lĩnh vực ứng dụng lớn: âm học và điện từ học. Sau bài học, sinh viên cần nhận ra phương trình sóng là cấu trúc toán học chung cho sự lan truyền áp suất âm và trường điện từ, hiểu vai trò của mode riêng, cộng hưởng, điều kiện biên và hình học miền, đồng thời thấy được tính thống nhất của PDE xuyên qua nhiều hiện tượng vật lý khác nhau.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm phương trình sóng, mode riêng, cộng hưởng và phản xạ. Đây là bài tổng kết rất phù hợp để giúp sinh viên thấy tính thống nhất của chương.
+Sinh viên cần nắm phương trình sóng, khái niệm mode riêng, hiện tượng cộng hưởng và phản xạ sóng. Bài học này mang tính tổng kết giúp gắn kết lý thuyết chương với các bài toán kỹ thuật và vật lý thực tế.
 
 ## Dẫn nhập
 
-Nếu chỉ học phương trình sóng như phương trình của dây rung, sinh viên sẽ dễ đánh giá thấp tầm quan trọng của nó. Nhưng trên thực tế, cùng một cấu trúc toán học xuất hiện khi âm thanh lan trong không khí, khi ánh sáng lan trong không gian, khi sóng điện từ đi trong ống dẫn, và khi phòng hòa nhạc tạo ra các cộng hưởng riêng.
+Nếu chỉ nhìn phương trình sóng qua mô hình dây đàn rung, ta dễ đánh giá thấp phạm vi ứng dụng của nó. Trên thực tế, cùng một cấu trúc toán học xuất hiện khi âm thanh truyền trong không khí, khi ánh sáng lan truyền trong không gian, khi sóng điện từ chạy trong ống dẫn sóng và khi phòng hòa nhạc hình thành các tần số cộng hưởng đặc trưng.
 
-Đây là bài để khóa lại chương bằng một thông điệp lớn: PDE không chỉ giải một bài toán cụ thể, mà cho ta một ngôn ngữ thống nhất cho những hiện tượng nhìn bề ngoài rất khác nhau. Sợi chỉ đỏ vẫn là lan truyền, mode riêng, điều kiện biên và năng lượng.
+Thông điệp xuyên suốt của bài học là tính thống nhất của toán học ứng dụng: dù đại lượng vật lý thay đổi, các khái niệm cốt lõi vẫn là sự lan truyền với tốc độ hữu hạn, hệ mode riêng, điều kiện biên và năng lượng.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Âm thanh là những nén và dãn nhỏ của không khí lan truyền. Sóng điện từ là dao động của điện trường và từ trường lan trong không gian. Một bên ta nghe được, một bên ta nhìn hoặc đo được, nhưng về mặt toán học cả hai đều là sóng: có tốc độ truyền, có phản xạ, có cộng hưởng và có mode.
+Âm thanh là sự lan truyền của những biến thiên nén–dãn nhỏ trong không khí; sóng điện từ là sự lan truyền của dao động điện trường và từ trường trong không gian. Tuy bản chất vật lý khác nhau, cả hai đều tuân theo quy luật sóng: có tốc độ lan truyền xác định, có hiện tượng phản xạ, cộng hưởng và hệ mode riêng.
 
 ### Cách nhìn hình ảnh
 
-Trong âm học, mode của căn phòng là những vùng áp suất tăng giảm xen kẽ, với các mặt nút và bụng. Trong ống dẫn sóng điện từ, mode TE và TM tạo nên các hình dạng trường khác nhau trên tiết diện. Hình học miền điều khiển mode trong cả hai bối cảnh.
+Trong âm học phòng, các mode riêng biểu hiện thành những vùng áp suất tăng giảm xen kẽ với các mặt nút và bụng sóng. Trong ống dẫn sóng điện từ, các mode ngang điện (TE) và ngang từ (TM) tạo nên những cấu trúc trường đặc trưng trên mặt cắt ngang. Trong cả hai lĩnh vực, hình học miền trực tiếp định hình cấu trúc mode.
 
 ### Cách nhìn hình thức
 
-Trong âm học tuyến tính, áp suất nhiễu nhỏ $$ p(x,t) $$ thỏa gần đúng $$ p_{tt}=c^2\Delta p $$. Trong điện từ học, từ phương trình Maxwell trong chân không, các thành phần của $$ \mathbf E,\ \mathbf B $$ thỏa phương trình sóng:
+Trong âm học tuyến tính, độ lệch áp suất nhỏ $$ p(x,t) $$ thỏa mãn gần đúng phương trình sóng $$ p_{tt}=c^2\Delta p $$. Trong điện từ học, từ hệ phương trình Maxwell trong chân không không nguồn, các thành phần của điện trường $$ \mathbf E $$ và từ trường $$ \mathbf B $$ đều thỏa mãn phương trình sóng:
 
 $$
 \Delta \mathbf E=\frac{1}{c^2}\mathbf E_{tt},
 \qquad
-\Delta \mathbf B=\frac{1}{c^2}\mathbf B_{tt}.
+\Delta \mathbf B=\frac{1}{c^2}\mathbf B_{tt},
 $$
 
-Ở đây $$ c $$ là tốc độ ánh sáng.
+trong đó $$ c $$ là tốc độ ánh sáng trong chân không.
 
 ## Những ngộ nhận thường gặp
 
-- "Âm thanh và điện từ là hai thế giới hoàn toàn khác nên toán học chắc cũng khác." Sai. Cùng một cấu trúc PDE xuất hiện trong cả hai.
-- "Cộng hưởng chỉ là hiện tượng âm thanh." Không đúng; điện từ, dao động cơ học và nhiều hệ khác đều có cộng hưởng mode riêng.
-- "Mode riêng chỉ là chuyện lý thuyết." Sai; chúng quyết định âm sắc, chất lượng truyền, tần số cắt và đáp ứng thực tế của hệ.
-- "Điều kiện biên chỉ quyết định biên độ." Không đúng; chúng quyết định hẳn mode nào được phép tồn tại.
+- "Âm thanh và điện từ là hai lĩnh vực hoàn toàn tách biệt nên toán học cũng khác hẳn nhau." Sai; cả hai đều được mô tả bởi cùng một cấu trúc phương trình sóng.
+- "Cộng hưởng chỉ là hiện tượng trong âm học." Không đúng; cộng hưởng mode riêng xuất hiện rộng rãi trong điện từ, cơ học kết cấu và nhiều hệ vật lý khác.
+- "Mode riêng chỉ là khái niệm trừu tượng trên giấy." Sai; chúng quyết định trực tiếp âm sắc, chất lượng truyền dẫn, tần số cắt và đáp ứng thực tế của thiết bị.
+- "Điều kiện biên chỉ ảnh hưởng đến biên độ sóng." Không đúng; điều kiện biên quyết định trực tiếp tập mode và tần số riêng nào được phép tồn tại.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Nhìn ra phương trình sóng trong từng lĩnh vực
+### Bước 1: Nhận diện phương trình sóng trong từng lĩnh vực
 
-Âm thanh, điện từ và dây rung cần được đặt cạnh nhau.
+Đặt song song ba mô hình: dây rung cơ học, sóng âm và sóng điện từ.
 
-### Bước 2: Nhấn mạnh mode và cộng hưởng
+### Bước 2: Tập trung vào mode riêng và cộng hưởng
 
-Đây là khái niệm thống nhất mạnh nhất.
+Đây là hai khái niệm thống nhất mạnh nhất giữa các lĩnh vực.
 
-### Bước 3: Liên hệ hình học với ứng dụng
+### Bước 3: Liên hệ hình học miền với thiết kế kỹ thuật
 
-Phòng, ống dẫn, khoang cộng hưởng đều là các miền PDE.
+Nhìn nhận phòng hòa nhạc, ống dẫn sóng và hốc cộng hưởng như các miền biên PDE.
 
-### Các checkpoint
+### Các điểm kiểm tra
 
-- Sinh viên có kể được điểm chung toán học giữa âm học và điện từ học hay không.
-- Sinh viên có giải thích được vì sao hình học phòng hoặc ống dẫn ảnh hưởng mạnh đến mode hay không.
-- Sinh viên có hiểu cộng hưởng là hậu quả của kích thích gần tần số riêng hay không.
+- Sinh viên có chỉ ra được điểm chung toán học giữa âm học tuyến tính và điện từ học hay không.
+- Sinh viên có giải thích được vì sao hình học căn phòng hoặc tiết diện ống dẫn ảnh hưởng trực tiếp đến hệ mode hay không.
+- Sinh viên có hiểu cộng hưởng là hệ quả của việc kích thích gần một tần số riêng hay không.
 
 ## Ví dụ được giải chi tiết
 
 ### Ví dụ 1: Âm học phòng
 
-Áp suất âm thỏa phương trình sóng trong một miền là căn phòng. Các điều kiện biên trên tường và hình học phòng quyết định các mode riêng. Nếu nguồn âm kích gần một mode nào đó, áp suất ở mode ấy có thể tăng mạnh. Đây là lý do thiết kế âm học phòng phải quan tâm đến cộng hưởng.
+Áp suất âm thỏa mãn phương trình sóng trên miền không gian của căn phòng. Hình dạng phòng và tính chất phản xạ/hấp thụ của tường quy định các mode riêng. Khi nguồn âm phát ở tần số gần một mode riêng, biên độ áp suất tại mode đó tăng mạnh — đây là lý do thiết kế âm học phòng cần kiểm soát cộng hưởng.
 
 ### Ví dụ 2: Dây đàn và nhạc cụ
 
-Các họa âm của dây đàn là các mode riêng của phương trình sóng trên đoạn. Ví dụ này nên được dùng như cầu nối trực quan từ bài dây rung sang âm học thực tế.
+Các họa âm của dây đàn chính là các mode riêng của phương trình sóng một chiều trên đoạn hữu hạn, tạo cầu nối trực quan từ bài toán dây rung sang âm học thực tế.
 
 ### Ví dụ 3: Ống dẫn sóng điện từ
 
-Trong waveguide, điều kiện biên trên thành dẫn tạo ra các mode TE và TM. Mỗi mode có tần số cắt riêng. Nếu tần số quá thấp, mode không lan truyền hiệu quả. Ví dụ này là minh họa rất mạnh cho việc điều kiện biên quyết định mode và truyền dẫn.
+Trong ống dẫn sóng (waveguide), điều kiện biên trên thành kim loại dẫn điện hình thành các mode TE và TM. Mỗi mode có một tần số cắt riêng: nếu tần số sóng thấp hơn tần số cắt, mode không thể lan truyền mà suy giảm nhanh. Đây là ví dụ rõ nét về vai trò của điều kiện biên trong truyền dẫn.
 
-### Ví dụ 4: Maxwell và sóng điện từ
+### Ví dụ 4: Hệ phương trình Maxwell và sóng điện từ
 
-Từ Maxwell, điện trường và từ trường đều thỏa phương trình sóng. Ví dụ này giúp sinh viên thấy phương trình sóng bước ra khỏi cơ học để đi vào vật lý trường.
+Từ các phương trình Maxwell trong chân không, ta suy ra trực tiếp điện trường và từ trường đều thỏa mãn phương trình sóng với tốc độ $$ c $$, đưa phương trình sóng vượt ra ngoài cơ học cổ điển để bước vào vật lý trường.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao cộng hưởng là hiện tượng tự nhiên khi hệ bị kích gần tần số riêng?
-2. Điều gì là điểm chung toán học giữa âm thanh, dây rung và điện từ?
-3. Vì sao hình học miền và điều kiện biên lại quan trọng ngang với bản thân phương trình?
+1. Vì sao hiện tượng cộng hưởng xảy ra khi hệ bị kích thích ở tần số gần tần số riêng?
+2. Điểm chung toán học giữa dao động dây đàn, sóng âm và sóng điện từ là gì?
+3. Vì sao hình học miền và điều kiện biên quan trọng không kém bản thân phương trình sóng?
 
 ## Bài toán ứng dụng
 
-1. Vì sao một căn phòng hình học kém có thể làm một số tần số âm bị dội rất mạnh?
-2. Trong ống dẫn sóng, vì sao tồn tại tần số cắt dưới đó sóng không truyền được?
-3. Trong thiết kế thiết bị quang hoặc vô tuyến, vì sao việc điều khiển mode là vấn đề trung tâm?
+1. Vì sao một căn phòng có tỉ lệ hình học không hợp lý dễ khiến một số tần số âm bị cộng hưởng quá mức?
+2. Trong ống dẫn sóng điện từ, vì sao tồn tại tần số cắt mà dưới ngưỡng đó sóng không truyền đi được?
+3. Trong thiết kế thiết bị quang học hoặc vô tuyến, vì sao kiểm soát các mode truyền sóng là bài toán trọng tâm?
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng câu hỏi: "Điểm chung giữa dây đàn, phòng hòa nhạc và ống dẫn sóng là gì?"
-- Cho sinh viên lập bảng so sánh: đại lượng vật lý, PDE, tốc độ truyền, mode, điều kiện biên.
-- Hỏi cả lớp: "Nếu thay đổi hình dạng phòng hoặc ống dẫn, điều gì sẽ thay đổi trước tiên trong lời giải?"
-- Khuyến khích sinh viên kể thêm các ví dụ sóng từ lĩnh vực mà các em biết.
+- Khởi đầu bằng câu hỏi: "Dây đàn, phòng hòa nhạc và ống dẫn sóng điện từ có điểm chung toán học nào?"
+- Cho sinh viên lập bảng đối chiếu giữa các lĩnh vực: đại lượng trường, PDE, tốc độ truyền sóng, hệ mode và điều kiện biên.
+- Đặt câu hỏi: "Nếu thay đổi kích thước hoặc hình dạng phòng/ống dẫn, đại lượng nào trong lời giải thay đổi đầu tiên?"
+- Khuyến khích sinh viên nêu thêm các ví dụ truyền sóng từ những ngành kỹ thuật khác mà các em quan tâm.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên luôn quay về một bộ bốn ý thống nhất: phương trình sóng, mode riêng, cộng hưởng, điều kiện biên. Nếu bộ khung này chắc, các ví dụ ứng dụng sẽ bớt rời rạc hơn nhiều.
+Nên quy mọi ví dụ ứng dụng về cùng một khung bốn yếu tố: phương trình sóng, mode riêng, cộng hưởng và điều kiện biên để bài học mạch lạc và dễ ghi nhớ.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể mời sinh viên khá giỏi tìm hiểu sâu hơn về suy ra phương trình sóng từ Maxwell hoặc từ phương trình Euler tuyến tính hóa trong âm học, hoặc phân tích chi tiết hơn các mode của waveguide.
+Có thể yêu cầu sinh viên tự thực hiện bước khử biến từ hệ phương trình Maxwell hoặc từ hệ phương trình Euler tuyến tính hóa trong âm học để suy ra phương trình sóng, hoặc phân tích chi tiết tần số cắt của ống dẫn sóng hình chữ nhật.
 
 ## Tóm tắt dễ nhớ
 
-Âm thanh và điện từ đều là những biểu hiện của cùng một ngôn ngữ toán học: phương trình sóng cộng với mode riêng và điều kiện biên. Hình học miền quyết định cộng hưởng, còn mode quyết định cách năng lượng lan truyền và được quan sát trong thực tế.
+Âm thanh và sóng điện từ đều tuân theo cùng một khuôn khổ toán học gồm phương trình sóng, hệ mode riêng và điều kiện biên. Hình học miền quyết định phổ cộng hưởng, còn hệ mode quyết định cách năng lượng lan truyền trong thực tế.
 
 ## Video tham khảo
 
-- xem trước: [Divergence and curl:  The language of Maxwell's equations, fluid flow, and more](https://www.youtube.com/watch?v=rB83DpBJQsE) — 3Blue1Brown, tiếng Anh. Divergence và curl là ngôn ngữ của các phương trình Maxwell.
-- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, tiếng Anh. Phương trình sóng mà các mô hình âm và điện từ quy về.
-- [8.03 - Lect 12 - Dispersion, Phase Velocity, Group Velocity](https://www.youtube.com/watch?v=YEDUCl9t1m0) — Lectures by Walter Lewin. They will make you ♥ Physics., tiếng Anh. Tán sắc trong một sóng thật, hiệu chỉnh đối với một tín hiệu điện từ hoặc âm lý tưởng.
+- Xem trước: [Divergence and curl:  The language of Maxwell's equations, fluid flow, and more](https://www.youtube.com/watch?v=rB83DpBJQsE) — 3Blue1Brown, tiếng Anh. Giải thích trực quan toán tử phân kỳ (divergence) và xoáy (curl) — ngôn ngữ của hệ phương trình Maxwell.
+- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, tiếng Anh. Ôn lại phương trình sóng nền tảng mà cả mô hình âm học lẫn điện từ đều dẫn tới.
+- [8.03 - Lect 12 - Dispersion, Phase Velocity, Group Velocity](https://www.youtube.com/watch?v=YEDUCl9t1m0) — Lectures by Walter Lewin. They will make you ♥ Physics., tiếng Anh. Thảo luận hiện tượng tán sắc như hiệu chỉnh thực tế đối với sóng âm và sóng điện từ lý tưởng.
 
 ## Tài liệu tham khảo
 
-- Evans, *Partial Differential Equations* - phát triển chặt chẽ phương trình sóng, năng lượng, và tính duy nhất.
-- Haberman, *Applied Partial Differential Equations* - trực giác vật lý tốt cho sóng, cộng hưởng, và phản xạ.
+- Evans, *Partial Differential Equations* — trình bày chặt chẽ về phương trình sóng, phương pháp năng lượng và tính duy nhất.
+- Haberman, *Applied Partial Differential Equations* — cung cấp trực giác vật lý rõ ràng về sóng, cộng hưởng và phản xạ.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Âm học tuyến tính
-- Bài toán: Áp suất âm trong không khí lan truyền như một sóng.
+- Bài toán: Áp suất âm trong không khí lan truyền dưới dạng sóng.
 - Mô hình:
 $$ p_{tt}=c^2\Delta p. $$
 - Giả thiết và giới hạn: Biên độ nhỏ, môi trường đồng nhất, bỏ qua hấp thụ mạnh.
-- Diễn giải: Phương trình sóng giải thích phản xạ âm, cộng hưởng và mode phòng.
+- Diễn giải: Phương trình sóng giải thích các hiện tượng phản xạ âm, cộng hưởng và mode không gian của phòng.
 
 #### Sóng điện từ
-- Bài toán: Trong môi trường đồng nhất không có nguồn, các thành phần trường điện và từ thỏa phương trình sóng.
-- Mô hình: Ở mức đơn giản,
+- Bài toán: Trong môi trường đồng nhất không nguồn, các thành phần của điện trường và từ trường thỏa mãn phương trình sóng.
+- Mô hình: Ở dạng đơn giản theo từng thành phần,
 $$ E_{tt}=c^2\Delta E. $$
-- Giả thiết và giới hạn: Môi trường tuyến tính, đẳng hướng, không nguồn.
-- Diễn giải: Hình thức toán học của âm và điện từ có họ hàng sâu sắc.
+- Giả thiết và giới hạn: Môi trường tuyến tính, đẳng hướng, không nguồn điện tích và dòng điện tự do.
+- Diễn giải: Âm học và điện từ học chia sẻ cùng một cấu trúc toán học cơ bản.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Một trong những sức mạnh lớn của PDE là cùng một cấu trúc toán học xuất hiện ở nhiều ngành. Khi nhận ra phương trình sóng trong âm học và điện từ, sinh viên thấy rằng phương pháp giải quan trọng hơn bối cảnh cụ thể.
+Một ưu thế nổi bật của lý thuyết PDE là khả năng dùng chung một cấu trúc toán học cho nhiều ngành vật lý khác nhau. Khi nhận diện được phương trình sóng trong cả âm học lẫn điện từ học, người học thấy rõ giá trị phổ quát của các phương pháp giải đã học.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -189,12 +189,12 @@ plt.show()
 
 Một sóng phẳng một chiều có dạng
 $$ u(x,t)=A\cos(kx-\omega t), $$
-với quan hệ
+với hệ thức tán sắc tuyến tính
 $$ \omega=ck. $$
-Từ đó suy ra vận tốc pha bằng $$ c $$ và bước sóng là $$ \lambda=2\pi/k $$. Cùng công thức này xuất hiện cả trong âm học lẫn điện từ học tuyến tính.
+Từ đó suy ra vận tốc pha bằng $$ c $$ và bước sóng $$ \lambda=2\pi/k $$. Cùng biểu thức này xuất hiện trong cả âm học lẫn điện từ học tuyến tính.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Nhận diện phương trình sóng trong các bối cảnh vật lý khác nhau.
+**Bậc đại học.** Nhận diện phương trình sóng và ý nghĩa các tham số trong các bối cảnh vật lý khác nhau.
 
-**Bậc sau đại học.** Liên hệ với hệ Maxwell đầy đủ, tensor ứng suất âm học và truyền sóng trong môi trường không đồng nhất.
+**Bậc sau đại học.** Nghiên cứu hệ phương trình Maxwell đầy đủ, tenxơ ứng suất âm học và bài toán truyền sóng trong môi trường không đồng nhất.

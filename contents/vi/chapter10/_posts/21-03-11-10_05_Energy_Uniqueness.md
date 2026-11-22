@@ -13,175 +13,165 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giúp sinh viên hiểu vì sao năng lượng là đại lượng tự nhiên nhất để kiểm soát phương trình sóng. Sau bài học, sinh viên cần biết viết năng lượng của dây rung, hiểu cơ chế bảo toàn năng lượng dưới các điều kiện biên phù hợp, dùng năng lượng để suy ra tính duy nhất, và so sánh bản chất bảo toàn của sóng với bản chất tắt dần của phương trình nhiệt.
+Bài học này giúp sinh viên hiểu vì sao năng lượng là đại lượng tự nhiên nhất để kiểm soát nghiệm của phương trình sóng. Sau bài học, sinh viên cần biết viết biểu thức năng lượng của dây rung, hiểu cơ chế bảo toàn năng lượng dưới các điều kiện biên thích hợp, vận dụng phương pháp năng lượng để chứng minh tính duy nhất của nghiệm và so sánh tính bảo toàn của phương trình sóng với tính tiêu tán của phương trình nhiệt.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm phương trình sóng, tích phân từng phần và trực giác về động năng, thế năng. Đây là bài có giá trị kết nối mạnh giữa cơ học và PDE: một đại lượng vật lý quen thuộc trở thành công cụ toán học để chứng minh định lý.
+Sinh viên cần nắm phương trình sóng, kỹ thuật tích phân từng phần và trực giác cơ học về động năng và thế năng. Bài học này cho thấy một đại lượng vật lý quen thuộc có thể trở thành công cụ chứng minh định lý chặt chẽ trong PDE.
 
 ## Dẫn nhập
 
-Cho đến đây, ta đã thấy sóng truyền và dao động. Nhưng làm sao biết nghiệm không nổ vô lý, không mất ổn định, và với cùng dữ liệu đầu thì không thể có hai nghiệm khác nhau? Câu trả lời nằm ở năng lượng. Năng lượng không chỉ là khái niệm vật lý; nó là đại lượng toán học kiểm soát toàn bộ bài toán.
+Ở các bài trước, ta đã khảo sát cách sóng truyền đi và dao động. Tuy nhiên, làm thế nào để chắc chắn rằng nghiệm không tăng vọt bất thường, không mất ổn định và ứng với cùng một bộ dữ liệu ban đầu chỉ tồn tại duy nhất một nghiệm? Câu trả lời nằm ở phương pháp năng lượng.
 
-Điều rất đẹp là phương trình sóng không làm mất năng lượng như phương trình nhiệt. Thay vào đó, nó chuyển đổi qua lại giữa động năng và thế năng đàn hồi. Chính cấu trúc này là lý do ta có bảo toàn năng lượng và từ đó có tính duy nhất rất sạch.
+Khác với phương trình nhiệt vốn làm tiêu tán năng lượng theo thời gian, phương trình sóng thuần nhất chuyển hóa qua lại giữa động năng và thế năng đàn hồi mà không làm thất thoát tổng năng lượng. Chính định luật bảo toàn này mang lại phép chứng minh tính duy nhất ngắn gọn và chặt chẽ.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Một dây rung vừa chuyển động lên xuống vừa bị kéo căng. Vì vậy năng lượng của nó có hai phần: động năng do vận tốc, và thế năng do biến dạng. Khi dây đi qua vị trí cân bằng, động năng lớn còn thế năng nhỏ. Khi dây đạt biên lớn nhất, vận tốc nhỏ đi nhưng biến dạng lớn hơn. Tổng hai phần này được giữ nguyên nếu không có ma sát.
+Một sợi dây đang dao động vừa có chuyển động ngang (tạo ra động năng nhờ vận tốc) vừa bị kéo căng biến dạng (tạo ra thế năng đàn hồi nhờ độ dốc). Khi dây đi qua vị trí cân bằng, động năng lớn còn thế năng nhỏ; khi dây đạt biên độ cực đại, vận tốc giảm về 0 trong khi thế năng đạt cực đại. Nếu không có ma sát hay ngoại lực, tổng hai phần năng lượng này luôn không đổi.
 
 ### Cách nhìn hình ảnh
 
-Nếu ta vẽ dây ở các thời điểm khác nhau, hình dạng có thể thay đổi liên tục, nhưng "mức độ hoạt động tổng thể" của hệ không đổi trong bài toán thuần nhất. Điều đó nghĩa là năng lượng không biến mất cũng không tự sinh ra, chỉ chuyển giữa dao động và độ cong không gian của dây.
+Khi quan sát hình dạng dây tại các thời điểm liên tiếp, đồ thị dây thay đổi liên tục nhưng tổng mức năng lượng của hệ vẫn giữ nguyên trong bài toán thuần nhất. Năng lượng không tự sinh ra hay mất đi, mà chỉ luân chuyển giữa chuyển động và biến dạng đàn hồi của dây.
 
 ### Cách nhìn hình thức
 
-Với dây rung một chiều, năng lượng thường được viết là
+Đối với dây rung một chiều, năng lượng cơ học được định nghĩa là
 
 $$
 E(t)=\frac{1}{2}\int_0^L\bigl(\rho u_t^2+T u_x^2\bigr)\,dx.
 $$
 
-Nếu dùng dạng chuẩn $$ u_{tt}=c^2u_{xx} $$, ta có thể viết tương đương
+Với dạng chuẩn hóa $$ u_{tt}=c^2u_{xx} $$, ta viết tương đương
 
 $$
-E(t)=\frac{1}{2}\int_0^L\bigl(u_t^2+c^2u_x^2\bigr)\,dx
+E(t)=\frac{1}{2}\int_0^L\bigl(u_t^2+c^2u_x^2\bigr)\,dx.
 $$
 
-sau khi chuẩn hóa hệ số. Nhân PDE với $$ u_t $$ và tích phân theo $$ x $$, ta thu được
+Nhân hai vế PDE với $$ u_t $$ rồi tích phân theo $$ x $$ trên $$ [0,L] $$ và áp dụng tích phân từng phần, ta thu được
 
 $$ \frac{dE}{dt}=c^2[u_xu_t]_0^L. $$
 
-Nếu hạng biên bằng 0, ta có
+Khi số hạng biên bằng 0, năng lượng được bảo toàn:
 
 $$ \frac{dE}{dt}=0. $$
 
 ## Những ngộ nhận thường gặp
 
-- "Năng lượng chỉ là phần trực giác vật lý, không cần cho chứng minh." Sai. Đây là công cụ chứng minh mạnh nhất của bài.
-- "Phương trình sóng luôn làm năng lượng giảm như phương trình nhiệt." Không đúng; với hệ thuần nhất không tắt dần, năng lượng được bảo toàn.
-- "Tính duy nhất phải đến từ công thức nghiệm." Không nhất thiết; lập luận năng lượng cho ta tính duy nhất mà không cần viết nghiệm rõ ràng.
-- "Nếu năng lượng bằng 0 thì chỉ suy ra vận tốc bằng 0." Sai; còn suy ra độ dốc không gian bằng 0, và từ dữ liệu đầu-biên ta suy ra nghiệm bằng 0.
+- "Năng lượng chỉ mang ý nghĩa minh họa vật lý, không dùng để chứng minh toán học." Sai; phương pháp năng lượng là công cụ chứng minh chủ lực của bài học.
+- "Phương trình sóng luôn làm năng lượng suy giảm như phương trình nhiệt." Không đúng; với hệ thuần nhất không có tắt dần, tổng cơ năng được bảo toàn.
+- "Muốn chứng minh tính duy nhất thì phải tìm được công thức nghiệm tường minh." Không cần thiết; lập luận năng lượng chứng minh tính duy nhất mà không cần viết công thức nghiệm.
+- "Nếu năng lượng bằng 0 thì chỉ suy ra vận tốc bằng 0." Sai; từ $$ E(t)=0 $$ ta suy ra cả $$ u_t\equiv 0 $$ lẫn $$ u_x\equiv 0 $$, kết hợp với điều kiện đầu và biên sẽ suy ra nghiệm bằng 0 đồng nhất.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Viết đúng năng lượng
+### Bước 1: Viết biểu thức năng lượng
 
-Sinh viên cần thấy rõ động năng và thế năng nằm ở đâu.
+Nhận diện rõ thành phần động năng (gắn với $$ u_t^2 $$) và thế năng (gắn với $$ u_x^2 $$).
 
-### Bước 2: Nhân PDE với
+### Bước 2: Nhân PDE với $$ u_t $$
 
-$$ u_t $$
+Đây là phép biến đổi cốt lõi tạo ra đạo hàm toàn phần của năng lượng.
 
-Đây là thao tác trung tâm.
+### Bước 3: Tích phân từng phần và phân tích số hạng biên
 
-### Bước 3: Tích phân từng phần và đọc hạng biên
+Kiểm tra tác động của điều kiện biên lên sự bảo toàn năng lượng.
 
-Điều kiện biên thực sự xuất hiện ở đây.
+### Bước 4: Chứng minh tính duy nhất bằng phương pháp năng lượng
 
-### Bước 4: Dùng năng lượng cho tính duy nhất
+Áp dụng cho hiệu của hai nghiệm cùng thỏa mãn một bài toán biên–đầu.
 
-Đây là phần cần được nhấn mạnh nhất.
+### Các điểm kiểm tra
 
-### Các checkpoint
-
-- Sinh viên có giải thích được vì sao năng lượng có hai phần hay không.
-- Sinh viên có tính đúng đạo hàm theo thời gian của năng lượng hay không.
-- Sinh viên có biết điều kiện biên nào làm hạng biên triệt tiêu hay không.
+- Sinh viên có giải thích được ý nghĩa vật lý của hai số hạng trong biểu thức năng lượng hay không.
+- Sinh viên có tính đúng đạo hàm theo thời gian $$ E'(t) $$ hay không.
+- Sinh viên có xác định được những loại điều kiện biên nào làm số hạng biên triệt tiêu hay không.
 
 ## Ví dụ được giải chi tiết
 
 ### Ví dụ 1: Bảo toàn năng lượng với biên cố định
 
-Nếu $$ u(0,t)=u(L,t)=0 $$, thì suy ra $$ u_t(0,t)=u_t(L,t)=0 $$ trên biên cố định theo thời gian. Vì vậy $$ [u_xu_t]_0^L=0 $$ và $$ E'(t)=0 $$. Ví dụ này là trường hợp chuẩn nên được học thật chắc.
+Nếu $$ u(0,t)=u(L,t)=0 $$ với mọi $$ t $$, thì đạo hàm theo thời gian tại biên cũng triệt tiêu: $$ u_t(0,t)=u_t(L,t)=0 $$. Do đó $$ [u_xu_t]_0^L=0 $$ và $$ E'(t)=0 $$. Đây là trường hợp mẫu chuẩn cần nắm vững.
 
-### Ví dụ 2: Tính duy nhất
+### Ví dụ 2: Chứng minh tính duy nhất của nghiệm
 
-Giả sử $$ u_1,\ u_2 $$ là hai nghiệm của cùng một bài toán. Đặt $$ w=u_1-u_2 $$. Khi đó $$ w_{tt}=c^2w_{xx} $$ với dữ liệu đầu và biên bằng 0. Năng lượng của $$ w $$ tại $$ t=0 $$ bằng 0, nên nhờ bảo toàn năng lượng ta có $$ E_w(t)=0 $$ với mọi $$ t $$. Do đó $$ w_t=0,\qquad w_x=0 $$, và cuối cùng $$ w\equiv 0 $$. Đây là ví dụ chứng minh đẹp nhất của bài.
+Giả sử $$ u_1,\ u_2 $$ là hai nghiệm của cùng một bài toán phương trình sóng với cùng điều kiện đầu và biên. Đặt $$ w=u_1-u_2 $$. Khi đó $$ w_{tt}=c^2w_{xx} $$ với dữ liệu ban đầu và dữ liệu biên đều bằng 0. Năng lượng của $$ w $$ tại $$ t=0 $$ bằng 0, và nhờ định luật bảo toàn năng lượng, $$ E_w(t)=0 $$ với mọi $$ t $$. Suy ra $$ w_t\equiv 0,\qquad w_x\equiv 0 $$, kết hợp điều kiện đầu cho $$ w\equiv 0 $$, tức $$ u_1\equiv u_2 $$.
 
 ### Ví dụ 3: So sánh với phương trình nhiệt
 
-Với phương trình nhiệt, năng lượng kiểu
+Trong phương trình nhiệt thuần nhất, đại lượng kiểu năng lượng $$ \int u^2\,dx $$ thường giảm dần theo thời gian. Ngược lại, trong phương trình sóng thuần nhất, năng lượng cơ học $$ E(t) $$ được bảo toàn hoàn toàn. Phép so sánh này làm nổi bật sự khác biệt căn bản giữa hai lớp PDE.
 
-$$ \int u^2 $$
+### Ví dụ 4: Bảo toàn năng lượng với biên tự do
 
-thường giảm theo thời gian. Với phương trình sóng, năng lượng cơ học được bảo toàn. Ví dụ so sánh này cực kỳ hữu ích để phân biệt bản chất của hai lớp PDE.
-
-### Ví dụ 4: Biên tự do
-
-Nếu điều kiện biên là $$ u_x(0,t)=u_x(L,t)=0 $$, thì hạng biên cũng triệt tiêu. Ví dụ này giúp sinh viên thấy không chỉ Dirichlet mà cả Neumann tự nhiên cũng có thể bảo toàn năng lượng.
+Với điều kiện biên Neumann $$ u_x(0,t)=u_x(L,t)=0 $$, số hạng biên $$ [u_xu_t]_0^L $$ cũng triệt tiêu. Như vậy cả biên cố định lẫn biên tự do đều bảo toàn năng lượng của hệ.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao năng lượng của phương trình sóng có thể được hiểu là tổng của động năng và thế năng?
-2. Tại sao hạng biên đóng vai trò quyết định trong công thức năng lượng?
-3. Vì sao bảo toàn năng lượng dẫn đến tính duy nhất rất tự nhiên?
+1. Vì sao năng lượng của phương trình sóng được hiểu là tổng của động năng và thế năng đàn hồi?
+2. Tại sao số hạng biên giữ vai trò quyết định trong công thức $$ E'(t) $$?
+3. Vì sao định luật bảo toàn năng lượng lại dẫn trực tiếp đến tính duy nhất của nghiệm?
 
 ## Bài toán ứng dụng
 
-1. Một dây đàn lý tưởng không có ma sát. Vì sao năng lượng không mất đi dù hình dạng dây thay đổi liên tục?
-2. Trong mô hình có tắt dần, nếu thêm hạng $$ \gamma u_t $$, vì sao ta kỳ vọng năng lượng giảm?
-3. Trong mô phỏng số sóng, vì sao việc theo dõi năng lượng là cách tốt để kiểm tra độ tin cậy của chương trình?
+1. Xét một sợi dây đàn lý tưởng không có ma sát. Vì sao tổng năng lượng không thay đổi dù hình dạng dây biến đổi liên tục?
+2. Khi bổ sung số hạng tắt dần $$ \gamma u_t $$ ($$ \gamma>0 $$) vào phương trình sóng, năng lượng của hệ biến thiên theo chiều hướng nào?
+3. Trong mô phỏng số bài toán sóng, vì sao việc theo dõi giá trị năng lượng theo thời gian là một phép kiểm chứng hữu ích cho độ tin cậy của sơ đồ số?
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng câu hỏi: "Khi dây rung, năng lượng đang nằm ở đâu?"
-- Cho sinh viên tự nhân PDE với
-
-$$ u_t $$
-
-và thử đoán trước dạng của năng lượng.
-- Hỏi cả lớp: "Điều kiện biên nào làm biên không bơm hay rút năng lượng khỏi hệ?"
-- Tổ chức hoạt động chứng minh tính duy nhất theo nhóm từ công thức năng lượng.
+- Khởi đầu bằng câu hỏi: "Khi một sợi dây đang rung, năng lượng của nó tồn tại dưới những dạng nào?"
+- Hướng dẫn sinh viên nhân phương trình sóng với $$ u_t $$ và tự suy ra biểu thức năng lượng.
+- Đặt câu hỏi: "Những điều kiện biên nào bảo đảm biên không truyền thêm hay rút bớt năng lượng khỏi hệ?"
+- Tổ chức hoạt động nhóm để sinh viên tự hoàn thiện phép chứng minh tính duy nhất từ đẳng thức năng lượng.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên bám vào phiên bản một chiều với biên cố định trước. Khi động năng, thế năng và hạng biên đã rõ, lập luận tổng quát sẽ nhẹ nhàng hơn rất nhiều.
+Nên tập trung vào trường hợp một chiều với biên cố định trước. Khi đã hiểu rõ từng bước tính $$ E'(t) $$ và vai trò của số hạng biên, việc mở rộng sang các điều kiện biên khác sẽ nhẹ nhàng hơn.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể mời sinh viên khá giỏi thảo luận không gian năng lượng cho nghiệm yếu, hoặc so sánh cơ chế bảo toàn năng lượng với các hệ Hamilton trong cơ học.
+Có thể yêu cầu sinh viên tìm hiểu khái niệm không gian năng lượng cho nghiệm yếu, hoặc liên hệ cấu trúc bảo toàn năng lượng của phương trình sóng với hệ Hamilton trong cơ học giải tích.
 
 ## Tóm tắt dễ nhớ
 
-Phương trình sóng thuần nhất bảo toàn năng lượng. Năng lượng gồm phần vận tốc và phần biến dạng không gian. Chính cấu trúc này cho ta công cụ mạnh để chứng minh tính duy nhất và hiểu vì sao sóng khác căn bản với nhiệt.
+Phương trình sóng thuần nhất với biên bảo toàn thỏa mãn định luật bảo toàn năng lượng, trong đó năng lượng là tổng động năng và thế năng đàn hồi. Đẳng thức năng lượng là công cụ trực tiếp và chặt chẽ để chứng minh tính duy nhất của nghiệm, đồng thời phân biệt rõ phương trình sóng với phương trình nhiệt.
 
 ## Video tham khảo
 
-- xem trước: [Energy Methods for the Wave Equation](https://www.youtube.com/watch?v=fOmON6ubkTM) — Mike, the Mathematician, tiếng Anh. Phương pháp năng lượng cho phương trình sóng.
-- [Lecture 5.4: Qualitative analysis of Wave equation - Uniqueness by Energy method](https://www.youtube.com/watch?v=Sq7DQpaVFbc) — NPTEL IIT Bombay, tiếng Anh. NPTEL dùng đẳng thức năng lượng để chứng minh tính duy nhất.
-- [Energy Method](https://www.youtube.com/watch?v=-8_nuZFVAMQ) — Dr Peyam, tiếng Anh. Dr Peyam về phương pháp năng lượng như một lập luận duy nhất.
+- Xem trước: [Energy Methods for the Wave Equation](https://www.youtube.com/watch?v=fOmON6ubkTM) — Mike, the Mathematician, tiếng Anh. Trình bày phương pháp năng lượng cho phương trình sóng.
+- [Lecture 5.4: Qualitative analysis of Wave equation - Uniqueness by Energy method](https://www.youtube.com/watch?v=Sq7DQpaVFbc) — NPTEL IIT Bombay, tiếng Anh. Vận dụng đẳng thức năng lượng để chứng minh tính duy nhất của nghiệm.
+- [Energy Method](https://www.youtube.com/watch?v=-8_nuZFVAMQ) — Dr Peyam, tiếng Anh. Giải thích gọn gàng lập luận chứng minh tính duy nhất bằng phương pháp năng lượng.
 
 ## Tài liệu tham khảo
 
-- Evans, *Partial Differential Equations* - phát triển chặt chẽ phương trình sóng, năng lượng, và tính duy nhất.
-- Haberman, *Applied Partial Differential Equations* - trực giác vật lý tốt cho sóng, cộng hưởng, và phản xạ.
+- Evans, *Partial Differential Equations* — trình bày chặt chẽ về phương trình sóng, phương pháp năng lượng và tính duy nhất.
+- Haberman, *Applied Partial Differential Equations* — cung cấp trực giác vật lý rõ ràng về sóng, cộng hưởng và phản xạ.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Kiểm chứng mô phỏng dao động
-- Bài toán: Trong mô phỏng cấu trúc, bảo toàn năng lượng là phép kiểm tra chất lượng quan trọng.
+- Bài toán: Trong mô phỏng kết cấu cơ học, kiểm tra bảo toàn năng lượng là tiêu chuẩn quan trọng để đánh giá chất lượng sơ đồ số.
 - Mô hình:
 $$
 E(t)=\frac{1}{2}\int_0^L \left(u_t^2+c^2u_x^2\right)\,dx.
 $$
-- Giả thiết và giới hạn: Hệ không có tắt dần và biên thích hợp.
-- Diễn giải: Năng lượng toàn phần đổi chỗ giữa động năng và thế năng đàn hồi nhưng tổng giữ nguyên.
+- Giả thiết và giới hạn: Hệ không có ma sát hay tắt dần và thỏa điều kiện biên bảo toàn.
+- Diễn giải: Năng lượng luân chuyển giữa động năng và thế năng đàn hồi trong khi tổng không đổi.
 
-#### Tính duy nhất của đáp án vật lý
-- Bài toán: Nếu hai mô hình có cùng dữ liệu đầu và biên, ta muốn biết chúng có thể cho hai nghiệm khác nhau hay không.
+#### Tính duy nhất của nghiệm vật lý
+- Bài toán: Xác định xem hai nghiệm cùng thỏa mãn một bài toán biên–đầu có bắt buộc trùng nhau hay không.
 - Mô hình: Áp dụng phương pháp năng lượng cho hiệu của hai nghiệm.
-- Giả thiết và giới hạn: Bài toán tuyến tính, dữ liệu đủ trơn.
-- Diễn giải: Bảo toàn năng lượng dẫn trực tiếp đến tính duy nhất.
+- Giả thiết và giới hạn: Bài toán tuyến tính, nghiệm đủ trơn để thực hiện phép tích phân từng phần.
+- Diễn giải: Bảo toàn năng lượng trực tiếp dẫn tới tính duy nhất.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Phương pháp năng lượng ít phụ thuộc vào việc có công thức nghiệm tường minh hay không. Nó cho một "định luật vật lý toàn cục" từ đó suy ra ổn định và duy nhất. Đây là ý tưởng sẽ quay lại nhiều lần trong PDE hiện đại.
+Phương pháp năng lượng không phụ thuộc vào việc tìm được công thức nghiệm tường minh. Nó khai thác một định luật toàn cục của hệ để chứng minh tính ổn định và tính duy nhất — một kỹ thuật xuất hiện xuyên suốt trong lý thuyết PDE hiện đại.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -215,10 +205,10 @@ Với dây cố định hai đầu, lấy đạo hàm theo thời gian của
 $$
 E(t)=\frac{1}{2}\int_0^L \left(u_t^2+c^2u_x^2\right)\,dx
 $$
-và dùng tích phân từng phần, các hạng biên triệt tiêu nên $$ E'(t)=0 $$. Nếu hiệu của hai nghiệm có dữ liệu đầu bằng không, năng lượng của hiệu bằng không với mọi $$ t $$, do đó hiệu bằng không và nghiệm là duy nhất.
+và áp dụng tích phân từng phần, các số hạng biên triệt tiêu nên $$ E'(t)=0 $$. Nếu hiệu của hai nghiệm có dữ liệu ban đầu bằng 0, năng lượng của hiệu bằng 0 với mọi $$ t $$, suy ra hiệu bằng 0 và nghiệm là duy nhất.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Hiểu năng lượng là tổng của động năng và thế năng đàn hồi.
+**Bậc đại học.** Nắm biểu thức năng lượng như tổng động năng và thế năng đàn hồi, vận dụng để chứng minh tính duy nhất.
 
-**Bậc sau đại học.** Mở rộng sang ước lượng năng lượng, ổn định yếu và bài toán hyperbolic với hệ số biến thiên.
+**Bậc sau đại học.** Mở rộng sang các ước lượng năng lượng, tính ổn định của nghiệm yếu và phương trình hyperbolic có hệ số biến thiên.

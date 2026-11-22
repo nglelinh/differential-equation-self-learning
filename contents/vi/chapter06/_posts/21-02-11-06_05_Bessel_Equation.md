@@ -12,33 +12,33 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giới thiệu phương trình Bessel như một ví dụ tiêu biểu cho sức mạnh của phương pháp Frobenius và cho cách hình học của bài toán quyết định họ nghiệm xuất hiện. Sau bài học, sinh viên cần nhận dạng được phương trình Bessel, hiểu hàm Bessel loại một xuất hiện từ nghiệm hữu hạn tại gốc, và thấy được mối liên hệ giữa các không điểm của hàm Bessel với trị riêng trong các bài toán có đối xứng trụ.
+Bài học này giới thiệu phương trình Bessel như ví dụ tiêu biểu cho sức mạnh của phương pháp Frobenius và cho cách hình học bài toán quyết định họ nghiệm xuất hiện. Sau bài học, sinh viên cần nhận dạng được phương trình Bessel, hiểu vì sao hàm Bessel loại một được chọn từ điều kiện hữu hạn tại gốc và thấy được mối liên hệ giữa các không điểm của hàm Bessel với trị riêng trong các bài toán đối xứng trụ.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm phương pháp Frobenius, khái niệm điểm kỳ dị chính quy, và trực giác về tách biến trong tọa độ cực hoặc trụ. Đây là bài đầu tiên trong chương nơi một họ hàm đặc biệt được nhìn như nghiệm tự nhiên của một lớp bài toán hình học cụ thể.
+Sinh viên nên nắm vững phương pháp Frobenius, khái niệm điểm kỳ dị chính quy và trực giác về tách biến trong tọa độ cực hoặc tọa độ trụ. Đây là bài học đầu tiên trong chương khảo sát một họ hàm đặc biệt như nghiệm tự nhiên của một lớp bài toán hình học cụ thể.
 
 ## Dẫn nhập
 
 ![Phương trình Bessel và các hàm Bessel]({{ site.imgurl }}/chapter_img/chapter06/05_bessel_equation.svg)
 
-Khi ta giải các bài toán có đối xứng tròn như màng trống, truyền nhiệt trong ống, sóng trong ống dẫn hoặc thế trong miền trụ, phần bán kính của bài toán gần như luôn dẫn đến phương trình Bessel. Điều này cho thấy các hàm Bessel không phải là các "hàm lạ" do sách giáo khoa nghĩ ra, mà là phản ứng tự nhiên của giải tích trước hình học tròn.
+Khi giải các bài toán có đối xứng tròn hoặc trụ — chẳng hạn dao động màng trống, truyền nhiệt trong thanh trụ, sóng trong ống dẫn tròn hay thế năng trong miền trụ — phương trình theo phương bán kính gần như luôn dẫn về phương trình Bessel. Điều này cho thấy hàm Bessel không phải một hàm nhân tạo, mà là nghiệm tự nhiên của giải tích trong hình học tròn.
 
-Một điểm rất đáng dạy chậm ở đây là sự chuyển đổi tư duy: ở chương đầu, nghiệm quen thuộc là sin, cos, hàm mũ. Sang đây, ta bắt đầu hiểu rằng mỗi hình học có một bộ "sin cos riêng" của nó. Với hình học tròn, họ đó là các hàm Bessel.
+Nếu ở các chương đầu nghiệm quen thuộc là sin, cos và hàm mũ, thì ở đây ta thấy mỗi hình học đặc trưng sẽ sinh ra một họ hàm dao động riêng: với đoạn thẳng là sin và cos, còn với hình tròn và hình trụ là họ hàm Bessel.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Nếu một sợi dây dao động trên một đoạn thẳng, các mode riêng của nó là các hàm sin. Nhưng nếu một màng tròn dao động, các vòng tròn đồng tâm và sự lan truyền từ tâm ra biên khiến cấu trúc dao động khác hẳn. Hàm Bessel chính là "mode bán kính" của thế giới tròn đó.
+Với một sợi dây đàn dao động trên đoạn thẳng, các chế độ riêng (mode) có dạng hàm sin. Khi chuyển sang màng trống hình tròn, sự lan truyền sóng theo các vòng đồng tâm từ tâm ra biên làm thay đổi cấu trúc dao động, và hàm Bessel chính là các chế độ dao động theo hướng kính trong hình học đó.
 
 ### Cách nhìn hình ảnh
 
-Đồ thị của $$ J_0(x) $$ dao động giống sin-cos nhưng biên độ không giữ nguyên và các khoảng cách giữa các không điểm không hoàn toàn đều. Nếu vẽ các mode màng tròn, các nút dao động xuất hiện thành những vòng tròn đồng tâm; bán kính các vòng này được quyết định bởi các nghiệm của hàm Bessel.
+Đồ thị của $$ J_0(x) $$ dao động tương tự hàm cos nhưng biên độ tắt dần theo $$ x $$ và khoảng cách giữa các không điểm không hoàn toàn đều nhau. Trên màng trống tròn, các đường nút dao động tạo thành những vòng tròn đồng tâm có bán kính xác định bởi các không điểm của hàm Bessel.
 
 ### Cách nhìn hình thức
 
-Phương trình Bessel bậc $$ \nu $$ có dạng $$ x^2y''+xy'+(x^2-\nu^2)y=0 $$. Đây là phương trình có điểm kỳ dị chính quy tại $$ x=0 $$. Dùng Frobenius, ta tìm được nghiệm loại một:
+Phương trình Bessel bậc $$ \nu $$ có dạng $$ x^2y''+xy'+(x^2-\nu^2)y=0 $$, với điểm $$ x=0 $$ là điểm kỳ dị chính quy. Áp dụng phương pháp Frobenius, ta thu được hàm Bessel loại một:
 
 $$
 J_\nu(x)=
@@ -47,150 +47,132 @@ J_\nu(x)=
 \left(\frac{x}{2}\right)^{2m+\nu}.
 $$
 
-Khi $$ \nu $$ không nguyên, hai nghiệm độc lập thường là
-
-$$ J_\nu(x)
-\qquad \text{và} \qquad
-J_{-\nu}(x). $$
-
-Khi $$ \nu $$ là số nguyên, nghiệm thứ hai độc lập thường được ký hiệu là hàm Bessel loại hai.
+Khi $$ \nu $$ không phải số nguyên, hai nghiệm độc lập tuyến tính là $$ J_\nu(x) $$ và $$ J_{-\nu}(x) $$. Khi $$ \nu $$ là số nguyên, $$ J_{-\nu}(x)=(-1)^\nu J_\nu(x) $$ phụ thuộc tuyến tính với $$ J_\nu(x) $$, nên nghiệm độc lập thứ hai được định nghĩa là hàm Bessel loại hai $$ Y_\nu(x) $$.
 
 ## Những ngộ nhận thường gặp
 
-- "Bessel chỉ là công thức cần nhớ." Sai. Điều quan trọng hơn là hiểu nó xuất hiện từ đối xứng trụ.
-- "Nó giống sin-cos nên có thể thay thế bằng sin-cos." Không đúng; hình học khác dẫn đến họ hàm khác.
-- "Chỉ cần học chuỗi định nghĩa là đủ." Chưa đủ; cần hiểu nghiệm hữu hạn tại gốc và các không điểm đóng vai trò trị riêng.
-- "Các nghiệm của hàm Bessel chỉ là chi tiết kỹ thuật." Sai. Chúng chính là thông tin quyết định mode vật lý cho nhiều bài toán biên.
+- "Hàm Bessel chỉ là một công thức chuỗi cần học thuộc." Sai. Ý nghĩa cốt lõi nằm ở nguồn gốc đối xứng trụ và các tính chất vật lý của nó.
+- "Vì đồ thị giống sin–cos nên có thể thay bằng sin–cos." Không đúng; hình học tròn và hình học đoạn thẳng dẫn đến hai họ hàm riêng khác nhau.
+- "Chỉ cần biết khai triển chuỗi định nghĩa là đủ." Chưa đủ; cần nắm vai trò của điều kiện hữu hạn tại gốc và ý nghĩa trị riêng của các không điểm.
+- "Không điểm của hàm Bessel chỉ là chi tiết phụ về mặt tính toán." Sai. Các không điểm này xác định trực tiếp tần số riêng và các đường nút vật lý của bài toán biên.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Nhận ra dạng Bessel
+### Bước 1: Nhận dạng phương trình Bessel
 
-Tập nhìn thấy phương trình có dạng chuẩn hoặc có thể đưa về dạng chuẩn.
+Nhận biết dạng chuẩn của phương trình Bessel hoặc các phương trình có thể đổi biến về dạng chuẩn.
 
-### Bước 2: Liên hệ với Frobenius
+### Bước 2: Liên hệ với phương pháp Frobenius
 
-Nhắc lại vì sao điểm $$ x=0 $$ là kỳ dị chính quy và vì sao dạng nghiệm chuỗi có số mũ là tự nhiên.
+Xác nhận $$ x=0 $$ là điểm kỳ dị chính quy và rút ra phương trình chỉ số $$ r^2-\nu^2=0 $$.
 
-### Bước 3: Chọn nghiệm vật lý phù hợp
+### Bước 3: Chọn nghiệm phù hợp điều kiện vật lý
 
-Trong nhiều bài toán, ta loại nghiệm phát nổ tại gốc và giữ lại nghiệm hữu hạn là
+Trong các miền chứa gốc tọa độ, điều kiện hữu hạn tại gốc loại bỏ nghiệm kỳ dị và giữ lại hàm Bessel loại một $$ J_\nu $$.
 
-$$ J_\nu. $$
+### Bước 4: Khai thác các không điểm
 
-### Bước 4: Đọc vai trò của các không điểm
+Liên hệ các không điểm của $$ J_\nu $$ với điều kiện biên và phổ trị riêng của bài toán.
 
-Không điểm của hàm Bessel thường gắn với điều kiện biên và trị riêng.
+### Các điểm kiểm tra
 
-### Các checkpoint
-
-- Sinh viên có nhận ra phương trình Bessel từ bài toán tách biến hay không.
-- Sinh viên có hiểu vì sao điều kiện hữu hạn tại gốc chọn ra
-
-$$ J_\nu $$
-
-hay không.
-- Sinh viên có giải thích được vai trò vật lý của các không điểm hay không.
+- Sinh viên có nhận diện được phương trình Bessel xuất hiện sau phép tách biến hay không.
+- Sinh viên có giải thích được vì sao điều kiện hữu hạn tại gốc chọn ra $$ J_\nu $$ hay không.
+- Sinh viên có nêu được ý nghĩa vật lý của các không điểm hàm Bessel hay không.
 
 ## Ví dụ được giải chi tiết
 
 ### Ví dụ 1: Phương trình Bessel bậc 0
 
-Xét $$ x^2y''+xy'+x^2y=0 $$. Đây là phương trình Bessel bậc $$ \nu=0 $$. Phương trình chỉ số cho $$ r^2=0 $$, nên có nghiệm Frobenius hữu hạn tại gốc với $$ r=0 $$. Truy hồi dẫn đến
+Xét $$ x^2y''+xy'+x^2y=0 $$, tức phương trình Bessel bậc $$ \nu=0 $$. Phương trình chỉ số là $$ r^2=0 $$, cho nghiệm Frobenius hữu hạn tại gốc ứng với $$ r=0 $$. Hệ thức truy hồi dẫn đến
 
 $$
 J_0(x)=1-\frac{x^2}{2^2}+\frac{x^4}{2^2 4^2}-\cdots.
 $$
 
-Ví dụ này nên được dùng để nhấn mạnh rằng chuỗi không phải trang trí; nó chính là cách sinh ra hàm Bessel.
+Ví dụ này cho thấy chuỗi Frobenius chính là cơ chế trực tiếp định nghĩa hàm Bessel.
 
 ### Ví dụ 2: Phương trình Bessel bậc 1
 
-Xét $$ x^2y''+xy'+(x^2-1)y=0 $$. Ở đây $$ \nu=1 $$. Nghiệm hữu hạn tại gốc là
+Xét $$ x^2y''+xy'+(x^2-1)y=0 $$ với $$ \nu=1 $$. Nghiệm hữu hạn tại gốc là
 
 $$
 J_1(x)=\frac{x}{2}-\frac{x^3}{2^4}+\frac{x^5}{2^7\cdot 3}-\cdots.
 $$
 
-Điểm sư phạm quan trọng là sinh viên thấy bậc của hàm quyết định hành vi đầu tiên gần gốc: với $$ \nu=1 $$, hàm bắt đầu như một bội của
-
-$$ x. $$
+Bậc $$ \nu $$ quyết định hành vi dẫn đầu gần gốc tọa độ: với $$ \nu=1 $$, hàm tiệm cận tuyến tính theo $$ x $$ khi $$ x\to 0 $$.
 
 ### Ví dụ 3: Bài toán biên trên đĩa tròn
 
-Giả sử phần bán kính của một mode dao động thỏa $$ r^2R''+rR'+(\lambda^2r^2-m^2)R=0 $$. Đây là phương trình Bessel bậc $$ m $$. Nghiệm hữu hạn tại $$ r=0 $$ là $$ R(r)=J_m(\lambda r) $$. Nếu biên cố định tại $$ r=a $$, ta có điều kiện $$ J_m(\lambda a)=0 $$. Vì vậy các giá trị cho phép của $$ \lambda $$ được xác định bởi các không điểm của hàm Bessel. Đây là ví dụ rất đẹp để kết nối ODE với trị riêng và mode dao động.
+Giả sử phần hướng kính của một chế độ dao động thỏa phương trình $$ r^2R''+rR'+(\lambda^2r^2-m^2)R=0 $$. Nghiệm hữu hạn tại $$ r=0 $$ là $$ R(r)=J_m(\lambda r) $$. Với điều kiện biên cố định tại bán kính $$ r=a $$, ta phải có $$ J_m(\lambda a)=0 $$. Do đó các giá trị riêng cho phép của $$ \lambda $$ được xác định trực tiếp từ các không điểm của $$ J_m $$, kết nối chặt chẽ ODE với bài toán trị riêng.
 
-### Ví dụ 4: Trường hợp nửa nguyên
+### Ví dụ 4: Trường hợp bậc nửa nguyên
 
-Với
-
-$$ \nu=\frac{1}{2}, $$
-
-hàm Bessel có thể viết bằng hàm lượng giác:
+Với $$ \nu=\frac{1}{2} $$, hàm Bessel có thể biểu diễn tường minh bằng hàm lượng giác:
 
 $$ J_{1/2}(x)=\sqrt{\frac{2}{\pi x}}\sin x. $$
 
-Ví dụ này cực kỳ giá trị trong giảng dạy vì nó cho thấy sin-cos và Bessel không hoàn toàn tách rời nhau; chúng thuộc cùng một bức tranh nhưng ứng với các hình học khác nhau.
+Ví dụ này cho thấy họ hàm lượng giác và họ hàm Bessel có mối liên hệ chặt chẽ trong cùng một khung lý thuyết, tương ứng với các cấu trúc hình học khác nhau.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao bài toán tròn lại dẫn đến hàm Bessel thay vì hàm sin và cos?
-2. Trong nhiều bài toán vật lý, vì sao ta chỉ giữ nghiệm hữu hạn tại gốc?
-3. Vai trò của các không điểm của hàm Bessel trong bài toán biên là gì?
+1. Vì sao các bài toán có đối xứng tròn lại dẫn đến hàm Bessel thay vì hàm sin và cos?
+2. Trong nhiều bài toán vật lý trên miền chứa gốc tọa độ, vì sao ta chỉ giữ nghiệm hữu hạn tại gốc?
+3. Các không điểm của hàm Bessel đóng vai trò gì khi áp đặt điều kiện biên?
 
 ## Bài toán ứng dụng
 
-1. Giải thích bằng lời vì sao dao động của màng trống tròn tạo ra các vòng nút đồng tâm và các vòng này liên quan đến hàm Bessel.
-2. Trong dẫn nhiệt của một thanh trụ dài, vì sao phần bán kính của nghiệm thường liên quan đến phương trình Bessel?
-3. Trong quang học sợi tròn hoặc ống dẫn sóng, vì sao điều kiện biên trên thành ống lại chọn ra các giá trị rời rạc của tham số trị riêng?
+1. Hãy giải thích bằng lời vì sao dao động của màng trống tròn tạo nên các vòng nút đồng tâm và mối liên hệ của chúng với hàm Bessel.
+2. Trong bài toán dẫn nhiệt trên thanh trụ dài, vì sao thành phần phụ thuộc bán kính thường thỏa phương trình Bessel?
+3. Trong ống dẫn sóng hình tròn hoặc sợi quang, vì sao điều kiện biên trên thành ống lại chọn ra một tập rời rạc các trị riêng?
 
 ## Chiến lược giảng dạy tương tác
 
-- Cho sinh viên xem cùng lúc hình dạng mode của dây đàn và màng tròn để hỏi: "Nếu hình học thay đổi, họ hàm riêng có nên giữ nguyên không?"
-- Dừng lại ở ý tưởng "sin-cos của hình tròn" vì đây là cách nói trực quan rất dễ nhớ.
-- Yêu cầu sinh viên dự đoán nghiệm nào sẽ bị loại nếu cần hữu hạn tại gốc trước khi viết công thức chính thức.
-- Tổ chức một thảo luận ngắn: "Không điểm của nghiệm có ý nghĩa hình học gì trong dao động?"
+- Đặt cạnh nhau hình ảnh chế độ dao động của dây đàn và màng trống tròn để thảo luận cách hình học chi phối họ hàm riêng.
+- Nhấn mạnh hình ảnh trực quan xem hàm Bessel như "hàm sin–cos của hình học tròn".
+- Yêu cầu sinh viên dự đoán nghiệm nào bị loại bỏ dưới điều kiện hữu hạn tại gốc trước khi viết nghiệm tổng quát.
+- Thảo luận ý nghĩa hình học của các không điểm nghiệm trong bài toán dao động.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên cho các em tập trung vào ba ý chính: dạng phương trình, nghiệm hữu hạn tại gốc, và vai trò của không điểm. Không cần ép nhớ ngay toàn bộ công thức chuỗi tổng quát nếu trực giác còn yếu.
+Nên tập trung vào ba trọng tâm: dạng phương trình chuẩn, lựa chọn nghiệm hữu hạn $$ J_\nu $$ tại gốc và vai trò của các không điểm đối với điều kiện biên, chưa cần ghi nhớ ngay toàn bộ công thức chuỗi tổng quát.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể giao cho sinh viên khá giỏi tìm cách suy ra phương trình Bessel từ tách biến phương trình Laplace hoặc phương trình sóng trong tọa độ cực. Việc nhìn thấy "nguồn gốc hình học" sẽ làm kiến thức bền hơn rất nhiều.
+Có thể yêu cầu sinh viên tự tách biến phương trình Laplace hoặc phương trình sóng trong tọa độ cực để dẫn ra phương trình Bessel, giúp nắm vững nguồn gốc hình học của phương trình.
 
 ## Tóm tắt dễ nhớ
 
-Phương trình Bessel là ngôn ngữ tự nhiên của hình học tròn và trụ. Nghiệm hữu hạn tại gốc là hàm Bessel loại một $$ J_\nu $$, và các không điểm của nó thường đóng vai trò trị riêng trong bài toán biên.
+Phương trình Bessel là phương trình đặc trưng của hình học tròn và trụ. Nghiệm hữu hạn tại gốc là hàm Bessel loại một $$ J_\nu $$, và các không điểm của nó xác định trực tiếp các trị riêng và tần số dao động trong bài toán biên.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Dao động màng tròn
-- Bài toán: Mode xuyên tâm của màng tròn cố định biên thỏa phương trình Bessel.
+- Bài toán: Thành phần hướng kính của màng tròn cố định biên thỏa phương trình Bessel.
 - Mô hình:
 $$ r^2 R''+rR'+(\lambda r^2-n^2)R=0. $$
-- Giả thiết và giới hạn: Hình học tròn lý tưởng, biên cố định đều.
-- Diễn giải: Các zero của $$ J_n $$ lượng tử hóa tần số dao động.
+- Giả thiết và giới hạn: Màng tròn đồng nhất, biên cố định đều.
+- Diễn giải: Các không điểm của $$ J_n $$ lượng tử hóa các tần số dao động riêng.
 
 #### Dẫn nhiệt trong thanh trụ
-- Bài toán: Nhiệt độ xuyên tâm trong trụ tròn sau tách biến dẫn tới
+- Bài toán: Phân bố nhiệt độ theo bán kính trong trụ tròn sau tách biến dẫn tới phương trình
 $$ r^2 R''+rR'+\lambda r^2 R=0. $$
-- Giả thiết và giới hạn: Vật liệu đồng nhất, đối xứng trụ.
-- Diễn giải: Điều kiện hữu hạn tại $$ r=0 $$ chọn $$ J_0 $$ thay vì $$ Y_0 $$.
+- Giả thiết và giới hạn: Vật liệu đồng nhất và đối xứng trụ.
+- Diễn giải: Điều kiện hữu hạn tại trục tâm $$ r=0 $$ chọn hàm $$ J_0 $$ và loại bỏ $$ Y_0 $$.
 
-#### Sóng điện từ trong ống dẫn sóng
-- Bài toán: Mode TE/TM trong ống tròn có profile xuyên tâm là hàm Bessel.
-- Mô hình: Cùng cấu trúc Bessel với điều kiện biên trên bán kính ống.
-- Giả thiết và giới hạn: Ống dẫn sóng lý tưởng, bỏ tổn hao vật liệu.
-- Diễn giải: Zero của $$ J_n $$ hoặc đạo hàm của nó quyết định mode cắt.
+#### Sóng điện từ trong ống dẫn sóng tròn
+- Bài toán: Các chế độ truyền sóng TE/TM trong ống dẫn sóng tròn có biên dạng hướng kính là hàm Bessel.
+- Mô hình: Cùng cấu trúc phương trình Bessel kết hợp điều kiện biên trên thành ống.
+- Giả thiết và giới hạn: Ống dẫn sóng lý tưởng, bỏ qua tổn hao vật liệu.
+- Diễn giải: Các không điểm của $$ J_n $$ hoặc $$ J_n' $$ quyết định tần số cắt của từng chế độ truyền sóng.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Vai trò của Bessel trong hình học tròn giống vai trò của sin-cos trong hình học đoạn thẳng. Điều kiện regularity tại gốc loại bỏ nghiệm $$ Y_\nu $$ trong nhiều bài toán vật lý. Bẫy phổ biến là xem $$ J_\nu $$ chỉ như "hàm tra bảng"; thực ra hình dạng, zero và quan hệ truy hồi của nó mang ý nghĩa mode rất trực tiếp.
+Hàm Bessel trong hình học tròn đóng vai trò tương tự hàm sin và cos trên đoạn thẳng. Điều kiện chính quy (hữu hạn) tại gốc loại bỏ hàm $$ Y_\nu $$ trong các miền đặc chứa tâm. Thay vì xem $$ J_\nu $$ chỉ như hàm tra bảng, cần nhìn nhận hình dạng đồ thị, dãy không điểm và các hệ thức truy hồi của nó như biểu hiện trực tiếp của các chế độ dao động vật lý.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -221,25 +203,25 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Với màng tròn bán kính $$ a $$ và mode xuyên tâm bậc $$ 0 $$, điều kiện biên là
+Với màng tròn bán kính $$ a $$ ở chế độ hướng kính bậc $$ 0 $$, điều kiện biên cố định là
 $$ J_0(\sqrt{\lambda}\,a)=0. $$
-Nếu $$ j_{0,1} $$ là zero đầu tiên của $$ J_0 $$, thì
+Nếu $$ j_{0,1} $$ là không điểm dương đầu tiên của $$ J_0 $$, ta thu được
 $$ \sqrt{\lambda}=\frac{j_{0,1}}{a}. $$
-Điều này cho thấy tần số cơ bản của mode được quyết định trực tiếp bởi zero đầu tiên của Bessel.
+Điều này cho thấy tần số cơ bản của màng trống phụ thuộc trực tiếp vào không điểm đầu tiên của hàm Bessel.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Nhận diện phương trình Bessel, hiểu sự khác nhau giữa $$ J_\nu $$ và $$ Y_\nu $$, đọc ý nghĩa của zero.
+**Bậc đại học.** Nhận diện phương trình Bessel, phân biệt $$ J_\nu $$ với $$ Y_\nu $$ và diễn giải ý nghĩa các không điểm.
 
-**Bậc sau đại học.** Khai thác tính trực giao, công thức tiệm cận và các bài toán Sturm-Liouville kiểu Bessel.
+**Bậc sau đại học.** Khai thác tính trực giao có trọng số, khai triển tiệm cận khi $$ x\to\infty $$ và bài toán Sturm–Liouville dạng Bessel.
 
 ## Video tham khảo
 
-- xem trước: [Advanced Engineering Mathematics, Lecture 2.7: Bessel's equation](https://www.youtube.com/watch?v=lcvWAgrdFn0) — Professor Macauley, tiếng Anh. Bài giảng của Professor Macauley về phương trình Bessel.
-- [Bessel Functions and the Frobenius Method](https://www.youtube.com/watch?v=uLORiAWe63A) — Faculty of Khan, tiếng Anh. Faculty of Khan suy hàm Bessel bằng Frobenius.
-- [Bessel's Equation - Ordinary Differential Equations | Lecture 29](https://www.youtube.com/watch?v=HoV5MiyYO3M) — Jason Bramburger, tiếng Anh. Bài của Jason Bramburger dành riêng cho phương trình Bessel.
+- Xem trước: [Advanced Engineering Mathematics, Lecture 2.7: Bessel's equation](https://www.youtube.com/watch?v=lcvWAgrdFn0) — Professor Macauley, tiếng Anh. Bài giảng chi tiết về phương trình Bessel.
+- [Bessel Functions and the Frobenius Method](https://www.youtube.com/watch?v=uLORiAWe63A) — Faculty of Khan, tiếng Anh. Xây dựng hàm Bessel bằng phương pháp Frobenius.
+- [Bessel's Equation - Ordinary Differential Equations | Lecture 29](https://www.youtube.com/watch?v=HoV5MiyYO3M) — Jason Bramburger, tiếng Anh. Bài giảng chuyên sâu về phương trình Bessel.
 
 ## Tài liệu tham khảo
 
-- Boyce & DiPrima, Chương 5: dẫn nhập phương trình Bessel bằng phương pháp Frobenius.
-- Haberman, *Applied PDEs*: giải thích rất tốt vai trò của Bessel trong bài toán đối xứng trụ và tách biến.
+- Boyce & DiPrima, Chương 5: dẫn nhập phương trình Bessel từ phương pháp Frobenius.
+- Haberman, *Applied PDEs*: phân tích rõ vai trò của hàm Bessel trong bài toán đối xứng trụ và tách biến.

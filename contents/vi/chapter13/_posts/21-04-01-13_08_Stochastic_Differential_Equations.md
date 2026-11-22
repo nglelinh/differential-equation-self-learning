@@ -14,158 +14,152 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài optional này giới thiệu SDE như mô hình vi phân cho hệ có nhiễu ngẫu nhiên. Sau bài học, sinh viên cần hiểu vai trò của Brownian motion, cấu trúc cơ bản của một phương trình Ito, ý tưởng của sơ đồ Euler-Maruyama, và sự khác biệt giữa nghiệm ODE xác định với quỹ đạo ngẫu nhiên của SDE.
+Bài học tùy chọn này giới thiệu phương trình vi phân ngẫu nhiên (SDE) như mô hình vi phân cho các hệ chịu tác động của nhiễu ngẫu nhiên. Sau bài học, sinh viên cần nắm vai trò của chuyển động Brown (Brownian motion), cấu trúc cơ bản của phương trình Itô, ý tưởng của lược đồ Euler–Maruyama, và sự khác biệt giữa nghiệm xác định của ODE với họ quỹ đạo ngẫu nhiên của SDE.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm ODE, Euler, biến ngẫu nhiên chuẩn, và trực giác về nhiễu trong mô hình thực nghiệm. Không cần đi sâu vào xác suất đo lường, nhưng cần chấp nhận rằng nghiệm giờ đây là một quá trình ngẫu nhiên chứ không phải một hàm duy nhất cố định.
+Sinh viên cần nắm ODE, phương pháp Euler, phân phối chuẩn và trực giác về nhiễu trong các hệ thực nghiệm. Bài học không yêu cầu sâu về lý thuyết xác suất độ đo, nhưng cần nắm bước chuyển tư duy rằng nghiệm nay là một quá trình ngẫu nhiên thay vì một hàm xác định duy nhất.
 
 ## Dẫn nhập
 
-Trong thế giới thực, nhiều hệ không vận hành hoàn toàn theo quy luật mượt mà. Giá cổ phiếu dao động ngẫu nhiên, hạt bụi bị va đập bởi phân tử chất lỏng, kích thước quần thể chịu ảnh hưởng bởi môi trường biến động. ODE thuần túy chỉ mô tả phần xu thế xác định; để mô tả nhiễu, ta cần SDE.
+Nhiều hệ trong tự nhiên và tài chính không tiến hóa theo quy luật hoàn toàn xác định: giá tài sản dao động bất định, hạt phấn chịu va chạm liên tục từ các phân tử chất lỏng, kích thước quần thể chịu tác động của biến động môi trường. ODE chỉ mô tả xu hướng xác định; để đưa nhiễu nội tại vào phương trình, ta cần đến SDE.
 
-SDE giữ lại phần “drift” có quy luật của ODE nhưng bổ sung thêm một thành phần ngẫu nhiên. Điều này làm thay đổi sâu sắc cách hiểu nghiệm, cách lấy đạo hàm, và cả cách xây dựng phương pháp số.
+SDE giữ lại thành phần xu hướng (drift) tương tự ODE và bổ sung thành phần nhiễu (diffusion). Sự xuất hiện của thành phần ngẫu nhiên làm thay đổi căn bản cách hiểu về nghiệm, quy tắc vi phân và cách xây dựng lược đồ số.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Hãy tưởng tượng một chiếc lá trôi trên dòng nước. Dòng chảy chính đẩy lá theo một hướng chung, nhưng các xoáy nước nhỏ và va chạm ngẫu nhiên khiến quỹ đạo rung lắc liên tục. Trong SDE, phần drift là dòng chảy chung, còn phần nhiễu là các xoáy nước ngẫu nhiên.
+Hãy hình dung một chiếc lá trôi trên mặt sông: dòng chảy chính đẩy chiếc lá theo một hướng tổng thể, còn các xoáy nước nhỏ và dao động ngẫu nhiên làm quỹ đạo rung lắc liên tục. Trong SDE, thành phần drift tương ứng với dòng chảy chính, còn thành phần diffusion tương ứng với các nhiễu loạn ngẫu nhiên đó.
 
 ### Cách hình ảnh
 
-Giáo viên nên vẽ nhiều quỹ đạo khác nhau cùng xuất phát từ một điểm dưới cùng một SDE. Sinh viên sẽ thấy ngay: khác với ODE, một điều kiện đầu không tạo ra một đường duy nhất mà tạo ra một họ quỹ đạo ngẫu nhiên. Điều này là điểm thay đổi tư duy quan trọng nhất.
+Khi vẽ nhiều quỹ đạo mô phỏng cùng xuất phát từ một điều kiện đầu dưới cùng một SDE, ta thấy thay vì một đường cong duy nhất như ở ODE, nghiệm là cả một họ quỹ đạo phân nhánh ngẫu nhiên theo thời gian.
 
 ### Cách hình thức
 
-Một SDE kiểu Ito có dạng $$ dX_t=b(X_t,t)\,dt+\sigma(X_t,t)\,dW_t $$, trong đó $$ W_t $$ là Brownian motion.
+Một SDE dạng Itô có biểu thức $$ dX_t=b(X_t,t)\,dt+\sigma(X_t,t)\,dW_t $$, trong đó $$ W_t $$ là chuyển động Brown chuẩn:
 
-- Thành phần $$ b(X_t,t)\,dt $$ gọi là drift, mô tả xu thế xác định.
-- Thành phần $$ \sigma(X_t,t)\,dW_t $$ gọi là diffusion, mô tả nhiễu.
+- Thành phần $$ b(X_t,t)\,dt $$ gọi là **drift**, mô tả xu hướng xác định.
+- Thành phần $$ \sigma(X_t,t)\,dW_t $$ gọi là **diffusion**, mô tả cường độ nhiễu ngẫu nhiên.
 
-Sơ đồ Euler-Maruyama là
+Lược đồ số cơ bản **Euler–Maruyama** có dạng:
 
 $$
 X_{n+1}=X_n+b(X_n,t_n)\Delta t+\sigma(X_n,t_n)\Delta W_n,
 $$
 
-với
-
-$$ \Delta W_n\sim \mathcal{N}(0,\Delta t). $$
+với các gia số độc lập $$ \Delta W_n\sim \mathcal{N}(0,\Delta t) $$.
 
 ## Ngộ nhận thường gặp
 
-### “SDE chỉ là ODE cộng thêm nhiễu ngẫu nhiên bên ngoài”
+### “SDE chỉ là ODE cộng thêm nhiễu bên ngoài ở bước cuối”
 
-Chưa đủ. Thành phần nhiễu thay đổi cả quy tắc giải tích và bản chất của nghiệm.
+Chưa đủ. Nhiễu ngẫu nhiên tác động liên tục vào động lực của hệ, làm thay đổi cả quy tắc giải tích (công thức Itô) lẫn cấu trúc nghiệm.
 
-### “Brownian motion là một hàm trơn dao động”
+### “Chuyển động Brown là một hàm trơn dao động nhanh”
 
-Sai. Quỹ đạo Brownian liên tục nhưng cực kỳ gồ ghề và hầu như không khả vi cổ điển.
+Sai. Quỹ đạo chuyển động Brown liên tục ở mọi nơi nhưng hầu chắc chắn không khả vi cổ điển tại bất kỳ điểm nào.
 
-### “Một lần mô phỏng SDE cho ta toàn bộ hành vi của hệ”
+### “Chỉ cần chạy một quỹ đạo mô phỏng là nắm được hành vi của SDE”
 
-Không. Ta thường phải xem nhiều quỹ đạo hoặc các đại lượng kỳ vọng.
+Không đúng. Thường cần mô phỏng nhiều quỹ đạo để ước lượng phân phối, kỳ vọng, phương sai hoặc xác suất sự kiện.
 
-### “Euler-Maruyama chỉ là Euler đổi ký hiệu”
+### “Euler–Maruyama chỉ là phương pháp Euler đổi tên biến”
 
-Không. Nó phải xử lý các gia số ngẫu nhiên có phương sai tỷ lệ với $$ \Delta t $$.
+Không đúng. Gia số nhiễu có độ lệch chuẩn cỡ $$ \sqrt{\Delta t} $$ (phương sai tỷ lệ với $$ \Delta t $$), khiến tính chất hội tụ mạnh và hội tụ yếu khác hẳn ODE xác định.
 
 ## Tiến trình học
 
-### Bước 1: Nhìn từ ODE sang SDE
+### Bước 1: Mở rộng từ ODE sang SDE
 
-Viết ODE quen thuộc rồi thêm thành phần nhiễu.
+Xuất phát từ phương trình vi phân xác định rồi bổ sung thành phần nhiễu.
 
-### Bước 2: Giới thiệu Brownian motion
+### Bước 2: Làm quen với chuyển động Brown
 
-Nhấn mạnh hai đặc điểm: gia số độc lập và phân phối chuẩn với phương sai tỷ lệ thời gian.
+Nhấn mạnh hai tính chất cốt lõi: gia số độc lập và phân phối chuẩn $$ \mathcal{N}(0,\Delta t) $$.
 
-### Bước 3: Xây Euler-Maruyama
+### Bước 3: Thiết lập lược đồ Euler–Maruyama
 
-Cho sinh viên thấy đây là bản mở rộng tự nhiên của Euler sang bối cảnh ngẫu nhiên.
+Nhìn nhận đây là phần mở rộng tự nhiên của phương pháp Euler tiến sang môi trường ngẫu nhiên.
 
-### Bước 4: Phân biệt quỹ đạo và kỳ vọng
+### Bước 4: Phân biệt quỹ đạo mẫu và đặc trưng thống kê
 
-Đây là điểm sinh viên thường bỏ sót khi mới học.
+Làm rõ sự khác nhau giữa từng quỹ đạo riêng lẻ với kỳ vọng hay phân phối của tập quỹ đạo.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có giải thích được drift và diffusion không?
-- Sinh viên có nói được vì sao cần lấy
-
-$$ \Delta W_n\sim \mathcal{N}(0,\Delta t) $$
-
-không?
-- Sinh viên có hiểu vì sao một SDE tạo ra nhiều quỹ đạo khác nhau không?
+- Sinh viên có phân biệt được vai trò của drift và diffusion hay không?
+- Sinh viên có giải thích được vì sao gia số $$ \Delta W_n\sim \mathcal{N}(0,\Delta t) $$ hay không?
+- Sinh viên có hiểu vì sao một SDE với cùng điều kiện đầu lại sinh ra nhiều quỹ đạo khác nhau hay không?
 
 ## Ví dụ có lời giải
 
-### Ví dụ 1: Brownian motion thuần túy
+### Ví dụ 1: Chuyển động Brown thuần túy
 
-Xét $$ dX_t=dW_t $$. Khi đó $$ X_t=X_0+W_t $$. Đây là mô hình đơn giản nhất của chuyển động ngẫu nhiên không có drift.
+Xét $$ dX_t=dW_t $$, có nghiệm $$ X_t=X_0+W_t $$. Đây là mô hình cơ bản nhất của quá trình ngẫu nhiên không có thành phần drift.
 
-### Ví dụ 2: Euler-Maruyama cho drift hằng
+### Ví dụ 2: Euler–Maruyama với drift và diffusion hằng
 
-Xét $$ dX_t=\mu\,dt+\sigma\,dW_t $$. Sơ đồ số là $$ X_{n+1}=X_n+\mu\Delta t+\sigma\Delta W_n $$. Giá trị mới gồm một phần xác định và một phần nhiễu chuẩn.
+Xét $$ dX_t=\mu\,dt+\sigma\,dW_t $$. Lược đồ số là $$ X_{n+1}=X_n+\mu\Delta t+\sigma\Delta W_n $$, trong đó mỗi bước cập nhật gồm phần tịnh tiến xác định cộng thêm một gia số ngẫu nhiên chuẩn.
 
-### Ví dụ 3: Geometric Brownian motion
+### Ví dụ 3: Chuyển động Brown hình học (Geometric Brownian motion)
 
-Xét $$ dX_t=\mu X_t\,dt+\sigma X_t\,dW_t $$. Euler-Maruyama cho $$ X_{n+1}=X_n+\mu X_n\Delta t+\sigma X_n\Delta W_n $$. Ví dụ này rất quan trọng trong tài chính và cũng cho thấy nhiễu có cường độ tỷ lệ với trạng thái hiện tại.
+Xét $$ dX_t=\mu X_t\,dt+\sigma X_t\,dW_t $$. Lược đồ Euler–Maruyama cho $$ X_{n+1}=X_n+\mu X_n\Delta t+\sigma X_n\Delta W_n $$. Đây là mô hình tiêu biểu trong tài chính định lượng, trong đó biên độ nhiễu tỷ lệ với trạng thái hiện tại.
 
-### Ví dụ 4: So sánh ODE và SDE
+### Ví dụ 4: Đối chiếu ODE và SDE
 
-Nếu bỏ thành phần nhiễu, ta được $$ X'=\mu X $$. Lúc đó với một điều kiện đầu, quỹ đạo là duy nhất. Khi thêm nhiễu, nhiều quỹ đạo khác nhau cùng xuất phát từ một điểm nhưng tách nhau ra theo thời gian. Đây là khác biệt nền tảng.
+Khi đặt $$ \sigma=0 $$, phương trình rút về ODE $$ X'=\mu X $$ với một quỹ đạo xác định duy nhất từ mỗi điều kiện đầu. Khi $$ \sigma\ne 0 $$, các quỹ đạo cùng xuất phát từ $$ X_0 $$ sẽ phân tách ngẫu nhiên theo thời gian.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao nghiệm của SDE không nên được hiểu như một đường cong trơn duy nhất?
-2. Drift và diffusion đóng hai vai trò khác nhau như thế nào trong mô hình?
-3. Tại sao gia số Brownian lại có cỡ $$ \sqrt{\Delta t} $$ chứ không phải $$ \Delta t $$?
+1. Vì sao nghiệm của SDE không thể xem là một đường cong trơn duy nhất?
+2. Thành phần drift và thành phần diffusion đảm nhận hai vai trò khác nhau như thế nào?
+3. Vì sao độ lớn điển hình của gia số chuyển động Brown có cỡ $$ \sqrt{\Delta t} $$ thay vì $$ \Delta t $$?
 
 ## Bài toán ứng dụng
 
-1. Trong tài chính, vì sao giá cổ phiếu thường được mô hình hóa bằng SDE thay vì ODE?
-2. Trong sinh học tế bào, nhiễu nội tại của hệ phản ứng hóa sinh có thể được phản ánh qua thành phần diffusion thế nào?
-3. Trong vật lý thống kê, chuyển động Brown của hạt bụi là ví dụ trực tiếp ra sao của SDE?
+1. Trong tài chính định lượng, vì sao diễn biến giá cổ phiếu thường được mô hình hóa bằng SDE thay vì ODE?
+2. Trong sinh học tế bào, nhiễu nội tại của các phản ứng hóa sinh ít phân tử được thể hiện qua thành phần diffusion như thế nào?
+3. Trong vật lý thống kê, chuyển động Brown của hạt lơ lửng trong chất lỏng liên hệ trực tiếp với SDE ra sao?
 
 ## Chiến lược dạy học tương tác
 
 ### Câu hỏi nên hỏi trên lớp
 
-- Nếu cùng một điều kiện đầu mà ta thấy nhiều quỹ đạo thực nghiệm khác nhau, ODE còn đủ không?
-- Em hiểu thế nào là “nhiễu tích lũy theo thời gian”?
-- Trong mô phỏng SDE, ta quan tâm quỹ đạo đơn lẻ hay trung bình của nhiều quỹ đạo?
+- Nếu cùng một điều kiện đầu nhưng các lần đo thực nghiệm cho nhiều quỹ đạo khác nhau, mô hình ODE thuần túy còn đủ không?
+- Hiểu thế nào về việc nhiễu tích lũy theo căn bậc hai của thời gian?
+- Khi mô phỏng SDE, khi nào ta quan tâm từng quỹ đạo cụ thể và khi nào quan tâm phân phối thống kê?
 
 ### Hoạt động gợi ý
 
-- Cho sinh viên mô phỏng vài quỹ đạo Euler-Maruyama bằng bảng tính hoặc mã ngắn.
-- So sánh trên hình giữa nghiệm ODE và nhiều quỹ đạo SDE cùng điều kiện đầu.
-- Thảo luận nhóm về những hiện tượng đời thực đòi hỏi mô hình ngẫu nhiên.
+- Chạy mô phỏng vài quỹ đạo Euler–Maruyama và so sánh với đường nghiệm ODE tương ứng (khi $$ \sigma=0 $$).
+- Tính trung bình mẫu của nhiều quỹ đạo để đối chiếu với kỳ vọng lý thuyết.
+- Thảo luận nhóm các hệ thực tế cần bổ sung yếu tố ngẫu nhiên.
 
 ### Cách tăng tham gia
 
-- Bắt đầu từ ví dụ cổ phiếu hay chuyển động hạt bụi.
-- Cho sinh viên tự tạo các số ngẫu nhiên chuẩn để cập nhật vài bước đầu.
-- Mời sinh viên mô tả bằng lời sự khác nhau giữa “không chắc chắn về dữ liệu” và “nhiễu nội tại của mô hình”.
+- Mở đầu bằng biểu đồ giá tài sản hoặc chuyển động hạt bụi trong chất lỏng.
+- Cho sinh viên tự sinh một vài bước số ngẫu nhiên chuẩn để cảm nhận sự phân nhánh của quỹ đạo.
+- Yêu cầu phân biệt bằng lời giữa "sai số đo đạc" và "nhiễu động lực nội tại của hệ".
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Giữ ở mức trực giác và Euler-Maruyama.
-- Tránh sa sâu vào Ito formula trong bài đầu.
-- Dùng rất nhiều hình các quỹ đạo ngẫu nhiên.
+- Tập trung vào trực giác drift–diffusion và công thức Euler–Maruyama.
+- Chưa đi sâu vào công thức Itô ở lần tiếp cận đầu tiên.
+- Sử dụng nhiều đồ thị so sánh nhiều quỹ đạo mẫu.
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Tìm hiểu strong convergence và weak convergence.
-- So sánh diễn giải Ito và Stratonovich.
-- Phân tích nghiệm giải tích của geometric Brownian motion.
+- Tìm hiểu phân biệt giữa hội tụ mạnh (strong convergence) và hội tụ yếu (weak convergence).
+- So sánh hai cách diễn giải tích phân ngẫu nhiên Itô và Stratonovich.
+- Dẫn xuất nghiệm giải tích của chuyển động Brown hình học bằng công thức Itô.
 
 ## Ghi nhớ nhanh
 
-SDE mở rộng ODE để mô tả hệ có nhiễu ngẫu nhiên nội tại. Nghiệm không còn là một đường duy nhất mà là một họ quỹ đạo ngẫu nhiên, và Euler-Maruyama là bước số cơ bản để mô phỏng chúng.
+SDE mở rộng ODE cho các hệ chịu nhiễu ngẫu nhiên nội tại: nghiệm không còn là một đường cong xác định mà là một quá trình ngẫu nhiên, và lược đồ Euler–Maruyama là phương pháp số cơ bản để mô phỏng các quỹ đạo đó.
 
 ---
 
@@ -173,19 +167,19 @@ SDE mở rộng ODE để mô tả hệ có nhiễu ngẫu nhiên nội tại. N
 
 ### 1. Giá tài sản và tài chính định lượng
 
-Geometric Brownian motion $$ dX_t=\mu X_t\,dt+\sigma X_t\,dW_t $$ là mô hình kinh điển cho giá tài sản trong tài chính định lượng. Drift biểu diễn xu hướng tăng trưởng trung bình, còn diffusion biểu diễn nhiễu thị trường. Mô hình đơn giản này có nhiều giới hạn thực tế như không mô tả nhảy giá hay biến động ngẫu nhiên theo thời gian, nhưng nó là cửa ngõ tự nhiên để hiểu SDE.
+Chuyển động Brown hình học $$ dX_t=\mu X_t\,dt+\sigma X_t\,dW_t $$ là mô hình cơ sở cho giá tài sản, với drift mô tả tỷ suất sinh lời kỳ vọng và diffusion mô tả độ biến động thị trường. Dù chưa nắm bắt được các bước nhảy giá hay độ biến động thay đổi theo thời gian, mô hình này là điểm khởi đầu chuẩn cho lý thuyết SDE.
 
 ### 2. Chuyển động Brown và vật lý thống kê
 
-Một hạt bụi trong chất lỏng chịu vô số va chạm vi mô, khiến quỹ đạo có thành phần ngẫu nhiên mạnh. SDE mô tả đúng trực giác này bằng cách tách drift hệ thống ra khỏi nhiễu phân tử. Đây là một trong những động cơ lịch sử sâu sắc nhất của lý thuyết SDE.
+Hạt nhỏ lơ lửng trong chất lỏng chịu vô số va chạm phân tử ngẫu nhiên. SDE tách riêng lực cản/lực ngoài xác định (drift) khỏi tác động va chạm vi mô (diffusion) — một trong những động lực lịch sử quan trọng nhất của lý thuyết SDE.
 
 ### 3. Sinh học quần thể và hóa sinh tế bào
 
-Trong quần thể nhỏ hoặc phản ứng hóa sinh ít phân tử, nhiễu nội tại có thể quan trọng ngang với xu hướng trung bình. ODE chỉ mô tả động lực trung bình, còn SDE bổ sung dao động ngẫu nhiên quan sát được trong thí nghiệm. Mô hình này đặc biệt quan trọng khi cần mô tả khả năng thoát khỏi cân bằng hay dao động ngẫu nhiên quanh trạng thái ổn định.
+Với quần thể nhỏ hoặc phản ứng hóa sinh có số lượng phân tử ít, dao động ngẫu nhiên nội tại có thể ảnh hưởng mạnh tương đương xu hướng trung bình. SDE cho phép khảo sát các hiện tượng mà ODE bỏ sót, như sự thoát khỏi trạng thái cân bằng do nhiễu.
 
 ## Trực giác sâu hơn
 
-SDE thay đổi bản chất của câu hỏi từ “nghiệm là hàm nào?” sang “phân bố các quỹ đạo và các đại lượng thống kê của chúng là gì?”. Ngộ nhận phổ biến là lấy một quỹ đạo mô phỏng rồi coi đó là toàn bộ hệ. Trong nhiều ứng dụng, điều quan trọng hơn lại là kỳ vọng, phương sai, xác suất vượt ngưỡng, hay phân bố thời gian dừng.
+Chuyển từ ODE sang SDE làm thay đổi câu hỏi trọng tâm: từ "tìm một hàm duy nhất" sang "khảo sát phân phối của tập quỹ đạo và các đại lượng thống kê như kỳ vọng, phương sai hay xác suất vượt ngưỡng".
 
 ## Trực quan hóa bằng Python
 
@@ -219,7 +213,7 @@ plt.show()
 
 ## Trực quan hóa bằng JavaScript
 
-Có thể dùng `Plotly.js` để sinh nhiều quỹ đạo ngẫu nhiên cùng điều kiện đầu, rồi bật/tắt trung bình mẫu để sinh viên thấy sự khác nhau giữa quỹ đạo đơn lẻ và hành vi thống kê.
+Có thể dùng `Plotly.js` để sinh nhiều quỹ đạo mẫu từ cùng một điều kiện đầu và bật/tắt đường trung bình mẫu nhằm đối chiếu giữa từng quỹ đạo riêng lẻ với hành vi thống kê.
 
 ## Gợi ý tài nguyên ngoài
 
@@ -229,11 +223,11 @@ Tìm kiếm: `Euler Maruyama visualization`, `Brownian motion simulation`, hoặ
 
 ### Mức đại học (Undergraduate)
 
-Tập trung vào drift, diffusion, Brownian motion, và Euler-Maruyama như bản mở rộng tự nhiên của Euler sang môi trường ngẫu nhiên.
+Tập trung vào khái niệm drift, diffusion, chuyển động Brown và lược đồ Euler–Maruyama.
 
 ### Mức sau đại học (Graduate)
 
-Đi sâu vào strong vs weak convergence, Ito formula, Fokker-Planck equation, Stratonovich interpretation, và các solver bậc cao cho SDE.
+Đi sâu vào hội tụ mạnh và hội tụ yếu, công thức Itô, phương trình Fokker–Planck, diễn giải Stratonovich và các lược đồ số bậc cao (như Milstein).
 
 > Xem toàn bộ minh họa tương tác của chương tại: [Bộ Minh họa tương tác Chương 13]({{ site.baseurl }}/contents/vi/chapter13/13_09_Interactive_Gallery/)
 
@@ -242,21 +236,20 @@ Tập trung vào drift, diffusion, Brownian motion, và Euler-Maruyama như bả
 ### 1. Ứng dụng thực tế
 
 #### Thị trường tài chính
-- Bài toán: Giá tài sản chịu nhiễu ngẫu nhiên chứ không chỉ xu hướng xác định.
-- Mô hình:
-$$ dX_t=\mu X_t\,dt+\sigma X_t\,dW_t. $$
-- Giả thiết và giới hạn: Brownian motion là mô hình lý tưởng hóa; dữ liệu thực có thể có jump và volatility thay đổi.
-- Diễn giải: SDE bổ sung nhiễu ngẫu nhiên trực tiếp vào động lực học.
+- Bài toán: Mô hình hóa giá tài sản vừa có xu hướng vừa chịu biến động ngẫu nhiên.
+- Mô hình: $$ dX_t=\mu X_t\,dt+\sigma X_t\,dW_t $$.
+- Giả thiết và giới hạn: Chuyển động Brown là mô hình lý tưởng hóa; dữ liệu thực tế có thể xuất hiện bước nhảy và độ biến động thay đổi theo thời gian.
+- Diễn giải: SDE tích hợp trực tiếp nhiễu ngẫu nhiên vào phương trình động lực.
 
 #### Chuyển động Brown và khuếch tán
-- Bài toán: Hạt nhỏ trong chất lỏng chịu va chạm ngẫu nhiên liên tục.
-- Mô hình: Dùng SDE kiểu Langevin hoặc geometric Brownian motion.
-- Giả thiết và giới hạn: Nhiễu Gaussian trắng là xấp xỉ lý tưởng hóa.
-- Diễn giải: SDE nối ODE với xác suất và PDE Fokker-Planck.
+- Bài toán: Mô phỏng hạt nhỏ chịu va chạm ngẫu nhiên liên tục trong chất lỏng.
+- Mô hình: Các phương trình kiểu Langevin hoặc chuyển động Brown hình học.
+- Giả thiết và giới hạn: Giả thiết nhiễu trắng Gaussian là xấp xỉ lý tưởng hóa.
+- Diễn giải: SDE kết nối trực tiếp ODE với lý thuyết xác suất và phương trình Fokker–Planck.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-SDE thay đạo hàm cổ điển bằng vi phân có phần xác định và phần ngẫu nhiên. Vì quỹ đạo Brown không khả vi cổ điển, giải tích Ito thay thế giải tích vi phân quen thuộc. Một bẫy phổ biến là đối xử $$ dW_t $$ như một vi phân thường; điều đó bỏ qua các hiệu ứng đặc trưng như hạng Ito.
+Vì quỹ đạo chuyển động Brown không khả vi cổ điển, giải tích Itô thay thế các quy tắc vi phân thông thường. Một sai sót phổ biến là thao tác với $$ dW_t $$ như vi phân cổ điển, bỏ qua số hạng bậc hai đặc trưng (số hạng Itô) xuất hiện từ $$ (dW_t)^2 \sim dt $$.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -294,24 +287,20 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Cho geometric Brownian motion
-$$ dX_t=\mu X_t\,dt+\sigma X_t\,dW_t. $$
-Lược đồ Euler-Maruyama là
+Cho chuyển động Brown hình học $$ dX_t=\mu X_t\,dt+\sigma X_t\,dW_t $$. Lược đồ Euler–Maruyama được viết:
 $$
 X_{n+1}=X_n+\mu X_n \Delta t+\sigma X_n \Delta W_n,
 $$
-trong đó
-$$ \Delta W_n \sim \mathcal{N}(0,\Delta t). $$
-Đây là bản ngẫu nhiên của Euler tiến cho ODE.
+trong đó $$ \Delta W_n \sim \mathcal{N}(0,\Delta t) $$. Đây là phiên bản ngẫu nhiên trực tiếp của phương pháp Euler tiến.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Hiểu quỹ đạo mẫu, nhiễu Brown và Euler-Maruyama.
+**Bậc đại học.** Nắm khái niệm quỹ đạo mẫu, nhiễu Brown và lược đồ Euler–Maruyama.
 
-**Bậc sau đại học.** Kết nối với Ito formula, strong/weak convergence và Fokker-Planck equations.
+**Bậc sau đại học.** Kết nối với công thức Itô, hội tụ mạnh/yếu và phương trình Fokker–Planck.
 
 ## Video tham khảo
 
-- xem trước: [21. Stochastic Differential Equations](https://www.youtube.com/watch?v=qdbkvD4N-us) — MIT OpenCourseWare, tiếng Anh. MIT 18.S096 giới thiệu phương trình vi phân ngẫu nhiên.
-- [Lecture 24: Stochastic Calculus](https://www.youtube.com/watch?v=5cruqmIF6l0) — MIT OpenCourseWare, tiếng Anh. Giải tích ngẫu nhiên mà các phương trình ấy được viết trong đó.
-- [Latent Stochastic Differential Equations for Irregularly-Sampled Time Series - David Duvenaud](https://www.youtube.com/watch?v=93wr5vhI0F4) — Institute for Advanced Study, tiếng Anh. Một bài nghiên cứu về SDE ẩn, cách dùng hướng dữ liệu của cùng đối tượng.
+- xem trước: [21. Stochastic Differential Equations](https://www.youtube.com/watch?v=qdbkvD4N-us) — MIT OpenCourseWare, tiếng Anh. Bài giảng MIT 18.S096 giới thiệu phương trình vi phân ngẫu nhiên.
+- [Lecture 24: Stochastic Calculus](https://www.youtube.com/watch?v=5cruqmIF6l0) — MIT OpenCourseWare, tiếng Anh. Giới thiệu giải tích ngẫu nhiên làm nền tảng cho SDE.
+- [Latent Stochastic Differential Equations for Irregularly-Sampled Time Series - David Duvenaud](https://www.youtube.com/watch?v=93wr5vhI0F4) — Institute for Advanced Study, tiếng Anh. Trình bày ứng dụng SDE ẩn theo hướng dữ liệu cho chuỗi thời gian.

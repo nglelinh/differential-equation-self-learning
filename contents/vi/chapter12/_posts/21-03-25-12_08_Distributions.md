@@ -14,111 +14,111 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài này giới thiệu phân phối như một mở rộng của khái niệm hàm để xử lý nguồn điểm và các đối tượng kỳ dị. Sau bài học, sinh viên cần hiểu test functions, phân phối sinh bởi hàm, đạo hàm phân phối, delta Dirac, và mối liên hệ giữa phân phối với đạo hàm yếu cùng PDE có dữ liệu singular.
+Bài học tùy chọn này giới thiệu khái niệm phân phối (distribution) như sự mở rộng của khái niệm hàm nhằm xử lý nguồn điểm và các đối tượng kỳ dị. Sau bài học, sinh viên cần nắm vai trò của hàm thử, phân phối sinh bởi hàm khả tích địa phương, đạo hàm phân phối, phân phối delta Dirac, và mối liên hệ giữa phân phối với đạo hàm yếu cũng như PDE có dữ liệu kỳ dị.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm hàm thử $$ C_c^\infty(\Omega) $$, đạo hàm yếu, tích phân từng phần và trực giác về nguồn điểm trong vật lý. Đây là bài optional nhưng đặc biệt có giá trị vì nó cho thấy ngôn ngữ của PDE còn rộng hơn Sobolev space.
+Sinh viên cần nắm không gian hàm thử $$ C_c^\infty(\Omega) $$, đạo hàm yếu, tích phân từng phần và trực giác về nguồn điểm trong vật lý. Nội dung này mở rộng ngôn ngữ của PDE vượt ra ngoài khuôn khổ không gian Sobolev.
 
 ## Dẫn nhập
 
-Có những đối tượng vật lý rất tự nhiên nhưng không thể mô tả bằng hàm cổ điển: một điện tích điểm, một xung lực tức thời, một khối lượng tập trung tại một điểm. Nếu chỉ cho phép hàm thông thường, ta không thể viết chúng gọn gàng. Phân phối giải quyết điều đó bằng cách không mô tả đối tượng qua giá trị điểm, mà qua tác động của nó lên các hàm thử trơn.
+Nhiều đối tượng vật lý quen thuộc không thể biểu diễn bằng hàm thông thường: điện tích điểm, xung lực tức thời hay khối lượng tập trung tại một điểm. Lý thuyết phân phối giải quyết vấn đề này bằng cách không mô tả đối tượng thông qua giá trị tại từng điểm, mà thông qua tác động tuyến tính của nó lên các hàm thử trơn.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Hãy tưởng tượng dùng một bộ cảm biến trơn để “quét” một nguồn. Nếu nguồn trải đều, cảm biến trả về tích phân quen thuộc. Nếu nguồn tập trung tại một điểm, cảm biến vẫn cho kết quả, cụ thể là giá trị của hàm thử tại điểm đó. Phân phối là cách ghi lại toàn bộ phản ứng trước mọi phép quét trơn.
+Hãy hình dung việc dùng các đầu dò trơn để đo một phân bố nguồn. Với nguồn trải đều, kết quả đo là tích phân thông thường; với nguồn tập trung tại một điểm, đầu dò vẫn trả về một giá trị xác định, chính là giá trị của hàm thử tại điểm đặt nguồn. Phân phối mã hóa toàn bộ đáp ứng đó trên mọi hàm thử trơn.
 
 ### Cách hình ảnh
 
-Một hình minh họa nên đặt cạnh nhau:
+Có thể đặt cạnh nhau ba hình ảnh để đối chiếu:
 
-- một hàm thông thường với diện tích dưới đồ thị,
-- một mũi nhọn vô hạn tượng trưng cho delta Dirac,
-- và một hàm bước có đạo hàm tập trung tại điểm nhảy.
+- một hàm thông thường gắn với diện tích dưới đồ thị,
+- một mũi nhọn biểu trưng cho phân phối delta Dirac,
+- một hàm bậc thang có đạo hàm tập trung tại điểm nhảy.
 
-Hình này giúp sinh viên thấy phân phối không phải “hàm kỳ lạ”, mà là mô hình hóa những hiện tượng rất thật.
+Cách đối chiếu này cho thấy phân phối là công cụ mô hình hóa chặt chẽ cho các hiện tượng vật lý thực tế chứ không chỉ là khái niệm trừu tượng.
 
 ### Cách hình thức
 
-Một phân phối trên $$ \Omega $$ là ánh xạ tuyến tính liên tục $$ T:C_c^\infty(\Omega)\to \mathbb{R} $$ hoặc $$ \mathbb{C} $$.
+Một phân phối trên $$ \Omega $$ là một phiếm hàm tuyến tính liên tục $$ T:C_c^\infty(\Omega)\to \mathbb{R} $$ (hoặc $$ \mathbb{C} $$).
 
-Nếu $$ u\in L^1_{\mathrm{loc}}(\Omega) $$, ta định nghĩa phân phối sinh bởi $$ u $$ qua
+Nếu $$ u\in L^1_{\mathrm{loc}}(\Omega) $$, phân phối chính quy sinh bởi $$ u $$ được định nghĩa bởi:
 
 $$
 \langle T_u,\varphi\rangle=\int_\Omega u(x)\varphi(x)\,dx.
 $$
 
-Đạo hàm phân phối được định nghĩa bởi
+Đạo hàm phân phối của $$ T $$ được định nghĩa qua:
 
 $$
 \langle \partial_i T,\varphi\rangle=-\langle T,\partial_i\varphi\rangle.
 $$
 
-Đây chính là sự tiếp nối hoàn hảo của ý tưởng tích phân từng phần.
+Định nghĩa này kế thừa trực tiếp công thức tích phân từng phần.
 
 ## Ngộ nhận thường gặp
 
 ### “Phân phối chỉ là ký hiệu hình thức”
 
-Sai. Nó là một đối tượng toán học chặt chẽ với không gian kiểm tra rõ ràng.
+Sai. Đây là đối tượng toán học được định nghĩa chặt chẽ trên không gian hàm thử $$ C_c^\infty(\Omega) $$.
 
-### “Dirac delta là một hàm vô hạn tại một điểm”
+### “Delta Dirac là một hàm bằng vô cùng tại một điểm”
 
-Không nên hiểu như vậy trong khóa học này. Delta không phải hàm theo nghĩa thông thường mà là một phân phối.
+Không chính xác về mặt giải tích. Trong lý thuyết này, delta Dirac không phải là hàm theo nghĩa thông thường mà là một phân phối.
 
-### “Đạo hàm phân phối là khái niệm hoàn toàn khác đạo hàm yếu”
+### “Đạo hàm phân phối hoàn toàn tách biệt với đạo hàm yếu”
 
-Không. Đạo hàm yếu chính là đạo hàm phân phối trong trường hợp kết quả vẫn là một hàm khả tích cục bộ.
+Không đúng. Đạo hàm yếu chính là trường hợp riêng của đạo hàm phân phối khi kết quả thu được có thể biểu diễn bởi một hàm khả tích địa phương.
 
-### “Phân phối quá trừu tượng nên không có ứng dụng thật”
+### “Phân phối quá trừu tượng nên ít ứng dụng”
 
-Sai. Nguồn điểm, xung lực, hàm Green và biến đổi Fourier đều dùng ngôn ngữ này rất tự nhiên.
+Sai. Nguồn điểm, xung lực, hàm Green và biến đổi Fourier đều sử dụng ngôn ngữ phân phối một cách trực tiếp.
 
 ## Tiến trình học
 
-### Bước 1: Nhìn lại hàm thử
+### Bước 1: Ôn lại vai trò của hàm thử
 
-Sinh viên cần chắc rằng $$ \varphi\in C_c^\infty(\Omega) $$ là các “thiết bị đo” trơn.
+Xác định rõ $$ \varphi\in C_c^\infty(\Omega) $$ đóng vai trò là các "đầu dò" trơn có giá compact.
 
-### Bước 2: Hiểu mọi hàm khả tích cục bộ đều sinh ra phân phối
+### Bước 2: Xem mọi hàm khả tích địa phương như một phân phối
 
-Điều này giúp chuyển từ thế giới cũ sang thế giới mới một cách nhẹ nhàng.
+Thiết lập cầu nối từ khái niệm hàm quen thuộc sang khái niệm phân phối.
 
-### Bước 3: Giới thiệu Dirac delta
+### Bước 3: Khảo sát phân phối delta Dirac
 
-Đây là ví dụ gây ấn tượng mạnh nhất.
+Phân tích ví dụ tiêu biểu nhất của phân phối không sinh bởi hàm thông thường.
 
 ### Bước 4: Định nghĩa đạo hàm phân phối
 
-Kết nối trực tiếp với đạo hàm yếu và PDE có nguồn kỳ dị.
+Liên hệ trực tiếp với đạo hàm yếu và PDE có nguồn kỳ dị.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có giải thích được $$ \delta_{x_0} $$ làm gì với một hàm thử không?
-- Sinh viên có phân biệt được hàm Heaviside và đạo hàm phân phối của nó không?
-- Sinh viên có hiểu vì sao mọi hàm khả tích cục bộ là một phân phối không?
+- Sinh viên có nêu được tác động của $$ \delta_{x_0} $$ lên một hàm thử $$ \varphi $$ hay không?
+- Sinh viên có phân biệt được hàm Heaviside và đạo hàm phân phối của nó hay không?
+- Sinh viên có giải thích được vì sao mọi hàm khả tích địa phương đều xác định một phân phối hay không?
 
 ## Ví dụ có lời giải
 
-### Ví dụ 1: Hàm sinh phân phối
+### Ví dụ 1: Phân phối sinh bởi hàm
 
-Cho $$ u(x)=x $$ trên $$ (-1,1) $$. Phân phối tương ứng là
+Cho $$ u(x)=x $$ trên $$ (-1,1) $$. Phân phối tương ứng là:
 
 $$
 \langle T_u,\varphi\rangle=\int_{-1}^1 x\varphi(x)\,dx.
 $$
 
-Đây chỉ là cách viết lại một hàm thông thường bằng ngôn ngữ phân phối.
+Đây là cách biểu diễn một hàm thông thường dưới ngôn ngữ phân phối.
 
-### Ví dụ 2: Dirac delta
+### Ví dụ 2: Phân phối delta Dirac
 
-Tại điểm $$ x_0 $$, định nghĩa $$ \langle \delta_{x_0},\varphi\rangle=\varphi(x_0) $$. Nó “lấy mẫu” giá trị của hàm thử tại đúng một điểm. Đây là mô hình lý tưởng cho nguồn điểm.
+Tại điểm $$ x_0 $$, phân phối delta Dirac được định nghĩa bởi $$ \langle \delta_{x_0},\varphi\rangle=\varphi(x_0) $$. Phép toán này lấy giá trị của hàm thử tại đúng một điểm, là mô hình toán học chuẩn cho nguồn điểm.
 
-### Ví dụ 3: Đạo hàm của Heaviside
+### Ví dụ 3: Đạo hàm phân phối của hàm Heaviside
 
-Với hàm bước
+Với hàm bậc thang
 
 $$
 H(x)=
@@ -128,7 +128,7 @@ H(x)=
 \end{cases}
 $$
 
-ta có
+ta có với mọi $$ \varphi\in C_c^\infty(\mathbb{R}) $$:
 
 $$
 \langle H',\varphi\rangle=-\int_{\mathbb{R}} H(x)\varphi'(x)\,dx
@@ -136,85 +136,81 @@ $$
 =\varphi(0).
 $$
 
-Vậy $$ H'=\delta_0 $$ theo nghĩa phân phối.
+Do đó $$ H'=\delta_0 $$ theo nghĩa phân phối.
 
-### Ví dụ 4: Nguồn điểm cho Poisson
+### Ví dụ 4: Phương trình Poisson với nguồn điểm
 
-Trong không gian nhiều chiều, bài toán $$ -\Delta u=\delta_0 $$ được hiểu theo nghĩa phân phối. Nghiệm cơ bản của bài toán này chính là nền tảng của hàm Green. Ví dụ này cho thấy vì sao phân phối là ngôn ngữ tự nhiên của PDE.
+Trong không gian nhiều chiều, phương trình $$ -\Delta u=\delta_0 $$ được hiểu theo nghĩa phân phối. Nghiệm của phương trình này chính là nghiệm cơ bản — nền tảng để xây dựng hàm Green.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao delta Dirac không nên được xem là một hàm thông thường?
-2. Đạo hàm phân phối kế thừa tích phân từng phần theo cách nào?
-3. Khi nào đạo hàm phân phối của một hàm cũng là một hàm khả tích cục bộ?
+1. Vì sao không nên xem delta Dirac là một hàm số thông thường?
+2. Định nghĩa đạo hàm phân phối kế thừa công thức tích phân từng phần như thế nào?
+3. Khi nào đạo hàm phân phối của một hàm cũng chính là đạo hàm yếu dạng hàm khả tích địa phương?
 
 ## Bài toán ứng dụng
 
-1. Trong điện học, một điện tích điểm được mô hình hóa bằng delta Dirac như thế nào?
-2. Trong cơ học, một xung lực tức thời tác dụng lên hệ được biểu diễn bằng phân phối ra sao?
-3. Trong xử lý tín hiệu, vì sao xung Dirac là đầu vào lý tưởng để khảo sát đáp ứng của hệ?
+1. Trong tĩnh điện học, một điện tích điểm được mô hình hóa bằng phân phối delta Dirac như thế nào?
+2. Trong cơ học, một xung lực tác dụng tức thời lên hệ được biểu diễn bằng phân phối ra sao?
+3. Trong xử lý tín hiệu, vì sao xung Dirac là tín hiệu đầu vào chuẩn để khảo sát đáp ứng xung của hệ tuyến tính?
 
 ## Chiến lược dạy học tương tác
 
 ### Câu hỏi nên hỏi trên lớp
 
-- Nếu một nguồn tập trung tại duy nhất một điểm, em sẽ mô tả nó bằng hàm thế nào?
-- Tại sao ngôn ngữ phân phối lại phù hợp hơn ngôn ngữ hàm ở đây?
-- Có phải mọi phân phối đều đến từ một hàm không?
+- Nếu một nguồn tập trung tại duy nhất một điểm, ta có thể biểu diễn nó bằng hàm số thông thường không?
+- Vì sao ngôn ngữ phân phối lại khắc phục được bế tắc đó?
+- Có phải mọi phân phối đều sinh bởi một hàm khả tích địa phương không?
 
 ### Hoạt động gợi ý
 
-- Cho sinh viên tính trực tiếp đạo hàm phân phối của Heaviside.
-- So sánh phản ứng của một hàm thử trước nguồn đều và nguồn điểm.
-- Thảo luận nhóm về các hiện tượng vật lý đòi hỏi mô hình hóa bằng nguồn tập trung.
+- Cho sinh viên tính trực tiếp đạo hàm phân phối của hàm Heaviside.
+- So sánh tác động của nguồn phân bố đều và nguồn điểm lên cùng một hàm thử.
+- Thảo luận nhóm về các hiện tượng vật lý cần mô hình hóa bằng nguồn tập trung.
 
 ### Cách tăng tham gia
 
-- Bắt đầu bằng câu hỏi “điện tích điểm là hàm gì?”.
-- Cho sinh viên đóng vai “hàm thử” và “nguồn” để diễn giải bằng ngôn ngữ đời thường.
-- Khuyến khích sinh viên nêu ví dụ ngoài vật lý, như xung trong tín hiệu.
+- Mở đầu bằng câu hỏi: "Mật độ của một điện tích điểm có phải là một hàm thông thường không?"
+- Yêu cầu sinh viên diễn giải cặp ngoặc $$ \langle T,\varphi\rangle $$ bằng ngôn ngữ trực quan trước khi thao tác đại số.
+- Khuyến khích sinh viên lấy thêm ví dụ từ kỹ thuật điện hoặc xử lý tín hiệu.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Giữ trọng tâm ở một chiều trước.
-- Luôn diễn giải cặp ngoặc
-
-$$ \langle T,\varphi\rangle $$
-
-thành “tác động của phân phối lên hàm thử”.
-- Làm thật chậm ví dụ Heaviside.
+- Tập trung trước vào trường hợp một chiều.
+- Luôn diễn giải ký hiệu $$ \langle T,\varphi\rangle $$ là "tác động của phân phối $$ T $$ lên hàm thử $$ \varphi $$".
+- Trình bày chậm và rõ từng bước cho ví dụ đạo hàm của hàm Heaviside.
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Tìm hiểu vì sao mọi đạo hàm của delta đều là phân phối.
-- Liên hệ phân phối với biến đổi Fourier.
-- Khảo sát nghiệm cơ bản của Laplacian trong $$ \mathbb{R}^n $$.
+- Chứng minh mọi đạo hàm bậc tùy ý của phân phối delta vẫn là phân phối.
+- Tìm hiểu biến đổi Fourier trên không gian phân phối ôn hòa (tempered distributions).
+- Khảo sát nghiệm cơ bản của toán tử Laplace trong $$ \mathbb{R}^n $$.
 
 ## Ghi nhớ nhanh
 
-Phân phối mở rộng khái niệm hàm bằng cách mô tả đối tượng qua tác động của nó lên các hàm thử. Nhờ đó, nguồn điểm, xung lực và đạo hàm của các hàm không trơn đều được đưa vào PDE một cách chặt chẽ.
+Lý thuyết phân phối mở rộng khái niệm hàm bằng cách định nghĩa đối tượng qua tác động tuyến tính lên các hàm thử trơn. Nhờ đó, nguồn điểm, xung lực và đạo hàm của các hàm gián đoạn đều được đưa vào PDE một cách chặt chẽ.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Lực tập trung và tải điểm
-- Bài toán: Một dầm chịu tải tập trung tại một điểm không thể mô tả bằng hàm trơn thông thường.
-- Mô hình: Dùng delta Dirac $$ \delta_{x_0} $$ làm nguồn.
-- Giả thiết và giới hạn: Mô hình lý tưởng hóa lực rất tập trung.
-- Diễn giải: Distributions mở rộng khái niệm hàm để chứa các nguồn điểm.
+- Bài toán: Một dầm chịu tải tập trung tại một điểm không thể biểu diễn bằng hàm tải trơn thông thường.
+- Mô hình: Sử dụng phân phối delta Dirac $$ \delta_{x_0} $$ làm số hạng nguồn.
+- Giả thiết và giới hạn: Là mô hình lý tưởng hóa cho tải trọng tập trung trên vùng rất nhỏ.
+- Diễn giải: Phân phối mở rộng không gian hàm để xử lý các nguồn điểm.
 
 #### Tín hiệu xung
-- Bài toán: Một cú kích hoạt cực ngắn trong điện tử hay cơ học được mô tả tốt hơn bằng xung lý tưởng.
-- Mô hình: Dùng phân bố như delta hoặc đạo hàm của delta.
-- Giả thiết và giới hạn: Là giới hạn của các xung hẹp hữu hạn năng lượng hoặc hữu hạn diện tích.
-- Diễn giải: Nhiều công thức vật lý trở nên gọn và chính xác hơn trong ngôn ngữ phân bố.
+- Bài toán: Một xung kích hoạt cực ngắn trong điện tử hoặc cơ học được mô hình hóa thuận tiện bằng xung lý tưởng.
+- Mô hình: Sử dụng phân phối delta hoặc đạo hàm của phân phối delta.
+- Giả thiết và giới hạn: Được hiểu là giới hạn của các xung hẹp có diện tích đơn vị.
+- Diễn giải: Nhiều công thức kỹ thuật trở nên gọn gàng và chặt chẽ hơn trong khuôn khổ phân phối.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Phân bố không phải là "hàm lạ", mà là cách gán giá trị cho mọi test function. Tư tưởng này giúp đạo hàm của hàm bậc thang, nguồn điểm, hay nghiệm cơ bản đều có nghĩa. Một ngộ nhận phổ biến là delta là một hàm vô hạn tại một điểm; tốt hơn nên hiểu nó như một toán tử tuyến tính.
+Phân phối không phải là "hàm có giá trị vô cùng", mà là một phiếm hàm tuyến tính tác động lên mọi hàm thử trơn. Nhờ cách nhìn này, đạo hàm của hàm bậc thang, nguồn điểm và nghiệm cơ bản của PDE đều có định nghĩa rõ ràng.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -241,22 +237,20 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Nếu $$ H $$ là hàm Heaviside, thì theo nghĩa phân bố,
-$$ H'=\delta_0. $$
-Điều này được đọc là
+Nếu $$ H $$ là hàm Heaviside thì theo nghĩa phân phối, $$ H'=\delta_0 $$. Đẳng thức này được hiểu là:
 $$
 \langle H', \varphi \rangle = -\langle H, \varphi' \rangle = \varphi(0)
 $$
-với mọi test function $$ \varphi $$. Đây là lý do xung điểm xuất hiện tự nhiên khi lấy đạo hàm của tín hiệu bật-tắt.
+với mọi hàm thử $$ \varphi \in C_c^\infty(\mathbb{R}) $$. Điều này giải thích vì sao xung điểm xuất hiện tự nhiên khi lấy đạo hàm của tín hiệu bật–tắt.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Dùng delta và Heaviside như công cụ mô hình hóa.
+**Bậc đại học.** Sử dụng delta Dirac và hàm Heaviside trong mô hình hóa vật lý và kỹ thuật.
 
-**Bậc sau đại học.** Kết nối với Schwartz distributions, Fourier transform và nghiệm cơ bản của PDE.
+**Bậc sau đại học.** Kết nối với phân phối Schwartz, biến đổi Fourier và nghiệm cơ bản của PDE.
 
 ## Video tham khảo
 
-- xem trước: [Dirac Delta: Not a Function but a Distribution](https://www.youtube.com/watch?v=XZKf1G5ATkM) — Scintropy, tiếng Anh. Vì sao Dirac delta là một phân phối chứ không phải một hàm.
-- [MM51: Dirac delta distributions](https://www.youtube.com/watch?v=uTSKsWGWpIQ) — Learn Physics with Dr. Viv!, tiếng Anh. Phân phối Dirac delta như tác động tuyến tính mà bài này định nghĩa.
-- [The Dirac Delta 'Function': How to model an impulse or infinite spike](https://www.youtube.com/watch?v=SxNVcCVj-3c) — Dr. Trefor Bazett, tiếng Anh. Trefor Bazett về delta như mô hình một xung, trước định nghĩa phiếm hàm.
+- xem trước: [Dirac Delta: Not a Function but a Distribution](https://www.youtube.com/watch?v=XZKf1G5ATkM) — Scintropy, tiếng Anh. Giải thích vì sao delta Dirac là một phân phối chứ không phải hàm thông thường.
+- [MM51: Dirac delta distributions](https://www.youtube.com/watch?v=uTSKsWGWpIQ) — Learn Physics with Dr. Viv!, tiếng Anh. Trình bày phân phối delta Dirac dưới dạng tác động tuyến tính lên hàm thử.
+- [The Dirac Delta 'Function': How to model an impulse or infinite spike](https://www.youtube.com/watch?v=SxNVcCVj-3c) — Dr. Trefor Bazett, tiếng Anh. Giới thiệu trực giác về xung Dirac trước khi đi vào định nghĩa phiếm hàm.

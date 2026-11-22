@@ -13,177 +13,161 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giới thiệu phương trình Poisson như phiên bản có nguồn của phương trình Laplace. Sau bài học, sinh viên cần hiểu vì sao $$ \Delta u=f $$ là mô hình của cân bằng có nguồn nội tại, biết diễn giải vai trò của dấu và độ lớn của $$ f $$, thấy mối liên hệ với điện tích và nguồn nhiệt, và hiểu ý tưởng biểu diễn nghiệm qua nghiệm cơ bản hoặc hàm Green.
+Bài học này giới thiệu phương trình Poisson như dạng có nguồn của phương trình Laplace. Sau bài học, sinh viên cần hiểu vì sao $$ \Delta u=f $$ mô tả trạng thái cân bằng có nguồn bên trong, biết diễn giải ý nghĩa của dấu và độ lớn của $$ f $$, nắm mối liên hệ với mật độ điện tích và nguồn nhiệt, đồng thời hiểu ý tưởng biểu diễn nghiệm qua nghiệm cơ bản hoặc hàm Green.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm phương trình Laplace, khái niệm hàm điều hòa và trực giác về bài toán biên. Đây là bài giúp sinh viên chuyển từ "không nguồn" sang "có nguồn" trong elliptic PDE.
+Sinh viên cần nắm phương trình Laplace, khái niệm hàm điều hòa và trực giác về bài toán biên. Bài học này đánh dấu bước chuyển từ bài toán không nguồn sang bài toán có nguồn trong lớp PDE elliptic.
 
 ## Dẫn nhập
 
-Nếu phương trình Laplace mô tả trạng thái cân bằng thuần khiết không có nguồn bên trong, thì Poisson là bước mở rộng tự nhiên khi trong miền có một cơ chế phát sinh hay tiêu hao nội tại. Một phân bố điện tích trong tĩnh điện, một nguồn nhiệt ổn định trong tấm kim loại, hay nhiều mô hình thế khác đều dẫn đến phương trình Poisson.
+Nếu phương trình Laplace mô tả trạng thái cân bằng thuần túy không có nguồn bên trong, thì phương trình Poisson là bước mở rộng tự nhiên khi trong miền xuất hiện cơ chế phát sinh hoặc tiêu hao nội tại. Phân bố điện tích trong tĩnh điện, nguồn nhiệt ổn định trong tấm kim loại hay nhiều mô hình trường thế khác đều dẫn đến phương trình Poisson.
 
-Điều rất nên nhấn mạnh là Poisson không phá vỡ câu chuyện elliptic, mà làm nó phong phú hơn. Laplace là Poisson với vế phải bằng 0, còn $$ f $$ chính là tác nhân uốn cong trường thế bên trong miền.
+Cần lưu ý rằng phương trình Poisson vẫn nằm trọn trong khuôn khổ elliptic: phương trình Laplace là trường hợp riêng với vế phải bằng 0, còn số hạng nguồn $$ f $$ là tác nhân làm uốn cong trường thế bên trong miền.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Nếu Laplace là "cân bằng không nguồn", thì Poisson là "cân bằng có nguồn". Nơi $$ f>0 $$, nghiệm bị đẩy theo một phía nào đó; nơi $$ f<0 $$, nghiệm bị kéo theo phía ngược lại. Nguồn bên trong làm cho trường bên trong có độ cong nội tại thay vì chỉ phản ứng thụ động với biên.
+Nếu phương trình Laplace mô tả "cân bằng không nguồn", thì phương trình Poisson mô tả "cân bằng có nguồn". Tại nơi $$ f>0 $$, nghiệm bị uốn cong theo một chiều; tại nơi $$ f<0 $$, nghiệm bị uốn cong theo chiều ngược lại. Nguồn bên trong tạo ra độ cong nội tại cho trường nghiệm thay vì chỉ phụ thuộc thụ động vào biên.
 
 ### Cách nhìn hình ảnh
 
-Với $$ \Delta u=0 $$, trường bên trong bị giữ bởi biên và không tự sinh đỉnh mới. Với $$ \Delta u=f $$, nguồn $$ f $$ giống như một lực "đẩy cong" đồ thị của $$ u $$. Nơi nguồn mạnh hơn, nghiệm cong mạnh hơn. Điều này giúp sinh viên liên hệ trực tiếp giữa dữ liệu nguồn và hình dạng nghiệm.
+Với $$ \Delta u=0 $$, đồ thị nghiệm bên trong bị kéo căng bởi biên và không tự tạo đỉnh mới. Với $$ \Delta u=f $$, nguồn $$ f $$ đóng vai trò như lực làm cong đồ thị của $$ u $$; nơi nguồn mạnh hơn thì độ cong lớn hơn. Cách nhìn này giúp liên hệ trực tiếp giữa phân bố nguồn và hình dạng của nghiệm.
 
 ### Cách nhìn hình thức
 
-Phương trình Poisson có dạng $$ \Delta u=f $$. Nếu $$ f=0 $$, ta quay về phương trình Laplace. Trong tĩnh điện:
+Phương trình Poisson có dạng $$ \Delta u=f $$, và rút về phương trình Laplace khi $$ f=0 $$. Trong tĩnh điện:
 
 $$ \Delta V=-\frac{\rho}{\varepsilon_0}, $$
 
-với $$ \rho $$ là mật độ điện tích. Trong nhiệt ổn định:
+với $$ \rho $$ là mật độ điện tích. Trong truyền nhiệt ổn định:
 
 $$ -k\Delta T=Q, $$
 
-với $$ Q $$ là nguồn nhiệt thể tích. Trong toàn không gian, nếu có nghiệm cơ bản $$ \Phi $$, ta có thể hình dung nghiệm như một chập $$ u=\Phi*f $$ trong những điều kiện thích hợp.
+với $$ Q $$ là nguồn nhiệt thể tích. Trên toàn không gian, khi có nghiệm cơ bản $$ \Phi $$ và điều kiện suy giảm thích hợp, nghiệm có thể biểu diễn dưới dạng tích chập $$ u=\Phi*f $$.
 
 ## Những ngộ nhận thường gặp
 
-- "Poisson chỉ khác Laplace ở việc thêm một vế phải, nên không cần học riêng." Sai. Vế phải chính là phần mang ý nghĩa vật lý của nguồn.
-- "Dấu của
-
-$$ f $$
-
-không quan trọng." Sai; nó quyết định hướng cong của nghiệm.
-- "Nếu có nguồn thì dữ liệu biên không còn quan trọng." Không đúng; elliptic PDE vẫn bị biên chi phối rất mạnh.
-- "Chỉ cần biết
-
-$$ f $$
-
-là có thể bỏ qua miền và điều kiện biên." Sai; nguồn và biên cùng xác định nghiệm.
+- "Poisson chỉ khác Laplace ở vế phải khác 0 nên không cần học riêng." Sai; vế phải mang trực tiếp ý nghĩa vật lý của phân bố nguồn.
+- "Dấu của $$ f $$ không quan trọng." Sai; dấu của $$ f $$ quyết định chiều cong của nghiệm.
+- "Khi đã có nguồn thì dữ liệu biên không còn quan trọng." Không đúng; PDE elliptic vẫn chịu sự chi phối mạnh của điều kiện biên.
+- "Chỉ cần biết $$ f $$ là có thể bỏ qua hình học miền và điều kiện biên." Sai; cả nguồn bên trong lẫn điều kiện biên cùng xác định nghiệm.
 
 ## Tiến trình học tập đề xuất
 
 ### Bước 1: So sánh Laplace và Poisson
 
-Sinh viên nên thấy rõ mối liên hệ nền tảng giữa hai phương trình.
+Làm rõ mối liên hệ cơ bản giữa trường hợp không nguồn và có nguồn.
 
-### Bước 2: Hiểu ý nghĩa của nguồn
+### Bước 2: Hiểu ý nghĩa của số hạng nguồn
 
-Đây là phần bản chất nhất của bài.
+Diễn giải tác động của dấu và độ lớn của $$ f $$ lên hình dạng nghiệm.
 
-### Bước 3: Nối với ứng dụng vật lý
+### Bước 3: Liên hệ với ứng dụng vật lý
 
-Điện tích và nguồn nhiệt là hai ví dụ mạnh nhất.
+Phân tích hai mô hình điển hình là mật độ điện tích và nguồn nhiệt.
 
 ### Bước 4: Giới thiệu biểu diễn nghiệm
 
-Nghiệm cơ bản và hàm Green là ngôn ngữ tự nhiên tiếp theo.
+Đặt nền cho khái niệm nghiệm cơ bản và hàm Green ở bài tiếp theo.
 
 ### Các checkpoint
 
-- Sinh viên có giải thích được vì sao Poisson là Laplace có nguồn hay không.
-- Sinh viên có diễn giải được dấu của
-
-$$ f $$
-
-về mặt hình học hay không.
-- Sinh viên có hiểu vì sao nguồn không thay thế vai trò của điều kiện biên hay không.
+- Sinh viên có giải thích được vì sao phương trình Poisson là dạng có nguồn của phương trình Laplace hay không.
+- Sinh viên có diễn giải được ý nghĩa hình học của dấu của $$ f $$ hay không.
+- Sinh viên có hiểu vì sao sự có mặt của nguồn không thay thế vai trò của điều kiện biên hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Một chiều
+### Ví dụ 1: Trường hợp một chiều
 
-Trong một chiều, $$ u''=f(x) $$. Nếu $$ f(x)=1 $$, thì nghiệm là một hàm bậc hai:
+Trong một chiều, phương trình có dạng $$ u''=f(x) $$. Nếu $$ f(x)=1 $$, nghiệm là hàm bậc hai:
 
 $$ u(x)=\frac{x^2}{2}+ax+b. $$
 
-Ví dụ này rất hữu ích vì nó cho sinh viên thấy ngay "nguồn hằng" tạo ra độ cong đều.
+Ví dụ này minh họa trực tiếp rằng một nguồn hằng tạo ra độ cong không đổi.
 
 ### Ví dụ 2: Tĩnh điện
 
-Nếu mật độ điện tích $$ \rho $$ khác 0 trong một vùng, điện thế $$ V $$ thỏa
+Khi mật độ điện tích $$ \rho $$ khác 0 trong một vùng, điện thế $$ V $$ thỏa mãn:
 
 $$ \Delta V=-\frac{\rho}{\varepsilon_0}. $$
 
-Ví dụ này là cầu nối trực tiếp sang ứng dụng tĩnh điện ở cuối chương.
+Đây là cầu nối trực tiếp tới phần ứng dụng tĩnh điện ở cuối chương.
 
-### Ví dụ 3: Nhiệt ổn định với nguồn
+### Ví dụ 3: Truyền nhiệt ổn định có nguồn
 
-Nếu một tấm có nguồn nhiệt phân bố đều, nhiệt độ ổn định không còn điều hòa mà thỏa Poisson. Ví dụ này giúp sinh viên nối chương elliptic với chương nhiệt đã học trước đó.
+Nếu một tấm vật liệu có nguồn nhiệt phân bố đều, phân bố nhiệt độ ổn định không còn là hàm điều hòa mà thỏa mãn phương trình Poisson. Ví dụ này kết nối trực tiếp chương elliptic với chương phương trình nhiệt.
 
-### Ví dụ 4: Dạng tích chập trong toàn không gian
+### Ví dụ 4: Biểu diễn tích chập trên toàn không gian
 
-Trong toàn không gian, ta có thể viết $$ u=\Phi*f $$ khi điều kiện suy giảm phù hợp. Ví dụ này báo trước vai trò của nghiệm cơ bản và hàm Green ở bài kế tiếp.
+Trên toàn không gian, với điều kiện suy giảm thích hợp, nghiệm có thể viết dưới dạng $$ u=\Phi*f $$. Biểu diễn này mở đường cho khái niệm nghiệm cơ bản và hàm Green ở bài học kế tiếp.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao một nguồn nội tại làm bài toán chuyển từ Laplace sang Poisson?
+1. Vì sao sự xuất hiện của nguồn bên trong khiến bài toán chuyển từ phương trình Laplace sang phương trình Poisson?
 2. Dấu của $$ f $$ ảnh hưởng đến độ cong của nghiệm như thế nào?
-3. Vì sao bài toán Poisson vẫn là bài toán biên chứ không chỉ là bài toán nguồn?
+3. Vì sao phương trình Poisson vẫn là một bài toán biên chứ không chỉ phụ thuộc vào nguồn?
 
 ## Bài toán ứng dụng
 
 1. Trong tĩnh điện, vì sao một phân bố điện tích thể tích dẫn đến phương trình Poisson cho điện thế?
-2. Trong truyền nhiệt ổn định, vì sao một nguồn nhiệt bên trong làm nhiệt độ không còn thỏa Laplace?
-3. Nếu $$ f $$ chỉ khác 0 trong một vùng nhỏ, vì sao ảnh hưởng của nguồn vẫn lan ra toàn miền qua nghiệm của Poisson?
+2. Trong truyền nhiệt ổn định, vì sao nguồn nhiệt bên trong làm nhiệt độ không còn thỏa mãn phương trình Laplace?
+3. Nếu $$ f $$ chỉ khác 0 trong một vùng nhỏ, vì sao ảnh hưởng của nguồn vẫn lan ra toàn miền thông qua nghiệm của phương trình Poisson?
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng câu hỏi: "Nếu trong miền có nguồn, cân bằng còn 'phẳng' như trước nữa không?"
-- Cho sinh viên so sánh trực tiếp bài toán
-
-$$ u''=0 $$
-
-với $$ u''=1 $$ trong một chiều.
-- Hỏi cả lớp: "Nguồn nội tại đang thay đổi điều gì trong cấu trúc của nghiệm?"
-- Khuyến khích sinh viên kể bằng lời một ví dụ vật lý mà trong đó có nguồn bên trong miền.
+- Bắt đầu bằng câu hỏi: "Nếu trong miền có nguồn, trạng thái cân bằng có còn 'phẳng' như trường hợp không nguồn nữa không?"
+- Cho sinh viên so sánh trực tiếp hai bài toán một chiều $$ u''=0 $$ và $$ u''=1 $$.
+- Hỏi cả lớp: "Nguồn bên trong làm thay đổi điều gì trong cấu trúc của nghiệm?"
+- Khuyến khích sinh viên nêu bằng lời một ví dụ vật lý có nguồn bên trong miền.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên bám vào ví dụ một chiều trước để trực giác về độ cong trở nên rõ. Sau khi thấy $$ u''=f $$ trong một chiều, việc chấp nhận $$ \Delta u=f $$ trong nhiều chiều sẽ nhẹ hơn.
+Nên bắt đầu từ ví dụ một chiều để làm rõ trực giác về độ cong. Khi đã quen với $$ u''=f $$, việc mở rộng sang $$ \Delta u=f $$ trong nhiều chiều sẽ tự nhiên hơn.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể mời sinh viên khá giỏi thảo luận vai trò của nghiệm cơ bản trong toàn không gian, hoặc so sánh Poisson với các bài toán cực tiểu năng lượng có thêm nguồn.
+Có thể gợi ý sinh viên khá giỏi tìm hiểu vai trò của nghiệm cơ bản trên toàn không gian, hoặc so sánh phương trình Poisson với bài toán cực tiểu hóa năng lượng có thêm số hạng nguồn.
 
 ## Tóm tắt dễ nhớ
 
-Phương trình Poisson là phương trình của cân bằng có nguồn. Laplace mô tả trường không nguồn, còn Poisson cho biết nguồn nội tại uốn cong nghiệm như thế nào. Dù có nguồn, bài toán vẫn bị biên chi phối mạnh và vẫn thuộc thế giới elliptic.
+Phương trình Poisson mô tả trạng thái cân bằng có nguồn. Nếu phương trình Laplace ứng với trường không nguồn, thì phương trình Poisson cho biết nguồn bên trong làm cong nghiệm như thế nào. Dù có nguồn, bài toán vẫn thuộc lớp elliptic và chịu sự chi phối mạnh của điều kiện biên.
 
 ## Video tham khảo
 
-- xem trước: [mod08lec73 - The Poisson's Equation: Green's function solution](https://www.youtube.com/watch?v=hiHWwZb2AVU) — NPTEL-NOC IITM, tiếng Anh. NPTEL giải phương trình Poisson bằng một hàm Green.
-- [Laplace's Equation and Poisson's Equation](https://www.youtube.com/watch?v=nmvs0vrBT18) — Steve Brunton, tiếng Anh. Phương trình Poisson khác Laplace ở một số hạng nguồn như thế nào.
-- [Lecture 4: Electrostatic potential, Poisson's Equation, Laplace's Equation, Green's functions](https://www.youtube.com/watch?v=Z0-AkSfMJYU) — rkingery, tiếng Anh. Thế tĩnh điện, Poisson và Laplace trong một bài giảng.
+- xem trước: [mod08lec73 - The Poisson's Equation: Green's function solution](https://www.youtube.com/watch?v=hiHWwZb2AVU) — NPTEL-NOC IITM, tiếng Anh. Giải phương trình Poisson bằng hàm Green.
+- [Laplace's Equation and Poisson's Equation](https://www.youtube.com/watch?v=nmvs0vrBT18) — Steve Brunton, tiếng Anh. So sánh sự khác biệt giữa phương trình Poisson và phương trình Laplace thông qua số hạng nguồn.
+- [Lecture 4: Electrostatic potential, Poisson's Equation, Laplace's Equation, Green's functions](https://www.youtube.com/watch?v=Z0-AkSfMJYU) — rkingery, tiếng Anh. Trình bày tổng hợp về điện thế tĩnh điện, phương trình Poisson, Laplace và hàm Green.
 
 ## Tài liệu tham khảo
 
-- Evans, *Partial Differential Equations* - khuôn khổ chuẩn cho hàm điều hòa, phương trình Poisson, và hàm Green.
-- Haberman, *Applied Partial Differential Equations* - trình bày trực quan về tĩnh điện, dòng chảy thế, và phương pháp ảnh.
+- Evans, *Partial Differential Equations* — trình bày chuẩn về hàm điều hòa, phương trình Poisson và hàm Green.
+- Haberman, *Applied Partial Differential Equations* — trình bày trực quan về tĩnh điện, dòng chảy thế và phương pháp ảnh.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Tấm có nguồn nhiệt phân bố
-- Bài toán: Một tấm mỏng được đốt nóng bên trong nên trạng thái dừng không còn là Laplace mà là Poisson.
+- Bài toán: Tìm phân bố nhiệt độ dừng của một tấm mỏng có nguồn nhiệt bên trong.
 - Mô hình:
 $$ -\Delta u=f. $$
 - Giả thiết và giới hạn: Nguồn $$ f $$ đã biết, vật liệu đồng nhất, trạng thái dừng.
-- Diễn giải: Vế phải đo mức độ mất cân bằng nội tại do nguồn.
+- Diễn giải: Vế phải đo mức độ mất cân bằng cục bộ do nguồn tạo ra.
 
-#### Võng của màng chịu tải
-- Bài toán: Độ võng tĩnh của màng hay màng đàn hồi dưới tải phân bố.
-- Mô hình: Một dạng Poisson với $$ f $$ là tải trọng.
-- Giả thiết và giới hạn: Biến dạng nhỏ, tải đã biết.
-- Diễn giải: So với Laplace, Poisson cho biết miền không còn "không nguồn".
+#### Độ võng của màng đàn hồi chịu tải
+- Bài toán: Xác định độ võng tĩnh của một màng đàn hồi dưới tác dụng của tải phân bố.
+- Mô hình: Phương trình Poisson với $$ f $$ biểu diễn mật độ tải trọng.
+- Giả thiết và giới hạn: Biến dạng nhỏ, tải trọng đã biết.
+- Diễn giải: So với phương trình Laplace, phương trình Poisson phản ánh sự có mặt của tác nhân tải trọng bên trong miền.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Nếu Laplace mô tả cân bằng thuần, thì Poisson mô tả cân bằng có cưỡng bức bên trong. Nguồn dương hay âm tạo độ cong trung bình trong nghiệm. Một lỗi phổ biến là quên ý nghĩa vật lý của dấu trừ hoặc quy ước dấu của nguồn.
+Nếu phương trình Laplace mô tả cân bằng thuần túy, thì phương trình Poisson mô tả cân bằng có nguồn cưỡng bức bên trong; dấu của nguồn quyết định chiều độ cong trung bình của nghiệm. Một lỗi thường gặp là nhầm lẫn ý nghĩa vật lý của dấu trừ hoặc quy ước dấu của số hạng nguồn.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -210,14 +194,14 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Trên đoạn $$ 0<x<1 $$, giải
+Trên đoạn $$ 0<x<1 $$, xét bài toán
 $$ -u''=1, \qquad u(0)=u(1)=0. $$
-Tích phân hai lần cho
+Tích phân hai lần thu được
 $$ u(x)=\frac{1}{2}x(1-x). $$
-Hàm nghiệm cong lên trên vì có nguồn dương phân bố đều. Đây là mô hình đơn giản cho nhiệt độ hay độ võng dưới tải đều.
+Nghiệm cong lên trên do có nguồn dương phân bố đều. Đây là mô hình đơn giản cho phân bố nhiệt độ hoặc độ võng của dây/màng chịu tải đều.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Phân biệt rõ Laplace và Poisson qua vai trò của nguồn.
+**Bậc đại học.** Phân biệt rõ phương trình Laplace và phương trình Poisson qua vai trò của số hạng nguồn.
 
-**Bậc sau đại học.** Kết nối với weak formulation, regularity elliptic và nguyên lý cực đại có nguồn.
+**Bậc sau đại học.** Liên hệ với dạng yếu (weak formulation), tính chính quy elliptic và nguyên lý cực đại cho bài toán có nguồn.

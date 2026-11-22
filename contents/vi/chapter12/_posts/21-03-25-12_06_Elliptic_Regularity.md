@@ -14,30 +14,30 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài này giúp sinh viên hiểu hiện tượng regularity của phương trình elliptic: dữ liệu đủ tốt thường kéo theo nghiệm tốt hơn dự kiến ban đầu. Sau bài học, sinh viên cần nắm trực giác “elliptic làm mịn”, phân biệt regularity nội miền và tới biên, và hiểu vì sao regularity là bước nối từ nghiệm yếu tới nghiệm cổ điển hơn.
+Bài học này giải thích hiện tượng tính chính quy (regularity) của phương trình elliptic: khi dữ liệu và miền đủ tốt, nghiệm yếu thực tế trơn hơn mức dự kiến ban đầu. Sau bài học, sinh viên cần nắm trực giác về tác dụng làm trơn của toán tử elliptic, phân biệt tính chính quy bên trong miền và tính chính quy tới tận biên, và hiểu vì sao tính chính quy là cầu nối từ nghiệm yếu sang nghiệm cổ điển.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm nghiệm yếu, Sobolev space, bài toán Poisson và trực giác về đạo hàm yếu bậc cao. Cũng nên nhớ rằng tồn tại nghiệm yếu mới chỉ là bước đầu; điều ta thực sự muốn biết tiếp theo là nghiệm mượt đến đâu.
+Sinh viên cần nắm khái niệm nghiệm yếu, không gian Sobolev, bài toán Poisson và đạo hàm yếu bậc cao. Việc chứng minh tồn tại nghiệm yếu mới chỉ là bước đầu; câu hỏi tiếp theo là nghiệm đó đạt độ trơn tới mức nào.
 
 ## Dẫn nhập
 
-Nếu dữ liệu đầu vào không quá xấu, phương trình elliptic thường “sửa” nghiệm theo hướng mượt hơn. Đây là một hiện tượng đáng chú ý vì ta chỉ khởi đầu với nghiệm yếu trong $$ H^1 $$, nhưng sau đó có thể suy ra nghiệm nằm trong $$ H^2 $$, thậm chí trơn hơn nếu nguồn và biên trơn. Nói cách khác, toán tử elliptic không chỉ cho nghiệm tồn tại mà còn thưởng thêm độ trơn.
+Khi dữ liệu đầu vào đủ tốt, phương trình elliptic có xu hướng cải thiện độ trơn của nghiệm. Dù ban đầu ta chỉ chứng minh được nghiệm yếu thuộc $$ H^1 $$, các kết quả về tính chính quy cho phép suy ra nghiệm thực chất thuộc $$ H^2 $$, hoặc cao hơn nữa nếu nguồn và biên trơn hơn. Nói cách khác, toán tử elliptic không chỉ đảm bảo tồn tại nghiệm mà còn nâng bậc độ trơn của nghiệm so với dữ liệu nguồn.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Hãy tưởng tượng bạn đặt một nguồn nhiệt phân bố đều dưới một tấm kim loại ở trạng thái ổn định. Nhiệt độ không thể tạo ra những gai nhọn tùy ý nếu nguồn chỉ ở mức vừa phải; hệ cân bằng sẽ san phẳng chúng. Elliptic regularity là cách diễn đạt toán học của quá trình “san phẳng” đó.
+Xét một tấm kim loại ở trạng thái nhiệt ổn định chịu tác dụng của một nguồn nhiệt phân bố. Nếu nguồn nhiệt không quá kỳ dị, phân bố nhiệt độ cân bằng không thể xuất hiện các đỉnh nhọn bất thường vì quá trình truyền nhiệt có xu hướng san phẳng sự chênh lệch. Tính chính quy elliptic là cách diễn đạt toán học của hiệu ứng san phẳng này.
 
 ### Cách hình ảnh
 
-Một hình tốt là so sánh hai đối tượng:
+Có thể đặt hai đối tượng cạnh nhau để so sánh:
 
-- Dữ liệu nguồn $$ f $$ có thể hơi gồ ghề.
-- Nghiệm $$ u $$ của $$ -\Delta u=f $$ thường trơn hơn bậc hai về trực giác.
+- Dữ liệu nguồn $$ f $$ có thể chỉ thuộc $$ L^2 $$ và không liên tục.
+- Nghiệm $$ u $$ của $$ -\Delta u=f $$ thường trơn hơn nguồn hai bậc theo thang đạo hàm Sobolev.
 
-Giáo viên cũng nên so sánh với wave equation: sóng mang singularity đi xa, còn elliptic trải ảnh hưởng ra toàn miền nên có xu hướng mượt hơn.
+Nên đối chiếu với phương trình sóng: phương trình sóng lan truyền điểm kỳ dị dọc theo đường đặc trưng, còn phương trình elliptic phân tán ảnh hưởng trên toàn miền nên làm trơn nghiệm.
 
 ### Cách hình thức
 
@@ -47,143 +47,143 @@ $$
 -\Delta u=f \quad \text{trong } \Omega,\qquad u=0 \quad \text{trên } \partial\Omega,
 $$
 
-nếu $$ f\in L^2(\Omega) $$ và miền đủ đều, thì thường có ước lượng
+nếu $$ f\in L^2(\Omega) $$ và biên $$ \partial\Omega $$ đủ trơn, ta có ước lượng:
 
 $$
 \lVert u\rVert_{H^2(\Omega)}\le C\lVert f\rVert_{L^2(\Omega)}.
 $$
 
-Do đó nghiệm yếu thực ra nằm trong $$ H^2(\Omega)\cap H^1_0(\Omega) $$. Tổng quát hơn, nếu $$ f $$ trơn hơn thì $$ u $$ thường trơn hơn thêm hai bậc ở nội miền.
+Do đó nghiệm yếu thực chất thuộc $$ H^2(\Omega)\cap H^1_0(\Omega) $$. Tổng quát hơn, ở bên trong miền, nếu $$ f $$ trơn hơn thì $$ u $$ thường trơn hơn $$ f $$ hai bậc.
 
 ## Ngộ nhận thường gặp
 
-### “Có nghiệm yếu thì tự động rất trơn”
+### “Có nghiệm yếu thì tự động có nghiệm rất trơn”
 
-Sai. Regularity cần giả thiết về dữ liệu và hình học miền.
+Sai. Tính chính quy đòi hỏi các giả thiết cụ thể về độ trơn của dữ liệu nguồn, hệ số và hình học biên.
 
-### “Elliptic regularity chỉ là chuyện trong miền, không liên quan biên”
+### “Tính chính quy elliptic chỉ xảy ra bên trong miền, không liên quan đến biên”
 
-Không đúng. Gần biên, hình dạng miền và loại điều kiện biên ảnh hưởng cực mạnh.
+Không đúng. Gần biên, hình dạng miền (chẳng hạn góc lõm) và loại điều kiện biên ảnh hưởng rất mạnh đến độ trơn toàn cục.
 
-### “Nếu nguồn không liên tục thì nghiệm chẳng thể tốt hơn nguồn”
+### “Nguồn không liên tục thì nghiệm không thể trơn hơn nguồn”
 
-Sai. Nghiệm của toán tử elliptic thường tốt hơn nguồn theo nghĩa Sobolev.
+Sai. Nghiệm của toán tử elliptic bậc hai thường có thêm hai bậc đạo hàm yếu so với nguồn.
 
-### “Regularity luôn giống nhau cho mọi PDE”
+### “Mọi lớp PDE đều có cùng tính chính quy”
 
-Sai. Đây là nét rất riêng của lớp elliptic và khác hẳn với wave equation.
+Sai. Hiệu ứng làm trơn là đặc trưng của phương trình elliptic (và parabolic theo không gian), khác hẳn với phương trình sóng hyperbolic.
 
 ## Tiến trình học
 
-### Bước 1: Bắt đầu từ nghiệm yếu
+### Bước 1: Xuất phát từ nghiệm yếu
 
-Nhắc rằng theo Lax-Milgram, ta có $$ u\in H^1_0(\Omega) $$.
+Nhắc lại rằng theo định lý Lax–Milgram, ta mới chỉ có $$ u\in H^1_0(\Omega) $$.
 
-### Bước 2: Đặt câu hỏi mới
+### Bước 2: Đặt câu hỏi về độ trơn cao hơn
 
-Liệu nghiệm có thêm đạo hàm nào nữa không? Đây là lúc regularity xuất hiện.
+Kiểm tra xem nghiệm có sở hữu thêm các đạo hàm yếu bậc cao hơn hay không — đó là nội dung của tính chính quy.
 
-### Bước 3: Phân biệt nội miền và tới biên
+### Bước 3: Phân biệt chính quy nội miền và chính quy tới biên
 
-Trong lòng miền, regularity thường dễ hơn. Tới biên, cần giả thiết hình học đều đặn.
+Bên trong miền, tính chính quy chỉ phụ thuộc vào độ trơn cục bộ của hệ số và nguồn; tới tận biên, cần thêm giả thiết về hình học biên.
 
-### Bước 4: Liên hệ với các bài toán cổ điển
+### Bước 4: Liên hệ với nghiệm cổ điển
 
-Nếu regularity đủ mạnh, nghiệm yếu có thể trở thành nghiệm cổ điển.
+Khi bậc chính quy Sobolev đủ lớn (kết hợp với định lý nhúng Sobolev), nghiệm yếu trở thành nghiệm cổ điển.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có giải thích được “elliptic làm mịn” bằng lời không?
-- Sinh viên có phân biệt được regularity nội miền và regularity tới biên không?
-- Sinh viên có biết vì sao hình học biên ảnh hưởng đến độ trơn không?
+- Sinh viên có giải thích được bằng lời hiệu ứng làm trơn của toán tử elliptic hay không?
+- Sinh viên có phân biệt được tính chính quy nội miền và tính chính quy tới biên hay không?
+- Sinh viên có hiểu vì sao hình học biên ảnh hưởng đến độ trơn của nghiệm hay không?
 
 ## Ví dụ có lời giải
 
 ### Ví dụ 1: Bài toán một chiều
 
-Xét $$-u''=f \quad \text{trên } (0,1),\qquad u(0)=u(1)=0$$. Nếu $$ f\in L^2(0,1) $$ thì từ chính phương trình ta thấy $$ u''=-f\in L^2(0,1) $$. Vậy $$ u\in H^2(0,1) $$. Đây là ví dụ đơn giản nhất của elliptic regularity.
+Xét $$-u''=f \quad \text{trên } (0,1),\qquad u(0)=u(1)=0$$. Nếu $$ f\in L^2(0,1) $$ thì trực tiếp từ phương trình ta có $$ u''=-f\in L^2(0,1) $$, suy ra $$ u\in H^2(0,1) $$. Đây là minh họa đơn giản nhất cho tính chính quy elliptic.
 
-### Ví dụ 2: Dữ liệu trơn hơn
+### Ví dụ 2: Dữ liệu nguồn trơn hơn
 
-Nếu trong ví dụ trên, $$ f\in H^1(0,1) $$ thì trực giác cho thấy $$ u''\in H^1(0,1) $$, từ đó $$ u\in H^3(0,1) $$. Sinh viên không cần chứng minh đầy đủ ở bước này, nhưng nên thấy mô hình “nguồn thêm một bậc, nghiệm thêm hai bậc”.
+Trong ví dụ trên, nếu $$ f\in H^1(0,1) $$ thì $$ u''=-f\in H^1(0,1) $$, kéo theo $$ u\in H^3(0,1) $$. Quy luật tổng quát ở đây là nghiệm luôn trơn hơn nguồn hai bậc: khi $$ f\in H^k $$, ta thu được $$ u\in H^{k+2} $$.
 
-### Ví dụ 3: Ảnh hưởng của miền
+### Ví dụ 3: Ảnh hưởng của hình học miền
 
-Trên một miền có góc nhọn, như hình chữ L, nghiệm của phương trình Laplace có thể mất một phần regularity gần góc dù dữ liệu khá đẹp. Ví dụ này nhắc sinh viên rằng biên không chỉ là chi tiết kỹ thuật.
+Trên một miền có góc lõm, chẳng hạn miền hình chữ L, nghiệm của phương trình Laplace hoặc Poisson có thể mất một phần tính chính quy gần đỉnh góc dù nguồn rất trơn. Ví dụ này cho thấy điều kiện về biên không chỉ là chi tiết kỹ thuật phụ.
 
-### Ví dụ 4: So sánh với wave equation
+### Ví dụ 4: So sánh với phương trình sóng
 
-Nếu dữ liệu ban đầu của phương trình sóng có một singularity, singularity ấy thường truyền theo đặc tuyến chứ không tự biến mất ngay. So sánh này làm nổi bật bản chất khác của elliptic: nó không vận chuyển singularity mà phân bố lại ảnh hưởng trên toàn miền.
+Nếu dữ liệu ban đầu của phương trình sóng có một điểm kỳ dị, điểm kỳ dị đó sẽ lan truyền dọc theo đường đặc trưng thay vì biến mất. Phép so sánh này làm nổi bật bản chất khác biệt của toán tử elliptic: không vận chuyển kỳ dị mà phân bố lại ảnh hưởng trên toàn miền.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao elliptic operator có xu hướng làm mịn nghiệm hơn so với dữ liệu?
-2. Tại sao regularity nội miền thường dễ đạt hơn regularity đến biên?
-3. Điều gì có thể phá vỡ regularity dù nguồn khá trơn?
+1. Vì sao toán tử elliptic có xu hướng làm trơn nghiệm so với dữ liệu nguồn?
+2. Tại sao tính chính quy nội miền thường dễ đạt hơn tính chính quy tới tận biên?
+3. Những yếu tố nào có thể làm giảm tính chính quy của nghiệm dù nguồn khá trơn?
 
 ## Bài toán ứng dụng
 
-1. Trong mô hình điện thế, vì sao nếu mật độ điện tích đo được ở mức $$ L^2 $$ thì điện thế kỳ vọng vẫn khá trơn?
-2. Trong mô phỏng số, regularity của nghiệm ảnh hưởng thế nào đến tốc độ hội tụ của phương pháp phần tử hữu hạn?
-3. Trong cơ học vật liệu, vì sao các góc nhọn hay khuyết tật hình học thường gây tập trung ứng suất và làm giảm regularity?
+1. Trong tĩnh điện học, vì sao khi mật độ điện tích chỉ thuộc $$ L^2 $$ thì điện thế thu được vẫn có độ trơn cao hơn?
+2. Trong tính toán số, tính chính quy của nghiệm ảnh hưởng như thế nào đến tốc độ hội tụ của phương pháp phần tử hữu hạn?
+3. Trong cơ học vật liệu, vì sao các góc nhọn hoặc khuyết tật hình học thường gây tập trung ứng suất và làm giảm độ trơn của nghiệm?
 
 ## Chiến lược dạy học tương tác
 
 ### Câu hỏi nên hỏi trên lớp
 
-- Có hợp lý không khi một phương trình cân bằng lại cho nghiệm “mượt hơn” nguồn?
-- Vì sao cùng một phương trình nhưng miền đẹp và miền có góc lại cho regularity khác nhau?
-- Nếu chỉ biết tồn tại nghiệm yếu, em còn muốn hỏi thêm điều gì về nghiệm?
+- Về mặt vật lý, vì sao một phương trình cân bằng lại cho nghiệm trơn hơn nguồn?
+- Tại sao cùng một phương trình nhưng miền có biên trơn và miền có góc lõm lại cho mức chính quy khác nhau?
+- Sau khi biết nghiệm yếu tồn tại, câu hỏi quan trọng tiếp theo cần đặt ra là gì?
 
 ### Hoạt động gợi ý
 
-- So sánh trên lớp ba loại PDE: elliptic, parabolic, hyperbolic về cách xử lý singularity.
-- Cho sinh viên vẽ sơ đồ “dữ liệu ở mức nào thì nghiệm ở mức nào”.
-- Thảo luận nhóm về vai trò của biên trơn trong bài toán biên.
+- So sánh cách xử lý điểm kỳ dị của ba lớp PDE: elliptic, parabolic và hyperbolic.
+- Vẽ sơ đồ đối chiếu bậc không gian của nguồn $$ f $$ và bậc không gian tương ứng của nghiệm $$ u $$.
+- Thảo luận nhóm về vai trò của giả thiết biên trơn trong các định lý chính quy toàn cục.
 
 ### Cách tăng tham gia
 
-- Cho sinh viên dự đoán trước khi nêu định lý regularity.
-- Dùng ví dụ một chiều như bằng chứng trực giác đầu tiên.
-- Mời sinh viên tìm một lý do vật lý cho hiện tượng làm mịn.
+- Yêu cầu sinh viên dự đoán bậc trơn của nghiệm trước khi phát biểu định lý.
+- Dùng bài toán một chiều $$ -u''=f $$ làm chứng minh trực quan đầu tiên.
+- Mời sinh viên tìm một giải thích vật lý cho hiệu ứng làm trơn.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
 - Giữ trọng tâm ở ví dụ một chiều $$ -u''=f $$.
-- Nhấn mạnh thông điệp chính hơn là chứng minh kỹ thuật.
-- Dùng bảng so sánh giữa “tồn tại nghiệm yếu” và “nghiệm trơn hơn”.
+- Nhấn mạnh ý nghĩa và hệ quả của định lý trước khi đi vào chi tiết chứng minh.
+- Lập bảng đối chiếu giữa hai bước: "chứng minh tồn tại nghiệm yếu" và "nâng bậc độ trơn của nghiệm".
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Tìm hiểu bootstrap regularity.
-- Phân tích regularity nội miền bằng đạo hàm sai phân.
-- Xem các phản ví dụ trên miền có góc nhọn hoặc biên kém đều.
+- Tìm hiểu kỹ thuật nâng bậc chính quy lặp (bootstrap regularity).
+- Khảo sát cách chứng minh chính quy nội miền bằng thương sai phân.
+- Nghiên cứu các phản ví dụ mất chính quy trên miền có góc lõm hoặc hệ số gián đoạn.
 
 ## Ghi nhớ nhanh
 
-Regularity elliptic nói rằng nghiệm yếu của bài toán cân bằng thường mượt hơn ta tưởng, miễn là nguồn và biên đủ tốt. Đây là bước then chốt để đi từ “có nghiệm” sang “nghiệm đẹp đến mức nào”.
+Tính chính quy elliptic khẳng định rằng nghiệm yếu của bài toán cân bằng thường trơn hơn dữ liệu nguồn hai bậc, với điều kiện nguồn, hệ số và biên đủ tốt. Đây là bước kết nối từ "nghiệm tồn tại" sang "nghiệm trơn đến mức nào".
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Làm trơn trường nhiệt độ
-- Bài toán: Nguồn nhiệt có thể gồ ghề, nhưng nhiệt độ cân bằng thường mượt hơn mong đợi.
-- Mô hình: Nếu $$ -\Delta u=f $$, elliptic regularity thường cho phép suy ra $$ u $$ có thêm đạo hàm so với $$ f $$.
-- Giả thiết và giới hạn: Còn phụ thuộc miền, hệ số và điều kiện biên.
-- Diễn giải: Toán tử elliptic có xu hướng "làm trơn" nghiệm.
+- Bài toán: Nguồn nhiệt có thể gián đoạn, nhưng trường nhiệt độ cân bằng vẫn trơn hơn.
+- Mô hình: Với $$ -\Delta u=f $$, tính chính quy elliptic cho phép suy ra $$ u $$ có nhiều đạo hàm yếu hơn $$ f $$.
+- Giả thiết và giới hạn: Kết quả phụ thuộc vào hình học miền, độ trơn của hệ số và điều kiện biên.
+- Diễn giải: Toán tử elliptic có tác dụng làm trơn nghiệm.
 
 #### Điện thế tĩnh trong môi trường đồng nhất
-- Bài toán: Điện thế sinh bởi nguồn tích phân được thường mượt hơn bản thân nguồn.
-- Mô hình: Các ước lượng kiểu $$ \lVert u\rVert_{H^{2}} \le C\lVert f\rVert_{L^2} $$ trong trường hợp thích hợp.
-- Giả thiết và giới hạn: Cần miền trơn đủ và toán tử elliptic đều.
-- Diễn giải: Regularity giải thích vì sao nghiệm vật lý nhìn mượt dù dữ liệu thô.
+- Bài toán: Điện thế sinh bởi mật độ điện tích khả tích thường trơn hơn chính phân bố điện tích.
+- Mô hình: Ước lượng dạng $$ \lVert u\rVert_{H^{2}} \le C\lVert f\rVert_{L^2} $$ trong các điều kiện thích hợp.
+- Giả thiết và giới hạn: Đòi hỏi biên đủ trơn và toán tử elliptic đều.
+- Diễn giải: Tính chính quy giải thích vì sao trường thế vật lý quan sát được thường mượt hơn dữ liệu nguồn thô.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Elliptic regularity phát biểu rằng PDE elliptic không chỉ có nghiệm mà còn thường cho nghiệm tốt hơn dữ liệu. Một nhầm lẫn thường gặp là tưởng điều này luôn đúng đến biên mà không cần giả thiết; thật ra biên và hệ số có thể làm mất độ trơn.
+Tính chính quy elliptic cho thấy PDE elliptic không chỉ có nghiệm yếu mà còn nâng độ trơn của nghiệm so với nguồn. Một nhầm lẫn phổ biến là cho rằng kết quả này luôn đúng tới tận biên mà không cần giả thiết; thực tế góc nhọn ở biên hoặc hệ số gián đoạn có thể làm giảm độ trơn của nghiệm.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -214,20 +214,20 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Xét
+Xét phương trình
 $$
 -u'' = \operatorname{sgn}\!\left(x-\tfrac12\right)
 $$
-trên $$ 0<x<1 $$ với $$ u(0)=u(1)=0 $$. Vế phải chỉ là hàm bậc thang, nhưng nghiệm thu được là hàm từng khúc bậc hai và do đó liên tục khả vi. Điều này minh họa trực tiếp hiện tượng "nghiệm mượt hơn nguồn".
+trên $$ 0<x<1 $$ với $$ u(0)=u(1)=0 $$. Vế phải là hàm bậc thang gián đoạn tại $$ x=\tfrac12 $$, nhưng nghiệm thu được là hàm bậc hai từng khúc và thuộc lớp $$ C^1 $$ (liên tục khả vi). Điều này minh họa trực tiếp hiện tượng nghiệm trơn hơn nguồn.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Quan sát hiện tượng làm trơn qua các ví dụ một chiều.
+**Bậc đại học.** Quan sát hiệu ứng làm trơn qua các ví dụ một chiều tường minh.
 
-**Bậc sau đại học.** Kết nối với ước lượng Schauder, ước lượng $$ H^k $$ và regularity cục bộ/toàn cục.
+**Bậc sau đại học.** Kết nối với ước lượng Schauder, ước lượng $$ H^k $$ và tính chính quy cục bộ/toàn cục.
 
 ## Video tham khảo
 
-- xem trước: [Sketch of Elliptic regularity](https://www.youtube.com/watch?v=wecQr1yruVY) — Calculus is pictures., tiếng Anh. Một phác thảo tính chính quy elliptic: nghiệm yếu của phương trình elliptic trơn thì trơn hơn.
-- [Index Theory Lecture 7: Sobolev space theory](https://www.youtube.com/watch?v=Q1JecioLurc) — Masoud Khalkhali, tiếng Anh. Thang Sobolev đo độ trơn thêm ấy.
-- [Peter Lax - Lax-Milgram Theorem](https://www.youtube.com/watch?v=d6lx6kKV9-E) — Simons Foundation, tiếng Anh. Lax-Milgram, thứ mới chỉ cho nghiệm H^1 rồi tính chính quy nâng lên.
+- xem trước: [Sketch of Elliptic regularity](https://www.youtube.com/watch?v=wecQr1yruVY) — Calculus is pictures., tiếng Anh. Phác thảo trực quan về tính chính quy elliptic cho nghiệm yếu.
+- [Index Theory Lecture 7: Sobolev space theory](https://www.youtube.com/watch?v=Q1JecioLurc) — Masoud Khalkhali, tiếng Anh. Trình bày thang không gian Sobolev dùng để đo độ trơn của nghiệm.
+- [Peter Lax - Lax-Milgram Theorem](https://www.youtube.com/watch?v=d6lx6kKV9-E) — Simons Foundation, tiếng Anh. Nhắc lại định lý Lax–Milgram — bước tạo nghiệm yếu trong H^1 trước khi nâng bậc chính quy.

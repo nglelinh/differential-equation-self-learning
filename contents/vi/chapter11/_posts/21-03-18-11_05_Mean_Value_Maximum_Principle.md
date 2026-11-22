@@ -13,37 +13,37 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này trình bày hai tính chất định tính quan trọng nhất của hàm điều hòa: tính chất trung bình và nguyên lý cực đại. Sau bài học, sinh viên cần hiểu vì sao giá trị của một hàm điều hòa tại một điểm bằng trung bình của nó xung quanh điểm đó, biết hệ quả rằng hàm điều hòa không thể có cực đại hay cực tiểu nội tại nghiêm ngặt trừ khi là hằng, và dùng nguyên lý cực đại để giải thích tính duy nhất của bài toán Dirichlet.
+Bài học này trình bày hai tính chất định tính quan trọng của hàm điều hòa: tính chất giá trị trung bình và nguyên lý cực đại. Sau bài học, sinh viên cần hiểu vì sao giá trị của một hàm điều hòa tại một điểm bằng trung bình của nó xung quanh điểm đó, nắm được hệ quả rằng hàm điều hòa không thể có cực đại hay cực tiểu chặt bên trong miền trừ khi là hàm hằng, và biết dùng nguyên lý cực đại để chứng minh tính duy nhất của nghiệm bài toán Dirichlet.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm phương trình Laplace, trực giác về trạng thái cân bằng không nguồn, và khái niệm bài toán biên. Đây là bài lý thuyết cốt lõi của chương vì nó mô tả "tính cách" của hàm điều hòa mà không cần công thức nghiệm cụ thể.
+Sinh viên cần nắm phương trình Laplace, trực giác về trạng thái cân bằng không nguồn và khái niệm bài toán biên. Đây là bài lý thuyết cốt lõi của chương vì nó mô tả hành vi đặc trưng của hàm điều hòa mà không cần đến công thức nghiệm tường minh.
 
 ## Dẫn nhập
 
-Điều gì làm hàm điều hòa trở nên đặc biệt? Không chỉ là việc nó thỏa $$ \Delta u=0 $$, mà là những tính chất định tính rất mạnh đi kèm. Một trong những tính chất đẹp nhất là: giá trị tại một điểm không được quyết định bởi điểm đó, mà bởi trung bình xung quanh. Từ đó suy ra ngay rằng nghiệm không thể tự mọc ra một đỉnh mới hay một đáy mới trong nội thất.
+Điều làm hàm điều hòa trở nên đặc biệt không chỉ là phương trình $$ \Delta u=0 $$, mà là những tính chất định tính chặt chẽ đi kèm. Một trong số đó là giá trị tại một điểm không tồn tại độc lập, mà bằng trung bình các giá trị xung quanh nó. Từ tính chất này suy ra ngay rằng nghiệm điều hòa khác hằng không thể tự tạo ra đỉnh cực đại hay đáy cực tiểu bên trong miền.
 
-Đây là chỗ mà trực giác "cân bằng" trở nên chính xác. Nếu bên trong miền không có nguồn, thì không có cơ chế nào để đẩy trường lên một cực đại nội tại hay kéo nó xuống một cực tiểu nội tại. Mọi giá trị bên trong đều bị ràng buộc bởi lân cận và cuối cùng bởi biên.
+Tại đây, trực giác về trạng thái cân bằng trở thành phát biểu toán học chính xác. Khi không có nguồn bên trong miền, không có cơ chế nào để đẩy giá trị nghiệm lên cực đại cục bộ hay kéo xuống cực tiểu cục bộ bên trong; mọi giá trị bên trong đều bị ràng buộc bởi lân cận và cuối cùng bởi dữ liệu trên biên.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Nếu nhiệt độ đã ở trạng thái ổn định không nguồn, giá trị tại một điểm không thể khác biệt quá mạnh so với môi trường rất gần quanh nó. Nếu điểm đó nóng hơn hẳn mọi điểm xung quanh, hệ chưa thật sự cân bằng. Vì thế trong trạng thái điều hòa, điểm trung tâm phải "bình quân" với vùng lân cận. Đó là trực giác của tính chất trung bình.
+Khi phân bố nhiệt độ đã đạt trạng thái ổn định không nguồn, nhiệt độ tại một điểm không thể cao hơn hẳn mọi điểm ngay xung quanh nó, vì nếu vậy nhiệt vẫn sẽ tiếp tục truyền đi và hệ chưa đạt cân bằng. Do đó, ở trạng thái điều hòa, giá trị tại mỗi điểm phải cân bằng với trung bình của vùng lân cận — đó là trực giác của tính chất giá trị trung bình.
 
 ### Cách nhìn hình ảnh
 
-Hãy tưởng tượng một bề mặt đàn hồi mỏng được giữ bởi biên. Nếu bề mặt là điều hòa, nó không thể có một chóp nhọn hoàn toàn bên trong mà không có lực nâng từ dưới. Nếu có một cực đại nội tại nghiêm ngặt, trung bình quanh điểm đó sẽ thấp hơn, mâu thuẫn với tính chất trung bình. Hình ảnh này rất tốt để dẫn tới nguyên lý cực đại.
+Hãy xét một màng đàn hồi mỏng được căng giữ theo đường biên. Nếu bề mặt có tính điều hòa, nó không thể tạo ra một đỉnh nhọn nằm hoàn toàn bên trong mà không có lực nâng từ phía dưới. Nếu tồn tại cực đại chặt bên trong miền, giá trị trung bình xung quanh điểm đó sẽ nhỏ hơn giá trị tại chính điểm đó, mâu thuẫn với tính chất giá trị trung bình. Lập luận này dẫn thẳng tới nguyên lý cực đại.
 
 ### Cách nhìn hình thức
 
-Nếu $$ u $$ điều hòa trong miền $$ \Omega $$ và quả cầu $$ B_r(x_0)\subset \Omega $$, thì
+Nếu $$ u $$ điều hòa trong miền $$ \Omega $$ và hình cầu $$ B_r(x_0)\subset \Omega $$, thì:
 
 $$
 u(x_0)=\frac{1}{\lvert B_r\rvert}\int_{B_r(x_0)}u(x)\,dx.
 $$
 
-Một công thức tương tự đúng với trung bình trên mặt cầu. Từ đó suy ra nguyên lý cực đại:
+Công thức tương tự cũng đúng với trung bình trên mặt cầu. Từ đó suy ra nguyên lý cực đại:
 
 $$
 \max_{\overline{\Omega}}u=\max_{\partial\Omega}u,
@@ -51,48 +51,48 @@ $$
 \min_{\overline{\Omega}}u=\min_{\partial\Omega}u,
 $$
 
-nếu $$ u $$ điều hòa và liên tục trên đóng của miền.
+với điều kiện $$ u $$ điều hòa trong $$ \Omega $$ và liên tục trên bao đóng $$ \overline{\Omega} $$ của miền bị chặn.
 
 ## Những ngộ nhận thường gặp
 
-- "Tính chất trung bình chỉ là mẹo tích phân." Sai. Nó là bản chất hình học của hàm điều hòa.
-- "Nguyên lý cực đại nói rằng hàm điều hòa không thể lớn." Không đúng; nó nói cực trị phải nằm ở biên nếu hàm không hằng.
-- "Nếu có cực đại nội tại thì chắc chỉ do đồ thị đặc biệt." Sai; điều đó bị cấu trúc Laplace cấm.
-- "Tính duy nhất của bài toán Dirichlet phải đến từ công thức nghiệm." Không nhất thiết; nguyên lý cực đại cho tính duy nhất rất trực tiếp.
+- "Tính chất giá trị trung bình chỉ là một kỹ thuật tính tích phân." Sai; nó phản ánh trực tiếp bản chất hình học của hàm điều hòa.
+- "Nguyên lý cực đại có nghĩa là hàm điều hòa không thể nhận giá trị lớn." Không đúng; nguyên lý chỉ khẳng định cực trị phải đạt được trên biên nếu hàm không phải hàm hằng.
+- "Nếu có cực đại bên trong miền thì chỉ là do hình dạng đặc biệt của đồ thị." Sai; cấu trúc của phương trình Laplace loại trừ khả năng này đối với hàm điều hòa khác hằng.
+- "Tính duy nhất của bài toán Dirichlet phải chứng minh từ công thức nghiệm." Không cần thiết; nguyên lý cực đại cho phép chứng minh tính duy nhất một cách trực tiếp.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Hiểu tính chất trung bình
+### Bước 1: Hiểu tính chất giá trị trung bình
 
-Đây là phát biểu nền tảng nhất.
+Nắm vững phát biểu nền tảng về giá trị tại tâm hình cầu hoặc mặt cầu.
 
 ### Bước 2: Suy ra nguyên lý cực đại
 
-Sinh viên nên thấy nó như một hệ quả tự nhiên chứ không phải định lý rời rạc.
+Nhìn nhận nguyên lý cực đại như hệ quả trực tiếp từ tính chất giá trị trung bình thay vì một định lý tách rời.
 
-### Bước 3: Áp dụng cho tính duy nhất
+### Bước 3: Áp dụng chứng minh tính duy nhất
 
-Đây là ứng dụng quan trọng nhất của bài.
+Sử dụng nguyên lý cực đại cho hiệu của hai nghiệm của bài toán Dirichlet.
 
 ### Các checkpoint
 
-- Sinh viên có giải thích được bằng lời vì sao giá trị tại tâm phải bằng trung bình xung quanh hay không.
-- Sinh viên có hiểu vì sao cực đại nội tại nghiêm ngặt là không thể hay không.
-- Sinh viên có dùng nguyên lý cực đại để chứng minh tính duy nhất được hay không.
+- Sinh viên có giải thích được bằng lời vì sao giá trị tại tâm bằng trung bình các giá trị xung quanh hay không.
+- Sinh viên có hiểu vì sao cực đại chặt bên trong miền không thể tồn tại đối với hàm điều hòa khác hằng hay không.
+- Sinh viên có vận dụng được nguyên lý cực đại để chứng minh tính duy nhất của nghiệm hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Trường hợp hằng
+### Ví dụ 1: Hàm hằng
 
-Nếu $$ u(x)\equiv C $$, thì rõ ràng giá trị tại mọi điểm bằng trung bình trên mọi quả cầu xung quanh. Đây là ví dụ đơn giản nhất cho tính chất trung bình.
+Nếu $$ u(x)\equiv C $$, hiển nhiên giá trị tại mọi điểm đều bằng trung bình trên mọi hình cầu xung quanh. Đây là trường hợp đơn giản nhất minh họa tính chất giá trị trung bình.
 
-### Ví dụ 2: Hàm affine trong một chiều
+### Ví dụ 2: Hàm tuyến tính trong một chiều
 
-Trong một chiều, $$ u''=0 $$ cho $$ u(x)=ax+b $$. Giá trị tại điểm giữa đoạn đúng bằng trung bình của hai đầu đoạn. Đây là phiên bản một chiều rất trực giác của tính chất trung bình.
+Trong một chiều, $$ u''=0 $$ cho $$ u(x)=ax+b $$. Giá trị tại trung điểm của một đoạn thẳng đúng bằng trung bình cộng của giá trị tại hai đầu mút. Đây là phiên bản một chiều trực quan của tính chất giá trị trung bình.
 
 ### Ví dụ 3: Tính duy nhất của bài toán Dirichlet
 
-Giả sử $$ u_1,\ u_2 $$ là hai nghiệm của cùng một bài toán Dirichlet cho Laplace. Đặt $$ w=u_1-u_2 $$. Khi đó
+Giả sử $$ u_1,\ u_2 $$ là hai nghiệm của cùng một bài toán Dirichlet cho phương trình Laplace. Đặt $$ w=u_1-u_2 $$, khi đó:
 
 $$
 \Delta w=0,
@@ -100,75 +100,75 @@ $$
 w=0 \text{ trên } \partial\Omega.
 $$
 
-Theo nguyên lý cực đại, $$ \max_{\overline{\Omega}}w=0 $$ và $$ \min_{\overline{\Omega}}w=0 $$. Suy ra $$ w\equiv 0 $$. Đây là ví dụ quan trọng nhất của bài.
+Theo nguyên lý cực đại, $$ \max_{\overline{\Omega}}w=0 $$ và $$ \min_{\overline{\Omega}}w=0 $$, suy ra $$ w\equiv 0 $$. Đây là ứng dụng trọng tâm của bài học.
 
-### Ví dụ 4: Kiểm tra trực giác của nghiệm số
+### Ví dụ 4: Kiểm tra tính hợp lý của nghiệm số
 
-Nếu một nghiệm số cho bài toán Laplace với dữ liệu biên không âm lại tạo ra một đỉnh âm bên trong miền, ta biết ngay có gì đó sai. Ví dụ này giúp nối lý thuyết với tính toán số.
+Nếu một nghiệm số của bài toán Laplace với dữ liệu biên không âm lại xuất hiện giá trị âm bên trong miền, ta biết ngay phép tính hoặc sơ đồ số có sai sót. Ví dụ này nối trực tiếp lý thuyết định tính với tính toán số.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao tính chất trung bình phản ánh trực tiếp ý tưởng "không có nguồn bên trong"?
-2. Tại sao cực đại nội tại nghiêm ngặt mâu thuẫn với tính chất trung bình?
-3. Vì sao nguyên lý cực đại kéo theo tính duy nhất của bài toán Dirichlet?
+1. Vì sao tính chất giá trị trung bình phản ánh trực tiếp giả thiết không có nguồn bên trong miền?
+2. Tại sao sự tồn tại của một cực đại chặt bên trong miền lại mâu thuẫn với tính chất giá trị trung bình?
+3. Vì sao nguyên lý cực đại kéo theo tính duy nhất của nghiệm bài toán Dirichlet?
 
 ## Bài toán ứng dụng
 
-1. Trong nhiệt ổn định, vì sao nếu biên luôn nằm trong khoảng $$ [m,M] $$, nhiệt độ bên trong cũng phải nằm trong khoảng đó?
-2. Trong tĩnh điện, vì sao điện thế trong vùng không có điện tích không thể có một đỉnh nội tại nghiêm ngặt?
-3. Trong mô phỏng số Laplace, vì sao nguyên lý cực đại là một kiểm tra chất lượng rất mạnh?
+1. Trong truyền nhiệt ổn định không nguồn, vì sao nếu nhiệt độ trên biên nằm trong đoạn $$ [m,M] $$ thì nhiệt độ bên trong miền cũng phải nằm trong đoạn đó?
+2. Trong tĩnh điện, vì sao điện thế trong vùng không có điện tích không thể đạt cực đại chặt bên trong miền?
+3. Trong mô phỏng số phương trình Laplace, vì sao nguyên lý cực đại là một tiêu chí kiểm tra chất lượng nghiệm hữu hiệu?
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng câu hỏi: "Nếu bên trong miền không có nguồn, điều gì ngăn trường tạo ra một đỉnh mới?"
-- Cho sinh viên thử phản biện bằng cách giả sử tồn tại cực đại nội tại rồi đối chiếu với tính chất trung bình.
-- Hỏi cả lớp: "Nếu hai nghiệm có cùng biên, tại sao hiệu của chúng phải bằng 0?"
-- Khuyến khích sinh viên diễn giải nguyên lý cực đại bằng ngôn ngữ vật lý, không chỉ bằng ký hiệu.
+- Bắt đầu bằng câu hỏi: "Nếu bên trong miền không có nguồn, điều gì ngăn trường nghiệm tạo ra một đỉnh cực đại mới?"
+- Cho sinh viên thử phản chứng bằng cách giả sử tồn tại cực đại chặt bên trong rồi đối chiếu với tính chất giá trị trung bình.
+- Hỏi cả lớp: "Nếu hai nghiệm có cùng giá trị trên biên, tại sao hiệu của chúng phải bằng 0 trên toàn miền?"
+- Khuyến khích sinh viên diễn giải nguyên lý cực đại bằng ngôn ngữ vật lý bên cạnh công thức toán học.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên bám vào phiên bản một chiều và trực giác trung bình trên đoạn trước. Khi ý tưởng đó rõ, công thức quả cầu và nguyên lý cực đại sẽ bớt trừu tượng hơn.
+Nên bám vào trường hợp một chiều và tính chất trung bình trên đoạn thẳng trước. Khi ý tưởng này đã rõ ràng, công thức tích phân trên hình cầu và nguyên lý cực đại sẽ dễ tiếp cận hơn.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể mời sinh viên khá giỏi thảo luận nguyên lý cực đại mạnh hoặc liên hệ tính chất trung bình với các quá trình martingale và xác suất thế vị.
+Có thể gợi ý sinh viên khá giỏi tìm hiểu nguyên lý cực đại mạnh, hoặc liên hệ tính chất giá trị trung bình với quá trình martingale và lý thuyết thế xác suất.
 
 ## Tóm tắt dễ nhớ
 
-Hàm điều hòa có giá trị tại một điểm bằng trung bình của nó xung quanh điểm đó. Vì thế nó không thể có cực trị nội tại nghiêm ngặt trừ khi là hằng. Đây là lý do bài toán Dirichlet cho Laplace có tính duy nhất rất mạnh và nghiệm bị biên kiểm soát hoàn toàn.
+Hàm điều hòa có giá trị tại mỗi điểm bằng trung bình các giá trị xung quanh nó. Do đó, hàm điều hòa khác hằng không thể đạt cực trị chặt bên trong miền. Hệ quả trực tiếp là nghiệm bài toán Dirichlet cho phương trình Laplace có tính duy nhất và hoàn toàn bị chặn bởi dữ liệu biên.
 
 ## Video tham khảo
 
-- xem trước: [Harmonic functions: Mean value theorem](https://www.youtube.com/watch?v=p60dU_62KcQ) — Dr Chris Tisdell, tiếng Anh. Chris Tisdell chứng minh tính chất trung bình của một hàm điều hòa.
-- [Properties of harmonic functions part 2: the mean value property](https://www.youtube.com/watch?v=_bC91Xqirgs) — William Nesse, tiếng Anh. Tính chất trung bình được phát biểu và sử dụng.
-- [Qualitative Properties of Laplace's Equation - Partial Differential Equations | Lecture 12](https://www.youtube.com/watch?v=Mi25YqpsxlM) — Jason Bramburger, tiếng Anh. Jason Bramburger về các tính chất định tính của phương trình Laplace, gồm nguyên lý cực đại.
+- xem trước: [Harmonic functions: Mean value theorem](https://www.youtube.com/watch?v=p60dU_62KcQ) — Dr Chris Tisdell, tiếng Anh. Chứng minh tính chất giá trị trung bình của hàm điều hòa.
+- [Properties of harmonic functions part 2: the mean value property](https://www.youtube.com/watch?v=_bC91Xqirgs) — William Nesse, tiếng Anh. Phát biểu và áp dụng tính chất giá trị trung bình.
+- [Qualitative Properties of Laplace's Equation - Partial Differential Equations | Lecture 12](https://www.youtube.com/watch?v=Mi25YqpsxlM) — Jason Bramburger, tiếng Anh. Trình bày các tính chất định tính của phương trình Laplace, bao gồm nguyên lý cực đại.
 
 ## Tài liệu tham khảo
 
-- Evans, *Partial Differential Equations* - khuôn khổ chuẩn cho hàm điều hòa, phương trình Poisson, và hàm Green.
-- Haberman, *Applied Partial Differential Equations* - trình bày trực quan về tĩnh điện, dòng chảy thế, và phương pháp ảnh.
+- Evans, *Partial Differential Equations* — trình bày chuẩn về hàm điều hòa, phương trình Poisson và hàm Green.
+- Haberman, *Applied Partial Differential Equations* — trình bày trực quan về tĩnh điện, dòng chảy thế và phương pháp ảnh.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Kiểm tra cảm biến nhiệt
-- Bài toán: Nếu dữ liệu biên nằm trong một khoảng cho trước, nhiệt độ bên trong không thể vượt quá khoảng đó khi không có nguồn.
-- Mô hình: Tính chất này đến từ nguyên lý cực đại cho $$ \Delta u=0 $$.
-- Giả thiết và giới hạn: Miền liên thông, nghiệm điều hòa đủ trơn.
-- Diễn giải: Cực trị của nghiệm điều hòa nằm ở biên, không ở bên trong.
+- Bài toán: Nếu nhiệt độ trên biên nằm trong một khoảng cho trước và không có nguồn bên trong, nhiệt độ bên trong miền không thể vượt ra ngoài khoảng đó.
+- Mô hình: Suy ra từ nguyên lý cực đại cho $$ \Delta u=0 $$.
+- Giả thiết và giới hạn: Miền liên thông, bị chặn; nghiệm điều hòa liên tục trên bao đóng miền.
+- Diễn giải: Cực trị của nghiệm điều hòa đạt được trên biên chứ không ở bên trong miền.
 
-#### Điện thế tĩnh không có cực trị nội bộ
+#### Điện thế tĩnh không có cực trị bên trong
 - Bài toán: Trong miền không có điện tích, điện thế không thể có điểm cực đại hoặc cực tiểu chặt bên trong.
-- Mô hình: Mean value property và maximum principle cho hàm điều hòa.
-- Giả thiết và giới hạn: Không có nguồn nội bộ, nghiệm đủ trơn.
-- Diễn giải: Đây là ràng buộc định tính rất mạnh, thường hữu ích hơn công thức nghiệm tường minh.
+- Mô hình: Tính chất giá trị trung bình và nguyên lý cực đại cho hàm điều hòa.
+- Giả thiết và giới hạn: Không có nguồn điện tích bên trong, nghiệm đủ trơn.
+- Diễn giải: Đây là ràng buộc định tính chặt chẽ, thường hữu ích ngay cả khi không có công thức nghiệm tường minh.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Tính chất trung bình nói rằng giá trị tại một điểm bằng trung bình trên các vòng tròn nhỏ xung quanh nó. Nếu một điểm thật sự là cực đại nội bộ, trung bình xung quanh sẽ nhỏ hơn nó, điều này mâu thuẫn. Đây là trực giác gốc của nguyên lý cực đại.
+Tính chất giá trị trung bình khẳng định giá trị tại một điểm bằng trung bình trên các đường tròn nhỏ bao quanh điểm đó. Nếu điểm ấy là cực đại chặt bên trong, giá trị trung bình xung quanh phải nhỏ hơn nó — dẫn đến mâu thuẫn. Đó chính là lập luận gốc của nguyên lý cực đại.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -197,12 +197,12 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Nếu $$ u $$ điều hòa trên một miền đóng bị chặn và $$ u=0 $$ trên toàn bộ biên, thì theo nguyên lý cực đại cả cực đại lẫn cực tiểu đều bằng $$ 0 $$. Do đó
+Nếu $$ u $$ điều hòa trên một miền bị chặn, liên tục trên bao đóng và $$ u=0 $$ trên toàn bộ biên, thì theo nguyên lý cực đại cả giá trị lớn nhất lẫn nhỏ nhất trên miền đều bằng $$ 0 $$. Suy ra
 $$ u\equiv 0. $$
-Đây là cách rất nhanh để chứng minh tính duy nhất mà không cần viết nghiệm ra.
+Đây là cách ngắn gọn để chứng minh tính duy nhất mà không cần tìm công thức nghiệm.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Dùng nguyên lý cực đại để suy ra chặn trên, chặn dưới và tính duy nhất.
+**Bậc đại học.** Vận dụng nguyên lý cực đại để suy ra chặn trên, chặn dưới và tính duy nhất của nghiệm.
 
-**Bậc sau đại học.** Kết nối với Harnack inequality, unique continuation và weak maximum principle.
+**Bậc sau đại học.** Kết nối với bất đẳng thức Harnack, tính thác triển duy nhất (unique continuation) và nguyên lý cực đại yếu.

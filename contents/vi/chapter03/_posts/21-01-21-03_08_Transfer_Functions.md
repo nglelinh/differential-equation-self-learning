@@ -10,164 +10,136 @@ categories:
 lesson_type: optional
 ---
 ## Mục tiêu
-Bài học này giúp sinh viên hiểu hàm truyền như mô tả đại số của một hệ tuyến tính bất biến theo thời gian, biết cách suy ra hàm truyền từ ODE với điều kiện đầu bằng 0, và diễn giải mối quan hệ giữa cực, đáp ứng xung, đầu vào và đầu ra. Đây là bước mở rộng từ Laplace như công cụ giải bài toán sang Laplace như ngôn ngữ của điều khiển và xử lý tín hiệu.
+Bài học này giới thiệu hàm truyền như biểu diễn đại số đặc trưng cho một hệ tuyến tính bất biến theo thời gian (LTI), hướng dẫn cách suy ra hàm truyền từ ODE với điều kiện đầu bằng 0, và phân tích mối liên hệ giữa các cực, đáp ứng xung, tín hiệu vào và tín hiệu ra.
 
 ## Kiến thức nền
-Sinh viên cần nắm giải IVP bằng Laplace, Heaviside, delta và tích chập. Một chút trực giác về đầu vào, đầu ra và đáp ứng xung sẽ rất hữu ích, nhưng bài học này có thể đóng vai trò chính để tạo ra trực giác ấy.
+Sinh viên cần nắm giải IVP bằng Laplace, hàm bước Heaviside, hàm delta và định lý tích chập. Trực giác về đầu vào, đầu ra và đáp ứng xung sẽ được củng cố xuyên suốt bài học này.
 
 ## Dẫn nhập
 ![Sơ đồ minh họa cho bài 03-08 Hàm Truyền và Hệ thống]({{ site.imgurl }}/chapter_img/chapter03/03_08_transfer_functions.svg)
 
-Trong các bài trước, ta thường bắt đầu từ một ODE cụ thể rồi giải để tìm nghiệm. Nhưng nếu cùng một hệ phải chịu nhiều đầu vào khác nhau, việc giải lại từ đầu mỗi lần là không hiệu quả. Ta cần một cách tóm gọn bản thân hệ, tách nó khỏi tín hiệu vào cụ thể. Hàm truyền chính là công cụ đó.
+Khi một hệ vật lý phải chịu nhiều tín hiệu đầu vào khác nhau, việc giải lại phương trình vi phân từ đầu cho từng đầu vào là không hiệu quả. Ta cần một biểu diễn tóm gọn bản chất nội tại của hệ, tách rời khỏi từng đầu vào cụ thể — đó chính là hàm truyền.
 
-Khi điều kiện đầu bằng 0, một hệ tuyến tính bất biến theo thời gian có thể được mô tả bằng tỉ số giữa đầu ra và đầu vào trong miền Laplace. Từ đó, ta có thể nghiên cứu ổn định, đáp ứng xung, lọc tần số và hành vi dài hạn bằng một biểu thức duy nhất. Đây là nơi ODE gặp lý thuyết hệ thống.
+Với điều kiện đầu bằng 0, một hệ LTI được mô tả hoàn toàn bởi tỉ số giữa ảnh Laplace của đầu ra và đầu vào. Từ biểu thức duy nhất này, ta có thể khảo sát tính ổn định, đáp ứng xung, đặc tính lọc tần số và hành vi dài hạn của hệ.
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan
-Hàm truyền giống như "chữ ký động" của hệ. Nó cho biết hệ sẽ biến đổi đầu vào như thế nào mà không cần biết đầu vào cụ thể là gì. Khi có đầu vào mới, ta chỉ cần nhân với hàm truyền trong miền $$ s $$.
+Hàm truyền đóng vai trò "chữ ký động học" của hệ: nó mô tả cách hệ biến đổi mọi đầu vào mà không phụ thuộc vào một tín hiệu cụ thể nào. Khi có đầu vào mới, ta chỉ cần nhân ảnh Laplace của đầu vào với hàm truyền trong miền $$ s $$.
 
 ### Cách nhìn hình ảnh
-Nếu coi đầu vào là thứ đi qua một "hộp đen", thì hàm truyền mô tả chính hộp đen ấy. Các cực của hàm truyền cho biết hệ có xu hướng rung, suy giảm hay cộng hưởng ra sao. Đáp ứng xung là hình ảnh thời gian của cùng một thông tin.
+Nếu xem hệ như một "hộp đen" biến đổi tín hiệu vào thành tín hiệu ra, hàm truyền chính là đặc trưng toán học của hộp đen đó. Các cực của hàm truyền cho biết hệ có xu hướng suy giảm, dao động hay mất ổn định, còn đáp ứng xung là biểu diễn tương ứng trong miền thời gian.
 
 ### Cách nhìn hình thức
-Với hệ LTI và điều kiện đầu bằng 0, nếu
-$$
-X(s)=\mathcal{L}\{x(t)\},\qquad Y(s)=\mathcal{L}\{y(t)\},
-$$
-thì hàm truyền được định nghĩa bởi
+Với hệ LTI có điều kiện đầu bằng 0, đặt $$ X(s)=\mathcal{L}\{x(t)\} $$ và $$ Y(s)=\mathcal{L}\{y(t)\} $$, hàm truyền được định nghĩa bởi
 $$ H(s)=\frac{Y(s)}{X(s)}. $$
 Nếu hệ được mô tả bởi ODE
 $$
 a_n y^{(n)}+\cdots+a_1 y'+a_0y=b_m x^{(m)}+\cdots+b_0x,
 $$
-thì sau Laplace với điều kiện đầu bằng 0, ta có
+thì sau khi lấy biến đổi Laplace với điều kiện đầu bằng 0, ta thu được
 $$
 H(s)=\frac{b_m s^m+\cdots+b_0}{a_n s^n+\cdots+a_0}.
 $$
 
 ## Những ngộ nhận thường gặp
-- "Hàm truyền là cùng một thứ với nghiệm." Sai. Nó là đặc trưng của hệ, không phải lời giải cho một đầu vào cụ thể.
-- "Điều kiện đầu không quan trọng khi nói về hàm truyền." Sai. Định nghĩa chuẩn dùng điều kiện đầu bằng 0 để tách riêng bản thân hệ khỏi trạng thái ban đầu.
-- "Biết hàm truyền là đủ để biết mọi thứ ngay lập tức." Chưa đủ; còn cần hiểu đầu vào và cách quay về miền thời gian.
-- "Cực chỉ là thông tin đại số." Sai. Chúng liên hệ trực tiếp với mode động học và ổn định.
+- "Hàm truyền chính là nghiệm của phương trình." Sai: hàm truyền là đặc trưng của hệ, không phải lời giải ứng với một đầu vào cụ thể.
+- "Điều kiện đầu không liên quan đến định nghĩa hàm truyền." Sai: định nghĩa chuẩn yêu cầu điều kiện đầu bằng 0 để tách riêng đặc tính nội tại của hệ khỏi trạng thái ban đầu.
+- "Biết hàm truyền là có ngay đồ thị đầu ra." Chưa đủ: cần nhân với ảnh Laplace của đầu vào cụ thể rồi biến đổi ngược về miền thời gian.
+- "Vị trí cực chỉ là chi tiết đại số." Sai: vị trí cực quyết định trực tiếp các chế độ dao động và tính ổn định của hệ.
 
 ## Tiến trình học tập đề xuất
-### Bước 1: Xuất phát từ một ODE đầu vào-đầu ra
-Viết rõ tín hiệu vào và ra.
+### Bước 1: Viết ODE đầu vào – đầu ra
+Xác định rõ tín hiệu đầu vào $$ x(t) $$ và tín hiệu đầu ra $$ y(t) $$.
 
-### Bước 2: Áp Laplace với điều kiện đầu bằng 0
-Đây là bước tách hệ khỏi trạng thái đầu.
+### Bước 2: Lấy biến đổi Laplace với điều kiện đầu bằng 0
+Tách đặc tính nội tại của hệ khỏi trạng thái ban đầu.
 
-### Bước 3: Giải tỉ số $$ Y/X $$
-Ta thu được hàm truyền.
+### Bước 3: Lập tỉ số $$ H(s)=Y(s)/X(s) $$
+Thu được hàm truyền dạng phân thức hữu tỉ.
 
-### Bước 4: Kết nối với đáp ứng xung và cực
-Hiểu được ý nghĩa hệ thống của công thức.
+### Bước 4: Đọc đáp ứng xung và vị trí cực
+Liên hệ mẫu số hàm truyền với hành vi thời gian và tính ổn định.
 
 ### Các checkpoint
-- Sinh viên có phân biệt được hàm truyền với nghiệm thời gian hay không.
-- Sinh viên có hiểu tại sao cần điều kiện đầu bằng 0 trong định nghĩa hay không.
-- Sinh viên có đọc được cực của hàm truyền gắn với mode hệ như thế nào hay không.
+- Sinh viên có phân biệt rõ hàm truyền với nghiệm thời gian hay không.
+- Sinh viên có giải thích được lý do cần điều kiện đầu bằng 0 hay không.
+- Sinh viên có đọc được mối liên hệ giữa cực của hàm truyền và các thành phần nghiệm hay không.
 
 ## Ví dụ được giải chi tiết
 ### Ví dụ 1: Mạch RC đơn giản
-Xét mạch RC với điện áp đầu vào $$ x(t) $$ và điện áp đầu ra trên tụ là $$ y(t) $$:
+Xét mạch RC với điện áp đầu vào $$ x(t) $$ và điện áp đầu ra trên tụ $$ y(t) $$:
 $$ RC\,y'+y=x. $$
-Áp Laplace với điều kiện đầu bằng 0:
-$$ RC\,sY+Y=X. $$
-Suy ra
+Lấy biến đổi Laplace với điều kiện đầu bằng 0: $$ RC\,sY+Y=X $$, suy ra
 $$ H(s)=\frac{Y}{X}=\frac{1}{RC\,s+1}. $$
-Đây là hàm truyền bậc nhất rất quan trọng trong lý thuyết mạch và lọc tín hiệu.
+Đây là hàm truyền bậc nhất cơ bản của bộ lọc thông thấp RC.
 
-### Ví dụ 2: Đáp ứng xung từ hàm truyền
-Với
-$$ H(s)=\frac{1}{s+1}, $$
-đáp ứng xung là
-$$ h(t)=\mathcal{L}^{-1}\{H(s)\}=e^{-t}. $$
-Điều này cho thấy hệ "ghi nhớ" đầu vào quá khứ theo một hàm suy giảm mũ.
+### Ví dụ 2: Tìm đáp ứng xung từ hàm truyền
+Với $$ H(s)=\frac{1}{s+1} $$, đáp ứng xung là
+$$ h(t)=\mathcal{L}^{-1}\{H(s)\}=e^{-t}, $$
+cho thấy ảnh hưởng của một xung tức thời suy giảm theo hàm mũ.
 
-### Ví dụ 3: Từ hàm truyền đến đầu ra
-Nếu
-$$ H(s)=\frac{1}{s+1} $$
-và đầu vào là bước đơn vị
-$$ x(t)=1, $$
-thì
-$$ X(s)=\frac{1}{s}. $$
-Do đó
+### Ví dụ 3: Tính đầu ra từ hàm truyền
+Với $$ H(s)=\frac{1}{s+1} $$ và đầu vào bước đơn vị $$ x(t)=1 $$ (nên $$ X(s)=\frac{1}{s} $$), ta có
 $$ Y(s)=H(s)X(s)=\frac{1}{s(s+1)}. $$
-Lấy Laplace ngược:
-$$ y(t)=1-e^{-t}. $$
-Ví dụ này cho thấy hàm truyền thực sự giúp ta giải nhiều bài với cùng một hệ rất nhanh.
+Lấy biến đổi Laplace ngược thu được $$ y(t)=1-e^{-t} $$. Có sẵn $$ H(s) $$ giúp tính nhanh đầu ra cho nhiều đầu vào khác nhau.
 
-### Ví dụ 4: Cực và ổn định
-Nếu
-$$ H(s)=\frac{1}{(s+1)(s+3)}, $$
-thì các cực ở $$ s=-1 $$ và $$ s=-3 $$ cho ta hai mode suy giảm
-$$ e^{-t},\qquad e^{-3t}. $$
-Vì cả hai cực đều có phần thực âm, hệ ổn định theo nghĩa đáp ứng tự do suy giảm. Đây là cầu nối rất đẹp giữa đại số miền $$ s $$ và động học miền thời gian.
+### Ví dụ 4: Cực của hàm truyền và tính ổn định
+Với $$ H(s)=\frac{1}{(s+1)(s+3)} $$, hai cực tại $$ s=-1 $$ và $$ s=-3 $$ tương ứng với hai thành phần suy giảm $$ e^{-t} $$ và $$ e^{-3t} $$. Vì mọi cực đều có phần thực âm, đáp ứng tự do tắt dần về 0 và hệ ổn định.
 
 ## Câu hỏi khái niệm
-1. Vì sao hàm truyền được định nghĩa với điều kiện đầu bằng 0?
-2. Vì sao biết hàm truyền cho phép giải nhanh nhiều bài với cùng một hệ?
-3. Cực của hàm truyền nói gì về ổn định và mode của hệ?
+1. Vì sao định nghĩa hàm truyền yêu cầu các điều kiện đầu bằng 0?
+2. Vì sao biết hàm truyền giúp rút ngắn đáng kể việc tính đáp ứng cho nhiều đầu vào khác nhau?
+3. Vị trí các cực của hàm truyền cho biết gì về tính ổn định và dạng dao động của hệ?
 
 ## Bài toán ứng dụng
-1. Một bộ lọc điện tử cần làm mượt tín hiệu cao tần. Hãy giải thích vì sao hàm truyền là công cụ tự nhiên để mô tả chức năng của bộ lọc.
-2. Trong điều khiển tự động, vì sao việc biết cực của hệ trước khi mô phỏng thời gian lại rất có giá trị?
-3. Một hệ đo lường có đầu ra chậm phản ứng với đầu vào thay đổi nhanh. Hãy giải thích hiện tượng này dưới ngôn ngữ hàm truyền bậc nhất.
+1. Một bộ lọc điện tử cần làm suy giảm tín hiệu tần số cao. Vì sao hàm truyền là công cụ tự nhiên để mô tả đặc tính lọc đó?
+2. Trong kỹ thuật điều khiển, vì sao việc kiểm tra vị trí cực trước khi mô phỏng theo thời gian có ý nghĩa quan trọng?
+3. Một hệ đo lường phản ứng chậm trước tín hiệu đầu vào biến đổi nhanh. Hãy giải thích hiện tượng này bằng hàm truyền bậc nhất.
 
 ## Chiến lược giảng dạy tương tác
-- Cho sinh viên nhìn ODE đầu vào-đầu ra rồi tự suy ra hàm truyền trước khi giáo viên chốt công thức.
-- Hỏi lớp: "Nếu giữ nguyên hệ nhưng thay đầu vào, phần nào của phép tính được giữ lại?"
-- Cho sinh viên ghép các hàm truyền đơn giản với dạng đáp ứng thời gian tương ứng.
-- Khuyến khích lớp diễn giải bằng lời cực âm, cực dương, cực phức dưới góc nhìn ổn định và dao động.
+- Cho sinh viên tự suy ra hàm truyền từ ODE đầu vào – đầu ra trước khi tổng quát hóa công thức.
+- Hỏi lớp: "Khi giữ nguyên hệ nhưng thay đổi tín hiệu đầu vào, phần nào của lời giải trong miền $$ s $$ không đổi?"
+- Ghép cặp giữa một số hàm truyền đơn giản với đồ thị đáp ứng thời gian tương ứng.
+- Thảo luận ý nghĩa ổn định và dao động của cực thực âm, cực thực dương và cặp cực phức.
 
 ## Phân hóa học tập
 ### Hỗ trợ sinh viên còn gặp khó khăn
-Nên để sinh viên yếu bám vào chuỗi đơn giản: ODE đầu vào-đầu ra, Laplace với điều kiện đầu bằng 0, rút $$ Y/X $$. Khi thấy quy trình lặp lại, hàm truyền sẽ bớt trừu tượng.
+Giữ quy trình ba bước ngắn gọn: viết ODE đầu vào – đầu ra, lấy Laplace với điều kiện đầu bằng 0 và rút tỉ số $$ Y(s)/X(s) $$.
 
 ### Thử thách cho sinh viên khá giỏi
-Có thể yêu cầu sinh viên khá giỏi nối hàm truyền với đáp ứng tần số sơ cấp, hoặc suy ra hàm truyền của một hệ bậc hai như RLC rồi phân tích các cực.
+Yêu cầu sinh viên liên hệ hàm truyền với đáp ứng tần số $$ H(i\omega) $$, hoặc suy ra hàm truyền của mạch RLC rồi phân tích quỹ đạo các cực khi thay đổi điện trở $$ R $$.
 
 ## Tóm tắt dễ nhớ
-Hàm truyền là bản mô tả gọn của hệ trong miền Laplace:
-$$ H(s)=\frac{Y(s)}{X(s)} $$
-khi điều kiện đầu bằng 0. Biết hàm truyền là biết cách hệ biến đổi mọi đầu vào. Các cực của nó chính là dấu vết đại số của các mode thời gian.
+Hàm truyền $$ H(s)=\frac{Y(s)}{X(s)} $$ (với điều kiện đầu bằng 0) mô tả gọn gàng đặc tính vào – ra của một hệ LTI trong miền Laplace. Các cực của hàm truyền tương ứng trực tiếp với các chế độ động học và tính ổn định của hệ trong miền thời gian.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Bộ lọc RC
-- Bài toán: Mạch RC đầu vào - đầu ra cần được mô tả độc lập với từng tín hiệu cụ thể.
+#### Bộ lọc thông thấp RC
+- Bài toán: Mô tả đặc tính lọc của mạch RC độc lập với từng tín hiệu đầu vào.
 - Mô hình:
 $$
-RC\,y'+y=x
-\quad\Rightarrow\quad
-H(s)=\frac{1}{RC\,s+1}.
+RC\,y'+y=x \quad\Rightarrow\quad H(s)=\frac{1}{RC\,s+1}.
 $$
-- Giả thiết và giới hạn: Điều kiện đầu bằng 0, hệ tuyến tính và bất biến theo thời gian.
-- Diễn giải: Hàm truyền là "chữ ký động" của hệ và cho biết nó lọc tín hiệu như thế nào.
+- Giả thiết và giới hạn: Điều kiện đầu bằng 0, hệ tuyến tính bất biến theo thời gian.
+- Diễn giải: Hàm truyền cho biết mức suy giảm tín hiệu theo tần số.
 
 #### Hệ cơ điện bậc hai
-- Bài toán: Một cảm biến hoặc bộ truyền động có quán tính, cản và hồi phục.
-- Mô hình:
-$$ m y''+c y'+k y=x(t). $$
+- Bài toán: Cảm biến hoặc cơ cấu chấp hành có quán tính, lực cản và độ cứng hồi phục.
+- Mô hình: $$ m y''+c y'+k y=x(t) $$, cho hàm truyền $$ H(s)=\frac{1}{ms^2+cs+k} $$.
 - Giả thiết và giới hạn: Tuyến tính hóa quanh điểm làm việc.
-- Diễn giải: Các cực của
-$$ H(s)=\frac{1}{ms^2+cs+k} $$
-cho biết hệ dao động, tắt dần hay mất ổn định.
+- Diễn giải: Vị trí các cực cho biết hệ dao động, tắt dần hay mất ổn định.
 
-#### Kinh tế và hộp đen đầu vào - đầu ra
-- Bài toán: Ta quan tâm hệ phản ứng với các cú sốc vào như thế nào hơn là từng chi tiết vi mô bên trong.
-- Mô hình:
-$$ H(s)=\frac{Y(s)}{X(s)}. $$
-- Giả thiết và giới hạn: Điều kiện đầu bằng 0 và hệ mang tính LTI.
-- Diễn giải: Hàm truyền cho phép tách "hệ" khỏi "đầu vào".
+#### Mô hình hộp đen đầu vào – đầu ra trong kinh tế
+- Bài toán: Quan tâm đến phản ứng tổng thể của hệ trước các cú sốc vào hơn là từng cơ chế vi mô bên trong.
+- Mô hình: $$ H(s)=\frac{Y(s)}{X(s)} $$.
+- Giả thiết và giới hạn: Điều kiện đầu bằng 0 và xấp xỉ tuyến tính bất biến theo thời gian.
+- Diễn giải: Tách biệt đặc tính của hệ khỏi tín hiệu đầu vào.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Hàm truyền là điểm chương Laplace chuyển hẳn sang tư duy hệ thống. Từ đây, giải ODE không còn là mục tiêu duy nhất; ta còn muốn mô tả, so sánh và thiết kế hệ. Một hiểu lầm phổ biến là nghĩ hàm truyền chính là nghiệm. Không phải vậy: nó là đặc trưng của hộp đen, còn nghiệm thời gian chỉ xuất hiện khi ghép nó với một đầu vào cụ thể.
+Hàm truyền đánh dấu bước chuyển từ giải ODE sang phân tích và thiết kế hệ thống. Cần phân biệt rõ: hàm truyền là thuộc tính của bản thân hệ ("hộp đen"), còn nghiệm thời gian chỉ xác định khi nhân hàm truyền với một đầu vào cụ thể rồi biến đổi ngược.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -186,7 +158,7 @@ plt.grid(alpha=0.3)
 plt.show()
 ```
 
-Đây là một trực quan rất tốt để thấy mạch bậc nhất điển hình phản ứng mạnh với tần số thấp và yếu dần với tần số cao.
+Đồ thị cho thấy hệ bậc nhất này truyền tốt tín hiệu tần số thấp và làm suy giảm dần tín hiệu tần số cao.
 
 ### 4. Gợi ý tìm thêm mô phỏng
 
@@ -196,33 +168,23 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Xét mạch RC:
-$$ RC\,y'+y=x. $$
-Áp Laplace với điều kiện đầu bằng 0:
-$$ (RC\,s+1)Y=X. $$
-Suy ra
-$$ H(s)=\frac{Y}{X}=\frac{1}{RC\,s+1}. $$
-Nếu đầu vào là bước đơn vị
-$$ x(t)=1,\qquad X(s)=\frac{1}{s}, $$
-thì
-$$ Y(s)=\frac{1}{s(RC\,s+1)}. $$
-Lấy ngược được
-$$ y(t)=1-e^{-t/(RC)}. $$
-Ví dụ này cho thấy rất rõ luồng tư duy: hàm truyền mô tả hộp đen, đầu vào cụ thể tạo ra đầu ra cụ thể.
+Xét mạch RC $$ RC\,y'+y=x $$. Lấy biến đổi Laplace với điều kiện đầu bằng 0 được $$ (RC\,s+1)Y=X $$, suy ra $$ H(s)=\frac{1}{RC\,s+1} $$. Khi đầu vào là bước đơn vị $$ x(t)=1 $$ ($$ X(s)=\frac{1}{s} $$), ta có
+$$ Y(s)=\frac{1}{s(RC\,s+1)}, $$
+và biến đổi ngược thu được $$ y(t)=1-e^{-t/(RC)} $$. Ví dụ minh họa rõ quy trình: hàm truyền đặc trưng cho mạch, còn đầu vào cụ thể quyết định đáp ứng cụ thể.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Dẫn xuất đúng hàm truyền từ ODE đầu vào - đầu ra với điều kiện đầu bằng 0.
+**Bậc đại học.** Thiết lập đúng hàm truyền từ ODE đầu vào – đầu ra với điều kiện đầu bằng 0.
 
-**Bậc sau đại học.** Đi tiếp sang cực, zero, đáp ứng tần số và ổn định nội tại của hệ.
+**Bậc sau đại học.** Mở rộng sang phân tích cực – điểm không, đáp ứng tần số (giản đồ Bode) và ổn định nội tại của hệ.
 
 ## Video tham khảo
 
-- xem trước: [Control Systems Lectures - Transfer Functions](https://www.youtube.com/watch?v=RJleGwXorUk) — Brian Douglas, tiếng Anh. Brian Douglas về hàm truyền như ánh xạ vào-ra của một hệ tuyến tính.
-- [Pole Diagrams | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=pUFSXhoazY8) — MIT OpenCourseWare, tiếng Anh. Giản đồ cực: các cực của hàm truyền quyết định tăng, tắt và dao động.
-- [The Laplace Transform and the Important Role it Plays](https://www.youtube.com/watch?v=VJ9phDRys_I) — Brian Douglas, tiếng Anh. Vì sao biến đổi Laplace là ngôn ngữ tự nhiên của các hàm truyền ấy.
+- Xem trước: [Control Systems Lectures - Transfer Functions](https://www.youtube.com/watch?v=RJleGwXorUk) — Brian Douglas, tiếng Anh. Giới thiệu hàm truyền như ánh xạ vào – ra của một hệ tuyến tính.
+- [Pole Diagrams | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=pUFSXhoazY8) — MIT OpenCourseWare, tiếng Anh. Giải thích cách các cực của hàm truyền quyết định tăng trưởng, tắt dần và dao động.
+- [The Laplace Transform and the Important Role it Plays](https://www.youtube.com/watch?v=VJ9phDRys_I) — Brian Douglas, tiếng Anh. Phân tích vì sao biến đổi Laplace là ngôn ngữ tự nhiên cho hàm truyền.
 
 ## Tài liệu tham khảo
-- Boyce & DiPrima — *Elementary Differential Equations*: phần hàm truyền rất phù hợp cho sinh viên lần đầu gặp ngôn ngữ hệ thống.
-- Zill — *Differential Equations with Boundary-Value Problems*: có nhiều ví dụ nối Laplace với mạch điện và hệ thống.
-- Ross — *Differential Equations*: ngắn gọn và hữu ích để ôn ý tưởng cốt lõi của transfer function.
+- Boyce & DiPrima — *Elementary Differential Equations*: phần hàm truyền trình bày rõ cho người mới làm quen với lý thuyết hệ thống.
+- Zill — *Differential Equations with Boundary-Value Problems*: nhiều ví dụ gắn biến đổi Laplace với mạch điện và hệ thống.
+- Ross — *Differential Equations*: ngắn gọn, thuận tiện để ôn ý tưởng cốt lõi của hàm truyền.

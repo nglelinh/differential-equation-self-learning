@@ -14,166 +14,166 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài optional này giới thiệu bài toán ngược như hướng ứng dụng tự nhiên của vi địa phương và PDE. Sau bài học, sinh viên cần phân biệt bài toán thuận với bài toán ngược, hiểu vì sao bài toán ngược thường không ổn định, và thấy vai trò của regularization, propagation of singularities, và dữ liệu không đầy đủ trong tái dựng.
+Bài học tùy chọn này giới thiệu bài toán ngược như một hướng ứng dụng quan trọng của giải tích vi địa phương và PDE. Sau bài học, sinh viên cần phân biệt rõ bài toán thuận với bài toán ngược, hiểu vì sao bài toán ngược thường không ổn định, và nắm vai trò của chính quy hóa (regularization), sự lan truyền kỳ dị và tính không đầy đủ của dữ liệu trong quá trình tái tạo.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm propagation of singularities, phương trình sóng hay elliptic cơ bản, và trực giác về dữ liệu đo bị nhiễu. Cũng nên nhớ rằng trong bài toán thuận, mô hình đã biết; còn trong bài toán ngược, thứ cần tìm lại chính là cấu trúc ẩn của hệ.
+Sinh viên nên nắm định lý lan truyền kỳ dị, các phương trình sóng và elliptic cơ bản cùng trực giác về dữ liệu đo có nhiễu. Điểm khác biệt cốt lõi là trong bài toán thuận, mô hình và tham số đã biết trước; còn trong bài toán ngược, chính cấu trúc ẩn của hệ là đối tượng cần tìm.
 
 ## Dẫn nhập
 
-Trong bài toán thuận, ta biết phương trình, biết hệ số, biết nguồn, rồi tính ra nghiệm hoặc dữ liệu đo. Trong bài toán ngược, thứ tự ấy bị đảo lại: ta quan sát dữ liệu ở ngoài, rồi cố suy ra bên trong. Đó là bản chất của chụp cắt lớp, địa chấn phản xạ, siêu âm, radar, và rất nhiều công nghệ hiện đại.
+Trong bài toán thuận, ta biết phương trình, hệ số và nguồn, từ đó tính ra nghiệm hoặc dữ liệu quan sát. Trong bài toán ngược, chiều suy luận đảo lại: từ dữ liệu đo ở bên ngoài, ta tìm cách suy ra cấu trúc bên trong. Đây là bản chất của chụp cắt lớp vi tính, địa chấn phản xạ, siêu âm, radar và nhiều kỹ thuật đo đạc hiện đại.
 
-Điều làm bài toán ngược khó hơn nhiều là tính không ổn định. Một nhiễu rất nhỏ trong dữ liệu có thể gây thay đổi lớn trong đối tượng tái dựng. Vì vậy, đây là nơi phân tích, PDE, thống kê, và tính toán gặp nhau một cách rất thực tế.
+Thách thức lớn nhất của bài toán ngược là tính không ổn định: một nhiễu rất nhỏ trong dữ liệu đo có thể dẫn tới sai lệch lớn trong kết quả tái tạo. Vì thế, đây là điểm giao thoa thực tiễn giữa giải tích PDE, thống kê và tính toán khoa học.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Hãy tưởng tượng bạn nghe tiếng vọng trong một căn phòng và cố suy ra hình dạng của căn phòng từ tiếng vọng đó. Đây là bài toán ngược: từ kết quả đo bên ngoài, suy ra cấu trúc không nhìn thấy trực tiếp.
+Hãy tưởng tượng việc lắng nghe tiếng vọng trong một căn phòng để suy đoán hình dạng căn phòng đó. Bài toán ngược hoạt động theo nguyên tắc tương tự: từ các phép đo gián tiếp bên ngoài, khôi phục cấu trúc không thể quan sát trực tiếp bên trong.
 
 ### Cách hình ảnh
 
-Giáo viên nên vẽ hai mũi tên:
+Có thể biểu diễn hai chiều đối ngược bằng hai mũi tên:
 
 - bài toán thuận: tham số -> mô hình -> dữ liệu;
-- bài toán ngược: dữ liệu -> tái dựng tham số.
+- bài toán ngược: dữ liệu -> tái tạo tham số.
 
-Sau đó thêm một đám “nhiễu” ở phía dữ liệu để sinh viên thấy ngay điểm khó: dữ liệu đầu vào của bài toán ngược vốn đã không sạch.
+Khi bổ sung thêm thành phần nhiễu vào phía dữ liệu đo, người học thấy ngay bản chất khó khăn của bài toán ngược: đầu vào của phép nghịch đảo luôn chứa sai số.
 
 ### Cách hình thức
 
-Nếu bài toán thuận được mô hình hóa như $$ \mathcal{F}(m)=d $$, trong đó $$ m $$ là tham số hay cấu trúc ẩn, còn $$ d $$ là dữ liệu, thì bài toán ngược là tìm $$ m $$ từ $$ d $$. Trong nhiều trường hợp, ánh xạ $$ \mathcal{F}^{-1} $$:
+Nếu bài toán thuận được biểu diễn dưới dạng $$ \mathcal{F}(m)=d $$, với $$ m $$ là tham số hoặc cấu trúc ẩn còn $$ d $$ là dữ liệu quan sát, thì bài toán ngược yêu cầu xác định $$ m $$ từ $$ d $$. Trong nhiều trường hợp thực tế, ánh xạ ngược $$ \mathcal{F}^{-1} $$:
 
-- không tồn tại toàn cục;
+- không tồn tại trên toàn miền dữ liệu;
 - không duy nhất;
-- hoặc rất không ổn định.
+- hoặc không liên tục (rất nhạy cảm với nhiễu).
 
-Điều đó dẫn đến nhu cầu regularization và các kỹ thuật dùng thông tin trước.
+Do đó, ta cần các phương pháp chính quy hóa và thông tin tiên nghiệm (prior).
 
 ## Ngộ nhận thường gặp
 
-### “Bài toán ngược chỉ là giải ngược lại một công thức”
+### “Bài toán ngược chỉ là giải ngược một công thức đại số”
 
-Sai. Khó khăn chính là không ổn định và thiếu dữ liệu.
+Sai. Trở ngại cốt lõi nằm ở tính không ổn định và sự thiếu hụt dữ liệu đo.
 
-### “Nếu dữ liệu nhiều thì tự động tái dựng tốt”
+### “Càng nhiều dữ liệu thì kết quả tái tạo tự động càng tốt”
 
-Không. Cách dữ liệu liên hệ với singularity của đối tượng quan trọng không kém số lượng dữ liệu.
+Không hẳn. Cách dữ liệu ghi nhận các hướng kỳ dị của đối tượng quan trọng không kém số lượng phép đo.
 
-### “Regularization là mẹo kỹ thuật làm sai bài toán”
+### “Chính quy hóa là thủ thuật làm sai lệch bài toán”
 
-Không. Nó là cách làm cho bài toán trở nên có ý nghĩa trước nhiễu.
+Không đúng. Chính quy hóa là cơ chế toán học giúp xác định một nghiệm ổn định và có ý nghĩa trước nhiễu đo.
 
-### “Microlocal analysis quá trừu tượng để giúp bài toán ngược”
+### “Giải tích vi địa phương quá trừu tượng để áp dụng cho bài toán ngược”
 
-Sai. Chính nó giúp hiểu singularity nào có thể thấy được và singularity nào bị mất.
+Sai. Chính giải tích vi địa phương xác định được kỳ dị nào là khả kiến và kỳ dị nào bị khuất trong dữ liệu đo.
 
 ## Bộ ba câu hỏi trung tâm
 
-Khi bắt đầu học bài toán ngược, sinh viên thường gom mọi khó khăn vào một từ chung là “khó”. Thực ra nên tách thành ba câu hỏi khác nhau:
+Thay vì gộp chung mọi trở ngại của bài toán ngược thành một khái niệm mơ hồ là “khó”, nên tách thành ba câu hỏi độc lập:
 
-- khả kiến: singularity hay đặc trưng nào của đối tượng có thật sự đi vào dữ liệu đo;
-- duy nhất: dữ liệu hiện có có xác định được một nghiệm duy nhất hay không;
-- ổn định: nhiễu nhỏ của dữ liệu có làm tái dựng dao động mạnh hay không.
+- **tính khả kiến:** những kỳ dị hoặc đặc trưng nào của đối tượng thực sự đi vào dữ liệu đo;
+- **tính duy nhất:** dữ liệu hiện có có xác định duy nhất một nghiệm hay không;
+- **tính ổn định:** nhiễu nhỏ trong dữ liệu có gây dao động lớn ở nghiệm tái tạo hay không.
 
-Tách bộ ba này ra giúp sinh viên đọc tài liệu nghiên cứu tốt hơn, vì rất nhiều bài báo chỉ giải quyết một hoặc hai câu hỏi trong số đó, chứ không phải toàn bộ bài toán ngược một lúc.
+Cách phân tách này giúp đọc tài liệu nghiên cứu rõ ràng hơn, vì nhiều công trình tập trung giải quyết riêng một hoặc hai khía cạnh trong bộ ba trên.
 
 ## Tiến trình học
 
-### Bước 1: Phân biệt thuận và ngược
+### Bước 1: Phân biệt bài toán thuận và bài toán ngược
 
-Sinh viên phải thấy bài toán ngược không chỉ là “đổi chiều suy luận”.
+Nhấn mạnh rằng bài toán ngược không đơn thuần là đảo chiều công thức.
 
 ### Bước 2: Hiểu tính không ổn định
 
-Nhiễu nhỏ ở dữ liệu có thể khuếch đại mạnh khi tái dựng.
+Phân tích cơ chế nhiễu nhỏ trong dữ liệu bị khuếch đại mạnh khi nghịch đảo trực tiếp.
 
-### Bước 3: Đưa vào regularization
+### Bước 3: Áp dụng chính quy hóa
 
-Nêu vai trò của ràng buộc bổ sung hay thông tin prior.
+Làm rõ vai trò của các ràng buộc bổ sung và thông tin tiên nghiệm.
 
-### Bước 4: Kết nối với vi địa phương
+### Bước 4: Kết nối với giải tích vi địa phương
 
-Dùng propagation of singularities để hiểu dữ liệu nhìn thấy những cạnh hay singularity nào.
+Sử dụng định lý lan truyền kỳ dị để xác định những biên cạnh nào có thể quan sát được từ dữ liệu.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có giải thích được vì sao bài toán ngược thường khó hơn bài toán thuận không?
-- Sinh viên có nêu được ít nhất một lý do cần regularization không?
-- Sinh viên có hiểu tại sao visibility của singularity là câu hỏi trung tâm không?
+- Sinh viên có giải thích được vì sao bài toán ngược thường không ổn định hơn bài toán thuận hay không?
+- Sinh viên có nêu được lý do cần dùng chính quy hóa hay không?
+- Sinh viên có hiểu vì sao tính khả kiến của kỳ dị là câu hỏi trọng tâm hay không?
 
 ## Ví dụ có lời giải
 
-### Ví dụ 1: Chụp cắt lớp
+### Ví dụ 1: Chụp cắt lớp vi tính (CT)
 
-Trong CT scan, dữ liệu là các tích phân tia X qua cơ thể. Từ các tích phân đó, ta cố tái dựng mật độ bên trong. Đây là bài toán ngược điển hình: dữ liệu đo ngoài biên, đối tượng cần tìm ở bên trong.
+Trong chụp cắt lớp vi tính, dữ liệu đo là các tích phân tia X đi qua cơ thể; từ đó cần khôi phục hàm mật độ mô bên trong. Đây là bài toán ngược điển hình với dữ liệu đo ở ngoài biên và đối tượng cần tìm nằm bên trong.
 
 ### Ví dụ 2: Địa chấn phản xạ
 
-Sóng được phát xuống lòng đất và tín hiệu phản xạ được ghi lại trên mặt đất. Từ thời gian và cấu trúc tín hiệu phản xạ, ta suy ra lớp địa chất bên dưới. Singularity của tín hiệu phản xạ thường tương ứng với biên của các lớp vật liệu.
+Sóng đàn hồi được phát xuống lòng đất và tín hiệu phản xạ được ghi nhận tại bề mặt. Từ thời gian truyền và dạng sóng phản xạ, ta suy ra cấu trúc địa tầng bên dưới; các kỳ dị của tín hiệu đo tương ứng trực tiếp với ranh giới giữa các lớp đất đá.
 
-### Ví dụ 3: Tính không ổn định
+### Ví dụ 3: Tính không ổn định trước nhiễu cao tần
 
-Nếu dữ liệu bị nhiễu cao tần, phép nghịch đảo thô có thể khuếch đại nhiễu này rất mạnh. Ví dụ này giải thích vì sao tái dựng trực tiếp thường cho ảnh đầy nhiễu và cần regularization.
+Khi dữ liệu chứa nhiễu tần số cao, phép nghịch đảo thô sẽ khuếch đại mạnh thành phần nhiễu đó, khiến ảnh tái tạo bị hỏng nếu không áp dụng chính quy hóa.
 
-### Ví dụ 4: Vai trò của microlocal analysis
+### Ví dụ 4: Vai trò của giải tích vi địa phương
 
-Trong nhiều mô hình sóng, singularity quan sát được ở dữ liệu đo có thể được kéo ngược qua FIO để suy ra singularity của vật thể. Ví dụ này cho thấy vi địa phương không chỉ là lý thuyết trừu tượng mà là công cụ để quyết định “cái gì nhìn thấy được”.
+Trong các mô hình truyền sóng, kỳ dị ghi nhận trên dữ liệu đo có thể được ánh xạ ngược thông qua toán tử FIO để suy ra kỳ dị của vật thể. Điều này cho thấy giải tích vi địa phương là công cụ thực tiễn để xác định chính xác phần cấu trúc nào là khả kiến.
 
-### Ví dụ 5: Mất khả kiến vì góc đo hạn chế
+### Ví dụ 5: Mất tính khả kiến do góc đo hạn chế
 
-Nếu máy đo chỉ quan sát được từ một số góc nhất định, một số biên của vật thể có thể không tạo ra dữ liệu đủ mạnh để tái dựng. Đây là ví dụ rất trực quan cho câu hỏi khả kiến: không phải mọi singularity của vật thể đều có đường đi tới thiết bị đo.
+Nếu thiết bị chỉ thu thập dữ liệu trên một dải góc chiếu hạn chế, một số biên cạnh của vật thể sẽ không tạo tín hiệu đủ rõ để tái tạo. Đây là minh họa trực tiếp cho câu hỏi khả kiến: không phải mọi kỳ dị của vật thể đều truyền được thông tin tới thiết bị đo.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao bài toán ngược thường không ổn định hơn nhiều so với bài toán thuận?
-2. Regularization đang sửa dữ liệu hay sửa chính khái niệm nghiệm của bài toán?
-3. Tại sao việc hiểu singularity nào có thể được quan sát là câu hỏi quan trọng hơn việc tái dựng toàn bộ hàm một cách mù quáng?
+1. Vì sao bài toán ngược thường kém ổn định hơn nhiều so với bài toán thuận?
+2. Chính quy hóa thực chất đang điều chỉnh dữ liệu đo hay điều chỉnh bản thân khái niệm nghiệm?
+3. Vì sao xác định những kỳ dị nào khả kiến lại quan trọng trước khi cố tái tạo toàn bộ hàm?
 
 ## Bài toán ứng dụng
 
-1. Trong y sinh, vì sao ảnh CT hay siêu âm về bản chất là kết quả của bài toán ngược?
-2. Trong địa vật lý, vì sao phản xạ sóng lại mang thông tin rõ nhất về các biên lớp vật chất?
-3. Trong kiểm tra không phá hủy vật liệu, việc phát hiện vết nứt là ví dụ của tái dựng singularity như thế nào?
+1. Trong y sinh, vì sao ảnh CT hay siêu âm về bản chất là nghiệm của một bài toán ngược?
+2. Trong địa vật lý, vì sao sóng phản xạ mang thông tin sắc nét nhất về các ranh giới địa tầng?
+3. Trong kiểm tra không phá hủy vật liệu, việc phát hiện vết nứt liên hệ thế nào với bài toán tái tạo kỳ dị?
 
 ## Chiến lược dạy học tương tác
 
-### Câu hỏi nên hỏi trên lớp
+### Câu hỏi nên đặt trên lớp
 
-- Nếu dữ liệu có nhiễu, em có nên tin hoàn toàn vào nghiệm nghịch đảo thô không?
-- Trong một ảnh y khoa, ta cần tái dựng toàn bộ hàm thật hay chủ yếu là các biên quan trọng?
-- Tại sao bài toán ngược luôn gắn chặt với câu hỏi “dữ liệu nào là đủ”?
+- Khi dữ liệu đo có nhiễu, ta có thể tin hoàn toàn vào nghiệm nghịch đảo trực tiếp không?
+- Trong ảnh y khoa, mục tiêu quan trọng hơn là tái tạo chính xác mọi giá trị nền hay định vị đúng các đường biên?
+- Vì sao bài toán ngược luôn gắn liền với câu hỏi “hình học đo như thế nào là đủ”?
 
 ### Hoạt động gợi ý
 
-- Cho sinh viên vẽ sơ đồ thuận-ngược cho một ứng dụng thực tế.
-- Thảo luận nhóm về việc regularization đánh đổi giữa ổn định và độ sắc nét.
-- So sánh một dữ liệu sạch và một dữ liệu nhiễu trong mô phỏng tái dựng đơn giản.
+- Cho sinh viên vẽ sơ đồ thuận–ngược cho một ứng dụng cụ thể.
+- Thảo luận nhóm về sự đánh đổi giữa độ ổn định và độ sắc nét khi điều chỉnh tham số chính quy hóa.
+- So sánh trực quan kết quả tái tạo từ dữ liệu sạch và dữ liệu có nhiễu trên một mô phỏng đơn giản.
 
-### Cách tăng tham gia
+### Cách tăng mức độ tham gia
 
-- Bắt đầu bằng ví dụ chụp cắt lớp mà sinh viên biết.
-- Cho sinh viên đề xuất nguồn nhiễu thực tế trong đo đạc.
-- Mời sinh viên tranh luận xem trong ảnh y khoa, biên hay giá trị tuyệt đối quan trọng hơn.
+- Mở đầu bằng ứng dụng quen thuộc như chụp cắt lớp CT.
+- Đề nghị sinh viên liệt kê các nguồn nhiễu thực tế trong phép đo.
+- Thảo luận xem trong ảnh y khoa, biên cấu trúc hay giá trị tuyệt đối quan trọng hơn.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Tập trung vào sơ đồ khái niệm hơn là mô hình chi tiết.
-- Dùng các ví dụ đời thực như CT, địa chấn, siêu âm.
-- Nhấn mạnh một thông điệp: bài toán ngược khó vì dữ liệu không đầy đủ và có nhiễu.
+- Tập trung vào sơ đồ khái niệm trước khi đi vào công thức chi tiết.
+- Khai thác các ví dụ thực tiễn như CT, địa chấn và siêu âm.
+- Nhấn mạnh thông điệp cốt lõi: bài toán ngược khó do dữ liệu không đầy đủ và có nhiễu.
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Tìm hiểu ngắn gọn về regularization kiểu Tikhonov.
-- Liên hệ Radon transform với CT.
-- Khảo sát vai trò của FIO trong việc kéo ngược wave front set.
+- Tìm hiểu ngắn gọn phương pháp chính quy hóa Tikhonov.
+- Liên hệ biến đổi Radon với mô hình toán học của CT.
+- Khảo sát vai trò của FIO trong việc ánh xạ ngược tập mặt sóng.
 
 ## Ghi nhớ nhanh
 
-Bài toán ngược cố tái dựng cấu trúc ẩn từ dữ liệu quan sát. Nó thường khó vì không ổn định, và vi địa phương giúp trả lời câu hỏi cốt lõi: singularity nào của đối tượng thật sự có thể được nhìn thấy trong dữ liệu.
+Bài toán ngược hướng tới việc khôi phục cấu trúc ẩn từ dữ liệu quan sát. Do tính không ổn định trước nhiễu, chính quy hóa là bắt buộc, còn giải tích vi địa phương giúp xác định chính xác kỳ dị nào của đối tượng thực sự khả kiến trong dữ liệu.
 
 ---
 
@@ -181,25 +181,25 @@ Bài toán ngược cố tái dựng cấu trúc ẩn từ dữ liệu quan sát
 
 ### 1. Chụp cắt lớp vi tính
 
-Mô hình cơ bản của CT là biến đổi Radon
+Mô hình toán học cơ bản của CT là biến đổi Radon:
 
 $$
 Rf(\theta,s)=\int_{x\cdot \theta=s} f(x)\,d\sigma(x).
 $$
 
-Bài toán ngược là tìm mật độ $$ f $$ từ các tích phân tia X. Mô hình này giả định tia đi thẳng và tán xạ không đáng kể, điều chỉ gần đúng trong thực tế. Diễn giải quan trọng là chất lượng tái dựng phụ thuộc không chỉ vào thuật toán nghịch đảo mà còn vào việc singularity nào thực sự được hình học phép đo nhìn thấy.
+Bài toán ngược là xác định mật độ $$ f $$ từ các tích phân tia X (dưới giả thiết tia đi thẳng và bỏ qua tán xạ). Chất lượng ảnh tái tạo không chỉ phụ thuộc vào thuật toán nghịch đảo mà còn phụ thuộc vào những kỳ dị nào thực sự được hình học phép đo ghi nhận.
 
-### 2. Chụp trở kháng điện
+### 2. Chụp ảnh trở kháng điện (EIT)
 
-Trong EIT, ta áp điện áp trên biên cơ thể và đo dòng điện tạo ra. Mô hình PDE đơn giản là $$ \nabla \cdot (\gamma(x) \nabla u)=0 $$, với $$ \gamma(x) $$ là độ dẫn chưa biết. Mô hình giả định môi trường liên tục và tiếp xúc điện cực tốt. Đây là bài toán ngược rất không chỉnh, nên nhiễu nhỏ có thể phá hủy chi tiết cao tần. Diễn giải là: khôi phục cấu trúc thô thường ổn định hơn nhiều so với khôi phục biên sắc nét.
+Trong EIT, ta đặt điện áp trên biên cơ thể và đo dòng điện sinh ra. Mô hình PDE cơ bản là $$ \nabla \cdot (\gamma(x) \nabla u)=0 $$, với độ dẫn $$ \gamma(x) $$ chưa biết (giả sử môi trường liên tục và tiếp xúc điện cực tốt). Đây là bài toán ngược không chỉnh nghiêm trọng nên nhiễu nhỏ dễ phá hủy chi tiết tần số cao; việc khôi phục cấu trúc thô vì thế ổn định hơn nhiều so với khôi phục biên sắc nét.
 
 ### 3. Nghịch đảo địa chấn
 
-Với trường sóng thỏa $$ u_{tt}-c(x)^2\Delta u=s $$, ta muốn suy ra vận tốc $$ c(x) $$ hoặc các mặt phản xạ từ số liệu ở biên. Mô hình giả định biết nguồn phát và chế độ sóng gần tuyến tính. Giới hạn là multipathing, suy hao, và nguồn không chắc chắn làm bài toán khó hơn đáng kể. Diễn giải thực tế là thông tin đáng tin cậy đầu tiên thường nằm ở thời gian truyền và các biên phản xạ, chứ không phải ở toàn bộ bản đồ hệ số trơn.
+Với phương trình sóng $$ u_{tt}-c(x)^2\Delta u=s $$, mục tiêu là suy ra vận tốc $$ c(x) $$ hoặc các mặt phản xạ từ dữ liệu bề mặt (dưới giả thiết biết nguồn phát và chế độ gần tuyến tính). Hiện tượng đa đường truyền (multipathing), suy hao và sai số nguồn khiến bài toán khó hơn nhiều; thông tin tin cậy nhất thường nằm ở thời gian truyền và vị trí các mặt phản xạ thay vì toàn bộ trường vận tốc trơn.
 
 ## Trực giác sâu hơn
 
-Bài toán ngược không chỉ là “làm phép ngược”. Ta đang cố đảo một ánh xạ có thể làm mất, làm mờ, hoặc khuếch đại thông tin. Ngộ nhận thường gặp là cứ có thêm dữ liệu thì nghiệm sẽ ổn định hơn. Trên thực tế, hình học đo đạc, độ nhìn thấy, và cơ chế khuếch đại nhiễu mới là các yếu tố quyết định.
+Bài toán ngược không đơn thuần là đảo chiều một phép tính mà là đảo một ánh xạ vốn có thể làm mờ, suy giảm hoặc mất mát thông tin. Thêm dữ liệu chỉ hữu ích khi hình học đo bổ sung được các hướng khả kiến mới và kiểm soát tốt mức khuếch đại nhiễu.
 
 ## Trực quan hóa bằng Python
 
@@ -232,7 +232,7 @@ plt.show()
 
 ## Trực quan hóa bằng JavaScript
 
-Có thể dùng `Plotly.js` để cho sinh viên kéo thanh trượt mức nhiễu và tham số regularization, rồi quan sát ảnh hưởng của chúng lên nghiệm nghịch đảo trong ví dụ deblurring 1D.
+Có thể dùng `Plotly.js` để sinh viên điều chỉnh mức nhiễu và tham số chính quy hóa bằng thanh trượt, quan sát trực tiếp tác động lên nghiệm tái tạo trong bài toán khử mờ 1D.
 
 ## Gợi ý tài nguyên ngoài
 
@@ -242,11 +242,11 @@ Tìm kiếm: `limited angle tomography artifacts`, `electrical impedance tomogra
 
 ### Mức đại học (Undergraduate)
 
-Tập trung vào sự khác nhau giữa bài toán thuận và ngược, cùng với trực giác rằng nhiễu có thể làm phép nghịch đảo rất không ổn định.
+Tập trung vào sự khác biệt giữa bài toán thuận và ngược, cùng trực giác về cách nhiễu làm phép nghịch đảo mất ổn định.
 
 ### Mức sau đại học (Graduate)
 
-Đi sâu vào linearization, normal operators, ước lượng ổn định, regularization kiểu Tikhonov, và các định lý khả kiến vi địa phương cho các toán tử đo kiểu Radon hay toán tử sóng.
+Đi sâu vào tuyến tính hóa, toán tử chuẩn tắc (normal operators), ước lượng ổn định, chính quy hóa Tikhonov và các định lý khả kiến vi địa phương cho biến đổi Radon và toán tử sóng.
 
 > Xem toàn bộ minh họa tương tác của chương tại: [Bộ Minh họa tương tác Chương 15]({{ site.baseurl }}/contents/vi/chapter15/15_10_Interactive_Gallery/)
 
@@ -255,20 +255,20 @@ Tập trung vào sự khác nhau giữa bài toán thuận và ngược, cùng v
 ### 1. Ứng dụng thực tế
 
 #### Chụp cắt lớp y học
-- Bài toán: Từ các phép đo gián tiếp, ta muốn khôi phục cấu trúc bên trong cơ thể.
-- Mô hình: Toán tử thuận ánh xạ vật thể sang dữ liệu; bài toán ngược là tìm nghịch đảo hay nghịch đảo gần đúng.
-- Giả thiết và giới hạn: Dữ liệu hữu hạn góc, nhiễu và mô hình chưa hoàn hảo đều làm bài toán không ổn định.
-- Diễn giải: Microlocal analysis cho biết singularity nào có thể thấy được từ dữ liệu.
+- Bài toán: Khôi phục cấu trúc bên trong cơ thể từ các phép đo gián tiếp bên ngoài.
+- Mô hình: Toán tử thuận ánh xạ vật thể sang dữ liệu; bài toán ngược tìm nghịch đảo hoặc nghịch đảo xấp xỉ.
+- Giả thiết và giới hạn: Góc chiếu hữu hạn, nhiễu đo và sai số mô hình đều làm giảm độ ổn định.
+- Diễn giải: Giải tích vi địa phương chỉ rõ kỳ dị nào khả kiến từ dữ liệu đo.
 
-#### Bài toán nghịch địa chấn
-- Bài toán: Từ sóng đo trên bề mặt, suy ra các mặt phản xạ trong lòng đất.
-- Mô hình: Dùng linearization, normal operator và FIO để phân tích stability và visibility.
-- Giả thiết và giới hạn: Không phải mọi hướng singularity đều được quan sát.
-- Diễn giải: "Thấy được" trong phase space quan trọng hơn chỉ "có tồn tại" trong không gian vật lý.
+#### Bài toán ngược địa chấn
+- Bài toán: Suy ra các mặt phản xạ trong lòng đất từ dữ liệu sóng trên bề mặt.
+- Mô hình: Kết hợp tuyến tính hóa, toán tử chuẩn tắc và FIO để phân tích tính ổn định và tính khả kiến.
+- Giả thiết và giới hạn: Không phải mọi hướng kỳ dị đều được ghi nhận bởi hệ cảm biến.
+- Diễn giải: Tính khả kiến trên không gian pha quan trọng hơn sự tồn tại đơn thuần trong không gian vật lý.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Bài toán ngược thường không ổn định vì nghịch đảo của bộ lọc suy giảm cao tần sẽ khuếch đại nhiễu. Điều này giải thích vì sao regularization là bắt buộc chứ không phải tùy chọn. Một ngộ nhận phổ biến là nếu bài toán thuận có nghiệm duy nhất thì bài toán ngược cũng ổn định; điều đó sai trong rất nhiều bài toán thực tế.
+Bài toán ngược thường không ổn định vì nghịch đảo của một toán tử làm suy giảm cao tần sẽ khuếch đại mạnh nhiễu đo; do đó chính quy hóa là yêu cầu bắt buộc. Ngay cả khi bài toán thuận có nghiệm duy nhất, bài toán ngược tương ứng vẫn có thể rất kém ổn định.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -304,20 +304,20 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Nếu toán tử thuận là convolution với symbol $$ a(\xi) $$ nhỏ ở cao tần, thì nghịch đảo chính thức nhân bởi $$ 1/a(\xi) $$ sẽ khuếch đại nhiễu tại nơi $$ a(\xi) $$ gần $$ 0 $$. Vì vậy regularization kiểu Tikhonov thay nghịch đảo bởi
+Nếu toán tử thuận là phép tích chập với ký hiệu $$ a(\xi) $$ rất nhỏ ở tần số cao, phép nghịch đảo hình thức nhân bởi $$ 1/a(\xi) $$ sẽ khuếch đại mạnh nhiễu tại nơi $$ a(\xi) $$ gần $$ 0 $$. Chính quy hóa Tikhonov thay thế bằng bộ nhân ổn định hơn:
 $$
 \frac{\overline{a(\xi)}}{\lvert a(\xi)\rvert^2+\varepsilon}.
 $$
-Đây là ví dụ điển hình cho lý do bất ổn định của bài toán ngược.
+Đây là minh họa tiêu biểu cho bản chất bất ổn định của bài toán ngược.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Phân biệt bài toán thuận và ngược qua ví dụ deblurring đơn giản.
+**Bậc đại học.** Phân biệt bài toán thuận và ngược qua ví dụ khử mờ đơn giản.
 
-**Bậc sau đại học.** Kết nối với normal operators, visibility, regularization va microlocal reconstruction theorems.
+**Bậc sau đại học.** Kết nối với toán tử chuẩn tắc, tính khả kiến, chính quy hóa và các định lý tái tạo vi địa phương.
 
 ## Video tham khảo
 
-- xem trước: [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Bài vi địa phương của Zworski, bộ công cụ của các bài toán biên và phổ ngược.
-- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Vasy về tán xạ và các bài toán toàn cục kiểu ngược cho toán tử sóng.
-- [Introduction to Fourier Integral operators 1 (Allan Greenleaf)](https://www.youtube.com/watch?v=4O_oC9kFFWQ) — Mathematics video VAROQUI Hervé, Tiếng Việt. Toán tử tích phân Fourier, thứ mô tả phép đo trong nhiều bài toán ngược.
+- Nên xem trước: [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Các phương pháp vi địa phương của Maciej Zworski dùng cho bài toán biên và phổ ngược.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Bài giảng của András Vasy về lý thuyết tán xạ và các bài toán toàn cục kiểu ngược cho toán tử sóng.
+- [Introduction to Fourier Integral operators 1 (Allan Greenleaf)](https://www.youtube.com/watch?v=4O_oC9kFFWQ) — Mathematics video VAROQUI Hervé, tiếng Việt. Toán tử tích phân Fourier — công cụ mô tả phép đo trong nhiều bài toán ngược.

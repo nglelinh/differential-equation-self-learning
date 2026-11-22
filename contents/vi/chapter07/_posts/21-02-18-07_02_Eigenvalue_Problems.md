@@ -12,78 +12,70 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giới thiệu bài toán trị riêng của ODE như bước chuyển quan trọng từ BVP thông thường sang lý thuyết phổ. Sau bài học, sinh viên cần hiểu trị riêng là gì, vì sao chỉ một số giá trị tham số đặc biệt mới cho nghiệm không tầm thường, biết giải bài toán mẫu trên đoạn hữu hạn, và thấy mối liên hệ trực tiếp giữa trị riêng, mode riêng và tần số tự nhiên của hệ vật lý.
+Bài học này giới thiệu bài toán trị riêng cho phương trình vi phân thường như bước chuyển tiếp từ BVP thông thường sang lý thuyết phổ. Sau bài học, sinh viên cần hiểu khái niệm trị riêng và hàm riêng, giải thích được vì sao chỉ một số giá trị tham số đặc biệt mới cho nghiệm không tầm thường, giải thành thạo bài toán mẫu trên đoạn hữu hạn và nhận ra mối liên hệ giữa trị riêng, chế độ riêng và tần số tự nhiên trong vật lý.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm chắc BVP hai điểm, phương trình tuyến tính cấp hai hệ số hằng, và trực giác từ đại số tuyến tính về trị riêng của ma trận. Bài này đặc biệt hiệu quả nếu giảng viên liên tục đối chiếu với đại số tuyến tính để sinh viên thấy sự quen thuộc trong một bối cảnh vô hạn chiều.
+Sinh viên cần nắm vững BVP hai điểm, phương trình vi phân tuyến tính cấp hai hệ số hằng và khái niệm trị riêng, vector riêng của ma trận trong đại số tuyến tính. Việc đối chiếu thường xuyên với đại số tuyến tính sẽ giúp khái niệm toán tử trên không gian hàm trở nên gần gũi hơn.
 
 ## Dẫn nhập
 
 ![Bài toán trị riêng Sturm-Liouville]({{ site.imgurl }}/chapter_img/chapter07/02_eigenvalue_problems.svg)
 
-Trong một BVP thông thường, dữ kiện ở vế phải và điều kiện biên thường được cho sẵn, và ta hỏi có nghiệm hay không. Nhưng đôi khi trong phương trình xuất hiện một tham số, và bài toán đổi thành: với những giá trị nào của tham số đó, ta mới có một nghiệm không tầm thường thỏa điều kiện biên? Khi ấy, ta bước vào thế giới của bài toán trị riêng.
+Trong một BVP thông thường, phương trình và điều kiện biên được cho trước để tìm nghiệm. Khi phương trình thuần nhất chứa một tham số chưa biết $$ \lambda $$, bài toán chuyển thành câu hỏi mới: với những giá trị nào của $$ \lambda $$ thì bài toán tồn tại nghiệm không tầm thường thỏa mãn điều kiện biên? Đó là **bài toán trị riêng**.
 
-Ý tưởng này rất đẹp vì nó hoàn toàn song song với đại số tuyến tính. Với ma trận $$ A $$, ta tìm $$ \lambda $$ để phương trình $$ A\mathbf{v}=\lambda \mathbf{v} $$ có vector riêng khác 0. Với toán tử vi phân, ta cũng làm điều tương tự: chỉ những giá trị tham số đặc biệt mới cho phép xuất hiện nghiệm khác không. Các nghiệm đó chính là hàm riêng, và trong vật lý chúng thường là các mode dao động hoặc trạng thái cộng hưởng.
+Cấu trúc này hoàn toàn song song với đại số tuyến tính: thay vì tìm $$ \lambda $$ để phương trình ma trận $$ A\mathbf{v}=\lambda \mathbf{v} $$ có vector riêng khác 0, ở đây ta tìm các giá trị $$ \lambda $$ để toán tử vi phân có nghiệm khác không thỏa điều kiện biên. Các nghiệm đó là **hàm riêng**, và trong vật lý chúng tương ứng với các chế độ dao động tự nhiên hoặc trạng thái dừng.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Hãy nghĩ đến một dây đàn bị giữ cố định ở hai đầu. Không phải mọi tần số đều cho phép dây dao động tự nhiên. Chỉ một số tần số đặc biệt tạo ra hình dạng sóng khớp hoàn toàn với điều kiện ở hai đầu. Những tần số đó là trị riêng, còn hình dạng tương ứng là hàm riêng.
+Xét một sợi dây đàn cố định hai đầu. Dây không thể dao động tự nhiên ở mọi tần số tùy ý; chỉ một dãy rời rạc các tần số đặc biệt mới tạo ra sóng dừng khớp với hai đầu cố định. Các tần số đó gắn với trị riêng, còn hình dạng sóng tương ứng là hàm riêng.
 
 ### Cách nhìn hình ảnh
 
-Nếu vẽ các mode của dây rung, ta sẽ thấy mode cơ bản có một bụng, mode tiếp theo có hai bụng, rồi ba bụng, và cứ thế tăng dần. Mỗi mode có một "số nút" riêng và gắn với một trị riêng tăng dần. Hình ảnh này rất quan trọng vì nó cho thấy trị riêng không phải chỉ là con số; nó là nhãn cho một hoa văn dao động cụ thể.
+Khi vẽ các chế độ dao động của dây rung, chế độ cơ bản có một bụng sóng, chế độ thứ hai có hai bụng sóng (một nút ở giữa), chế độ thứ ba có ba bụng sóng, và số nút tăng dần theo bậc. Mỗi trị riêng vì thế gắn với một hình dạng không gian và một số nút xác định.
 
 ### Cách nhìn hình thức
 
-Một bài toán trị riêng vi phân điển hình có dạng $$ Ly=\lambda w(x)y $$, với điều kiện biên thích hợp. Ở đây $$ L $$ là toán tử vi phân và $$ w(x)>0 $$ là trọng số. Ta tìm những giá trị $$ \lambda $$ sao cho tồn tại nghiệm $$ y\not\equiv 0 $$ thỏa điều kiện biên. Những giá trị đó là trị riêng, còn nghiệm tương ứng là hàm riêng.
+Một bài toán trị riêng vi phân điển hình có dạng $$ Ly=\lambda w(x)y $$ kèm các điều kiện biên thuần nhất, trong đó $$ L $$ là toán tử vi phân và $$ w(x)>0 $$ là hàm trọng số. Những giá trị $$ \lambda $$ mà tại đó tồn tại nghiệm không tầm thường $$ y\not\equiv 0 $$ gọi là **trị riêng** (eigenvalue), và các nghiệm tương ứng gọi là **hàm riêng** (eigenfunction).
 
 ## Những ngộ nhận thường gặp
 
-- "Trị riêng là bất kỳ giá trị nào làm bài toán có nghiệm." Chưa đủ. Ta cần nghiệm không tầm thường.
-- "Hàm riêng chỉ khác nhau bởi một hệ số nên không quan trọng." Sai. Chính hình dạng của chúng mang ý nghĩa mode vật lý.
-- "Nếu bài toán có tham số thì mọi giá trị tham số đều đáng như nhau." Không đúng. Bài toán trị riêng chính là sự chọn lọc các giá trị đặc biệt.
-- "Khái niệm trị riêng ở ODE không liên quan đến đại số tuyến tính." Sai. Đây là cùng một ý tưởng được mở rộng sang toán tử trên không gian hàm.
+- "Trị riêng là bất kỳ giá trị nào giúp bài toán có nghiệm." Sai. Nghiệm tầm thường $$ y\equiv 0 $$ luôn thỏa bài toán thuần nhất; trị riêng đòi hỏi phải có nghiệm không tầm thường.
+- "Hàm riêng chỉ xác định sai khác một hằng số nhân nên không quan trọng." Sai. Hình dạng không gian và vị trí các nút của hàm riêng mang ý nghĩa vật lý trực tiếp.
+- "Mọi giá trị tham số trong phương trình đều có vai trò như nhau." Sai. Điều kiện biên chọn lọc ra một tập rời rạc các giá trị đặc biệt.
+- "Trị riêng của ODE không liên quan đến trị riêng ma trận." Sai. Đây là sự mở rộng trực tiếp của cùng một khái niệm từ hữu hạn chiều sang không gian hàm vô hạn chiều.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Ôn lại trị riêng ma trận
+### Bước 1: Liên hệ với trị riêng ma trận
 
-Điều này giúp sinh viên bớt cảm giác bài mới hoàn toàn xa lạ.
+Nhắc lại khái niệm $$ A\mathbf{v}=\lambda\mathbf{v} $$ với $$ \mathbf{v}\neq \mathbf{0} $$ làm điểm tựa trực giác.
 
-### Bước 2: Xem một BVP có tham số
+### Bước 2: Phân tích BVP thuần nhất có tham số
 
-Hiểu rằng tham số không còn là hằng số phụ mà là đối tượng cần tìm.
+Nhận diện vai trò của tham số $$ \lambda $$ cần xác định thay vì một hằng số đã biết.
 
-### Bước 3: Loại trừ các trường hợp tham số
+### Bước 3: Xét đầy đủ các trường hợp dấu của tham số
 
-Giải từng trường hợp
+Khảo sát lần lượt ba trường hợp $$ \lambda<0 $$, $$ \lambda=0 $$ và $$ \lambda>0 $$ để không bỏ sót trị riêng nào.
 
-$$ \lambda<0,
-\qquad
-\lambda=0,
-\qquad
-\lambda>0 $$
+### Bước 4: Diễn giải hàm riêng dưới góc độ chế độ dao động
 
-để thấy trị riêng xuất hiện thế nào.
+Gắn kết kết quả giải tích với hình dạng sóng và chuẩn bị chuyển sang lý thuyết Sturm–Liouville.
 
-### Bước 4: Diễn giải hàm riêng như mode riêng
+### Các điểm kiểm tra
 
-Đây là cầu nối quan trọng sang Sturm-Liouville.
-
-### Các checkpoint
-
-- Sinh viên có giải thích được vì sao ta cần nghiệm không tầm thường hay không.
-- Sinh viên có giải được bài toán mẫu và tìm ra dãy trị riêng hay không.
-- Sinh viên có hiểu hàm riêng là mode dao động hay không.
+- Sinh viên có giải thích được vì sao định nghĩa trị riêng yêu cầu $$ y\not\equiv 0 $$ hay không.
+- Sinh viên có giải đầy đủ ba trường hợp dấu của $$ \lambda $$ cho bài toán mẫu hay không.
+- Sinh viên có liên hệ được hàm riêng với chế độ dao động vật lý hay không.
 
 ## Ví dụ được giải chi tiết
 
 ### Ví dụ 1: Dây đàn cố định hai đầu
 
-Xét
+Xét bài toán
 
 $$ y''+\lambda y=0,
 \qquad
@@ -91,11 +83,11 @@ y(0)=0,
 \qquad
 y(L)=0. $$
 
-Ta xét ba trường hợp.
+Ta xét ba trường hợp của $$ \lambda $$:
 
-Nếu $$ \lambda=-\mu^2<0 $$, thì nghiệm có dạng $$ y=Ae^{\mu x}+Be^{-\mu x} $$. Điều kiện biên buộc $$ A=B=0 $$, nên chỉ có nghiệm tầm thường.
-
-Nếu $$ \lambda=0 $$, thì $$ y=Ax+B $$. Điều kiện biên lại buộc $$ A=B=0 $$. Nếu $$ \lambda=\mu^2>0 $$, thì $$ y=A\cos(\mu x)+B\sin(\mu x) $$. Điều kiện $$ y(0)=0 $$ cho $$ A=0 $$. Điều kiện $$ y(L)=0 $$ cho $$ B\sin(\mu L)=0 $$. Để có nghiệm không tầm thường, cần
+- Nếu $$ \lambda=-\mu^2<0 $$ ($$ \mu>0 $$): nghiệm tổng quát là $$ y=Ae^{\mu x}+Be^{-\mu x} $$. Điều kiện biên buộc $$ A=B=0 $$, chỉ cho nghiệm tầm thường.
+- Nếu $$ \lambda=0 $$: nghiệm là $$ y=Ax+B $$, điều kiện biên cũng buộc $$ A=B=0 $$.
+- Nếu $$ \lambda=\mu^2>0 $$ ($$ \mu>0 $$): nghiệm là $$ y=A\cos(\mu x)+B\sin(\mu x) $$. Điều kiện $$ y(0)=0 $$ cho $$ A=0 $$; điều kiện $$ y(L)=0 $$ cho $$ B\sin(\mu L)=0 $$. Để có nghiệm không tầm thường ($$ B\neq 0 $$), cần
 
 $$
 \sin(\mu L)=0
@@ -103,7 +95,7 @@ $$
 \mu L=n\pi.
 $$
 
-Vậy
+Vậy dãy trị riêng và hàm riêng tương ứng là:
 
 $$
 \lambda_n=\left(\frac{n\pi}{L}\right)^2,
@@ -113,11 +105,11 @@ $$
 n=1,2,3,\ldots
 $$
 
-Đây là ví dụ nền tảng của cả chương.
+Đây là bài toán trị riêng mẫu mực của toàn chương.
 
-### Ví dụ 2: Điều kiện Neumann
+### Ví dụ 2: Điều kiện biên Neumann
 
-Xét
+Xét bài toán
 
 $$ y''+\lambda y=0,
 \qquad
@@ -125,81 +117,77 @@ y'(0)=0,
 \qquad
 y'(L)=0. $$
 
-Khi $$ \lambda=\mu^2>0 $$, nghiệm là $$ y=A\cos(\mu x)+B\sin(\mu x) $$. Ta có $$ y'=-A\mu\sin(\mu x)+B\mu\cos(\mu x) $$. Điều kiện $$ y'(0)=0 $$ cho $$ B=0 $$. Điều kiện $$ y'(L)=0 $$ cho $$ -A\mu\sin(\mu L)=0 $$. Do đó $$ \mu L=n\pi $$, và các hàm riêng là
+Với $$ \lambda=\mu^2>0 $$, nghiệm là $$ y=A\cos(\mu x)+B\sin(\mu x) $$ nên $$ y'=-A\mu\sin(\mu x)+B\mu\cos(\mu x) $$. Điều kiện $$ y'(0)=0 $$ cho $$ B=0 $$; điều kiện $$ y'(L)=0 $$ cho $$ -A\mu\sin(\mu L)=0 $$, suy ra $$ \mu L=n\pi $$ và các hàm riêng là
 
 $$ \phi_n(x)=\cos\left(\frac{n\pi x}{L}\right). $$
 
-Ví dụ này cho thấy thay đổi điều kiện biên sẽ thay đổi cả họ hàm riêng.
+Ví dụ này cho thấy việc thay đổi điều kiện biên làm thay đổi trực tiếp họ hàm riêng.
 
-### Ví dụ 3: Một bài toán có trị riêng bằng 0
+### Ví dụ 3: Trường hợp có trị riêng bằng 0
 
-Với điều kiện Neumann thuần nhất ở cả hai đầu, mode hằng $$ \phi_0(x)=1 $$ thường xuất hiện tương ứng với $$ \lambda_0=0 $$. Đây là một điểm nhiều sinh viên bỏ sót vì quá quen với dãy bắt đầu từ $$ n=1 $$. Ví dụ này rất đáng để nhấn mạnh: cấu trúc phổ phụ thuộc sâu vào điều kiện biên.
+Trong bài toán điều kiện biên Neumann thuần nhất ở hai đầu (Ví dụ 2), khi xét $$ \lambda=0 $$ ta thu được nghiệm $$ y=Ax+B $$. Điều kiện $$ y'(0)=y'(L)=0 $$ chỉ buộc $$ A=0 $$ còn $$ B $$ tùy ý, nên tồn tại trị riêng $$ \lambda_0=0 $$ ứng với hàm riêng hằng $$ \phi_0(x)=1 $$. Đây là trường hợp dễ bị bỏ sót nếu chỉ quen dãy bắt đầu từ $$ n=1 $$.
 
-### Ví dụ 4: Từ trị riêng đến tần số
+### Ví dụ 4: Từ trị riêng đến tần số tự nhiên
 
-Với dây đàn, nghiệm theo thời gian thường có tần số tỉ lệ với $$ \sqrt{\lambda_n} $$. Điều này cho thấy trị riêng không chỉ là tham số toán học mà là đại lượng vật lý đo được. Ví dụ này nên được dùng để nối bài toán ODE với sóng và âm thanh.
+Trong mô hình dây đàn, tần số dao động theo thời gian tỉ lệ thuận với $$ \sqrt{\lambda_n} $$. Do đó trị riêng không chỉ là đại lượng toán học trừu tượng mà gắn trực tiếp với các tần số cộng hưởng đo được trong thực nghiệm.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao điều kiện $$ y\not\equiv 0 $$ lại là cốt lõi trong định nghĩa trị riêng?
-2. Vì sao điều kiện biên thay đổi thì trị riêng và hàm riêng cũng thay đổi theo?
-3. Trong mô hình vật lý, tại sao trị riêng thường được hiểu là các tần số tự nhiên hoặc mức năng lượng cho phép?
+1. Vì sao yêu cầu $$ y\not\equiv 0 $$ là điều kiện không thể thiếu trong định nghĩa trị riêng?
+2. Vì sao khi thay đổi điều kiện biên thì phổ trị riêng và họ hàm riêng đều thay đổi theo?
+3. Trong vật lý, vì sao trị riêng thường tương ứng với tần số tự nhiên hoặc mức năng lượng rời rạc?
 
 ## Bài toán ứng dụng
 
-1. Một dây đàn dài $$ L $$ bị giữ cố định ở hai đầu. Hãy giải thích vì sao chỉ một dãy rời rạc các tần số dao động mới được phép.
-2. Một thanh cách nhiệt hoàn toàn ở hai đầu. Hãy thảo luận vì sao mode nhiệt hằng tương ứng với trị riêng bằng 0 lại xuất hiện tự nhiên.
-3. Trong cơ học lượng tử, vì sao điều kiện biên trên miền hữu hạn thường dẫn đến các mức năng lượng rời rạc thay vì liên tục?
+1. Với một dây đàn chiều dài $$ L $$ cố định hai đầu, hãy giải thích vì sao dây chỉ dao động tự nhiên ở một dãy tần số rời rạc.
+2. Với một thanh cách nhiệt hoàn toàn ở hai đầu, hãy giải thích ý nghĩa vật lý của chế độ nhiệt hằng tương ứng với trị riêng $$ \lambda_0=0 $$.
+3. Trong cơ học lượng tử, vì sao ràng buộc biên trên miền hữu hạn thường dẫn đến phổ năng lượng rời rạc thay vì liên tục?
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng cách hỏi: "Vì sao một dây đàn không phát ra mọi tần số cùng mức mạnh như nhau?"
-- Cho sinh viên giải theo nhóm ba trường hợp dấu của
-
-$$ \lambda $$
-
-rồi ghép kết quả thành bức tranh hoàn chỉnh.
-- Vẽ các mode đầu tiên của sin và cos để sinh viên gắn trị riêng với hình dạng thật.
-- Khuyến khích sinh viên kể lại bằng lời mối liên hệ giữa trị riêng của ma trận và trị riêng của toán tử vi phân.
+- Mở đầu bằng câu hỏi thực tế: vì sao dây đàn chỉ phát ra các họa âm rời rạc thay vì mọi tần số tùy ý?
+- Phân nhóm sinh viên xử lý ba trường hợp dấu của $$ \lambda $$ rồi tổng hợp kết quả chung.
+- Vẽ các hàm riêng sin và cos bậc thấp để sinh viên gắn trị riêng với số nút và hình dạng sóng.
+- Yêu cầu sinh viên so sánh bằng lời cấu trúc bài toán trị riêng của ma trận và của toán tử vi phân.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên cho các em lặp lại thật chắc ví dụ dây đàn cổ điển trước khi giới thiệu các biến thể điều kiện biên khác. Cấu trúc ba trường hợp của $$ \lambda $$ cần được luyện thành phản xạ.
+Nên thực hành thuần thục bài toán dây cố định hai đầu cùng quy trình xét đủ ba trường hợp dấu của $$ \lambda $$ trước khi chuyển sang các điều kiện biên khác.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể yêu cầu sinh viên khá giỏi so sánh trực tiếp ma trận đối xứng hữu hạn chiều với toán tử Sturm-Liouville để thấy vì sao ta kỳ vọng trị riêng thực và hàm riêng trực giao trong bài sau.
+Có thể yêu cầu sinh viên đối chiếu tính chất của ma trận đối xứng thực (trị riêng thực, vector riêng trực giao) với kỳ vọng tương tự cho toán tử Sturm–Liouville ở bài học tiếp theo.
 
 ## Tóm tắt dễ nhớ
 
-Bài toán trị riêng hỏi: với những giá trị tham số nào, BVP có nghiệm không tầm thường. Các giá trị đó là trị riêng, còn các nghiệm tương ứng là hàm riêng. Trong vật lý, chúng chính là các mode và tần số tự nhiên mà hệ cho phép.
+Bài toán trị riêng tìm những giá trị tham số $$ \lambda $$ sao cho một BVP thuần nhất có nghiệm không tầm thường. Các giá trị đó là trị riêng, còn các nghiệm tương ứng là hàm riêng — biểu diễn toán học của các tần số và chế độ tự nhiên mà hệ vật lý cho phép.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Dao động tự nhiên của dây đàn
-- Bài toán: Một dây giữ cố định hai đầu chỉ dao động ở một số tần số nhất định.
+- Bài toán: Dây đàn cố định hai đầu chỉ duy trì dao động đứng ở một dãy tần số riêng rời rạc.
 - Mô hình:
 $$ y''+\lambda y=0,\qquad y(0)=0,\qquad y(L)=0. $$
-- Giả thiết và giới hạn: Dây mảnh, lực căng đều, dao động nhỏ.
+- Giả thiết và giới hạn: Dây mảnh, lực căng không đổi, biên độ dao động nhỏ.
 - Diễn giải: Chỉ các giá trị
 $$ \lambda_n=\left(\frac{n\pi}{L}\right)^2 $$
-mới cho mode không tầm thường.
+mới cho chế độ dao động không tầm thường.
 
-#### Mức năng lượng lượng tử trong hố thế
-- Bài toán: Hạt trong giếng thế một chiều có các trạng thái dừng rời rạc.
-- Mô hình: Sau chuẩn hóa, bài toán biên cho phương trình kiểu
+#### Mức năng lượng lượng tử trong hố thế vô hạn
+- Bài toán: Hạt vi mô chuyển động trong giếng thế một chiều có các trạng thái dừng rời rạc.
+- Mô hình: Sau khi chuẩn hóa, phương trình Schrödinger dừng có dạng
 $$ y''+\lambda y=0 $$
-với điều kiện biên triệt tiêu ở thành giếng.
-- Giả thiết và giới hạn: Mô hình hố thế vô hạn là lý tưởng hóa mạnh.
-- Diễn giải: Trị riêng là mức năng lượng, hàm riêng là trạng thái sóng.
+với hàm sóng triệt tiêu tại hai thành giếng.
+- Giả thiết và giới hạn: Hố thế sâu vô hạn là mô hình lý tưởng hóa.
+- Diễn giải: Trị riêng tương ứng với mức năng lượng cho phép, còn hàm riêng là hàm sóng trạng thái dừng.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Bài toán trị riêng của ODE là phiên bản vô hạn chiều của trị riêng ma trận. Điểm quan trọng nhất là: ta không tìm nghiệm cho mọi tham số, mà chỉ tìm những tham số đặc biệt cho phép nghiệm không tầm thường. Một bẫy phổ biến là quên loại nghiệm tầm thường hoặc không nhìn hàm riêng như mode vật lý.
+Bài toán trị riêng của ODE là phiên bản vô hạn chiều của bài toán trị riêng ma trận. Điểm cốt lõi là ta không giải với mọi tham số tùy ý mà tìm tập tham số đặc biệt cho nghiệm không tầm thường. Cần tránh hai lỗi phổ biến: quên kiểm tra trường hợp $$ \lambda=0 $$ và tách rời hàm riêng khỏi ý nghĩa chế độ vật lý.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -230,30 +218,30 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Giải
+Giải bài toán trị riêng
 $$ y''+\lambda y=0,\qquad y(0)=0,\qquad y(L)=0. $$
-Nếu $$ \lambda=\mu^2>0 $$, nghiệm là
+Với $$ \lambda=\mu^2>0 $$, nghiệm có dạng
 $$ y=A\cos(\mu x)+B\sin(\mu x). $$
-Điều kiện ở $$ x=0 $$ cho $$ A=0 $$, còn ở $$ x=L $$ cho
+Điều kiện tại $$ x=0 $$ cho $$ A=0 $$; điều kiện tại $$ x=L $$ cho
 $$ B\sin(\mu L)=0. $$
-Muốn có nghiệm không tầm thường, cần
+Để có nghiệm không tầm thường, phải có
 $$ \sin(\mu L)=0, $$
-tức là
+suy ra
 $$ \mu=\frac{n\pi}{L}. $$
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Giải bài toán mẫu và hiểu trị riêng, hàm riêng như tần số và mode.
+**Bậc đại học.** Giải thành thạo bài toán trị riêng cơ bản và diễn giải trị riêng, hàm riêng như tần số và chế độ dao động.
 
 **Bậc sau đại học.** Kết nối với lý thuyết phổ của toán tử tự liên hợp trên không gian hàm.
 
 ## Video tham khảo
 
-- xem trước: [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, tiếng Anh. Trị riêng và hàm riêng của một toán tử vi phân với điều kiện biên.
-- [Sturm-Liouville Theorem and Proof](https://www.youtube.com/watch?v=_F0ck1JncLE) — Faculty of Khan, tiếng Anh. Faculty of Khan phát biểu và chứng minh định lý Sturm-Liouville.
-- [Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra](https://www.youtube.com/watch?v=PFDu9oVAE-g) — 3Blue1Brown, tiếng Anh. Bức tranh trị riêng hữu hạn chiều mà bài toán vi phân này mở rộng.
+- Xem trước: [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, tiếng Anh. Giới thiệu trị riêng và hàm riêng của toán tử vi phân kèm điều kiện biên.
+- [Sturm-Liouville Theorem and Proof](https://www.youtube.com/watch?v=_F0ck1JncLE) — Faculty of Khan, tiếng Anh. Phát biểu và chứng minh định lý Sturm–Liouville.
+- [Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra](https://www.youtube.com/watch?v=PFDu9oVAE-g) — 3Blue1Brown, tiếng Anh. Trực giác hình học về trị riêng hữu hạn chiều mà bài toán vi phân mở rộng.
 
 ## Tài liệu tham khảo
 
-- Boyce & DiPrima, Chương 10: bài toán trị riêng và dây rung hai đầu.
-- Haberman, Chương 5: liên hệ giữa trị riêng, mode riêng và điều kiện biên vật lý.
+- Boyce & DiPrima, Chương 10: bài toán trị riêng và dây rung cố định hai đầu.
+- Haberman, Chương 5: mối liên hệ giữa trị riêng, chế độ riêng và điều kiện biên vật lý.

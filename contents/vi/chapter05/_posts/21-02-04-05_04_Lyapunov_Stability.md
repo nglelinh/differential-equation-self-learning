@@ -12,90 +12,90 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giúp sinh viên hiểu phương pháp Lyapunov như cách chứng minh ổn định mà không cần giải nghiệm tường minh, biết thế nào là một hàm Lyapunov tốt, và thấy vai trò của tư duy năng lượng trong phân tích hệ phi tuyến.
+Bài học này giúp sinh viên nắm được phương pháp Lyapunov như một công cụ chứng minh tính ổn định mà không cần tìm nghiệm tường minh, hiểu các tiêu chuẩn của một hàm Lyapunov phù hợp và nhận thấy vai trò của tư duy năng lượng trong phân tích hệ phi tuyến.
 
 ## Kiến thức nền
 
-Sinh viên cần nắm điểm cân bằng, đạo hàm theo quỹ đạo và trực giác ổn định. Một ít quen thuộc với năng lượng trong cơ học sẽ giúp bài học trở nên tự nhiên hơn.
+Sinh viên cần nắm vững khái niệm điểm cân bằng, đạo hàm theo quỹ đạo và trực giác về ổn định. Sự quen thuộc với khái niệm năng lượng trong cơ học sẽ giúp tiếp cận bài học tự nhiên hơn.
 
 ## Dẫn nhập
 
 ![Hàm Lyapunov như năng lượng suy giảm]({{ site.imgurl }}/chapter_img/chapter05/04_lyapunov_stability.svg)
 
-Có rất nhiều hệ phi tuyến quan trọng mà ta không thể giải explicit. Nếu cứ đòi hỏi công thức nghiệm rồi mới nói về ổn định, ta sẽ bó tay với phần lớn mô hình thực tế. Phương pháp Lyapunov mở ra một con đường khác: thay vì theo dõi quỹ đạo trực tiếp, ta tìm một đại lượng vô hướng đóng vai trò như năng lượng, rồi quan sát xem nó tăng, giảm hay giữ nguyên dọc theo chuyển động.
+Nhiều hệ phi tuyến quan trọng không thể giải được bằng công thức tường minh. Nếu chỉ xét tính ổn định sau khi tìm được nghiệm đóng, ta sẽ không thể phân tích phần lớn các mô hình thực tế. Phương pháp Lyapunov mở ra một hướng tiếp cận khác: thay vì theo dõi trực tiếp quỹ đạo, ta xây dựng một hàm vô hướng đóng vai trò tương tự năng lượng rồi khảo sát xem đại lượng đó tăng, giảm hay giữ nguyên dọc theo chuyển động.
 
-Đây là một trong những ý tưởng đẹp nhất của động lực học. Thay vì giải bài toán chuyển động, ta giải bài toán tìm một "thước đo độ xa khỏi cân bằng" mà hệ không thể làm tăng lên. Nếu thước đo ấy giảm nghiêm ngặt, ta còn biết hệ bị kéo về cân bằng. Ý tưởng vừa hình học, vừa vật lý, vừa rất thực dụng.
+Ý tưởng cốt lõi là tìm một "thước đo độ lệch khỏi vị trí cân bằng" mà hệ không thể làm tăng lên. Nếu thước đo này giảm nghiêm ngặt theo thời gian, ta suy ra hệ bị kéo dần về điểm cân bằng. Cách tiếp cận này vừa có ý nghĩa hình học và vật lý rõ ràng, vừa có tính ứng dụng cao.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Hãy tưởng tượng $$ V(x,y) $$ là độ cao của một bề mặt năng lượng. Nếu quỹ đạo của hệ luôn đi xuống hoặc đi ngang trên bề mặt đó, hệ khó có thể tự nhiên chạy ra vùng cao hơn. Nếu nó luôn đi xuống, hệ bị hút về đáy.
+Hãy hình dung $$ V(x,y) $$ như độ cao của một bề mặt năng lượng có đáy tại điểm cân bằng. Nếu quỹ đạo của hệ luôn đi xuống hoặc giữ nguyên độ cao trên bề mặt đó, hệ không thể tự thoát lên các vùng cao hơn. Nếu quỹ đạo luôn đi xuống, hệ sẽ tiến về đáy.
 
 ### Cách nhìn hình ảnh
 
-Các đường mức của $$ V $$ giống như những vòng rào bao quanh cân bằng. Nếu dọc theo quỹ đạo, hệ luôn đi vào phía trong các đường mức, ta có một bức tranh rất rõ về ổn định. Đây là cách Lyapunov biến một vấn đề quỹ đạo thành một vấn đề hình học của họ mức.
+Các đường mức của $$ V $$ giống như những vòng bao quanh điểm cân bằng. Nếu dọc theo mọi quỹ đạo, trường vector luôn hướng vào phía trong các đường mức này, ta có hình ảnh trực quan rõ ràng về tính ổn định. Nhờ đó, Lyapunov chuyển bài toán theo dõi quỹ đạo thành bài toán hình học về họ các đường mức.
 
 ### Cách nhìn hình thức
 
-Một hàm $$ V(x,y) $$ thường được dùng làm hàm Lyapunov quanh cân bằng gốc nếu
+Một hàm trơn $$ V(x,y) $$ là ứng viên hàm Lyapunov quanh điểm cân bằng gốc nếu
 $$ V(0,0)=0, $$
 và
 $$ V(x,y)>0 \quad \text{khi } (x,y)\neq (0,0) $$
-trong một lân cận. Đạo hàm theo quỹ đạo là
+trong một lân cận của gốc tọa độ (tức là $$ V $$ xác định dương). Đạo hàm của $$ V $$ dọc theo quỹ đạo của hệ là
 $$ \dot{V}=V_x f(x,y)+V_y g(x,y). $$
 Nếu
-$$ \dot{V}\le 0, $$
-ta có thông tin mạnh về ổn định. Nếu
+$$ \dot{V}\le 0 $$
+trong lân cận đó, điểm cân bằng ổn định theo Lyapunov. Nếu
 $$ \dot{V}<0 $$
-nghiêm ngặt ngoài cân bằng, thường ta có ổn định tiệm cận.
+nghiêm ngặt ngoài điểm cân bằng, điểm cân bằng ổn định tiệm cận.
 
 ## Những ngộ nhận thường gặp
 
-- "Muốn chứng minh ổn định phải biết nghiệm." Sai. Đây chính là điều Lyapunov giúp ta tránh.
-- "Bất kỳ hàm dương nào cũng là hàm Lyapunov tốt." Sai. Điều quyết định là đạo hàm dọc theo quỹ đạo.
-- "Nếu $$ \dot{V}=0 $$ thì chắc chắn không kết luận được gì." Không hẳn; đôi khi còn cần thêm ý tưởng LaSalle, nhưng trong bài cơ bản ta thường cẩn thận hơn.
-- "Lyapunov chỉ là kỹ thuật cơ học." Sai. Nó áp dụng rộng trong điều khiển, sinh học, mạch điện và nhiều hệ phi tuyến khác.
+- "Muốn chứng minh ổn định thì bắt buộc phải tìm ra nghiệm." Sai. Mục đích chính của phương pháp Lyapunov là xét ổn định mà không cần giải nghiệm tường minh.
+- "Mọi hàm xác định dương đều là hàm Lyapunov." Sai. Điều kiện quyết định nằm ở dấu của đạo hàm dọc theo quỹ đạo $$ \dot{V} $$.
+- "Nếu $$ \dot{V}=0 $$ thì không kết luận được gì." Không đúng; khi $$ \dot{V}=0 $$ ta đã có ổn định Lyapunov, và trong nhiều trường hợp $$ \dot{V}\le 0 $$ còn có thể kết hợp thêm nguyên lý bất biến LaSalle để suy ra ổn định tiệm cận.
+- "Phương pháp Lyapunov chỉ dùng trong cơ học." Sai. Nó được ứng dụng rộng rãi trong lý thuyết điều khiển, sinh học, mạch điện và nhiều lớp hệ phi tuyến khác.
 
 ## Tiến trình học tập đề xuất
 
 ### Bước 1: Chọn ứng viên $$ V $$
 
-Thường bắt đầu từ dạng giống năng lượng như $$ x^2+y^2 $$.
+Thường bắt đầu từ những dạng tương tự năng lượng như $$ x^2+y^2 $$.
 
-### Bước 2: Kiểm tra tính dương xác định
+### Bước 2: Kiểm tra tính xác định dương
 
-Không có bước này thì $$ V $$ không đo đúng "độ xa".
+Đảm bảo $$ V(0,0)=0 $$ và $$ V(x,y)>0 $$ ngoài gốc, để $$ V $$ thực sự đo được độ lệch khỏi cân bằng.
 
-### Bước 3: Tính $$ \dot{V} $$ theo quỹ đạo
+### Bước 3: Tính đạo hàm $$ \dot{V} $$ dọc theo quỹ đạo
 
-Đây là bước quyết định.
+Sử dụng quy tắc dây chuyền để thay $$ \dot{x}=f(x,y) $$ và $$ \dot{y}=g(x,y) $$.
 
-### Bước 4: Kết luận ổn định hay tiệm cận
+### Bước 4: Rút ra kết luận ổn định phù hợp
 
-Phải nói rõ loại kết luận nào thực sự thu được.
+Phân biệt rõ trường hợp suy ra ổn định Lyapunov với trường hợp suy ra ổn định tiệm cận.
 
-### Các checkpoint
+### Các điểm kiểm tra
 
-- Sinh viên có phân biệt được $$ V>0 $$ với $$ \dot{V}<0 $$ không.
-- Sinh viên có tính đúng đạo hàm theo quỹ đạo hay không.
-- Sinh viên có kết luận quá mạnh từ giả thiết chưa đủ hay không.
+- Sinh viên có phân biệt rõ hai điều kiện $$ V>0 $$ và $$ \dot{V}<0 $$ hay không.
+- Sinh viên có tính chính xác đạo hàm theo quỹ đạo hay không.
+- Sinh viên có tránh việc kết luận quá mạnh từ điều kiện chưa đủ (chẳng hạn chỉ có $$ \dot{V}\le 0 $$) hay không.
 
 ## Ví dụ được giải chi tiết
 
 ### Ví dụ 1: Hệ tuyến tính có tắt dần
 
-Xét
+Xét hệ
 $$ x'=-x-y,\qquad y'=x-y. $$
-Chọn
+Chọn hàm ứng viên
 $$ V=x^2+y^2. $$
-Ta có
+Đạo hàm dọc theo quỹ đạo là:
 $$ \dot{V}=2xx'+2yy'
 =2x(-x-y)+2y(x-y)
 =-2x^2-2y^2. $$
 Vì
 $$ \dot{V}<0 $$
-ngoài gốc, hệ ổn định tiệm cận tại gốc. Đây là ví dụ kinh điển cho sức mạnh của Lyapunov.
+tại mọi điểm khác gốc tọa độ, điểm cân bằng gốc là ổn định tiệm cận.
 
 ### Ví dụ 2: Hệ bảo toàn năng lượng
 
@@ -105,86 +105,86 @@ chọn
 $$ V=x^2+y^2. $$
 Khi đó
 $$ \dot{V}=2xy+2y(-x)=0. $$
-Điều này cho thấy năng lượng được bảo toàn. Gốc ổn định theo Lyapunov nhưng không tiệm cận. Đây là ví dụ rất tốt để phân biệt hai khái niệm.
+Năng lượng được bảo toàn dọc theo quỹ đạo. Gốc tọa độ ổn định theo Lyapunov nhưng không ổn định tiệm cận. Ví dụ này minh họa rõ ranh giới giữa hai khái niệm.
 
-### Ví dụ 3: Chọn sai ứng viên
+### Ví dụ 3: Chọn sai hàm ứng viên
 
-Nếu chọn một hàm không dương xác định, chẳng hạn
+Nếu chọn một hàm không xác định dương, chẳng hạn
 $$ V=x^2-y^2, $$
-thì ngay cả khi tính $$ \dot{V} $$ đẹp, nó cũng không còn là thước đo đáng tin của khoảng cách tới cân bằng. Ví dụ này nhắc sinh viên rằng chọn $$ V $$ là nghệ thuật, không chỉ là thao tác.
+thì dù biểu thức $$ \dot{V} $$ có gọn đẹp đến đâu, $$ V $$ vẫn không thể đóng vai trò thước đo khoảng cách tới cân bằng. Do đó việc xây dựng hàm $$ V $$ đòi hỏi cả tư duy cấu trúc lẫn trực giác toán học.
 
-### Ví dụ 4: Năng lượng cơ học có ma sát
+### Ví dụ 4: Cơ năng trong hệ có ma sát
 
-Trong nhiều hệ cơ học, năng lượng toàn phần
+Trong nhiều hệ cơ học, cơ năng toàn phần
 $$ V=\text{động năng}+\text{thế năng} $$
-là ứng viên tự nhiên. Nếu có ma sát hay lực cản, $$ \dot{V} $$ thường âm. Đây là chiếc cầu trực giác mạnh nhất nối Lyapunov với vật lý.
+là ứng viên tự nhiên. Khi có ma sát hoặc lực cản, $$ \dot{V} $$ thường không dương. Đây là mối liên hệ trực tiếp nhất giữa phương pháp Lyapunov và vật lý.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao Lyapunov cho phép nói về ổn định mà không cần công thức nghiệm?
-2. Hai yêu cầu "dương xác định" và "đạo hàm không dương" đóng vai trò gì khác nhau?
-3. Vì sao $$ \dot{V}=0 $$ thường cho ổn định nhưng chưa chắc cho ổn định tiệm cận?
+1. Vì sao phương pháp Lyapunov cho phép kết luận tính ổn định mà không cần công thức nghiệm?
+2. Hai điều kiện "xác định dương" và "đạo hàm không dương" đóng vai trò khác nhau như thế nào?
+3. Vì sao điều kiện $$ \dot{V}=0 $$ cho thấy tính ổn định Lyapunov nhưng chưa đủ để suy ra ổn định tiệm cận?
 
 ## Bài toán ứng dụng
 
-1. Trong điều khiển robot, vì sao việc tìm một hàm "năng lượng sai lệch" là chiến lược rất tự nhiên?
-2. Trong mạch điện có điện trở, vì sao năng lượng của hệ thường giảm dần và dẫn tới ổn định?
-3. Trong sinh học, một đại lượng đo độ lệch khỏi cân bằng có thể đóng vai trò hàm Lyapunov như thế nào?
+1. Trong điều khiển robot, vì sao việc xây dựng một hàm "năng lượng sai lệch" là chiến lược thiết kế tự nhiên?
+2. Trong mạch điện có điện trở, vì sao năng lượng điện từ thường tiêu hao dần và kéo hệ về trạng thái ổn định?
+3. Trong mô hình sinh học, một đại lượng đo độ lệch khỏi trạng thái cân bằng có thể được dùng làm hàm Lyapunov như thế nào?
 
 ## Chiến lược giảng dạy tương tác
 
-- Cho sinh viên thử nhiều hàm ứng viên khác nhau để thấy không phải hàm nào cũng hiệu quả.
-- Hỏi lớp: "Nếu coi $$ V $$ là năng lượng, hệ đang tiêu hao hay tích lũy năng lượng?"
-- So sánh hai ví dụ: một có $$ \dot{V}<0 $$ và một có $$ \dot{V}=0 $$ để nhấn mạnh khác biệt.
-- Khuyến khích sinh viên diễn giải hình học của các đường mức $$ V=\text{hằng số} $$.
+- Cho sinh viên thử nghiệm nhiều hàm ứng viên khác nhau để thấy không phải hàm nào cũng phù hợp.
+- Đặt câu hỏi cho lớp: nếu xem $$ V $$ như năng lượng, hệ đang tiêu hao hay tích lũy năng lượng dọc theo quỹ đạo?
+- Đối chiếu trực tiếp hai ví dụ có $$ \dot{V}<0 $$ và $$ \dot{V}=0 $$ để làm rõ sự khác biệt.
+- Khuyến khích sinh viên mô tả ý nghĩa hình học của họ đường mức $$ V=\text{hằng số} $$.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên cho sinh viên yếu bắt đầu từ ứng viên chuẩn
+Nên để sinh viên làm quen từ ứng viên đơn giản
 $$ V=x^2+y^2 $$
-trong vài bài đầu. Mục tiêu là xây trực giác về $$ \dot{V} $$ trước khi yêu cầu các hàm tinh tế hơn.
+trong các bài tập đầu tiên nhằm xây dựng vững chắc cách tính và diễn giải $$ \dot{V} $$ trước khi chuyển sang những hàm phức tạp hơn.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể yêu cầu sinh viên khá giỏi thử xây dựng một hàm Lyapunov riêng cho một hệ phi tuyến cụ thể, hoặc tìm ví dụ mà $$ \dot{V}\le 0 $$ nhưng kết luận tiệm cận cần thêm công cụ mở rộng.
+Có thể yêu cầu sinh viên tự xây dựng một hàm Lyapunov cho một hệ phi tuyến cụ thể, hoặc phân tích ví dụ có $$ \dot{V}\le 0 $$ nhưng vẫn ổn định tiệm cận nhờ các công cụ mở rộng.
 
 ## Tóm tắt dễ nhớ
 
-Phương pháp Lyapunov thay bài toán giải quỹ đạo bằng bài toán tìm một đại lượng luôn giảm. Nếu $$ V $$ đo được độ xa khỏi cân bằng và $$ \dot{V} $$ không tăng, ta có ổn định; nếu $$ \dot{V} $$ giảm nghiêm ngặt, ta thường có ổn định tiệm cận. Đây là ngôn ngữ năng lượng của động lực học.
+Phương pháp Lyapunov chuyển bài toán tìm nghiệm quỹ đạo thành bài toán tìm một đại lượng không tăng dọc theo chuyển động. Khi $$ V $$ đo độ lệch khỏi cân bằng (xác định dương) và $$ \dot{V}\le 0 $$, hệ ổn định theo Lyapunov; nếu $$ \dot{V}<0 $$ nghiêm ngặt ngoài cân bằng, hệ ổn định tiệm cận.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Cơ học có ma sát
-- Bài toán: Không giải nghiệm explicit vẫn muốn chứng minh con lắc có ma sát sẽ hạ năng lượng và tiến về đáy.
+- Bài toán: Chứng minh con lắc có ma sát giảm dần năng lượng và tiến về vị trí cân bằng thấp nhất mà không cần tìm nghiệm tường minh.
 - Mô hình:
 $$
 \dot{\theta}=\omega,\qquad
 \dot{\omega}=-\sin\theta-c\omega,
 $$
-với ứng viên Lyapunov
+với ứng viên Lyapunov là cơ năng:
 $$
 V(\theta,\omega)=1-\cos\theta+\frac{1}{2}\omega^2.
 $$
-- Giả thiết và giới hạn: Kết luận dựa trên cấu trúc năng lượng, không cho tốc độ hội tụ chính xác ngay.
-- Diễn giải: Nếu $$ \dot{V}\le 0 $$, hệ không thể tự leo lên mức năng lượng cao hơn.
+- Giả thiết và giới hạn: Kết luận dựa trên cấu trúc năng lượng, chưa tự động cho biết tốc độ hội tụ chính xác.
+- Diễn giải: Do $$ \dot{V}\le 0 $$, hệ không thể tự chuyển lên mức năng lượng cao hơn.
 
 #### Điều khiển robot
-- Bài toán: Thiết kế luật điều khiển để sai số vị trí và vận tốc giảm về $$ 0 $$.
+- Bài toán: Thiết kế luật điều khiển sao cho sai số vị trí và vận tốc giảm về $$ 0 $$.
 - Mô hình:
 $$ \dot{e}_1=e_2,\qquad
 \dot{e}_2=-k_1 e_1-k_2 e_2, $$
-với
+với hàm ứng viên
 $$ V=\frac{1}{2}(k_1 e_1^2+e_2^2). $$
-- Giả thiết và giới hạn: Mô hình hóa đã bỏ qua bão hòa cơ cấu chấp hành và nhiễu đo.
-- Diễn giải: Hàm Lyapunov là chứng cứ ổn định, không chỉ là trực giác.
+- Giả thiết và giới hạn: Mô hình bỏ qua giới hạn bão hòa của cơ cấu chấp hành và nhiễu đo.
+- Diễn giải: Hàm Lyapunov cung cấp bằng chứng toán học chặt chẽ cho tính ổn định của bộ điều khiển.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Lyapunov thay bài toán "tìm nghiệm" bằng bài toán "tìm đại lượng giảm". Điều kiện $$ V>0 $$ và $$ \dot{V}\le 0 $$ có vai trò khác nhau: một cái đo khoảng cách tới cân bằng, cái kia kiểm soát hướng tiến hóa. Bẫy thường gặp là kết luận ổn định tiệm cận chỉ từ $$ \dot{V}\le 0 $$. Bài này nối hệ phi tuyến với trực giác năng lượng trong cơ học và điều khiển.
+Phương pháp Lyapunov thay việc giải quỹ đạo bằng việc tìm một đại lượng suy giảm. Hai điều kiện $$ V>0 $$ và $$ \dot{V}\le 0 $$ đảm nhiệm vai trò riêng biệt: một điều kiện đo khoảng cách đến điểm cân bằng, điều kiện kia kiểm soát chiều biến thiên theo thời gian. Một lỗi thường gặp là vội kết luận ổn định tiệm cận khi mới chứng minh được $$ \dot{V}\le 0 $$. Bài học này kết nối trực tiếp hệ phi tuyến với nguyên lý năng lượng trong cơ học và kỹ thuật điều khiển.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -224,23 +224,23 @@ $$ x'=-x-y,\qquad
 y'=x-y. $$
 Chọn
 $$ V=x^2+y^2. $$
-Khi đó
+Ta có
 $$ \dot{V}=2x(-x-y)+2y(x-y)=-2x^2-2y^2<0 $$
-ngoài gốc. Vì vậy gốc ổn định tiệm cận. Đây là ví dụ mẫu cho việc chứng minh ổn định mà không cần giải nghiệm.
+với mọi điểm khác gốc. Do đó gốc tọa độ là ổn định tiệm cận — một minh họa điển hình cho việc chứng minh ổn định mà không cần giải nghiệm tường minh.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Nhận diện và kiểm tra các hàm Lyapunov cơ bản như $$ x^2+y^2 $$.
+**Bậc đại học.** Nhận diện và kiểm tra các hàm Lyapunov cơ bản như dạng toàn phương $$ x^2+y^2 $$.
 
-**Bậc sau đại học.** Bàn về định lý Lyapunov trực tiếp, nguyên lý bất biến LaSalle và tính toàn cục của ổn định.
+**Bậc sau đại học.** Nghiên cứu định lý trực tiếp của Lyapunov, nguyên lý bất biến LaSalle và tính ổn định tiệm cận toàn cục.
 
 ## Video tham khảo
 
-- xem trước: [What is a Lyapunov function](https://www.youtube.com/watch?v=uXAx_641FPM) — richard pates, tiếng Anh. Hàm Lyapunov là gì và sự giảm của nó chứng minh ổn định như thế nào.
-- [A Visual Explanation of Lyapunov Stability](https://www.youtube.com/watch?v=W8YpgG0KuOo) — Prof Gio | Giordano Scarciotti, tiếng Anh. Một diễn giải trực quan về ổn định Lyapunov.
-- [MAE5790-7 Conservative Systems](https://www.youtube.com/watch?v=3s2lmZspEU8) — Cornell MAE, tiếng Anh. Strogatz về hệ bảo toàn, nơi năng lượng chính là một hàm Lyapunov.
+- Xem trước: [What is a Lyapunov function](https://www.youtube.com/watch?v=uXAx_641FPM) — richard pates, tiếng Anh. Giới thiệu khái niệm hàm Lyapunov và cách sự suy giảm của nó chứng minh tính ổn định.
+- [A Visual Explanation of Lyapunov Stability](https://www.youtube.com/watch?v=W8YpgG0KuOo) — Prof Gio | Giordano Scarciotti, tiếng Anh. Diễn giải trực quan về ổn định Lyapunov.
+- [MAE5790-7 Conservative Systems](https://www.youtube.com/watch?v=3s2lmZspEU8) — Cornell MAE, tiếng Anh. Strogatz trình bày về hệ bảo toàn, nơi năng lượng đóng vai trò hàm Lyapunov.
 
 ## Tài liệu tham khảo
 
-- Strogatz, Chương 7: giới thiệu rất trực quan phương pháp Lyapunov.
-- Arnold, Chương 5: tốt cho trực giác năng lượng và ổn định phi tuyến.
+- Strogatz, Chương 7: giới thiệu trực quan về phương pháp Lyapunov.
+- Arnold, Chương 5: trình bày rõ trực giác năng lượng và ổn định phi tuyến.

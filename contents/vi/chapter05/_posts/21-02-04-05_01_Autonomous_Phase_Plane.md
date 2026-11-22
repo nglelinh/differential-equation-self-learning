@@ -12,11 +12,11 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này mở đầu chương **động lực học phi tuyến** bằng cách chuyển trọng tâm từ "giải công thức nghiệm" sang "đọc hình học của quỹ đạo". Sinh viên sẽ hiểu hệ tự trị hai chiều, trường vector, nullcline, quỹ đạo trên mặt phẳng pha, và thấy vì sao mặt phẳng pha là công cụ trung tâm để hiểu hệ phi tuyến ngay cả khi không có nghiệm tường minh.
+Bài học này mở đầu chương **động lực học phi tuyến**, chuyển trọng tâm từ việc tìm công thức nghiệm sang phân tích hình học của quỹ đạo. Sinh viên sẽ nắm được khái niệm hệ tự trị hai chiều, trường vector, đường nullcline và quỹ đạo trên mặt phẳng pha, qua đó hiểu vì sao mặt phẳng pha là công cụ trung tâm để khảo sát hệ phi tuyến ngay cả khi không có nghiệm tường minh.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm hệ phương trình vi phân hai chiều, trường hợp tuyến tính hóa từ chương trước và ý nghĩa của điểm cân bằng. Trực giác về đường pha một chiều cũng rất hữu ích vì mặt phẳng pha là bước mở rộng tự nhiên từ đó.
+Sinh viên nên nắm vững hệ phương trình vi phân hai chiều, hệ tuyến tính từ chương trước và ý nghĩa của điểm cân bằng. Trực giác về đường pha một chiều cũng rất hữu ích vì mặt phẳng pha là sự mở rộng tự nhiên từ đó.
 
 ## Dẫn nhập
 
@@ -24,207 +24,205 @@ Sinh viên nên nắm hệ phương trình vi phân hai chiều, trường hợp
 
 ### Động lực học phi tuyến là gì?
 
-**Động lực học phi tuyến** (nonlinear dynamics) nghiên cứu cách các hệ thống thay đổi theo thời gian khi các thành phần tương tác **không theo quan hệ tỷ lệ thuận**. Trong hệ tuyến tính, nếu bạn tăng gấp đôi đầu vào, đầu ra cũng tăng gấp đôi — nhưng trong thực tế, nhiều hiện tượng không tuân theo nguyên lý này. Ví dụ:
-- Con lắc: lực hồi phục tỷ lệ với $$\sin\theta$$ chứ không phải $$\theta$$ (phi tuyến khi góc lệch lớn)
-- Dịch bệnh: số người nhiễm tăng theo số người chưa nhiễm nhân với số người đã nhiễm (tích phi tuyến)
-- Hóa học: tốc độ phản ứng phụ thuộc nồng độ các chất tham gia theo cách phức tạp
+**Động lực học phi tuyến** (nonlinear dynamics) nghiên cứu cách các hệ thống biến đổi theo thời gian khi các thành phần tương tác **không theo quan hệ tỷ lệ thuận**. Trong hệ tuyến tính, khi đầu vào tăng gấp đôi thì đầu ra cũng tăng gấp đôi; tuy nhiên, nhiều hiện tượng thực tế không tuân theo tính chất này:
+- Con lắc: lực hồi phục tỷ lệ với $$\sin\theta$$ thay vì $$\theta$$ (phi tuyến khi góc lệch lớn).
+- Dịch bệnh: tốc độ lây nhiễm tỷ lệ với tích giữa số người chưa nhiễm và số người đã nhiễm (tích phi tuyến).
+- Hóa học: tốc độ phản ứng phụ thuộc vào nồng độ các chất tham gia theo những hàm phi tuyến phức tạp.
 
-Điểm khác biệt cốt lõi: trong hệ tuyến tính, ta có thể viết nghiệm tường minh; trong hệ phi tuyến, **công thức nghiệm hiếm khi tồn tại** — nhưng ta vẫn có thể hiểu hệ qua hình học.
+Điểm khác biệt cốt lõi là: với hệ tuyến tính, ta thường viết được nghiệm tường minh; còn với hệ phi tuyến, **công thức nghiệm đóng hiếm khi tồn tại**, nhưng ta vẫn có thể hiểu hành vi của hệ thông qua hình học.
 
 ### Mặt phẳng pha là gì?
 
-**Mặt phẳng pha** (phase plane) là không gian 2 chiều mà mỗi điểm biểu diễn **trạng thái hoàn chỉnh** của hệ tại một thời điểm. Với hệ 2 biến $$x$$ và $$y$$, mặt phẳng pha có:
-- Trục hoành $$x$$: biến thứ nhất (ví dụ: vị trí, nồng độ, dân số)
-- Trục tung $$y$$: biến thứ hai (ví dụ: vận tốc, tốc độ phản ứng, tốc độ tăng trưởng)
+**Mặt phẳng pha** (phase plane) là không gian hai chiều mà mỗi điểm biểu diễn **trạng thái đầy đủ** của hệ tại một thời điểm. Với hệ hai biến $$x$$ và $$y$$, mặt phẳng pha gồm:
+- Trục hoành $$x$$: biến trạng thái thứ nhất (ví dụ: vị trí, nồng độ, dân số).
+- Trục tung $$y$$: biến trạng thái thứ hai (ví dụ: vận tốc, tốc độ phản ứng, tốc độ tăng trưởng).
 
-Mỗi điểm $$(x, y)$$ trên mặt phẳng cho biết **toàn bộ trạng thái** của hệ tại thời điểm đó — không chỉ một thành phần mà cả hai.
+Mỗi điểm $$(x, y)$$ trên mặt phẳng xác định đồng thời cả hai thành phần trạng thái của hệ tại thời điểm đang xét.
 
 ### Tại sao dùng mặt phẳng pha?
 
-Thay vì vẽ đồ thị $$x(t)$$ và $$y(t)$$ riêng biệt theo thời gian (mỗi đồ thị là một sợi dây), ta vẽ **quỹ đạo** (trajectory) của cặp $$(x, y)$$ trên mặt phẳng. Điều này cho ta:
-- **Bức tranh toàn cảnh**: thấy hệ đi về đâu, quay quanh đâu, có dao động không
-- **Hiểu cấu trúc**: điểm cân bằng, quỹ đạo ổn định/unstable, dao động tự duy trì
-- **Trực giác mạnh**: không cần công thức nghiệm vẫn hiểu hệ
+Thay vì vẽ riêng hai đồ thị $$x(t)$$ và $$y(t)$$ theo thời gian, ta vẽ **quỹ đạo** (trajectory) của cặp $$(x, y)$$ trực tiếp trên mặt phẳng. Cách biểu diễn này mang lại:
+- **Bức tranh toàn cảnh**: cho thấy hệ tiến về đâu, quay quanh vùng nào và có dao động hay không.
+- **Cấu trúc động lực**: làm lộ rõ điểm cân bằng, quỹ đạo ổn định hay không ổn định và dao động tự duy trì.
+- **Trực giác hình học**: giúp phân tích hệ ngay cả khi không tìm được công thức nghiệm.
 
-Hãy tưởng tượng bạn quan sát một con cá voi bơi trong đại dương. Nếu chỉ nhìn đồ thị độ sâu theo thời gian, bạn không biết nó di chuyển theo đường nào. Nhưng nếu bạn có bản đồ vệ tinh cho thấy **toàn bộ quỹ đạo** đường đi của nó, bạn sẽ hiểu nó săn mồi như thế nào, có quay lại vùng cũ không — mặt phẳng pha chính là "bản đồ vệ tinh" cho hệ động lực.
+Hãy hình dung việc quan sát một con cá voi bơi trong đại dương. Nếu chỉ xem đồ thị độ sâu theo thời gian, ta không biết đường di chuyển của nó trong không gian. Ngược lại, một bản đồ vệ tinh cho thấy **toàn bộ quỹ đạo** sẽ giúp nhận ra lộ trình săn mồi và việc nó có quay lại vùng cũ hay không. Mặt phẳng pha đóng vai trò tương tự như tấm bản đồ đó đối với hệ động lực.
 
 ### Hai cách nhìn một hệ
 
 | Nhìn theo thời gian | Nhìn trên mặt phẳng pha |
 |---|---|
-| $$x(t)$$: sợi dây lên xuống | Quỹ đạo: đường cong trong mặt phẳng |
-| $$y(t)$$: sợi dây lên xuống | Cùng đường cong đó |
-| Hai đồ thị tách biệt | Một hình duy nhất |
+| $$x(t)$$: đường cong biến thiên theo $$t$$ | Quỹ đạo: đường cong trong mặt phẳng trạng thái |
+| $$y(t)$$: đường cong biến thiên theo $$t$$ | Cùng đường cong đó |
+| Hai đồ thị tách biệt | Một hình biểu diễn duy nhất |
 | Cần nghiệm tường minh | Chỉ cần trường vector |
 
-Ở các chương trước, nhiều bài toán có thể được giải bằng công thức rõ ràng. Nhưng trong **động lực học phi tuyến, công thức thường không còn là nhân vật chính**. Điều quan trọng hơn là **biết hệ đi về đâu, quay quanh đâu, có bị chặn không, có dao động bền hay không**. Những câu hỏi này mang tính hình học nhiều hơn là tính toán.
+Ở các chương trước, nhiều bài toán có thể giải bằng công thức rõ ràng. Tuy nhiên, trong **động lực học phi tuyến, công thức nghiệm không còn là trọng tâm**. Điều quan trọng hơn là xác định **hệ tiến về đâu, quay quanh đâu, có bị chặn không và có dao động bền vững hay không**. Những câu hỏi này thiên về hình học hơn là tính toán đại số.
 
-**Hệ tự trị** là nơi lý tưởng để bước vào thế giới đó. Vì vế phải không phụ thuộc tường minh vào thời gian, hình học của quỹ đạo chỉ phụ thuộc vào vị trí trong không gian trạng thái. Thay vì nhìn đồ thị của từng biến theo thời gian, ta nhìn trực tiếp **chuyển động của cả hệ trên mặt phẳng pha**. Đây là sự chuyển dịch tư duy lớn nhất của chương.
+**Hệ tự trị** là điểm khởi đầu phù hợp cho hướng tiếp cận này. Do vế phải không phụ thuộc tường minh vào thời gian, hình học quỹ đạo chỉ phụ thuộc vào vị trí trong không gian trạng thái. Thay vì khảo sát từng biến riêng lẻ theo thời gian, ta quan sát trực tiếp chuyển động của cả hệ trên mặt phẳng pha.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Hãy tưởng tượng mỗi điểm trong mặt phẳng là một trạng thái có thể của hệ. Tại mỗi điểm, hệ "muốn đi" theo một hướng nhất định. Nếu ta vẽ mũi tên chỉ hướng ấy ở mọi nơi, ta có một bản đồ động học. Quỹ đạo là đường mà hệ sẽ lần theo trên bản đồ đó.
+Hãy xem mỗi điểm trong mặt phẳng là một trạng thái có thể của hệ. Tại mỗi điểm, hệ có xu hướng dịch chuyển theo một hướng xác định. Khi vẽ các mũi tên chỉ hướng tại mọi điểm, ta thu được một bản đồ động học, và quỹ đạo chính là đường đi men theo các mũi tên đó.
 
 ### Cách nhìn hình ảnh
 
 Với hệ
 $$ \dot{x}=f(x,y),\qquad \dot{y}=g(x,y), $$
-ta gắn tại điểm $$ (x,y) $$ vector
+ta gắn tại mỗi điểm $$ (x,y) $$ vector vận tốc
 $$ \left(f(x,y),g(x,y)\right). $$
-Các quỹ đạo luôn tiếp tuyến với trường vector này. Nullcline $$ \dot{x}=0 $$ là nơi chuyển động theo phương ngang biến mất, còn nullcline $$ \dot{y}=0 $$ là nơi chuyển động theo phương đứng biến mất. Chúng chia mặt phẳng thành các vùng có hướng chuyển động khác nhau.
+Các quỹ đạo luôn tiếp tuyến với trường vector này. Đường nullcline $$ \dot{x}=0 $$ là tập hợp các điểm mà chuyển động theo phương ngang triệt tiêu, còn đường nullcline $$ \dot{y}=0 $$ là nơi chuyển động theo phương đứng triệt tiêu. Các đường nullcline chia mặt phẳng thành những miền có chiều chuyển động khác nhau.
 
 ### Cách nhìn hình thức
 
-**Hệ tự trị** (autonomous system) là hệ phương trình vi phân mà vế phải **không phụ thuộc tường minh vào thời gian $$t$$**. Nghĩa là:
-$$\dot{x} = f(x, y),\qquad \dot{y} = g(x, y)$$
-Thay vì $$\dot{x} = f(x, y, t)$$ (hệ không tự trị), ta có các quy luật chỉ phụ thuộc vào **vị trí hiện tại** $$(x, y)$$ chứ không phải thời điểm.
+**Hệ tự trị** (autonomous system) là hệ phương trình vi phân có vế phải **không phụ thuộc tường minh vào thời gian $$t$$**:
+$$\dot{x} = f(x, y),\qquad \dot{y} = g(x, y).$$
+Khác với hệ không tự trị $$\dot{x} = f(x, y, t)$$, quy luật biến thiên của hệ tự trị chỉ phụ thuộc vào **trạng thái hiện tại** $$(x, y)$$, không phụ thuộc vào thời điểm.
 
-**So sánh**:
+**So sánh:**
 
 | Hệ tự trị | Hệ không tự trị |
 |---|---|
 | $$\dot{x} = x(1-x)$$ | $$\dot{x} = x(1-x) + \sin(t)$$ |
-| Không có $$t$$ ở vế phải | Có $$t$$ ở vế phải |
+| Không chứa $$t$$ ở vế phải | Có chứa $$t$$ ở vế phải |
 | Quỹ đạo chỉ phụ thuộc vị trí | Quỹ đạo phụ thuộc cả thời gian |
 | Hình học pha cố định | Hình học pha thay đổi theo thời gian |
 
-**Ý nghĩa của tính tự trị**:
-- Quy luật chuyển động **không đổi** theo thời gian — hệ "nhớ" cùng một cách ở mọi thời điểm
-- Nếu hệ bắt đầu ở trạng thái $$(x_0, y_0)$$ tại $$t_0$$ hoặc tại $$t_1$$, quỹ đạo sẽ **giống nhau** — chỉ khác thời điểm bắt đầu
-- Điều này có nghĩa: hình học pha là **bất biến theo thời gian** — "đồng hồ tuyệt đối" không quan trọng, chỉ có "vị trí tương đối" quan trọng
+**Ý nghĩa của tính tự trị:**
+- Quy luật chuyển động không đổi theo thời gian.
+- Nếu hệ xuất phát tại trạng thái $$(x_0, y_0)$$ ở thời điểm $$t_0$$ hay $$t_1$$, đường quỹ đạo thu được vẫn giống hệt nhau, chỉ dịch chuyển theo thời gian.
+- Hình học pha bất biến theo phép tịnh tiến thời gian: mốc thời gian tuyệt đối không làm thay đổi dạng quỹ đạo.
 
-**Ví dụ**:
-- Hệ tự trị: $$\dot{x} = x(1-x),\ \dot{y} = y(x-1)$$ — quy luật chỉ phụ thuộc $$x, y$$
-- Hệ không tự trị: $$\dot{x} = x(1-x) + \cos(t)$$ — quy luật thay đổi theo thời gian
+**Ví dụ:**
+- Hệ tự trị: $$\dot{x} = x(1-x),\ \dot{y} = y(x-1)$$ — vế phải chỉ phụ thuộc vào $$x, y$$.
+- Hệ không tự trị: $$\dot{x} = x(1-x) + \cos(t)$$ — quy luật thay đổi tường minh theo thời gian.
 
-Một hệ tự trị phẳng có dạng
-$$ \dot{x}=f(x,y),\qquad \dot{y}=g(x,y), $$
-trong đó $$ f,g $$ không phụ thuộc tường minh vào $$ t $$. Một quỹ đạo là ảnh của nghiệm
+Về mặt hình thức, một **quỹ đạo** là ảnh của nghiệm
 $$ t\mapsto (x(t),y(t)) $$
-trong mặt phẳng trạng thái. Điểm cân bằng là điểm thỏa
+trong mặt phẳng trạng thái. **Điểm cân bằng** là điểm $$(x_*, y_*)$$ thỏa mãn đồng thời
 $$ f(x_*,y_*)=0,\qquad g(x_*,y_*)=0. $$
 
 ## Những ngộ nhận thường gặp
 
-- "Không có công thức nghiệm thì không hiểu được hệ." Sai. Mặt phẳng pha cho rất nhiều thông tin định tính mạnh.
-- "Quỹ đạo trên mặt phẳng pha chính là đồ thị theo thời gian." Sai. Nó mô tả trạng thái so với trạng thái, không phải trạng thái theo thời gian.
-- "Nullcline là quỹ đạo của hệ." Sai. Chúng chỉ là các đường nơi một thành phần vận tốc bằng 0.
-- "Hệ tự trị nghĩa là hệ đơn giản." Không đúng. Hệ tự trị có thể rất giàu cấu trúc và rất phi tuyến.
+- "Không có công thức nghiệm thì không thể hiểu được hệ." Sai. Mặt phẳng pha cung cấp nhiều thông tin định tính quan trọng về hành vi của hệ.
+- "Quỹ đạo trên mặt phẳng pha chính là đồ thị theo thời gian." Sai. Quỹ đạo thể hiện mối liên hệ giữa các biến trạng thái với nhau, không phải biến thiên của từng biến theo thời gian.
+- "Nullcline là quỹ đạo của hệ." Sai. Nullcline chỉ là đường mà tại đó một thành phần vận tốc bằng 0.
+- "Hệ tự trị là hệ đơn giản." Không đúng. Hệ tự trị vẫn có thể rất phi tuyến và có cấu trúc động lực phức tạp.
 
 ## Tiến trình học tập đề xuất
 
 ### Bước 1: Xác định trường vector
 
-Xem hệ "muốn đi" theo hướng nào tại từng điểm.
+Quan sát hướng dịch chuyển của hệ tại từng vị trí trên mặt phẳng.
 
 ### Bước 2: Tìm điểm cân bằng và nullcline
 
-Đây là bộ khung đầu tiên của mặt phẳng pha.
+Xây dựng bộ khung cơ bản cho mặt phẳng pha.
 
-### Bước 3: Chia mặt phẳng thành các vùng dấu
+### Bước 3: Chia mặt phẳng thành các miền dấu
 
-Đọc chiều tăng giảm của từng biến.
+Xác định chiều tăng, giảm của từng biến trên mỗi miền.
 
 ### Bước 4: Phác họa quỹ đạo
 
-Chú ý chúng phải tiếp tuyến với trường vector và tôn trọng nullcline.
+Vẽ các đường cong tiếp tuyến với trường vector và cắt các đường nullcline đúng phương (đứng hoặc ngang).
 
-### Các checkpoint
+### Các điểm kiểm tra
 
-- Sinh viên có phân biệt được quỹ đạo với nullcline hay không.
-- Sinh viên có đọc đúng dấu của $$ \dot{x},\dot{y} $$ trên các miền hay không.
-- Sinh viên có hiểu vì sao hệ tự trị cho quỹ đạo "giống nhau" nếu dịch thời gian hay không.
+- Sinh viên có phân biệt được quỹ đạo với đường nullcline hay không.
+- Sinh viên có xác định đúng dấu của $$ \dot{x},\dot{y} $$ trên các miền hay không.
+- Sinh viên có giải thích được vì sao phép dịch thời gian không làm thay đổi quỹ đạo của hệ tự trị hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Hệ tuyến tính đơn giản trong mặt phẳng pha
+### Ví dụ 1: Hệ tuyến tính đơn giản trên mặt phẳng pha
 
-Xét
+Xét hệ
 $$ \dot{x}=x,\qquad \dot{y}=-y. $$
-Ta có nullcline
+Các đường nullcline là
 $$ x=0,\qquad y=0. $$
-Nếu $$ x>0 $$ thì $$ \dot{x}>0 $$, còn $$ x<0 $$ thì $$ \dot{x}<0 $$. Tương tự, nếu $$ y>0 $$ thì $$ \dot{y}<0 $$, còn $$ y<0 $$ thì $$ \dot{y}>0 $$. Do đó quỹ đạo bị đẩy ra theo trục $$ x $$ nhưng hút vào theo trục $$ y $$. Đây là chân dung yên ngựa, nhưng điều quan trọng ở đây là thấy cách đọc trực tiếp từ dấu.
+Khi $$ x>0 $$ thì $$ \dot{x}>0 $$, còn khi $$ x<0 $$ thì $$ \dot{x}<0 $$. Tương tự, khi $$ y>0 $$ thì $$ \dot{y}<0 $$, còn khi $$ y<0 $$ thì $$ \dot{y}>0 $$. Do đó, quỹ đạo bị đẩy ra dọc theo trục $$ x $$ và hút vào dọc theo trục $$ y $$. Đây là chân dung điểm yên ngựa, cho thấy ta có thể đọc trực tiếp dạng chuyển động chỉ từ việc xét dấu.
 
 ### Ví dụ 2: Nullcline và điểm cân bằng
 
-Xét
+Xét hệ
 $$ \dot{x}=x(1-x-y),\qquad \dot{y}=y(2-x-y). $$
-Nullcline của $$ x $$ là
+Nullcline theo $$ x $$ là
 $$ x=0 \quad \text{hoặc} \quad x+y=1. $$
-Nullcline của $$ y $$ là
+Nullcline theo $$ y $$ là
 $$ y=0 \quad \text{hoặc} \quad x+y=2. $$
-Từ đây, sinh viên có thể chia mặt phẳng thành các vùng và đọc dấu của $$ \dot{x},\dot{y} $$ trước cả khi giải nghiệm.
+Từ các đường này, sinh viên có thể chia mặt phẳng thành các miền và xác định dấu của $$ \dot{x},\dot{y} $$ mà chưa cần giải hệ.
 
-### Ví dụ 3: Một quỹ đạo không cần công thức
+### Ví dụ 3: Phác họa quỹ đạo không cần công thức nghiệm
 
-Nếu trong một vùng ta biết
+Nếu trong một miền ta có
 $$ \dot{x}>0,\qquad \dot{y}<0, $$
-thì quỹ đạo đi về phía phải và phía dưới. Chỉ với thông tin này, ta đã có thể phác hướng chuyển động cục bộ của hệ mà không cần lời giải explicit.
+thì quỹ đạo sẽ đi sang phải và xuống dưới. Chỉ từ thông tin về dấu này, ta đã xác định được hướng chuyển động cục bộ mà không cần nghiệm tường minh.
 
-### Ví dụ 4: Tính tự trị và dịch thời gian
+### Ví dụ 4: Tính tự trị và phép dịch thời gian
 
-Nếu một quỹ đạo là nghiệm của hệ tự trị, thì cùng quỹ đạo đó nhưng bắt đầu ở thời điểm khác vẫn là nghiệm. Điều này giải thích vì sao hình học pha của hệ tự trị không phụ thuộc vào "đồng hồ tuyệt đối", mà chỉ phụ thuộc vào trạng thái.
+Nếu một đường cong là quỹ đạo nghiệm của hệ tự trị, thì cùng đường cong đó nhưng xuất phát tại thời điểm khác vẫn là một nghiệm. Điều này giải thích vì sao hình học pha của hệ tự trị không phụ thuộc vào mốc thời gian tuyệt đối mà chỉ phụ thuộc vào trạng thái.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao mặt phẳng pha cho trực giác mạnh hơn đồ thị theo thời gian trong hệ hai chiều?
-2. Vai trò của nullcline trong việc phác họa quỹ đạo là gì?
-3. Vì sao tính tự trị làm cho quỹ đạo được hiểu như hình học trạng thái chứ không phải như lịch biểu thời gian?
+1. Vì sao mặt phẳng pha mang lại trực giác tốt hơn đồ thị theo thời gian đối với hệ hai chiều?
+2. Đường nullcline đóng vai trò gì trong việc phác họa quỹ đạo?
+3. Vì sao tính tự trị cho phép xem quỹ đạo là đối tượng hình học trong không gian trạng thái thay vì một biểu đồ phụ thuộc mốc thời gian?
 
 ## Bài toán ứng dụng
 
-1. Trong sinh thái học, hai quần thể cùng tiến hóa. Hãy giải thích vì sao mặt phẳng pha phù hợp hơn việc chỉ vẽ riêng từng đồ thị dân số theo thời gian.
-2. Trong hóa học, hai nồng độ tương tác qua phản ứng. Hãy diễn giải trường vector như bản đồ của hướng thay đổi phản ứng.
-3. Trong điều khiển, vì sao việc biết các vùng hệ đi lên hay đi xuống trong không gian trạng thái lại quan trọng?
+1. Trong sinh thái học, khi hai quần thể cùng biến đổi, hãy giải thích vì sao mặt phẳng pha phù hợp hơn việc chỉ vẽ riêng hai đồ thị dân số theo thời gian.
+2. Trong hóa học, hai nồng độ tương tác qua phản ứng. Hãy diễn giải trường vector như bản đồ chỉ hướng tiến triển của phản ứng.
+3. Trong lý thuyết điều khiển, vì sao việc xác định các miền tăng giảm trong không gian trạng thái lại có ý nghĩa thực tiễn?
 
 ## Chiến lược giảng dạy tương tác
 
-- Cho sinh viên nhìn một trường vector và đoán đường đi của quỹ đạo trước khi được cho hệ phương trình.
-- Tổ chức hoạt động "đọc dấu" trên các miền được chia bởi nullcline.
-- Yêu cầu sinh viên so sánh cùng một nghiệm nhìn theo đồ thị thời gian và nhìn trong mặt phẳng pha.
-- Khuyến khích sinh viên dùng lời mô tả hướng chuyển động trước khi vẽ hình chi tiết.
+- Cho sinh viên quan sát một trường vector và dự đoán dạng quỹ đạo trước khi cung cấp hệ phương trình.
+- Tổ chức hoạt động xét dấu trên các miền được phân chia bởi các đường nullcline.
+- Yêu cầu sinh viên đối chiếu cùng một nghiệm khi biểu diễn trên đồ thị thời gian và trên mặt phẳng pha.
+- Khuyến khích sinh viên mô tả bằng lời chiều chuyển động trước khi vẽ hình chi tiết.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên để sinh viên yếu tập trung vào ba bước cố định: tìm nullcline, xét dấu trên các vùng, rồi vẽ vài mũi tên mẫu. Cách làm từng bước này giúp các em không bị choáng bởi mặt phẳng pha.
+Nên hướng dẫn sinh viên tập trung theo quy trình ba bước cố định: tìm nullcline, xét dấu trên từng miền, sau đó vẽ một số mũi tên mẫu. Cách làm tuần tự này giúp tránh lúng túng khi tiếp cận mặt phẳng pha.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể yêu cầu sinh viên khá giỏi giải thích vì sao quỹ đạo của hệ tự trị không thể tự cắt nhau, hoặc phân tích thêm vùng bất biến dương trong các mô hình sinh học.
+Có thể yêu cầu sinh viên giải thích vì sao hai quỹ đạo khác nhau của hệ tự trị không thể cắt nhau, hoặc phân tích miền bất biến dương trong các mô hình sinh học.
 
 ## Tóm tắt dễ nhớ
 
-Mặt phẳng pha là bản đồ động học của hệ tự trị hai chiều. Muốn đọc hệ, hãy tìm điểm cân bằng, vẽ nullcline, xét dấu của $$ \dot{x},\dot{y} $$ và nhìn quỹ đạo như những đường tiếp tuyến với trường vector. Không cần công thức nghiệm mới hiểu được hệ.
+Mặt phẳng pha là bản đồ động học của hệ tự trị hai chiều. Để phân tích hệ, ta tìm điểm cân bằng, vẽ các đường nullcline, xét dấu của $$ \dot{x},\dot{y} $$ và phác họa quỹ đạo sao cho luôn tiếp tuyến với trường vector. Ta vẫn hiểu được hành vi định tính của hệ mà không cần công thức nghiệm đóng.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Con lắc có ma sát
-- Bài toán: Muốn hiểu vật dao động có quay về vị trí cân bằng hay còn dao động mãi.
+- Bài toán: Xác định xem vật dao động sẽ dừng về vị trí cân bằng hay tiếp tục dao động mãi.
 - Mô hình:
 $$
 \dot{\theta}=\omega,\qquad
 \dot{\omega}=-\sin\theta-c\omega.
 $$
-- Giả thiết và giới hạn: Bỏ qua nhiễu ngoài và giả sử lực cản tuyến tính theo vận tốc góc.
-- Diễn giải: Mặt phẳng pha cho thấy ngay quỹ đạo xoắn vào cân bằng hay chạy vòng qua nhiều chu kỳ.
+- Giả thiết và giới hạn: Bỏ qua nhiễu ngoài và giả sử lực cản tỷ lệ tuyến tính với vận tốc góc.
+- Diễn giải: Mặt phẳng pha cho thấy trực quan quỹ đạo xoắn dần về vị trí cân bằng hay quay qua nhiều chu kỳ.
 
 #### Tương tác hai quần thể
-- Bài toán: Hai loài cùng biến đổi, một loài tăng làm loài kia giảm.
+- Bài toán: Hai loài cùng biến đổi, sự gia tăng của một loài làm suy giảm loài kia.
 - Mô hình:
 $$ \dot{x}=x(1-y),\qquad
 \dot{y}=y(x-1). $$
-- Giả thiết và giới hạn: Mô hình hóa rất lý tưởng, chưa có sức chứa môi trường hay trễ thời gian.
-- Diễn giải: Trường vector và nullcline cho ta hình học định tính trước cả khi tìm nghiệm.
+- Giả thiết và giới hạn: Mô hình lý tưởng hóa, chưa tính đến sức chứa môi trường hay độ trễ thời gian.
+- Diễn giải: Trường vector và các đường nullcline thể hiện cấu trúc định tính trước khi giải nghiệm.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Mặt phẳng pha là bước chuyển từ "giải ra công thức" sang "đọc cấu trúc quỹ đạo". Nullcline không phải là quỹ đạo, mà là nơi một thành phần vận tốc bằng $$ 0 $$. Một bẫy phổ biến là lẫn lộn đồ thị theo thời gian với quỹ đạo trạng thái. Bài này nối trực tiếp với Chương 4: thay vì chỉ phân loại hệ tuyến tính, ta bắt đầu dùng hình học để hiểu cả hệ phi tuyến.
+Mặt phẳng pha đánh dấu bước chuyển từ việc tìm công thức nghiệm sang phân tích cấu trúc quỹ đạo. Cần phân biệt rõ: nullcline không phải là quỹ đạo mà là tập hợp điểm có một thành phần vận tốc bằng $$ 0 $$, và quỹ đạo trạng thái không phải là đồ thị theo thời gian. Bài học này nối tiếp trực tiếp Chương 4: thay vì dừng ở việc phân loại hệ tuyến tính, ta bắt đầu vận dụng hình học để khảo sát hệ phi tuyến.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -267,23 +265,23 @@ plt.show()
 Xét hệ
 $$ \dot{x}=x(1-y),\qquad
 \dot{y}=y(x-1). $$
-Nullcline là
+Các đường nullcline là
 $$ x=0,\ y=1,\ y=0,\ x=1. $$
-Trong miền $$ x>1,\ y<1 $$ ta có $$ \dot{x}>0,\ \dot{y}>0 $$ nên quỹ đạo đi lên và sang phải. Chỉ từ dấu của trường vector, ta đã phác được động học cục bộ mà không cần nghiệm tường minh.
+Trong miền $$ x>1,\ y<1 $$, ta có $$ \dot{x}>0,\ \dot{y}>0 $$ nên quỹ đạo đi sang phải và lên trên. Chỉ cần xét dấu của trường vector, ta đã phác họa được xu hướng động học cục bộ mà không cần nghiệm tường minh.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Tập trung vào trường vector, nullcline, điểm cân bằng và cách đọc hướng chuyển động.
+**Bậc đại học.** Tập trung vào trường vector, đường nullcline, điểm cân bằng và cách đọc chiều chuyển động.
 
-**Bậc sau đại học.** Nhấn mạnh dòng chảy, tập bất biến, cấu trúc tôpô của quỹ đạo và tính duy nhất của nghiệm.
+**Bậc sau đại học.** Nhấn mạnh khái niệm dòng chảy (flow), tập bất biến, cấu trúc tôpô của quỹ đạo và tính duy nhất của nghiệm.
 
 ## Video tham khảo
 
-- xem trước: [MAE5790-1 Course introduction and overview](https://www.youtube.com/watch?v=ycJEoqmQvwg) — Cornell MAE, tiếng Anh. Strogatz mở khóa: không gian pha thay cho công thức.
-- [MAE5790-2 One dimensional Systems](https://www.youtube.com/watch?v=YNIm2Op7UPg) — Cornell MAE, tiếng Anh. Đường pha một chiều là bước khởi động trước mặt phẳng.
-- [Drawing Phase Portraits for Nonlinear Systems](https://www.youtube.com/watch?v=vBwyD4JJlSs) — Steve Brunton, tiếng Anh. Brunton về cách phác chân dung pha phi tuyến từ trường vector.
+- Xem trước: [MAE5790-1 Course introduction and overview](https://www.youtube.com/watch?v=ycJEoqmQvwg) — Cornell MAE, tiếng Anh. Strogatz mở đầu khóa học với cách tiếp cận không gian pha thay cho công thức nghiệm.
+- [MAE5790-2 One dimensional Systems](https://www.youtube.com/watch?v=YNIm2Op7UPg) — Cornell MAE, tiếng Anh. Đường pha một chiều là bước khởi đầu trước khi chuyển sang mặt phẳng pha.
+- [Drawing Phase Portraits for Nonlinear Systems](https://www.youtube.com/watch?v=vBwyD4JJlSs) — Steve Brunton, tiếng Anh. Hướng dẫn phác họa chân dung pha phi tuyến từ trường vector.
 
 ## Tài liệu tham khảo
 
-- Strogatz, Chương 5-6: trực giác rất mạnh về hệ tự trị và mặt phẳng pha.
+- Strogatz, Chương 5–6: trình bày trực quan về hệ tự trị và mặt phẳng pha.
 - Arnold, Chương 4: làm rõ góc nhìn hình học của trường vector và dòng chảy.

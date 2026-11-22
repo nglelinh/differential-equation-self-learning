@@ -12,57 +12,57 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài tùy chọn này nối hệ ma trận, trị riêng và ma trận cơ bản với latent neural ODE và các mô hình nhận dạng hệ hiện đại. Sinh viên cần đọc latent ODE như hệ ẩn tuyến tính hoặc phi tuyến, giải thích vì sao cấu trúc trị riêng vẫn chi phối hành vi dài hạn, và định vị các bài 2019–2022 đã biến mô hình không gian trạng thái liên tục thành công cụ deep learning chuẩn. Các phương pháp trị riêng của chương không bị thay thế.
+Bài đọc tùy chọn này kết nối hệ ma trận, trị riêng và ma trận nghiệm cơ bản của Chương 04 với mô hình latent neural ODE và các phương pháp nhận dạng hệ hiện đại. Sinh viên sẽ nhìn nhận latent ODE như một hệ trạng thái ẩn (tuyến tính hoặc phi tuyến), giải thích vì sao cấu trúc trị riêng vẫn chi phối hành vi dài hạn, và hiểu vai trò của các công trình giai đoạn 2019–2022 trong việc đưa mô hình không gian trạng thái liên tục vào học sâu. Bài không thay thế các phương pháp trị riêng cổ điển của chương.
 
 ## Kiến thức nền
 
-Sinh viên cần biết viết hệ cấp một $$\mathbf{x}'=A\mathbf{x}+\mathbf{g}(t)$$, tính trị riêng và vector riêng, lập $$e^{At}$$, và đọc chân dung pha tuyến tính. Mô hình ngăn ở bài cuối chương là ví dụ chạy lý tưởng.
+Sinh viên cần biết biểu diễn hệ bậc nhất $$\mathbf{x}'=A\mathbf{x}+\mathbf{g}(t)$$, tính trị riêng và vector riêng, xây dựng hàm mũ ma trận $$e^{At}$$ và đọc chân dung pha tuyến tính. Mô hình ngăn chứa ở cuối chương là ví dụ minh họa phù hợp nhất cho bài đọc này.
 
 ## Dẫn nhập
 
-Hệ ODE là ngôn ngữ bản địa của các đại lượng tương tác: dao động tử liên kết, bồn nối tiếp, ngăn dịch tễ. Cùng ngôn ngữ ấy nay nằm trong mạng nơ-ron. Rubanova, Chen và Duvenaud (*Latent ODEs for Irregularly-Sampled Time Series*, NeurIPS 2019) mã hóa một dãy không đều thành trạng thái đầu ẩn, rồi sinh tương lai bằng cách tích phân neural ODE trong không gian ấy. Dãy quan sát là phần đọc ra của một hệ thời gian liên tục mà mạng không viết dạng đóng, nhưng vẫn có Jacobian, phổ, và chân dung pha.
+Hệ ODE là ngôn ngữ tự nhiên cho các đại lượng tương tác như bộ dao động ghép, bể pha trộn nối tiếp hay mô hình ngăn dịch tễ. Cách biểu diễn này hiện cũng được tích hợp trực tiếp vào mạng nơ-ron. Rubanova, Chen và Duvenaud (*Latent ODEs for Irregularly-Sampled Time Series*, NeurIPS 2019) mã hóa một chuỗi thời gian lấy mẫu không đều thành trạng thái khởi đầu trong không gian ẩn, rồi dự đoán tương lai bằng cách tích phân một neural ODE trong không gian ẩn đó. Chuỗi quan sát là đầu ra đọc từ một hệ thời gian liên tục mà mạng không viết ở dạng công thức đóng, nhưng vẫn có ma trận Jacobian, phổ trị riêng và chân dung pha.
 
-Khảo sát 2022 của Kidger ([arXiv:2202.02435](https://arxiv.org/abs/2202.02435)) và bài Neural CDE (Kidger, Morrill, Foster và Lyons, ICLR 2021) mở rộng ý tưởng từ trường ẩn tự trị sang hệ bị dẫn bởi một đường đầu vào. Cộng đồng SciML quanh Diffrax và DiffEqFlux xem hệ cơ chế và hệ nơ-ron như đối tượng hoán đổi được. Ma trận mũ của chương là nghiệm đúng của trường hợp tuyến tính, do đó là chẩn đoán đầu tiên cho mọi mô hình ấy.
+Khảo sát năm 2022 của Kidger ([arXiv:2202.02435](https://arxiv.org/abs/2202.02435)) cùng bài báo về Neural CDE (Kidger, Morrill, Foster và Lyons, ICLR 2021) mở rộng hướng tiếp cận từ hệ ẩn tự trị sang hệ chịu dẫn dắt bởi một đường tín hiệu đầu vào. Cộng đồng học máy khoa học (SciML) xoay quanh các thư viện như Diffrax và DiffEqFlux xem hệ phương trình cơ chế và hệ nơ-ron là các thành phần có thể kết hợp hoặc thay thế lẫn nhau. Hàm mũ ma trận của Chương 04 chính là nghiệm giải tích đúng trong trường hợp tuyến tính, nên đóng vai trò công cụ kiểm chứng đầu tiên cho các mô hình này.
 
 ## Khái niệm then chốt
 
 ### Không gian trạng thái ẩn
 
-Latent ODE là hệ $$\mathbf{z}'=f_\theta(\mathbf{z})$$, $$\mathbf{x}(t)=g_\phi(\mathbf{z}(t))$$, với $$\mathbf{x}$$ quan sát và $$\mathbf{z}$$ ẩn. Nếu $$f_\theta(\mathbf{z})\approx A\mathbf{z}$$ gần cân bằng, phân loại đã chứng minh trong chương áp nguyên văn: trị riêng thực âm cho nút tắt, trị riêng phức phần thực âm cho xoắn ốc, trị riêng không báo đường cân bằng hoặc luật bảo toàn. Huấn luyện bỏ qua phổ ấy có thể khớp quan sát mà vẫn không ổn định bên trong.
+Một mô hình latent ODE có dạng $$\mathbf{z}'=f_\theta(\mathbf{z})$$, $$\mathbf{x}(t)=g_\phi(\mathbf{z}(t))$$, trong đó $$\mathbf{x}$$ là biến quan sát và $$\mathbf{z}$$ là trạng thái ẩn. Nếu gần một điểm cân bằng ta có xấp xỉ tuyến tính $$f_\theta(\mathbf{z})\approx A\mathbf{z}$$, toàn bộ phân loại của Chương 04 vẫn giữ nguyên hiệu lực: trị riêng thực âm ứng với nút hút, trị riêng phức có phần thực âm ứng với xoắn ốc hút, còn trị riêng bằng 0 báo hiệu đường cân bằng hoặc đại lượng bảo toàn. Việc huấn luyện mà bỏ qua phổ trị riêng có thể khớp tốt dữ liệu quan sát nhưng vẫn ẩn chứa sự mất ổn định bên trong không gian ẩn.
 
-### Ma trận cơ bản và tuyến tính hóa
+### Ma trận nghiệm cơ bản và phép tuyến tính hóa
 
-Ma trận cơ bản $$\Phi(t)=e^{At}$$ ánh xạ điều kiện đầu thành trạng thái tại $$t$$. Trong mô hình ẩn tuyến tính, cùng đối tượng ấy là toán tử chuyển trạng thái học được. Với trường ẩn phi tuyến, ma trận cơ bản địa phương là ma trận chuyển của phương trình biến phân $$\mathbf{v}'=Df_\theta(\mathbf{z}(t))\mathbf{v}$$. Đó đúng tuyến tính hóa dùng để vẽ chân dung pha, nay được tính tự động bằng cách lấy đạo hàm bộ giải.
+Ma trận nghiệm cơ bản $$\Phi(t)=e^{At}$$ ánh xạ trạng thái ban đầu sang trạng thái tại thời điểm $$t$$. Trong mô hình không gian trạng thái ẩn tuyến tính, đây chính là toán tử chuyển trạng thái được học từ dữ liệu. Với trường động lực ẩn phi tuyến, ma trận chuyển cục bộ tương ứng là nghiệm của phương trình biến phân $$\mathbf{v}'=Df_\theta(\mathbf{z}(t))\mathbf{v}$$ — chính là phép tuyến tính hóa dùng để phân tích chân dung pha, nay được tính tự động thông qua vi phân tự động qua bộ giải ODE.
 
-### Đầu vào, điều khiển, và Neural CDE
+### Đầu vào, điều khiển và Neural CDE
 
-Hệ không thuần nhất $$\mathbf{x}'=A\mathbf{x}+\mathbf{g}(t)$$ là cách cổ điển thêm lực. Neural CDE thay $$\mathbf{g}(t)\,dt$$ bằng gia số điều khiển $$f_\theta(\mathbf{z})\,dX(t)$$, đúng mô hình khi đầu vào là đường đo được chứ không phải hàm thời gian cho sẵn. Biến thiên tham số vẫn là công thức nghiệm khái niệm: hệ thuần nhất vận chuyển hiệu ứng mỗi gia số về phía trước bằng $$\Phi(t)\Phi(s)^{-1}$$.
+Hệ không thuần nhất $$\mathbf{x}'=A\mathbf{x}+\mathbf{g}(t)$$ là cách cổ điển để đưa tác động ngoài vào hệ. Neural CDE thay số hạng $$\mathbf{g}(t)\,dt$$ bằng gia số điều khiển $$f_\theta(\mathbf{z})\,dX(t)$$, phù hợp khi đầu vào là một chuỗi dữ liệu đo được liên tục theo thời gian thay vì một hàm giải tích cho trước. Về mặt khái niệm, công thức biến thiên hằng số vẫn giữ nguyên vai trò: hệ thuần nhất truyền tác động của từng gia số đầu vào theo thời gian thông qua toán tử $$\Phi(t)\Phi(s)^{-1}$$.
 
-### Khả năng nhận dạng ngăn
+### Tính nhận dạng trong mô hình ngăn
 
-Mô hình ngăn dược động học và dịch tễ chỉ nhận dạng được tới những đồng dạng nhất định. Sự mơ hồ ấy xuất hiện trong latent ODE: nếu $$P$$ khả nghịch, $$\mathbf{w}=P\mathbf{z}$$ cho hệ tương đương với ma trận $$PAP^{-1}$$. Trị riêng bất biến; vector riêng và nghĩa ngăn thì không.
+Trong dược động học và dịch tễ, mô hình ngăn thường chỉ nhận dạng được sai khác một phép biến đổi tọa độ tương đương. Sự bất định tương tự xuất hiện ở latent ODE: với mọi ma trận khả nghịch $$P$$, phép đổi biến $$\mathbf{w}=P\mathbf{z}$$ tạo ra hệ tương đương với ma trận $$PAP^{-1}$$. Các trị riêng bất biến dưới phép đồng dạng này, còn vector riêng và ý nghĩa vật lý của từng ngăn thì thay đổi theo hệ cơ sở.
 
 ## Phương pháp và kỹ thuật
 
-1. Khớp latent ODE hoặc mô hình không gian trạng thái tuyến tính với dãy.
-2. Tuyến tính hóa trường học được tại cân bằng hoặc điểm làm việc suy ra.
-3. Tính trị riêng và so với các thang thời gian thấy trong dữ liệu.
-4. Nếu ứng dụng là mô hình ngăn, kiểm tra phổ — không phải một cơ sở cụ thể — có ổn định qua các hạt giống ngẫu nhiên không.
-5. Với hệ bị dẫn, so sánh đáp ứng học được với biến thiên tham số trên hệ tuyến tính hóa.
+1. Huấn luyện một latent ODE hoặc mô hình không gian trạng thái tuyến tính trên chuỗi dữ liệu.
+2. Tuyến tính hóa trường động lực học được tại điểm cân bằng hoặc điểm làm việc suy ra từ mô hình.
+3. Tính các trị riêng của Jacobian và đối chiếu với các thang thời gian quan sát trong dữ liệu.
+4. Với mô hình ngăn, kiểm tra xem phổ trị riêng — chứ không phải từng tọa độ riêng lẻ — có ổn định qua nhiều lần khởi tạo ngẫu nhiên khác nhau hay không.
+5. Với hệ có đầu vào điều khiển, so sánh đáp ứng của mô hình với công thức biến thiên hằng số áp dụng lên hệ đã tuyến tính hóa.
 
-Phần mềm: `torchdiffeq` cho latent ODE PyTorch; Diffrax cho JAX, gồm CDE; hệ SciML trong Julia cho hệ lai cơ chế–nơ-ron.
+Về công cụ phần mềm, `torchdiffeq` thường dùng cho latent ODE trên PyTorch, Diffrax dùng trên JAX (hỗ trợ cả CDE), còn hệ sinh thái SciML trên Julia thuận tiện cho các mô hình lai giữa cơ chế vật lý và mạng nơ-ron.
 
 ## Ví dụ
 
-### Ví dụ 1: Lấy lại hai bồn ẩn
+### Ví dụ 1: Khôi phục hệ hai bể pha trộn ẩn
 
-Hai bồn pha trộn là hệ tuyến tính với trị riêng thực âm. Nếu chỉ quan sát nồng độ hạ lưu, latent ODE hai chiều ẩn nên lấy lại hai thang thời gian ấy, dù tọa độ học được là phép quay của các ngăn vật lý. Vẽ trị riêng qua các hạt giống huấn luyện giàu thông tin hơn vẽ quỹ đạo ẩn.
+Hệ hai bể pha trộn nối tiếp là hệ tuyến tính có hai trị riêng thực âm. Ngay cả khi chỉ quan sát nồng độ ở bể hạ lưu, một latent ODE hai chiều ẩn vẫn cần khôi phục được hai thang thời gian đặc trưng này, dù hệ tọa độ học được có thể là phép xoay của các ngăn vật lý ban đầu. Do đó, đối chiếu phổ trị riêng qua các lần chạy huấn luyện mang lại nhiều thông tin hơn so với việc chỉ vẽ trực tiếp các tọa độ ẩn.
 
-### Ví dụ 2: Dao động tử liên kết và mode riêng
+### Ví dụ 2: Bộ dao động ghép và chế độ dao động riêng
 
-Hai lò xo liên kết có một cặp cặp trị riêng ảo, tương ứng mode riêng. Mô hình ẩn huấn luyện trên tổng hai vị trí có thể lấy lại tần số và vẫn trộn hình dạng mode. Tính toán mode riêng của chương là chuẩn: tần số là bất biến phổ, hình dạng phụ thuộc cơ sở.
+Hệ hai lò xo ghép nối có hai cặp trị riêng thuần ảo tương ứng với hai tần số dao động riêng. Một mô hình ẩn huấn luyện chỉ trên tổng chuyển vị của hai vật có thể khôi phục chính xác hai tần số này nhưng vẫn trộn lẫn hình dạng của các chế độ riêng. Phân tích chế độ riêng của Chương 04 giải thích rõ điều đó: tần số là bất biến phổ, còn dạng dao động phụ thuộc vào hệ cơ sở được chọn.
 
-### Ví dụ 3: Latent ODE tuyến tính trong mã
+### Ví dụ 3: Latent ODE tuyến tính bằng PyTorch
 
 ```python
 import torch
@@ -79,37 +79,37 @@ zt = odeint(f, z0, t)
 print(zt[-1])
 ```
 
-Thay $$A$$ bằng một mạng nhỏ biến đoạn này thành latent ODE. Việc đầu tiên cần in sau huấn luyện vẫn là phổ của Jacobian tại cân bằng.
+Thay ma trận hằng $$A$$ bằng một mạng nơ-ron nhỏ sẽ chuyển đoạn mã trên thành một latent ODE. Sau khi huấn luyện, đại lượng đầu tiên nên kiểm tra vẫn là phổ trị riêng của ma trận Jacobian tại điểm cân bằng.
 
 ## Ứng dụng
 
-Latent ODE được dùng trong hồ sơ sức khỏe điện tử, cảm biến đeo, chuỗi khí hậu và ghi quần thể thần kinh — mọi nơi mẫu không đều và trạng thái ẩn là hệ động lực chiều thấp. Trong kỹ thuật chúng ngồi cạnh lọc Kalman cổ điển và nhận dạng không gian con. Dịch tễ là phép thử đặc biệt trung thực. Một hệ ẩn kiểu SIR không nên được ca ngợi vì lỗi tái tạo thấp nếu Jacobian tại cân bằng không bệnh có dấu phổ sai, vì dấu ấy là số tái sản xuất cơ bản ở dạng tuyến tính hóa.
+Latent ODE được ứng dụng trong phân tích hồ sơ sức khỏe điện tử, dữ liệu cảm biến đeo, chuỗi thời gian khí hậu và dữ liệu hoạt động quần thể thần kinh — những bài toán có tần suất lấy mẫu không đều và động lực ẩn chiều thấp. Trong kỹ thuật, chúng bổ sung cho bộ lọc Kalman cổ điển và phương pháp nhận dạng không gian con. Dịch tễ học là phép kiểm chứng rất rõ ràng: một mô hình ẩn dạng SIR không thể coi là đạt yêu cầu chỉ vì sai số tái tạo thấp nếu Jacobian tại cân bằng không bệnh mang dấu phổ sai, bởi dấu này liên hệ trực tiếp với hệ số lây nhiễm cơ bản trong xấp xỉ tuyến tính.
 
-Các bài CDE và rough DE 2021–2022 thêm trục ứng dụng thứ hai: hệ bị dẫn bởi điều khiển, giao dịch hoặc kích thích không đều. Đó là phiên bản hiện đại của hệ tuyến tính không thuần nhất.
+Các nghiên cứu về Neural CDE và phương trình vi phân thô (rough DE) giai đoạn 2021–2022 mở rộng sang lớp bài toán chịu dẫn dắt bởi tín hiệu điều khiển, dữ liệu giao dịch hoặc kích thích không đều — phiên bản hiện đại của hệ tuyến tính không thuần nhất.
 
 ## Thách thức và hướng mở rộng
 
-Chiều ẩn là siêu tham số không có analogue của dạng Jordan tính được: quá nhỏ thì mất mode, quá lớn thì trị riêng thừa không nhận dạng và thường không ổn định. Độ cứng xuất hiện ngay khi các thang thời gian tách, đúng như hệ tuyến tính stiff. Quan sát rời rạc để lại hệ liên tục dưới xác định. Trường phi tuyến học được có thể có hấp dẫn giả xa dữ liệu, nên ngoại suy là câu hỏi chân dung pha, không phải câu hỏi hàm mất mát.
+Số chiều của không gian ẩn là siêu tham số không có cách xác định trực tiếp tương tự dạng chuẩn Jordan: chọn quá nhỏ sẽ bỏ sót chế độ động học, chọn quá lớn sẽ phát sinh trị riêng thừa khó nhận dạng và dễ mất ổn định. Tính cứng (stiffness) cũng xuất hiện ngay khi các thang thời gian chênh lệch lớn, giống như ở hệ tuyến tính cứng. Quan sát rời rạc khiến hệ liên tục bị thiếu xác định, và trường phi tuyến học được có thể sinh ra điểm hút giả nằm xa vùng dữ liệu huấn luyện; vì vậy, ngoại suy thực chất là bài toán phân tích chân dung pha chứ không chỉ là tối thiểu hóa hàm mất mát.
 
-Câu hỏi hữu ích: nếu hai hệ ẩn chia sẻ trị riêng nhưng không chia sẻ vector riêng, kết luận khoa học nào còn đúng? Câu trả lời của chương: những kết luận phụ thuộc lớp đồng dạng của $$A$$, không phụ thuộc một cơ sở ưa thích.
+Một câu hỏi đáng suy nghĩ: nếu hai hệ ẩn có cùng phổ trị riêng nhưng khác vector riêng, những kết luận khoa học nào vẫn giữ nguyên giá trị? Theo lý thuyết Chương 04, đó là mọi kết luận phụ thuộc vào lớp đồng dạng của $$A$$ chứ không phụ thuộc vào một hệ cơ sở cụ thể.
 
 ## Video tham khảo
 
-- xem trước: [Latent Stochastic Differential Equations for Irregularly-Sampled Time Series - David Duvenaud](https://www.youtube.com/watch?v=93wr5vhI0F4) — Institute for Advanced Study, tiếng Anh. David Duvenaud về phương trình vi phân ngẫu nhiên ẩn cho chuỗi thời gian không đều.
-- [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, tiếng Anh. Neural ODE, mô hình động lực ẩn tất định mà bài này đang mở rộng.
-- [Solving Systems of Differential Equations with Eigenvalues and Eigenvectors](https://www.youtube.com/watch?v=Zwb5eiYcL8w) — Steve Brunton, tiếng Anh. Hệ tuyến tính cổ điển, cấu trúc mà một mô hình ẩn tuyến tính học được đang cố khôi phục.
+- Xem trước: [Latent Stochastic Differential Equations for Irregularly-Sampled Time Series - David Duvenaud](https://www.youtube.com/watch?v=93wr5vhI0F4) — Institute for Advanced Study, tiếng Anh. Bài giảng của David Duvenaud về phương trình vi phân ngẫu nhiên ẩn cho chuỗi thời gian lấy mẫu không đều.
+- [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, tiếng Anh. Giới thiệu neural ODE — nền tảng động lực ẩn tất định của bài đọc này.
+- [Solving Systems of Differential Equations with Eigenvalues and Eigenvectors](https://www.youtube.com/watch?v=Zwb5eiYcL8w) — Steve Brunton, tiếng Anh. Ôn lại hệ tuyến tính cổ điển mà các mô hình ẩn tuyến tính hướng tới khôi phục.
 
 ## Bài tập
 
-1. **Bất biến đồng dạng.** Chỉ ra $$A$$ và $$PAP^{-1}$$ sinh quỹ đạo tương đương sau đổi tọa độ $$\mathbf{w}=P\mathbf{z}$$. Bài báo latent ODE nên báo những đại lượng nào?
+1. **Bất biến đồng dạng.** Chứng minh rằng $$A$$ và $$PAP^{-1}$$ sinh ra các quỹ đạo tương đương qua phép đổi tọa độ $$\mathbf{w}=P\mathbf{z}$$. Từ đó, các nghiên cứu về latent ODE nên báo cáo những đại lượng nào?
 
-2. **Hạng đầu ra quan sát.** Với $$\mathbf{x}'=A\mathbf{x}$$, $$y=c^\top\mathbf{x}$$, giải thích khi nào một đầu ra vô hướng vẫn lấy lại được phổ của $$A$$. Liên hệ với khả năng quan sát.
+2. **Khả năng quan sát từ đầu ra vô hướng.** Với hệ $$\mathbf{x}'=A\mathbf{x}$$ và đầu ra $$y=c^\top\mathbf{x}$$, giải thích điều kiện để một tín hiệu quan sát vô hướng vẫn khôi phục được phổ của $$A$$, và liên hệ với khái niệm tính quan sát được (observability).
 
-3. **Biến thiên tham số như bộ giải mã.** Viết nghiệm của $$\mathbf{z}'=A\mathbf{z}+B\mathbf{u}(t)$$ và diễn giải $$B\mathbf{u}(t)$$ như gia số Neural CDE. $$e^{A(t-s)}$$ đóng vai trò gì?
+3. **Biến thiên hằng số dưới góc nhìn giải mã.** Viết công thức nghiệm của $$\mathbf{z}'=A\mathbf{z}+B\mathbf{u}(t)$$ và đối chiếu số hạng $$B\mathbf{u}(t)$$ với gia số điều khiển trong Neural CDE. Toán tử $$e^{A(t-s)}$$ đóng vai trò gì?
 
-4. **Thí nghiệm tính toán.** Khớp latent ODE tuyến tính hai chiều với mẫu hệ hai bồn chỉ quan sát bồn thứ hai. So sánh trị riêng học được với trị riêng thật qua năm hạt giống.
+4. **Thử nghiệm tính toán.** Huấn luyện một latent ODE tuyến tính hai chiều trên dữ liệu từ hệ hai bể pha trộn khi chỉ quan sát bể thứ hai. So sánh các trị riêng học được với trị riêng thực qua năm lần khởi tạo ngẫu nhiên khác nhau.
 
-5. **Khám phá mở.** Đọc Rubanova, Chen và Duvenaud (NeurIPS 2019) và phác sơ đồ encoder–decoder cạnh hình ngăn cổ điển. $$e^{At}$$ đang ẩn ở đâu?
+5. **Khám phá mở.** Đọc bài báo của Rubanova, Chen và Duvenaud (NeurIPS 2019) và vẽ sơ đồ encoder–decoder đặt cạnh mô hình ngăn cổ điển. Vai trò của $$e^{At}$$ tương ứng với bộ phận nào trong sơ đồ?
 
 ## Tài liệu
 
@@ -117,4 +117,4 @@ Câu hỏi hữu ích: nếu hai hệ ẩn chia sẻ trị riêng nhưng không 
 - Rubanova, Y., Chen, R. T. Q., và Duvenaud, D. “Latent ordinary differential equations for irregularly-sampled time series.” *NeurIPS* 2019. [arXiv:1907.03907](https://arxiv.org/abs/1907.03907).
 - Kidger, P., Morrill, J., Foster, J., và Lyons, T. “Neural controlled differential equations.” *ICLR* 2021. [arXiv:2005.08926](https://arxiv.org/abs/2005.08926).
 - Kidger, P. *On Neural Differential Equations*. Oxford, 2022. [arXiv:2202.02435](https://arxiv.org/abs/2202.02435).
-- `torchdiffeq` và Diffrax, như ở các bài hiện đại Chương 01 và 13.
+- `torchdiffeq` và Diffrax, tương tự các bài ứng dụng hiện đại ở Chương 01 và Chương 13.

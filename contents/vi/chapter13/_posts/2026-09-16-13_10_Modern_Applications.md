@@ -12,63 +12,63 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài tùy chọn này xem Euler, Runge–Kutta, độ cứng, CFL và Euler–Maruyama như xương sống số của tính toán khoa học khả vi. Sinh viên cần giải thích đạo hàm reverse-mode qua một bộ giải, định vị `torchdiffeq` và Diffrax, và nối neural SDE với các mô hình khuếch tán score thống trị mô hình sinh 2021–2024. Lý thuyết nhất quán và ổn định cổ điển của chương không bị thay thế.
+Bài học tùy chọn này đặt các phương pháp Euler, Runge–Kutta, bài toán cứng, điều kiện CFL và lược đồ Euler–Maruyama làm nền tảng số của tính toán khoa học khả vi. Sinh viên cần giải thích được cách lấy đạo hàm lan truyền ngược (reverse-mode) qua một bộ giải, nắm vai trò của `torchdiffeq` và Diffrax, đồng thời kết nối neural SDE với các mô hình khuếch tán dựa trên score phổ biến trong giai đoạn 2021–2024. Lý thuyết nhất quán và ổn định cổ điển của chương vẫn giữ nguyên giá trị cốt lõi.
 
 ## Kiến thức nền
 
-Sinh viên cần biết Euler tiến và lùi, RK4, miền ổn định tuyến tính, CFL, và sơ đồ Euler–Maruyama cho SDE. Bài ôn chuẩn bị về lỗi rời rạc hóa là khởi động đúng.
+Sinh viên cần nắm phương pháp Euler tiến và Euler lùi, RK4, miền ổn định tuyến tính, điều kiện CFL và lược đồ Euler–Maruyama cho SDE. Bài 13.00 về rời rạc hóa và ổn định là phần chuẩn bị trực tiếp cho nội dung này.
 
 ## Dẫn nhập
 
-Phương pháp số là ánh xạ từ trường vector và bước lưới tới quỹ đạo rời rạc. Nếu ánh xạ ấy khả vi, nó có thể ngồi trong vòng học: tham số của trường, của bộ điều khiển, hoặc của closure có thể được huấn luyện bằng gradient descent. Chen và cộng sự (NeurIPS 2018) phổ biến phương pháp liên hợp cho neural ODE. Luận án 2022 của Kidger ([arXiv:2202.02435](https://arxiv.org/abs/2202.02435)) và thư viện Diffrax ([https://docs.kidger.site/diffrax/](https://docs.kidger.site/diffrax/)) biến toàn bộ catalog của chương này — bộ giải ODE hiện và ẩn, CDE, SDE, bước thích nghi — thành nguyên thủy JAX. `torchdiffeq` ([https://github.com/rtqichen/torchdiffeq](https://github.com/rtqichen/torchdiffeq)) làm điều tương tự trong PyTorch.
+Một phương pháp số thực chất là ánh xạ từ trường vector và bước lưới sang quỹ đạo rời rạc. Nếu ánh xạ đó khả vi, ta có thể đặt nó trực tiếp bên trong vòng lặp huấn luyện để tối ưu hóa tham số của trường vector, bộ điều khiển hoặc số hạng đóng (closure) bằng hạ gradient. Chen và cộng sự (NeurIPS 2018) đã phổ biến phương pháp liên hợp (adjoint) cho neural ODE. Luận án năm 2022 của Kidger ([arXiv:2202.02435](https://arxiv.org/abs/2202.02435)) cùng thư viện Diffrax ([https://docs.kidger.site/diffrax/](https://docs.kidger.site/diffrax/)) đã đưa toàn bộ hệ thống bộ giải của chương này — ODE hiện và ẩn, CDE, SDE, bước thích nghi — thành các thành phần tính toán gốc trong JAX; `torchdiffeq` ([https://github.com/rtqichen/torchdiffeq](https://github.com/rtqichen/torchdiffeq)) thực hiện mục tiêu tương tự trong PyTorch.
 
-Ở phía ngẫu nhiên, Kidger, Foster, Li và Lyons (*Neural SDEs as Infinite-Dimensional GANs*, ICML 2021; *Efficient and Accurate Gradients for Neural SDEs*, NeurIPS 2021) cho thấy cách lan truyền ngược qua bộ giải SDE. Song và cộng sự (ICLR 2021) dùng SDE khuếch tán như mô hình sinh. Các câu hỏi số là những câu đã học ở đây: lỗi mạnh versus yếu, độ cứng, và ổn định của Euler–Maruyama.
+Ở nhánh ngẫu nhiên, Kidger, Foster, Li và Lyons (*Neural SDEs as Infinite-Dimensional GANs*, ICML 2021; *Efficient and Accurate Gradients for Neural SDEs*, NeurIPS 2021) chỉ ra cách lan truyền ngược qua bộ giải SDE. Song và cộng sự (ICLR 2021) sử dụng SDE khuếch tán làm mô hình sinh dữ liệu. Các vấn đề giải tích số cốt lõi vẫn giữ nguyên như trong chương: sai số mạnh so với sai số yếu, độ cứng và tính ổn định của lược đồ Euler–Maruyama.
 
 ## Khái niệm then chốt
 
-### Lấy đạo hàm ánh xạ một bước
+### Lấy đạo hàm qua ánh xạ một bước
 
-Euler tiến $$y_{n+1}=y_n+h f_\theta(y_n)$$ có Jacobian $$I+h Df_\theta(y_n)$$. Autodiff reverse-mode nhân các Jacobian ấy ngược, tức lan truyền liên hợp rời rạc. Euler ẩn đòi giải tuyến tính mỗi bước; định lý hàm ẩn cung cấp Jacobian. Bài stiff đòi liên hợp ẩn, không hiện, vì cùng lý do chúng đòi giải thuận ẩn.
+Lược đồ Euler tiến $$y_{n+1}=y_n+h f_\theta(y_n)$$ có ma trận Jacobian là $$I+h Df_\theta(y_n)$$. Phép vi phân tự động chế độ ngược (reverse-mode autodiff) nhân ngược các ma trận Jacobian này lại, tương ứng với phương pháp liên hợp rời rạc (discrete adjoint). Với Euler ẩn, mỗi bước đòi hỏi giải một hệ phương trình, và định lý hàm ẩn cung cấp biểu thức Jacobian tương ứng. Bài toán cứng đòi hỏi phương pháp liên hợp ẩn thay vì hiện, vì cùng lý do ổn định như ở chiều thuận.
 
-### Liên hợp liên tục và checkpoint
+### Phương pháp liên hợp liên tục và lưu mốc (checkpointing)
 
-Liên hợp liên tục của Chen và cộng sự tích phân một ODE thêm ngược và tiết kiệm bộ nhớ, với giá một lỗi rời rạc hóa mới. Diffrax mở cả hai lựa chọn discretize-then-optimize và optimize-then-discretize, tức cách nói thời 2022: chọn liệu gradient là gradient đúng của phương pháp số hay xấp xỉ gradient của bài liên tục. Đó là hai đối tượng khác nhau, và phân tích lỗi địa phương của chương áp cho cả hai.
+Phương pháp liên hợp liên tục của Chen và cộng sự tích phân ngược một ODE phụ để tiết kiệm bộ nhớ, nhưng phải đánh đổi bằng một sai số rời rạc hóa mới ở chiều ngược. Diffrax hỗ trợ cả hai cách tiếp cận *discretize-then-optimize* và *optimize-then-discretize*: lựa chọn giữa việc lấy gradient chính xác của lược đồ rời rạc hay xấp xỉ gradient của bài toán liên tục. Đây là hai đối tượng khác nhau, và phân tích sai số cục bộ trong chương áp dụng cho cả hai.
 
-### Neural SDE và SDE score
+### Neural SDE và mô hình khuếch tán dựa trên score
 
-Neural SDE
+Một neural SDE có dạng:
 
 $$
 dX_t = b_\theta(t,X_t)\,dt + \sigma_\theta(t,X_t)\,dW_t
 $$
 
-là quá trình Itô học được. Huấn luyện nó đòi liên hợp ngẫu nhiên và đường Brownian nhất quán trên lượt ngược (Kidger và cộng sự, NeurIPS 2021). Mô hình sinh score dùng SDE thuận cho sẵn và chỉ học score định nghĩa drift ngược. Euler–Maruyama là bộ lấy mẫu mặc định; sơ đồ SDE bậc cao hơn và predictor–corrector là tinh chỉnh 2021–2024. Miền ổn định của sơ đồ vẫn quyết định bước ngược lớn có nổ hay không.
+là một quá trình Itô có tham số học được. Việc huấn luyện đòi hỏi phương pháp liên hợp ngẫu nhiên và phải tái tạo chính xác cùng một quỹ đạo chuyển động Brown trên lượt ngược (Kidger và cộng sự, NeurIPS 2021). Trong khi đó, mô hình sinh dựa trên score sử dụng một SDE thuận cho trước và chỉ học hàm score xác định số hạng trôi ngược. Euler–Maruyama là bộ lấy mẫu cơ sở, còn các lược đồ SDE bậc cao hơn và dạng dự đoán–hiệu chỉnh (predictor–corrector) là những cải tiến giai đoạn 2021–2024; miền ổn định của lược đồ vẫn quyết định liệu bước thời gian ngược lớn có bị mất ổn định hay không.
 
-### CFL và stepper PDE học được
+### Điều kiện CFL và bộ bước thời gian PDE học được
 
-Stepper thời gian học được cho PDE có thể phá CFL dù mỗi ảnh chụp trông trơn. Brandstetter, Worrall và Welling (*Message Passing Neural PDE Solvers*, ICLR 2022; [arXiv:2202.03376](https://arxiv.org/abs/2202.03376)) và bộ PDEBench (Takamoto và cộng sự, NeurIPS 2022; [arXiv:2210.07182](https://arxiv.org/abs/2210.07182)) làm điều ấy thực nghiệm. Roll-out ổn định mười bước rồi nổ ở một trăm là câu chuyện ổn định cổ điển, nay với thông lượng nơ-ron.
+Một bộ cập nhật thời gian học bằng mạng nơ-ron cho PDE vẫn có thể vi phạm điều kiện CFL ngay cả khi từng khung trạng thái trông mượt. Brandstetter, Worrall và Welling (*Message Passing Neural PDE Solvers*, ICLR 2022; [arXiv:2202.03376](https://arxiv.org/abs/2202.03376)) và bộ chuẩn PDEBench (Takamoto và cộng sự, NeurIPS 2022; [arXiv:2210.07182](https://arxiv.org/abs/2210.07182)) minh họa rõ hiện tượng này qua thực nghiệm. Việc dự báo ổn định trong 10 bước nhưng bùng nổ ở bước thứ 100 chính là bài toán ổn định số cổ điển, nay xuất hiện với thông lượng được tham số hóa bằng mạng nơ-ron.
 
 ## Phương pháp và kỹ thuật
 
-1. Chọn sơ đồ thuận có miền ổn định chứa phổ kỳ vọng (RK hiện cho ODE không stiff, phương pháp ẩn hoặc mũ cho ODE stiff, sơ đồ tôn CFL cho PDE hyperbolic, Euler–Maruyama hoặc tốt hơn cho SDE).
-2. Quyết định giữa autodiff đúng của sơ đồ rời rạc và liên hợp liên tục.
-3. Đặt dung sai sao cho gradient không bị nhiễu bộ giải át.
-4. Với SDE, lưu hoặc tái tạo cùng gia số Brownian trên lượt ngược.
-5. Kiểm chứng bằng nghiệm chế tạo, phép thử ổn định tuyến tính, và roll-out dài.
+1. Chọn lược đồ thuận có miền ổn định bao trùm phổ dự kiến (Runge–Kutta tường minh cho ODE không cứng, phương pháp ẩn hoặc hàm mũ cho ODE cứng, lược đồ thỏa điều kiện CFL cho PDE hyperbolic, Euler–Maruyama hoặc bậc cao hơn cho SDE).
+2. Lựa chọn giữa vi phân tự động chính xác trên lược đồ rời rạc và phương pháp liên hợp liên tục.
+3. Thiết lập dung sai đủ chặt để nhiễu từ bộ giải không làm lệch hướng gradient.
+4. Với SDE, lưu trữ hoặc tái tạo chính xác cùng dãy gia số Brown trên lượt tính ngược.
+5. Kiểm chứng bằng nghiệm tự tạo (manufactured solutions), phép thử ổn định tuyến tính và chạy dự báo nhiều bước (roll-out) dài hạn.
 
-Tài liệu phần mềm là một phần của phương pháp. API bộ giải Diffrax và `odeint_adjoint` của `torchdiffeq` là tài liệu sinh viên nên mở trước khi bịa quy tắc backprop mới.
+Tài liệu kỹ thuật của thư viện cũng là một phần quan trọng của quy trình: sinh viên nên tham khảo giao diện bộ giải của Diffrax và `odeint_adjoint` trong `torchdiffeq` trước khi tự xây dựng quy tắc lan truyền ngược.
 
 ## Ví dụ
 
-### Ví dụ 1: Liên hợp Euler ẩn
+### Ví dụ 1: Liên hợp cho Euler ẩn
 
-Với $$y'=-\lambda y$$, Euler ẩn là $$y_{n+1}=y_n/(1+h\lambda)$$. Đạo hàm theo $$\lambda$$ sơ cấp và phải khớp autodiff. Gradient của Euler hiện, ngược lại, được lấy qua thuận không ổn định khi $$h\lambda$$ lớn, và do đó vô nghĩa.
+Với bài toán thử $$y'=-\lambda y$$, lược đồ Euler ẩn cho $$y_{n+1}=y_n/(1+h\lambda)$$. Đạo hàm của $$y_{n+1}$$ theo $$\lambda$$ có thể tính trực tiếp bằng giải tích sơ cấp và phải khớp với kết quả từ vi phân tự động. Ngược lại, gradient của Euler tường minh khi $$h\lambda$$ lớn được tính dọc theo một quỹ đạo thuận đã mất ổn định nên không còn ý nghĩa.
 
-### Ví dụ 2: Lỗi mạnh Euler–Maruyama
+### Ví dụ 2: Sai số mạnh của Euler–Maruyama
 
-Sơ đồ $$X_{n+1}=X_n+h b(X_n)+\sqrt{h}\,\sigma(X_n)\xi_n$$ có bậc mạnh $$1/2$$ nói chung. Neural SDE huấn luyện với mất mát từng đường không thể thắng bậc ấy trừ khi nâng sơ đồ. Mất mát yếu (phân phối) có thể dùng sơ đồ yếu hơn, vì thế bộ lấy mẫu mô hình sinh thường quan tâm lỗi yếu.
+Lược đồ $$X_{n+1}=X_n+h b(X_n)+\sqrt{h}\,\sigma(X_n)\xi_n$$ nói chung chỉ có bậc hội tụ mạnh bằng $$1/2$$. Một neural SDE huấn luyện bằng hàm mất mát theo từng quỹ đạo không thể vượt qua giới hạn hội tụ này trừ khi nâng cấp lược đồ số. Ngược lại, hàm mất mát yếu (so sánh phân phối) cho phép dùng tiêu chuẩn hội tụ yếu hơn — đó là lý do các bộ lấy mẫu trong mô hình sinh thường chú trọng sai số yếu.
 
-### Ví dụ 3: Giải ODE kiểu Diffrax về tinh thần
+### Ví dụ 3: Minh họa bộ giải ODE làm chuẩn đối chiếu
 
 ```python
 import numpy as np
@@ -81,37 +81,37 @@ sol = solve_ivp(f, [0, 2], [1.0], rtol=1e-6, atol=1e-6)
 print(sol.y[0, -1], np.exp(-0.8 * 2))
 ```
 
-Bộ giải khả vi thay `solve_ivp` bằng đối tượng cũng trả $$\partial y(T)/\partial\theta$$. Các số thuận vẫn phải khớp phép thử này.
+Một bộ giải khả vi thay `solve_ivp` bằng một toán tử vừa tính nghiệm thuận vừa trả về $$\partial y(T)/\partial\theta$$; tuy nhiên giá trị nghiệm thuận vẫn phải khớp với phép kiểm chứng chuẩn như trên.
 
 ## Ứng dụng
 
-Bộ giải khả vi nay là chuẩn trong neural ODE, phương trình vi phân phổ quát (Rackauckas và cộng sự, 2021, và hệ SciML), nhận dạng hệ, và điều khiển tối ưu. Neural SDE mô hình chuỗi tài chính không đều, động học phân tử, và động lực ngẫu nhiên ẩn. SDE score sinh ảnh, phân tử, và ngày càng ứng viên cho bài ngược ảnh hóa. PDEBench (2022) và các bộ sau như The Well (Ohana và cộng sự, NeurIPS 2024) cung cấp phép thử roll-out cộng đồng để stepper học được so với các phương pháp cổ điển của chương trên bài công khai.
+Bộ giải khả vi hiện là thành phần chuẩn trong neural ODE, phương trình vi phân phổ quát (Rackauckas và cộng sự, 2021, và hệ sinh thái SciML), nhận dạng hệ thống và điều khiển tối ưu. Neural SDE được dùng để mô hình hóa chuỗi thời gian tài chính lấy mẫu không đều, động học phân tử và các quá trình ngẫu nhiên ẩn. Các SDE dựa trên score được ứng dụng rộng rãi trong sinh ảnh, thiết kế phân tử và các bài toán ngược trong xử lý ảnh. PDEBench (2022) cùng các bộ dữ liệu chuẩn gần đây như The Well (Ohana và cộng sự, NeurIPS 2024) cung cấp bài kiểm tra dự báo nhiều bước công khai để đối chiếu bộ bước thời gian học được với các phương pháp số cổ điển của chương.
 
-Trong kỹ thuật, bộ giải CFD hoặc mạch khả vi cho phép nhà thiết kế tối ưu hình học hoặc tham số với cùng công nghệ liên hợp mà lý thuyết điều khiển tối ưu đã dùng hàng thập kỷ. Nguyên liệu mới là chính phần dư có thể chứa một mạng.
+Trong kỹ thuật, bộ giải động lực học chất lưu (CFD) hoặc mạch điện khả vi cho phép tối ưu hóa hình học và tham số bằng cùng kỹ thuật liên hợp vốn đã quen thuộc hàng thập kỷ trong lý thuyết điều khiển tối ưu; điểm mới là phần dư phương trình có thể chứa trực tiếp một mạng nơ-ron.
 
 ## Thách thức và hướng mở rộng
 
-Liên hợp của quỹ đạo hỗn loạn dài không ổn định; shadowing và least-squares shadowing là chủ đề nghiên cứu, không phải công cụ đã giải. Bộ giải ẩn làm lượt ngược đắt. Liên hợp ngẫu nhiên cần tái tạo nhiễu cẩn thận. Stepper PDE học được overfitting chân trời ngắn. Hệ lai rời rạc–liên tục phá autodiff ngây thơ. Không vấn đề nào bãi bỏ A-ổn định hoặc CFL; chúng làm các ý niệm cổ điển ấy quý hơn.
+Phương pháp liên hợp trên quỹ đạo hỗn loạn dài thường mất ổn định do độ nhạy theo điều kiện đầu; các kỹ thuật shadowing và least-squares shadowing vẫn đang là hướng nghiên cứu mở. Bộ giải ẩn làm tăng chi phí tính toán ở lượt ngược, còn liên hợp ngẫu nhiên đòi hỏi cơ chế tái tạo nhiễu chính xác. Bộ bước thời gian PDE học được dễ bị quá khớp trên khoảng thời gian dự báo ngắn, và các hệ lai rời rạc–liên tục làm hỏng phép vi phân tự động thông thường. Không một cải tiến học máy nào thay thế được tính A-ổn định hay điều kiện CFL; ngược lại, chúng làm nổi bật hơn nữa giá trị của các nguyên lý số cổ điển này.
 
-Câu hỏi: nếu liên hợp liên tục và liên hợp rời rạc lệch $$10\%$$, cái nào bạn nên tin cho tối ưu bạn thực sự đang chạy? Câu trả lời của chương là liên hợp rời rạc, vì đó là gradient của phương pháp bạn đã triển khai.
+Một câu hỏi thực tế quan trọng: nếu gradient từ liên hợp liên tục và liên hợp rời rạc lệch nhau $$10\%$$, ta nên tin kết quả nào cho quá trình tối ưu đang chạy? Theo quan điểm giải tích số của chương, nên dùng liên hợp rời rạc vì đó mới là gradient chính xác của thuật toán số thực sự đang được triển khai.
 
 ## Video tham khảo
 
-- xem trước: [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, tiếng Anh. Các bộ giải neural ODE khả vi, chủ đề hiện đại của bài.
-- [Latent Stochastic Differential Equations for Irregularly-Sampled Time Series - David Duvenaud](https://www.youtube.com/watch?v=93wr5vhI0F4) — Institute for Advanced Study, tiếng Anh. Phương trình vi phân ngẫu nhiên ẩn là mở rộng có nhiễu.
-- [On Neural Differential Equations](https://www.youtube.com/watch?v=TGfGiBhDEi0) — Patrick Kidger, tiếng Anh. Patrick Kidger về việc huấn luyện xuyên qua các bộ giải phương trình vi phân.
+- xem trước: [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, tiếng Anh. Giới thiệu neural ODE và bộ giải khả vi — chủ đề trọng tâm của bài.
+- [Latent Stochastic Differential Equations for Irregularly-Sampled Time Series - David Duvenaud](https://www.youtube.com/watch?v=93wr5vhI0F4) — Institute for Advanced Study, tiếng Anh. Trình bày phương trình vi phân ngẫu nhiên ẩn cho dữ liệu chuỗi thời gian lấy mẫu không đều.
+- [On Neural Differential Equations](https://www.youtube.com/watch?v=TGfGiBhDEi0) — Patrick Kidger, tiếng Anh. Bài giảng của Patrick Kidger về cơ sở toán học và kỹ thuật huấn luyện qua bộ giải phương trình vi phân.
 
 ## Bài tập
 
-1. **Miền ổn định và bước học được.** Với $$y'=\lambda y$$, viết hệ số khuếch đại của RK4. Với $$h\lambda$$ nào stepper phần dư nơ-ron được phép dùng RK4 làm sơ đồ trong?
+1. **Miền ổn định và bước thời gian học được.** Với $$y'=\lambda y$$, viết hệ số khuếch đại của RK4. Trong vùng giá trị nào của $$h\lambda$$ thì một bộ cập nhật phần dư nơ-ron có thể sử dụng RK4 làm lược đồ bên trong mà vẫn ổn định?
 
-2. **Liên hợp rời rạc versus liên tục.** Với một bước Euler ẩn của $$y'=-\theta y$$, tính cả gradient đúng của ánh xạ số lẫn liên hợp liên tục đánh giá tại bước ấy. Khi nào chúng khớp?
+2. **Liên hợp rời rạc và liên hợp liên tục.** Với một bước Euler ẩn áp dụng cho $$y'=-\theta y$$, hãy tính cả gradient chính xác của ánh xạ số lẫn kết quả từ liên hợp liên tục đánh giá tại bước đó. Khi nào hai giá trị này khớp nhau?
 
-3. **Mạnh versus yếu.** Giải thích vì sao bộ lấy mẫu score có thể chịu sơ đồ bậc mạnh kém nếu metric mục tiêu là khoảng cách phân phối.
+3. **Sai số mạnh và sai số yếu.** Giải thích vì sao một bộ lấy mẫu theo mô hình score có thể chấp nhận lược đồ có bậc hội tụ mạnh thấp nếu tiêu chí đánh giá mục tiêu là khoảng cách giữa hai phân phối.
 
-4. **Thí nghiệm tính toán.** Dùng `torchdiffeq` hoặc ánh xạ Euler tự viết, khớp $$\theta$$ trong $$y'=-\theta y$$ với dữ liệu sinh bởi $$\theta=1$$. So huấn luyện bằng liên hợp rời rạc và gradient sai phân hữu hạn.
+4. **Thí nghiệm tính toán.** Dùng `torchdiffeq` hoặc tự cài đặt ánh xạ Euler, ước lượng tham số $$\theta$$ trong $$y'=-\theta y$$ từ dữ liệu sinh bởi $$\theta=1$$. So sánh quá trình huấn luyện dùng liên hợp rời rạc với gradient sai phân hữu hạn.
 
-5. **Khám phá mở.** Đọc tài liệu Diffrax hoặc Kidger (2022), chương số, và viết hướng dẫn một trang: lớp bộ giải nào của chương này người dùng nên chọn cho (a) neural ODE không stiff, (b) closure hóa học stiff, (c) neural SDE?
+5. **Khám phá mở.** Đọc tài liệu Diffrax hoặc chương về phương pháp số trong luận án của Kidger (2022), sau đó viết bản hướng dẫn ngắn một trang chỉ rõ nên chọn lớp bộ giải nào của chương này cho: (a) neural ODE không cứng, (b) mô hình động học hóa học cứng, và (c) neural SDE.
 
 ## Tài liệu
 

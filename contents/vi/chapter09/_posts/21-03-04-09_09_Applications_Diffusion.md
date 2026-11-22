@@ -13,159 +13,159 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài học này kết thúc chương bằng cách mở rộng góc nhìn: phương trình nhiệt không chỉ là mô hình truyền nhiệt, mà là ngôn ngữ chung của rất nhiều quá trình khuếch tán. Sau bài học, sinh viên cần nhận ra cấu trúc khuếch tán trong sinh học, vật liệu, tài chính và các hệ khác, hiểu ý tưởng "từ nơi đậm sang nơi loãng", và thấy được sức mạnh của PDE nằm ở việc nhận diện cơ chế chung vượt qua tên gọi của đại lượng.
+Bài học này khép lại chương bằng việc mở rộng góc nhìn: phương trình nhiệt không chỉ mô tả sự truyền nhiệt mà còn là mô hình chung của nhiều quá trình khuếch tán. Sau bài học, sinh viên cần nhận diện được cấu trúc khuếch tán trong sinh học, khoa học vật liệu, lý thuyết xác suất và tài chính, hiểu nguyên lý lan truyền từ nơi có mật độ cao sang nơi có mật độ thấp, đồng thời thấy được giá trị của PDE trong việc thống nhất nhiều hiện tượng khác nhau dưới cùng một cấu trúc toán học.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm bản chất khuếch tán của phương trình nhiệt, vai trò của hệ số khuếch tán, và trực giác từ các bài trước về làm mượt, nguyên lý cực đại và nghiệm Gaussian. Đây là bài học tổng kết và mở rộng tầm nhìn.
+Sinh viên cần nắm bản chất khuếch tán của phương trình nhiệt, ý nghĩa hệ số khuếch tán và trực giác từ các bài trước về tính làm mượt, nguyên lý cực đại và nhân Gaussian. Bài học này mang tính tổng kết và mở rộng liên ngành.
 
 ## Dẫn nhập
 
-Tên gọi "phương trình nhiệt" rất dễ khiến sinh viên tưởng rằng mô hình này chỉ dành cho nhiệt độ. Nhưng thật ra điều quan trọng hơn tên gọi là cơ chế toán học: một đại lượng được bảo toàn cục bộ và chảy từ nơi có mật độ cao sang nơi có mật độ thấp. Khi cơ chế đó xuất hiện, một phương trình kiểu nhiệt thường theo sau.
+Tên gọi "phương trình nhiệt" dễ tạo cảm giác rằng mô hình này chỉ gắn với nhiệt độ. Trên thực tế, yếu tố cốt lõi nằm ở cơ chế toán học chung: một đại lượng được bảo toàn cục bộ và dịch chuyển từ nơi có mật độ cao sang nơi có mật độ thấp. Bất cứ khi nào cơ chế này xuất hiện, một phương trình dạng phương trình nhiệt thường hình thành.
 
-Đây là một bài rất đáng dạy bằng ví dụ liên ngành, vì nó giúp sinh viên hiểu PDE không chỉ là kỹ thuật giải phương trình, mà là khả năng nhận ra cùng một cấu trúc trong nhiều hiện tượng khác nhau. Chính sự thống nhất này là một trong những vẻ đẹp lớn nhất của toán ứng dụng.
+Việc tiếp cận bài học qua các ví dụ liên ngành giúp sinh viên thấy rằng nghiên cứu PDE không chỉ là học kỹ thuật giải phương trình, mà còn là khả năng nhận diện cùng một mô hình trong nhiều lĩnh vực khác nhau.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Khuếch tán là xu hướng tự nhiên của hệ đi từ chênh lệch lớn sang chênh lệch nhỏ hơn. Mực loang trong nước, mùi hương lan trong phòng, thuốc ngấm trong mô, hay biến động giá bị "trải" trong một mô hình tài chính đều mang chung tinh thần đó: cấu hình gồ ghề tiến dần về cấu hình mượt hơn.
+Khuếch tán là xu hướng tự nhiên của hệ đi từ trạng thái chênh lệch lớn sang trạng thái đồng đều hơn. Giọt mực loang trong nước, mùi hương lan trong không khí, dược chất thẩm thấu qua mô sinh học hay sự phân tán xác suất theo thời gian đều tuân theo cùng một quy luật: cấu hình gồ ghề dần trở nên trơn phẳng.
 
 ### Cách nhìn hình ảnh
 
-Một đỉnh nồng độ sắc nét theo thời gian trở thành một đường cong thấp và rộng hơn. Trong nhiều ứng dụng, nếu vẽ nghiệm theo không gian ở các thời điểm liên tiếp, ta sẽ thấy cùng một kịch bản: đỉnh hạ xuống, vùng ảnh hưởng mở rộng, và hồ sơ trở nên trơn hơn. Đó là dấu vân tay thị giác của khuếch tán.
+Một đỉnh nồng độ sắc nét sẽ hạ thấp và trải rộng dần theo thời gian. Khi vẽ phân bố nghiệm theo không gian tại các thời điểm liên tiếp, ta luôn quan sát thấy cùng một đặc trưng: đỉnh cực đại giảm xuống, vùng phân bố mở rộng và đồ thị trở nên mượt hơn.
 
 ### Cách nhìn hình thức
 
-Dạng điển hình của phương trình khuếch tán là $$ u_t=D\Delta u $$, hoặc có thêm nguồn và phản ứng:
+Dạng chuẩn của phương trình khuếch tán là $$ u_t=D\Delta u $$, hoặc ở dạng mở rộng có thêm nguồn và phản ứng:
 
 $$ u_t=D\Delta u+F(u,x,t). $$
 
-Ở đây $$ D $$ là hệ số khuếch tán. Dù $$ u $$ là nhiệt độ, nồng độ, mật độ xác suất hay một đại lượng tài chính đã biến đổi, toán tử chính $$ \Delta u $$ vẫn mang cùng một ý nghĩa: khuếch tán làm phẳng chênh lệch không gian.
+Trong đó $$ D $$ là hệ số khuếch tán. Dù $$ u $$ đại diện cho nhiệt độ, nồng độ chất, mật độ xác suất hay giá trị tài sản sau khi đổi biến, toán tử Laplace $$ \Delta u $$ vẫn đóng vai trò làm phẳng các chênh lệch trong không gian.
 
 ## Những ngộ nhận thường gặp
 
-- "Phương trình nhiệt chỉ mô tả nhiệt." Sai. Nó là mô hình chuẩn của rất nhiều cơ chế lan tỏa.
-- "Nếu xuất hiện đạo hàm bậc hai theo không gian thì chắc là sóng." Không đúng; bản chất thời gian bậc nhất cộng với Laplace cho ta khuếch tán chứ không phải sóng.
-- "Ứng dụng khác lĩnh vực thì phải là một PDE hoàn toàn khác." Không nhất thiết; đôi khi chỉ thay tên biến và ý nghĩa hệ số.
-- "Tất cả các quá trình lan tỏa đều thuần khuếch tán." Sai; nhiều mô hình còn có phản ứng, đối lưu, nguồn hoặc cấu trúc phi tuyến.
+- "Phương trình nhiệt chỉ dùng để mô tả nhiệt độ." Sai; đây là mô hình tiêu chuẩn của nhiều quá trình lan tỏa trong tự nhiên và kỹ thuật.
+- "Hễ có đạo hàm bậc hai theo không gian thì đó là phương trình sóng." Không đúng; sự kết hợp giữa đạo hàm bậc nhất theo thời gian và toán tử Laplace tạo ra khuếch tán, khác hẳn bản chất dao động của sóng.
+- "Các hiện tượng ở lĩnh vực khác nhau luôn cần những phương trình hoàn toàn khác nhau." Không nhất thiết; nhiều mô hình chỉ khác nhau về tên biến và ý nghĩa vật lý của tham số.
+- "Mọi quá trình lan tỏa đều là khuếch tán thuần túy." Sai; nhiều hệ thực tế còn có thêm các thành phần phản ứng, đối lưu, nguồn hoặc tính phi tuyến.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Nhìn ra cấu trúc bảo toàn cộng dòng chảy
+### Bước 1: Nhận diện cấu trúc bảo toàn kết hợp với dòng chảy
 
-Đây là chìa khóa để nhận diện mô hình khuếch tán.
+Đây là dấu hiệu cơ bản để xác định một mô hình khuếch tán.
 
-### Bước 2: So sánh nhiều lĩnh vực khác nhau
+### Bước 2: Đối chiếu ví dụ giữa các lĩnh vực khác nhau
 
-Mục tiêu là nhìn thấy cái chung sau lớp vỏ ngôn ngữ riêng.
+Tìm ra cấu trúc toán học chung ẩn sau các thuật ngữ chuyên ngành khác nhau.
 
-### Bước 3: Nhận diện các thành phần bổ sung
+### Bước 3: Nhận diện các số hạng mở rộng
 
-Nguồn, phản ứng, đối lưu là các mở rộng tự nhiên.
+Làm quen với vai trò của nguồn, phản ứng và đối lưu khi mô hình hóa các hệ phức tạp hơn.
 
-### Các checkpoint
+### Các điểm kiểm tra
 
-- Sinh viên có kể được ít nhất ba hiện tượng khác nhau cùng được mô tả bởi phương trình kiểu nhiệt hay không.
-- Sinh viên có giải thích được "đi từ nơi đậm sang nơi loãng" dưới ngôn ngữ PDE hay không.
-- Sinh viên có phân biệt được khuếch tán với dao động sóng hay không.
+- Sinh viên có nêu được ít nhất ba hiện tượng thuộc các lĩnh vực khác nhau cùng tuân theo phương trình dạng nhiệt hay không.
+- Sinh viên có diễn đạt được nguyên lý "truyền từ nơi đậm sang nơi loãng" bằng ngôn ngữ PDE hay không.
+- Sinh viên có phân biệt rõ quá trình khuếch tán với hiện tượng truyền sóng hay không.
 
 ## Ví dụ được giải chi tiết
 
 ### Ví dụ 1: Sinh học và y sinh
 
-Nếu $$ c(x,t) $$ là nồng độ một chất dinh dưỡng hoặc thuốc trong mô, ta có thể viết $$ c_t=D c_{xx} $$. Nếu có tiêu thụ hay phản ứng, ta thêm hạng phản ứng:
+Gọi $$ c(x,t) $$ là nồng độ chất dinh dưỡng hoặc thuốc trong mô sinh học. Trong trường hợp khuếch tán thuần, ta có $$ c_t=D c_{xx} $$. Khi có thêm quá trình tiêu thụ hoặc phản ứng hóa sinh, phương trình trở thành
 
 $$ c_t=D c_{xx}-R(c). $$
 
-Ví dụ này cho thấy phương trình nhiệt là cửa ngõ đến mô hình khuếch tán-phản ứng.
+Ví dụ này mở đường sang lớp mô hình phản ứng–khuếch tán.
 
-### Ví dụ 2: Khuếch tán trong vật liệu
+### Ví dụ 2: Khuếch tán trong vật liệu rắn
 
-Trong vật liệu rắn, nồng độ tạp chất $$ c(x,t) $$ thường thỏa $$ c_t=D c_{xx} $$. Hệ số $$ D $$ phụ thuộc nhiệt độ theo kiểu Arrhenius. Điều này giải thích vì sao tăng nhiệt độ có thể làm khuếch tán nhanh lên rất mạnh.
+Trong khoa học vật liệu, nồng độ tạp chất $$ c(x,t) $$ trong chất rắn thường tuân theo $$ c_t=D c_{xx} $$, với hệ số khuếch tán $$ D $$ phụ thuộc mạnh vào nhiệt độ theo quy luật Arrhenius. Điều này giải thích vì sao việc gia nhiệt làm tăng đáng kể tốc độ khuếch tán tạp chất.
 
-### Ví dụ 3: Xác suất và Brownian motion
+### Ví dụ 3: Xác suất và chuyển động Brown
 
-Mật độ xác suất của một hạt chuyển động Brown ngẫu nhiên thỏa một phương trình khuếch tán. Đây là ví dụ rất đẹp cho thấy cùng một toán tử Gaussian vừa mô tả truyền nhiệt vừa mô tả sự lan tỏa xác suất.
+Hàm mật độ xác suất vị trí của một hạt thực hiện chuyển động Brown thỏa mãn một phương trình khuếch tán. Ví dụ này cho thấy cùng một nhân Gaussian vừa mô tả sự truyền nhiệt vừa mô tả sự lan tỏa xác suất của quá trình ngẫu nhiên.
 
-### Ví dụ 4: Tài chính
+### Ví dụ 4: Tài chính định lượng
 
 Phương trình Black-Scholes
 
 $$ V_t+\frac12\sigma^2S^2V_{SS}+rSV_S-rV=0 $$
 
-sau một phép đổi biến thích hợp có thể đưa về dạng phương trình nhiệt. Ví dụ này rất đáng nhớ vì nó cho thấy khuếch tán bước ra khỏi vật lý và đi vào định giá tài sản.
+sau một phép đổi biến thích hợp có thể quy về phương trình nhiệt chuẩn. Kết quả này minh họa việc cấu trúc khuếch tán xuất hiện ngay cả trong định giá tài sản tài chính.
 
-### Ví dụ 5: Nhìn lại cơ chế chung
+### Ví dụ 5: Điểm chung của các mô hình
 
-Trong mọi ví dụ trên, điều quan trọng không phải tên biến $$ u $$ là gì, mà là việc chênh lệch không gian bị san bằng theo thời gian. Đây là sợi chỉ đỏ nối toàn bộ chương.
+Trong tất cả các ví dụ trên, điểm cốt lõi không nằm ở tên gọi của đại lượng $$ u $$, mà ở cơ chế san bằng chênh lệch không gian theo thời gian — sợi dây xuyên suốt toàn bộ chương.
 
 ## Câu hỏi khái niệm
 
-1. Điều gì làm cho nhiều hiện tượng rất khác nhau vẫn cùng được mô tả bởi một PDE kiểu nhiệt?
-2. Vì sao phương trình nhiệt là ngôn ngữ của "làm phẳng chênh lệch"?
-3. Khi nào một mô hình khuếch tán cần được mở rộng thêm phản ứng hoặc đối lưu?
+1. Yếu tố nào khiến nhiều hiện tượng thuộc các lĩnh vực rất khác nhau lại cùng được mô tả bởi phương trình dạng nhiệt?
+2. Vì sao có thể xem phương trình nhiệt là mô hình toán học của quá trình san bằng chênh lệch?
+3. Trong những tình huống nào mô hình khuếch tán thuần cần bổ sung số hạng phản ứng hoặc đối lưu?
 
 ## Bài toán ứng dụng
 
-1. Một loại thuốc được tiêm cục bộ vào mô. Hãy giải thích vì sao nồng độ thuốc ban đầu rất cao ở gần điểm tiêm nhưng dần lan rộng theo thời gian.
-2. Trong công nghệ vật liệu, vì sao nung nóng có thể làm tạp chất khuếch tán nhanh hơn đáng kể?
-3. Trong tài chính, vì sao một phương trình nhìn rất khác Black-Scholes vẫn có thể liên hệ sâu với phương trình nhiệt sau đổi biến?
+1. Một lượng thuốc được tiêm cục bộ vào mô. Hãy giải thích vì sao nồng độ thuốc ban đầu tập trung cao tại điểm tiêm rồi giảm dần và lan rộng theo thời gian.
+2. Trong công nghệ vật liệu, vì sao tăng nhiệt độ lại đẩy nhanh quá trình khuếch tán tạp chất?
+3. Trong tài chính, vì sao một phương trình có dạng khác biệt như Black-Scholes vẫn có thể quy về phương trình nhiệt sau khi đổi biến?
 
 ## Chiến lược giảng dạy tương tác
 
-- Mở bài bằng câu hỏi: "Ngoài nhiệt độ, còn đại lượng nào có thể 'lan ra' theo cùng kiểu toán học?"
-- Cho sinh viên làm bảng so sánh: đại lượng, miền vật lý, hệ số khuếch tán, nguồn hoặc phản ứng.
-- Hỏi cả lớp: "Điều gì là cái chung giữa thuốc khuếch tán trong mô và nhiệt khuếch tán trên thanh?"
-- Khuyến khích sinh viên kể thêm ví dụ từ lĩnh vực các em quan tâm để thấy tính liên ngành của mô hình.
+- Mở đầu bằng câu hỏi: "Ngoài nhiệt độ, còn những đại lượng nào trong tự nhiên lan tỏa theo quy luật toán học tương tự?"
+- Cho sinh viên lập bảng đối chiếu giữa các lĩnh vực: đại lượng khảo sát, miền không gian, hệ số khuếch tán và số hạng nguồn/phản ứng.
+- Đặt câu hỏi: "Điểm chung về mặt toán học giữa quá trình thuốc khuếch tán trong mô và nhiệt truyền dọc theo thanh kim loại là gì?"
+- Khuyến khích sinh viên đề xuất thêm ví dụ từ ngành học của mình để thấy tính liên ngành của PDE.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên nhấn mạnh một câu ngắn dễ nhớ: "phương trình nhiệt mô tả mọi quá trình đi từ chênh lệch lớn sang chênh lệch nhỏ". Khi câu này rõ, các ví dụ liên ngành sẽ tự động dễ hiểu hơn.
+Nên giữ một ý chính xuyên suốt: phương trình nhiệt mô tả các quá trình vận động từ nơi có chênh lệch lớn sang trạng thái đồng đều hơn. Khi nắm vững nguyên lý này, việc hiểu các ví dụ liên ngành sẽ thuận lợi hơn nhiều.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể mời sinh viên khá giỏi thảo luận sự khác nhau giữa khuếch tán tuyến tính và khuếch tán phi tuyến, hoặc giữa khuếch tán thuần và khuếch tán-phản ứng trong sinh học và hóa học.
+Có thể yêu cầu sinh viên phân tích sự khác nhau giữa khuếch tán tuyến tính và phi tuyến, hoặc giữa khuếch tán thuần túy và mô hình phản ứng–khuếch tán trong sinh học và hóa học.
 
 ## Tóm tắt dễ nhớ
 
-Phương trình nhiệt là mô hình chuẩn của khuếch tán, không chỉ của truyền nhiệt. Từ sinh học, vật liệu, xác suất đến tài chính, cùng một cấu trúc PDE xuất hiện khi một đại lượng lan từ nơi đậm sang nơi loãng và làm phẳng chênh lệch theo thời gian.
+Phương trình nhiệt là mô hình chuẩn cho quá trình khuếch tán, vượt xa phạm vi truyền nhiệt thuần túy. Từ sinh học, vật liệu, xác suất đến tài chính, cùng một cấu trúc PDE xuất hiện bất cứ khi nào một đại lượng lan từ nơi mật độ cao sang nơi mật độ thấp và san bằng chênh lệch theo thời gian.
 
 ## Video tham khảo
 
-- xem trước: [Deriving the Heat Equation: A Parabolic Partial Differential Equation for Heat Energy Conservation](https://www.youtube.com/watch?v=9d8PwnKVA-U) — Steve Brunton, tiếng Anh. Nhiệt và khuếch tán là cùng một định luật bảo toàn với mật độ khác.
-- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Làm trơn và mất các tần số cao, sự kiện định tính của khuếch tán.
-- [Solving the Heat Equation with the Fourier Transform](https://www.youtube.com/watch?v=7haZCrQDHpA) — Steve Brunton, tiếng Anh. Nhân Gauss tường minh của khuếch tán trên đường thẳng.
+- Xem trước: [Deriving the Heat Equation: A Parabolic Partial Differential Equation for Heat Energy Conservation](https://www.youtube.com/watch?v=9d8PwnKVA-U) — Steve Brunton, tiếng Anh. Giải thích sự tương đồng giữa truyền nhiệt và khuếch tán như cùng một định luật bảo toàn áp dụng cho các mật độ khác nhau.
+- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Minh họa hiệu ứng làm trơn và suy giảm tần số cao — đặc trưng định tính của quá trình khuếch tán.
+- [Solving the Heat Equation with the Fourier Transform](https://www.youtube.com/watch?v=7haZCrQDHpA) — Steve Brunton, tiếng Anh. Thiết lập tường minh nhân Gaussian của quá trình khuếch tán trên toàn trục thực.
 
 ## Tài liệu tham khảo
 
-- Evans, *Partial Differential Equations* - nền tảng chuẩn cho phương trình nhiệt, nguyên lý cực đại, và hàm Green.
-- Haberman, *Applied Partial Differential Equations* - nhiều ví dụ vật lý và phương pháp tính minh họa rất rõ.
+- Evans, *Partial Differential Equations* — tài liệu chuẩn về phương trình nhiệt, nguyên lý cực đại và hàm Green.
+- Haberman, *Applied Partial Differential Equations* — cung cấp nhiều ví dụ vật lý và phương pháp giải minh họa rõ ràng.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Khuếch tán sinh học
-- Bài toán: Chất dinh dưỡng hoặc tế bào lan trong mô sinh học.
+- Bài toán: Chất dinh dưỡng hoặc tế bào lan tỏa trong môi trường mô sinh học.
 - Mô hình:
 $$ u_t=D u_{xx} $$
-hoặc trong nhiều chiều là
+hoặc trong nhiều chiều:
 $$ u_t=D\Delta u. $$
-- Giả thiết và giới hạn: Mô hình Fick đơn giản, bỏ qua phản ứng sinh hóa.
-- Diễn giải: Khuếch tán làm phẳng nồng độ và lan truyền khối lượng từ nơi đậm sang nơi loãng.
+- Giả thiết và giới hạn: Theo định luật khuếch tán Fick đơn giản, bỏ qua các phản ứng sinh hóa.
+- Diễn giải: Quá trình khuếch tán làm phẳng phân bố nồng độ và dịch chuyển vật chất từ nơi đậm đặc sang nơi loãng hơn.
 
 #### Tài chính định lượng
-- Bài toán: Sau đổi biến phù hợp, phương trình Black-Scholes liên hệ chặt với phương trình nhiệt.
-- Mô hình: Một phép đổi biến đưa PDE giá quyền chọn về dạng heat equation.
-- Giả thiết và giới hạn: Khung Black-Scholes chuẩn có nhiều giả thiết lý tưởng hóa.
-- Diễn giải: Toán học của khuếch tán xuất hiện cả trong sinh học lẫn tài chính.
+- Bài toán: Sau phép đổi biến thích hợp, phương trình Black-Scholes quy về dạng phương trình nhiệt.
+- Mô hình: Chuyển đổi PDE định giá quyền chọn về phương trình khuếch tán chuẩn.
+- Giả thiết và giới hạn: Mô hình Black-Scholes cổ điển dựa trên một số giả thiết lý tưởng hóa về thị trường.
+- Diễn giải: Cùng một nền tảng toán học của khuếch tán xuất hiện trong cả sinh học lẫn tài chính.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Ứng dụng khuếch tán cho thấy phương trình nhiệt không chỉ nói về nhiệt. Bất cứ quá trình nào có xu hướng làm phẳng gradient đều thường dẫn đến cùng một cấu trúc toán học. Một bẫy phổ biến là nghĩ "heat equation" chỉ thuộc vật lý cổ điển.
+Các ứng dụng khuếch tán cho thấy phương trình nhiệt không bị giới hạn trong vật lý cổ điển. Mọi quá trình có xu hướng làm giảm gradient mật độ đều có thể dẫn tới cấu trúc phương trình tương tự.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -194,12 +194,12 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Nếu ban đầu một chất được tập trung gần $$ x=0 $$, nghiệm khuếch tán sẽ lan rộng, biên độ cực đại giảm dần, nhưng tổng khối lượng
+Nếu ban đầu một chất tập trung quanh $$ x=0 $$, phân bố nồng độ theo thời gian sẽ trải rộng và hạ thấp biên độ cực đại, nhưng tổng khối lượng
 $$ \int_{\mathbb{R}}u(x,t)\,dx $$
-được bảo toàn trong mô hình không có nguồn hay thất thoát. Đây là dấu hiệu điển hình của quá trình khuếch tán thuần.
+vẫn được bảo toàn trong mô hình không có nguồn hay thất thoát. Đây là dấu hiệu đặc trưng của quá trình khuếch tán thuần túy.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Nhận diện heat equation như mô hình khuếch tán phổ quát và diễn giải bảo toàn khối lượng.
+**Bậc đại học.** Nhận diện phương trình nhiệt như mô hình khuếch tán tổng quát và diễn giải tính bảo toàn khối lượng.
 
-**Bậc sau đại học.** Liên hệ với Brownian motion, Fokker-Planck và các mô hình khuếch tán-phản ứng.
+**Bậc sau đại học.** Tìm hiểu mối liên hệ với chuyển động Brown, phương trình Fokker-Planck và các hệ phản ứng–khuếch tán.

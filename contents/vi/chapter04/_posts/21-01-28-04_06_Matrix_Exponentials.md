@@ -12,83 +12,76 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giúp sinh viên hiểu ma trận mũ $$ e^{At} $$ như toán tử tiến hóa trung tâm của hệ tuyến tính, biết định nghĩa bằng chuỗi, hiểu cách tính trong các trường hợp chéo hóa được hoặc Jordan, và thấy rằng ma trận mũ là công cụ thống nhất hóa mọi kết quả về trị riêng trong chương.
+Bài học này giới thiệu ma trận mũ (hàm mũ ma trận) $$ e^{At} $$ như toán tử tiến hóa trung tâm của hệ tuyến tính hệ số hằng, trình bày định nghĩa bằng chuỗi lũy thừa, cách tính trong trường hợp chéo hóa được và khối Jordan, đồng thời cho thấy $$ e^{At} $$ thống nhất toàn bộ các trường hợp trị riêng đã học trong chương.
 
 ## Kiến thức nền
 
-Sinh viên cần nắm chuỗi mũ thông thường, trị riêng, vector riêng và các trường hợp trị riêng lặp, phức. Một chút trực giác về toán tử "đẩy trạng thái từ thời điểm đầu đến thời điểm sau" cũng rất hữu ích.
+Sinh viên cần nắm chuỗi Taylor của hàm mũ thông thường, trị riêng, vector riêng cùng các trường hợp trị riêng phức và trị riêng lặp. Trực giác về toán tử đưa trạng thái từ thời điểm ban đầu đến thời điểm $$ t $$ sẽ giúp nắm bài dễ dàng hơn.
 
 ## Dẫn nhập
 
 ![Ma trận mũ như dòng chảy của hệ tuyến tính]({{ site.imgurl }}/chapter_img/chapter04/06_matrix_exponentials.svg)
 
-Trong ODE một ẩn, hàm mũ $$ e^{at} $$ là đối tượng tự nhiên nhất vì đạo hàm của nó lại chính là một bội số của nó. Với hệ tuyến tính
-$$ \mathbf{x}'=A\mathbf{x}, $$
-ta mong có một phiên bản "hàm mũ" cho ma trận. Ma trận mũ $$ e^{At} $$ chính là câu trả lời. Nó không chỉ là một công thức đẹp; nó là cách viết gọn nhất của toàn bộ nghiệm.
+Trong ODE một ẩn, hàm mũ $$ e^{at} $$ là nghiệm cơ bản vì đạo hàm của nó tỉ lệ với chính nó. Với hệ tuyến tính $$ \mathbf{x}'=A\mathbf{x} $$, đối tượng tương ứng là ma trận mũ $$ e^{At} $$, cho phép viết nghiệm của mọi bài toán giá trị đầu hệ số hằng trong một công thức duy nhất.
 
-Điểm hay của bài học này là nó gom tất cả các trường hợp trước thành một khung duy nhất. Trị riêng thực, trị riêng phức, trị riêng lặp, vector suy rộng, tất cả đều có thể được xem là những cách khác nhau để hiểu hoặc tính $$ e^{At} $$.
+Giá trị lớn nhất của ma trận mũ là tính thống nhất: trị riêng thực phân biệt, trị riêng phức, trị riêng lặp và vector riêng suy rộng đều có thể xem là các phương pháp khác nhau để tính hoặc diễn giải cùng một đối tượng $$ e^{At} $$.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Ma trận mũ giống như một "bộ máy thời gian" của hệ. Nếu biết trạng thái ban đầu $$ \mathbf{x}_0 $$, thì $$ e^{At} $$ nói cho ta trạng thái tại thời điểm $$ t $$ là gì. Nó là toán tử đưa hiện tại sang tương lai.
+Ma trận mũ đóng vai trò toán tử tiến hóa theo thời gian: khi biết trạng thái ban đầu $$ \mathbf{x}_0 $$, phép nhân $$ e^{At}\mathbf{x}_0 $$ cho trực tiếp trạng thái của hệ tại thời điểm $$ t $$.
 
 ### Cách nhìn hình ảnh
 
-Nếu $$ A $$ sinh ra trường vector trên mặt phẳng trạng thái, thì $$ e^{At} $$ là dòng chảy của trường vector ấy trong thời gian $$ t $$. Thay vì chỉ biết vận tốc tức thời tại từng điểm, ta có một công thức mô tả cả quỹ đạo sau khi để hệ tiến hóa trong một khoảng thời gian.
+Nếu ma trận $$ A $$ sinh ra trường vector vận tốc trên không gian trạng thái, thì $$ e^{At} $$ mô tả dòng chảy của trường vector đó sau khoảng thời gian $$ t $$, ánh xạ mọi điểm xuất phát sang vị trí mới dọc theo quỹ đạo.
 
 ### Cách nhìn hình thức
 
-Ma trận mũ được định nghĩa bởi chuỗi
+Ma trận mũ được định nghĩa bằng chuỗi lũy thừa hội tụ với mọi ma trận vuông $$ A $$:
 $$
 e^{At}=I+At+\frac{(At)^2}{2!}+\frac{(At)^3}{3!}+\cdots.
 $$
-Từ đây suy ra
-$$ \frac{d}{dt}e^{At}=Ae^{At}, $$
-và
-$$ e^{A\cdot 0}=I. $$
-Do đó, nghiệm của bài toán giá trị đầu
+Từ định nghĩa này suy ra $$ \frac{d}{dt}e^{At}=Ae^{At} $$ và $$ e^{A\cdot 0}=I $$. Do đó, nghiệm duy nhất của bài toán giá trị đầu
 $$
 \mathbf{x}'=A\mathbf{x},\qquad \mathbf{x}(0)=\mathbf{x}_0
 $$
-là
-$$ \mathbf{x}(t)=e^{At}\mathbf{x}_0. $$
+là $$ \mathbf{x}(t)=e^{At}\mathbf{x}_0 $$.
 
 ## Những ngộ nhận thường gặp
 
-- "Ma trận mũ chỉ là ký hiệu sang trọng cho nghiệm." Sai. Nó là toán tử tiến hóa thật sự, và có ý nghĩa độc lập rất mạnh.
-- "Muốn tính $$ e^{At} $$ phải cộng chuỗi vô hạn trực tiếp." Thường không. Ta thường tính qua chéo hóa hoặc Jordan.
-- "Nếu biết trị riêng thì không cần ma trận mũ." Sai. Ma trận mũ là cách gộp mọi mode vào một đối tượng duy nhất.
-- "Ma trận mũ luôn dễ tính." Không hẳn, nhưng khái niệm của nó vẫn cực kỳ quan trọng kể cả khi tính cụ thể khó.
+- "Ma trận mũ chỉ là cách ký hiệu cho gọn." Sai: đây là toán tử tiến hóa xác định chặt chẽ bằng chuỗi và có nhiều tính chất đại số quan trọng.
+- "Muốn tính $$ e^{At} $$ phải cộng trực tiếp chuỗi vô hạn." Thường không cần: ta thường tính thông qua chéo hóa, dạng Jordan hoặc biến đổi Laplace.
+- "Biết trị riêng rồi thì không cần ma trận mũ." Sai: ma trận mũ gộp toàn bộ các thành phần nghiệm vào một ma trận nghiệm cơ bản chuẩn hóa tại $$ t=0 $$.
+- "Ma trận mũ luôn dễ tính bằng tay." Không hẳn, nhưng ý nghĩa lý thuyết và ứng dụng tính toán số của nó vẫn rất quan trọng.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Hiểu định nghĩa bằng chuỗi
+### Bước 1: Nắm định nghĩa bằng chuỗi lũy thừa
 
-Đây là gốc của mọi tính chất.
+Hiểu nguồn gốc của tính chất đạo hàm $$ \frac{d}{dt}e^{At}=Ae^{At} $$.
 
-### Bước 2: Xác minh vai trò nghiệm của hệ
+### Bước 2: Kiểm chứng vai trò giải bài toán giá trị đầu
 
-Cho thấy $$ e^{At} $$ giải bài toán giá trị đầu.
+Thấy rõ $$ \mathbf{x}(t)=e^{At}\mathbf{x}_0 $$ thỏa cả phương trình lẫn điều kiện đầu.
 
-### Bước 3: Học cách tính qua chéo hóa
+### Bước 3: Tính qua phép chéo hóa
 
-Đây là trường hợp thực hành thường gặp nhất.
+Luyện thành thạo công thức $$ e^{At}=Pe^{Dt}P^{-1} $$.
 
-### Bước 4: Liên hệ với Jordan
+### Bước 4: Tính cho khối Jordan
 
-Thấy ngay nguồn gốc của các số hạng $$ te^{\lambda t} $$.
+Thấy trực tiếp nguồn gốc đại số của các số hạng $$ te^{\lambda t} $$.
 
 ### Các checkpoint
 
-- Sinh viên có hiểu vì sao $$ e^{At} $$ là ma trận cơ bản của hệ hay không.
-- Sinh viên có biết khi nào dùng chéo hóa để tính $$ e^{At} $$ hay không.
-- Sinh viên có liên hệ được ma trận mũ với các dạng nghiệm ở các bài trước hay không.
+- Sinh viên có hiểu vì sao $$ e^{At} $$ là ma trận nghiệm cơ bản thỏa $$ \Phi(0)=I $$ hay không.
+- Sinh viên có biết áp dụng phép chéo hóa để tính $$ e^{At} $$ hay không.
+- Sinh viên có liên hệ được $$ e^{At} $$ với các dạng nghiệm đã học ở các bài trước hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Ma trận chéo
+### Ví dụ 1: Ma trận đường chéo
 
 Nếu
 $$
@@ -106,21 +99,11 @@ e^{2t} & 0\\
 0 & e^{-t}
 \end{pmatrix}.
 $$
-Đây là trường hợp dễ nhất và cho thấy ma trận mũ đúng là phiên bản ma trận của hàm mũ thường.
+Đây là trường hợp đơn giản nhất, minh họa trực tiếp việc hàm mũ tác động độc lập lên từng phần tử đường chéo.
 
-### Ví dụ 2: Chéo hóa được
+### Ví dụ 2: Ma trận chéo hóa được
 
-Giả sử
-$$ A=PDP^{-1} $$
-với
-$$
-D=
-\begin{pmatrix}
-\lambda_1 & 0\\
-0 & \lambda_2
-\end{pmatrix}.
-$$
-Khi đó
+Giả sử $$ A=PDP^{-1} $$ với $$ D=\begin{pmatrix} \lambda_1 & 0\\ 0 & \lambda_2 \end{pmatrix} $$. Khi đó
 $$
 e^{At}=Pe^{Dt}P^{-1}
 =
@@ -129,9 +112,9 @@ P
 e^{\lambda_1 t} & 0\\
 0 & e^{\lambda_2 t}
 \end{pmatrix}
-P^{-1}.
+P^{-1},
 $$
-Ví dụ này là cầu nối trực tiếp giữa chéo hóa và nghiệm của hệ.
+nối trực tiếp phép chéo hóa với công thức nghiệm của hệ.
 
 ### Ví dụ 3: Khối Jordan bậc hai
 
@@ -143,9 +126,7 @@ A=
 0 & \lambda
 \end{pmatrix},
 $$
-ta viết
-$$ A=\lambda I+N, $$
-trong đó
+ta tách $$ A=\lambda I+N $$, trong đó
 $$
 N=
 \begin{pmatrix}
@@ -154,7 +135,7 @@ N=
 \end{pmatrix},
 \qquad N^2=0.
 $$
-Do đó
+Vì $$ \lambda I $$ và $$ N $$ giao hoán với nhau, ta có
 $$
 e^{At}=e^{\lambda t}e^{Nt}
 =e^{\lambda t}\left(I+tN\right)
@@ -164,85 +145,70 @@ e^{At}=e^{\lambda t}e^{Nt}
 0 & 1
 \end{pmatrix}.
 $$
-Đây là nguồn gốc ma trận của số hạng $$ te^{\lambda t} $$.
+Đây chính là nguồn gốc ma trận của thừa số $$ te^{\lambda t} $$.
 
-### Ví dụ 4: Dùng ma trận mũ để giải IVP
+### Ví dụ 4: Giải bài toán giá trị đầu bằng ma trận mũ
 
-Nếu
-$$
-\mathbf{x}(0)=
-\begin{pmatrix}
-1\\
-2
-\end{pmatrix},
-$$
-và biết $$ e^{At} $$, thì ta chỉ việc nhân
-$$ \mathbf{x}(t)=e^{At}\mathbf{x}(0). $$
-Điểm mạnh của cách viết này là toàn bộ điều kiện đầu được gói gọn trong một phép nhân vector cuối cùng.
+Nếu đã có $$ e^{At} $$ và điều kiện đầu $$ \mathbf{x}(0)=\begin{pmatrix} 1\\ 2 \end{pmatrix} $$, ta chỉ cần thực hiện phép nhân $$ \mathbf{x}(t)=e^{At}\mathbf{x}(0) $$. Toàn bộ điều kiện đầu được áp dụng trong một phép nhân ma trận – vector duy nhất.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao biết $$ e^{At} $$ gần như là biết toàn bộ hệ tuyến tính?
-2. Tại sao chéo hóa giúp tính ma trận mũ dễ hơn rất nhiều?
-3. Vì sao khối Jordan sinh ra các số hạng có nhân thêm $$ t $$?
+1. Vì sao biết $$ e^{At} $$ tương đương với việc nắm trọn vẹn động học của hệ tuyến tính thuần nhất?
+2. Vì sao phép chéo hóa rút ngắn đáng kể việc tính ma trận mũ?
+3. Vì sao khối Jordan bậc hai lại sinh ra thừa số $$ t $$ trong $$ e^{At} $$?
 
 ## Bài toán ứng dụng
 
-1. Trong mô phỏng số, vì sao một công thức tiến hóa trực tiếp dạng $$ \mathbf{x}(t)=e^{At}\mathbf{x}_0 $$ lại rất giá trị?
-2. Một hệ điều khiển tuyến tính cần dự báo trạng thái sau một khoảng thời gian ngắn. Hãy giải thích vai trò của ma trận mũ.
-3. Một hệ dao động liên kết có nhiều mode. Hãy giải thích vì sao ma trận mũ là cách gộp toàn bộ các mode ấy vào một công thức duy nhất.
+1. Trong mô phỏng số, vì sao công thức tiến hóa trực tiếp $$ \mathbf{x}(t)=e^{At}\mathbf{x}_0 $$ có giá trị thực tiễn cao?
+2. Một hệ điều khiển tuyến tính cần dự báo trạng thái sau bước thời gian $$ h $$. Ma trận mũ đóng vai trò gì trong bước rời rạc hóa này?
+3. Với một hệ dao động ghép nhiều thành phần, vì sao ma trận mũ giúp gộp mọi chế độ vào một biểu thức duy nhất?
 
 ## Chiến lược giảng dạy tương tác
 
-- Cho sinh viên thử tính $$ e^{At} $$ với ma trận chéo trước để xây trực giác.
-- Hỏi lớp: "Nếu hàm mũ thường giải ODE một ẩn, vật tương tự cho hệ là gì?"
-- So sánh trực tiếp cách tính qua chéo hóa và qua Jordan để thấy hai trường hợp quen thuộc của chương quay về đây.
-- Khuyến khích sinh viên diễn giải $$ e^{At} $$ như một toán tử dòng chảy chứ không chỉ là ký hiệu.
+- Cho sinh viên tự tính $$ e^{At} $$ từ chuỗi định nghĩa trên ma trận đường chéo trước để tạo trực giác.
+- Hỏi lớp: "Nếu hàm mũ thường giải ODE vô hướng $$ x'=ax $$, công cụ tương ứng cho hệ $$ \mathbf{x}'=A\mathbf{x} $$ là gì?"
+- Đặt cạnh nhau hai ví dụ chéo hóa và khối Jordan để tổng hợp lại các bài trước.
+- Nhấn mạnh cách đọc $$ e^{At} $$ như một toán tử dòng chảy thay vì chỉ là công thức tính.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên để sinh viên yếu làm chắc các ví dụ ma trận chéo và chéo hóa được trước. Điều cốt lõi không phải là thuộc hết kỹ thuật, mà là hiểu được ma trận mũ là "nghiệm tổng quát dưới dạng toán tử".
+Luyện vững các ví dụ ma trận đường chéo và ma trận chéo hóa được trước, tập trung hiểu ý nghĩa toán tử tiến hóa của $$ e^{At} $$.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể yêu cầu sinh viên khá giỏi chứng minh tính chất
-$$ e^{A(t+s)}=e^{At}e^{As} $$
-khi cùng một ma trận $$ A $$, hoặc suy nghĩ về việc điều gì xảy ra nếu thay $$ A $$ bằng ma trận phụ thuộc thời gian.
+Yêu cầu sinh viên chứng minh tính chất nhóm một tham số $$ e^{A(t+s)}=e^{At}e^{As} $$, đồng thời kiểm tra lý do công thức $$ e^{(A+B)t}=e^{At}e^{Bt} $$ chỉ đúng khi $$ AB=BA $$.
 
 ## Tóm tắt dễ nhớ
 
-Ma trận mũ $$ e^{At} $$ là hàm mũ của hệ tuyến tính. Nó đưa trạng thái ban đầu sang trạng thái tại thời điểm $$ t $$. Chéo hóa và Jordan chỉ là hai cách nhìn để tính cùng một đối tượng. Khi hiểu ma trận mũ, sinh viên đã có công cụ thống nhất nhất của hệ tuyến tính hệ số hằng.
+Ma trận mũ $$ e^{At} $$ là toán tử tiến hóa đưa trạng thái ban đầu $$ \mathbf{x}_0 $$ sang trạng thái $$ \mathbf{x}(t)=e^{At}\mathbf{x}_0 $$. Chéo hóa và khối Jordan là các cách tính cụ thể của cùng một công cụ thống nhất cho hệ tuyến tính hệ số hằng.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Dự báo trạng thái trực tiếp
-- Bài toán: Muốn biết hệ tuyến tính đi từ trạng thái ban đầu đến trạng thái sau thời gian $$ t $$ như thế nào.
-- Mô hình:
-$$ \mathbf{x}(t)=e^{At}\mathbf{x}_0. $$
-- Giả thiết và giới hạn: Hệ số hằng, hệ tuyến tính.
-- Diễn giải: Ma trận mũ là toán tử tiến hóa trực tiếp của hệ.
+- Bài toán: Xác định trạng thái của hệ tuyến tính sau thời gian $$ t $$ từ trạng thái ban đầu.
+- Mô hình: $$ \mathbf{x}(t)=e^{At}\mathbf{x}_0 $$.
+- Giả thiết và giới hạn: Hệ tuyến tính hệ số hằng.
+- Diễn giải: Ma trận mũ ánh xạ trực tiếp trạng thái đầu sang trạng thái tại thời điểm bất kỳ.
 
-#### Mô phỏng số và điều khiển
-- Bài toán: Thuật toán cần cập nhật trạng thái qua một bước thời gian hữu hạn.
-- Mô hình:
-$$ \mathbf{x}(t+h)=e^{Ah}\mathbf{x}(t). $$
-- Giả thiết và giới hạn: Không có forcing hoặc forcing được xử lý riêng.
-- Diễn giải: Công thức này rất quan trọng trong mô phỏng và điều khiển số.
+#### Rời rạc hóa trong mô phỏng số và điều khiển
+- Bài toán: Cập nhật trạng thái hệ liên tục theo bước thời gian rời rạc $$ h $$.
+- Mô hình: $$ \mathbf{x}(t+h)=e^{Ah}\mathbf{x}(t) $$.
+- Giả thiết và giới hạn: Hệ thuần nhất (hoặc phần ngoại lực được xử lý riêng).
+- Diễn giải: Công thức chuẩn để rời rạc hóa chính xác hệ tuyến tính trong điều khiển số.
 
-#### Gom toàn bộ mode trong một đối tượng
-- Bài toán: Muốn một công thức thống nhất thay vì phải nhớ mọi trường hợp trị riêng, suy rộng hay phức.
-- Mô hình:
-$$ e^{At}=I+At+\frac{(At)^2}{2!}+\cdots. $$
-- Giả thiết và giới hạn: Khái niệm luôn đúng dù tính cụ thể có thể khó.
-- Diễn giải: Ma trận mũ là đối tượng trung tâm bao trùm toàn bộ các trường hợp trước đó.
+#### Công thức thống nhất mọi trường hợp trị riêng
+- Bài toán: Biểu diễn nghiệm mà không cần tách rời từng trường hợp thực, phức hay lặp.
+- Mô hình: $$ e^{At}=I+At+\frac{(At)^2}{2!}+\cdots $$.
+- Giả thiết và giới hạn: Luôn xác định với mọi ma trận vuông $$ A $$.
+- Diễn giải: Bao trùm toàn bộ các kỹ thuật giải hệ thuần nhất hệ số hằng trong chương.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Nếu $$ e^{rt} $$ giải ODE một ẩn hệ số hằng, thì $$ e^{At} $$ giải hệ tuyến tính hệ số hằng. Đây là một trong những khái niệm đẹp và thống nhất nhất của chương. Chéo hóa, Jordan hay trị riêng phức đều chỉ là các cách tính hoặc diễn giải cùng một đối tượng duy nhất.
+Nếu $$ e^{rt} $$ giải phương trình vô hướng hệ số hằng, thì $$ e^{At} $$ giải hệ tuyến tính hệ số hằng. Mọi trường hợp đã học trước đó (trị riêng thực, phức, lặp) đều quy về việc tính hoặc phân tích cùng một đối tượng $$ e^{At} $$.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -283,24 +249,14 @@ A=
 2 & 0\\
 0 & -1
 \end{pmatrix},
-$$
-ta có
-$$
+\qquad
 e^{At}=
 \begin{pmatrix}
 e^{2t} & 0\\
 0 & e^{-t}
-\end{pmatrix}.
-$$
-Nếu
-$$
-\mathbf{x}(0)=
-\begin{pmatrix}
-1\\
-3
 \end{pmatrix},
 $$
-thì
+và điều kiện đầu $$ \mathbf{x}(0)=\begin{pmatrix} 1\\ 3 \end{pmatrix} $$, ta thu được ngay
 $$
 \mathbf{x}(t)=
 \begin{pmatrix}
@@ -308,21 +264,21 @@ e^{2t}\\
 3e^{-t}
 \end{pmatrix}.
 $$
-Ví dụ này cho thấy ma trận mũ vừa giữ được cấu trúc mode, vừa cho ta công thức tiến hóa trực tiếp.
+Công thức ma trận mũ vừa giữ rõ cấu trúc các thành phần nghiệm vừa cho phép tính trực tiếp trạng thái tại mọi thời điểm.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Hiểu vai trò của $$ e^{At} $$ và tính được nó trong các trường hợp chéo hay chéo hóa được.
+**Bậc đại học.** Nắm vai trò của $$ e^{At} $$ và tính được cho ma trận đường chéo, chéo hóa được và khối Jordan bậc hai.
 
-**Bậc sau đại học.** Chứng minh các tính chất toán tử và nối với semigroup của hệ tuyến tính.
+**Bậc sau đại học.** Chứng minh các tính chất toán tử và liên hệ với nửa nhóm (semigroup) tiến hóa của hệ tuyến tính.
 
 ## Video tham khảo
 
-- xem trước: [How (and why) to raise e to the power of a matrix | DE6](https://www.youtube.com/watch?v=O85OWBJ2ayo) — 3Blue1Brown, tiếng Anh. Grant Sanderson về vì sao e^{At} giải x'=Ax và cách tính nó.
-- [Matrix Exponentials | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=qbyeQum8qTE) — MIT OpenCourseWare, tiếng Anh. Bài ngắn của MIT về lũy thừa ma trận.
-- [Lec 29 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=zreI4HllD80) — MIT OpenCourseWare, tiếng Anh. Bài đầy đủ của Mattuck suy ra lũy thừa ma trận.
+- Xem trước: [How (and why) to raise e to the power of a matrix | DE6](https://www.youtube.com/watch?v=O85OWBJ2ayo) — 3Blue1Brown, tiếng Anh. Giải thích vì sao $$ e^{At} $$ giải hệ $$ \mathbf{x}'=A\mathbf{x} $$ và cách tính hàm mũ ma trận.
+- [Matrix Exponentials | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=qbyeQum8qTE) — MIT OpenCourseWare, tiếng Anh. Bài giảng ngắn của MIT về hàm mũ ma trận.
+- [Lec 29 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=zreI4HllD80) — MIT OpenCourseWare, tiếng Anh. Bài giảng đầy đủ của giáo sư Mattuck xây dựng công thức hàm mũ ma trận.
 
 ## Tài liệu tham khảo
 
-- Boyce & DiPrima, Chương 7: trình bày ma trận mũ như công cụ giải hệ rất rõ ràng.
+- Boyce & DiPrima, Chương 7: trình bày rõ ràng ứng dụng của ma trận mũ trong giải hệ tuyến tính.
 - Arnold, *Ordinary Differential Equations*: nhấn mạnh trực giác dòng chảy và toán tử tiến hóa.
