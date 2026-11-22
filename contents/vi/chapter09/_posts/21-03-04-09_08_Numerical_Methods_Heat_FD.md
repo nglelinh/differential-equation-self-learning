@@ -13,41 +13,37 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài học này giới thiệu cách rời rạc hóa phương trình nhiệt bằng sai phân hữu hạn. Sau bài học, sinh viên cần hiểu cách xây dựng lưới không gian-thời gian, biết suy ra sơ đồ explicit, implicit và Crank-Nicolson, hiểu trực giác điều kiện ổn định
-
-$$ r\le \frac12 $$
-
-cho sơ đồ tường minh, và thấy được vì sao phân tích số không chỉ là tính gần đúng mà còn là bài học về ổn định và tôn trọng cấu trúc của PDE.
+Bài học này giới thiệu cách rời rạc hóa phương trình nhiệt bằng phương pháp sai phân hữu hạn. Sau bài học, sinh viên cần nắm cách xây dựng lưới không gian–thời gian, biết thiết lập các sơ đồ tường minh (explicit), ẩn (implicit) và Crank-Nicolson, hiểu trực giác của điều kiện ổn định $$ r\le \frac12 $$ đối với sơ đồ tường minh, và thấy được vì sao phương pháp số cần tôn trọng cấu trúc định tính của PDE gốc.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm phương trình nhiệt liên tục, xấp xỉ sai phân của đạo hàm, và trực giác về ổn định từ ODE số nếu có. Đây là bài rất thích hợp để nối phân tích PDE với mô phỏng thực hành.
+Sinh viên cần nắm phương trình nhiệt liên tục, công thức xấp xỉ đạo hàm bằng sai phân và khái niệm ổn định số cơ bản (từ phương trình vi phân thường nếu đã học). Bài học này kết nối lý thuyết PDE với mô phỏng tính toán thực hành.
 
 ## Dẫn nhập
 
-Ngay cả khi đã có nghiệm lý thuyết, trong nhiều bài toán thực tế ta vẫn cần mô phỏng số. Dữ liệu có thể quá phức tạp để khai triển tường minh, miền có thể khó, hoặc ta chỉ cần một xấp xỉ nhanh. Phương pháp sai phân hữu hạn là lựa chọn nhập môn tự nhiên nhất cho phương trình nhiệt.
+Ngay cả khi đã nắm các phương pháp giải tích, nhiều bài toán thực tế vẫn đòi hỏi mô phỏng số do dữ liệu ban đầu phức tạp, miền hình học không chuẩn hoặc nhu cầu tính toán nhanh. Phương pháp sai phân hữu hạn là công cụ nhập môn trực tiếp nhất cho phương trình nhiệt.
 
-Nhưng bài này không chỉ dạy cách thay đạo hàm bằng hiệu. Nó còn cho sinh viên thấy một thông điệp sâu hơn: một mô hình số tốt phải tôn trọng bản chất của phương trình gốc. Với phương trình nhiệt, điều đó có nghĩa là phải ổn định, làm mượt, và không tạo dao động phi vật lý khi lưới được chọn hợp lý.
+Bài học này không chỉ dừng ở việc thay đạo hàm bằng tỉ số sai phân, mà nhấn mạnh một nguyên tắc quan trọng: một sơ đồ số đáng tin cậy phải phản ánh đúng bản chất vật lý của phương trình gốc. Với phương trình nhiệt, điều đó đòi hỏi sơ đồ phải ổn định, có tính làm mượt và không sinh ra dao động phi vật lý khi bước lưới được chọn hợp lý.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Ta thay một thanh liên tục bằng một dãy các nút, và thay thời gian liên tục bằng các bước nhảy nhỏ. Nhiệt tại một nút ở thời điểm kế tiếp được tính từ nhiệt hiện tại của nút đó và hai nút lân cận. Điều này phản ánh đúng trực giác vật lý: nhiệt lan ra nhờ tương tác cục bộ với hàng xóm gần nhất.
+Ta thay thế thanh liên tục bằng một dãy các nút rời rạc và chia thời gian thành các bước nhỏ. Nhiệt độ tại một nút ở bước thời gian tiếp theo được cập nhật dựa trên nhiệt độ hiện tại của chính nút đó và hai nút kề cận. Cơ chế này phản ánh trực tiếp bản chất tương tác cục bộ của quá trình dẫn nhiệt.
 
 ### Cách nhìn hình ảnh
 
-Trên lưới sai phân, sơ đồ explicit cập nhật giá trị mới từ tầng thời gian cũ, nên dễ hình dung như "nhảy tới" từng bước. Sơ đồ implicit thì buộc ta giải cả tầng mới cùng lúc, giống như tìm một cấu hình tự-consistent mới. Crank-Nicolson nằm ở giữa: nó cân bằng giữa chính xác và ổn định.
+Trên lưới không gian–thời gian, sơ đồ tường minh (explicit) tính trực tiếp từng giá trị ở tầng thời gian mới từ tầng thời gian cũ. Sơ đồ ẩn (implicit) lại liên kết các ẩn số ở tầng mới thành một hệ phương trình giải đồng thời, tạo nên một cấu hình tự nhất quán. Sơ đồ Crank-Nicolson nằm ở giữa hai cách tiếp cận đó, cân bằng giữa độ chính xác và tính ổn định.
 
 ### Cách nhìn hình thức
 
-Chia đoạn $$ [0,L] $$ thành các nút
+Chia đoạn $$ [0,L] $$ thành các nút lưới
 
 $$ x_j=j\Delta x,
 \qquad
 \Delta x=\frac{L}{N}, $$
 
-và thời gian thành $$ t^n=n\Delta t $$. Xấp xỉ
+và chia thời gian thành các mốc $$ t^n=n\Delta t $$. Xấp xỉ các đạo hàm bởi
 
 $$
 u_t\approx \frac{u_j^{n+1}-u_j^n}{\Delta t},
@@ -55,54 +51,50 @@ u_t\approx \frac{u_j^{n+1}-u_j^n}{\Delta t},
 u_{xx}\approx \frac{u_{j+1}^n-2u_j^n+u_{j-1}^n}{(\Delta x)^2}.
 $$
 
-Với
+Đặt tham số lưới
 
 $$ r=\frac{\alpha^2\Delta t}{(\Delta x)^2}, $$
 
-sơ đồ explicit là
+ta thu được sơ đồ tường minh
 
 $$ u_j^{n+1}=u_j^n+r(u_{j+1}^n-2u_j^n+u_{j-1}^n). $$
 
 ## Những ngộ nhận thường gặp
 
-- "Sai phân chỉ là thay đạo hàm bằng hiệu nên luôn đáng tin." Sai; còn phải xét ổn định và hội tụ.
-- "Explicit dễ hơn nên tốt hơn." Không nhất thiết; nó có điều kiện ổn định nghiêm ngặt.
-- "Nếu nghiệm thật mượt thì nghiệm số tự động mượt." Không đúng; chọn lưới sai có thể tạo dao động phi vật lý.
-- "Implicit luôn tốt hơn mọi mặt." Không hẳn; nó ổn định hơn nhưng đòi hỏi giải hệ tuyến tính mỗi bước.
+- "Phương pháp sai phân chỉ là thay đạo hàm bằng hiệu nên luôn hội tụ về nghiệm đúng." Sai; cần kiểm tra tính tương thích, tính ổn định và sự hội tụ.
+- "Sơ đồ tường minh dễ cài đặt hơn nên luôn tốt hơn." Không hẳn; sơ đồ tường minh chịu điều kiện ổn định rất chặt về bước thời gian.
+- "Nếu nghiệm chính xác trơn thì nghiệm số cũng tự động trơn." Không đúng; chọn bước lưới vi phạm điều kiện ổn định sẽ tạo ra dao động phi vật lý tăng nhanh.
+- "Sơ đồ ẩn luôn vượt trội về mọi mặt." Không hoàn toàn; sơ đồ ẩn ổn định không điều kiện nhưng đòi hỏi giải hệ phương trình tuyến tính ở mỗi bước thời gian.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Dựng lưới
+### Bước 1: Thiết lập lưới rời rạc
 
-Sinh viên phải rõ biến liên tục được thay bằng những gì.
+Xác định rõ biến liên tục và ẩn hàm được rời rạc hóa tại các nút lưới nào.
 
-### Bước 2: Suy ra các xấp xỉ sai phân
+### Bước 2: Suy ra công thức xấp xỉ sai phân
 
-Không nên học thuộc sơ đồ trước khi hiểu chúng từ đâu ra.
+Hiểu nguồn gốc của từng sơ đồ từ khai triển Taylor thay vì học thuộc công thức.
 
-### Bước 3: So sánh explicit và implicit
+### Bước 3: So sánh sơ đồ tường minh và sơ đồ ẩn
 
-Đây là bước quan trọng về mặt tư duy số.
+Đánh giá sự đánh đổi giữa chi phí tính toán mỗi bước và giới hạn bước thời gian.
 
-### Bước 4: Phân tích ổn định cơ bản
+### Bước 4: Phân tích tính ổn định cơ bản
 
-Giúp sinh viên thấy vì sao PDE và mô phỏng số phải "khớp tính cách".
+Làm rõ mối liên hệ giữa điều kiện ổn định số và tính chất khuếch tán của PDE.
 
-### Các checkpoint
+### Các điểm kiểm tra
 
-- Sinh viên có viết đúng sơ đồ explicit từ xấp xỉ đạo hàm hay không.
-- Sinh viên có hiểu ý nghĩa của tham số
-
-$$ r $$
-
-hay không.
-- Sinh viên có phân biệt được ưu nhược của explicit, implicit, và Crank-Nicolson hay không.
+- Sinh viên có tự thiết lập được sơ đồ tường minh từ công thức xấp xỉ đạo hàm hay không.
+- Sinh viên có hiểu vai trò của tham số không thứ nguyên $$ r $$ hay không.
+- Sinh viên có phân biệt được ưu nhược điểm của sơ đồ tường minh, sơ đồ ẩn và Crank-Nicolson hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Sơ đồ explicit
+### Ví dụ 1: Sơ đồ tường minh (explicit)
 
-Với $$ u_t=\alpha^2u_{xx} $$, ta thay các xấp xỉ sai phân và được
+Thay các xấp xỉ sai phân vào phương trình $$ u_t=\alpha^2u_{xx} $$, ta được
 
 $$
 \frac{u_j^{n+1}-u_j^n}{\Delta t}
@@ -110,23 +102,23 @@ $$
 \alpha^2\frac{u_{j+1}^n-2u_j^n+u_{j-1}^n}{(\Delta x)^2}.
 $$
 
-Suy ra $$ u_j^{n+1}=u_j^n+r(u_{j+1}^n-2u_j^n+u_{j-1}^n) $$. Ví dụ này nên được dạy như khuôn mẫu đầu tiên của cả bài.
+Suy ra $$ u_j^{n+1}=u_j^n+r(u_{j+1}^n-2u_j^n+u_{j-1}^n) $$. Đây là sơ đồ mẫu cơ bản nhất để bắt đầu tìm hiểu sai phân hữu hạn.
 
-### Ví dụ 2: Điều kiện ổn định
+### Ví dụ 2: Điều kiện ổn định von Neumann
 
-Phân tích von Neumann cho sơ đồ explicit dẫn tới hệ số khuếch đại
+Phân tích ổn định von Neumann cho sơ đồ tường minh dẫn tới hệ số khuếch đại
 
 $$ \xi=1-4r\sin^2\left(\frac{\theta}{2}\right). $$
 
-Để $$ \lvert \xi\rvert\le 1 $$ với mọi $$ \theta $$, cần
+Điều kiện ổn định $$ \lvert \xi\rvert\le 1 $$ với mọi $$ \theta $$ tương đương với
 
 $$ r\le \frac12. $$
 
-Ví dụ này rất quan trọng vì nó cho thấy bước thời gian không được chọn tùy ý.
+Kết quả này cho thấy bước thời gian $$ \Delta t $$ không thể chọn tùy ý mà phải giảm tỉ lệ với $$ (\Delta x)^2 $$ khi làm mịn lưới không gian.
 
-### Ví dụ 3: Sơ đồ implicit
+### Ví dụ 3: Sơ đồ ẩn (implicit)
 
-Sơ đồ lùi Euler là
+Sử dụng sai phân lùi theo thời gian (Backward Euler):
 
 $$
 \frac{u_j^{n+1}-u_j^n}{\Delta t}
@@ -134,17 +126,17 @@ $$
 \alpha^2\frac{u_{j+1}^{n+1}-2u_j^{n+1}+u_{j-1}^{n+1}}{(\Delta x)^2}.
 $$
 
-Sau khi thu gọn:
+Thu gọn lại, ta được hệ phương trình
 
 $$
 -r u_{j-1}^{n+1}+(1+2r)u_j^{n+1}-r u_{j+1}^{n+1}=u_j^n.
 $$
 
-Ta phải giải một hệ tam đường chéo ở mỗi bước thời gian. Đổi lại, sơ đồ này ổn định hơn nhiều.
+Ở mỗi bước thời gian ta phải giải một hệ tuyến tính tam đường chéo, đổi lại sơ đồ ổn định với mọi $$ r>0 $$.
 
-### Ví dụ 4: Crank-Nicolson
+### Ví dụ 4: Sơ đồ Crank-Nicolson
 
-Crank-Nicolson lấy trung bình giữa explicit và implicit:
+Crank-Nicolson lấy trung bình giữa sơ đồ tường minh và sơ đồ ẩn:
 
 $$
 \frac{u_j^{n+1}-u_j^n}{\Delta t}
@@ -155,78 +147,74 @@ $$
 (u_{j+1}^n-2u_j^n+u_{j-1}^n)\Bigr].
 $$
 
-Ví dụ này nên được dùng để nhấn mạnh sự đánh đổi giữa độ chính xác và độ phức tạp tính toán.
+Sơ đồ này vừa ổn định không điều kiện vừa đạt độ chính xác bậc hai theo cả không gian và thời gian, minh họa sự cân bằng giữa độ chính xác và chi phí tính toán.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao sơ đồ explicit cho phương trình nhiệt cần điều kiện ổn định nghiêm ngặt?
-2. Điều gì làm cho sơ đồ implicit đáng tin cậy hơn về ổn định?
-3. Vì sao một mô phỏng số tốt nên phản ánh đúng bản chất làm mượt của phương trình nhiệt?
+1. Vì sao sơ đồ tường minh cho phương trình nhiệt đòi hỏi điều kiện ổn định chặt theo $$ (\Delta x)^2 $$?
+2. Cơ chế nào giúp sơ đồ ẩn ổn định hơn sơ đồ tường minh?
+3. Vì sao một sơ đồ số tốt cần phản ánh đúng tính chất làm mượt của phương trình nhiệt?
 
 ## Bài toán ứng dụng
 
-1. Trong mô phỏng truyền nhiệt của một thanh dài, vì sao chọn $$ \Delta t $$ quá lớn có thể làm nghiệm số nổ dù nghiệm thật rất mượt?
-2. Trong kỹ thuật tính toán, khi nào nên chấp nhận giải hệ tuyến tính mỗi bước để đổi lấy ổn định tốt hơn?
-3. Trong đồ họa hoặc xử lý ảnh, vì sao khuếch tán số được xem như một phép lọc làm mượt và tại sao ổn định lại quan trọng?
+1. Khi mô phỏng truyền nhiệt trên một thanh dài, vì sao chọn bước thời gian $$ \Delta t $$ quá lớn có thể khiến nghiệm số phân kỳ dù nghiệm chính xác rất trơn?
+2. Trong thực hành tính toán kỹ thuật, khi nào nên chấp nhận giải hệ tuyến tính ở mỗi bước để đổi lấy bước thời gian lớn hơn?
+3. Trong xử lý ảnh, vì sao khuếch tán số có thể đóng vai trò bộ lọc làm mịn và vì sao tính ổn định là yêu cầu bắt buộc?
 
 ## Chiến lược giảng dạy tương tác
 
-- Cho sinh viên tự suy ra sơ đồ explicit từ xấp xỉ đạo hàm thay vì đưa công thức sẵn.
-- Hỏi cả lớp: "Nếu nhiệt thật luôn làm mượt, vì sao nghiệm số lại có thể dao động?"
-- Dùng một bảng so sánh explicit, implicit, Crank-Nicolson về chi phí, ổn định, và độ chính xác.
-- Nếu có thể, cho sinh viên mô phỏng nhanh một trường hợp ổn định và một trường hợp không ổn định để trực giác trở nên rất rõ.
+- Hướng dẫn sinh viên tự thiết lập sơ đồ tường minh từ công thức sai phân thay vì đưa sẵn kết quả.
+- Đặt câu hỏi: "Nếu nghiệm chính xác của phương trình nhiệt luôn trơn dần, vì sao nghiệm số lại có thể xuất hiện dao động tăng vọt?"
+- Lập bảng so sánh ba sơ đồ tường minh, ẩn và Crank-Nicolson theo các tiêu chí: chi phí mỗi bước, điều kiện ổn định và bậc chính xác.
+- Chạy minh họa nhanh một trường hợp ổn định ($$ r\le 1/2 $$) và một trường hợp bất ổn định ($$ r>1/2 $$) để sinh viên quan sát trực tiếp.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên bám vào sơ đồ explicit trước, vì nó cho cảm giác "cập nhật cục bộ" rất trực quan. Khi ý tưởng đó đã vững, mới chuyển sang implicit và Crank-Nicolson.
+Nên tập trung nắm chắc sơ đồ tường minh trước vì cách cập nhật cục bộ dễ hình dung. Sau khi hiểu rõ công thức và vai trò của tham số $$ r $$, hãy chuyển sang sơ đồ ẩn và Crank-Nicolson.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể yêu cầu sinh viên khá giỏi tự thực hiện phân tích von Neumann đầy đủ, hoặc so sánh tính ổn định năng lượng của các sơ đồ khác nhau.
+Có thể yêu cầu sinh viên thực hiện đầy đủ phân tích ổn định von Neumann cho cả ba sơ đồ, hoặc khảo sát điều kiện để sơ đồ số thỏa mãn nguyên lý cực đại rời rạc.
 
 ## Tóm tắt dễ nhớ
 
-Sai phân hữu hạn biến phương trình nhiệt thành bài toán lưới không gian-thời gian. Explicit dễ cài nhưng bị ràng buộc bởi
-
-$$ r\le \frac12, $$
-
-implicit ổn định hơn nhưng tốn công giải hệ, còn Crank-Nicolson cân bằng giữa ổn định và độ chính xác. Sơ đồ số tốt phải tôn trọng tính làm mượt của phương trình nhiệt.
+Phương pháp sai phân hữu hạn chuyển phương trình nhiệt thành bài toán trên lưới không gian–thời gian. Sơ đồ tường minh dễ cài đặt nhưng bị ràng buộc bởi điều kiện ổn định $$ r\le \frac12 $$, sơ đồ ẩn ổn định không điều kiện nhưng cần giải hệ tuyến tính, còn Crank-Nicolson cân bằng giữa ổn định và độ chính xác bậc hai.
 
 ## Video tham khảo
 
-- xem trước: [PDE | Finite differences: introduction](https://www.youtube.com/watch?v=g3Xw1r7QGOE) — commutant, tiếng Anh. commutant giới thiệu sai phân hữu hạn cho PDE.
-- [Finite Difference Method for PDES: Solution of Heat Equation](https://www.youtube.com/watch?v=ACduEf-K9qk) — Easy Mathematics, tiếng Anh. Một lược đồ sai phân viết cho phương trình nhiệt.
-- [Deriving Forward Euler and Backward/Implicit Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=MstPeOTCVzQ) — Steve Brunton, tiếng Anh. Euler thuận và Euler lùi, các phép rời rạc thời gian mà các lược đồ nhiệt dùng.
+- Xem trước: [PDE | Finite differences: introduction](https://www.youtube.com/watch?v=g3Xw1r7QGOE) — commutant, tiếng Anh. Giới thiệu tổng quan về phương pháp sai phân hữu hạn cho PDE.
+- [Finite Difference Method for PDES: Solution of Heat Equation](https://www.youtube.com/watch?v=ACduEf-K9qk) — Easy Mathematics, tiếng Anh. Trình bày cụ thể cách thiết lập sơ đồ sai phân cho phương trình nhiệt.
+- [Deriving Forward Euler and Backward/Implicit Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=MstPeOTCVzQ) — Steve Brunton, tiếng Anh. Giải thích phương pháp Euler thuận và Euler lùi, nền tảng cho bước rời rạc hóa theo thời gian.
 
 ## Tài liệu tham khảo
 
-- Evans, *Partial Differential Equations* - nền tảng chuẩn cho phương trình nhiệt, nguyên lý cực đại, và hàm Green.
-- Haberman, *Applied Partial Differential Equations* - nhiều ví dụ vật lý và phương pháp tính minh họa rất rõ.
+- Evans, *Partial Differential Equations* — tài liệu chuẩn về phương trình nhiệt, nguyên lý cực đại và hàm Green.
+- Haberman, *Applied Partial Differential Equations* — cung cấp nhiều ví dụ vật lý và phương pháp giải minh họa rõ ràng.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Mô phỏng nhiệt trên máy tính
-- Bài toán: Cần tính gần đúng nghiệm khi không có công thức tường minh thuận tiện.
-- Mô hình sai phân hiện:
+#### Mô phỏng truyền nhiệt trên máy tính
+- Bài toán: Tính gần đúng phân bố nhiệt khi không có công thức nghiệm giải tích thuận tiện.
+- Mô hình sai phân tường minh:
 $$
 u_j^{n+1}=u_j^n+r\left(u_{j+1}^n-2u_j^n+u_{j-1}^n\right).
 $$
-- Giả thiết và giới hạn: Lưới đều, miền một chiều, điều kiện ổn định kiểu CFL.
-- Diễn giải: Sơ đồ số bắt chước tính làm phẳng của phương trình nhiệt.
+- Giả thiết và giới hạn: Lưới đều một chiều và thỏa mãn điều kiện ổn định số.
+- Diễn giải: Sơ đồ sai phân tái hiện tính chất làm phẳng của phương trình nhiệt trên lưới rời rạc.
 
-#### Phương pháp implicit trong kỹ thuật
-- Bài toán: Muốn bước thời gian lớn hơn mà vẫn ổn định.
-- Mô hình: Backward Euler hoặc Crank-Nicolson cho phương trình nhiệt.
-- Giả thiết và giới hạn: Phải giải hệ tuyến tính ở mỗi bước.
-- Diễn giải: Đổi chi phí đại số để lấy ổn định tốt hơn.
+#### Sơ đồ ẩn trong mô phỏng kỹ thuật
+- Bài toán: Cần sử dụng bước thời gian lớn hơn mà vẫn bảo toàn tính ổn định.
+- Mô hình: Sơ đồ Backward Euler hoặc Crank-Nicolson cho phương trình nhiệt.
+- Giả thiết và giới hạn: Đòi hỏi giải một hệ tuyến tính ở mỗi bước thời gian.
+- Diễn giải: Đổi thêm chi phí đại số tuyến tính để đạt tính ổn định không điều kiện.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Phương pháp sai phân hữu hạn cho phương trình nhiệt cho thấy rõ mối quan hệ giữa PDE liên tục và mô hình lưới rời rạc. Một bẫy phổ biến là nghĩ chỉ cần rời rạc hóa xong là đúng; thật ra ổn định và hội tụ là điều phải kiểm tra cẩn thận.
+Phương pháp sai phân hữu hạn cho phương trình nhiệt thể hiện rõ mối liên hệ giữa PDE liên tục và mô hình rời rạc trên lưới. Rời rạc hóa phương trình mới chỉ là bước đầu; tính ổn định và sự hội tụ luôn phải được kiểm tra chặt chẽ.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -265,14 +253,14 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Với sơ đồ explicit,
-$$ r=\frac{\alpha^2 \Delta t}{(\Delta x)^2}, $$
-điều kiện ổn định cổ điển là
+Với sơ đồ tường minh, tham số
+$$ r=\frac{\alpha^2 \Delta t}{(\Delta x)^2} $$
+phải thỏa mãn điều kiện ổn định cổ điển
 $$ r\le \frac{1}{2}. $$
-Nếu chọn $$ r $$ quá lớn, nghiệm số có thể bùng nổ dù nghiệm thật rất trơn. Đây là ví dụ điển hình cho tầm quan trọng của phân tích ổn định.
+Nếu chọn $$ r $$ vượt ngưỡng này, nghiệm số sẽ phân kỳ nhanh dù nghiệm liên tục rất trơn. Đây là ví dụ tiêu biểu cho vai trò thiết yếu của phân tích ổn định số.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Cài đặt sơ đồ explicit cơ bản và hiểu điều kiện ổn định.
+**Bậc đại học.** Cài đặt sơ đồ tường minh cơ bản và hiểu điều kiện ổn định.
 
-**Bậc sau đại học.** Phân tích Von Neumann, so sánh explicit/implicit, và bàn về consistency-stability-convergence.
+**Bậc sau đại học.** Thực hiện phân tích ổn định von Neumann, so sánh các sơ đồ tường minh và ẩn, cũng như vận dụng định lý tương đương Lax (tương thích và ổn định kéo theo hội tụ).

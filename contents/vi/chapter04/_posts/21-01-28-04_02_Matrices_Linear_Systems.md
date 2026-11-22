@@ -12,39 +12,37 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giúp sinh viên viết hệ tuyến tính dưới dạng ma trận, hiểu vì sao ma trận là bản tóm tắt động học của hệ, và nắm khái niệm ma trận nghiệm cơ bản như phiên bản hệ của nghiệm tổng quát. Đây là cửa ngõ để đưa đại số tuyến tính vào giải ODE hệ thống.
+Bài học này hướng dẫn cách viết hệ phương trình vi phân tuyến tính dưới dạng ma trận, hiểu ý nghĩa động học của ma trận hệ số và nắm khái niệm ma trận nghiệm cơ bản như phiên bản nhiều chiều của nghiệm tổng quát. Đây là bước chuẩn bị trực tiếp để vận dụng đại số tuyến tính vào giải hệ ODE.
 
 ## Kiến thức nền
 
-Sinh viên cần nắm vector, ma trận, phép nhân ma trận với vector và ý tưởng độc lập tuyến tính. Việc hiểu ODE một ẩn tuyến tính cũng giúp sinh viên nhận ra cách nguyên lý chồng chập được mở rộng cho hệ.
+Sinh viên cần nắm vector, ma trận, phép nhân ma trận với vector và khái niệm độc lập tuyến tính. Kiến thức về ODE tuyến tính một ẩn giúp dễ dàng mở rộng nguyên lý chồng chất sang hệ nhiều chiều.
 
 ## Dẫn nhập
 
 ![Ma trận điều khiển sự tiến hóa của hệ tuyến tính]({{ site.imgurl }}/chapter_img/chapter04/02_matrices_linear_systems.svg)
 
-Khi ta viết một hệ gồm nhiều phương trình thành một biểu thức ma trận duy nhất, điều ta đạt được không chỉ là sự gọn gàng. Ta đạt được một bản đồ cấu trúc của tương tác. Mỗi hàng của ma trận cho biết tốc độ thay đổi của một biến trạng thái phụ thuộc thế nào vào toàn bộ trạng thái, còn mỗi cột cho biết một thành phần trạng thái ảnh hưởng ra sao lên cả hệ.
+Viết một hệ phương trình thành một đẳng thức ma trận duy nhất không chỉ giúp rút gọn ký hiệu, mà còn thể hiện rõ cấu trúc tương tác của toàn hệ: mỗi hàng của ma trận cho biết tốc độ thay đổi của một biến trạng thái phụ thuộc vào toàn bộ các biến như thế nào, còn mỗi cột cho biết một thành phần trạng thái tác động ra sao lên cả hệ.
 
-Đây là bước rất quan trọng về mặt nhận thức. Trước đó, sinh viên có thể nhìn hệ như một danh sách phương trình đặt cạnh nhau. Sau bài học này, hệ cần được nhìn như một thực thể tuyến tính duy nhất với một toán tử tiến hóa là ma trận $$ A $$.
+Từ đây, thay vì nhìn hệ như một danh sách phương trình rời rạc, ta nhìn hệ như một thực thể tuyến tính thống nhất với toán tử tiến hóa là ma trận $$ A $$.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Ma trận $$ A $$ giống như "bộ luật tương tác" của hệ. Nó cho biết nếu ta đang ở trạng thái hiện tại $$ \mathbf{x} $$ thì hệ bị kéo theo những hướng nào, mạnh hay yếu đến đâu.
+Ma trận $$ A $$ đóng vai trò "quy luật tương tác" của hệ: tại mỗi trạng thái $$ \mathbf{x} $$, tích $$ A\mathbf{x} $$ xác định hướng và độ lớn vận tốc biến đổi của trạng thái đó.
 
 ### Cách nhìn hình ảnh
 
-Trong hệ hai chiều
-$$ \mathbf{x}'=A\mathbf{x}, $$
-ma trận $$ A $$ gán cho mỗi điểm $$ \mathbf{x} $$ một vector tiếp tuyến $$ A\mathbf{x} $$. Vì vậy, ma trận sinh ra trường vector trên mặt phẳng trạng thái. Đó là cầu nối đầu tiên từ đại số tuyến tính sang hình học pha.
+Trong hệ hai chiều $$ \mathbf{x}'=A\mathbf{x} $$, ma trận $$ A $$ gán cho mỗi điểm $$ \mathbf{x} $$ trên mặt phẳng một vector tiếp tuyến $$ A\mathbf{x} $$, qua đó tạo nên trường vector trên mặt phẳng trạng thái. Đây là cầu nối trực tiếp từ đại số tuyến tính sang hình học pha.
 
 ### Cách nhìn hình thức
 
-Một hệ tuyến tính thuần nhất hệ số hằng được viết
+Một hệ tuyến tính thuần nhất hệ số hằng có dạng
 $$ \mathbf{x}'=A\mathbf{x}, $$
-trong đó $$ A $$ là ma trận hằng cỡ $$ n\times n $$. Nếu có nguồn ngoài, ta viết
+với $$ A $$ là ma trận hằng cỡ $$ n\times n $$. Khi có tác động ngoài, hệ viết là
 $$ \mathbf{x}'=A\mathbf{x}+\mathbf{g}(t). $$
-Nếu $$ \mathbf{x}_1,\ldots,\mathbf{x}_n $$ là các nghiệm vector độc lập tuyến tính của hệ thuần nhất, thì ma trận
+Nếu $$ \mathbf{x}_1,\ldots,\mathbf{x}_n $$ là $$ n $$ nghiệm vector độc lập tuyến tính của hệ thuần nhất, thì ma trận
 $$
 \Phi(t)=
 \begin{pmatrix}
@@ -53,45 +51,44 @@ $$
 \lvert  & & \rvert
 \end{pmatrix}
 $$
-được gọi là ma trận nghiệm cơ bản, và mọi nghiệm của hệ đều có dạng
-$$ \mathbf{x}(t)=\Phi(t)\mathbf{c}. $$
+được gọi là ma trận nghiệm cơ bản, và nghiệm tổng quát của hệ thuần nhất có dạng $$ \mathbf{x}(t)=\Phi(t)\mathbf{c} $$.
 
 ## Những ngộ nhận thường gặp
 
-- "Ma trận chỉ là ký hiệu viết tắt." Sai. Nó mã hóa cấu trúc tương tác của hệ.
-- "Mỗi cột của ma trận nghiệm cơ bản chỉ là một nghiệm ngẫu nhiên." Sai. Cần các cột độc lập tuyến tính để sinh toàn bộ không gian nghiệm.
-- "Nếu giải được từng phương trình thành phần thì không cần ma trận." Thường không đúng, vì các phương trình ghép chặt với nhau.
-- "Ma trận $$ A $$ chỉ ảnh hưởng tốc độ, không ảnh hưởng hình học." Sai. Chính $$ A $$ quyết định trường vector và chân dung pha.
+- "Ma trận chỉ là cách viết tắt." Sai: ma trận mã hóa trực tiếp cấu trúc tương tác và hình học của hệ.
+- "Các cột của ma trận nghiệm cơ bản là những nghiệm bất kỳ." Sai: các cột phải độc lập tuyến tính để sinh ra toàn bộ không gian nghiệm.
+- "Có thể giải riêng từng phương trình thành phần mà không cần ma trận." Thường không thực hiện được khi các biến ghép nối chặt với nhau.
+- "Ma trận $$ A $$ chỉ quyết định tốc độ, không quyết định hình học." Sai: chính $$ A $$ sinh ra trường vector và quyết định toàn bộ chân dung pha.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Viết hệ dưới dạng vector-matrix
+### Bước 1: Viết hệ dưới dạng ma trận – vector
 
-Chuyển từ danh sách phương trình sang một biểu thức duy nhất.
+Gom danh sách các phương trình thành phần thành một đẳng thức duy nhất.
 
 ### Bước 2: Đọc ý nghĩa của từng hàng và từng cột
 
-Làm cho ma trận bớt trừu tượng.
+Liên hệ từng phần tử $$ a_{ij} $$ với tác động giữa các biến trạng thái.
 
-### Bước 3: Hiểu nguyên lý chồng chập cho hệ
+### Bước 3: Áp dụng nguyên lý chồng chất cho hệ
 
-Tổ hợp tuyến tính của các nghiệm vẫn là nghiệm.
+Tổ hợp tuyến tính của các nghiệm vector của hệ thuần nhất vẫn là nghiệm.
 
-### Bước 4: Xây ma trận nghiệm cơ bản
+### Bước 4: Xây dựng ma trận nghiệm cơ bản
 
-Đây là khái niệm sẽ quay lại nhiều lần trong chương.
+Chuẩn bị công cụ cốt lõi dùng xuyên suốt các bài sau của chương.
 
 ### Các checkpoint
 
-- Sinh viên có viết đúng hệ thành $$ \mathbf{x}'=A\mathbf{x} $$ hay không.
-- Sinh viên có hiểu vì sao cần đủ $$ n $$ nghiệm độc lập cho hệ $$ n $$ chiều hay không.
-- Sinh viên có diễn giải được $$ A\mathbf{x} $$ như một vector vận tốc trạng thái hay không.
+- Sinh viên có chuyển chính xác hệ phương trình sang dạng $$ \mathbf{x}'=A\mathbf{x} $$ hay không.
+- Sinh viên có hiểu vì sao hệ $$ n $$ chiều cần đúng $$ n $$ nghiệm độc lập tuyến tính hay không.
+- Sinh viên có diễn giải được $$ A\mathbf{x} $$ như vector vận tốc trạng thái hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Viết hệ dưới dạng ma trận
+### Ví dụ 1: Biểu diễn hệ dưới dạng ma trận
 
-Xét
+Xét hệ
 $$
 \begin{cases}
 x_1'=2x_1-x_2,\\
@@ -110,13 +107,11 @@ A=
 \begin{pmatrix}
 2 & -1\\
 3 & 4
-\end{pmatrix}.
+\end{pmatrix},
 $$
-Khi đó hệ viết gọn là
-$$ \mathbf{x}'=A\mathbf{x}. $$
-Điểm sư phạm ở đây là sinh viên thấy ngay ma trận gom toàn bộ hệ lại thành một phép nhân duy nhất.
+hệ viết gọn thành $$ \mathbf{x}'=A\mathbf{x} $$. Toàn bộ quan hệ giữa hai biến được gói trong một phép nhân ma trận duy nhất.
 
-### Ví dụ 2: Hệ chéo
+### Ví dụ 2: Hệ có ma trận đường chéo
 
 Với
 $$
@@ -126,16 +121,7 @@ A=
 0 & -1
 \end{pmatrix},
 $$
-hệ trở thành
-$$
-\begin{cases}
-x_1'=2x_1,\\
-x_2'=-x_2.
-\end{cases}
-$$
-Ta giải được
-$$ x_1=c_1e^{2t},\qquad x_2=c_2e^{-t}. $$
-Do đó
+hệ tách thành hai phương trình độc lập $$ x_1'=2x_1 $$ và $$ x_2'=-x_2 $$, cho nghiệm $$ x_1=c_1e^{2t} $$ và $$ x_2=c_2e^{-t} $$. Viết dưới dạng vector:
 $$
 \mathbf{x}(t)=
 c_1e^{2t}
@@ -150,11 +136,11 @@ c_2e^{-t}
 1
 \end{pmatrix}.
 $$
-Ví dụ này cho thấy các trục tọa độ đóng vai trò như hai hướng động học độc lập.
+Hai trục tọa độ đóng vai trò hai phương động học độc lập.
 
-### Ví dụ 3: Ma trận nghiệm cơ bản
+### Ví dụ 3: Xây dựng ma trận nghiệm cơ bản
 
-Từ ví dụ trên, ta có thể chọn hai nghiệm độc lập:
+Từ Ví dụ 2, chọn hai nghiệm độc lập
 $$
 \mathbf{x}_1(t)=e^{2t}
 \begin{pmatrix}
@@ -168,77 +154,71 @@ $$
 1
 \end{pmatrix}.
 $$
-Ma trận nghiệm cơ bản là
+Ma trận nghiệm cơ bản tương ứng là
 $$
 \Phi(t)=
 \begin{pmatrix}
 e^{2t} & 0\\
 0 & e^{-t}
-\end{pmatrix}.
+\end{pmatrix},
 $$
-Mọi nghiệm đều viết dưới dạng
-$$ \mathbf{x}(t)=\Phi(t)\mathbf{c}. $$
-Đây là phiên bản hệ của "nghiệm tổng quát" đã quen ở ODE một ẩn.
+và mọi nghiệm của hệ thuần nhất đều viết dưới dạng $$ \mathbf{x}(t)=\Phi(t)\mathbf{c} $$.
 
-### Ví dụ 4: Đọc hàng và cột của ma trận
+### Ví dụ 4: Đọc ý nghĩa phần tử ma trận
 
-Nếu trong một hệ, phần tử $$ a_{21} $$ lớn dương, điều đó nói rằng biến thứ nhất tác động mạnh theo chiều tăng lên tốc độ thay đổi của biến thứ hai. Cách đọc này giúp ma trận trở thành một đối tượng có nghĩa, không chỉ là bảng số.
+Nếu phần tử $$ a_{21} $$ dương lớn, biến thứ nhất tác động mạnh theo chiều làm tăng tốc độ thay đổi của biến thứ hai. Cách đọc theo hàng và cột này gắn trực tiếp bảng số với cơ chế tương tác thực tế.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao viết hệ dưới dạng ma trận không chỉ là tiết kiệm ký hiệu?
-2. Mỗi hàng và mỗi cột của ma trận $$ A $$ có thể được đọc theo những nghĩa nào?
-3. Vì sao ma trận nghiệm cơ bản là khái niệm trung tâm cho hệ tuyến tính?
+1. Vì sao biểu diễn ma trận mang lại giá trị vượt trên việc rút gọn ký hiệu?
+2. Mỗi hàng và mỗi cột của ma trận $$ A $$ thể hiện thông tin gì?
+3. Vì sao ma trận nghiệm cơ bản là khái niệm trung tâm của lý thuyết hệ tuyến tính?
 
 ## Bài toán ứng dụng
 
-1. Trong mô hình kinh tế hai ngành, một biến đại diện cho sản lượng và biến kia cho nhu cầu. Hãy giải thích vì sao ma trận là ngôn ngữ phù hợp để mã hóa tương tác.
-2. Trong sinh học, hai quần thể tác động lẫn nhau. Hãy diễn giải ý nghĩa của các hệ số ngoài đường chéo của ma trận.
-3. Trong cơ học nhiều bậc tự do, vì sao việc gom hệ vào ma trận giúp mở đường cho phân tích trị riêng?
+1. Trong mô hình kinh tế hai biến (sản lượng và nhu cầu), vì sao dạng ma trận thích hợp để mã hóa tác động qua lại giữa hai biến?
+2. Trong sinh học, khi hai quần thể tương tác, các phần tử ngoài đường chéo của ma trận $$ A $$ biểu thị điều gì?
+3. Trong cơ học nhiều bậc tự do, vì sao biểu diễn ma trận là bước đệm cần thiết cho phân tích trị riêng?
 
 ## Chiến lược giảng dạy tương tác
 
-- Cho sinh viên chuyển qua lại giữa dạng hệ thành phần và dạng ma trận.
-- Yêu cầu lớp mô tả bằng lời ý nghĩa của từng hệ số trong một ma trận nhỏ.
-- Cho sinh viên xây ma trận nghiệm cơ bản từ hai nghiệm đã biết để thấy khái niệm này không xa lạ.
-- Dùng màu khác nhau cho các cột của $$ \Phi(t) $$ để nhấn mạnh chúng là các nghiệm cơ sở.
+- Cho sinh viên chuyển đổi qua lại giữa dạng hệ thành phần và dạng ma trận.
+- Yêu cầu lớp diễn đạt bằng lời ý nghĩa động học của từng hệ số trong một ma trận $$ 2\times 2 $$.
+- Cho sinh viên tự ghép ma trận nghiệm cơ bản từ hai nghiệm vector đã biết.
+- Dùng màu khác nhau phân biệt các cột của $$ \Phi(t) $$ để nhấn mạnh mỗi cột là một nghiệm cơ sở.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên cho sinh viên yếu làm việc với hệ 2 chiều trước, vì ở đó mọi thứ vẫn nhìn thấy được bằng hình và bằng công thức. Cần nhấn mạnh thật rõ rằng vector nghiệm là một hàm theo thời gian, không phải một vector cố định.
+Bắt đầu với hệ hai chiều để sinh viên dễ đối chiếu đồng thời giữa công thức và hình vẽ, nhấn mạnh rõ vector nghiệm là một hàm theo thời gian chứ không phải vector hằng.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể yêu cầu sinh viên khá giỏi chứng minh trực tiếp rằng nếu $$ \Phi(t) $$ là ma trận nghiệm cơ bản thì mọi nghiệm đều có dạng $$ \Phi(t)\mathbf{c} $$, hoặc phân tích mối liên hệ giữa định thức của $$ \Phi(t) $$ và tính độc lập tuyến tính.
+Yêu cầu sinh viên chứng minh rằng nếu $$ \Phi(t) $$ là ma trận nghiệm cơ bản thì mọi nghiệm đều có dạng $$ \Phi(t)\mathbf{c} $$, và liên hệ định thức $$ \det\Phi(t) $$ với tính độc lập tuyến tính (định thức Wronskian của hệ).
 
 ## Tóm tắt dễ nhớ
 
-Hệ tuyến tính viết dưới dạng
-$$ \mathbf{x}'=A\mathbf{x} $$
-để lộ ra toán tử động học của hệ. Ma trận $$ A $$ sinh trường vector, còn ma trận nghiệm cơ bản $$ \Phi(t) $$ sinh toàn bộ không gian nghiệm. Khi hiểu được hai đối tượng này, sinh viên đã có bộ khung đại số cho toàn bộ chương.
+Viết hệ tuyến tính dưới dạng $$ \mathbf{x}'=A\mathbf{x} $$ làm nổi bật toán tử động học của hệ: ma trận $$ A $$ sinh ra trường vector, còn ma trận nghiệm cơ bản $$ \Phi(t) $$ sinh ra toàn bộ không gian nghiệm qua biểu thức $$ \mathbf{x}(t)=\Phi(t)\mathbf{c} $$.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Tương tác loài trong sinh học
-- Bài toán: Mỗi quần thể chịu ảnh hưởng bởi bản thân nó và loài khác.
-- Mô hình tuyến tính hóa:
-$$ \mathbf{x}'=A\mathbf{x}. $$
-- Giả thiết và giới hạn: Chỉ đúng gần điểm cân bằng, chưa phản ánh phi tuyến toàn cục.
-- Diễn giải: Ma trận $$ A $$ là bản đồ gọn của mọi ảnh hưởng chéo trong hệ.
+#### Tương tác giữa các loài trong sinh học
+- Bài toán: Tốc độ biến đổi của mỗi quần thể phụ thuộc vào chính nó và các loài khác.
+- Mô hình tuyến tính hóa: $$ \mathbf{x}'=A\mathbf{x} $$.
+- Giả thiết và giới hạn: Chỉ chính xác gần điểm cân bằng, chưa mô tả đầy đủ tính phi tuyến toàn cục.
+- Diễn giải: Ma trận $$ A $$ tóm gọn toàn bộ các tác động chéo trong hệ sinh thái.
 
 #### Mạng điện nhiều nút
-- Bài toán: Điện áp hoặc dòng trên nhiều phần tử thay đổi đồng thời và phụ thuộc lẫn nhau.
-- Mô hình:
-$$ \mathbf{x}'=A\mathbf{x}+\mathbf{g}(t). $$
-- Giả thiết và giới hạn: Tuyến tính, thông số hằng, gần điểm làm việc.
-- Diễn giải: Viết dưới dạng ma trận giúp nhìn ra ngay cấu trúc ghép nối của cả mạng.
+- Bài toán: Điện áp hoặc dòng điện trên nhiều nhánh thay đổi đồng thời và phụ thuộc lẫn nhau.
+- Mô hình: $$ \mathbf{x}'=A\mathbf{x}+\mathbf{g}(t) $$.
+- Giả thiết và giới hạn: Mạch tuyến tính, tham số không đổi quanh điểm làm việc.
+- Diễn giải: Dạng ma trận làm rõ ngay cấu trúc liên kết của mạng điện.
 
-#### Mô hình vốn - hàng tồn kho
-- Bài toán: Một biến kinh tế có thể làm tăng hoặc giảm tốc độ biến kia.
+#### Mô hình vốn và hàng tồn kho
+- Bài toán: Một biến kinh tế tác động trực tiếp lên tốc độ biến đổi của biến còn lại.
 - Mô hình:
 $$
 \begin{pmatrix}
@@ -255,12 +235,12 @@ x_1\\
 x_2
 \end{pmatrix}.
 $$
-- Giả thiết và giới hạn: Chỉ là mô hình hóa tuyến tính cục bộ.
-- Diễn giải: Hàng và cột của ma trận nói rõ ai tác động lên ai.
+- Giả thiết và giới hạn: Xấp xỉ tuyến tính cục bộ.
+- Diễn giải: Các phần tử theo hàng và cột chỉ rõ chiều và mức độ tác động giữa hai biến.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Viết hệ dưới dạng ma trận không phải chỉ để rút gọn ký hiệu. Nó đổi hẳn cách đọc hệ: ma trận $$ A $$ vừa là bộ luật tương tác, vừa là máy sinh trường vector. Đây là điểm nối thẳng với đại số tuyến tính: cơ sở nghiệm, độc lập tuyến tính và ma trận nghiệm cơ bản đều là các ý tưởng quen thuộc nhưng giờ mang nghĩa động học.
+Dạng ma trận thay đổi cách nhìn toàn diện về hệ: $$ A $$ vừa là quy luật tương tác giữa các biến, vừa là toán tử sinh trường vector trên không gian trạng thái. Các khái niệm đại số tuyến tính như cơ sở, độc lập tuyến tính và ma trận khả nghịch nay mang trực tiếp ý nghĩa động lực học.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -300,7 +280,7 @@ x_1'=2x_1-x_2,\\
 x_2'=3x_1+4x_2.
 \end{cases}
 $$
-Viết gọn:
+Viết dưới dạng ma trận:
 $$
 \mathbf{x}'=
 \begin{pmatrix}
@@ -308,24 +288,24 @@ $$
 3 & 4
 \end{pmatrix}\mathbf{x}.
 $$
-Ngay khi viết theo dạng này, ta đọc được:
-- Hàng thứ nhất mô tả tốc độ của $$ x_1 $$ phụ thuộc vào chính $$ x_1 $$ và vào $$ x_2 $$.
-- Hàng thứ hai làm điều tương tự cho $$ x_2 $$.
-- Ma trận tạo một trường vector trên mặt phẳng trạng thái, từ đó chân dung pha sẽ được sinh ra.
+Từ biểu diễn này ta đọc được trực tiếp:
+- Hàng thứ nhất cho biết tốc độ thay đổi của $$ x_1 $$ phụ thuộc vào cả $$ x_1 $$ và $$ x_2 $$.
+- Hàng thứ hai mô tả tương tự cho $$ x_2 $$.
+- Ma trận $$ A $$ xác định trường vector trên mặt phẳng trạng thái, làm cơ sở dựng chân dung pha.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Thành thạo chuyển từ danh sách phương trình sang dạng $$ \mathbf{x}'=A\mathbf{x} $$.
+**Bậc đại học.** Thành thạo chuyển hệ thành phần sang dạng $$ \mathbf{x}'=A\mathbf{x} $$ và dựng ma trận nghiệm cơ bản cho các trường hợp đơn giản.
 
-**Bậc sau đại học.** Nhấn mạnh ma trận nghiệm cơ bản, không gian nghiệm và dòng chảy tuyến tính.
+**Bậc sau đại học.** Nhấn mạnh cấu trúc không gian nghiệm, ma trận nghiệm cơ bản chuẩn hóa và dòng chảy tuyến tính.
 
 ## Video tham khảo
 
-- xem trước: [Matrix Systems of Differential Equations](https://www.youtube.com/watch?v=Vtijyyo5fKI) — Steve Brunton, tiếng Anh. Hệ ma trận và vì sao các cột của ma trận cơ bản là các nghiệm.
-- [Linear Systems of Equations | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=_Fo3Jq1blKk) — MIT OpenCourseWare, tiếng Anh. Bài ngắn của MIT về hệ tuyến tính trong phần này của 18.03.
-- [Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra](https://www.youtube.com/watch?v=PFDu9oVAE-g) — 3Blue1Brown, tiếng Anh. Vector riêng là lý do hình học để một hệ ma trận tách được.
+- Xem trước: [Matrix Systems of Differential Equations](https://www.youtube.com/watch?v=Vtijyyo5fKI) — Steve Brunton, tiếng Anh. Trình bày hệ ma trận và lý do các cột của ma trận nghiệm cơ bản tạo thành cơ sở nghiệm.
+- [Linear Systems of Equations | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=_Fo3Jq1blKk) — MIT OpenCourseWare, tiếng Anh. Bài giảng ngắn của MIT về hệ phương trình tuyến tính.
+- [Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra](https://www.youtube.com/watch?v=PFDu9oVAE-g) — 3Blue1Brown, tiếng Anh. Minh họa trực quan vai trò hình học của vector riêng trong việc tách rời hệ ma trận.
 
 ## Tài liệu tham khảo
 
-- Boyce & DiPrima, Chương 7: trình bày rõ dạng ma trận và ma trận nghiệm cơ bản.
-- Arnold, *Ordinary Differential Equations*: tốt cho trực giác hình học của toán tử $$ A $$.
+- Boyce & DiPrima, Chương 7: trình bày hệ thống về dạng ma trận và ma trận nghiệm cơ bản.
+- Arnold, *Ordinary Differential Equations*: giàu trực giác hình học cho toán tử tuyến tính $$ A $$.

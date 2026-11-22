@@ -12,49 +12,37 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giúp sinh viên xử lý hệ tuyến tính khi ma trận có cặp trị riêng phức liên hợp, chuyển nghiệm phức thành nghiệm thực, và đọc được hiện tượng quay, xoắn ốc hút vào hay xoắn ốc đẩy ra từ phần thực và phần ảo của trị riêng.
+Bài học này hướng dẫn cách giải hệ tuyến tính khi ma trận có cặp trị riêng phức liên hợp, chuyển nghiệm phức về hai nghiệm thực độc lập và đọc trực tiếp chuyển động quay, xoắn ốc hút hay xoắn ốc đẩy từ phần thực và phần ảo của trị riêng.
 
 ## Kiến thức nền
 
-Sinh viên cần nắm số phức cơ bản, công thức Euler và trường hợp trị riêng thực phân biệt. Đây là nơi trực giác hình học trở nên đặc biệt mạnh, nên việc liên hệ với dao động điều hòa từ chương trước rất hữu ích.
+Sinh viên cần nắm kiến thức cơ bản về số phức, công thức Euler và phương pháp trị riêng cho trường hợp trị riêng thực phân biệt. Liên hệ với bài nghiệm phức của ODE cấp hai ở Chương 02 sẽ giúp nắm bài nhanh hơn.
 
 ## Dẫn nhập
 
 ![Quỹ đạo xoắn khi trị riêng là phức liên hợp]({{ site.imgurl }}/chapter_img/chapter04/04_eigenvalue_complex.svg)
 
-Trong hệ một ẩn, nghiệm phức thường báo hiệu dao động. Điều đó tiếp tục đúng với hệ tuyến tính, nhưng bây giờ ý nghĩa hình học còn rõ hơn. Khi trị riêng là phức, quỹ đạo không chỉ tăng hoặc giảm trên một đường thẳng, mà quay quanh gốc. Nếu đồng thời có co lại hay giãn ra, quỹ đạo sẽ thành xoắn ốc.
+Ở phương trình một ẩn, nghiệm đặc trưng phức dẫn đến dao động. Trong hệ tuyến tính, ý nghĩa hình học còn trực quan hơn: khi ma trận có cặp trị riêng phức liên hợp, quỹ đạo trên mặt phẳng pha quay quanh gốc tọa độ; nếu phần thực khác 0, quỹ đạo vừa quay vừa co lại hoặc giãn ra tạo thành đường xoắn ốc.
 
-Đây là bài học rất giàu trực giác. Chỉ từ cặp số
-$$ \alpha\pm i\beta, $$
-ta có thể đọc ngay ba thông tin: có quay hay không, quay nhanh hay chậm, và biên độ co hay giãn. Không nhiều nơi trong toán học mà đại số và hình học nói chuyện trực tiếp với nhau rõ đến như vậy.
+Chỉ từ cặp trị riêng $$ \alpha\pm i\beta $$, ta xác định được ngay ba đặc tính: hệ có quay quanh gốc, tần số góc tỉ lệ với $$ \beta $$, và biên độ co lại hay giãn ra tùy dấu của $$ \alpha $$.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Có thể hình dung hệ như một chuyển động quay trong mặt phẳng. Phần ảo của trị riêng tạo ra nhịp quay, còn phần thực giống như việc mỗi vòng quay đồng thời bị co lại hoặc bị kéo phình ra.
+Hệ có thể hình dung như một chuyển động quay trong mặt phẳng: phần ảo tạo ra chuyển động quay, còn phần thực làm bán kính quay thu hẹp dần hoặc mở rộng dần theo thời gian.
 
 ### Cách nhìn hình ảnh
 
-Nếu
-$$ \alpha<0, $$
-quỹ đạo xoắn vào gốc. Nếu
-$$ \alpha>0, $$
-quỹ đạo xoắn ra. Nếu
-$$ \alpha=0, $$
-quỹ đạo chỉ quay quanh gốc mà không co giãn, tạo nên tâm lý tưởng trong mô hình tuyến tính. Phần ảo $$ \beta $$ quyết định tốc độ góc.
+Nếu $$ \alpha<0 $$, quỹ đạo xoắn vào gốc (xoắn ốc hút); nếu $$ \alpha>0 $$, quỹ đạo xoắn ra xa gốc (xoắn ốc đẩy); nếu $$ \alpha=0 $$, quỹ đạo khép kín quanh gốc tạo thành điểm tâm (center) trong mô hình tuyến tính. Phần ảo $$ \beta $$ quyết định tốc độ quay góc.
 
 ### Cách nhìn hình thức
 
-Giả sử $$ A $$ có trị riêng
-$$ \lambda=\alpha\pm i\beta,\qquad \beta\neq 0, $$
-và vector riêng phức
-$$ \mathbf{v}=\mathbf{a}+i\mathbf{b}. $$
-Một nghiệm phức là
+Giả sử $$ A $$ có cặp trị riêng phức liên hợp $$ \lambda=\alpha\pm i\beta $$ ($$ \beta\neq 0 $$) và vector riêng phức $$ \mathbf{v}=\mathbf{a}+i\mathbf{b} $$ ứng với $$ \alpha+i\beta $$. Một nghiệm phức của hệ là
 $$
 \mathbf{x}(t)=e^{(\alpha+i\beta)t}(\mathbf{a}+i\mathbf{b}).
 $$
-Dùng công thức Euler, ta tách được hai nghiệm thực độc lập:
+Áp dụng công thức Euler rồi tách phần thực và phần ảo, ta thu được hai nghiệm thực độc lập tuyến tính:
 $$
 \mathbf{x}_1(t)=e^{\alpha t}\left(\mathbf{a}\cos \beta t-\mathbf{b}\sin \beta t\right),
 $$
@@ -64,52 +52,50 @@ $$
 
 ## Những ngộ nhận thường gặp
 
-- "Trị riêng phức khiến nghiệm không còn ý nghĩa thực." Sai. Ta luôn tách được hai nghiệm thực độc lập.
-- "Chỉ cần có phần ảo là quỹ đạo luôn là đường tròn." Sai. Còn phụ thuộc phần thực có bằng 0 hay không.
-- "Nếu quỹ đạo quay thì hệ chắc chắn ổn định." Không đúng. Có thể quay và đồng thời đi ra xa.
-- "Phần thực và phần ảo của trị riêng có vai trò như nhau." Sai. Chúng mã hóa hai loại hành vi hoàn toàn khác.
+- "Trị riêng phức nghĩa là hệ không có nghiệm thực." Sai: phần thực và phần ảo của một nghiệm phức luôn cho hai nghiệm thực độc lập tuyến tính.
+- "Có phần ảo thì quỹ đạo luôn là đường tròn." Sai: quỹ đạo chỉ khép kín khi $$ \alpha=0 $$ (và thường là elip hơn là đường tròn chuẩn).
+- "Quỹ đạo quay nghĩa là hệ ổn định." Không đúng: nếu $$ \alpha>0 $$, quỹ đạo vừa quay vừa xoắn ra xa vô hạn.
+- "Phần thực và phần ảo có vai trò giống nhau." Sai: phần thực quyết định co/giãn biên độ, còn phần ảo quyết định tần số quay.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Tìm trị riêng phức
+### Bước 1: Tìm cặp trị riêng phức liên hợp
 
-Nhận ra trường hợp biệt thức âm.
+Xác định trường hợp biệt thức âm từ đa thức đặc trưng.
 
-### Bước 2: Tìm vector riêng phức
+### Bước 2: Tìm một vector riêng phức
 
-Làm chậm và cẩn thận với số phức.
+Chỉ cần tìm một vector riêng $$ \mathbf{v}=\mathbf{a}+i\mathbf{b} $$ ứng với $$ \lambda=\alpha+i\beta $$.
 
 ### Bước 3: Tách phần thực và phần ảo
 
-Đây là bước chuyển về thế giới nghiệm thực.
+Sử dụng công thức Euler để viết hai nghiệm thực độc lập tuyến tính.
 
-### Bước 4: Diễn giải hình học
+### Bước 4: Đọc hình học quỹ đạo
 
-Hỏi ngay quỹ đạo quay, hút hay đẩy.
+Xác định ngay dạng tâm, xoắn ốc hút hay xoắn ốc đẩy từ dấu của $$ \alpha $$.
 
 ### Các checkpoint
 
-- Sinh viên có tách đúng nghiệm phức sang hai nghiệm thực hay không.
-- Sinh viên có giải thích được vai trò của $$ \alpha $$ và $$ \beta $$ hay không.
-- Sinh viên có phân biệt được tâm, xoắn ốc hút và xoắn ốc đẩy hay không.
+- Sinh viên có tách chính xác nghiệm phức thành hai nghiệm thực hay không.
+- Sinh viên có giải thích rõ vai trò của $$ \alpha $$ và $$ \beta $$ hay không.
+- Sinh viên có phân biệt được điểm tâm, xoắn ốc hút và xoắn ốc đẩy hay không.
 
 ## Ví dụ được giải chi tiết
 
 ### Ví dụ 1: Chuyển động quay thuần
 
-Xét
+Xét ma trận
 $$
 A=
 \begin{pmatrix}
 0 & -1\\
 1 & 0
-\end{pmatrix}.
+\end{pmatrix},
 $$
-Ta có trị riêng
-$$ \lambda=\pm i. $$
-Nghiệm thực là tổ hợp của sin-cos. Các quỹ đạo là đường tròn quanh gốc. Đây là mô hình hệ bậc nhất của dao động điều hòa không tắt.
+có cặp trị riêng $$ \lambda=\pm i $$. Nghiệm thực là tổ hợp của sin và cos, và các quỹ đạo là các đường tròn đồng tâm quanh gốc — biểu diễn hệ bậc nhất của dao động điều hòa không cản.
 
-### Ví dụ 2: Xoắn ốc hút vào
+### Ví dụ 2: Xoắn ốc hút
 
 Xét
 $$
@@ -117,15 +103,13 @@ A=
 \begin{pmatrix}
 -1 & -2\\
 2 & -1
-\end{pmatrix}.
+\end{pmatrix},
 $$
-Trị riêng là
-$$ -1\pm 2i. $$
-Vì phần thực âm, quỹ đạo quay và đồng thời co về gốc. Do đó gốc là một tiêu điểm ổn định.
+có trị riêng $$ \lambda=-1\pm 2i $$. Vì phần thực $$ \alpha=-1<0 $$, quỹ đạo vừa quay vừa co về gốc, tạo thành tiêu điểm (xoắn ốc) ổn định.
 
-### Ví dụ 3: Xoắn ốc đẩy ra
+### Ví dụ 3: Xoắn ốc đẩy
 
-Nếu thay ma trận trên bằng
+Với ma trận
 $$
 A=
 \begin{pmatrix}
@@ -133,88 +117,73 @@ A=
 2 & 1
 \end{pmatrix},
 $$
-thì trị riêng là
-$$ 1\pm 2i. $$
-Quỹ đạo vẫn quay với tốc độ góc 2 nhưng biên độ tăng theo $$ e^t $$. Đây là mô hình điển hình của xoắn ốc không ổn định.
+trị riêng là $$ \lambda=1\pm 2i $$. Quỹ đạo quay với tốc độ góc bằng 2 nhưng biên độ tăng theo $$ e^t $$, tạo thành xoắn ốc không ổn định.
 
-### Ví dụ 4: Tách giải thích từ trị riêng
+### Ví dụ 4: Đọc nhanh đặc tính động học từ trị riêng
 
-Từ trị riêng
-$$ \lambda=-3\pm 4i, $$
-ta có thể đọc ngay: hệ quay, tốc độ quay liên quan đến 4, và biên độ giảm như $$ e^{-3t} $$. Sinh viên nên tập phản xạ đọc trực tiếp ý nghĩa này mà không cần giải đầy đủ.
+Từ cặp trị riêng $$ \lambda=-3\pm 4i $$, ta kết luận ngay: hệ quay quanh gốc với tần số góc 4 và biên độ suy giảm theo $$ e^{-3t} $$. Sinh viên nên rèn kỹ năng đọc nhanh này trước khi giải chi tiết.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao trị riêng phức lại gắn với chuyển động quay trong mặt phẳng?
+1. Vì sao cặp trị riêng phức liên hợp gắn liền với chuyển động quay trên mặt phẳng pha?
 2. Phần thực và phần ảo của trị riêng đóng vai trò động học nào?
-3. Vì sao cùng có phần ảo nhưng có hệ quay tròn, có hệ xoắn vào, có hệ xoắn ra?
+3. Vì sao cùng có phần ảo khác 0 nhưng có hệ tạo quỹ đạo khép kín, có hệ xoắn vào và có hệ xoắn ra?
 
 ## Bài toán ứng dụng
 
-1. Một hệ điều khiển có đáp ứng dao động rồi tắt dần. Hãy liên hệ với trị riêng phức có phần thực âm.
-2. Một mô hình quần thể hai biến cho quỹ đạo xoắn ra khỏi cân bằng. Điều này gợi ý gì về ổn định?
-3. Một mạch điện dao động điều hòa lý tưởng không mất năng lượng. Hãy diễn giải vì sao phần thực của trị riêng phải bằng 0.
+1. Một hệ điều khiển có đáp ứng dao động tắt dần. Hãy liên hệ hiện tượng này với cặp trị riêng phức có phần thực âm.
+2. Một mô hình hai quần thể có quỹ đạo xoắn ra xa điểm cân bằng. Điều đó cho biết gì về tính ổn định?
+3. Một mạch LC lý tưởng không tiêu hao năng lượng dao động điều hòa mãi. Vì sao phần thực của trị riêng phải bằng 0?
 
 ## Chiến lược giảng dạy tương tác
 
-- Cho sinh viên đoán dạng quỹ đạo chỉ từ trị riêng trước khi vẽ hình.
-- Tổ chức bài tập ghép cặp giữa các trị riêng và các chân dung pha tương ứng.
-- Yêu cầu lớp diễn giải bằng lời cụm
-$$ \alpha\pm i\beta $$
-thành "quay, hút/đẩy, nhanh/chậm".
-- So sánh trực tiếp với dao động điều hòa ở chương trước để tạo cầu nối.
+- Cho sinh viên dự đoán dạng chân dung pha chỉ từ cặp trị riêng trước khi vẽ hình.
+- Tổ chức bài tập ghép cặp giữa các giá trị $$ \alpha\pm i\beta $$ và các dạng chân dung pha tương ứng.
+- Yêu cầu lớp diễn đạt nhanh cặp $$ \alpha\pm i\beta $$ thành mô tả định tính: quay, hút/đẩy, nhanh/chậm.
+- Đối chiếu trực tiếp với bài nghiệm phức của Chương 02 để củng cố sự liên kết kiến thức.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên cho sinh viên yếu bám vào một bảng ngắn: $$ \alpha<0 $$ là hút, $$ \alpha>0 $$ là đẩy, $$ \beta\neq 0 $$ là quay. Sơ đồ hóa đơn giản này giúp các em không bị chìm trong số phức.
+Tóm gọn quy tắc bằng bảng ngắn: $$ \alpha<0 $$ là hút, $$ \alpha>0 $$ là đẩy, $$ \alpha=0 $$ là quay khép kín, còn $$ \beta\neq 0 $$ tạo chuyển động quay.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể yêu cầu sinh viên khá giỏi viết nghiệm dưới dạng ma trận quay kết hợp co giãn, để thấy cấu trúc
-$$ e^{\alpha t}R_{\beta t} $$
-ẩn sau cặp trị riêng phức.
+Yêu cầu sinh viên biểu diễn nghiệm bằng phép quay kết hợp co giãn dạng $$ e^{\alpha t}R_{\beta t} $$ để thấy rõ bản chất hình học ẩn sau cặp trị riêng phức.
 
 ## Tóm tắt dễ nhớ
 
-Trị riêng phức không làm hệ "mất thực", mà làm hệ bắt đầu quay. Phần ảo tạo dao động quay, phần thực tạo co hoặc giãn. Muốn đọc nhanh hệ 2 chiều, hãy nhìn
-$$ \alpha\pm i\beta $$
-như mã hóa của quay cộng co/giãn.
+Trị riêng phức liên hợp $$ \alpha\pm i\beta $$ mã hóa chuyển động quay kết hợp co giãn: phần ảo $$ \beta $$ tạo nhịp quay, còn phần thực $$ \alpha $$ quyết định biên độ thu nhỏ ($$ \alpha<0 $$), giữ nguyên ($$ \alpha=0 $$) hay mở rộng ($$ \alpha>0 $$).
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Mô hình quay và xoắn trong cơ học
-- Bài toán: Một hệ phẳng vừa quay vừa co hoặc giãn.
-- Mô hình:
-$$ \lambda=\alpha\pm i\beta. $$
+#### Chuyển động quay và xoắn trong cơ học
+- Bài toán: Hệ hai chiều vừa quay quanh cân bằng vừa tiêu tán hoặc nhận năng lượng.
+- Mô hình: $$ \lambda=\alpha\pm i\beta $$.
 - Giả thiết và giới hạn: Hệ tuyến tính hai chiều.
-- Diễn giải: Phần ảo sinh quay, phần thực sinh co hoặc giãn.
+- Diễn giải: Phần ảo tạo chuyển động quay, phần thực tạo sự co hoặc giãn bán kính.
 
-#### Điện tử và dao động tắt dần
-- Bài toán: Một mạch điện hoặc bộ lọc có đáp ứng dao động tắt dần quanh cân bằng.
+#### Dao động tắt dần trong mạch điện tử
+- Bài toán: Mạch điện hoặc bộ lọc có đáp ứng dao động tắt dần về cân bằng.
 - Mô hình:
 $$
 \mathbf{x}(t)=e^{\alpha t}\left(\mathbf{a}\cos \beta t+\mathbf{b}\sin \beta t\right).
 $$
-- Giả thiết và giới hạn: Tính tuyến tính gần điểm làm việc.
-- Diễn giải: Trị riêng phức là ngôn ngữ tự nhiên của dao động có quay trong không gian trạng thái.
+- Giả thiết và giới hạn: Tuyến tính hóa quanh điểm làm việc.
+- Diễn giải: Cặp trị riêng phức là biểu diễn chuẩn của dao động trong không gian trạng thái.
 
-#### Mô hình dòng chảy quay trong sinh học hoặc hóa học
-- Bài toán: Hai biến có thể quay quanh cân bằng thay vì tiến thẳng vào hoặc ra.
-- Mô hình:
-$$
-\alpha<0 \Rightarrow \text{spiral sink},\qquad
-\alpha>0 \Rightarrow \text{spiral source}.
-$$
-- Giả thiết và giới hạn: Chỉ là phân loại tuyến tính cục bộ.
-- Diễn giải: Chỉ từ trị riêng đã đọc được kiểu quỹ đạo.
+#### Dòng chảy xoắn trong sinh học và hóa học
+- Bài toán: Hai đại lượng biến đổi lệch pha và quay quanh cân bằng thay vì tiến thẳng vào hoặc ra.
+- Mô hình: $$ \alpha<0 \Rightarrow \text{spiral sink} $$, $$ \alpha>0 \Rightarrow \text{spiral source} $$.
+- Giả thiết và giới hạn: Phân loại tuyến tính cục bộ quanh điểm cân bằng.
+- Diễn giải: Chỉ cần xác định trị riêng là đọc được hình thái quỹ đạo lân cận cân bằng.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Nếu trị riêng thực nói về giãn co dọc các hướng riêng, thì trị riêng phức nói về giãn co kết hợp quay. Bài này nối rất chặt với chương dao động điều hòa: nghiệm phức không phải đối tượng "ảo" mà là cách mã hóa tự nhiên của dao động và xoắn ốc.
+Nếu trị riêng thực tương ứng với co giãn dọc các phương riêng, thì trị riêng phức tương ứng với co giãn kết hợp phép quay. Nội dung này nối thẳng với bài nghiệm phức của Chương 02: số phức là công cụ đại số gọn gàng để mô tả dao động và xoắn ốc.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -245,17 +214,15 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Cho
+Cho ma trận
 $$
 A=
 \begin{pmatrix}
 0 & -1\\
 1 & 0
-\end{pmatrix}.
+\end{pmatrix},
 $$
-Các trị riêng là
-$$ \lambda=\pm i. $$
-Nghiệm có dạng quay thuần:
+có các trị riêng $$ \lambda=\pm i $$. Nghiệm tổng quát thực là
 $$
 \mathbf{x}(t)=
 c_1
@@ -270,21 +237,21 @@ c_2
 \cos t
 \end{pmatrix}.
 $$
-Quỹ đạo là các đường tròn quanh gốc. Đây là ví dụ nền tảng để thấy trị riêng phức tạo ra quay chứ không phải chỉ "tính toán phức".
+Các quỹ đạo là đường tròn quanh gốc, minh họa trực tiếp việc cặp trị riêng thuần ảo sinh ra chuyển động quay tuần hoàn.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Học tách nghiệm phức thành hai nghiệm thực và đọc vai trò của $$ \alpha,\beta $$.
+**Bậc đại học.** Thành thạo tách nghiệm phức thành hai nghiệm thực độc lập và đọc vai trò của $$ \alpha,\beta $$.
 
-**Bậc sau đại học.** Nối với dạng chuẩn quay - co giãn và các tiêu điểm trong phân loại điểm cân bằng.
+**Bậc sau đại học.** Liên hệ với dạng chuẩn quay – co giãn và phân loại điểm cân bằng tiêu điểm/tâm.
 
 ## Video tham khảo
 
-- xem trước: [2x2 Systems of ODEs: Imaginary Eigenvalues and Center Fixed Points](https://www.youtube.com/watch?v=b7389fIVey0) — Steve Brunton, tiếng Anh. Một cặp thuần ảo và tâm mà nó tạo ra trên mặt phẳng pha.
-- [Linear Systems: Complex Roots | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=TRVS5Wo9LoM) — MIT OpenCourseWare, tiếng Anh. Bài ngắn của MIT về hệ tuyến tính có trị riêng phức.
-- [MAE5790-5 Two dimensional linear systems](https://www.youtube.com/watch?v=QrHRaA93Nrg) — Cornell MAE, tiếng Anh. Strogatz phân loại hệ tuyến tính hai chiều, gồm các xoắn ốc.
+- Xem trước: [2x2 Systems of ODEs: Imaginary Eigenvalues and Center Fixed Points](https://www.youtube.com/watch?v=b7389fIVey0) — Steve Brunton, tiếng Anh. Phân tích cặp trị riêng thuần ảo và điểm tâm trên mặt phẳng pha.
+- [Linear Systems: Complex Roots | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=TRVS5Wo9LoM) — MIT OpenCourseWare, tiếng Anh. Bài giảng ngắn của MIT về hệ tuyến tính có trị riêng phức.
+- [MAE5790-5 Two dimensional linear systems](https://www.youtube.com/watch?v=QrHRaA93Nrg) — Cornell MAE, tiếng Anh. Giáo sư Strogatz phân loại hệ tuyến tính hai chiều, bao gồm các trường hợp xoắn ốc.
 
 ## Tài liệu tham khảo
 
-- Boyce & DiPrima, Chương 7: trình bày rất rõ cách chuyển nghiệm phức sang nghiệm thực.
-- Arnold, *Ordinary Differential Equations*: đặc biệt mạnh về trực giác hình học của quỹ đạo quay.
+- Boyce & DiPrima, Chương 7: trình bày rõ kỹ thuật chuyển nghiệm phức sang nghiệm thực.
+- Arnold, *Ordinary Differential Equations*: giải thích sâu trực giác hình học của chuyển động quay.

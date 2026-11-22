@@ -13,45 +13,41 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giúp sinh viên giải phương trình Laplace trên hình chữ nhật bằng phương pháp tách biến, đồng thời hiểu vì sao nghiệm có dạng sine theo một chiều và hyperbolic theo chiều còn lại. Sau bài học, sinh viên cần biết quy trình tách biến cho bài toán Dirichlet chuẩn, hiểu vai trò của các mode riêng theo phương ngang, và thấy cách dữ liệu biên trên một cạnh được "phổ hóa" thành các hệ số Fourier rồi lan vào nội thất.
+Bài học này hướng dẫn giải phương trình Laplace trên miền hình chữ nhật bằng phương pháp tách biến, đồng thời làm rõ vì sao nghiệm có dạng hàm sin theo một phương và hàm hyperbolic theo phương còn lại. Sau bài học, sinh viên cần nắm quy trình tách biến cho bài toán Dirichlet chuẩn, hiểu vai trò của các mode riêng theo phương ngang, và thấy cách dữ liệu trên một cạnh biên được khai triển thành các hệ số Fourier rồi lan truyền vào bên trong miền.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm phương trình Laplace, bài toán trị riêng một chiều và chuỗi Fourier sine. Đây là bài mẫu quan trọng nhất để học cách giải bài toán biên elliptic trên miền đơn giản.
+Sinh viên cần nắm phương trình Laplace, bài toán trị riêng một chiều và chuỗi Fourier sin. Đây là bài toán mẫu nền tảng để luyện cách giải bài toán biên elliptic trên miền có hình học đơn giản.
 
 ## Dẫn nhập
 
-Trên hình chữ nhật, phương trình Laplace là nơi phương pháp tách biến bộc lộ sức mạnh rất rõ. Dữ liệu biên có thể phức tạp, nhưng hình học miền lại rất đều, nên ta có thể bóc bài toán thành các mode riêng một chiều. Mỗi mode theo một phương sẽ lan sang phương còn lại theo một hàm hyperbolic phù hợp.
+Trên hình chữ nhật, phương pháp tách biến phát huy hiệu quả rõ rệt đối với phương trình Laplace. Dù dữ liệu biên có thể phức tạp, hình học đều đặn của miền cho phép phân tích bài toán thành các mode riêng một chiều. Mỗi mode theo phương này sẽ phát triển sang phương còn lại theo một hàm hyperbolic tương ứng.
 
-Về mặt sư phạm, bài này đặc biệt quan trọng vì nó là lần đầu sinh viên thấy rõ một nghiệm elliptic được xây dựng từ dữ liệu biên chứ không phải dữ liệu đầu. Điều này tạo nên một trực giác rất khác so với nhiệt và sóng.
+Về mặt sư phạm, bài học này đánh dấu lần đầu sinh viên thấy trực tiếp một nghiệm elliptic được xây dựng từ dữ liệu biên thay vì dữ liệu ban đầu, từ đó hình thành trực giác khác biệt so với phương trình nhiệt và phương trình sóng.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Nếu một cạnh của hình chữ nhật được áp đặt điện thế hoặc nhiệt độ không đều, ảnh hưởng của dữ liệu đó sẽ thấm dần vào bên trong miền. Các gợn biên "ngắn" theo phương ngang sẽ suy giảm theo phương dọc khác với các gợn "dài". Tách biến cho phép ta theo dõi từng gợn riêng lẻ.
+Nếu một cạnh của hình chữ nhật được đặt ở mức điện thế hoặc nhiệt độ không đồng đều, ảnh hưởng của dữ liệu đó sẽ thấm dần vào bên trong miền. Các dao động biên có bước sóng ngắn theo phương ngang sẽ suy giảm nhanh hơn theo phương dọc so với các dao động có bước sóng dài. Phương pháp tách biến cho phép theo dõi từng thành phần dao động đó một cách độc lập.
 
 ### Cách nhìn hình ảnh
 
-Các mode
-
-$$ \sin\left(\frac{n\pi x}{a}\right) $$
-
-diễn tả dao động theo chiều ngang. Khi đi vào trong miền theo chiều $$ y $$, chúng được nhân với các hàm $$ \sinh $$ hoặc $$ \cosh $$. Hình ảnh này rất hữu ích: một mode Fourier trên biên không biến mất, mà được "nâng vào trong miền" với tốc độ khác nhau theo bậc mode.
+Các mode $$ \sin\left(\frac{n\pi x}{a}\right) $$ biểu diễn dao động theo phương ngang. Khi đi vào bên trong miền theo phương $$ y $$, chúng được nhân với các hàm $$ \sinh $$ hoặc $$ \cosh $$. Như vậy, mỗi mode Fourier trên biên không biến mất mà lan vào trong miền với tốc độ suy giảm khác nhau tùy theo bậc $$ n $$.
 
 ### Cách nhìn hình thức
 
-Xét $$ u_{xx}+u_{yy}=0 $$ trên $$ \Omega=(0,a)\times(0,b) $$. Đặt $$ u(x,y)=X(x)Y(y) $$. Thế vào PDE:
+Xét phương trình $$ u_{xx}+u_{yy}=0 $$ trên $$ \Omega=(0,a)\times(0,b) $$. Đặt $$ u(x,y)=X(x)Y(y) $$ và thế vào PDE, ta được:
 
 $$ \frac{X''}{X}=-\frac{Y''}{Y}=-\lambda. $$
 
-Ta nhận được
+Từ đó thu được hai phương trình vi phân thường:
 
 $$ X''+\lambda X=0,
 \qquad
 Y''-\lambda Y=0. $$
 
-Nếu điều kiện biên trên $$ x=0,\ x=a,\ y=0 $$ là 0, còn trên $$ y=b $$ là $$ f(x) $$, thì phần $$ X $$ phải thỏa bài toán Dirichlet một chiều, nên
+Nếu điều kiện biên trên các cạnh $$ x=0,\ x=a,\ y=0 $$ đều bằng 0, còn trên cạnh $$ y=b $$ là $$ f(x) $$, thì $$ X $$ phải thỏa mãn bài toán trị riêng Dirichlet một chiều, suy ra:
 
 $$
 X_n(x)=\sin\left(\frac{n\pi x}{a}\right),
@@ -61,66 +57,50 @@ $$
 
 ## Những ngộ nhận thường gặp
 
-- "Laplace trong hình chữ nhật chỉ là Fourier một chiều viết dài hơn." Không đúng; đây là một bài toán biên hai chiều thật sự.
-- "Hàm hyperbolic xuất hiện ngẫu nhiên." Sai. Chúng là nghiệm tự nhiên của phương trình
-
-$$ Y''-\lambda Y=0. $$
-- "Dữ liệu biên chỉ đóng vai trò cuối cùng để tìm hằng số." Không đúng; toàn bộ nghiệm được xây dựng từ dữ liệu biên.
-- "Mode cao luôn quan trọng như mode thấp ở sâu trong miền." Không đúng; chúng thường suy giảm nhanh hơn khi đi vào trong.
+- "Giải Laplace trong hình chữ nhật chỉ là viết lại chuỗi Fourier một chiều dài hơn." Không đúng; đây là bài toán biên hai chiều thực thụ.
+- "Hàm hyperbolic xuất hiện một cách ngẫu nhiên." Sai; chúng là nghiệm tự nhiên của phương trình $$ Y''-\lambda Y=0. $$
+- "Dữ liệu biên chỉ dùng ở bước cuối để tìm hằng số." Không đúng; toàn bộ cấu trúc nghiệm được xây dựng từ dữ liệu biên.
+- "Mode bậc cao luôn ảnh hưởng ngang bằng mode bậc thấp ở sâu trong miền." Không đúng; các mode bậc cao suy giảm nhanh hơn khi đi vào bên trong miền.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Viết bài toán biên đầy đủ
+### Bước 1: Viết đầy đủ bài toán biên
 
-Sinh viên phải luôn rõ cạnh nào bằng 0, cạnh nào mang dữ liệu.
+Xác định rõ cạnh nào có giá trị bằng 0 và cạnh nào mang dữ liệu biên khác 0.
 
-### Bước 2: Đặt dạng tích
+### Bước 2: Giả sử nghiệm dạng tích
 
-Đây là bước mở khóa bài toán.
+Đặt $$ u(x,y)=X(x)Y(y) $$ để tách PDE thành hai phương trình vi phân thường.
 
-### Bước 3: Giải bài toán riêng cho
+### Bước 3: Giải bài toán trị riêng cho $$ X $$
 
-$$ X $$
+Bước này dẫn đến họ các mode sin.
 
-Phần này dẫn đến sine modes.
+### Bước 4: Giải phương trình cho $$ Y $$
 
-### Bước 4: Giải phần
+Chọn tổ hợp hàm hyperbolic phù hợp với điều kiện biên trên các cạnh nằm ngang.
 
-$$ Y $$
+### Bước 5: Khớp dữ liệu biên bằng chuỗi Fourier sin
 
-và chọn tổ hợp hyperbolic phù hợp.
-
-### Bước 5: Ghép dữ liệu biên bằng Fourier sine
-
-Đây là nơi chương Fourier quay lại một cách rất tự nhiên.
+Vận dụng khai triển chuỗi Fourier để xác định các hệ số nghiệm.
 
 ### Các checkpoint
 
-- Sinh viên có hiểu vì sao phần
-
-$$ X $$
-
-là bài toán trị riêng Dirichlet hay không.
-- Sinh viên có biết vì sao
-
-$$ \sinh $$
-
-và $$ \cosh $$ xuất hiện hay không.
-- Sinh viên có thấy dữ liệu trên một cạnh được biến thành các hệ số Fourier như thế nào hay không.
+- Sinh viên có giải thích được vì sao phần $$ X $$ dẫn đến bài toán trị riêng Dirichlet hay không.
+- Sinh viên có hiểu vì sao các hàm $$ \sinh $$ và $$ \cosh $$ xuất hiện ở phần $$ Y $$ hay không.
+- Sinh viên có thấy cách dữ liệu trên một cạnh biên được chuyển thành các hệ số Fourier hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Ba cạnh bằng 0, cạnh trên bằng
+### Ví dụ 1: Ba cạnh bằng 0, cạnh trên bằng $$ f(x) $$
 
-$$ f(x) $$
-
-Xét
+Xét bài toán với điều kiện biên:
 
 $$ u(0,y)=u(a,y)=u(x,0)=0,
 \qquad
 u(x,b)=f(x). $$
 
-Nghiệm có dạng
+Nghiệm có dạng chuỗi:
 
 $$
 u(x,y)=\sum_{n=1}^{\infty}c_n
@@ -128,106 +108,89 @@ u(x,y)=\sum_{n=1}^{\infty}c_n
 \sin\left(\frac{n\pi x}{a}\right).
 $$
 
-Hệ số $$ c_n $$ được xác định bằng cách khớp điều kiện trên $$ y=b $$. Đây là ví dụ chuẩn nhất của bài.
+Các hệ số $$ c_n $$ được xác định bằng cách khớp điều kiện biên trên cạnh $$ y=b $$. Đây là bài toán mẫu tiêu chuẩn của bài học.
 
 ### Ví dụ 2: Dữ liệu biên là một mode duy nhất
 
-Nếu
-
-$$ f(x)=\sin\left(\frac{\pi x}{a}\right), $$
-
-thì chỉ mode $$ n=1 $$ xuất hiện. Nghiệm đơn giản thành
+Nếu $$ f(x)=\sin\left(\frac{\pi x}{a}\right) $$, thì chỉ có mode $$ n=1 $$ xuất hiện, và nghiệm rút gọn thành:
 
 $$
 u(x,y)=C\,\sinh\left(\frac{\pi y}{a}\right)\sin\left(\frac{\pi x}{a}\right).
 $$
 
-Ví dụ này rất mạnh vì nó cho thấy dữ liệu biên là một mode thì nghiệm bên trong giữ nguyên mode đó.
+Ví dụ này cho thấy khi dữ liệu biên chỉ gồm một mode riêng, nghiệm bên trong miền cũng bảo toàn đúng mode đó.
 
 ### Ví dụ 3: Dữ liệu biên hằng
 
-Nếu $$ f(x)=1 $$ trên $$ (0,a) $$, ta phải khai triển hằng số thành sine series trên $$ [0,a] $$. Ví dụ này giúp sinh viên thấy ngay cả dữ liệu biên rất đơn giản cũng có thể yêu cầu phổ Fourier vô hạn.
+Nếu $$ f(x)=1 $$ trên $$ (0,a) $$, ta phải khai triển hàm hằng thành chuỗi Fourier sin trên $$ [0,a] $$. Điều này cho thấy ngay cả dữ liệu biên đơn giản cũng có thể cần đến phổ Fourier vô hạn.
 
-### Ví dụ 4: Suy giảm vào nội thất
+### Ví dụ 4: Sự suy giảm khi đi vào bên trong miền
 
-Các mode bậc cao mang hệ số
-
-$$ \sinh\left(\frac{n\pi y}{a}\right) $$
-
-chuẩn hóa theo biên trên. Khi nhìn từ biên vào sâu trong miền, các mode cao thường suy giảm nhanh hơn. Đây là ví dụ trực giác tốt về "lọc hình học" của bài toán elliptic.
+Các mode bậc cao mang nhân tử $$ \sinh\left(\frac{n\pi y}{a}\right) $$ đã được chuẩn hóa theo cạnh biên trên. Khi đi từ cạnh biên vào sâu bên trong miền, các mode bậc cao suy giảm nhanh hơn nhiều so với mode bậc thấp. Đây là minh họa trực quan cho hiệu ứng lọc tần số của bài toán elliptic.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao trên hình chữ nhật, một phương của Laplace dẫn đến sine còn phương kia dẫn đến hyperbolic?
-2. Vì sao dữ liệu biên đóng vai trò tương tự dữ liệu phổ trong nghiệm tách biến?
-3. Điều gì khiến mode cao ít ảnh hưởng hơn khi đi sâu vào trong miền?
+1. Vì sao trên hình chữ nhật, một phương của phương trình Laplace cho nghiệm sin còn phương kia cho nghiệm hyperbolic?
+2. Vì sao dữ liệu biên đóng vai trò như phổ tần số trong nghiệm tách biến?
+3. Điều gì khiến các mode bậc cao ít ảnh hưởng hơn khi đi sâu vào bên trong miền?
 
 ## Bài toán ứng dụng
 
-1. Một cạnh của tấm kim loại được giữ ở hồ sơ nhiệt độ không đều, ba cạnh còn lại giữ ở 0. Vì sao nhiệt độ bên trong có thể được xây dựng từ các sine modes trên cạnh đó?
-2. Trong tĩnh điện, vì sao điện thế bên trong hình chữ nhật có thể được xem như "phần mở rộng điều hòa" của dữ liệu trên biên?
-3. Nếu dữ liệu biên dao động rất gắt theo phương ngang, vì sao ảnh hưởng của nó vào sâu trong miền thường yếu nhanh hơn?
+1. Một cạnh của tấm kim loại được giữ theo một phân bố nhiệt độ không đều, còn ba cạnh kia giữ ở nhiệt độ 0. Vì sao nhiệt độ bên trong có thể biểu diễn qua các mode sin trên cạnh đó?
+2. Trong tĩnh điện, vì sao điện thế bên trong hình chữ nhật có thể xem như phần mở rộng điều hòa của dữ liệu trên biên?
+3. Nếu dữ liệu biên dao động rất nhanh theo phương ngang, vì sao ảnh hưởng của nó vào sâu trong miền lại suy yếu nhanh hơn?
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng câu hỏi: "Nếu chỉ biết dữ liệu trên một cạnh, làm sao thông tin đó lan vào cả miền?"
-- Cho sinh viên thử một dữ liệu biên là một mode sine duy nhất để thấy nghiệm rất gọn.
-- Hỏi cả lớp: "Tại sao phần theo
-
-$$ y $$
-
-lại không cho sine mà lại cho
-
-$$ \sinh,\cosh? $$
-"
-- Khuyến khích sinh viên liên hệ với chương Fourier: dữ liệu biên ở đây đang được khai triển theo nghĩa nào?
+- Bắt đầu bằng câu hỏi: "Nếu chỉ biết dữ liệu trên một cạnh biên, thông tin đó lan truyền vào toàn miền bằng cách nào?"
+- Cho sinh viên thử trường hợp dữ liệu biên là một mode sin duy nhất để thấy dạng nghiệm gọn nhẹ trước khi xét chuỗi tổng quát.
+- Hỏi cả lớp: "Tại sao phương trình theo $$ y $$ lại không cho nghiệm sin mà cho $$ \sinh,\cosh $$?"
+- Khuyến khích sinh viên liên hệ với chương chuỗi Fourier để nhận ra ý nghĩa của phép khai triển dữ liệu biên.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên giữ một mẫu bài toán chuẩn với ba cạnh bằng 0 và một cạnh cho dữ liệu. Đây là khuôn mẫu tốt nhất để học chắc quy trình tách biến trong hình chữ nhật.
+Nên bám sát bài toán mẫu chuẩn với ba cạnh bằng 0 và một cạnh mang dữ liệu khác 0 để nắm chắc quy trình tách biến trên hình chữ nhật.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể mời sinh viên khá giỏi khảo sát các cấu hình dữ liệu biên khác, hoặc thảo luận vì sao bài toán có dữ liệu trên nhiều cạnh dẫn đến việc ghép chồng nhiều nghiệm tách biến.
+Có thể gợi ý sinh viên khá giỏi khảo sát các cấu hình điều kiện biên khác, hoặc phân tích vì sao bài toán có dữ liệu khác 0 trên nhiều cạnh có thể giải bằng nguyên lý chồng chất từ nhiều nghiệm tách biến.
 
 ## Tóm tắt dễ nhớ
 
-Trên hình chữ nhật, phương trình Laplace được giải bằng tách biến thành sine modes theo một chiều và hàm hyperbolic theo chiều kia. Dữ liệu biên được biến thành phổ Fourier, rồi mỗi mode được kéo vào trong miền theo quy luật elliptic tương ứng.
+Trên hình chữ nhật, phương trình Laplace được giải bằng cách tách biến thành các mode sin theo một phương và các hàm hyperbolic theo phương còn lại. Dữ liệu biên được khai triển thành chuỗi Fourier, và mỗi mode lan truyền vào bên trong miền theo quy luật suy giảm đặc trưng của phương trình elliptic.
 
 ## Video tham khảo
 
-- xem trước: [PDE 101: Separation of Variables! ...or how I learned to stop worrying and solve Laplace's equation](https://www.youtube.com/watch?v=VjWtMl6vQ3Q) — Steve Brunton, tiếng Anh. Brunton tách biến cho phương trình Laplace trên một hình chữ nhật.
-- [Laplace’s Equation: Separation of Variables](https://www.youtube.com/watch?v=8jOqXM8OFh8) — Professor Dave Explains, tiếng Anh. Professor Dave Explains cùng phép tách trên một hình chữ nhật.
-- [Separation of Variables - Laplace Eq Part 1](https://www.youtube.com/watch?v=-FNkz01Ksvw) — Dr. Underwood's Physics YouTube Page, tiếng Anh. Một bài chữ nhật được giải, với một cạnh không thuần nhất.
+- xem trước: [PDE 101: Separation of Variables! ...or how I learned to stop worrying and solve Laplace's equation](https://www.youtube.com/watch?v=VjWtMl6vQ3Q) — Steve Brunton, tiếng Anh. Trình bày phương pháp tách biến cho phương trình Laplace trên hình chữ nhật.
+- [Laplace’s Equation: Separation of Variables](https://www.youtube.com/watch?v=8jOqXM8OFh8) — Professor Dave Explains, tiếng Anh. Hướng dẫn chi tiết phép tách biến trên miền hình chữ nhật.
+- [Separation of Variables - Laplace Eq Part 1](https://www.youtube.com/watch?v=-FNkz01Ksvw) — Dr. Underwood's Physics YouTube Page, tiếng Anh. Giải bài toán Laplace trên hình chữ nhật với một cạnh không thuần nhất.
 
 ## Tài liệu tham khảo
 
-- Evans, *Partial Differential Equations* - khuôn khổ chuẩn cho hàm điều hòa, phương trình Poisson, và hàm Green.
-- Haberman, *Applied Partial Differential Equations* - trình bày trực quan về tĩnh điện, dòng chảy thế, và phương pháp ảnh.
+- Evans, *Partial Differential Equations* — trình bày chuẩn về hàm điều hòa, phương trình Poisson và hàm Green.
+- Haberman, *Applied Partial Differential Equations* — trình bày trực quan về tĩnh điện, dòng chảy thế và phương pháp ảnh.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Nhiệt độ ổn định trên tấm hình chữ nhật
-- Bài toán: Một tấm kim loại chữ nhật có nhiệt độ biên cho trước và ta cần phân bố nhiệt trong miền.
-- Mô hình:
-$$ u_{xx}+u_{yy}=0 $$
-trên hình chữ nhật, với điều kiện Dirichlet.
-- Giả thiết và giới hạn: Trạng thái dừng, vật liệu đồng nhất, hình chữ nhật lý tưởng.
-- Diễn giải: Tách biến cho phép tách ảnh hưởng của từng mode biên.
+- Bài toán: Tìm phân bố nhiệt độ bên trong một tấm kim loại chữ nhật khi biết nhiệt độ trên biên.
+- Mô hình: $$ u_{xx}+u_{yy}=0 $$ trên hình chữ nhật với điều kiện biên Dirichlet.
+- Giả thiết và giới hạn: Trạng thái dừng, vật liệu đồng nhất, miền hình chữ nhật lý tưởng.
+- Diễn giải: Tách biến cho phép khảo sát riêng tác động của từng mode biên.
 
-#### Điện thế trong tụ bản phẳng hình chữ nhật
-- Bài toán: Điện thế giữa các cạnh dẫn điện khác nhau trong một miền chữ nhật.
-- Mô hình: Cùng phương trình Laplace với dữ liệu biên điện thế.
-- Giả thiết và giới hạn: Điện trường tĩnh, không có điện tích trong miền.
-- Diễn giải: Hình học chữ nhật làm xuất hiện các mode hyperbolic-sinus và sinus.
+#### Điện thế trong miền dẫn điện hình chữ nhật
+- Bài toán: Xác định điện thế giữa các cạnh dẫn điện mang điện thế khác nhau trong một miền chữ nhật.
+- Mô hình: Phương trình Laplace với điều kiện biên cho trước về điện thế.
+- Giả thiết và giới hạn: Điện trường tĩnh, không có điện tích bên trong miền.
+- Diễn giải: Hình học chữ nhật tạo ra các mode kết hợp giữa hàm sin và hàm hyperbolic.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Tách biến ở đây giống chương sóng và nhiệt, nhưng phần thời gian biến mất. Điều còn lại là cân bằng giữa các hướng không gian. Một ngộ nhận thường gặp là nghĩ các mode chỉ có ý nghĩa cho bài toán tiến hóa; thật ra chúng cũng là ngôn ngữ tự nhiên của bài toán elliptic.
+Kỹ thuật tách biến ở đây tương tự như trong chương phương trình sóng và phương trình nhiệt, nhưng không còn biến thời gian; điều còn lại là sự cân bằng giữa các hướng không gian. Một ngộ nhận thường gặp là cho rằng các mode riêng chỉ có ý nghĩa trong bài toán tiến hóa, trong khi thực tế chúng cũng là ngôn ngữ tự nhiên cho bài toán elliptic.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -257,7 +220,7 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Nếu trên hình chữ nhật $$ 0<x<a $$, $$ 0<y<b $$ ta đặt
+Nếu trên hình chữ nhật $$ 0<x<a $$, $$ 0<y<b $$ ta đặt điều kiện biên
 $$
 u(0,y)=u(a,y)=u(x,0)=0, \qquad u(x,b)=\sin\!\left(\frac{\pi x}{a}\right),
 $$
@@ -265,10 +228,10 @@ thì nghiệm là
 $$
 u(x,y)=\sin\!\left(\frac{\pi x}{a}\right)\frac{\sinh(\pi y/a)}{\sinh(\pi b/a)}.
 $$
-Nghiệm cho thấy ảnh hưởng của biên trên lan vào miền theo một mode duy nhất.
+Kết quả này cho thấy ảnh hưởng của cạnh biên trên lan vào bên trong miền theo đúng một mode duy nhất.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Thiết lập và giải bài toán chữ nhật bằng tách biến.
+**Bậc đại học.** Thiết lập và giải bài toán trên hình chữ nhật bằng phương pháp tách biến.
 
-**Bậc sau đại học.** Phân tích hội tụ chuỗi, tính đầy đủ của eigenfunction và tính ổn định theo dữ liệu biên.
+**Bậc sau đại học.** Phân tích sự hội tụ của chuỗi nghiệm, tính đầy đủ của hệ hàm riêng và tính ổn định theo dữ liệu biên.

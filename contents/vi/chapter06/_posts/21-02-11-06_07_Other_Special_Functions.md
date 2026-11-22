@@ -12,92 +12,92 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài học tùy chọn này mở rộng tầm nhìn của sinh viên ra ngoài Bessel và Legendre. Mục tiêu không phải là học thuộc thật nhiều công thức, mà là nhận ra một khuôn mẫu chung: mỗi họ hàm đặc biệt gắn với một phương trình vi phân chuẩn, một trọng số trực giao, và thường là một cấu trúc vật lý hoặc hình học rất cụ thể. Sau bài học, sinh viên cần có bản đồ khái niệm về Hermite, Laguerre và Chebyshev, biết chúng đến từ đâu và dùng trong bối cảnh nào.
+Bài học tùy chọn này mở rộng tầm nhìn ra ngoài hai họ Bessel và Legendre. Mục tiêu không phải là ghi nhớ nhiều công thức mà là nhận diện khuôn mẫu chung: mỗi họ hàm đặc biệt gắn với một phương trình vi phân chuẩn, một hàm trọng số trực giao và một bối cảnh vật lý hoặc giải tích cụ thể. Sau bài học, sinh viên có cái nhìn tổng quan về các đa thức Hermite, Laguerre và Chebyshev cùng miền ứng dụng của chúng.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm khái niệm hàm đặc biệt như một họ nghiệm chuẩn, trực giao cơ bản, và ý tưởng trị riêng của toán tử vi phân. Đây là bài học định hướng, không cần quá nặng tính kỹ thuật, nhưng lại rất quan trọng để giúp sinh viên thấy bức tranh lớn.
+Sinh viên nên nắm khái niệm hàm đặc biệt như một họ nghiệm chuẩn, tính trực giao cơ bản và ý tưởng trị riêng của toán tử vi phân. Bài học thiên về định hướng hệ thống hơn là tính toán chi tiết nhằm giúp sinh viên nắm bức tranh tổng thể.
 
 ## Dẫn nhập
 
 ![Một số hàm đặc biệt trong các bài toán vật lý toán]({{ site.imgurl }}/chapter_img/chapter06/07_other_special_functions.svg)
 
-Sau khi học Bessel và Legendre, nhiều sinh viên bắt đầu tự hỏi: liệu còn bao nhiêu họ hàm như vậy nữa, và chúng có liên hệ gì với nhau? Câu trả lời là có rất nhiều, nhưng điều đáng chú ý hơn là chúng không hề rời rạc. Mỗi họ là lời đáp tự nhiên cho một lớp bài toán vi phân và một loại đối xứng riêng.
+Sau khi học Bessel và Legendre, một câu hỏi tự nhiên là còn bao nhiêu họ hàm đặc biệt khác và chúng liên hệ với nhau ra sao. Thực tế có nhiều họ hàm đặc biệt, nhưng chúng không tồn tại rời rạc: mỗi họ là nghiệm tự nhiên của một lớp phương trình vi phân gắn với một cấu trúc đối xứng, điều kiện biên và trọng số trực giao cụ thể.
 
-Ta có thể xem các hàm đặc biệt như một "bản đồ phổ riêng" của giải tích. Thay đổi hình học, thay đổi điều kiện biên, hoặc thay đổi trọng số trực giao, ta sẽ thấy một họ hàm mới hiện ra. Hermite, Laguerre và Chebyshev là ba đại diện rất quan trọng cho bức tranh đó.
+Các đa thức Hermite, Laguerre và Chebyshev là ba đại diện tiêu biểu mở rộng bức tranh phổ đó sang toàn trục thực, nửa trục dương và bài toán xấp xỉ trên đoạn hữu hạn.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Nếu Bessel là ngôn ngữ của hình tròn và Legendre là ngôn ngữ của mặt cầu, thì Hermite, Laguerre và Chebyshev là ngôn ngữ của những bối cảnh khác: dao động với thế bậc hai, bài toán bán kính giảm dần, và xấp xỉ tối ưu trên đoạn. Mỗi họ giống như một bộ chữ cái riêng phù hợp nhất với một môi trường riêng.
+Nếu hàm Bessel là ngôn ngữ của hình tròn và đa thức Legendre là ngôn ngữ của mặt cầu, thì Hermite, Laguerre và Chebyshev gắn với ba bối cảnh khác: dao động trong thế bậc hai trên toàn trục thực, bài toán hướng kính suy giảm theo hàm mũ trên nửa trục dương và bài toán xấp xỉ tối ưu trên đoạn $$ [-1,1] $$.
 
 ### Cách nhìn hình ảnh
 
-Đồ thị của đa thức Hermite có xu hướng dao động mạnh hơn khi bậc tăng và thường đi kèm trọng số Gauss. Đa thức Laguerre sống tự nhiên trên nửa trục dương và được ghép với trọng số mũ suy giảm. Đa thức Chebyshev dao động gần đều trong đoạn $$ [-1,1] $$ và nổi bật trong bài toán xấp xỉ vì chúng kiểm soát sai số rất tốt.
+Đồ thị đa thức Hermite dao động mạnh hơn khi bậc tăng và thường đi kèm nhân tử trọng số Gauss. Đa thức Laguerre xác định trên nửa trục dương $$ [0,\infty) $$ đi kèm trọng số mũ suy giảm. Đa thức Chebyshev dao động với biên độ đều nhau trong đoạn $$ [-1,1] $$, rất thuận lợi cho bài toán nội suy và xấp xỉ số nhờ khả năng kiểm soát sai số đều.
 
 ### Cách nhìn hình thức
 
-Ba họ tiêu biểu là:
+Ba phương trình chuẩn tương ứng gồm:
 
-Đa thức Hermite:
+Phương trình Hermite:
 
 $$ y''-2xy'+2ny=0. $$
 
-Đa thức Laguerre:
+Phương trình Laguerre:
 
 $$ xy''+(1-x)y'+ny=0. $$
 
-Đa thức Chebyshev:
+Phương trình Chebyshev:
 
 $$ (1-x^2)y''-xy'+n^2y=0. $$
 
-Mỗi họ đều là nghiệm riêng của một toán tử vi phân và thường tạo thành một hệ trực giao với trọng số phù hợp.
+Mỗi họ đa thức là nghiệm riêng của một toán tử vi phân cấp hai và lập thành hệ trực giao theo một hàm trọng số thích hợp trên miền xác định của nó.
 
 ## Những ngộ nhận thường gặp
 
-- "Hàm đặc biệt là các ngoại lệ ngẫu nhiên." Sai. Chúng là kết quả có hệ thống của lý thuyết toán tử và bài toán biên.
-- "Tên gọi đặc biệt nghĩa là khó và ít dùng." Không đúng; chúng xuất hiện rất thường xuyên trong vật lý toán và tính toán khoa học.
-- "Chỉ cần học Bessel và Legendre là đủ." Chưa đủ nếu muốn nhìn toàn cảnh các mô hình cổ điển.
-- "Trực giao chỉ là tính chất phụ." Sai. Trực giao là lý do các họ hàm này trở thành cơ sở hiệu quả để khai triển nghiệm.
+- "Hàm đặc biệt chỉ là các ngoại lệ rời rạc." Sai. Chúng là kết quả có hệ thống của lý thuyết toán tử và bài toán giá trị biên.
+- "Gọi là hàm đặc biệt nghĩa là ít ứng dụng thực tế." Không đúng; chúng xuất hiện thường xuyên trong vật lý toán và tính toán khoa học.
+- "Chỉ cần biết Bessel và Legendre là đủ." Chưa đủ nếu muốn hiểu toàn diện các mô hình cổ điển trong cơ học lượng tử và giải tích số.
+- "Tính trực giao chỉ là một tính chất phụ." Sai. Chính tính trực giao giúp các họ hàm này trở thành cơ sở hiệu quả để khai triển nghiệm.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Nhìn bức tranh chung
+### Bước 1: Nắm cấu trúc chung
 
-Mỗi họ hàm đặc biệt đi với một phương trình, một trọng số, và một bối cảnh ứng dụng.
+Ghi nhớ bộ bốn đặc trưng của mỗi họ hàm: phương trình vi phân, miền xác định, hàm trọng số trực giao và bối cảnh ứng dụng.
 
-### Bước 2: Học ba ví dụ điển hình
+### Bước 2: Khảo sát ba họ tiêu biểu
 
-Hermite, Laguerre và Chebyshev là đủ để thấy sự đa dạng của thế giới hàm đặc biệt.
+Tìm hiểu Hermite, Laguerre và Chebyshev để thấy sự đa dạng của các họ đa thức trực giao.
 
-### Bước 3: So sánh theo cấu trúc
+### Bước 3: Đối chiếu theo cấu trúc
 
-So sánh miền xác định, trọng số trực giao, và loại bài toán vật lý đi kèm.
+So sánh song song miền xác định, trọng số và bài toán gốc của từng họ.
 
-### Bước 4: Liên hệ với bài toán thực
+### Bước 4: Liên hệ với bài toán thực tế
 
-Đặt câu hỏi: hình học hay toán tử nào đã sinh ra họ hàm đó?
+Đặt câu hỏi: hình học, điều kiện biên hay toán tử nào đã dẫn tới từng họ hàm cụ thể?
 
-### Các checkpoint
+### Các điểm kiểm tra
 
-- Sinh viên có kể được mỗi họ hàm gắn với loại bài toán nào hay không.
-- Sinh viên có hiểu rằng trọng số trực giao thay đổi theo từng họ hay không.
-- Sinh viên có thấy tính thống nhất phía sau các tên gọi khác nhau hay không.
+- Sinh viên có nêu được mỗi họ hàm gắn với lớp bài toán nào hay không.
+- Sinh viên có hiểu vì sao hàm trọng số trực giao thay đổi theo từng họ hay không.
+- Sinh viên có nhận thấy cấu trúc thống nhất đằng sau các tên gọi khác nhau hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Hermite và dao động tử điều hòa
+### Ví dụ 1: Đa thức Hermite và dao động tử điều hòa
 
-Phương trình Hermite là $$ y''-2xy'+2ny=0 $$. Với $$ n=0 $$, ta có nghiệm đa thức đơn giản $$ H_0(x)=1 $$. Với $$ n=1 $$, ta có $$ H_1(x)=2x $$. Những đa thức này xuất hiện trong mô tả dao động tử điều hòa lượng tử sau khi tách phần suy giảm Gauss ra ngoài. Ví dụ này cho thấy hàm đặc biệt thường không xuất hiện một mình mà đi kèm một nhân tử trọng số.
+Phương trình Hermite là $$ y''-2xy'+2ny=0 $$. Với $$ n=0 $$, ta có $$ H_0(x)=1 $$; với $$ n=1 $$, ta có $$ H_1(x)=2x $$. Họ đa thức này xuất hiện trong nghiệm của dao động tử điều hòa lượng tử sau khi tách nhân tử suy giảm Gauss, minh họa việc hàm đặc biệt thường đi kèm một hàm trọng số.
 
-### Ví dụ 2: Laguerre và miền nửa trục
+### Ví dụ 2: Đa thức Laguerre trên nửa trục dương
 
-Phương trình Laguerre là $$ xy''+(1-x)y'+ny=0 $$. Với $$ n=0 $$, nghiệm đa thức là $$ L_0(x)=1 $$. Với $$ n=1 $$, ta có $$ L_1(x)=1-x $$. Đây là họ hàm rất tự nhiên trong các bài toán bán kính trên nửa trục dương, chẳng hạn mô hình nguyên tử hydro ở dạng đơn giản hóa.
+Phương trình Laguerre là $$ xy''+(1-x)y'+ny=0 $$. Với $$ n=0 $$, ta có $$ L_0(x)=1 $$; với $$ n=1 $$, ta có $$ L_1(x)=1-x $$. Họ hàm này xuất hiện tự nhiên trong các bài toán hướng kính trên nửa trục dương $$ x\ge 0 $$, tiêu biểu là mô hình nguyên tử hydro.
 
-### Ví dụ 3: Chebyshev và xấp xỉ
+### Ví dụ 3: Đa thức Chebyshev và bài toán xấp xỉ
 
-Phương trình Chebyshev là $$ (1-x^2)y''-xy'+n^2y=0 $$. Các nghiệm đa thức quan trọng thỏa $$ T_n(\cos \theta)=\cos(n\theta) $$. Từ đó:
+Phương trình Chebyshev là $$ (1-x^2)y''-xy'+n^2y=0 $$. Các đa thức Chebyshev loại một thỏa hệ thức $$ T_n(\cos \theta)=\cos(n\theta) $$, suy ra:
 
 $$ T_0(x)=1,
 \qquad
@@ -105,73 +105,73 @@ T_1(x)=x,
 \qquad
 T_2(x)=2x^2-1. $$
 
-Ví dụ này rất hay vì nó nối trực tiếp hàm đặc biệt với lượng giác và bài toán nội suy tối ưu.
+Công thức lượng giác này kết nối trực tiếp đa thức Chebyshev với chuỗi Fourier và bài toán nội suy đa thức tối ưu.
 
-### Ví dụ 4: So sánh ba họ theo môi trường sống
+### Ví dụ 4: So sánh ba họ theo miền xác định và trọng số
 
-Hermite sống tự nhiên trên toàn trục thực với trọng số Gauss. Laguerre sống trên nửa trục dương với trọng số mũ. Chebyshev sống trên đoạn $$ [-1,1] $$ với trọng số đặc trưng gần biên. Đây là ví dụ so sánh khái niệm giúp sinh viên nhớ lâu hơn việc học tách rời từng công thức.
+Đa thức Hermite xác định tự nhiên trên toàn trục thực với trọng số Gauss $$ e^{-x^2} $$. Đa thức Laguerre xác định trên nửa trục dương với trọng số mũ $$ e^{-x} $$. Đa thức Chebyshev xác định trên đoạn $$ [-1,1] $$ với trọng số $$ (1-x^2)^{-1/2} $$. Cách đối chiếu theo cấu trúc này giúp hệ thống hóa kiến thức tốt hơn việc học rời rạc từng công thức.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao mỗi họ hàm đặc biệt lại đi kèm với một trọng số trực giao khác nhau?
-2. Điều gì khiến một họ hàm trở thành "tự nhiên" cho một bài toán vật lý hay số học cụ thể?
-3. Vì sao việc so sánh các họ hàm theo hình học và toán tử sinh ra chúng lại hữu ích hơn việc học riêng lẻ từng công thức?
+1. Vì sao mỗi họ đa thức trực giao lại đi kèm với một hàm trọng số khác nhau?
+2. Điều gì làm cho một họ hàm trở thành cơ sở tự nhiên cho một bài toán vật lý hoặc tính toán cụ thể?
+3. Vì sao việc so sánh các họ hàm theo toán tử và miền xác định lại hiệu quả hơn việc học thuộc từng công thức riêng lẻ?
 
 ## Bài toán ứng dụng
 
-1. Trong cơ học lượng tử, vì sao dao động tử điều hòa lại dẫn đến đa thức Hermite sau khi chuẩn hóa nghiệm?
-2. Trong các bài toán xấp xỉ hàm trên máy tính, vì sao đa thức Chebyshev đặc biệt nổi tiếng?
-3. Trong các mô hình bán kính trên miền $$ x\ge 0 $$, vì sao Laguerre thường xuất hiện tự nhiên hơn Legendre?
+1. Trong cơ học lượng tử, vì sao dao động tử điều hòa lại dẫn đến đa thức Hermite sau khi chuẩn hóa và tách nhân tử tiệm cận?
+2. Trong tính toán số, vì sao đa thức Chebyshev được ưa chuộng rộng rãi cho xấp xỉ hàm trên đoạn hữu hạn?
+3. Với các bài toán hướng kính trên miền $$ x\ge 0 $$, vì sao đa thức Laguerre xuất hiện tự nhiên hơn đa thức Legendre?
 
 ## Chiến lược giảng dạy tương tác
 
-- Tổ chức bài học như một "bản đồ họ hàng" giữa các hàm đặc biệt hơn là một danh sách công thức.
-- Cho sinh viên điền bảng so sánh: phương trình, miền xác định, trọng số, ứng dụng chính.
-- Hỏi cả lớp: "Nếu thay đổi hình học hoặc điều kiện biên, ta mong họ hàm nào thay đổi?"
-- Cho một nhóm phụ trách Hermite, một nhóm Laguerre, một nhóm Chebyshev, rồi yêu cầu các nhóm dạy lại nhau trong vài phút.
+- Trình bày bài học dưới dạng một bảng hệ thống hóa các họ hàm đặc biệt thay vì danh sách công thức rời rạc.
+- Cho sinh viên tự hoàn thiện bảng so sánh gồm bốn cột: phương trình, miền xác định, trọng số trực giao và ứng dụng chính.
+- Đặt câu hỏi cho lớp: khi thay đổi miền xác định hoặc điều kiện biên, họ hàm tương ứng thay đổi ra sao?
+- Chia nhóm để mỗi nhóm trình bày ngắn về một họ (Hermite, Laguerre, Chebyshev) rồi đối chiếu chung cả lớp.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Không nên yêu cầu các em nhớ toàn bộ công thức tổng quát ngay. Chỉ cần nắm được mỗi họ gắn với bài toán nào và nhìn được vài đa thức đầu tiên là đã đủ nền rất tốt.
+Không cần ghi nhớ ngay toàn bộ công thức tổng quát; chỉ cần nắm được mỗi họ gắn với bài toán nào và nhận diện được vài đa thức bậc thấp đầu tiên.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể mời sinh viên khá giỏi khám phá ngôn ngữ Sturm-Liouville để thống nhất cách hiểu về trực giao, trị riêng và trọng số của các họ hàm đặc biệt khác nhau.
+Có thể yêu cầu sinh viên viết lại cả ba phương trình dưới dạng tự liên hợp Sturm–Liouville để tự suy ra hàm trọng số trực giao tương ứng của từng họ.
 
 ## Tóm tắt dễ nhớ
 
-Hàm đặc biệt không phải ngoại lệ rời rạc mà là các mode riêng tự nhiên của những toán tử và hình học khác nhau. Hermite, Laguerre và Chebyshev mở rộng bức tranh đã thấy ở Bessel và Legendre: mỗi họ đi với một phương trình chuẩn, một trọng số trực giao, và một miền ứng dụng riêng.
+Các hàm đặc biệt không phải những ngoại lệ rời rạc mà là các chế độ riêng tự nhiên của những toán tử vi phân gắn với từng miền và trọng số cụ thể. Hermite, Laguerre và Chebyshev mở rộng bức tranh từ Bessel và Legendre sang toàn trục thực, nửa trục dương và giải tích số.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Dao động tử điều hòa lượng tử
-- Bài toán: Nghiệm chuẩn hóa của phần không gian thỏa phương trình Hermite.
+- Bài toán: Thành phần đa thức của hàm sóng chuẩn hóa thỏa phương trình Hermite.
 - Mô hình:
 $$ y''-2x y'+2n y=0. $$
-- Giả thiết và giới hạn: Đây là sau phép đổi biến vô thứ nguyên và tách nhân Gaussian.
-- Diễn giải: Đa thức Hermite mã hóa các mức năng lượng rời rạc.
+- Giả thiết và giới hạn: Thu được sau khi đổi biến không thứ nguyên và tách nhân tử Gauss.
+- Diễn giải: Bậc $$ n $$ của đa thức Hermite gắn trực tiếp với các mức năng lượng rời rạc.
 
-#### Nguyên tử hydrogen
-- Bài toán: Phần xuyên tâm sau chuẩn hóa cho phương trình Laguerre liên kết.
+#### Nguyên tử hydro
+- Bài toán: Phần hướng kính của hàm sóng sau chuẩn hóa dẫn đến phương trình Laguerre liên kết.
 - Mô hình điển hình:
 $$ x y''+(1-x)y'+n y=0. $$
-- Giả thiết và giới hạn: Chỉ phản ánh một phần của bài toán đầy đủ.
-- Diễn giải: Đa thức Laguerre điều khiển số nút của nghiệm xuyên tâm.
+- Giả thiết và giới hạn: Là một phần trong bài toán tách biến đầy đủ của nguyên tử hydro.
+- Diễn giải: Đa thức Laguerre quyết định số nút của hàm sóng theo phương bán kính.
 
 #### Xấp xỉ số và xử lý tín hiệu
-- Bài toán: Cần đa thức tối ưu trên đoạn $$ [-1,1] $$ để nội suy hay lọc phổ.
+- Bài toán: Tìm hệ đa thức tối ưu trên đoạn $$ [-1,1] $$ phục vụ nội suy và phương pháp phổ.
 - Mô hình Chebyshev:
 $$ (1-x^2)y''-x y'+n^2 y=0. $$
-- Giả thiết và giới hạn: Vai trò ở đây nghiêng về giải tích số hơn là vật lý thuần.
-- Diễn giải: Chebyshev cho cơ sở rất ổn định cho xấp xỉ phổ.
+- Giả thiết và giới hạn: Trọng tâm ứng dụng thuộc lĩnh vực giải tích số và kỹ thuật tín hiệu.
+- Diễn giải: Đa thức Chebyshev cung cấp cơ sở ổn định số cao cho các phương pháp phổ.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Các hàm đặc biệt không phải bảng công thức rời rạc; mỗi họ xuất hiện như nghiệm tự nhiên của một toán tử với đối xứng và trọng số riêng. Bẫy phổ biến là học từng họ như vật thể riêng lẻ thay vì nhìn mối liên hệ giữa toán tử, điều kiện biên và tính trực giao.
+Mỗi họ hàm đặc biệt xuất hiện như hệ hàm riêng tự nhiên của một toán tử vi phân với đối xứng và trọng số xác định. Cần tránh học từng họ như những công thức tách biệt mà nên gắn chúng với mối liên hệ chung giữa toán tử, điều kiện biên và tính trực giao.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -207,23 +207,23 @@ plt.show()
 
 Phương trình Hermite
 $$ y''-2x y'+2n y=0 $$
-cho nghiệm đa thức khi $$ n $$ là số nguyên không âm. Chẳng hạn với $$ n=2 $$:
+có nghiệm đa thức khi $$ n $$ là số nguyên không âm. Chẳng hạn với $$ n=2 $$:
 $$ H_2(x)=4x^2-2. $$
-Trong cơ học lượng tử, số bậc của Hermite gắn trực tiếp với mức năng lượng.
+Trong cơ học lượng tử, bậc của đa thức Hermite tương ứng trực tiếp với mức năng lượng của dao động tử điều hòa.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Nhận diện vài họ chuẩn và môi trường vật lý xuất hiện của chúng.
+**Bậc đại học.** Nhận diện các họ đa thức chuẩn cùng miền xác định và bối cảnh vật lý đặc trưng.
 
-**Bậc sau đại học.** Kết nối với bài toán Sturm-Liouville, cơ sở trực giao có trọng số và phương pháp phổ.
+**Bậc sau đại học.** Thống nhất các họ hàm thông qua lý thuyết Sturm–Liouville, cơ sở trực giao có trọng số và phương pháp phổ.
 
 ## Video tham khảo
 
-- xem trước: [The Gamma Function, its Properties, and Application to Bessel Functions](https://www.youtube.com/watch?v=PwCl7vVyXwY) — Faculty of Khan, tiếng Anh. Hàm gamma, hàm chuẩn hóa nhiều họ trong bài này.
-- [Hermite and Laguerre Polynomials | Differential Equations](https://www.youtube.com/watch?v=1WlTe-DzO5E) — The Cynical Philosopher, tiếng Anh. Đa thức Hermite và Laguerre là các họ trực giao cổ điển còn lại.
-- [Intro to the Gamma Function](https://www.youtube.com/watch?v=c7_F4P71E2E) — Physics and Math Lectures, tiếng Anh. Tích phân gamma xuất hiện trong hệ số của các họ ấy.
+- Xem trước: [The Gamma Function, its Properties, and Application to Bessel Functions](https://www.youtube.com/watch?v=PwCl7vVyXwY) — Faculty of Khan, tiếng Anh. Giới thiệu hàm gamma — công cụ chuẩn hóa xuất hiện trong nhiều họ hàm đặc biệt của bài học.
+- [Hermite and Laguerre Polynomials | Differential Equations](https://www.youtube.com/watch?v=1WlTe-DzO5E) — The Cynical Philosopher, tiếng Anh. Trình bày đa thức Hermite và Laguerre như các họ đa thức trực giao cổ điển.
+- [Intro to the Gamma Function](https://www.youtube.com/watch?v=c7_F4P71E2E) — Physics and Math Lectures, tiếng Anh. Phân tích tích phân gamma xuất hiện trong các hệ số của những họ hàm đặc biệt.
 
 ## Tài liệu tham khảo
 
-- Boyce & DiPrima, Chương 5: giới thiệu các họ hàm đặc biệt như kết quả của phương trình vi phân cổ điển.
-- Haberman, *Applied PDEs*: đặt các hàm này vào ngữ cảnh tách biến và bài toán vật lý thực.
+- Boyce & DiPrima, Chương 5: giới thiệu các họ hàm đặc biệt xuất phát từ phương trình vi phân cổ điển.
+- Haberman, *Applied PDEs*: đặt các họ hàm đặc biệt trong bối cảnh phương pháp tách biến và bài toán vật lý.

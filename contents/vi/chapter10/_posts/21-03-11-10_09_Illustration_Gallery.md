@@ -12,15 +12,15 @@ lesson_type: optional
 
 ## Mục Đích Của Bài Hỗ Trợ
 
-Bài này gom toàn bộ minh họa của Chương 10 vào một không gian ôn tập trực quan chung. Phương trình sóng đưa sinh viên vào một thế giới PDE rất khác với phương trình nhiệt: thông tin được truyền đi thay vì bị làm mượt ngay, năng lượng được vận chuyển thay vì tiêu tán, còn hình học xuất hiện qua biên, mặt phân cách và miền lan truyền. Gallery giúp các chủ đề đó luôn hiện rõ khi chương đi từ phần suy ra mô hình đến các ứng dụng.
+Bài học này tập hợp toàn bộ hình minh họa của Chương 10 vào một không gian ôn tập trực quan chung. Phương trình sóng mở ra một bức tranh PDE khác hẳn phương trình nhiệt: thông tin được truyền đi với tốc độ hữu hạn thay vì bị làm mượt tức thì, năng lượng được vận chuyển và bảo toàn thay vì tiêu tán, còn hình học thể hiện trực tiếp qua điều kiện biên, mặt phân cách và miền lan truyền. Bộ minh họa giúp kết nối xuyên suốt các chủ đề này từ bước thiết lập mô hình đến các ứng dụng thực tế.
 
-Các bài chính phát triển công thức và phương pháp giải một cách bài bản. Bài hỗ trợ này cho phép người học nhìn toàn bộ chương trong một cái nhìn so sánh: sóng chạy đối lập với sóng dừng, truyền hữu hạn tốc độ đối lập với khuếch tán, bảo toàn năng lượng đối lập với tắt dần, và dây rung một chiều mở ra môi trường nhiều chiều. Kiểu so sánh này đặc biệt hữu ích khi khóa học bắt đầu phân biệt rõ hơn hành vi hyperbolic, parabolic và elliptic.
+Trong khi các bài chính trình bày công thức và phương pháp giải theo trình tự hệ thống, bài hỗ trợ này giúp người học đặt các khái niệm cạnh nhau để so sánh: sóng chạy và sóng dừng, lan truyền hữu hạn tốc độ và khuếch tán, bảo toàn năng lượng và tắt dần, dây rung một chiều và màng dao động nhiều chiều. Cách đối chiếu này hỗ trợ trực tiếp cho việc phân biệt hành vi của các lớp PDE hyperbolic, parabolic và elliptic.
 
 ## Cách Sử Dụng Bài Này
 
-Nên đi qua gallery theo đúng thứ tự bài học. Sau mỗi hình, hãy quay lại bài giảng tương ứng và tự hỏi hình đó đang mã hóa đặc điểm toán học nào: cân bằng lực, lan truyền theo đặc trưng, cấu trúc mode riêng, lan rộng hình học, bảo toàn năng lượng, điều kiện ghép tại mặt phân cách, hay ý nghĩa vật lý của nghiệm. Khi làm như vậy, trang này trở thành cây cầu nối giữa công thức và trực giác sóng.
+Nên xem bộ minh họa theo đúng thứ tự các bài học trong chương. Sau mỗi hình, hãy đối chiếu lại bài học tương ứng để nhận diện đặc điểm toán học đang được minh họa: cân bằng lực, lan truyền theo đường đặc trưng, cấu trúc mode riêng, sự lan rộng hình học, bảo toàn năng lượng, điều kiện ghép tại mặt phân cách hay ý nghĩa vật lý của nghiệm. Qua đó, trang này đóng vai trò cầu nối giữa công thức giải tích và trực giác sóng.
 
-Bài này cũng là một bản ôn tập tốt trước khi sang Chương 11, vì nó giúp làm rõ những đặc điểm nào là riêng của sóng lan truyền và những gì sẽ không còn xuất hiện trong bài toán elliptic.
+Đây cũng là tài liệu ôn tập hữu ích trước khi chuyển sang Chương 11, giúp làm rõ những đặc trưng riêng của bài toán sóng lan truyền so với các bài toán elliptic.
 
 ## Gallery Nhúng Trực Tiếp
 
@@ -33,9 +33,9 @@ Bài này cũng là một bản ôn tập tốt trước khi sang Chương 11, v
 
 ## Câu Hỏi Gợi Ý Khi Học
 
-1. Hình nào nhấn mạnh sự lan truyền hữu hạn tốc độ, và hình nào nhấn mạnh cấu trúc do biên hoặc hình học miền quyết định?
-2. Ở đâu ta thấy rõ nhất sự đối lập giữa hành vi sóng và khuếch tán nhiệt?
-3. Các hình ứng dụng cuối chương đã diễn giải lại cùng một cấu trúc PDE dưới những ngôn ngữ vật lý khác nhau như thế nào?
+1. Hình nào làm nổi bật tính lan truyền hữu hạn tốc độ, và hình nào làm nổi bật cấu trúc mode do biên hoặc hình học miền quyết định?
+2. Sự đối lập giữa hành vi truyền sóng và quá trình khuếch tán nhiệt thể hiện rõ nhất ở những minh họa nào?
+3. Các hình ứng dụng cuối chương đã diễn giải lại cùng một cấu trúc phương trình sóng trong các lĩnh vực vật lý khác nhau như thế nào?
 
 ## Liên Kết Tới Các Bài Học Chính
 
@@ -50,6 +50,6 @@ Bài này cũng là một bản ôn tập tốt trước khi sang Chương 11, v
 
 ## Video tham khảo
 
-- xem trước: [Solving the Wave Equation with Separation of Variables... and Guitar String Physics](https://www.youtube.com/watch?v=ywrgWRSQ3PY) — Steve Brunton, tiếng Anh. Hoạt hình dây mà bộ minh họa đang trình bày.
-- [PDE 10 | Wave equation: d'Alembert's formula](https://www.youtube.com/watch?v=j2G91naZ8bo) — commutant, tiếng Anh. Các sóng chạy của công thức d'Alembert.
-- [Phase Velocity versus Group Velocity:  Wave Dispersion](https://www.youtube.com/watch?v=EIqKG5TiSYs) — Physics Videos by Eugene Khutoryansky, tiếng Anh. Một bó sóng tán sắc để so với các khung sóng lý tưởng.
+- Xem trước: [Solving the Wave Equation with Separation of Variables... and Guitar String Physics](https://www.youtube.com/watch?v=ywrgWRSQ3PY) — Steve Brunton, tiếng Anh. Hoạt ảnh dao động dây đàn gắn trực tiếp với các hình minh họa trong bài.
+- [PDE 10 | Wave equation: d'Alembert's formula](https://www.youtube.com/watch?v=j2G91naZ8bo) — commutant, tiếng Anh. Minh họa trực quan các sóng chạy trong công thức d'Alembert.
+- [Phase Velocity versus Group Velocity:  Wave Dispersion](https://www.youtube.com/watch?v=EIqKG5TiSYs) — Physics Videos by Eugene Khutoryansky, tiếng Anh. Minh họa gói sóng tán sắc để đối chiếu với các khung hình sóng lý tưởng.

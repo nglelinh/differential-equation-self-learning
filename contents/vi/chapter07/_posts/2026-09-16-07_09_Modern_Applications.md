@@ -12,65 +12,65 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài tùy chọn này đặt bài toán biên hai điểm, trị riêng Sturm–Liouville và hàm Green cạnh mạng vật lý-thông tin và bộ giải nơ-ron biến phân. Sinh viên cần viết được mất mát PINN cho BVP, giải thích vì sao bài trị riêng khó hơn bài nguồn tuyến tính, và dùng tài liệu chế độ thất bại 2021–2024 như chẩn đoán chứ không như lý do bỏ phương pháp. Lý thuyết Sturm–Liouville của chương không bị viết lại.
+Bài học tùy chọn này đặt bài toán giá trị biên hai điểm, bài toán trị riêng Sturm–Liouville và hàm Green cạnh mạng nơ-ron tích hợp vật lý (PINN) cùng các bộ giải nơ-ron biến phân. Sinh viên cần viết được hàm mất mát PINN cho bài toán giá trị biên (BVP), giải thích vì sao bài toán trị riêng khó hơn bài toán nguồn tuyến tính và biết sử dụng các kết quả nghiên cứu giai đoạn 2021–2024 về chế độ thất bại làm công cụ chẩn đoán. Lý thuyết Sturm–Liouville cổ điển của chương vẫn là chuẩn mực kiểm chứng.
 
 ## Kiến thức nền
 
-Sinh viên cần biết điều kiện biên hai điểm, dạng tự liên hợp Sturm–Liouville, khai triển hàm riêng, và ý niệm hàm Green như nghịch đảo của toán tử vi phân.
+Sinh viên cần nắm điều kiện biên hai điểm, dạng tự liên hợp Sturm–Liouville, khai triển theo hàm riêng và ý nghĩa của hàm Green như toán tử nghịch đảo của toán tử vi phân.
 
 ## Dẫn nhập
 
-Bài toán biên đòi hỏi hàm thỏa phương trình vi phân và điều kiện tại hơn một điểm. Ràng buộc toàn cục ấy làm BVP khác IVP, và là lý do bộ giải nơ-ron ngây thơ thường thất bại: mạng có thể thỏa ODE trong miền trong vẫn trượt biên thứ hai, hoặc thỏa cả hai biên vẫn ngồi nhầm không gian riêng.
+Bài toán giá trị biên đòi hỏi nghiệm phải đồng thời thỏa phương trình vi phân bên trong miền và các điều kiện ràng buộc tại hơn một điểm biên. Tính toàn cục này làm BVP khác căn bản so với bài toán giá trị đầu (IVP) và giải thích vì sao bộ giải nơ-ron đơn giản dễ thất bại: mạng có thể thỏa tốt phương trình vi phân bên trong miền nhưng sai lệch ở biên thứ hai, hoặc thỏa cả hai biên nhưng rơi vào nhầm không gian riêng.
 
-Raissi, Perdikaris và Karniadakis (2019) đặt khuôn PINN hiện đại. Krishnapriyan, Gholami, Zhe, Kirby và Mahoney (*Characterizing possible failure modes in physics-informed neural networks*, NeurIPS 2021) rồi cho thấy các BVP đối lưu, phản ứng và tần số cao đơn giản có thể làm PINN sụp. Wang, Yu và Perdikaris phân tích bệnh gradient và độ cứng trong mất mát PINN. Cuomo và cộng sự (*J. Sci. Comput.*, 2022) khảo sát phương pháp hình thành. Hao và cộng sự (*PINNacle*, NeurIPS 2024) biến những quan sát ấy thành benchmark công khai.
+Raissi, Perdikaris và Karniadakis (2019) đã đặt nền móng cho khuôn khổ PINN hiện đại. Sau đó, Krishnapriyan, Gholami, Zhe, Kirby và Mahoney (*Characterizing possible failure modes in physics-informed neural networks*, NeurIPS 2021) chỉ ra rằng ngay cả các BVP đối lưu, phản ứng và tần số cao đơn giản cũng có thể khiến PINN thất bại. Wang, Yu và Perdikaris phân tích hiện tượng bất ổn gradient và tính cứng (stiffness) trong hàm mất mát của PINN. Cuomo và cộng sự (*J. Sci. Comput.*, 2022) khảo sát sự phát triển của phương pháp, còn Hao và cộng sự (*PINNacle*, NeurIPS 2024) hệ thống hóa các quan sát này thành một bộ kiểm chuẩn công khai.
 
-Một dòng biến phân song song, phương pháp Deep Ritz của E và Yu (2018) và các hậu duệ, cực tiểu hóa năng lượng chứ không phải phần dư mạnh và gần hơn với dạng yếu mà lý thuyết Sturm–Liouville đã dùng. Hàm Green nằm ở đầu kia: một khi toán tử đã đảo, học nghịch đảo như toán tử (DeepONet, neural operator) trở thành nhiệm vụ cấp BVP chứ không phải từng điểm.
+Song song với đó, nhánh biến phân — tiêu biểu là phương pháp Deep Ritz của E và Yu (2018) cùng các mở rộng sau này — cực tiểu hóa phiếm hàm năng lượng thay vì phần dư dạng mạnh, gần gũi hơn với dạng yếu trong lý thuyết Sturm–Liouville. Ở chiều ngược lại, quan điểm hàm Green cho thấy khi toán tử đã khả nghịch, việc học trực tiếp toán tử nghịch đảo (DeepONet, toán tử nơ-ron) sẽ giải quyết bài toán ở cấp độ toàn bộ lớp BVP thay vì từng nghiệm đơn lẻ.
 
 ## Khái niệm then chốt
 
-### Mất mát PINN cho bài hai điểm
+### Hàm mất mát PINN cho bài toán hai điểm
 
-Với $$-u''=f$$ trên $$(0,1)$$, $$u(0)=u(1)=0$$, một mất mát chuẩn là
+Với bài toán $$-u''=f$$ trên $$(0,1)$$, $$u(0)=u(1)=0$$, hàm mất mát PINN tiêu chuẩn có dạng
 
 $$
 \mathcal{L}(\theta)=\sum_i\bigl(u_\theta''(x_i)+f(x_i)\bigr)^2+\lambda\bigl(u_\theta(0)^2+u_\theta(1)^2\bigr).
 $$
 
-Trọng số $$\lambda$$ không do phương trình cho. Quá nhỏ thì mạng bỏ biên; quá lớn thì phần dư bị thiếu huấn luyện. Đánh đổi ấy là ảnh tính toán của sự thật rằng BVP là phương trình toán tử cộng ràng buộc không gian con, không phải IVP cộng phạt.
+Trọng số $$\lambda$$ không được phương trình quy định sẵn. Nếu $$\lambda$$ quá nhỏ, mạng không thỏa điều kiện biên; nếu $$\lambda$$ quá lớn, phần dư vi phân bị huấn luyện kém. Sự đánh đổi này phản ánh về mặt tính toán một thực tế toán học: BVP là phương trình toán tử trên một không gian con thỏa điều kiện biên, chứ không phải một IVP cộng thêm số hạng phạt.
 
-### Trị riêng như ẩn chung
+### Trị riêng như ẩn số đồng thời
 
-Bài trị riêng Sturm–Liouville đòi cặp $$(\lambda,u)$$. PINN phải học cả hai, thường với chuẩn hóa $$\|u\|_{L^2}=1$$ và phạt trực giao với các hàm riêng đã tìm. Không ràng buộc ấy mạng trôi về nghiệm tầm thường hoặc hỗn hợp mode. Định lý các hàm riêng trực giao của chương chính là regularization.
+Bài toán trị riêng Sturm–Liouville yêu cầu tìm đồng thời cả cặp $$(\lambda,u)$$. PINN phải học cả hai đại lượng này, thường kèm theo điều kiện chuẩn hóa $$\|u\|_{L^2}=1$$ và số hạng phạt trực giao với các hàm riêng đã tìm trước đó. Nếu thiếu các ràng buộc này, mạng dễ suy biến về nghiệm tầm thường hoặc hội tụ về tổ hợp trộn lẫn nhiều chế độ. Định lý về tính trực giao của các hàm riêng trong chương chính là cơ sở điều chuẩn (regularization) cho bài toán học.
 
 ### Hàm Green và học toán tử
 
-Nghiệm $$u(x)=\int G(x,s)f(s)\,ds$$ đã là một toán tử. Học $$G$$, hoặc học trực tiếp ánh xạ $$f\mapsto u$$, thường tái sử dụng được hơn học một $$u$$. Physics-informed DeepONet (Wang, Wang và Perdikaris, *Science Advances*, 2021) và lý thuyết neural operator của Kovachki và cộng sự (2023) đi đường ấy. Với toán tử tự liên hợp âm, nhân học được phải ra gần đối xứng — phép kiểm cụ thể sinh viên có thể làm.
+Biểu diễn nghiệm $$u(x)=\int G(x,s)f(s)\,ds$$ bản thân nó là một toán tử tích phân. Việc học hạt nhân $$G$$, hoặc học trực tiếp ánh xạ $$f\mapsto u$$, thường có khả năng tái sử dụng cao hơn việc chỉ huấn luyện cho một nghiệm $$u$$ cố định. Physics-informed DeepONet (Wang, Wang và Perdikaris, *Science Advances*, 2021) và lý thuyết toán tử nơ-ron của Kovachki và cộng sự (2023) phát triển theo hướng này. Với toán tử tự liên hợp, hạt nhân Green học được phải gần đối xứng — đây là một phép kiểm chứng trực tiếp mà sinh viên có thể thực hiện.
 
-### Các chế độ thất bại mà lý thuyết dự đoán
+### Các chế độ thất bại mà lý thuyết cổ điển đã dự báo
 
-Số Péclet cao, lớp mỏng, và dao động hàm riêng sắc tạo cùng thiên kiến phổ đã gặp ở chương chuỗi. Nhân quả ít là vấn đề hơn với BVP elliptic so với tiến hóa, nhưng analogue gần nhất là nguyên lý cực đại: mạng chìm dưới giá trị biên trên khoảng không nguồn đang phá định lý, không chỉ một số hạng mất mát. PINNacle (2024) ghi nhận các sửa phổ biến (trọng số thích nghi, phân rã miền, tái lấy mẫu theo phần dư) giúp thường xuyên thế nào, và không giúp thường xuyên thế nào.
+Số Péclet cao, lớp biên mỏng và các hàm riêng dao động nhanh đều tạo ra hiện tượng thiên kiến phổ tương tự chương chuỗi. Với BVP elliptic, tính nhân quả theo thời gian không đặt ra như ở bài toán tiến hóa, nhưng nguyên lý tương đương gần nhất là nguyên lý cực đại: một nghiệm nơ-ron nhận giá trị nhỏ hơn giá trị biên trên miền không có nguồn là đang vi phạm định lý toán học, chứ không đơn thuần là sai số tối ưu nhỏ. Bộ kiểm chuẩn PINNacle (2024) ghi nhận mức độ hiệu quả lẫn giới hạn của các kỹ thuật khắc phục phổ biến như trọng số thích nghi, phân rã miền và tái lấy mẫu theo phần dư.
 
 ## Phương pháp và kỹ thuật
 
-1. Viết dạng mạnh, toán tử biên, và nếu có, dạng năng lượng.
-2. Chọn biểu diễn: mạng thô, mạng ép cứng biên bằng nhân $$x(1-x)$$, hoặc trunk phổ các hàm riêng.
-3. Huấn luyện với phần dư và biên (hoặc năng lượng); thích nghi trọng số nếu gradient một số hạng át.
-4. Với trị riêng, thêm chuẩn hóa và deflation.
-5. Kiểm chứng bằng công cụ của chương: tích phân trực giao, đồng nhất thức Green, đếm nút của hàm riêng.
+1. Xác định dạng mạnh, toán tử biên và dạng phiếm hàm năng lượng (nếu có).
+2. Chọn biểu diễn nghiệm: mạng thông thường, mạng ép cứng điều kiện biên bằng nhân tử như $$x(1-x)$$, hoặc cơ sở thân phổ gồm các hàm riêng.
+3. Huấn luyện theo phần dư vi phân và điều kiện biên (hoặc phiếm hàm năng lượng); điều chỉnh trọng số thích nghi nếu gradient của một thành phần lấn át thành phần còn lại.
+4. Với bài toán trị riêng, bổ sung ràng buộc chuẩn hóa và cơ chế loại trừ chế độ đã tìm (deflation).
+5. Kiểm chứng kết quả bằng công cụ của chương: tích phân trực giao, đồng nhất thức Green và đếm số không điểm của hàm riêng.
 
-Ép cứng dữ liệu Dirichlet là cải tiến sơ cấp hiệu quả nhất. Đó là analogue nơ-ron của việc chọn không gian hàm đã nằm trong $$H^1_0$$.
+Ép cứng điều kiện biên Dirichlet là cải tiến cơ bản mang lại hiệu quả rõ rệt nhất, tương ứng về mặt mạng nơ-ron với việc chọn trực tiếp không gian hàm nằm sẵn trong $$H^1_0$$.
 
 ## Ví dụ
 
-### Ví dụ 1: Mã hóa biên cứng
+### Ví dụ 1: Ép cứng điều kiện biên
 
-Ansatz $$u_\theta(x)=x(1-x)n_\theta(x)$$ giải $$u(0)=u(1)=0$$ đúng. Mất mát rồi chỉ còn phần dư vi phân. Đây là thay đổi một dòng thường thắng phạt biên lớn.
+Dạng nghiệm thử $$u_\theta(x)=x(1-x)n_\theta(x)$$ tự động thỏa chính xác $$u(0)=u(1)=0$$. Khi đó hàm mất mát chỉ còn lại phần dư của phương trình vi phân — một thay đổi một dòng nhưng thường hiệu quả hơn việc dùng hệ số phạt biên lớn.
 
-### Ví dụ 2: Hàm riêng đầu của $$-u''=\lambda u$$
+### Ví dụ 2: Hàm riêng đầu tiên của $$-u''=\lambda u$$
 
-Cặp đúng là $$\lambda=\pi^2$$, $$u=\sqrt{2}\sin(\pi x)$$ trên $$(0,1)$$. PINN báo $$\lambda\approx 9.87$$ nhưng hàm riêng có hai không nội tại đã nhảy sang mode cao hơn. Đếm không là định lý dao động Sturm dùng như unit test.
+Cặp nghiệm chính xác là $$\lambda=\pi^2$$ và $$u=\sqrt{2}\sin(\pi x)$$ trên $$(0,1)$$. Nếu một PINN báo $$\lambda\approx 9.87$$ nhưng hàm riêng thu được có hai không điểm bên trong miền thì mạng đã nhảy sang chế độ bậc cao hơn. Việc đếm số không điểm chính là định lý dao động Sturm được vận dụng như một phép kiểm thử đơn vị (unit test).
 
-### Ví dụ 3: Lắp phần dư
+### Ví dụ 3: Tính phần dư bằng mã nguồn
 
 ```python
 import torch
@@ -88,37 +88,37 @@ loss = ((-d2u - f)**2).mean()
 print(float(loss))
 ```
 
-Phần dư in ra chưa phải nghiệm, nhưng cấu trúc đã tôn trọng điều kiện hai điểm.
+Giá trị phần dư in ra chưa phải nghiệm đã huấn luyện, nhưng kiến trúc mạng đã bảo đảm thỏa mãn chính xác điều kiện biên hai điểm.
 
 ## Ứng dụng
 
-Bộ giải BVP nơ-ron được dùng cho đàn hồi tham số, dòng nước ngầm, và Helmholtz khi nhiều vế phải hoặc nhiều hệ số phải đảo. PINN trị riêng xuất hiện trong nhận dạng kết cấu dao động và tìm trạng thái cơ lượng tử. Trong cả hai bối cảnh, đối tượng tái sử dụng thường là toán tử nghịch đảo, không phải một ảnh chụp — vì thế hàm Green và học toán tử thuộc cùng cuộc trò chuyện.
+Các bộ giải BVP nơ-ron được ứng dụng trong bài toán đàn hồi có tham số, dòng chảy nước ngầm và phương trình Helmholtz khi cần giải lặp lại cho nhiều vế phải hoặc nhiều cấu hình hệ số khác nhau. PINN cho bài toán trị riêng xuất hiện trong nhận dạng dao động kết cấu và tính toán trạng thái cơ học lượng tử. Trong cả hai bối cảnh, đối tượng có giá trị tái sử dụng cao là toán tử nghịch đảo chứ không phải một nghiệm đơn lẻ — đó là lý do hàm Green và học toán tử gắn kết chặt chẽ với nhau.
 
-Niềm tin kỹ thuật vẫn chạy qua các phép thử cổ điển. Mode shape học được không trực giao với mode thấp hơn, hoặc độ võng học được phá nguyên lý cực đại, phải bị loại trước khi vào vòng thiết kế.
+Độ tin cậy kỹ thuật vẫn dựa trên các tiêu chuẩn kiểm chứng cổ điển: một dạng chế độ (mode shape) học được không trực giao với các chế độ bậc thấp hơn, hoặc một trường độ võng vi phạm nguyên lý cực đại, cần bị loại bỏ trước khi đưa vào thiết kế.
 
 ## Thách thức và hướng mở rộng
 
-PINN vẫn nhạy với trọng số mất mát, lấy mẫu và kiến trúc. Helmholtz tần số cao và lớp đối lưu mạnh vẫn khó trong benchmark 2024. Phương pháp biến phân cần đúng không gian hàm và quadrature không giấu lớp biên. Nghịch đảo học toán tử cần họ huấn luyện phủ các nguồn liên quan; chúng không tạo hàm Green miễn phí. Điều kiện biên hỗn hợp và bài truyền cần phần dư giao diện mà câu chuyện hai điểm cơ bản không chứa.
+PINN vẫn nhạy với cách chọn trọng số hàm mất mát, chiến lược lấy mẫu và kiến trúc mạng. Phương trình Helmholtz tần số cao và các bài toán có lớp biên đối lưu mạnh vẫn là thách thức lớn trong các bộ kiểm chuẩn năm 2024. Phương pháp biến phân đòi hỏi không gian hàm phù hợp và phép cầu phương số đủ mịn để không bỏ sót lớp biên. Các mô hình học toán tử nghịch đảo cần tập dữ liệu huấn luyện bao phủ đầy đủ lớp hàm nguồn quan tâm chứ không tự động khôi phục được hàm Green ngoài miền huấn luyện. Ngoài ra, điều kiện biên hỗn hợp và bài toán truyền qua giao diện đòi hỏi các số hạng phần dư tại giao diện mà mô hình hai điểm cơ bản chưa đề cập.
 
-Câu hỏi phản tư: nếu phần dư PINN nhỏ nhưng đồng nhất thức Green rời rạc thất bại, lỗi nào quan trọng hơn? Chương gợi ý đồng nhất thức, vì nó mã hóa tính tự liên hợp và bảo toàn.
+Câu hỏi phản tư: nếu một PINN có phần dư vi phân nhỏ nhưng vi phạm đồng nhất thức Green rời rạc, sai số nào đáng lo ngại hơn? Lý thuyết của chương gợi ý ưu tiên kiểm tra đồng nhất thức Green, vì nó phản ánh trực tiếp tính tự liên hợp và các định luật bảo toàn của toán tử.
 
 ## Video tham khảo
 
-- xem trước: [Physics Informed Neural Networks (PINNs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=-zrY7P2dVC4) — Steve Brunton, tiếng Anh. Mạng có thông tin vật lý ép phần dư của bài toán biên, đúng phương pháp của bài.
-- [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, tiếng Anh. Bài toán Sturm-Liouville cổ điển mà các mạng ấy được yêu cầu tôn trọng.
-- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, tiếng Anh. Mạng toán tử là một cách khác để học ánh xạ nghiệm của bài toán biên.
+- Xem trước: [Physics Informed Neural Networks (PINNs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=-zrY7P2dVC4) — Steve Brunton, tiếng Anh. Giới thiệu mạng nơ-ron tích hợp vật lý áp đặt phần dư phương trình vi phân và điều kiện biên.
+- [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, tiếng Anh. Nền tảng lý thuyết Sturm–Liouville cổ điển mà các mô hình học cần tuân thủ.
+- [Deep Operator Networks (DeepONet) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=CDCyOHXDRcI) — Steve Brunton, tiếng Anh. Giới thiệu mạng học toán tử như một hướng tiếp cận khác cho ánh xạ nghiệm của bài toán giá trị biên.
 
 ## Bài tập
 
-1. **Không gian hàm trước.** Giải thích vì sao ansatz $$u=x(1-x)n(x)$$ mã hóa cứng Dirichlet nhưng không phải Neumann. Đề xuất ansatz cho $$u'(0)=u'(1)=0$$.
+1. **Ràng buộc không gian hàm từ trước.** Giải thích vì sao dạng thử $$u=x(1-x)n(x)$$ ép cứng điều kiện biên Dirichlet nhưng không ép điều kiện Neumann. Hãy đề xuất một dạng thử phù hợp cho điều kiện $$u'(0)=u'(1)=0$$.
 
-2. **Deflation.** Viết số hạng mất mát phạt chồng lấn của hàm riêng mới với $$\sin(\pi x)$$ và $$\sin(2\pi x)$$. Vì sao $$L^2$$ là tích trong tự nhiên?
+2. **Loại trừ chế độ (Deflation).** Viết số hạng hàm mất mát phạt sự chồng lấn của hàm riêng mới với $$\sin(\pi x)$$ và $$\sin(2\pi x)$$. Giải thích vì sao tích trong $$L^2$$ là lựa chọn tự nhiên.
 
-3. **Kiểm Green.** Với $$-u''=f$$, $$u(0)=u(1)=0$$, nhân là $$G(x,s)=\min(x,s)-xs$$. Làm sao thử liệu toán tử học được $$\mathcal{G}(f)$$ có gần toán tử tích phân này?
+3. **Kiểm chứng hàm Green.** Với bài toán $$-u''=f$$, $$u(0)=u(1)=0$$, hàm Green là $$G(x,s)=\min(x,s)-xs$$. Hãy đề xuất cách kiểm tra xem một toán tử học được $$\mathcal{G}(f)$$ có xấp xỉ tốt toán tử tích phân này hay không.
 
-4. **Thí nghiệm tính toán.** Huấn luyện PINN mã hóa cứng ở trên với $$f\equiv 1$$ và so $$u_\theta$$ với $$u(x)=\tfrac12 x(1-x)$$ đúng. Rồi tăng tần số lên $$f=\sin(8\pi x)$$ và ghi điều xảy ra với lỗi.
+4. **Thí nghiệm tính toán.** Huấn luyện PINN ép cứng điều kiện biên ở trên với $$f\equiv 1$$ và so sánh $$u_\theta$$ với nghiệm chính xác $$u(x)=\tfrac12 x(1-x)$$. Sau đó tăng tần số nguồn lên $$f=\sin(8\pi x)$$ và ghi nhận sự thay đổi của sai số.
 
-5. **Khám phá mở.** Đọc Krishnapriyan và cộng sự (NeurIPS 2021) hoặc bài PINNacle (2024) và liệt kê ba đặc trưng BVP làm hỏng PINN vanilla một cách hệ thống. Với mỗi đặc trưng, nêu định lý hoặc cấu trúc của chương đã dự đoán khó khăn.
+5. **Khám phá mở.** Đọc bài báo của Krishnapriyan và cộng sự (NeurIPS 2021) hoặc PINNacle (2024), liệt kê ba đặc trưng của BVP thường gây thất bại cho PINN cơ bản, và chỉ ra định lý hoặc cấu trúc nào trong chương đã dự báo trước những khó khăn đó.
 
 ## Tài liệu
 

@@ -13,37 +13,37 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giúp sinh viên hiểu điều kiện biên thuần nhất không chỉ là một giả thiết thuận tiện, mà là yếu tố quyết định hệ mode riêng của bài toán nhiệt. Sau bài học, sinh viên cần phân biệt được ba kiểu điều kiện biên cơ bản Dirichlet, Neumann và Robin, biết chúng dẫn đến các họ hàm riêng khác nhau như thế nào, và thấy được vì sao cùng một PDE nhưng biên khác nhau lại sinh ra những nghiệm hoàn toàn khác về cấu trúc.
+Bài học này giúp sinh viên hiểu rằng điều kiện biên thuần nhất không chỉ là giả thiết thuận tiện cho tính toán, mà là yếu tố trực tiếp xác định hệ mode riêng của bài toán nhiệt. Sau bài học, sinh viên cần phân biệt ba loại điều kiện biên cơ bản Dirichlet, Neumann và Robin, nắm rõ chúng dẫn đến các họ hàm riêng nào, và thấy được vì sao cùng một PDE nhưng điều kiện biên khác nhau lại cho cấu trúc nghiệm khác hẳn nhau.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm phương pháp tách biến, bài toán trị riêng Sturm-Liouville và ý nghĩa vật lý cơ bản của điều kiện biên. Đây là bài nối giữa Fourier nửa khoảng và PDE nhiệt một cách rất trực tiếp.
+Sinh viên cần nắm phương pháp tách biến, bài toán trị riêng Sturm-Liouville và ý nghĩa vật lý cơ bản của điều kiện biên. Bài học này liên kết trực tiếp khai triển Fourier nửa khoảng với bài toán truyền nhiệt.
 
 ## Dẫn nhập
 
-Khi giải phương trình nhiệt, nhiều sinh viên tập trung vào PDE ở giữa miền mà quên rằng chính biên mới quyết định tập mode nào được phép tồn tại. Nhưng với tách biến, điều kiện biên không chỉ là "dữ kiện phụ": chúng ép phần không gian $$ X(x) $$ thành một bài toán trị riêng, và do đó quyết định toàn bộ phổ của hệ.
+Khi giải phương trình nhiệt, người học thường chú ý nhiều đến phương trình bên trong miền mà ít để ý rằng chính điều kiện biên mới quyết định tập mode nào được phép tồn tại. Trong phương pháp tách biến, điều kiện biên ràng buộc phần không gian $$ X(x) $$ thành một bài toán trị riêng, qua đó quy định toàn bộ phổ của hệ.
 
-Đây là một bài học cực kỳ quan trọng về tư duy toán học: cùng một toán tử $$ u_t=\alpha^2u_{xx} $$ nhưng đổi điều kiện biên là ta đổi luôn không gian mode. Nói cách khác, biên là một phần của hệ vật lý, không phải chỉ là phần trang trí của đề bài.
+Cùng một phương trình $$ u_t=\alpha^2u_{xx} $$, chỉ cần thay đổi điều kiện biên là không gian mode đã thay đổi theo. Nói cách khác, điều kiện biên là một bộ phận cấu thành của hệ vật lý chứ không phải dữ kiện phụ kèm theo đề bài.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Hãy nghĩ đến một thanh kim loại. Nếu hai đầu bị giữ ở nhiệt độ cố định, biên đang "kéo" nhiệt độ về một mốc. Nếu hai đầu cách nhiệt, biên không cho dòng nhiệt chạy qua. Nếu biên trao đổi với môi trường, nó vừa giữ vừa cho phép rò nhiệt. Ba cơ chế vật lý này hiển nhiên phải dẫn đến ba kiểu hành vi mode khác nhau.
+Xét một thanh kim loại: nếu hai đầu được giữ ở nhiệt độ cố định, biên duy trì nhiệt độ tại hai mốc xác định; nếu hai đầu cách nhiệt, không có dòng nhiệt đi qua biên; nếu hai đầu trao đổi nhiệt với môi trường xung quanh, biên vừa cản trở vừa cho phép truyền nhiệt. Ba cơ chế vật lý khác nhau đó tất yếu dẫn đến ba dạng hành vi mode khác nhau.
 
 ### Cách nhìn hình ảnh
 
-Với Dirichlet, các mode phải chạm trục tại hai đầu, nên dạng tự nhiên là sine. Với Neumann, độ dốc tại hai đầu bằng 0, nên cosine trở nên tự nhiên. Với Robin, mode không còn đơn giản như sine hay cosine thuần, vì điều kiện ở biên là một sự pha trộn giữa giá trị và độ dốc.
+Với điều kiện Dirichlet, các mode phải triệt tiêu tại hai đầu mút nên hàm sin là lựa chọn tự nhiên. Với điều kiện Neumann, độ dốc tại hai đầu bằng 0 nên các mode có dạng hàm cos. Với điều kiện Robin, điều kiện biên kết hợp cả giá trị lẫn độ dốc, nên các mode không còn là hàm sin hay cos chuẩn với tần số bội nguyên đơn giản nữa.
 
 ### Cách nhìn hình thức
 
-Sau tách biến, bài toán không gian có dạng $$ X''+\lambda X=0 $$ với điều kiện biên tùy bài toán.
+Sau khi tách biến, bài toán không gian có dạng $$ X''+\lambda X=0 $$ kèm điều kiện biên tương ứng.
 
 Trường hợp Dirichlet:
 
 $$ X(0)=X(L)=0. $$
 
-Ta được
+Ta thu được
 
 $$
 X_n(x)=\sin\left(\frac{n\pi x}{L}\right),
@@ -55,7 +55,7 @@ Trường hợp Neumann:
 
 $$ X'(0)=X'(L)=0. $$
 
-Ta được
+Ta thu được
 
 $$
 X_0(x)=1,
@@ -73,42 +73,42 @@ X'(0)+\beta_1 X(0)=0,
 X'(L)+\beta_2 X(L)=0.
 $$
 
-Khi đó các trị riêng thường được xác định từ một phương trình siêu việt.
+Khi đó, các trị riêng thường được xác định từ một phương trình siêu việt.
 
 ## Những ngộ nhận thường gặp
 
-- "Điều kiện biên thuần nhất chỉ để tách biến dễ hơn." Sai. Nó quyết định chính hệ hàm riêng.
-- "Dirichlet, Neumann, Robin chỉ khác nhau ở ký hiệu." Không đúng; chúng mô tả ba cơ chế vật lý khác nhau.
-- "Robin chỉ là trường hợp trung gian không quan trọng." Sai; nó rất phổ biến trong trao đổi nhiệt với môi trường.
-- "Mode hằng của Neumann là chi tiết kỹ thuật." Không đúng; nó phản ánh bảo toàn nhiệt trung bình khi không có dòng qua biên.
+- "Điều kiện biên thuần nhất chỉ để việc tách biến gọn hơn." Sai; điều kiện biên xác định trực tiếp hệ hàm riêng của bài toán.
+- "Dirichlet, Neumann và Robin chỉ khác nhau về ký hiệu." Không đúng; chúng biểu diễn ba cơ chế trao đổi nhiệt khác nhau tại biên.
+- "Điều kiện Robin chỉ là trường hợp trung gian ít gặp." Sai; đây là mô hình rất phổ biến khi vật trao đổi nhiệt đối lưu với môi trường.
+- "Mode hằng trong bài toán Neumann chỉ là chi tiết kỹ thuật nhỏ." Không đúng; nó thể hiện sự bảo toàn nhiệt độ trung bình khi không có dòng nhiệt thoát qua biên.
 
 ## Tiến trình học tập đề xuất
 
 ### Bước 1: Đọc đúng điều kiện biên
 
-Sinh viên phải tập phản xạ: nhìn biên là biết loại bài toán trị riêng.
+Rèn phản xạ nhận diện loại bài toán trị riêng ngay từ dạng điều kiện biên.
 
-### Bước 2: Nối với chuỗi Fourier thích hợp
+### Bước 2: Gắn với khai triển Fourier tương ứng
 
-Dirichlet đi với sine, Neumann đi với cosine là mẫu cơ bản cần ghi nhớ.
+Ghi nhớ cặp tương ứng cơ bản: Dirichlet đi với chuỗi sin, Neumann đi với chuỗi cos.
 
-### Bước 3: Hiểu ý nghĩa vật lý của mode đặc biệt
+### Bước 3: Hiểu ý nghĩa vật lý của các mode đặc biệt
 
-Đặc biệt là mode hằng trong bài toán Neumann.
+Chú ý đặc biệt đến vai trò của mode hằng trong bài toán Neumann.
 
-### Bước 4: Chuẩn bị cho bài không thuần nhất
+### Bước 4: Chuẩn bị cho bài toán không thuần nhất
 
-Nhận ra vì sao nếu biên không thuần nhất thì ta thường cần lifting trước.
+Nhận ra lý do cần dùng hàm phụ trợ (lifting) khi điều kiện biên không thuần nhất.
 
-### Các checkpoint
+### Các điểm kiểm tra
 
-- Sinh viên có nhìn điều kiện biên và dự đoán đúng họ hàm riêng hay không.
-- Sinh viên có giải thích được vì sao Neumann cho phép mode hằng hay không.
-- Sinh viên có phân biệt được ý nghĩa vật lý của ba kiểu biên hay không.
+- Sinh viên có dự đoán đúng họ hàm riêng ngay khi đọc điều kiện biên hay không.
+- Sinh viên có giải thích được vì sao bài toán Neumann có mode hằng hay không.
+- Sinh viên có phân biệt được ý nghĩa vật lý của ba loại điều kiện biên hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Dirichlet thuần nhất
+### Ví dụ 1: Điều kiện biên Dirichlet thuần nhất
 
 Với $$ u(0,t)=u(L,t)=0 $$, bài toán không gian là
 
@@ -116,101 +116,101 @@ $$ X''+\lambda X=0,
 \qquad
 X(0)=X(L)=0. $$
 
-Nghiệm không tầm thường là
+Các hàm riêng tương ứng là
 
 $$ X_n(x)=\sin\left(\frac{n\pi x}{L}\right). $$
 
-Đây là trường hợp cơ bản nhất và dẫn trực tiếp đến sine series.
+Đây là trường hợp tiêu chuẩn dẫn trực tiếp tới chuỗi sin.
 
-### Ví dụ 2: Neumann thuần nhất
+### Ví dụ 2: Điều kiện biên Neumann thuần nhất
 
-Với $$ u_x(0,t)=u_x(L,t)=0 $$, ta có $$ X'(0)=X'(L)=0 $$. Mode riêng gồm $$ X_0(x)=1 $$ và
+Với $$ u_x(0,t)=u_x(L,t)=0 $$, ta có $$ X'(0)=X'(L)=0 $$. Hệ hàm riêng bao gồm mode hằng $$ X_0(x)=1 $$ và
 
 $$
 X_n(x)=\cos\left(\frac{n\pi x}{L}\right),\quad n\ge 1.
 $$
 
-Mode hằng có trị riêng bằng 0 và rất quan trọng về mặt vật lý: nếu không có dòng qua biên, nhiệt trung bình không tự biến mất.
+Mode hằng ứng với trị riêng $$ \lambda_0=0 $$ mang ý nghĩa vật lý rõ ràng: khi hai đầu cách nhiệt hoàn toàn, nhiệt độ trung bình của thanh được bảo toàn theo thời gian.
 
-### Ví dụ 3: Robin và trao đổi nhiệt
+### Ví dụ 3: Điều kiện biên Robin và trao đổi nhiệt
 
-Nếu đầu phải trao đổi nhiệt với môi trường, ta có thể gặp điều kiện như $$ -k u_x(L,t)=h(u(L,t)-u_\infty) $$. Sau khi đưa về dạng thuần nhất, phần không gian thỏa $$ X'(L)+\beta X(L)=0 $$. Khi đó nghiệm không còn là sine hay cosine thuần túy với trị riêng đếm được đơn giản. Ví dụ này giúp sinh viên thấy bài toán thật nhanh chóng vượt ra ngoài các mẫu quá quen.
+Nếu đầu phải trao đổi nhiệt với môi trường ở nhiệt độ $$ u_\infty $$, điều kiện biên có dạng $$ -k u_x(L,t)=h(u(L,t)-u_\infty) $$. Sau khi dịch gốc nhiệt độ về dạng thuần nhất, phần không gian thỏa mãn $$ X'(L)+\beta X(L)=0 $$. Khi đó trị riêng không còn là các bội số đơn giản của $$ (\pi/L)^2 $$ mà phải giải từ phương trình siêu việt. Ví dụ này cho thấy các bài toán thực tế nhanh chóng vượt ra khỏi hai mẫu sin và cos quen thuộc.
 
-### Ví dụ 4: Tác động lên nghiệm tổng quát
+### Ví dụ 4: Ảnh hưởng lên cấu trúc nghiệm tổng quát
 
-Với Dirichlet, nghiệm có dạng tổng sine modes. Với Neumann, nghiệm có thêm mode hằng:
+Với biên Dirichlet, nghiệm là tổng các mode sin suy giảm về 0. Với biên Neumann, nghiệm có thêm mode hằng:
 
 $$
 u(x,t)=c_0+\sum_{n=1}^{\infty}c_n e^{-\alpha^2(n\pi/L)^2t}\cos\left(\frac{n\pi x}{L}\right).
 $$
 
-Ví dụ này rất hữu ích để thấy biên thay đổi thì cả cấu trúc dài hạn của nghiệm cũng thay đổi.
+Ví dụ này minh họa rằng thay đổi điều kiện biên làm thay đổi cả hành vi dài hạn của nghiệm.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao điều kiện biên lại quyết định trực tiếp hệ mode riêng của bài toán nhiệt?
-2. Tại sao bài toán Neumann cho phép mode hằng nhưng bài toán Dirichlet thì không?
-3. Điều kiện Robin phản ánh điều gì về tương tác giữa hệ và môi trường?
+1. Vì sao điều kiện biên lại quyết định trực tiếp hệ mode riêng của bài toán truyền nhiệt?
+2. Tại sao bài toán Neumann có mode hằng còn bài toán Dirichlet thì không?
+3. Điều kiện biên Robin mô tả cơ chế tương tác nào giữa hệ và môi trường?
 
 ## Bài toán ứng dụng
 
-1. Một thanh có hai đầu giữ ở nhiệt độ 0. Vì sao dạng nghiệm tự nhiên phải bằng 0 ở hai đầu mọi thời điểm?
-2. Một thanh cách nhiệt hoàn toàn ở hai đầu. Vì sao nhiệt trung bình của thanh có thể được bảo toàn?
-3. Trong mô hình trao đổi nhiệt với không khí, vì sao điều kiện Robin hợp lý hơn Dirichlet hoặc Neumann thuần túy?
+1. Xét một thanh có hai đầu giữ ở nhiệt độ 0. Vì sao mọi mode riêng của nghiệm đều phải triệt tiêu tại hai đầu ở mọi thời điểm?
+2. Với một thanh cách nhiệt hoàn toàn ở hai đầu, vì sao nhiệt độ trung bình của thanh được bảo toàn?
+3. Khi mô hình hóa thanh kim loại trao đổi nhiệt với không khí, vì sao điều kiện Robin sát thực tế hơn điều kiện Dirichlet hoặc Neumann thuần túy?
 
 ## Chiến lược giảng dạy tương tác
 
-- Cho sinh viên nhìn ba phát biểu vật lý khác nhau rồi yêu cầu ghép với Dirichlet, Neumann, Robin.
-- Vẽ các mode đầu tiên của sine và cosine để lớp thấy bằng mắt sự khác nhau ở biên.
-- Hỏi cả lớp: "Nếu không có dòng nhiệt qua biên, mode nào sẽ không bị triệt tiêu?"
-- Tổ chức thảo luận ngắn: "Biên là dữ kiện hay là một phần của cơ chế vật lý?"
+- Đưa ra ba mô tả vật lý khác nhau và yêu cầu sinh viên ghép đúng với điều kiện Dirichlet, Neumann và Robin.
+- Vẽ các mode đầu tiên của hàm sin và hàm cos để cả lớp quan sát trực tiếp sự khác biệt tại hai đầu mút.
+- Đặt câu hỏi: "Nếu không có dòng nhiệt đi qua biên, mode nào sẽ không bị suy giảm theo thời gian?"
+- Thảo luận ngắn: điều kiện biên chỉ là dữ kiện đề bài hay là một phần cơ chế vật lý của hệ?
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên yêu cầu sinh viên lập một bảng ba cột: loại biên, ý nghĩa vật lý, họ hàm riêng. Đây là một khung nhớ rất hiệu quả và giảm nhầm lẫn đáng kể.
+Nên hướng dẫn sinh viên lập bảng đối chiếu ba cột: loại điều kiện biên, ý nghĩa vật lý và họ hàm riêng tương ứng. Cách hệ thống hóa này giúp giảm nhầm lẫn đáng kể.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể mời sinh viên khá giỏi khảo sát sơ bộ phương trình siêu việt của Robin và thảo luận cách phổ riêng thay đổi khi hệ số trao đổi nhiệt $$ h $$ tăng hoặc giảm.
+Có thể yêu cầu sinh viên khảo sát sơ bộ phương trình siêu việt của bài toán Robin và phân tích sự dịch chuyển của phổ trị riêng khi hệ số trao đổi nhiệt $$ h $$ tăng hoặc giảm.
 
 ## Tóm tắt dễ nhớ
 
-Điều kiện biên thuần nhất quyết định hệ mode riêng của phương trình nhiệt. Dirichlet dẫn đến sine, Neumann dẫn đến cosine kèm mode hằng, còn Robin mô tả trao đổi với môi trường và cho phổ riêng tinh tế hơn. Cùng một PDE nhưng biên khác thì nghiệm cũng khác về bản chất.
+Điều kiện biên thuần nhất quyết định hệ mode riêng của phương trình nhiệt: Dirichlet sinh ra chuỗi sin, Neumann sinh ra chuỗi cos kèm mode hằng, còn Robin mô tả trao đổi nhiệt với môi trường và dẫn đến phổ trị riêng từ phương trình siêu việt. Cùng một phương trình nhưng điều kiện biên khác nhau sẽ tạo ra cấu trúc nghiệm khác nhau.
 
 ## Video tham khảo
 
-- xem trước: [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Điều kiện đầu mút thuần nhất là thứ cho các mode sin khớp thanh trong nghiệm này.
-- [Deriving the Heat Equation: A Parabolic Partial Differential Equation for Heat Energy Conservation](https://www.youtube.com/watch?v=9d8PwnKVA-U) — Steve Brunton, tiếng Anh. Phép suy diễn, gồm các số hạng biên trở thành các điều kiện thuần nhất ấy.
-- [PDE 101: Separation of Variables! ...or how I learned to stop worrying and solve Laplace's equation](https://www.youtube.com/watch?v=VjWtMl6vQ3Q) — Steve Brunton, tiếng Anh. Tách biến với điều kiện biên áp lên bài toán trị riêng không gian.
+- Xem trước: [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Giải thích vai trò của điều kiện biên thuần nhất trong việc chọn các mode sin phù hợp cho thanh dẫn nhiệt.
+- [Deriving the Heat Equation: A Parabolic Partial Differential Equation for Heat Energy Conservation](https://www.youtube.com/watch?v=9d8PwnKVA-U) — Steve Brunton, tiếng Anh. Thiết lập phương trình nhiệt kèm phân tích các số hạng biên dẫn tới điều kiện biên thuần nhất.
+- [PDE 101: Separation of Variables! ...or how I learned to stop worrying and solve Laplace's equation](https://www.youtube.com/watch?v=VjWtMl6vQ3Q) — Steve Brunton, tiếng Anh. Trình bày cách tách biến với điều kiện biên áp đặt lên bài toán trị riêng không gian.
 
 ## Tài liệu tham khảo
 
-- Evans, *Partial Differential Equations* - nền tảng chuẩn cho phương trình nhiệt, nguyên lý cực đại, và hàm Green.
-- Haberman, *Applied Partial Differential Equations* - nhiều ví dụ vật lý và phương pháp tính minh họa rất rõ.
+- Evans, *Partial Differential Equations* — tài liệu chuẩn về phương trình nhiệt, nguyên lý cực đại và hàm Green.
+- Haberman, *Applied Partial Differential Equations* — cung cấp nhiều ví dụ vật lý và phương pháp giải minh họa rõ ràng.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Thanh với hai đầu giữ lạnh
-- Bài toán: Điều kiện Dirichlet thuần nhất mô tả biên cố định nhiệt độ.
+#### Thanh có hai đầu giữ cố định nhiệt độ
+- Bài toán: Điều kiện biên Dirichlet thuần nhất mô tả hai đầu thanh được giữ ở cùng một mức nhiệt độ chuẩn hóa bằng 0.
 - Mô hình:
 $$ u(0,t)=u(L,t)=0. $$
-- Giả thiết và giới hạn: Biên được "ghim" ở cùng mức chuẩn hóa.
-- Diễn giải: Cơ sở sin là hệ mode phù hợp.
+- Giả thiết và giới hạn: Nhiệt độ tại biên được giữ cố định hoàn toàn theo thời gian.
+- Diễn giải: Cơ sở sin là hệ mode tương thích.
 
-#### Thanh cách nhiệt ở đầu
-- Bài toán: Điều kiện Neumann thuần nhất mô tả không có dòng nhiệt qua biên.
+#### Thanh cách nhiệt ở hai đầu
+- Bài toán: Điều kiện biên Neumann thuần nhất mô tả trường hợp không có dòng nhiệt truyền qua biên.
 - Mô hình:
 $$ u_x(0,t)=0 \quad \text{hoặc} \quad u_x(L,t)=0. $$
-- Giả thiết và giới hạn: Biên lý tưởng không trao đổi nhiệt.
+- Giả thiết và giới hạn: Biên cách nhiệt lý tưởng, không trao đổi nhiệt với bên ngoài.
 - Diễn giải: Cơ sở cos xuất hiện tự nhiên.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Điều kiện biên quyết định hẳn cơ sở mode, không chỉ thay vài hằng số. Một bẫy phổ biến là dùng sai cơ sở sin/cos vì quên ý nghĩa vật lý của biên. Bài này là cầu nối trực tiếp giữa Fourier series và PDE.
+Điều kiện biên quyết định trực tiếp cơ sở hàm riêng chứ không chỉ thay đổi một vài hằng số trong nghiệm. Một sai sót thường gặp là chọn nhầm cơ sở sin hoặc cos do bỏ qua ý nghĩa vật lý của biên. Bài học này kết nối trực tiếp chuỗi Fourier với bài toán biên PDE.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -239,18 +239,18 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Với Dirichlet thuần nhất,
+Với điều kiện Dirichlet thuần nhất
 $$ u(0,t)=u(L,t)=0, $$
-bài toán không gian cho nghiệm
+bài toán không gian cho các hàm riêng
 $$ \phi_n(x)=\sin\left(\frac{n\pi x}{L}\right). $$
-Với Neumann thuần nhất,
+Với điều kiện Neumann thuần nhất
 $$ u_x(0,t)=u_x(L,t)=0, $$
-ta nhận
+ta thu được
 $$ \phi_n(x)=\cos\left(\frac{n\pi x}{L}\right). $$
-Đây là ví dụ rõ nhất cho việc biên quyết định phổ.
+Đây là minh họa trực tiếp cho việc điều kiện biên quyết định phổ của bài toán.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Ghép đúng điều kiện biên với cơ sở mode tương ứng.
+**Bậc đại học.** Xác định đúng cơ sở mode tương ứng với từng loại điều kiện biên.
 
-**Bậc sau đại học.** Liên hệ với Laplacian tự liên hợp dưới các miền xác định khác nhau.
+**Bậc sau đại học.** Liên hệ với tính tự liên hợp của toán tử Laplace trên các miền xác định tương ứng với từng điều kiện biên.

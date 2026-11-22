@@ -12,93 +12,83 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này trình bày lý thuyết Sturm-Liouville như khung tổ chức đẹp nhất của bài toán trị riêng vi phân. Sau bài học, sinh viên cần nhận ra dạng Sturm-Liouville, hiểu ý nghĩa của tính tự liên hợp, biết vì sao trị riêng là thực, vì sao các hàm riêng khác trị riêng thì trực giao theo trọng số, và thấy được đây là chiếc cầu nối tự nhiên giữa ODE, chuỗi Fourier tổng quát và các PDE tách biến.
+Bài học này trình bày lý thuyết Sturm–Liouville như khuôn khổ thống nhất của bài toán trị riêng vi phân. Sau bài học, sinh viên cần nhận diện được dạng Sturm–Liouville chuẩn, hiểu ý nghĩa của tính tự liên hợp, giải thích được vì sao các trị riêng là số thực và các hàm riêng ứng với trị riêng khác nhau trực giao theo trọng số, đồng thời thấy rõ cầu nối giữa ODE, chuỗi Fourier tổng quát và các PDE tách biến.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm bài toán trị riêng cơ bản, tích phân từng phần, và trực giác về cơ sở trực giao từ đại số tuyến tính hoặc chuỗi Fourier. Nếu bài 07-02 được hiểu như "một ví dụ điển hình", thì bài này là bức tranh tổng quát hóa và lý giải vì sao ví dụ đó đẹp đến vậy.
+Sinh viên nên nắm vững bài toán trị riêng cơ bản, kỹ thuật tích phân từng phần và trực giác về cơ sở trực giao từ đại số tuyến tính hoặc chuỗi Fourier. Nếu bài 07-02 đóng vai trò một ví dụ điển hình, thì bài này tổng quát hóa và giải thích cấu trúc toán học đứng sau ví dụ đó.
 
 ## Dẫn nhập
 
 ![Cấu trúc tự liên hợp của bài toán Sturm-Liouville]({{ site.imgurl }}/chapter_img/chapter07/03_sturm_liouville_theory.svg)
 
-Khi mới gặp bài toán trị riêng, sinh viên thường nghĩ rằng ta chỉ đang giải một vài BVP có tham số. Nhưng càng học, ta càng nhận ra phía sau những bài toán ấy có một cấu trúc chung rất mạnh: một toán tử vi phân tự liên hợp, một trọng số dương, một phổ trị riêng thực và một họ hàm riêng trực giao. Tên gọi cho cấu trúc đó là lý thuyết Sturm-Liouville.
+Đằng sau nhiều bài toán trị riêng có tham số trong vật lý toán tồn tại một cấu trúc chung rất chặt chẽ: một toán tử vi phân tự liên hợp, một hàm trọng số dương, một phổ trị riêng thực và một hệ hàm riêng trực giao. Lý thuyết mô tả cấu trúc tổng quát đó gọi là **lý thuyết Sturm–Liouville**.
 
-Giá trị của bài này không nằm ở việc ghi nhớ một công thức, mà ở việc giúp sinh viên nhìn thấy toàn bộ chương dưới một ngôn ngữ thống nhất. Từ đây, Bessel, Legendre, chuỗi Fourier tổng quát và khai triển hàm riêng đều bắt đầu nối với nhau rất tự nhiên.
+Nhờ lý thuyết này, các kết quả về hàm Bessel, đa thức Legendre, chuỗi Fourier tổng quát và khai triển theo hàm riêng được đặt vào cùng một hệ thống thống nhất thay vì tách rời từng công thức.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Trong đại số tuyến tính, ma trận đối xứng là "ngoan": trị riêng thực, vector riêng trực giao, phép khai triển rất đẹp. Sturm-Liouville là phiên bản vô hạn chiều của câu chuyện đó. Toán tử vi phân tự liên hợp đóng vai trò của ma trận đối xứng, còn hàm riêng đóng vai trò của vector riêng.
+Trong đại số tuyến tính, ma trận đối xứng thực có cấu trúc phổ rất đẹp: mọi trị riêng đều thực, các vector riêng ứng với trị riêng khác nhau trực giao và lập thành cơ sở trực giao. Lý thuyết Sturm–Liouville là phiên bản vô hạn chiều của kết quả đó, trong đó toán tử vi phân tự liên hợp đóng vai trò ma trận đối xứng và các hàm riêng đóng vai trò vector riêng.
 
 ### Cách nhìn hình ảnh
 
-Nếu vẽ các hàm riêng đầu tiên của một bài toán Sturm-Liouville, ta thường thấy chúng có số nút tăng dần và "không lẫn" nhau theo nghĩa trực giao. Khi lấy tích có trọng số rồi tích phân, hai mode khác nhau triệt tiêu lẫn nhau. Hình ảnh này giúp sinh viên hiểu trực giao của hàm không chỉ là ký hiệu mà là một dạng độc lập hình học giữa các mode.
+Khi vẽ các hàm riêng đầu tiên của một bài toán Sturm–Liouville, số không điểm (nút) bên trong miền tăng dần theo bậc trị riêng và các chế độ này không giao thoa lẫn nhau theo nghĩa tích phân có trọng số. Tích phân có trọng số của hai chế độ khác nhau triệt tiêu hoàn toàn, thể hiện tính độc lập hình học giữa các chế độ.
 
 ### Cách nhìn hình thức
 
-Dạng Sturm-Liouville chuẩn là
+Bài toán Sturm–Liouville dạng chuẩn có phương trình
 
 $$ -(p(x)y')'+q(x)y=\lambda w(x)y,
 \qquad a<x<b, $$
 
-với
+với $$ p(x)>0 $$, $$ w(x)>0 $$ cùng các điều kiện biên thuần nhất tách biệt thích hợp. Do tính tự liên hợp của toán tử, bài toán Sturm–Liouville chính quy có các tính chất nền tảng sau:
 
-$$ p(x)>0,
-\qquad
-w(x)>0, $$
-
-và các điều kiện biên thích hợp. Khi toán tử là tự liên hợp, ta có các tính chất then chốt:
-
-- Mọi trị riêng đều là số thực.
-- Các hàm riêng ứng với trị riêng khác nhau trực giao theo trọng số
-
-$$ w(x). $$
-- Trong nhiều trường hợp tốt, các hàm riêng tạo thành một hệ đầy đủ để khai triển hàm.
+- Mọi trị riêng đều là số thực và lập thành một dãy tăng dần ra vô cực.
+- Các hàm riêng ứng với các trị riêng khác nhau trực giao theo hàm trọng số $$ w(x) $$.
+- Hệ các hàm riêng tạo thành một cơ sở đầy đủ để khai triển hàm trong không gian $$ L^2_w(a,b) $$.
 
 ## Những ngộ nhận thường gặp
 
-- "Sturm-Liouville chỉ là một dạng viết khác." Sai. Dạng viết đó làm lộ ra tính tự liên hợp và kéo theo toàn bộ cấu trúc phổ.
-- "Trọng số chỉ là hệ số kỹ thuật." Không đúng. Trọng số quyết định tích vô hướng tự nhiên của bài toán.
-- "Trực giao chỉ là phép tính tình cờ." Sai. Nó là hệ quả sâu của tự liên hợp và điều kiện biên.
-- "Bài toán này quá trừu tượng, ít liên hệ vật lý." Sai. Hầu hết các mode vật lý cổ điển đều đi qua ngôn ngữ Sturm-Liouville.
+- "Dạng Sturm–Liouville chỉ là cách viết lại hình thức." Sai. Dạng viết này làm lộ rõ tính tự liên hợp — yếu tố quyết định toàn bộ tính chất phổ.
+- "Hàm trọng số $$ w(x) $$ chỉ là hệ số phụ." Sai. Nó xác định trực tiếp tích vô hướng tự nhiên của bài toán.
+- "Tính trực giao chỉ là kết quả tính toán tình cờ." Sai. Nó là hệ quả trực tiếp của tính tự liên hợp và điều kiện biên.
+- "Lý thuyết này quá trừu tượng, ít gắn với vật lý." Sai. Hầu hết các bài toán chế độ riêng trong cơ học, nhiệt học và cơ học lượng tử đều thuộc khung Sturm–Liouville.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Nhìn lại ví dụ trị riêng cơ bản
+### Bước 1: Nhìn lại bài toán trị riêng cơ bản
 
-Từ bài dây đàn, hỏi điều gì đã làm cho cấu trúc đó đẹp và ổn định.
+Xuất phát từ bài toán dây đàn để tìm hiểu cơ chế tạo nên tính thực của trị riêng và tính trực giao của hàm sin.
 
-### Bước 2: Nhận dạng dạng tự liên hợp
+### Bước 2: Đưa phương trình về dạng tự liên hợp
 
-Sinh viên cần biết chuyển bài toán về dạng
+Luyện cách biến đổi phương trình vi phân cấp hai về dạng chuẩn $$ -(py')'+qy=\lambda wy $$ (nhân thừa số tích phân nếu cần).
 
-$$ -(py')'+qy=\lambda wy. $$
+### Bước 3: Nắm khái niệm tích vô hướng có trọng số
 
-### Bước 3: Hiểu tích vô hướng có trọng số
+Liên hệ tích phân có trọng số $$ w(x) $$ với tích vô hướng trong đại số tuyến tính.
 
-Đây là chỗ nhiều em thấy lạ, nhưng thực ra rất gần đại số tuyến tính.
+### Bước 4: Chứng minh tính trực giao bằng tích phân từng phần
 
-### Bước 4: Chứng minh trực giao bằng tích phân từng phần
+Thực hiện cẩn thận phép tích phân từng phần (đồng nhất thức Lagrange) và thấy vai trò của điều kiện biên trong việc triệt tiêu các số hạng biên.
 
-Đây là điểm then chốt và nên dạy chậm.
+### Bước 5: Diễn giải các hệ quả phổ
 
-### Bước 5: Diễn giải hệ quả phổ
+Ghi nhớ bộ tính chất cốt lõi: trị riêng thực, hàm riêng trực giao và thứ tự tăng dần của số nút.
 
-Nhấn mạnh trị riêng thực, hàm riêng trực giao, và thứ tự mode.
+### Các điểm kiểm tra
 
-### Các checkpoint
-
-- Sinh viên có nhận ra được trọng số của bài toán hay không.
-- Sinh viên có giải thích được vì sao tự liên hợp gợi liên tưởng đến ma trận đối xứng hay không.
-- Sinh viên có tự trình bày được ý tưởng chứng minh trực giao hay không.
+- Sinh viên có xác định đúng hàm trọng số $$ w(x) $$ của bài toán hay không.
+- Sinh viên có giải thích được sự tương đồng giữa toán tử tự liên hợp và ma trận đối xứng thực hay không.
+- Sinh viên có tự trình bày được chứng minh tính trực giao của hai hàm riêng hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Bài toán sin cổ điển dưới dạng Sturm-Liouville
+### Ví dụ 1: Bài toán sin cổ điển dưới dạng Sturm–Liouville
 
-Xét
+Xét bài toán
 
 $$ y''+\lambda y=0,
 \qquad
@@ -106,109 +96,102 @@ y(0)=0,
 \qquad
 y(L)=0. $$
 
-Viết lại:
+Viết lại dưới dạng chuẩn:
 
-$$ -y''=\lambda y. $$
+$$ -y''=\lambda y, $$
 
-Ở đây
+tương ứng với $$ p(x)=1 $$, $$ q(x)=0 $$ và $$ w(x)=1 $$. Đây là trường hợp Sturm–Liouville đơn giản nhất, khẳng định rằng chuỗi Fourier sin là một trường hợp riêng của lý thuyết tổng quát.
 
-$$ p(x)=1,
-\qquad
-q(x)=0,
-\qquad
-w(x)=1. $$
+### Ví dụ 2: Chứng minh tính trực giao của hai hàm riêng
 
-Đây là ví dụ Sturm-Liouville đơn giản nhất. Bài này nên được dùng để khẳng định với sinh viên rằng chuỗi Fourier sin không đứng riêng lẻ; nó là một trường hợp của lý thuyết tổng quát hơn.
+Giả sử $$ \phi_m $$ và $$ \phi_n $$ lần lượt là hàm riêng ứng với hai trị riêng $$ \lambda_m $$ và $$ \lambda_n $$:
 
-### Ví dụ 2: Chứng minh trực giao cho hai hàm riêng
+$$ -(p\phi_m')'+q\phi_m=\lambda_m w\phi_m,\qquad -(p\phi_n')'+q\phi_n=\lambda_n w\phi_n. $$
 
-Giả sử $$ \phi_m $$ và $$ \phi_n $$ thỏa $$ -(p\phi_m')'+q\phi_m=\lambda_m w\phi_m $$, $$ -(p\phi_n')'+q\phi_n=\lambda_n w\phi_n. $$
-
-Nhân phương trình đầu với $$ \phi_n $$ và phương trình sau với $$ \phi_m $$, rồi trừ đi. Sau khi tích phân trên $$ [a,b] $$ và dùng tích phân từng phần, các hạng biên biến mất nhờ điều kiện biên, ta được
+Nhân phương trình thứ nhất với $$ \phi_n $$, phương trình thứ hai với $$ \phi_m $$, trừ vế theo vế rồi lấy tích phân trên $$ [a,b] $$. Áp dụng tích phân từng phần, các số hạng tại biên triệt tiêu nhờ điều kiện biên, thu được:
 
 $$
 (\lambda_m-\lambda_n)\int_a^b \phi_m(x)\phi_n(x)w(x)\,dx=0.
 $$
 
-Nếu $$ \lambda_m\ne \lambda_n $$, suy ra
+Khi $$ \lambda_m\ne \lambda_n $$, suy ra ngay:
 
 $$ \int_a^b \phi_m(x)\phi_n(x)w(x)\,dx=0. $$
 
-Đây là phép tính ngắn nhưng là trái tim của cả chương.
+Phép chứng minh ngắn gọn này là hạt nhân lý thuyết của cả chương.
 
-### Ví dụ 3: Vai trò của trọng số
+### Ví dụ 3: Vai trò của hàm trọng số
 
-Xét một bài toán có dạng
+Xét bài toán có dạng
 
 $$ -(xy')'=\lambda x y,
 \qquad 0<x<1. $$
 
-Ở đây trọng số là $$ w(x)=x $$. Điều này nghĩa là trực giao đúng phải là
+Ở đây hàm trọng số là $$ w(x)=x $$, nên điều kiện trực giao đúng phải là
 
 $$ \int_0^1 \phi_m(x)\phi_n(x)x\,dx=0, $$
 
-không phải tích phân thông thường không trọng số. Ví dụ này cực kỳ quan trọng vì nhiều sinh viên hay quên mất trọng số khi chuyển từ công thức sang thực hành.
+chứ không phải tích phân không có trọng số. Ví dụ này giúp tránh sai sót phổ biến khi bỏ quên trọng số trong khai triển hàm riêng.
 
-### Ví dụ 4: Liên hệ với Bessel và Legendre
+### Ví dụ 4: Liên hệ với phương trình Bessel và Legendre
 
-Sau khi biến đổi thích hợp, phương trình Legendre và nhiều phương trình vật lý cổ điển đều rơi vào khung Sturm-Liouville. Ví dụ này không cần tính chi tiết nhiều, nhưng nên dùng để sinh viên thấy rằng chương trước và chương này đang ghép thành một hệ thống thống nhất.
+Sau khi đưa về dạng tự liên hợp, phương trình Legendre, phương trình Bessel và nhiều phương trình đặc biệt ở Chương 06 đều nằm gọn trong khuôn khổ Sturm–Liouville. Điều này gắn kết Chương 06 và Chương 07 thành một hệ thống thống nhất.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao tính tự liên hợp của toán tử vi phân lại giống vai trò của ma trận đối xứng trong đại số tuyến tính?
-2. Tại sao trực giao giữa các hàm riêng khác trị riêng lại là một tính chất cực kỳ quan trọng?
-3. Vai trò của trọng số $$ w(x) $$ trong lý thuyết Sturm-Liouville là gì?
+1. Tính tự liên hợp của toán tử vi phân tương ứng như thế nào với tính đối xứng của ma trận trong đại số tuyến tính?
+2. Vì sao tính trực giao giữa các hàm riêng ứng với trị riêng phân biệt lại có giá trị thực tiễn lớn?
+3. Hàm trọng số $$ w(x) $$ đóng vai trò gì trong cấu trúc của bài toán Sturm–Liouville?
 
 ## Bài toán ứng dụng
 
-1. Trong bài toán truyền nhiệt hoặc dao động, vì sao việc có một họ mode trực giao lại giúp ta giải bài toán hiệu quả hơn rất nhiều?
-2. Một mô hình vật lý tạo ra phương trình với hệ số biến thiên. Hãy giải thích vì sao việc đưa bài toán về dạng Sturm-Liouville lại có giá trị lớn.
-3. Trong các hệ dao động, vì sao các mode khác nhau thường được xem là "độc lập năng lượng" theo một nghĩa thích hợp?
+1. Trong bài toán truyền nhiệt hoặc dao động, vì sao việc sở hữu một họ chế độ trực giao giúp giải bài toán thuận lợi hơn nhiều?
+2. Khi một mô hình vật lý dẫn tới phương trình có hệ số biến thiên, việc viết lại phương trình dưới dạng Sturm–Liouville mang lại lợi ích gì?
+3. Trong các hệ dao động cơ học, vì sao các chế độ riêng khác nhau được xem là độc lập về mặt năng lượng?
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng câu hỏi: "Ma trận đối xứng đẹp ở điểm nào, và nếu thay ma trận bằng toán tử vi phân thì điều gì còn giữ lại?"
-- Cho sinh viên tự điền bảng tương ứng giữa đại số tuyến tính và Sturm-Liouville: vector riêng, hàm riêng, tích vô hướng, trọng số, trực giao.
-- Dừng thật lâu ở phép tích phân từng phần sinh ra trực giao; đây là khoảnh khắc bản chất nhất của bài.
-- Mời sinh viên giải thích bằng lời vì sao điều kiện biên làm cho các hạng biên biến mất.
+- Đặt câu hỏi mở đầu: ma trận đối xứng thực có những tính chất phổ nổi bật nào, và điều gì được bảo toàn khi chuyển sang toán tử vi phân?
+- Cho sinh viên lập bảng đối chiếu giữa đại số tuyến tính và Sturm–Liouville: vector riêng – hàm riêng, tích vô hướng – tích phân có trọng số, tính đối xứng – tính tự liên hợp.
+- Phân tích chậm bước tích phân từng phần trong chứng minh trực giao để làm rõ vai trò triệt tiêu số hạng biên của điều kiện biên.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên giữ chặt liên hệ với đại số tuyến tính và chuỗi Fourier. Khi thấy cái mới chỉ là cái cũ ở không gian hàm, sinh viên sẽ bớt ngợp rất nhiều.
+Nên duy trì sự đối chiếu liên tục với đại số tuyến tính và chuỗi Fourier quen thuộc để giảm cảm giác trừu tượng khi làm việc trong không gian hàm.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể yêu cầu sinh viên khá giỏi khảo sát thêm ý tưởng đầy đủ của hệ hàm riêng hoặc liên hệ với nguyên lý cực trị cho trị riêng nhỏ nhất. Đây là bước chuẩn bị tốt cho các chương PDE và giải tích hàm sau này.
+Có thể yêu cầu sinh viên tìm hiểu thêm về tính đầy đủ của hệ hàm riêng hoặc nguyên lý cực trị Rayleigh–Ritz cho trị riêng nhỏ nhất — bước chuẩn bị tốt cho giải tích hàm và PDE.
 
 ## Tóm tắt dễ nhớ
 
-Lý thuyết Sturm-Liouville là phiên bản vô hạn chiều của ma trận đối xứng. Dạng tự liên hợp kéo theo trị riêng thực, hàm riêng trực giao theo trọng số, và mở đường cho việc khai triển hàm theo các mode riêng phù hợp với toán tử và điều kiện biên của bài toán.
+Lý thuyết Sturm–Liouville là phiên bản vô hạn chiều của lý thuyết phổ cho ma trận đối xứng thực. Dạng tự liên hợp kết hợp điều kiện biên thích hợp bảo đảm các trị riêng thực, các hàm riêng trực giao theo hàm trọng số $$ w(x) $$ và mở đường cho khai triển hàm theo hệ hàm riêng.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Dao động dây không đồng nhất
-- Bài toán: Dây có mật độ thay đổi theo vị trí, nên bài toán mode tự nhiên có trọng số.
+- Bài toán: Dây có mật độ khối lượng thay đổi theo vị trí dẫn đến bài toán chế độ riêng có hàm trọng số.
 - Mô hình:
 $$ -(p(x)y')'+q(x)y=\lambda w(x)y. $$
-- Giả thiết và giới hạn: Hệ tuyến tính, biên chính quy, trọng số dương.
-- Diễn giải: Sturm-Liouville nói với ta rằng trị riêng là thực, hàm riêng trực giao và tạo nên cơ sở mode.
+- Giả thiết và giới hạn: Hệ tuyến tính, điều kiện biên chính quy, $$ p(x)>0 $$ và $$ w(x)>0 $$.
+- Diễn giải: Lý thuyết Sturm–Liouville bảo đảm trị riêng thực và các chế độ dao động trực giao theo trọng số mật độ.
 
-#### Truyền nhiệt hay khuếch tán với hệ số biến thiên
-- Bài toán: Tách biến phương trình nhiệt với vật liệu không đồng nhất dẫn đến toán tử tự liên hợp.
+#### Truyền nhiệt hoặc khuếch tán trong môi trường không đồng nhất
+- Bài toán: Tách biến phương trình nhiệt với hệ số dẫn nhiệt phụ thuộc vị trí dẫn tới toán tử tự liên hợp.
 - Mô hình:
 $$
 \frac{d}{dx}\left(p(x)\frac{dy}{dx}\right)+(\lambda w(x)-q(x))y=0.
 $$
-- Giả thiết và giới hạn: Tách biến và điều kiện biên thích hợp.
-- Diễn giải: Tính tự liên hợp là lý do các mode có tính trực giao và phổ đẹp.
+- Giả thiết và giới hạn: Bài toán tách biến được với điều kiện biên thích hợp.
+- Diễn giải: Tính tự liên hợp bảo đảm phổ thực và tính trực giao của các chế độ truyền nhiệt.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Sturm-Liouville là nơi bài toán trị riêng được đặt vào khung toán tử rất có cấu trúc. Tự liên hợp chính là nguyên nhân sâu xa của phổ thực và trực giao. Một bẫy phổ biến là học định lý như danh sách tính chất mà không thấy rằng các tính chất ấy đều đến từ phép tích phân từng phần và điều kiện biên.
+Lý thuyết Sturm–Liouville đặt các bài toán trị riêng vào một khung toán tử có cấu trúc chặt chẽ. Thay vì học thuộc danh sách các tính chất rời rạc, cần nắm rõ nguồn gốc chung của chúng: phép tích phân từng phần kết hợp với điều kiện biên thuần nhất.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -239,27 +222,27 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Với bài toán đơn giản
+Với bài toán trị riêng cơ bản
 $$ y''+\lambda y=0,\qquad y(0)=y(L)=0, $$
-hàm riêng là
-$$ \phi_n(x)=\sin\left(\frac{n\pi x}{L}\right). $$
-Ta có tính trực giao:
+các hàm riêng là
+$$ \phi_n(x)=\sin\left(\frac{n\pi x}{L}\right) $$
+thỏa mãn tính trực giao
 $$ \int_0^L \phi_m(x)\phi_n(x)\,dx=0\qquad (m\ne n). $$
-Đây là ví dụ cốt lõi cho cơ chế trực giao trong Sturm-Liouville.
+Đây là minh họa trực quan nhất cho cơ chế trực giao trong lý thuyết Sturm–Liouville.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Nắm dạng chuẩn, phổ thực và trực giao của hàm riêng.
+**Bậc đại học.** Nắm dạng chuẩn Sturm–Liouville, tính thực của trị riêng và tính trực giao có trọng số của hàm riêng.
 
-**Bậc sau đại học.** Bàn về toán tử tự liên hợp, không gian Hilbert có trọng số và định lý phổ.
+**Bậc sau đại học.** Nghiên cứu toán tử tự liên hợp, không gian Hilbert có trọng số $$ L^2_w $$ và định lý phổ.
 
 ## Video tham khảo
 
-- xem trước: [Sturm-Liouville Theorem and Proof](https://www.youtube.com/watch?v=_F0ck1JncLE) — Faculty of Khan, tiếng Anh. Dạng tự liên hợp, trị riêng thực và hàm riêng trực giao.
-- [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, tiếng Anh. Một bài đầy đủ phát triển lý thuyết từ biểu thức vi phân.
-- [Sturm-Liouville Theory](https://www.youtube.com/watch?v=12d15vI52b8) — Nathan Kutz, tiếng Anh. Tổng quan tính toán và lý thuyết của Nathan Kutz.
+- Xem trước: [Sturm-Liouville Theorem and Proof](https://www.youtube.com/watch?v=_F0ck1JncLE) — Faculty of Khan, tiếng Anh. Trình bày dạng tự liên hợp, trị riêng thực và tính trực giao của hàm riêng.
+- [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, tiếng Anh. Phát triển đầy đủ lý thuyết Sturm–Liouville từ toán tử vi phân.
+- [Sturm-Liouville Theory](https://www.youtube.com/watch?v=12d15vI52b8) — Nathan Kutz, tiếng Anh. Tổng quan lý thuyết và tính toán về Sturm–Liouville.
 
 ## Tài liệu tham khảo
 
-- Boyce & DiPrima, Chương 11: trình bày khung Sturm-Liouville, trọng số và trực giao hàm riêng.
-- Haberman, Chương 5: giải thích trực giác của toán tử tự liên hợp trong các bài toán vật lý cổ điển.
+- Boyce & DiPrima, Chương 11: trình bày khuôn khổ Sturm–Liouville, trọng số và tính trực giao hàm riêng.
+- Haberman, Chương 5: giải thích trực giác về toán tử tự liên hợp trong các bài toán vật lý cổ điển.

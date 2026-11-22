@@ -10,66 +10,66 @@ categories:
 ---
 
 ## Mục tiêu
-Bài này giải thích cách phương trình Laplace, phương trình Poisson và lý thuyết thế cổ điển phát triển từ cơ học thiên thể, điện tĩnh và dòng chảy chất lưu. Sinh viên nên thấy Chương 11 là một nơi gặp gỡ lịch sử của hình học, vật lý và giải tích.
+Bài này trình bày quá trình hình thành và phát triển của phương trình Laplace, phương trình Poisson và lý thuyết thế cổ điển từ cơ học thiên thể, tĩnh điện và cơ học chất lưu. Qua đó, sinh viên có thể nhìn nhận Chương 11 như điểm giao thoa lịch sử giữa hình học, vật lý và giải tích.
 
 ## Kiến thức nền
-Sinh viên nên nắm nội dung giải tích chính của Chương 11: tách biến, tọa độ cực, hàm điều hòa, hàm Green, ứng dụng điện tĩnh và dòng chảy thế.
+Sinh viên cần nắm các nội dung giải tích chính của Chương 11: phương pháp tách biến, tọa độ cực, hàm điều hòa, hàm Green, cùng các ứng dụng trong tĩnh điện và dòng chảy thế.
 
 ## Câu chuyện mở màn
-Nottingham, năm 1828. George Green, khi ấy vẫn còn là một người thợ xay sống xa trung tâm học thuật, đang suy nghĩ về điện thế và lực hút như những đại lượng vô hình nhưng rất có trật tự. Xung đột ông gặp phải là thế này: làm sao mô tả một trường không nhìn thấy bằng một phương trình đủ cứng để dự đoán được điều gì xảy ra bên trong miền chỉ từ dữ liệu ở biên hoặc từ phân bố nguồn.
+Tại Nottingham năm 1828, George Green — khi ấy vẫn là một người thợ xay làm việc xa các trung tâm học thuật — suy tư về điện thế và lực hút như những đại lượng không nhìn thấy được nhưng tuân theo cấu trúc chặt chẽ. Vấn đề ông đối mặt là làm sao mô tả một trường vô hình bằng một phương trình đủ chặt để xác định hành vi bên trong miền chỉ từ dữ liệu trên biên hoặc từ phân bố nguồn.
 
-Trong vùng không có điện tích, thế điện thỏa $$\Delta u = 0$$. Điều đó có nghĩa là giá trị của $$u$$ ở bên trong bị ràng buộc mạnh bởi những gì xảy ra trên biên. Ví dụ, nếu ta biết điện thế trên bề mặt một vật dẫn, thì nghiệm harmonic bên trong không được tùy tiện tạo ra cực đại mới. Chính từ kiểu câu hỏi ấy mà hàm Green, lý thuyết thế và các phương trình Laplace-Poisson trưởng thành. Chương 11 vì vậy có sức hút riêng: nó kể câu chuyện của những hiện tượng “đứng yên” nhưng lại chứa một hình học nội tại rất sâu.
+Trong vùng không có điện tích, điện thế thỏa mãn $$\Delta u = 0$$. Điều này có nghĩa là giá trị của $$u$$ bên trong miền bị ràng buộc chặt bởi giá trị trên biên. Chẳng hạn, khi đã biết điện thế trên bề mặt một vật dẫn, nghiệm điều hòa bên trong không thể tự tạo ra cực đại mới. Chính từ những câu hỏi như vậy mà hàm Green, lý thuyết thế và cặp phương trình Laplace–Poisson phát triển. Nhờ đó, Chương 11 mang sắc thái riêng: khảo sát những trạng thái cân bằng tưởng chừng tĩnh lặng nhưng ẩn chứa cấu trúc hình học nội tại sâu sắc.
 
 ## Mạch truyện lớn
-Mạch truyện của chương chạy từ hấp dẫn Newton, điện học của Coulomb, Green, Gauss và Maxwell đến lý thuyết hiện đại về harmonic functions. Một bên là vật lý trường, nơi thế năng và điện thế là đối tượng tự nhiên. Bên kia là giải tích, nơi các nguyên lý cực trị, hàm Green và bài toán biên dần hình thành.
+Mạch phát triển của chương trải dài từ thuyết vạn vật hấp dẫn của Newton, điện học của Coulomb, Green, Gauss và Maxwell đến lý thuyết hiện đại về hàm điều hòa. Một nhánh xuất phát từ vật lý trường, nơi thế năng và điện thế là các đối tượng tự nhiên; nhánh kia thuộc về giải tích, nơi các nguyên lý cực trị, hàm Green và lý thuyết bài toán biên dần được xây dựng.
 
-Câu chuyện này đẹp ở chỗ nó cho thấy phương trình elliptic ít ồn ào hơn phương trình sóng hay nhiệt, nhưng không hề kém sâu. Chính sự im lặng về thời gian khiến hình học của miền và ảnh hưởng của biên trở thành toàn bộ câu chuyện.
+Điểm đáng chú ý của lịch sử này là các phương trình elliptic tuy không mô tả sự tiến hóa theo thời gian như phương trình sóng hay phương trình nhiệt, nhưng cấu trúc toán học của chúng không hề kém phần sâu sắc. Chính việc không phụ thuộc vào thời gian khiến hình học của miền và tác động của biên trở thành yếu tố trung tâm.
 
-Hãy hình dung Green bên cạnh cối xay ở Nottingham, nghĩ về một vật dẫn cô lập trong không khí tĩnh điện. Nếu thế trên bề mặt đã được giữ cố định, đồng nhất thức của ông nói rằng mọi điểm bên trong đều “nói chuyện” với biên qua một nhân Green: giá trị tại một điểm không tự do, mà được viết lại từ dữ liệu trên mặt và từ nguồn bên trong. Đó cũng chính là ý tưởng giá trị trung bình được kể bằng ngôn ngữ của một người thợ xay. Điện thế ở tâm một quả cầu không thể cao hơn mọi điểm trên mặt cầu, vì nếu không thì trường sẽ tự tạo ra một cực trị giữa miền trống. Cảnh ấy làm cho nguyên lý cực đại và hàm Green bớt trừu tượng: chúng là cách toán học viết lại một sự thật rất vật lý, rằng nội thất của một miền cân bằng bị biên cầm nắm.
+Có thể hình dung Green bên cối xay gió ở Nottingham khi ông xét một vật dẫn cô lập trong không gian tĩnh điện. Nếu điện thế trên bề mặt đã được cố định, các đồng nhất thức của ông cho thấy mọi điểm bên trong đều liên hệ trực tiếp với biên thông qua một nhân Green: giá trị tại một điểm không thể chọn tùy ý, mà được biểu diễn từ dữ liệu trên bề mặt và từ phân bố nguồn bên trong. Đó cũng là tinh thần của tính chất giá trị trung bình: điện thế tại tâm một hình cầu không thể lớn hơn mọi điểm trên mặt cầu, bởi nếu ngược lại thì trường sẽ tự phát sinh một cực trị giữa vùng trống không có nguồn. Hình ảnh này giúp nguyên lý cực đại và hàm Green trở nên cụ thể hơn: chúng diễn đạt bằng ngôn ngữ toán học một sự thật vật lý rằng trạng thái bên trong của một miền cân bằng hoàn toàn chịu sự chi phối của biên.
 
 ## Chủ đề này phát sinh từ đâu, giải quyết vấn đề gì, và ai đã vướng ở đâu?
-**Nguồn gốc.** Chủ đề này mọc lên từ hấp dẫn Newton, điện học thế kỷ XVIII-XIX, thế năng, dòng chảy và trạng thái dừng của nhiệt. Laplace, Poisson, Green, Gauss và Maxwell đều gặp cùng một loại đối tượng: một trường vô hình nhưng có cấu trúc hình học rất cứng trong không gian.
+**Nguồn gốc.** Chủ đề này xuất phát từ cơ học thiên thể của Newton, điện học thế kỷ XVIII–XIX, lý thuyết thế năng, dòng chảy chất lưu và trạng thái nhiệt dừng. Laplace, Poisson, Green, Gauss và Maxwell đều gặp cùng một đối tượng: một trường không nhìn thấy trực tiếp nhưng mang cấu trúc hình học chặt chẽ trong không gian.
 
-**Bài toán họ đang cố giải.** Họ muốn biết nguồn và điều kiện biên quyết định thế năng, điện thế hay trường cân bằng như thế nào trong toàn miền. Từ đó mới sinh ra harmonic function, Green's function, nguyên lý cực đại và toàn bộ trực giác rằng biên có thể điều khiển nội thất.
+**Bài toán cần giải quyết.** Các nhà khoa học muốn xác định phân bố nguồn và điều kiện biên chi phối thế năng, điện thế hay trường cân bằng trong toàn miền như thế nào. Từ nhu cầu đó, khái niệm hàm điều hòa, hàm Green, nguyên lý cực đại và trực giác rằng biên điều khiển phần bên trong đã ra đời.
 
-**Khó khăn và nút thắt.** Khó ở chỗ đây là loại bài toán không có thời gian để “theo dõi” như ODE hay phương trình nhiệt. Thông tin nằm ẩn trong hình học của miền và cấu trúc toàn cục của nghiệm. Green phải tìm cách viết hàm Green; Gauss và Maxwell phải làm rõ mối liên hệ giữa định luật vật lý và toán tử Laplace; còn các nhà giải tích phải học cách tin rằng cực trị bên trong không thể xuất hiện tùy tiện nếu nghiệm là harmonic.
+**Khó khăn và nút thắt.** Trở ngại lớn nằm ở chỗ đây là lớp bài toán không có biến thời gian để theo dõi sự tiến triển như phương trình vi phân thường hay phương trình nhiệt; toàn bộ thông tin nằm trong hình học của miền và cấu trúc toàn cục của nghiệm. Green phải tìm cách xây dựng hàm Green; Gauss và Maxwell phải làm rõ mối liên hệ giữa các định luật vật lý và toán tử Laplace; còn giới giải tích phải chứng minh và lý giải vì sao cực trị bên trong không thể xuất hiện tùy ý đối với nghiệm điều hòa.
 
 ## Những bước ngoặt của câu chuyện
-1. **Giới thiệu phương trình Laplace.** Hàm điều hòa ban đầu xuất hiện trong các bối cảnh hấp dẫn và điện tĩnh, nơi các trường cân bằng thỏa một định luật cân bằng cục bộ. Tên của Laplace ghi dấu sự tổng hợp giữa vật lý và toán học này.
-2. **Tách biến trên hình chữ nhật.** Các bài toán biên cổ điển trên hộp và bản phẳng khiến tọa độ chữ nhật trở nên tự nhiên. Các phương pháp Fourier và khai triển theo hàm riêng nhanh chóng bước vào.
-3. **Laplace trong tọa độ cực.** Đối xứng tròn và hướng tâm trong thiên văn, điện tĩnh và bài toán màng dẫn tự nhiên đến các dạng cực và cầu. Hình học trực tiếp biến đổi phương trình.
-4. **Phương trình Poisson.** Poisson đưa vào các số hạng nguồn để biểu diễn mật độ điện tích hay khối lượng. Phương trình này trở thành bước tiếp theo tự nhiên sau cân bằng không nguồn.
-5. **Tính chất giá trị trung bình và nguyên lý cực đại.** Những tính chất này nắm bắt độ cứng rất đặc biệt của hàm điều hòa. Về sau chúng trở thành các định lý cấu trúc trung tâm của PDE elliptic.
-6. **Hàm Green.** Bài luận năm 1828 của Green đem lại một cách mã hóa rất mạnh ảnh hưởng của biên và đáp ứng đối với nguồn. Cách nhìn này là một trong những chiến thắng bền vững nhất của lý thuyết thế.
-7. **Điện tĩnh.** Định luật Coulomb, định luật Gauss và sự tổng hợp của Maxwell khiến thế năng và hàm điều hòa trở nên không thể thiếu về mặt vật lý. Chương 11 mang theo toàn bộ lịch sử ấy.
-8. **Dòng chảy chất lưu.** Lý thuyết dòng chảy thế nối hàm điều hòa với chuyển động không nén không xoáy. Điều này cho các phương trình một đời sống khoa học lớn khác ngoài điện tĩnh.
+1. **Giới thiệu phương trình Laplace.** Hàm điều hòa ban đầu xuất hiện trong bài toán hấp dẫn và tĩnh điện, nơi các trường cân bằng thỏa mãn một điều kiện cân bằng cục bộ. Tên của Laplace gắn liền với sự tổng hợp giữa vật lý và giải tích này.
+2. **Tách biến trên hình chữ nhật.** Các bài toán biên cổ điển trên miền hộp và bản phẳng khiến hệ tọa độ Descartes trở nên tự nhiên, mở đường cho phương pháp Fourier và khai triển theo hàm riêng.
+3. **Phương trình Laplace trong tọa độ cực.** Tính đối xứng tròn và đối xứng hướng tâm trong thiên văn học, tĩnh điện và bài toán màng phẳng dẫn đến dạng cực và dạng cầu, cho thấy hình học miền tác động trực tiếp lên biểu thức của phương trình.
+4. **Phương trình Poisson.** Poisson bổ sung số hạng nguồn để biểu diễn mật độ điện tích hoặc mật độ khối lượng, tạo thành bước mở rộng tự nhiên từ trạng thái cân bằng không nguồn sang cân bằng có nguồn.
+5. **Tính chất giá trị trung bình và nguyên lý cực đại.** Các tính chất này phản ánh mức độ ràng buộc rất chặt của hàm điều hòa và về sau trở thành những định lý nền tảng của phương trình đạo hàm riêng (PDE) elliptic.
+6. **Hàm Green.** Bài luận năm 1828 của Green cung cấp công cụ biểu diễn rõ ràng ảnh hưởng của biên và đáp ứng của hệ trước các nguồn, trở thành một trong những kết quả có sức sống lâu dài nhất của lý thuyết thế.
+7. **Tĩnh điện.** Định luật Coulomb, định luật Gauss và hệ phương trình Maxwell khiến thế điện và hàm điều hòa giữ vai trò không thể thiếu trong vật lý.
+8. **Dòng chảy chất lưu.** Lý thuyết dòng chảy thế gắn hàm điều hòa với chuyển động không nén được và không xoáy, mở ra một lĩnh vực ứng dụng lớn khác bên cạnh tĩnh điện.
 
 ## Những cảnh đáng nhớ
-Công trình của Laplace trong cơ học thiên thể đặt nền cho lý thuyết thế cổ điển: lực hút và thế năng không còn chỉ là mô tả lực từ xa mà được viết thành một phương trình cân bằng trong không gian. Poisson mở rộng phương trình ấy để bao gồm các số hạng nguồn, khiến mật độ khối lượng hay điện tích xuất hiện tường minh thay vì ẩn mình sau giả thiết “không nguồn”.
+Công trình của Laplace trong cơ học thiên thể đặt nền móng cho lý thuyết thế cổ điển: thay vì chỉ mô tả lực hút tác dụng từ xa, trường hấp dẫn và thế năng được biểu diễn thông qua một phương trình cân bằng trong không gian. Poisson tiếp tục mở rộng phương trình ấy bằng cách đưa vào số hạng nguồn, giúp mật độ khối lượng hoặc điện tích xuất hiện tường minh thay vì chỉ xét miền không nguồn.
 
-Bước tiếp theo là học cách đọc biên và đọc tồn tại. Gauss và Green biến đổi chủ đề bằng các đồng nhất thức tích phân và phương pháp biên, cho thấy giá trị bên trong có thể được viết lại từ dữ liệu trên mặt. Nguyên lý Dirichlet định hình lại các câu hỏi tồn tại trong thế kỷ XIX, biến bài toán tìm hàm điều hòa thành bài toán cực tiểu hóa năng lượng. Maxwell và Kelvin mang lý thuyết thế đi sâu vào vật lý, và từ đó Laplace–Poisson trở thành ngôn ngữ chung của điện, từ và nhiều trường cân bằng khác.
+Bước tiến tiếp theo là nghiên cứu vai trò của biên và tính tồn tại nghiệm. Gauss và Green đưa vào các đồng nhất thức tích phân và phương pháp biên, chứng tỏ giá trị nghiệm bên trong miền có thể được tính từ dữ liệu trên bề mặt. Trong thế kỷ XIX, nguyên lý Dirichlet định hình lại bài toán tồn tại khi chuyển việc tìm hàm điều hòa thành bài toán cực tiểu hóa năng lượng. Sau đó, Maxwell và Kelvin phát triển sâu lý thuyết thế trong vật lý, đưa cặp phương trình Laplace–Poisson thành ngôn ngữ chung cho điện, từ và nhiều trường cân bằng khác.
 
 ## Vì sao biết lịch sử này làm toán bớt khô
-Chương 11 quan trọng về mặt lịch sử vì nó biến trạng thái cân bằng thành hình học. Nghiệm không chỉ bị ràng buộc bởi các định luật vi phân cục bộ mà còn bởi cấu trúc biên toàn cục và những nguyên lý định tính rất cứng.
+Chương 11 có ý nghĩa quan trọng về mặt lịch sử vì nó chuyển khái niệm trạng thái cân bằng sang ngôn ngữ hình học. Nghiệm không chỉ chịu ràng buộc bởi các phương trình vi phân cục bộ mà còn bởi cấu trúc biên toàn cục và những tính chất định tính chặt chẽ.
 
-Nó cũng giải thích vì sao PDE elliptic có cảm giác khác hẳn phương trình nhiệt và sóng. Thay vì tiến hóa hay lan truyền, ý tưởng chi phối ở đây là tính tương thích trên toàn miền không gian.
+Góc nhìn này cũng giải thích vì sao PDE elliptic mang đặc trưng khác hẳn phương trình nhiệt và phương trình sóng. Thay vì mô tả quá trình tiến hóa hay lan truyền theo thời gian, ý tưởng chi phối ở đây là sự tương thích trên toàn bộ miền không gian.
 
 ## Câu hỏi thảo luận
-1. Vì sao lý thuyết thế lại trở thành vùng gặp gỡ màu mỡ giữa vật lý và giải tích?
-2. Vì sao nguyên lý cực đại và tính chất giá trị trung bình lại tiết lộ nhiều đến vậy về mặt lịch sử?
-3. Vì sao hình học đóng vai trò nổi bật đến thế trong các bài toán Laplace và Poisson?
+1. Vì sao lý thuyết thế trở thành điểm gặp gỡ hiệu quả giữa vật lý và giải tích?
+2. Vì sao nguyên lý cực đại và tính chất giá trị trung bình lại có ý nghĩa lớn về mặt lịch sử?
+3. Vì sao hình học miền giữ vai trò nổi bật trong các bài toán Laplace và Poisson?
 
 ## Gợi ý trả lời câu hỏi thảo luận
-1. Lý thuyết thế trở thành vùng gặp gỡ màu mỡ vì các bài toán hấp dẫn, điện và tĩnh học đều dẫn tới cùng một lớp phương trình. Khi vật lý liên tục sinh ra cùng cấu trúc toán học, giải tích có động lực rất mạnh để đào sâu các tính chất của hàm điều hòa và nguồn Poisson.
-2. Nguyên lý cực đại và tính chất giá trị trung bình tiết lộ nhiều vì chúng cho thấy hàm điều hòa bị ràng buộc mạnh bởi cấu trúc nội tại của chính nó. Chỉ từ vài định lý ngắn, ta thấy hiện lên sự cứng nhắc đáng kinh ngạc của nghiệm, khác hẳn nhiều phương trình khác.
-3. Hình học nổi bật trong các bài toán Laplace và Poisson vì miền và biên không chỉ là bối cảnh mà là một phần của dữ kiện quyết định nghiệm. Hình dạng vật thể, miền không gian và cách đặt điều kiện biên đều in dấu trực tiếp lên hành vi của nghiệm.
+1. Lý thuyết thế gắn kết chặt chẽ vật lý và giải tích vì nhiều bài toán khác nhau như hấp dẫn, điện học và tĩnh học đều dẫn đến cùng một lớp phương trình. Khi các hiện tượng vật lý liên tục sinh ra cùng một cấu trúc toán học, giải tích có động lực rõ ràng để nghiên cứu sâu các tính chất của hàm điều hòa và phương trình Poisson.
+2. Nguyên lý cực đại và tính chất giá trị trung bình có ý nghĩa lớn vì chúng cho thấy hàm điều hòa bị ràng buộc chặt bởi cấu trúc nội tại của chính nó. Chỉ từ vài định lý ngắn gọn, ta đã thấy rõ tính ổn định và chặt chẽ đặc trưng của nghiệm điều hòa so với nhiều lớp phương trình khác.
+3. Hình học giữ vai trò nổi bật trong các bài toán Laplace và Poisson vì miền và biên không chỉ là bối cảnh mà là phần dữ kiện trực tiếp xác định nghiệm. Hình dạng vật thể, cấu trúc không gian và cách đặt điều kiện biên đều ảnh hưởng trực tiếp đến dạng và hành vi của nghiệm.
 
 ## Tóm tắt kiến thức toán học
-- Phương trình Laplace và Poisson sinh ra từ hấp dẫn, điện tĩnh, dòng chảy thế và các trạng thái cân bằng.
-- Ý tưởng trung tâm là nguồn và điều kiện biên quyết định cấu trúc của nghiệm trong toàn miền.
-- Ví dụ trong câu chuyện là phương trình $$\Delta u = 0$$ trong miền không có nguồn, cho thấy nghiệm harmonic bên trong bị kiểm soát bởi dữ liệu biên.
+- Phương trình Laplace và phương trình Poisson bắt nguồn từ cơ học thiên thể, tĩnh điện, dòng chảy thế và các bài toán trạng thái cân bằng.
+- Ý tưởng cốt lõi là phân bố nguồn và điều kiện biên cùng xác định cấu trúc của nghiệm trên toàn miền.
+- Ví dụ trung tâm là phương trình $$\Delta u = 0$$ trong miền không có nguồn, cho thấy nghiệm điều hòa bên trong miền bị chi phối bởi dữ liệu trên biên.
 
 ## Tài liệu tham khảo
-- Evans, *Partial Differential Equations*. Một chỉ dẫn hiện đại mạnh cho cấu trúc elliptic.
-- Kellogg, *Foundations of Potential Theory*. Nguồn cổ điển cả về toán lẫn lịch sử.
-- Bài luận năm 1828 của Green và các trước tác của Maxwell vẫn là tài liệu nền cho chủ đề này.
+- Evans, *Partial Differential Equations*. Tài liệu hiện đại tiêu chuẩn về cấu trúc phương trình elliptic.
+- Kellogg, *Foundations of Potential Theory*. Tài liệu kinh điển cả về mặt toán học lẫn lịch sử.
+- Bài luận năm 1828 của Green và các công trình của Maxwell vẫn là những tài liệu nền tảng cho chủ đề này.

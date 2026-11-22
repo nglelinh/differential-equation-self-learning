@@ -12,15 +12,15 @@ lesson_type: optional
 
 ## Mục Đích Của Bài Hỗ Trợ
 
-Bài này gom toàn bộ minh họa của Chương 12 vào một không gian ôn tập trực quan chung. Giải tích hàm thường tạo cảm giác trừu tượng khi người học vừa bước ra từ những chương còn gắn chặt với mô hình vi phân cụ thể. Gallery giúp giữ lại sợi chỉ xuyên suốt của chương: tất cả những không gian, toán tử và định lý ở đây đều được xây dựng để làm cho PDE có thể giải được, ổn định được, và hiểu được vượt ra ngoài phạm vi cổ điển.
+Bài học này tập hợp toàn bộ các hình minh họa của Chương 12 vào một không gian ôn tập trực quan thống nhất. Giải tích hàm thường tạo cảm giác trừu tượng khi người học vừa chuyển từ các chương gắn với công thức vi phân tường minh. Bộ minh họa giúp giữ rõ mạch xuyên suốt của chương: mọi không gian, toán tử và định lý ở đây đều được xây dựng nhằm giúp bài toán PDE có thể giải được, ổn định và phân tích được vượt ra ngoài khuôn khổ cổ điển.
 
-Các bài chính đi từ chuẩn và đạo hàm yếu đến Sobolev spaces, dạng yếu, định lý tồn tại kiểu biến phân, và regularity. Trang bổ trợ này giúp nhìn thấy tiến trình đó như một kiến trúc thống nhất thay vì một chuỗi định nghĩa rời rạc. Đồng thời, các bài optional như lý thuyết phổ và phân phối cũng được đặt lại vào cùng một bản đồ ý niệm chung.
+Các bài chính lần lượt đi từ chuẩn $$ L^p $$ và đạo hàm yếu tới không gian Sobolev, dạng yếu, định lý tồn tại biến phân Lax–Milgram và tính chính quy elliptic. Trang tổng hợp này giúp người học nhìn nhận toàn bộ tiến trình như một cấu trúc liền mạch thay vì các định nghĩa rời rạc, đồng thời đặt các chủ đề tùy chọn như lý thuyết phổ, phân phối và lý thuyết Sobolev vào cùng một bản đồ khái niệm.
 
 ## Cách Sử Dụng Bài Này
 
-Nên đi qua gallery theo đúng thứ tự bài học. Sau mỗi hình, hãy quay lại bài giảng tương ứng và tự hỏi khái niệm đó đang giải quyết vấn đề gì: đo độ lớn của hàm, vi phân hóa dữ liệu không trơn, viết PDE dưới dạng yếu, chứng minh tồn tại nghiệm, hay nâng cấp regularity. Khi đó giải tích hàm sẽ luôn gắn với động lực của PDE thay vì trôi thành một lý thuyết tách riêng.
+Nên xem bộ minh họa theo đúng thứ tự các bài học. Sau mỗi hình, hãy đối chiếu lại bài giảng tương ứng và xác định khái niệm đó giải quyết vấn đề gì: đo độ lớn của hàm, mở rộng đạo hàm cho hàm không trơn, viết PDE dưới dạng yếu, chứng minh tồn tại nghiệm hay nâng bậc chính quy. Nhờ vậy, giải tích hàm luôn gắn chặt với bài toán PDE thay vì trở thành một lý thuyết tách rời.
 
-Trang này cũng rất hữu ích để ôn tập trước các chương sau về phương pháp số, toán tử giả vi phân và microlocal analysis, vì tất cả đều dùng lại ngôn ngữ của toán tử, nghiệm yếu và đối tượng suy rộng.
+Trang này cũng hữu ích để ôn tập trước các chương tiếp theo về phương pháp số, vì các phương pháp hiện đại đều sử dụng trực tiếp ngôn ngữ toán tử, nghiệm yếu và không gian hàm.
 
 ## Gallery Nhúng Trực Tiếp
 
@@ -33,9 +33,9 @@ Trang này cũng rất hữu ích để ôn tập trước các chương sau v�
 
 ## Câu Hỏi Gợi Ý Khi Học
 
-1. Hình nào chủ yếu nói về cách đo hàm, và hình nào chủ yếu nói về cách giải PDE?
-2. Ở đâu chương chuyển từ phần định nghĩa sang các định lý tồn tại và regularity?
-3. Các chủ đề optional đã hoàn thiện bức tranh giải tích hàm tổng thể như thế nào thay vì đứng tách biệt?
+1. Hình minh họa nào tập trung vào cách đo hàm, và hình nào tập trung vào phương pháp giải PDE?
+2. Ở giai đoạn nào chương chuyển từ phần định nghĩa không gian sang các định lý tồn tại và tính chính quy?
+3. Các bài tùy chọn đã bổ sung và hoàn thiện bức tranh giải tích hàm tổng thể như thế nào?
 
 ## Liên Kết Tới Các Bài Học Chính
 
@@ -52,6 +52,6 @@ Trang này cũng rất hữu ích để ôn tập trước các chương sau v�
 
 ## Video tham khảo
 
-- xem trước: [Dirac Delta: Not a Function but a Distribution](https://www.youtube.com/watch?v=XZKf1G5ATkM) — Scintropy, tiếng Anh. Phân phối delta, hình mà bộ minh họa giải tích hàm này bắt đầu.
-- [Sobolev Spaces Explained | Weak Derivatives, W¹ᵖ and H¹](https://www.youtube.com/watch?v=bUIZGQ7T0rU) — Sciwords, tiếng Anh. Tính chính quy Sobolev như một mức tăng đạo hàm yếu.
-- [Peter Lax - Lax-Milgram Theorem](https://www.youtube.com/watch?v=d6lx6kKV9-E) — Simons Foundation, tiếng Anh. Lax-Milgram từ chính tác giả, định lý mà các khung nói tới.
+- xem trước: [Dirac Delta: Not a Function but a Distribution](https://www.youtube.com/watch?v=XZKf1G5ATkM) — Scintropy, tiếng Anh. Giải thích phân phối delta Dirac gắn với phần minh họa mở đầu về đối tượng suy rộng.
+- [Sobolev Spaces Explained | Weak Derivatives, W¹ᵖ and H¹](https://www.youtube.com/watch?v=bUIZGQ7T0rU) — Sciwords, tiếng Anh. Trình bày không gian Sobolev và ý nghĩa của đạo hàm yếu.
+- [Peter Lax - Lax-Milgram Theorem](https://www.youtube.com/watch?v=d6lx6kKV9-E) — Simons Foundation, tiếng Anh. Trình bày trực tiếp từ Peter Lax về định lý Lax–Milgram minh họa trong chương.

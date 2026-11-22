@@ -12,154 +12,154 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giúp sinh viên phân tích mô hình hai loài cạnh tranh tài nguyên, dùng nullcline để đọc khả năng cùng tồn tại hay loại trừ, và hiểu cách các hệ số cạnh tranh quyết định kết quả sinh thái dài hạn.
+Bài học này giúp sinh viên phân tích mô hình hai loài cạnh tranh tài nguyên, sử dụng đường nullcline để đánh giá khả năng cùng tồn tại hay loại trừ lẫn nhau và hiểu cách các hệ số cạnh tranh quyết định kết cục sinh thái dài hạn.
 
 ## Kiến thức nền
 
-Sinh viên cần nắm mặt phẳng pha, nullcline, điểm cân bằng và trực giác logistic. Bài học này là nơi tư duy mô hình hóa hệ phi tuyến bước thẳng vào một câu hỏi sinh học rất thực: cùng tồn tại hay loại trừ.
+Sinh viên cần nắm vững mặt phẳng pha, đường nullcline, điểm cân bằng và mô hình tăng trưởng logistic. Bài học này áp dụng trực tiếp tư duy phân tích hệ phi tuyến vào câu hỏi sinh học cốt lõi: hai loài sẽ cùng tồn tại hay một loài sẽ loại trừ loài kia?
 
 ## Dẫn nhập
 
 ![Hai loài cạnh tranh nguồn lực]({{ site.imgurl }}/chapter_img/chapter05/08_competing_species.svg)
 
-Không phải mọi tương tác sinh thái đều là săn mồi-con mồi. Nhiều khi hai loài không ăn nhau, nhưng cùng cần một nguồn tài nguyên giới hạn. Khi đó, mỗi loài không chỉ bị cản bởi mật độ của chính mình mà còn bởi sự hiện diện của loài kia. Từ đây nảy sinh câu hỏi động lực học rất tự nhiên: hai loài sẽ cùng tồn tại, hay một loài sẽ đẩy loài kia ra khỏi hệ?
+Không phải mọi tương tác sinh thái đều thuộc dạng săn mồi – con mồi. Trong nhiều trường hợp, hai loài không tiêu thụ nhau nhưng cùng khai thác một nguồn tài nguyên hữu hạn. Khi đó, tốc độ tăng trưởng của mỗi loài vừa bị giới hạn bởi mật độ của chính nó, vừa bị kìm hãm bởi sự hiện diện của loài kia. Câu hỏi động lực học đặt ra là: hai loài có thể cùng tồn tại lâu dài hay một loài sẽ chiếm ưu thế và đẩy loài còn lại đến tuyệt chủng?
 
-Mô hình cạnh tranh hai loài là ví dụ rất hay vì chỉ cần vài hệ số là ta đã có thể thấy nhiều kịch bản sinh thái khác nhau. Nó dạy sinh viên rằng "ổn định sinh thái" không phải là một ý niệm mơ hồ, mà là hệ quả của những tỷ lệ tương tác định lượng rất cụ thể.
+Mô hình cạnh tranh hai loài cho thấy chỉ với một số ít tham số định lượng, hệ đã có thể dẫn đến nhiều kịch bản sinh thái khác nhau. Qua đó, sinh viên thấy rằng "ổn định sinh thái" không phải khái niệm cảm tính mà là hệ quả trực tiếp của cấu trúc các hệ số tương tác.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Mỗi loài lớn lên theo kiểu logistic nếu sống một mình. Nhưng khi có loài kia, sức chứa hiệu dụng của môi trường giảm đi. Hai loài vì thế không chỉ tự hạn chế mà còn hạn chế lẫn nhau.
+Nếu sống tách biệt, mỗi loài tăng trưởng theo quy luật logistic. Khi cùng chung sống, sự hiện diện của loài kia làm giảm sức chứa hiệu dụng của môi trường. Như vậy, hai loài vừa tự hạn chế mật độ của bản thân, vừa hạn chế lẫn nhau.
 
 ### Cách nhìn hình ảnh
 
-Trên mặt phẳng pha, nullcline của mỗi loài là những đường chia vùng tăng và giảm. Vị trí tương đối của hai nullcline quyết định liệu có điểm cân bằng cùng tồn tại ổn định hay không. Nhìn hình nullcline thường đã đủ để dự đoán kết quả sinh thái.
+Trên mặt phẳng pha, các đường nullcline phân chia miền tăng và giảm của từng loài. Vị trí tương đối giữa hai đường nullcline quyết định xem có tồn tại điểm cân bằng nội ổn định hay không; do đó, chỉ cần quan sát cấu hình nullcline thường đã đủ để dự đoán kết cục sinh thái.
 
 ### Cách nhìn hình thức
 
-Một dạng chuẩn là
+Một dạng chuẩn của mô hình cạnh tranh hai loài là
 $$
 \frac{dx}{dt}=r_1x\left(1-\frac{x+\alpha_{12}y}{K_1}\right),
 $$
 $$
 \frac{dy}{dt}=r_2y\left(1-\frac{y+\alpha_{21}x}{K_2}\right).
 $$
-Ở đây $$ K_1,K_2 $$ là sức chứa riêng, còn $$ \alpha_{12},\alpha_{21} $$ đo mức độ cạnh tranh chéo. Nếu cạnh tranh chéo yếu đủ, cân bằng cùng tồn tại có thể ổn định. Nếu cạnh tranh chéo quá mạnh, một loài có thể loại trừ loài kia.
+Trong đó $$ K_1,K_2 $$ là sức chứa môi trường riêng của từng loài, còn $$ \alpha_{12},\alpha_{21} $$ đo mức độ cạnh tranh chéo. Nếu cạnh tranh chéo đủ yếu so với mức tự hạn chế, điểm cân bằng cùng tồn tại có thể ổn định; nếu cạnh tranh chéo quá mạnh, một loài có thể loại trừ loài kia.
 
 ## Những ngộ nhận thường gặp
 
-- "Cạnh tranh luôn làm một loài tuyệt chủng." Không đúng. Đồng tồn tại ổn định vẫn có thể xảy ra.
-- "Chỉ cần nhìn tốc độ tăng trưởng nội tại $$ r_1,r_2 $$ là đủ." Sai. Hệ số cạnh tranh chéo mới là yếu tố quyết định lớn về lâu dài.
-- "Nếu có điểm cân bằng nội thì chắc chắn hệ sẽ tiến tới đó." Không nhất thiết; còn phải xét ổn định.
-- "Mô hình cạnh tranh chỉ là logistic viết dài hơn." Sai. Chính tương tác chéo tạo ra động lực học mới.
+- "Cạnh tranh luôn dẫn đến việc một loài tuyệt chủng." Không đúng. Hai loài vẫn có thể cùng tồn tại ổn định nếu cạnh tranh chéo đủ yếu.
+- "Chỉ cần so sánh tốc độ tăng trưởng nội tại $$ r_1,r_2 $$ là biết loài nào thắng." Sai. Sức chứa môi trường và các hệ số cạnh tranh chéo mới là yếu tố quyết định kết cục dài hạn.
+- "Hễ có điểm cân bằng nội thì hệ chắc chắn hội tụ về đó." Không đúng; cần kiểm tra tính ổn định của điểm cân bằng đó.
+- "Mô hình cạnh tranh chỉ là phương trình logistic viết dài hơn." Sai. Chính các số hạng tương tác chéo tạo ra những kịch bản động lực học mới.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Viết nullcline
+### Bước 1: Xác định các đường nullcline
 
-Xác định vùng tăng giảm của từng loài.
+Tìm tập hợp các điểm mà tốc độ tăng trưởng của từng loài bằng 0 để phân vùng tăng, giảm.
 
 ### Bước 2: Tìm các điểm cân bằng
 
-Cân bằng biên và cân bằng nội.
+Xác định đầy đủ cả các điểm cân bằng biên (một hoặc hai loài bằng 0) lẫn điểm cân bằng nội.
 
-### Bước 3: So sánh vị trí nullcline
+### Bước 3: So sánh vị trí tương đối của hai đường nullcline
 
-Đây là chìa khóa hình học để đọc kết quả sinh thái.
+Phân loại các cấu hình cắt nhau hoặc không cắt nhau để đọc kết cục dài hạn.
 
-### Bước 4: Diễn giải sinh học
+### Bước 4: Diễn giải ý nghĩa sinh học
 
-Chuyển từ hình học pha sang cùng tồn tại hay loại trừ.
+Chuyển kết quả từ hình học mặt phẳng pha sang kịch bản cùng tồn tại hoặc loại trừ cạnh tranh.
 
-### Các checkpoint
+### Các điểm kiểm tra
 
-- Sinh viên có đọc đúng ý nghĩa của các hệ số cạnh tranh không.
-- Sinh viên có nhìn ra khi nào có cân bằng nội không.
-- Sinh viên có phân biệt được tồn tại cân bằng với ổn định của cân bằng không.
+- Sinh viên có giải thích đúng ý nghĩa của các hệ số cạnh tranh chéo hay không.
+- Sinh viên có xác định được điều kiện để tồn tại điểm cân bằng nội hay không.
+- Sinh viên có phân biệt được giữa sự tồn tại và tính ổn định của điểm cân bằng nội hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Nullcline của loài thứ nhất
+### Ví dụ 1: Đường nullcline của loài thứ nhất
 
-Từ
+Từ phương trình
 $$
 \frac{dx}{dt}=r_1x\left(1-\frac{x+\alpha_{12}y}{K_1}\right),
 $$
-ta có nullcline:
+các đường nullcline của loài 1 là
 $$ x=0 $$
-hoặc
+và
 $$ x+\alpha_{12}y=K_1. $$
-Đường thẳng thứ hai cho biết loài 1 dừng tăng khi tổng "gánh nặng hiệu dụng" đạt sức chứa của nó.
+Đường thẳng thứ hai cho biết loài 1 ngừng tăng trưởng khi tổng mật độ quy đổi đạt đúng sức chứa môi trường của nó.
 
-### Ví dụ 2: Cạnh tranh yếu và đồng tồn tại
+### Ví dụ 2: Cạnh tranh yếu và cùng tồn tại ổn định
 
-Nếu hai nullcline cắt nhau theo cách tạo ra một điểm cân bằng nội nằm trong góc phần tư dương và quỹ đạo lân cận tiến về đó, ta có đồng tồn tại ổn định. Đây là kịch bản sinh thái hòa hợp tương đối.
+Khi hai đường nullcline cắt nhau trong góc phần tư thứ nhất sao cho mọi quỹ đạo lân cận đều hướng về giao điểm đó, hệ đạt trạng thái cùng tồn tại ổn định. Đây là kịch bản cả hai loài cùng duy trì mật độ dương lâu dài.
 
-### Ví dụ 3: Cạnh tranh mạnh và loại trừ
+### Ví dụ 3: Cạnh tranh mạnh và loại trừ cạnh tranh
 
-Nếu mỗi loài tác động lên loài kia mạnh hơn chính nó tự hạn chế bản thân, cân bằng nội có thể không ổn định hoặc không tồn tại trong miền dương. Khi đó hệ thường đi tới một trong hai cân bằng biên, nghĩa là một loài thắng thế.
+Nếu tác động ức chế của mỗi loài lên loài kia mạnh hơn tác động tự hạn chế lên chính nó, điểm cân bằng nội có thể không ổn định (dạng yên ngựa) hoặc không nằm trong miền dương. Khi đó các quỹ đạo hội tụ về một trong hai điểm cân bằng biên, nghĩa là một loài loại trừ loài còn lại.
 
-### Ví dụ 4: Đọc sinh học từ hình học
+### Ví dụ 4: Đọc kết cục sinh học từ hình học
 
-Nếu nullcline của loài 1 nằm "xa hơn" nullcline của loài 2 theo cả hai trục, điều đó thường gợi ý loài 1 có lợi thế cạnh tranh toàn cục. Đây là nơi hình học mặt phẳng pha trở thành trực giác sinh thái.
+Nếu đường nullcline dương của loài 1 nằm hoàn toàn phía ngoài đường nullcline dương của loài 2 trên cả hai trục, loài 1 có lợi thế cạnh tranh tuyệt đối và sẽ loại trừ loài 2. Đây là minh họa rõ nét cho việc đọc kết luận sinh thái trực tiếp từ hình học mặt phẳng pha.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao vị trí tương đối của nullcline quan trọng hơn việc chỉ nhìn riêng từng phương trình?
-2. Khi nào cân bằng nội biểu thị đồng tồn tại bền?
-3. Vì sao loại trừ cạnh tranh là một kết quả động lực học chứ không chỉ là một khẩu hiệu sinh thái?
+1. Vì sao vị trí tương đối của hai đường nullcline lại quan trọng hơn việc xét riêng từng phương trình?
+2. Trong điều kiện nào điểm cân bằng nội biểu thị trạng thái cùng tồn tại bền vững?
+3. Vì sao nguyên lý loại trừ cạnh tranh là một hệ quả động lực học cụ thể thay vì một nhận định định tính chung chung?
 
 ## Bài toán ứng dụng
 
-1. Hai loài thực vật cùng tranh nước và ánh sáng. Hãy giải thích vì sao hệ số cạnh tranh chéo quyết định kết cục lâu dài.
-2. Trong vi sinh, hai dòng vi khuẩn cùng dùng một nguồn carbon. Hãy liên hệ với mô hình cạnh tranh hai loài.
-3. Một chính sách bảo tồn muốn giữ hai loài cùng tồn tại. Hãy giải thích cần chú ý tham số nào của mô hình.
+1. Hai loài thực vật cùng cạnh tranh nước và ánh sáng. Hãy giải thích vai trò của các hệ số cạnh tranh chéo trong kết cục dài hạn.
+2. Trong vi sinh học, hai chủng vi khuẩn cùng sử dụng một nguồn carbon chung. Hãy liên hệ tình huống này với mô hình cạnh tranh hai loài.
+3. Khi xây dựng chính sách bảo tồn nhằm duy trì sự cùng tồn tại của hai loài, cần tác động vào những tham số nào của mô hình?
 
 ## Chiến lược giảng dạy tương tác
 
-- Cho sinh viên vẽ nullcline trước rồi mới hỏi kết quả sinh thái.
-- Tổ chức thảo luận nhóm: "Loài nào đang có lợi thế và vì sao?"
-- Yêu cầu lớp giải thích bằng lời ý nghĩa sinh học của từng tham số $$ K_i $$ và $$ \alpha_{ij} $$.
-- So sánh mô hình cạnh tranh với mô hình săn mồi-con mồi để thấy hai cơ chế tương tác khác nhau về bản chất.
+- Yêu cầu sinh viên vẽ các cấu hình nullcline trước khi dự đoán kết cục sinh thái.
+- Tổ chức thảo luận nhóm để xác định loài nào có lợi thế trong từng cấu hình hình học và giải thích lý do.
+- Cho lớp diễn đạt bằng lời ý nghĩa sinh học của từng tham số $$ K_i $$ và $$ \alpha_{ij} $$.
+- Đối chiếu mô hình cạnh tranh với mô hình săn mồi – con mồi để làm nổi bật sự khác biệt về cơ chế tương tác.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên để sinh viên yếu dùng bảng hai cột "tự hạn chế" và "cạnh tranh chéo" cho từng loài trước khi đi vào nullcline. Khi nghĩa sinh học rõ ràng, hình học sẽ dễ theo hơn.
+Nên lập bảng hai cột phân tách rõ phần "tự hạn chế" và phần "cạnh tranh chéo" cho mỗi loài trước khi chuyển sang vẽ nullcline. Khi ý nghĩa sinh học rõ ràng, việc đọc hình học sẽ dễ dàng hơn.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể yêu cầu sinh viên khá giỏi phân tích ổn định của cân bằng nội bằng Jacobian, hoặc khảo sát cách kết quả thay đổi khi tham số cạnh tranh đi qua một ngưỡng.
+Có thể yêu cầu sinh viên xét tính ổn định của điểm cân bằng nội bằng ma trận Jacobian, hoặc khảo sát sự chuyển đổi kịch bản khi tham số cạnh tranh vượt qua ngưỡng tới hạn.
 
 ## Tóm tắt dễ nhớ
 
-Mô hình cạnh tranh hai loài là logistic có tương tác chéo. Nullcline là chìa khóa hình học để đọc kết quả: cùng tồn tại hay loại trừ. Kết cục sinh thái không do một loài "mạnh hơn" theo cảm giác, mà do cấu trúc định lượng của các hệ số cạnh tranh.
+Mô hình cạnh tranh hai loài là mô hình logistic có bổ sung tương tác chéo. Cấu hình đường nullcline là công cụ hình học chủ yếu để xác định hai loài cùng tồn tại hay loại trừ nhau. Kết cục sinh thái phụ thuộc vào quan hệ định lượng giữa mức tự hạn chế và các hệ số cạnh tranh chéo.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Hai loài tranh tài nguyên
-- Bài toán: Hai loài cùng dùng một nguồn sống hữu hạn và ảnh hưởng bất lợi lẫn nhau.
+#### Hai loài cạnh tranh tài nguyên
+- Bài toán: Hai loài cùng khai thác một nguồn sống hữu hạn và gây tác động bất lợi cho nhau.
 - Mô hình:
 $$
 \dot{x}=x(1-x-\alpha y),\qquad
 \dot{y}=y(1-y-\beta x).
 $$
-- Giả thiết và giới hạn: Tham số không đổi theo thời gian, môi trường đồng nhất.
-- Diễn giải: Tùy $$ \alpha,\beta $$, hệ có thể dẫn đến cùng tồn tại hoặc một loài loại trừ loài kia.
+- Giả thiết và giới hạn: Các tham số không đổi theo thời gian và môi trường đồng nhất.
+- Diễn giải: Tùy theo giá trị của $$ \alpha,\beta $$, hệ hội tụ về trạng thái cùng tồn tại hoặc dẫn tới việc một loài loại trừ loài kia.
 
 #### Cạnh tranh thị phần
-- Bài toán: Hai công ty tranh cùng một thị trường hữu hạn.
-- Mô hình: Dùng cấu trúc logistic ghép nối tương tự mô hình cạnh tranh loài.
-- Giả thiết và giới hạn: Đây là mô hình ẩn dụ kinh tế, bỏ qua chiến lược giá và quảng cáo phức tạp.
-- Diễn giải: Hệ giúp giải thích vì sao ưu thế nhỏ trong cạnh tranh chéo có thể dẫn đến chiếm lĩnh dài hạn.
+- Bài toán: Hai doanh nghiệp cùng cạnh tranh trong một thị trường có quy mô hữu hạn.
+- Mô hình: Sử dụng cấu trúc hệ logistic ghép nối tương tự mô hình cạnh tranh loài.
+- Giả thiết và giới hạn: Đây là mô hình tương tự hóa kinh tế, bỏ qua chiến lược định giá và truyền thông phức tạp.
+- Diễn giải: Mô hình giúp minh họa cách một lợi thế nhỏ trong hệ số cạnh tranh chéo có thể dẫn đến ưu thế chiếm lĩnh dài hạn.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Mô hình cạnh tranh là nơi hình học nullcline trở nên rất giàu ý nghĩa. Giao điểm của hai nullcline biểu diễn trạng thái mà cả hai loài đều không đổi tức thời. Bẫy thường gặp là đọc nullcline như đường đi thật của dân số. Bài này nối logistic một chiều với hệ hai chiều và làm rõ cơ chế coexistence so với competitive exclusion.
+Mô hình cạnh tranh là ví dụ tiêu biểu nơi hình học nullcline mang lại cái nhìn trực tiếp nhất. Giao điểm của hai đường nullcline là trạng thái mà tốc độ thay đổi tức thời của cả hai loài đều bằng 0. Cần tránh nhầm lẫn đường nullcline với quỹ đạo thực của quần thể. Bài học này mở rộng phương trình logistic một chiều sang hệ hai chiều và làm rõ cơ chế giữa cùng tồn tại (coexistence) và loại trừ cạnh tranh (competitive exclusion).
 
 ### 3. Trực quan hóa bằng Python
 
@@ -199,26 +199,26 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Cho
+Cho hệ
 $$ \dot{x}=x(1-x-0.6y),\qquad
 \dot{y}=y(1-y-0.8x). $$
-Nullcline dương là
+Các đường nullcline dương là
 $$ x+0.6y=1,\qquad y+0.8x=1. $$
-Giao điểm nằm trong góc phần tư dương, nên về mặt hình học có ứng viên cân bằng cùng tồn tại. Phân tích Jacobian tại đó cho biết trạng thái này ổn định hay không.
+Giao điểm của hai đường thẳng này nằm trong góc phần tư dương, do đó hệ có một điểm cân bằng nội ứng viên cho trạng thái cùng tồn tại. Việc xét ma trận Jacobian tại giao điểm đó sẽ xác định trạng thái này có ổn định hay không.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Vẽ nullcline, xác định cân bằng biên và cân bằng trong, rồi diễn giải bằng ngôn ngữ sinh học.
+**Bậc đại học.** Vẽ các đường nullcline, xác định điểm cân bằng biên và cân bằng nội, sau đó diễn giải bằng ngôn ngữ sinh học.
 
-**Bậc sau đại học.** Phân tích điều kiện cùng tồn tại bền vững, kéo theo tập hấp dẫn và liên hệ với lý thuyết cạnh tranh trong sinh thái học toán.
+**Bậc sau đại học.** Phân tích điều kiện cùng tồn tại bền vững, cấu trúc tập hút (attractor) và liên hệ với lý thuyết cạnh tranh trong sinh thái học toán.
 
 ## Video tham khảo
 
-- xem trước: [Lotka-Volterra Competition Explained: Rabbits vs. Sheep | Phase Plane Analysis](https://www.youtube.com/watch?v=07V_UNLz0qs) — Dr. Shane Ross, tiếng Anh. Shane Ross về cạnh tranh Lotka-Volterra, đường không và loại trừ cạnh tranh.
-- [Competition Explained by Lotka-Volterra Model](https://www.youtube.com/watch?v=8GxwFrAyD9Q) — EcologyTalks, tiếng Anh. Cạnh tranh được giải thích qua cùng mô hình mặt phẳng pha.
-- [V7-4e Two Competing Species, critical points, stability, phase portrait. Elem Differential Equations](https://www.youtube.com/watch?v=btQVm3PGT4k) — wenshenpsu, tiếng Anh. Điểm tới hạn và chân dung pha của hai loài cạnh tranh.
+- Xem trước: [Lotka-Volterra Competition Explained: Rabbits vs. Sheep | Phase Plane Analysis](https://www.youtube.com/watch?v=07V_UNLz0qs) — Dr. Shane Ross, tiếng Anh. Shane Ross phân tích mô hình cạnh tranh Lotka–Volterra, đường nullcline và nguyên lý loại trừ cạnh tranh.
+- [Competition Explained by Lotka-Volterra Model](https://www.youtube.com/watch?v=8GxwFrAyD9Q) — EcologyTalks, tiếng Anh. Giải thích cạnh tranh sinh học thông qua phân tích mặt phẳng pha.
+- [V7-4e Two Competing Species, critical points, stability, phase portrait. Elem Differential Equations](https://www.youtube.com/watch?v=btQVm3PGT4k) — wenshenpsu, tiếng Anh. Xác định điểm cân bằng, tính ổn định và chân dung pha của hai loài cạnh tranh.
 
 ## Tài liệu tham khảo
 
-- Strogatz, Chương 6: rất tốt cho phân tích nullcline và đồng tồn tại.
-- Arnold, Chương 5: hữu ích cho góc nhìn hình học của các cân bằng và miền hút.
+- Strogatz, Chương 6: trình bày rõ ràng về phân tích nullcline và điều kiện cùng tồn tại.
+- Arnold, Chương 5: hữu ích cho góc nhìn hình học về điểm cân bằng và miền hút.

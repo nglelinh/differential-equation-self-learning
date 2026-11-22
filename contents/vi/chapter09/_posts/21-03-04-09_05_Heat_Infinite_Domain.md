@@ -13,27 +13,27 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này trình bày phương trình nhiệt trên toàn trục thực, nơi tách biến theo chuỗi mode rời rạc không còn là công cụ tự nhiên nhất. Sau bài học, sinh viên cần hiểu vì sao biến đổi Fourier là lựa chọn đúng trên miền vô hạn, biết công thức nghiệm dưới dạng nhân nhiệt Gaussian, và thấy được mỗi tần số suy giảm theo hệ số $$ e^{-\alpha^2\xi^2 t} $$ nên các dao động cao tần bị dập tắt nhanh hơn.
+Bài học này trình bày phương trình nhiệt trên toàn trục thực, nơi phương pháp tách biến theo chuỗi mode rời rạc không còn phù hợp. Sau bài học, sinh viên cần hiểu vì sao biến đổi Fourier là công cụ tự nhiên trên miền vô hạn, nắm công thức nghiệm tích chập với nhân nhiệt Gaussian và thấy được mỗi thành phần tần số suy giảm theo hệ số $$ e^{-\alpha^2\xi^2 t} $$, khiến các dao động tần số cao bị triệt tiêu nhanh hơn.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm phương trình nhiệt trên đoạn hữu hạn, chuỗi Fourier phức, và biến đổi Fourier ở mức giới thiệu. Bài này là nơi lý thuyết Fourier trên miền vô hạn thật sự đi vào PDE.
+Sinh viên cần nắm phương trình nhiệt trên đoạn hữu hạn, chuỗi Fourier phức và biến đổi Fourier ở mức nhập môn. Bài học này đưa lý thuyết biến đổi Fourier trực tiếp vào việc giải PDE trên miền không bị chặn.
 
 ## Dẫn nhập
 
-Trên đoạn hữu hạn, các mode riêng được đếm bằng số nguyên và bài toán được giải bằng chuỗi Fourier. Nhưng khi không còn biên, không còn điều kiện ở $$ x=0 $$ hay $$ x=L $$, thì tập mode phù hợp không còn là một dãy rời rạc nữa. Toàn trục thực đòi hỏi một phổ liên tục, và vì thế biến đổi Fourier trở thành công cụ tự nhiên.
+Trên đoạn hữu hạn, điều kiện biên tạo ra một dãy mode riêng đếm được và bài toán được giải bằng chuỗi Fourier. Khi không còn biên tại $$ x=0 $$ hay $$ x=L $$, phổ tần số không còn rời rạc mà trở thành liên tục trên toàn trục thực. Do đó, biến đổi Fourier thay thế chuỗi Fourier một cách tự nhiên.
 
-Điểm đẹp của bài này là cùng một ý tưởng cũ vẫn sống tiếp: ta vẫn phân rã nghiệm thành các mode điều hòa, chỉ khác ở chỗ bây giờ tần số chạy liên tục. Đây là bước chuyển rất quan trọng từ Fourier series sang Fourier transform trong bối cảnh PDE.
+Ý tưởng cốt lõi vẫn không đổi: nghiệm vẫn được phân rã thành các mode điều hòa, chỉ khác là chỉ số tần số giờ đây biến thiên liên tục. Đây là bước chuyển quan trọng từ chuỗi Fourier sang biến đổi Fourier trong lý thuyết PDE.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Nếu dữ liệu ban đầu là một đỉnh nhiệt cục bộ trên toàn trục, ta mong nhiệt lan ra cả hai phía mà không bị biên phản xạ hay chặn lại. Miền vô hạn vì thế là môi trường lý tưởng để quan sát khuếch tán "tự do". Nghiệm sẽ không còn là tổng của vài mode đếm được, mà là tổ hợp của vô số tần số liên tục.
+Nếu phân bố nhiệt ban đầu là một đỉnh cục bộ trên toàn trục thực, nhiệt sẽ lan tỏa đều ra cả hai phía mà không chịu phản xạ hay ràng buộc từ biên. Miền vô hạn vì thế là mô hình lý tưởng để quan sát quá trình khuếch tán tự do, nơi nghiệm là sự chồng chất của một phổ tần số liên tục.
 
 ### Cách nhìn hình ảnh
 
-Trong miền tần số, mỗi dao động dạng $$ e^{i\xi x} $$ là một mode cơ bản. Theo thời gian, mode này bị nhân thêm bởi $$ e^{-\alpha^2\xi^2 t} $$. Vì $$ \xi^2 $$ lớn thì suy giảm nhanh, các chi tiết nhỏ của dữ liệu ban đầu biến mất trước. Trong miền không gian, điều đó xuất hiện như sự làm mượt và trải rộng của đồ thị.
+Trong miền tần số, mỗi dao động cơ bản có dạng $$ e^{i\xi x} $$. Theo thời gian, biên độ của mode này được nhân thêm thừa số suy giảm $$ e^{-\alpha^2\xi^2 t} $$. Khi $$ \lvert\xi\rvert $$ lớn, thừa số này giảm rất nhanh nên các chi tiết nhỏ, biến thiên gắt của dữ liệu ban đầu sớm biến mất. Trong miền không gian, quá trình đó biểu hiện qua việc đồ thị nhiệt độ ngày càng phẳng và trải rộng ra.
 
 ### Cách nhìn hình thức
 
@@ -43,11 +43,13 @@ $$ u_t=\alpha^2u_{xx},
 \qquad
 x\in\mathbb R,\ t>0, $$
 
-với điều kiện đầu $$ u(x,0)=f(x) $$. Lấy biến đổi Fourier theo $$ x $$: $$
+với điều kiện ban đầu $$ u(x,0)=f(x) $$. Lấy biến đổi Fourier theo biến không gian $$ x $$:
+
+$$
 \hat u(\xi,t)=\int_{-\infty}^{\infty}u(x,t)e^{-i\xi x}\,dx.
 $$
 
-Vì đạo hàm theo không gian trở thành phép nhân bởi $$ i\xi $$, ta có $$\partial_t\hat u(\xi,t)=-\alpha^2\xi^2\hat u(\xi,t)$$. Đây là ODE theo thời gian, nên $$ \hat u(\xi,t)=\hat f(\xi)e^{-\alpha^2\xi^2 t} $$. Lấy biến đổi ngược, ta được
+Vì phép lấy đạo hàm theo không gian chuyển thành phép nhân với $$ i\xi $$, ta thu được $$\partial_t\hat u(\xi,t)=-\alpha^2\xi^2\hat u(\xi,t)$$. Giải ODE theo thời gian này cho $$ \hat u(\xi,t)=\hat f(\xi)e^{-\alpha^2\xi^2 t} $$. Áp dụng biến đổi Fourier ngược, ta có
 
 $$
 u(x,t)=\frac{1}{2\pi}\int_{-\infty}^{\infty}\hat f(\xi)e^{-\alpha^2\xi^2 t}e^{i\xi x}\,d\xi.
@@ -55,52 +57,44 @@ $$
 
 ## Những ngộ nhận thường gặp
 
-- "Miền vô hạn chỉ là bản sao của miền hữu hạn khi cho
-
-$$ L\to\infty. $$
-
-" Không hẳn; phổ chuyển từ rời rạc sang liên tục.
-- "Nếu không có biên thì bài toán đơn giản hơn theo mọi nghĩa." Không đúng; nó đẹp hơn theo Fourier transform nhưng cũng đòi hỏi trực giác mới.
-- "Gaussian xuất hiện chỉ vì tính toán may mắn." Sai. Nó là hạt nhân tự nhiên của khuếch tán tự do.
-- "Tần số thấp và cao đều suy giảm giống nhau." Không đúng; tần số càng cao càng bị triệt tiêu nhanh.
+- "Miền vô hạn chỉ đơn giản là trường hợp miền hữu hạn khi cho $$ L\to\infty $$." Không hoàn toàn như vậy; khi lấy giới hạn này, phổ chuyển từ rời rạc sang liên tục.
+- "Không có biên thì bài toán đơn giản hơn về mọi mặt." Không đúng; bài toán thuận tiện hơn cho biến đổi Fourier nhưng đòi hỏi trực giác mới về tích phân phổ và điều kiện ở vô cực.
+- "Hàm Gaussian xuất hiện chỉ nhờ sự trùng hợp trong tính toán." Sai; đây là hạt nhân tự nhiên của quá trình khuếch tán tự do.
+- "Tần số thấp và tần số cao suy giảm với tốc độ như nhau." Không đúng; tần số càng cao càng bị triệt tiêu nhanh theo bậc hai của $$ \xi $$.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Nhắc lại biến đổi Fourier
+### Bước 1: Ôn lại biến đổi Fourier
 
-Sinh viên cần nhớ vai trò của phổ liên tục.
+Củng cố khái niệm phổ liên tục và các tính chất cơ bản của biến đổi Fourier.
 
-### Bước 2: Biến PDE thành ODE trong miền tần số
+### Bước 2: Chuyển PDE thành ODE trong miền tần số
 
-Đây là bước kỹ thuật quan trọng nhất.
+Đây là bước biến đổi kỹ thuật trọng tâm của bài.
 
-### Bước 3: Lấy biến đổi ngược và nhận diện nhân nhiệt
+### Bước 3: Biến đổi ngược và nhận diện nhân nhiệt
 
-Đây là lúc Gaussian xuất hiện.
+Đưa nghiệm từ miền tần số trở về miền không gian để thấy sự xuất hiện của hàm Gaussian.
 
-### Bước 4: Diễn giải tính làm mượt bằng ngôn ngữ phổ
+### Bước 4: Diễn giải hiệu ứng làm mượt qua phổ
 
-Đây là lợi ích khái niệm lớn nhất của bài.
+Liên hệ sự suy giảm nhanh ở tần số cao với độ trơn của nghiệm theo thời gian.
 
-### Các checkpoint
+### Các điểm kiểm tra
 
 - Sinh viên có giải thích được vì sao miền vô hạn dẫn đến phổ liên tục hay không.
-- Sinh viên có hiểu vì sao đạo hàm theo không gian trở thành phép nhân trong miền tần số hay không.
-- Sinh viên có thấy mối liên hệ giữa
-
-$$ e^{-\alpha^2\xi^2 t} $$
-
-và sự triệt tiêu tần số cao hay không.
+- Sinh viên có hiểu vì sao đạo hàm theo không gian chuyển thành phép nhân trong miền tần số hay không.
+- Sinh viên có thấy mối liên hệ giữa thừa số $$ e^{-\alpha^2\xi^2 t} $$ và sự triệt tiêu các thành phần tần số cao hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Công thức phổ của nghiệm
+### Ví dụ 1: Công thức nghiệm trong miền phổ
 
-Với dữ liệu ban đầu $$ f $$, ta có $$ \hat u(\xi,t)=\hat f(\xi)e^{-\alpha^2\xi^2 t} $$. Ví dụ này cho thấy nghiệm trong miền tần số cực kỳ đơn giản: mỗi tần số chỉ suy giảm theo một hệ số mũ.
+Với điều kiện ban đầu $$ f $$, ta có $$ \hat u(\xi,t)=\hat f(\xi)e^{-\alpha^2\xi^2 t} $$. Biểu diễn trong miền tần số đặc biệt gọn: mỗi thành phần tần số chỉ suy giảm độc lập theo một thừa số mũ.
 
 ### Ví dụ 2: Nhân nhiệt Gaussian
 
-Ta có thể viết nghiệm dưới dạng chập:
+Áp dụng định lý tích chập, nghiệm có thể viết dưới dạng
 
 $$ u(x,t)=\int_{-\infty}^{\infty}f(y)G(x-y,t)\,dy, $$
 
@@ -111,80 +105,80 @@ G(x,t)=\frac{1}{\sqrt{4\pi\alpha^2 t}}
 \exp\left(-\frac{x^2}{4\alpha^2 t}\right).
 $$
 
-Đây là nhân nhiệt. Nó dương, có tổng khối lượng bằng 1, và làm vai trò của một hạt nhân trung bình có trọng số.
+Hàm $$ G(x,t) $$ được gọi là nhân nhiệt (heat kernel). Nhân nhiệt luôn dương, có tích phân toàn miền bằng 1 và đóng vai trò như một hàm trọng số lấy trung bình.
 
-### Ví dụ 3: Dữ liệu xung hình chữ nhật
+### Ví dụ 3: Dữ liệu ban đầu dạng xung chữ nhật
 
-Nếu $$ f(x)=\mathbf 1_{\lvert x\rvert<a}(x) $$, thì nghiệm là một tích phân của Gaussian trên đoạn $$ [-a,a] $$, và có thể viết bằng hàm lỗi. Ví dụ này rất quan trọng vì nó cho thấy một biên sắc ban đầu sẽ được làm trơn ngay lập tức.
+Nếu $$ f(x)=\mathbf 1_{\lvert x\rvert<a}(x) $$, nghiệm là tích phân của hàm Gaussian trên đoạn $$ [-a,a] $$ và có thể biểu diễn qua hàm lỗi (error function). Ví dụ này cho thấy một bước nhảy sắc nét ban đầu sẽ được làm trơn ngay lập tức khi $$ t>0 $$.
 
-### Ví dụ 4: Dữ liệu rất nhấp nhô
+### Ví dụ 4: Dữ liệu ban đầu dao động mạnh
 
-Nếu dữ liệu ban đầu chứa nhiều thành phần cao tần, thì trong miền Fourier các thành phần này bị nhân bởi $$ e^{-\alpha^2\xi^2 t} $$ với $$ \xi $$ lớn, nên biến mất rất nhanh. Đây là cách giải thích phổ cho hiện tượng làm mượt mà không cần nhìn trực tiếp trong miền không gian.
+Nếu dữ liệu ban đầu chứa nhiều thành phần tần số cao, trong miền Fourier các thành phần này bị nhân với $$ e^{-\alpha^2\xi^2 t} $$ (với $$ \lvert\xi\rvert $$ lớn) nên tắt rất nhanh. Đây là lời giải thích theo ngôn ngữ phổ cho hiệu ứng làm mượt của phương trình nhiệt.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao trên miền vô hạn ta nên nghĩ theo phổ liên tục thay vì các mode đếm được?
-2. Điều gì trong công thức $$ e^{-\alpha^2\xi^2 t} $$ giải thích việc nhiệt làm mượt dữ liệu?
-3. Vì sao nhân nhiệt Gaussian có thể được xem là một phép trung bình có trọng số?
+1. Vì sao trên miền vô hạn ta sử dụng phổ liên tục thay vì các mode rời rạc đếm được?
+2. Yếu tố nào trong biểu thức $$ e^{-\alpha^2\xi^2 t} $$ giải thích cơ chế làm mượt dữ liệu của phương trình nhiệt?
+3. Vì sao nhân nhiệt Gaussian có thể được hiểu như một phép lấy trung bình có trọng số?
 
 ## Bài toán ứng dụng
 
-1. Một xung nhiệt cục bộ được đặt trên một thanh rất dài. Vì sao sau thời gian ngắn, hồ sơ nhiệt độ có dạng gần Gaussian?
-2. Trong xử lý ảnh, vì sao lọc Gaussian lại có liên hệ chặt với phương trình nhiệt?
-3. Trong xác suất, vì sao Gaussian xuất hiện tự nhiên khi mô tả sự lan tỏa của nhiều nhiễu nhỏ độc lập?
+1. Một xung nhiệt cục bộ được tạo ra trên một thanh rất dài. Vì sao sau một thời gian ngắn, phân bố nhiệt độ có dạng gần với đường cong Gaussian?
+2. Trong xử lý ảnh, vì sao bộ lọc làm mờ Gaussian có liên hệ mật thiết với phương trình nhiệt?
+3. Trong lý thuyết xác suất, vì sao phân bố Gaussian xuất hiện tự nhiên khi tổng hợp tác động lan tỏa của nhiều nhiễu nhỏ độc lập?
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng câu hỏi: "Khi không còn biên, mode riêng sẽ được đếm thế nào?"
-- Cho sinh viên so sánh một bài toán trên đoạn hữu hạn với một bài toán trên toàn trục để thấy sự chuyển từ phổ rời rạc sang liên tục.
-- Hỏi cả lớp: "Tần số nào sống lâu hơn dưới tác động của phương trình nhiệt?"
-- Vẽ hoặc mô tả cách một xung hình chữ nhật được làm trơn dần thành dạng Gaussian.
+- Khởi đầu bằng câu hỏi: "Khi không còn biên hữu hạn, các mode riêng sẽ được phân bố như thế nào?"
+- Đối chiếu một bài toán trên đoạn hữu hạn với một bài toán trên toàn trục thực để làm nổi bật bước chuyển từ phổ rời rạc sang phổ liên tục.
+- Đặt câu hỏi: "Thành phần tần số nào tồn tại lâu hơn dưới sự tiến hóa của phương trình nhiệt?"
+- Minh họa quá trình một xung chữ nhật được làm trơn dần thành dạng gần Gaussian.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên nhấn mạnh hai công thức cốt lõi: nghiệm phổ $$ \hat u=\hat f e^{-\alpha^2\xi^2 t} $$ và nghiệm chập với Gaussian. Khi hai công thức này đã quen, phần giải thích sâu hơn sẽ dễ tiếp nhận hơn.
+Nên tập trung vào hai công thức cốt lõi: nghiệm trong miền phổ $$ \hat u=\hat f e^{-\alpha^2\xi^2 t} $$ và nghiệm tích chập với nhân Gaussian. Khi đã quen với hai công thức này, phần diễn giải chi tiết sẽ dễ tiếp thu hơn.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể mời sinh viên khá giỏi tự suy ra nhân nhiệt bằng cách lấy biến đổi ngược của $$ e^{-\alpha^2\xi^2 t} $$, hoặc liên hệ với chuyển động Brown và xác suất.
+Có thể yêu cầu sinh viên tự tính biến đổi Fourier ngược của $$ e^{-\alpha^2\xi^2 t} $$ để suy ra nhân nhiệt, hoặc tìm hiểu mối liên hệ với chuyển động Brown trong lý thuyết xác suất.
 
 ## Tóm tắt dễ nhớ
 
-Trên miền vô hạn, phương trình nhiệt được giải tự nhiên bằng biến đổi Fourier. Mỗi tần số suy giảm theo $$ e^{-\alpha^2\xi^2 t} $$, nên tần số cao chết nhanh. Nghiệm trong miền không gian là chập của dữ liệu ban đầu với một Gaussian, vì thế nhiệt luôn có xu hướng làm mượt.
+Trên miền vô hạn, phương trình nhiệt được giải tự nhiên bằng biến đổi Fourier. Mỗi tần số suy giảm theo thừa số $$ e^{-\alpha^2\xi^2 t} $$ nên các tần số cao tắt nhanh hơn. Trong miền không gian, nghiệm là tích chập của dữ liệu ban đầu với nhân nhiệt Gaussian, qua đó làm mượt phân bố nhiệt theo thời gian.
 
 ## Video tham khảo
 
-- xem trước: [Solving the Heat Equation with the Fourier Transform](https://www.youtube.com/watch?v=7haZCrQDHpA) — Steve Brunton, tiếng Anh. Biến đổi Fourier giải phương trình nhiệt trên cả đường thẳng.
-- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Cùng sự tắt của các tần số, giờ không còn một thanh hữu hạn các mode.
-- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Biến đổi được dùng như phép đổi tọa độ trong phép tính ấy.
+- Xem trước: [Solving the Heat Equation with the Fourier Transform](https://www.youtube.com/watch?v=7haZCrQDHpA) — Steve Brunton, tiếng Anh. Trình bày cách dùng biến đổi Fourier để giải phương trình nhiệt trên toàn trục thực.
+- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Minh họa cơ chế suy giảm theo tần số, đối chiếu giữa miền hữu hạn và miền vô hạn.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Giới thiệu trực quan biến đổi Fourier như phép đổi hệ tọa độ sang miền tần số.
 
 ## Tài liệu tham khảo
 
-- Evans, *Partial Differential Equations* - nền tảng chuẩn cho phương trình nhiệt, nguyên lý cực đại, và hàm Green.
-- Haberman, *Applied Partial Differential Equations* - nhiều ví dụ vật lý và phương pháp tính minh họa rất rõ.
+- Evans, *Partial Differential Equations* — tài liệu chuẩn về phương trình nhiệt, nguyên lý cực đại và hàm Green.
+- Haberman, *Applied Partial Differential Equations* — cung cấp nhiều ví dụ vật lý và phương pháp giải minh họa rõ ràng.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Khuếch tán trên toàn trục số
-- Bài toán: Chất lan truyền trên miền vô hạn, không còn biên hữu hạn để dùng chuỗi Fourier.
+#### Khuếch tán trên toàn trục thực
+- Bài toán: Chất hòa tan hoặc nhiệt lan truyền trên miền vô hạn, không có biên hữu hạn để dùng chuỗi Fourier.
 - Mô hình:
 $$ u_t=\alpha^2 u_{xx},\qquad x\in \mathbb{R}. $$
-- Giả thiết và giới hạn: Miền vô hạn và dữ liệu đủ giảm ở vô cực.
-- Diễn giải: Phổ liên tục thay thế phổ rời rạc.
+- Giả thiết và giới hạn: Miền vô hạn và dữ liệu suy giảm đủ nhanh ở vô cực.
+- Diễn giải: Phổ tần số liên tục thay thế cho phổ rời rạc.
 
-#### Nhiệt độ từ một đám nhiệt cục bộ
-- Bài toán: Ban đầu nhiệt chỉ tập trung trong một vùng nhỏ rồi lan dần ra.
-- Mô hình: Dùng biến đổi Fourier hoặc heat kernel.
-- Giả thiết và giới hạn: Không có biên phản xạ hay điều kiện ngoại lực.
-- Diễn giải: Profile ngày càng bè rộng và thấp đi nhưng tổng khối lượng nhiệt bảo toàn.
+#### Phân bố nhiệt từ một nguồn cục bộ
+- Bài toán: Ban đầu nhiệt tập trung trong một vùng hẹp rồi khuếch tán dần ra xung quanh.
+- Mô hình: Sử dụng biến đổi Fourier hoặc tích chập với nhân nhiệt.
+- Giả thiết và giới hạn: Không có biên phản xạ hay nguồn nhiệt ngoài.
+- Diễn giải: Đồ thị nhiệt độ ngày càng trải rộng và hạ thấp đỉnh, trong khi tổng nhiệt lượng được bảo toàn.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Miền vô hạn phá vỡ cơ sở mode rời rạc sin-cos và đòi hỏi phổ liên tục. Một bẫy phổ biến là cố giữ nguyên trực giác chuỗi Fourier trên miền vô hạn; đúng hơn phải nghĩ theo biến đổi Fourier và hạt nhân nhiệt.
+Trên miền vô hạn, cơ sở mode rời rạc sin-cos không còn phù hợp và cần chuyển sang phổ liên tục. Thay vì giữ trực giác của chuỗi Fourier, cần tiếp cận bài toán bằng biến đổi Fourier và nhân nhiệt.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -213,14 +207,14 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Với dữ kiện đầu là delta tại gốc, nghiệm của phương trình nhiệt trên $$ \mathbb{R} $$ là
+Với điều kiện ban đầu là hàm delta Dirac tại gốc tọa độ, nghiệm của phương trình nhiệt trên $$ \mathbb{R} $$ là
 $$
 G(x,t)=\frac{1}{\sqrt{4\pi \alpha^2 t}}\exp\left(-\frac{x^2}{4\alpha^2 t}\right).
 $$
-Đó là profile Gaussian cơ bản mô tả một xung nhiệt loãng dần theo thời gian.
+Đây là dạng Gaussian cơ bản mô tả sự khuếch tán dần của một xung nhiệt điểm theo thời gian.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Hiểu vì sao Gaussian xuất hiện và cách profile trải rộng theo thời gian.
+**Bậc đại học.** Hiểu nguồn gốc của hàm Gaussian và cách phân bố nhiệt trải rộng theo thời gian.
 
-**Bậc sau đại học.** Nhấn mạnh semigroup nhiệt trên $$ \mathbb{R}^n $$ và vai trò của biến đổi Fourier.
+**Bậc sau đại học.** Tìm hiểu nửa nhóm nhiệt (heat semigroup) trên $$ \mathbb{R}^n $$ và vai trò của biến đổi Fourier trong phân tích nghiệm.

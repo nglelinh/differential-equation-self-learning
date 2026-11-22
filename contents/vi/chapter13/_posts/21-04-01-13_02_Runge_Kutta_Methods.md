@@ -14,101 +14,109 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài này giới thiệu họ phương pháp Runge-Kutta như sự cải tiến có hệ thống của Euler. Sau bài học, sinh viên cần hiểu ý tưởng lấy nhiều mẫu độ dốc trong một bước, thiết lập được công thức RK4, giải thích được vì sao phương pháp này chính xác hơn Euler, và biết khi nào Runge-Kutta là lựa chọn phù hợp hay chưa phù hợp.
+Bài học này giới thiệu họ phương pháp Runge–Kutta như sự cải tiến có hệ thống của phương pháp Euler. Sau bài học, sinh viên cần hiểu ý tưởng lấy nhiều mẫu độ dốc trong cùng một bước, thiết lập được công thức RK4, giải thích vì sao RK4 chính xác hơn Euler đáng kể, và nhận biết khi nào Runge–Kutta là lựa chọn thích hợp hay chưa phù hợp.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm phương pháp Euler, khai triển Taylor, khái niệm bậc chính xác, và bài toán giá trị ban đầu cho ODE. Nên nhớ rằng Euler dùng duy nhất một độ dốc tại đầu bước, còn Runge-Kutta tìm cách mô tả tốt hơn hình dạng cục bộ của nghiệm trong cả bước.
+Sinh viên cần nắm phương pháp Euler, khai triển Taylor, khái niệm bậc chính xác và bài toán giá trị ban đầu cho ODE. Trong khi Euler chỉ dùng một độ dốc tại đầu bước, Runge–Kutta sử dụng nhiều mẫu độ dốc để nắm bắt chính xác hơn hình dạng cục bộ của nghiệm trên toàn bước.
 
 ## Dẫn nhập
 
-Nếu Euler giống như lái xe chỉ nhìn hướng tại điểm xuất phát của đoạn đường, thì Runge-Kutta giống như thò đầu quan sát thêm ở giữa đoạn và gần cuối đoạn trước khi quyết định bước đi. Ta không chỉ hỏi “độ dốc bây giờ là gì?” mà hỏi “độ dốc đại diện cho cả bước này nên là gì?”.
+Nếu phương pháp Euler chỉ dựa vào hướng đi tại điểm xuất phát của mỗi đoạn đường, thì phương pháp Runge–Kutta quan sát thêm độ dốc ở giữa đoạn và cuối đoạn trước khi quyết định bước cập nhật. Thay vì chỉ dùng độ dốc đầu bước, ta tìm một độ dốc đại diện tốt hơn cho cả khoảng $$ [t_n, t_{n+1}] $$.
 
-Ý tưởng ấy cực kỳ mạnh: chỉ bằng cách lấy vài mẫu thông minh trong một bước, ta có thể tăng độ chính xác rất nhiều mà không cần đạo hàm bậc cao của $$ f $$. Đó là lý do Runge-Kutta trở thành chuẩn thực hành trong rất nhiều bài toán ODE.
+Chỉ bằng cách lấy một vài mẫu độ dốc có chọn lọc trong mỗi bước, Runge–Kutta nâng cao bậc chính xác đáng kể mà không cần tính đạo hàm bậc cao của $$ f $$. Nhờ ưu điểm này, họ Runge–Kutta trở thành công cụ tiêu chuẩn cho nhiều bài toán ODE không cứng.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Hãy tưởng tượng đi bộ qua một con dốc quanh co. Nếu chỉ nhìn độ nghiêng tại điểm đầu, bạn dễ đi lệch. Nếu quan sát thêm giữa đường và gần cuối đoạn, bạn sẽ có ước lượng tốt hơn cho độ nghiêng trung bình của cả quãng. Runge-Kutta làm đúng điều đó với trường hướng của ODE.
+Khi đi qua một đoạn dốc uốn lượn, nếu chỉ đo độ nghiêng tại điểm đầu thì dự đoán vị trí cuối đoạn dễ bị lệch. Nếu đo thêm độ nghiêng ở giữa đoạn và gần cuối đoạn rồi kết hợp lại, ta thu được ước lượng sát hơn nhiều cho độ dốc trung bình của cả quãng. Runge–Kutta thực hiện đúng nguyên tắc đó trên trường hướng của ODE.
 
 ### Cách hình ảnh
 
-Giáo viên nên vẽ bốn điểm lấy mẫu trong một bước của RK4: đầu bước, hai điểm giữa bước, và cuối bước. Mỗi điểm cho một độ dốc $$ k_1,k_2,k_3,k_4 $$. Sau đó nhấn mạnh rằng nghiệm mới được tạo bởi trung bình có trọng số của bốn độ dốc ấy, chứ không đơn thuần lấy trung bình cộng.
+Trong một bước của RK4, ta lấy bốn mẫu độ dốc $$ k_1,k_2,k_3,k_4 $$ tại đầu bước, hai vị trí giữa bước và cuối bước. Giá trị mới $$ y_{n+1} $$ được tính theo trung bình có trọng số của bốn độ dốc đó (với trọng số $$ 1, 2, 2, 1 $$ chia cho 6), ưu tiên thông tin ở giữa bước.
 
 ### Cách hình thức
 
-Với bài toán $$ y'=f(t,y) $$, RK4 được xác định bởi $$ k_1=f(t_n,y_n) $$, $$ k_2=f\!\left(t_n+\frac h2,y_n+\frac h2k_1\right), $$
+Với bài toán $$ y'=f(t,y) $$, phương pháp Runge–Kutta bậc bốn cổ điển (RK4) được xác định bởi:
 
-$$ k_3=f\!\left(t_n+\frac h2,y_n+\frac h2k_2\right), $$ $$ k_4=f(t_n+h,y_n+hk_3) $$, và
+$$
+k_1=f(t_n,y_n), \qquad k_2=f\!\left(t_n+\frac h2,y_n+\frac h2k_1\right),
+$$
+
+$$
+k_3=f\!\left(t_n+\frac h2,y_n+\frac h2k_2\right), \qquad k_4=f(t_n+h,y_n+hk_3),
+$$
+
+và
 
 $$
 y_{n+1}=y_n+\frac h6\left(k_1+2k_2+2k_3+k_4\right).
 $$
 
-Phương pháp này có sai số toàn cục bậc bốn trong điều kiện trơn thích hợp.
+Trong điều kiện nghiệm đủ trơn, phương pháp này có sai số toàn cục bậc bốn, tức $$ O(h^4) $$.
 
 ## Ngộ nhận thường gặp
 
-### “Runge-Kutta chỉ là Euler lặp nhiều lần”
+### “Runge–Kutta chỉ là lặp phương pháp Euler nhiều lần”
 
-Không đúng. Trọng số và vị trí lấy mẫu được chọn để khớp khai triển Taylor ở bậc cao.
+Không đúng. Các điểm lấy mẫu và trọng số trong Runge–Kutta được thiết kế đặc biệt để triệt tiêu các số hạng sai số và khớp khai triển Taylor đến bậc cao.
 
-### “Bậc cao hơn luôn tốt hơn”
+### “Phương pháp bậc cao hơn luôn tốt hơn”
 
-Không hẳn. Nếu bài toán cứng hoặc mỗi lần tính $$ f $$ rất đắt, bậc cao chưa chắc là lựa chọn tối ưu.
+Không hẳn. Khi bài toán cứng hoặc mỗi lần đánh giá hàm $$ f $$ rất tốn kém, phương pháp bậc cao tường minh chưa chắc là lựa chọn tối ưu.
 
-### “RK4 chính xác vì dùng bốn điểm”
+### “RK4 chính xác đơn thuần vì dùng bốn điểm”
 
-Chưa đủ. Điều quan trọng không chỉ là số điểm mà là cách chọn và cách trộn các độ dốc.
+Chưa đủ. Yếu tố quyết định không chỉ là số tầng (stage) mà là cách chọn vị trí lấy mẫu và bộ trọng số sao cho khớp với khai triển Taylor bậc bốn.
 
-### “Một phương pháp chính xác cao thì tự động ổn định”
+### “Phương pháp có bậc chính xác cao thì tự động ổn định”
 
-Sai. Độ chính xác và ổn định là hai câu chuyện khác nhau.
+Sai. Bậc chính xác và tính ổn định là hai tính chất độc lập nhau.
 
 ## Tiến trình học
 
-### Bước 1: Nhìn lại Euler
+### Bước 1: Nhìn lại hạn chế của phương pháp Euler
 
-Nhấn mạnh điểm yếu: chỉ lấy một độ dốc.
+Nhấn mạnh nguyên nhân sai số bậc thấp: chỉ sử dụng duy nhất độ dốc tại đầu bước.
 
-### Bước 2: Giới thiệu ý tưởng “nhiều slope trong một bước”
+### Bước 2: Giới thiệu ý tưởng lấy nhiều độ dốc trong một bước
 
-Cho sinh viên hiểu Runge-Kutta là cách ước lượng tốt hơn độ dốc trung bình trên khoảng $$ [t_n,t_{n+1}] $$.
+Xem Runge–Kutta như cách ước lượng chính xác hơn độ dốc trung bình trên đoạn $$ [t_n,t_{n+1}] $$.
 
-### Bước 3: Học RK2 rồi lên RK4
+### Bước 3: Đi từ RK2 lên RK4
 
-Đi từ phương pháp trung điểm hoặc Heun để RK4 không xuất hiện như một công thức thần bí.
+Bắt đầu từ phương pháp trung điểm hoặc Heun (RK2) trước khi giới thiệu RK4 để công thức không xuất hiện đột ngột.
 
-### Bước 4: So sánh chi phí với lợi ích
+### Bước 4: Cân nhắc chi phí và hiệu quả
 
-Một bước RK4 cần bốn lần tính $$ f $$, nhưng thường cho phép dùng bước lớn hơn nhiều so với Euler.
+Mỗi bước RK4 cần bốn lần đánh giá $$ f $$, nhưng thường cho phép dùng bước $$ h $$ lớn hơn nhiều so với Euler để đạt cùng mức sai số.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có giải thích được vì sao cần nhiều độ dốc trong một bước không?
-- Sinh viên có thiết lập đúng bốn hệ số $$ k_i $$ không?
-- Sinh viên có phân biệt được bậc chính xác với số lần tính hàm không?
+- Sinh viên có giải thích được vì sao lấy nhiều mẫu độ dốc trong một bước lại giảm sai số hay không?
+- Sinh viên có viết và tính đúng bốn hệ số $$ k_1,k_2,k_3,k_4 $$ hay không?
+- Sinh viên có phân biệt được bậc chính xác của phương pháp với số lần đánh giá hàm trong một bước hay không?
 
 ## Ví dụ có lời giải
 
 ### Ví dụ 1: RK2 cho bài toán đơn giản
 
-Xét $$ y'=y,\qquad y(0)=1 $$. Với bước $$ h $$, phương pháp trung điểm cho
+Xét $$ y'=y,\qquad y(0)=1 $$. Với bước $$ h $$, phương pháp trung điểm (RK2) cho:
 
 $$
 k_1=y_n,
 \qquad
-k_2=y_n+\frac h2k_1=y_n\left(1+\frac h2\right).
+k_2=y_n+\frac h2k_1=y_n\left(1+\frac h2\right),
 $$
 
-Suy ra
+suy ra
 
 $$
 y_{n+1}=y_n+hk_2=y_n\left(1+h+\frac{h^2}{2}\right).
 $$
 
-Đây đã tốt hơn Euler vì khớp thêm hạng bậc hai của $$ e^h $$.
+Kết quả này chính xác hơn Euler vì đã khớp thêm số hạng bậc hai của khai triển $$ e^h $$.
 
 ### Ví dụ 2: Một bước RK4 cho $$ y'=y $$
 
@@ -124,64 +132,65 @@ k_3=1+\frac h2+\frac{h^2}{4},
 k_4=1+h+\frac{h^2}{2}+\frac{h^3}{4}.
 $$
 
-Thay vào công thức RK4 cho xấp xỉ gần với khai triển Taylor của $$ e^h $$ đến bậc bốn. Đây là lý do phương pháp rất chính xác cho bài toán trơn.
+Thay vào công thức RK4 cho biểu thức khớp hoàn toàn với khai triển Taylor của $$ e^h $$ đến bậc bốn. Đây là lý do RK4 đạt độ chính xác cao trên các bài toán trơn.
 
 ### Ví dụ 3: So sánh Euler và RK4
 
-Với bước $$ h=0.5 $$ trên bài toán $$ y'=y $$, Euler sau một bước cho $$ y_1=1.5 $$, trong khi RK4 cho giá trị gần với $$ e^{0.5}\approx 1.6487 $$. Sự khác biệt thể hiện rõ ngay cả khi chỉ đi một bước tương đối lớn.
+Với bước $$ h=0.5 $$ trên bài toán $$ y'=y $$, sau một bước Euler cho $$ y_1=1.5 $$, trong khi RK4 cho giá trị rất sát với $$ e^{0.5}\approx 1.6487 $$. Sự chênh lệch thể hiện rõ ngay cả trên một bước khá lớn.
 
 ### Ví dụ 4: Khi RK4 chưa phải lựa chọn tốt
 
-Xét bài toán cứng $$ y'=-1000y $$. Dù RK4 chính xác cao trong bài toán trơn không cứng, nó vẫn có thể bị ép dùng bước rất nhỏ vì ổn định. Ví dụ này nhắc sinh viên rằng bậc cao không giải quyết mọi vấn đề.
+Xét bài toán cứng $$ y'=-1000y $$. Dù có bậc chính xác cao trên bài toán trơn, RK4 là phương pháp tường minh nên vẫn bị ràng buộc bởi miền ổn định hữu hạn và buộc phải dùng bước $$ h $$ rất nhỏ. Ví dụ này nhắc lại rằng bậc cao không tự động giải quyết tính cứng.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao Runge-Kutta không cần đạo hàm bậc cao của $$ f $$ mà vẫn đạt bậc chính xác cao?
-2. Điều gì làm cho bốn độ dốc trong RK4 “đại diện” tốt cho cả một bước?
-3. Khi nào nên ưu tiên phương pháp nhiều bậc hơn, và khi nào nên ưu tiên phương pháp ổn định hơn?
+1. Vì sao phương pháp Runge–Kutta đạt bậc chính xác cao mà không cần tính đạo hàm bậc cao của $$ f $$?
+2. Vì sao bốn độ dốc trong RK4 phản ánh tốt hành vi trung bình của nghiệm trên cả bước $$ [t_n,t_{n+1}] $$?
+3. Trong trường hợp nào nên ưu tiên phương pháp bậc cao, và khi nào nên ưu tiên phương pháp có miền ổn định rộng hơn?
 
 ## Bài toán ứng dụng
 
-1. Trong mô phỏng quỹ đạo hành tinh, vì sao một phương pháp như RK4 thường hữu ích hơn Euler?
-2. Trong sinh học quần thể, nếu mỗi lần tính $$ f $$ tương đối rẻ, ta đánh đổi thế nào giữa số bước và độ chính xác?
-3. Trong điều khiển robot thời gian thực, việc dùng RK4 có thể bị hạn chế bởi chi phí tính toán ra sao?
+1. Trong mô phỏng quỹ đạo hành tinh, vì sao RK4 thường vượt trội hơn phương pháp Euler?
+2. Trong mô hình sinh học quần thể, khi chi phí mỗi lần tính $$ f $$ thấp, ta cân đối giữa kích thước bước và độ chính xác như thế nào?
+3. Trong điều khiển robot thời gian thực, chi phí bốn lần đánh giá $$ f $$ mỗi bước của RK4 có thể đặt ra hạn chế gì?
 
 ## Chiến lược dạy học tương tác
 
 ### Câu hỏi nên hỏi trên lớp
 
-- Nếu Euler chỉ nhìn một điểm, em muốn nhìn thêm ở đâu để cải thiện dự đoán?
-- Vì sao điểm giữa bước lại quan trọng?
-- Em chọn bốn độ dốc rồi trộn chúng như thế nào để có ý nghĩa hình học?
+- Nếu Euler chỉ lấy độ dốc tại đầu bước, ta nên lấy mẫu thêm ở vị trí nào trong đoạn $$ [t_n,t_{n+1}] $$?
+- Vì sao thông tin tại điểm giữa bước lại được gán trọng số lớn hơn trong RK4?
+- Tại sao bốn độ dốc cần được tổ hợp có trọng số thay vì lấy trung bình đều?
 
 ### Hoạt động gợi ý
 
-- Cho sinh viên tính thủ công RK2 và RK4 trên cùng một bài toán nhỏ.
-- Dùng phần mềm so sánh sai số Euler, RK2, RK4 khi thay đổi $$ h $$.
-- Chia nhóm: một nhóm bảo vệ Euler vì rẻ, một nhóm bảo vệ RK4 vì chính xác.
+- Cho sinh viên tính tay một bước RK2 và RK4 trên cùng một bài toán đơn giản.
+- Chạy mã so sánh đồ thị sai số của Euler, RK2 và RK4 theo bước $$ h $$ trên thang log–log.
+- Thảo luận nhóm so sánh lợi thế của Euler (chi phí mỗi bước thấp) và RK4 (độ chính xác cao).
 
 ### Cách tăng tham gia
 
-- Đi từ phương pháp trung điểm trước khi đưa RK4.
-- Cho sinh viên đoán vai trò của các hệ số $$ 1,2,2,1 $$.
-- Yêu cầu giải thích RK4 bằng lời không dùng công thức.
+- Trình bày phương pháp trung điểm (RK2) trước khi đưa ra công thức RK4.
+- Mời sinh viên dự đoán ý nghĩa của bộ trọng số $$ 1,2,2,1 $$ (gợi liên hệ với quy tắc Simpson).
+- Yêu cầu giải thích ý tưởng RK4 bằng lời trước khi viết công thức.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Làm quen bằng RK2 trước.
-- Dùng sơ đồ khối chỉ ra luồng tạo $$ k_1,k_2,k_3,k_4 $$.
+- Làm quen từ RK2 trước khi chuyển sang RK4.
+- Dùng sơ đồ luồng minh họa thứ tự tính $$ k_1 \to k_2 \to k_3 \to k_4 $$.
+- Tập trung vào ý tưởng "ước lượng độ dốc trung bình trên cả bước".
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Suy ra các điều kiện order conditions cơ bản cho RK2 và RK4.
+- Suy ra các điều kiện bậc (order conditions) cơ bản cho RK2 và RK4.
 - So sánh miền ổn định của RK4 với Euler tiến trên bài toán $$ y'=\lambda y $$.
-- Phân tích khi nào embedded Runge-Kutta phù hợp cho adaptive step size.
+- Tìm hiểu cặp phương pháp Runge–Kutta lồng nhau (embedded Runge–Kutta) dùng để điều chỉnh bước thích nghi.
 
 ## Ghi nhớ nhanh
 
-Runge-Kutta cải tiến Euler bằng cách lấy nhiều mẫu độ dốc trong cùng một bước để ước lượng tốt hơn xu thế trung bình của nghiệm. RK4 đặc biệt phổ biến vì đạt độ chính xác cao cho nhiều bài toán trơn với chi phí vừa phải.
+Runge–Kutta cải tiến phương pháp Euler bằng cách lấy nhiều mẫu độ dốc trong cùng một bước để ước lượng chính xác hơn xu thế trung bình của nghiệm. RK4 được dùng rộng rãi vì cân bằng tốt giữa độ chính xác bậc bốn và chi phí tính toán hợp lý trên các bài toán trơn không cứng.
 
 ---
 
@@ -189,7 +198,7 @@ Runge-Kutta cải tiến Euler bằng cách lấy nhiều mẫu độ dốc tron
 
 ### 1. Quỹ đạo hành tinh và vệ tinh
 
-Trong cơ học thiên thể, hệ ODE thường có dạng
+Trong cơ học thiên thể, hệ phương trình chuyển động thường có dạng:
 
 $$
 \mathbf{x}'=\mathbf{v},
@@ -197,19 +206,19 @@ $$
 \mathbf{v}'=\mathbf{a}(\mathbf{x}).
 $$
 
-RK4 thường cho quỹ đạo ngắn-trung hạn chính xác hơn nhiều so với Euler với cùng số bước. Mô hình giả định ta có thể tính gia tốc nhiều lần trong một bước mà chi phí vẫn chấp nhận được. Giới hạn là với tích phân rất dài hạn hay bài toán bảo toàn cấu trúc Hamilton, có thể cần các phương pháp cấu trúc-preserving khác.
+Trên khoảng thời gian ngắn đến trung hạn, RK4 cho quỹ đạo chính xác hơn nhiều so với Euler với cùng số bước (khi chi phí tính gia tốc chấp nhận được). Tuy nhiên, với mô phỏng rất dài hạn cần bảo toàn năng lượng hoặc cấu trúc Hamilton, cần các phương pháp bảo toàn cấu trúc (như tích phân symplectic).
 
 ### 2. Động học dịch bệnh và sinh học quần thể
 
-Các mô hình SIR hay logistic mở rộng thường cần tính nhanh nhiều kịch bản tham số. Nếu mỗi lần đánh giá hàm $$ f $$ không quá đắt, RK4 là lựa chọn thực hành tốt vì giảm sai số mạnh với bước vừa phải. Giới hạn là bài toán cứng hoặc nhiều thang thời gian có thể khiến RK4 mất lợi thế ổn định.
+Các mô hình như SIR hay logistic mở rộng thường cần chạy nhanh nhiều kịch bản tham số. Khi mỗi lần đánh giá $$ f $$ không quá tốn kém, RK4 giảm mạnh sai số với bước thời gian vừa phải; giới hạn chỉ xuất hiện khi hệ có tính cứng hoặc nhiều thang thời gian chênh lệch lớn.
 
 ### 3. Điều khiển robot và mô phỏng thời gian thực
 
-Trong điều khiển robot, trạng thái hệ thường tuân theo ODE phi tuyến. RK4 cho mô phỏng quỹ đạo chính xác hơn Euler, nhưng bốn lần gọi hàm mỗi bước có thể là chi phí đáng kể trong vòng lặp thời gian thực. Đây là nơi sinh viên thấy rõ đánh đổi giữa độ chính xác và thời gian tính.
+Trạng thái robot tuân theo các hệ ODE phi tuyến. RK4 cho độ chính xác quỹ đạo cao hơn Euler, nhưng bốn lần gọi hàm mỗi bước có thể tạo áp lực lên chu kỳ tính toán thời gian thực — thể hiện rõ sự đánh đổi giữa độ chính xác và tốc độ.
 
 ## Trực giác sâu hơn
 
-Runge-Kutta là bài học về “thông tin nhiều hơn trong cùng một bước”. Thay vì giảm bước liên tục, ta hỏi liệu có thể hiểu tốt hơn hình dạng cục bộ của nghiệm trong chính bước đó không. Ngộ nhận phổ biến là nghĩ RK4 tốt chỉ vì nó có bốn công thức con; thực ra sức mạnh nằm ở việc các hệ số được chọn để khớp khai triển Taylor đến bậc cao.
+Runge–Kutta dựa trên ý tưởng khai thác nhiều thông tin hơn trong cùng một bước thay vì chỉ chia nhỏ bước liên tục. Sức mạnh của RK4 không nằm ở việc có bốn công thức con, mà ở việc vị trí các tầng và bộ trọng số được chọn chính xác để khớp khai triển Taylor đến bậc bốn.
 
 ## Trực quan hóa bằng Python
 
@@ -251,7 +260,7 @@ plt.show()
 
 ## Trực quan hóa bằng JavaScript
 
-Có thể dùng `Plotly.js` để cho sinh viên bật/tắt các độ dốc $$ k_1,k_2,k_3,k_4 $$ trên cùng một bước và nhìn trực tiếp cách tổ hợp trọng số của chúng tạo ra cập nhật RK4.
+Có thể dùng `Plotly.js` cho phép bật/tắt từng độ dốc $$ k_1,k_2,k_3,k_4 $$ trên cùng một bước để quan sát trực tiếp cách tổ hợp trọng số của chúng tạo ra bước cập nhật RK4.
 
 ## Gợi ý tài nguyên ngoài
 
@@ -261,22 +270,11 @@ Tìm kiếm: `RK4 visualization`, `Runge Kutta slope sampling`, hoặc `adaptive
 
 ### Mức đại học (Undergraduate)
 
-Tập trung vào ý tưởng “lấy nhiều độ dốc trong một bước” và khả năng cải thiện đáng kể so với Euler trên các bài toán trơn không cứng.
+Tập trung vào ý tưởng lấy nhiều mẫu độ dốc trong một bước và ưu thế độ chính xác của RK4 so với Euler trên các bài toán trơn không cứng.
 
 ### Mức sau đại học (Graduate)
 
-Đi sâu vào order conditions, tableau Butcher, embedded methods, adaptive step size, và giới hạn ổn định của họ Runge-Kutta trên bài toán cứng.
-- Tập trung vào ý tưởng “ước lượng độ dốc trung bình”.
-
-### Thử thách cho sinh viên khá giỏi
-
-- Tìm cách suy ra điều kiện bậc của Runge-Kutta.
-- So sánh RK4 với Taylor bậc bốn.
-- Tìm hiểu embedded Runge-Kutta và adaptive step size.
-
-## Ghi nhớ nhanh
-
-Runge-Kutta cải tiến Euler bằng cách lấy nhiều mẫu độ dốc trong cùng một bước để ước lượng tốt hơn độ dốc trung bình. RK4 là lựa chọn kinh điển vì cân bằng tốt giữa độ chính xác cao và chi phí tính toán vừa phải.
+Đi sâu vào điều kiện bậc (order conditions), bảng Butcher, phương pháp lồng nhau (embedded methods), điều khiển bước thích nghi và giới hạn ổn định của họ Runge–Kutta trên bài toán cứng.
 
 > Xem toàn bộ minh họa tương tác của chương tại: [Bộ Minh họa tương tác Chương 13]({{ site.baseurl }}/contents/vi/chapter13/13_09_Interactive_Gallery/)
 
@@ -285,25 +283,23 @@ Runge-Kutta cải tiến Euler bằng cách lấy nhiều mẫu độ dốc tron
 ### 1. Ứng dụng thực tế
 
 #### Quỹ đạo tên lửa hoặc robot
-- Bài toán: Cần mô phỏng hệ động lực với độ chính xác cao hơn Euler nhưng vẫn tránh giải implicit phức tạp.
-- Mô hình: Dùng RK4
-$$ y_{n+1}=y_n+\frac{h}{6}(k_1+2k_2+2k_3+k_4) $$
-với các slope trung gian.
-- Giả thiết và giới hạn: Mỗi bước cần nhiều lần đánh giá hàm hơn; không tự động giải quyết stiffness.
-- Diễn giải: Runge-Kutta cải thiện độ chính xác bằng cách "thăm dò" độ dốc ở giữa bước.
+- Bài toán: Mô phỏng hệ động lực với độ chính xác cao hơn Euler nhưng vẫn tránh giải hệ ẩn phức tạp.
+- Mô hình: Sử dụng RK4 với công thức $$ y_{n+1}=y_n+\frac{h}{6}(k_1+2k_2+2k_3+k_4) $$ cùng bốn độ dốc trung gian.
+- Giả thiết và giới hạn: Cần bốn lần đánh giá hàm mỗi bước và không tự động xử lý được tính cứng.
+- Diễn giải: Cải thiện độ chính xác nhờ thăm dò độ dốc tại các điểm bên trong bước.
 
 #### Mô hình dịch bệnh
-- Bài toán: Hệ SIR phi tuyến thường cần mô phỏng số với độ chính xác tốt trong ngắn và trung hạn.
-- Mô hình: Áp RK2 hoặc RK4 cho hệ
+- Bài toán: Mô phỏng hệ SIR phi tuyến với độ chính xác tốt trên khoảng thời gian ngắn và trung hạn.
+- Mô hình: Áp dụng RK2 hoặc RK4 cho hệ:
 $$
 S'=-\beta SI,\quad I'=\beta SI-\gamma I,\quad R'=\gamma I.
 $$
-- Giả thiết và giới hạn: Độ chính xác phụ thuộc bước; bảo toàn không âm có thể cần bước nhỏ hoặc lược đồ chuyên biệt.
-- Diễn giải: RK methods là lựa chọn mặc định trong nhiều mô phỏng khoa học trước khi đi sâu vào cấu trúc riêng của bài toán.
+- Giả thiết và giới hạn: Độ chính xác phụ thuộc kích thước bước; việc bảo toàn tính không âm có thể cần bước nhỏ hoặc lược đồ chuyên biệt.
+- Diễn giải: Họ Runge–Kutta thường là lựa chọn khởi đầu tiêu chuẩn trước khi thiết kế các lược đồ chuyên biệt cho cấu trúc riêng của bài toán.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Nếu Euler nhìn độ dốc tại một điểm, Runge-Kutta nhìn nhiều độ dốc bên trong một bước rồi trộn chúng lại có chủ ý. Ý tưởng này giống việc dùng thông tin cục bộ phong phú hơn để khớp khai triển Taylor mà không cần tính đạo hàm bậc cao. Một bẫy phổ biến là chỉ nhớ RK4 như công thức thuộc lòng mà quên cấu trúc stage và trọng số.
+Nếu Euler chỉ dựa vào độ dốc tại một điểm, thì Runge–Kutta kết hợp nhiều độ dốc bên trong một bước để khớp khai triển Taylor bậc cao mà không phải tính đạo hàm bậc cao của $$ f $$. Nên nắm vững cấu trúc các tầng (stages) và trọng số thay vì chỉ học thuộc công thức RK4 một cách máy móc.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -346,26 +342,24 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Cho
-$$ y'=y,\qquad y(0)=1,\qquad h=0.5. $$
-Một bước RK4 từ $$ t=0 $$ cho
+Cho $$ y'=y,\qquad y(0)=1,\qquad h=0.5 $$. Một bước RK4 từ $$ t=0 $$ cho:
 $$
 k_1=1,\quad k_2=1.25,\quad k_3=1.3125,\quad k_4=1.65625,
 $$
-nên
+suy ra
 $$
 y_1 = 1 + \frac{0.5}{6}(1+2(1.25)+2(1.3125)+1.65625)\approx 1.6484,
 $$
-rất gần $$ e^{0.5}\approx 1.6487 $$.
+rất sát với nghiệm chính xác $$ e^{0.5}\approx 1.6487 $$.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** So sánh Euler, midpoint và RK4 trên cùng một ODE.
+**Bậc đại học.** So sánh trực tiếp Euler, phương pháp trung điểm và RK4 trên cùng một ODE.
 
-**Bậc sau đại học.** Kết nối với order conditions, Butcher tableaux và SSP methods.
+**Bậc sau đại học.** Kết nối với điều kiện bậc, bảng Butcher và các phương pháp SSP (strong stability preserving).
 
 ## Video tham khảo
 
-- xem trước: [Runge-Kutta Integrator Overview:  All Purpose Numerical Integration of Differential Equations](https://www.youtube.com/watch?v=HOWJp8NV5xU) — Steve Brunton, tiếng Anh. Tổng quan của Brunton về Runge-Kutta như một bộ tích phân một bước đa dụng.
-- [Coding a Fourth-Order Runge-Kutta Integrator in Python and Matlab](https://www.youtube.com/watch?v=vNoFdtcPFdk) — Steve Brunton, tiếng Anh. Một bước Runge-Kutta bậc bốn viết thành mã.
-- [Understanding Runge-Kutta](https://www.youtube.com/watch?v=t48a2M27kjM) — ThatMathThing, tiếng Anh. ThatMathThing giải thích các tầng Runge-Kutta đến từ đâu.
+- xem trước: [Runge-Kutta Integrator Overview:  All Purpose Numerical Integration of Differential Equations](https://www.youtube.com/watch?v=HOWJp8NV5xU) — Steve Brunton, tiếng Anh. Tổng quan về phương pháp Runge–Kutta như bộ tích phân một bước đa dụng.
+- [Coding a Fourth-Order Runge-Kutta Integrator in Python and Matlab](https://www.youtube.com/watch?v=vNoFdtcPFdk) — Steve Brunton, tiếng Anh. Hướng dẫn cài đặt phương pháp Runge–Kutta bậc bốn trong Python và MATLAB.
+- [Understanding Runge-Kutta](https://www.youtube.com/watch?v=t48a2M27kjM) — ThatMathThing, tiếng Anh. Giải thích trực quan nguồn gốc các tầng trong phương pháp Runge–Kutta.

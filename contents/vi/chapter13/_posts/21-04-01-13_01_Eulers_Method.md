@@ -14,177 +14,177 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giúp sinh viên hiểu phương pháp Euler như bước khởi đầu của toàn bộ giải tích số cho ODE. Sau bài học, sinh viên cần thiết lập được công thức Euler tiến và Euler lùi, giải thích được vì sao Euler là “đi theo tiếp tuyến”, phân biệt sai số cục bộ với sai số toàn cục, và nhận ra mối liên hệ giữa bước thời gian với ổn định số.
+Bài học này giới thiệu phương pháp Euler như điểm xuất phát của giải tích số cho ODE. Sau bài học, sinh viên cần thiết lập được công thức Euler tiến và Euler lùi, giải thích được ý nghĩa hình học "đi theo tiếp tuyến", phân biệt sai số cục bộ với sai số toàn cục, và hiểu mối liên hệ giữa kích thước bước thời gian với tính ổn định số.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm đạo hàm, khai triển Taylor, bài toán giá trị ban đầu $$ y'=f(t,y),\qquad y(t_0)=y_0 $$, và trực giác rằng nghiệm của ODE là một đường cong có tiếp tuyến xác định bởi $$ f $$. Các ý này được ôn lại trong Bài 13.00. Cũng nên ôn lại rằng đạo hàm chính là tốc độ thay đổi tức thời.
+Sinh viên cần nắm khái niệm đạo hàm, khai triển Taylor, bài toán giá trị ban đầu $$ y'=f(t,y),\qquad y(t_0)=y_0 $$ và trực giác rằng nghiệm ODE là đường cong có hệ số góc tiếp tuyến cho bởi $$ f $$. Các nội dung này đã được ôn tập trong Bài 13.00.
 
 ## Dẫn nhập
 
-Nếu biết vị trí hiện tại của một vật và biết vận tốc của nó ngay lúc này, ta có thể đoán vị trí sau một khoảng thời gian rất ngắn bằng cách đi theo tiếp tuyến. Phương pháp Euler làm đúng điều đó cho nghiệm của ODE. Nó không cố nhìn xa; nó chỉ nói: “trong một bước nhỏ, tiếp tuyến là dự đoán tốt nhất”.
+Nếu biết vị trí và vận tốc hiện tại của một vật, ta có thể ước lượng vị trí sau một khoảng thời gian rất ngắn bằng cách giữ nguyên vận tốc đó — tức đi dọc theo tiếp tuyến. Phương pháp Euler áp dụng đúng ý tưởng ấy cho nghiệm của ODE trên từng bước nhỏ.
 
-Euler rất đơn giản nhưng lại cực kỳ quan trọng vì mọi phương pháp bậc cao hơn đều là cách sửa, cải tiến, hoặc mở rộng trực giác này. Vì vậy, học Euler không chỉ là học một công thức số, mà là học ngôn ngữ nền của mô phỏng vi phân.
+Dù có công thức rất đơn giản, phương pháp Euler giữ vai trò nền tảng vì hầu hết các phương pháp bậc cao hơn đều là sự cải tiến hoặc mở rộng từ trực giác này. Hiểu rõ phương pháp Euler giúp nắm vững ngôn ngữ cơ bản của mô phỏng phương trình vi phân.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Hãy tưởng tượng đang lái xe trong sương mù, chỉ nhìn được rất gần. Bạn biết hướng xe đang đi ngay lúc này, nên trong vài mét tiếp theo, cách an toàn nhất là tiếp tục theo hướng đó. Euler cũng vậy: biết độ dốc hiện tại của nghiệm thì ta bước tới bằng cách giữ nguyên độ dốc ấy trong một đoạn ngắn.
+Hãy tưởng tượng đang di chuyển trong sương mù với tầm nhìn ngắn: khi biết hướng di chuyển ngay tại vị trí hiện tại, cách ước lượng tự nhiên nhất cho vài bước kế tiếp là đi thẳng theo hướng đó. Phương pháp Euler thực hiện đúng nguyên tắc này bằng cách giữ nguyên độ dốc tại đầu bước trong suốt một khoảng thời gian ngắn $$ h $$.
 
 ### Cách hình ảnh
 
-Giáo viên nên vẽ đồ thị nghiệm thật và tiếp tuyến tại điểm $$ \left(t_n,y_n\right) $$. Từ tiếp tuyến đó, ta đi một bước ngang dài $$ h $$ để tìm giá trị mới $$ y_{n+1} $$. Nếu bước nhỏ, tiếp tuyến gần đường cong; nếu bước lớn, điểm dự đoán có thể lệch đáng kể.
+Trên đồ thị, từ điểm $$ \left(t_n,y_n\right) $$ ta kẻ đoạn tiếp tuyến có độ dốc $$ f(t_n,y_n) $$ đi ngang một đoạn $$ h $$ để thu được $$ y_{n+1} $$. Khi $$ h $$ nhỏ, tiếp tuyến bám sát đường cong nghiệm; khi $$ h $$ lớn, sai lệch tăng lên rõ rệt.
 
-So sánh thêm Euler tiến và Euler lùi trên cùng hình: Euler tiến dùng độ dốc ở đầu bước, Euler lùi dùng độ dốc ở cuối bước. Hình này giúp sinh viên hiểu ngay vì sao Euler lùi thường ổn định hơn nhưng khó tính hơn.
+Đặt Euler tiến và Euler lùi trên cùng một hình cho thấy khác biệt căn bản: Euler tiến dùng độ dốc ở đầu bước, còn Euler lùi dùng độ dốc ở cuối bước. Sự khác biệt này làm Euler lùi ổn định hơn nhưng đòi hỏi giải phương trình tại mỗi bước.
 
 ### Cách hình thức
 
-Với bước thời gian $$ h>0 $$ và $$ t_n=t_0+nh $$:
+Với bước thời gian $$ h>0 $$ và các mốc $$ t_n=t_0+nh $$:
 
-- Euler tiến:
+- Euler tiến (tường minh):
 
 $$ y_{n+1}=y_n+h f(t_n,y_n). $$
 
-- Euler lùi:
+- Euler lùi (ẩn):
 
 $$ y_{n+1}=y_n+h f(t_{n+1},y_{n+1}). $$
 
-Euler tiến là phương pháp tường minh vì tính thẳng được $$ y_{n+1} $$ từ dữ liệu cũ. Euler lùi là phương pháp ngầm vì $$ y_{n+1} $$ xuất hiện ở hai vế nên thường phải giải một phương trình phụ.
+Euler tiến tính trực tiếp $$ y_{n+1} $$ từ dữ liệu đã biết, còn Euler lùi có $$ y_{n+1} $$ ở cả hai vế nên thường cần giải một phương trình (tuyến tính hoặc phi tuyến) ở mỗi bước.
 
 ## Ngộ nhận thường gặp
 
-### “Euler luôn cho nghiệm tốt nếu công thức đúng”
+### “Euler luôn cho nghiệm tốt miễn là viết đúng công thức”
 
-Sai. Công thức đúng không đảm bảo kết quả tốt khi bước $$ h $$ quá lớn.
+Sai. Ngay cả khi công thức đúng hoàn toàn, bước $$ h $$ quá lớn vẫn có thể gây sai số lớn hoặc mất ổn định.
 
-### “Sai số cục bộ nhỏ thì sai số toàn cục cũng nhỏ như nhau”
+### “Sai số cục bộ nhỏ thì sai số toàn cục cũng nhỏ cùng bậc”
 
-Không. Sai số tích lũy qua nhiều bước, nên sai số toàn cục thường lớn hơn một bậc.
+Không đúng. Sai số tích lũy qua nhiều bước khiến sai số toàn cục thường lớn hơn sai số cục bộ một bậc của $$ h $$.
 
-### “Euler lùi chỉ là phiên bản đổi chỉ số của Euler tiến”
+### “Euler lùi chỉ là đổi chỉ số so với Euler tiến”
 
-Sai. Việc lấy độ dốc ở cuối bước làm thay đổi sâu sắc tính ổn định.
+Sai. Việc đánh giá độ dốc ở cuối bước làm thay đổi hoàn toàn miền ổn định của lược đồ.
 
-### “Phương pháp số thất bại là vì mô hình sai”
+### “Kết quả số sai nghĩa là mô hình vi phân sai”
 
-Không nhất thiết. Nhiều khi mô hình đúng nhưng sơ đồ số không ổn định.
+Không nhất thiết. Nhiều trường hợp mô hình đúng nhưng lược đồ số hoặc bước thời gian không ổn định.
 
 ## Tiến trình học
 
-### Bước 1: Từ tiếp tuyến đến công thức
+### Bước 1: Từ xấp xỉ tiếp tuyến đến công thức lặp
 
 Viết xấp xỉ tuyến tính $$ y(t_n+h)\approx y(t_n)+hy'(t_n) $$, rồi thay $$ y'(t_n)=f(t_n,y(t_n)) $$.
 
-### Bước 2: Hiểu sai số
+### Bước 2: Phân tích sai số bằng khai triển Taylor
 
-Dùng Taylor để thấy Euler tiến bỏ qua các hạng từ bậc hai trở lên.
+Chỉ ra rằng Euler tiến cắt bỏ các số hạng từ bậc hai trở đi, nên có sai số cục bộ bậc $$ O(h^2) $$ và sai số toàn cục bậc $$ O(h) $$.
 
-### Bước 3: So sánh Euler tiến và Euler lùi
+### Bước 3: Đối chiếu Euler tiến và Euler lùi
 
-Nhấn mạnh bài toán $$ y'=\lambda y $$ để nhìn rõ sự khác nhau về ổn định.
+Xét bài toán thử $$ y'=\lambda y $$ để thấy rõ sự khác biệt về miền ổn định.
 
-### Bước 4: Kết nối với phương pháp bậc cao
+### Bước 4: Mở hướng sang phương pháp bậc cao
 
-Giải thích rằng Runge-Kutta sẽ lấy nhiều độ dốc hơn trong một bước thay vì chỉ một độ dốc.
+Chuẩn bị ý tưởng cho Runge–Kutta: lấy nhiều mẫu độ dốc trong cùng một bước thay vì chỉ dùng một độ dốc.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có tự suy ra được Euler từ xấp xỉ tiếp tuyến không?
-- Sinh viên có giải thích được tại sao bước nhỏ làm kết quả tốt hơn không?
-- Sinh viên có phân biệt được phương pháp tường minh và ngầm không?
+- Sinh viên có tự suy ra được công thức Euler từ xấp xỉ tiếp tuyến hay không?
+- Sinh viên có giải thích được vì sao giảm bước $$ h $$ cải thiện độ chính xác hay không?
+- Sinh viên có phân biệt được phương pháp tường minh và phương pháp ẩn hay không?
 
 ## Ví dụ có lời giải
 
-### Ví dụ 1: Một bước Euler cho tăng trưởng mũ
+### Ví dụ 1: Một bước Euler cho bài toán tăng trưởng mũ
 
-Xét $$ y'=y,\qquad y(0)=1 $$. Với bước $$ h=0.1 $$, Euler tiến cho $$ y_1=y_0+0.1y_0=1.1 $$. Trong khi nghiệm đúng tại $$ t=0.1 $$ là $$ e^{0.1}\approx 1.10517 $$. Sai số nhỏ nhưng đã xuất hiện ngay sau một bước.
+Xét $$ y'=y,\qquad y(0)=1 $$. Với bước $$ h=0.1 $$, Euler tiến cho $$ y_1=y_0+0.1y_0=1.1 $$, trong khi nghiệm chính xác tại $$ t=0.1 $$ là $$ e^{0.1}\approx 1.10517 $$. Sai số nhỏ đã xuất hiện ngay từ bước đầu tiên.
 
 ### Ví dụ 2: Nhiều bước Euler
 
-Vẫn với bài toán trên, ta có quy luật $$ y_n=(1+h)^n $$. Nếu $$ t_n=nh $$ thì nghiệm đúng là $$ e^{t_n} $$. Do $$ (1+h)^n\approx e^{nh} $$ khi $$ h $$ nhỏ, Euler bắt được xu hướng tăng nhưng không trùng chính xác.
+Tiếp tục bài toán trên, ta có công thức tường minh $$ y_n=(1+h)^n $$ tại $$ t_n=nh $$, so với nghiệm chính xác $$ e^{t_n} $$. Khi $$ h $$ nhỏ, $$ (1+h)^n\approx e^{nh} $$, nên Euler tiến nắm bắt đúng xu hướng tăng nhưng luôn trễ hơn nghiệm thật.
 
-### Ví dụ 3: Ổn định với suy giảm mũ
+### Ví dụ 3: Ổn định trên bài toán suy giảm mũ
 
-Xét $$ y'=-2y,\qquad y(0)=1 $$. Euler tiến cho $$ y_{n+1}=(1-2h)y_n $$. Nếu $$ h=0.2 $$ thì hệ số là $$ 0.6 $$, nghiệm số giảm dần hợp lý. Nhưng nếu $$ h=1 $$ thì hệ số là $$ -1 $$, nghiệm số dao động dấu dù nghiệm thật luôn dương. Đây là ví dụ kinh điển cho thấy bước lớn gây méo vật lý.
+Xét $$ y'=-2y,\qquad y(0)=1 $$. Euler tiến cho $$ y_{n+1}=(1-2h)y_n $$. Với $$ h=0.2 $$, hệ số khuếch đại là $$ 0.6 $$, nghiệm số giảm dần hợp lý. Với $$ h=1 $$, hệ số là $$ -1 $$, nghiệm số đổi dấu qua từng bước dù nghiệm thật luôn dương — minh họa rõ việc bước quá lớn làm biến dạng tính chất vật lý.
 
-### Ví dụ 4: Euler lùi trên bài toán cứng đơn giản
+### Ví dụ 4: Euler lùi trên bài toán suy giảm nhanh
 
-Với $$ y'=-10y,\qquad y(0)=1 $$, Euler lùi cho $$ y_{n+1}=y_n-10hy_{n+1} $$, nên
+Với $$ y'=-10y,\qquad y(0)=1 $$, Euler lùi cho $$ y_{n+1}=y_n-10hy_{n+1} $$, suy ra:
 
 $$ y_{n+1}=\frac{1}{1+10h}y_n. $$
 
-Hệ số này luôn dương và nhỏ hơn 1 với mọi $$ h>0 $$, nên Euler lùi ổn định hơn nhiều so với Euler tiến.
+Hệ số khuếch đại luôn dương và nhỏ hơn 1 với mọi $$ h>0 $$, cho thấy ưu thế ổn định vượt trội của Euler lùi so với Euler tiến.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao Euler có thể được xem là “đi theo tiếp tuyến” chứ không phải “đi theo đường cong”?
-2. Tại sao hai phương pháp chỉ khác nhau ở chỗ lấy độ dốc đầu bước hay cuối bước lại cho tính ổn định rất khác nhau?
-3. Khi nào việc giảm bước $$ h $$ là cần thiết vì độ chính xác, và khi nào là vì ổn định?
+1. Vì sao có thể mô tả phương pháp Euler là "đi theo tiếp tuyến" thay vì "đi theo đường cong nghiệm"?
+2. Tại sao chỉ khác nhau ở vị trí đánh giá độ dốc (đầu bước hay cuối bước) mà Euler tiến và Euler lùi có tính ổn định khác nhau rất xa?
+3. Khi nào ta cần giảm bước $$ h $$ vì yêu cầu độ chính xác, và khi nào vì yêu cầu ổn định?
 
 ## Bài toán ứng dụng
 
-1. Nếu $$ y(t) $$ là dân số vi khuẩn với tốc độ tăng trưởng tỉ lệ với dân số, Euler mô phỏng quá trình này thế nào?
-2. Trong mô hình làm mát, tại sao bước thời gian quá lớn có thể tạo ra nhiệt độ âm phi thực tế?
-3. Trong mô phỏng quỹ đạo vệ tinh, việc chỉ dùng tiếp tuyến trong mỗi bước sẽ gây loại sai số nào?
+1. Nếu $$ y(t) $$ là kích thước quần thể vi khuẩn có tốc độ tăng tỷ lệ với dân số, phương pháp Euler mô phỏng quá trình này như thế nào?
+2. Trong mô hình làm nguội, vì sao bước thời gian quá lớn có thể sinh ra nhiệt độ âm phi vật lý?
+3. Trong mô phỏng quỹ đạo vệ tinh, việc chỉ dùng tiếp tuyến tại đầu mỗi bước sẽ gây ra loại sai số đặc trưng nào?
 
 ## Chiến lược dạy học tương tác
 
 ### Câu hỏi nên hỏi trên lớp
 
-- Nếu chỉ được biết độ dốc tại đúng một thời điểm, em sẽ dự đoán điểm tiếp theo ra sao?
-- Khi nào một bước số “quá dài” so với hình học của nghiệm?
-- Em mong đợi Euler thất bại trước về độ chính xác hay về ổn định?
+- Nếu chỉ biết độ dốc tại đúng một thời điểm, cách tự nhiên nhất để dự đoán trạng thái kế tiếp là gì?
+- Khi nào một bước thời gian được xem là "quá lớn" so với độ cong của nghiệm?
+- Trên bài toán suy giảm nhanh, Euler tiến thường hỏng trước do sai số tích lũy hay do mất ổn định?
 
 ### Hoạt động gợi ý
 
-- Cho sinh viên vẽ thủ công 3 bước Euler trên cùng đồ thị nghiệm thật.
-- Dùng bảng tính để thay đổi $$ h $$ và quan sát sai số.
-- Chia lớp thành hai nhóm: một nhóm bảo vệ Euler tiến, một nhóm bảo vệ Euler lùi trong bài toán suy giảm.
+- Cho sinh viên vẽ tay 3 bước Euler trên cùng hệ trục với đồ thị nghiệm chính xác.
+- Dùng bảng tính thay đổi bước $$ h $$ và theo dõi tốc độ giảm sai số toàn cục.
+- Chia hai nhóm thảo luận ưu và nhược điểm của Euler tiến và Euler lùi trên bài toán suy giảm.
 
 ### Cách tăng tham gia
 
-- Bắt đầu từ hình học tiếp tuyến thay vì công thức.
-- Cho sinh viên dự đoán kết quả trước khi bấm máy.
-- Yêu cầu mô tả sai số bằng lời đời thường trước khi nói bậc chính xác.
+- Bắt đầu từ hình học tiếp tuyến trước khi viết công thức đại số.
+- Mời sinh viên dự đoán hành vi nghiệm số trước khi chạy mã minh họa.
+- Yêu cầu diễn giải sai số bằng ngôn ngữ trực quan trước khi giới thiệu ký hiệu $$ O(h) $$.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Chỉ làm việc với phương trình dạng $$ y'=\lambda y $$ trước.
-- Dùng bảng giá trị thay vì ký hiệu trừu tượng ngay từ đầu.
-- Nhấn mạnh một thông điệp ngắn: Euler = giá trị cũ + bước x độ dốc hiện tại.
+- Luyện tập trước với phương trình tuyến tính $$ y'=\lambda y $$.
+- Dùng bảng tính từng bước cụ thể trước khi viết công thức truy hồi tổng quát.
+- Tóm gọn quy tắc: giá trị mới = giá trị cũ + bước $$ h $$ nhân độ dốc hiện tại.
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Chứng minh sai số toàn cục của Euler tiến là $$ O(h) $$.
-- Phân tích miền ổn định của Euler tiến trên mặt phẳng phức.
-- So sánh Euler với xấp xỉ Taylor bậc một của toán tử dòng.
+- Chứng minh sai số toàn cục của Euler tiến có bậc $$ O(h) $$.
+- Vẽ và phân tích miền ổn định tuyệt đối của Euler tiến trên mặt phẳng phức.
+- So sánh phương pháp Euler với xấp xỉ Taylor bậc nhất của ánh xạ dòng.
 
 ## Ghi nhớ nhanh
 
-Phương pháp Euler là xấp xỉ nghiệm ODE bằng cách đi theo tiếp tuyến trong từng bước ngắn. Nó đơn giản, nền tảng và cho thấy rõ hai bài học lớn của giải tích số: sai số tích lũy theo thời gian và ổn định phụ thuộc mạnh vào kích thước bước.
+Phương pháp Euler xấp xỉ nghiệm ODE bằng cách bước dọc theo tiếp tuyến trên từng đoạn nhỏ. Lược đồ đơn giản này minh họa đầy đủ hai bài học nền tảng của giải tích số: sai số tích lũy theo số bước và tính ổn định phụ thuộc chặt vào kích thước bước thời gian.
 
 ---
 
 ## Ứng dụng thực tế
 
-### 1. Tăng trưởng quần thể và suy giảm phóng xạ
+### 1. Tăng trưởng quần thể và phân rã phóng xạ
 
-Với mô hình $$ y'=ky $$, Euler tiến cho công thức cập nhật $$ y_{n+1}=(1+kh)y_n $$. Đây là cách rời rạc hóa tự nhiên của tăng trưởng mũ hay suy giảm mũ. Mô hình giả định tốc độ tăng tỉ lệ với trạng thái hiện tại và không có giới hạn tài nguyên. Diễn giải là Euler cho thấy cách một định luật vi phân liên tục biến thành quy tắc lặp thời gian trên máy tính.
+Với mô hình $$ y'=ky $$, Euler tiến cho quy tắc cập nhật $$ y_{n+1}=(1+kh)y_n $$, là dạng rời rạc hóa trực tiếp của quá trình tăng trưởng hoặc suy giảm theo hàm mũ (với giả thiết hệ số $$ k $$ không đổi và không có giới hạn tài nguyên).
 
-### 2. Làm mát Newton
+### 2. Định luật làm nguội Newton
 
-Trong mô hình nhiệt độ $$ T $$ của một vật thể, $$ T'=-k(T-T_{\text{env}}) $$, Euler tiến dự đoán nhiệt độ mới từ độ lệch nhiệt hiện tại. Mô hình giả định môi trường ổn định và hệ số truyền nhiệt không đổi. Nếu bước thời gian quá lớn, nghiệm số có thể dao động hoặc âm phi thực tế dù nhiệt độ thật tiến về cân bằng rất êm. Đây là ví dụ tốt để phân biệt sai mô hình với sai sơ đồ số.
+Với mô hình $$ T'=-k(T-T_{\text{env}}) $$ (nhiệt độ môi trường và hệ số truyền nhiệt không đổi), Euler tiến cập nhật nhiệt độ theo độ chênh lệch nhiệt hiện tại. Nếu chọn bước $$ h $$ quá lớn, nghiệm số có thể dao động hoặc giảm xuống mức phi thực tế dù nghiệm thật tiến đều về $$ T_{\text{env}} $$ — cho thấy rõ sự khác biệt giữa sai số mô hình và bất ổn của lược đồ số.
 
 ### 3. Mô phỏng vận tốc trong cơ học cơ bản
 
-Với phương trình Newton $$ v'=a(t,v) $$, Euler tiến cập nhật vận tốc bằng công thức “vận tốc mới = vận tốc cũ + gia tốc x thời gian”. Mô hình hợp lý khi gia tốc không đổi nhiều trong một bước ngắn. Giới hạn là ở hệ dao động nhanh hoặc nhạy năng lượng, Euler có thể tích lũy sai số mạnh.
+Với phương trình $$ v'=a(t,v) $$, Euler tiến tương ứng với quy tắc cập nhật vận tốc bằng gia tốc nhân khoảng thời gian $$ h $$. Cách làm này hợp lý khi gia tốc biến thiên chậm trong một bước, nhưng với hệ dao động hoặc hệ bảo toàn năng lượng, Euler tiến dễ tích lũy sai số đáng kể.
 
 ## Trực giác sâu hơn
 
-Euler là bài học đầu tiên về mối căng kéo giữa hình học liên tục và tính toán rời rạc. Nó rất chính xác nếu ta chỉ nhìn từng bước đủ ngắn, nhưng có thể thất bại về lâu dài vì tích lũy sai số hoặc vì mất ổn định. Ngộ nhận thường gặp là nghĩ Euler kém chỉ vì “bậc thấp”; thật ra giá trị lớn nhất của nó là phơi bày rõ mọi khái niệm số học nền tảng.
+Phương pháp Euler thể hiện rõ sự đánh đổi giữa mô tả liên tục và tính toán rời rạc: chính xác trên bước đủ ngắn nhưng dễ tích lũy sai số hoặc mất ổn định khi chạy dài hạn. Giá trị lớn nhất của phương pháp Euler không chỉ nằm ở ứng dụng tính nhanh, mà ở việc phơi bày minh bạch mọi khái niệm cơ bản của giải tích số.
 
 ## Trực quan hóa bằng Python
 
@@ -219,7 +219,7 @@ plt.show()
 
 ## Trực quan hóa bằng JavaScript
 
-Có thể dùng `Plotly.js` với thanh trượt bước $$ h $$ để sinh viên quan sát cùng một bài toán $$ y'=y $$ hoặc $$ y'=-2y $$ sẽ thay đổi từ xấp xỉ tốt sang dao động sai vật lý như thế nào khi tăng bước.
+Có thể dùng `Plotly.js` kèm thanh trượt điều chỉnh bước $$ h $$ để quan sát trực tiếp cách nghiệm của $$ y'=y $$ hoặc $$ y'=-2y $$ chuyển từ xấp xỉ ổn định sang dao động sai lệch vật lý khi tăng $$ h $$.
 
 ## Gợi ý tài nguyên ngoài
 
@@ -229,11 +229,11 @@ Tìm kiếm: `Euler method slope field animation`, `Newton cooling Euler method`
 
 ### Mức đại học (Undergraduate)
 
-Tập trung vào trực giác tiếp tuyến, sai số cục bộ so với toàn cục, và phân biệt Euler tiến với Euler lùi trên các mô hình tăng/giảm đơn giản.
+Tập trung vào trực giác tiếp tuyến, phân biệt sai số cục bộ và sai số toàn cục, cùng sự khác nhau giữa Euler tiến và Euler lùi trên các mô hình tuyến tính đơn giản.
 
 ### Mức sau đại học (Graduate)
 
-Đi sâu vào consistency, zero-stability, phân tích miền ổn định trên mặt phẳng phức, và cách Euler liên hệ với toán tử dòng và semigroup của hệ động lực.
+Đi sâu vào tính nhất quán (consistency), ổn định bậc không (zero-stability), miền ổn định trên mặt phẳng phức và mối liên hệ với ánh xạ dòng cũng như nửa nhóm (semigroup) của hệ động lực.
 
 > Xem toàn bộ minh họa tương tác của chương tại: [Bộ Minh họa tương tác Chương 13]({{ site.baseurl }}/contents/vi/chapter13/13_09_Interactive_Gallery/)
 
@@ -242,28 +242,23 @@ Tập trung vào trực giác tiếp tuyến, sai số cục bộ so với toàn
 ### 1. Ứng dụng thực tế
 
 #### Quỹ đạo vệ tinh và cơ học thiên thể
-- Bài toán: Khi không có nghiệm đóng thuận tiện, ta cần cập nhật vị trí và vận tốc theo từng bước thời gian.
-- Mô hình: Viết hệ
-$$ \mathbf{y}' = f(t,\mathbf{y}), $$
-rồi dùng Euler tiến
+- Bài toán: Cập nhật vị trí và vận tốc theo từng bước thời gian khi không có nghiệm đóng.
+- Mô hình: Viết hệ $$ \mathbf{y}' = f(t,\mathbf{y}) $$ và áp dụng Euler tiến:
 $$
 \mathbf{y}_{n+1}=\mathbf{y}_n+h f(t_n,\mathbf{y}_n).
 $$
-- Giả thiết và giới hạn: Bước thời gian đủ nhỏ; Euler tiến có thể trôi pha và tích lũy sai số năng lượng.
-- Diễn giải: Phương pháp biến ODE thành quy tắc cập nhật từng bước trên máy tính.
+- Giả thiết và giới hạn: Đòi hỏi bước thời gian nhỏ; Euler tiến có thể gây trôi pha và sai lệch năng lượng dài hạn.
+- Diễn giải: Chuyển phương trình động lực liên tục thành quy tắc cập nhật từng bước trên máy tính.
 
 #### Tăng trưởng dân số hoặc vốn
-- Bài toán: Dự báo gần đúng
-$$ y'=ky $$
-khi chỉ cần ước lượng nhanh theo thời gian rời rạc.
-- Mô hình:
-$$ y_{n+1}=y_n+hky_n=(1+hk)y_n. $$
-- Giả thiết và giới hạn: Hệ số tăng trưởng hằng; bước lớn làm sai số toàn cục tăng nhanh.
-- Diễn giải: Euler cho thấy rõ mối liên hệ giữa mô hình liên tục và tăng trưởng theo chu kỳ rời rạc.
+- Bài toán: Ước lượng nhanh mô hình $$ y'=ky $$ theo các chu kỳ rời rạc.
+- Mô hình: $$ y_{n+1}=y_n+hky_n=(1+hk)y_n $$.
+- Giả thiết và giới hạn: Hệ số tăng trưởng không đổi; bước $$ h $$ lớn làm sai số toàn cục tăng nhanh.
+- Diễn giải: Minh họa trực tiếp mối liên hệ giữa tăng trưởng liên tục và lãi ghép theo chu kỳ rời rạc.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Euler tiến đi theo tiếp tuyến tại đầu bước, nên nó là phép xấp xỉ bậc nhất tự nhiên nhất. Điểm quan trọng không chỉ là công thức, mà là tư duy: mỗi lược đồ số chính là một cách thay nghiệm trơn bằng quy tắc cập nhật rời rạc. Một bẫy phổ biến là nghĩ giảm bước luôn giải quyết mọi vấn đề; với hệ cứng, ổn định còn quan trọng hơn cả độ chính xác cục bộ.
+Euler tiến đi theo tiếp tuyến tại đầu bước nên là phép xấp xỉ bậc nhất tự nhiên nhất. Điểm cốt lõi là mỗi lược đồ số thay thế tiến hóa liên tục bằng một quy tắc cập nhật rời rạc; với hệ cứng, yêu cầu ổn định còn khắt khe hơn yêu cầu độ chính xác cục bộ.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -302,20 +297,18 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Với
-$$ y'=y, \qquad y(0)=1, $$
-và bước $$ h=0.5 $$, Euler tiến cho
+Với $$ y'=y, \qquad y(0)=1 $$ và bước $$ h=0.5 $$, Euler tiến cho:
 $$ y_1=1+0.5(1)=1.5, \qquad y_2=1.5+0.5(1.5)=2.25. $$
-Trong khi nghiệm đúng tại $$ t=1 $$ là $$ e \approx 2.718 $$. Sai số này minh họa rõ việc các bước tuyến tính ngắn dần mới bám được tăng trưởng mũ.
+So với nghiệm đúng tại $$ t=1 $$ là $$ e \approx 2.718 $$, sai số này cho thấy cần các bước tuyến tính đủ nhỏ mới bám sát được đường cong mũ.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Dựng công thức Euler từ tiếp tuyến và tính sai số bằng ví dụ đơn giản.
+**Bậc đại học.** Xây dựng công thức Euler từ tiếp tuyến và đánh giá sai số qua các ví dụ tường minh.
 
-**Bậc sau đại học.** Kết nối với consistency, absolute stability và modified equations.
+**Bậc sau đại học.** Kết nối với tính nhất quán, ổn định tuyệt đối và lý thuyết phương trình hiệu chỉnh (modified equations).
 
 ## Video tham khảo
 
-- xem trước: [Deriving Forward Euler and Backward/Implicit Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=MstPeOTCVzQ) — Steve Brunton, tiếng Anh. Brunton suy Euler thuận và Euler ẩn.
-- [Numerical Integration of ODEs with Forward Euler and Backward Euler in Python and Matlab](https://www.youtube.com/watch?v=ITFolyl_66U) — Steve Brunton, tiếng Anh. Cùng hai lược đồ được lập trình và so sánh.
-- [Euler's Method | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=X5-ucBtneVM) — MIT OpenCourseWare, tiếng Anh. Bài ngắn của MIT về phương pháp Euler cho y'=f(x,y).
+- xem trước: [Deriving Forward Euler and Backward/Implicit Euler Integration Schemes for Differential Equations](https://www.youtube.com/watch?v=MstPeOTCVzQ) — Steve Brunton, tiếng Anh. Dẫn xuất chi tiết lược đồ Euler tiến và Euler ẩn.
+- [Numerical Integration of ODEs with Forward Euler and Backward Euler in Python and Matlab](https://www.youtube.com/watch?v=ITFolyl_66U) — Steve Brunton, tiếng Anh. Cài đặt và so sánh hai lược đồ Euler trong Python và MATLAB.
+- [Euler's Method | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=X5-ucBtneVM) — MIT OpenCourseWare, tiếng Anh. Trình bày ngắn gọn về phương pháp Euler cho bài toán y'=f(x,y).

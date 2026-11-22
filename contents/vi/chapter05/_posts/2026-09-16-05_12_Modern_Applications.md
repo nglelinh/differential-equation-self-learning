@@ -12,62 +12,62 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài tùy chọn này đưa ổn định Lyapunov, tuyến tính hóa và lập luận mặt pha vào tài liệu 2019–2023 về chứng chỉ nơ-ron. Sinh viên cần nêu được một hàm Lyapunov học được được kỳ vọng chứng minh điều gì, phân biệt giảm thực nghiệm với giảm đã kiểm chứng, và định vị khảo sát cùng các kết quả NeurIPS chính. Các định lý ổn định cổ điển của chương vẫn là chuẩn mực chân lý.
+Bài học tùy chọn này kết nối ổn định Lyapunov, tuyến tính hóa và lập luận trên mặt phẳng pha với các nghiên cứu giai đoạn 2019–2023 về chứng chỉ nơ-ron. Sinh viên cần nêu được một hàm Lyapunov học được có nhiệm vụ chứng minh điều gì, phân biệt sự suy giảm trên tập mẫu với sự suy giảm đã được kiểm chứng, đồng thời nắm được các kết quả chính từ bài khảo sát và hội nghị NeurIPS tiêu biểu. Các định lý ổn định cổ điển của chương vẫn đóng vai trò chuẩn mực kiểm định.
 
 ## Kiến thức nền
 
-Sinh viên cần biết hệ tự trị, tuyến tính hóa Jacobian, kiểm hàm Lyapunov, và các rẽ nhánh sơ cấp. Chu trình giới hạn và mô hình SIR hữu ích nhưng không bắt buộc.
+Sinh viên cần nắm hệ tự trị, tuyến tính hóa bằng ma trận Jacobian, cách kiểm tra hàm Lyapunov và các dạng rẽ nhánh cơ bản. Kiến thức về chu trình giới hạn và mô hình SIR có ích nhưng không bắt buộc.
 
 ## Dẫn nhập
 
-Hàm Lyapunov là chứng chỉ kiểu năng lượng: nếu $$V$$ xác định dương và $$\dot V\le 0$$ dọc dòng, cân bằng ổn định. Tìm $$V$$ bằng tay là một nghệ thuật. Ý tưởng hiện đại là tham số hóa $$V_\theta$$ bằng mạng nơ-ron và huấn luyện, thường cùng bộ điều khiển $$u_\theta$$, sao cho các bất đẳng thức Lyapunov trở thành mất mát. Chang, Roohi và Gao (*Neural Lyapunov Control*, NeurIPS 2019) cho một khuôn sớm và có ảnh hưởng. Dawson, Gao và Fan rồi khảo sát cảnh quan rộng hơn của chứng chỉ Lyapunov, barrier và contraction nơ-ron trên *IEEE Transactions on Robotics* 39 (2023): 1749–1767 ([https://doi.org/10.1109/TRO.2022.3232542](https://doi.org/10.1109/TRO.2022.3232542); [arXiv:2202.11762](https://arxiv.org/abs/2202.11762)).
+Hàm Lyapunov đóng vai trò như một chứng chỉ dạng năng lượng: nếu $$V$$ xác định dương và $$\dot V\le 0$$ dọc theo quỹ đạo, điểm cân bằng là ổn định. Tuy nhiên, việc tìm hàm $$V$$ bằng tay thường rất khó. Ý tưởng hiện đại là tham số hóa $$V_\theta$$ bằng mạng nơ-ron và huấn luyện nó — thường đồng thời với bộ điều khiển $$u_\theta$$ — sao cho các bất đẳng thức Lyapunov được đưa vào hàm mất mát. Chang, Roohi và Gao (*Neural Lyapunov Control*, NeurIPS 2019) đã đề xuất một khuôn khổ nền tảng có ảnh hưởng lớn cho hướng tiếp cận này. Sau đó, Dawson, Gao và Fan khảo sát toàn cảnh về các chứng chỉ Lyapunov, barrier và contraction nơ-ron trên *IEEE Transactions on Robotics* 39 (2023): 1749–1767 ([https://doi.org/10.1109/TRO.2022.3232542](https://doi.org/10.1109/TRO.2022.3232542); [arXiv:2202.11762](https://arxiv.org/abs/2202.11762)).
 
-Wu, Clark, Kantaros và Vorobeychik (*Neural Lyapunov Control for Discrete-Time Systems*, NeurIPS 2023; [arXiv:2305.06547](https://arxiv.org/abs/2305.06547)) mở rộng ý tưởng sang thời gian rời rạc với kiểm chứng mixed-integer, sinh bộ điều khiển ổn định có chứng minh trên các benchmark phi tuyến chuẩn. Thông điệp khái niệm cho chương này sắc: mạng nơ-ron không nới định lý Lyapunov. Nó tìm một hàm mà định lý có thể chấp nhận.
+Wu, Clark, Kantaros và Vorobeychik (*Neural Lyapunov Control for Discrete-Time Systems*, NeurIPS 2023; [arXiv:2305.06547](https://arxiv.org/abs/2305.06547)) mở rộng ý tưởng này sang hệ thời gian rời rạc bằng kiểm chứng quy hoạch nguyên hỗn hợp (mixed-integer), tạo ra các bộ điều khiển ổn định có chứng minh trên những bài toán chuẩn phi tuyến. Thông điệp khái niệm cốt lõi cho chương này rất rõ ràng: mạng nơ-ron không nới lỏng định lý Lyapunov, mà chỉ tìm kiếm một hàm đáp ứng đúng các điều kiện của định lý.
 
 ## Khái niệm then chốt
 
-### Chứng chỉ versus bộ dự đoán
+### Chứng chỉ so với bộ dự đoán
 
-Bộ dự đoán quỹ đạo trả lời “trạng thái đi đâu?”. Chứng chỉ trả lời “vì sao ta được tin nó ở lại trong một tập an toàn?”. Câu thứ hai là câu hỏi Lyapunov. Một $$V_\theta$$ học được chỉ hữu ích nếu ta kiểm được
+Bộ dự đoán quỹ đạo trả lời câu hỏi “trạng thái sẽ đi về đâu?”, còn chứng chỉ trả lời câu hỏi “vì sao ta có thể khẳng định trạng thái ở lại trong tập an toàn?”. Câu hỏi thứ hai chính là bài toán Lyapunov. Một hàm $$V_\theta$$ học được chỉ có giá trị nếu ta kiểm chứng được điều kiện
 
 $$
 V_\theta(0)=0,\qquad V_\theta(x)>0\ \text{khi }x\neq 0,\qquad \nabla V_\theta(x)\cdot f\bigl(x,u_\theta(x)\bigr)<0
 $$
 
-trên một miền quan tâm, không chỉ trên mẫu huấn luyện. Dawson và cộng sự (2023) nhấn mạnh tiến bộ của lĩnh vực chính là bước từ giảm trên mẫu tới giảm đã kiểm chứng.
+trên toàn bộ một miền quan tâm, chứ không chỉ trên tập điểm huấn luyện. Dawson và cộng sự (2023) nhấn mạnh rằng tiến bộ thực sự của lĩnh vực nằm ở bước chuyển từ suy giảm trên mẫu sang suy giảm đã được kiểm chứng chặt chẽ.
 
-### Lyapunov, barrier và contraction nơ-ron
+### Hàm Lyapunov, barrier và contraction nơ-ron
 
-Chứng chỉ barrier giữ quỹ đạo khỏi tập xấu; metric contraction làm các quỹ đạo gần nhau tiến lại. Cả hai là họ hàng gần của hàm Lyapunov và của trực giác mặt pha đã phát triển ở đây. Tuyến tính hóa vẫn là phép thử địa phương: nếu Jacobian tại cân bằng có trị riêng phần thực dương, không hàm Lyapunov trơn nào chứng minh ổn định được, dù mạng giàu biểu diễn đến đâu.
+Chứng chỉ barrier giữ quỹ đạo không đi vào vùng mất an toàn, còn metric contraction đảm bảo các quỹ đạo lân cận tiến lại gần nhau. Cả hai đều liên hệ chặt chẽ với hàm Lyapunov và trực giác mặt phẳng pha của chương này. Trong khi đó, tuyến tính hóa vẫn là phép kiểm tra cục bộ thiết yếu: nếu ma trận Jacobian tại điểm cân bằng có trị riêng với phần thực dương, sẽ không tồn tại hàm Lyapunov trơn nào chứng minh được tính ổn định, bất kể mạng nơ-ron có năng lực biểu diễn lớn đến đâu.
 
-### Kiểm chứng như vòng kín
+### Kiểm chứng theo vòng kín
 
-Các phương pháp hiện đại xen học và kiểm chứng. Mạng đề xuất $$V_\theta$$; bộ giải SAT hoặc mixed-integer tìm phản ví dụ $$x$$ nơi $$\dot V_\theta(x)\ge 0$$; điểm ấy được thêm vào tập huấn luyện. Wu và cộng sự (NeurIPS 2023) làm vòng ấy hiệu quả trong thời gian rời rạc. Vòng ấy là analogue tính toán của việc kiểm bài tập: sau khi bịa $$V$$, vẫn phải tính $$\dot V$$ và xét dấu.
+Các phương pháp hiện đại thường xen kẽ giữa huấn luyện và kiểm chứng. Mạng nơ-ron đề xuất một ứng viên $$V_\theta$$; bộ giải SAT hoặc quy hoạch nguyên hỗn hợp sẽ tìm phản ví dụ $$x$$ thỏa $$\dot V_\theta(x)\ge 0$$; các điểm phản ví dụ này sau đó được bổ sung vào tập huấn luyện. Wu và cộng sự (NeurIPS 2023) đã thiết kế vòng lặp này vận hành hiệu quả cho hệ thời gian rời rạc. Về bản chất, quy trình này tương ứng về mặt tính toán với cách làm bài tập cổ điển: sau khi đề xuất một hàm $$V$$, ta vẫn phải tính $$\dot V$$ và kiểm tra dấu trên miền xét.
 
-### Rẽ nhánh và chứng chỉ mong manh
+### Rẽ nhánh và tính mong manh của chứng chỉ
 
-Nếu tham số vượt giá trị Hopf, một cân bằng ổn định trở thành tiêu điểm không ổn định bao quanh bởi chu trình giới hạn. Chứng chỉ huấn luyện một phía rẽ nhánh không thể tái sử dụng mù ở phía kia. Đó là lý do hiện đại để giữ sơ đồ rẽ nhánh của chương.
+Nếu tham số vượt qua ngưỡng rẽ nhánh Hopf, một điểm cân bằng ổn định có thể biến thành tiêu điểm không ổn định được bao quanh bởi chu trình giới hạn. Khi đó, chứng chỉ được huấn luyện ở một phía của điểm rẽ nhánh không thể đem tái sử dụng nguyên trạng ở phía còn lại. Đây là lý do thực tiễn cho thấy các sơ đồ rẽ nhánh trong chương vẫn giữ nguyên giá trị.
 
 ## Phương pháp và kỹ thuật
 
-1. Xác định trường vòng kín $$f(x,u_\theta(x))$$, gồm bão hòa hoặc bộ lọc an toàn nếu có.
-2. Huấn luyện $$V_\theta$$ (và có thể $$u_\theta$$) với mất mát thưởng tính dương và sự giảm trên một miền lấy mẫu.
-3. Kiểm chứng điều kiện giảm bằng bộ kiểm đúng hoặc bảo thủ, không chỉ bằng thêm mẫu.
-4. Báo tập dưới mức đã kiểm chứng $$\bigl\{x:V_\theta(x)\le c\bigr\}$$ như miền hút hoặc tập an toàn.
+1. Xác định trường vector vòng kín $$f(x,u_\theta(x))$$, bao gồm cả giới hạn bão hòa hoặc bộ lọc an toàn nếu có.
+2. Huấn luyện $$V_\theta$$ (và có thể đồng thời $$u_\theta$$) bằng hàm mất mát khuyến khích tính xác định dương và điều kiện suy giảm trên một miền lấy mẫu.
+3. Kiểm chứng điều kiện suy giảm bằng bộ kiểm chứng chính xác hoặc bảo thủ, thay vì chỉ tăng số lượng điểm mẫu.
+4. Xác định tập dưới mức đã kiểm chứng $$\bigl\{x:V_\theta(x)\le c\bigr\}$$ như một miền hút hoặc tập an toàn được bảo đảm.
 
-Chân dung pha vẫn là hình ảnh hóa đầu tiên. Một $$V_\theta$$ học được có tập dưới mức cắt ngang đa tạp ổn định của yên ngựa đang tuyên bố một miền mà lý thuyết tuyến tính hóa cấm.
+Chân dung pha vẫn là công cụ trực quan đầu tiên nên dùng. Nếu tập dưới mức của một hàm $$V_\theta$$ học được cắt ngang đa tạp ổn định của một điểm yên ngựa, chứng chỉ đó đang khẳng định một miền hút trái với kết luận của lý thuyết tuyến tính hóa.
 
 ## Ví dụ
 
 ### Ví dụ 1: Con lắc tắt dần
 
-Với $$\theta''+\sin\theta+\gamma\theta'=0$$ năng lượng $$V=\tfrac12(\theta')^2+(1-\cos\theta)$$ là hàm Lyapunov cổ điển, nhưng tự nó không chứng minh tắt mũ. Một $$V_\theta$$ nơ-ron có thể thêm số hạng chéo và nới miền hút đã kiểm chứng. Sinh viên nên vẽ năng lượng bảo toàn trước, rồi hỏi mạng được phép thêm số hạng nào mà không phá xác định dương.
+Với phương trình $$\theta''+\sin\theta+\gamma\theta'=0$$, cơ năng $$V=\tfrac12(\theta')^2+(1-\cos\theta)$$ là một hàm Lyapunov cổ điển, nhưng tự bản thân nó không chứng minh được tốc độ tắt dần theo hàm mũ. Một hàm $$V_\theta$$ nơ-ron có thể bổ sung các số hạng chéo để mở rộng miền hút đã kiểm chứng. Sinh viên nên vẽ các đường đồng mức của cơ năng trước, rồi đặt câu hỏi mạng nơ-ron có thể thêm số hạng nào mà không phá vỡ tính xác định dương.
 
-### Ví dụ 2: Chứng chỉ giả từ mẫu
+### Ví dụ 2: Chứng chỉ giả từ lấy mẫu
 
-Giả sử chỉ lấy mẫu quanh một hố xoắn và huấn luyện $$V_\theta=\|x\|^2$$. $$\dot V$$ trên mẫu có thể âm trong khi một nút không ổn định xa, hoặc một chu trình giới hạn, vẫn chưa thấy. Kiểm chứng trên hộp đủ lớn sẽ thất bại. Đây là cảnh báo của chương về ổn định địa phương versus toàn cục, nay dưới dạng phần mềm.
+Giả sử ta chỉ lấy mẫu quanh một tiêu điểm hút và chọn $$V_\theta=\|x\|^2$$. Đạo hàm $$\dot V$$ có thể âm trên toàn bộ tập mẫu, trong khi ở xa hơn tồn tại một nút không ổn định hoặc một chu trình giới hạn chưa được phát hiện. Khi đem kiểm chứng trên một hình hộp đủ lớn, điều kiện sẽ thất bại. Đây chính là lưu ý quen thuộc của chương về sự khác biệt giữa ổn định cục bộ và ổn định toàn cục, được thể hiện trong bối cảnh phần mềm.
 
-### Ví dụ 3: Phần dư giảm trong mã
+### Ví dụ 3: Kiểm tra phần dư suy giảm bằng mã nguồn
 
 ```python
 import torch
@@ -87,41 +87,41 @@ Vdot = (gradV * f(x)).sum(dim=-1)
 print(float((Vdot < 0).float().mean()))
 ```
 
-Giá trị gần $$1$$ trên mẫu ngẫu nhiên là khích lệ và vẫn chưa phải chứng minh. Đó là toàn bộ điểm sư phạm.
+Kết quả tiến gần $$1$$ trên các điểm mẫu ngẫu nhiên là một tín hiệu tích cực nhưng chưa phải là chứng minh toán học. Đó chính là trọng tâm sư phạm của ví dụ này.
 
 ## Ứng dụng
 
-Chứng chỉ học được nay nằm trong bộ công cụ robot và điều khiển: ổn định quadrotor, bám quỹ đạo xe, và học tăng cường an toàn đều cần một lý do để tin chính sách nơ-ron sẽ không rời tập an toàn. Dịch tễ cho khán giả khác. Hàm Lyapunov học được cho mô hình kiểu SIR có thể chứng nhận cân bằng không bệnh ổn định tiệm cận khi $$R_0<1$$, hoặc thất bại theo cách lộ sai trong số hạng lây nhiễm học được. Trong SciML rộng hơn, một PINN tuyên bố trạng thái dừng ổn định có thể bị yêu cầu đưa ra chứng chỉ, không chỉ phần dư nhỏ.
+Các chứng chỉ học được hiện đã được sử dụng trong kỹ thuật robot và điều khiển: ổn định máy bay bốn cánh (quadrotor), điều khiển xe bám quỹ đạo và học tăng cường an toàn đều cần cơ sở để bảo đảm chính sách nơ-ron không rời khỏi tập an toàn. Dịch tễ học mang đến một góc nhìn ứng dụng khác: hàm Lyapunov học được cho mô hình dạng SIR có thể chứng nhận trạng thái cân bằng không dịch bệnh là ổn định tiệm cận khi $$R_0<1$$, hoặc thất bại theo cách làm lộ sai lệch trong số hạng lây nhiễm đã học. Trong lĩnh vực học máy khoa học (SciML) rộng hơn, một mạng PINN tuyên bố hội tụ về trạng thái dừng ổn định có thể được yêu cầu cung cấp chứng chỉ ổn định thay vì chỉ báo cáo phần dư nhỏ.
 
-Dawson và cộng sự (2023) thu thập các miền ứng dụng và cả các chế độ thất bại chính: kiểm chứng không đầy đủ, miền hút quá nhỏ, và chứng chỉ bỏ qua giới hạn chấp hành.
+Dawson và cộng sự (2023) đã tổng hợp các lĩnh vực ứng dụng cùng những dạng thất bại phổ biến nhất: kiểm chứng không đầy đủ, miền hút thu được quá nhỏ và chứng chỉ bỏ qua giới hạn của cơ cấu chấp hành.
 
 ## Thách thức và hướng mở rộng
 
-Kiểm chứng kém mở rộng theo chiều; mã hóa mixed-integer của mạng trở nên đắt ngoài chiều trạng thái khiêm tốn. Chứng chỉ thời gian rời rạc và liên tục không hoán đổi được nếu không có lập luận lấy mẫu cẩn thận. Hệ ngẫu nhiên và lai cần mở rộng supermartingale hoặc nhiều Lyapunov. Cuối cùng, bộ điều khiển được chứng nhận trên mô hình chưa được chứng nhận trên nhà máy: sai mô hình có thể phá $$\dot V<0$$.
+Quá trình kiểm chứng gặp khó khăn khi mở rộng lên số chiều cao; việc mã hóa mạng nơ-ron dưới dạng bài toán quy hoạch nguyên hỗn hợp trở nên rất tốn kém khi vượt qua số chiều trạng thái nhỏ. Chứng chỉ cho hệ thời gian rời rạc và hệ thời gian liên tục không thể thay thế lẫn nhau nếu thiếu lập luận chặt chẽ về bước lấy mẫu. Các hệ ngẫu nhiên và hệ lai đòi hỏi mở rộng sang siêu martingale (supermartingale) hoặc họ nhiều hàm Lyapunov. Cuối cùng, một bộ điều khiển được chứng nhận trên mô hình toán học chưa chắc đã được bảo đảm trên đối tượng thực: sai số mô hình có thể làm hỏng điều kiện $$\dot V<0$$.
 
-Câu hỏi phản tư: nếu chứng chỉ nơ-ron được kiểm trên tập compact, nó nói gì về quỹ đạo xuất phát ngoài tập ấy? Mặt pha đã trả lời: không gì, trừ việc chúng có thể vào tập hoặc thoát sang hấp dẫn khác.
+Câu hỏi phản tư: nếu một chứng chỉ nơ-ron chỉ được kiểm chứng trên một tập compact, nó cho biết điều gì về các quỹ đạo xuất phát bên ngoài tập đó? Phân tích mặt phẳng pha đã trả lời: không thể kết luận gì chắc chắn, ngoại trừ khả năng chúng có thể đi vào tập đó hoặc bị hút sang một miền hút khác.
 
 ## Video tham khảo
 
-- xem trước: [Safe Nonlinear Control using Robust Neural Lyapunov Functions](https://www.youtube.com/watch?v=ZEsQZeBOMDI) — Charles Dawson, tiếng Anh. Một bài nói về việc học hàm Lyapunov nơ-ron bền cho điều khiển an toàn.
-- [Arash Mehrjou:  Neural Lyapunov Redesign](https://www.youtube.com/watch?v=ylRDhiFcujs) — Machine Learning and Dynamical Systems Seminar, tiếng Anh. Arash Mehrjou về thiết kế lại Lyapunov bằng mạng nơ-ron.
-- [What is a Lyapunov function](https://www.youtube.com/watch?v=uXAx_641FPM) — richard pates, tiếng Anh. Hàm Lyapunov cổ điển mà các chứng chỉ học được đang bắt chước.
+- Xem trước: [Safe Nonlinear Control using Robust Neural Lyapunov Functions](https://www.youtube.com/watch?v=ZEsQZeBOMDI) — Charles Dawson, tiếng Anh. Bài trình bày về việc học hàm Lyapunov nơ-ron bền vững cho điều khiển an toàn.
+- [Arash Mehrjou:  Neural Lyapunov Redesign](https://www.youtube.com/watch?v=ylRDhiFcujs) — Machine Learning and Dynamical Systems Seminar, tiếng Anh. Arash Mehrjou trình bày về thiết kế lại hàm Lyapunov bằng mạng nơ-ron.
+- [What is a Lyapunov function](https://www.youtube.com/watch?v=uXAx_641FPM) — richard pates, tiếng Anh. Giới thiệu hàm Lyapunov cổ điển làm nền tảng cho các chứng chỉ học được.
 
 ## Bài tập
 
-1. **Cản tuyến tính.** Cho $$x'=Ax$$ với $$A$$ có trị riêng phần thực dương. Chứng minh không hàm Lyapunov $$C^1$$ nào thỏa $$\dot V<0$$ quanh gốc. Thuật toán huấn luyện phải làm gì?
+1. **Rào cản tuyến tính.** Cho hệ $$x'=Ax$$ với ma trận $$A$$ có trị riêng với phần thực dương. Chứng minh rằng không tồn tại hàm Lyapunov $$C^1$$ nào thỏa mãn $$\dot V<0$$ quanh gốc tọa độ. Trong trường hợp này, thuật toán huấn luyện phải xử lý ra sao?
 
-2. **Từ năng lượng đến Lyapunov chặt.** Với con lắc tắt dần, bắt đầu từ năng lượng cơ học và thêm số hạng chéo nhỏ $$\varepsilon\theta\theta'$$. Với $$\varepsilon$$ nào $$V$$ vẫn xác định dương gần $$0$$, và với $$\varepsilon$$ nào $$\dot V$$ âm chặt?
+2. **Từ năng lượng đến hàm Lyapunov chặt.** Với con lắc tắt dần, xuất phát từ cơ năng và cộng thêm số hạng chéo nhỏ $$\varepsilon\theta\theta'$$. Với giá trị $$\varepsilon$$ nào thì $$V$$ vẫn xác định dương gần $$0$$, và với $$\varepsilon$$ nào thì $$\dot V$$ âm chặt?
 
-3. **Barrier versus Lyapunov.** Viết điều kiện barrier giữ $$x_1\ge 0$$ cho một hệ phẳng đơn giản. Điều kiện ấy khác $$\dot V<0$$ thế nào?
+3. **Barrier so với Lyapunov.** Viết điều kiện barrier để giữ $$x_1\ge 0$$ cho một hệ phẳng đơn giản. Điều kiện đó khác gì so với điều kiện $$\dot V<0$$?
 
-4. **Thí nghiệm tính toán.** Huấn luyện mạng nhỏ $$V_\theta$$ cho $$x'=-x$$, $$y'=-2y$$ trên đĩa đơn vị rồi đánh giá $$\dot V_\theta$$ trên lưới. Chỉ các ô lưới nơi sự giảm thất bại.
+4. **Thí nghiệm tính toán.** Huấn luyện một mạng nhỏ $$V_\theta$$ cho hệ $$x'=-x$$, $$y'=-2y$$ trên đĩa đơn vị rồi đánh giá $$\dot V_\theta$$ trên một lưới điểm. Chỉ ra các ô lưới nơi điều kiện suy giảm bị vi phạm.
 
-5. **Khám phá mở.** Đọc Dawson, Gao và Fan (IEEE TRO 2023) và tóm tắt, trong một trang, khác biệt giữa chứng chỉ lấy mẫu và chứng chỉ đã kiểm chứng. Rồi liếc Wu và cộng sự (NeurIPS 2023) và ghi chú điều gì trở nên dễ hơn trong thời gian rời rạc.
+5. **Khám phá mở.** Đọc bài báo của Dawson, Gao và Fan (IEEE TRO 2023) và tóm tắt trong một trang sự khác biệt giữa chứng chỉ dựa trên lấy mẫu và chứng chỉ đã được kiểm chứng. Sau đó tham khảo thêm Wu và cộng sự (NeurIPS 2023) để ghi chú những điểm trở nên thuận lợi hơn trong thiết lập thời gian rời rạc.
 
 ## Tài liệu
 
-- Strogatz, *Nonlinear Dynamics and Chaos*; Arnold, về hình học ổn định.
+- Strogatz, *Nonlinear Dynamics and Chaos*; Arnold, về hình học của tính ổn định.
 - Chang, Y.-C., Roohi, N., và Gao, S. “Neural Lyapunov control.” *NeurIPS* 2019. [arXiv:2005.00611](https://arxiv.org/abs/2005.00611).
 - Dawson, C., Gao, S., và Fan, C. “Safe control with learned certificates.” *IEEE TRO* 39, số 3 (2023): 1749–1767.
 - Wu, J., Clark, A., Kantaros, Y., và Vorobeychik, Y. “Neural Lyapunov control for discrete-time systems.” *NeurIPS* 2023. [arXiv:2305.06547](https://arxiv.org/abs/2305.06547).

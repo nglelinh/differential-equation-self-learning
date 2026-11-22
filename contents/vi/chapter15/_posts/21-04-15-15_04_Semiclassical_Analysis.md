@@ -14,161 +14,161 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài optional này giới thiệu giải tích bán cổ điển như chiếc cầu giữa tần số cao, PDE, và cơ học cổ điển. Sau bài học, sinh viên cần hiểu ý nghĩa của tham số nhỏ $$ h $$, biết tại sao giới hạn $$ h\to 0 $$ quan trọng, và thấy được mối liên hệ giữa quỹ đạo cổ điển, wave packets, và toán tử Schrödinger.
+Bài học tùy chọn này giới thiệu giải tích bán cổ điển (semiclassical analysis) như cầu nối giữa chế độ tần số cao, PDE và cơ học cổ điển. Sau bài học, sinh viên cần hiểu ý nghĩa của tham số nhỏ $$ h $$, vai trò của giới hạn $$ h\to 0 $$, và mối liên hệ giữa quỹ đạo cổ điển, gói sóng (wave packets) và toán tử Schrödinger.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm Fourier transform, pseudodifferential operators, Hamiltonian mechanics ở mức trực giác, và phương trình Schrödinger cơ bản. Kiến thức về phổ và wave front set cũng rất hữu ích để hiểu tại sao tham số nhỏ dẫn đến một thang nhìn mới.
+Sinh viên nên nắm biến đổi Fourier, toán tử giả vi phân, trực giác cơ học Hamilton và phương trình Schrödinger cơ bản. Kiến thức về lý thuyết phổ và tập mặt sóng cũng hỗ trợ tốt cho việc hiểu thang đo mới do tham số nhỏ tạo ra.
 
 ## Dẫn nhập
 
-Giải tích bán cổ điển nghiên cứu điều gì xảy ra khi một tham số nhỏ, thường ký hiệu $$ h $$ hay $$ \hbar $$, tiến về 0. Trong vật lý, đây là giới hạn từ lượng tử về cổ điển. Trong phân tích, đây cũng là cách nghiên cứu tần số rất cao hay bước sóng rất nhỏ. Vì vậy giải tích bán cổ điển là điểm gặp nhau của PDE, phổ, và động lực học Hamilton.
+Giải tích bán cổ điển nghiên cứu hành vi của nghiệm PDE khi một tham số nhỏ — thường ký hiệu $$ h $$ hoặc $$ \hbar $$ — tiến về 0. Trong vật lý, đây là giới hạn chuyển từ cơ học lượng tử sang cơ học cổ điển; trong giải tích, đây cũng là cách khảo sát chế độ tần số rất cao hay bước sóng rất ngắn. Nhờ đó, giải tích bán cổ điển trở thành giao điểm của PDE, lý thuyết phổ và động lực học Hamilton.
 
-Một trong những nét đẹp của lý thuyết này là nó biến những câu hỏi tưởng rất khác nhau thành cùng một ngôn ngữ: localization của nghiệm, quỹ đạo cổ điển, và sự phân bố phổ cao.
+Ưu điểm lớn của lý thuyết này là quy tụ nhiều câu hỏi tưởng như tách biệt — sự định xứ của nghiệm, quỹ đạo cổ điển và phân bố phổ năng lượng cao — vào cùng một ngôn ngữ thống nhất.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Hãy tưởng tượng một gói sóng ngày càng hẹp. Khi bước sóng rất nhỏ so với kích thước miền quan sát, sóng bắt đầu cư xử như hạt đi theo quỹ đạo cổ điển. Giải tích bán cổ điển nghiên cứu chính vùng chuyển tiếp này: vẫn là sóng, nhưng đã lộ ra cấu trúc của động lực học cổ điển.
+Hãy tưởng tượng một gói sóng ngày càng thu hẹp: khi bước sóng rất nhỏ so với kích thước đặc trưng của hệ, sóng bắt đầu hành xử giống một hạt chuyển động dọc theo quỹ đạo cổ điển. Giải tích bán cổ điển khảo sát chính vùng chuyển tiếp đó — đối tượng vẫn mang bản chất sóng, nhưng cấu trúc động lực học cổ điển đã hiện ra rõ nét.
 
 ### Cách hình ảnh
 
-Giáo viên nên vẽ ba hình:
+Có thể vẽ đối chiếu ba hình ảnh:
 
 - một sóng trải rộng;
-- một wave packet hẹp;
-- quỹ đạo cổ điển mà tâm gói sóng đi theo.
+- một gói sóng hẹp;
+- quỹ đạo cổ điển mà tâm gói sóng bám theo.
 
-Hình này rất hiệu quả vì nó cho sinh viên thấy tại sao một tham số nhỏ lại làm xuất hiện quỹ đạo thay vì chỉ các dao động mơ hồ.
+Cách trình bày này giúp người học thấy ngay vì sao khi tham số nhỏ tiến về 0, cấu trúc quỹ đạo cổ điển nổi lên từ nền dao động sóng.
 
 ### Cách hình thức
 
-Ta xét các họ toán tử phụ thuộc tham số nhỏ $$ h $$, điển hình là $$ P_h=-h^2\Delta+V(x) $$. Khi $$ h\to 0 $$, toán tử này được phân tích thông qua symbol semiclassical $$ p(x,\xi)=\lvert \xi\rvert^2+V(x) $$. Đây đồng thời là Hamiltonian cổ điển của hệ. Nhờ đó, các hiện tượng lượng tử cao tần được đọc qua hình học cổ điển trong không gian pha.
+Ta khảo sát các họ toán tử phụ thuộc tham số nhỏ $$ h $$, tiêu biểu là $$ P_h=-h^2\Delta+V(x) $$. Khi $$ h\to 0 $$, toán tử được phân tích qua ký hiệu bán cổ điển $$ p(x,\xi)=\lvert \xi\rvert^2+V(x) $$, trùng khớp với hàm Hamilton cổ điển của hệ. Nhờ vậy, nhiều tính chất cao tần của nghiệm được đọc trực tiếp từ hình học cổ điển trên không gian pha.
 
 ## Ngộ nhận thường gặp
 
-### “Giải tích bán cổ điển chỉ là vật lý lượng tử”
+### “Giải tích bán cổ điển chỉ là một nhánh của vật lý lượng tử”
 
-Không. Trong phân tích, nó cũng là lý thuyết tần số cao rất mạnh.
+Không đúng. Trong giải tích toán học, đây còn là công cụ nền tảng cho các bài toán tần số cao và bước sóng ngắn.
 
-### “Cho $$ h\to 0 $$ thì sóng biến mất và chỉ còn hạt”
+### “Khi $$ h\to 0 $$ thì sóng biến mất hoàn toàn, chỉ còn hạt”
 
-Không hoàn toàn. Sóng vẫn hiện diện, nhưng cấu trúc của chúng phản ánh mạnh động lực học cổ điển.
+Không hoàn toàn. Bản chất sóng vẫn tồn tại, nhưng cấu trúc định xứ và lan truyền của sóng phản ánh chặt chẽ động lực học cổ điển.
 
-### “Giải tích bán cổ điển chỉ là thay biến ký hiệu”
+### “Giải tích bán cổ điển chỉ là phép đổi ký hiệu”
 
-Sai. Việc đưa vào tham số nhỏ tạo ra một calculus, một trực giác, và nhiều kết quả phổ mới.
+Sai. Tham số nhỏ $$ h $$ sinh ra một phép tính ký hiệu riêng cùng nhiều kết quả sâu về phổ và lan truyền.
 
-### “Quỹ đạo cổ điển tự động cho đầy đủ hành vi lượng tử”
+### “Quỹ đạo cổ điển mô tả đầy đủ hành vi lượng tử”
 
-Không. Giới hạn cổ điển cho trực giác mạnh, nhưng vẫn còn nhiều hiệu ứng lượng tử tinh vi.
+Không. Giới hạn cổ điển cung cấp bức tranh dẫn đầu, còn nhiều hiệu ứng lượng tử tinh vi như xuyên hầm hay giao thoa vẫn cần phân tích sâu hơn.
 
 ## Tiến trình học
 
-### Bước 1: Giới thiệu tham số nhỏ
+### Bước 1: Hiểu vai trò của tham số nhỏ
 
-Sinh viên cần hiểu $$ h $$ không chỉ là một hằng số mà là một thang đo mới.
+Xem $$ h $$ như một thang đo bước sóng chứ không chỉ là hằng số vật lý cố định.
 
-### Bước 2: Chuyển toán tử sang symbol semiclassical
+### Bước 2: Chuyển từ toán tử sang ký hiệu bán cổ điển
 
-Liên hệ với Hamiltonian cổ điển.
+Liên kết trực tiếp ký hiệu bán cổ điển với hàm Hamilton cổ điển.
 
-### Bước 3: Giới thiệu wave packets
+### Bước 3: Sử dụng gói sóng
 
-Đây là cầu nối trực quan nhất giữa sóng và quỹ đạo.
+Xem gói sóng là cầu nối trực quan nhất giữa dao động sóng và quỹ đạo hạt.
 
-### Bước 4: Kết nối với phổ và cơ học lượng tử
+### Bước 4: Liên hệ với lý thuyết phổ và cơ học lượng tử
 
-Nêu rằng nhiều bài toán phổ lớn được đọc lại thành bài toán semiclassical.
+Nhận ra nhiều bài toán trị riêng lớn có thể viết lại thành bài toán bán cổ điển.
 
 ### Ghi chú sư phạm then chốt
 
-Ở bài này, sinh viên thường bị “rơi chữ” vì có quá nhiều tầng ngôn ngữ cùng lúc: sóng, hạt, phổ, và quỹ đạo Hamilton. Một mẹo dạy rất hiệu quả là luôn quay lại một tam giác trực giác:
+Trong bài học này, người học dễ bị quá tải thuật ngữ khi phải làm việc đồng thời với sóng, hạt, phổ và quỹ đạo Hamilton. Có thể tóm tắt mạch tư duy qua ba bước liên kết:
 
-- $$ h $$ nhỏ nghĩa là bước sóng nhỏ;
-- bước sóng nhỏ nghĩa là nghiệm tập trung mạnh trong không gian pha;
-- khi tập trung mạnh, quỹ đạo cổ điển bắt đầu lộ ra.
+- $$ h $$ nhỏ tương ứng với bước sóng rất ngắn;
+- bước sóng ngắn cho phép nghiệm tập trung hẹp trong không gian pha;
+- khi tập trung mạnh, chuyển động của gói sóng bám theo quỹ đạo cổ điển.
 
-Nếu sinh viên nắm được tam giác này, phần formalism phía sau sẽ dễ tiếp nhận hơn nhiều.
+Nắm chắc chuỗi liên hệ này sẽ giúp các công thức hình thức phía sau dễ tiếp cận hơn nhiều.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có giải thích được vì sao $$ h\to 0 $$ là giới hạn tần số cao không?
-- Sinh viên có hiểu symbol semiclassical liên hệ với Hamiltonian cổ điển thế nào không?
-- Sinh viên có mô tả được vai trò của wave packet không?
+- Sinh viên có giải thích được vì sao $$ h\to 0 $$ tương ứng với giới hạn tần số cao hay không?
+- Sinh viên có hiểu mối liên hệ giữa ký hiệu bán cổ điển và hàm Hamilton cổ điển hay không?
+- Sinh viên có mô tả được vai trò của gói sóng hay không?
 
 ## Ví dụ có lời giải
 
 ### Ví dụ 1: Toán tử Schrödinger tự do
 
-Xét $$ P_h=-h^2\Delta $$. Symbol semiclassical là $$ p(x,\xi)=\lvert \xi\rvert^2 $$. Đây cũng là năng lượng động học cổ điển. Ví dụ này cho thấy ngay sự trùng khớp giữa toán tử lượng tử và Hamiltonian cổ điển.
+Xét $$ P_h=-h^2\Delta $$. Ký hiệu bán cổ điển của nó là $$ p(x,\xi)=\lvert \xi\rvert^2 $$, trùng khớp với động năng cổ điển.
 
-### Ví dụ 2: Thêm thế năng
+### Ví dụ 2: Bổ sung thế năng
 
-Với $$ P_h=-h^2\Delta+V(x) $$, symbol trở thành $$ \lvert \xi\rvert^2+V(x) $$. Đây là Hamiltonian quen thuộc của cơ học cổ điển. Nhờ đó, quỹ đạo cổ điển xuất hiện tự nhiên trong phân tích nghiệm của PDE.
+Với $$ P_h=-h^2\Delta+V(x) $$, ký hiệu trở thành $$ \lvert \xi\rvert^2+V(x) $$ — đúng bằng hàm Hamilton quen thuộc của cơ học cổ điển, giải thích vì sao quỹ đạo cổ điển xuất hiện tự nhiên trong giải tích PDE.
 
-### Ví dụ 3: Wave packet
+### Ví dụ 3: Gói sóng
 
-Một gói sóng hẹp trong không gian pha thường di chuyển gần theo dòng Hamilton của symbol trong khoảng thời gian thích hợp. Đây là trực giác cốt lõi của tương ứng cổ điển-lượng tử.
+Một gói sóng hẹp định xứ trong không gian pha sẽ di chuyển bám sát dòng Hamilton của ký hiệu trong một khoảng thời gian thích hợp — đây là trực giác cốt lõi của nguyên lý tương ứng cổ điển–lượng tử.
 
-### Ví dụ 4: Phổ cao
+### Ví dụ 4: Phổ năng lượng cao
 
-Bài toán trị riêng lớn cho $$ -\Delta $$ có thể được đọc như bài toán semiclassical bằng cách đặt $$ h\sim \lambda^{-1/2} $$. Ví dụ này giải thích vì sao semiclassical analysis gắn chặt với spectral asymptotics.
+Bài toán trị riêng lớn cho $$ -\Delta $$ có thể quy về bài toán bán cổ điển bằng cách đặt $$ h\sim \lambda^{-1/2} $$, cho thấy mối liên hệ trực tiếp giữa giải tích bán cổ điển và tiệm cận phổ.
 
-### Ví dụ 5: Ansatz WKB
+### Ví dụ 5: Dạng nghiệm thử WKB
 
-Một ansatz kinh điển là tìm nghiệm dưới dạng $$ u_h(x)\approx a(x)e^{iS(x)/h} $$. Ở đây, $$ S(x) $$ đóng vai trò pha cổ điển còn $$ a(x) $$ là biên độ chậm. Khi thay vào phương trình, bậc đầu tiên thường dẫn đến phương trình Hamilton-Jacobi cho $$ S $$. Ví dụ này rất quan trọng về mặt sư phạm vì nó cho sinh viên thấy “quỹ đạo cổ điển” không phải được gắn từ bên ngoài vào, mà tự sinh ra từ phép thế của nghiệm cao tần.
+Một dạng nghiệm thử (ansatz) kinh điển là $$ u_h(x)\approx a(x)e^{iS(x)/h} $$, trong đó $$ S(x) $$ là hàm pha cổ điển còn $$ a(x) $$ là biên độ biến thiên chậm. Khi thay vào phương trình, số hạng bậc dẫn đầu cho phương trình Hamilton–Jacobi cho $$ S $$, chứng tỏ quỹ đạo cổ điển tự nảy sinh trực tiếp từ cấu trúc nghiệm dao động nhanh.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao giới hạn $$ h\to 0 $$ lại là giới hạn tần số cao?
-2. Điều gì làm cho symbol semiclassical đóng vai trò của Hamiltonian cổ điển?
-3. Tại sao wave packets là đối tượng trực giác quan trọng trong semiclassical analysis?
+1. Vì sao giới hạn $$ h\to 0 $$ đồng nghĩa với giới hạn tần số cao?
+2. Điều gì khiến ký hiệu bán cổ điển đóng vai trò của hàm Hamilton cổ điển?
+3. Vì sao gói sóng là công cụ trực giác trung tâm của giải tích bán cổ điển?
 
 ## Bài toán ứng dụng
 
-1. Trong cơ học lượng tử, vì sao quỹ đạo cổ điển vẫn xuất hiện trong giới hạn năng lượng cao?
-2. Trong quang học hình học, bước sóng nhỏ gợi liên hệ gì với semiclassical analysis?
-3. Trong spectral theory, tại sao đếm trị riêng lớn có thể được chuyển thành một bài toán semiclassical?
+1. Trong cơ học lượng tử, vì sao quỹ đạo cổ điển nổi lên ở giới hạn năng lượng cao?
+2. Trong quang học hình học, chế độ bước sóng ngắn liên hệ ra sao với giải tích bán cổ điển?
+3. Trong lý thuyết phổ, vì sao bài toán đếm trị riêng lớn có thể chuyển về bài toán bán cổ điển?
 
 ## Chiến lược dạy học tương tác
 
-### Câu hỏi nên hỏi trên lớp
+### Câu hỏi nên đặt trên lớp
 
-- Khi bước sóng rất nhỏ, em mong đợi sóng cư xử giống cái gì?
-- Tại sao một tham số nhỏ có thể thay đổi hoàn toàn góc nhìn phân tích?
-- Em thấy mối liên hệ giữa Hamiltonian cổ điển và toán tử lượng tử ở đâu?
+- Khi bước sóng trở nên rất nhỏ so với kích thước hệ, sóng sẽ có hành vi gần với mô hình nào?
+- Vì sao việc đưa thêm một tham số nhỏ lại tạo ra cả một góc nhìn giải tích mới?
+- Mối liên hệ giữa hàm Hamilton cổ điển và toán tử lượng tử thể hiện ở đâu?
 
 ### Hoạt động gợi ý
 
-- Vẽ quỹ đạo cổ điển và đường đi gần đúng của một wave packet.
-- So sánh toán tử Schrödinger với Hamiltonian cổ điển tương ứng.
-- Tổ chức thảo luận nhóm: semiclassical là “giới hạn lượng tử” hay “giới hạn cao tần”?
+- Vẽ đối chiếu quỹ đạo cổ điển với đường đi của tâm gói sóng.
+- So sánh trực tiếp toán tử Schrödinger với hàm Hamilton cổ điển tương ứng.
+- Thảo luận nhóm câu hỏi: giải tích bán cổ điển nên được hiểu là “giới hạn lượng tử” hay “giới hạn cao tần”?
 
-### Cách tăng tham gia
+### Cách tăng mức độ tham gia
 
-- Bắt đầu từ hình ảnh gói sóng hẹp.
-- Cho sinh viên tự đoán symbol semiclassical của các toán tử đơn giản.
-- Mời sinh viên giải thích semiclassical bằng ngôn ngữ vật lý trước rồi mới quay về PDE.
+- Mở đầu bằng hình ảnh trực quan của gói sóng hẹp.
+- Đề nghị sinh viên tự đoán ký hiệu bán cổ điển của một số toán tử quen thuộc.
+- Khuyến khích giải thích ý nghĩa vật lý trước khi viết biểu thức toán tử.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Bám vào ví dụ $$ -h^2\Delta+V(x) $$.
-- Tránh đi sâu vào calculus semiclassical đầy đủ.
-- Nhấn mạnh một dòng chủ đạo: $$ h $$ nhỏ làm sóng lộ ra quỹ đạo cổ điển.
+- Bám sát ví dụ mẫu $$ -h^2\Delta+V(x) $$.
+- Chưa cần đi sâu vào toàn bộ phép tính giả vi phân bán cổ điển.
+- Nhấn mạnh một ý chủ đạo: khi $$ h $$ nhỏ, sóng bộc lộ quỹ đạo cổ điển.
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Tìm hiểu semiclassical wave front set.
-- Liên hệ với định lý Egorov ở mức trực giác.
-- Khảo sát mối liên hệ giữa WKB và phương trình Hamilton-Jacobi.
+- Tìm hiểu khái niệm tập mặt sóng bán cổ điển.
+- Nắm ý tưởng định lý Egorov về sự tiến hóa của đại lượng quan sát.
+- Khảo sát mối liên hệ giữa phương pháp WKB và phương trình Hamilton–Jacobi.
 
 ## Ghi nhớ nhanh
 
-Giải tích bán cổ điển nghiên cứu PDE khi có một tham số nhỏ $$ h $$, qua đó nối cấu trúc sóng của nghiệm với động lực học cổ điển trong không gian pha. Đây là chiếc cầu mạnh giữa phân tích Fourier, phổ, và cơ học lượng tử.
+Giải tích bán cổ điển khảo sát PDE phụ thuộc tham số nhỏ $$ h $$, kết nối cấu trúc sóng cao tần của nghiệm với động lực học cổ điển trên không gian pha và bắc cầu giữa giải tích Fourier, lý thuyết phổ và cơ học lượng tử.
 
 ---
 
@@ -176,41 +176,41 @@ Giải tích bán cổ điển nghiên cứu PDE khi có một tham số nhỏ $
 
 ### 1. Cơ học lượng tử: Nguyên lý tương ứng Bohr
 
-Nguyên lý tương ứng của Bohr phát biểu rằng cơ học lượng tử phải trở về cơ học cổ điển trong giới hạn tác dụng lớn ($$ \hbar \to 0 $$ theo thang vĩ mô). Giải tích bán cổ điển là phát biểu toán học chính xác của nguyên lý này.
+Nguyên lý tương ứng Bohr nêu rằng cơ học lượng tử phải quy về cơ học cổ điển trong giới hạn tác dụng lớn ($$ \hbar \to 0 $$ trên thang vĩ mô). Giải tích bán cổ điển cung cấp khuôn khổ toán học chặt chẽ cho nguyên lý này.
 
-Với phương trình Schrödinger không phụ thuộc thời gian:
+Với phương trình Schrödinger dừng:
 $$ -\frac{\hbar^2}{2m}\Delta\psi + V(x)\psi = E\psi, $$
-đặt $$ h = \hbar $$ và tìm nghiệm dạng WKB:
+đặt $$ h = \hbar $$ và xét nghiệm thử WKB:
 $$ \psi_h(x) \approx A(x) e^{iS(x)/h}, $$
-thì bậc đầu của phương trình cho phương trình Hamilton-Jacobi:
-$$ \frac{\lvert \nabla S\rvert^2}{2m} + V(x) = E. $$
-Đây chính là phương trình mô tả quỹ đạo cổ điển của hạt với năng lượng $$ E $$ trong thế năng $$ V(x) $$.
+số hạng bậc dẫn đầu cho phương trình Hamilton–Jacobi:
+$$ \frac{\lvert \nabla S\rvert^2}{2m} + V(x) = E, $$
+mô tả chính xác quỹ đạo cổ điển của hạt có năng lượng $$ E $$ trong thế năng $$ V(x) $$.
 
-**Ứng dụng:** Tính xác suất xuyên hầm (quantum tunneling) qua rào thế, hiệu ứng được ứng dụng trong đèn LED, laser bán dẫn, và kính hiển vi xuyên hầm (STM).
+**Ứng dụng:** Tính xác suất xuyên hầm lượng tử (quantum tunneling) qua rào thế — cơ sở của điốt phát quang (LED), laser bán dẫn và kính hiển vi quét xuyên hầm (STM).
 
 ### 2. Quang học: Từ sóng điện từ đến tia sáng
 
-Phương trình sóng Maxwell:
+Phương trình sóng Maxwell
 $$
 \frac{\partial^2 \mathbf{E}}{\partial t^2} = c^2 \Delta \mathbf{E}
 $$
-trong môi trường không đồng nhất với chiết suất $$ n(x) $$ có tham số nhỏ tự nhiên là tỷ lệ $$ \lambda/L $$ (bước sóng so với kích thước vật lý quan trọng). Khi $$ \lambda/L \to 0 $$, nghiệm sóng điện từ tập trung dọc theo tia sáng — chính là bicharacteristics của phương trình eikonal:
+trong môi trường có chiết suất biến thiên $$ n(x) $$ chứa tham số nhỏ tự nhiên là tỉ số $$ \lambda/L $$ (bước sóng chia cho kích thước đặc trưng). Khi $$ \lambda/L \to 0 $$, sóng điện từ tập trung dọc theo các tia sáng — chính là đường song đặc trưng của phương trình eikonal:
 $$ \lvert \nabla S\rvert^2 = n(x)^2. $$
-Đây là nền tảng của quang học hình học và thiết kế các hệ thống quang học từ kính thiên văn Hubble đến hệ thống lithography trong sản xuất chip.
+Đây là nền tảng của quang học hình học, từ thiết kế kính thiên văn không gian đến kỹ thuật quang khắc (lithography) trong chế tạo vi mạch.
 
 ### 3. Địa chấn học tần số cao
 
-Trong thăm dò địa chấn, sóng địa chấn tần số cao (chu kỳ $$ T \ll $$ kích thước cấu trúc địa chất) truyền gần đúng theo các tia ray. Tham số nhỏ ở đây là $$ h \sim T/T_{\rm geol} $$. Phân tích semiclassical giải thích tại sao ray theory hiệu quả ở tần số cao và khi nào nó phá vỡ (gần caustic, nơi nhiều tia giao nhau).
+Trong thăm dò địa chấn, sóng tần số cao (chu kỳ $$ T $$ rất nhỏ so với quy mô cấu trúc địa chất) truyền xấp xỉ theo các tia địa chấn với tham số nhỏ $$ h \sim T/T_{\rm geol} $$. Giải tích bán cổ điển giải thích vì sao lý thuyết tia hiệu quả ở tần số cao và chỉ ra nơi nó mất hiệu lực (tại các vùng tụ quang — caustic — nơi nhiều tia giao nhau).
 
 ### 4. Vật lý laser và quang học lượng tử
 
-Trong cavity laser, ánh sáng bị giữ trong buồng cộng hưởng. Mode của laser là trị riêng của toán tử Maxwell trong buồng cộng hưởng. Semiclassical analysis dự đoán tần số của mode qua quỹ đạo ánh sáng trong buồng — đây là cơ sở của laser Fabry-Pérot và nhiều cấu trúc quang học hiện đại.
+Trong buồng cộng hưởng laser, các mode dao động là trị riêng của toán tử Maxwell. Giải tích bán cổ điển dự đoán phân bố tần số mode thông qua các quỹ đạo ánh sáng tuần hoàn trong buồng, làm cơ sở cho laser Fabry–Pérot và nhiều hệ quang học hiện đại.
 
 ---
 
 ## Trực quan hóa bằng Python
 
-### Wave packet và sự hội tụ về quỹ đạo cổ điển khi h → 0
+### Gói sóng và sự hội tụ về quỹ đạo cổ điển khi h → 0
 
 ```python
 import numpy as np
@@ -289,7 +289,7 @@ plt.savefig("semiclassical_wave_packet.png", dpi=150)
 plt.show()
 ```
 
-### WKB approximation: Xuyên hầm lượng tử
+### Xấp xỉ WKB: Xuyên hầm lượng tử
 
 ```python
 import numpy as np
@@ -379,36 +379,36 @@ plt.show()
 
 ### Mức đại học (Undergraduate)
 
-**Thông điệp chính:** Khi bước sóng nhỏ, sóng "cư xử như hạt". Semiclassical analysis là cách đo lường chính xác sự chuyển tiếp đó.
+**Thông điệp chính:** Khi bước sóng rất ngắn, sóng hành xử gần như hạt cổ điển, và giải tích bán cổ điển định lượng chính xác quá trình chuyển tiếp này.
 
 **Điều cần nhớ:**
-- Tham số $$ h $$ đo tỷ lệ giữa bước sóng và kích thước đặc trưng của bài toán.
-- Ansatz WKB: $$ \psi_h \approx A(x) e^{iS(x)/h} $$ — pha dao động nhanh, biên độ chậm.
-- Symbol semiclassical $$ p(x,\xi) = \lvert \xi\rvert^2 + V(x) $$ là Hamiltonian cổ điển.
-- Quỹ đạo cổ điển xuất hiện như "đường đi" của wave packet khi $$ h \to 0 $$.
+- Tham số $$ h $$ đo tỉ số giữa bước sóng và thang kích thước đặc trưng của bài toán.
+- Dạng nghiệm thử WKB: $$ \psi_h \approx A(x) e^{iS(x)/h} $$ gồm pha dao động nhanh và biên độ biến thiên chậm.
+- Ký hiệu bán cổ điển $$ p(x,\xi) = \lvert \xi\rvert^2 + V(x) $$ chính là hàm Hamilton cổ điển.
+- Quỹ đạo cổ điển hiện ra như đường đi của tâm gói sóng khi $$ h \to 0 $$.
 
-**Bài tập:** Với thế năng điều hòa $$ V(x) = x^2/2 $$, tìm pha WKB $$ S(x) $$ thỏa phương trình Hamilton-Jacobi. Giải thích kết quả theo quỹ đạo cổ điển.
+**Bài tập:** Với thế năng điều hòa $$ V(x) = x^2/2 $$, hãy tìm hàm pha WKB $$ S(x) $$ thỏa phương trình Hamilton–Jacobi và giải thích kết quả theo quỹ đạo cổ điển.
 
 ### Mức sau đại học (Graduate)
 
-**Calculus semiclassical:** Tập hợp các toán tử $$ {Op_h(a) : a \in S^m} $$ với quantization
+**Phép tính bán cổ điển:** Họ các toán tử $$ {Op_h(a) : a \in S^m} $$ với quy ước lượng tử hóa Weyl
 $$
 Op_h(a) u(x) = \frac{1}{(2\pi h)^n} \int e^{i(x-y)\cdot\xi/h} a\left(\frac{x+y}{2}, \xi\right) u(y)\, dy\, d\xi
 $$
-tạo thành một algebra với phép nhân thỏa:
+tạo thành một đại số với phép hợp thành thỏa mãn
 $$
 Op_h(a) \circ Op_h(b) = Op_h(a \# b),
 \qquad a \# b = ab + \frac{h}{2i}\{a, b\} + O(h^2),
 $$
-trong đó $$\{a,b\} = \nabla_\xi a \cdot \nabla_x b - \nabla_x a \cdot \nabla_\xi b$$ là bracket Poisson.
+trong đó $$\{a,b\} = \nabla_\xi a \cdot \nabla_x b - \nabla_x a \cdot \nabla_\xi b$$ là ngoặc Poisson.
 
 **Định lý Egorov:** Nếu $$ \Phi_t $$ là dòng Hamilton của $$ p $$, thì
 $$
 e^{itP_h/h} \circ Op_h(a) \circ e^{-itP_h/h} = Op_h(a \circ \Phi_t) + O(h),
 $$
-tức toán tử tiến hóa biến đổi observable theo dòng cổ điển. Đây là phát biểu toán học của nguyên lý tương ứng.
+nghĩa là toán tử tiến hóa lượng tử làm biến đổi đại lượng quan sát dọc theo dòng cổ điển — biểu thức toán học chặt chẽ của nguyên lý tương ứng.
 
-**Liên kết với FIO:** Toán tử tiến hóa $$ e^{-itP_h/h} $$ chính là một FIO, với phase là hàm hành động Hamilton-Jacobi.
+**Liên kết với FIO:** Toán tử tiến hóa $$ e^{-itP_h/h} $$ là một FIO có hàm pha là hàm tác dụng Hamilton–Jacobi.
 
 ---
 
@@ -416,11 +416,11 @@ tức toán tử tiến hóa biến đổi observable theo dòng cổ điển. �
 
 | Khái niệm | Kết nối |
 |---|---|
-| WKB (Ch. 6 mở rộng) | Ansatz WKB là trường hợp riêng của phân tích semiclassical |
-| Phương trình Hamilton-Jacobi | Phase WKB thỏa phương trình Hamilton-Jacobi |
-| FIO (bài 3) | Toán tử tiến hóa semiclassical là FIO |
-| Spectral asymptotics (bài 5) | Trị riêng cao ↔ tham số semiclassical nhỏ |
-| Cơ học lượng tử (bài 7) | Nguyên lý tương ứng là nội dung của định lý Egorov |
+| Phương pháp WKB (Ch. 6) | Dạng nghiệm thử WKB là trường hợp riêng của giải tích bán cổ điển |
+| Phương trình Hamilton–Jacobi | Hàm pha WKB thỏa phương trình Hamilton–Jacobi |
+| FIO (Bài 15.03) | Toán tử tiến hóa bán cổ điển là một FIO |
+| Tiệm cận phổ (Bài 15.05) | Trị riêng năng lượng cao tương ứng với tham số bán cổ điển nhỏ |
+| Cơ học lượng tử (Bài 15.07) | Nguyên lý tương ứng được phát biểu chặt chẽ qua định lý Egorov |
 
 > Xem toàn bộ minh họa tương tác của chương tại: [Bộ Minh họa tương tác Chương 15]({{ site.baseurl }}/contents/vi/chapter15/15_10_Interactive_Gallery/)
 
@@ -429,21 +429,21 @@ tức toán tử tiến hóa biến đổi observable theo dòng cổ điển. �
 ### 1. Ứng dụng thực tế
 
 #### Quang học hình học
-- Bài toán: Khi bước sóng rất nhỏ, ánh sáng lan gần như theo tia và phản xạ/khúc xạ theo luật cổ điển.
-- Mô hình: Dùng tham số nhỏ $$ h $$ trong ansatz WKB
+- Bài toán: Khi bước sóng rất ngắn, ánh sáng truyền gần như theo tia và phản xạ, khúc xạ theo các định luật cổ điển.
+- Mô hình: Sử dụng tham số nhỏ $$ h $$ trong dạng nghiệm thử WKB
 $$ u_h(x)\approx a(x)e^{i\phi(x)/h}. $$
-- Giả thiết và giới hạn: Mô hình tần số cao; thất bại gần caustics hoặc turning points.
-- Diễn giải: Semiclassical analysis nối trực tiếp PDE với quỹ đạo Hamilton cổ điển.
+- Giả thiết và giới hạn: Hiệu quả ở chế độ tần số cao nhưng mất hiệu lực gần vùng tụ quang (caustics) hoặc điểm quay (turning points).
+- Diễn giải: Giải tích bán cổ điển nối trực tiếp PDE với các quỹ đạo Hamilton cổ điển.
 
 #### Cơ học lượng tử bán cổ điển
-- Bài toán: Xem trạng thái lượng tử tập trung như thế nào quanh quỹ đạo cổ điển khi $$ h \to 0 $$.
-- Mô hình: Nghiên cứu toán tử semiclassical và wave packets.
-- Giả thiết và giới hạn: Chỉ đúng trong chế độ Planck nhỏ và thời gian thích hợp.
-- Diễn giải: Đây là hình thức toán học của nguyên lý tương ứng.
+- Bài toán: Khảo sát cách trạng thái lượng tử tập trung quanh quỹ đạo cổ điển khi $$ h \to 0 $$.
+- Mô hình: Sử dụng toán tử bán cổ điển và gói sóng.
+- Giả thiết và giới hạn: Có hiệu lực ở chế độ hằng số Planck hiệu dụng nhỏ và trong khoảng thời gian thích hợp.
+- Diễn giải: Đây là dạng toán học chặt chẽ của nguyên lý tương ứng.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Semiclassical analysis hỏi điều gì xảy ra khi tần số rất cao hoặc khi tham số lượng tử $$ h $$ rất nhỏ. Khi đó một nghiệm vừa dao động nhanh vừa bị điều chế chậm bởi biên độ. Một bẫy phổ biến là chỉ xem $$ h $$ như tham số trang trí; thực ra toàn bộ cấu trúc scale của bài toán phụ thuộc vào nó.
+Giải tích bán cổ điển nghiên cứu chế độ tần số rất cao hoặc tham số lượng tử $$ h $$ rất nhỏ, nơi nghiệm dao động rất nhanh trong khi biên độ biến thiên chậm. Tham số $$ h $$ không chỉ là ký hiệu phụ mà quyết định toàn bộ cấu trúc thang đo của bài toán.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -474,20 +474,20 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Với phương trình Schrödinger tự do semiclassical
+Với phương trình Schrödinger tự do bán cổ điển
 $$ ih \partial_t u_h = -\frac{h^2}{2}\Delta u_h, $$
-một wave packet ban đầu tập trung quanh $$ (x_0,\xi_0) $$ sẽ di chuyển gần theo quỹ đạo cổ điển
+một gói sóng ban đầu tập trung quanh $$ (x_0,\xi_0) $$ sẽ di chuyển bám sát quỹ đạo cổ điển
 $$ \dot x = \xi, \qquad \dot \xi = 0. $$
-Đây là phát biểu cơ bản cho thấy động lực học lượng tử tiến gần động lực học cổ điển khi $$ h $$ nhỏ.
+Kết quả này minh họa trực tiếp cách động lực học lượng tử tiến gần động lực học cổ điển khi $$ h $$ nhỏ.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Hiểu ansatz WKB và trực giác sóng ngắn.
+**Bậc đại học.** Nắm dạng nghiệm thử WKB và trực giác chế độ bước sóng ngắn.
 
-**Bậc sau đại học.** Kết nối với semiclassical pseudodifferential calculus, Egorov va semiclassical measures.
+**Bậc sau đại học.** Kết nối với phép tính giả vi phân bán cổ điển, định lý Egorov và độ đo bán cổ điển.
 
 ## Video tham khảo
 
-- xem trước: [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Zworski giảng trong truyền thống vi địa phương mà công trình bán cổ điển của ông thuộc về.
-- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Khung vi địa phương mà một tham số bán cổ điển sau này tinh chỉnh.
-- [Math of QM: 5.7. Spectral Theorem for Unbounded Selfadjoint Operators](https://www.youtube.com/watch?v=cdOkiNIONSc) — Roland Speicher, tiếng Anh. Một định lý phổ cho toán tử không bị chặn, họ hàng cơ học lượng tử của cùng phép phân tích.
+- Nên xem trước: [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Bài giảng của Maciej Zworski theo hướng vi địa phương gắn liền với giải tích bán cổ điển.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Khung vi địa phương làm nền cho phần tinh chỉnh với tham số bán cổ điển.
+- [Math of QM: 5.7. Spectral Theorem for Unbounded Selfadjoint Operators](https://www.youtube.com/watch?v=cdOkiNIONSc) — Roland Speicher, tiếng Anh. Định lý phổ cho toán tử tự liên hợp không bị chặn — nền tảng giải tích hàm của cơ học lượng tử.

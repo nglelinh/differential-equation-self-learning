@@ -13,173 +13,161 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài học này mở rộng mô hình sóng lý tưởng sang hai cơ chế rất quan trọng trong thực tế: tán sắc và hấp thụ. Sau bài học, sinh viên cần hiểu tán sắc là gì, phân biệt vận tốc pha với vận tốc nhóm, biết vì sao gói sóng có thể biến dạng khi các tần số chạy với tốc độ khác nhau, và hiểu cách thêm tắt dần làm năng lượng sóng suy giảm theo thời gian.
+Bài học này mở rộng mô hình sóng lý tưởng sang hai cơ chế phổ biến trong thực tế: tán sắc và hấp thụ (tiêu tán). Sau bài học, sinh viên cần hiểu bản chất của hiện tượng tán sắc, phân biệt vận tốc pha và vận tốc nhóm, giải thích được vì sao gói sóng biến dạng khi các tần số truyền với tốc độ khác nhau, đồng thời hiểu cách số hạng tắt dần làm suy giảm năng lượng sóng theo thời gian.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm sóng phẳng, phương trình sóng cơ bản và số phức ở mức vừa đủ để hiểu nghiệm dạng $$ e^{i(kx-\omega t)} $$. Đây là bài quan trọng để chuyển từ sóng lý tưởng sang sóng thực tế.
+Sinh viên cần nắm khái niệm sóng phẳng, phương trình sóng cơ bản và biểu diễn số phức đủ để làm việc với nghiệm dạng $$ e^{i(kx-\omega t)} $$. Bài học này tạo bước chuyển từ mô hình sóng lý tưởng sang sóng trong môi trường thực.
 
 ## Dẫn nhập
 
-Trong mô hình sóng lý tưởng, mọi tần số truyền cùng một tốc độ nên gói sóng giữ nguyên hình dạng. Nhưng thực tế hiếm khi lý tưởng như vậy. Nước sâu, plasma, sợi quang, vật liệu đàn hồi thực, và cả nhiều mô hình trường đều cho thấy các tần số khác nhau truyền khác nhau. Khi đó gói sóng bị trải ra, méo dạng hoặc chậm dần. Đó là tán sắc.
+Trong phương trình sóng lý tưởng, mọi thành phần tần số truyền đi với cùng một vận tốc nên gói sóng giữ nguyên hình dạng. Tuy nhiên, trong thực tế — như sóng trên nước sâu, sóng trong plasma, sợi quang hay vật liệu đàn hồi — các tần số khác nhau thường truyền với tốc độ khác nhau, khiến gói sóng trải rộng và biến dạng theo thời gian. Hiện tượng này gọi là tán sắc.
 
-Ngoài ra, môi trường thật còn có tổn hao. Ma sát, hấp thụ, cản nhớt, mất mát điện từ làm biên độ sóng giảm dần. Khi kết hợp tán sắc và hấp thụ, ta có bức tranh gần hơn nhiều với các hệ vật lý thực.
+Bên cạnh đó, môi trường thực luôn tồn tại tổn hao do ma sát, độ nhớt hoặc hấp thụ điện từ, làm biên độ và năng lượng sóng giảm dần. Kết hợp cả tán sắc và tiêu tán giúp mô tả sát thực tế hơn nhiều hệ sóng vật lý.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Nếu một gói sóng là sự chồng của nhiều tần số, và mỗi tần số chạy với tốc độ hơi khác nhau, thì theo thời gian chúng sẽ không còn "đi cùng nhau" nữa. Gói sóng bị kéo dài, tách pha hoặc méo. Đó là tán sắc. Nếu đồng thời môi trường hút năng lượng từ sóng, biên độ toàn bộ gói cũng giảm đi. Đó là hấp thụ hay tắt dần.
+Một gói sóng là sự chồng chất của nhiều thành phần tần số. Nếu mỗi tần số di chuyển với tốc độ khác nhau, theo thời gian chúng sẽ tách pha nhau, làm gói sóng kéo dài và biến dạng — đó là tán sắc. Nếu môi trường đồng thời rút bớt năng lượng của sóng, biên độ của cả gói sẽ giảm dần — đó là hấp thụ hay tiêu tán.
 
 ### Cách nhìn hình ảnh
 
-Với sóng không tán sắc, một gói xung di chuyển như một khối gần như giữ nguyên hình. Với sóng tán sắc, bao sóng thay đổi độ rộng theo thời gian. Nếu có hấp thụ, bao sóng còn hạ biên độ dần. Hình ảnh này rất mạnh vì nó cho thấy sóng thực tế hiếm khi chỉ "chạy đi" một cách lý tưởng.
+Với sóng không tán sắc, gói xung di chuyển gần như giữ nguyên hình dạng ban đầu. Với sóng có tán sắc, đường bao của gói sóng trải rộng dần theo thời gian. Nếu có thêm tiêu tán, biên độ đường bao cũng hạ thấp dần. Hình ảnh này phân biệt rõ hai cơ chế biến đổi của sóng thực tế.
 
 ### Cách nhìn hình thức
 
-Một sóng phẳng có dạng $$ u(x,t)=e^{i(kx-\omega t)} $$. Quan hệ $$ \omega=\omega(k) $$ gọi là quan hệ tán sắc.
+Xét sóng phẳng có dạng $$ u(x,t)=e^{i(kx-\omega t)} $$. Hệ thức liên hệ $$ \omega=\omega(k) $$ gọi là quan hệ tán sắc:
 
-- Nếu
+- Nếu $$ \omega=ck $$, môi trường không tán sắc.
+- Nếu $$ \omega $$ phụ thuộc phi tuyến vào $$ k $$, môi trường có tán sắc.
 
-$$ \omega=ck, $$
-
-thì không tán sắc.
-- Nếu
-
-$$ \omega $$
-
-phụ thuộc phi tuyến vào $$ k $$, ta có tán sắc.
-
-Vận tốc pha:
+Vận tốc pha được định nghĩa là
 
 $$ v_p=\frac{\omega}{k}. $$
 
-Vận tốc nhóm:
+Vận tốc nhóm được định nghĩa là
 
 $$ v_g=\frac{d\omega}{dk}. $$
 
-Nếu thêm hấp thụ, một mô hình đơn giản là
+Để mô tả thêm sự tiêu tán (tắt dần), một mô hình đơn giản là phương trình sóng có cản:
 
 $$ u_{tt}+\gamma u_t=c^2u_{xx},
 \qquad \gamma>0. $$
 
 ## Những ngộ nhận thường gặp
 
-- "Tán sắc nghĩa là sóng bị mất năng lượng." Không đúng; tán sắc là chuyện các tần số đi lệch tốc độ, không nhất thiết làm giảm năng lượng.
-- "Vận tốc pha và vận tốc nhóm luôn giống nhau." Chỉ đúng trong môi trường không tán sắc.
-- "Hấp thụ và tán sắc là cùng một hiện tượng." Sai. Một cái làm lệch pha giữa các tần số, một cái rút năng lượng khỏi hệ.
-- "Nếu gói sóng méo đi thì chắc chắn là do hấp thụ." Không hẳn; tán sắc một mình cũng đã đủ làm méo dạng.
+- "Tán sắc đồng nghĩa với việc sóng bị mất năng lượng." Không đúng; tán sắc là hiện tượng các tần số truyền với tốc độ khác nhau và có thể xảy ra trong hệ bảo toàn năng lượng.
+- "Vận tốc pha và vận tốc nhóm luôn bằng nhau." Chỉ đúng trong môi trường không tán sắc.
+- "Hấp thụ và tán sắc là cùng một hiện tượng." Sai; tán sắc làm lệch pha giữa các thành phần tần số, còn hấp thụ làm tiêu hao năng lượng của hệ.
+- "Hễ gói sóng bị biến dạng thì chắc chắn là do hấp thụ." Không hẳn; chỉ riêng tán sắc cũng đủ làm gói sóng trải rộng và biến dạng.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Học quan hệ tán sắc
+### Bước 1: Thiết lập quan hệ tán sắc
 
-Đây là cốt lõi của bài.
+Thay nghiệm sóng phẳng $$ e^{i(kx-\omega t)} $$ vào PDE để tìm $$ \omega(k) $$.
 
 ### Bước 2: Phân biệt vận tốc pha và vận tốc nhóm
 
-Sinh viên nên thật rõ hai khái niệm này.
+Nắm rõ ý nghĩa của $$ v_p=\omega/k $$ và $$ v_g=d\omega/dk $$.
 
-### Bước 3: Xét ví dụ tán sắc đơn giản
+### Bước 3: Khảo sát một ví dụ tán sắc điển hình
 
-Klein-Gordon là ví dụ mẫu rất tốt.
+Sử dụng phương trình Klein-Gordon làm ví dụ mẫu dễ tính toán.
 
-### Bước 4: Thêm hấp thụ
+### Bước 4: Bổ sung số hạng tắt dần
 
-So sánh cơ chế mất pha với cơ chế mất năng lượng.
+So sánh cơ chế lệch pha (tán sắc) với cơ chế mất năng lượng (tiêu tán).
 
-### Các checkpoint
+### Các điểm kiểm tra
 
-- Sinh viên có phát biểu được tán sắc bằng lời hay không.
-- Sinh viên có phân biệt được vận tốc pha và nhóm hay không.
-- Sinh viên có giải thích được vì sao thêm
-
-$$ \gamma u_t $$
-
-làm sóng tắt dần hay không.
+- Sinh viên có diễn đạt được khái niệm tán sắc bằng lời hay không.
+- Sinh viên có phân biệt rõ vận tốc pha và vận tốc nhóm hay không.
+- Sinh viên có giải thích được vì sao số hạng $$ \gamma u_t $$ làm sóng suy giảm năng lượng theo thời gian hay không.
 
 ## Ví dụ được giải chi tiết
 
 ### Ví dụ 1: Sóng không tán sắc
 
-Với phương trình sóng chuẩn $$ u_{tt}=c^2u_{xx} $$, ta có $$ \omega=ck $$. Khi đó $$ v_p=v_g=c $$. Điều này giải thích vì sao gói sóng lý tưởng giữ nguyên hình dạng.
+Với phương trình sóng chuẩn $$ u_{tt}=c^2u_{xx} $$, ta có $$ \omega=ck $$, suy ra $$ v_p=v_g=c $$. Mọi tần số truyền cùng tốc độ nên gói sóng lý tưởng giữ nguyên hình dạng.
 
 ### Ví dụ 2: Phương trình Klein-Gordon
 
-Xét $$ u_{tt}-c^2u_{xx}+m^2u=0 $$. Ta có $$ \omega^2=c^2k^2+m^2 $$. Đây là quan hệ tán sắc phi tuyến, nên $$ v_p\ne v_g $$. Ví dụ này cho sinh viên thấy chỉ cần một số hạng bổ sung là cấu trúc lan truyền đã đổi khác.
+Xét phương trình $$ u_{tt}-c^2u_{xx}+m^2u=0 $$. Thay nghiệm sóng phẳng cho quan hệ tán sắc $$ \omega^2=c^2k^2+m^2 $$. Vì quan hệ này phi tuyến theo $$ k $$ nên $$ v_p\ne v_g $$. Chỉ cần thêm một số hạng tuyến tính bậc không là tính chất lan truyền đã thay đổi đáng kể.
 
-### Ví dụ 3: Tắt dần
+### Ví dụ 3: Phương trình sóng có tắt dần
 
-Với $$ u_{tt}+\gamma u_t=c^2u_{xx} $$, số hạng $$ \gamma u_t $$ làm năng lượng giảm theo thời gian. Ví dụ này rất tốt để nối với bài năng lượng đã học trước đó.
+Với $$ u_{tt}+\gamma u_t=c^2u_{xx} $$ ($$ \gamma>0 $$), số hạng $$ \gamma u_t $$ làm đạo hàm năng lượng âm ($$ E'(t)=-\gamma\int u_t^2\,dx\le 0 $$), khiến dao động suy giảm dần theo thời gian.
 
-### Ví dụ 4: Gói sóng
+### Ví dụ 4: Sự trải rộng của gói sóng
 
-Một gói sóng là chồng của nhiều tần số gần nhau. Nếu quan hệ tán sắc phi tuyến, các thành phần này sẽ dần lệch nhau, làm gói sóng trải rộng. Đây là ví dụ khái niệm quan trọng nhất của bài.
+Một gói sóng được tạo thành từ các tần số lân cận quanh số sóng trung tâm $$ k_0 $$. Khi quan hệ tán sắc phi tuyến, các thành phần này truyền với vận tốc pha khác nhau nên dần tách nhau ra, làm gói sóng trải rộng trong khi đường bao dịch chuyển theo vận tốc nhóm $$ v_g $$.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao tán sắc làm gói sóng méo dạng dù không nhất thiết làm mất năng lượng?
-2. Vận tốc pha và vận tốc nhóm phản ánh hai khía cạnh nào của sóng?
-3. Vì sao thêm hạng $$ \gamma u_t $$ lại tạo ra hấp thụ?
+1. Vì sao tán sắc làm biến dạng gói sóng ngay cả khi tổng năng lượng được bảo toàn?
+2. Vận tốc pha và vận tốc nhóm đặc trưng cho hai khía cạnh nào của quá trình truyền sóng?
+3. Vì sao việc thêm số hạng $$ \gamma u_t $$ với $$ \gamma>0 $$ lại gây ra tiêu tán năng lượng?
 
 ## Bài toán ứng dụng
 
-1. Trong sợi quang, vì sao các xung tín hiệu có thể bị trải rộng theo thời gian truyền?
-2. Trong sóng nước, vì sao các gợn với bước sóng khác nhau có thể di chuyển không đồng tốc?
-3. Trong âm học hoặc vật liệu nhớt, vì sao biên độ sóng giảm dần ngay cả khi không có biên phản xạ?
+1. Trong truyền thông cáp quang, vì sao xung ánh sáng có xu hướng bị trải rộng sau khi truyền qua quãng đường dài?
+2. Trên mặt nước sâu, vì sao các gợn sóng có bước sóng khác nhau lại di chuyển với tốc độ khác nhau?
+3. Trong âm học hoặc vật liệu có độ nhớt, vì sao biên độ sóng giảm dần ngay cả khi không có biên phản xạ?
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng câu hỏi: "Một gói sóng có thể chạy mà vẫn giữ nguyên hình dạng mãi không?"
-- Vẽ hoặc mô tả một gói sóng không tán sắc và một gói sóng tán sắc để lớp so sánh.
-- Hỏi cả lớp: "Điều gì khác nhau giữa sóng yếu dần và sóng méo dạng?"
-- Khuyến khích sinh viên giải thích vận tốc pha và nhóm bằng ngôn ngữ 'sóng mang' và 'bao sóng'.
+- Khởi đầu bằng câu hỏi: "Một gói sóng có thể truyền đi mãi mà giữ nguyên hình dạng ban đầu hay không?"
+- So sánh trực quan một gói sóng không tán sắc với một gói sóng có tán sắc.
+- Đặt câu hỏi: "Khác biệt cơ bản giữa sóng bị suy yếu biên độ và sóng bị trải rộng biến dạng là gì?"
+- Gợi ý sinh viên liên hệ vận tốc pha với chuyển động của "sóng mang" và vận tốc nhóm với chuyển động của "đường bao gói sóng".
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên bám vào một ví dụ duy nhất về sóng phẳng và một ví dụ duy nhất về gói sóng. Khi trực giác đã hình thành, các công thức $$ v_p,\ v_g $$ sẽ dễ nhớ hơn nhiều.
+Nên tập trung vào một ví dụ sóng phẳng (phương trình sóng chuẩn so với Klein-Gordon) và một hình ảnh gói sóng cụ thể. Khi trực giác đã rõ, các công thức $$ v_p,\ v_g $$ sẽ dễ ghi nhớ hơn.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể mời sinh viên khá giỏi thực hiện khai triển quanh một số sóng trung tâm để suy ra vận tốc nhóm, hoặc thảo luận mối liên hệ giữa tán sắc và hình học phổ của toán tử.
+Có thể yêu cầu sinh viên thực hiện khai triển Taylor của $$ \omega(k) $$ quanh số sóng trung tâm $$ k_0 $$ để rút ra ý nghĩa của vận tốc nhóm, hoặc thảo luận phương trình sóng tán sắc bậc cao như KdV và phương trình Schrödinger tuyến tính.
 
 ## Tóm tắt dễ nhớ
 
-Tán sắc là hiện tượng các tần số khác nhau truyền với tốc độ khác nhau, làm gói sóng méo dạng. Hấp thụ là hiện tượng biên độ và năng lượng sóng giảm dần theo thời gian. Một bên làm lệch pha, một bên làm mất năng lượng, và cả hai đều rất phổ biến trong sóng thực tế.
+Tán sắc xảy ra khi các tần số khác nhau truyền với tốc độ khác nhau ($$ \omega(k) $$ phi tuyến), làm gói sóng biến dạng và tách biệt vận tốc pha với vận tốc nhóm. Hấp thụ (tiêu tán) làm biên độ và năng lượng sóng giảm dần theo thời gian. Hai cơ chế này khác nhau về bản chất nhưng thường cùng xuất hiện trong các hệ sóng thực tế.
 
 ## Video tham khảo
 
-- xem trước: [Phase Velocity versus Group Velocity:  Wave Dispersion](https://www.youtube.com/watch?v=EIqKG5TiSYs) — Physics Videos by Eugene Khutoryansky, tiếng Anh. Vận tốc pha đối với vận tốc nhóm, bức tranh của tán sắc.
-- [13. Dispersive Medium, Phase Velocity, Group Velocity](https://www.youtube.com/watch?v=QxemLb8-5AA) — MIT OpenCourseWare, tiếng Anh. MIT OpenCourseWare về một môi trường tán sắc.
-- [8.03 - Lect 12 - Dispersion, Phase Velocity, Group Velocity](https://www.youtube.com/watch?v=YEDUCl9t1m0) — Lectures by Walter Lewin. They will make you ♥ Physics., tiếng Anh. Walter Lewin về tán sắc, vận tốc pha và vận tốc nhóm.
+- Xem trước: [Phase Velocity versus Group Velocity:  Wave Dispersion](https://www.youtube.com/watch?v=EIqKG5TiSYs) — Physics Videos by Eugene Khutoryansky, tiếng Anh. Minh họa trực quan sự khác biệt giữa vận tốc pha và vận tốc nhóm trong hiện tượng tán sắc.
+- [13. Dispersive Medium, Phase Velocity, Group Velocity](https://www.youtube.com/watch?v=QxemLb8-5AA) — MIT OpenCourseWare, tiếng Anh. Bài giảng về môi trường tán sắc, vận tốc pha và vận tốc nhóm.
+- [8.03 - Lect 12 - Dispersion, Phase Velocity, Group Velocity](https://www.youtube.com/watch?v=YEDUCl9t1m0) — Lectures by Walter Lewin. They will make you ♥ Physics., tiếng Anh. Walter Lewin trình bày và minh họa thí nghiệm về tán sắc, vận tốc pha và vận tốc nhóm.
 
 ## Tài liệu tham khảo
 
-- Evans, *Partial Differential Equations* - phát triển chặt chẽ phương trình sóng, năng lượng, và tính duy nhất.
-- Haberman, *Applied Partial Differential Equations* - trực giác vật lý tốt cho sóng, cộng hưởng, và phản xạ.
+- Evans, *Partial Differential Equations* — trình bày chặt chẽ về phương trình sóng, phương pháp năng lượng và tính duy nhất.
+- Haberman, *Applied Partial Differential Equations* — cung cấp trực giác vật lý rõ ràng về sóng, cộng hưởng và phản xạ.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Tán sắc trong sóng nước hay quang học
-- Bài toán: Các tần số khác nhau truyền với tốc độ pha khác nhau nên gói sóng dần dãn ra.
-- Mô hình: Quan hệ phân tán $$ \omega=\omega(k) $$ không tuyến tính theo số sóng $$ k $$.
+#### Tán sắc trong sóng nước và quang học
+- Bài toán: Các thành phần tần số khác nhau truyền với vận tốc pha khác nhau khiến gói sóng trải rộng dần.
+- Mô hình: Quan hệ tán sắc $$ \omega=\omega(k) $$ phi tuyến theo số sóng $$ k $$.
 - Giả thiết và giới hạn: Môi trường tuyến tính nhưng có cơ chế tán sắc.
 - Diễn giải: Không phải mọi phương trình dạng sóng đều truyền nguyên hình như trường hợp lý tưởng.
 
 #### Tiêu tán trong môi trường có ma sát
-- Bài toán: Dây rung trong không khí hoặc vật liệu nhớt mất biên độ theo thời gian.
+- Bài toán: Dây rung trong không khí hoặc sóng trong vật liệu nhớt mất dần biên độ theo thời gian.
 - Mô hình:
 $$ u_{tt}+\gamma u_t=c^2u_{xx}. $$
-- Giả thiết và giới hạn: Tắt dần tuyến tính, hệ số $$ \gamma $$ hằng.
-- Diễn giải: Tắt dần làm hao năng lượng và suy giảm dao động.
+- Giả thiết và giới hạn: Lực cản tuyến tính với hệ số $$ \gamma $$ không đổi.
+- Diễn giải: Số hạng cản rút dần năng lượng và làm tắt dao động.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Tán sắc làm thay đổi hình dạng sóng vì các thành phần Fourier chạy với tốc độ khác nhau; tiêu tán làm giảm biên độ do năng lượng bị mất đi. Hai khái niệm này thường bị trộn lẫn, nhưng về cơ chế toán học chúng hoàn toàn khác nhau.
+Tán sắc làm biến dạng sóng do các thành phần Fourier di chuyển không đồng tốc, còn tiêu tán làm giảm biên độ do năng lượng bị mất đi. Tuy thường đi kèm trong thực tế, hai hiện tượng này có cơ chế toán học hoàn toàn tách biệt.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -210,12 +198,12 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Một mode trên dây tắt dần có thể được viết gần đúng dưới dạng
+Một mode dao động trên dây có tắt dần yếu có thể viết gần đúng dưới dạng
 $$ u(x,t)=e^{-\gamma t/2}\sin(kx)\cos(\omega_d t), $$
-với $$ \omega_d $$ là tần số đã hiệu chỉnh bởi tắt dần. Hệ số mũ cho thấy năng lượng không còn được bảo toàn mà giảm dần theo thời gian.
+trong đó $$ \omega_d $$ là tần số đã hiệu chỉnh do lực cản. Thừa số suy giảm mũ $$ e^{-\gamma t/2} $$ cho thấy năng lượng không còn bảo toàn mà giảm dần theo thời gian.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Phân biệt tán sắc với tiêu tán qua hành vi của biên độ và dạng sóng.
+**Bậc đại học.** Phân biệt rõ tán sắc và tiêu tán qua sự biến đổi của dạng sóng và biên độ.
 
-**Bậc sau đại học.** Kết nối với group velocity, semigroup tắt dần và phương trình KdV hay Schrödinger tuyến tính.
+**Bậc sau đại học.** Tìm hiểu sâu về vận tốc nhóm, nửa nhóm tắt dần, phương trình KdV và phương trình Schrödinger tuyến tính.

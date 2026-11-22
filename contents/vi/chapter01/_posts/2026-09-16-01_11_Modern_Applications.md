@@ -12,77 +12,77 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài tùy chọn này cho thấy bài toán giá trị ban đầu cấp một của chương đã tái xuất, sau 2018 và đặc biệt trong tài liệu 2022–2026, như mô hình cho mạng nơ-ron độ sâu liên tục. Sinh viên cần viết được một neural ODE, giải thích vì sao tồn tại và duy nhất vẫn chi phối kiến trúc, liên hệ mạng residual với bước Euler, và định vị các thư viện chính. Lý thuyết cổ điển không bị viết lại.
+Bài học tùy chọn này trình bày cách bài toán giá trị đầu cấp một của Chương 01 được ứng dụng từ sau năm 2018—và đặc biệt trong giai đoạn 2022–2026—như nền tảng cho các mạng nơ-ron độ sâu liên tục (continuous-depth neural networks). Sau bài học, sinh viên có thể viết phương trình của một neural ODE, giải thích vì sao định lý tồn tại và duy nhất vẫn chi phối thiết kế kiến trúc, liên hệ mạng dư (residual network) với sơ đồ Euler và nhận diện các thư viện tính toán phổ biến.
 
 ## Kiến thức nền
 
-Sinh viên cần biết phương trình tách biến và tuyến tính cấp một, thừa số tích phân, và định lý Picard–Lindelöf. Chỉ cần hình dung trường vector tham số hóa $$f(t,y;\theta)$$; không giả định nền tảng học máy chuyên sâu.
+Sinh viên cần nắm phương trình tách biến, phương trình tuyến tính cấp một, nhân tử tích phân và định lý Picard–Lindelöf. Chỉ cần hiểu trường vector tham số hóa $$f(t,y;\theta)$$; bài học không yêu cầu nền tảng học máy chuyên sâu.
 
 ## Dẫn nhập
 
-Phương trình cấp một $$y'=f(t,y)$$ là quy luật biến trạng thái hiện tại thành vận tốc tức thời. Mạng residual làm điều rất giống: mỗi lớp cập nhật trạng thái ẩn bằng một gia số học được. Chen, Rubanova, Bettencourt và Duvenaud làm chính xác phép loại suy ấy trong *Neural Ordinary Differential Equations* (NeurIPS 2018) khi thay chồng lớp rời rạc bằng ODE
+Phương trình vi phân cấp một $$y'=f(t,y)$$ quy định vận tốc tức thời theo trạng thái hiện tại. Mạng dư (residual network) hoạt động theo cơ chế tương tự: mỗi tầng cập nhật trạng thái ẩn bằng một lượng gia số học từ dữ liệu. Chen, Rubanova, Bettencourt và Duvenaud đã chính thức hóa mối liên hệ này trong bài báo *Neural Ordinary Differential Equations* (NeurIPS 2018) bằng cách thay chuỗi tầng rời rạc bằng hệ ODE
 
 $$
 \frac{dh}{dt}=f_\theta\bigl(t,h(t)\bigr),\qquad h(t_0)=x,
 $$
 
-và tính gradient bằng phương pháp liên hợp. Tài liệu tiếp theo, được Kidger khảo sát năm 2022 ([arXiv:2202.02435](https://arxiv.org/abs/2202.02435)), xem residual net, neural ODE, neural CDE và neural SDE như một họ mô hình độ sâu liên tục.
+và tính gradient theo tham số bằng phương pháp liên hợp (adjoint method). Các nghiên cứu tiếp theo, được Kidger tổng hợp năm 2022 ([arXiv:2202.02435](https://arxiv.org/abs/2202.02435)), đặt mạng dư, neural ODE, neural CDE và neural SDE trong cùng một họ mô hình độ sâu liên tục.
 
-Vì sao sinh viên phương trình cấp một phải quan tâm? Vì mọi sự kiện định tính đã chứng minh trong chương đều trở thành ràng buộc thiết kế. Nếu $$f_\theta$$ không Lipschitz, tính duy nhất có thể mất. Nếu $$f_\theta$$ stiff, bộ giải hiện sẽ phí bước. Nếu dữ liệu đến lúc không đều, quỹ đạo liên tục tự nhiên hơn lưới rời rạc cố định. Cùng lý thuyết tồn tại làm cho mô hình quần thể và pha trộn đáng tin nay quyết định liệu mạng độ sâu liên tục có phải ánh xạ đặt chỉnh từ đầu vào đến đầu ra hay không.
+Với người học ODE cấp một, điểm đáng chú ý là mọi kết quả định tính đã học trong chương đều trở thành ràng buộc thiết kế thực tế: nếu $$f_\theta$$ không thỏa điều kiện Lipschitz, tính duy nhất có thể bị phá vỡ; nếu $$f_\theta$$ cứng (stiff), bộ giải hiện sẽ phải dùng bước cực nhỏ; còn khi dữ liệu quan sát đến tại các mốc thời gian không đều, mô hình quỹ đạo liên tục tự nhiên hơn nhiều so với mạng lưới rời rạc cố định. Chính lý thuyết tồn tại–duy nhất dùng cho mô hình dân số và bể trộn nay quyết định việc mạng độ sâu liên tục có xác định một ánh xạ đặt chỉnh từ đầu vào sang đầu ra hay không.
 
 ## Khái niệm then chốt
 
-### Mạng residual như rời rạc hóa Euler
+### Mạng dư như phép rời rạc hóa Euler
 
-Khối residual $$h_{n+1}=h_n+\Delta t\,f_\theta(h_n)$$ là Euler tiến cho $$h'=f_\theta(h)$$. Lấy giới hạn liên tục không phải ẩn dụ: đó là cùng quá trình biến thương sai phân thành đạo hàm. Augmented neural ODE (Dupont, Doucet và Teh, NeurIPS 2019) thêm chiều để quỹ đạo có thể không cắt nhau, khôi phục khả năng biểu diễn mà một dòng cấp một thuần trên không gian gốc không có. Lý do đã thấy trên đường pha của phương trình tự trị vô hướng: các dòng một chiều không thể xuyên qua nhau.
+Một khối mạng dư $$h_{n+1}=h_n+\Delta t\,f_\theta(h_n)$$ chính là sơ đồ Euler hiện cho phương trình $$h'=f_\theta(h)$$. Lấy giới hạn liên tục khi $$\Delta t \to 0$$ hoàn toàn tương tự bước chuyển từ thương sai phân sang đạo hàm. Mô hình Augmented Neural ODE (Dupont, Doucet và Teh, NeurIPS 2019) bổ sung thêm chiều cho không gian trạng thái để các quỹ đạo có thể tránh cắt nhau, qua đó mở rộng khả năng biểu diễn so với dòng cấp một thuần trên không gian gốc—đúng như tính chất không cắt nhau của các quỹ đạo nghiệm đã thấy trên đường pha của phương trình tự trị một chiều.
 
-### Phương pháp liên hợp
+### Phương pháp liên hợp (adjoint method)
 
-Huấn luyện cần $$\nabla_\theta\mathcal{L}$$ khi mất mát phụ thuộc trạng thái cuối $$h(T)$$. Lấy đạo hàm qua mọi bước bộ giải phải lưu cả quỹ đạo. Phương pháp liên hợp thay vào đó tích phân
+Quá trình huấn luyện cần tính gradient $$\nabla_\theta\mathcal{L}$$ khi hàm mất mát phụ thuộc vào trạng thái cuối $$h(T)$$. Nếu lan truyền ngược trực tiếp qua mọi bước của bộ giải số, ta phải lưu toàn bộ quỹ đạo trong bộ nhớ. Thay vào đó, phương pháp liên hợp giải ngược thời gian phương trình độ nhạy
 
 $$
 \frac{da}{dt}=-a^\top D_h f_\theta(t,h),\qquad a(T)=\nabla_{h(T)}\mathcal{L}
 $$
 
-ngược và tích lũy gradient tham số dọc quỹ đạo ngược. Đây là phương trình độ nhạy khi lấy đạo hàm IVP theo tham số, nay dùng ở quy mô mạng sâu. Kidger (2022) và tài liệu `torchdiffeq` ([https://github.com/rtqichen/torchdiffeq](https://github.com/rtqichen/torchdiffeq)) nhấn mạnh liên hợp chỉ chính xác bằng bộ giải thuận và ngược; dung sai không nhất quán sinh gradient không nhất quán.
+và tích lũy gradient theo tham số dọc theo quỹ đạo ngược. Đây chính là phương trình độ nhạy khi lấy đạo hàm nghiệm của bài toán giá trị đầu theo tham số, áp dụng ở quy mô mạng nơ-ron. Kidger (2022) cùng tài liệu `torchdiffeq` ([https://github.com/rtqichen/torchdiffeq](https://github.com/rtqichen/torchdiffeq)) lưu ý rằng độ chính xác của phương pháp liên hợp phụ thuộc chặt vào sai số tích phân thuận và ngược; nếu đặt dung sai quá lỏng, gradient thu được có thể sai lệch.
 
 ### Neural CDE
 
-Khi đầu vào vốn là một đường $$X(t)$$, như chuỗi thời gian không đều, Kidger, Morrill, Foster và Lyons (*Neural Controlled Differential Equations*, ICLR 2021) thay ODE bằng phương trình điều khiển
+Khi dữ liệu đầu vào là một chuỗi thời gian liên tục hoặc lấy mẫu không đều $$X(t)$$, Kidger, Morrill, Foster và Lyons (*Neural Controlled Differential Equations*, ICLR 2021) thay ODE bằng phương trình vi phân điều khiển:
 
 $$
 dh(t)=f_\theta\bigl(h(t)\bigr)\,dX(t).
 $$
 
-Lý thuyết cấp một vẫn áp dụng sau khi viết lại hệ như phương trình thường bị dẫn bởi gia số của $$X$$. Ưu điểm là quan sát không cần nằm trên lưới đều — điều mà mô hình bồn pha trộn và đếm quần thể đã gợi ý: luật liên tục là chính, lưới lấy mẫu là phụ.
+Sau khi nội suy đường dẫn $$X(t)$$, phương trình có thể viết lại thành một hệ ODE dẫn động bởi đạo hàm của $$X$$. Ưu điểm là các điểm quan sát không cần cách đều nhau—tương tự mô hình bể pha trộn hay quần thể trong thực tế, nơi quy luật tiến hóa là liên tục còn lịch lấy mẫu chỉ là rời rạc.
 
-### Phần mềm 2022–2026
+### Hệ sinh thái phần mềm giai đoạn 2022–2026
 
-Hai thư viện chiếm lĩnh thực hành hiện nay. `torchdiffeq` cài bộ giải ODE thích nghi và liên hợp trong PyTorch. Diffrax (Kidger, 2021–2022; [https://docs.kidger.site/diffrax/](https://docs.kidger.site/diffrax/)) làm điều tương tự trong JAX, với giao diện thống nhất cho ODE, CDE và SDE. Cả hai đều xem bộ giải như một nguyên thủy khả vi, nên phương trình cấp một không còn chỉ là bài tập: nó là một lớp.
+Hai thư viện tiêu biểu trong thực hành hiện nay là `torchdiffeq` (cài đặt các bộ giải ODE bước thích nghi và phương pháp liên hợp trên PyTorch) và Diffrax (Kidger, 2021–2022; [https://docs.kidger.site/diffrax/](https://docs.kidger.site/diffrax/)), cung cấp giao diện thống nhất cho ODE, CDE và SDE trên JAX. Cả hai đều xem bộ giải vi phân như một thành phần cơ sở khả vi (differentiable primitive), biến phương trình vi phân cấp một thành một tầng mạng hoàn chỉnh.
 
 ## Phương pháp và kỹ thuật
 
-Quy trình thực hành là hậu duệ trực tiếp của pipeline IVP trong chương này.
+Quy trình xây dựng một neural ODE kế thừa trực tiếp quy trình bài toán giá trị đầu trong Chương 01:
 
-1. Chọn kiến trúc trường vector $$f_\theta$$ (một MLP nhỏ là điển hình).
-2. Chọn bộ giải có miền ổn định khớp bài toán: Runge–Kutta hiện cho động lực không stiff, ẩn hoặc bán ẩn khi trường học được bị stiff.
-3. Tích phân từ đầu vào $$x$$ đến thời điểm $$T$$, hoặc đến từng thời điểm quan sát $$t_i$$.
-4. Lập mất mát trên các trạng thái quan sát và lan truyền ngược, bằng unroll hoặc liên hợp.
-5. Kiểm chứng không chỉ mất mát mà cả chẩn đoán cấp một: bị chặn, so sánh với trường tuyến tính hóa, và độ nhạy theo $$T$$.
+1. Chọn kiến trúc cho trường vector $$f_\theta$$ (thường là một mạng MLP nhỏ).
+2. Chọn bộ giải có miền ổn định phù hợp: Runge–Kutta hiện cho hệ không cứng, hoặc bộ giải ẩn/bán ẩn khi trường học được có tính cứng (stiff).
+3. Tích phân từ trạng thái đầu $$x$$ đến thời điểm cuối $$T$$ hoặc tại danh sách các mốc quan sát $$t_i$$.
+4. Tính hàm mất mát trên các trạng thái quan sát và lan truyền ngược gradient bằng cách trải bước bộ giải (discretize-then-optimize) hoặc bằng phương pháp liên hợp (optimize-then-discretize).
+5. Kiểm tra chẩn đoán động lực học bên cạnh hàm mất mát: tính bị chặn của quỹ đạo, hành vi tuyến tính hóa cục bộ và độ nhạy theo thời đoạn $$T$$.
 
-Tách biến và thừa số tích phân vẫn hữu ích như phép kiểm. Nếu trường học được gần tuyến tính, $$h'=Ah+b$$, nghiệm đúng $$e^{At}$$ là chuẩn độc lập. Nếu trường tự trị và vô hướng, đường pha dự đoán các cân bằng mà mạng được phép có.
+Các kỹ thuật cổ điển như tách biến và nhân tử tích phân vẫn đóng vai trò bài kiểm chuẩn độc lập: nếu trường học được gần tuyến tính $$h'=Ah+b$$, nghiệm giải tích $$e^{At}$$ là mốc đối chiếu; nếu trường tự trị một chiều, đường pha cho biết trước cấu trúc các điểm cân bằng mà mạng có thể biểu diễn.
 
 ## Ví dụ
 
-### Ví dụ 1: Độ sâu liên tục cho chuỗi thời gian không đều
+### Ví dụ 1: Chuỗi thời gian lấy mẫu không đều
 
-Giả sử $$y(t_i)$$ đến tại $$0=t_0<t_1<\cdots<t_n$$ không cách đều. Mạng rời rạc phải bịa quy tắc khuyết. Neural ODE chỉ đánh giá cùng quỹ đạo tại các thời điểm cho sẵn. Đó đúng cách ta xử lý mô hình bồn pha trộn khi kỹ thuật viên lấy mẫu lúc tiện.
+Giả sử dữ liệu quan sát $$y(t_i)$$ thu được tại các mốc $$0=t_0<t_1<\cdots<t_n$$ không cách đều. Các mạng rời rạc theo bước cố định thường phải nội suy hoặc điền giá trị khuyết, trong khi neural ODE chỉ cần tích phân cùng một quỹ đạo liên tục đến đúng các thời điểm $$t_i$$—tương tự cách xử lý số liệu lấy mẫu không đều trong bài toán bể pha trộn.
 
-### Ví dụ 2: Mất Lipschitz như bệnh huấn luyện
+### Ví dụ 2: Mất tính Lipschitz gây sự cố khi huấn luyện
 
-Nếu $$f_\theta$$ dùng kích hoạt không bị chặn và trọng số lớn, hằng số Lipschitz địa phương có thể nổ. Bộ giải rồi bước rất nhỏ hoặc thất bại, và tính duy nhất trên khoảng huấn luyện trở nên đáng ngờ. Weight decay, chuẩn hóa phổ, hoặc lớp tanh cuối không chỉ là regularization; chúng là nỗ lực ở lại trong giả thiết Picard–Lindelöf.
+Nếu $$f_\theta$$ dùng hàm kích hoạt không bị chặn cùng trọng số lớn, hằng số Lipschitz cục bộ có thể tăng rất mạnh. Khi đó bộ giải bước thích nghi phải thu bước về cực nhỏ hoặc thất bại, còn tính duy nhất trên khoảng huấn luyện trở nên kém đảm bảo. Các kỹ thuật như suy giảm trọng số (weight decay), chuẩn hóa phổ (spectral normalization) hay dùng hàm kích hoạt bị chặn như `tanh` ở tầng cuối không chỉ để chống quá khớp mà còn nhằm giữ trường vector nằm trong phạm vi giả thiết của định lý Picard–Lindelöf.
 
-### Ví dụ 3: Phác thảo `torchdiffeq` tối thiểu
+### Ví dụ 3: Minh họa tối giản với `torchdiffeq`
 
 ```python
 import torch
@@ -105,37 +105,37 @@ with torch.no_grad():
 print(yt.shape)  # (21, 2)
 ```
 
-Đầu ra là mẫu rời rạc của một quỹ đạo cấp một liên tục. Thay `Field` bằng $$f(t,y)=-y$$ ta lấy lại phân rã mũ đã giải bằng tách biến.
+Kết quả trả về là giá trị của quỹ đạo liên tục lấy mẫu tại 21 mốc thời gian. Nếu thay `Field` bằng trường tuyến tính $$f(t,y)=-y$$, ta thu lại đúng nghiệm phân rã mũ quen thuộc từ bài tách biến.
 
 ## Ứng dụng
 
-Mô hình độ sâu liên tục được dùng cho chuỗi thời gian y khoa không đều, động lực ẩn trong thần kinh học, kiến trúc residual trong thị giác máy, và closure vật lý–ML lai khi một luật cấp một đã biết được giữ và chỉ học số hạng còn thiếu. Trong điều khiển và dược động học chúng cho dạng không gian trạng thái tự nhiên: trạng thái ẩn là vector ngăn, trường vector một phần cơ chế và một phần học được. Trong mọi bối cảnh, lý thuyết tồn tại của chương là phép kiểm tỉnh táo đầu tiên.
+Các mô hình độ sâu liên tục được ứng dụng trong phân tích chuỗi thời gian y khoa lấy mẫu không đều, mô hình hóa động lực ẩn trong khoa học thần kinh, kiến trúc mạng dư trong thị giác máy tính và các mô hình kết hợp vật lý–học máy (giữ lại phần phương trình cơ chế đã biết và chỉ học số hạng còn thiếu). Trong kỹ thuật điều khiển và dược động học, chúng cung cấp biểu diễn không gian trạng thái tự nhiên với trạng thái ẩn là vector các ngăn. Trong mọi trường hợp, lý thuyết tồn tại và duy nhất của Chương 01 là bước kiểm tra độ hợp lý đầu tiên.
 
-Kidger (2022) và hệ SciML quanh Diffrax cùng `torchdiffeq` cũng đổi văn hóa phần mềm: bộ giải không còn giấu trong integrator hộp đen mà là lớp khả vi hạng nhất.
+Công trình của Kidger (2022) cùng hệ sinh thái Diffrax và `torchdiffeq` cũng thay đổi cách thiết kế phần mềm khoa học: bộ giải ODE không còn nằm tách biệt như hộp đen ngoài mô hình mà trở thành một tầng khả vi tích hợp trực tiếp.
 
 ## Thách thức và hướng mở rộng
 
-Neural ODE có thể huấn luyện chậm hơn residual net rời rạc, nhất là khi trường học được bị stiff. Liên hợp ngược có thể lệch gradient thật nếu dung sai lỏng. Khả năng biểu diễn trên không gian gốc bị giới hạn vì dòng khả nghịch và không cắt nhau; tăng cường chiều, ẩn phụ, hoặc phương trình điều khiển là thuốc thường dùng. Còn một cảnh báo triết học: khớp thành công không đồng nhất một trường vector duy nhất. Nhiều vế phải cấp một có thể chia sẻ cùng quỹ đạo lấy mẫu.
+Neural ODE thường huấn luyện chậm hơn mạng dư rời rạc, đặc biệt khi trường vector học được trở nên cứng (stiff). Phương pháp liên hợp có thể cho gradient sai lệch nếu dung sai tích phân đặt quá lỏng. Ngoài ra, vì dòng nghiệm của ODE khả nghịch và không tự cắt nhau, khả năng biểu diễn trên không gian gốc bị hạn chế; các giải pháp thường dùng gồm tăng chiều trạng thái (augmented neural ODE), bổ sung biến ẩn phụ hoặc dùng phương trình vi phân điều khiển (neural CDE). Một lưu ý quan trọng khác là việc khớp tốt dữ liệu lấy mẫu không đảm bảo xác định duy nhất một trường vector, bởi nhiều vế phải cấp một khác nhau có thể đi qua cùng một tập điểm quan sát hữu hạn.
 
-Câu hỏi mang theo: tính chất nào của $$f$$ (Lipschitz, Lipschitz một phía, đơn điệu) nên bị ràng buộc khi học nếu ta muốn cùng những định lý so sánh làm cho phương trình cấp một vô hướng trở nên trong suốt?
+Một câu hỏi mở đáng suy nghĩ: những tính chất giải tích nào của $$f$$ (như điều kiện Lipschitz, Lipschitz một phía hoặc tính đơn điệu) nên được áp đặt trong quá trình huấn luyện để mô hình học được vẫn giữ được các định lý so sánh rõ ràng như ở ODE cấp một vô hướng?
 
 ## Video tham khảo
 
-- xem trước: [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, tiếng Anh. Bài của Brunton về neural ODE: một mạng là trường vector của mô hình độ sâu liên tục.
-- [David Duvenaud | Reflecting on Neural ODEs | NeurIPS 2019](https://www.youtube.com/watch?v=YZ-_E7A3V2w) — Preserve Knowledge, tiếng Anh. David Duvenaud nhìn lại bài Neural ODE và phương pháp liên hợp dùng để làm gì.
-- [On Neural Differential Equations](https://www.youtube.com/watch?v=TGfGiBhDEi0) — Patrick Kidger, tiếng Anh. Bài giảng của Patrick Kidger về phương trình vi phân nơ-ron như một khung mô hình.
+- Xem trước: [Neural ODEs (NODEs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=nJphsM4obOk) — Steve Brunton, tiếng Anh. Giới thiệu neural ODE với mạng nơ-ron đóng vai trò trường vector của mô hình độ sâu liên tục.
+- [David Duvenaud | Reflecting on Neural ODEs | NeurIPS 2019](https://www.youtube.com/watch?v=YZ-_E7A3V2w) — Preserve Knowledge, tiếng Anh. David Duvenaud trao đổi lại về ý tưởng Neural ODE và vai trò của phương pháp liên hợp.
+- [On Neural Differential Equations](https://www.youtube.com/watch?v=TGfGiBhDEi0) — Patrick Kidger, tiếng Anh. Bài giảng của Patrick Kidger về hệ phương trình vi phân nơ-ron như một khung mô hình thống nhất.
 
 ## Bài tập
 
-1. **Từ khối residual đến ODE.** Viết $$h_{n+1}=h_n+h\,f(h_n)$$ và lấy $$h\to 0$$. Thu lại $$h'=f(h)$$ và nêu nghĩa chính xác của giới hạn trên một khoảng hữu hạn.
+1. **Từ khối residual đến ODE.** Xuất phát từ $$h_{n+1}=h_n+h\,f(h_n)$$ và cho $$h\to 0$$, hãy thu lại phương trình $$h'=f(h)$$ và nêu rõ ý nghĩa của giới hạn này trên một khoảng thời gian hữu hạn.
 
-2. **Vòng lặp Picard như trực giác huấn luyện.** Với $$y'=\theta y$$, $$y(0)=1$$, viết hai vòng Picard đầu. Vòng lặp này khác bước gradient trên $$\theta$$ cho mất mát $$\lvert y(1)-e\rvert^2$$ như thế nào?
+2. **Phép lặp Picard và bước cập nhật huấn luyện.** Xét $$y'=\theta y$$, $$y(0)=1$$. Hãy viết hai bước lặp Picard đầu tiên và so sánh quá trình lặp đó với bước hạ gradient theo $$\theta$$ cho hàm mất mát $$\lvert y(1)-e\rvert^2$$.
 
-3. **Liên hợp cho ODE tuyến tính vô hướng.** Cho $$y'=\theta y$$, $$y(0)=1$$, và $$\mathcal{L}=\tfrac12 y(T)^2$$. Tính $$\partial\mathcal{L}/\partial\theta$$ bằng hai cách: đạo hàm dạng đóng, và giải phương trình liên hợp.
+3. **Phương trình liên hợp cho ODE tuyến tính vô hướng.** Cho $$y'=\theta y$$, $$y(0)=1$$ và $$\mathcal{L}=\tfrac12 y(T)^2$$. Hãy tính $$\partial\mathcal{L}/\partial\theta$$ theo hai cách: lấy đạo hàm trực tiếp từ nghiệm dạng đóng và giải phương trình liên hợp ngược thời gian.
 
-4. **Thí nghiệm tính toán.** Dùng `torchdiffeq` hoặc Diffrax, khớp neural ODE với mẫu của phương trình logistic $$y'=y(1-y)$$. So sánh trường học được dọc đường pha với vế phải tự trị đúng. Mạng có lấy lại cân bằng tại $$0$$ và $$1$$ không?
+4. **Thí nghiệm tính toán.** Dùng `torchdiffeq` hoặc Diffrax để huấn luyện một neural ODE khớp dữ liệu mẫu từ phương trình logistic $$y'=y(1-y)$$. So sánh trường vector học được dọc theo đường pha với vế phải đúng và kiểm tra xem mạng có tái tạo được hai điểm cân bằng $$0$$ và $$1$$ hay không.
 
-5. **Khám phá mở.** Đọc Mục 1 của Kidger (2022) và giải thích, trong một trang, vì sao chuỗi thời gian không đều làm mô hình cấp một liên tục tự nhiên hơn kiến trúc rời rạc cố định.
+5. **Khám phá mở.** Đọc Chương 1 luận án của Kidger (2022) và viết khoảng một trang phân tích vì sao dữ liệu chuỗi thời gian lấy mẫu không đều phù hợp tự nhiên hơn với mô hình liên tục cấp một so với kiến trúc rời rạc cố định.
 
 ## Tài liệu
 

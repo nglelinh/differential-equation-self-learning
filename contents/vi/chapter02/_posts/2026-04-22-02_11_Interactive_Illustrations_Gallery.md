@@ -12,14 +12,14 @@ lesson_type: optional
 
 ## Tổng quan
 
-Bài bổ sung này tập hợp toàn bộ minh họa JavaScript của Chương 02 vào một nơi. Bài này đóng vai trò như phần đồng hành trực quan cho các phương pháp giải và các ứng dụng của chương.
+Bài bổ sung này tập hợp toàn bộ các minh họa tương tác (JavaScript) của Chương 02 vào một trang, đóng vai trò tài liệu trực quan song hành cùng các phương pháp giải và ứng dụng trong chương.
 
 ## Nội dung có trong bộ minh họa
 
-- nghiệm đặc trưng và phân rã theo mode
-- nghiệm kép, nghiệm phức, và bao dao động
-- giảm bậc, hệ số bất định, và biến thiên hằng số
-- phương trình bậc cao, dao động cơ học, mạch RLC, và Wronskian
+- Nghiệm đặc trưng và sự suy giảm theo từng thành phần nghiệm
+- Nghiệm kép, nghiệm phức và đường bao dao động
+- Hạ bậc, hệ số bất định và biến thiên hằng số
+- Phương trình bậc cao, dao động cơ học, mạch RLC và định thức Wronskian
 
 {% include interactive-frame.html
   title="Bộ minh họa tương tác Chương 02"
@@ -30,6 +30,6 @@ Bài bổ sung này tập hợp toàn bộ minh họa JavaScript của Chương 
 
 ## Video tham khảo
 
-- xem trước: [Mechanical Vibrations: Underdamped vs Overdamped vs Critically Damped](https://www.youtube.com/watch?v=CTd1uVq5-l8) — Dr. Trefor Bazett, tiếng Anh. Các trường hợp tắt dần để so với applet dao động trong bộ minh họa.
-- [Second-Order Ordinary Differential Equations: Solving the Harmonic Oscillator Four Ways](https://www.youtube.com/watch?v=8ePqqZXSMQs) — Steve Brunton, tiếng Anh. Bốn phương pháp cho một dao động tử, bản đồ các mô hình tương tác.
-- [Undamped Mechanical Vibrations & Hooke's Law // Simple Harmonic Motion](https://www.youtube.com/watch?v=Z52emur7Rko) — Dr. Trefor Bazett, tiếng Anh. Dao động điều hòa đơn giản như hình tham chiếu không cản.
+- Xem trước: [Mechanical Vibrations: Underdamped vs Overdamped vs Critically Damped](https://www.youtube.com/watch?v=CTd1uVq5-l8) — Dr. Trefor Bazett, tiếng Anh. Phân biệt các chế độ tắt dần để đối chiếu với minh họa dao động trong bài.
+- [Second-Order Ordinary Differential Equations: Solving the Harmonic Oscillator Four Ways](https://www.youtube.com/watch?v=8ePqqZXSMQs) — Steve Brunton, tiếng Anh. Giải bài toán dao động điều hòa theo bốn cách khác nhau, giúp liên hệ các mô hình tương tác trong chương.
+- [Undamped Mechanical Vibrations & Hooke's Law // Simple Harmonic Motion](https://www.youtube.com/watch?v=Z52emur7Rko) — Dr. Trefor Bazett, tiếng Anh. Trình bày dao động điều hòa đơn giản làm trường hợp tham chiếu khi không có lực cản.

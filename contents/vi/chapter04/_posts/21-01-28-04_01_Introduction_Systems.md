@@ -12,33 +12,33 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này mở đầu chương về hệ phương trình vi phân, giúp sinh viên hiểu vì sao nhiều hiện tượng không thể mô tả đầy đủ bằng một ẩn duy nhất, biết cách viết trạng thái dưới dạng vector, và thấy được mối liên hệ giữa phương trình bậc cao và hệ bậc nhất. Sau bài học, sinh viên cần chuyển từ tư duy "một hàm theo thời gian" sang tư duy "toàn bộ trạng thái của hệ tiến hóa theo thời gian".
+Bài học này mở đầu chương về hệ phương trình vi phân, giúp sinh viên hiểu vì sao nhiều hiện tượng không thể mô tả đầy đủ bằng một ẩn duy nhất, biết cách biểu diễn trạng thái dưới dạng vector, và nắm mối liên hệ giữa phương trình bậc cao với hệ bậc nhất. Qua đó, sinh viên chuyển từ cách nhìn "một hàm theo thời gian" sang "toàn bộ vector trạng thái tiến hóa theo thời gian".
 
 ## Kiến thức nền
 
-Sinh viên nên nắm ODE cấp một, ODE cấp hai, khái niệm điều kiện đầu và một ít đại số tuyến tính cơ bản như vector và ma trận. Trực giác vật lý về vị trí, vận tốc, dòng chảy hoặc nhiều quần thể tương tác cũng rất hữu ích, vì hệ phương trình thường xuất hiện khi một đại lượng không đủ để kể hết câu chuyện động học.
+Sinh viên nên nắm ODE cấp một, ODE cấp hai, khái niệm điều kiện đầu và kiến thức cơ bản về vector, ma trận. Trực giác vật lý về vị trí, vận tốc, dòng chảy hoặc các quần thể tương tác sẽ giúp bài học dễ tiếp cận hơn.
 
 ## Dẫn nhập
 
 ![Sơ đồ chuyển từ phương trình bậc cao sang hệ trạng thái]({{ site.imgurl }}/chapter_img/chapter04/01_introduction_systems.svg)
 
-Trong các chương trước, ta thường giải một phương trình cho một hàm chưa biết. Nhưng thực tế hiếm khi gói gọn trong một biến duy nhất. Một vật dao động cần cả vị trí lẫn vận tốc. Một mạch điện cần điện tích và dòng điện. Một mô hình sinh thái có thể cần theo dõi nhiều loài cùng lúc. Khi nhiều đại lượng cùng tiến hóa và ảnh hưởng lẫn nhau, cách nhìn tự nhiên nhất không còn là một phương trình, mà là một hệ.
+Ở các chương trước, ta thường xét một phương trình cho một hàm ẩn duy nhất. Tuy nhiên, nhiều hiện tượng thực tế đòi hỏi nhiều biến cùng tiến hóa: một vật dao động cần cả vị trí và vận tốc, một mạch điện cần điện tích và dòng điện, còn một mô hình sinh thái cần theo dõi đồng thời nhiều loài. Khi nhiều đại lượng ảnh hưởng lẫn nhau, mô tả tự nhiên nhất là một hệ phương trình vi phân.
 
-Ý tưởng trung tâm của chương là: hệ phương trình không phải là phiên bản dài dòng hơn của ODE một ẩn, mà là ngôn ngữ đúng cho các mô hình nhiều trạng thái. Một khi ta chấp nhận nhìn trạng thái như một vector, rất nhiều công cụ mạnh xuất hiện: ma trận, trị riêng, chân dung pha, ma trận mũ và cuối cùng là cách đọc hình học của động lực học.
+Hệ phương trình không chỉ là cách viết dài hơn của ODE một ẩn, mà là ngôn ngữ chuẩn cho các mô hình nhiều biến trạng thái. Khi biểu diễn trạng thái bằng vector, ta có thể vận dụng ngay ma trận, trị riêng, hàm mũ ma trận và chân dung pha để phân tích hình học của chuyển động.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Một hệ phương trình giống như một đội nhiều người đang cùng di chuyển, trong đó mỗi người không chỉ phụ thuộc vào bản thân mình mà còn phụ thuộc vào vị trí và chuyển động của những người khác. Ta không thể hiểu đội hình bằng cách theo dõi riêng từng người mà phải theo dõi toàn bộ cấu hình.
+Một hệ phương trình giống như một nhóm nhiều đối tượng cùng di chuyển, trong đó chuyển động của mỗi đối tượng phụ thuộc vào vị trí và trạng thái của các đối tượng còn lại. Để dự đoán diễn biến, ta phải theo dõi toàn bộ cấu hình của cả nhóm thay vì tách rời từng cá thể.
 
 ### Cách nhìn hình ảnh
 
-Nếu một ODE một ẩn cho quỹ đạo trên mặt phẳng $$ \left(t,y\right) $$, thì hệ hai ẩn cho quỹ đạo trong mặt phẳng trạng thái $$ \left(x_1,x_2\right) $$, hệ ba ẩn cho quỹ đạo trong không gian ba chiều, và nói chung là trong không gian trạng thái $$ \mathbb{R}^n $$. Khi đó nghiệm không chỉ là đồ thị theo thời gian, mà là một đường cong trạng thái cho thấy hệ đi qua những cấu hình nào.
+Nếu ODE một ẩn biểu diễn nghiệm như đồ thị trên mặt phẳng $$ \left(t,y\right) $$, thì hệ hai ẩn tạo ra quỹ đạo trong mặt phẳng trạng thái $$ \left(x_1,x_2\right) $$, hệ ba ẩn tạo ra quỹ đạo trong không gian ba chiều, và tổng quát hơn là trong không gian trạng thái $$ \mathbb{R}^n $$. Nghiệm khi đó được nhìn như đường cong biểu diễn chuỗi cấu hình mà hệ đi qua.
 
 ### Cách nhìn hình thức
 
-Một hệ vi phân cấp một tổng quát có dạng
+Một hệ phương trình vi phân cấp một tổng quát có dạng
 $$ \mathbf{x}'=\mathbf{f}(t,\mathbf{x}), $$
 trong đó
 $$
@@ -50,13 +50,11 @@ x_2(t)\\
 x_n(t)
 \end{pmatrix}.
 $$
-Nếu phương trình bậc $$ n $$
-$$ y^{(n)}=F\left(t,y,y',\ldots,y^{(n-1)}\right) $$
-được đặt với
+Mọi phương trình bậc $$ n $$ dạng $$ y^{(n)}=F\left(t,y,y',\ldots,y^{(n-1)}\right) $$ đều đưa được về hệ bậc nhất bằng phép đặt
 $$
 x_1=y,\quad x_2=y',\quad \ldots,\quad x_n=y^{(n-1)},
 $$
-thì nó trở thành hệ bậc nhất:
+thu được:
 $$
 \begin{cases}
 x_1'=x_2,\\
@@ -69,120 +67,106 @@ $$
 
 ## Những ngộ nhận thường gặp
 
-- "Hệ phương trình chỉ là cách viết khác của ODE bậc cao." Sai. Chúng tương đương về dữ liệu, nhưng hệ làm lộ ra cấu trúc trạng thái và tương tác tốt hơn nhiều.
-- "Mỗi phương trình trong hệ có thể được hiểu riêng rẽ." Không đúng. Ý nghĩa thực sự nằm ở sự ghép nối giữa các thành phần.
-- "Trạng thái chỉ là giá trị của biến chính." Sai. Trạng thái gồm toàn bộ thông tin cần để dự đoán tương lai, thường là nhiều biến cùng lúc.
-- "Chỉ hệ phi tuyến mới thú vị." Sai. Ngay cả hệ tuyến tính đã cho ta hình học và động lực học rất phong phú.
+- "Hệ phương trình chỉ là cách viết lại của ODE bậc cao." Sai: tuy tương đương về mặt thông tin trong trường hợp chuyển đổi từ ODE bậc cao, dạng hệ làm lộ rõ cấu trúc trạng thái và sự tương tác giữa các biến.
+- "Có thể hiểu riêng lẻ từng phương trình trong hệ." Không đúng: hành vi của hệ phát sinh từ sự ghép nối giữa các thành phần.
+- "Trạng thái chỉ là giá trị của biến chính." Sai: trạng thái phải bao gồm toàn bộ các biến cần thiết để xác định diễn biến tương lai.
+- "Chỉ hệ phi tuyến mới có hành vi đa dạng." Sai: ngay cả hệ tuyến tính cũng mang lại nhiều cấu trúc hình học và động lực học quan trọng.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Nhận ra biến trạng thái
+### Bước 1: Xác định các biến trạng thái
 
-Hỏi xem cần biết những đại lượng nào để dự đoán tương lai của hệ.
+Liệt kê những đại lượng cần biết tại một thời điểm để dự đoán tương lai của hệ.
 
-### Bước 2: Viết trạng thái dưới dạng vector
+### Bước 2: Biểu diễn trạng thái dưới dạng vector
 
-Tập cho sinh viên quen với ký hiệu gọn mà giàu ý nghĩa này.
+Làm quen với ký hiệu vector gọn gàng và nhất quán.
 
-### Bước 3: Từ phương trình bậc cao sang hệ bậc nhất
+### Bước 3: Chuyển ODE bậc cao thành hệ bậc nhất
 
-Đây là cầu nối kỹ thuật quan trọng nhất đầu chương.
+Thực hành thuần thục phép đặt biến trạng thái.
 
-### Bước 4: Chuyển từ đồ thị theo thời gian sang quỹ đạo trạng thái
+### Bước 4: Đọc quỹ đạo trong không gian trạng thái
 
-Đây là bước đổi tư duy quan trọng nhất.
+Phân biệt đồ thị theo thời gian với quỹ đạo trên mặt phẳng pha.
 
 ### Các checkpoint
 
-- Sinh viên có giải thích được vì sao một hệ cần nhiều biến trạng thái hay không.
-- Sinh viên có chuyển đúng một ODE bậc cao về hệ bậc nhất hay không.
-- Sinh viên có hiểu quỹ đạo trong không gian trạng thái khác gì đồ thị theo thời gian hay không.
+- Sinh viên có giải thích được vì sao hệ cần nhiều biến trạng thái hay không.
+- Sinh viên có chuyển chính xác một ODE bậc cao về hệ bậc nhất hay không.
+- Sinh viên có phân biệt được quỹ đạo trạng thái với đồ thị hàm theo thời gian hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Từ dao động bậc hai sang hệ
+### Ví dụ 1: Chuyển dao động bậc hai sang hệ bậc nhất
 
-Xét phương trình
-$$ y''+2y'+5y=0. $$
-Đặt
-$$ x_1=y,\qquad x_2=y'. $$
-Khi đó
-$$ x_1'=x_2, $$
-và từ phương trình gốc,
-$$ x_2'=-2x_2-5x_1. $$
-Ta thu được hệ
+Xét phương trình $$ y''+2y'+5y=0 $$. Đặt $$ x_1=y $$ và $$ x_2=y' $$, ta có $$ x_1'=x_2 $$ và $$ x_2'=-2x_2-5x_1 $$, thu được hệ
 $$
 \begin{cases}
 x_1'=x_2,\\
 x_2'=-5x_1-2x_2.
 \end{cases}
 $$
-Ví dụ này rất quan trọng vì nó cho sinh viên thấy rõ một ODE bậc hai thật ra là một hệ hai biến trạng thái.
+Ví dụ này cho thấy một ODE bậc hai thực chất tương đương với một hệ hai biến trạng thái.
 
-### Ví dụ 2: Mô hình hai quần thể
+### Ví dụ 2: Mô hình tương tác hai quần thể
 
-Giả sử $$ x(t) $$ và $$ y(t) $$ là hai quần thể có tương tác tuyến tính sơ bộ:
+Giả sử $$ x(t) $$ và $$ y(t) $$ là kích thước hai quần thể tương tác tuyến tính:
 $$
 \begin{cases}
 x'=2x-y,\\
 y'=x+3y.
 \end{cases}
 $$
-Ở đây, tốc độ thay đổi của mỗi quần thể phụ thuộc vào cả hai quần thể. Không có cách hợp lý nào để nén bức tranh này vào một ẩn duy nhất mà vẫn giữ trực giác mô hình ban đầu. Đây là ví dụ rất tốt để nhấn mạnh vì sao hệ là ngôn ngữ tự nhiên.
+Tốc độ thay đổi của mỗi quần thể phụ thuộc đồng thời vào cả hai quần thể; giữ nguyên dạng hệ giúp bảo toàn trực giác mô hình ban đầu.
 
-### Ví dụ 3: Trạng thái trong mạch điện
+### Ví dụ 3: Biến trạng thái trong mạch điện LC
 
-Một mạch LC đơn giản có thể viết thành phương trình bậc hai cho điện tích. Nhưng nếu đặt
-$$ x_1=q,\qquad x_2=q', $$
-ta có ngay hệ hai chiều, trong đó $$ x_1 $$ là điện tích còn $$ x_2 $$ là dòng điện. Điều này có ý nghĩa vật lý rất mạnh: ta không chỉ biết "mạch đang chứa bao nhiêu điện tích", mà còn biết "điện tích đang thay đổi theo hướng nào".
+Một mạch LC có thể mô tả bằng ODE bậc hai theo điện tích $$ q $$. Đặt $$ x_1=q $$ và $$ x_2=q' $$, ta thu được hệ hai chiều trong đó $$ x_1 $$ là điện tích trên tụ và $$ x_2 $$ là dòng điện chạy qua cuộn cảm. Cặp biến này phản ánh trực tiếp trạng thái năng lượng của mạch.
 
-### Ví dụ 4: Ý nghĩa của điều kiện đầu
+### Ví dụ 4: Điều kiện đầu của hệ
 
-Với hệ
-$$ \mathbf{x}'=\mathbf{f}(t,\mathbf{x}), $$
-điều kiện đầu có dạng
-$$ \mathbf{x}(t_0)=\mathbf{x}_0. $$
-Nghĩa là ta không chỉ biết một số, mà biết toàn bộ cấu hình khởi đầu của hệ. Đây là bản tổng quát hóa rất tự nhiên của bài toán giá trị đầu đã học ở chương trước.
+Với hệ $$ \mathbf{x}'=\mathbf{f}(t,\mathbf{x}) $$, điều kiện đầu có dạng $$ \mathbf{x}(t_0)=\mathbf{x}_0 $$, tức cho trước toàn bộ cấu hình khởi đầu của mọi thành phần trạng thái tại thời điểm $$ t_0 $$.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao nhiều mô hình vật lý hoặc sinh học buộc phải được viết dưới dạng hệ chứ không thể chỉ bằng một ODE một ẩn?
-2. Khi viết một ODE bậc hai thành hệ bậc nhất, điều gì được "lộ ra" về mặt trạng thái?
-3. Vì sao quỹ đạo trong không gian trạng thái thường cho trực giác tốt hơn chỉ nhìn đồ thị theo thời gian?
+1. Vì sao nhiều mô hình vật lý và sinh học cần biểu diễn dưới dạng hệ thay vì một ODE một ẩn?
+2. Khi chuyển ODE bậc hai sang hệ bậc nhất, thông tin trạng thái nào được làm rõ hơn?
+3. Vì sao quỹ đạo trong không gian trạng thái thường bổ sung trực giác tốt hơn so với chỉ xem từng đồ thị theo thời gian?
 
 ## Bài toán ứng dụng
 
-1. Một xe tự hành cần được mô tả bởi vị trí và vận tốc. Hãy giải thích vì sao chỉ biết vị trí tại một thời điểm là chưa đủ để dự đoán chuyển động tiếp theo.
-2. Một mô hình dịch tễ có ba nhóm dân số: nhạy cảm, nhiễm và hồi phục. Hãy giải thích vì sao hệ phương trình là ngôn ngữ đúng.
-3. Một mạch điện có điện tích và dòng điện thay đổi theo thời gian. Hãy diễn giải chúng như hai thành phần của một vector trạng thái.
+1. Một xe tự hành chuyển động trên đường thẳng được mô tả bởi vị trí và vận tốc. Vì sao chỉ biết vị trí tại một thời điểm là chưa đủ để dự đoán chuyển động tiếp theo?
+2. Một mô hình dịch tễ gồm ba nhóm dân số: nhạy cảm, nhiễm bệnh và hồi phục. Vì sao hệ phương trình là cách mô tả tự nhiên?
+3. Trong một mạch điện có điện tích và dòng điện cùng biến thiên, hãy giải thích ý nghĩa của vector trạng thái gồm hai thành phần này.
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng câu hỏi: "Muốn dự đoán hoàn toàn tương lai của một vật dao động, chỉ biết vị trí hiện tại có đủ không?"
-- Cho sinh viên làm việc theo cặp để chuyển 2 đến 3 ODE bậc hai thành hệ bậc nhất.
-- Vẽ đồng thời đồ thị $$ y(t) $$ và quỹ đạo trong mặt phẳng $$ \left(y,y'\right) $$ để lớp thấy sự khác biệt giữa hai cách nhìn.
-- Khuyến khích sinh viên giải thích bằng lời ý nghĩa của từng thành phần trong vector trạng thái.
+- Mở đầu bằng câu hỏi: "Để dự đoán chuyển động tiếp theo của một vật dao động, chỉ biết vị trí hiện tại có đủ không?"
+- Cho sinh viên thực hành theo cặp chuyển 2–3 ODE bậc hai thành hệ bậc nhất.
+- Vẽ song song đồ thị $$ y(t) $$ và quỹ đạo trên mặt phẳng $$ \left(y,y'\right) $$ để so sánh hai góc nhìn.
+- Yêu cầu sinh viên diễn giải bằng lời ý nghĩa vật lý của từng thành phần trong vector trạng thái.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên cho sinh viên yếu dùng một mẫu cố định: đặt trạng thái, viết các đạo hàm thấp trước, rồi dùng phương trình gốc cho đạo hàm cuối cùng. Việc lặp đúng khuôn mẫu này sẽ giúp các em bớt sợ ký hiệu vector.
+Cho sinh viên luyện theo quy trình cố định: đặt các biến trạng thái từ $$ y $$ đến $$ y^{(n-1)} $$, viết các phương trình nối tiếp $$ x_k'=x_{k+1} $$, sau đó thay phương trình gốc vào phương trình cuối cùng.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể yêu cầu sinh viên khá giỏi suy nghĩ xem một hệ bậc nhất hai chiều có thể được nén lại thành một ODE bậc hai trong trường hợp nào, và khi nào việc đó làm mất trực giác mô hình.
+Yêu cầu sinh viên khảo sát điều kiện để khử biến đưa một hệ bậc nhất hai chiều về một ODE bậc hai, và thảo luận những gì có thể bị mờ đi về mặt trực giác khi khử biến.
 
 ## Tóm tắt dễ nhớ
 
-Hệ phương trình là ngôn ngữ của trạng thái nhiều thành phần. Một ODE bậc cao có thể viết thành hệ bậc nhất, nhưng lợi ích lớn hơn là ta nhìn thấy toàn bộ cấu trúc tương tác của hệ. Muốn hiểu một hệ, hãy hỏi: trạng thái gồm những gì, các thành phần ảnh hưởng nhau ra sao, và quỹ đạo trạng thái trông như thế nào.
+Hệ phương trình vi phân là ngôn ngữ của các hệ nhiều biến trạng thái. Mọi ODE bậc cao đều chuyển được về hệ bậc nhất, nhưng giá trị lớn hơn của dạng hệ là làm rõ tương tác giữa các thành phần và mở ra góc nhìn hình học qua quỹ đạo trong không gian trạng thái.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Quỹ đạo của vật bay
-- Bài toán: Muốn mô tả một vật trong mặt phẳng, ta không thể chỉ theo dõi một biến; cần cả vị trí và vận tốc theo nhiều hướng.
+#### Quỹ đạo của vật chuyển động trong mặt phẳng
+- Bài toán: Để mô tả chuyển động hai chiều, cần theo dõi đồng thời tọa độ vị trí và hai thành phần vận tốc.
 - Mô hình:
 $$
 \mathbf{x}(t)=
@@ -195,22 +179,22 @@ v_y
 \qquad
 \mathbf{x}'=\mathbf{f}(t,\mathbf{x}).
 $$
-- Giả thiết và giới hạn: Bỏ qua nhiều chi tiết như lực cản phi tuyến hoặc quay của vật.
-- Diễn giải: Hệ phương trình là ngôn ngữ tự nhiên vì trạng thái thật sự có nhiều thành phần gắn kết.
+- Giả thiết và giới hạn: Bỏ qua các yếu tố phức tạp như lực cản phi tuyến mạnh hoặc chuyển động quay quanh trục.
+- Diễn giải: Hệ bậc nhất tổ chức đầy đủ các thành phần trạng thái gắn kết trong một vector duy nhất.
 
 #### Mô hình dịch tễ nhiều ngăn
-- Bài toán: Số người nhạy cảm, nhiễm và hồi phục cùng tiến hóa theo thời gian.
+- Bài toán: Số người nhạy cảm, nhiễm bệnh và hồi phục biến đổi đồng thời theo thời gian.
 - Mô hình:
 $$
 \frac{dS}{dt}=f_1(S,I,R),\qquad
 \frac{dI}{dt}=f_2(S,I,R),\qquad
 \frac{dR}{dt}=f_3(S,I,R).
 $$
-- Giả thiết và giới hạn: Hệ đồng nhất, tham số không đổi, chưa xét cấu trúc tuổi hay không gian.
-- Diễn giải: Hệ cho phép đọc tương tác giữa nhiều biến mà một ODE đơn lẻ không thể kể hết.
+- Giả thiết và giới hạn: Quần thể trộn đều, tham số không đổi, chưa xét phân bố độ tuổi hay không gian.
+- Diễn giải: Dạng hệ thể hiện trực tiếp luồng chuyển dịch giữa các nhóm dân số.
 
-#### Chuyển ODE bậc cao sang trạng thái
-- Bài toán: Một dao động cơ học bậc hai cần được viết lại để dùng công cụ ma trận và hình học pha.
+#### Chuyển ODE bậc cao sang hệ trạng thái
+- Bài toán: Đưa mô hình dao động cơ học bậc hai về dạng hệ bậc nhất để áp dụng công cụ ma trận và mặt phẳng pha.
 - Mô hình:
 $$
 y''+2y'+5y=0
@@ -220,12 +204,12 @@ x_1'=x_2,\\
 x_2'=-2x_2-5x_1.
 \end{cases}
 $$
-- Giả thiết và giới hạn: Chỉ thay đổi ngôn ngữ mô tả, không thay đổi nội dung động học.
-- Diễn giải: Dạng hệ bậc nhất là cánh cửa vào toàn bộ chương hệ ODE.
+- Giả thiết và giới hạn: Chỉ thay đổi dạng biểu diễn, giữ nguyên hoàn toàn nội dung động học.
+- Diễn giải: Là bước chuẩn bị trực tiếp cho toàn bộ Chương 04.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Hệ phương trình là bước chuyển từ "một đại lượng biến thiên" sang "một trạng thái nhiều chiều". Đây là thay đổi tư duy quan trọng hơn chính kỹ thuật biến đổi. Bài học này nối trực tiếp với chương trước vì mọi ODE bậc cao đều có thể được xem như hệ bậc nhất, và nó cũng chuẩn bị cho hình học của chân dung pha cùng phổ ma trận ở các bài sau. Một bẫy phổ biến là cố đọc từng phương trình thành phần như các bài toán riêng; ý nghĩa thật sự nằm ở sự ghép nối của toàn bộ hệ.
+Chuyển từ một hàm vô hướng sang một vector trạng thái nhiều chiều là thay đổi tư duy cốt lõi của chương. Mọi ODE bậc cao đều có thể xem như hệ bậc nhất, tạo nền trực tiếp cho việc nghiên cứu phổ ma trận và chân dung pha ở các bài sau. Cần tránh đọc rời rạc từng phương trình thành phần, vì đặc trưng của hệ nằm ở sự liên kết giữa chúng.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -259,20 +243,14 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Xét dao động
-$$ y''+2y'+5y=0. $$
-Đặt
-$$ x_1=y,\qquad x_2=y', $$
-ta được hệ
+Xét phương trình dao động $$ y''+2y'+5y=0 $$. Đặt $$ x_1=y $$ và $$ x_2=y' $$, ta thu được hệ
 $$
 \begin{cases}
 x_1'=x_2,\\
 x_2'=-5x_1-2x_2.
 \end{cases}
 $$
-Trạng thái ban đầu
-$$ y(0)=1,\qquad y'(0)=0 $$
-tương ứng với
+Điều kiện đầu $$ y(0)=1 $$, $$ y'(0)=0 $$ chuyển thành vector trạng thái ban đầu
 $$
 \mathbf{x}(0)=
 \begin{pmatrix}
@@ -280,21 +258,21 @@ $$
 0
 \end{pmatrix}.
 $$
-Ví dụ này cho thấy một ODE bậc hai không mất đi nội dung khi chuyển về hệ; trái lại, nó trở nên minh bạch hơn về mặt trạng thái.
+Biểu diễn này giữ nguyên thông tin của phương trình gốc đồng thời làm rõ cấu trúc trạng thái hai chiều.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Tập trung vào việc chọn đúng biến trạng thái và chuyển ODE bậc cao thành hệ bậc nhất.
+**Bậc đại học.** Chọn đúng biến trạng thái và chuyển thành thạo ODE bậc cao sang hệ bậc nhất.
 
-**Bậc sau đại học.** Nhấn mạnh không gian trạng thái, dòng chảy động lực học và quan điểm hệ như một toán tử tiến hóa trên $$ \mathbb{R}^n $$.
+**Bậc sau đại học.** Mở rộng sang không gian trạng thái, dòng động lực học và toán tử tiến hóa trên $$ \mathbb{R}^n $$.
 
 ## Video tham khảo
 
-- xem trước: [Systems of Differential Equations // Part 1: Linear Systems and the Eigenvalue Method](https://www.youtube.com/watch?v=aTMNQtzU0rU) — Dr. Trefor Bazett, tiếng Anh. Cách một phương trình bậc cao thành hệ cấp một, và cách viết một hệ tuyến tính.
-- [Matrix Systems of Differential Equations](https://www.youtube.com/watch?v=Vtijyyo5fKI) — Steve Brunton, tiếng Anh. Dạng ma trận x'=Ax của Brunton cho một hệ phương trình vi phân.
-- [Lec 24 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=MCrDzhpu3-s) — MIT OpenCourseWare, tiếng Anh. Mattuck giới thiệu hệ cấp một trong khóa MIT.
+- Xem trước: [Systems of Differential Equations // Part 1: Linear Systems and the Eigenvalue Method](https://www.youtube.com/watch?v=aTMNQtzU0rU) — Dr. Trefor Bazett, tiếng Anh. Cách chuyển phương trình bậc cao thành hệ cấp một và viết hệ tuyến tính.
+- [Matrix Systems of Differential Equations](https://www.youtube.com/watch?v=Vtijyyo5fKI) — Steve Brunton, tiếng Anh. Giới thiệu dạng ma trận $$ \mathbf{x}'=A\mathbf{x} $$ cho hệ phương trình vi phân.
+- [Lec 24 | MIT 18.03 Differential Equations, Spring 2006](https://www.youtube.com/watch?v=MCrDzhpu3-s) — MIT OpenCourseWare, tiếng Anh. Bài giảng mở đầu của giáo sư Mattuck về hệ cấp một trong khóa MIT 18.03.
 
 ## Tài liệu tham khảo
 
-- Boyce & DiPrima, Chương 7: phần mở đầu rất tốt cho việc chuyển từ ODE bậc cao sang hệ trạng thái.
-- Arnold, *Ordinary Differential Equations*: cho trực giác hình học sâu về hệ và không gian trạng thái.
+- Boyce & DiPrima, Chương 7: phần mở đầu rõ ràng về chuyển đổi từ ODE bậc cao sang hệ trạng thái.
+- Arnold, *Ordinary Differential Equations*: trình bày giàu trực giác hình học về hệ và không gian trạng thái.

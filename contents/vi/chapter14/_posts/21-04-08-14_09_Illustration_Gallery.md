@@ -12,15 +12,15 @@ lesson_type: optional
 
 ## Mục Đích Của Bài Hỗ Trợ
 
-Bài này gom toàn bộ minh họa của Chương 14 vào một không gian ôn tập trực quan chung. Toán tử giả vi phân thường là thời điểm người học cảm thấy mình đã bước ra khỏi kỹ thuật PDE cổ điển để đi vào một ngôn ngữ hiện đại hơn. Gallery giúp bước chuyển đó có cấu trúc và có nhịp, thay vì gây cảm giác đột ngột và quá hình thức.
+Bài học bổ trợ này tập hợp toàn bộ minh họa của Chương 14 vào một không gian ôn tập trực quan chung. Toán tử giả vi phân thường là giai đoạn người học chuyển từ các kỹ thuật PDE cổ điển sang ngôn ngữ giải tích hiện đại hơn; bộ minh họa giúp quá trình chuyển tiếp đó diễn ra mạch lạc, có cấu trúc thay vì gây cảm giác đột ngột và nặng tính hình thức.
 
-Chuyển động cốt lõi của chương đi từ trực giác Fourier sang calculus của toán tử. Symbol mã hóa phản ứng theo tần số, các lớp symbol tổ chức hành vi tiệm cận, parametrix giải thích nghịch đảo xấp xỉ, và việc đưa lý thuyết lên đa tạp cho thấy bản chất hình học của toàn bộ calculus. Bài bổ trợ này cho phép người học nhìn lại toàn bộ kiến trúc đó như một chỉnh thể thống nhất thay vì một chuỗi định nghĩa rời nhau.
+Mạch nội dung cốt lõi của chương đi từ trực giác Fourier đến phép tính toán tử: ký hiệu (symbol) mã hóa phản ứng theo tần số, các lớp ký hiệu phân loại hành vi tiệm cận, parametrix giải thích cơ chế nghịch đảo xấp xỉ, và phần mở rộng lên đa tạp làm rõ bản chất hình học của toàn bộ lý thuyết. Trang này giúp người học nhìn lại cấu trúc chương như một chỉnh thể thống nhất thay vì chuỗi định nghĩa rời rạc.
 
 ## Cách Sử Dụng Bài Này
 
-Nên đi qua gallery theo đúng thứ tự bài học. Sau mỗi hình, hãy quay lại bài giảng tương ứng và tự hỏi hình đó đang nhấn mạnh sự thay đổi ý niệm nào: vượt ra ngoài công thức vi phân cục bộ, đọc toán tử qua không gian tần số, tổ chức symbol theo hành vi tiệm cận, dựng toán tử từ symbol, hay chứng minh regularity qua parametrix. Khi đó ngôn ngữ hiện đại của chương sẽ luôn bám vào động lực PDE quen thuộc.
+Nên xem lần lượt các minh họa theo đúng thứ tự bài học. Sau mỗi hình, hãy đối chiếu lại bài giảng tương ứng và tự đặt câu hỏi hình đó đang nhấn mạnh bước chuyển khái niệm nào: vượt ra ngoài công thức vi phân cục bộ, đọc toán tử qua miền tần số, phân loại ký hiệu theo tốc độ tăng trưởng, dựng toán tử từ ký hiệu, hay chứng minh tính chính quy bằng parametrix. Cách học này giúp ngôn ngữ hiện đại của chương luôn gắn chặt với động lực PDE quen thuộc.
 
-Trang này cũng là một chiếc cầu rất tự nhiên sang Chương 15, nơi góc nhìn symbolic sẽ trở nên hình học và microlocal hơn nữa.
+Trang này cũng tạo cầu nối tự nhiên sang Chương 15, nơi góc nhìn ký hiệu được phát triển sâu hơn theo hướng hình học và vi địa phương.
 
 ## Gallery Nhúng Trực Tiếp
 
@@ -33,9 +33,9 @@ Trang này cũng là một chiếc cầu rất tự nhiên sang Chương 15, nơ
 
 ## Câu Hỏi Gợi Ý Khi Học
 
-1. Hình nào chủ yếu nói về đổi góc nhìn, và hình nào chủ yếu nói về đổi kỹ thuật?
-2. Ở đâu trực giác tần số đã trở thành một calculus toán tử hoàn chỉnh?
-3. Hình regularity cuối chương đã diễn giải lại lý thuyết elliptic trước đó dưới ngôn ngữ symbol như thế nào?
+1. Minh họa nào chủ yếu nhấn mạnh sự thay đổi góc nhìn, và minh họa nào tập trung vào công cụ kỹ thuật?
+2. Tại bước nào trực giác tần số phát triển thành một phép tính toán tử hoàn chỉnh?
+3. Minh họa về tính chính quy ở cuối chương diễn giải lại lý thuyết elliptic trước đó bằng ngôn ngữ ký hiệu như thế nào?
 
 ## Liên Kết Tới Các Bài Học Chính
 
@@ -51,6 +51,6 @@ Trang này cũng là một chiếc cầu rất tự nhiên sang Chương 15, nơ
 
 ## Video tham khảo
 
-- xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Tiếng Việt. Bức tranh symbol mà bộ minh họa đang cố vẽ.
-- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Không gian Fourier, màn hình mà các symbol tác động lên.
-- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Một bài nghiên cứu cho thấy các hình đang chuẩn bị cho điều gì.
+- Nên xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, tiếng Việt. Giới thiệu góc nhìn ký hiệu mà bộ minh họa đang trực quan hóa.
+- [But what is the Fourier Transform?  A visual introduction.](https://www.youtube.com/watch?v=spUNpyF58BY) — 3Blue1Brown, tiếng Anh. Minh họa không gian Fourier — miền mà các ký hiệu tác động lên.
+- [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Bài giảng chuyên sâu cho thấy các minh họa này chuẩn bị cho hướng nghiên cứu nào tiếp theo.

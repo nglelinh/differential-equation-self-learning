@@ -10,170 +10,143 @@ categories:
 lesson_type: required
 ---
 ## Mục tiêu
-Bài học này giúp sinh viên dùng Laplace để giải trực tiếp các bài toán giá trị đầu tuyến tính, hiểu vì sao điều kiện đầu được xử lý "tự động" trong miền $$ s $$, và phân biệt được khi nào Laplace tiện hơn phương pháp cổ điển. Đây là bài kết nối mạnh nhất giữa công cụ biến đổi và mục tiêu giải ODE.
+Bài học này hướng dẫn sử dụng biến đổi Laplace để giải trực tiếp các bài toán giá trị đầu (IVP) tuyến tính, giải thích vì sao điều kiện đầu được tích hợp tự động trong miền $$ s $$, và xác định khi nào phương pháp Laplace thuận lợi hơn các phương pháp cổ điển.
 
 ## Kiến thức nền
-Sinh viên cần nắm định nghĩa Laplace, bảng cơ bản, Laplace ngược và công thức cho đạo hàm:
-$$ \mathcal{L}\{y'\}=sY-y(0), $$
-$$ \mathcal{L}\{y''\}=s^2Y-sy(0)-y'(0). $$
-Kỹ năng phân thức đơn là bắt buộc ở bài này.
+Sinh viên cần nắm định nghĩa Laplace, bảng biến đổi cơ bản, biến đổi ngược và công thức biến đổi đạo hàm:
+$$ \mathcal{L}\{y'\}=sY-y(0),\qquad \mathcal{L}\{y''\}=s^2Y-sy(0)-y'(0). $$
+Kỹ năng phân tích phân thức đơn là yêu cầu bắt buộc cho bài học này.
 
 ## Dẫn nhập
 ![Sơ đồ minh họa cho bài 03-04 Giải Bài toán Giá trị Đầu bằng Laplace]({{ site.imgurl }}/chapter_img/chapter03/03_04_solving_ivps.svg)
 
-Ở các chương trước, ta đã giải nhiều ODE bằng phương trình đặc trưng, hệ số bất định hay biến thiên hằng số. Những phương pháp ấy rất mạnh, nhưng khi điều kiện đầu phức tạp, forcing gián đoạn, hoặc dạng phương trình không thuận tay, Laplace thường cho một lối đi ngắn và nhất quán hơn. Điểm hấp dẫn nhất là điều kiện đầu không phải được xử lý riêng sau cùng; chúng xuất hiện ngay trong biến đổi của đạo hàm.
+Ở Chương 02, ta đã giải nhiều ODE bằng phương trình đặc trưng, hệ số bất định và biến thiên hằng số. Tuy nhiên, khi gặp bài toán có điều kiện đầu kèm ngoại lực phức tạp hoặc gián đoạn, biến đổi Laplace thường mang lại quy trình gọn và nhất quán hơn. Ưu điểm nổi bật là điều kiện đầu không cần chờ đến bước cuối mới thay vào, mà xuất hiện ngay trong công thức biến đổi của đạo hàm.
 
-Vì vậy, Laplace không chỉ là một phương pháp khác. Nó là một phong cách giải khác: chuyển toàn bộ bài toán vi phân sang bài toán đại số cho $$ Y(s) $$, rồi quay lại bằng Laplace ngược. Khi đã quen với quy trình này, sinh viên có trong tay một công cụ cực kỳ linh hoạt cho nhiều dạng bài toán tuyến tính.
+Như vậy, biến đổi Laplace chuyển toàn bộ bài toán vi phân kèm điều kiện đầu thành một phương trình đại số theo $$ Y(s) $$, rồi quay lại miền thời gian bằng biến đổi ngược.
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan
-Đạo hàm là phép toán cục bộ theo thời gian, còn Laplace gom toàn bộ lịch sử của tín hiệu vào một biểu thức. Thật bất ngờ nhưng rất đẹp: khi áp Laplace vào đạo hàm, toàn bộ sự phức tạp của vi phân giảm xuống phép nhân bởi $$ s $$ và vài số điều kiện đầu.
+Đạo hàm là phép toán cục bộ theo thời gian, còn biến đổi Laplace tích hợp toàn bộ diễn biến của hàm trên $$ [0,\infty) $$. Khi áp dụng biến đổi Laplace lên đạo hàm (qua tích phân từng phần), phép vi phân rút gọn thành phép nhân với $$ s $$ trừ đi các giá trị điều kiện đầu.
 
 ### Cách nhìn hình ảnh
-Một phương trình như
-$$ y''+3y'+2y=f(t) $$
-sau Laplace sẽ thành
+Một phương trình như $$ y''+3y'+2y=f(t) $$ sau khi lấy biến đổi Laplace trở thành
 $$
 \left(s^2+3s+2\right)Y(s)-\text{các điều kiện đầu}=F(s).
 $$
-Điều này giống như ta biến một toán tử vi phân thành một đa thức theo $$ s $$. Chính hình ảnh "đa thức thay cho đạo hàm" làm Laplace rất gần với phương trình đặc trưng.
+Toán tử vi phân chuyển thành một đa thức theo $$ s $$, tạo liên hệ trực tiếp với đa thức đặc trưng ở Chương 02.
 
 ### Cách nhìn hình thức
-Với một IVP tuyến tính, ta áp Laplace từng vế, dùng công thức đạo hàm để nhận được phương trình đại số theo $$ Y(s) $$, giải ra $$ Y(s) $$, rồi lấy Laplace ngược. Quy trình tổng quát là:
+Quy trình chuẩn để giải một IVP tuyến tính bằng biến đổi Laplace gồm 6 bước:
 
-1. Viết ODE và điều kiện đầu.
-2. Áp Laplace hai vế.
-3. Thế điều kiện đầu vào ngay trong công thức đạo hàm.
-4. Giải đại số để tìm $$ Y(s) $$.
-5. Phân tích phân thức đơn nếu cần.
-6. Lấy Laplace ngược.
+1. Viết rõ phương trình vi phân và các điều kiện đầu tại $$ t=0 $$.
+2. Lấy biến đổi Laplace hai vế.
+3. Thay trực tiếp điều kiện đầu vào công thức biến đổi của đạo hàm.
+4. Giải phương trình đại số để tìm $$ Y(s) $$.
+5. Phân tích $$ Y(s) $$ thành các phân thức đơn nếu cần.
+6. Lấy biến đổi Laplace ngược để thu được $$ y(t) $$.
 
 ## Những ngộ nhận thường gặp
-- "Laplace chỉ là phương trình đặc trưng theo một ký hiệu khác." Sai. Nó đặc biệt mạnh vì gộp cả forcing và điều kiện đầu.
-- "Điều kiện đầu phải thay vào sau cùng như thường lệ." Sai. Chúng xuất hiện ngay sau khi biến đổi đạo hàm.
-- "Nếu giải được bằng phương pháp cổ điển thì Laplace là dư thừa." Không đúng. Laplace có thể cho cấu trúc sạch hơn, nhất là với forcing khó.
-- "Laplace luôn là cách nhanh nhất." Cũng không đúng. Với bài thuần nhất đơn giản, phương trình đặc trưng thường nhanh hơn.
+- "Biến đổi Laplace chỉ là viết lại phương trình đặc trưng bằng ký hiệu khác." Sai: nó gộp đồng thời cả vế phải không thuần nhất lẫn điều kiện đầu vào một bước đại số.
+- "Điều kiện đầu vẫn phải giải riêng ở bước cuối." Sai: chúng được đưa vào ngay khi biến đổi đạo hàm.
+- "Nếu giải được bằng phương pháp cổ điển thì Laplace là thừa." Không đúng: với ngoại lực gián đoạn hoặc dạng phức tạp, Laplace cho cách trình bày gọn hơn nhiều.
+- "Laplace luôn nhanh hơn mọi phương pháp khác." Cũng không đúng: với phương trình thuần nhất đơn giản, phương trình đặc trưng thường nhanh hơn.
 
 ## Tiến trình học tập đề xuất
-### Bước 1: Viết công thức Laplace của các đạo hàm
-Đây là xương sống của cả bài.
+### Bước 1: Viết chính xác công thức Laplace của đạo hàm
+Đây là bước nền tảng của toàn bộ bài học.
 
-### Bước 2: Giải phương trình đại số theo $$ Y(s) $$
-Làm cẩn thận để không mất dấu của điều kiện đầu.
+### Bước 2: Giải phương trình đại số cho $$ Y(s) $$
+Kiểm tra kỹ dấu của các số hạng chứa điều kiện đầu.
 
-### Bước 3: Đưa $$ Y(s) $$ về dạng lấy ngược được
-Thường bằng phân tích phân thức đơn.
+### Bước 3: Biến đổi $$ Y(s) $$ về dạng tra bảng được
+Thường dùng phân tích phân thức đơn hoặc hoàn thành bình phương.
 
-### Bước 4: Quay lại miền thời gian
-Kiểm tra nghiệm và diễn giải động học.
+### Bước 4: Biến đổi ngược về miền thời gian
+Kiểm tra lại điều kiện đầu và diễn giải hành vi nghiệm.
 
 ### Các checkpoint
-- Sinh viên có đặt đúng dấu của các điều kiện đầu trong Laplace của đạo hàm hay không.
-- Sinh viên có giải đúng phương trình theo $$ Y(s) $$ hay không.
-- Sinh viên có kiểm tra lại nghiệm sau khi lấy ngược không.
+- Sinh viên có viết đúng dấu các điều kiện đầu trong công thức Laplace của đạo hàm hay không.
+- Sinh viên có giải đúng biểu thức đại số cho $$ Y(s) $$ hay không.
+- Sinh viên có kiểm tra lại nghiệm $$ y(t) $$ sau khi biến đổi ngược hay không.
 
 ## Ví dụ được giải chi tiết
 ### Ví dụ 1: Phương trình cấp một
-Giải
-$$ y'+y=1,\qquad y(0)=2. $$
-Đặt
-$$ Y(s)=\mathcal{L}\{y(t)\}. $$
-Áp Laplace:
-$$ \left(sY-2\right)+Y=\frac{1}{s}. $$
+Giải bài toán $$ y'+y=1 $$ với $$ y(0)=2 $$. Đặt $$ Y(s)=\mathcal{L}\{y(t)\} $$ và lấy biến đổi Laplace hai vế:
+$$ \left(sY-2\right)+Y=\frac{1}{s} \Rightarrow \left(s+1\right)Y=\frac{1}{s}+2. $$
 Suy ra
-$$ \left(s+1\right)Y=\frac{1}{s}+2. $$
-Do đó
 $$ Y=\frac{1}{s(s+1)}+\frac{2}{s+1}. $$
-Phân tích:
-$$ \frac{1}{s(s+1)}=\frac{1}{s}-\frac{1}{s+1}. $$
-Nên
-$$ Y=\frac{1}{s}+\frac{1}{s+1}. $$
-Lấy ngược:
+Vì $$ \frac{1}{s(s+1)}=\frac{1}{s}-\frac{1}{s+1} $$, ta rút gọn thành $$ Y=\frac{1}{s}+\frac{1}{s+1} $$. Lấy biến đổi ngược:
 $$ y(t)=1+e^{-t}. $$
 
 ### Ví dụ 2: Phương trình cấp hai
-Giải
-$$ y''+y=0,\qquad y(0)=0,\qquad y'(0)=1. $$
-Áp Laplace:
-$$ \left(s^2Y-1\right)+Y=0. $$
-Suy ra
-$$ \left(s^2+1\right)Y=1, $$
-nên
-$$ Y=\frac{1}{s^2+1}. $$
-Do đó
+Giải bài toán $$ y''+y=0 $$ với $$ y(0)=0 $$, $$ y'(0)=1 $$. Lấy biến đổi Laplace:
+$$ \left(s^2Y-1\right)+Y=0 \Rightarrow \left(s^2+1\right)Y=1 \Rightarrow Y=\frac{1}{s^2+1}. $$
+Lấy biến đổi ngược cho ngay
 $$ y(t)=\sin t. $$
-Ví dụ này cho thấy Laplace xử lý điều kiện đầu cực gọn.
 
-### Ví dụ 3: Forcing mũ
-Giải
-$$ y''-y=e^t,\qquad y(0)=1,\qquad y'(0)=0. $$
-Áp Laplace:
-$$ \left(s^2Y-s\right)-Y=\frac{1}{s-1}. $$
-Suy ra
-$$ \left(s^2-1\right)Y=s+\frac{1}{s-1}. $$
-Từ đó giải ra $$ Y(s) $$ rồi phân tích phân thức đơn. Bài này minh họa việc Laplace giải cùng lúc phần thuần nhất, forcing và điều kiện đầu trong một công thức duy nhất.
+### Ví dụ 3: Ngoại lực hàm mũ
+Giải bài toán $$ y''-y=e^t $$ với $$ y(0)=1 $$, $$ y'(0)=0 $$. Lấy biến đổi Laplace hai vế:
+$$ \left(s^2Y-s\right)-Y=\frac{1}{s-1} \Rightarrow \left(s^2-1\right)Y=s+\frac{1}{s-1}. $$
+Từ đây ta rút $$ Y(s) $$, phân tích phân thức đơn rồi lấy biến đổi ngược. Ví dụ cho thấy biến đổi Laplace xử lý đồng thời phần thuần nhất, phần cộng hưởng với ngoại lực và điều kiện đầu trong cùng một phương trình đại số.
 
-### Ví dụ 4: Khi nào Laplace đáng giá
-Nếu một bài toán có forcing gián đoạn, lực bật nguồn, hoặc delta, Laplace thường vượt trội rõ rệt so với phương pháp cổ điển. Điểm sư phạm ở đây là học sinh không chỉ biết dùng Laplace, mà còn biết khi nào nên dùng nó.
+### Ví dụ 4: Khi nào nên ưu tiên biến đổi Laplace
+Khi bài toán có ngoại lực gián đoạn, nguồn đóng-ngắt theo thời điểm hoặc tác động xung delta, biến đổi Laplace thể hiện lợi thế rõ rệt so với các phương pháp cổ điển.
 
 ## Câu hỏi khái niệm
-1. Vì sao Laplace của đạo hàm lại tự động chứa điều kiện đầu?
-2. Vì sao giải trong miền $$ s $$ thường gọn hơn giải trực tiếp trong thời gian?
-3. Khi nào Laplace là lựa chọn thông minh hơn phương pháp cổ điển?
+1. Vì sao biến đổi Laplace của đạo hàm tự động chứa các điều kiện đầu?
+2. Vì sao giải phương trình đại số trong miền $$ s $$ thường gọn hơn xử lý trực tiếp trong miền thời gian?
+3. Trong những tình huống nào biến đổi Laplace hiệu quả hơn các phương pháp Chương 02?
 
 ## Bài toán ứng dụng
-1. Một mạch điện được bật từ trạng thái ban đầu không bằng 0. Hãy giải thích vì sao Laplace đặc biệt tiện cho loại bài này.
-2. Một hệ cơ học chịu lực ngoài và có dữ kiện đầu rõ ràng. Hãy thảo luận ưu điểm của việc đưa toàn bộ bài toán sang miền $$ s $$.
-3. Một hệ có forcing gián đoạn theo thời gian. Vì sao việc xử lý bằng Laplace thường ít rối hơn so với giải trực tiếp trong miền thời gian?
+1. Một mạch điện khởi động từ trạng thái tích điện ban đầu khác 0. Vì sao biến đổi Laplace đặc biệt tiện cho bài toán này?
+2. Một hệ cơ học chịu ngoại lực kèm điều kiện đầu xác định. Ưu điểm của việc đưa toàn bộ bài toán sang miền $$ s $$ là gì?
+3. Với ngoại lực gián đoạn từng khúc theo thời gian, vì sao dùng Laplace tránh được việc phải nối nghiệm thủ công trên từng khoảng?
 
 ## Chiến lược giảng dạy tương tác
-- Cho sinh viên giải cùng một IVP bằng hai cách: cổ điển và Laplace, rồi so sánh.
-- Dừng lại ở bước áp Laplace đạo hàm để hỏi lớp: "Điều kiện đầu đã xuất hiện ở đâu?"
-- Cho sinh viên làm bảng quy trình 6 bước thay vì nhảy vào tính toán rời rạc.
-- Khuyến khích sinh viên kiểm tra nghiệm cuối bằng cách thế ngược vào ODE ban đầu.
+- Cho sinh viên giải cùng một IVP bằng cả phương pháp cổ điển lẫn biến đổi Laplace rồi so sánh.
+- Dừng lại ngay sau bước biến đổi đạo hàm để lớp chỉ ra vị trí xuất hiện của các điều kiện đầu.
+- Cho sinh viên luyện theo đúng quy trình 6 bước thống nhất.
+- Yêu cầu sinh viên thế nghiệm tìm được vào lại phương trình và điều kiện đầu để tự kiểm tra.
 
 ## Phân hóa học tập
 ### Hỗ trợ sinh viên còn gặp khó khăn
-Nên cho sinh viên yếu bám vào khung cố định: viết $$ Y(s) $$, thay công thức đạo hàm, gom $$ Y $$, phân thức đơn, lấy ngược. Sự đều đặn của quy trình là lợi thế lớn của Laplace với người mới học.
+Giữ cố định chuỗi thao tác: ký hiệu $$ Y(s) $$, thay công thức đạo hàm, gom hệ số của $$ Y(s) $$, phân tích phân thức đơn và biến đổi ngược. Tính đều đặn của quy trình giúp người mới học ít mắc lỗi.
 
 ### Thử thách cho sinh viên khá giỏi
-Có thể yêu cầu sinh viên khá giỏi so sánh độ phức tạp đại số của Laplace với phương pháp cổ điển trên cùng một bài, hoặc giải một bài có forcing gián đoạn để thấy lợi thế thực sự của công cụ.
+Yêu cầu sinh viên so sánh khối lượng tính toán đại số giữa Laplace và phương pháp cổ điển trên cùng một bài toán, hoặc thử giải trước một bài có vế phải gián đoạn.
 
 ## Tóm tắt dễ nhớ
-Giải IVP bằng Laplace là biến bài toán vi phân thành bài toán đại số cho $$ Y(s) $$. Đạo hàm biến thành đa thức theo $$ s $$ cộng với các điều kiện đầu. Hãy nhớ quy trình: áp Laplace, giải $$ Y(s) $$, tách phân thức, lấy ngược.
+Giải IVP bằng biến đổi Laplace chuyển bài toán vi phân thành phương trình đại số cho $$ Y(s) $$, trong đó đạo hàm thành đa thức theo $$ s $$ gắn sẵn điều kiện đầu. Quy trình cốt lõi: biến đổi hai vế, giải $$ Y(s) $$, tách phân thức đơn và biến đổi ngược.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Giải nhanh IVP điện - cơ
-- Bài toán: Hệ cơ học hoặc mạch điện có điều kiện đầu khác 0 và forcing đơn giản.
-- Mô hình:
-$$ y''+ay'+by=f(t) $$
-với dữ kiện đầu gắn ngay trong Laplace của đạo hàm.
-- Giả thiết và giới hạn: Hệ tuyến tính, điều kiện đầu được cho tại $$ t=0 $$.
-- Diễn giải: Laplace gom điều kiện đầu và forcing vào cùng một phương trình đại số.
+#### Giải nhanh IVP cơ - điện
+- Bài toán: Hệ cơ học hoặc mạch điện có điều kiện đầu khác 0 kèm ngoại lực.
+- Mô hình: $$ y''+ay'+by=f(t) $$ với điều kiện đầu đưa trực tiếp vào công thức đạo hàm.
+- Giả thiết và giới hạn: Hệ tuyến tính hệ số hằng, điều kiện đầu cho tại $$ t=0 $$.
+- Diễn giải: Điều kiện đầu và ngoại lực được xử lý chung trong một phương trình đại số.
 
-#### Cảm biến khởi động từ trạng thái lệch
-- Bài toán: Một cảm biến hay bộ lọc bắt đầu với trạng thái tích trữ ban đầu không bằng 0.
+#### Cảm biến khởi động từ trạng thái lệch cân bằng
+- Bài toán: Cảm biến hoặc bộ lọc bắt đầu hoạt động với năng lượng tích trữ ban đầu khác 0.
 - Mô hình:
 $$
 \mathcal{L}\{y'\}=sY-y(0),\qquad
 \mathcal{L}\{y''\}=s^2Y-sy(0)-y'(0).
 $$
-- Giả thiết và giới hạn: Điều kiện đầu đủ chính xác, hệ tuyến tính.
-- Diễn giải: Điều kiện đầu không còn là bước áp riêng sau cùng mà trở thành một phần hữu cơ của phép biến đổi.
+- Giả thiết và giới hạn: Hệ tuyến tính và biết chính xác trạng thái đầu.
+- Diễn giải: Điều kiện đầu trở thành một phần trực tiếp của bước biến đổi thay vì phải giải hệ hằng số ở cuối bài.
 
 #### Mô hình tài chính tuyến tính đơn giản
-- Bài toán: Một trạng thái vốn hay nợ chịu cả động lực nội tại lẫn dòng tiền vào ra.
-- Mô hình:
-$$ y'+ay=g(t),\qquad y(0)=y_0. $$
+- Bài toán: Trạng thái vốn hoặc dư nợ chịu đồng thời lãi suất nội tại và dòng tiền vào–ra.
+- Mô hình: $$ y'+ay=g(t) $$, $$ y(0)=y_0 $$.
 - Giả thiết và giới hạn: Tuyến tính hóa quanh quỹ đạo tham chiếu.
-- Diễn giải: Laplace giúp đưa bài toán về quan hệ hữu tỉ cho $$ Y(s) $$, sau đó đọc lại lời giải thời gian.
+- Diễn giải: Biến đổi Laplace đưa mô hình về hàm hữu tỉ theo $$ Y(s) $$, từ đó khôi phục quỹ đạo thời gian.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Giải IVP bằng Laplace là điểm hội tụ của toàn bộ bốn bài đầu chương: định nghĩa, bảng cơ bản, Laplace ngược và đạo hàm trong miền $$ s $$. Một hiểu lầm thường gặp là nghĩ Laplace chỉ đáng dùng khi bài "khó"; thực ra giá trị thật của nó là tính thống nhất, đặc biệt khi chuẩn bị sang forcing gián đoạn, xung hay hệ thống.
+Bài học này hội tụ bốn nội dung đầu chương: định nghĩa, bảng biến đổi cơ bản, biến đổi ngược và công thức đạo hàm. Giá trị lớn nhất của phương pháp không chỉ là giải nhanh vài bài cụ thể mà là tính thống nhất, chuẩn bị trực tiếp cho các bài về hàm bước, hàm xung và hàm truyền.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -202,35 +175,25 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Giải
-$$ y'+y=1,\qquad y(0)=2. $$
-Áp Laplace:
-$$ (sY-2)+Y=\frac{1}{s}. $$
-Suy ra
+Xét lại bài toán $$ y'+y=1 $$, $$ y(0)=2 $$. Áp dụng biến đổi Laplace ta có $$ (sY-2)+Y=\frac{1}{s} $$, dẫn đến
 $$
-(s+1)Y=\frac{1}{s}+2,
-\qquad
-Y=\frac{1}{s(s+1)}+\frac{2}{s+1}.
+(s+1)Y=\frac{1}{s}+2,\qquad Y=\frac{1}{s(s+1)}+\frac{2}{s+1}=\frac{1}{s}+\frac{1}{s+1}.
 $$
-Phân tích:
-$$ Y=\frac{1}{s}+\frac{1}{s+1}. $$
-Lấy ngược:
-$$ y(t)=1+e^{-t}. $$
-Lời giải cho thấy hệ tiến về trạng thái ổn định $$ 1 $$, còn phần $$ e^{-t} $$ chính là ảnh hưởng của điều kiện đầu.
+Biến đổi ngược thu được $$ y(t)=1+e^{-t} $$. Nghiệm cho thấy hệ tiến dần về giá trị ổn định $$ 1 $$, còn số hạng $$ e^{-t} $$ thể hiện độ lệch do điều kiện đầu suy giảm theo thời gian.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Thuần thục quy trình 6 bước giải IVP bằng Laplace.
+**Bậc đại học.** Thành thạo quy trình 6 bước giải IVP bằng biến đổi Laplace.
 
-**Bậc sau đại học.** So sánh Laplace với phương pháp cổ điển và đọc rõ phần quá độ, phần ổn định, cùng ý nghĩa của dữ kiện đầu trong miền $$ s $$.
+**Bậc sau đại học.** Đối chiếu với phương pháp cổ điển và tách rõ ảnh hưởng của điều kiện đầu (đáp ứng đầu vào bằng 0) với ảnh hưởng của ngoại lực (đáp ứng trạng thái đầu bằng 0) trong miền $$ s $$.
 
 ## Video tham khảo
 
-- xem trước: [Laplace: Solving ODE's | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=5av3kiejazQ) — MIT OpenCourseWare, tiếng Anh. MIT giải bài toán giá trị đầu bằng cách biến đổi ODE, kể cả dữ liệu đầu.
-- [Why Laplace transforms are so useful](https://www.youtube.com/watch?v=FE-hM1kRK4Y) — 3Blue1Brown, tiếng Anh. Vì sao biến đổi biến bài toán giá trị đầu vi phân thành đại số.
-- [Partial Fractions and Laplace Inverse | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=D6Rd1K93nSA) — MIT OpenCourseWare, tiếng Anh. Bước phân thức kết thúc nghiệm sau phần đại số theo s.
+- Xem trước: [Laplace: Solving ODE's | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=5av3kiejazQ) — MIT OpenCourseWare, tiếng Anh. Giải bài toán giá trị đầu bằng cách biến đổi toàn bộ ODE kèm điều kiện đầu.
+- [Why Laplace transforms are so useful](https://www.youtube.com/watch?v=FE-hM1kRK4Y) — 3Blue1Brown, tiếng Anh. Giải thích vì sao biến đổi Laplace chuyển bài toán vi phân thành đại số.
+- [Partial Fractions and Laplace Inverse | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=D6Rd1K93nSA) — MIT OpenCourseWare, tiếng Anh. Bước phân tích phân thức đơn để hoàn tất lời giải từ miền $$ s $$.
 
 ## Tài liệu tham khảo
-- Boyce & DiPrima — *Elementary Differential Equations*: phần giải IVP bằng Laplace rất rõ ràng và mạch lạc.
-- Zill — *Differential Equations with Boundary-Value Problems*: nhiều ví dụ luyện đúng kiểu bài trọng tâm của chương.
-- Ross — *Differential Equations*: gọn, trực tiếp, phù hợp để ôn quy trình chuẩn.
+- Boyce & DiPrima — *Elementary Differential Equations*: phần giải IVP bằng Laplace trình bày rõ ràng, hệ thống.
+- Zill — *Differential Equations with Boundary-Value Problems*: nhiều bài tập luyện đúng trọng tâm của chương.
+- Ross — *Differential Equations*: ngắn gọn, phù hợp để ôn quy trình chuẩn.

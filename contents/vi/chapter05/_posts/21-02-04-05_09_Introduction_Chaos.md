@@ -12,155 +12,155 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài học này mở cánh cửa đầu tiên vào hỗn loạn xác định, giúp sinh viên phân biệt hỗn loạn với ngẫu nhiên, hiểu ý tưởng nhạy cảm với điều kiện đầu, và thấy vì sao các hệ phi tuyến xác định vẫn có thể không dự báo được dài hạn.
+Bài học này giới thiệu khái niệm hỗn loạn tất định, giúp sinh viên phân biệt hỗn loạn với ngẫu nhiên, hiểu cơ chế phụ thuộc nhạy vào điều kiện đầu và nhận thấy vì sao một hệ phi tuyến hoàn toàn xác định vẫn có thể không dự báo được trong dài hạn.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm hệ phi tuyến, mặt phẳng pha, chu trình giới hạn và ít nhất một trực giác về hệ ba chiều. Bài học này không nhằm đi sâu kỹ thuật mà nhằm xây trực giác đúng và tránh hiểu lầm phổ biến.
+Sinh viên nên nắm vững hệ phi tuyến, mặt phẳng pha, chu trình giới hạn và có trực giác ban đầu về hệ ba chiều. Bài học không đi sâu vào kỹ thuật chứng minh mà tập trung xây dựng trực giác đúng và tránh các hiểu lầm phổ biến.
 
 ## Dẫn nhập
 
 ![Cấu trúc hỗn loạn và độ nhạy điều kiện đầu]({{ site.imgurl }}/chapter_img/chapter05/09_introduction_chaos.svg)
 
-Trong ngôn ngữ đời thường, "hỗn loạn" thường bị hiểu là hoàn toàn ngẫu nhiên và không có quy luật. Nhưng trong động lực học, hỗn loạn lại là điều gần như ngược lại: hệ hoàn toàn xác định bởi phương trình, không hề tung đồng xu nào, nhưng vẫn cực kỳ khó dự báo về lâu dài vì nhạy cảm rất mạnh với sai số ban đầu.
+Trong đời sống hằng ngày, từ "hỗn loạn" thường bị đồng nhất với sự ngẫu nhiên hoàn toàn và không theo quy luật nào. Tuy nhiên, trong động lực học, hỗn loạn mang ý nghĩa khác hẳn: hệ hoàn toàn tuân theo các phương trình tất định, không hề có yếu tố ngẫu nhiên, nhưng vẫn rất khó dự báo dài hạn do độ nhạy rất lớn đối với sai số ở điều kiện đầu.
 
-Đây là một bài quan trọng về mặt triết học của khóa học. Nó giúp sinh viên thấy rằng "có mô hình" không đồng nghĩa với "dự báo được dài hạn". Ngay cả khi mô hình rất rõ và tất định, động lực học phi tuyến vẫn có thể khuếch đại sai khác rất nhỏ tới mức lời tiên đoán dài hạn mất giá trị thực tế.
+Bài học này mang lại một nhận thức quan trọng cho toàn khóa học: sở hữu một mô hình toán học chính xác và tất định không đồng nghĩa với khả năng dự báo vô hạn trong tương lai. Động lực học phi tuyến có thể khuếch đại những sai lệch ban đầu cực nhỏ đến mức dự báo dài hạn mất ý nghĩa thực tiễn.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Hãy tưởng tượng hai hệ bắt đầu gần như giống hệt nhau. Nếu sai lệch nhỏ ban đầu được hệ khuếch đại theo thời gian, thì sau một lúc hai quỹ đạo sẽ tách xa nhau tới mức không còn giống nhau nữa. Đó là trực giác cốt lõi của hỗn loạn.
+Hãy xét hai trạng thái ban đầu gần như trùng khớp nhau. Nếu động lực học của hệ khuếch đại dần sai lệch nhỏ ban đầu theo thời gian, hai quỹ đạo sẽ nhanh chóng tách xa nhau đến mức không còn tương đồng. Đó là trực giác cốt lõi của hiện tượng hỗn loạn.
 
 ### Cách nhìn hình ảnh
 
-Trong các hệ hỗn loạn như Lorenz, quỹ đạo có vẻ bị hút vào một cấu trúc hình học nhất định nhưng không bao giờ lặp đúng và không đóng thành chu kỳ đơn giản. Ta có trật tự hình học ở mức toàn cục, nhưng bất định dự báo ở mức quỹ đạo cụ thể dài hạn.
+Trong các hệ hỗn loạn như hệ Lorenz, quỹ đạo bị hút vào một cấu trúc hình học giới hạn nhưng không bao giờ lặp lại chính xác và không khép thành chu kỳ đơn giản. Hệ đồng thời thể hiện trật tự hình học ở quy mô toàn cục và tính khó dự báo ở từng quỹ đạo cụ thể trong dài hạn.
 
 ### Cách nhìn hình thức
 
-Một dấu hiệu của hỗn loạn là nhạy cảm với điều kiện đầu. Nếu sai lệch ban đầu $$ \delta(0) $$ tăng gần như
+Một dấu hiệu đặc trưng của hỗn loạn là sự phụ thuộc nhạy vào điều kiện đầu. Nếu sai lệch ban đầu $$ \delta(0) $$ tăng trưởng xấp xỉ theo quy luật hàm mũ
 $$
-\lvert \delta(t)\rvert\approx \lvert \delta(0)\rverte^{\lambda t}
+\lvert \delta(t)\rvert\approx \lvert \delta(0)\rvert e^{\lambda t}
 $$
-với $$ \lambda>0 $$, thì hệ có ít nhất một số mũ Lyapunov dương. Một mô hình kinh điển là hệ Lorenz:
+với $$ \lambda>0 $$, hệ có ít nhất một số mũ Lyapunov dương. Một mô hình kinh điển là hệ phương trình Lorenz:
 $$ \dot{x}=\sigma(y-x), $$
 $$ \dot{y}=rx-y-xz, $$
 $$ \dot{z}=xy-bz. $$
 
 ## Những ngộ nhận thường gặp
 
-- "Hỗn loạn nghĩa là ngẫu nhiên hoàn toàn." Sai. Hệ vẫn tất định.
-- "Nếu hệ hỗn loạn thì không có quy luật nào cả." Sai. Có cấu trúc toàn cục rất mạnh như hấp dẫn lạ.
-- "Không dự báo được dài hạn nghĩa là mô hình sai." Không nhất thiết. Có thể mô hình đúng nhưng quá nhạy với sai số đầu.
-- "Mọi hệ phi tuyến đều hỗn loạn." Sai. Hỗn loạn là hiện tượng đặc biệt, không phải mặc định.
+- "Hỗn loạn có nghĩa là hoàn toàn ngẫu nhiên." Sai. Hệ hỗn loạn vẫn tuân theo phương trình tất định.
+- "Hệ hỗn loạn không có bất kỳ quy luật nào." Sai. Hệ vẫn có cấu trúc hình học toàn cục rõ nét, chẳng hạn tập hút lạ (strange attractor).
+- "Không dự báo được dài hạn chứng tỏ mô hình bị sai." Không nhất thiết. Mô hình có thể hoàn toàn đúng nhưng quá nhạy với sai số đo ở điều kiện đầu.
+- "Mọi hệ phi tuyến đều hỗn loạn." Sai. Hỗn loạn chỉ xuất hiện trong những điều kiện nhất định, không phải tính chất mặc định của mọi hệ phi tuyến.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Phân biệt tất định và dự báo được
+### Bước 1: Phân biệt tính tất định và khả năng dự báo
 
-Đây là điểm nhận thức quan trọng nhất.
+Làm rõ vì sao hai khái niệm này không đồng nhất với nhau.
 
-### Bước 2: Hiểu nhạy cảm với điều kiện đầu
+### Bước 2: Hiểu sự phụ thuộc nhạy vào điều kiện đầu
 
-Qua ví dụ và trực giác mũ Lyapunov.
+Tiếp cận thông qua ví dụ khuếch đại sai số và trực giác về số mũ Lyapunov.
 
-### Bước 3: Giới thiệu Lorenz như mô hình mẫu
+### Bước 3: Khảo sát hệ Lorenz như mô hình tiêu biểu
 
-Không cần giải chi tiết, chỉ cần hiểu cấu trúc.
+Tập trung vào cấu trúc động học tổng quát thay vì giải tường minh.
 
-### Bước 4: Nói về giới hạn dự báo
+### Bước 4: Liên hệ với giới hạn dự báo trong thực tế
 
-Liên hệ với khí tượng và các hệ thực.
+Gắn kết khái niệm với khí tượng học và các hệ kỹ thuật, tự nhiên.
 
-### Các checkpoint
+### Các điểm kiểm tra
 
-- Sinh viên có phân biệt được hỗn loạn với ngẫu nhiên hay không.
-- Sinh viên có hiểu vai trò của sai số ban đầu không.
-- Sinh viên có thấy vì sao hệ ba chiều mới mở cánh cửa cho hỗn loạn liên tục điển hình không.
+- Sinh viên có phân biệt rõ hỗn loạn tất định với quá trình ngẫu nhiên hay không.
+- Sinh viên có giải thích được vai trò của sai số điều kiện đầu hay không.
+- Sinh viên có hiểu vì sao hệ liên tục cần tối thiểu ba chiều mới có thể xuất hiện hỗn loạn hay không.
 
 ## Ví dụ được giải chi tiết
 
 ### Ví dụ 1: Sai số tăng theo hàm mũ
 
-Nếu
+Nếu sai lệch ban đầu là
 $$ \lvert \delta(0)\rvert=10^{-6} $$
-và
+và số mũ đặc trưng là
 $$ \lambda=1, $$
-thì sau thời gian $$ t=10 $$,
+thì sau khoảng thời gian $$ t=10 $$,
 $$ \lvert \delta(t)\rvert\approx 10^{-6}e^{10}. $$
-Sai số tăng lên rất lớn so với ban đầu. Ví dụ này giúp sinh viên thấy hỗn loạn không cần "nổ tức thì", chỉ cần khuếch đại liên tục.
+Sai lệch đã tăng lên rất lớn so với ban đầu. Ví dụ này cho thấy hỗn loạn không cần một cú nhảy đột ngột mà hoạt động thông qua sự khuếch đại liên tục.
 
 ### Ví dụ 2: Hệ Lorenz
 
-Với tham số cổ điển
+Với bộ tham số kinh điển
 $$ \sigma=10,\qquad r=28,\qquad b=\frac{8}{3}, $$
-quỹ đạo của Lorenz bị hút vào một cấu trúc hình cánh bướm nổi tiếng nhưng không tuần hoàn. Đây là ví dụ mẫu để giới thiệu hấp dẫn lạ.
+các quỹ đạo của hệ Lorenz bị hút vào một cấu trúc hình cánh bướm không tuần hoàn. Đây là ví dụ mẫu mực để giới thiệu khái niệm tập hút lạ.
 
 ### Ví dụ 3: Hỗn loạn không phải ngẫu nhiên
 
-Dù quỹ đạo Lorenz nhìn rất "loạn", nếu khởi đầu cùng chính xác một điều kiện đầu, hệ sẽ đi đúng cùng một quỹ đạo. Điều này là sự khác biệt bản chất giữa hỗn loạn và tung xúc xắc.
+Dù quỹ đạo của hệ Lorenz biến thiên rất phức tạp, nếu khởi tạo tại đúng cùng một điều kiện đầu thì hệ luôn đi theo đúng một quỹ đạo duy nhất. Đây là điểm phân biệt bản chất giữa hỗn loạn tất định và các quá trình ngẫu nhiên như gieo xúc xắc.
 
 ### Ví dụ 4: Giới hạn dự báo thời tiết
 
-Thời tiết là ví dụ nổi tiếng vì nó được mô hình hóa bằng các phương trình xác định nhưng việc đo dữ liệu ban đầu không bao giờ hoàn hảo. Sai số nhỏ ấy có thể khuếch đại, tạo ra giới hạn dự báo dài hạn. Đây là ứng dụng đời thật mạnh nhất của ý tưởng hỗn loạn.
+Khí quyển được mô tả bằng các phương trình vật lý tất định, nhưng dữ liệu quan trắc ban đầu luôn tồn tại sai số đo. Độ nhạy của hệ làm các sai số nhỏ này khuếch đại nhanh theo thời gian, tạo ra giới hạn tự nhiên cho dự báo thời tiết dài hạn.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao một hệ tất định vẫn có thể không dự báo được dài hạn?
-2. Hỗn loạn khác ngẫu nhiên ở điểm cốt lõi nào?
-3. Tại sao cấu trúc hình học toàn cục và bất định quỹ đạo cụ thể có thể cùng tồn tại?
+1. Vì sao một hệ tất định vẫn có thể không dự báo được trong dài hạn?
+2. Hỗn loạn khác với ngẫu nhiên ở điểm cốt lõi nào?
+3. Vì sao trật tự hình học toàn cục và tính bất định của từng quỹ đạo dài hạn lại có thể cùng tồn tại?
 
 ## Bài toán ứng dụng
 
-1. Trong khí tượng học, vì sao cải thiện dữ liệu ban đầu rất quan trọng nhưng vẫn không thể phá bỏ hoàn toàn giới hạn dự báo?
-2. Một hệ sinh học có phản hồi phi tuyến mạnh. Hãy giải thích vì sao mô hình tất định vẫn có thể cho hành vi thực nghiệm khó đoán.
-3. Trong kỹ thuật, vì sao việc phát hiện nhạy cảm điều kiện đầu có thể quan trọng hơn việc tìm nghiệm explicit?
+1. Trong khí tượng học, vì sao việc nâng cao độ chính xác của dữ liệu đo ban đầu rất có ích nhưng vẫn không thể loại bỏ hoàn toàn giới hạn dự báo?
+2. Một hệ sinh học có tương tác phi tuyến mạnh. Hãy giải thích vì sao một mô hình tất định vẫn có thể sinh ra dữ liệu thực nghiệm trông khó đoán.
+3. Trong kỹ thuật, vì sao việc phát hiện sớm độ nhạy với điều kiện đầu đôi khi quan trọng hơn việc tìm nghiệm tường minh?
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng câu hỏi: "Một hệ hoàn toàn xác định có thể không dự báo được dài hạn không?"
-- Cho sinh viên so sánh bằng lời giữa hỗn loạn và nhiễu ngẫu nhiên.
-- Dùng hình Lorenz như cơ hội để thảo luận "trật tự trong hỗn loạn".
-- Khuyến khích sinh viên mô tả mối quan hệ giữa sai số đo và giới hạn dự báo bằng ngôn ngữ đời thường trước khi viết công thức mũ Lyapunov.
+- Mở đầu bằng câu hỏi: một hệ hoàn toàn xác định có thể không dự báo được dài hạn hay không?
+- Yêu cầu sinh viên so sánh bằng lời giữa hỗn loạn tất định và nhiễu ngẫu nhiên.
+- Sử dụng hình ảnh tập hút Lorenz để thảo luận về sự tồn tại của cấu trúc trật tự bên trong hỗn loạn.
+- Khuyến khích sinh viên diễn đạt mối liên hệ giữa sai số đo và chân trời dự báo bằng ngôn ngữ thường ngày trước khi đưa vào công thức số mũ Lyapunov.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên giữ trọng tâm ở trực giác và ví dụ khí tượng. Không cần ép các em đi quá sâu vào định nghĩa hình thức của hỗn loạn ngay ở bài giới thiệu.
+Nên giữ trọng tâm ở trực giác vật lý và ví dụ dự báo thời tiết, tránh đi quá sâu vào các định nghĩa tôpô hình thức ngay trong bài giới thiệu.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể yêu cầu sinh viên khá giỏi đọc thêm về số mũ Lyapunov, hấp dẫn lạ hoặc so sánh hệ liên tục hỗn loạn với ánh xạ logistic rời rạc.
+Có thể yêu cầu sinh viên tìm hiểu thêm về số mũ Lyapunov, tập hút lạ hoặc so sánh hệ liên tục hỗn loạn với ánh xạ logistic rời rạc.
 
 ## Tóm tắt dễ nhớ
 
-Hỗn loạn không phải là không có quy luật, mà là có quy luật quá nhạy để dự báo dài hạn. Hệ vẫn tất định, nhưng sai số ban đầu tăng mạnh theo thời gian. Đây là bài học lớn của động lực học phi tuyến: biết phương trình chưa chắc đồng nghĩa với biết tương lai xa.
+Hỗn loạn không phải là tình trạng vô quy luật, mà là hệ có quy luật tất định nhưng quá nhạy với điều kiện đầu để dự báo dài hạn. Sai số nhỏ ban đầu bị khuếch đại nhanh theo thời gian, cho thấy việc biết phương trình vận động không đồng nghĩa với khả năng dự báo tương lai xa.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Khí tượng học
-- Bài toán: Mô hình thời tiết là tất định nhưng dự báo dài hạn vẫn có giới hạn.
+- Bài toán: Các phương trình mô tả thời tiết là tất định nhưng dự báo dài hạn vẫn có giới hạn.
 - Mô hình Lorenz:
 $$
 \dot{x}=\sigma(y-x),\qquad
 \dot{y}=rx-y-xz,\qquad
 \dot{z}=xy-bz.
 $$
-- Giả thiết và giới hạn: Đây là mô hình cực giản lược của đối lưu khí quyển.
-- Diễn giải: Quỹ đạo bị hút vào một cấu trúc hình học nhưng sai số đầu nhỏ tăng rất nhanh.
+- Giả thiết và giới hạn: Đây là mô hình rất giản lược của hiện tượng đối lưu khí quyển.
+- Diễn giải: Quỹ đạo nằm gọn trên một cấu trúc hình học giới hạn nhưng sai số đầu nhỏ bị khuếch đại rất nhanh.
 
 #### Mạch điện và dao động phi tuyến
-- Bài toán: Một hệ kỹ thuật tất định có thể cho tín hiệu rất phức tạp, khó dự báo.
-- Mô hình: Các bộ dao động cưỡng bức phi tuyến hoặc mạch công suất có thể có động học hỗn loạn.
-- Giả thiết và giới hạn: Mô hình thực có thêm nhiễu và chi tiết phần cứng.
-- Diễn giải: Hỗn loạn không phải ngẫu nhiên, mà là sự nhạy mạnh với điều kiện đầu.
+- Bài toán: Một hệ kỹ thuật tất định vẫn có thể tạo ra tín hiệu phức tạp, không tuần hoàn và khó dự báo.
+- Mô hình: Các bộ dao động phi tuyến chịu lực cưỡng bức hoặc mạch điện tử công suất có thể biểu hiện động học hỗn loạn.
+- Giả thiết và giới hạn: Hệ thực tế còn chịu ảnh hưởng của nhiễu và các đặc tính phần cứng.
+- Diễn giải: Tính phức tạp của tín hiệu không nhất thiết đến từ nhiễu ngẫu nhiên mà có thể xuất phát từ độ nhạy với điều kiện đầu.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Hỗn loạn xác định cho thấy "biết phương trình" không đồng nghĩa với "biết tương lai xa". Một bẫy phổ biến là đồng nhất hỗn loạn với nhiễu ngẫu nhiên. Thực ra quỹ đạo hỗn loạn vẫn đi theo luật tất định, nhưng sai số đo ban đầu bị khuếch đại. Bài này mở rộng động lực học phi tuyến từ mặt phẳng pha sang không gian trạng thái nhiều chiều.
+Hỗn loạn tất định cho thấy việc biết chính xác phương trình không đồng nghĩa với dự báo được tương lai xa. Cần tránh đồng nhất hỗn loạn với nhiễu ngẫu nhiên: quỹ đạo hỗn loạn tuân theo quy luật hoàn toàn xác định nhưng khuếch đại sai số đo ban đầu. Bài học này mở rộng động lực học phi tuyến từ mặt phẳng pha hai chiều sang không gian trạng thái nhiều chiều.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -196,25 +196,25 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Nếu hai trạng thái đầu chỉ lệch nhau cỡ $$ 10^{-4} $$ nhưng khoảng cách tăng gần như
+Nếu hai trạng thái ban đầu chỉ lệch nhau khoảng $$ 10^{-4} $$ nhưng khoảng cách giữa hai quỹ đạo tăng xấp xỉ theo
 $$
-\lvert \delta(t)\rvert\approx \lvert \delta(0)\rverte^{\lambda t}
+\lvert \delta(t)\rvert\approx \lvert \delta(0)\rvert e^{\lambda t}
 $$
-với $$ \lambda>0 $$, thì sau thời gian vừa đủ dài hai dự báo sẽ tách xa nhau rõ rệt. Đây là cốt lõi của giới hạn dự báo trong khí tượng.
+với $$ \lambda>0 $$, thì sau một khoảng thời gian đủ dài, hai dự báo sẽ tách xa nhau hoàn toàn. Đây là bản chất toán học của giới hạn dự báo trong khí tượng học.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Tập trung vào phân biệt hỗn loạn với ngẫu nhiên và hiểu nhạy cảm điều kiện đầu.
+**Bậc đại học.** Phân biệt hỗn loạn tất định với ngẫu nhiên và hiểu khái niệm phụ thuộc nhạy vào điều kiện đầu.
 
-**Bậc sau đại học.** Giới thiệu số mũ Lyapunov, hấp dẫn lạ, lát cắt Poincare và entropy tôpô.
+**Bậc sau đại học.** Tìm hiểu số mũ Lyapunov, tập hút lạ, lát cắt Poincaré và entropy tôpô.
 
 ## Video tham khảo
 
-- xem trước: [MAE5790-16 waterwheel equations and Lorenz equations](https://www.youtube.com/watch?v=U-bWDtbB4qY) — Cornell MAE, tiếng Anh. Strogatz suy các phương trình Lorenz từ bánh xe nước hỗn loạn.
-- [MAE5790-17 Chaos in the Lorenz equations](https://www.youtube.com/watch?v=gscKcPAm-H0) — Cornell MAE, tiếng Anh. Hỗn loạn ngay trong các phương trình Lorenz.
-- [MAE5790-15 Chaotic waterwheel](https://www.youtube.com/watch?v=HljJv7Hf6Zo) — Cornell MAE, tiếng Anh. Thí nghiệm bánh xe nước làm hiện sự phụ thuộc nhạy vào điều kiện đầu.
+- Xem trước: [MAE5790-16 waterwheel equations and Lorenz equations](https://www.youtube.com/watch?v=U-bWDtbB4qY) — Cornell MAE, tiếng Anh. Strogatz xây dựng hệ phương trình Lorenz từ mô hình bánh xe nước hỗn loạn.
+- [MAE5790-17 Chaos in the Lorenz equations](https://www.youtube.com/watch?v=gscKcPAm-H0) — Cornell MAE, tiếng Anh. Phân tích hiện tượng hỗn loạn trong hệ phương trình Lorenz.
+- [MAE5790-15 Chaotic waterwheel](https://www.youtube.com/watch?v=HljJv7Hf6Zo) — Cornell MAE, tiếng Anh. Thí nghiệm bánh xe nước minh họa trực tiếp sự phụ thuộc nhạy vào điều kiện đầu.
 
 ## Tài liệu tham khảo
 
-- Strogatz, Chương 9: giới thiệu Lorenz và trực giác hỗn loạn rất tốt.
-- Arnold, Chương 5: hữu ích để đặt hỗn loạn vào bức tranh rộng hơn của động lực học phi tuyến.
+- Strogatz, Chương 9: trình bày rõ hệ Lorenz và trực giác về hỗn loạn.
+- Arnold, Chương 5: hữu ích để đặt hiện tượng hỗn loạn vào bức tranh chung của động lực học phi tuyến.

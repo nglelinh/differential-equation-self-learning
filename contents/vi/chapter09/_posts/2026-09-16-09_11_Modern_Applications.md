@@ -12,63 +12,63 @@ lesson_type: optional
 
 ## Mục tiêu
 
-Bài tùy chọn này nối phương trình nhiệt, nhân Gauss và nguyên lý cực đại với hai phát triển 2021–2024: bộ giải vật lý-thông tin và học toán tử cho khuếch tán, cùng mô hình sinh score mà quá trình thuận là SDE khuếch tán. Sinh viên cần nhận ra nhân nhiệt trong cả hai câu chuyện và giải thích vì sao nguyên lý cực đại là unit test cho trường nhiệt độ học được. Việc suy ra và phân tích Fourier của phương trình nhiệt vẫn là lý thuyết chính thức.
+Bài tùy chọn này kết nối phương trình nhiệt, nhân Gaussian và nguyên lý cực đại với hai hướng phát triển giai đoạn 2021–2024: các bộ giải mạng nơ-ron tích hợp vật lý (PINN) cùng học toán tử cho bài toán khuếch tán, và mô hình sinh dựa trên hàm score (score-based generative model) có quá trình thuận là phương trình vi phân ngẫu nhiên (SDE) khuếch tán. Sau bài học, sinh viên có thể nhận diện nhân nhiệt trong cả hai lĩnh vực và giải thích vì sao nguyên lý cực đại đóng vai trò tiêu chuẩn kiểm chứng cơ bản cho trường nhiệt độ học được. Việc thiết lập và phân tích Fourier cho phương trình nhiệt vẫn là nền tảng lý thuyết chính thức.
 
 ## Kiến thức nền
 
-Sinh viên cần biết suy ra phương trình nhiệt, tách biến, nghiệm cơ bản trên đường thẳng, và nguyên lý cực đại. Bài phương pháp số tùy chọn của chương hữu ích nhưng không bắt buộc.
+Sinh viên cần nắm cách thiết lập phương trình nhiệt, phương pháp tách biến, nghiệm cơ bản trên toàn trục thực và nguyên lý cực đại. Bài phương pháp sai phân hữu hạn tùy chọn của chương là tài liệu bổ trợ hữu ích nhưng không bắt buộc.
 
 ## Dẫn nhập
 
-Phương trình nhiệt $$u_t=\alpha^2 u_{xx}$$ là mô hình liên tục của làm mượt. Nhân của nó là Gauss rộng dần theo thời gian, và nguyên lý cực đại cấm điểm nóng nội tại chưa có trên biên parabolic. Hai sự thật ấy nay là hạ tầng học máy.
+Phương trình nhiệt $$u_t=\alpha^2 u_{xx}$$ là mô hình liên tục điển hình của quá trình làm mượt: nhân tích phân của nó là hàm Gaussian trải rộng theo thời gian, còn nguyên lý cực đại loại trừ khả năng tự xuất hiện điểm nóng mới bên trong miền ngoài biên parabolic. Hai tính chất nền tảng này hiện đang đóng vai trò trụ cột trong nhiều phương pháp học máy khoa học.
 
-Ở phía SciML, PINN, DeepONet và Fourier neural operator được huấn luyện như bộ giải khuếch tán và surrogate tham số cho dẫn nhiệt, dòng môi trường xốp, và các bài parabolic liên quan. Hao và cộng sự (*PINNacle*, NeurIPS 2024) gồm các bài dẫn nhiệt trong hơn hai mươi benchmark PDE. Li và cộng sự (PINO, [arXiv:2111.03794](https://arxiv.org/abs/2111.03794)) kết hợp học toán tử với phần dư vật lý để tập dữ liệu thô vẫn được tinh bằng chính toán tử nhiệt.
+Trong mảng học máy khoa học (SciML), PINN, DeepONet và Fourier neural operator được huấn luyện làm bộ giải khuếch tán và mô hình thay thế theo tham số cho bài toán dẫn nhiệt, dòng chảy trong môi trường xốp và các PDE parabolic liên quan. Hao và cộng sự (*PINNacle*, NeurIPS 2024) đưa các bài toán dẫn nhiệt vào bộ hơn hai mươi chuẩn đánh giá PDE. Li và cộng sự (PINO, [arXiv:2111.03794](https://arxiv.org/abs/2111.03794)) kết hợp học toán tử với phần dư phương trình vật lý để dữ liệu huấn luyện trên lưới thô vẫn được tinh chỉnh trực tiếp bởi toán tử nhiệt.
 
-Ở phía mô hình sinh, Song, Sohl-Dickstein, Kingma, Kumar, Ermon và Poole (*Score-Based Generative Modeling through Stochastic Differential Equations*, ICLR 2021; [arXiv:2011.13456](https://arxiv.org/abs/2011.13456)) lấy một phân phối dữ liệu, tiến hóa nó bằng SDE khuếch tán mà luật thỏa phương trình Fokker–Planck, rồi đảo SDE để lấy mẫu. Quá trình thuận là dòng nhiệt trên mật độ. Hiểu nhân và nguyên lý cực đại vì thế không phải loại suy; đó là lý do quá trình ngược có thể đặt chỉnh sau khi học score $$\nabla\log p_t$$.
+Trong mảng mô hình sinh, Song, Sohl-Dickstein, Kingma, Kumar, Ermon và Poole (*Score-Based Generative Modeling through Stochastic Differential Equations*, ICLR 2021; [arXiv:2011.13456](https://arxiv.org/abs/2011.13456)) lấy một phân bố dữ liệu, cho tiến hóa theo một SDE khuếch tán có mật độ xác suất thỏa mãn phương trình Fokker–Planck, rồi đảo ngược SDE theo thời gian để sinh mẫu mới. Quá trình thuận chính là một dòng khuếch tán trên hàm mật độ. Do đó, việc hiểu nhân nhiệt và nguyên lý cực đại không chỉ mang tính ví von, mà giải thích trực tiếp vì sao quá trình đảo ngược có thể đặt chỉnh sau khi học hàm score $$\nabla\log p_t$$.
 
 ## Khái niệm then chốt
 
 ### Bộ giải học được cho phương trình nhiệt
 
-PINN cho $$u_t-\alpha^2 u_{xx}=0$$ collocates điểm phần dư trong không-thời gian. Mô hình toán tử thay vào đó học ánh xạ từ dữ liệu đầu $$u(\cdot,0)$$, hoặc từ trường dẫn, tới $$u(\cdot,T)$$. Đối tượng thứ hai gần nhân nhiệt hơn: nó là toán tử Green xấp xỉ. Phép thử siêu phân giải, đánh giá mô hình trên lưới mịn hơn lưới huấn luyện, chỉ có nghĩa vì toán tử nhiệt thật là ánh xạ giữa không gian hàm, không phải giữa lưới pixel.
+Mạng PINN giải phương trình $$u_t-\alpha^2 u_{xx}=0$$ bằng cách tối thiểu hóa phần dư PDE tại các điểm đặt (collocation points) trong miền không gian–thời gian. Ngược lại, các mô hình học toán tử trực tiếp học ánh xạ từ dữ liệu ban đầu $$u(\cdot,0)$$ hoặc từ trường hệ số dẫn nhiệt sang nghiệm $$u(\cdot,T)$$. Cách tiếp cận thứ hai gần với nhân nhiệt hơn vì nó xấp xỉ trực tiếp toán tử Green. Phép thử siêu phân giải (đánh giá mô hình trên lưới mịn hơn lưới huấn luyện) chỉ có ý nghĩa vì toán tử nhiệt thực chất là ánh xạ giữa các không gian hàm chứ không phụ thuộc vào một lưới điểm cố định.
 
-### Nhân như tích chập Gauss
+### Nhân nhiệt như phép tích chập Gaussian
 
-Trên đường thẳng,
+Trên toàn trục thực,
 
 $$
 u(x,t)=\frac{1}{\sqrt{4\pi\alpha^2 t}}\int_{\mathbb{R}}\exp\Bigl(-\frac{(x-y)^2}{4\alpha^2 t}\Bigr)u_0(y)\,dy.
 $$
 
-Mô hình score dùng tích chập họ hàng gần để biến luật dữ liệu phức tạp thành luật gần Gauss. SDE ngược rồi khử nhiễu. Sinh viên đã tính nhân này bằng biến đổi Fourier đang nhìn cùng Gauss, nay dùng như bộ sinh mẫu chứ không như công thức nhiệt độ.
+Các mô hình dựa trên score sử dụng một phép tích chập tương tự để biến phân bố dữ liệu phức tạp thành phân bố gần Gaussian, sau đó chạy SDE ngược để khử nhiễu và sinh mẫu. Khi đã tính nhân nhiệt này bằng biến đổi Fourier, sinh viên đang tiếp cận chính hàm Gaussian đó, chỉ khác là nó được dùng cho bài toán sinh mẫu thay vì tính phân bố nhiệt độ.
 
-### Nguyên lý cực đại như chẩn đoán
+### Nguyên lý cực đại như công cụ chẩn đoán
 
-Nhiệt độ học được vượt cực đại đầu và biên không phải bộ giải hơi sai; đó là bộ giải đã rời định lý. Benchmark kiểu PINNacle vì thế nên báo vi phạm ràng buộc cũng như lỗi $$L^2$$. Cùng chẩn đoán áp cho khuếch tán sinh: quá trình ngược tập trung khối sắc hơn score ước lượng cho phép đang phá cấu trúc Fokker–Planck.
+Nếu một trường nhiệt độ do mạng dự đoán vượt quá cực đại của dữ liệu ban đầu và dữ liệu biên, đó không chỉ là sai số xấp xỉ nhỏ mà là dấu hiệu mô hình đã vi phạm trực tiếp định lý của bài toán. Vì vậy, các bộ chuẩn đánh giá như PINNacle cần báo cáo mức độ vi phạm ràng buộc vật lý song song với sai số $$L^2$$. Nguyên tắc chẩn đoán tương tự cũng áp dụng cho khuếch tán sinh: nếu quá trình ngược tập trung khối xác suất sắc hơn mức hàm score ước lượng cho phép, mô hình đang phá vỡ cấu trúc Fokker–Planck.
 
-### Nhân quả theo thời gian
+### Tính nhân quả theo thời gian
 
-Wang, Sankaran và Perdikaris (CMAME 2024) cho thấy PINN xem thời gian như chỉ một tọa độ collocation khác có thể phá nhân quả parabolic và thất bại trên tiến hóa hỗn loạn hoặc turbulent. Với phương trình nhiệt vấn đề nhẹ hơn nhưng có thật: điểm phần dư lúc muộn không được phép “giải thích hết” trường sớm không nhất quán.
+Wang, Sankaran và Perdikaris (*CMAME* 2024) chỉ ra rằng nếu PINN coi biến thời gian chỉ như một tọa độ đặt điểm thông thường, mô hình có thể vi phạm tính nhân quả của bài toán parabolic và thất bại trên các hệ hỗn loạn hoặc chảy rối. Đối với phương trình nhiệt, hiện tượng này nhẹ hơn nhưng vẫn hiện hữu: phần dư tại các thời điểm muộn không được phép bù đắp cho một trường nghiệm sai lệch ở các thời điểm sớm.
 
 ## Phương pháp và kỹ thuật
 
-- **PINN / PINN nhân quả.** Tốt cho nhận dạng dẫn ngược và hình học không đều; mong manh trên chân trời dài và lớp nhiệt mỏng.
-- **Neural operator (FNO, DeepONet, PINO).** Tốt cho họ dữ liệu đầu hoặc hệ số; phải kiểm ở độ phân giải mới và đối chiếu nhân trên đường thẳng.
-- **Mô hình score / khuếch tán.** Tốt cho lấy mẫu từ luật dữ liệu chiều cao; mối liên hệ với chương này là cấu trúc Fokker–Planck / nhiệt, không phải tuyên bố chúng thay bộ giải PDE.
+- **PINN và PINN bảo toàn nhân quả.** Phù hợp cho bài toán ngược nhận dạng hệ số dẫn nhiệt và miền hình học không đều, nhưng dễ kém ổn định trên khoảng thời gian dài hoặc khi xuất hiện lớp nhiệt mỏng.
+- **Mạng toán tử (FNO, DeepONet, PINO).** Phù hợp cho họ dữ liệu ban đầu hoặc họ hệ số đa dạng; cần kiểm chứng trên độ phân giải mới và đối chiếu với nhân nhiệt trên trục thực.
+- **Mô hình score / khuếch tán.** Phù hợp để lấy mẫu từ phân bố dữ liệu nhiều chiều; điểm giao với chương này nằm ở cấu trúc Fokker–Planck và phương trình nhiệt, không nhằm thay thế các bộ giải PDE truyền thống.
 
-Sơ đồ sai phân hữu hạn từ bài số tùy chọn vẫn là nghiệm chuẩn huấn luyện và kiểm hai phương pháp đầu.
+Các sơ đồ sai phân hữu hạn trong bài phương pháp số tùy chọn vẫn giữ vai trò bộ sinh nghiệm tham chiếu để huấn luyện và kiểm chứng hai nhóm phương pháp đầu tiên.
 
 ## Ví dụ
 
-### Ví dụ 1: Kiểm nhân trên đường thẳng
+### Ví dụ 1: Kiểm chứng nhân nhiệt trên toàn trục thực
 
-Nếu mô hình toán tử được huấn luyện trên dữ liệu đầu giá compact trên khoảng lớn, đáp ứng của nó trước xấp xỉ delta phải gần Gauss phương sai $$2\alpha^2 T$$. Đo phương sai ấy là câu hỏi thi nhân nhiệt.
+Nếu một mô hình toán tử được huấn luyện trên dữ liệu ban đầu có giá compact trong một khoảng đủ lớn, đáp ứng của nó trước một xung xấp xỉ hàm delta Dirac phải tiệm cận hàm Gaussian có phương sai $$2\alpha^2 T$$. Việc đo phương sai này là một phép kiểm chứng trực tiếp đối với nhân nhiệt học được.
 
-### Ví dụ 2: Phá nguyên lý cực đại
+### Ví dụ 2: Kiểm tra vi phạm nguyên lý cực đại
 
-Huấn luyện PINN nhỏ trên $$u_t=u_{xx}$$ với $$u(0,t)=u(1,t)=0$$ và $$u(x,0)=x(1-x)$$, rồi soi $$\max u_\theta$$. Nếu cực đại vượt $$1/4$$, mô hình đã phá định lý và không bảng $$L^2$$ nào bào chữa được.
+Huấn luyện một mạng PINN cỡ nhỏ cho phương trình $$u_t=u_{xx}$$ với điều kiện biên $$u(0,t)=u(1,t)=0$$ và điều kiện ban đầu $$u(x,0)=x(1-x)$$, sau đó kiểm tra giá trị $$\max u_\theta$$. Nếu cực đại vượt quá $$1/4$$, mô hình đã vi phạm nguyên lý cực đại dù sai số trung bình $$L^2$$ có thể vẫn nhỏ.
 
-### Ví dụ 3: Bước nhiệt rời rạc và bước score
+### Ví dụ 3: Bước cập nhật nhiệt rời rạc và bước khuếch tán
 
 ```python
 import numpy as np
@@ -79,35 +79,35 @@ u_next[1:-1] = u[1:-1] + 0.25 * (u[2:] - 2 * u[1:-1] + u[:-2])
 print(u_next)
 ```
 
-Bộ lấy mẫu khuếch tán nổ phương sai dùng trung bình địa phương tương tự, rồi thêm nhiễu. Phần tất định là phương trình nhiệt; nhiễu thuộc mối quan tâm của chương ngẫu nhiên.
+Bộ lấy mẫu khuếch tán tăng phương sai (variance-exploding) áp dụng một phép lấy trung bình cục bộ tương tự rồi cộng thêm nhiễu ngẫu nhiên. Phần tất định chính là bước tiến hóa của phương trình nhiệt, còn phần nhiễu gắn với mô hình ngẫu nhiên.
 
 ## Ứng dụng
 
-Bộ giải nhiệt học được xuất hiện trong thiết kế nhiệt, mô hình pin, và nhận dạng nguồn nhiệt y khoa. Mô hình thời tiết học toán tử xem khuếch tán và hòa trộn khí quyển như phần của surrogate Fourier lớn hơn. Mô hình score đã trở thành bộ sinh mặc định trong thị giác và, ngày càng, prior cho bài ngược ảnh y khoa (Song và cộng sự, ICLR 2022; Chung và cộng sự, *Diffusion Posterior Sampling*, ICLR 2023). Sinh học và tài chính, đã nêu ở bài ứng dụng khuếch tán tùy chọn, nay có lớp tính toán thứ hai: thay vì giải một Black–Scholes hoặc Fisher, ta có thể học một họ ánh xạ ấy, hoặc lấy mẫu từ khuếch tán huấn luyện trên quỹ đạo lịch sử.
+Các bộ giải nhiệt dựa trên học máy được ứng dụng trong thiết kế quản lý nhiệt, mô hình hóa pin và nhận dạng nguồn nhiệt y sinh. Trong dự báo thời tiết bằng học toán tử, quá trình khuếch tán và hòa trộn khí quyển là một phần của mô hình thay thế Fourier quy mô lớn. Mô hình dựa trên score đã trở thành phương pháp sinh mẫu phổ biến trong thị giác máy tính và ngày càng được dùng làm phân bố tiên nghiệm (prior) cho bài toán ngược trong chẩn đoán hình ảnh y khoa (Song và cộng sự, ICLR 2022; Chung và cộng sự, *Diffusion Posterior Sampling*, ICLR 2023). Các bài toán sinh học và tài chính nêu ở bài ứng dụng khuếch tán cũng có thêm một lớp công cụ mới: thay vì chỉ giải từng phương trình Black–Scholes hoặc Fisher riêng lẻ, ta có thể học cả họ ánh xạ nghiệm hoặc lấy mẫu từ mô hình khuếch tán huấn luyện trên chuỗi dữ liệu lịch sử.
 
 ## Thách thức và hướng mở rộng
 
-Khuếch tán thời gian dài trên lưới mịn đắt để mô phỏng cho dữ liệu huấn luyện, nên mô hình toán tử có thể thừa hưởng độ đo thực nghiệm lệch. PINN khó với dẫn đa thang. Khuếch tán sinh đòi nhiều đánh giá hàm và khớp score cẩn thận; phương trình Fokker–Planck của chúng chiều cao và không thay thế một giải PDE đặt chỉnh. Khuếch tán dị hướng và suy biến phá bức tranh Gauss đơn giản. Mô hình có thể khớp marginal tại thời $$T$$ vẫn có nhân trung gian sai.
+Mô phỏng khuếch tán trên khoảng thời gian dài với lưới mịn đòi hỏi chi phí tính toán lớn để tạo dữ liệu huấn luyện, khiến các mô hình toán tử dễ chịu ảnh hưởng của phân bố mẫu lệch. Mạng PINN gặp khó khăn với hệ số dẫn nhiệt đa thang đo. Các mô hình khuếch tán sinh đòi hỏi nhiều bước đánh giá hàm và ước lượng score chính xác; phương trình Fokker–Planck tương ứng có số chiều rất cao và không thay thế cho bộ giải PDE đặt chỉnh. Ngoài ra, khuếch tán dị hướng hoặc suy biến làm mất dạng Gaussian đơn giản, và một mô hình khớp tốt phân bố biên tại thời điểm cuối $$T$$ vẫn có thể học sai nhân chuyển tiếp ở các thời điểm trung gian.
 
-Nếu bộ giải nhiệt học được phá nguyên lý cực đại nhưng thắng benchmark, điều ấy nghĩa là gì về mặt vật lý? Nghĩa là benchmark đang đo đại lượng sai.
+Nếu một bộ giải nhiệt học được vi phạm nguyên lý cực đại nhưng đạt điểm cao trên bảng đánh giá, điều đó cho thấy tiêu chí đánh giá chưa phản ánh đúng yêu cầu vật lý của bài toán.
 
 ## Video tham khảo
 
-- xem trước: [Diffusion and Score-Based Generative Models](https://www.youtube.com/watch?v=wMmqCMwuM2Q) — MITCBMM, tiếng Anh. MIT CBMM về khuếch tán và mô hình sinh dựa trên score, chủ đề hiện đại của bài.
-- [Physics Informed Neural Networks (PINNs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=-zrY7P2dVC4) — Steve Brunton, tiếng Anh. Một mạng có thông tin vật lý cho PDE khuếch tán, họ hàng tính toán khoa học của các mô hình ấy.
-- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Phương trình nhiệt cổ điển mà các mô hình khuếch tán học được được xây từ đó.
+- Xem trước: [Diffusion and Score-Based Generative Models](https://www.youtube.com/watch?v=wMmqCMwuM2Q) — MITCBMM, tiếng Anh. Giới thiệu khuếch tán và mô hình sinh dựa trên hàm score, chủ đề hiện đại trọng tâm của bài.
+- [Physics Informed Neural Networks (PINNs) (Physics Informed Machine Learning)](https://www.youtube.com/watch?v=-zrY7P2dVC4) — Steve Brunton, tiếng Anh. Trình bày mạng nơ-ron tích hợp vật lý cho các bài toán PDE khuếch tán.
+- [Solving the heat equation | DE3](https://www.youtube.com/watch?v=ToIXSwZ1pJU) — 3Blue1Brown, tiếng Anh. Ôn lại phương trình nhiệt cổ điển làm nền tảng cho các mô hình khuếch tán hiện đại.
 
 ## Bài tập
 
-1. **Phương sai của nhân.** Từ nghiệm cơ bản, chỉ ra khối delta tại gốc có phương sai $$2\alpha^2 t$$ tại thời $$t$$. Làm sao ước lượng $$\alpha$$ từ hàm Green học được?
+1. **Phương sai của nhân nhiệt.** Từ biểu thức nghiệm cơ bản, hãy chứng minh phân bố xuất phát từ khối delta tại gốc có phương sai $$2\alpha^2 t$$ tại thời điểm $$t$$. Làm thế nào ước lượng hệ số $$\alpha$$ từ hàm Green học được?
 
-2. **Nguyên lý cực đại như mất mát.** Đề xuất phạt hinge tính phí PINN mỗi khi $$u_\theta$$ vượt cực đại biên. Định lý nào bảo đảm nghiệm thật trả không gì?
+2. **Đưa nguyên lý cực đại vào hàm mất mát.** Đề xuất một số hạng phạt dạng hinge áp lên PINN mỗi khi $$u_\theta$$ vượt quá cực đại trên biên parabolic. Định lý nào bảo đảm nghiệm chính xác có giá trị phạt này bằng 0?
 
-3. **SDE thuận và nhiệt.** Với SDE $$dX=\sigma\,dW$$, viết phương trình Fokker–Planck cho mật độ và đồng nhất với phương trình nhiệt. $$\alpha$$ theo $$\sigma$$ là gì?
+3. **SDE thuận và phương trình nhiệt.** Với SDE $$dX=\sigma\,dW$$, hãy viết phương trình Fokker–Planck cho hàm mật độ xác suất và đối chiếu với phương trình nhiệt. Hệ số $$\alpha$$ phụ thuộc vào $$\sigma$$ theo công thức nào?
 
-4. **Thí nghiệm tính toán.** Cài sơ đồ nhiệt hiện và mô hình toán tử nhỏ (thậm chí ánh xạ tuyến tính trên giá trị lưới) học một bước thời gian. So nhân của chúng bằng cách áp cả hai lên delta rời rạc.
+4. **Thí nghiệm tính toán.** Cài đặt sơ đồ nhiệt tường minh và một mô hình toán tử đơn giản (chẳng hạn ánh xạ tuyến tính trên các giá trị lưới) để học một bước thời gian. So sánh nhân của hai phương pháp bằng cách tác động cả hai lên một xung delta rời rạc.
 
-5. **Khám phá mở.** Đọc Song và cộng sự (ICLR 2021) và một bài nhiệt PINNacle (2024). Viết một trang giải thích cách dùng khuếch tán nào — giải $$u_t=\alpha^2\Delta u$$, hay lấy mẫu bằng thêm nhiễu rồi khử nhiễu — gần nghiệm cơ bản của chương hơn.
+5. **Tìm hiểu mở rộng.** Đọc bài báo của Song và cộng sự (ICLR 2021) và một bài toán dẫn nhiệt trong bộ chuẩn PINNacle (2024). Viết một trang so sánh xem cách sử dụng khuếch tán nào — giải trực tiếp $$u_t=\alpha^2\Delta u$$ hay sinh mẫu bằng thêm nhiễu rồi khử nhiễu — gần với nghiệm cơ bản của chương hơn.
 
 ## Tài liệu
 

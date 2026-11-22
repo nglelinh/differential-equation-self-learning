@@ -13,48 +13,48 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này trình bày phương pháp tách biến cho phương trình sóng trên đoạn hữu hạn, nơi điều kiện biên tạo ra các sóng dừng và các tần số riêng. Sau bài học, sinh viên cần biết cách chuyển PDE thành bài toán trị riêng không gian cùng ODE thời gian, hiểu vì sao các mode riêng là sóng dừng, và thấy được cách dữ liệu đầu được khai triển theo các họa âm của dây.
+Bài học này trình bày phương pháp tách biến cho phương trình sóng trên đoạn hữu hạn, nơi điều kiện biên tạo ra các sóng dừng và các tần số riêng. Sau bài học, sinh viên cần biết cách đưa PDE về bài toán trị riêng không gian kết hợp với ODE theo thời gian, hiểu vì sao các mode riêng là sóng dừng và nắm cách khai triển điều kiện ban đầu theo các họa âm của dây.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm bài toán trị riêng Sturm-Liouville, khai triển Fourier sine và điều kiện đầu của phương trình sóng. Bài này là nơi Fourier, giá trị riêng và vật lý sóng gặp nhau rõ nhất.
+Sinh viên cần nắm bài toán trị riêng Sturm-Liouville, khai triển chuỗi Fourier sin và dạng điều kiện ban đầu của phương trình sóng. Đây là nơi lý thuyết Fourier, trị riêng và vật lý dao động kết nối trực tiếp với nhau.
 
 ## Dẫn nhập
 
-Trên toàn trục, nghiệm d'Alembert cho ta sóng chạy. Nhưng trên một đoạn hữu hạn, nhất là với hai đầu dây bị cố định, sóng không thể cứ chạy mãi mà không phản xạ. Hệ bắt đầu chọn ra những mode đặc biệt tương thích với biên. Những mode đó không dịch chuyển như sóng chạy đơn lẻ, mà dao động tại chỗ. Chúng được gọi là sóng dừng.
+Trên toàn trục thực, nghiệm d'Alembert mô tả các sóng chạy tự do. Tuy nhiên, trên một đoạn hữu hạn có hai đầu cố định, sóng không thể truyền mãi mà liên tục phản xạ qua lại giữa hai biên. Sự giao thoa đó chọn lọc ra các dạng dao động đặc trưng tương thích với điều kiện biên: chúng không dịch chuyển tịnh tiến như sóng chạy đơn lẻ mà dao động tại chỗ, gọi là sóng dừng.
 
-Vì vậy bài này rất quan trọng: nó chỉ ra cách hình học của miền và điều kiện biên biến bài toán sóng thành một bài toán phổ. Âm thanh của dây đàn chính là tổng của các mode dừng này.
+Như vậy, hình học miền và điều kiện biên chuyển bài toán truyền sóng thành một bài toán phổ. Âm thanh phát ra từ một sợi dây đàn chính là sự chồng chất của các mode sóng dừng này.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Một dây đàn bị kẹp ở hai đầu không thể rung với hình dạng bất kỳ. Chỉ những hình dạng vừa khít với hai đầu cố định mới tồn tại lâu dài như các mode dao động tự nhiên. Tách biến là cách toán học để tìm chính các mode "vừa khít" đó.
+Một sợi dây đàn cố định hai đầu không thể duy trì ổn định mọi hình dạng dao động tùy ý. Chỉ những hình dạng triệt tiêu đúng tại hai đầu cố định mới tồn tại như các mode dao động tự nhiên. Phương pháp tách biến giúp tìm chính xác họ mode đó.
 
 ### Cách nhìn hình ảnh
 
-Mode đầu tiên có một bụng và không có nút trong nội thất, mode thứ hai có hai bụng và một nút giữa, mode thứ ba có nhiều nút hơn. Mỗi mode dao động theo thời gian nhưng giữ nguyên hình dạng không gian. Hình ảnh này giải thích thế nào là sóng dừng.
+Mode đầu tiên có một bụng sóng và không có điểm nút bên trong đoạn dây; mode thứ hai có hai bụng sóng và một điểm nút ở chính giữa; các mode bậc cao hơn có ngày càng nhiều nút. Mỗi mode giữ nguyên dáng không gian và chỉ thay đổi biên độ theo thời gian — đó chính là đặc trưng của sóng dừng.
 
 ### Cách nhìn hình thức
 
-Xét
+Xét phương trình
 
 $$ u_{tt}=c^2u_{xx},
 \qquad 0<x<L, $$
 
-với điều kiện biên Dirichlet:
+với điều kiện biên Dirichlet thuần nhất
 
 $$ u(0,t)=u(L,t)=0. $$
 
-Đặt $$ u(x,t)=X(x)T(t) $$. Thế vào PDE:
+Đặt $$ u(x,t)=X(x)T(t) $$ và thế vào PDE:
 
 $$ X T''=c^2X''T. $$
 
-Chia cho $$ c^2XT $$, ta được
+Chia hai vế cho $$ c^2XT $$, ta thu được
 
 $$ \frac{T''}{c^2T}=\frac{X''}{X}=-\lambda. $$
 
-Từ đó:
+Từ đó tách ra hai phương trình vi phân thường:
 
 $$ X''+\lambda X=0,
 \qquad
@@ -62,46 +62,46 @@ T''+c^2\lambda T=0. $$
 
 ## Những ngộ nhận thường gặp
 
-- "Tách biến cho sóng giống hệt tách biến cho nhiệt." Chỉ giống ở phần không gian; phần thời gian hoàn toàn khác vì bậc thời gian là hai.
-- "Mỗi mode riêng là một sóng chạy." Không đúng; trên đoạn hữu hạn các mode riêng điển hình là sóng dừng.
-- "Chỉ cần điều kiện đầu về vị trí." Sai; phương trình sóng cần cả vận tốc đầu.
-- "Mode cao chỉ là chi tiết kỹ thuật." Không đúng; chúng tạo nên âm sắc và chi tiết dao động.
+- "Tách biến cho phương trình sóng giống hệt phương trình nhiệt." Chỉ giống ở bài toán trị riêng không gian; phương trình theo thời gian khác hẳn vì đạo hàm thời gian có bậc hai.
+- "Mỗi mode riêng là một sóng chạy." Không đúng; trên đoạn hữu hạn, các mode riêng chuẩn là sóng dừng.
+- "Chỉ cần biết vị trí ban đầu là đủ xác định nghiệm." Sai; phương trình sóng đòi hỏi cả độ lệch ban đầu lẫn vận tốc ban đầu.
+- "Các mode bậc cao chỉ là hiệu chỉnh nhỏ không quan trọng." Không đúng; chúng quyết định âm sắc và các chi tiết dao động của dây.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Đặt nghiệm dạng tích
+### Bước 1: Giả sử nghiệm dạng tích
 
-Đây là bước khởi đầu quen thuộc.
+Áp dụng bước khởi đầu quen thuộc $$ u(x,t)=X(x)T(t) $$.
 
 ### Bước 2: Giải bài toán trị riêng không gian
 
-Điều kiện biên quyết định họ hàm riêng.
+Sử dụng điều kiện biên để xác định họ hàm riêng và các trị riêng tương ứng.
 
-### Bước 3: Giải ODE thời gian
+### Bước 3: Giải ODE theo thời gian
 
-Đây là nơi sóng khác nhiệt rõ nhất.
+Nhận diện nghiệm dao động điều hòa — điểm khác biệt rõ rệt nhất so với phương trình nhiệt.
 
-### Bước 4: Ghép điều kiện đầu
+### Bước 4: Áp đặt hai điều kiện ban đầu
 
-Vai trò của $$ f $$ và $$ g $$ phải được thấy rõ.
+Xác định hệ số khai triển từ độ lệch ban đầu $$ f $$ và vận tốc ban đầu $$ g $$.
 
-### Các checkpoint
+### Các điểm kiểm tra
 
-- Sinh viên có phân biệt được phần không gian và phần thời gian sau tách biến hay không.
-- Sinh viên có hiểu vì sao phần thời gian dao động điều hòa thay vì suy giảm mũ hay không.
-- Sinh viên có giải thích được ý nghĩa vật lý của các mode dừng hay không.
+- Sinh viên có tách đúng bài toán không gian và bài toán thời gian hay không.
+- Sinh viên có giải thích được vì sao phần thời gian dao động điều hòa thay vì suy giảm theo hàm mũ hay không.
+- Sinh viên có mô tả được ý nghĩa vật lý của các mode sóng dừng hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Điều kiện Dirichlet chuẩn
+### Ví dụ 1: Điều kiện biên Dirichlet chuẩn
 
-Với $$ u(0,t)=u(L,t)=0 $$, ta có bài toán không gian
+Với $$ u(0,t)=u(L,t)=0 $$, bài toán trị riêng không gian là
 
 $$ X''+\lambda X=0,
 \qquad
 X(0)=X(L)=0. $$
 
-Nghiệm không tầm thường xuất hiện khi
+Nghiệm không tầm thường tồn tại khi
 
 $$
 \lambda_n=\left(\frac{n\pi}{L}\right)^2,
@@ -109,20 +109,20 @@ $$
 X_n(x)=\sin\left(\frac{n\pi x}{L}\right).
 $$
 
-### Ví dụ 2: Phần thời gian
+### Ví dụ 2: Nghiệm theo thời gian
 
-Với mỗi $$ \lambda_n $$, ta được $$ T_n''+c^2\lambda_n T_n=0 $$. Nghiệm là
+Ứng với mỗi $$ \lambda_n $$, phương trình thời gian $$ T_n''+c^2\lambda_n T_n=0 $$ cho nghiệm
 
 $$
 T_n(t)=A_n\cos\left(\frac{n\pi ct}{L}\right)
 +B_n\sin\left(\frac{n\pi ct}{L}\right).
 $$
 
-Ví dụ này nên được dùng để nhấn mạnh: phương trình sóng bảo toàn dao động thay vì dập nó đi.
+Kết quả này cho thấy phương trình sóng lý tưởng duy trì dao động liên tục thay vì dập tắt theo hàm mũ.
 
 ### Ví dụ 3: Nghiệm tổng quát
 
-Ghép lại:
+Chồng chất tất cả các mode riêng, ta có
 
 $$
 u(x,t)=\sum_{n=1}^{\infty}
@@ -133,88 +133,80 @@ A_n\cos\left(\frac{n\pi ct}{L}\right)
 \sin\left(\frac{n\pi x}{L}\right).
 $$
 
-Hệ số $$ A_n $$ đến từ dữ liệu vị trí đầu $$ f(x) $$, còn $$ B_n $$ đến từ dữ liệu vận tốc đầu
+Trong đó, các hệ số $$ A_n $$ được xác định từ độ lệch ban đầu $$ f(x) $$, còn các hệ số $$ B_n $$ được xác định từ vận tốc ban đầu $$ g(x) $$.
 
-$$ g(x). $$
+### Ví dụ 4: Các họa âm của dây đàn
 
-### Ví dụ 4: Họa âm của dây đàn
-
-Tần số riêng là
+Tần số góc riêng của dây là
 
 $$ \omega_n=\frac{n\pi c}{L}. $$
 
-Mode thứ nhất là họa âm cơ bản, các mode cao hơn là họa âm bậc cao. Ví dụ này là cầu nối rất mạnh giữa toán học và âm học.
+Mode $$ n=1 $$ là âm cơ bản, còn các mode $$ n\ge 2 $$ là các họa âm bậc cao. Đây là mối liên hệ trực tiếp giữa phổ trị riêng toán học và âm học nhạc cụ.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao trên đoạn hữu hạn, sóng chạy dẫn đến các mode dừng sau khi xét điều kiện biên?
+1. Vì sao trên đoạn hữu hạn có biên cố định, nghiệm lại tổ chức thành các mode sóng dừng?
 2. Tại sao phần thời gian của phương trình sóng cho dao động điều hòa thay vì suy giảm mũ như phương trình nhiệt?
-3. Vì sao cần cả dữ liệu vị trí và vận tốc đầu để xác định nghiệm?
+3. Vì sao cần cả độ lệch ban đầu và vận tốc ban đầu để xác định đầy đủ các hệ số trong nghiệm?
 
 ## Bài toán ứng dụng
 
-1. Một dây đàn bị kẹp hai đầu. Vì sao chỉ một họ rời rạc các tần số mới được phép tồn tại bền vững?
-2. Nếu dữ liệu đầu gần với mode cơ bản, vì sao âm thanh nghe được chủ yếu gần với tần số thấp nhất?
-3. Trong thiết kế nhạc cụ, vì sao chiều dài $$ L $$ ảnh hưởng trực tiếp đến các tần số riêng?
+1. Với một dây đàn cố định hai đầu, vì sao chỉ tồn tại một tập rời rạc các tần số dao động riêng?
+2. Nếu hình dạng ban đầu của dây gần trùng với mode cơ bản, vì sao âm thanh nghe được chủ yếu mang tần số thấp nhất?
+3. Trong thiết kế nhạc cụ dây, chiều dài $$ L $$ của dây ảnh hưởng như thế nào đến các tần số riêng?
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng câu hỏi: "Một dây bị kẹp hai đầu có thể rung theo mọi hình dạng hay không?"
-- Vẽ ba mode đầu tiên và yêu cầu sinh viên đếm số nút, số bụng.
-- Hỏi cả lớp: "Điểm khác lớn nhất giữa bài tách biến cho nhiệt và cho sóng là gì?"
-- Cho sinh viên ghép dữ liệu đầu với vai trò của
-
-$$ A_n $$
-
-và
-
-$$ B_n. $$
+- Mở đầu bằng câu hỏi: "Một sợi dây cố định hai đầu có thể dao động ổn định theo mọi hình dạng hay không?"
+- Vẽ ba mode đầu tiên và yêu cầu sinh viên đếm số nút và số bụng của từng mode.
+- Đặt câu hỏi: "Điểm khác biệt cốt lõi nhất giữa phương pháp tách biến cho phương trình nhiệt và cho phương trình sóng là gì?"
+- Yêu cầu sinh viên xác định rõ mối liên hệ giữa điều kiện ban đầu với các hệ số $$ A_n $$ và $$ B_n $$.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên bám vào bài toán dây hai đầu cố định như mẫu chuẩn. Khi các em hiểu thật chắc trường hợp này, việc mở rộng sang biên khác hoặc hình học khác sẽ dễ hơn.
+Nên lấy bài toán dây cố định hai đầu làm khuôn mẫu chuẩn. Khi quy trình giải bài toán này đã vững, việc mở rộng sang điều kiện biên khác hoặc miền nhiều chiều sẽ thuận lợi hơn.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể mời sinh viên khá giỏi so sánh nghiệm d'Alembert với khai triển sóng dừng trên đoạn hữu hạn, hoặc phân tích sự khác nhau giữa mode riêng của Dirichlet và Neumann cho dây rung.
+Có thể yêu cầu sinh viên đối chiếu nghiệm d'Alembert (với mở rộng tuần hoàn lẻ) với khai triển sóng dừng trên đoạn hữu hạn, hoặc so sánh phổ mode của dây có biên Dirichlet và dây có biên Neumann.
 
 ## Tóm tắt dễ nhớ
 
-Tách biến cho phương trình sóng trên đoạn hữu hạn sinh ra một bài toán trị riêng không gian và một ODE dao động theo thời gian. Các mode không gian là sóng dừng, còn tần số của chúng là các tần số riêng của hệ. Dữ liệu đầu quyết định cách pha trộn các họa âm đó.
+Phương pháp tách biến cho phương trình sóng trên đoạn hữu hạn dẫn đến một bài toán trị riêng không gian và một ODE dao động điều hòa theo thời gian. Các mode không gian là sóng dừng ứng với các tần số riêng rời rạc, còn điều kiện ban đầu quyết định biên độ của từng họa âm.
 
 ## Video tham khảo
 
-- xem trước: [Solving the Wave Equation with Separation of Variables... and Guitar String Physics](https://www.youtube.com/watch?v=ywrgWRSQ3PY) — Steve Brunton, tiếng Anh. Tách biến trên một dây hữu hạn, với các mode âm nhạc.
-- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, tiếng Anh. Phương trình đang được tách, được suy ra trước chuỗi.
-- [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, tiếng Anh. Chuỗi Fourier đóng gói các mode không gian ấy.
+- Xem trước: [Solving the Wave Equation with Separation of Variables... and Guitar String Physics](https://www.youtube.com/watch?v=ywrgWRSQ3PY) — Steve Brunton, tiếng Anh. Giải phương trình sóng trên dây hữu hạn bằng tách biến và liên hệ với các họa âm của dây đàn.
+- [Deriving the Wave Equation](https://www.youtube.com/watch?v=UXqUXYaRyGU) — Steve Brunton, tiếng Anh. Ôn lại quá trình thiết lập phương trình sóng trước khi áp dụng phương pháp tách biến.
+- [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, tiếng Anh. Ôn lại chuỗi Fourier dùng để tổng hợp các mode không gian của dây.
 
 ## Tài liệu tham khảo
 
-- Evans, *Partial Differential Equations* - phát triển chặt chẽ phương trình sóng, năng lượng, và tính duy nhất.
-- Haberman, *Applied Partial Differential Equations* - trực giác vật lý tốt cho sóng, cộng hưởng, và phản xạ.
+- Evans, *Partial Differential Equations* — trình bày chặt chẽ về phương trình sóng, phương pháp năng lượng và tính duy nhất.
+- Haberman, *Applied Partial Differential Equations* — cung cấp trực giác vật lý rõ ràng về sóng, cộng hưởng và phản xạ.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
 #### Tần số riêng của dây cố định hai đầu
-- Bài toán: Xác định các mode dao động của dây violin hay dây cầu treo mô hình hóa một chiều.
+- Bài toán: Xác định các mode dao động của dây đàn violin hoặc mô hình một chiều của dây cáp cầu treo.
 - Mô hình:
 $$ u_{tt}=c^2u_{xx}, \qquad u(0,t)=u(L,t)=0. $$
-- Giả thiết và giới hạn: Biên cố định hoàn toàn, dây lý tưởng, dao động nhỏ.
-- Diễn giải: Tách biến dẫn đến các mode đứng rời rạc.
+- Giả thiết và giới hạn: Hai đầu cố định hoàn toàn, dây lý tưởng, biên độ dao động nhỏ.
+- Diễn giải: Tách biến cho ra tập rời rạc các mode sóng dừng.
 
-#### Cộng hưởng trong cấu kiện
-- Bài toán: Một thanh hay cáp bị kích thích gần tần số riêng sẽ cho đáp ứng lớn.
-- Mô hình: Tổng các mode riêng theo điều kiện biên tương ứng.
-- Giả thiết và giới hạn: Hệ tuyến tính, không xét phi tuyến hình học.
-- Diễn giải: Phân tích mode là nền tảng của thiết kế tránh cộng hưởng.
+#### Cộng hưởng trong kết cấu
+- Bài toán: Một thanh hoặc dây cáp chịu kích thích gần tần số riêng sẽ dao động với biên độ lớn.
+- Mô hình: Chồng chất các mode riêng tương ứng với điều kiện biên của kết cấu.
+- Giả thiết và giới hạn: Hệ tuyến tính, bỏ qua phi tuyến hình học.
+- Diễn giải: Phân tích phổ mode riêng là cơ sở để thiết kế kết cấu tránh hiện tượng cộng hưởng nguy hiểm.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Tách biến biến PDE thành hai ODE được ghép bởi cùng một hằng số tách. Ý nghĩa vật lý là ta đang tìm các hình dạng không gian dao động với nhịp thời gian riêng. Một ngộ nhận hay gặp là mọi điều kiện ban đầu đều là một mode đơn; thật ra chúng thường là tổ hợp của nhiều mode.
+Tách biến chuyển PDE thành hai ODE liên kết qua cùng một trị riêng. Ý nghĩa vật lý là tìm các dạng dao động không gian có nhịp biến thiên điều hòa theo thời gian. Thông thường, một trạng thái ban đầu bất kỳ là sự chồng chất của nhiều mode chứ không chỉ một mode đơn lẻ.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -242,18 +234,18 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Nếu
+Nếu điều kiện ban đầu là
 $$
 u(x,0)=\sin\!\left(\frac{\pi x}{L}\right), \qquad u_t(x,0)=0,
 $$
-thì chỉ mode cơ bản được kích hoạt và nghiệm là
+thì chỉ mode cơ bản được kích thích và nghiệm là
 $$
 u(x,t)=\cos\!\left(\frac{\pi c t}{L}\right)\sin\!\left(\frac{\pi x}{L}\right).
 $$
-Điều này cho thấy một hình dạng ban đầu trùng với eigenfunction sẽ dao động mà không đổi hình.
+Khi hình dạng ban đầu trùng đúng với một hàm riêng, dây sẽ dao động điều hòa mà giữ nguyên dạng hình học theo thời gian.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Thiết lập bài toán tách biến và nhận diện tần số riêng.
+**Bậc đại học.** Thiết lập bài toán tách biến, tính hệ số khai triển và xác định các tần số riêng.
 
-**Bậc sau đại học.** Kết nối với Sturm-Liouville, tính trực giao của mode và hội tụ của khai triển eigenfunction.
+**Bậc sau đại học.** Liên hệ với lý thuyết Sturm-Liouville, tính trực giao của hệ mode và sự hội tụ của khai triển theo hàm riêng.

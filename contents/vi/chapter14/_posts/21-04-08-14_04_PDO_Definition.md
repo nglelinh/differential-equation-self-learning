@@ -14,37 +14,37 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài này xây định nghĩa chính thức của toán tử giả vi phân từ symbol. Sau bài học, sinh viên cần đọc được công thức lượng tử hóa cơ bản, hiểu vì sao differential operators là trường hợp riêng, biết vai trò của Schwartz space, và nhìn thấy cách một symbol sinh ra một toán tử thực sự tác động lên hàm.
+Bài học này trình bày định nghĩa chính thức của toán tử giả vi phân từ ký hiệu (symbol). Sau bài học, sinh viên cần đọc hiểu công thức lượng tử hóa cơ bản, giải thích vì sao toán tử vi phân là trường hợp riêng, nắm vai trò của không gian Schwartz và thấy rõ cách một ký hiệu tạo ra một toán tử tác động trực tiếp lên hàm số.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm symbol $$ a(x,\xi) $$, biến đổi Fourier, và trực giác rằng một toán tử nên được hiểu qua cách nó xử lý các thành phần tần số. Kiến thức về không gian Schwartz $$ \mathcal{S}(\mathbb{R}^n) $$ và hàm suy giảm nhanh cũng sẽ rất hữu ích.
+Sinh viên nên nắm khái niệm ký hiệu $$ a(x,\xi) $$, biến đổi Fourier và trực giác xem toán tử qua cách xử lý từng thành phần tần số. Kiến thức cơ bản về không gian Schwartz $$ \mathcal{S}(\mathbb{R}^n) $$ gồm các hàm trơn suy giảm nhanh cũng rất hữu ích.
 
 ## Dẫn nhập
 
-Đến đây, ta đã có một ngôn ngữ mô tả toán tử bằng symbol. Nhưng một câu hỏi thiết yếu vẫn còn đó: nếu cho trước một symbol $$ a(x,\xi) $$, ta phải biến nó thành một toán tử như thế nào? Câu trả lời là một công thức tích phân dao động kết hợp không gian vật lý và không gian tần số.
+Sau khi có ngôn ngữ ký hiệu, câu hỏi trọng tâm đặt ra là: từ một ký hiệu cho trước $$ a(x,\xi) $$, làm thế nào để dựng lại toán tử tương ứng? Câu trả lời là một tích phân dao động kết hợp đồng thời biến vị trí và biến tần số.
 
-Đây là khoảnh khắc “từ dữ liệu sang cơ chế”: symbol không còn là mô tả trừu tượng nữa mà trở thành động cơ thật sự tạo ra toán tử.
+Đây là bước chuyển từ mô tả sang cơ chế tác động: ký hiệu không còn chỉ là nhãn đại số mà trực tiếp sinh ra toán tử thông qua phép lượng tử hóa.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Ta có thể nghĩ pseudodifferential operator như một bộ lọc tần số thay đổi theo vị trí. Mỗi vị trí $$ x $$ có thể dùng một quy tắc lọc khác nhau trên các tần số $$ \xi $$. Toán tử kết quả nhận dữ liệu đầu vào, phân tích nó thành các mode, cân từng mode bằng symbol, rồi ghép lại.
+Có thể xem một toán tử giả vi phân như một bộ lọc tần số thay đổi theo vị trí. Tại mỗi điểm $$ x $$, toán tử áp dụng một quy tắc lọc riêng lên các tần số $$ \xi $$: phân tích hàm đầu vào thành các mode dao động, nhân từng mode với trọng số từ ký hiệu, rồi tổng hợp lại để thu được giá trị đầu ra.
 
 ### Cách hình ảnh
 
-Sơ đồ trực quan nên là:
+Quy trình tác động gồm ba bước:
 
-1. tách $$ u $$ thành các sóng cơ bản;
-2. nhân mỗi thành phần với $$ a(x,\xi) $$;
-3. chồng các thành phần đã sửa lại để thu được $$ Au(x) $$.
+1. phân tích hàm $$ u $$ thành các sóng phẳng cơ bản;
+2. nhân mỗi thành phần tần số với $$ a(x,\xi) $$;
+3. tổng hợp các thành phần đã nhân để thu được $$ Au(x) $$.
 
-So sánh ngay với differential operator: khi symbol là đa thức theo $$ \xi $$, bộ lọc này chính là đạo hàm quen thuộc.
+So sánh với toán tử vi phân: khi ký hiệu là đa thức theo $$ \xi $$, quy trình lọc này rút gọn đúng về phép lấy đạo hàm quen thuộc.
 
 ### Cách hình thức
 
-Với symbol đủ tốt $$ a(x,\xi) $$, ta định nghĩa toán tử
+Với ký hiệu đủ tốt $$ a(x,\xi) $$, ta định nghĩa toán tử giả vi phân bởi
 
 $$
 \operatorname{Op}(a)u(x)
@@ -54,7 +54,7 @@ $$
 e^{i(x-y)\cdot\xi}a(x,\xi)u(y)\,dy\,d\xi.
 $$
 
-Nếu viết bằng Fourier transform thì có thể hiểu như
+Viết thông qua biến đổi Fourier, công thức trên có dạng
 
 $$
 \operatorname{Op}(a)u(x)
@@ -69,7 +69,7 @@ $$
 a(x,\xi)=\sum_{\lvert \alpha\rvert\le m}a_\alpha(x)(i\xi)^\alpha,
 $$
 
-ta thu được đúng differential operator
+ta thu lại chính xác toán tử vi phân
 
 $$
 \sum_{\lvert \alpha\rvert\le m}a_\alpha(x)\partial^\alpha.
@@ -77,55 +77,55 @@ $$
 
 ## Ngộ nhận thường gặp
 
-### “Định nghĩa chỉ là một tích phân Fourier quen thuộc”
+### “Định nghĩa chỉ là một tích phân Fourier thông thường”
 
-Không hẳn. Điểm mới là symbol phụ thuộc vào cả $$ x $$ và $$ \xi $$.
+Không hẳn. Điểm mở rộng cốt lõi là ký hiệu phụ thuộc đồng thời vào cả $$ x $$ và $$ \xi $$.
 
-### “Toán tử giả vi phân luôn dễ hiểu như phép nhân trong Fourier”
+### “Toán tử giả vi phân luôn tương đương với phép nhân trực tiếp trong miền Fourier”
 
-Chỉ khi symbol không phụ thuộc $$ x $$ thì chuyện này mới hoàn toàn trực tiếp.
+Điều này chỉ đúng hoàn toàn khi ký hiệu không phụ thuộc vào biến vị trí $$ x $$.
 
-### “Schwartz space chỉ là lựa chọn phụ”
+### “Không gian Schwartz chỉ là lựa chọn phụ”
 
-Không. Đây là môi trường tự nhiên để tích phân dao động được hiểu sạch sẽ trước khi mở rộng sang các không gian khác.
+Không đúng. Đây là miền xác định tự nhiên giúp tích phân dao động hội tụ chặt chẽ trước khi mở rộng toán tử sang các không gian hàm tổng quát hơn.
 
-### “Nếu symbol trơn thì toán tử luôn đơn giản”
+### “Ký hiệu trơn thì toán tử luôn đơn giản”
 
-Không. Tính chất mapping của toán tử còn phụ thuộc vào bậc và lớp symbol.
+Không đúng. Tính chất ánh xạ của toán tử còn phụ thuộc mạnh vào bậc và lớp ký hiệu.
 
 ## Tiến trình học
 
 ### Bước 1: Nhìn lại trường hợp hệ số hằng
 
-Ở đây toán tử chỉ là nhân trong miền Fourier.
+Khi ký hiệu chỉ phụ thuộc $$ \xi $$, toán tử quy về phép nhân trong miền Fourier.
 
-### Bước 2: Thêm phụ thuộc vị trí $$ x $$
+### Bước 2: Bổ sung sự phụ thuộc theo vị trí $$ x $$
 
-Đây là bước biến differential operator thành mô hình tổng quát hơn.
+Đây là bước mở rộng then chốt vượt qua khuôn khổ bộ nhân hằng.
 
-### Bước 3: Đọc công thức lượng tử hóa
+### Bước 3: Phân tích công thức lượng tử hóa
 
-Sinh viên nên hiểu ý nghĩa của từng thành phần trong tích phân.
+Hiểu rõ vai trò của từng thành phần trong tích phân dao động.
 
-### Bước 4: Kiểm tra differential operator là trường hợp riêng
+### Bước 4: Kiểm tra toán tử vi phân là trường hợp riêng
 
-Đây là bước quan trọng để loại bỏ cảm giác “định nghĩa từ trên trời rơi xuống”.
+Xác nhận sự tương thích với các toán tử quen thuộc giúp định nghĩa trở nên tự nhiên hơn.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có giải thích được vai trò của $$ e^{i(x-y)\cdot\xi} $$ trong công thức không?
-- Sinh viên có thấy differential operator xuất hiện lại từ symbol đa thức không?
-- Sinh viên có hiểu vì sao cần một lớp hàm tốt như Schwartz space không?
+- Sinh viên có giải thích được vai trò của thừa số pha $$ e^{i(x-y)\cdot\xi} $$ trong công thức hay không?
+- Sinh viên có kiểm chứng được toán tử vi phân xuất hiện lại từ ký hiệu đa thức hay không?
+- Sinh viên có hiểu vì sao cần khởi đầu trên không gian Schwartz hay không?
 
 ## Ví dụ có lời giải
 
-### Ví dụ 1: Phép nhân bởi hàm
+### Ví dụ 1: Toán tử nhân bởi hàm
 
 Nếu $$ a(x,\xi)=b(x) $$ không phụ thuộc $$ \xi $$, thì
 
 $$ \operatorname{Op}(a)u(x)=b(x)u(x). $$
 
-Đây là pseudodifferential operator đơn giản nhất: toán tử nhân.
+Đây là ví dụ đơn giản nhất của toán tử giả vi phân: phép nhân theo điểm.
 
 ### Ví dụ 2: Đạo hàm bậc nhất
 
@@ -133,15 +133,15 @@ Nếu $$ a(x,\xi)=i\xi_j $$, thì
 
 $$ \operatorname{Op}(a)u=\partial_{x_j}u. $$
 
-Ví dụ này xác nhận rằng đạo hàm cổ điển nằm trọn trong khuôn khổ mới.
+Ví dụ này khẳng định phép lấy đạo hàm cổ điển nằm trọn trong định nghĩa mới.
 
 ### Ví dụ 3: Toán tử bậc âm
 
-Xét
+Xét ký hiệu
 
 $$ a(\xi)=\frac{1}{(1+\lvert \xi\rvert^2)^{1/2}}. $$
 
-Toán tử tương ứng là $$ (1-\Delta)^{-1/2} $$, một toán tử bậc $$ -1 $$. Nó không phải differential operator nhưng hoàn toàn tự nhiên trong calculus mới.
+Toán tử tương ứng là $$ (1-\Delta)^{-1/2} $$, có bậc $$ -1 $$. Đây không phải toán tử vi phân nhưng hoàn toàn thuộc khuôn khổ giả vi phân.
 
 ### Ví dụ 4: Toán tử có hệ số biến thiên
 
@@ -149,57 +149,57 @@ Với
 
 $$ a(x,\xi)=b(x)\frac{1}{1+\lvert \xi\rvert^2}, $$
 
-ta có một toán tử vừa nhân theo vị trí vừa lọc tần số cao. Đây là hình ảnh điển hình của pseudodifferential operator tổng quát.
+toán tử vừa lọc tần số cao vừa nhân trọng số theo vị trí. Đây là hình ảnh tiêu biểu của toán tử giả vi phân tổng quát.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao công thức định nghĩa pseudodifferential operator phải kết hợp cả biến $$ x $$, $$ y $$, và $$ \xi $$?
-2. Điều gì làm cho differential operator chỉ là một trường hợp đặc biệt của lượng tử hóa từ symbol?
-3. Tại sao việc làm việc trước trên Schwartz space lại hợp lý về mặt giải tích?
+1. Vì sao công thức định nghĩa toán tử giả vi phân phải chứa đồng thời các biến $$ x $$, $$ y $$ và $$ \xi $$?
+2. Vì sao toán tử vi phân chỉ là một trường hợp đặc biệt của phép lượng tử hóa từ ký hiệu?
+3. Tại sao việc xét toán tử trước hết trên không gian Schwartz lại thuận lợi về mặt giải tích?
 
 ## Bài toán ứng dụng
 
-1. Nếu một toán tử làm mịn tín hiệu bằng cách cắt giảm cao tần, symbol của nó nên có dạng tổng quát ra sao?
-2. Trong bài toán nghịch đảo cho toán tử elliptic, vì sao lớp pseudodifferential operator là môi trường tự nhiên cho nghịch đảo xấp xỉ?
-3. Trong mô hình môi trường không đồng nhất, việc cho symbol phụ thuộc vị trí phản ánh điều gì về vật lý?
+1. Nếu một toán tử làm trơn tín hiệu bằng cách cắt giảm cao tần, ký hiệu của nó có dạng tổng quát như thế nào?
+2. Trong bài toán nghịch đảo cho toán tử elliptic, vì sao lớp toán tử giả vi phân là môi trường phù hợp cho nghịch đảo xấp xỉ?
+3. Trong mô hình môi trường không đồng nhất, việc ký hiệu phụ thuộc vào vị trí phản ánh đặc trưng vật lý nào?
 
 ## Chiến lược dạy học tương tác
 
-### Câu hỏi nên hỏi trên lớp
+### Câu hỏi nên đặt trên lớp
 
-- Nếu cho em một symbol, em sẽ “lắp” thành toán tử thế nào?
-- Công thức định nghĩa có vẻ phức tạp, nhưng phần nào trong đó là quen thuộc từ Fourier?
-- Em có thể tìm lại toán tử nhân và đạo hàm từ định nghĩa tổng quát không?
+- Từ một ký hiệu cho trước, làm thế nào để dựng thành toán tử tác động lên hàm?
+- Trong công thức định nghĩa, phần nào là kiến thức quen thuộc từ biến đổi Fourier?
+- Làm sao kiểm tra lại toán tử nhân và phép lấy đạo hàm từ công thức tổng quát?
 
 ### Hoạt động gợi ý
 
-- Cho sinh viên kiểm tra trực tiếp hai ví dụ: symbol hằng theo $$ \xi $$ và symbol bằng $$ i\xi_j $$.
-- Dùng sơ đồ luồng “Fourier -> nhân symbol -> biến đổi ngược”.
-- Thảo luận nhóm về sự khác nhau giữa bộ lọc đồng nhất và bộ lọc phụ thuộc vị trí.
+- Cho sinh viên tự kiểm chứng hai ví dụ cơ bản: ký hiệu không phụ thuộc $$ \xi $$ và ký hiệu $$ i\xi_j $$.
+- Sử dụng sơ đồ luồng “biến đổi Fourier -> nhân với ký hiệu -> biến đổi Fourier ngược”.
+- Thảo luận nhóm về sự khác biệt giữa bộ lọc đồng nhất và bộ lọc phụ thuộc vị trí.
 
-### Cách tăng tham gia
+### Cách tăng mức độ tham gia
 
-- Bắt đầu bằng các symbol rất đơn giản.
-- Mời sinh viên tự chỉ ra đâu là phần “nhân” và đâu là phần “ghép lại”.
-- Yêu cầu giải thích công thức bằng lời trước rồi mới quay về ký hiệu.
+- Bắt đầu bằng các ký hiệu đơn giản trước khi tổng quát hóa.
+- Yêu cầu sinh viên chỉ rõ phần “lọc theo tần số” và phần “tổng hợp lại” trong tích phân.
+- Khuyến khích diễn đạt ý nghĩa công thức bằng lời trước khi thao tác ký hiệu.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Giới hạn ở các symbol chỉ phụ thuộc $$ \xi $$ trước.
-- Dùng nhiều ví dụ hơn định nghĩa trừu tượng.
-- Nhấn mạnh rằng pseudodifferential operator là bộ lọc tần số có thể thay đổi theo vị trí.
+- Giới hạn trước ở các ký hiệu chỉ phụ thuộc $$ \xi $$.
+- Minh họa bằng nhiều ví dụ cụ thể trước khi phân tích định nghĩa trừu tượng.
+- Nhấn mạnh trực giác: toán tử giả vi phân là bộ lọc tần số có thể thay đổi theo vị trí.
 
 ### Thử thách cho sinh viên khá giỏi
 
-- So sánh các quy ước lượng tử hóa khác nhau, như Kohn-Nirenberg và Weyl.
-- Chứng minh differential operator xuất hiện lại từ symbol đa thức.
-- Tìm hiểu cách mở rộng từ Schwartz space sang Sobolev spaces.
+- So sánh các quy ước lượng tử hóa khác nhau như Kohn–Nirenberg và Weyl.
+- Chứng minh chi tiết rằng ký hiệu đa thức cho lại đúng toán tử vi phân.
+- Tìm hiểu cách mở rộng toán tử từ không gian Schwartz sang các không gian Sobolev.
 
 ## Ghi nhớ nhanh
 
-Một pseudodifferential operator được sinh ra từ symbol bằng một công thức Fourier cục bộ. Differential operators là những trường hợp đặc biệt khi symbol là đa thức theo $$ \xi $$, còn symbol tổng quát cho phép ta mô tả cả các toán tử làm mịn và nghịch đảo xấp xỉ.
+Toán tử giả vi phân được xây dựng từ ký hiệu thông qua một công thức tích phân Fourier cục bộ. Toán tử vi phân là trường hợp đặc biệt ứng với ký hiệu đa thức theo $$ \xi $$, trong khi ký hiệu tổng quát bao quát cả các toán tử làm trơn và nghịch đảo xấp xỉ.
 
 ---
 
@@ -207,23 +207,23 @@ Một pseudodifferential operator được sinh ra từ symbol bằng một côn
 
 ### 1. Bộ lọc thay đổi theo vị trí trong xử lý ảnh
 
-Trong ảnh thực, mức nhiễu ở vùng tối, vùng sáng, hay vùng biên có thể khác nhau. Một toán tử có symbol kiểu $$ a(x,\xi) $$ cho phép bộ lọc thay đổi theo vị trí thay vì dùng cùng một quy tắc trên toàn ảnh. Mô hình này hữu ích cho denoising thích nghi hoặc deblurring không đồng nhất. Giới hạn là ảnh số thật còn có phi tuyến và ràng buộc học máy, nhưng trực giác PDE vẫn rất mạnh.
+Trong ảnh thực tế, mức nhiễu ở vùng tối, vùng sáng hoặc vùng biên thường không giống nhau. Một toán tử với ký hiệu dạng $$ a(x,\xi) $$ cho phép điều chỉnh quy tắc lọc theo từng vị trí thay vì áp dụng đồng nhất trên toàn ảnh. Mô hình này hữu ích cho khử nhiễu thích nghi và khử mờ không đồng nhất, dù ảnh số thực tế còn chịu ảnh hưởng của các yếu tố phi tuyến.
 
 ### 2. Môi trường vật liệu không đồng nhất
 
-Trong âm học hay cơ học vật liệu, cùng một mode tần số có thể bị hấp thụ hay khuếch đại khác nhau ở các vùng khác nhau của không gian. Điều này được mô tả tự nhiên bằng symbol phụ thuộc cả $$ x $$ lẫn $$ \xi $$. Mô hình giả định biến thiên đủ trơn để calculus áp dụng được. Diễn giải là: công thức lượng tử hóa biến một “luật địa phương theo vị trí và tần số” thành một toán tử thật sự tác động lên nghiệm.
+Trong âm học và cơ học vật liệu, cùng một mode tần số có thể bị hấp thụ hoặc khuếch đại khác nhau tùy vùng không gian. Tính chất này được mô tả tự nhiên bởi ký hiệu phụ thuộc cả $$ x $$ lẫn $$ \xi $$ dưới giả thiết môi trường biến thiên đủ trơn. Công thức lượng tử hóa chuyển “luật tác động cục bộ theo vị trí và tần số” thành một toán tử cụ thể tác động lên nghiệm.
 
-### 3. Nghịch đảo xấp xỉ trong elliptic PDE
+### 3. Nghịch đảo xấp xỉ trong PDE elliptic
 
-Nếu ta cần một ứng viên nghịch đảo cho toán tử elliptic, công thức $$ \operatorname{Op}(a) $$ cho phép chuyển symbol nghịch đảo dự đoán thành toán tử cụ thể. Đây là bước quan trọng trong xây parametrix. Mô hình giả định symbol đủ tốt thuộc một lớp ổn định. Giới hạn là ở miền có biên hoặc hình học phức tạp, cần thêm cấu trúc bổ sung.
+Khi cần dựng ứng viên nghịch đảo cho một toán tử elliptic, công thức $$ \operatorname{Op}(a) $$ giúp chuyển ký hiệu nghịch đảo dự đoán thành một toán tử xác định. Đây là bước trung tâm trong quá trình xây dựng parametrix, với giả thiết ký hiệu thuộc một lớp ổn định; trên miền có biên hoặc hình học phức tạp, cần bổ sung thêm cấu trúc kỹ thuật phù hợp.
 
 ## Trực giác sâu hơn
 
-Điểm cốt lõi của định nghĩa không nằm ở tích phân kép dài, mà ở ý tưởng: ta phân tích tín hiệu thành dao động, cân mỗi dao động bằng một luật phụ thuộc vị trí và tần số, rồi ghép lại. Ngộ nhận thường gặp là nghĩ định nghĩa chỉ là “viết Fourier theo cách rắc rối hơn”; thật ra chính phụ thuộc theo $$ x $$ làm nên sức mạnh mới của ΨDO.
+Điểm cốt lõi của định nghĩa không nằm ở hình thức tích phân kép, mà ở quy trình: phân tích tín hiệu thành các dao động, gán trọng số cho từng dao động theo một quy tắc phụ thuộc vị trí và tần số, rồi tổng hợp lại. Chính sự phụ thuộc theo biến $$ x $$ tạo nên khả năng biểu diễn rộng rãi của ΨDO so với bộ nhân Fourier cổ điển.
 
 ## Trực quan hóa bằng Python
 
-Đoạn code sau minh họa một bộ lọc làm mịn thay đổi theo vị trí trên tín hiệu 1D.
+Đoạn mã sau minh họa một bộ lọc làm trơn thay đổi theo vị trí trên tín hiệu 1D.
 
 ```python
 import numpy as np
@@ -255,7 +255,7 @@ plt.show()
 
 ## Trực quan hóa bằng JavaScript
 
-Có thể dùng `p5.js` hoặc `Plotly.js` để thêm thanh trượt điều khiển “mức làm mịn ở bên trái” và “mức làm mịn ở bên phải”, giúp sinh viên cảm được trực giác của symbol phụ thuộc $$ x $$.
+Có thể dùng `p5.js` hoặc `Plotly.js` để tạo hai thanh trượt điều chỉnh mức làm trơn ở bên trái và bên phải gốc tọa độ, giúp người học quan sát trực tiếp hiệu ứng của ký hiệu phụ thuộc $$ x $$.
 
 ## Gợi ý tài nguyên ngoài
 
@@ -265,34 +265,34 @@ Tìm kiếm: `position dependent filter Fourier`, `Kohn Nirenberg quantization v
 
 ### Mức đại học (Undergraduate)
 
-Nên xem ΨDO như bộ lọc tần số có thể thay đổi theo vị trí và nhận ra các trường hợp riêng: toán tử nhân, đạo hàm, toán tử làm mịn.
+Xem ΨDO như bộ lọc tần số thay đổi theo vị trí và nhận diện rõ các trường hợp riêng: toán tử nhân, phép lấy đạo hàm và toán tử làm trơn.
 
 ### Mức sau đại học (Graduate)
 
-Đi sâu vào các quy ước lượng tử hóa, không gian Schwartz, mở rộng sang Sobolev spaces, và vai trò của định nghĩa này trong composition calculus.
+Đi sâu vào các quy ước lượng tử hóa, không gian Schwartz, mở rộng sang các không gian Sobolev và vai trò của định nghĩa này trong phép tính hợp thành.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Ảnh y sinh và deconvolution
-- Bài toán: Thiết bị đo làm biến dạng tín hiệu theo cách phụ thuộc cả vị trí và tần số.
+#### Ảnh y sinh và giải chập
+- Bài toán: Thiết bị đo làm biến dạng tín hiệu theo cơ chế phụ thuộc cả vị trí lẫn tần số.
 - Mô hình:
 $$
 (\operatorname{Op}(a)u)(x)=\frac{1}{2\pi}\int e^{ix\xi}a(x,\xi)\hat u(\xi)\,d\xi.
 $$
-- Giả thiết và giới hạn: Mô hình tuyến tính; bỏ qua nhiều hiệu ứng phi tuyến của thiết bị.
+- Giả thiết và giới hạn: Mô hình tuyến tính, chưa tính đến các hiệu ứng phi tuyến của thiết bị đo.
 - Diễn giải: ΨDO định nghĩa toán tử như một bộ lọc tần số cục bộ theo vị trí.
 
 #### Cơ học lượng tử bán cổ điển
-- Bài toán: Toán tử quan sát được xây từ một hàm trên không gian pha.
-- Mô hình: Từ hàm $$ a(x,\xi) $$, ta lượng tử hóa thành $$ \operatorname{Op}(a) $$.
-- Giả thiết và giới hạn: Còn phụ thuộc quy ước lượng tử hóa.
-- Diễn giải: Đây là cầu nối trực tiếp từ quan sát cổ điển sang toán tử.
+- Bài toán: Xây dựng toán tử tương ứng với một đại lượng quan sát trên không gian pha.
+- Mô hình: Từ hàm $$ a(x,\xi) $$, thực hiện lượng tử hóa để thu được toán tử $$ \operatorname{Op}(a) $$.
+- Giả thiết và giới hạn: Kết quả phụ thuộc vào quy ước lượng tử hóa được chọn.
+- Diễn giải: Công thức này tạo cầu nối trực tiếp từ đại lượng cổ điển sang toán tử lượng tử.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Định nghĩa ΨDO nói rằng ta làm Fourier theo biến không gian, nhân bởi symbol, rồi biến đổi ngược lại, nhưng phép nhân giờ có thể phụ thuộc vào vị trí. Nói ngắn gọn: "lọc tần số nhưng lọc khác nhau ở các vùng khác nhau". Một bẫy phổ biến là xem $$ a(x,\xi) $$ như chỉ là hàm phụ; thật ra nó chính là DNA của toán tử.
+Định nghĩa ΨDO thực hiện biến đổi Fourier theo không gian, nhân với ký hiệu rồi biến đổi ngược lại, nhưng hệ số nhân giờ đây có thể thay đổi theo vị trí — tức lọc tần số với quy tắc khác nhau ở từng vùng không gian. Vì thế, $$ a(x,\xi) $$ không phải đại lượng phụ trợ mà chính là đặc trưng cốt lõi quyết định bản chất toán tử.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -327,16 +327,16 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Nếu $$ a(x,\xi)=i\xi $$, ta thu lại đạo hàm bậc nhất. Nếu $$ a(x,\xi)=1/(1+\xi^2) $$, ta được một toán tử làm trơn. Hai ví dụ này cho thấy định nghĩa ΨDO bao trùm cả toán tử vi phân lẫn các toán tử smoothing.
+Nếu $$ a(x,\xi)=i\xi $$, ta thu lại đạo hàm bậc nhất; nếu $$ a(x,\xi)=1/(1+\xi^2) $$, ta thu được một toán tử làm trơn. Hai ví dụ này cho thấy định nghĩa ΨDO bao trùm đồng thời cả toán tử vi phân lẫn toán tử làm trơn.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Hiểu định nghĩa qua hai ví dụ: đạo hàm và bộ lọc làm trơn.
+**Bậc đại học.** Nắm định nghĩa qua hai ví dụ nền tảng là đạo hàm và bộ lọc làm trơn.
 
-**Bậc sau đại học.** Kết nối với Kohn-Nirenberg, Weyl quantization và kernels dao động.
+**Bậc sau đại học.** Kết nối với phép lượng tử hóa Kohn–Nirenberg, lượng tử hóa Weyl và nhân tích phân dao động.
 
 ## Video tham khảo
 
-- xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, Tiếng Việt. Định nghĩa bằng tích phân dao động của một toán tử giả vi phân.
-- [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, tiếng Anh. Đại số thu được và các tính chất ánh xạ của nó.
-- [Ps d o’s lecture 2 (Xuwen Zhu)](https://www.youtube.com/watch?v=0OBoX9_-ndQ) — Mathematics video VAROQUI Hervé, Tiếng Việt. Một lượt thứ hai qua định nghĩa.
+- Nên xem trước: [Ps d o’s lecture 1 (Xuwen Zhu)](https://www.youtube.com/watch?v=kP9sxwBJQv4) — Mathematics video VAROQUI Hervé, tiếng Việt. Trình bày định nghĩa toán tử giả vi phân bằng tích phân dao động.
+- [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, tiếng Anh. Giới thiệu đại số toán tử giả vi phân và các tính chất ánh xạ của nó.
+- [Ps d o’s lecture 2 (Xuwen Zhu)](https://www.youtube.com/watch?v=0OBoX9_-ndQ) — Mathematics video VAROQUI Hervé, tiếng Việt. Tiếp tục phân tích và củng cố định nghĩa toán tử giả vi phân.

@@ -12,37 +12,37 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này cho thấy vì sao lý thuyết trị riêng và trực giao không chỉ đẹp về mặt lý thuyết mà còn cực kỳ hữu dụng: chúng cho phép biểu diễn một hàm theo hệ hàm riêng của bài toán. Sau bài học, sinh viên cần hiểu khai triển theo hàm riêng như một phiên bản tổng quát của chuỗi Fourier, biết công thức tính hệ số bằng phép chiếu có trọng số, và thấy được cách khai triển này tách một bài toán phức tạp thành các mode độc lập.
+Bài học này cho thấy giá trị thực tiễn của lý thuyết trị riêng và tính trực giao: cho phép biểu diễn một hàm bất kỳ theo hệ hàm riêng của bài toán. Sau bài học, sinh viên cần hiểu khai triển theo hàm riêng như sự tổng quát hóa của chuỗi Fourier, nắm công thức tính hệ số bằng phép chiếu có trọng số và biết cách dùng khai triển này để tách một bài toán phức tạp thành các chế độ độc lập.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm chắc trực giao, trọng số, và khái niệm hàm riêng từ bài Sturm-Liouville. Trực giác từ chuỗi Fourier là nền tảng rất quan trọng, vì gần như mọi ý tưởng trong bài này đều là "Fourier nhưng trong cơ sở phù hợp với toán tử của bài toán".
+Sinh viên nên nắm vững tính trực giao, hàm trọng số và khái niệm hàm riêng từ bài Sturm–Liouville. Kiến thức cơ bản về chuỗi Fourier là nền tảng trực tiếp vì khai triển theo hàm riêng chính là chuỗi Fourier viết trong cơ sở riêng của toán tử bài toán.
 
 ## Dẫn nhập
 
 ![Khai triển theo hàm riêng như Fourier tổng quát]({{ site.imgurl }}/chapter_img/chapter07/04_eigenfunction_expansions.svg)
 
-Chuỗi Fourier đã dạy ta một bài học lớn: một hàm phức tạp có thể được tách thành các dao động cơ bản đơn giản. Khai triển theo hàm riêng là sự mở rộng sâu hơn của ý tưởng đó. Thay vì chỉ dùng sin và cos, ta dùng chính các hàm riêng do bài toán và điều kiện biên sinh ra. Điều này làm cho cơ sở "ăn khớp" với cấu trúc vật lý của hệ hơn nhiều.
+Chuỗi Fourier cho thấy một hàm phức tạp có thể được phân tích thành tổng các sóng sin và cos cơ bản. Khai triển theo hàm riêng mở rộng trực tiếp ý tưởng đó: thay vì luôn cố định cơ sở lượng giác, ta sử dụng chính họ hàm riêng do toán tử vi phân và điều kiện biên của bài toán sinh ra.
 
-Đây là điểm bản lề của chương. Sau khi hiểu khai triển theo hàm riêng, sinh viên sẽ thấy cách giải nhiều BVP và PDE trở nên sáng sủa: thay vì xử lý cả bài toán trong một khối, ta chiếu dữ liệu lên từng mode rồi giải từng mode riêng biệt.
+Nhờ vậy, nhiều bài toán BVP không thuần nhất và PDE tách biến được giải gọn gàng: thay vì xử lý toàn bộ phương trình cùng lúc, ta chiếu dữ liệu lên từng chế độ riêng rồi giải từng phương trình độc lập.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Một bản nhạc phức tạp có thể được phân tích thành các họa âm đơn giản. Tương tự, một phân bố nhiệt, một hình dạng ban đầu của dây, hay một nguồn tác động có thể được tách thành các mode riêng. Mỗi mode là một thành phần cơ bản mà hệ "biết cách xử lý" rất tự nhiên.
+Tương tự như một âm thanh phức tạp được phân tích thành các họa âm cơ bản, một phân bố nhiệt độ, hình dạng ban đầu của dây đàn hay hàm nguồn tác động đều có thể tách thành tổng các chế độ riêng mà hệ xử lý độc lập với nhau.
 
 ### Cách nhìn hình ảnh
 
-Nếu vẽ một hàm bất kỳ trên đoạn, ta có thể xấp xỉ nó bằng tổng hữu hạn các mode riêng đầu tiên. Ban đầu chỉ thấy hình dạng thô, nhưng khi thêm nhiều mode hơn, đồ thị dần bám sát hàm gốc. Hình ảnh này rất giống Fourier, chỉ khác là các mode cơ sở không còn phải là sin và cos.
+Khi xấp xỉ một hàm trên đoạn bằng tổng hữu hạn các hàm riêng đầu tiên, đường cong tổng riêng ban đầu chỉ phản ánh dáng điệu tổng quát, rồi bám ngày càng sát hàm gốc khi bổ sung thêm các chế độ bậc cao — hoàn toàn tương tự chuỗi Fourier nhưng với họ hàm cơ sở tổng quát hơn.
 
 ### Cách nhìn hình thức
 
-Nếu $$ \{\phi_n\} $$ là hệ hàm riêng trực giao với trọng số $$ w(x) $$, ta viết
+Nếu $$ \{\phi_n\} $$ là hệ hàm riêng trực giao theo hàm trọng số $$ w(x) $$ trên $$ [a,b] $$, ta khai triển hàm $$ f(x) $$ dưới dạng
 
-$$ f(x)\sim \sum_{n=1}^{\infty} c_n\phi_n(x). $$
+$$ f(x)\sim \sum_{n=1}^{\infty} c_n\phi_n(x), $$
 
-Các hệ số được tính bằng công thức chiếu:
+trong đó các hệ số khai triển được xác định bởi công thức chiếu có trọng số:
 
 $$
 c_n=
@@ -50,48 +50,48 @@ c_n=
 {\int_a^b \phi_n^2(x)w(x)\,dx}.
 $$
 
-Đây là hoàn toàn tương tự với việc chiếu một vector lên cơ sở trực giao trong đại số tuyến tính.
+Công thức này hoàn toàn tương tự phép chiếu một vector lên cơ sở trực giao trong đại số tuyến tính.
 
 ## Những ngộ nhận thường gặp
 
-- "Khai triển theo hàm riêng chỉ là thay sin-cos bằng một họ hàm khác." Chưa đủ. Điều cốt lõi là cơ sở được sinh ra từ chính toán tử của bài toán.
-- "Trực giao là đủ, không cần quan tâm trọng số." Sai. Trọng số là một phần của tích vô hướng tự nhiên.
-- "Hệ số khai triển chỉ là thủ tục tính toán." Không đúng. Chúng đo mức đóng góp của từng mode vào dữ liệu ban đầu hoặc nguồn tác động.
-- "Nếu biết vài mode đầu thì không cần quan tâm bài toán gốc nữa." Sai. Ý nghĩa của mode luôn gắn với toán tử và điều kiện biên sinh ra nó.
+- "Khai triển theo hàm riêng chỉ là thay sin–cos bằng một họ hàm tùy chọn." Không đủ. Cơ sở phải được sinh ra từ chính toán tử và điều kiện biên của bài toán.
+- "Chỉ cần biết các hàm trực giao, không cần quan tâm hàm trọng số." Sai. Trọng số $$ w(x) $$ là thành phần bắt buộc trong cả tử số và mẫu số của công thức chiếu.
+- "Hệ số khai triển chỉ là kết quả tính tích phân thuần túy." Sai. Mỗi hệ số $$ c_n $$ đo trực tiếp biên độ đóng góp của chế độ thứ $$ n $$ trong dữ liệu.
+- "Chỉ cần lấy vài chế độ đầu là không cần quan tâm điều kiện biên nữa." Sai. Hình dạng và ý nghĩa của các chế độ luôn gắn chặt với toán tử và điều kiện biên gốc.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Nhớ lại Fourier
+### Bước 1: Ôn lại chuỗi Fourier
 
-Xem lại công thức chiếu trong chuỗi Fourier như một tiền mẫu.
+Xem lại công thức tính hệ số Fourier như một trường hợp đặc biệt với $$ w(x)=1 $$.
 
-### Bước 2: Thay cơ sở Fourier bằng hàm riêng của bài toán
+### Bước 2: Thay thế bằng hệ hàm riêng của bài toán
 
-Đây là bước chuyển tư duy quan trọng.
+Chuyển sang cơ sở $$ \{\phi_n\} $$ tương ứng với toán tử Sturm–Liouville đang xét.
 
-### Bước 3: Tính hệ số có trọng số
+### Bước 3: Tính hệ số chiếu có trọng số
 
-Sinh viên cần rất chắc chỗ này.
+Luyện tính đúng tử số và mẫu số có kèm hàm trọng số $$ w(x) $$.
 
-### Bước 4: Diễn giải mode
+### Bước 4: Diễn giải ý nghĩa chế độ
 
-Mỗi mode là một thành phần dao động hay đáp ứng cơ bản của hệ.
+Hiểu mỗi số hạng $$ c_n\phi_n(x) $$ như một thành phần dao động hoặc đáp ứng cơ bản.
 
-### Bước 5: Nối sang PDE và BVP không thuần nhất
+### Bước 5: Vận dụng cho BVP không thuần nhất và PDE
 
-Cho sinh viên thấy mục đích lớn của công cụ này.
+Thay khai triển vào phương trình để đưa toán tử vi phân về phép nhân đại số theo từng trị riêng.
 
-### Các checkpoint
+### Các điểm kiểm tra
 
-- Sinh viên có viết được công thức hệ số chiếu đúng trọng số hay không.
-- Sinh viên có giải thích được tại sao các mode độc lập với nhau hay không.
-- Sinh viên có thấy khai triển theo hàm riêng là Fourier tổng quát hay không.
+- Sinh viên có viết đúng công thức hệ số chiếu có kèm trọng số $$ w(x) $$ hay không.
+- Sinh viên có giải thích được vì sao các chế độ riêng tách rời nhau khi giải phương trình hay không.
+- Sinh viên có nhận thấy chuỗi Fourier là trường hợp riêng của khai triển theo hàm riêng hay không.
 
 ## Ví dụ được giải chi tiết
 
 ### Ví dụ 1: Khai triển Fourier sin cổ điển
 
-Trên đoạn $$ [0,L] $$, với điều kiện Dirichlet thuần nhất, các hàm riêng là
+Trên đoạn $$ [0,L] $$ với điều kiện biên Dirichlet thuần nhất, các hàm riêng là
 
 $$ \phi_n(x)=\sin\left(\frac{n\pi x}{L}\right). $$
 
@@ -107,33 +107,29 @@ $$
 c_n=\frac{2}{L}\int_0^L f(x)\sin\left(\frac{n\pi x}{L}\right)\,dx.
 $$
 
-Ví dụ này là điểm tựa tốt nhất vì sinh viên đã có thể quen từ chuỗi Fourier.
+Đây là trường hợp quen thuộc nhất làm điểm tựa cho công thức tổng quát.
 
-### Ví dụ 2: Khai triển hàm
+### Ví dụ 2: Khai triển hàm $$ f(x)=x $$ trên $$ [0,\pi] $$ theo sin
 
-$$ f(x)=x $$
-
-trên $$ [0,\pi] $$ theo sin
-
-Trên đoạn này, các hệ số là
+Trên đoạn $$ [0,\pi] $$, các hệ số khai triển là
 
 $$ c_n=\frac{2}{\pi}\int_0^\pi x\sin(nx)\,dx. $$
 
-Tích phân từng phần cho
+Áp dụng tích phân từng phần thu được
 
 $$ c_n=\frac{2(-1)^{n+1}}{n}. $$
 
-Vì vậy
+Do đó
 
 $$
 x\sim 2\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n}\sin(nx).
 $$
 
-Ví dụ này minh họa trọn vẹn quy trình từ dữ liệu đến hệ số mode.
+Ví dụ này minh họa trọn vẹn quy trình tính hệ số chế độ từ hàm dữ liệu cho trước.
 
 ### Ví dụ 3: Khai triển với trọng số khác 1
 
-Giả sử hệ hàm riêng của một bài toán thỏa trực giao theo trọng số $$ w(x)=x $$. Khi đó hệ số đúng phải là
+Nếu hệ hàm riêng trực giao theo hàm trọng số $$ w(x)=x $$, công thức tính hệ số đúng phải là
 
 $$
 c_n=
@@ -141,11 +137,11 @@ c_n=
 {\int_a^b \phi_n^2(x)x\,dx}.
 $$
 
-Ví dụ khái niệm này rất cần thiết vì nhiều sinh viên mang công thức Fourier không trọng số vào mọi nơi rồi mắc lỗi.
+Cần luôn kiểm tra hàm trọng số của bài toán để tránh áp dụng máy móc công thức Fourier không trọng số.
 
-### Ví dụ 4: Giải một BVP không thuần nhất bằng mode
+### Ví dụ 4: Giải BVP không thuần nhất bằng khai triển hàm riêng
 
-Xét
+Xét bài toán
 
 $$ -y''=f(x),
 \qquad
@@ -153,81 +149,77 @@ y(0)=0,
 \qquad
 y(L)=0. $$
 
-Nếu khai triển
+Khai triển vế phải theo hệ hàm riêng $$ \phi_n(x)=\sin\left(\frac{n\pi x}{L}\right) $$:
 
 $$ f(x)=\sum_{n=1}^{\infty} b_n\phi_n(x), $$
 
-với
-
-$$ \phi_n(x)=\sin\left(\frac{n\pi x}{L}\right), $$
-
-thì ta tìm nghiệm dưới dạng
+và tìm nghiệm dưới dạng
 
 $$ y(x)=\sum_{n=1}^{\infty} a_n\phi_n(x). $$
 
-Thế vào phương trình sẽ cho $$ \lambda_n a_n=b_n $$, nên
+Thay vào phương trình và sử dụng $$ -\phi_n''=\lambda_n\phi_n $$, ta thu được $$ \lambda_n a_n=b_n $$, suy ra
 
 $$ a_n=\frac{b_n}{\lambda_n}. $$
 
-Ví dụ này cho thấy toàn bộ sức mạnh của khai triển hàm riêng: bài toán vi phân biến thành vô số phương trình đại số một chiều.
+Nhờ khai triển theo hàm riêng, bài toán vi phân được chuyển thành dãy các phương trình đại số một ẩn độc lập.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao nói khai triển theo hàm riêng là phiên bản tổng quát của chuỗi Fourier?
-2. Hệ số khai triển đo điều gì về mối quan hệ giữa dữ liệu và từng mode riêng?
-3. Vì sao việc dùng đúng cơ sở hàm riêng của bài toán giúp lời giải PDE hoặc BVP sáng sủa hơn hẳn?
+1. Vì sao khai triển theo hàm riêng được xem là sự tổng quát hóa của chuỗi Fourier?
+2. Mỗi hệ số khai triển $$ c_n $$ đo đại lượng gì trong mối quan hệ giữa hàm dữ liệu và chế độ riêng tương ứng?
+3. Vì sao việc sử dụng đúng hệ hàm riêng của bài toán lại làm đơn giản hóa đáng kể quá trình giải BVP và PDE?
 
 ## Bài toán ứng dụng
 
-1. Trong mô hình truyền nhiệt, vì sao phân bố nhiệt ban đầu có thể được tách thành các mode suy giảm độc lập theo thời gian?
-2. Trong xử lý âm thanh, việc phân tích tín hiệu thành các mode cơ bản có ý nghĩa tương tự thế nào với khai triển hàm riêng?
-3. Một hệ cơ học có nhiều mode dao động tự nhiên. Hãy giải thích vì sao tác động ban đầu bất kỳ có thể được xem như tổng của các mode đó.
+1. Trong bài toán truyền nhiệt, vì sao phân bố nhiệt độ ban đầu có thể phân tích thành tổng các chế độ tắt dần độc lập theo thời gian?
+2. Trong xử lý âm thanh, việc phân tích tín hiệu thành các thành phần tần số cơ bản tương đồng ra sao với khai triển theo hàm riêng?
+3. Với một cơ hệ có nhiều chế độ dao động tự nhiên, vì sao một trạng thái kích thích ban đầu bất kỳ có thể biểu diễn dưới dạng chồng chất các chế độ đó?
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng câu hỏi: "Nếu Fourier là phân tích theo các sóng cơ bản, vậy trong một hình học khác ta sẽ phân tích theo cái gì?"
-- Cho sinh viên tự tính một vài hệ số chiếu để cảm nhận được cơ chế "lấy thành phần theo mode".
-- Vẽ gần đúng của một hàm bằng 1 mode, 2 mode, 5 mode để trực quan hóa sự hội tụ.
-- Tổ chức hoạt động ghép đôi: một sinh viên giải thích bằng ngôn ngữ đại số tuyến tính, sinh viên kia giải thích bằng ngôn ngữ vật lý mode dao động.
+- Đặt câu hỏi chuyển tiếp: nếu chuỗi Fourier phân tích hàm theo sóng sin–cos trên đoạn thẳng, thì trong một hình học hoặc bài toán biên khác ta nên dùng cơ sở nào?
+- Cho sinh viên tự tính một số hệ số chiếu để nắm vững thao tác tích phân có trọng số.
+- Vẽ so sánh tổng riêng 1, 2 và 5 chế độ để trực quan hóa quá trình hội tụ.
+- Tổ chức trao đổi theo cặp: một sinh viên diễn giải bằng ngôn ngữ đại số tuyến tính, sinh viên kia diễn giải bằng ngôn ngữ vật lý về chế độ dao động.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên đi từ Fourier sin-cos quen thuộc trước rồi mới mở rộng sang hàm riêng tổng quát. Khi nền quen thuộc đã chắc, phần trọng số và cơ sở tổng quát sẽ bớt đáng sợ hơn.
+Nên xuất phát từ chuỗi Fourier sin–cos quen thuộc rồi mới tổng quát hóa sang hệ hàm riêng và trọng số $$ w(x) $$ để dễ tiếp thu hơn.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể yêu cầu sinh viên khá giỏi thảo luận về tính đầy đủ của hệ hàm riêng hoặc quan hệ Parseval như một phát biểu "bảo toàn năng lượng" trong không gian hàm.
+Có thể yêu cầu sinh viên tìm hiểu thêm về tính đầy đủ (completeness) của hệ hàm riêng và đẳng thức Parseval như một dạng định luật bảo toàn năng lượng trong không gian hàm.
 
 ## Tóm tắt dễ nhớ
 
-Khai triển theo hàm riêng là Fourier tổng quát: ta biểu diễn một hàm bằng các mode riêng do bài toán sinh ra. Các hệ số được tính bằng phép chiếu có trọng số, và nhờ đó nhiều BVP và PDE phức tạp được tách thành các mode độc lập rất dễ xử lý.
+Khai triển theo hàm riêng là chuỗi Fourier tổng quát, biểu diễn hàm dữ liệu theo chính hệ chế độ riêng của bài toán. Các hệ số được tính bằng phép chiếu có trọng số, giúp tách nhiều BVP và PDE tuyến tính thành các phương trình độc lập theo từng chế độ.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Phân bố nhiệt trên thanh
-- Bài toán: Nhiệt độ ban đầu bất kỳ trên thanh có thể được phân tích theo các mode riêng không gian.
+#### Phân bố nhiệt độ ban đầu trên thanh
+- Bài toán: Phân tích phân bố nhiệt ban đầu bất kỳ thành tổng các chế độ không gian của bài toán truyền nhiệt.
 - Mô hình:
 $$ u(x,0)=\sum_{n=1}^{\infty} c_n \phi_n(x). $$
-- Giả thiết và giới hạn: Cần một họ hàm riêng đầy đủ và bài toán chính quy.
-- Diễn giải: Khai triển theo hàm riêng là Fourier tổng quát cho hình học và trọng số phù hợp.
+- Giả thiết và giới hạn: Bài toán Sturm–Liouville chính quy có hệ hàm riêng đầy đủ.
+- Diễn giải: Khai triển theo hàm riêng là công cụ Fourier tổng quát tương thích với hình học và trọng số của bài toán.
 
 #### Dao động dây với kích thích ban đầu bất kỳ
-- Bài toán: Hình dạng ban đầu của dây cần được tách thành các mode dao động cơ bản.
+- Bài toán: Tách hình dạng ban đầu của dây đàn thành các chế độ dao động tự nhiên.
 - Mô hình:
 $$
 f(x)=\sum_{n=1}^{\infty} c_n \phi_n(x),\qquad
 c_n=\frac{\langle f,\phi_n\rangle_w}{\langle \phi_n,\phi_n\rangle_w}.
 $$
-- Giả thiết và giới hạn: Sự hội tụ phụ thuộc lớp hàm và điều kiện biên.
-- Diễn giải: Bài toán phức tạp được giảm thành tổng của các mode độc lập.
+- Giả thiết và giới hạn: Tốc độ và kiểu hội tụ phụ thuộc độ trơn của $$ f $$ và sự tương thích với điều kiện biên.
+- Diễn giải: Bài toán phức tạp được tách thành chồng chất của các chế độ độc lập.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Khai triển theo hàm riêng là bản nâng cấp của chuỗi Fourier: cơ sở không còn mặc định là sin-cos, mà là các mode riêng do toán tử và biên sinh ra. Một hiểu lầm phổ biến là xem đó chỉ là công cụ hình thức; thật ra nó là ngôn ngữ chuẩn để biểu diễn trạng thái trong hầu hết PDE tuyến tính tách biến được.
+Khai triển theo hàm riêng tổng quát hóa chuỗi Fourier bằng cách thay cơ sở lượng giác mặc định bằng cơ sở riêng sinh ra từ toán tử và điều kiện biên. Đây là ngôn ngữ nền tảng để giải hầu hết các PDE tuyến tính tách biến được.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -261,29 +253,29 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Trên đoạn $$ [0,L] $$ với điều kiện Dirichlet, ta có
+Trên đoạn $$ [0,L] $$ với điều kiện biên Dirichlet thuần nhất, ta có
 $$
 f(x)=\sum_{n=1}^{\infty} c_n \sin\left(\frac{n\pi x}{L}\right),
 $$
-trong đó
+với
 $$
 c_n=\frac{2}{L}\int_0^L f(x)\sin\left(\frac{n\pi x}{L}\right)\,dx.
 $$
-Đây là ví dụ quen thuộc nhất của khai triển theo hàm riêng và là mẫu để hiểu trường hợp tổng quát có trọng số.
+Đây là trường hợp mẫu quen thuộc nhất để làm cơ sở mở rộng sang khai triển có trọng số tổng quát.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Học cách tính hệ số và diễn giải khai triển như tổng mode.
+**Bậc đại học.** Tính thành thạo hệ số khai triển và diễn giải chuỗi như chồng chất các chế độ riêng.
 
-**Bậc sau đại học.** Nói về completeness, hội tụ trong chuẩn $$ L^2_w $$ và lý thuyết phổ của toán tử tự liên hợp.
+**Bậc sau đại học.** Nghiên cứu tính đầy đủ (completeness), sự hội tụ theo chuẩn $$ L^2_w $$ và lý thuyết phổ của toán tử tự liên hợp.
 
 ## Video tham khảo
 
-- xem trước: [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, tiếng Anh. Chuỗi Fourier là khai triển hàm riêng mẫu, sinh ra từ phương trình nhiệt.
-- [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, tiếng Anh. Vì sao hàm riêng Sturm-Liouville là cơ sở đúng cho khai triển.
-- [Computing Fourier Series | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=jzzpxqVohhI) — MIT OpenCourseWare, tiếng Anh. MIT tính hệ số Fourier, nguyên mẫu của một hệ số suy rộng.
+- Xem trước: [But what is a Fourier series?  From heat flow to drawing with circles | DE4](https://www.youtube.com/watch?v=r6sGWTCMz2k) — 3Blue1Brown, tiếng Anh. Giới thiệu chuỗi Fourier như khai triển theo hàm riêng tiêu biểu xuất phát từ phương trình nhiệt.
+- [Sturm-Liouville Theory - Partial Differential Equations | Lecture 23](https://www.youtube.com/watch?v=q6R734ukoCo) — Jason Bramburger, tiếng Anh. Giải thích vì sao hệ hàm riêng Sturm–Liouville lập thành cơ sở khai triển tự nhiên.
+- [Computing Fourier Series | MIT 18.03SC Differential Equations, Fall 2011](https://www.youtube.com/watch?v=jzzpxqVohhI) — MIT OpenCourseWare, tiếng Anh. Tính hệ số Fourier làm mẫu cho hệ số khai triển suy rộng.
 
 ## Tài liệu tham khảo
 
-- Boyce & DiPrima, Chương 11: xây dựng khai triển theo hàm riêng từ tính trực giao và bài toán biên.
-- Haberman, Chương 5: nhấn mạnh cách khai triển này chuyển bài toán PDE thành chuỗi mode độc lập.
+- Boyce & DiPrima, Chương 11: xây dựng khai triển theo hàm riêng từ tính trực giao và bài toán giá trị biên.
+- Haberman, Chương 5: trình bày cách khai triển hàm riêng chuyển bài toán PDE thành tổng các chế độ độc lập.

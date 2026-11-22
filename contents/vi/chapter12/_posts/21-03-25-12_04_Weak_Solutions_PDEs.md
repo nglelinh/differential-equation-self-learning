@@ -14,36 +14,36 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài này giúp sinh viên hiểu cách chuyển một PDE cổ điển sang dạng yếu, vì sao nghiệm yếu là khái niệm đúng cho nhiều bài toán elliptic, và vì sao đây là cầu nối trực tiếp tới các định lý tồn tại như Lax-Milgram. Sau bài học, sinh viên cần tự suy ra được dạng yếu cho một số bài toán mẫu.
+Bài học này hướng dẫn cách chuyển một PDE cổ điển sang dạng yếu, giải thích vì sao nghiệm yếu là khuôn khổ phù hợp cho nhiều bài toán elliptic, và làm rõ cầu nối trực tiếp tới các định lý tồn tại như Lax–Milgram. Sau bài học, sinh viên cần tự suy ra được dạng yếu cho các bài toán mẫu.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm đạo hàm yếu, không gian $$ H^1 $$ và $$ H^1_0 $$, tích phân từng phần, cùng trực giác về điều kiện biên Dirichlet. Cần nhấn mạnh rằng ta đang không “bỏ bớt” nội dung của PDE mà đang viết nó lại theo cách bền hơn.
+Sinh viên cần nắm đạo hàm yếu, các không gian $$ H^1 $$ và $$ H^1_0 $$, tích phân từng phần và trực giác về điều kiện biên Dirichlet. Cần lưu ý rằng dạng yếu không làm mất nội dung của PDE mà viết lại phương trình trong một khuôn khổ vững chắc hơn.
 
 ## Dẫn nhập
 
-Một PDE cổ điển thường yêu cầu nghiệm đủ trơn để mọi đạo hàm trong phương trình đều có nghĩa từng điểm. Nhưng thực tế, nghiệm tự nhiên của bài toán có thể chỉ có đạo hàm yếu. Nếu cứ giữ tiêu chuẩn cổ điển, ta sẽ loại bỏ chính những nghiệm đáng quan tâm nhất.
+Một PDE cổ điển đòi hỏi nghiệm đủ trơn để mọi đạo hàm xuất hiện trong phương trình đều tồn tại tại từng điểm. Tuy nhiên, nghiệm tự nhiên của nhiều bài toán thực tế chỉ có đạo hàm yếu; nếu giữ nguyên yêu cầu cổ điển, các nghiệm quan trọng này sẽ bị loại bỏ.
 
-Nghiệm yếu giải quyết điều đó bằng cách nhân PDE với một hàm thử rồi tích phân từng phần để chuyển đạo hàm sang phía hàm thử. Phương trình mới yếu hơn về mặt trơn, nhưng vẫn giữ nguyên nội dung cân bằng hay bảo toàn của mô hình.
+Cách tiếp cận nghiệm yếu khắc phục điều này bằng cách nhân PDE với một hàm thử rồi tích phân từng phần để giảm bậc đạo hàm đặt lên nghiệm. Phương trình thu được đòi hỏi ít độ trơn hơn nhưng vẫn bảo toàn nguyên lý cân bằng hoặc bảo toàn của mô hình vật lý.
 
 ## Khái niệm theo ba cách
 
 ### Cách trực giác
 
-Hãy nghĩ đến một tấm màng đàn hồi gắn chặt ở biên. Dù bề mặt có thể không trơn hoàn hảo tại mọi điểm, nó vẫn ở trạng thái cân bằng năng lượng. Nghiệm yếu mô tả đúng trạng thái cân bằng ấy thông qua một nguyên lý tổng thể thay vì yêu cầu độ cong chính xác tại từng điểm.
+Xét một tấm màng đàn hồi được cố định dọc theo biên. Dù bề mặt màng có thể không trơn tuyệt đối tại mọi điểm, hệ vẫn nằm ở trạng thái cân bằng năng lượng. Nghiệm yếu diễn đạt chính trạng thái cân bằng đó qua một điều kiện tích phân toàn cục thay vì đòi hỏi độ cong từng điểm.
 
 ### Cách hình ảnh
 
-Trên bảng, giáo viên nên vẽ hai cột:
+Có thể đặt hai biểu diễn song song để đối chiếu:
 
 - Cột trái: PDE cổ điển với toán tử $$ -\Delta u=f $$.
-- Cột phải: công thức tích phân với hàm thử $$ \varphi $$.
+- Cột phải: đẳng thức tích phân với hàm thử $$ \varphi $$.
 
-Mũi tên giữa hai cột chính là tích phân từng phần. Sinh viên sẽ nhìn thấy rất rõ quá trình “đẩy” đạo hàm khỏi nghiệm sang hàm thử.
+Phép tích phân từng phần đóng vai trò mũi tên nối hai cột, cho thấy rõ bước chuyển một bậc đạo hàm từ nghiệm sang hàm thử.
 
 ### Cách hình thức
 
-Xét bài toán Poisson
+Xét bài toán Poisson:
 
 $$
 \begin{cases}
@@ -52,193 +52,184 @@ u=0 & \text{trên } \partial\Omega.
 \end{cases}
 $$
 
-Ta gọi $$ u\in H^1_0(\Omega) $$ là nghiệm yếu nếu
+Ta nói $$ u\in H^1_0(\Omega) $$ là nghiệm yếu của bài toán nếu:
 
 $$
 \int_\Omega \nabla u\cdot \nabla \varphi\,dx=\int_\Omega f\varphi\,dx
 \qquad \forall \varphi\in H^1_0(\Omega).
 $$
 
-Nếu $$ u $$ đủ trơn, công thức này nhận được bằng cách nhân PDE với $$ \varphi $$ rồi tích phân từng phần.
+Khi $$ u $$ đủ trơn, đẳng thức này thu được trực tiếp bằng cách nhân PDE với $$ \varphi $$ rồi áp dụng công thức tích phân từng phần.
 
 ## Ngộ nhận thường gặp
 
 ### “Nghiệm yếu là nghiệm gần đúng”
 
-Sai. Nó là một khái niệm nghiệm chính xác trong một không gian hàm rộng hơn.
+Sai. Nghiệm yếu là khái niệm nghiệm chính xác được định nghĩa trên một không gian hàm rộng hơn.
 
-### “Dạng yếu làm mất điều kiện biên”
+### “Chuyển sang dạng yếu làm mất điều kiện biên”
 
-Không. Điều kiện biên được mã hóa trong việc chọn không gian thử, chẳng hạn $$ H^1_0(\Omega) $$ cho Dirichlet đồng nhất.
+Không đúng. Điều kiện biên được mã hóa vào không gian hàm (như $$ H^1_0(\Omega) $$ cho điều kiện Dirichlet thuần nhất) hoặc xuất hiện tường minh trong tích phân biên (như ở bài toán Neumann không thuần nhất).
 
-### “Chỉ cần thay PDE bằng một tích phân là xong”
+### “Chỉ cần viết lại PDE dưới dạng tích phân là xong”
 
-Chưa đủ. Phải chọn đúng không gian cho nghiệm và hàm thử thì dạng yếu mới có ý nghĩa.
+Chưa đủ. Cần chỉ rõ không gian cho nghiệm và không gian cho hàm thử để các tích phân đều có nghĩa và điều kiện biên được thực thi đúng.
 
-### “Nếu có nghiệm yếu thì tự động có nghiệm cổ điển”
+### “Có nghiệm yếu thì tự động có nghiệm cổ điển”
 
-Sai. Cần thêm giả thiết regularity để nâng nghiệm yếu lên nghiệm trơn hơn.
+Sai. Cần thêm các giả thiết và kết quả về tính chính quy (regularity) để khẳng định nghiệm yếu thực sự trơn hơn.
 
 ## Tiến trình học
 
-### Bước 1: Bắt đầu từ PDE cụ thể
+### Bước 1: Bắt đầu từ một PDE cụ thể
 
-Chọn Poisson vì đây là ví dụ mẫu rõ nhất.
+Chọn bài toán Poisson làm ví dụ mẫu tiêu biểu.
 
 ### Bước 2: Nhân với hàm thử
 
-Viết
+Viết đẳng thức tích phân:
 
 $$
 \int_\Omega (-\Delta u)\varphi\,dx=\int_\Omega f\varphi\,dx.
 $$
 
-### Bước 3: Tích phân từng phần
+### Bước 3: Áp dụng tích phân từng phần
 
-Chuyển Laplacian sang gradient:
+Chuyển toán tử Laplace sang tích vô hướng của hai gradient:
 
 $$
 \int_\Omega \nabla u\cdot\nabla\varphi\,dx=\int_\Omega f\varphi\,dx.
 $$
 
-### Bước 4: Mở rộng không gian của nghiệm
+### Bước 4: Xác định không gian nghiệm tự nhiên
 
-Nhận ra công thức sau chỉ đòi hỏi gradient yếu của $$ u $$ nằm trong $$ L^2 $$. Vì vậy không gian tự nhiên là $$ H^1_0(\Omega) $$.
+Nhận thấy biểu thức cuối chỉ yêu cầu gradient yếu của $$ u $$ thuộc $$ L^2 $$, do đó không gian tự nhiên cho bài toán Dirichlet thuần nhất là $$ H^1_0(\Omega) $$.
 
 ### Các điểm kiểm tra hiểu bài
 
-- Sinh viên có tự suy ra được dạng yếu từ dạng cổ điển không?
-- Sinh viên có giải thích được vai trò của hàm thử không?
-- Sinh viên có biết điều kiện biên được gắn vào đâu trong dạng yếu không?
+- Sinh viên có tự suy ra được dạng yếu từ dạng cổ điển hay không?
+- Sinh viên có giải thích được vai trò của hàm thử hay không?
+- Sinh viên có chỉ ra được điều kiện biên được đưa vào vị trí nào trong dạng yếu hay không?
 
 ## Ví dụ có lời giải
 
 ### Ví dụ 1: Bài toán một chiều
 
-Xét $$-u''=f \quad \text{trên } (0,1),\qquad u(0)=u(1)=0$$. Nhân với $$ \varphi\in H^1_0(0,1) $$ rồi tích phân:
+Xét $$-u''=f \quad \text{trên } (0,1),\qquad u(0)=u(1)=0$$. Nhân hai vế với $$ \varphi\in H^1_0(0,1) $$ rồi tích phân:
 
 $$ \int_0^1 (-u'')\varphi\,dx=\int_0^1 f\varphi\,dx. $$
 
-Tích phân từng phần cho
+Áp dụng tích phân từng phần (số hạng biên triệt tiêu vì $$ \varphi(0)=\varphi(1)=0 $$), ta thu được dạng yếu:
 
 $$ \int_0^1 u'\varphi'\,dx=\int_0^1 f\varphi\,dx. $$
 
-Đó là dạng yếu.
+### Ví dụ 2: Tính tương thích với nghiệm cổ điển
 
-### Ví dụ 2: Nếu nghiệm cổ điển tồn tại
+Giả sử $$ u\in C^2(\Omega)\cap C(\overline{\Omega}) $$ là nghiệm cổ điển của bài toán Poisson với điều kiện biên bằng 0. Khi đó mọi bước tích phân từng phần đều hợp lệ, nên mọi nghiệm cổ điển đều là nghiệm yếu. Như vậy, nghiệm yếu là sự mở rộng nhất quán của nghiệm cổ điển.
 
-Giả sử $$ u\in C^2(\Omega)\cap C(\overline{\Omega}) $$ nghiệm bài toán Poisson với biên bằng 0. Khi đó mọi bước tích phân từng phần đều hợp lệ, nên nghiệm cổ điển luôn là nghiệm yếu.
+### Ví dụ 3: Liên hệ với nguyên lý cực tiểu năng lượng
 
-Ý nghĩa: nghiệm yếu mở rộng khái niệm cũ chứ không thay thế theo kiểu mâu thuẫn.
-
-### Ví dụ 3: Từ nguyên lý năng lượng
-
-Xét phiếm hàm
+Xét phiếm hàm năng lượng:
 
 $$
 J(v)=\frac12\int_\Omega \lvert \nabla v\rvert^2\,dx-\int_\Omega fv\,dx
 $$
 
-trên $$ H^1_0(\Omega) $$.
-
-Nếu $$ u $$ là điểm cực tiểu của $$ J $$, thì đạo hàm theo hướng phải bằng 0:
+trên $$ H^1_0(\Omega) $$. Nếu $$ u $$ là điểm cực tiểu của $$ J $$, đạo hàm theo hướng tại $$ u $$ phải bằng 0:
 
 $$ \frac{d}{dt}J(u+t\varphi)\Big\vert_{t=0}=0. $$
 
-Từ đó suy ra
+Khai triển biểu thức này dẫn đến đúng dạng yếu:
 
 $$
 \int_\Omega \nabla u\cdot\nabla\varphi\,dx=\int_\Omega f\varphi\,dx.
 $$
 
-Ví dụ này cho thấy dạng yếu cũng chính là điều kiện cân bằng năng lượng.
+Ví dụ này cho thấy dạng yếu tương đương với điều kiện dừng của năng lượng.
 
-### Ví dụ 4: Điều kiện Neumann
+### Ví dụ 4: Điều kiện biên Neumann
 
-Nếu bài toán là
+Xét bài toán với điều kiện biên Neumann thuần nhất:
 
 $$
--\Delta u=f \quad \text{trong } \Omega,\qquad \frac{\partial u}{\partial n}=0 \quad \text{trên } \partial\Omega,
+-\Delta u=f \quad \text{trong } \Omega,\qquad \frac{\partial u}{\partial n}=0 \quad \text{trên } \partial\Omega.
 $$
 
-thì sau tích phân từng phần, số hạng biên không mất đi vì hàm thử không bằng 0 trên biên. Điều này cho thấy dạng yếu phụ thuộc mạnh vào loại điều kiện biên.
+Ở đây, hàm thử $$ \varphi\in H^1(\Omega) $$ không bị ép bằng 0 trên biên như trong bài toán Dirichlet. Sau khi tích phân từng phần, số hạng biên $$ -\int_{\partial\Omega} \frac{\partial u}{\partial n}\varphi\,ds $$ triệt tiêu nhờ chính điều kiện $$ \frac{\partial u}{\partial n}=0 $$ (nếu điều kiện Neumann không thuần nhất $$ \frac{\partial u}{\partial n}=g $$, số hạng biên $$ \int_{\partial\Omega} g\varphi\,ds $$ sẽ xuất hiện tường minh trong dạng yếu). Điều này cho thấy cả không gian hàm thử lẫn biểu thức dạng yếu đều phụ thuộc trực tiếp vào loại điều kiện biên.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao dạng yếu của Poisson chỉ cần đạo hàm bậc một yếu dù PDE gốc có đạo hàm bậc hai?
-2. Trong dạng yếu, điều kiện biên Dirichlet được đưa vào bằng cách nào?
-3. Tại sao nghiệm yếu thường gắn chặt với một nguyên lý cực tiểu năng lượng?
+1. Vì sao dạng yếu của phương trình Poisson chỉ đòi hỏi đạo hàm yếu bậc một dù phương trình gốc có đạo hàm bậc hai?
+2. Trong dạng yếu, điều kiện biên Dirichlet thuần nhất được thể hiện bằng cách nào?
+3. Vì sao nghiệm yếu của nhiều bài toán elliptic gắn liền với một nguyên lý cực tiểu hóa năng lượng?
 
 ## Bài toán ứng dụng
 
-1. Trong bài toán nhiệt ổn định của một tấm kim loại, dạng yếu diễn tả điều gì về cân bằng năng lượng toàn cục?
-2. Trong phương pháp phần tử hữu hạn, vì sao người ta giải dạng yếu thay vì dạng cổ điển?
-3. Trong cơ học kết cấu, tại sao các trường chuyển vị thực nghiệm thường phù hợp với mô hình nghiệm yếu hơn nghiệm cổ điển?
+1. Trong bài toán truyền nhiệt ổn định trên tấm kim loại, dạng yếu phản ánh ý nghĩa gì về cân bằng năng lượng toàn cục?
+2. Trong phương pháp phần tử hữu hạn (FEM), vì sao người ta rời rạc hóa dạng yếu thay vì dạng cổ điển?
+3. Trong cơ học kết cấu, vì sao trường chuyển vị thực tế thường phù hợp với khuôn khổ nghiệm yếu hơn nghiệm cổ điển?
 
 ## Chiến lược dạy học tương tác
 
 ### Câu hỏi nên hỏi trên lớp
 
-- Nếu nghiệm không có đạo hàm bậc hai cổ điển thì ta còn cách nào để giữ PDE không?
-- Hàm thử đóng vai trò như “thiết bị đo” điều gì của nghiệm?
-- Tại sao cùng một PDE nhưng dạng yếu thay đổi khi đổi điều kiện biên?
+- Nếu nghiệm không có đạo hàm bậc hai cổ điển, ta có cách nào vẫn giữ được ý nghĩa của PDE hay không?
+- Hàm thử đóng vai trò kiểm định điều gì của nghiệm?
+- Tại sao cùng một PDE nhưng dạng yếu và không gian hàm lại thay đổi khi đổi loại điều kiện biên?
 
 ### Hoạt động gợi ý
 
-- Cho sinh viên tự suy ra dạng yếu của bài toán một chiều theo nhóm.
-- So sánh trên bảng ba mức: dạng cổ điển, dạng yếu, bài toán cực tiểu năng lượng.
-- Để mỗi nhóm giải thích một câu “nội dung vật lý” của dạng yếu.
+- Cho sinh viên thảo luận nhóm để tự suy ra dạng yếu cho bài toán một chiều.
+- So sánh song song trên bảng ba biểu diễn: dạng cổ điển, dạng yếu và bài toán cực tiểu năng lượng.
+- Mời từng nhóm tóm tắt trong một câu ý nghĩa vật lý của dạng yếu.
 
 ### Cách tăng tham gia
 
-- Yêu cầu sinh viên điền chỗ trống trong phép tích phân từng phần.
-- Cho dự đoán trước về không gian tự nhiên của nghiệm.
-- Mời sinh viên nêu lại bằng lời tại sao bậc đạo hàm giảm đi.
+- Cho sinh viên điền từng bước biến đổi trong phép tích phân từng phần.
+- Yêu cầu dự đoán không gian hàm tự nhiên trước khi viết định nghĩa chính thức.
+- Mời sinh viên giải thích bằng lời lý do bậc đạo hàm giảm xuống sau khi tích phân từng phần.
 
 ## Phân hóa
 
 ### Hỗ trợ sinh viên gặp khó khăn
 
-- Làm rất kỹ bài toán một chiều trước.
-- Viết rõ từng bước tích phân từng phần.
-- Nhấn mạnh vai trò của không gian $$ H^1_0 $$ bằng ví dụ biên bằng 0.
+- Làm kỹ bài toán một chiều trước khi chuyển sang nhiều chiều.
+- Viết rõ từng bước tích phân từng phần và xử lý số hạng biên.
+- Minh họa vai trò của không gian $$ H^1_0 $$ qua điều kiện biên bằng 0.
 
 ### Thử thách cho sinh viên khá giỏi
 
-- Tự suy ra dạng yếu cho toán tử dạng
-
-$$ -\nabla\cdot(A\nabla u)=f. $$
-
-- Liên hệ dạng yếu với Euler-Lagrange.
-- Phân tích sự khác nhau giữa Dirichlet và Neumann trong khuôn khổ biến phân.
+- Tự suy ra dạng yếu cho toán tử phân kỳ $$ -\nabla\cdot(A\nabla u)=f $$.
+- Liên hệ dạng yếu với phương trình Euler–Lagrange.
+- So sánh vai trò của điều kiện biên cốt yếu (Dirichlet) và điều kiện biên tự nhiên (Neumann) trong khuôn khổ biến phân.
 
 ## Ghi nhớ nhanh
 
-Nghiệm yếu là cách viết lại PDE bằng công thức tích phân với hàm thử để bài toán vẫn có nghĩa khi nghiệm không đủ trơn. Đây là cánh cửa mở sang Sobolev space, nguyên lý năng lượng và phương pháp phần tử hữu hạn.
+Nghiệm yếu viết lại PDE dưới dạng đẳng thức tích phân với hàm thử để bài toán vẫn có nghĩa khi nghiệm không đủ trơn. Đây là cầu nối trực tiếp tới không gian Sobolev, nguyên lý năng lượng và phương pháp phần tử hữu hạn.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Poisson với nguồn gồ ghề
-- Bài toán: Nguồn nhiệt, tải trọng hay mật độ điện tích thực tế thường chỉ thuộc $$ L^2 $$ chứ không trơn.
-- Mô hình: Thay vì giải $$ -\Delta u=f $$ theo nghĩa cổ điển, ta tìm $$ u $$ sao cho
+#### Phương trình Poisson với nguồn không trơn
+- Bài toán: Nguồn nhiệt, tải trọng hoặc mật độ điện tích thực tế thường chỉ thuộc $$ L^2 $$ chứ không trơn.
+- Mô hình: Thay vì giải $$ -\Delta u=f $$ từng điểm, ta tìm $$ u $$ sao cho
 $$
 \int_\Omega \nabla u \cdot \nabla v\,dx = \int_\Omega f v\,dx
 $$
-với mọi test function $$ v $$.
-- Giả thiết và giới hạn: Dữ liệu và miền đủ để các tích phân có nghĩa.
-- Diễn giải: Nghiệm yếu cho phép tồn tại nghiệm trong các tình huống mà nghiệm cổ điển không rõ ràng.
+với mọi hàm thử $$ v $$.
+- Giả thiết và giới hạn: Miền và dữ liệu đảm bảo các tích phân hội tụ.
+- Diễn giải: Khuôn khổ nghiệm yếu cho phép chứng minh tồn tại nghiệm ngay cả khi nghiệm cổ điển không xác định rõ.
 
-#### Võng màng hoặc đàn hồi tuyến tính
-- Bài toán: Độ võng của một màng dưới tải phân bố thường được mô tả tốt nhất qua nguyên lý năng lượng.
-- Mô hình: Nghiệm yếu xuất hiện từ bài toán cực tiểu hóa năng lượng.
-- Giả thiết và giới hạn: Mô hình tuyến tính và biên thích hợp.
-- Diễn giải: "Yếu" ở đây không phải kém hơn, mà là đúng lớp hàm vật lý hơn.
+#### Độ võng màng và đàn hồi tuyến tính
+- Bài toán: Độ võng tĩnh của màng chịu tải phân bố thường được phát biểu trực tiếp từ nguyên lý cực tiểu năng lượng.
+- Mô hình: Nghiệm yếu chính là nghiệm của phương trình biến phân tương ứng với cực tiểu năng lượng.
+- Giả thiết và giới hạn: Mô hình tuyến tính cùng điều kiện biên thích hợp.
+- Diễn giải: "Nghiệm yếu" không có nghĩa là kém chất lượng, mà là nghiệm thuộc đúng lớp hàm năng lượng của vật lý.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Nghiệm yếu xuất hiện khi ta chuyển đạo hàm từ nghiệm sang test function bằng tích phân từng phần. Cái giá phải trả là ta không còn đòi hỏi quá nhiều độ trơn, nhưng cái được là phạm vi áp dụng rộng hơn rất nhiều. Một ngộ nhận phổ biến là nghiệm yếu chỉ là xấp xỉ số; thật ra nó là khái niệm nghiệm chuẩn trong nhiều ngành.
+Dạng yếu hình thành khi ta chuyển một bậc đạo hàm từ nghiệm sang hàm thử bằng tích phân từng phần. Nhờ giảm yêu cầu về độ trơn, phương trình áp dụng được cho lớp bài toán rộng hơn nhiều. Một nhầm lẫn phổ biến là coi nghiệm yếu chỉ là xấp xỉ số; thực chất đây là khái niệm nghiệm toán học chuẩn trong giải tích PDE hiện đại.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -266,24 +257,20 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Giải
+Xét bài toán
 $$
 -u''=1 \quad \text{trên } (0,1), \qquad u(0)=u(1)=0.
 $$
-Dạng yếu là tìm $$ u \in H_0^1(0,1) $$ sao cho
-$$ \int_0^1 u'v'\,dx = \int_0^1 v\,dx $$
-với mọi $$ v \in H_0^1(0,1) $$. Hàm
-$$ u(x)=\frac{x(1-x)}{2} $$
-thỏa đẳng thức này, nên chính là nghiệm yếu.
+Dạng yếu là tìm $$ u \in H_0^1(0,1) $$ sao cho $$ \int_0^1 u'v'\,dx = \int_0^1 v\,dx $$ với mọi $$ v \in H_0^1(0,1) $$. Hàm $$ u(x)=\frac{x(1-x)}{2} $$ thỏa mãn đẳng thức này và chính là nghiệm yếu (đồng thời là nghiệm cổ điển) của bài toán.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Hiểu cách tích phân từng phần sinh ra dạng yếu.
+**Bậc đại học.** Nắm cách dùng tích phân từng phần để thiết lập dạng yếu của PDE.
 
-**Bậc sau đại học.** Kết nối với Galerkin, compactness và tồn tại nghiệm cho PDE phi tuyến.
+**Bậc sau đại học.** Kết nối với phương pháp Galerkin, tính compact và sự tồn tại nghiệm yếu cho PDE phi tuyến.
 
 ## Video tham khảo
 
-- xem trước: [Lax-Milgram, application to Poisson equation.](https://www.youtube.com/watch?v=s5P3e1FhpTk) — Learn Maths with Dr Alex, tiếng Anh. Lax-Milgram áp vào phương trình Poisson, cho ra một nghiệm yếu.
-- [Sobolev Spaces Explained | Weak Derivatives, W¹ᵖ and H¹](https://www.youtube.com/watch?v=bUIZGQ7T0rU) — Sciwords, tiếng Anh. Không gian Sobolev H^1 mà nghiệm yếu ấy sống trong đó.
-- [Lax-Milgram lemma](https://www.youtube.com/watch?v=w8QjyVug78M) — Numerical Analysis by Julian Roth, tiếng Anh. Một trình bày thiên về chứng minh của bổ đề Lax-Milgram.
+- xem trước: [Lax-Milgram, application to Poisson equation.](https://www.youtube.com/watch?v=s5P3e1FhpTk) — Learn Maths with Dr Alex, tiếng Anh. Áp dụng định lý Lax–Milgram cho phương trình Poisson để thu được nghiệm yếu.
+- [Sobolev Spaces Explained | Weak Derivatives, W¹ᵖ and H¹](https://www.youtube.com/watch?v=bUIZGQ7T0rU) — Sciwords, tiếng Anh. Trình bày không gian Sobolev H^1 nơi nghiệm yếu tồn tại.
+- [Lax-Milgram lemma](https://www.youtube.com/watch?v=w8QjyVug78M) — Numerical Analysis by Julian Roth, tiếng Anh. Trình bày chi tiết chứng minh bổ đề Lax–Milgram.

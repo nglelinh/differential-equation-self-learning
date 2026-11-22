@@ -13,31 +13,31 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này giới thiệu hai hiện tượng cốt lõi khi sóng gặp biên hoặc mặt phân cách: phản xạ và truyền qua. Sau bài học, sinh viên cần hiểu vì sao sóng không chỉ đơn giản dừng lại ở biên, biết phân biệt phản xạ ở biên cố định và biên tự do, hiểu vai trò của trở kháng môi trường trong bài toán ghép hai miền, và thấy cách bảo toàn năng lượng điều khiển sự chia tách giữa sóng phản xạ và sóng truyền.
+Bài học này giới thiệu hai hiện tượng cơ bản khi sóng gặp biên hoặc mặt phân cách: phản xạ và truyền qua. Sau bài học, sinh viên cần hiểu vì sao sóng không dừng lại tại biên, phân biệt được phản xạ tại biên cố định và biên tự do, nắm vai trò của trở kháng sóng khi ghép hai môi trường và thấy được định luật bảo toàn năng lượng chi phối sự phân chia giữa sóng phản xạ và sóng truyền qua.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm sóng chạy một chiều, điều kiện biên cơ bản, và trực giác năng lượng của sóng. Bài này là nơi mô hình sóng bắt đầu tương tác trực tiếp với môi trường và vật cản.
+Sinh viên cần nắm sóng chạy một chiều, các điều kiện biên cơ bản và khái niệm năng lượng sóng. Bài học này đưa mô hình sóng vào tình huống tương tác trực tiếp với vật cản và ranh giới môi trường.
 
 ## Dẫn nhập
 
-Trong thực tế, sóng hiếm khi truyền mãi trong một môi trường đồng nhất vô hạn. Sóng âm gặp tường, xung trên dây gặp chỗ nối giữa hai đoạn dây, ánh sáng gặp mặt phân cách giữa hai vật liệu. Khi đó, một phần năng lượng dội lại, phần còn lại đi tiếp. Chính hiện tượng này tạo ra vang âm, giao thoa, phản hồi tín hiệu và nhiều hiệu ứng công nghệ quan trọng.
+Trong thực tế, sóng hiếm khi truyền mãi trong một môi trường đồng nhất vô hạn. Sóng âm gặp tường, xung cơ học gặp mối nối giữa hai đoạn dây có mật độ khác nhau, ánh sáng gặp mặt phân cách giữa hai môi trường quang học. Tại ranh giới, một phần năng lượng dội ngược trở lại và phần còn lại truyền tiếp sang môi trường kế tiếp. Hiện tượng này tạo ra tiếng vang, sự giao thoa, phản hồi tín hiệu và nhiều ứng dụng kỹ thuật.
 
-Đây là bài rất giàu trực giác vật lý. Nếu dạy tốt, sinh viên sẽ không chỉ nhớ công thức hệ số phản xạ, mà còn cảm được rằng biên và mặt phân cách là nơi hệ "thương lượng" xem bao nhiêu năng lượng được giữ lại, bao nhiêu năng lượng được chuyển qua.
+Thay vì chỉ ghi nhớ công thức hệ số phản xạ, cần nắm rõ ý nghĩa vật lý: mặt phân cách là nơi điều kiện liên tục quyết định tỷ lệ năng lượng được giữ lại và năng lượng truyền sang môi trường mới.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Khi một làn sóng trên dây đi đến chỗ dây bị kẹp chặt, đầu dây không thể chuyển vị, nên sóng buộc phải dội lại với đổi dấu. Nếu đầu dây tự do, sóng phản xạ nhưng không đổi dấu. Nếu sóng đi từ một đoạn dây nhẹ sang đoạn dây nặng hơn, một phần năng lượng đi vào đoạn mới, phần còn lại bật lại. Tất cả những điều đó là phản xạ và truyền qua.
+Khi một xung sóng trên dây truyền đến đầu bị kẹp cố định, đầu dây không thể dịch chuyển nên xung phản xạ ngược lại và đổi dấu. Nếu đầu dây tự do, xung phản xạ trở lại nhưng giữ nguyên dấu. Khi sóng đi từ đoạn dây nhẹ sang đoạn dây nặng hơn, một phần năng lượng truyền tiếp sang đoạn mới và phần còn lại phản xạ về phía cũ.
 
 ### Cách nhìn hình ảnh
 
-Sóng tới có thể được vẽ như một đỉnh đi sang phải. Ở biên cố định, đỉnh phản xạ thành một hõm. Ở biên tự do, đỉnh phản xạ vẫn là đỉnh. Ở mặt phân cách hai môi trường, ta nhìn thấy đồng thời một sóng phản xạ quay lại và một sóng truyền tiếp đi vào môi trường thứ hai với biên độ khác.
+Hãy hình dung sóng tới là một đỉnh truyền sang phải. Tại biên cố định, đỉnh sóng phản xạ thành một hõm; tại biên tự do, đỉnh sóng phản xạ vẫn là một đỉnh. Tại mặt phân cách giữa hai môi trường khác nhau, ta quan sát đồng thời một sóng phản xạ quay ngược lại và một sóng truyền qua đi vào môi trường thứ hai với biên độ đã thay đổi.
 
 ### Cách nhìn hình thức
 
-Với mặt phân cách giữa hai môi trường một chiều, ta viết
+Xét mặt phân cách giữa hai môi trường một chiều, viết sóng tới, sóng phản xạ và sóng truyền qua dưới dạng sóng phẳng điều hòa:
 
 $$
 u_i=Ae^{i(k_1x-\omega t)},
@@ -47,7 +47,7 @@ u_r=Be^{i(-k_1x-\omega t)},
 u_t=Ce^{i(k_2x-\omega t)}.
 $$
 
-Tại biên, ta yêu cầu liên tục chuyển vị và liên tục lực hay thông lượng phù hợp. Nếu đặt trở kháng sóng $$ Z_j=\rho_j c_j $$, thì hệ số phản xạ biên độ là
+Tại mặt phân cách, ta áp đặt điều kiện liên tục của đại lượng trường và thông lượng tương ứng. Đặt trở kháng sóng của mỗi môi trường là $$ Z_j=\rho_j c_j $$. Trong quy ước theo áp suất âm (tại đó $$ 1+R=T $$), hệ số phản xạ biên độ là
 
 $$ R=\frac{Z_2-Z_1}{Z_2+Z_1}, $$
 
@@ -55,126 +55,120 @@ và hệ số truyền qua là
 
 $$ T=\frac{2Z_2}{Z_1+Z_2}. $$
 
+(Lưu ý: nếu viết cho độ lệch ngang trên sợi dây có cùng lực căng, dấu của $$ R $$ đảo lại thành $$ (Z_1-Z_2)/(Z_1+Z_2) $$ và $$ T=2Z_1/(Z_1+Z_2) $$, nhưng tỉ lệ năng lượng phản xạ $$ R^2 $$ là như nhau.)
+
 ## Những ngộ nhận thường gặp
 
-- "Gặp biên thì sóng chỉ bật lại hoặc chỉ đi tiếp." Sai. Nó thường vừa phản xạ vừa truyền qua.
-- "Phản xạ luôn đổi dấu." Không đúng; còn tùy loại biên hoặc mặt phân cách.
-- "Nếu hai môi trường khác nhau ít thì vẫn phản xạ mạnh." Không hẳn; mức phản xạ phụ thuộc vào độ khớp trở kháng.
-- "Công thức
-
-$$ R,\ T $$
-
-chỉ là đại số." Sai. Chúng mã hóa cách năng lượng bị chia giữa hai phía.
+- "Khi gặp ranh giới, sóng chỉ phản xạ hoàn toàn hoặc truyền qua hoàn toàn." Sai; nói chung sóng vừa phản xạ vừa truyền qua.
+- "Sóng phản xạ lúc nào cũng bị đổi dấu (đảo pha)." Không đúng; dấu của sóng phản xạ phụ thuộc vào loại biên hoặc tương quan trở kháng hai môi trường.
+- "Hai môi trường khác nhau rất ít vẫn gây phản xạ mạnh." Không chính xác; cường độ phản xạ phụ thuộc vào mức chênh lệch trở kháng.
+- "Các công thức $$ R,\ T $$ chỉ là biến đổi đại số." Sai; chúng phản ánh trực tiếp cách năng lượng sóng phân bổ giữa hai phía mặt phân cách.
 
 ## Tiến trình học tập đề xuất
 
-### Bước 1: Xét phản xạ ở biên đơn giản
+### Bước 1: Xét phản xạ tại biên đơn giản
 
-Biên cố định và biên tự do là hai mẫu cơ bản dễ nhìn.
+Bắt đầu từ hai trường hợp trực quan nhất là biên cố định và biên tự do.
 
-### Bước 2: Chuyển sang hai môi trường
+### Bước 2: Mở rộng sang mặt phân cách hai môi trường
 
-Đây là nơi sóng phản xạ và truyền qua cùng xuất hiện.
+Quan sát sự xuất hiện đồng thời của sóng phản xạ và sóng truyền qua.
 
-### Bước 3: Đưa trở kháng vào câu chuyện
+### Bước 3: Đưa vào đại lượng trở kháng sóng
 
-Giúp sinh viên có một đại lượng vật lý cô đọng.
+Dùng $$ Z=\rho c $$ để cô đọng tính chất môi trường thành một tham số duy nhất.
 
-### Bước 4: Kiểm tra bảo toàn năng lượng
+### Bước 4: Kiểm chứng bằng bảo toàn năng lượng
 
-Đây là bước xác nhận kết quả vật lý hợp lý.
+Xác nhận tổng thông lượng năng lượng phản xạ và truyền qua bằng thông lượng sóng tới.
 
-### Các checkpoint
+### Các điểm kiểm tra
 
 - Sinh viên có giải thích được vì sao biên cố định gây phản xạ đổi dấu hay không.
-- Sinh viên có hiểu ý nghĩa của trở kháng sóng hay không.
-- Sinh viên có thấy rằng bảo toàn năng lượng ràng buộc
-
-$$ R $$
-
-và $$ T $$ hay không.
+- Sinh viên có nắm rõ ý nghĩa vật lý của trở kháng sóng hay không.
+- Sinh viên có thấy mối liên hệ giữa định luật bảo toàn năng lượng với $$ R $$ và $$ T $$ hay không.
 
 ## Ví dụ được giải chi tiết
 
 ### Ví dụ 1: Biên cố định
 
-Nếu $$ u(0,t)=0 $$, thì sóng phản xạ phải triệt tiêu chuyển vị tại biên. Điều đó dẫn đến phản xạ đổi dấu. Một đỉnh tới tạo ra một hõm phản xạ. Đây là ví dụ vật lý dễ nhớ nhất của bài.
+Với điều kiện $$ u(0,t)=0 $$, sóng phản xạ phải triệt tiêu độ lệch của sóng tới ngay tại biên, dẫn đến phản xạ đảo dấu: một đỉnh sóng tới tạo ra một hõm sóng phản xạ.
 
 ### Ví dụ 2: Biên tự do
 
-Nếu $$ u_x(0,t)=0 $$, thì phản xạ không đổi dấu. Đỉnh tới tạo ra đỉnh phản xạ. Ví dụ này rất hữu ích để sinh viên thấy chỉ thay một điều kiện biên là pha của sóng phản xạ đã đổi khác.
+Với điều kiện $$ u_x(0,t)=0 $$, sóng phản xạ không bị đảo dấu: một đỉnh sóng tới tạo ra một đỉnh sóng phản xạ. Chỉ cần đổi điều kiện biên là pha của sóng phản xạ đã thay đổi.
 
-### Ví dụ 3: Hai môi trường khớp nhau
+### Ví dụ 3: Hai môi trường khớp trở kháng
 
-Nếu $$ Z_1=Z_2 $$, thì $$ R=0 $$. Không có phản xạ. Ví dụ này giải thích vì sao "matching impedance" là ý tưởng lớn trong truyền sóng và kỹ thuật điện tử.
+Khi $$ Z_1=Z_2 $$, ta có $$ R=0 $$, tức không xảy ra phản xạ và toàn bộ năng lượng truyền qua. Đây là nguyên lý nền tảng của kỹ thuật phối hợp trở kháng (impedance matching) trong truyền sóng và điện tử.
 
-### Ví dụ 4: Chênh lệch trở kháng lớn
+### Ví dụ 4: Chênh lệch trở kháng rất lớn
 
-Nếu $$ Z_2\gg Z_1 $$, thì $$ R\approx 1 $$, nên phản xạ rất mạnh. Ví dụ này giúp sinh viên thấy mặt phân cách rất cứng đóng vai trò gần giống một biên cố định.
+Khi $$ Z_2\gg Z_1 $$, ta có $$ R\approx 1 $$ (hoặc $$ R\approx -1 $$ theo quy ước chuyển vị), tức gần như toàn bộ năng lượng bị phản xạ. Mặt phân cách với môi trường quá cứng hoạt động gần tương đương một biên phản xạ hoàn toàn.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao biên cố định và biên tự do cho hai kiểu phản xạ khác nhau về pha?
-2. Trở kháng sóng đo điều gì về môi trường?
-3. Vì sao bảo toàn năng lượng là kiểm tra tự nhiên cho công thức phản xạ và truyền qua?
+1. Vì sao biên cố định và biên tự do tạo ra hai kiểu phản xạ khác nhau về pha?
+2. Trở kháng sóng phản ánh đặc tính gì của môi trường truyền sóng?
+3. Vì sao định luật bảo toàn năng lượng là phép kiểm tra tự nhiên cho các công thức hệ số phản xạ và truyền qua?
 
 ## Bài toán ứng dụng
 
-1. Vì sao âm thanh trong phòng có thể dội lại mạnh nếu tường phản xạ tốt?
-2. Trong cáp truyền tín hiệu, vì sao ghép trở kháng giúp giảm phản xạ?
-3. Trong quang học, vì sao mặt phân cách giữa hai môi trường làm ánh sáng bị phản xạ một phần?
+1. Vì sao âm thanh trong một căn phòng có tường cứng và nhẵn lại dội vang mạnh?
+2. Trong đường dây truyền tín hiệu cao tần, vì sao phối hợp trở kháng giúp hạn chế phản xạ tín hiệu?
+3. Trong quang học, vì sao ánh sáng bị phản xạ một phần khi đi qua mặt phân cách giữa hai môi trường có chiết suất khác nhau?
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng câu hỏi: "Một đỉnh sóng đi tới bức tường sẽ bật lại thành đỉnh hay thành hõm?"
-- Cho sinh viên vẽ tay phản xạ ở biên cố định và biên tự do.
-- Hỏi cả lớp: "Nếu hai môi trường khớp hoàn hảo, ta có mong phản xạ còn tồn tại không?"
-- Tổ chức hoạt động so sánh trực giác âm học, dây rung và quang học dưới cùng một ngôn ngữ phản xạ-truyền qua.
+- Khởi đầu bằng câu hỏi: "Một đỉnh sóng chạy tới đầu dây cố định sẽ phản xạ lại thành đỉnh hay thành hõm?"
+- Yêu cầu sinh viên vẽ phác thảo xung phản xạ cho cả hai trường hợp biên cố định và biên tự do.
+- Đặt câu hỏi: "Nếu hai môi trường có trở kháng bằng nhau, liệu có xuất hiện sóng phản xạ hay không?"
+- So sánh hiện tượng phản xạ–truyền qua trong dây rung, âm học và quang học dưới cùng một ngôn ngữ trở kháng.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên đi từ hai hình ảnh cực đơn giản: biên cố định và biên tự do. Khi hai trường hợp này đã rõ, công thức ghép hai môi trường sẽ bớt trừu tượng hơn rất nhiều.
+Nên bắt đầu thật vững từ hai tình huống đơn giản là biên cố định và biên tự do. Khi đã hiểu cơ chế đổi pha tại biên, công thức ghép hai môi trường sẽ dễ tiếp thu hơn nhiều.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể mời sinh viên khá giỏi suy ra công thức $$ R,\ T $$ từ các điều kiện ghép, hoặc phân tích năng lượng trong trường hợp biên độ phức.
+Có thể yêu cầu sinh viên tự thiết lập công thức $$ R,\ T $$ từ các điều kiện liên tục tại $$ x=0 $$, kiểm tra hệ thức bảo toàn thông lượng năng lượng và mở rộng sang trường hợp biên độ phức.
 
 ## Tóm tắt dễ nhớ
 
-Khi sóng gặp biên hoặc mặt phân cách, nó thường tách thành phần phản xạ và phần truyền qua. Pha phản xạ phụ thuộc loại biên, còn cường độ phản xạ phụ thuộc vào độ khớp trở kháng giữa các môi trường. Năng lượng tới được chia ra chứ không tự mất đi.
+Khi sóng gặp biên hoặc mặt phân cách, nó thường tách thành sóng phản xạ và sóng truyền qua. Pha phản xạ phụ thuộc vào loại biên, còn cường độ phản xạ phụ thuộc vào độ chênh lệch trở kháng giữa hai môi trường, luôn tuân theo định luật bảo toàn năng lượng.
 
 ## Video tham khảo
 
-- xem trước: [Strings: reflection and transmission of an incoming wave at a discontinuity.](https://www.youtube.com/watch?v=Zokrkuc2EgU) — Mooc Bogazici, tiếng Anh. Phản xạ và truyền qua của một sóng tại một điểm gián đoạn của dây.
-- [Reflection and Transmission of Transverse Waves](https://www.youtube.com/watch?v=L5-RuMtXDyo) — Physics Ninja, tiếng Anh. Physics Ninja về phản xạ và truyền qua của một sóng ngang.
-- [PDE 10 | Wave equation: d'Alembert's formula](https://www.youtube.com/watch?v=j2G91naZ8bo) — commutant, tiếng Anh. Các sóng phải và trái của d'Alembert, các đối tượng bị phản xạ.
+- Xem trước: [Strings: reflection and transmission of an incoming wave at a discontinuity.](https://www.youtube.com/watch?v=Zokrkuc2EgU) — Mooc Bogazici, tiếng Anh. Phân tích sự phản xạ và truyền qua của sóng tới tại điểm gián đoạn trên dây.
+- [Reflection and Transmission of Transverse Waves](https://www.youtube.com/watch?v=L5-RuMtXDyo) — Physics Ninja, tiếng Anh. Giải thích chi tiết hiện tượng phản xạ và truyền qua đối với sóng ngang.
+- [PDE 10 | Wave equation: d'Alembert's formula](https://www.youtube.com/watch?v=j2G91naZ8bo) — commutant, tiếng Anh. Ôn lại cấu trúc sóng truyền sang phải và sang trái trong nghiệm d'Alembert.
 
 ## Tài liệu tham khảo
 
-- Evans, *Partial Differential Equations* - phát triển chặt chẽ phương trình sóng, năng lượng, và tính duy nhất.
-- Haberman, *Applied Partial Differential Equations* - trực giác vật lý tốt cho sóng, cộng hưởng, và phản xạ.
+- Evans, *Partial Differential Equations* — trình bày chặt chẽ về phương trình sóng, phương pháp năng lượng và tính duy nhất.
+- Haberman, *Applied Partial Differential Equations* — cung cấp trực giác vật lý rõ ràng về sóng, cộng hưởng và phản xạ.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Sóng địa chấn qua lớp vật liệu
-- Bài toán: Khi sóng gặp ranh giới giữa hai lớp đất đá, một phần bị phản xạ và một phần truyền qua.
-- Mô hình: Ghép hai phương trình sóng với trở kháng khác nhau và điều kiện liên tục tại giao diện.
-- Giả thiết và giới hạn: Gần đúng một chiều, vật liệu tuyến tính, mặt phân cách phẳng.
-- Diễn giải: Tương phản vật liệu quyết định mức phản xạ.
+#### Sóng địa chấn qua các lớp địa chất
+- Bài toán: Khi sóng địa chấn gặp ranh giới giữa hai tầng đất đá, một phần năng lượng phản xạ trở lại mặt đất và một phần truyền tiếp xuống sâu hơn.
+- Mô hình: Ghép hai phương trình sóng có trở kháng khác nhau kèm điều kiện liên tục tại mặt phân cách.
+- Giả thiết và giới hạn: Xấp xỉ một chiều, vật liệu đàn hồi tuyến tính, ranh giới phẳng.
+- Diễn giải: Độ tương phản trở kháng giữa các tầng vật liệu quyết định cường độ tín hiệu phản xạ.
 
-#### Dây gồm hai đoạn có mật độ khác nhau
-- Bài toán: Xung trên dây ghép hai vật liệu không truyền nguyên vẹn qua mối nối.
-- Mô hình: Áp điều kiện liên tục cho chuyển vị và lực kéo.
-- Giả thiết và giới hạn: Nối lý tưởng, lực căng như nhau, bỏ qua mất mát tại mối nối.
-- Diễn giải: Đây là mô hình cơ học đơn giản cho bài toán giao diện.
+#### Dây ghép từ hai đoạn có mật độ khác nhau
+- Bài toán: Một xung cơ học truyền qua mối nối giữa hai đoạn dây không đi qua nguyên vẹn mà tách thành xung phản xạ và xung truyền qua.
+- Mô hình: Áp đặt điều kiện liên tục chuyển vị và lực căng tại mối nối.
+- Giả thiết và giới hạn: Mối nối lý tưởng, cùng lực căng, bỏ qua tổn hao năng lượng tại điểm nối.
+- Diễn giải: Đây là mô hình cơ học đơn giản nhất cho bài toán truyền sóng qua mặt phân cách.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Phản xạ và truyền qua xuất hiện vì môi trường "kháng" chuyển động theo những mức khác nhau. Ý tưởng trở kháng ở đây rất gần với mạch điện, quang học và địa chấn. Một bẫy phổ biến là tưởng biên chỉ phản xạ hoàn toàn; thực tế thường là hỗn hợp phản xạ và truyền qua.
+Phản xạ và truyền qua phát sinh do hai môi trường cản trở chuyển động sóng ở các mức độ khác nhau. Khái niệm trở kháng tạo cầu nối thống nhất giữa cơ học sóng, mạch điện, quang học và địa chấn học.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -184,7 +178,7 @@ import matplotlib.pyplot as plt
 
 r = np.linspace(0.2, 4.0, 400)   # Z2 / Z1
 R = (r - 1) / (r + 1)
-T = 2 / (r + 1)
+T = 2 * r / (r + 1)
 
 plt.plot(r, R, label="He so phan xa")
 plt.plot(r, T, label="He so truyen")
@@ -204,12 +198,12 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Nếu trở kháng sóng ở hai phía là $$ Z_1 $$ và $$ Z_2 $$, biên độ phản xạ chuẩn hóa thường có dạng
+Với trở kháng sóng hai phía là $$ Z_1 $$ và $$ Z_2 $$, hệ số phản xạ áp suất có dạng
 $$ R=\frac{Z_2-Z_1}{Z_2+Z_1}. $$
-Khi $$ Z_2=Z_1 $$ thì $$ R=0 $$, nghĩa là không có phản xạ. Khi hai môi trường khác nhau nhiều, phản xạ mạnh lên. Đây là nguyên lý cốt lõi của ảnh địa chấn phản xạ.
+Khi $$ Z_2=Z_1 $$ thì $$ R=0 $$ (không có phản xạ); khi hai môi trường chênh lệch trở kháng lớn, sóng phản xạ trở nên mạnh. Đây là nguyên lý cơ sở của phương pháp khảo sát địa chấn phản xạ.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Áp điều kiện ghép và diễn giải ý nghĩa của phản xạ.
+**Bậc đại học.** Thiết lập điều kiện ghép tại ranh giới và diễn giải ý nghĩa vật lý của hệ số phản xạ và truyền qua.
 
-**Bậc sau đại học.** Liên hệ với scattering theory, truyền qua nhiều lớp và ma trận truyền.
+**Bậc sau đại học.** Mở rộng sang lý thuyết tán xạ (scattering theory), bài toán truyền qua nhiều lớp và phương pháp ma trận truyền.

@@ -13,31 +13,31 @@ lesson_type: required
 
 ## Mục tiêu
 
-Bài học này trình bày nghiệm d'Alembert cho phương trình sóng một chiều trên toàn trục. Sau bài học, sinh viên cần hiểu công thức d'Alembert không chỉ như một biểu thức cần nhớ, mà như phát biểu rằng nghiệm được tách thành sóng truyền sang phải và sang trái, biết vai trò của dữ liệu vị trí và vận tốc ban đầu, và hiểu ý tưởng miền ảnh hưởng cùng tốc độ lan truyền hữu hạn của sóng.
+Bài học này trình bày nghiệm d'Alembert cho phương trình sóng một chiều trên toàn trục thực. Sau bài học, sinh viên cần hiểu công thức d'Alembert như sự phân tách nghiệm thành hai sóng truyền ngược chiều sang phải và sang trái, nắm rõ vai trò riêng biệt của vị trí ban đầu và vận tốc ban đầu, đồng thời hiểu khái niệm miền ảnh hưởng và tốc độ lan truyền hữu hạn của sóng.
 
 ## Kiến thức nền
 
-Sinh viên nên nắm phương trình sóng một chiều, đổi biến cơ bản và điều kiện đầu $$ u(x,0)=f(x),\qquad u_t(x,0)=g(x) $$. Đây là bài cốt lõi để hiểu tính lan truyền của sóng trước khi chuyển sang miền hữu hạn và sóng dừng.
+Sinh viên cần nắm phương trình sóng một chiều, kỹ thuật đổi biến đơn giản và điều kiện ban đầu $$ u(x,0)=f(x),\qquad u_t(x,0)=g(x) $$. Đây là nền tảng để hiểu bản chất lan truyền của sóng trước khi xét miền hữu hạn và sóng dừng.
 
 ## Dẫn nhập
 
-Nếu phương trình nhiệt kể câu chuyện "dữ liệu bị làm mượt", thì nghiệm d'Alembert kể câu chuyện khác hẳn: dữ liệu ban đầu được tách thành hai phần và truyền đi theo hai hướng. Điều này làm phương trình sóng trở thành mô hình tự nhiên cho lan truyền tín hiệu, âm thanh, xung cơ học và nhiều hiện tượng khác có tốc độ lan truyền hữu hạn.
+Nếu phương trình nhiệt mô tả quá trình làm mượt dữ liệu, thì nghiệm d'Alembert thể hiện một cơ chế hoàn toàn khác: dữ liệu ban đầu tách thành hai thành phần và truyền đi theo hai chiều ngược nhau với tốc độ hữu hạn. Nhờ đặc tính này, phương trình sóng là mô hình tự nhiên cho sự truyền tín hiệu, sóng âm và xung cơ học.
 
-Đây là một trong những công thức đẹp nhất của PDE cổ điển vì nó cho ta thấy cấu trúc nghiệm một cách hoàn toàn trong suốt. Không cần phổ, không cần chuỗi vô hạn, chỉ cần nhìn đúng hệ tọa độ đặc trưng là bản chất của nghiệm lộ ra.
+Công thức d'Alembert cho thấy cấu trúc nghiệm một cách trực tiếp mà không cần chuỗi vô hạn hay phân tích phổ: chỉ cần chuyển sang hệ tọa độ đặc trưng thích hợp, bản chất hình học của nghiệm sẽ hiện ra rõ ràng.
 
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan
 
-Nếu ta kéo một đoạn dây lên rồi thả, hình dạng ban đầu không đứng yên một chỗ. Nó tách ra thành hai xung, một đi sang phải và một đi sang trái. Nghiệm d'Alembert chính là phát biểu toán học của hình ảnh vật lý này.
+Khi kéo một đoạn dây lên khỏi vị trí cân bằng rồi thả ra, hình dạng ban đầu không đứng yên tại chỗ mà tách làm hai xung nhỏ hơn, một xung chạy sang phải và một xung chạy sang trái. Công thức d'Alembert diễn đạt chính xác hiện tượng vật lý này.
 
 ### Cách nhìn hình ảnh
 
-Trong mặt phẳng $$ (x,t) $$, các đường $$ x-ct=\text{hằng số} $$ và $$ x+ct=\text{hằng số} $$ là các đặc trưng. Dữ liệu lan dọc theo những đường này. Vì vậy giá trị của nghiệm tại $$ (x,t) $$ chỉ nhận thông tin từ đoạn $$ [x-ct,x+ct] $$ trên trục ban đầu. Hình ảnh này là chìa khóa để hiểu miền ảnh hưởng và tốc độ truyền hữu hạn.
+Trong mặt phẳng không gian–thời gian $$ (x,t) $$, các đường thẳng $$ x-ct=\text{hằng số} $$ và $$ x+ct=\text{hằng số} $$ là các đường đặc trưng. Thông tin lan truyền dọc theo các đường này, nên giá trị nghiệm tại điểm $$ (x,t) $$ chỉ phụ thuộc vào dữ liệu ban đầu trên đoạn $$ [x-ct,x+ct] $$. Đây là hình ảnh trực quan của miền ảnh hưởng và tốc độ truyền hữu hạn.
 
 ### Cách nhìn hình thức
 
-Xét $$ u_{tt}=c^2u_{xx} $$ trên toàn trục. Đặt $$ \xi=x-ct,\qquad \eta=x+ct $$. Trong tọa độ mới, phương trình trở thành $$ u_{\xi\eta}=0 $$. Do đó nghiệm tổng quát có dạng $$ u(x,t)=F(x-ct)+G(x+ct) $$. Nếu điều kiện đầu là $$ u(x,0)=f(x),\qquad u_t(x,0)=g(x) $$, thì công thức d'Alembert là
+Xét phương trình $$ u_{tt}=c^2u_{xx} $$ trên toàn trục thực. Đổi biến đặc trưng $$ \xi=x-ct,\qquad \eta=x+ct $$, phương trình chuyển thành $$ u_{\xi\eta}=0 $$, nên nghiệm tổng quát có dạng $$ u(x,t)=F(x-ct)+G(x+ct) $$. Với điều kiện ban đầu $$ u(x,0)=f(x),\qquad u_t(x,0)=g(x) $$, ta thu được công thức d'Alembert:
 
 $$
 u(x,t)=\frac{f(x-ct)+f(x+ct)}{2}
@@ -46,158 +46,134 @@ $$
 
 ## Những ngộ nhận thường gặp
 
-- "Nghiệm d'Alembert chỉ là công thức khép kín đặc biệt." Sai. Nó tiết lộ bản chất lan truyền theo đặc trưng của phương trình sóng.
-- "Dữ liệu tại một điểm ảnh hưởng ngay toàn miền." Không đúng; thông tin lan với tốc độ hữu hạn
-
-$$ c. $$
-- "Nếu
-
-$$ g=0 $$
-
-thì sóng đứng yên." Sai; dữ liệu hình dạng ban đầu vẫn tách thành hai sóng truyền ngược chiều.
-- "Công thức d'Alembert áp dụng nguyên xi cho đoạn hữu hạn." Không phải; trên đoạn hữu hạn ta còn phải xử lý biên bằng phản xạ hay tách biến.
+- "Nghiệm d'Alembert chỉ là một công thức đóng đặc biệt." Sai; nó bộc lộ trực tiếp bản chất lan truyền dọc theo đường đặc trưng của phương trình sóng.
+- "Nhiễu loạn tại một điểm ảnh hưởng ngay lập tức đến toàn bộ không gian." Không đúng; thông tin chỉ lan truyền với tốc độ hữu hạn $$ c $$.
+- "Nếu vận tốc ban đầu $$ g=0 $$ thì dây đứng yên." Sai; độ lệch ban đầu vẫn tách thành hai sóng truyền theo hai hướng ngược nhau.
+- "Công thức d'Alembert áp dụng nguyên vẹn cho đoạn hữu hạn." Không chính xác; trên đoạn hữu hạn cần xử lý thêm phản xạ tại biên bằng phương pháp mở rộng hoặc tách biến.
 
 ## Tiến trình học tập đề xuất
 
 ### Bước 1: Đổi sang biến đặc trưng
 
-Đây là điểm kỹ thuật mở khóa toàn bài.
+Thực hiện phép đổi biến $$ \xi=x-ct,\ \eta=x+ct $$ để rút gọn phương trình về $$ u_{\xi\eta}=0 $$.
 
-### Bước 2: Hiểu nghiệm dạng
+### Bước 2: Hiểu cấu trúc nghiệm $$ F(x-ct)+G(x+ct) $$
 
-$$ F(x-ct)+G(x+ct) $$
+Nhận diện thành phần sóng truyền sang phải và sóng truyền sang trái.
 
-Đây là phát biểu sóng phải và sóng trái.
+### Bước 3: Áp đặt điều kiện ban đầu
 
-### Bước 3: Ghép điều kiện đầu
+Xác định rõ đóng góp riêng biệt của độ lệch ban đầu $$ f $$ và vận tốc ban đầu $$ g $$.
 
-Sinh viên cần thấy rõ vai trò khác nhau của $$ f $$ và
+### Bước 4: Diễn giải miền ảnh hưởng và miền phụ thuộc
 
-$$ g. $$
+Liên hệ đoạn $$ [x-ct,x+ct] $$ với tốc độ lan truyền hữu hạn của thông tin.
 
-### Bước 4: Diễn giải miền ảnh hưởng
+### Các điểm kiểm tra
 
-Đây là lợi ích khái niệm lớn nhất của bài.
-
-### Các checkpoint
-
-- Sinh viên có giải thích được vì sao các đặc trưng là
-
-$$ x\pm ct $$
-
-hay không.
-- Sinh viên có biết phần nào của công thức đến từ dữ liệu vị trí và phần nào đến từ dữ liệu vận tốc hay không.
-- Sinh viên có diễn giải được tốc độ lan truyền hữu hạn bằng lời hay không.
+- Sinh viên có giải thích được vì sao các đường đặc trưng có dạng $$ x\pm ct=\text{hằng số} $$ hay không.
+- Sinh viên có phân biệt được phần nghiệm do vị trí ban đầu và phần nghiệm do vận tốc ban đầu tạo ra hay không.
+- Sinh viên có diễn đạt được ý nghĩa của tốc độ lan truyền hữu hạn bằng lời hay không.
 
 ## Ví dụ được giải chi tiết
 
-### Ví dụ 1: Dữ liệu hình dạng, không có vận tốc đầu
+### Ví dụ 1: Có độ lệch ban đầu, vận tốc ban đầu bằng 0
 
-Nếu $$ u(x,0)=f(x),\qquad u_t(x,0)=0 $$, thì
+Nếu $$ u(x,0)=f(x),\qquad u_t(x,0)=0 $$, công thức d'Alembert rút gọn thành
 
 $$ u(x,t)=\frac{f(x-ct)+f(x+ct)}{2}. $$
 
-Nghĩa là hình dạng ban đầu tách thành hai bản sao dịch chuyển ngược chiều nhau. Đây là ví dụ quan trọng nhất để sinh viên nhìn ra bản chất truyền sóng.
+Hình dạng ban đầu tách thành hai bản sao có biên độ bằng một nửa và dịch chuyển ngược chiều nhau với tốc độ $$ c $$.
 
 ### Ví dụ 2: Sóng điều hòa
 
-Nếu $$ f(x)=\sin x,\qquad g(x)=0 $$, thì
+Nếu $$ f(x)=\sin x,\qquad g(x)=0 $$, ta thu được
 
 $$
 u(x,t)=\frac{\sin(x-ct)+\sin(x+ct)}{2}
 =\sin x\cos(ct).
 $$
 
-Ví dụ này cho thấy cùng một nghiệm có thể được hiểu vừa như tổng hai sóng chạy, vừa như một sóng đứng.
+Ví dụ này cho thấy cùng một nghiệm có thể được nhìn nhận đồng thời như sự chồng chất của hai sóng chạy ngược chiều và như một sóng dừng.
 
-### Ví dụ 3: Chỉ có vận tốc đầu
+### Ví dụ 3: Chỉ có vận tốc ban đầu dạng xung điểm
 
-Nếu $$ f(x)=0,\qquad g(x)=\delta(x) $$, thì
+Nếu $$ f(x)=0,\qquad g(x)=\delta(x) $$, ta có
 
 $$ u(x,t)=\frac{1}{2c}\mathbf 1_{\lvert x\rvert<ct}. $$
 
-Đây là ví dụ rất mạnh về mặt trực giác: một xung vận tốc điểm tạo ra một vùng ảnh hưởng hữu hạn lan rộng với tốc độ
+Một xung vận tốc tập trung tại gốc tạo ra vùng nhiễu loạn hữu hạn mở rộng về hai phía với tốc độ $$ c $$.
 
-$$ c. $$
+### Ví dụ 4: Miền phụ thuộc
 
-### Ví dụ 4: Miền ảnh hưởng
-
-Giá trị $$ u(x,t) $$ chỉ phụ thuộc vào $$ f $$ và $$ g $$ trên đoạn $$ [x-ct,x+ct] $$. Nếu dữ liệu ban đầu bằng 0 trên đoạn này, thì nghiệm tại $$ (x,t) $$ cũng không nhận ảnh hưởng từ bên ngoài đoạn đó. Đây là điểm khác biệt lớn nhất với phương trình nhiệt.
+Giá trị $$ u(x,t) $$ chỉ phụ thuộc vào $$ f $$ và $$ g $$ trên đoạn $$ [x-ct,x+ct] $$. Nếu dữ liệu ban đầu bằng 0 trên đoạn này, nghiệm tại $$ (x,t) $$ cũng bằng 0 bất kể dữ liệu bên ngoài đoạn đó ra sao. Đây là điểm khác biệt cơ bản so với phương trình nhiệt.
 
 ## Câu hỏi khái niệm
 
-1. Vì sao nghiệm d'Alembert cho thấy sóng truyền với tốc độ hữu hạn?
-2. Dữ liệu vị trí ban đầu và dữ liệu vận tốc ban đầu đóng vai trò khác nhau như thế nào trong công thức?
-3. Vì sao cùng một nghiệm có thể được hiểu vừa là tổng hai sóng chạy vừa là một sóng đứng trong vài trường hợp?
+1. Vì sao công thức d'Alembert chứng tỏ sóng lan truyền với tốc độ hữu hạn?
+2. Vị trí ban đầu và vận tốc ban đầu đóng vai trò khác nhau như thế nào trong nghiệm d'Alembert?
+3. Vì sao trong một số trường hợp, cùng một nghiệm vừa có thể xem là tổng hai sóng chạy vừa có thể xem là một sóng đứng?
 
 ## Bài toán ứng dụng
 
-1. Một xung ngắn được truyền trên dây rất dài. Vì sao sau đó ta quan sát thấy hai xung tách ra và đi về hai phía?
-2. Trong truyền tín hiệu, vì sao miền ảnh hưởng hữu hạn là đặc điểm vật lý quan trọng?
-3. Trong cơ học, vì sao cần cả vị trí ban đầu và vận tốc ban đầu để xác định duy nhất nghiệm của phương trình sóng?
+1. Một xung ngắn được tạo ra ở giữa một sợi dây rất dài rồi thả tự do. Vì sao sau đó ta quan sát thấy hai xung tách ra và truyền về hai phía?
+2. Trong truyền tín hiệu, vì sao miền ảnh hưởng hữu hạn là một đặc trưng vật lý quan trọng?
+3. Trong cơ học, vì sao cần biết cả vị trí ban đầu lẫn vận tốc ban đầu để xác định duy nhất chuyển động của dây?
 
 ## Chiến lược giảng dạy tương tác
 
-- Bắt đầu bằng câu hỏi: "Nếu kéo dây lên rồi thả, hình dạng ban đầu đi đâu?"
-- Vẽ các đường đặc trưng
-
-$$ x\pm ct=\text{hằng số} $$
-
-và yêu cầu sinh viên mô tả dữ liệu đang lan dọc theo chúng.
-- Hỏi cả lớp: "Điều gì trong công thức d'Alembert chứng minh rằng thông tin không lan tức thời?"
-- Cho sinh viên tự kiểm tra một ví dụ ngắn như
-
-$$ f(x)=\sin x,\ g(x)=0 $$
-
-để nối công thức với hình ảnh sóng đứng.
+- Khởi đầu bằng câu hỏi: "Nếu kéo một đoạn dây lên rồi thả nhẹ từ trạng thái nghỉ, hình dạng ban đầu sẽ chuyển động ra sao?"
+- Vẽ các đường đặc trưng $$ x\pm ct=\text{hằng số} $$ trên mặt phẳng $$ (x,t) $$ để sinh viên theo dõi hướng lan truyền dữ liệu.
+- Đặt câu hỏi: "Chi tiết nào trong công thức d'Alembert khẳng định thông tin không truyền đi tức thời?"
+- Cho sinh viên tự kiểm chứng ví dụ $$ f(x)=\sin x,\ g(x)=0 $$ để nối nghiệm sóng chạy với hình ảnh sóng dừng.
 
 ## Phân hóa học tập
 
 ### Hỗ trợ sinh viên còn gặp khó khăn
 
-Nên tập trung vào công thức $$ u=F(x-ct)+G(x+ct) $$ trước khi đi đến dạng đầy đủ với tích phân. Khi đã thấy sóng phải và sóng trái, phần còn lại sẽ dễ hiểu hơn nhiều.
+Nên tập trung vào dạng tổng quát $$ u=F(x-ct)+G(x+ct) $$ trước khi đưa vào số hạng tích phân của vận tốc đầu. Khi đã nắm rõ hình ảnh sóng chạy sang phải và sang trái, công thức đầy đủ sẽ dễ hiểu hơn.
 
 ### Thử thách cho sinh viên khá giỏi
 
-Có thể mời sinh viên khá giỏi dùng công thức d'Alembert để phân tích phản xạ trên đoạn hữu hạn bằng phương pháp mở rộng, hoặc so sánh với phương trình truyền tải bậc nhất.
+Có thể yêu cầu sinh viên áp dụng công thức d'Alembert kết hợp phép mở rộng lẻ/chẵn để mô tả hiện tượng phản xạ sóng trên đoạn hữu hạn, hoặc so sánh với phương trình truyền tải bậc nhất.
 
 ## Tóm tắt dễ nhớ
 
-Nghiệm d'Alembert nói rằng nghiệm của phương trình sóng một chiều là tổng của một sóng đi sang phải và một sóng đi sang trái. Thông tin lan theo đặc trưng $$ x\pm ct $$, nên sóng có tốc độ truyền hữu hạn và miền ảnh hưởng rõ ràng.
+Nghiệm d'Alembert biểu diễn nghiệm của phương trình sóng một chiều như tổng của một sóng truyền sang phải và một sóng truyền sang trái. Dữ liệu lan truyền dọc theo các đường đặc trưng $$ x\pm ct $$, đảm bảo tốc độ lan truyền hữu hạn và miền ảnh hưởng xác định rõ ràng.
 
 ## Video tham khảo
 
-- xem trước: [PDE 10 | Wave equation: d'Alembert's formula](https://www.youtube.com/watch?v=j2G91naZ8bo) — commutant, tiếng Anh. commutant suy công thức d'Alembert cho dây vô hạn.
-- [D'Alembert Solution to the Wave Equation](https://www.youtube.com/watch?v=Sc21aPg2RyE) — Faculty of Khan, tiếng Anh. Faculty of Khan về cùng nghiệm d'Alembert.
-- [The Method of Characteristics and the Wave Equation](https://www.youtube.com/watch?v=eI2x99SxJgU) — Steve Brunton, tiếng Anh. Phương pháp đường đặc trưng, nơi công thức d'Alembert xuất phát.
+- Xem trước: [PDE 10 | Wave equation: d'Alembert's formula](https://www.youtube.com/watch?v=j2G91naZ8bo) — commutant, tiếng Anh. Thiết lập công thức d'Alembert cho phương trình sóng trên dây vô hạn.
+- [D'Alembert Solution to the Wave Equation](https://www.youtube.com/watch?v=Sc21aPg2RyE) — Faculty of Khan, tiếng Anh. Trình bày chi tiết cách suy ra và áp dụng nghiệm d'Alembert.
+- [The Method of Characteristics and the Wave Equation](https://www.youtube.com/watch?v=eI2x99SxJgU) — Steve Brunton, tiếng Anh. Giải thích phương pháp đường đặc trưng làm nền tảng cho công thức d'Alembert.
 
 ## Tài liệu tham khảo
 
-- Evans, *Partial Differential Equations* - phát triển chặt chẽ phương trình sóng, năng lượng, và tính duy nhất.
-- Haberman, *Applied Partial Differential Equations* - trực giác vật lý tốt cho sóng, cộng hưởng, và phản xạ.
+- Evans, *Partial Differential Equations* — trình bày chặt chẽ về phương trình sóng, phương pháp năng lượng và tính duy nhất.
+- Haberman, *Applied Partial Differential Equations* — cung cấp trực giác vật lý rõ ràng về sóng, cộng hưởng và phản xạ.
 
 ## Mở rộng: Ứng dụng, Trực giác và Trực quan hóa
 
 ### 1. Ứng dụng thực tế
 
-#### Xung trên dây vô hạn
-- Bài toán: Một xung ban đầu trên dây truyền sang trái và phải sau khi được tạo ra.
+#### Xung cơ học trên dây vô hạn
+- Bài toán: Theo dõi một xung ban đầu lan truyền về hai phía trên sợi dây rất dài.
 - Mô hình:
 $$
 u(x,t)=\frac{f(x-ct)+f(x+ct)}{2}+\frac{1}{2c}\int_{x-ct}^{x+ct}g(s)\,ds.
 $$
-- Giả thiết và giới hạn: Miền vô hạn, tốc độ sóng hằng, không có biên.
-- Diễn giải: Nghiệm cho thấy dữ liệu ban đầu di chuyển mà không đổi dạng trong môi trường lý tưởng.
+- Giả thiết và giới hạn: Miền vô hạn, tốc độ sóng không đổi, không có phản xạ biên.
+- Diễn giải: Trong môi trường lý tưởng không tán sắc và không tổn hao, hai xung thành phần giữ nguyên hình dạng khi di chuyển.
 
-#### Xung điện trên đường truyền
-- Bài toán: Điện áp trên cáp dài, trong xấp xỉ không tổn hao, có dạng tổng của sóng tiến và sóng lùi.
-- Mô hình: Sau chuẩn hóa, điện áp thỏa một phương trình sóng một chiều với nghiệm kiểu d'Alembert.
-- Giả thiết và giới hạn: Bỏ qua điện trở và tổn hao, tham số đường truyền đồng nhất.
-- Diễn giải: Công thức d'Alembert xuất hiện tự nhiên trong kỹ thuật điện.
+#### Xung điện trên đường dây truyền tải
+- Bài toán: Điện áp trên đường dây truyền tải dài không tổn hao biểu diễn thành tổng của sóng thuận và sóng nghịch.
+- Mô hình: Sau khi chuẩn hóa, điện áp thỏa mãn phương trình sóng một chiều với nghiệm dạng d'Alembert.
+- Giả thiết và giới hạn: Bỏ qua điện trở và tổn hao, đường truyền đồng nhất.
+- Diễn giải: Công thức d'Alembert xuất hiện trực tiếp trong phân tích mạch và đường truyền cao tần.
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Nghiệm d'Alembert cho thấy dữ liệu ban đầu không bị "phân tán" ngay lập tức; nó chỉ được tách thành các thành phần chạy trái và phải. Đây là một cách rất rõ để thấy phương trình sóng có tốc độ truyền hữu hạn, trái ngược với hiệu ứng làm trơn tức thời của phương trình nhiệt.
+Nghiệm d'Alembert cho thấy dữ liệu ban đầu không bị làm phẳng tức thì mà tách thành các thành phần dịch chuyển sang trái và sang phải với tốc độ hữu hạn, trái ngược hoàn toàn với hiệu ứng làm trơn tức thời của phương trình nhiệt.
 
 ### 3. Trực quan hóa bằng Python
 
@@ -229,16 +205,16 @@ plt.show()
 
 ### 5. Bài toán mẫu có bối cảnh thực
 
-Nếu vận tốc ban đầu bằng không và độ lệch ban đầu là
+Nếu vận tốc ban đầu bằng 0 và độ lệch ban đầu là
 $$ u(x,0)=e^{-x^2}, $$
-thì
+thì nghiệm là
 $$
 u(x,t)=\frac{1}{2}e^{-(x-ct)^2}+\frac{1}{2}e^{-(x+ct)^2}.
 $$
-Một xung ban đầu đối xứng tách thành hai xung giống hệt nhau đi ngược chiều. Đây là hình ảnh cơ học kinh điển của dây vô hạn.
+Xung đối xứng ban đầu tách thành hai xung giống hệt nhau có biên độ bằng một nửa và chuyển động ngược chiều nhau.
 
 ### 6. Phân tầng độ khó
 
-**Bậc đại học.** Hiểu cách dữ liệu ban đầu tạo ra sóng đi sang trái và phải.
+**Bậc đại học.** Nắm vững công thức d'Alembert và cách dữ liệu ban đầu tách thành hai sóng truyền ngược chiều.
 
-**Bậc sau đại học.** Liên hệ với nghiệm cơ bản của toán tử hyperbolic và nguyên lý miền ảnh hưởng.
+**Bậc sau đại học.** Liên hệ với nghiệm cơ bản của toán tử hyperbolic và nguyên lý miền ảnh hưởng hữu hạn.
