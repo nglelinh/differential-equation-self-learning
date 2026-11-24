@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Giữa rừng phương trình vi phân cấp một, **phương trình tách biến** là lớp bài toán đầu tiên—và cũng thanh lịch nhất—mà ta có thể giải triệt để bằng phép tích phân trực tiếp. Ý tưởng đơn giản đến bất ngờ: dồn toàn bộ biến phụ thuộc $y$ sang vế trái, biến độc lập $x$ sang vế phải, rồi tích phân hai vế—nhưng ẩn sau sự đơn giản ấy lại có những cạm bẫy tinh tế như **nghiệm kỳ dị bị mất khi chia** và **nghiệm ẩn không giải tường minh được**!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Tách biến
+
+1. **Cấu trúc nhân tử hóa $\frac{dy}{dx} = g(x)\,h(y)$**:
+   Nhận diện nhanh khi vế phải tách được thành tích của một hàm chỉ phụ thuộc $x$ và một hàm chỉ phụ thuộc $y$.
+2. **Bảo toàn nghiệm cân bằng ($h(y_0) = 0$)**:
+   Trước khi chia hai vế cho $h(y)$, **luôn kiểm tra** các giá trị $y = y_0$ làm $h(y_0) = 0$; chúng là các nghiệm hằng thực thụ dễ bị đánh rơi!
+3. **Nghiệm ẩn vs. Nghiệm tường minh & Miền xác định**:
+   Tích phân $\int \frac{dy}{h(y)} = \int g(x)\,dx + C$ thường cho hệ thức ẩn $H(y) = G(x) + C$; khi giải ra $y(x)$ phải chọn đúng nhánh đi qua $(x_0, y_0)$ và xác định rõ khoảng tồn tại cực đại.
+4. **Bản chất chặt chẽ đằng sau ký hiệu vi phân**:
+   Phép tách $dy, dx$ không phải "mẹo hủy ký hiệu" tùy tiện mà là hệ quả chặt chẽ của **quy tắc dây chuyền** $\frac{d}{dx}H(y(x)) = H'(y)y' = g(x)$.
+
 ## Mục tiêu
 Bài học này giúp sinh viên nhận diện phương trình vi phân tách biến, hiểu cơ sở toán học của việc gom các biểu thức theo từng biến và giải được bài toán tách biến kèm điều kiện đầu. Sinh viên cũng cần rèn thói quen kiểm tra nghiệm cân bằng, miền xác định và vai trò của hằng số tích phân—những chi tiết dễ bị bỏ sót khi giải bài tập.
 
@@ -22,6 +36,15 @@ Sinh viên cần thành thạo đạo hàm, nguyên hàm cơ bản, biến đổ
 Nhiều mô hình cơ bản trong khoa học có tốc độ biến thiên bằng tích của một yếu tố chỉ phụ thuộc thời gian và một yếu tố chỉ phụ thuộc trạng thái hiện tại. Chẳng hạn, tốc độ tăng trưởng của một quần thể có thể phụ thuộc đồng thời vào yếu tố mùa vụ theo $$ t $$ và quy mô hiện tại $$ P $$. Khi hai ảnh hưởng này tách được thành tích, ta có thể đưa toàn bộ phần liên quan đến biến trạng thái về một vế và phần liên quan đến thời gian về vế còn lại.
 
 Ưu điểm của phương pháp tách biến nằm ở chỗ nó khai thác trực tiếp cấu trúc nhân tử của mô hình để tích lũy riêng phần ảnh hưởng của từng biến qua phép tích phân. Khi thực hiện cẩn thận, phương pháp này không chỉ cho công thức nghiệm mà còn giúp phát hiện các nghiệm cân bằng và giới hạn miền tồn tại của nghiệm.
+
+### Khung giải thích (nên đọc chậm): Giải trọn vẹn IVP $\frac{dy}{dx} = -2xy^2,\; y(0) = \frac{1}{2}$ và phát hiện khoảng bùng nổ
+
+1. **Kiểm tra nghiệm cân bằng**: $h(y) = y^2 = 0 \implies y \equiv 0$ là nghiệm hằng (nhưng không thỏa $y(0) = 1/2$).
+2. **Tách biến và tích phân** (với $y \ne 0$):
+   $$\frac{dy}{y^2} = -2x\,dx \implies \int y^{-2}\,dy = \int -2x\,dx \implies -\frac{1}{y} = -x^2 + C \implies \frac{1}{y} = x^2 - C.$$
+3. **Ghim hằng số từ $y(0) = \frac{1}{2}$**:
+   $$\frac{1}{1/2} = 0^2 - C \implies -C = 2 \implies y(x) = \mathbf{\frac{1}{x^2 + 2}}.$$
+4. **Kiểm tra khoảng tồn tại**: Vì $x^2 + 2 \ge 2 > 0$ với mọi $x \in \mathbb{R}$, nghiệm tồn tại trên toàn $(-\infty, +\infty)$. Ngược lại, nếu đổi điều kiện đầu thành $y(0) = -\frac{1}{2}$, ta được $y(x) = \frac{1}{x^2 - 2}$, bị **bùng nổ tại $x = \pm\sqrt{2}$** nên khoảng tồn tại cực đại chỉ còn $(-\sqrt{2}, \sqrt{2})$!
 
 ## Khái niệm theo ba cách
 

@@ -12,6 +12,21 @@ lesson_type: required
 
 ![Trực giác về coercivity trong định lý Lax-Milgram]({{ site.imgurl }}/chapter_img/chapter12/05_lax_milgram_theorem.svg )
 
+Khi phương trình elliptic có thêm số hạng đối lưu $\mathbf{b} \cdot \nabla u$ (như dòng chất lỏng vừa khuếch tán vừa cuốn nhiệt đi theo gió), dạng song tuyến tính $a(u, v)$ **không còn đối xứng** ($a(u, v) \neq a(v, u)$), nên ta không thể xem nó là tích vô hướng để dùng Định lý Biểu diễn Riesz hay cực tiểu hóa năng lượng được nữa! **Định lý Lax–Milgram (1954)** chính là chiếc chìa khóa vạn năng bẻ khóa cả trường hợp không đối xứng: chỉ cần kiểm tra đúng **ba điều kiện**—liên tục của $a$, cưỡng bức của $a$, và liên tục của $\ell$—là có ngay tồn tại, duy nhất và ổn định nghiệm!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Định lý Lax–Milgram
+
+1. **Ba giả thiết vàng trên Không gian Hilbert $V$**:
+   - *Liên tục (bị chặn)*: $|a(u, v)| \le M \|u\|_V \|v\|_V$.
+   - *Cưỡng bức (coercive / V-elliptic)*: $a(u, u) \ge \alpha \|u\|_V^2$ với hằng số $\alpha > 0$.
+   - *Phiếm hàm $\ell \in V'$ liên tục*: $|\ell(v)| \le \|\ell\|_{V'} \|v\|_V$.
+2. **Kết luận mạnh gấp ba: Tồn tại, Duy nhất và Ổn định**:
+   Khi 3 giả thiết thỏa mãn, tồn tại **duy nhất** $u \in V$ sao cho $a(u, v) = \ell(v)\;\forall v \in V$, đồng thời nghiệm bị chặn ổn định theo dữ liệu đầu vào: $\|u\|_V \le \frac{1}{\alpha}\|\ell\|_{V'}$.
+3. **Liên hệ với Định lý Riesz & Nguyên lý Cực tiểu Năng lượng**:
+   Khi $a$ đối xứng, $u$ đồng thời là điểm cực tiểu duy nhất của phiếm hàm năng lượng $J(v) = \frac{1}{2}a(v, v) - \ell(v)$. Khi $a$ không đối xứng, Lax–Milgram chứng minh bằng nguyên lý ánh xạ co Banach mà không cần $J(v)$!
+4. **Cầu nối trực tiếp sang Sai số Phần tử Hữu hạn (Bổ đề Céa)**:
+   Chính hai hằng số $M$ và $\alpha$ trong Lax–Milgram cho ra Bổ đề Céa nổi tiếng: $\|u - u_h\|_V \le \frac{M}{\alpha} \inf_{v_h \in V_h} \|u - v_h\|_V$—nghiệm FEM gần như là xấp xỉ tốt nhất có thể trong không gian hữu hạn chiều $V_h$!
+
 ## Mục tiêu
 
 Bài học này giới thiệu định lý Lax–Milgram như công cụ chứng minh tồn tại và duy nhất nền tảng cho các bài toán biến phân tuyến tính. Sau bài học, sinh viên cần nhận diện được hai điều kiện cốt lõi là tính liên tục (bị chặn) và tính cưỡng bức (coercive), hiểu ý nghĩa hình học của chúng, và áp dụng được định lý vào bài toán Poisson.
@@ -24,6 +39,18 @@ Sinh viên cần nắm không gian Hilbert, phiếm hàm tuyến tính liên t�
 
 Sau khi chuyển PDE sang dạng yếu, ta không còn giải trực tiếp một phương trình vi phân từng điểm mà giải đẳng thức song tuyến tính $$ a(u,v)=F(v) $$. Ba câu hỏi đặt ra là: bài toán có nghiệm hay không, nghiệm có duy nhất hay không, và nghiệm có phụ thuộc liên tục vào dữ liệu hay không? Định lý Lax–Milgram trả lời đồng thời cả ba câu hỏi trong một khuôn khổ gọn gàng.
 
+
+### Khung giải thích (nên đọc chậm): Kiểm tra tay đầy đủ 3 điều kiện Lax–Milgram cho một PDE không đối xứng
+
+Xét phương trình đối lưu–khuếch tán–phản ứng trên $(0, 1)$: $-u'' + u' + 2u = f$ với $u(0) = u(1) = 0$. Dạng song tuyến tính trên $V = H_0^1(0, 1)$ là:
+$$a(u, v) = \int_0^1 \big(u'v' + u'v + 2uv\big)\,dx.$$
+Lưu ý $a(u, v) \neq a(v, u)$ do số hạng $\int u'v\,dx$! Hãy kiểm tra hai hằng số $M$ và $\alpha$:
+1. **Tính cưỡng bức ($\alpha$)**: Với $v = u \in H_0^1(0, 1)$, số hạng đối lưu tự triệt tiêu nhờ $u(0)=u(1)=0$:
+   $$\int_0^1 u' u\,dx = \left[\frac{u^2(x)}{2}\right]_0^1 = 0.$$
+   Do đó $a(u, u) = \|u'\|_{L^2}^2 + 2\|u\|_{L^2}^2 \ge \mathbf{1} \cdot \big(\|u'\|_{L^2}^2 + \|u\|_{L^2}^2\big) = \|u\|_{H^1}^2 \implies \mathbf{\alpha = 1} > 0$!
+2. **Tính liên tục ($M$)**: Dùng Cauchy–Schwarz:
+   $$|a(u, v)| \le \|u'\|_{L^2}\|v'\|_{L^2} + \|u'\|_{L^2}\|v\|_{L^2} + 2\|u\|_{L^2}\|v\|_{L^2} \le \mathbf{3}\|u\|_{H^1}\|v\|_{H^1} \implies \mathbf{M = 3}.$$
+3. **Kết luận**: Với mọi $f \in L^2(0, 1)$, bài toán có **duy nhất một nghiệm yếu** $u \in H_0^1(0,1)$ và thỏa mãn ước lượng ổn định $\|u\|_{H^1} \le \|f\|_{L^2}$!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

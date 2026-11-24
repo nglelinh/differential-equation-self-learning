@@ -10,6 +10,40 @@ categories:
 lesson_type: required
 ---
 
+Plug the trial vector $$\mathbf{x}(t) = \mathbf{v}\,e^{\lambda t}$$ into the constant-coefficient system $$\mathbf{x}' = A\mathbf{x}$$: differentiation brings down $$\lambda$$, and canceling $$e^{\lambda t} > 0$$ turns a coupled calculus problem into the pure eigenvalue equation $$A\mathbf{v} = \lambda\mathbf{v}$$. Geometrically, each real eigenvector defines an invisible highway through the origin along which trajectories travel in a pure straight line without ever bending!
+
+## Background Knowledge Map: Straight-Line Solutions and Spectral Decoupling
+
+Four principles explain why distinct real eigenvalues yield the cleanest possible dynamics:
+
+1. **Automatic Linear Independence:** Eigenvectors corresponding to distinct eigenvalues $$\lambda_1, \dots, \lambda_n$$ are guaranteed linearly independent, so $$\{\mathbf{v}_1 e^{\lambda_1 t}, \dots, \mathbf{v}_n e^{\lambda_n t}\}$$ immediately forms a complete fundamental set for $$\mathbf{x}' = A\mathbf{x}$$.
+2. **Coordinate Decoupling via $$P^{-1}AP = D$$:** Setting $$\mathbf{x} = P\mathbf{y}$$ (where columns of $$P$$ are eigenvectors) converts $$\mathbf{x}' = A\mathbf{x}$$ into $$n$$ completely uncoupled scalar equations $$y_k' = \lambda_k y_k$$.
+3. **Asymptotic Tangency (Fast vs. Slow Eigendirections):** For a stable node with $$\lambda_2 < \lambda_1 < 0$$, the fast mode $$e^{\lambda_2 t}$$ dies out far quicker than $$e^{\lambda_1 t}$$, so almost every trajectory bends to enter the origin **tangent to the slow eigenvector** $$\mathbf{v}_1$$!
+4. **Saddle Geometry ($$\lambda_1 > 0 > \lambda_2$$):** Trajectories on the stable line $$\operatorname{span}(\mathbf{v}_2)$$ head directly into the origin, trajectories on the unstable line $$\operatorname{span}(\mathbf{v}_1)$$ flee away, and all other trajectories sweep in along $$\mathbf{v}_2$$ and curve out parallel to $$\mathbf{v}_1$$.
+
+### Step-by-Step Worked Example (Read Slowly): Solving a 2D Real-Distinct System and Predicting Asymptotic Direction
+
+Solve the initial value problem
+$$\mathbf{x}' = \begin{pmatrix} -4 & 2 \\ 1 & -3 \end{pmatrix}\mathbf{x}, \qquad \mathbf{x}(0) = \begin{pmatrix} 3 \\ 0 \end{pmatrix},$$
+and determine the exact line along which $$\mathbf{x}(t)$$ approaches the origin as $$t \to +\infty$$.
+
+1. **Find the eigenvalues of $$A$$:**
+   $$\operatorname{tr}(A) = -7, \qquad \det(A) = (-4)(-3) - 2 = 10.$$
+   Characteristic equation: $$\lambda^2 + 7\lambda + 10 = (\lambda + 2)(\lambda + 5) = 0 \implies \lambda_1 = -2,\; \lambda_2 = -5$$.
+   Since both eigenvalues are real and negative, the origin is an **asymptotically stable node**.
+2. **Compute an eigenvector for each eigenvalue:**
+   - For $$\lambda_1 = -2$$ (slow mode): $$(A + 2I)\mathbf{v}_1 = \begin{pmatrix} -2 & 2 \\ 1 & -1 \end{pmatrix}\mathbf{v}_1 = \mathbf{0} \implies \mathbf{v}_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$$.
+   - For $$\lambda_2 = -5$$ (fast mode): $$(A + 5I)\mathbf{v}_2 = \begin{pmatrix} 1 & 2 \\ 1 & 2 \end{pmatrix}\mathbf{v}_2 = \mathbf{0} \implies \mathbf{v}_2 = \begin{pmatrix} 2 \\ -1 \end{pmatrix}$$.
+3. **Form the general solution and match $$\mathbf{x}(0) = (3, 0)^\top$$:**
+   $$\mathbf{x}(t) = c_1 e^{-2t}\begin{pmatrix} 1 \\ 1 \end{pmatrix} + c_2 e^{-5t}\begin{pmatrix} 2 \\ -1 \end{pmatrix}.$$
+   At $$t = 0$$: $$c_1 + 2c_2 = 3$$ and $$c_1 - c_2 = 0 \implies c_1 = c_2 = 1$$.
+   Thus
+   $$\mathbf{x}(t) = e^{-2t}\begin{pmatrix} 1 \\ 1 \end{pmatrix} + e^{-5t}\begin{pmatrix} 2 \\ -1 \end{pmatrix} = \begin{pmatrix} e^{-2t} + 2e^{-5t} \\ e^{-2t} - e^{-5t} \end{pmatrix}.$$
+4. **Determine the exact asymptotic approach direction as $$t \to \infty$$:**
+   Factor out the dominant slow exponential $$e^{-2t}$$:
+   $$\mathbf{x}(t) = e^{-2t}\left[\begin{pmatrix} 1 \\ 1 \end{pmatrix} + e^{-3t}\begin{pmatrix} 2 \\ -1 \end{pmatrix}\right] \sim e^{-2t}\begin{pmatrix} 1 \\ 1 \end{pmatrix}.$$
+   Because $$e^{-3t} \to 0$$, the trajectory curves smoothly to enter $$(0,0)$$ tangent to the slow line $$x_2 = x_1$$!
+
 ## Learning Objectives
 
 This lesson helps students use eigenvalues and eigenvectors to solve linear systems when the matrix has real distinct eigenvalues, understand the meaning of each eigenvector mode as an invariant dynamical direction, and read the growing, decaying, or saddle behavior of the system from the signs of the eigenvalues.

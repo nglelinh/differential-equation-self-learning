@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** In 1911, physicist Hendrik Lorentz posed a haunting question during a Göttingen lecture: does the high-frequency distribution of resonant tones inside an arbitrarily shaped room depend on the room's intricate geometry, or *only* on its total volume? Just months later, Hermann Weyl proved his celebrated **Weyl Law**, launching the modern field of spectral geometry and Mark Kac's famous question: *"Can one hear the shape of a drum?"*
+
 ![Spectral asymptotics and eigenvalue counting]({{ site.imgurl }}/chapter_img/chapter15/05_spectral_asymptotics.svg )
 
 ## Objectives
@@ -19,6 +21,15 @@ This optional lesson introduces spectral asymptotics, especially Weyl's law, as 
 ## Prerequisites
 
 Students should know eigenvalue problems, the Laplacian, Hilbert spaces, and the semiclassical intuition that large eigenvalues correspond to high frequency. Chapter 12 on spectral theory provides useful background.
+
+## Background Knowledge Map: Counting Eigenvalues via Phase-Space Volume
+
+Four pillars connect the spectrum $0 < \lambda_1 \le \lambda_2 \le \dots$ of $-\Delta$ on a bounded domain $\Omega \subset \mathbb{R}^d$ to its geometry:
+
+1. **Eigenvalue Counting Function $N(\lambda) = \#\{k : \lambda_k \le \lambda\}$:** Weyl's leading law states $N(\lambda) \sim (2\pi)^{-d}\omega_d \operatorname{Vol}(\Omega)\,\lambda^{d/2}$ as $\lambda \to \infty$ (where $\omega_d$ is the unit ball volume in $\mathbb{R}^d$)—matching the semiclassical heuristic "one quantum state per $(2\pi)^d$ of phase-space volume $\{|\xi|^2 \le \lambda\}$."
+2. **Dirichlet–Neumann Bracketing (Courant's Variational Proof):** Tiling $\Omega$ by tiny cubes and sandwiching $-\Delta$ between Dirichlet (lower bound) and Neumann (upper bound) subproblems proves Weyl's leading term elementarily without microlocal machinery.
+3. **Second-Order Boundary Correction (Ivrii's Theorem):** For smooth domains whose periodic billiard trajectories have measure zero, $N(\lambda) = (2\pi)^{-d}\omega_d\operatorname{Vol}(\Omega)\lambda^{d/2} \mp \frac{1}{4}(2\pi)^{-(d-1)}\omega_{d-1}\operatorname{Area}(\partial\Omega)\lambda^{(d-1)/2} + o(\lambda^{(d-1)/2})$ ($-$ for Dirichlet, $+$ for Neumann)—letting you "hear" both area and perimeter!
+4. **Wave Trace and Poisson Relation:** Studying the trace $\operatorname{Tr}(e^{-it\sqrt{-\Delta}}) = \sum_k e^{-it\sqrt{\lambda_k}}$ via FIOs reveals that its singularities in $t$ occur exclusively at the lengths of closed periodic geodesics/billiards!
 
 ## Introduction
 
@@ -83,6 +94,24 @@ High-energy spectral data is naturally interpreted through phase-space geometry.
 - Can they explain why large spectra contain geometric information?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Testing One-Term and Two-Term Weyl Laws on the Square $[0,\pi]^2$
+
+For the Dirichlet Laplacian $-\Delta$ on $\Omega = (0,\pi)^2$, the exact eigenvalues are $\lambda_{m,n} = m^2 + n^2$ for integers $m, n \ge 1$. Count $N(25)$ exactly by hand and compare with both the one-term and two-term Weyl formulas!
+
+1. **Count all positive integer pairs $(m,n)$ with $m^2 + n^2 \le 25$:**
+   - $m = 1$: $n^2 \le 24 \implies n \in \{1, 2, 3, 4\}$ ($4$ modes).
+   - $m = 2$: $n^2 \le 21 \implies n \in \{1, 2, 3, 4\}$ ($4$ modes).
+   - $m = 3$: $n^2 \le 16 \implies n \in \{1, 2, 3, 4\}$ ($4$ modes).
+   - $m = 4$: $n^2 \le 9 \implies n \in \{1, 2, 3\}$ ($3$ modes).
+   - $m = 5$: $n^2 \le 0 \implies$ none ($0$ modes).
+   Exact count: $N(25) = 4 + 4 + 4 + 3 = 15$.
+2. **Compute the 2D one-term Weyl prediction ($\operatorname{Area}(\Omega) = \pi^2$):**
+   $$N_{\text{Weyl},1}(\lambda) = \frac{\operatorname{Area}(\Omega)}{4\pi}\lambda = \frac{\pi^2}{4\pi}(25) = \frac{25\pi}{4} \approx 19.63.$$
+3. **Add the Dirichlet perimeter correction ($\operatorname{Perim}(\Omega) = 4\pi$):**
+   $$N_{\text{Weyl},2}(\lambda) = \frac{\operatorname{Area}(\Omega)}{4\pi}\lambda - \frac{\operatorname{Perim}(\Omega)}{4\pi}\sqrt{\lambda} = 19.63 - \frac{4\pi}{4\pi}(5) = 19.63 - 5 = 14.63.$$
+   Notice how the boundary correction immediately drops the discrepancy from $4.63$ down to just $0.37$—already accurate to $2.5\%$ at $\lambda = 25$!
 
 ### Example 1: The interval $$ [0,\pi] $$
 

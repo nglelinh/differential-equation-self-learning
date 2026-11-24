@@ -10,6 +10,23 @@ categories:
 lesson_type: required
 ---
 
+
+Với phương trình vô hướng $x' = ax$, nghiệm đẹp nhất đời là $x(t) = e^{at}x_0$. Khi nâng lên hệ nhiều chiều $\mathbf{x}' = A\mathbf{x}$, ta có thể viết hệt như vậy: **$\mathbf{x}(t) = e^{At}\mathbf{x}_0$**, trong đó **Ma trận mũ** được định nghĩa bằng chuỗi lũy thừa $e^{At} = I + At + \frac{t^2}{2!}A^2 + \dots$! Điều tinh tế cần cảnh giác: khác với số thực, $e^{(A+B)t} = e^{At}e^{Bt}$ **chỉ đúng khi $AB = BA$**—một chi tiết nhỏ nhưng cực kỳ quan trọng trong vật lý lượng tử và robot học!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Ma trận Mũ $e^{At}$
+
+1. **Định nghĩa chuỗi & Tính hội tụ tuyệt đối**:
+   $e^{At} = \sum_{k=0}^\infty \frac{t^k}{k!}A^k$ hội tụ trên toàn $\mathbb{R}$ với mọi ma trận vuông $A$, thỏa $\frac{d}{dt}e^{At} = A e^{At}$ và $e^{A\cdot 0} = I$—là ma trận cơ bản chuẩn hóa tại $t = 0$.
+2. **Bốn phương pháp tính $e^{At}$ thực chiến**:
+   - **Chéo hóa** ($A = PDP^{-1}$): $e^{At} = P e^{Dt} P^{-1}$ với $e^{Dt} = \operatorname{diag}(e^{\lambda_1 t}, \dots, e^{\lambda_n t})$.
+   - **Tách $A = \lambda I + N$** (khi $N$ lũy linh $N^k = 0$): vì $\lambda I$ và $N$ giao hoán, $e^{At} = e^{\lambda t}\left(I + tN + \frac{t^2}{2!}N^2 + \dots\right)$ (chuỗi dừng hữu hạn!).
+   - **Biến đổi Laplace**: $e^{At} = \mathcal{L}^{-1}\big\{(sI - A)^{-1}\big\}$.
+   - **Từ ma trận cơ bản bất kỳ $\Phi(t)$**: $e^{At} = \Phi(t)\Phi(0)^{-1}$.
+3. **Tính chất nhóm một tham số & Điều kiện giao hoán**:
+   $e^{A(t+s)} = e^{At}e^{As}$ và $(e^{At})^{-1} = e^{-At}$ luôn đúng (nên $e^{At}$ luôn khả nghịch!); nhưng $e^{A+B} = e^A e^B$ đòi hỏi $AB = BA$.
+4. **Cầu nối tới Hệ không thuần nhất (Công thức Duhamel)**:
+   Nhờ $e^{At}$, nghiệm hệ $\mathbf{x}' = A\mathbf{x} + \mathbf{g}(t)$ gói gọn trong một dòng: $\mathbf{x}(t) = e^{At}\mathbf{x}_0 + \int_0^t e^{A(t-s)}\mathbf{g}(s)\,ds$.
+
 ## Mục tiêu
 
 Bài học này giới thiệu ma trận mũ (hàm mũ ma trận) $$ e^{At} $$ như toán tử tiến hóa trung tâm của hệ tuyến tính hệ số hằng, trình bày định nghĩa bằng chuỗi lũy thừa, cách tính trong trường hợp chéo hóa được và khối Jordan, đồng thời cho thấy $$ e^{At} $$ thống nhất toàn bộ các trường hợp trị riêng đã học trong chương.
@@ -25,6 +42,17 @@ Sinh viên cần nắm chuỗi Taylor của hàm mũ thông thường, trị ri�
 Trong ODE một ẩn, hàm mũ $$ e^{at} $$ là nghiệm cơ bản vì đạo hàm của nó tỉ lệ với chính nó. Với hệ tuyến tính $$ \mathbf{x}'=A\mathbf{x} $$, đối tượng tương ứng là ma trận mũ $$ e^{At} $$, cho phép viết nghiệm của mọi bài toán giá trị đầu hệ số hằng trong một công thức duy nhất.
 
 Giá trị lớn nhất của ma trận mũ là tính thống nhất: trị riêng thực phân biệt, trị riêng phức, trị riêng lặp và vector riêng suy rộng đều có thể xem là các phương pháp khác nhau để tính hoặc diễn giải cùng một đối tượng $$ e^{At} $$.
+
+### Khung giải thích (nên đọc chậm): Tính $e^{At}$ cho ma trận Jordan $A = \begin{pmatrix} 2 & 3 \\ 0 & 2 \end{pmatrix}$ bằng hai cách độc lập để kiểm chứng!
+
+**Cách 1 — Tách giao hoán $A = 2I + N$** với $N = \begin{pmatrix} 0 & 3 \\ 0 & 0 \end{pmatrix}$:
+- Kiểm tra tính lũy linh: $N^2 = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} = 0$, nên mọi $N^k = 0$ ($k \ge 2$)!
+- Do $2I$ giao hoán với $N$:
+  $$e^{At} = e^{2It} e^{Nt} = e^{2t}(I + tN) = e^{2t}\begin{pmatrix} 1 & 3t \\ 0 & 1 \end{pmatrix} = \mathbf{\begin{pmatrix} e^{2t} & 3t e^{2t} \\ 0 & e^{2t} \end{pmatrix}}.$$
+
+**Cách 2 — Biến đổi Laplace ngược $\mathcal{L}^{-1}\{(sI - A)^{-1}\}$**:
+- $sI - A = \begin{pmatrix} s-2 & -3 \\ 0 & s-2 \end{pmatrix} \implies (sI - A)^{-1} = \begin{pmatrix} \frac{1}{s-2} & \frac{3}{(s-2)^2} \\ 0 & \frac{1}{s-2} \end{pmatrix}$.
+- Lấy $\mathcal{L}^{-1}$ từng phần tử: $\mathbf{\begin{pmatrix} e^{2t} & 3t e^{2t} \\ 0 & e^{2t} \end{pmatrix}}$ — khớp tuyệt đối từng ô!
 
 ## Khái niệm theo ba cách
 

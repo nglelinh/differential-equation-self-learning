@@ -10,6 +10,49 @@ categories:
 lesson_type: required
 ---
 
+Near the center of a vibrating circular drum or the nucleus of a hydrogen atom, the governing differential equation develops a singularity: its coefficients divide by $$ r $$ or $$ r^2 $$, so an ordinary Taylor series $$ \sum a_n r^n $$ fails to capture solutions that behave like $$ r^{1/2} $$, $$ r^{-1} $$, or $$ \ln r $$. In 1873, Ferdinand Georg Frobenius discovered a breathtakingly clean remedy: factor out the leading singular power $$ x^r $$ first, and expand what remains as a regular power series, $$ y(x) = x^r \sum_{n=0}^{\infty} a_n x^n $$.
+
+That single modification unlocks almost every special function of nineteenth- and twentieth-century mathematical physics—Bessel, Laguerre, hypergeometric, and confluent hypergeometric functions all emerge from the Frobenius machine.
+
+## Background Knowledge Map: Regular Singular Points and the Frobenius Engine
+
+1. **Regular vs. Irregular Singular Points (Growth Rate Control):** In $$ y'' + P(x)y' + Q(x)y = 0 $$, a singular point $$ x_0 $$ is *regular* if $$ (x - x_0)P(x) $$ and $$ (x - x_0)^2 Q(x) $$ are both analytic at $$ x_0 $$. Intuitively, the singularities are no worse than a Cauchy–Euler equation, keeping solutions tame enough to be represented by generalized power series rather than essential singularities like $$ e^{-1/x} $$.
+2. **The Indicial Equation $$ I(r) = r(r-1) + p_0 r + q_0 = 0 $$ (Leading Asymptotics):** Letting $$ p_0 = \lim_{x\to 0} x P(x) $$ and $$ q_0 = \lim_{x\to 0} x^2 Q(x) $$, the lowest power of $$ x $$ in the Frobenius substitution forces $$ I(r) a_0 = 0 $$. Since $$ a_0 \neq 0 $$, the roots $$ r_1, r_2 $$ (ordered with $$ \operatorname{Re}(r_1) \ge \operatorname{Re}(r_2) $$) dictate the exact leading behavior $$ y \sim x^r $$ near $$ x = 0 $$.
+3. **The Three Frobenius Cases (Resonance Between Roots):**
+   - *Case 1 ($$ r_1 - r_2 \notin \mathbb{Z} $$):* Two independent Frobenius series exist directly.
+   - *Case 2 ($$ r_1 = r_2 $$):* One Frobenius series plus a second solution containing $$ y_1(x)\ln x $$.
+   - *Case 3 ($$ r_1 - r_2 \in \mathbb{Z}_{>0} $$):* The recurrence for $$ r_2 $$ hits division by $$ I(r_2 + N) = I(r_1) = 0 $$, which may require a $$ C y_1(x)\ln x $$ term (or occasionally decouples cleanly with $$ C = 0 $$).
+4. **Guaranteed Convergence Radius (Fuchs–Frobenius Theorem):** Any Frobenius series converges on $$ 0 < |x - x_0| < R $$, where $$ R $$ is at least the distance from $$ x_0 $$ to the nearest *other* complex singularity of $$ (x-x_0)P(x) $$ or $$ (x-x_0)^2 Q(x) $$.
+
+### Step-by-Step Worked Example (Read Slowly): Frobenius Solution of $$ 2x^2 y'' - x y' + (1 + x) y = 0 $$
+
+**Problem:** Classify $$ x = 0 $$, solve the indicial equation, derive the recurrence relation, and compute the first three terms of both linearly independent Frobenius solutions around $$ x = 0 $$.
+
+1. **Verify $$ x = 0 $$ is a regular singular point:** Divide by $$ 2x^2 $$:
+   $$ y'' - \frac{1}{2x} y' + \frac{1 + x}{2x^2} y = 0. $$
+   Thus $$ x P(x) = -\frac{1}{2} $$ (so $$ p_0 = -\frac{1}{2} $$) and $$ x^2 Q(x) = \frac{1 + x}{2} $$ (so $$ q_0 = \frac{1}{2} $$). Both are polynomials (entire), so $$ x = 0 $$ is a regular singular point with $$ R = \infty $$.
+2. **Solve the indicial equation:**
+   $$ I(r) = r(r - 1) - \frac{1}{2} r + \frac{1}{2} = r^2 - \frac{3}{2} r + \frac{1}{2} = (r - 1)\left(r - \frac{1}{2}\right) = 0. $$
+   The roots are $$ r_1 = 1 $$ and $$ r_2 = \frac{1}{2} $$. Their difference is $$ r_1 - r_2 = \frac{1}{2} \notin \mathbb{Z} $$, so we are in **Case 1**: two clean Frobenius series exist with no logarithm!
+3. **Substitute $$ y(x) = \sum_{n=0}^{\infty} a_n x^{n+r} $$ into $$ 2x^2 y'' - x y' + (1 + x) y = 0 $$:**
+   $$ \sum_{n=0}^{\infty} \bigl[2(n+r)(n+r-1) - (n+r) + 1\bigr] a_n x^{n+r} + \sum_{n=0}^{\infty} a_n x^{n+r+1} = 0. $$
+   Factor the bracket as $$ 2 I(n+r) = (n+r-1)(2(n+r)-1) $$. Shift the second sum by $$ k = n + 1 $$ (so $$ n = k - 1 $$):
+   $$ 2 I(r) a_0 x^r + \sum_{k=1}^{\infty} \Bigl[ (k+r-1)(2k+2r-1) a_k + a_{k-1} \Bigr] x^{k+r} = 0. $$
+   This yields the recurrence for $$ k \ge 1 $$:
+   $$ a_k = \frac{-a_{k-1}}{(k+r-1)(2k+2r-1)}. $$
+4. **Compute Solution 1 ($$ r_1 = 1, a_0 = 1 $$):** Here $$ a_k = \frac{-a_{k-1}}{k(2k+1)} $$.
+   - $$ k = 1 $$: $$ a_1 = \frac{-1}{1 \cdot 3} = -\frac{1}{3} $$.
+   - $$ k = 2 $$: $$ a_2 = \frac{-(-1/3)}{2 \cdot 5} = \frac{1}{30} $$.
+   $$ y_1(x) = x\left(1 - \frac{1}{3}x + \frac{1}{30}x^2 - \cdots\right). $$
+5. **Compute Solution 2 ($$ r_2 = \frac{1}{2}, a_0 = 1 $$):** Here $$ a_k = \frac{-a_{k-1}}{(k - 1/2)(2k)} = \frac{-a_{k-1}}{k(2k-1)} $$.
+   - $$ k = 1 $$: $$ a_1 = \frac{-1}{1 \cdot 1} = -1 $$.
+   - $$ k = 2 $$: $$ a_2 = \frac{-(-1)}{2 \cdot 3} = \frac{1}{6} $$.
+   $$ y_2(x) = x^{1/2}\left(1 - x + \frac{1}{6}x^2 - \cdots\right). $$
+6. **Quick verification on $$ y_1(x) = x - \frac{1}{3}x^2 + \frac{1}{30}x^3 $$:**
+   - $$ y_1' = 1 - \frac{2}{3}x + \frac{1}{10}x^2 $$, $$ y_1'' = -\frac{2}{3} + \frac{1}{5}x $$.
+   - $$ 2x^2 y_1'' - x y_1' + (1+x)y_1 = \left(-\frac{4}{3}x^2 + \frac{2}{5}x^3\right) - \left(x - \frac{2}{3}x^2 + \frac{1}{10}x^3\right) + \left(x + \frac{2}{3}x^2 - \frac{3}{10}x^3 + \frac{1}{30}x^4\right) = O(x^4) $$.
+   Every single term through $$ x^3 $$ cancels to zero!
+
 This lesson presents the Frobenius method—the generalization of power series to handle regular singular points. This is the key technique for solving ODEs near singular points like Bessel's and Legendre's equations.
 
 > **Teaching Notes**: Most challenging lesson in Chapter 06. Start with regular singular point definition (review from 06-02). Walk through Example 1 completely. If time is short, skip exceptional cases. Activity: "Classify the Singularity" (15 min).

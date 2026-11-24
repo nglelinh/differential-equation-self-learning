@@ -10,6 +10,19 @@ categories:
 lesson_type: required
 ---
 
+Trước khi giải phương trình vi phân bằng chuỗi vô hạn, bạn cần sử dụng thành thạo "bộ cờ lê đại số" của **chuỗi lũy thừa** $\sum_{n=0}^{\infty} a_n (x - x_0)^n$: tìm bán kính hội tụ để biết nghiệm có nghĩa ở đâu, lấy đạo hàm từng số hạng, và đặc biệt là kỹ thuật **dịch chỉ số (index shifting)** để cộng gộp các tổng có lũy thừa lệch nhau về cùng một mẫu $x^k$.
+
+## Bản đồ kiến thức nền: Bốn thao tác xương sống với Chuỗi Lũy thừa
+
+1. **Bán kính hội tụ $R$ (Tiêu chuẩn D'Alembert / Cauchy)**:
+   $R = \lim_{n\to\infty} \left\vert \frac{a_n}{a_{n+1}} \right\vert$. Chuỗi hội tụ tuyệt đối khi $\vert x - x_0 \vert < R$ và phân kỳ khi $\vert x - x_0 \vert > R$.
+2. **Đạo hàm và Tích phân từng số hạng bên trong khoảng hội tụ**:
+   $y'(x) = \sum_{n=1}^{\infty} n a_n (x - x_0)^{n-1}$ và $y''(x) = \sum_{n=2}^{\infty} n(n-1) a_n (x - x_0)^{n-2}$ đều giữ nguyên **đúng bán kính hội tụ $R$**.
+3. **Kỹ thuật dịch chỉ số (Index Shifting)**:
+   Đặt $k = n - 2$ (suy ra $n = k + 2$) để biến $\sum_{n=2}^{\infty} n(n-1) a_n x^{n-2}$ thành $\sum_{k=0}^{\infty} (k+2)(k+1) a_{k+2} x^k$—giúp mọi tổng cùng bắt đầu từ $x^k$ để đồng nhất hệ số!
+4. **Định lý đồng nhất hệ số (Identity Theorem)**:
+   Nếu $\sum_{k=0}^{\infty} c_k (x - x_0)^k = 0$ trên một khoảng mở quanh $x_0$, thì **mọi hệ số $c_k = 0$ với mọi $k \ge 0$**!
+
 ## Mục tiêu
 
 Bài học này ôn tập chuỗi lũy thừa theo đúng định hướng của chương nghiệm chuỗi: không chỉ ghi nhớ công thức mà hiểu chuỗi lũy thừa như một ngôn ngữ mô tả hành vi cục bộ của hàm số. Sau bài học, sinh viên cần biết nhận dạng chuỗi lũy thừa, xác định bán kính hội tụ, thực hiện đạo hàm và tích phân từng số hạng, đồng thời hiểu vì sao dãy hệ số chuỗi trở thành ẩn số trung tâm khi giải phương trình vi phân.
@@ -25,6 +38,17 @@ Sinh viên nên nắm vững giới hạn, chuỗi số, đạo hàm, tích phâ
 Khi khảo sát một hàm số quanh một điểm, ta thường muốn có một biểu diễn vừa gọn gàng vừa chính xác. Chuỗi lũy thừa đáp ứng yêu cầu đó bằng cách thay một hàm phức tạp bằng tổng vô hạn của các lũy thừa cơ bản. Đáng chú ý là trong nhiều trường hợp, đây không chỉ là phép xấp xỉ mà là biểu diễn chính xác của hàm trong cả một lân cận.
 
 Trong chương này, thay vì tìm nghiệm dưới dạng tổ hợp các hàm sơ cấp quen thuộc như sin, cos hay hàm mũ, ta giả sử nghiệm có dạng chuỗi lũy thừa rồi dùng chính phương trình vi phân để xác định các hệ số. Vì vậy, ôn tập chuỗi lũy thừa là nền tảng trực tiếp cho toàn bộ chương.
+
+### Khung giải thích (nên đọc chậm): Thực hành dịch chỉ số và gộp 2 tổng thành 1 tổng duy nhất
+
+Cần viết biểu thức $S(x) = \sum_{n=2}^{\infty} n(n-1) a_n x^{n-2} + \sum_{n=0}^{\infty} a_n x^n$ thành một chuỗi duy nhất theo $x^k$:
+1. **Tổng thứ nhất**: Đặt $k = n - 2 \implies n = k + 2$. Khi $n = 2$ thì $k = 0$:
+   $$\sum_{n=2}^{\infty} n(n-1) a_n x^{n-2} = \sum_{k=0}^{\infty} (k+2)(k+1) a_{k+2} x^k.$$
+2. **Tổng thứ hai**: Chỉ cần đổi tên biến giả $n \to k$: $\sum_{k=0}^{\infty} a_k x^k$.
+3. **Gộp chung vì cả hai đã cùng bắt đầu từ $k = 0$ và cùng lũy thừa $x^k$**:
+   $$S(x) = \sum_{k=0}^{\infty} \big[(k+2)(k+1) a_{k+2} + a_k\big] x^k.$$
+4. **Áp dụng ngay**: Nếu $S(x) = 0$ (chính là phương trình $y'' + y = 0$!), định lý đồng nhất hệ số lập tức cho hệ thức truy hồi:
+   $$a_{k+2} = -\frac{a_k}{(k+2)(k+1)} \qquad (k = 0, 1, 2, \dots).$$
 
 ## Khái niệm theo ba cách
 

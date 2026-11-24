@@ -9,6 +9,20 @@ categories:
 - chapter04
 ---
 
+
+Khi Newton và Lagrange nghiên cứu chuyển động đồng thời của Mặt Trời, Trái Đất và Sao Mộc—hay khi các nhà vật lý khảo sát mạng lưới lò xo liên kết—một phương trình vi phân đơn lẻ không còn đủ nữa: họ buộc phải giải hàng loạt phương trình móc nối chặt chẽ vào nhau. Sự kết hôn lịch sử giữa **phương trình vi phân** và **đại số ma trận** (Cayley, Sylvester, Jordan, Peano) ở thế kỷ XIX đã biến hệ phương trình cồng kềnh thành một biểu thức ngắn gọn đến kinh ngạc: $\mathbf{x}(t) = e^{At}\mathbf{x}_0$!
+
+## Bản đồ kiến thức nền: Bốn cột mốc lịch sử của Hệ PTVP Thường
+
+1. **Lagrange & Bài toán Dao động nhỏ (1760s–1788)**:
+   Khi nghiên cứu chuỗi hạt nối lò xo và nhiễu loạn hành tinh, Lagrange phát hiện các "tần số riêng" (trị riêng) giúp tách rời hoàn toàn hệ phương trình ghép nối.
+2. **Cayley & Sylvester (1850s) — Ngôn ngữ Ma trận**:
+   Đưa ra ký hiệu ma trận và định lý Cayley–Hamilton, cho phép viết gọn hệ $n$ phương trình vi phân thành một dòng duy nhất $\mathbf{x}' = A\mathbf{x}$.
+3. **Camille Jordan (1870) — Dạng chuẩn tắc Jordan**:
+   Giải quyết triệt để trường hợp "cứng đầu" nhất khi ma trận có trị riêng bội nhưng thiếu vectơ riêng (defective matrix), đưa ra chuỗi vectơ riêng suy rộng sinh ra các số hạng $t^k e^{\lambda t}$.
+4. **Giuseppe Peano (1887) & Henri Poincaré — Ma trận mũ & Chân dung pha**:
+   Peano định nghĩa chặt chẽ chuỗi ma trận mũ $e^{At} = \sum \frac{t^k}{k!}A^k$, còn Poincaré phân loại hình học các điểm kỳ dị (nút, yên ngựa, tiêu điểm, tâm), mở đường sang Chương 05.
+
 ## Mục tiêu
 Bài học này trình bày lịch sử hình thành của hệ phương trình vi phân từ cơ học, lý thuyết ma trận và phân tích định tính chuyển động. Sinh viên sẽ thấy Chương 04 đánh dấu bước chuyển từ việc nghiên cứu từng hàm riêng lẻ sang khảo sát động lực học trong không gian nhiều chiều.
 
@@ -19,6 +33,17 @@ Sinh viên nên nắm các kỹ thuật của Chương 04, gồm trị riêng, h
 Turin, nửa sau thế kỷ XVIII. Khi nghiên cứu các hệ cơ học có nhiều đại lượng cùng biến đổi, Joseph-Louis Lagrange sớm nhận thấy một ẩn số duy nhất không còn đủ để mô tả chuyển động. Một vật dao động cần cả vị trí lẫn vận tốc; một hệ nhiều vật liên kết có các thành phần tác động qua lại lẫn nhau. Nhu cầu mô tả các trạng thái nhiều chiều buộc toán học vượt ra khỏi khuôn khổ từng phương trình đơn lẻ.
 
 Bước ngoặt đến khi nhiều biến được gom thành một vector trạng thái. Chẳng hạn, phương trình dao động điều hòa $$x'' + \omega^2 x = 0$$ có thể viết lại thành hệ bậc nhất $$x_1' = x_2$$, $$x_2' = -\omega^2 x_1$$. Từ dạng biểu diễn này, ma trận, trị riêng, vector riêng và chân dung pha cho phép xác định trực tiếp hệ sẽ quay, hội tụ hay phân kỳ theo những phương nào. Ví dụ đơn giản đó cho thấy hệ ODE không chỉ là nhiều phương trình đặt cạnh nhau, mà là cách nhìn chuyển động như một quỹ đạo hình học trong không gian trạng thái.
+
+### Khung giải thích (nên đọc chậm): Tái hiện bước chuyển lịch sử—biến PTVP cấp hai $y'' + 3y' + 2y = 0$ thành hệ ma trận đồng hành (Companion Matrix)
+
+1. **Đặt vectơ trạng thái** $\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} y \\ y' \end{pmatrix}$:
+   - $x_1' = y' = x_2$
+   - $x_2' = y'' = -2y - 3y' = -2x_1 - 3x_2$
+2. **Viết dưới dạng ma trận $\mathbf{x}' = A\mathbf{x}$**:
+   $$\mathbf{x}' = \begin{pmatrix} 0 & 1 \\ -2 & -3 \end{pmatrix}\mathbf{x}.$$
+3. **Kiểm tra đa thức đặc trưng của $A$**:
+   $$\det(A - \lambda I) = -\lambda(-3 - \lambda) - (-2) = \mathbf{\lambda^2 + 3\lambda + 2} = 0!$$
+   Đa thức đặc trưng của ma trận $A$ trùng khít từng hệ số với phương trình đặc trưng $r^2 + 3r + 2 = 0$ của Chương 02—chứng minh mọi PTVP bậc $n$ đều là trường hợp đặc biệt của hệ bậc một!
 
 ## Mạch truyện lớn
 Tiến trình lịch sử của chương đi từ cơ học và thiên văn học sang đại số ma trận và không gian pha. Trong thế kỷ XIX, khi các bài toán nhiều ẩn xuất hiện ngày càng nhiều, các nhà toán học hệ thống hóa chúng bằng ma trận, phép khử, trị riêng và hàm mũ ma trận. Song song đó, trực giác hình học về quỹ đạo trong mặt phẳng pha phát triển mạnh, biến hệ phương trình thành một trường vector biểu diễn chuyển động.

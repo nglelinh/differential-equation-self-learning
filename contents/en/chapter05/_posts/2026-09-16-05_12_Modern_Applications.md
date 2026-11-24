@@ -10,6 +10,37 @@ categories:
 lesson_type: optional
 ---
 
+Autonomous drones, bipedal robots, and power-grid inverters all obey high-dimensional nonlinear ODEs where hand-crafting a Lyapunov function $$V(\mathbf{x})$$ is virtually impossible—yet shipping an unverified black-box controller risks catastrophic instability. **Neural Lyapunov Functions** bridge this exact gap: a neural network *learns* a candidate bowl $$V_\theta(\mathbf{x})$$ from data, and a formal mathematical verifier (like an SMT solver or interval arithmetic) certifies $$\dot{V}_\theta(\mathbf{x}) < 0$$ across an entire verified Region of Attraction (RoA)!
+
+## Background Knowledge Map: Lyapunov Stability Inside Safe AI & Control
+
+Four Chapter 05 concepts directly power certified neural control and verification:
+
+1. **Structural Positive Definiteness by Architecture:** To guarantee $$V_\theta(\mathbf{0}) = 0$$ and $$V_\theta(\mathbf{x}) > 0$$ everywhere without relying solely on loss penalties, modern architectures parameterize $$V_\theta(\mathbf{x}) = \|\phi_\theta(\mathbf{x}) - \phi_\theta(\mathbf{0})\|^2 + \varepsilon\|\mathbf{x}\|^2$$ (an exact positive-definite bowl by construction!).
+2. **Lie-Derivative Training Loss ($$\dot{V}_\theta = \nabla V_\theta \cdot \mathbf{f}$$):** Using automatic differentiation, training minimizes the **Lyapunov risk**
+   $$\mathcal{L}_{\text{Lyap}}(\theta) = \frac{1}{N}\sum_{i=1}^N \max\!\Bigl(0,\; \nabla V_\theta(\mathbf{x}_i)\cdot \mathbf{f}(\mathbf{x}_i) + \alpha V_\theta(\mathbf{x}_i)\Bigr),$$
+   pushing the learned bowl downhill at exponential decay rate $$\alpha > 0$$ at every sampled state!
+3. **Counterexample-Guided Verification (CEGIS Loop):** Sampling alone can miss a narrow unstable ridge; a formal verifier (e.g., dReal / Z3 / $$\alpha,\beta$$-CROWN) searches the domain for any counterexample where $$\dot{V}_\theta(\mathbf{x}) \ge 0$$, feeds it back into the training set, and repeats until **zero** counterexamples remain!
+4. **Certifying the Region of Attraction (Sublevel Set $$\Omega_c$$):** Once $$\dot{V}_\theta(\mathbf{x}) < 0$$ is verified on a domain $$D$$, the largest sublevel set $$\Omega_c = \{\mathbf{x} : V_\theta(\mathbf{x}) \le c\} \subset D$$ is a mathematically guaranteed **safe operating envelope** from which the robot is 100% certified to recover!
+
+### Step-by-Step Worked Example (Read Slowly): Computing Lyapunov Risk and Certifying a Sublevel Safe Set
+
+Consider the nonlinear scalar-controlled system (inverted-pendulum angle $$x$$ with saturation-like cubic nonlinearity)
+$$x' = f(x) = -2x + x^3$$
+and a simple 1-parameter candidate Lyapunov function $$V_\theta(x) = \theta x^2$$ ($$\theta > 0$$).
+
+1. **Compute the Lie derivative $$\dot{V}_\theta(x) = V_\theta'(x)f(x)$$:**
+   $$\dot{V}_\theta(x) = (2\theta x)(-2x + x^3) = 2\theta x^2(x^2 - 2).$$
+2. **Find the exact domain $$D$$ where $$\dot{V}_\theta(x) < 0$$ (formal verification step):**
+   Since $$2\theta x^2 > 0$$ for $$x \ne 0$$, we have
+   $$\dot{V}_\theta(x) < 0 \iff x^2 - 2 < 0 \iff \lvert x \rvert < \sqrt{2} \approx 1.4142.$$
+   Notice that a naive trainer sampling only on $$[-1, 1]$$ sees zero violations, whereas a verifier checking $$[-2, 2]$$ immediately returns counterexamples at $$\lvert x \rvert \ge \sqrt{2}$$ (the unstable equilibria $$x = \pm\sqrt{2}$$!).
+3. **Certify the exact largest safe sublevel set $$\Omega_c$$ (set $$\theta = 1$$ so $$V(x) = x^2$$):**
+   For any $$c < 2$$, the sublevel set $$\Omega_c = \{x : x^2 \le c\} = [-\sqrt{c},\; \sqrt{c}]$$ lies strictly inside $$(-\sqrt{2}, \sqrt{2})$$, certifying **exponential convergence** to $$0$$ for every initial state with $$\lvert x(0) \rvert < \sqrt{2}$$!
+4. **Compute the Lyapunov risk at a counterexample $$x = 1.5$$ with decay target $$\alpha = 0.5$$ and $$\theta = 1$$:**
+   $$\dot{V}(1.5) + 0.5\,V(1.5) = 2(2.25)(2.25 - 2) + 0.5(2.25) = 1.125 + 1.125 = \mathbf{+2.25} > 0,$$
+   producing a crisp positive penalty that tells the optimizer (or controller) exactly where stability broke down!
+
 ## Objectives
 
 This optional lesson carries Lyapunov stability, linearization, and phase-plane reasoning into the 2019–2023 literature on neural certificates. Students should be able to state what a learned Lyapunov function is expected to prove, distinguish empirical decrease from a verified decrease, and locate the main survey and NeurIPS results on neural Lyapunov and barrier methods. The classical stability theorems of the chapter remain the standard of truth.

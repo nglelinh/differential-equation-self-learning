@@ -12,6 +12,19 @@ lesson_type: required
 
 ![Động lực vượt qua toán tử vi phân cổ điển]({{ site.imgurl }}/chapter_img/chapter14/01_motivation_beyond.svg )
 
+Mọi toán tử vi phân truyền thống đều có hai "cái trần" không thể vượt qua: thứ nhất, bậc của chúng luôn phải là số nguyên không âm ($0, 1, 2, \dots$) nên không thể viết ra đạo hàm nửa bậc $(-\Delta)^{1/2}$ hay toán tử nghịch đảo $(-\Delta)^{-1}$; thứ hai, chúng hoàn toàn **địa phương** nên không thể mô tả các hiện tượng tương tác xa như sóng mặt nước hay ánh xạ Dirichlet-to-Neumann! Bài học này chỉ rõ vì sao toán học bắt buộc phải bước ra khỏi biên giới toán tử vi phân để tiến vào đại số $\Psi$DO.
+
+## Bản đồ kiến thức nền: Bốn động lực buộc ta phải vượt qua Toán tử Vi phân
+
+1. **Nghịch đảo của Toán tử Elliptic không phải Toán tử Vi phân**:
+   Nếu $P$ có bậc $m > 0$, nghịch đảo $P^{-1}$ phải có bậc $-m < 0$ (làm trơn thay vì lấy đạo hàm)—nó là một toán tử tích phân phi địa phương!
+2. **Đạo hàm Phân số và Toán tử Dirichlet-to-Neumann (DtN)**:
+   Trong bài toán sóng nước hay chụp ảnh trở kháng điện (EIT), ánh xạ đưa nhiệt độ biên $g = u|_{\partial\Omega}$ sang thông lượng biên $\Lambda g = \partial_n u|_{\partial\Omega}$ có ký hiệu chính là $|\xi|$—tương đương **căn bậc hai của toán tử Laplace** $(-\Delta)^{1/2}$!
+3. **Tách nhân tử Phương trình Sóng $u_{tt} - \Delta u = 0$**:
+   Muốn phân tích $\partial_t^2 - \Delta = (\partial_t - i\sqrt{-\Delta})(\partial_t + i\sqrt{-\Delta})$ để tách sóng đi tới và sóng đi lùi thành hai phương trình bậc nhất, ta bắt buộc cần đến toán tử giả vi phân bậc $1$ là $\sqrt{-\Delta}$!
+4. **Tính Giả-địa phương (Pseudolocality) — Món quà quý giá thay thế Tính Địa phương**:
+   Dù $\Psi$DO không bảo toàn giá $\operatorname{supp}(u)$ (tính phi địa phương), nó vẫn bảo toàn **giá kỳ dị** $\operatorname{sing\,supp}(Pu) \subset \operatorname{sing\,supp}(u)$—tức là nó **không bao giờ tự đẻ thêm điểm kỳ dị mới** ở nơi hàm $u$ vốn đã trơn!
+
 ## Mục tiêu
 
 Bài học này mở đầu chương về toán tử giả vi phân bằng cách trả lời câu hỏi cốt lõi: vì sao cần mở rộng ra ngoài lớp toán tử vi phân cổ điển. Sau bài học, sinh viên cần nhận rõ giới hạn của toán tử vi phân, hiểu vai trò của tần số trong phân tích PDE, và nắm được lý do một toán tử cần được mô tả bằng dữ liệu phụ thuộc đồng thời vào vị trí $$ x $$ và tần số $$ \xi $$.
@@ -26,6 +39,15 @@ Các toán tử vi phân cổ điển đóng vai trò nền tảng trong phần 
 
 Ví dụ điển hình là toán tử nghịch đảo của một toán tử elliptic. Toán tử $$ (1-\Delta)^{-1} $$ không phải toán tử vi phân, nhưng lại là đối tượng trung tâm khi giải phương trình $$ (1-\Delta)u=f $$. Nói cách khác, quá trình giải PDE tự nhiên dẫn ta tới một lớp toán tử rộng hơn nhiều so với lớp toán tử ban đầu tạo nên phương trình.
 
+
+### Khung giải thích (nên đọc chậm): So sánh trực tiếp Toán tử Laplace $-\Delta$ (địa phương) và Căn bậc hai $(-\Delta)^{1/2}$ (giả vi phân)
+
+Xét hàm tổng hai sóng điều hòa $u(x) = \sin(2x) + \sin(10x)$ trên $\mathbb{R}$:
+1. **Tác động của toán tử vi phân bậc 2 ($-\Delta = -\partial_x^2$, ký hiệu $\xi^2$)**:
+   $$(-\Delta u)(x) = 2^2\sin(2x) + 10^2\sin(10x) = \mathbf{4\sin(2x) + 100\sin(10x)}.$$
+2. **Tác động của toán tử giả vi phân bậc 1 ($(-\Delta)^{1/2}$, ký hiệu $|\xi|$)**:
+   $$\big((-\Delta)^{1/2} u\big)(x) = |2|\sin(2x) + |10|\sin(10x) = \mathbf{2\sin(2x) + 10\sin(10x)}.$$
+3. **Khác biệt bản chất**: Ký hiệu $|\xi|$ có góc nhọn không khả vi tại $\xi = 0$ nên không thể là đa thức của $\xi$. Trong không gian thực, $(-\Delta)^{1/2}u(x)$ được biểu diễn qua tích phân giá trị chính $\frac{1}{\pi}\operatorname{p.v.}\int \frac{u(x) - u(y)}{(x-y)^2}\,dy$—rõ ràng phụ thuộc vào giá trị của $u$ trên **toàn trục số** (phi địa phương)!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

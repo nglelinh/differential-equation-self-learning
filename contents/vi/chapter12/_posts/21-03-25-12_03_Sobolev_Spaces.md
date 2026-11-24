@@ -12,6 +12,19 @@ lesson_type: required
 
 ![Trực giác về Sobolev space và gradient yếu]({{ site.imgurl }}/chapter_img/chapter12/03_sobolev_spaces.svg )
 
+Không gian $L^2(\Omega)$ đủ rộng và đầy đủ nhưng lại không hề kiểm soát đạo hàm; không gian $C^1(\bar{\Omega})$ kiểm soát được đạo hàm nhưng lại bị "thủng" khi lấy giới hạn (như phản ví dụ Weierstrass đã chỉ ra). **Không gian Sobolev $W^{k,p}(\Omega)$**—và đặc biệt là không gian Hilbert $H^1(\Omega) = W^{1,2}(\Omega)$—là giao điểm hoàn hảo của cả hai thế giới: vừa đo được cả hàm lẫn các đạo hàm yếu tới bậc $k$, vừa **đầy đủ tuyệt đối**!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Không gian Sobolev $W^{k,p}(\Omega)$
+
+1. **Định nghĩa và Chuẩn Sobolev**:
+   $W^{k,p}(\Omega)$ gồm mọi hàm $u \in L^p(\Omega)$ sao cho mọi đạo hàm yếu $D^\alpha u$ ($|\alpha| \le k$) đều nằm trong $L^p(\Omega)$, với chuẩn $\|u\|_{W^{k,p}} = \left(\sum_{|\alpha|\le k} \|D^\alpha u\|_{L^p}^p\right)^{1/p}$.
+2. **Không gian Hilbert $H^k(\Omega) = W^{k,2}(\Omega)$**:
+   Khi $p = 2$, $H^1(\Omega)$ có tích vô hướng $\langle u, v \rangle_{H^1} = \int_\Omega (uv + \nabla u \cdot \nabla v)\,dx$. Trong vật lý, $\int |\nabla u|^2\,dx$ chính là năng lượng đàn hồi hay năng lượng tĩnh điện hữu hạn!
+3. **Không gian biên $0$: $H_0^1(\Omega)$ và Toán tử Vết (Trace Operator)**:
+   $H_0^1(\Omega)$ là bao đóng của $C_c^\infty(\Omega)$ trong $H^1(\Omega)$—nơi ở tự nhiên cho bài toán Dirichlet thuần nhất $u|_{\partial\Omega} = 0$. Dù phần tử $H^1$ chỉ xác định hầu khắp nơi, định lý Vết vẫn cho phép gán giá trị biên $T u \in L^2(\partial\Omega)$ một cách hoàn toàn chặt chẽ!
+4. **Bất đẳng thức Poincaré trên $H_0^1(\Omega)$**:
+   Trên miền bị chặn $\Omega$, $\|u\|_{L^2} \le C_P \|\nabla u\|_{L^2}$ với mọi $u \in H_0^1(\Omega)$—nghĩa là chỉ riêng nửa chuẩn năng lượng $\|\nabla u\|_{L^2}$ đã là một chuẩn tương đương trọn vẹn trên $H_0^1(\Omega)$!
+
 ## Mục tiêu
 
 Bài học này xây dựng không gian Sobolev — khuôn khổ cho phép đo đồng thời độ lớn của bản thân hàm và các đạo hàm yếu của nó. Sau bài học, sinh viên cần nắm định nghĩa $$ W^{k,p} $$, ý nghĩa đặc biệt của $$ H^k=W^{k,2} $$, vai trò của $$ H^1_0 $$ trong bài toán biên, và trực giác về cách nhúng Sobolev nối kết kiểm soát năng lượng với tính trơn của hàm.
@@ -24,6 +37,19 @@ Sinh viên cần nắm không gian $$ L^p $$, đạo hàm yếu, chuẩn, tích 
 
 Khi nghiên cứu PDE, chỉ biết hàm có tích phân hữu hạn trong $$ L^p $$ thường chưa đủ; ta cần kiểm soát thêm độ dốc, độ cong hoặc các đạo hàm bậc cao hơn. Tuy nhiên, nếu đòi hỏi đạo hàm cổ điển thì lớp hàm lại quá hẹp và loại bỏ nhiều nghiệm có ý nghĩa vật lý. Không gian Sobolev giải quyết cân bằng này: đủ rộng để chứa nghiệm yếu nhưng vẫn đủ chặt để bảo toàn cấu trúc hình học và năng lượng.
 
+
+### Khung giải thích (nên đọc chậm): Tính tay chính xác chuẩn $H^1(0, 1)$ của một "hàm mũ nón" phần tử hữu hạn
+
+Xét hàm mũ nón (hat function) có góc nhọn tại giữa đoạn $\Omega = (0, 1)$:
+$$u(x) = \begin{cases} x, & 0 \le x \le \tfrac{1}{2}, \\ 1 - x, & \tfrac{1}{2} \le x \le 1. \end{cases}$$
+1. **Tính phần $L^2$ của hàm $u$**:
+   $$\|u\|_{L^2}^2 = 2\int_0^{1/2} x^2\,dx = 2\left[\frac{x^3}{3}\right]_0^{1/2} = \frac{2}{24} = \mathbf{\frac{1}{12}}.$$
+2. **Tính phần $L^2$ của đạo hàm yếu $u'$**:
+   Đạo hàm yếu là $u'(x) = +1$ trên $(0, \tfrac{1}{2})$ và $u'(x) = -1$ trên $(\tfrac{1}{2}, 1)$, nên $(u'(x))^2 = 1$ hầu khắp nơi:
+   $$\|u'\|_{L^2}^2 = \int_0^1 1\,dx = \mathbf{1}.$$
+3. **Cộng lại ra chuẩn $H^1(0, 1)$**:
+   $$\|u\|_{H^1} = \sqrt{\frac{1}{12} + 1} = \sqrt{\frac{13}{12}} \approx \mathbf{1{,}0408} < \infty.$$
+   Vì $u(0) = u(1) = 0$ và liên tục từng khúc, ta có $u \in H_0^1(0, 1)$—đó là lý do các hàm mũ nón gãy khúc trở thành viên gạch cơ bản của Phương pháp Phần tử Hữu hạn (FEM)!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

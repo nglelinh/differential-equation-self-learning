@@ -9,7 +9,24 @@ categories:
 - chapter10
 lesson_type: required
 ---
+
 ![21 03 11 10 06 Reflection Transmission]({{ site.imgurl }}/chapter_img/chapter10/06_reflection_transmission.svg)
+
+Tại sao bạn nhìn thấy bóng mình phản chiếu qua cửa kính trong khi vẫn nhìn xuyên được ra ngoài phố? Tại sao khi nối hai sợi dây có độ dày khác nhau (hoặc cáp mạng có trở kháng lệch nhau), một phần tín hiệu bị **dội ngược lại** gây nhiễu còn một phần đi tiếp? Mọi hiện tượng **Phản xạ và Truyền qua (Reflection & Transmission)** đều được quyết định chính xác bởi hai điều kiện nối liên tục tại mặt phân cách $x = 0$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phản xạ & Truyền qua Sóng 1D
+
+1. **Hai điều kiện nối tại điểm ghép $x = 0$ (giữa hai dây có tốc độ $c_1, c_2$)**:
+   - Dây không đứt (liên tục li độ): $u(0^-, t) = u(0^+, t)$.
+   - Lực căng thẳng đứng cân bằng (liên tục độ dốc khi $T_1 = T_2$): $u_x(0^-, t) = u_x(0^+, t)$.
+2. **Hệ số Phản xạ $R$ và Hệ số Truyền qua $T_{\text{tr}}$**:
+   $$R = \frac{c_2 - c_1}{c_2 + c_1}, \qquad T_{\text{tr}} = \frac{2c_2}{c_2 + c_1} = 1 + R.$$
+3. **Hai giới hạn cực đoan giải thích mọi phản xạ**:
+   - Dây sau nặng vô cùng ($c_2 \to 0$, tường cứng): $R = -1,\; T_{\text{tr}} = 0$ → **phản xạ toàn phần và lật ngược pha**!
+   - Dây sau nhẹ vô cùng ($c_2 \to \infty$, đầu tự do): $R = +1,\; T_{\text{tr}} = 2$ → **phản xạ toàn phần giữ nguyên pha**!
+   - **Phối hợp trở kháng (Impedance Matching)** $c_1 = c_2$: $R = 0,\; T_{\text{tr}} = 1$ → **không có phản xạ**, 100% năng lượng truyền qua (nguyên lý lớp phủ chống chói ống kính và đầu cuối cáp đồng trục!).
+4. **Bảo toàn thông lượng năng lượng**:
+   Tỷ lệ công suất phản xạ + công suất truyền qua luôn bằng đúng $1$: $R^2 + \frac{c_1}{c_2} T_{\text{tr}}^2 = 1$!
 
 ## Mục tiêu
 
@@ -24,6 +41,18 @@ Sinh viên cần nắm sóng chạy một chiều, các điều kiện biên cơ
 Trong thực tế, sóng hiếm khi truyền mãi trong một môi trường đồng nhất vô hạn. Sóng âm gặp tường, xung cơ học gặp mối nối giữa hai đoạn dây có mật độ khác nhau, ánh sáng gặp mặt phân cách giữa hai môi trường quang học. Tại ranh giới, một phần năng lượng dội ngược trở lại và phần còn lại truyền tiếp sang môi trường kế tiếp. Hiện tượng này tạo ra tiếng vang, sự giao thoa, phản hồi tín hiệu và nhiều ứng dụng kỹ thuật.
 
 Thay vì chỉ ghi nhớ công thức hệ số phản xạ, cần nắm rõ ý nghĩa vật lý: mặt phân cách là nơi điều kiện liên tục quyết định tỷ lệ năng lượng được giữ lại và năng lượng truyền sang môi trường mới.
+
+### Khung giải thích (nên đọc chậm): Tính tay biên độ phản xạ, truyền qua và kiểm chứng bảo toàn năng lượng khi $c_1 = 3,\; c_2 = 1$
+
+Một sóng tới có biên độ $A_i = 10\text{ mm}$ truyền từ dây nhẹ ($c_1 = 3\text{ m/s}$) sang dây nặng hơn ($c_2 = 1\text{ m/s}$):
+1. **Tính hệ số $R$ và $T_{\text{tr}}$**:
+   $$R = \frac{1 - 3}{1 + 3} = \mathbf{-0{,}5}, \qquad T_{\text{tr}} = \frac{2(1)}{1 + 3} = \mathbf{+0{,}5}.$$
+2. **Biên độ thực tế**:
+   - Sóng phản xạ quay về dây 1: $A_r = R \cdot A_i = \mathbf{-5\text{ mm}}$ (lật ngược xuống dưới, độ lớn bằng một nửa sóng tới!).
+   - Sóng truyền qua sang dây 2: $A_t = T_{\text{tr}} \cdot A_i = \mathbf{+5\text{ mm}}$ (cùng chiều với sóng tới!).
+   - Kiểm tra liên tục tại $x = 0$: $A_i + A_r = 10 + (-5) = 5 = A_t$ (khớp!).
+3. **Kiểm chứng bảo toàn công suất năng lượng**:
+   $$R^2 + \frac{c_1}{c_2} T_{\text{tr}}^2 = (-0{,}5)^2 + \frac{3}{1}(0{,}5)^2 = 0{,}25 + 0{,}75 = \mathbf{1{,}00} \quad (25\% \text{ năng lượng dội lại}, \; 75\% \text{ đi tiếp!}).$$
 
 ## Khái niệm theo ba cách
 

@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Picture a thin rectangular brass plate whose left, right, and bottom edges are packed in crushed ice ($0^\circ\text{C}$) while the top edge is pressed against a heated bar with a wavy temperature profile. How does a two-dimensional equilibrium figure out what temperature to assign to the center of the plate? Separation of variables reveals the secret: the boundary profile splits into pure Fourier sine harmonics along $x$, and each harmonic decays smoothly into the interior along $y$ like a suspended hyperbolic chain.
+
 ## Learning Objectives
 
 This lesson solves Laplace's equation in rectangular domains using separation of variables. Students should understand how geometry and boundary conditions combine to determine harmonic expansions.
@@ -17,6 +19,15 @@ This lesson solves Laplace's equation in rectangular domains using separation of
 ## Prerequisites
 
 Students should know Laplace's equation, separation of variables from earlier PDE chapters, and the role of Fourier-type expansions on intervals.
+
+## Background Knowledge Map: Anatomy of Rectangular Separation
+
+Solving $\Delta u = 0$ on a rectangle $[0,a]\times[0,b]$ weaves together four foundational ideas:
+
+1. **Sturm–Liouville Eigenfunctions along the Homogeneous Direction:** Homogeneous boundary conditions on two opposite sides (such as $u(0,y)=u(a,y)=0$) quantize the separation constant into discrete eigenvalues $\lambda_n = (n\pi/a)^2$ with an orthogonal basis $\sin(n\pi x/a)$ capable of expanding arbitrary $L^2$ boundary data.
+2. **Hyperbolic Functions as Balanced Exponentials:** Because $u_{xx} + u_{yy} = 0$ has a *plus* sign, oscillation in $x$ ($X'' = -\lambda X$) forces non-oscillatory exponential growth/decay in $y$ ($Y'' = +\lambda Y$). Writing $Y(y)$ in terms of $\sinh(\sqrt{\lambda}y)$ and $\sinh(\sqrt{\lambda}(b-y))$ makes boundary matching immediate.
+3. **Linearity and Four-Edge Decomposition:** When all four sides carry nonzero boundary data, linearity lets us split the problem into four subproblems—each with three zero sides and one active side—and sum the resulting series.
+4. **Rapid Interior Decay of High Modes:** Because $\sinh(n\pi y/a)/\sinh(n\pi b/a) \approx e^{-n\pi(b-y)/a}$ for $y < b$, high-frequency wiggles along the boundary vanish exponentially fast inside the rectangle, explaining why harmonic solutions are real-analytic in the interior.
 
 ## Introduction
 
@@ -89,6 +100,26 @@ Students should connect the separated modes to the final equilibrium profile.
 - Can they distinguish the elliptic setting from time-dependent PDE separation problems?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Exact Two-Mode Equilibrium on $[0,\pi]\times[0,1]$
+
+Solve $\Delta u = 0$ on the rectangle $(0,\pi)\times(0,1)$ subject to $u(0,y) = u(\pi,y) = u(x,0) = 0$ and the top boundary condition $u(x,1) = \sin(x) + 3\sin(2x)$, then compute the exact temperature at the geometric center $(\pi/2, 1/2)$.
+
+1. **Separate variables:** Substitute $u(x,y) = X(x)Y(y)$ into $u_{xx} + u_{yy} = 0$:
+   $$\frac{X''(x)}{X(x)} = -\frac{Y''(y)}{Y(y)} = -\lambda.$$
+2. **Solve the $x$-eigenvalue problem:** The zero conditions $X(0) = X(\pi) = 0$ select $\lambda_n = n^2$ and $X_n(x) = \sin(nx)$ for $n = 1, 2, 3, \dots$.
+3. **Solve the $y$-ODE with the bottom condition $Y_n(0) = 0$:** From $Y_n'' - n^2 Y_n = 0$ and $Y_n(0) = 0$, we obtain $Y_n(y) = C_n \sinh(ny)$. Superposing all modes gives:
+   $$u(x,y) = \sum_{n=1}^{\infty} C_n \sinh(ny)\sin(nx).$$
+4. **Match the top boundary at $y = 1$:** Setting $y = 1$ requires
+   $$\sum_{n=1}^{\infty} C_n \sinh(n)\sin(nx) = \sin(x) + 3\sin(2x).$$
+   By orthogonality of $\{\sin(nx)\}$ on $[0,\pi]$, only $n=1$ and $n=2$ survive:
+   $$C_1 = \frac{1}{\sinh(1)}, \qquad C_2 = \frac{3}{\sinh(2)}, \qquad C_n = 0 \text{ for } n \ge 3.$$
+   Hence the exact equilibrium solution is:
+   $$u(x,y) = \frac{\sinh(y)}{\sinh(1)}\sin(x) + \frac{3\sinh(2y)}{\sinh(2)}\sin(2x).$$
+5. **Evaluate at the center $(\pi/2, 1/2)$:** Since $\sin(\pi/2) = 1$ and $\sin(\pi) = 0$, the second mode vanishes identically on the vertical centerline, leaving:
+   $$u\left(\frac{\pi}{2}, \frac{1}{2}\right) = \frac{\sinh(1/2)}{\sinh(1)} = \frac{\sinh(1/2)}{2\sinh(1/2)\cosh(1/2)} = \frac{1}{2\cosh(1/2)} \approx 0.4434.$$
+   Notice how the identity $\sinh(1) = 2\sinh(1/2)\cosh(1/2)$ collapses the ratio cleanly, and the center temperature $0.4434$ lies strictly between the minimum ($0$) and maximum ($1$) of the first-mode boundary data.
 
 ### Example 1: Three Zero Sides, One Nonzero Side
 

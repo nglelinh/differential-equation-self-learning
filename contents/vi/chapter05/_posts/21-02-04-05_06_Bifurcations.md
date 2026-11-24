@@ -10,6 +10,19 @@ categories:
 lesson_type: required
 ---
 
+Hãy tưởng tượng bạn đặt một cây thước nhựa thẳng đứng rồi ấn nhẹ từ trên xuống: ban đầu thước vẫn đứng thẳng; tăng lực thêm chút nữa vẫn thẳng; nhưng ngay khi lực vượt qua một **ngưỡng tới hạn**, thước đột ngột cong vồng sang trái hoặc sang phải! Hiện tượng thay đổi đột ngột về **số lượng hoặc tính ổn định của điểm cân bằng/chu trình giới hạn** khi tham số $\mu$ biến thiên liên tục gọi là **Phân nhánh (Bifurcation)**.
+
+## Bản đồ kiến thức nền: Bốn dạng Phân nhánh kinh điển nhất
+
+1. **Phân nhánh Yên – Nút (Saddle-Node: $\dot{x} = \mu - x^2$)**:
+   Cơ chế "sinh ra từ hư vô": khi $\mu < 0$ không có điểm cân bằng; tại $\mu = 0$ xuất hiện 1 điểm; khi $\mu > 0$ tách thành 2 điểm (1 ổn định, 1 bất ổn).
+2. **Phân nhánh Xuyên tới hạn (Transcritical: $\dot{x} = \mu x - x^2$)**:
+   Hai điểm cân bằng luôn tồn tại nhưng **tráo đổi tính ổn định** cho nhau khi đi qua $\mu = 0$ (mô hình ngưỡng bùng phát dịch bệnh $R_0 = 1$ và ngưỡng laser!).
+3. **Phân nhánh Chạc ba (Pitchfork: $\dot{x} = \mu x - x^3$)**:
+   Điển hình cho các hệ có **tính đối xứng** $x \leftrightarrow -x$ (uốn dọc thanh thép, chuyển pha sắt từ): 1 điểm ổn định ở gốc tách thành 1 điểm bất ổn + 2 điểm ổn định đối xứng $\pm\sqrt{\mu}$.
+4. **Phân nhánh Hopf (2D)**:
+   Khi một cặp trị riêng phức liên hợp $\lambda = \alpha(\mu) \pm i\omega(\mu)$ băng ngang trục ảo ($\alpha(\mu_c) = 0$), điểm cân bằng mất ổn định và **sinh ra một chu trình giới hạn** (cánh máy bay rung *flutter*, dao động hóa học)!
+
 ## Mục tiêu
 
 Bài học này giúp sinh viên hiểu phân nhánh như sự thay đổi cấu trúc định tính của nghiệm khi tham số biến thiên, phân biệt các dạng phân nhánh chuẩn gồm saddle-node, transcritical, pitchfork và Hopf, đồng thời thấy được vì sao những thay đổi nhỏ của tham số có thể dẫn đến chuyển đổi định tính lớn về động lực học.
@@ -25,6 +38,16 @@ Sinh viên cần nắm vững khái niệm điểm cân bằng, tính ổn đị
 Một hệ động lực không chỉ phụ thuộc vào điều kiện đầu mà còn phụ thuộc vào các tham số của mô hình. Thông thường, thay đổi rất nhỏ ở tham số chỉ làm quỹ đạo dịch chuyển nhẹ. Tuy nhiên, tại một số giá trị ngưỡng, một thay đổi rất nhỏ của tham số có thể làm thay đổi số lượng điểm cân bằng, đảo ngược tính ổn định hoặc làm xuất hiện một dao động tuần hoàn mới. Hiện tượng đó được gọi là **phân nhánh** (bifurcation).
 
 Lý thuyết phân nhánh cung cấp ngôn ngữ toán học để phân tích các giá trị ngưỡng, sự chuyển trạng thái và cơ chế mất ổn định. Thay vì chỉ hỏi hệ đang vận hành ra sao ở một bộ tham số cố định, ta còn đánh giá xem cấu trúc động học của hệ có biến đổi định tính khi điều kiện môi trường thay đổi hay không.
+
+### Khung giải thích (nên đọc chậm): Khảo sát bằng tay Phân nhánh Chạc ba siêu tới hạn $\dot{x} = \mu x - x^3$
+
+1. **Giải tìm mọi điểm cân bằng**: $\mu x - x^3 = x(\mu - x^2) = 0$.
+   - Với $\mu \le 0$: chỉ có duy nhất nghiệm thực $x^* = 0$.
+   - Với $\mu > 0$: có **3** nghiệm thực $x_0^* = 0$ và $x_{\pm}^* = \pm\sqrt{\mu}$.
+2. **Kiểm tra ổn định bằng đạo hàm $f'(x) = \mu - 3x^2$**:
+   - Tại $x_0^* = 0$: $f'(0) = \mu$. Do đó khi $\mu < 0$ thì $x_0^* = 0$ **ổn định**; khi $\mu > 0$ thì $x_0^* = 0$ hóa **bất ổn**!
+   - Tại $x_{\pm}^* = \pm\sqrt{\mu}$ (khi $\mu > 0$): $f'(\pm\sqrt{\mu}) = \mu - 3\mu = -2\mu < 0$ → cả hai nhánh mới đều **ổn định**!
+3. **Kiểm chứng bằng con số**: Tại $\mu = 4$, các điểm cân bằng là $x = 0$ ($f'(0) = +4 > 0$, bất ổn) và $x = \pm 2$ ($f'(\pm 2) = -8 < 0$, hút mọi quỹ đạo về $+2$ hoặc $-2$). Điểm $\mu_c = 0$ chính là điểm phân nhánh!
 
 ## Khái niệm theo ba cách
 

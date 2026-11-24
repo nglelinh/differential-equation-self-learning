@@ -10,6 +10,19 @@ categories:
 lesson_type: required
 ---
 
+Khi bạn gảy một dây đàn guitar dài $L$ căng cố định ở hai đầu, sợi dây không dao động theo một hình sin đơn lẻ mà là bản giao hưởng chồng chất của vô hạn **sóng đứng (standing waves)** ở các tần số riêng $\omega_n = \frac{n\pi c}{L}$. Phương pháp tách biến nối thẳng Lý thuyết trị riêng Sturm–Liouville sang vật lý âm nhạc!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Bài toán Dây đàn rung
+
+1. **Phương trình sóng 1D**:
+   $u_{tt} = c^2 u_{xx}$ với tốc độ truyền sóng $c = \sqrt{T/\rho}$ ($T$: lực căng dây, $\rho$: khối lượng riêng dài).
+2. **Tách biến $u(x, t) = X(x)T(t)$**:
+   Tách thành bài toán trị riêng không gian $X'' + \lambda X = 0,\; X(0)=X(L)=0$ (cho $\phi_n = \sin(n\pi x/L)$) và dao động điều hòa thời gian $T_n(t) = A_n\cos(\omega_n t) + B_n\sin(\omega_n t)$.
+3. **Âm cơ bản & Họa âm (Harmonics / Overtones)**:
+   Tần số cơ bản $f_1 = \frac{c}{2L}$ quyết định cao độ nốt nhạc; tỷ lệ năng lượng giữa các họa âm $f_n = n f_1$ quyết định **âm sắc (timbre)** phân biệt đàn guitar với piano!
+4. **Bảo toàn năng lượng cơ học**:
+   Tổng động năng và thế năng đàn hồi $E(t) = \frac{1}{2}\int_0^L (u_t^2 + c^2 u_x^2)\,dx$ là hằng số không đổi theo thời gian.
+
 ## Mục tiêu
 
 Bài học này kết nối toàn bộ nội dung chương với mô hình dây rung cổ điển. Sau bài học, sinh viên cần giải thích được vì sao điều kiện biên cố định hai đầu dẫn tới bài toán trị riêng không gian, diễn giải các hàm riêng như những chế độ sóng đứng và hiểu cách chồng chất các chế độ để mô tả dao động tổng quát của dây.
@@ -25,6 +38,20 @@ Sinh viên nên nắm vững BVP hai điểm, bài toán trị riêng, tính tr�
 Dây rung là ví dụ vật lý tiêu biểu nhất minh họa trọn vẹn lý thuyết bài toán giá trị biên, trị riêng và khai triển theo hàm riêng. Một sợi dây cố định hai đầu chỉ duy trì được một họ rời rạc các hình dạng dao động tự nhiên, mỗi hình dạng gắn với một tần số riêng xác định.
 
 Bài học này tổng hợp các khái niệm đã học thành một mạch logic thống nhất: BVP xác định toán tử không gian, bài toán trị riêng chọn ra các chế độ sóng đứng, còn tính trực giao cho phép khai triển điều kiện ban đầu thành tổng các chế độ đó.
+
+### Khung giải thích (nên đọc chậm): Tính tay dao động của dây đàn dài $L = \pi$ ($c = 2$) thả nhẹ từ hình dạng $u(x, 0) = 3\sin x - \sin(2x)$
+
+Cho điều kiện ban đầu: $u(x, 0) = 3\sin x - \sin(2x)$ và vận tốc đầu $u_t(x, 0) = 0$ (thả không vận tốc đầu).
+1. **Tìm tần số góc từng mode** ($\omega_n = \frac{n\pi c}{L} = \frac{n\pi \cdot 2}{\pi} = 2n$):
+   - Mode $n = 1$: $\omega_1 = 2$.
+   - Mode $n = 2$: $\omega_2 = 4$.
+2. **Xác định hệ số $A_n, B_n$**:
+   - Vì $u_t(x, 0) = 0 \implies$ mọi $B_n = 0$.
+   - Khớp $u(x, 0) = \sum A_n \sin(nx) = 3\sin x - \sin(2x) \implies A_1 = 3,\; A_2 = -1$ (mọi $A_n$ khác bằng $0$).
+3. **Nghiệm chính xác tại mọi $(x, t)$**:
+   $$u(x, t) = 3\cos(2t)\sin x - \cos(4t)\sin(2x).$$
+4. **Kiểm tra tại tâm dây $x = \pi/2$ vào lúc $t = \pi/4$**:
+   $u(\pi/2, \pi/4) = 3\cos(\pi/2)\sin(\pi/2) - \cos(\pi)\sin(\pi) = 3(0)(1) - (-1)(0) = \mathbf{0}$ (dây đi ngang qua vị trí cân bằng!).
 
 ## Khái niệm theo ba cách
 

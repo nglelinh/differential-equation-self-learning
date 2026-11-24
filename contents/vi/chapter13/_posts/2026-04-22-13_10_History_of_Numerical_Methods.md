@@ -9,6 +9,19 @@ categories:
 - chapter13
 ---
 
+Hầu hết các phương trình vi phân thực tế—từ quỹ đạo tàu Apollo bay lên Mặt Trăng đến dự báo đường đi của siêu bão—đều **không có công thức nghiệm đóng**! Suốt gần 300 năm từ khi Leonhard Euler vẽ những đoạn gấp khúc tiếp tuyến đầu tiên năm 1768 cho đến kỷ nguyên máy tính điện tử với Courant, Friedrichs, Lewy, von Neumann và Lax, nhân loại đã xây dựng một bộ môn khoa học kiệt xuất: biến thế giới vi phân liên tục thành những phép cộng–nhân hữu hạn chính xác đến từng chữ số thập phân.
+
+## Bản đồ kiến thức nền: Bốn bước ngoặt lịch sử của Giải tích Số cho ODE & PDE
+
+1. **Euler (1768) & Runge–Kutta (1895–1901) — Đột phá độ chính xác cho ODE**:
+   Euler đề xuất bước tiếp tuyến bậc 1 $O(h)$; hơn một thế kỷ sau, Carl Runge và Martin Kutta tạo ra sơ đồ 4 điểm thử đạt sai số $O(h^4)$ mà không cần tính đạo hàm bậc cao bằng tay!
+2. **Courant–Friedrichs–Lewy (1928) — Điều kiện CFL trứ danh**:
+   Trước cả khi có máy tính điện tử, bộ ba CFL phát hiện ra rằng lưới sai phân cho phương trình sóng chỉ hội tụ khi miền phụ thuộc số **bao trùm** miền phụ thuộc vật lý ($c\Delta t / \Delta x \le 1$).
+3. **von Neumann (1940s) & Định lý Tương đương Lax (1956)**:
+   Trong dự án tính toán sóng xung kích, John von Neumann dùng phân tích Fourier tìm ngưỡng ổn định, còn Peter Lax đóng đinh định lý trung tâm của ngành: *Nhất quán + Ổn định $\iff$ Hội tụ*!
+4. **Courant (1943), Turner–Clough (1956) & Kỷ nguyên Phần tử Hữu hạn (FEM)**:
+   Hợp nhất công thức yếu (Chương 12) với chia lưới tam giác linh hoạt, FEM cho phép mô phỏng chính xác máy bay, cầu treo và tim người trên mọi hình học cong phức tạp!
+
 ## Mục tiêu
 Bài này trình bày lịch sử phát triển của phương pháp số cho phương trình vi phân, từ lược đồ bước đầu tiên của Euler đến phần tử hữu hạn, bộ giải cho bài toán cứng và mô phỏng ngẫu nhiên. Qua đó, sinh viên thấy được cách phép tính xấp xỉ trở thành một ngành khoa học toán học độc lập.
 
@@ -20,6 +33,15 @@ Tại St. Petersburg vào thế kỷ XVIII, Leonhard Euler và các nhà tính t
 
 Với phương trình $$y' = y$$ và bước lưới $$h=0.1$$, phương pháp Euler cho quy tắc lặp $$y_{n+1}=y_n + 0.1y_n$$. Xuất phát từ $$y_0=1$$, ta thu được $$y_1=1.1$$, $$y_2=1.21$$ và tiếp tục tiến từng bước theo thời gian. Ví dụ đơn giản này thể hiện tinh thần cốt lõi của Chương 13: thay vì chờ đợi công thức nghiệm tường minh, ta xây dựng thuật toán cập nhật trạng thái theo từng bước rời rạc. Từ đây, lịch sử phương pháp số phát triển thành lịch sử của việc kiểm soát sai số, độ ổn định và cấu trúc xấp xỉ.
 
+
+### Khung giải thích (nên đọc chậm): So sánh trực tiếp 1 bước Euler (1768) và 1 bước RK4 (1901) bằng phép tính tay
+
+Giải $y' = y$, $y(0) = 1$ để ước lượng $y(0{,}5) = e^{0{,}5} \approx \mathbf{1{,}648721}$ chỉ với đúng **1 bước** $h = 0{,}5$:
+1. **Phương pháp Euler (bậc 1)**:
+   $$y_1^{\text{Euler}} = 1 + 0{,}5(1) = \mathbf{1{,}500000} \quad (\text{sai số } \approx 0{,}1487 \text{ hay } 9{,}0\%).$$
+2. **Phương pháp RK4 (bậc 4)** — khớp đúng đa thức Taylor bậc 4 của $e^h$:
+   $$y_1^{\text{RK4}} = 1 + 0{,}5 + \frac{0{,}5^2}{2} + \frac{0{,}5^3}{6} + \frac{0{,}5^4}{24} = 1 + 0{,}5 + 0{,}125 + 0{,}020833 + 0{,}002604 = \mathbf{1{,}648438}.$$
+   Sai số chỉ còn $\mathbf{0{,}000284}$ ($0{,}017\%$)—**chính xác hơn Euler trên 500 lần** ngay trên cùng một bước lưới $h = 0{,}5$!
 ## Mạch truyện lớn
 Tiến trình lịch sử bắt đầu từ phương pháp Euler, khi việc tính xấp xỉ từng bước còn được thực hiện thủ công. Sang đầu thế kỷ XX, Runge và Kutta cải tiến mạnh các phương pháp một bước; Adams và các đồng nghiệp phát triển phương pháp nhiều bước; đến giữa thế kỷ XX, Dahlquist, Courant–Friedrichs–Lewy (CFL), Crank–Nicolson cùng nhiều nhà toán học khác đã xây dựng nền tảng lý thuyết chặt chẽ cho câu hỏi khi nào một phép tính số là đáng tin cậy.
 

@@ -10,6 +10,20 @@ categories:
 lesson_type: optional
 ---
 
+
+Đằng sau những mô hình Học máy Khoa học (Scientific Machine Learning) gây tiếng vang những năm 2020—như mạng nơ-ron tích hợp vật lý (PINN) hay Neural Operator—không phải là phép màu hộp đen, mà chính là các công cụ kinh điển của Chương 00: đạo hàm riêng, tích vô hướng $L^2$, chuẩn Sobolev và đạo hàm tự động (Autodiff). Khi bạn hiểu nền tảng giải tích và đại số tuyến tính ở mức độ hình học, bạn sẽ nhìn xuyên qua mọi kiến trúc AI vật lý hiện đại.
+
+## Bản đồ kiến thức nền: Bốn trụ cột toán học của Học máy Khoa học hiện đại
+
+1. **Giải tích đa biến & Đạo hàm tự động (Automatic Differentiation)**:
+   Quy tắc dây chuyền (chain rule) áp dụng trên đồ thị tính toán cho phép tính chính xác đạo hàm riêng $\partial_t u_\theta, \partial_{xx} u_\theta$ đến sai số máy $10^{-16}$ mà không cần sai phân hữu hạn.
+2. **Không gian chuẩn & Hàm mất mát vật lý (Physics-Informed Loss)**:
+   Sai số phần dư của PTVP được đo bằng chuẩn $L^2$ rời rạc $\frac{1}{N}\sum \vert \mathcal{N}[u_\theta](x_i)\vert^2$, biến việc giải phương trình vi phân thành bài toán tối ưu hóa trên không gian tham số $\theta$.
+3. **Đại số tuyến tính phổ & Tính điều kiện (Conditioning)**:
+   Phổ trị riêng của ma trận Hessian hoặc nhân tiếp tuyến nơ-ron (NTK) quyết định tốc độ hội tụ; tỷ số điều kiện $\kappa = \lambda_{\max}/\lambda_{\min}$ lớn gây ra hiện tượng học chậm các tần số cao.
+4. **Không gian hàm vô hạn chiều & Học Toán tử (Operator Learning)**:
+   Thay vì xấp xỉ một nghiệm đơn lẻ, các mạng như FNO hay DeepONet học trực tiếp ánh xạ giữa hai không gian Banach $\mathcal{G}: \mathcal{A} \to \mathcal{U}$.
+
 ## Mục tiêu
 
 Bài học tùy chọn này kết nối ngôn ngữ giải tích, đại số tuyến tính và không gian hàm của Chương 00 với học máy khoa học (Scientific Machine Learning — SciML) giai đoạn 2022–2026. Sau bài học, sinh viên có thể nhìn nhận đạo hàm tự động như phiên bản tính toán của quy tắc dây chuyền, hiểu mạng nơ-ron như ánh xạ giữa các không gian Euclid hoặc không gian hàm, và giải thích vì sao tính tồn tại, tính duy nhất cùng tính đặt chỉnh vẫn đóng vai trò quyết định khi mô hình được học từ dữ liệu thay vì thiết lập hoàn toàn bằng tay.
@@ -23,6 +37,18 @@ Sinh viên cần nắm vững giới hạn, đạo hàm, giải tích nhiều bi
 Các công cụ cổ điển trong Chương 00 ban đầu được xây dựng để đặt nền móng chặt chẽ cho phương trình vi phân: tính liên tục phục vụ phép lấy giới hạn, đạo hàm mô tả tốc độ biến thiên, đại số tuyến tính giúp chéo hóa hệ phương trình, còn không gian hàm cho phép đo độ lớn và sai số của nghiệm. Hiện nay, chính những công cụ này đang định hình lĩnh vực học máy khoa học (SciML). Thay vì chỉ khớp đường cong qua một tập điểm rời rạc, các mô hình SciML hướng tới việc học quy luật động lực, toán tử nghiệm hoặc mô hình thay thế tôn trọng các ràng buộc vi phân.
 
 Hai câu hỏi cụ thể minh họa rõ mối liên hệ này. Thứ nhất, nếu một mạng dư (residual network) là một hệ động lực rời rạc, điều gì xảy ra khi bước rời rạc tiến về $$ 0 $$ và kiến trúc mạng trở thành một trường vector liên tục? Thứ hai, nếu một PDE xác định ánh xạ từ dữ liệu đầu vào $$a$$ sang nghiệm $$u$$, liệu ta có thể học ánh xạ đó như một toán tử giữa các không gian Banach thay vì chỉ như một vector giá trị tại các nút lưới? Cả hai câu hỏi đều đòi hỏi trực tiếp ngôn ngữ của chương này: điều kiện Lipschitz, ma trận Jacobi, tính đầy đủ và các chuẩn độc lập với phép rời rạc hóa lưới.
+
+### Khung giải thích (nên đọc chậm): Tính tay hàm mất mát PINN cho phương trình tăng trưởng $u'(t) = u(t),\; u(0) = 1$
+
+Giả sử ta dùng một mô hình đơn giản có 2 tham số $u_\theta(t) = a + b\,t$ trên đoạn $[0, 1]$ với 2 điểm kiểm tra nội bộ $t_1 = 0{,}5,\; t_2 = 1{,}0$ (biết nghiệm đúng là $e^t$):
+1. **Phần dư điều kiện đầu**: $r_{\text{IC}} = u_\theta(0) - 1 = a - 1$.
+2. **Phần dư phương trình vi phân**: $r_{\text{ODE}}(t) = u_\theta'(t) - u_\theta(t) = b - (a + bt)$.
+   - Tại $t_1 = 0{,}5$: $r_1 = b - a - 0{,}5b = 0{,}5b - a$.
+   - Tại $t_2 = 1{,}0$: $r_2 = b - a - b = -a$.
+3. **Thử giá trị tham số** $(a, b) = (1, 1{,}5)$:
+   - $r_{\text{IC}} = 0$, $r_1 = 0{,}75 - 1 = -0{,}25$, $r_2 = -1$.
+   - Hàm mất mát tổng: $\mathcal{L}(1, 1{,}5) = 0^2 + \frac{1}{2}\left[(-0{,}25)^2 + (-1)^2\right] = \frac{1{,}0625}{2} = \mathbf{0{,}53125}$.
+4. **Tính gradient theo $b$**: $\frac{\partial \mathcal{L}}{\partial b} = \frac{1}{2}\cdot 2(0{,}5b - a)(0{,}5) = 0{,}5(0{,}5b - a) = -0{,}125 < 0$, báo cho thuật toán tối ưu cần **tăng $b$** (tiến gần hệ số góc trung bình của $e^t$ trên $[0,1]$ là $e - 1 \approx 1{,}718$).
 
 ## Khái niệm then chốt
 

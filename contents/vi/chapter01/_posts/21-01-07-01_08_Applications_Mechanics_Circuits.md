@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Một vận động viên nhảy dù rơi qua không khí và một tụ điện đang nạp dòng trong mạch RC nhìn bề ngoài chẳng liên quan gì đến nhau—nhưng khi viết định luật Newton $F = ma$ và định luật Kirchhoff về điện áp, cả hai lại sinh ra **cùng một phương trình vi phân tuyến tính cấp một**! Đó chính là vẻ đẹp thống nhất của toán học ứng dụng: giải một phương trình, ta hiểu đồng thời cả cơ học lẫn điện học.
+
+## Bản đồ kiến thức nền: Bốn trụ cột Cơ học & Mạch điện Cấp Một
+
+1. **Chuyển động có lực cản không khí ($m\frac{dv}{dt} = mg - kv$ hoặc $mg - kv^2$)**:
+   Khi lực cản cân bằng trọng lực ($dv/dt = 0$), vật đạt **vận tốc giới hạn (terminal velocity)** $v_T = mg/k$ (cản tuyến tính) hoặc $v_T = \sqrt{mg/k}$ (cản bậc hai).
+2. **Mạch điện RC ($R\frac{dq}{dt} + \frac{1}{C}q = E(t)$)**:
+   Hằng số thời gian $\tau = RC$ quyết định tốc độ nạp/xả điện tích; sau thời gian $t = \tau$, tụ điện đã nạp được $1 - e^{-1} \approx 63{,}2\%$ giá trị cân bằng.
+3. **Mạch điện RL ($L\frac{di}{dt} + R i = E(t)$)**:
+   Cuộn cảm chống lại sự biến thiên đột ngột của dòng điện với hằng số thời gian $\tau = L/R$, tiến tiệm cận về dòng ổn định $I_\infty = E/R$.
+4. **Phân tích Thứ nguyên & Không thứ nguyên hóa**:
+   Kiểm tra đơn vị từng số hạng giúp phát hiện ngay lỗi thiết lập phương trình và lộ rõ các thang thời gian đặc trưng như $\tau = m/k$ hay $\tau = RC$.
+
 ## Mục tiêu
 Bài học này giúp sinh viên thấy các định luật vật lý cơ bản dẫn trực tiếp đến phương trình vi phân cấp một. Thông qua bài toán vật rơi có lực cản, mạch RC và mạch RL, sinh viên học cách chuyển định luật Newton và định luật Kirchhoff thành ODE, giải nghiệm và diễn giải các đại lượng vật lý đặc trưng như vận tốc giới hạn, trạng thái xác lập và hằng số thời gian (thời hằng).
 
@@ -22,6 +36,18 @@ Sinh viên cần nắm vững phương trình tuyến tính cấp một cùng m�
 Khi thả một vật rơi trong không khí, vận tốc không tăng mãi mà tiệm cận một vận tốc giới hạn khi lực cản cân bằng với trọng lực. Khi nối tụ điện với nguồn điện một chiều, điện tích trên tụ tăng dần chứ không nhảy tức thời lên giá trị cực đại. Tương tự, khi đóng mạch RL, dòng điện trải qua giai đoạn quá độ trước khi ổn định. Các hiện tượng vật lý khác nhau này lại có chung một cấu trúc ODE tuyến tính cấp một.
 
 Ưu điểm của nhóm bài toán cơ học và mạch điện là mỗi tham số đều mang ý nghĩa vật lý trực quan: hệ số nào tạo ra sự cản trở, tổ hợp tham số nào quyết định tốc độ đáp ứng và vì sao hệ tiến tới trạng thái ổn định.
+
+### Khung giải thích (nên đọc chậm): Tính vận tốc giới hạn và thời gian đạt 90% vận tốc giới hạn của vật rơi có cản tuyến tính
+
+Xét vật khối lượng $m = 10\text{ kg}$ thả rơi tự do từ nghỉ ($v(0) = 0$) với $g = 9{,}8\text{ m/s}^2$ và hệ số cản $k = 2\text{ kg/s}$:
+1. **Phương trình Newton**:
+   $$10\frac{dv}{dt} = 10(9{,}8) - 2v \implies \frac{dv}{dt} + 0{,}2v = 9{,}8.$$
+2. **Tìm ngay vận tốc giới hạn** (đặt $dv/dt = 0$):
+   $$v_T = \frac{9{,}8}{0{,}2} = \mathbf{49\text{ m/s}}.$$
+3. **Nghiệm tường minh**: Với $v(0) = 0$ và hằng số thời gian $\tau = m/k = 5\text{ s}$:
+   $$v(t) = 49\big(1 - e^{-0{,}2 t}\big).$$
+4. **Thời gian đạt $90\%$ vận tốc giới hạn** ($v(t) = 0{,}9 \times 49$):
+   $$1 - e^{-0{,}2 t} = 0{,}9 \implies e^{-0{,}2 t} = 0{,}1 \implies t = \frac{\ln 10}{0{,}2} \approx \frac{2{,}3026}{0{,}2} \approx \mathbf{11{,}51\text{ giây}}.$$
 
 ## Khái niệm theo ba cách
 

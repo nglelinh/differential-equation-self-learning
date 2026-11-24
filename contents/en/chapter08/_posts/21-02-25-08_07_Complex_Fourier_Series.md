@@ -10,6 +10,35 @@ categories:
 lesson_type: required
 ---
 
+Real Fourier series work well, yet they force you to juggle three separate coefficient formulas ($$ a_0, a_n, b_n $$) and messy trigonometric product-to-sum identities whenever you multiply or shift signals. Now invoke Euler's magic bridge, $$ e^{i\theta} = \cos\theta + i\sin\theta $$, and watch all three formulas collapse into *one* unified exponential series: $$ f(x) = \sum_{n=-\infty}^{\infty} c_n e^{i n\pi x / L} $$.
+
+Suddenly, shifting a signal in time just multiplies $$ c_n $$ by a phase factor $$ e^{-i n\pi x_0 / L} $$, differentiating just multiplies $$ c_n $$ by $$ i n\pi / L $$, and the gateway to the continuous Fourier Transform and the Fast Fourier Transform (FFT) swings wide open!
+
+## Background Knowledge Map: Complex Exponentials and Negative Frequencies
+
+1. **Euler's Unification (One Formula Replaces Three):** Substituting $$ \cos\theta = \frac{e^{i\theta} + e^{-i\theta}}{2} $$ and $$ \sin\theta = \frac{e^{i\theta} - e^{-i\theta}}{2i} $$ merges $$ a_0, a_n, b_n $$ into a single symmetric formula: $$ c_n = \frac{1}{2L}\int_{-L}^L f(x) e^{-i n\pi x / L}\,dx $$ for all $$ n \in \mathbb{Z} $$, with $$ c_0 = \frac{a_0}{2} $$, $$ c_n = \frac{a_n - i b_n}{2} $$ ($$ n > 0 $$), and $$ c_{-n} = \frac{a_n + i b_n}{2} $$.
+2. **Hermitian Symmetry for Real Signals (What Negative Frequencies Mean):** If $$ f(x) $$ is real-valued, then $$ c_{-n} = \overline{c_n} $$. Negative frequencies are not mysterious "backward time"—they are the exact complex-conjugate partner rotating in the opposite direction so the imaginary parts cancel cleanly to produce a real wave.
+3. **Hermitian Inner Product & Complex Parseval:** Using the conjugate inner product $$ \langle f, g \rangle = \frac{1}{2L}\int_{-L}^L f(x)\overline{g(x)}\,dx $$, the exponentials $$ \{e^{i n\pi x / L}\}_{n\in\mathbb{Z}} $$ are *orthonormal* (norm 1 for every $$ n $$, including $$ n = 0 $$!), yielding the spotless Parseval identity $$ \frac{1}{2L}\int_{-L}^L |f(x)|^2\,dx = \sum_{n=-\infty}^{\infty} |c_n|^2 $$.
+4. **Operational Calculus (Shifts and Derivatives Become Algebra):** Differentiating multiplies $$ c_n $$ by $$ i\omega_n $$, translating $$ f(x - a) $$ multiplies $$ c_n $$ by $$ e^{-i\omega_n a} $$, and periodic convolution $$ (f * g)(x) $$ becomes pointwise multiplication $$ 2L\,c_n(f) c_n(g) $$.
+
+### Step-by-Step Worked Example (Read Slowly): Complex Fourier Series of $$ f(x) = e^x $$ on $$ (-\pi, \pi) $$
+
+**Problem:** Compute the complex Fourier coefficients $$ c_n $$ of $$ f(x) = e^x $$ on $$ (-\pi, \pi) $$, verify Hermitian symmetry $$ c_{-n} = \overline{c_n} $$, and convert back to extract the real coefficients $$ a_n, b_n $$ without doing a single trig integral!
+
+1. **Compute $$ c_n $$ in one elementary exponential integral:**
+   $$ c_n = \frac{1}{2\pi}\int_{-\pi}^{\pi} e^x e^{-inx}\,dx = \frac{1}{2\pi}\int_{-\pi}^{\pi} e^{(1 - in)x}\,dx = \frac{1}{2\pi}\left[\frac{e^{(1 - in)x}}{1 - in}\right]_{-\pi}^{\pi}. $$
+2. **Use $$ e^{\pm i n\pi} = (-1)^n $$ and $$ e^\pi - e^{-\pi} = 2\sinh\pi $$:**
+   $$ c_n = \frac{(-1)^n (e^\pi - e^{-\pi})}{2\pi(1 - in)} = \frac{(-1)^n \sinh\pi}{\pi(1 - in)}. $$
+   Rationalize the denominator by multiplying top and bottom by $$ 1 + in $$:
+   $$ c_n = \frac{(-1)^n \sinh\pi}{\pi}\cdot\frac{1 + in}{1 + n^2} \qquad (n \in \mathbb{Z}). $$
+3. **Verify Hermitian symmetry $$ c_{-n} = \overline{c_n} $$:**
+   Replacing $$ n \to -n $$ leaves $$ (-1)^n $$ and $$ 1 + n^2 $$ unchanged while sending $$ 1 + in \to 1 - in = \overline{1 + in} $$, confirming $$ c_{-n} = \overline{c_n} $$!
+4. **Read off the real coefficients $$ a_0, a_n, b_n $$ effortlessly:**
+   - $$ \frac{a_0}{2} = c_0 = \frac{\sinh\pi}{\pi} $$.
+   - Since $$ c_n = \frac{a_n - i b_n}{2} $$ for $$ n \ge 1 $$, equating real and imaginary parts yields
+     $$ a_n = 2\operatorname{Re}(c_n) = \frac{2(-1)^n \sinh\pi}{\pi(1 + n^2)}, \qquad b_n = -2\operatorname{Im}(c_n) = \frac{2(-1)^{n+1} n \sinh\pi}{\pi(1 + n^2)}. $$
+   Check at $$ x = 0 $$: $$ \sum_{n=-\infty}^\infty c_n = \frac{\sinh\pi}{\pi}\sum_{n=-\infty}^\infty \frac{(-1)^n}{1 + n^2} = e^0 = 1 $$ (giving the bonus identity $$ \sum_{n=1}^\infty \frac{(-1)^n}{1+n^2} = \frac{1}{2}\left(\frac{\pi}{\sinh\pi} - 1\right) $$)!
+
 ## Learning Objectives
 
 This lesson reformulates Fourier series in exponential form. Students should understand Euler's formula, the relationship between real and complex coefficients, and the advantages of the complex notation for algebraic manipulation.

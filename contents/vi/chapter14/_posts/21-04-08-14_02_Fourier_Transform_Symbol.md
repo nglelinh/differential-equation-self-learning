@@ -12,6 +12,20 @@ lesson_type: required
 
 ![Fourier transform như cầu nối từ đạo hàm sang symbol]({{ site.imgurl }}/chapter_img/chapter14/02_fourier_transform_symbol.svg )
 
+Một toán tử vi phân hệ số biến thiên như $P = a(x)(-\partial_x^2) + b(x)(-i\partial_x) + c(x)$ vừa nhân với hàm theo vị trí $x$, vừa lấy đạo hàm tương ứng với tần số $\xi$. Làm sao biểu diễn nó qua Biến đổi Fourier khi $a(x)$ không còn là hằng số để kéo ra ngoài dấu tích phân? Bí quyết vô cùng thanh lịch: viết $u(x)$ thành tổng sóng phẳng $e^{ix\xi}\widehat{u}(\xi)$ trước, rồi để $P$ tác động trực tiếp lên $e^{ix\xi}$—hệ số hiện ra chính là **ký hiệu toàn phần $p(x, \xi)$**!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Biểu diễn Biến đổi Fourier và Ký hiệu $p(x, \xi)$
+
+1. **Công thức Tác động qua Ký hiệu Toàn phần**:
+   $$\big(P u\big)(x) = \frac{1}{(2\pi)^n}\int_{\mathbb{R}^n} e^{i x \cdot \xi}\, p(x, \xi)\, \widehat{u}(\xi)\,d\xi,$$
+   với $p(x, \xi) = e^{-ix\cdot\xi} P(e^{ix\cdot\xi})$! Đáng chú ý: hàm $p(x, \xi)$ sống trên **không gian pha** $(x, \xi) \in \mathbb{R}^n_x \times \mathbb{R}^n_\xi$!
+2. **Thứ tự tác động không giao hoán (Lượng tử hóa Trái / Kohn–Nirenberg vs. Weyl)**:
+   Vì $x$ và $D_x$ không giao hoán ($[D_x, x] = -i$), thứ tự viết $a(x) D_x$ (lượng tử hóa trái) khác $D_x a(x)$ (lượng tử hóa phải) một số hạng bậc thấp hơn; lượng tử hóa Weyl đặt $\frac{x+y}{2}$ đối xứng để toán tử có ký hiệu thực luôn tự liên hợp!
+3. **Ký hiệu Chính (Principal Symbol) $p_m(x, \xi)$**:
+   Là phần bậc cao nhất $m$ theo $\xi$ của $p(x, \xi)$. Dù thứ tự lượng tử hóa hay phép đổi tọa độ làm thay đổi các số hạng bậc thấp, **ký hiệu chính $p_m(x, \xi)$ hoàn toàn bất biến**—và quyết định toàn bộ tính elliptic hay đường đặc trưng của PDE!
+4. **Đọc tính chất PDE ngay trên Ký hiệu $p(x, \xi)$**:
+   Chỉ cần nhìn $p_m(x, \xi)$, ta phân loại ngay toán tử elliptic ($p_m \neq 0\;\forall \xi \neq 0$), hyperbolic ($p_m$ có nghiệm thực đơn theo $\tau$) hay parabolic!
+
 ## Mục tiêu
 
 Bài học này thiết lập cầu nối quan trọng nhất của chương: từ biến đổi Fourier đến khái niệm ký hiệu (symbol) của toán tử. Sau bài học, sinh viên cần nắm rõ cách biến đổi Fourier chuyển đạo hàm thành phép nhân, cách toán tử vi phân được mã hóa bằng ký hiệu, và vì sao ký hiệu chính chi phối hành vi ở tần số cao của toán tử.
@@ -26,6 +40,16 @@ Biến đổi Fourier mang lại một cách tiếp cận rất hiệu quả cho
 
 Trong chương này, biến đổi Fourier không chỉ là một công cụ tính tích phân mà còn là khung biểu diễn giúp ta đọc bản chất của toán tử thông qua tác động của nó lên từng mode tần số.
 
+
+### Khung giải thích (nên đọc chậm): Đọc chính xác Ký hiệu toàn phần và Ký hiệu chính của một toán tử hệ số biến thiên
+
+Xét toán tử vi phân bậc 2 trên $\mathbb{R}$:
+$$P = (1 + x^2)(-\partial_x^2) + 3x(-i\partial_x) + 5 = (1 + x^2)D_x^2 + 3x D_x + 5.$$
+1. **Tìm ký hiệu toàn phần $p(x, \xi)$**: Áp dụng $P$ lên $e^{ix\xi}$ (nhớ $D_x e^{ix\xi} = \xi e^{ix\xi}$ và $D_x^2 e^{ix\xi} = \xi^2 e^{ix\xi}$):
+   $$p(x, \xi) = e^{-ix\xi} P(e^{ix\xi}) = \mathbf{(1 + x^2)\xi^2 + 3x\xi + 5}.$$
+2. **Tách ký hiệu chính (bậc $m = 2$)**:
+   $$p_2(x, \xi) = \mathbf{(1 + x^2)\xi^2}.$$
+3. **Kiểm tra tính elliptic**: Với mọi $x \in \mathbb{R}$ và mọi $\xi \neq 0$, ta luôn có $(1 + x^2)\xi^2 \ge \xi^2 > 0$. Vậy $P$ là toán tử **elliptic tại mọi điểm trên $\mathbb{R}$**—và bậc thấp $3x\xi + 5$ không hề làm ảnh hưởng đến tính elliptic này!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

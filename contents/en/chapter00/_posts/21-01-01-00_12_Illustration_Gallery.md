@@ -10,6 +10,31 @@ categories:
 lesson_type: optional
 ---
 
+A formula like $$e^{At}$$ or $$\lvert f(x) - f(y)\rvert \le L\lvert x - y\rvert$$ can look dry on paper, yet each one encodes a vivid geometric picture: a cone bounding slopes, a vector field twisting space into eigen-axes, or a complex spiral pulsing in the plane. This gallery brings those invisible mental models into view so that when you meet Picard iteration, phase portraits, and Laplace poles in later chapters, you recognize their geometry immediately.
+
+## Background Knowledge Map: Four Visual Languages of Mathematical Foundations
+
+As you explore the interactive figures below, connect each visual to the analytical pillar it represents:
+
+1. **$$\varepsilon$$–$$\delta$$ Boxes and Lipschitz Cones (Real Analysis):** Visualizes continuity as trapping a curve inside a horizontal $$\varepsilon$$-band and Lipschitz continuity as restricting the graph inside a double cone of fixed slope $$\pm L$$.
+2. **Tangent Planes and Gradient Fields (Multivariable Calculus):** Shows how a nonlinear map looks locally like its Jacobian matrix and why gradient arrows always cross level sets orthogonally.
+3. **Invariant Lines and Eigen-Deformations (Linear Algebra):** Reveals eigenvectors as the rare directions that a linear map stretches without rotating—the straight-line trajectories of linear ODE systems.
+4. **Unit-Circle Rotation and Spirals (Complex Exponentials):** Maps $$\alpha + i\beta$$ directly to radial growth/decay ($$\alpha$$) and angular frequency ($$\beta$$), turning abstract complex roots into immediate motion.
+
+### Step-by-Step Worked Example (Read Slowly): Reading Four Foundational Quantities from One Visual Model
+
+Consider the planar linear map $$\mathbf{F}(x,y) = (x - 2y,\; 2x + y)$$, which combines every pillar in this gallery:
+
+1. **Matrix and Jacobian representation:** Since $$\mathbf{F}$$ is linear, its Jacobian everywhere is
+   $$A = \begin{pmatrix} 1 & -2 \\ 2 & 1 \end{pmatrix}.$$
+2. **Complex-number identification:** Identifying $$(x,y) \leftrightarrow z = x + iy$$, notice that
+   $$(1 + 2i)(x + iy) = (x - 2y) + i(2x + y).$$
+   So the matrix $$A$$ is literally multiplication by the complex number $$1 + 2i$$!
+3. **Polar geometry (scaling + rotation):** Compute modulus and argument:
+   $$r = \sqrt{1^2 + 2^2} = \sqrt{5} \approx 2.236, \qquad \theta = \arctan(2) \approx 63.43^\circ.$$
+   Every vector in the plane is scaled by $$\sqrt{5}$$ and rotated counterclockwise by $$63.43^\circ$$.
+4. **Lipschitz constant and uniform continuity:** Because $$\|\mathbf{F}(\mathbf{u}) - \mathbf{F}(\mathbf{v})\|_2 = \sqrt{5}\,\|\mathbf{u} - \mathbf{v}\|_2$$ for all $$\mathbf{u}, \mathbf{v} \in \mathbb{R}^2$$, the map is globally Lipschitz with exact Lipschitz constant $$L = \sqrt{5}$$, and its continuous-time counterpart $$\mathbf{x}' = A\mathbf{x}$$ produces outward spirals $$e^{t}\bigl(\cos 2t + i\sin 2t\bigr)z_0$$.
+
 ## Purpose of This Companion Lesson
 
 This lesson gathers the currently published Chapter 00 illustrations into one visual review space. Mathematical foundations can feel fragmented when they are taught as separate prerequisite topics, but the entire course depends on them as one connected language. The gallery helps students see that continuity, multivariable calculus, linear algebra, and complex numbers are not isolated preliminaries. They are the infrastructure behind later existence theorems, phase-space models, spectral ideas, and solution formulas.

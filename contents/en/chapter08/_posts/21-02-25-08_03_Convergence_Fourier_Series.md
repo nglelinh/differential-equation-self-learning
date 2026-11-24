@@ -10,6 +10,33 @@ categories:
 lesson_type: required
 ---
 
+In 1898, Albert Michelson built a mechanical harmonic analyzer capable of summing 80 Fourier modes and fed it a simple square wave. To his astonishment, no matter how many terms he added, a stubborn horn-shaped overshoot refused to vanish near the jump—always peaking about 9% above the cliff! Josiah Willard Gibbs proved in 1899 that Michelson's machine wasn't broken: the overshoot is a permanent mathematical artifact of approximating a discontinuity with continuous waves.
+
+This lesson separates three distinct modes of convergence—pointwise, uniform, and mean-square ($$ L^2 $$)—so you know *exactly* what a Fourier series converges to at smooth points, at jumps, and in energy norm.
+
+## Background Knowledge Map: Pointwise, Uniform, and Mean-Square Convergence
+
+1. **Dirichlet's Pointwise Theorem (Midpoint Rule at Jumps):** If $$ f $$ is piecewise smooth on $$ [-L, L] $$, its Fourier series converges at every point $$ x $$ to the symmetric average $$ \frac{1}{2}\bigl[f(x^+) + f(x^-)\bigr] $$. At points of continuity this equals $$ f(x) $$; at jump discontinuities it lands squarely halfway up the cliff.
+2. **Uniform Convergence Criterion (Continuity + Periodicity):** If $$ f $$ is continuous *everywhere* on $$ \mathbb{R} $$ (including matching endpoints $$ f(-L) = f(L) $$) and piecewise smooth, then $$ \sum (|a_n| + |b_n|) < \infty $$, so by the Weierstrass M-test the Fourier series converges *uniformly*—no Gibbs horns!
+3. **The Gibbs Phenomenon (Universal $$ \approx 8.95\% $$ Overshoot):** Near a jump of height $$ \Delta = f(x_0^+) - f(x_0^-) $$, the $$ N $$-th partial sum overshoots by $$ \frac{1}{\pi}\int_0^\pi \frac{\sin t}{t}\,dt - \frac{1}{2} \approx 0.08949 $$ times $$ \Delta $$. As $$ N \to \infty $$, the spike gets narrower (width $$ O(1/N) $$) but never shorter!
+4. **Mean-Square ($$ L^2 $$) Convergence (Energy Disappears):** Even with Gibbs horns, the *area* under the squared spike shrinks as $$ O(1/N) \to 0 $$, so $$ \|f - S_N\|_{L^2} \to 0 $$ for *every* $$ f \in L^2([-L, L]) $$.
+
+### Step-by-Step Worked Example (Read Slowly): Computing Dirichlet's Midpoint Limit and Quantifying the Gibbs Peak
+
+**Problem:** Consider the $$ 2\pi $$-periodic square wave defined on $$ (-\pi, \pi) $$ by $$ f(x) = -1 $$ for $$ -\pi < x < 0 $$ and $$ f(x) = +1 $$ for $$ 0 < x < \pi $$, whose Fourier series is $$ \frac{4}{\pi}\sum_{k=0}^\infty \frac{\sin((2k+1)x)}{2k+1} $$. (a) Find the exact pointwise limit of the series at $$ x = 0 $$ and $$ x = \pi $$. (b) Compute the peak value of $$ S_3(x) = \frac{4}{\pi}\bigl[\sin x + \frac{1}{3}\sin(3x)\bigr] $$ at $$ x = \frac{\pi}{4} $$ and measure its percentage overshoot relative to the jump $$ \Delta = 2 $$.
+
+1. **Apply Dirichlet's theorem at the discontinuities $$ x = 0 $$ and $$ x = \pi $$:**
+   - At $$ x = 0 $$: $$ f(0^-) = -1 $$, $$ f(0^+) = +1 \implies \frac{1}{2}(-1 + 1) = 0 $$. Check series directly: $$ \sin(0) = 0 $$ for every term, summing to $$ 0 $$.
+   - At $$ x = \pi $$: $$ f(\pi^-) = +1 $$, $$ f(\pi^+) = f(-\pi^+) = -1 \implies \frac{1}{2}(1 - 1) = 0 $$. Check series: $$ \sin((2k+1)\pi) = 0 $$, summing to $$ 0 $$.
+2. **Locate the first maximum of $$ S_3(x) = \frac{4}{\pi}\bigl[\sin x + \frac{1}{3}\sin(3x)\bigr] $$:**
+   Differentiate and set to zero:
+   $$ S_3'(x) = \frac{4}{\pi}\bigl[\cos x + \cos(3x)\bigr] = \frac{8}{\pi}\cos(2x)\cos x = 0. $$
+   The first positive critical point is $$ 2x = \frac{\pi}{2} \implies x = \frac{\pi}{4} $$.
+3. **Evaluate $$ S_3(\pi/4) $$ and measure the overshoot:**
+   Since $$ \sin(\pi/4) = \frac{\sqrt{2}}{2} $$ and $$ \sin(3\pi/4) = \frac{\sqrt{2}}{2} $$:
+   $$ S_3\!\left(\frac{\pi}{4}\right) = \frac{4}{\pi}\left(\frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{6}\right) = \frac{4}{\pi}\cdot \frac{2\sqrt{2}}{3} = \frac{8\sqrt{2}}{3\pi} \approx \frac{11.3137}{9.4248} \approx 1.2004. $$
+   The overshoot above $$ +1 $$ is $$ 0.2004 $$, which is $$ \frac{0.2004}{2} \approx 10.02\% $$ of the total jump $$ \Delta = 2 $$ (and as $$ N \to \infty $$, this peak moves closer to $$ x = 0^+ $$ and settles strictly at $$ 8.95\% $$ of $$ \Delta $$, never hitting $$ 0\% $$!).
+
 ## Learning Objectives
 
 This lesson studies when and how Fourier series converge. Students should distinguish pointwise, uniform, and mean-square convergence, understand why discontinuities create special behavior, and appreciate that convergence questions are essential rather than peripheral.

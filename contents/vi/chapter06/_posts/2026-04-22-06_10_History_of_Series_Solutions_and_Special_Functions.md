@@ -9,6 +9,19 @@ categories:
 - chapter06
 ---
 
+Khi các nhà toán học thế kỷ 18–19 giải bài toán dao động màng trống tròn, trường hấp dẫn của hành tinh hình cầu hay nguyên tử hydro lượng tử, họ liên tục đụng phải những phương trình vi phân hệ số biến thiên mà không một tổ hợp hàm sơ cấp ($\sin, \cos, e^x, \ln x$) nào biểu diễn nổi. Thay vì bỏ cuộc, Euler, Legendre, Bessel và Frobenius đã mở rộng chính "bảng chữ cái" của giải tích bằng **nghiệm chuỗi lũy thừa** và đặt tên cho các **Hàm đặc biệt (Special Functions)**.
+
+## Bản đồ kiến thức nền: Bốn cột mốc lịch sử định hình Chương 06
+
+1. **Newton & Euler — Chuỗi vô hạn như công cụ giải PTVP**:
+   Coi nghiệm $y(x) = \sum a_n x^n$ như một đa thức bậc vô hạn giúp biến phương trình vi phân thành một **hệ thức truy hồi đại số** cho các hệ số $a_n$.
+2. **Legendre (1785) & Bài toán thế năng hình cầu**:
+   Khi khai triển lực hấp dẫn $\frac{1}{\vert \mathbf{r} - \mathbf{r}' \vert}$ theo khoảng cách, các **đa thức Legendre $P_n(x)$** tự nhiên xuất hiện và trở thành ngôn ngữ chuẩn của điện từ học và cơ học lượng tử.
+3. **Bessel (1824) & Thiên văn học / Hình học trụ**:
+   Xuất phát từ bài toán quỹ đạo hành tinh Kepler rồi tỏa sáng trong bài toán dẫn nhiệt và màng trống hình trụ, hàm Bessel $J_\nu(x)$ là "hàm sin/cosin của tọa độ trụ".
+4. **Fuchs & Frobenius (1873) — Lý thuyết điểm kỳ dị chính quy**:
+   Đặt nền móng chặt chẽ phân biệt điểm thường, điểm kỳ dị chính quy và điểm kỳ dị bất thường trên mặt phẳng phức, thống nhất toàn bộ kho tàng hàm đặc biệt vào một phương pháp duy nhất.
+
 ## Mục tiêu
 Bài học này trình bày lịch sử hình thành của phương pháp chuỗi lũy thừa, phương pháp Frobenius và các hàm đặc biệt cổ điển. Qua đó, sinh viên thấy Chương 06 là giai đoạn phương trình vi phân bắt đầu tự định nghĩa những họ hàm mới cho riêng mình.
 
@@ -19,6 +32,17 @@ Sinh viên nên nắm các phương pháp giải chuỗi và các phương trìn
 Tại Königsberg vào đầu thế kỷ XIX, Friedrich Bessel đối mặt với những bài toán mà các hàm sơ cấp không còn đủ khả năng biểu diễn: tính toán quỹ đạo, quang học và các hiện tượng có đối xứng tròn xuất hiện liên tục trong thiên văn học lẫn vật lý. Vấn đề đặt ra rất rõ: ta viết được phương trình vi phân mô tả hiện tượng, nhưng nghiệm của nó không thể biểu diễn bằng đa thức, hàm mũ hay hàm lượng giác quen thuộc.
 
 Lối thoát là xây dựng nghiệm từng hệ số một. Với phương trình dạng $$x^2 y'' + x y' + x^2 y = 0$$, khi giả sử $$y = a_0 + a_1x + a_2x^2 + \cdots$$ rồi thay vào phương trình, các hệ số bị ràng buộc bởi một hệ thức truy hồi có cấu trúc chặt chẽ. Từ đó xuất hiện một họ hàm mới, về sau mang tên hàm Bessel. Ví dụ này thể hiện tư tưởng cốt lõi của Chương 06: phương trình vi phân không chỉ được giải bằng các hàm sẵn có, mà còn tự sinh ra những lớp hàm mới.
+
+### Khung giải thích (nên đọc chậm): Khai triển cầm tay chỉ việc đa thức Legendre $P_0, P_1, P_2$ từ công thức sinh thế năng hấp dẫn
+
+Xét hàm sinh thế năng của hai điện tích đặt cách nhau góc $\theta$ ($x = \cos\theta$, tỷ số khoảng cách $t < 1$):
+$$\frac{1}{\sqrt{1 - 2xt + t^2}} = \sum_{n=0}^{\infty} P_n(x)\, t^n.$$
+Đặt $u = 2xt - t^2$ và dùng khai triển nhị thức $(1 - u)^{-1/2} = 1 + \frac{1}{2}u + \frac{3}{8}u^2 + \dots$:
+- Hệ số của $t^0$: $P_0(x) = \mathbf{1}$.
+- Hệ số của $t^1$: $\frac{1}{2}(2x) = \mathbf{x} = P_1(x)$.
+- Hệ số của $t^2$: $\frac{1}{2}(-1) + \frac{3}{8}(4x^2) = \mathbf{\frac{3x^2 - 1}{2}} = P_2(x)$.
+
+Kiểm chứng nhanh tại $x = 1$: $P_0(1) = 1$, $P_1(1) = 1$, $P_2(1) = \frac{3-1}{2} = 1$ (đúng với $\frac{1}{\sqrt{1 - 2t + t^2}} = \frac{1}{1-t} = 1 + t + t^2 + \dots$!).
 
 ## Mạch truyện lớn
 Câu chuyện bắt đầu từ chuỗi lũy thừa (power series) — một công cụ giải tích cơ bản trở thành giải pháp hệ thống khi nghiệm sơ cấp không tồn tại. Tiếp đó, Euler, Frobenius, Bessel, Legendre, Hermite cùng nhiều nhà toán học khác chỉ ra rằng quanh các điểm thường, điểm kỳ dị chính quy và các bài toán có đối xứng hình học, phương trình vi phân để lại cấu trúc rất rõ ràng trong dãy hệ số của chuỗi.

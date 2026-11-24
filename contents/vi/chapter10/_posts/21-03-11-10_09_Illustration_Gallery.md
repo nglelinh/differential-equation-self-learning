@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Khác với phương trình nhiệt nơi mọi hình dạng ban đầu đều tan chảy thành đường cong mượt, thế giới của phương trình sóng trong Chương 10 sống động như một phòng thí nghiệm nhạc cụ và quang học: xung tam giác tách đôi giữ nguyên góc nhọn, sóng gặp đầu cố định lật ngược pha rồi dội về, còn môi trường tán sắc lại kéo giãn một gói sóng thành cầu vồng các tần số chạy nhanh chậm khác nhau.
+
+## Bản đồ kiến thức nền: Bốn hiện tượng cốt lõi cần quan sát trong Gallery Chương 10
+
+1. **Tách xung d'Alembert và Nón đặc trưng**:
+   Một nhiễu động cục bộ ban đầu không lan tức thì toàn không gian mà tách thành hai nửa chạy theo đúng hai tia $x \pm ct = \text{const}$, tạo thành nón ảnh hưởng có biên sắc nét.
+2. **Chồng chất Sóng đứng và Phổ Điều hòa**:
+   Trên dây hữu hạn $[0, L]$, tổng các mode $\sin(n\pi x/L)\cos(n\pi ct/L)$ tái tạo chuyển động sóng chạy tuần hoàn mà không hề hao hụt năng lượng toàn phần $E(t)$.
+3. **Phản xạ, Khúc xạ và Đổi dấu Pha tại Biên**:
+   Quan sát trực quan sự khác biệt giữa biên cố định Dirichlet (sóng phản xạ đảo dấu) và biên tự do Neumann (sóng phản xạ giữ nguyên dấu), cùng hệ số truyền qua khi hai đoạn dây có mật độ khác nhau.
+4. **Tán sắc ($v_p \neq v_g$) và Tiêu tán**:
+   Khi xuất hiện số hạng cản $u_t$ hoặc đạo hàm bậc cao, biên độ tắt dần theo hàm mũ hoặc hình dạng gói sóng biến dạng vì mỗi số sóng $k$ chạy với vận tốc pha riêng.
+
 ## Mục Đích Của Bài Hỗ Trợ
 
 Bài học này tập hợp toàn bộ hình minh họa của Chương 10 vào một không gian ôn tập trực quan chung. Phương trình sóng mở ra một bức tranh PDE khác hẳn phương trình nhiệt: thông tin được truyền đi với tốc độ hữu hạn thay vì bị làm mượt tức thì, năng lượng được vận chuyển và bảo toàn thay vì tiêu tán, còn hình học thể hiện trực tiếp qua điều kiện biên, mặt phân cách và miền lan truyền. Bộ minh họa giúp kết nối xuyên suốt các chủ đề này từ bước thiết lập mô hình đến các ứng dụng thực tế.
@@ -22,6 +35,13 @@ Nên xem bộ minh họa theo đúng thứ tự các bài học trong chương. 
 
 Đây cũng là tài liệu ôn tập hữu ích trước khi chuyển sang Chương 11, giúp làm rõ những đặc trưng riêng của bài toán sóng lan truyền so với các bài toán elliptic.
 
+
+### Khung giải thích (nên đọc chậm): Theo dõi bằng tay đường đi của một xung sóng phản xạ trên dây cố định
+
+Xét sợi dây $x \ge 0$ cố định tại $x = 0$ ($u(0, t) = 0$) với tốc độ sóng $c = 2\text{ m/s}$. Tại $t = 0$, ta thả từ trạng thái nghỉ ($u_t = 0$) một xung tam giác hẹp cao $h = 1$ có đỉnh tại $x_0 = 3\text{ m}$:
+1. **Tại $t = 1\text{ s}$**: Xung tách đôi thành hai xung cao $\mathbf{0{,}5}$, một đỉnh dịch sang phải tới $x = 3 + 2(1) = \mathbf{5\text{ m}}$, một đỉnh dịch sang trái tới $x = 3 - 2(1) = \mathbf{1\text{ m}}$.
+2. **Tại $t = 1{,}5\text{ s}$**: Đỉnh chạy sang trái chạm đúng tường $x = 0$; tại khoảnh khắc này xung thật và "xung ảnh âm" triệt tiêu nhau hoàn toàn tại $x = 0$.
+3. **Tại $t = 2\text{ s}$**: Xung phản xạ đã lật ngược xuống biên độ $\mathbf{-0{,}5}$ và chạy ngược sang phải tới vị trí $x = 2(2 - 1{,}5) = \mathbf{1\text{ m}}$, còn xung ban đầu sang phải đã tới $x = 3 + 4 = \mathbf{7\text{ m}}$!
 ## Gallery Nhúng Trực Tiếp
 
 {% include interactive-frame.html

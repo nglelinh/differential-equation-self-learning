@@ -9,6 +9,19 @@ categories:
 - chapter14
 ---
 
+Khi ta nghịch đảo một phương trình vi phân elliptic đơn giản như $(1 - \Delta)u = f$, kết quả $(1 - \Delta)^{-1}$ **không còn là một toán tử vi phân nữa** mà biến thành một toán tử tích phân kỳ dị phi địa phương! Suốt nửa đầu thế kỷ XX, các nhà toán học vất vả xử lý từng loại tích phân kỳ dị rời rạc, cho đến những năm 1960 khi Kohn, Nirenberg và Lars Hörmander thực hiện cuộc thống nhất lịch sử: gói gọn cả toán tử vi phân lẫn nghịch đảo xấp xỉ của chúng vào chung một đại số duy nhất—**Toán tử Giả vi phân ($\Psi$DO)**!
+
+## Bản đồ kiến thức nền: Bốn cột mốc lịch sử kiến tạo Lý thuyết Toán tử Giả vi phân
+
+1. **Calderón–Zygmund (1952–1957) — Tích phân Kỳ dị & Tính bị chặn $L^p$**:
+   Xây dựng lý thuyết các toán tử tích phân kỳ dị dạng nhân đồng bậc, mở ra cách giải bài toán biên elliptic hệ số biến thiên bằng công cụ giải tích điều hòa.
+2. **Kohn–Nirenberg (1965) — Khai sinh tên gọi "Toán tử Giả vi phân"**:
+   Định nghĩa đại số các toán tử qua biến đổi Fourier và ký hiệu $p(x, \xi)$, chứng minh quy tắc hợp thành (composition) và toán tử liên hợp (adjoint) bằng khai triển tiệm cận.
+3. **Lars Hörmander (1965–1971) — Các lớp Ký hiệu $S^m_{\rho,\delta}$**:
+   Chuẩn hóa hoàn hảo ngôn ngữ lớp ký hiệu $S^m_{\rho, \delta}$ với ước lượng đạo hàm theo $x$ và $\xi$, biến việc chứng minh tính trơn elliptic thành bài toán đại số thuần túy trên ký hiệu!
+4. **Atiyah–Singer (1963–1968) — Định lý Chỉ số trên Đa tạp**:
+   Toán tử giả vi phân trở thành công cụ không thể thiếu để kết nối giải tích PDE với tôpô đại số trên các đa tạp cong, định hình toàn bộ giải tích hình học hiện đại!
+
 ## Mục tiêu
 Bài học này trình bày quá trình hình thành của toán tử giả vi phân từ giải tích Fourier, lý thuyết tích phân kỳ dị, lý thuyết elliptic và phương trình đạo hàm riêng (PDE) hiện đại. Qua đó, người học có thể nhìn nhận Chương 14 như bước mở rộng các toán tử vi phân thành một phép tính ký hiệu linh hoạt và thống nhất hơn.
 
@@ -20,6 +33,16 @@ Tại New York vào đầu thập niên 1960, Louis Nirenberg và Joseph Kohn l�
 
 Xét toán tử $$1-\partial_x^2$$. Trong miền Fourier, phép lấy đạo hàm chuyển thành phép nhân với $$i\xi$$, nên toán tử này có ký hiệu là $$1+\xi^2$$. Khi muốn tìm một nghịch đảo gần đúng, ta tự nhiên dẫn tới ký hiệu $$\frac{1}{1+\xi^2}$$, nhưng đối tượng này không còn tương ứng với một toán tử vi phân cổ điển. Ví dụ đơn giản này giải thích lý do toán tử giả vi phân ra đời: nó cung cấp một khuôn khổ chặt chẽ cho các phép toán “gần nghịch đảo”, cho bài toán tính chính quy và cho việc phân tích hành vi đồng thời theo vị trí lẫn tần số mà PDE hiện đại đòi hỏi.
 
+
+### Khung giải thích (nên đọc chậm): Vì sao nghịch đảo của toán tử vi phân $1 - \Delta$ buộc ta phải phát minh $\Psi$DO?
+
+Xét phương trình $(1 - \Delta)u = f$ trên $\mathbb{R}^n$:
+1. **Trong không gian Fourier**: Đạo hàm $-\Delta$ trở thành phép nhân với $|\xi|^2$, nên:
+   $$(1 + |\xi|^2)\widehat{u}(\xi) = \widehat{f}(\xi) \implies \widehat{u}(\xi) = \frac{1}{1 + |\xi|^2}\widehat{f}(\xi).$$
+2. **So sánh hai ký hiệu**:
+   - Ký hiệu của $1 - \Delta$ là $p(\xi) = 1 + |\xi|^2$ — một **đa thức** bậc $2$ (tương ứng toán tử vi phân địa phương).
+   - Ký hiệu của $(1 - \Delta)^{-1}$ là $q(\xi) = (1 + |\xi|^2)^{-1}$ — một **hàm phân thức** bậc $-2$, **không phải đa thức**!
+3. **Hệ quả**: Tập hợp các toán tử vi phân *không đóng dưới phép lấy nghịch đảo*. Bằng cách mở rộng từ đa thức sang lớp ký hiệu $S^m$, ta thu được một đại số khép kín chứa cả $P$ lẫn nghịch đảo xấp xỉ (parametrix) $Q$ của nó!
 ## Mạch truyện lớn
 Sự phát triển của chủ đề này đi từ các bộ nhân Fourier và tích phân kỳ dị đến phép tính ký hiệu của Kohn–Nirenberg và Hörmander. Khi giới giải tích đã quen với việc đạo hàm biến thành phép nhân theo tần số, ý tưởng mô tả toán tử thông qua ký hiệu trở thành bước đi tất yếu. Từ nền tảng đó, các công cụ như parametrix, tính chính quy elliptic và tư duy vi địa phương (microlocal) có được khuôn khổ toán học vững chắc.
 

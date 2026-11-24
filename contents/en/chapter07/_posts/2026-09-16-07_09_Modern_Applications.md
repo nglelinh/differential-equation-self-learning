@@ -10,6 +10,40 @@ categories:
 lesson_type: optional
 ---
 
+Classical solvers like finite differences and finite elements solve boundary value problems by chopping the domain into a mesh and inverting a huge sparse matrix. Physics-Informed Neural Networks (PINNs) take a strikingly different approach: represent $$ u_\theta(x) $$ as a smooth neural network and train its weights $$ \theta $$ by minimizing the squared ODE/PDE residual plus boundary mismatches. Yet practitioners quickly discovered a painful trap—if you enforce boundary conditions only as "soft" penalty terms in the loss function, gradient conflicts can let the network satisfy the interior ODE while drifting away from the boundaries!
+
+Modern PINN theory solves this by importing two classical Chapter 07 weapons directly into neural architectures: *hard boundary-condition trial functions* (a trick dating back to Lagaris et al., 1998) and *spectral/Green's-function priors*.
+
+## Background Knowledge Map: PINNs Through the Lens of BVP Theory
+
+1. **Soft Penalty vs. Hard Boundary Enforcement:** A soft PINN loss $$ \mathcal{L} = \mathcal{L}_{\text{ODE}} + \lambda_{\text{bc}}\mathcal{L}_{\text{BC}} $$ can suffer from stiff, competing gradients. By writing $$ u_\theta(x) = g(x) + d(x)\,N_\theta(x) $$—where $$ g(x) $$ interpolates the boundary values and $$ d(x) $$ vanishes on $$ \partial\Omega $$—the boundary conditions are satisfied *exactly* for every weight vector $$ \theta $$.
+2. **Automatic Differentiation as Exact Operator Evaluation:** Reverse-mode autodiff computes $$ u_\theta'(x) $$ and $$ u_\theta''(x) $$ to machine precision without discretization error, turning any Sturm–Liouville residual $$ R_\theta(x) = -(p u_\theta')' + q u_\theta - f $$ into a differentiable objective.
+3. **Eigenvalue & Inverse BVP Discovery:** Unlike classical solvers that need all coefficients in advance, PINNs can treat unknown physical parameters (or eigenvalues $$ \lambda $$) as trainable scalars alongside $$ \theta $$, recovering diffusivity or stiffness fields directly from sparse noisy measurements.
+4. **Failure Modes & Diagnostics (Collocation & Stiffness):** Uniform collocation points can miss sharp boundary layers; adaptive residual-based sampling (RAR) and Fourier feature embeddings directly counteract spectral bias on high-wavenumber BVPs.
+
+### Step-by-Step Worked Example (Read Slowly): Designing a Hard-BC Trial Function and Computing Its Exact Residual
+
+**Problem:** For the BVP $$ -u''(x) + u(x) = x $$ on $$ [0, 1] $$ with $$ u(0) = 1 $$ and $$ u(1) = 2 $$, construct a hard-BC trial function $$ u_\theta(x) = g(x) + x(1-x) N_\theta(x) $$, take the simplest 1-parameter linear network $$ N_\theta(x) = \theta $$ (a constant), and find the optimal $$ \theta^* $$ minimizing the collocation loss at the single interior point $$ x = \frac{1}{2} $$.
+
+1. **Construct the boundary interpolant $$ g(x) $$ and distance factor $$ d(x) $$:**
+   - Linear interpolant through $$ (0, 1) $$ and $$ (1, 2) $$: $$ g(x) = 1 + x $$.
+   - Distance factor vanishing at $$ x = 0, 1 $$: $$ d(x) = x(1 - x) $$.
+   - Trial function: $$ u_\theta(x) = 1 + x + \theta\, x(1 - x) $$.
+   Check BCs: $$ u_\theta(0) = 1 $$ and $$ u_\theta(1) = 2 $$ for *every* $$ \theta \in \mathbb{R} $$!
+2. **Compute the exact ODE residual via differentiation:**
+   - $$ u_\theta'(x) = 1 + \theta(1 - 2x) $$.
+   - $$ u_\theta''(x) = -2\theta $$.
+   - Residual:
+     $$ R_\theta(x) = -u_\theta''(x) + u_\theta(x) - x = 2\theta + \bigl[1 + x + \theta x(1 - x)\bigr] - x = 1 + \theta\bigl(2 + x - x^2\bigr). $$
+3. **Minimize $$ \mathcal{L}(\theta) = \bigl[R_\theta(1/2)\bigr]^2 $$ at $$ x = \frac{1}{2} $$:**
+   At $$ x = \frac{1}{2} $$, $$ 2 + \frac{1}{2} - \frac{1}{4} = \frac{9}{4} $$, so
+   $$ R_\theta\!\left(\frac{1}{2}\right) = 1 + \frac{9}{4}\theta = 0 \implies \theta^* = -\frac{4}{9} \approx -0.4444. $$
+4. **Compare $$ u_{\theta^*}(1/2) $$ to the exact BVP solution:**
+   - Hard-BC 1-parameter PINN: $$ u_{\theta^*}(1/2) = 1.5 - \frac{4}{9}\left(\frac{1}{4}\right) = \frac{3}{2} - \frac{1}{9} = \frac{25}{18} \approx 1.3889 $$.
+   - Exact solution $$ u(x) = x + \frac{\sinh(1 - x) + \sinh x}{\sinh 1} $$ at $$ x = \frac{1}{2} $$:
+     $$ u\!\left(\frac{1}{2}\right) = 0.5 + \frac{2\sinh(0.5)}{\sinh 1} = 0.5 + \frac{1}{\cosh(0.5)} \approx 0.5 + \frac{1}{1.12763} \approx 1.3868. $$
+   With just **one** trainable parameter and exact hard BCs, the midpoint error is only $$ 0.0021 $$ (0.15%)!
+
 ## Objectives
 
 This optional lesson places two-point boundary value problems, Sturm–Liouville eigenvalues, and Green’s functions next to physics-informed networks and variational neural solvers. Students should be able to write a PINN loss for a BVP, explain why eigenvalue problems are harder than linear source problems, and use the 2021–2024 failure-mode literature as a diagnostic rather than as a reason to abandon the method. The Sturm–Liouville theory of the chapter is not rewritten.

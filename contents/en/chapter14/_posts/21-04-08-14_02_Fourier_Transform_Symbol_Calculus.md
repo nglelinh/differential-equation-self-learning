@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** In constant-coefficient PDEs, $x$ and $\xi$ never interfere with each other. The moment coefficients vary in space—like $a(x)\partial_x$—position and frequency stop commuting: $[D_x, x] = -i$. **Symbol calculus** turns this quantum-mechanical noncommutativity into a precise, systematic dictionary between operators and functions on phase space $(x,\xi)$.
+
 ## Learning Objectives
 
 This lesson introduces the Fourier-transform viewpoint behind symbol calculus. Students should understand how operators are encoded by symbols, why oscillatory kernels arise, and how algebraic behavior in frequency space reflects analytic behavior in physical space.
@@ -17,6 +19,15 @@ This lesson introduces the Fourier-transform viewpoint behind symbol calculus. S
 ## Prerequisites
 
 Students should know Fourier transforms, multipliers, and the motivational ideas from Lesson 14-01.
+
+## Background Knowledge Map: Quantization and Phase-Space Dictionaries
+
+Four pillars anchor the Fourier-transform quantization $a(x,D)$ of symbols into operators:
+
+1. **Standard (Kohn–Nirenberg / Left) Quantization:** Given a symbol $a(x,\xi)$, we define $(a(x,D)u)(x) = (2\pi)^{-n}\int_{\mathbb{R}^n} e^{ix\cdot\xi} a(x,\xi)\hat{u}(\xi)\,d\xi$—putting all derivatives $D$ to the *right* and spatial coefficients $x$ to the *left*.
+2. **Schwartz Space $\mathcal{S}(\mathbb{R}^n)$ as the Clean Arena:** Because $\mathcal{F}: \mathcal{S} \to \mathcal{S}$ is an isomorphism and oscillatory integrals converge rapidly on $\mathcal{S}$, every polynomial-growth symbol defines a continuous operator $\mathcal{S} \to \mathcal{S}$.
+3. **Alternative Quantizations (Weyl vs. Left):** In quantum mechanics, **Weyl quantization** evaluates $a(\frac{x+y}{2}, \xi)$, guaranteeing that real-valued symbols produce formally self-adjoint operators; converting between left and Weyl symbols introduces explicit lower-order derivative corrections.
+4. **Commutators and the Poisson Bracket:** For two symbols $a, b$, the leading symbol of the operator commutator $[a(x,D), b(x,D)]$ is $\frac{1}{i}\{a, b\} = \frac{1}{i}(\nabla_\xi a \cdot \nabla_x b - \nabla_x a \cdot \nabla_\xi b)$, directly linking PDE algebra to Hamiltonian mechanics.
 
 ## Introduction
 
@@ -85,6 +96,21 @@ This gives direction to the next lessons.
 - Can they describe why symbol calculus is useful for operator algebra?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Ordering Ambiguity and Exact Left Symbol of a Symmetrized Operator
+
+Find the exact Kohn–Nirenberg (left) symbol $a(x,\xi)$ of the formally self-adjoint 1D differential operator
+$$P u(x) = x D_x u(x) + D_x(x u(x)), \qquad \text{where } D_x = -i\frac{d}{dx},$$
+and verify how the operator ordering produces a lower-order imaginary correction.
+
+1. **Move all derivatives $D_x$ to the right of $x$:** Apply the product rule to the second term:
+   $$D_x(x u) = -i\frac{d}{dx}(x u) = -i u + x\left(-i\frac{du}{dx}\right) = -i u + x D_x u.$$
+2. **Combine with the first term:**
+   $$P u = x D_x u + (-i u + x D_x u) = 2x D_x u - i u.$$
+3. **Read off the exact left symbol:** Since $a(x,D)u = (2\pi)^{-1}\int e^{ix\xi} a(x,\xi)\hat{u}(\xi)\,d\xi$ places $x$ on the left and $D_x \mapsto \xi$ on the right:
+   $$a(x,\xi) = 2x\xi - i.$$
+4. **Verify via the Weyl symbol:** Notice that the *Weyl* symbol of $P$ is purely real, $a_W(x,\xi) = 2x\xi$, whereas the left symbol acquires the exact shift $-\frac{i}{2}\partial_x\partial_\xi(2x\xi) = -i$. That $-i$ is precisely what keeps $P$ self-adjoint in $L^2(\mathbb{R})$!
 
 ### Example 1: Classical Derivative Symbol
 

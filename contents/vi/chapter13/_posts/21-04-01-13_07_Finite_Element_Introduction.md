@@ -12,6 +12,19 @@ lesson_type: optional
 
 ![Lưới phần tử hữu hạn và các hàm cơ sở cục bộ]({{ site.imgurl }}/chapter_img/chapter13/07_finite_element_introduction.svg )
 
+Phương pháp sai phân hữu hạn (FDM) tuyệt vời trên hình vuông, nhưng hãy thử phủ lưới ô vuông lên một cánh tuabin máy bay hay động mạch chủ uốn lượn—biên cong sẽ bị cắt nham nhở như bậc thang! **Phương pháp Phần tử Hữu hạn (Finite Element Method — FEM)** kết hợp trực tiếp **Dạng yếu $H^1$** của Chương 12 với nghệ thuật chia miền thành các tam giác nhỏ linh hoạt và xấp xỉ nghiệm bằng tổ hợp tuyến tính của các "hàm mũ nón" địa phương—tạo nên công cụ mô phỏng kỹ thuật quyền năng nhất thế kỷ XX–XXI!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Phần tử Hữu hạn (FEM)
+
+1. **Từ Dạng yếu Vô hạn chiều sang Bài toán Galerkin Hữu hạn chiều**:
+   Thay không gian $V = H_0^1(\Omega)$ bằng không gian con hữu hạn chiều $V_h = \operatorname{span}\{\phi_1, \dots, \phi_N\}$, yêu cầu $a(u_h, v_h) = \ell(v_h)\;\forall v_h \in V_h$ lập tức dẫn tới hệ tuyến tính $K\mathbf{c} = \mathbf{F}$ với **ma trận độ cứng** $K_{ij} = a(\phi_j, \phi_i)$ và **vector tải** $F_i = \ell(\phi_i)$.
+2. **Hàm Cơ sở Mũ nón (Hat Functions) & Tính Thưa Tuyệt đối**:
+   Mỗi hàm cơ sở $\phi_i$ bằng $1$ tại đúng nút $x_i$ và bằng $0$ tại mọi nút khác, nên giá trị của nó chỉ khác $0$ trên vài phần tử kề quanh $x_i$. Hệ quả: $K_{ij} = 0$ hầu hết mọi nơi, ma trận $K$ cực kỳ thưa!
+3. **Tính Trực giao Galerkin và Bổ đề Céa**:
+   Sai số $e = u - u_h$ vuông góc với toàn bộ không gian xấp xỉ theo tích vô hướng năng lượng: $a(u - u_h, v_h) = 0\;\forall v_h \in V_h$. Do đó $u_h$ là **hình chiếu năng lượng tối ưu** của nghiệm thật lên $V_h$!
+4. **Lắp ghép theo từng Phần tử (Element-by-Element Assembly)**:
+   Trong thực tế lập trình, máy tính không tích phân trên cả miền mà tính ma trận nhỏ trên từng phần tử tam giác/đoạn thẳng chuẩn rồi cộng dồn vào ma trận toàn cục $K$—xử lý mượt mà vật liệu nhiều lớp lẫn biên cong!
+
 ## Mục tiêu
 
 Bài học tùy chọn này giới thiệu phương pháp phần tử hữu hạn (FEM) như bước chuyển tự nhiên từ dạng yếu của PDE sang tính toán số. Sau bài học, sinh viên cần hiểu ý tưởng chia miền thành các phần tử nhỏ, xây dựng hàm cơ sở có giá cục bộ, thiết lập hệ phương trình tuyến tính từ dạng yếu, và nhận ra ưu thế của FEM trên các miền hình học phức tạp.
@@ -26,6 +39,18 @@ Nếu sai phân hữu hạn đặt câu hỏi "xấp xỉ đạo hàm tại nút
 
 Cách tiếp cận này đặc biệt hiệu quả khi miền có hình học phức tạp (biên cong, lỗ khoét) hoặc khi mô hình vật lý được phát biểu tự nhiên qua nguyên lý năng lượng như trong cơ học đàn hồi, truyền nhiệt và cơ học vật rắn.
 
+
+### Khung giải thích (nên đọc chậm): Lắp ghép và giải tay bài toán FEM 1 phần tử cho $-u'' = 2$ trên $(0, 1)$
+
+Giải dạng yếu $\int_0^1 u' v'\,dx = \int_0^1 2v\,dx$ với $u(0) = u(1) = 0$ chỉ dùng **1 nút trong** tại $x_1 = \frac{1}{2}$ và 1 hàm mũ nón duy nhất:
+$$\phi_1(x) = \begin{cases} 2x, & 0 \le x \le \tfrac{1}{2}, \\ 2(1 - x), & \tfrac{1}{2} \le x \le 1. \end{cases}$$
+1. **Tính ma trận độ cứng $K_{11}$** (lưu ý $\phi_1'(x) = +2$ trên $(0, \tfrac{1}{2})$ và $-2$ trên $(\tfrac{1}{2}, 1)$, nên $(\phi_1')^2 = 4$ khắp đoạn):
+   $$K_{11} = \int_0^1 \big(\phi_1'(x)\big)^2\,dx = \int_0^1 4\,dx = \mathbf{4}.$$
+2. **Tính vector tải $F_1$** (diện tích tam giác đáy $1$, cao $1$ bằng $\frac{1}{2}$):
+   $$F_1 = \int_0^1 2\phi_1(x)\,dx = 2 \times \frac{1}{2} = \mathbf{1}.$$
+3. **Giải phương trình $K_{11} c_1 = F_1$**:
+   $$4 c_1 = 1 \implies c_1 = \mathbf{0{,}25}.$$
+   Kiểm tra với nghiệm đúng $u(x) = x(1 - x)$ tại $x = \frac{1}{2}$: $u\left(\frac{1}{2}\right) = \frac{1}{2}\cdot\frac{1}{2} = \mathbf{0{,}25}$—chính xác **100% tại nút** ngay cả khi lưới chỉ có đúng 1 ẩn số!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

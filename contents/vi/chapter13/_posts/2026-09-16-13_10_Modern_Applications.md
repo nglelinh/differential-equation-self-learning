@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Điều gì xảy ra khi ta đặt một bộ giải Runge–Kutta hay Euler–Maruyama *ngay bên trong* đồ thị tính toán của PyTorch/JAX để mạng nơ-ron học trực tiếp trường vector $f_\theta(y, t)$ của hệ động lực? Đó chính là cuộc cách mạng **Neural ODE, Neural SDE và Bộ giải Khả vi (Differentiable Solvers)**: thay vì lưu hàng nghìn bước trung gian làm tràn bộ nhớ GPU, ta giải ngược một **phương trình liên hợp (Adjoint ODE)** để tính gradient $\nabla_\theta \mathcal{L}$ với bộ nhớ $O(1)$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Bộ giải Khả vi & Neural SDE
+
+1. **Neural ODE ($y'(t) = f_\theta(y(t), t)$) như giới hạn liên tục của ResNet**:
+   Mỗi tầng mạng phần dư $y_{k+1} = y_k + h f_{\theta_k}(y_k)$ chính là một bước Euler; cho $h \to 0$ biến mạng sâu thành một ODE liên tục với bộ giải thích nghi bước thời gian!
+2. **Hai chiến lược tính Gradient: Discretize-then-Optimize vs. Optimize-then-Discretize**:
+   *Lan truyền ngược trực tiếp* qua từng bước RK cho gradient rời rạc chính xác nhưng tốn bộ nhớ $O(N)$; *Phương pháp Liên hợp liên tục (Adjoint Method)* giải ODE ngược thời gian $a'(t) = -a(t)^\top \frac{\partial f_\theta}{\partial y}$ với bộ nhớ $O(1)$!
+3. **Neural SDE ($dY_t = \mu_\theta(Y_t, t)\,dt + \sigma_\theta(Y_t, t)\,dW_t$)**:
+   Bổ sung thành phần nhiễu Brownian học được giúp mô hình hóa bất định, sinh chuỗi thời gian tài chính/y sinh và kết nối trực tiếp với **Mô hình Khuếch tán (Diffusion Models)** tạo ảnh hiện đại!
+4. **Ổn định Số trong Huấn luyện (Stiffness & Gradient Exploding)**:
+   Nếu mạng $f_\theta$ trở nên "cứng" trong lúc huấn luyện, bộ giải hiện sẽ phải băm nhỏ bước thời gian tới mức treo máy—đòi hỏi điều chuẩn Lipschitz hoặc bộ giải ẩn khả vi.
+
 ## Mục tiêu
 
 Bài học tùy chọn này đặt các phương pháp Euler, Runge–Kutta, bài toán cứng, điều kiện CFL và lược đồ Euler–Maruyama làm nền tảng số của tính toán khoa học khả vi. Sinh viên cần giải thích được cách lấy đạo hàm lan truyền ngược (reverse-mode) qua một bộ giải, nắm vai trò của `torchdiffeq` và Diffrax, đồng thời kết nối neural SDE với các mô hình khuếch tán dựa trên score phổ biến trong giai đoạn 2021–2024. Lý thuyết nhất quán và ổn định cổ điển của chương vẫn giữ nguyên giá trị cốt lõi.
@@ -24,6 +37,16 @@ Một phương pháp số thực chất là ánh xạ từ trường vector và 
 
 Ở nhánh ngẫu nhiên, Kidger, Foster, Li và Lyons (*Neural SDEs as Infinite-Dimensional GANs*, ICML 2021; *Efficient and Accurate Gradients for Neural SDEs*, NeurIPS 2021) chỉ ra cách lan truyền ngược qua bộ giải SDE. Song và cộng sự (ICLR 2021) sử dụng SDE khuếch tán làm mô hình sinh dữ liệu. Các vấn đề giải tích số cốt lõi vẫn giữ nguyên như trong chương: sai số mạnh so với sai số yếu, độ cứng và tính ổn định của lược đồ Euler–Maruyama.
 
+
+### Khung giải thích (nên đọc chậm): Tính tay gradient bằng Phương pháp Liên hợp (Adjoint) mà không cần lưu lịch sử bước
+
+Xét Neural ODE cực giản $y'(t) = \theta y(t)$, $y(0) = 1$ trên $[0, 1]$ với hàm mất mát $\mathcal{L} = \frac{1}{2}(y(1) - 2)^2$, cần tính $\frac{d\mathcal{L}}{d\theta}$ tại $\theta = 0$:
+1. **Lượt xuôi (Forward)**: Tại $\theta = 0$, $y'(t) = 0 \implies y(t) \equiv 1$ trên toàn $[0, 1]$, nên $y(1) = 1$.
+2. **Lượt ngược Liên hợp (Adjoint ODE)**:
+   Điều kiện cuối $a(1) = \frac{\partial \mathcal{L}}{\partial y(1)} = y(1) - 2 = \mathbf{-1}$, và phương trình liên hợp $a'(t) = -\frac{\partial(\theta y)}{\partial y} a(t) = -0 \cdot a(t) = 0 \implies a(t) \equiv \mathbf{-1}$.
+3. **Tích phân gradient theo tham số $\theta$**:
+   $$\frac{d\mathcal{L}}{d\theta} = \int_0^1 a(t)\frac{\partial(\theta y)}{\partial \theta}\,dt = \int_0^1 (-1) \cdot 1\,dt = \mathbf{-1}.$$
+   Kiểm tra bằng giải tích trực tiếp: $\mathcal{L}(\theta) = \frac{1}{2}(e^\theta - 2)^2 \implies \mathcal{L}'(0) = (e^0 - 2)e^0 = \mathbf{-1}$—khớp tuyệt đối!
 ## Khái niệm then chốt
 
 ### Lấy đạo hàm qua ánh xạ một bước

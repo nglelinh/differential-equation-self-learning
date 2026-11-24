@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Clap your hands in a dark cavern: the sharp acoustic crack does not smear out randomly across space—it races along classical light rays (geodesics), reflecting off walls at equal angles. **Hörmander's Propagation of Singularities Theorem** explains why: for any PDE of real principal type, singularities in $\operatorname{WF}(u)$ are forced to ride the Hamiltonian flow of the principal symbol $p_m(x,\xi)$.
+
 ![Propagation of singularities along PDE characteristics]({{ site.imgurl }}/chapter_img/chapter15/02_propagation_singularities.svg )
 
 ## Objectives
@@ -19,6 +21,15 @@ This lesson introduces one of the most beautiful results in microlocal analysis:
 ## Prerequisites
 
 Students should know wave front sets, principal symbols, and the basic idea of characteristics from transport or wave equations. It is also helpful to remember from earlier PDE chapters that wave equations tend to carry singular features along moving fronts rather than smoothing them immediately.
+
+## Background Knowledge Map: Characteristics, Hamiltonian Flow, and Singularity Transport
+
+Four pillars unite hyperbolic PDEs with classical symplectic mechanics:
+
+1. **Characteristic Set $\operatorname{Char}(P) = \{p_m(x,\xi) = 0\}$:** By microlocal ellipticity, whenever $Pu \in C^\infty$, $\operatorname{WF}(u)$ is trapped entirely inside $\operatorname{Char}(P)$—singularities can *only* exist where the principal symbol vanishes.
+2. **Hamiltonian Vector Field $H_p$ and Null Bicharacteristics:** Given a real principal symbol $p(x,\xi)$, Hamilton's equations $\dot{x} = \nabla_\xi p$, $\dot{\xi} = -\nabla_x p$ preserve $p(x(s),\xi(s)) = 0$. The resulting curves inside $\operatorname{Char}(P)$ are the **null bicharacteristics**, and their spatial projections $x(s)$ are the rays of geometric optics.
+3. **Hörmander's Propagation Theorem (1971):** If $P$ has real principal symbol $p$, then $\operatorname{WF}(u) \setminus \operatorname{WF}(Pu)$ is a union of maximally extended null bicharacteristics of $p$—singularities can neither appear out of thin air nor vanish mid-flight!
+4. **Contrast Across PDE Types:** Elliptic operators have $\operatorname{Char}(P) = \emptyset$ (no propagation, instant smoothing); hyperbolic operators have real characteristic cones (finite-speed ray propagation); Schrödinger operators have infinite propagation speed along flat horizontal bicharacteristics.
 
 ## Introduction
 
@@ -96,6 +107,24 @@ This is where students see why microlocal analysis is necessary.
 - Can they say why the principal symbol determines the route of singularities?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Deriving Wave Propagation Rays from Hamilton's Equations
+
+Apply Hörmander's bicharacteristic equations to the 1D wave operator $P = \partial_t^2 - c^2 \partial_x^2$ ($c > 0$) to recover d'Alembert's left- and right-moving rays directly from the principal symbol.
+
+1. **Compute the principal symbol $p(t, x; \tau, \xi)$:** Using $D_t = -i\partial_t \mapsto \tau$ and $D_x = -i\partial_x \mapsto \xi$ (so $\partial_t^2 = -D_t^2$, $\partial_x^2 = -D_x^2$):
+   $$p(t, x; \tau, \xi) = -\tau^2 + c^2\xi^2.$$
+2. **Find the characteristic set $\operatorname{Char}(P) = \{p = 0, (\tau,\xi) \neq (0,0)\}$:**
+   $$-\tau^2 + c^2\xi^2 = 0 \iff \tau = -c\xi \quad \text{or} \quad \tau = +c\xi \qquad (\xi \neq 0).$$
+3. **Write and solve Hamilton's equations $\dot{t} = \partial_\tau p$, $\dot{x} = \partial_\xi p$, $\dot{\tau} = -\partial_t p$, $\dot{\xi} = -\partial_x p$:**
+   $$\dot{t} = -2\tau, \qquad \dot{x} = 2c^2\xi, \qquad \dot{\tau} = 0, \qquad \dot{\xi} = 0.$$
+   Both frequency components $(\tau, \xi)$ stay constant along every ray!
+4. **Compute the physical ray velocity $\frac{dx}{dt} = \frac{\dot{x}}{\dot{t}}$ on each branch:**
+   $$\frac{dx}{dt} = \frac{2c^2\xi}{-2\tau} = -\frac{c^2\xi}{\tau}.$$
+   - On the branch $\tau = -c\xi$: $\frac{dx}{dt} = -\frac{c^2\xi}{-c\xi} = +c \implies x(t) = x_0 + ct$ (right-moving singularity!).
+   - On the branch $\tau = +c\xi$: $\frac{dx}{dt} = -\frac{c^2\xi}{+c\xi} = -c \implies x(t) = x_0 - ct$ (left-moving singularity!).
+   Notice how the *sign* of $\tau/\xi$ in phase space automatically separates the two traveling waves of d'Alembert's formula!
 
 ### Example 1: The transport equation
 

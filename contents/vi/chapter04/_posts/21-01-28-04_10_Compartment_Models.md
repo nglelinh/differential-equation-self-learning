@@ -10,6 +10,21 @@ categories:
 lesson_type: optional
 ---
 
+
+Khi bạn uống một viên thuốc, hoạt chất đi từ dạ dày vào máu, phân tán sang các mô rồi mới được gan thận thải trừ; tương tự, ô nhiễm hóa học luân chuyển giữa chuỗi hồ thông nhau hay carbon tuần hoàn giữa khí quyển và đại dương. Tất cả đều được mô tả bởi **Mô hình Ngăn (Compartment Models)**—một lớp hệ tuyến tính $\mathbf{x}' = A\mathbf{x} + \mathbf{b}$ có cấu trúc ma trận cực kỳ đẹp đảm bảo nồng độ không bao giờ âm và hệ luôn hội tụ về cân bằng bền vững!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Mô hình Ngăn
+
+1. **Nguyên lý cân bằng dòng chảy cho từng ngăn**:
+   $x_i'(t) = \sum_{j \ne i} k_{ij} x_j - \left(\sum_{j \ne i} k_{ji} + k_{0i}\right)x_i + b_i(t)$: phần tử ngoài đường chéo $a_{ij} \ge 0$ (dòng chảy vào từ ngăn $j$), phần tử đường chéo $a_{ii} \le 0$ (tổng dòng chảy ra khỏi ngăn $i$).
+2. **Hệ kín (Closed System) vs. Hệ mở (Open System)**:
+   - **Hệ kín** (không thoát ra môi trường, tổng mỗi cột của $A$ bằng $0$): tổng lượng chất $\sum x_i(t) = \text{const}$ được bảo toàn tuyệt đối, nên $A$ luôn có **một trị riêng $\lambda = 0$** tương ứng với trạng thái phân bố cân bằng!
+   - **Hệ mở** (có cửa thải ra ngoài): tổng cột $\le 0$ và có ít nhất một cột $< 0$; mọi trị riêng có $\operatorname{Re}(\lambda) < 0$, chất tan dần về $0$ nếu ngừng bơm.
+3. **Tính bất biến dương (Positivity)**:
+   Nhờ $a_{ij} \ge 0$ ($i \ne j$), nếu xuất phát từ $\mathbf{x}(0) \ge \mathbf{0}$ thì $\mathbf{x}(t) \ge \mathbf{0}$ ở mọi thời điểm—mô hình hoàn toàn tôn trọng thực tế vật lý!
+4. **Dược động học (Pharmacokinetics) & Thời gian đạt đỉnh $t_{\max}$**:
+   Mô hình hai ngăn (dạ dày $\to$ máu $\to$ thải trừ) cho phép tính chính xác thời điểm nồng độ thuốc trong máu đạt đỉnh để thiết kế liều dùng an toàn.
+
 ## Mục tiêu
 
 Bài học này cho thấy hệ phương trình vi phân là ngôn ngữ tự nhiên cho các mô hình ngăn trong dược động học, sinh thái học và dịch tễ học. Sinh viên sẽ biết cách lập phương trình cân bằng dòng vào – dòng ra cho từng ngăn, kiểm tra tính bảo toàn hoặc hao hụt tổng lượng, và đọc ma trận hệ như bản đồ trao đổi giữa các khoang.
@@ -25,6 +40,20 @@ Sinh viên cần nắm hệ tuyến tính, khái niệm nguồn ngoài và nguy�
 Bên cạnh dao động và cơ học, một lớp ứng dụng rộng lớn khác của hệ ODE là mô hình ngăn (compartment model). Trong đó, mỗi biến trạng thái đo lượng vật chất, dân số, thuốc hoặc chất ô nhiễm trong một khoang, còn các hệ số biểu diễn tốc độ chuyển dịch giữa các khoang.
 
 Mô hình ngăn không chỉ theo dõi "mỗi khoang chứa bao nhiêu" mà còn thể hiện "vật chất đi từ đâu sang đâu", giúp trả lời ngay các câu hỏi về bảo toàn khối lượng, thất thoát ra môi trường và trạng thái cân bằng dài hạn.
+
+### Khung giải thích (nên đọc chậm): Giải mô hình dược động học 2 ngăn (Dạ dày $x_1$ $\xrightarrow{k_1 = 2}$ Máu $x_2$ $\xrightarrow{k_2 = 1}$ Thải trừ) với liều uống $x_1(0) = 100\text{ mg},\; x_2(0) = 0$
+
+1. **Hệ phương trình tam giác**:
+   $$\begin{pmatrix} x_1 \\ x_2 \end{pmatrix}' = \begin{pmatrix} -2 & 0 \\ 2 & -1 \end{pmatrix}\begin{pmatrix} x_1 \\ x_2 \end{pmatrix}.$$
+   Đọc ngay trị riêng trên đường chéo: $\lambda_1 = -2 < 0,\; \lambda_2 = -1 < 0$ (hệ mở, ổn định tuyệt đối!).
+2. **Giải tầng từ trên xuống**:
+   - Từ $x_1' = -2x_1,\; x_1(0) = 100 \implies x_1(t) = \mathbf{100e^{-2t}}$.
+   - Thay vào $x_2' + x_2 = 200e^{-2t}$ (nhân $e^t$): $(e^t x_2)' = 200e^{-t} \implies x_2(t) = -200e^{-2t} + Ce^{-t}$.
+   - Với $x_2(0) = 0 \implies C = 200$, nên lượng thuốc trong máu là:
+     $$x_2(t) = \mathbf{200\big(e^{-t} - e^{-2t}\big)}\text{ mg}.$$
+3. **Tìm thời điểm đạt đỉnh $t_{\max}$ và nồng độ cực đại**:
+   $x_2'(t) = 200(-e^{-t} + 2e^{-2t}) = 0 \iff e^{-t} = 2e^{-2t} \iff e^t = 2 \iff t_{\max} = \ln 2 \approx \mathbf{0{,}693\text{ giờ}}$.
+   Khi đó $x_2(t_{\max}) = 200\left(\frac{1}{2} - \frac{1}{4}\right) = \mathbf{50\text{ mg}}$ (đúng một nửa liều uống ban đầu!).
 
 ## Khái niệm theo ba cách
 

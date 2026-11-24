@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** Why doesn't a hydrogen atom's electron spiral into the positively charged nucleus in a billionth of a second, as classical electrodynamics predicts? Because in quantum mechanics, squeezing a wavefunction $\psi(x)$ into a tiny ball around the origin forces its Fourier transform $\hat{\psi}(\xi)$ to explode outward—raising its kinetic energy $\int |\nabla\psi|^2\,dx$ faster than the Coulomb potential $-1/|x|$ can drop. Quantum stability is literally a PDE uncertainty inequality.
+
 ![The Schrodinger equation and the quantum meaning of spectral ideas]({{ site.imgurl }}/chapter_img/chapter15/07_quantum_mechanics.svg )
 
 ## Objectives
@@ -19,6 +21,15 @@ This optional lesson connects the ideas of the chapter with quantum mechanics. A
 ## Prerequisites
 
 Students should know Hilbert spaces, eigenvalues, self-adjoint operators, and the basic Schrodinger equation. Background in semiclassical analysis and spectral theory will make the larger picture more unified.
+
+## Background Knowledge Map: PDE Foundations of Quantum Mechanics
+
+Four mathematical pillars connect the Schrödinger equation $i\hbar\partial_t\psi = \hat{H}\psi$ directly to functional and microlocal analysis:
+
+1. **Self-Adjointness and Stone's Theorem:** Physical observables are self-adjoint operators on $L^2(\mathbb{R}^n)$; Stone's Theorem guarantees that the Hamiltonian $\hat{H} = -\frac{\hbar^2}{2m}\Delta + V(x)$ generates a unique unitary evolution group $U(t) = e^{-it\hat{H}/\hbar}$ conserving total probability $\|\psi(\cdot,t)\|_{L^2} = 1$ iff $\hat{H}$ is self-adjoint!
+2. **Bound States vs. Scattering States (Discrete vs. Essential Spectrum):** Negative eigenvalues of $\hat{H}$ correspond to localized bound states (orbitals), while $[0,\infty)$ forms the continuous spectrum of escaping scattering waves.
+3. **Canonical Commutation Relations and Heisenberg Uncertainty:** The noncommutativity $[\hat{x}, \hat{p}] = i\hbar$ is mathematically identical to Chapter 14's symbol commutator; via Cauchy–Schwarz it enforces $\Delta x\,\Delta p \ge \hbar/2$, forbidding simultaneous localization in position and momentum.
+4. **Hardy and Sobolev Inequalities for Stability of Matter:** The 3D Hardy inequality $\int_{\mathbb{R}^3} \frac{|\psi|^2}{|x|^2}\,dx \le 4\int_{\mathbb{R}^3} |\nabla\psi|^2\,dx$ guarantees the Coulomb Hamiltonian $-\Delta - Z/|x|$ is bounded from below—preventing atomic collapse!
 
 ## Introduction
 
@@ -97,6 +108,22 @@ Small $$ \hbar $$ reveals the classical geometric structure behind the quantum d
 - Can they see why semiclassical analysis links quantum and classical pictures?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Verifying $[\hat{x}, \hat{p}] = i\hbar$ and Exact Uncertainty Saturation
+
+For the 1D position operator $(\hat{x}\psi)(x) = x\psi(x)$ and momentum operator $(\hat{p}\psi)(x) = -i\hbar\psi'(x)$, compute their commutator $[\hat{x}, \hat{p}]$ and verify that the normalized Gaussian ground state $\psi(x) = (\pi \sigma^2)^{-1/4} e^{-x^2/(2\sigma^2)}$ ($\sigma > 0$) attains the exact Heisenberg minimum $\Delta x\,\Delta p = \hbar/2$.
+
+1. **Compute the commutator $[\hat{x}, \hat{p}]\psi$:**
+   $$[\hat{x}, \hat{p}]\psi = x(-i\hbar\psi') - (-i\hbar)\frac{d}{dx}(x\psi) = -i\hbar x\psi' + i\hbar(\psi + x\psi') = i\hbar\psi.$$
+2. **Compute the position variance $(\Delta x)^2 = \langle x^2 \rangle$** (by even symmetry $\langle x \rangle = 0$):
+   $$(\Delta x)^2 = \frac{1}{\sqrt{\pi}\sigma}\int_{-\infty}^{\infty} x^2 e^{-x^2/\sigma^2}\,dx = \frac{\sigma^2}{\sqrt{\pi}}\int_{-\infty}^{\infty} u^2 e^{-u^2}\,du = \frac{\sigma^2}{\sqrt{\pi}}\cdot\frac{\sqrt{\pi}}{2} = \frac{\sigma^2}{2} \implies \Delta x = \frac{\sigma}{\sqrt{2}}.$$
+3. **Compute the momentum variance $(\Delta p)^2 = \langle \hat{p}^2 \rangle = \hbar^2 \int |\psi'(x)|^2\,dx$** (with $\langle \hat{p}\rangle = 0$):
+   Since $\psi'(x) = -\frac{x}{\sigma^2}\psi(x)$, we have $|\psi'(x)|^2 = \frac{x^2}{\sigma^4}|\psi(x)|^2$, so:
+   $$(\Delta p)^2 = \frac{\hbar^2}{\sigma^4}\int_{-\infty}^{\infty} x^2 |\psi(x)|^2\,dx = \frac{\hbar^2}{\sigma^4}\cdot\frac{\sigma^2}{2} = \frac{\hbar^2}{2\sigma^2} \implies \Delta p = \frac{\hbar}{\sqrt{2}\sigma}.$$
+4. **Multiply $\Delta x$ and $\Delta p$:**
+   $$\Delta x \cdot \Delta p = \left(\frac{\sigma}{\sqrt{2}}\right)\left(\frac{\hbar}{\sqrt{2}\sigma}\right) = \frac{\hbar}{2}.$$
+   Notice $\sigma$ cancels completely—squeezing the Gaussian narrower in space ($\sigma \to 0$) automatically inflates its momentum spread inversely, locking the product at the exact quantum floor $\hbar/2$!
 
 ### Example 1: The free particle
 

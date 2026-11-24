@@ -9,7 +9,21 @@ categories:
 - chapter09
 lesson_type: required
 ---
+
 ![21 03 04 09 04 Nonhomogeneous Heat]({{ site.imgurl }}/chapter_img/chapter09/04_nonhomogeneous_heat.svg)
+
+Ngoài đời thực, hiếm khi hai đầu thanh kim loại đều giữ đúng ở $0^\circ\text{C}$ và không có nguồn nhiệt bên trong. Một thanh đồng có thể có đầu trái nhúng nước sôi $100^\circ\text{C}$, đầu phải giữ $20^\circ\text{C}$, lại có dòng điện chạy qua tự sinh nhiệt $q(x)$! Khi đó ta không thể tách biến trực tiếp—mà dùng một phép tách cực kỳ thanh lịch: **Trạng thái Dừng $v(x)$ + Phần Quá độ $w(x, t)$**!
+
+## Bản đồ kiến thức nền: Bốn bước giải Bài toán Nhiệt Không Thuần nhất
+
+1. **Phân tách $u(x, t) = v(x) + w(x, t)$**:
+   Chọn **nghiệm dừng (steady-state)** $v(x)$ thỏa $0 = \alpha v''(x) + q(x)$ cùng **đúng điều kiện biên không thuần nhất** ($v(0)=T_1, v(L)=T_2$).
+2. **Đưa phần quá độ $w(x, t) = u(x, t) - v(x)$ về bài toán thuần nhất**:
+   Khi lấy hiệu, cả nguồn nhiệt $q(x)$ lẫn biên $T_1, T_2$ đều triệt tiêu sạch: $w_t = \alpha w_{xx}$, $w(0,t) = w(L,t) = 0$, với điều kiện đầu mới $w(x, 0) = f(x) - v(x)$!
+3. **Khai triển hàm riêng cho nguồn phụ thuộc thời gian $q(x, t)$**:
+   Nếu nguồn nhiệt hoặc biên thay đổi theo $t$, ta khai triển $u(x, t) = \sum c_n(t)\phi_n(x)$ và giải ODE bậc nhất cho từng $c_n'(t) + \alpha\lambda_n c_n(t) = q_n(t)$ bằng nhân tử tích phân (Nguyên lý Duhamel).
+4. **Trực giác vật lý**:
+   Khi $t \to \infty$, phần quá độ $w(x, t) \to 0$, nên nhiệt độ toàn thanh hội tụ về đúng đường cong dừng $v(x)$!
 
 ## Mục tiêu
 
@@ -24,6 +38,18 @@ Sinh viên cần nắm phương trình nhiệt với điều kiện biên thuầ
 Trong thực tế, hai đầu thanh hiếm khi cùng giữ ở nhiệt độ 0 và nguồn nhiệt bên trong cũng thường khác 0. Tuy vậy, các công cụ của bài toán thuần nhất vẫn phát huy tác dụng: ta tách phần không thuần nhất vào một hàm phụ trợ đơn giản để phần còn lại quay về bài toán biên thuần nhất có thể giải bằng khai triển mode riêng.
 
 Cách tiếp cận này mang tính chiến lược rõ ràng: thay vì xử lý toàn bộ bài toán cùng lúc, ta phân tách nghiệm thành phần cân bằng và phần quá độ. Phần cân bằng mô tả trạng thái dài hạn, còn phần quá độ cho biết hệ tiến dần về trạng thái đó như thế nào.
+
+### Khung giải thích (nên đọc chậm): Tìm nghiệm dừng $v(x)$ và thiết lập bài toán quá độ $w(x, t)$ cho thanh có biên $20^\circ\text{C}$ và $80^\circ\text{C}$
+
+Xét $u_t = u_{xx}$ trên $[0, 10]$ với $u(0, t) = 20,\; u(10, t) = 80$ và nhiệt độ ban đầu $u(x, 0) = 50$.
+1. **Tìm nghiệm dừng $v(x)$** ($v''(x) = 0 \implies v(x) = ax + b$):
+   - $v(0) = 20 \implies b = 20$; $v(10) = 10a + 20 = 80 \implies a = 6$.
+   - Vậy $v(x) = \mathbf{20 + 6x}$ (đường thẳng nối từ $20^\circ\text{C}$ đến $80^\circ\text{C}$!).
+2. **Thiết lập bài toán cho $w(x, t) = u(x, t) - (20 + 6x)$**:
+   - Phương trình: $w_t = w_{xx}$.
+   - Điều kiện biên: $w(0, t) = 20 - 20 = \mathbf{0}$, $w(10, t) = 80 - 80 = \mathbf{0}$ (thuần nhất 100%!).
+   - Điều kiện đầu mới: $w(x, 0) = 50 - (20 + 6x) = \mathbf{30 - 6x}$.
+3. **Kiểm tra trạng thái cuối**: Khi $t \to \infty$, $w(x, t) \to 0$, nên tại điểm giữa thanh $x = 5$ nhiệt độ tiến về $v(5) = 20 + 6(5) = \mathbf{50^\circ\text{C}}$!
 
 ## Khái niệm theo ba cách
 

@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** Infinite-dimensional Banach and Hilbert spaces can feel intimidatingly abstract—until you see their geometric footprints in two dimensions. From the diamond-to-square morphing of $L^p$ unit balls to high-frequency waves that vanish weakly while keeping constant energy, these illustrations make functional analysis tangible.
+
 ## Purpose of This Companion Lesson
 
 This lesson gathers the Chapter 12 illustrations into one visual review space. Functional analysis can feel abstract when students first meet it, especially after several chapters driven by explicit differential-equation models. The gallery helps preserve the thread that runs through the chapter: all of these objects, spaces, and theorems were built to make PDE solvable, stable, and interpretable beyond the classical setting.
@@ -22,6 +24,15 @@ Work through the gallery in lesson order. After each figure, return to the corre
 
 The page is also a useful review before the later chapters on numerical analysis, pseudodifferential operators, and microlocal analysis, all of which reuse the language of operators, weak formulations, and generalized objects.
 
+## Background Knowledge Map: Visual Anchors for Functional Analysis in PDEs
+
+Use four visual lenses as you explore the diagrams in this gallery:
+
+1. **Unit Ball Geometry ($L^1$ Diamond, $L^2$ Circle, $L^\infty$ Square):** The smoothness and strict convexity of the $L^2$ ball reflect unique orthogonal projections, while the sharp corners of $L^1$ and $L^\infty$ explain why projections onto subspaces can lose uniqueness.
+2. **Weak vs. Strong Convergence via Rapid Oscillation:** Sequences like $\sin(nx)$ average to zero against any smooth test function (weak convergence) even though their $L^2$ amplitude never shrinks (failure of strong convergence).
+3. **Sobolev Norms as High-Frequency Penalties:** Because differentiation multiplies Fourier mode $k$ by $ik$, plotting $|\hat{u}(k)|$ versus $k|\hat{u}(k)|$ visually reveals why $H^1$ suppresses jagged oscillations that $L^2$ ignores.
+4. **Dirac Delta Approximations (Mollifiers):** Narrowing unit-area Gaussian bells illustrate how distributions arise as limits of smooth functions whose pointwise peak diverges while their integral action converges cleanly.
+
 ## Embedded Gallery
 
 {% include interactive-frame.html
@@ -30,6 +41,20 @@ The page is also a useful review before the later chapters on numerical analysis
   path="interactives/chapter12/index-en.html"
   height="980px"
 %}
+
+### Step-by-Step Worked Example (Read Slowly): Watching Strong $L^2$ Convergence Fail in $H^1$
+
+Consider the sequence of smooth functions $v_n(x) = \frac{1}{n}\sin(nx)$ on $(0, \pi)$. Compute both $\|v_n\|_{L^2(0,\pi)}$ and $\|v_n'\|_{L^2(0,\pi)}$ to see firsthand why $v_n \to 0$ strongly in $L^2$ yet only *weakly* in $H^1$.
+
+1. **Compute the $L^2$ norm:** Using $\int_0^\pi \sin^2(nx)\,dx = \frac{\pi}{2}$,
+   $$\|v_n\|_{L^2(0,\pi)} = \frac{1}{n}\sqrt{\frac{\pi}{2}} \xrightarrow{n \to \infty} 0.$$
+   Thus $v_n \to 0$ strongly in $L^2(0,\pi)$ (and even uniformly, since $|v_n(x)| \le 1/n$).
+2. **Compute the derivative's $L^2$ norm:** Differentiating gives $v_n'(x) = \cos(nx)$, whose amplitude never shrinks:
+   $$\|v_n'\|_{L^2(0,\pi)} = \left(\int_0^\pi \cos^2(nx)\,dx\right)^{1/2} = \sqrt{\frac{\pi}{2}} \not\to 0.$$
+   Hence $v_n$ does **not** converge strongly to $0$ in $H^1(0,\pi)$!
+3. **Verify weak convergence $v_n \rightharpoonup 0$ in $H^1(0,\pi)$:** For any smooth test function $\varphi \in C^1([0,\pi])$, integration by parts gives:
+   $$\int_0^\pi v_n'(x)\varphi'(x)\,dx = \int_0^\pi \cos(nx)\varphi'(x)\,dx = \left[\frac{\sin(nx)}{n}\varphi'(x)\right]_0^\pi - \frac{1}{n}\int_0^\pi \sin(nx)\varphi''(x)\,dx \to 0$$
+   (by Riemann–Lebesgue). Visually, the ripples shrink in height like $1/n$ while crowding $n$ times faster—keeping their total slope energy constant while cancelling out against every smooth observer.
 
 ## Suggested Study Prompts
 

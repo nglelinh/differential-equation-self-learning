@@ -10,6 +10,34 @@ categories:
 lesson_type: required
 ---
 
+Suppose two engineers discretize a temperature profile on a metal rod: near the center the curve is gentle, while near one end it spikes almost vertically. Pointwise continuity promises that at any *single* point you can zoom in far enough to make the function look flat—but uniform continuity promises that a *single* grid spacing $$\delta$$ works simultaneously across the entire domain. That distinction separates local intuition from global error bounds in differential equations.
+
+## Background Knowledge Map: The Hierarchy of Regularity
+
+When analyzing differential equations, continuity is not a single binary property—it is a ladder of progressively stronger controls:
+
+1. **Pointwise Continuity:** For each fixed $$x_0$$ and $$\varepsilon > 0$$, the tolerance $$\delta = \delta(\varepsilon, x_0)$$ may shrink dangerously as $$x_0$$ approaches a boundary or infinity.
+2. **Uniform Continuity:** A single $$\delta = \delta(\varepsilon)$$ works uniformly for all pairs $$x, y \in D$$ with $$\lvert x - y \rvert < \delta$$; this guarantees that Cauchy sequences map to Cauchy sequences and Riemann sums converge cleanly.
+3. **Heine–Cantor Compactness Principle:** Every continuous function on a closed, bounded interval $$[a,b]$$ is automatically uniformly continuous—which is why local ODE theorems work on compact rectangles $$[t_0-a, t_0+a] \times [y_0-b, y_0+b]$$.
+4. **Lipschitz Continuity:** Stronger still than uniform continuity, $$\lvert f(x) - f(y) \rvert \le L\lvert x - y \rvert$$ bounds the maximum secant slope everywhere and is the exact condition guaranteeing unique solutions in Picard–Lindelöf.
+
+### Step-by-Step Worked Example (Read Slowly): Separating Pointwise, Uniform, and Lipschitz Continuity
+
+Compare $$f(x) = x^2$$ on $$\mathbb{R}$$ versus $$f(x) = x^2$$ on $$[0, 3]$$, and contrast with $$g(x) = \sqrt{x}$$ on $$[0, 1]$$:
+
+1. **Why $$f(x) = x^2$$ fails uniform continuity on $$\mathbb{R}$$:**
+   Choose $$\varepsilon = 1$$. For any candidate $$\delta > 0$$, pick $$x_n = n$$ and $$y_n = n + \frac{\delta}{2}$$. Then $$\lvert x_n - y_n \rvert = \frac{\delta}{2} < \delta$$, yet
+   $$\lvert f(y_n) - f(x_n) \rvert = \left(n + \frac{\delta}{2}\right)^2 - n^2 = n\delta + \frac{\delta^2}{4}.$$
+   Choosing $$n > 1/\delta$$ forces $$\lvert f(y_n) - f(x_n) \rvert > 1 = \varepsilon$$. No single $$\delta$$ works globally.
+2. **Why $$f(x) = x^2$$ IS Lipschitz (hence uniformly continuous) on $$[0, 3]$$:**
+   For all $$x, y \in [0, 3]$$,
+   $$\lvert x^2 - y^2 \rvert = \lvert x + y \rvert\,\lvert x - y \rvert \le (3 + 3)\lvert x - y \rvert = 6\lvert x - y \rvert.$$
+   Thus $$L = 6$$ works globally on $$[0,3]$$, and $$\delta = \varepsilon / 6$$ certifies uniform continuity.
+3. **Why $$g(x) = \sqrt{x}$$ on $$[0, 1]$$ is uniformly continuous yet NOT Lipschitz:**
+   Since $$g$$ is continuous on the compact interval $$[0, 1]$$, Heine–Cantor guarantees uniform continuity (in fact $$\lvert \sqrt{x} - \sqrt{y} \rvert \le \sqrt{\lvert x - y \rvert}$$, so $$\delta = \varepsilon^2$$ works). However, taking $$y = 0$$ and $$x > 0$$ gives the secant slope
+   $$\frac{\lvert \sqrt{x} - \sqrt{0} \rvert}{\lvert x - 0 \rvert} = \frac{1}{\sqrt{x}} \xrightarrow{x \to 0^+} +\infty,$$
+   so no finite Lipschitz constant $$L$$ exists—precisely why the ODE $$y' = \sqrt{y},\; y(0) = 0$$ loses uniqueness!
+
 This lesson introduces the fundamental concepts of continuity and uniform continuity, which are essential for understanding the behavior of functions in optimization.
 
 ---

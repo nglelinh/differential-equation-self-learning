@@ -12,6 +12,19 @@ lesson_type: optional
 
 ![Schrödinger equation và góc nhìn lượng tử của phổ]({{ site.imgurl }}/chapter_img/chapter15/07_quantum_mechanics.svg )
 
+Nhiều người bất ngờ khi biết rằng hàng loạt khái niệm trụ cột của giải tích hiện đại—không gian Hilbert, toán tử tự liên hợp, lý thuyết phổ, ký hiệu $\Psi$DO và giải tích bán cổ điển—đều trưởng thành song hành cùng **Cơ học Lượng tử**! Phương trình Schrödinger $i\hbar \partial_t \psi = \hat{H}\psi$ không chỉ là một PDE vật lý, mà là tấm gương phản chiếu sâu sắc nhất toàn bộ lý thuyết toán tử ta đã xây dựng suốt khóa học.
+
+## Bản đồ kiến thức nền: Bốn trụ cột kết nối Lý thuyết PDE với Cơ học Lượng tử
+
+1. **Không gian Trạng thái $L^2(\mathbb{R}^n)$ và Diễn giải Xác suất Born**:
+   Hàm sóng $\psi(x, t) \in L^2$ với $\|\psi\|_{L^2} = 1$ mã hóa mật độ xác suất $|\psi(x, t)|^2$ tìm thấy hạt tại vị trí $x$. Tính **tự liên hợp** của Hamilton $\hat{H} = -\frac{\hbar^2}{2m}\Delta + V(x)$ đảm bảo toán tử tiến hóa $U(t) = e^{-it\hat{H}/\hbar}$ là **toán tử unita** (Định lý Stone), nên tổng xác suất $\int |\psi|^2\,dx = 1$ được bảo toàn vĩnh viễn!
+2. **Đại lượng Đo được = Toán tử Tự liên hợp & Phổ = Kết quả Đo**:
+   Vị trí $\hat{x} = x$, động lượng $\hat{p} = -i\hbar\nabla$, năng lượng $\hat{H}$. Phổ rời rạc (giá trị riêng) tương ứng **trạng thái liên kết** (như mức năng lượng rời rạc của nguyên tử Hydro), còn phổ liên tục tương ứng **trạng thái tán xạ** tự do!
+3. **Giao hoán tử $[\hat{x}, \hat{p}] = i\hbar$ và Nguyên lý Bất định Heisenberg**:
+   Chính tính không giao hoán giữa phép nhân $x$ và đạo hàm $-i\hbar\partial_x$ (cùng nguồn gốc với công thức hợp thành $\Psi$DO!) dẫn trực tiếp tới bất đẳng thức Cauchy–Schwarz nổi tiếng nhất vật lý: $\Delta x \cdot \Delta p \ge \frac{\hbar}{2}$!
+4. **Cầu nối Lượng tử $\leftrightarrow$ Cổ điển qua Lượng tử hóa Weyl & Egorov**:
+   Biến đổi hàm Hamilton cổ điển $H(x, p) = \frac{|p|^2}{2m} + V(x)$ thành toán tử $\hat{H}$ chính là phép lượng tử hóa $\Psi$DO với tham số $h = \hbar$!
+
 ## Mục tiêu
 
 Bài học tùy chọn này kết nối các ý tưởng của Chương 15 với cơ học lượng tử. Sau bài học, sinh viên cần hiểu vai trò của toán tử Hamilton như một toán tử tự liên hợp, nắm ý nghĩa vật lý của phổ năng lượng, và thấy rõ cách giải tích bán cổ điển cùng lý thuyết phổ vận hành trong phương trình Schrödinger.
@@ -26,6 +39,17 @@ Cơ học lượng tử là lĩnh vực mà lý thuyết toán tử không chỉ
 
 Bài học này không nhằm trình bày toàn bộ vật lý lượng tử mà tập trung làm rõ mối liên hệ mật thiết giữa PDE hiện đại và cơ học lượng tử.
 
+
+### Khung giải thích (nên đọc chậm): Tính tay Giao hoán tử Chính tắc $[\hat{x}, \hat{p}] = i\hbar$ và ý nghĩa Bất định
+
+Cho hai toán tử vị trí $(\hat{x}\psi)(x) = x\psi(x)$ và động lượng $(\hat{p}\psi)(x) = -i\hbar\psi'(x)$ tác động lên hàm sóng trơn $\psi \in \mathcal{S}(\mathbb{R})$:
+1. **Tính từng thứ tự tác động**:
+   - $(\hat{x}\hat{p}\psi)(x) = x\big(-i\hbar\psi'(x)\big) = -i\hbar\,x\psi'(x)$.
+   - $(\hat{p}\hat{x}\psi)(x) = -i\hbar\frac{d}{dx}\big(x\psi(x)\big) = -i\hbar\big(\psi(x) + x\psi'(x)\big) = -i\hbar\psi(x) - i\hbar\,x\psi'(x)$.
+2. **Lấy hiệu $[\hat{x}, \hat{p}]\psi = (\hat{x}\hat{p} - \hat{p}\hat{x})\psi$**:
+   Hai số hạng $-i\hbar x\psi'(x)$ triệt tiêu nhau hoàn toàn, chỉ còn lại:
+   $$[\hat{x}, \hat{p}]\psi(x) = \mathbf{i\hbar\,\psi(x)} \implies [\hat{x}, \hat{p}] = \mathbf{i\hbar\,I}.$$
+3. **Hệ quả bất định**: Theo bất đẳng thức Robertson $\Delta A\,\Delta B \ge \frac{1}{2}|\langle [A, B] \rangle|$, ta thu được ngay $\Delta x \cdot \Delta p \ge \mathbf{\frac{\hbar}{2}}$—không phải do thiết bị đo kém chính xác, mà là hệ quả toán học tất yếu của Biến đổi Fourier!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

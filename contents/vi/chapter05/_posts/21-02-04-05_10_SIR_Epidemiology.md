@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Khi một loại virus mới xuất hiện trong thành phố 1 triệu dân, làm sao các nhà dịch tễ học dự báo được đỉnh dịch sẽ rơi vào tuần nào, bao nhiêu phần trăm dân số cần tiêm vaccine để đạt **miễn dịch cộng đồng**, và việc đeo khẩu trang giảm 30% tiếp xúc sẽ làm phẳng đường cong đến đâu? Câu trả lời nằm trong hệ 3 phương trình vi phân phi tuyến kinh điển của Kermack và McKendrick (1927): **Mô hình SIR**.
+
+## Bản đồ kiến thức nền: Bốn trụ cột toán học của Mô hình Dịch tễ SIR
+
+1. **Ba ngăn bảo toàn dân số ($S + I + R = N$)**:
+   $S(t)$: người nhạy cảm (Susceptible); $I(t)$: người đang nhiễm bệnh (Infected); $R(t)$: người đã hồi phục/miễn dịch (Recovered). Vì $\dot{S} + \dot{I} + \dot{R} = 0$, tổng dân số $N$ là một bất biến.
+2. **Hệ phương trình $\dot{S} = -\frac{\beta}{N}SI,\; \dot{I} = \frac{\beta}{N}SI - \gamma I,\; \dot{R} = \gamma I$**:
+   $\beta$ là tốc độ lây truyền trung bình/ngày; $\gamma$ là tốc độ hồi phục ($1/\gamma$ là thời gian nhiễm bệnh trung bình tính theo ngày).
+3. **Hệ số lây nhiễm cơ bản $R_0 = \beta / \gamma$**:
+   Số ca nhiễm thứ cấp trung bình do 1 ca bệnh gây ra trong quần thể hoàn toàn nhạy cảm ($S_0 \approx N$). Dịch bùng phát khi và chỉ khi $\dot{I}(0) > 0 \iff R_0 \frac{S_0}{N} > 1$!
+4. **Ngưỡng miễn dịch cộng đồng ($p_c = 1 - 1/R_0$)**:
+   Nếu tiêm vaccine cho tỷ lệ $p > 1 - 1/R_0$ dân số để kéo $S_0/N < 1/R_0$, thì ngay lập tức $\dot{I}(0) < 0$—dịch tự tắt mà không cần tiêm 100% dân số!
+
 ## Mục tiêu
 
 Bài học này giúp sinh viên phân tích mô hình SIR như một hệ phương trình phi tuyến ba ngăn, hiểu ý nghĩa ngưỡng bùng phát $$ \mathcal{R}_0 $$, diễn giải khái niệm miễn dịch cộng đồng và thấy được vì sao hệ phương trình vi phân là công cụ tự nhiên để mô tả dịch tễ học cơ bản.
@@ -25,6 +38,21 @@ Sinh viên cần nắm vững mô hình ngăn, hệ phi tuyến và trực giác
 Một đợt dịch không chỉ là chuỗi số liệu ca mắc theo thời gian, mà là quá trình chuyển dịch dân số giữa các trạng thái: dễ nhiễm (Susceptible), đang nhiễm (Infectious) và hồi phục hoặc miễn dịch (Recovered). Mô hình SIR giữ lại cấu trúc cốt lõi của quá trình chuyển dịch này dưới dạng một hệ phương trình tương đối gọn.
 
 Giá trị lớn của mô hình SIR nằm ở chỗ nó không chỉ mô tả xu hướng tăng giảm của số ca mắc mà còn làm rõ khái niệm **ngưỡng bùng phát**. Dịch không tự bùng lên chỉ vì xuất hiện ca bệnh, mà phụ thuộc vào tỷ lệ giữa tốc độ lây truyền và tốc độ rời khỏi nhóm đang nhiễm. Từ đó xuất hiện hai khái niệm trung tâm: số sinh sản cơ bản và ngưỡng miễn dịch cộng đồng.
+
+### Khung giải thích (nên đọc chậm): Tính tay $R_0$, ngưỡng miễn dịch cộng đồng và đỉnh dịch cho một đợt cúm cụ thể
+
+Giả sử một thành phố có $N = 100.000$ người, tốc độ lây $\beta = 0{,}4\text{ ngày}^{-1}$ và thời gian khỏi bệnh trung bình $1/\gamma = 10\text{ ngày}$ ($\gamma = 0{,}1\text{ ngày}^{-1}$).
+
+1. **Tính hệ số lây nhiễm cơ bản**:
+   $$R_0 = \frac{\beta}{\gamma} = \frac{0{,}4}{0{,}1} = \mathbf{4{,}0}.$$
+2. **Tính ngưỡng miễn dịch cộng đồng**:
+   $$p_c = 1 - \frac{1}{R_0} = 1 - \frac{1}{4} = 0{,}75 = \mathbf{75\%} \quad (75.000\text{ người cần có miễn dịch}).$$
+3. **Xác định chính xác thời điểm ĐỈNH DỊCH ($I_{\max}$)**:
+   Tại đỉnh dịch, $\dot{I} = \left(\frac{\beta}{N} S - \gamma\right) I = 0 \implies S_{\text{đỉnh}} = \frac{\gamma}{\beta} N = \frac{N}{R_0} = \mathbf{25.000\text{ người}}$.
+   *(Nghĩa là dịch chỉ bắt đầu giảm khi đã có $75\%$ dân số rời khỏi nhóm $S$!)*
+4. **Tính chính xác chiều cao đỉnh dịch** bằng tích phân bất biến $I + S - \frac{N}{R_0}\ln S = \text{hằng số}$ (khởi đầu $S_0 \approx N, I_0 \approx 0$):
+   $$\frac{I_{\max}}{N} = 1 - \frac{1}{R_0} - \frac{\ln R_0}{R_0} = 1 - 0{,}25 - \frac{1{,}386}{4} \approx \mathbf{0{,}403} \quad (\approx \mathbf{40.300\text{ ca nhiễm cùng lúc!}}).$$
+   Nếu giãn cách giảm $\beta$ một nửa ($R_0 = 2{,}0$), đỉnh dịch sụt xuống chỉ còn $1 - 0{,}5 - \frac{0{,}693}{2} \approx \mathbf{15{,}3\%}$ ($15.300$ ca)—giảm gần **$3\times$ áp lực giường bệnh**!
 
 ## Khái niệm theo ba cách
 

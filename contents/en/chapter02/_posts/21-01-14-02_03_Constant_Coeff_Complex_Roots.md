@@ -9,6 +9,42 @@ categories:
 - chapter02
 lesson_type: required
 ---
+
+When a quadratic discriminant $$b^2 - 4ac$$ turns negative, a first-year algebra student writes "no real roots" and stops. In differential equations, negative discriminants are where the music begins: complex conjugate roots $$\alpha \pm i\beta$$ are the mathematical signature of every pendulum swing, violin tone, and AC radio wave, with $$\alpha$$ controlling the exponential envelope and $$\beta$$ setting the oscillation frequency.
+
+## Background Knowledge Map: Turning Complex Exponentials into Real Oscillations
+
+Four principles connect complex characteristic roots directly to physical waves:
+
+1. **Euler's Formula Extraction:** Given a complex solution $$z(t) = e^{(\alpha + i\beta)t} = e^{\alpha t}\cos(\beta t) + i\,e^{\alpha t}\sin(\beta t)$$, linearity of $$L$$ with real coefficients implies $$L[\operatorname{Re} z] + i\,L[\operatorname{Im} z] = L[z] = 0$$, so both real and imaginary parts are independent real solutions.
+2. **Envelope vs. Frequency Decomposition:** In $$y(t) = e^{\alpha t}(c_1 \cos \beta t + c_2 \sin \beta t)$$, $$\alpha = -\frac{b}{2a}$$ governs growth ($$\alpha > 0$$), neutral oscillation ($$\alpha = 0$$), or decay ($$\alpha < 0$$), while $$\beta = \frac{\sqrt{4ac - b^2}}{2a}$$ is the quasi-frequency (quasi-period $$T = 2\pi/\beta$$).
+3. **Amplitude–Phase Form:** Any linear combination $$c_1\cos(\beta t) + c_2\sin(\beta t)$$ collapses into a single shifted cosine $$R\cos(\beta t - \delta)$$ with $$R = \sqrt{c_1^2 + c_2^2}$$ and $$(\cos\delta, \sin\delta) = (c_1/R, c_2/R)$$—essential for reading peak amplitude and phase lag.
+4. **Logarithmic Decrement:** Consecutive oscillation peaks separated by one quasi-period $$T = 2\pi/\beta$$ decay by the exact constant ratio $$e^{\alpha T} = e^{2\pi\alpha/\beta}$$, allowing engineers to measure damping directly from an oscilloscope trace.
+
+### Step-by-Step Worked Example (Read Slowly): Solving an Underdamped IVP in Amplitude–Phase Form
+
+Solve
+$$y'' + 2y' + 5y = 0, \qquad y(0) = 3, \quad y'(0) = 1,$$
+rewrite the solution as $$R e^{\alpha t}\cos(\beta t - \delta)$$, and compute the amplitude decay factor per full cycle.
+
+1. **Find the complex characteristic roots:**
+   $$r^2 + 2r + 5 = (r + 1)^2 + 4 = 0 \implies r = -1 \pm 2i.$$
+   Thus $$\alpha = -1$$ and $$\beta = 2$$, giving
+   $$y(t) = e^{-t}\bigl(c_1 \cos 2t + c_2 \sin 2t\bigr).$$
+2. **Compute $$y'(t)$$ carefully via the product rule:**
+   $$y'(t) = e^{-t}\bigl[(-c_1 + 2c_2)\cos 2t + (-2c_1 - c_2)\sin 2t\bigr].$$
+3. **Apply $$y(0) = 3$$ and $$y'(0) = 1$$:**
+   - $$y(0) = c_1 = 3.$$
+   - $$y'(0) = -c_1 + 2c_2 = 1 \implies -3 + 2c_2 = 1 \implies c_2 = 2.$$
+   So $$y(t) = e^{-t}\bigl(3\cos 2t + 2\sin 2t\bigr)$$.
+4. **Convert to amplitude–phase form $$R e^{-t}\cos(2t - \delta)$$:**
+   $$R = \sqrt{3^2 + 2^2} = \sqrt{13} \approx 3.6056, \qquad \delta = \arctan\!\left(\frac{2}{3}\right) \approx 0.5880\text{ rad} \approx 33.7^\circ.$$
+   (Since $$c_1 = 3 > 0$$ and $$c_2 = 2 > 0$$, $$\delta$$ lies cleanly in Quadrant I.)
+   $$y(t) = \sqrt{13}\,e^{-t}\cos(2t - 0.5880).$$
+5. **Compute the quasi-period and per-cycle decay:**
+   $$T = \frac{2\pi}{\beta} = \pi \approx 3.1416, \qquad \frac{y(t + \pi)}{y(t)} = e^{-\pi} \approx 0.0432.$$
+   Every single oscillation retains only $$4.32\%$$ of the previous peak's amplitude!
+
 ## Learning Objectives
 This lesson helps students understand the origin of complex roots in the characteristic equation, convert them to real solutions using Euler's formula, and interpret the meaning of the real and imaginary parts in oscillatory dynamics. This is the central lesson for students to read harmonic oscillation, damped oscillation, and resonance in subsequent application lessons.
 

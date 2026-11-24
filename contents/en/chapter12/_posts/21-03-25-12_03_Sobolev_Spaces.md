@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Knowing a vibrating membrane has small $L^2$ displacement does not prevent it from hiding microscopic, infinitely jagged oscillations with infinite elastic energy. **Sobolev spaces** $W^{k,p}(\Omega)$ solve this by measuring both a function and its weak derivatives together in one complete norm—creating the exact natural home for PDE solutions.
+
 ![The intuition behind Sobolev spaces and weak gradients]({{ site.imgurl }}/chapter_img/chapter12/03_sobolev_spaces.svg )
 
 ## Objectives
@@ -19,6 +21,15 @@ This lesson builds Sobolev spaces as the setting in which we measure both a func
 ## Prerequisites
 
 Students should know $$ L^p $$ spaces, weak derivatives, norms, inner products, and the basic intuition of Dirichlet boundary conditions. It is also helpful to remember that in PDE, smoothness is often not assumed at the start but derived later.
+
+## Background Knowledge Map: Structure of Sobolev Spaces $W^{k,p}(\Omega)$ and $H^k(\Omega)$
+
+Four structural pillars make Sobolev spaces indispensable across modern analysis and numerical PDEs:
+
+1. **Combined Derivative Norms and Hilbert Geometry:** The space $W^{k,p}(\Omega)$ consists of $L^p$ functions whose weak derivatives up to order $k$ also lie in $L^p$. For $p=2$, $H^k(\Omega) = W^{k,2}(\Omega)$ is a Hilbert space with inner product $\langle u,v\rangle_{H^k} = \sum_{|\alpha|\le k}\int_\Omega D^\alpha u\,D^\alpha v\,dx$.
+2. **Approximation by Smooth Functions (Meyers–Serrin):** Although Sobolev functions can have kinks or even singularities in higher dimensions, $C^\infty(\Omega) \cap W^{k,p}(\Omega)$ is dense in $W^{k,p}(\Omega)$, allowing identities proved for smooth functions to pass to limits.
+3. **Boundary Traces and $H_0^1(\Omega)$:** Because $L^2$ functions are only defined a.e., evaluating $u$ on the zero-measure boundary $\partial\Omega$ is nontrivial. The Trace Theorem defines a bounded operator $T: H^1(\Omega) \to L^2(\partial\Omega)$, and $H_0^1(\Omega) = \overline{C_c^\infty(\Omega)}^{H^1}$ cleanly encodes zero Dirichlet boundary conditions.
+4. **Poincaré's Inequality:** On any bounded domain $\Omega$, controlling the gradient alone controls the function itself for $u \in H_0^1(\Omega)$: $\|u\|_{L^2} \le C_P \|\nabla u\|_{L^2}$, making the Dirichlet seminorm $\|\nabla u\|_{L^2}$ an equivalent norm on $H_0^1(\Omega)$.
 
 ## Introduction
 
@@ -95,6 +106,20 @@ Controlling weak derivatives forces extra structure. This is the bridge from ene
 - Can they say why dimension matters for Sobolev embedding?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Computing the $H^1(0,1)$ Norm and Verifying Poincaré's Inequality
+
+Consider the continuous tent function $u(x) = \min(x, 1-x)$ on $\Omega = (0,1)$. Verify $u \in H_0^1(0,1)$, compute $\|u\|_{H^1(0,1)}$ exactly, and check the sharp 1D Poincaré inequality $\|u\|_{L^2(0,1)} \le \frac{1}{\pi}\|u'\|_{L^2(0,1)}$.
+
+1. **Identify the weak derivative:** On $(0, 1/2)$, $u(x) = x$ so $u'(x) = 1$; on $(1/2, 1)$, $u(x) = 1-x$ so $u'(x) = -1$. Since $u$ is continuous across $x=1/2$ and $u(0) = u(1) = 0$, $u \in H_0^1(0,1)$ with weak derivative $u' = \mathbf{1}_{(0,1/2)} - \mathbf{1}_{(1/2,1)} \in L^2(0,1)$.
+2. **Compute $\|u\|_{L^2(0,1)}^2$:** By symmetry around $x = 1/2$,
+   $$\|u\|_{L^2(0,1)}^2 = 2\int_0^{1/2} x^2\,dx = 2\left[\frac{x^3}{3}\right]_0^{1/2} = \frac{1}{12} \implies \|u\|_{L^2(0,1)} = \frac{1}{2\sqrt{3}} \approx 0.2887.$$
+3. **Compute $\|u'\|_{L^2(0,1)}^2$ and $\|u\|_{H^1(0,1)}$:** Since $|u'(x)| = 1$ a.e. on $(0,1)$,
+   $$\|u'\|_{L^2(0,1)}^2 = \int_0^1 1^2\,dx = 1 \implies \|u\|_{H^1(0,1)} = \sqrt{\|u\|_{L^2}^2 + \|u'\|_{L^2}^2} = \sqrt{\frac{1}{12} + 1} = \sqrt{\frac{13}{12}} \approx 1.0408.$$
+4. **Check Poincaré's inequality:** The sharp Poincaré constant on $(0,1)$ is $1/\pi \approx 0.3183$ (attained by $\sin(\pi x)$). Here:
+   $$\frac{\|u\|_{L^2(0,1)}}{\|u'\|_{L^2(0,1)}} = \frac{1}{\sqrt{12}} \approx 0.2887 < \frac{1}{\pi} \approx 0.3183.$$
+   Notice that $u$ is *not* in $H^2(0,1)$ because $u'$ jumps from $+1$ to $-1$ at $x=1/2$, producing $-2\delta_{1/2}$ rather than an $L^2$ second derivative.
 
 ### Example 1: A linear function
 

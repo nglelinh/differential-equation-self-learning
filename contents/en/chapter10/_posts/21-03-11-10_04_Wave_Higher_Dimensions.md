@@ -10,6 +10,33 @@ categories:
 lesson_type: required
 ---
 
+Clap your hands in an open field (3D) and the sound arrives as a crisp snap followed by dead silence. Now drop a pebble into a still pond (2D) and watch: after the leading circular crest passes a floating leaf, the leaf keeps bobbing up and down in a lingering tail! Why does 3D space transmit crisp, echo-free speech and radio signals, whereas 2D flatland would leave every spoken word smeared in a muddled afterglow?
+
+The answer is **Huygens' Principle**, one of the deepest dimensional surprises in mathematical physics: Kirchhoff's formula in 3D depends *only* on the spherical surface $$ |\mathbf{y} - \mathbf{x}| = ct $$, whereas Hadamard's method of descent to 2D integrates over the entire filled disk $$ |\mathbf{y} - \mathbf{x}| \le ct $$!
+
+## Background Knowledge Map: Higher-Dimensional Waves and Huygens' Principle
+
+1. **Multi-Dimensional Laplacian & Rectangular Degeneracy:** On a 2D rectangular membrane $$ [0, a] \times [0, b] $$, separating $$ u_{tt} = c^2(u_{xx} + u_{yy}) $$ yields modes $$ \sin(m\pi x/a)\sin(n\pi y/b) $$ with frequencies $$ \omega_{mn} = c\pi\sqrt{\frac{m^2}{a^2} + \frac{n^2}{b^2}} $$. On a square ($$ a = b $$), distinct pairs like $$ (1, 2) $$ and $$ (2, 1) $$ share the exact same frequency—creating *degenerate* nodal patterns (Chladni figures)!
+2. **Spherical Symmetry Reduction (3D Reduces to 1D!):** For a radially symmetric 3D wave $$ u(r, t) $$, setting $$ w(r, t) = r\,u(r, t) $$ transforms $$ u_{tt} = c^2\left(u_{rr} + \frac{2}{r}u_r\right) $$ identically into the 1D wave equation $$ w_{tt} = c^2 w_{rr} $$, revealing the exact $$ 1/r $$ geometric amplitude decay of spherical waves!
+3. **Kirchhoff's Formula (3D — Sharp Huygens' Principle):** In $$ \mathbb{R}^3 $$, $$ u(\mathbf{x}, t) $$ depends *solely* on initial data on the thin spherical shell $$ \partial B(\mathbf{x}, ct) $$. Once the trailing edge of a localized pulse passes, $$ u $$ returns to *exact zero*.
+4. **Poisson's Formula via Method of Descent (2D — Lingering Tail):** Viewing a 2D wave as a $$ z $$-independent 3D wave projects the spherical shell onto the *entire interior* of the 2D disk $$ B(\mathbf{x}, ct) $$ with kernel $$ \frac{1}{\sqrt{c^2 t^2 - |\mathbf{x} - \mathbf{y}|^2}} $$, creating a permanent decaying wake behind every 2D wavefront!
+
+### Step-by-Step Worked Example (Read Slowly): Degenerate Chladni Modes on a Square Membrane and 3D Radial Decay
+
+**Problem:** (a) On a square membrane $$ [0, \pi] \times [0, \pi] $$ with $$ c = 1 $$ and clamped edges, verify that $$ u_{12}(x,y) = \sin(x)\sin(2y) $$ and $$ u_{21}(x,y) = \sin(2x)\sin(y) $$ share the same frequency $$ \omega $$, and find the nodal line of their superposition $$ v(x, y) = u_{12}(x, y) - u_{21}(x, y) $$. (b) Verify directly that $$ u(r, t) = \frac{f(r - ct)}{r} $$ satisfies the 3D radial wave equation $$ u_{tt} = c^2(u_{rr} + \frac{2}{r}u_r) $$.
+
+1. **Compute frequencies and Chladni nodal lines on $$ [0, \pi]^2 $$:**
+   - Eigenvalues: $$ \lambda_{12} = 1^2 + 2^2 = 5 $$ and $$ \lambda_{21} = 2^2 + 1^2 = 5 $$, so both vibrate at $$ \omega = \sqrt{5} $$!
+   - Factor the superposition $$ v(x, y) = \sin(x)\sin(2y) - \sin(2x)\sin(y) $$ using $$ \sin(2\theta) = 2\sin\theta\cos\theta $$:
+     $$ v(x, y) = 2\sin(x)\sin(y)\bigl[\cos(y) - \cos(x)\bigr]. $$
+   - Inside $$ (0, \pi)^2 $$, $$ \sin x > 0 $$ and $$ \sin y > 0 $$, so $$ v(x, y) = 0 \iff \cos y = \cos x \iff y = x $$!
+   While $$ u_{12} $$ has a horizontal nodal line ($$ y = \pi/2 $$) and $$ u_{21} $$ has a vertical one ($$ x = \pi/2 $$), their equal-frequency combination snaps onto the **diagonal** $$ y = x $$!
+2. **Verify the 3D outgoing spherical wave $$ u(r, t) = \frac{f(r - ct)}{r} $$:**
+   Let $$ w(r, t) = r u(r, t) = f(r - ct) $$. Compute:
+   - $$ w_r = u + r u_r \implies w_{rr} = 2 u_r + r u_{rr} = r\left(u_{rr} + \frac{2}{r}u_r\right) $$.
+   - $$ w_{tt} = r u_{tt} $$.
+   Since $$ w = f(r - ct) $$ satisfies $$ w_{tt} = c^2 f''(r - ct) = c^2 w_{rr} $$, dividing by $$ r > 0 $$ gives $$ u_{tt} = c^2\left(u_{rr} + \frac{2}{r}u_r\right) $$ identically!
+
 ## Learning Objectives
 
 This lesson extends wave analysis to two and three dimensions. Students should understand how geometry affects wave propagation and why radial or domain-specific coordinates become important.

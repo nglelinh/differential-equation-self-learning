@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Load a steel beam with a sudden step-change in weight, and classical PDE theory stalls immediately: if the forcing $f$ has a jump discontinuity, then $u''$ must jump too, so no twice-differentiable $C^2$ solution can exist. Yet the beam still bends smoothly to a unique equilibrium! **Weak solutions** shift the PDE from pointwise equality to integral energy balance, unlocking existence for discontinuous loads, composite materials, and finite-element meshes.
+
 ![A weak PDE formulation through test functions and integration by parts]({{ site.imgurl }}/chapter_img/chapter12/04_weak_solutions_pdes.svg )
 
 ## Objectives
@@ -19,6 +21,15 @@ This lesson explains how a classical PDE is rewritten in weak form, why weak sol
 ## Prerequisites
 
 Students should know weak derivatives, the spaces $$ H^1 $$ and $$ H^1_0 $$, integration by parts, and the basic meaning of homogeneous Dirichlet boundary conditions. It is important to emphasize that weak form does not throw away the PDE. It rewrites the same balance law in a more stable framework.
+
+## Background Knowledge Map: From Strong PDEs to Variational Weak Formulations
+
+Reformulating a boundary-value problem in weak form rests on four conceptual pillars:
+
+1. **Testing and Integrating by Parts:** Multiplying $-\nabla\cdot(A\nabla u) + cu = f$ by a test function $v \in H_0^1(\Omega)$ and integrating by parts lowers the required regularity from two derivatives on $u$ to just one weak derivative on $u$ and one on $v$: $\int_\Omega (A\nabla u \cdot \nabla v + cuv)\,dx = \int_\Omega fv\,dx$.
+2. **Essential vs. Natural Boundary Conditions:** Dirichlet conditions ($u=0$ on $\partial\Omega$) are built directly into the trial/test space $H_0^1(\Omega)$ (*essential*), whereas Neumann conditions ($\frac{\partial u}{\partial n} = g$) drop out automatically from the boundary term of integration by parts (*natural*).
+3. **Variational Equivalence (Dirichlet's Principle):** When the bilinear form $a(u,v)$ is symmetric and positive definite, solving $a(u,v) = L(v)$ for all $v$ is strictly equivalent to minimizing the quadratic energy $J[u] = \frac{1}{2}a(u,u) - L(u)$.
+4. **Consistency with Classical Theory:** Whenever a weak solution turns out to be $C^2(\overline{\Omega})$, integrating back by parts and invoking the Fundamental Lemma recovers the original pointwise PDE and boundary conditions.
 
 ## Introduction
 
@@ -104,6 +115,26 @@ The weak form only works if the solution and test functions live in a space wher
 - Can they distinguish weak solutions from approximate or numerical ones?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Solving a Discontinuous-Load BVP Weakly
+
+Find the unique weak solution $u \in H_0^1(0,1)$ of $-u'' = f(x)$ on $(0,1)$ with $u(0) = u(1) = 0$, where $f(x) = 0$ on $(0,1/2)$ and $f(x) = 1$ on $(1/2,1)$. Verify explicitly that $u$ satisfies the weak formulation $\int_0^1 u'v'\,dx = \int_{1/2}^1 v\,dx$ for all $v \in H_0^1(0,1)$ despite failing to be $C^2$.
+
+1. **Solve on each subinterval:**
+   - On $(0, 1/2)$: $-u'' = 0 \implies u(x) = A x$ (using $u(0) = 0$).
+   - On $(1/2, 1)$: $-u'' = 1 \implies u(x) = -\frac{1}{2}x^2 + Bx + C$.
+2. **Match $u$ and $u'$ across $x = 1/2$ (no point force at $1/2$):** Continuity of $u'$ guarantees $u''$ has no Dirac delta at $x=1/2$, while $u(1)=0$ fixes the final constant:
+   - $u'(1/2^-) = u'(1/2^+) \implies A = -\frac{1}{2} + B \implies B = A + \frac{1}{2}$.
+   - $u(1/2^-) = u(1/2^+) \implies \frac{1}{2}A = -\frac{1}{8} + \frac{1}{2}(A + \frac{1}{2}) + C \implies C = -\frac{1}{8}$.
+   - $u(1) = 0 \implies -\frac{1}{2} + (A + \frac{1}{2}) - \frac{1}{8} = 0 \implies A = \frac{1}{8}$, so $B = \frac{5}{8}$.
+   Thus:
+   $$u(x) = \begin{cases} \frac{1}{8}x, & 0 \le x \le \frac{1}{2}, \\ -\frac{1}{2}x^2 + \frac{5}{8}x - \frac{1}{8}, & \frac{1}{2} \le x \le 1. \end{cases}$$
+3. **Verify the weak formulation directly:** For any $v \in H_0^1(0,1)$ (so $v(0) = v(1) = 0$):
+   $$\int_0^1 u'(x)v'(x)\,dx = \int_0^{1/2} \frac{1}{8}v'(x)\,dx + \int_{1/2}^1 \left(-x + \frac{5}{8}\right)v'(x)\,dx.$$
+   Integrating by parts on each half:
+   $$= \frac{1}{8}v\!\left(\frac{1}{2}\right) + \left[\left(-x + \frac{5}{8}\right)v(x)\right]_{1/2}^1 + \int_{1/2}^1 v(x)\,dx = \frac{1}{8}v\!\left(\frac{1}{2}\right) - \frac{1}{8}v\!\left(\frac{1}{2}\right) + \int_{1/2}^1 v(x)\,dx = \int_{1/2}^1 v(x)\,dx.$$
+   The boundary terms at $x=1/2$ cancel identically! Notice $u \in C^1([0,1]) \cap H^2(0,1)$ yet $u \notin C^2([0,1])$.
 
 ### Example 1: Deriving the weak form of Poisson's equation
 

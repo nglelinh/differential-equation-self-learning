@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** A continuous differential equation can have a calm, exponentially decaying solution $e^{-10t}$—yet step through it on a computer with a seemingly modest step size $h = 0.25$ and the numerical approximation erupts into violent alternating explosions. Before we build high-order solvers, we must understand the central drama of numerical analysis: **discretization turns a differential equation into a discrete dynamical system with its own stability laws**.
+
 ## Learning Objectives
 
 This preparatory lesson builds the conceptual foundation for numerical differential equations before any named scheme is introduced. After completing it, students should understand why discretization is necessary, how Taylor expansion justifies time-stepping formulas, why local error and global error are different, and why stability is a mathematical property of the numerical method rather than of the differential equation alone.
@@ -27,6 +29,15 @@ The aim of this lesson is to make that shift explicit before students meet the f
 ## Prerequisites
 
 Students should know initial value problems for ODEs, Taylor expansions, the geometric meaning of derivatives, and the basic idea that exact solutions of many realistic models are unavailable in closed form. No prior stability theory is assumed.
+
+## Background Knowledge Map: The Four Pillars of Numerical Discretization
+
+Every numerical ODE and PDE solver rests on four interlocking concepts:
+
+1. **Taylor Expansion and Consistency:** Replacing a continuous derivative by a finite-difference formula leaves a remainder—the **local truncation error** $\tau(h) = O(h^p)$. A scheme is consistent if $\tau(h) \to 0$ as $h \to 0$.
+2. **Local vs. Global Error Accumulation:** Over a fixed horizon $T$, taking $N = T/h$ steps accumulates roughly $N$ local errors of size $O(h^{p+1})$ (per step), yielding a global error of order $O(h^p)$—provided errors do not get amplified exponentially.
+3. **Numerical Stability and the Dahlquist Test Equation:** Testing a solver on $y' = \lambda y$ reduces each step to $y_{n+1} = R(h\lambda)y_n$. Stability requires the amplification factor to satisfy $|R(h\lambda)| \le 1$; otherwise round-off and truncation errors explode regardless of consistency.
+4. **The Lax–Dahlquist Equivalence Principle:** For well-posed linear problems, **consistency + stability $\iff$ convergence**. Accuracy alone is worthless without stability, and stability alone is worthless if the scheme approximates the wrong equation.
 
 ## 1. From a Continuous Model to a Discrete Process
 
@@ -104,6 +115,19 @@ Stiffness is often introduced later in the chapter, but students benefit from an
 This is why backward Euler and other implicit methods matter. They are not merely more complicated variants of Euler. They are responses to a structural mismatch between physical time scales and explicit stability restrictions.
 
 ## 6. Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Watching Stability Flip on the Dahlquist Test Equation
+
+Apply forward Euler $y_{n+1} = y_n + h f(t_n, y_n)$ to the decaying ODE $y' = -10y$, $y(0) = 1$ (exact solution $y(t) = e^{-10t}$) using two step sizes: $h = 0.1$ and $h = 0.25$.
+
+1. **Compute the amplification factor:** Substituting $f(t,y) = -10y$ gives
+   $$y_{n+1} = (1 - 10h)y_n = R(h\lambda)^n y_0, \qquad R(h\lambda) = 1 - 10h.$$
+   Stability ($|1 - 10h| \le 1$) requires $-1 \le 1 - 10h \le 1 \iff 0 \le h \le 0.2$.
+2. **Case A ($h = 0.1$, inside the stability boundary):** Here $R = 1 - 10(0.1) = 0$. Thus $y_0 = 1, y_1 = 0, y_2 = 0, \dots$. Although inaccurate after step 1 (since $e^{-1} \approx 0.3679$), the scheme stays bounded and mimics decay.
+3. **Case B ($h = 0.25$, just beyond $h_{\max} = 0.2$):** Here $R = 1 - 10(0.25) = -1.5$, so $|R| = 1.5 > 1$. Stepping forward gives:
+   $$y_0 = 1, \quad y_1 = -1.5, \quad y_2 = +2.25, \quad y_3 = -3.375, \quad y_4 = +5.0625.$$
+   Even though the true solution has decayed to $e^{-10} \approx 4.5 \times 10^{-5}$ by $t = 1$, the numerical solution oscillates wildly and diverges to $\pm\infty$!
 
 ### Example 1: Deriving a first step from Taylor expansion
 

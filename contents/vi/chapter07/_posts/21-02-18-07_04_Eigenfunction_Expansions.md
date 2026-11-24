@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+Một khi hệ hàm riêng $\{\phi_n(x)\}$ đã lập thành một "hệ trục tọa độ trực giao" cho không gian hàm, việc giải một phương trình vi phân biên **không thuần nhất** $L[y] - \mu w(x) y = f(x)$ trở nên dễ đến bất ngờ: chỉ cần chiếu cả nghiệm $y$ lẫn vế phải $f$ lên hệ trục $\{\phi_n\}$, phương trình vi phân lập tức tách rã thành vô hạn phương trình đại số 1 ẩn siêu đơn giản!
+
+## Bản đồ kiến thức nền: Bốn bước của Phương pháp Khai triển Hàm riêng
+
+1. **Công thức hệ số Fourier tổng quát**:
+   Vì $\langle \phi_m, \phi_n \rangle_w = 0$ khi $m \neq n$, ta chiếu hàm bất kỳ $f(x) = \sum_{n=1}^\infty c_n \phi_n(x)$ bằng công thức:
+   $$c_n = \frac{\int_a^b f(x)\phi_n(x) w(x)\,dx}{\int_a^b [\phi_n(x)]^2 w(x)\,dx}.$$
+2. **Chéo hóa toán tử vi phân $L$**:
+   Vì $L[\phi_n] = \lambda_n w \phi_n$, phương trình $L[y] - \mu w y = f$ biến thành $(\lambda_n - \mu) a_n = b_n \implies a_n = \frac{b_n}{\lambda_n - \mu}$!
+3. **Cộng hưởng & Điều kiện Fredholm Alternative**:
+   Khi $\mu = \lambda_k$ (trùng trị riêng): nếu $b_k \neq 0$ → **vô nghiệm** (cộng hưởng phá hủy); nếu $b_k = 0$ (tức $f \perp \phi_k$) → **vô số nghiệm**!
+4. **Cầu nối trực tiếp tới Chuỗi Fourier**:
+   Chuỗi sin và cosin Fourier ở Chương 8 đơn giản chỉ là trường hợp riêng của khai triển hàm riêng với $L[y] = -y''$!
+
 ## Mục tiêu
 
 Bài học này cho thấy giá trị thực tiễn của lý thuyết trị riêng và tính trực giao: cho phép biểu diễn một hàm bất kỳ theo hệ hàm riêng của bài toán. Sau bài học, sinh viên cần hiểu khai triển theo hàm riêng như sự tổng quát hóa của chuỗi Fourier, nắm công thức tính hệ số bằng phép chiếu có trọng số và biết cách dùng khai triển này để tách một bài toán phức tạp thành các chế độ độc lập.
@@ -25,6 +39,15 @@ Sinh viên nên nắm vững tính trực giao, hàm trọng số và khái ni�
 Chuỗi Fourier cho thấy một hàm phức tạp có thể được phân tích thành tổng các sóng sin và cos cơ bản. Khai triển theo hàm riêng mở rộng trực tiếp ý tưởng đó: thay vì luôn cố định cơ sở lượng giác, ta sử dụng chính họ hàm riêng do toán tử vi phân và điều kiện biên của bài toán sinh ra.
 
 Nhờ vậy, nhiều bài toán BVP không thuần nhất và PDE tách biến được giải gọn gàng: thay vì xử lý toàn bộ phương trình cùng lúc, ta chiếu dữ liệu lên từng chế độ riêng rồi giải từng phương trình độc lập.
+
+### Khung giải thích (nên đọc chậm): Giải cầm tay chỉ việc BVP không thuần nhất $-y'' - 2y = 5\sin(3x),\; y(0) = y(\pi) = 0$
+
+Bài toán trị riêng tương ứng $-y'' = \lambda y,\; y(0)=y(\pi)=0$ có trị riêng $\lambda_n = n^2$ và hàm riêng $\phi_n(x) = \sin(nx)$ ($n = 1, 2, 3, \dots$).
+1. **Nhận diện vế phải trong cơ sở hàm riêng**: $f(x) = 5\sin(3x)$ chỉ có đúng **1 thành phần** ứng với $n = 3$ ($b_3 = 5$, mọi $b_n = 0$ với $n \neq 3$).
+2. **Thay vào công thức chéo hóa** với $\mu = 2$ và $\lambda_3 = 3^2 = 9 \neq 2$:
+   $$a_3 = \frac{b_3}{\lambda_3 - \mu} = \frac{5}{9 - 2} = \frac{5}{7}, \qquad a_n = 0 \; (n \neq 3).$$
+3. **Nghiệm duy nhất**: $y(x) = \mathbf{\frac{5}{7}\sin(3x)}$.
+4. **Kiểm tra ngược**: $-y'' - 2y = -\left(-\frac{45}{7}\sin(3x)\right) - \frac{10}{7}\sin(3x) = \frac{35}{7}\sin(3x) = 5\sin(3x)$ (đúng 100%!). Lưu ý: nếu đề bài đổi $\mu = 9$, mẫu số $9 - 9 = 0$ với $b_3 = 5 \neq 0$ → cộng hưởng vô nghiệm ngay lập tức!
 
 ## Khái niệm theo ba cách
 

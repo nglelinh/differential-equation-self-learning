@@ -10,6 +10,37 @@ categories:
 lesson_type: required
 ---
 
+Real-world variables almost never evolve in isolation: blood glucose interacts with insulin, a predator population rises and falls with its prey, and two coupled circuits exchange energy back and forth every millisecond. Moving from a single scalar equation $$y' = f(t,y)$$ to a vector system $$\mathbf{x}' = \mathbf{f}(t, \mathbf{x})$$ does more than handle interacting components—it also unifies *every* higher-order ODE under one single first-order geometric roof.
+
+## Background Knowledge Map: Lifting Higher-Order Dynamics into State Space
+
+Four core ideas bridge Chapters 1–2 and vector systems in $$\mathbb{R}^n$$:
+
+1. **Order-to-Dimension Reduction:** Any $$n$$th-order scalar ODE $$y^{(n)} = F(t, y, y', \dots, y^{(n-1)})$$ converts identically into a first-order system of $$n$$ equations by defining state variables $$x_1 = y,\; x_2 = y',\;\dots,\; x_n = y^{(n-1)}$$—which is why numerical solvers (`RK45`, `solve_ivp`) only ever need to implement first-order vector systems!
+2. **Companion Matrix Representation:** For a linear $$n$$th-order ODE, the reduction yields $$\mathbf{x}' = A(t)\mathbf{x} + \mathbf{g}(t)$$ where $$A$$ is the **companion matrix** whose characteristic polynomial matches the scalar ODE's characteristic polynomial verbatim.
+3. **Phase Space and Trajectories:** Instead of plotting $$x_1(t)$$ and $$x_2(t)$$ separately against time, plotting the parametric curve $$\mathbf{x}(t) = (x_1(t), x_2(t))$$ in $$\mathbb{R}^2$$ turns the system into a steady velocity field guiding particles through state space.
+4. **Vector Picard–Lindelöf Uniqueness:** Replacing absolute values by Euclidean norms $$\|\cdot\|$$ extends existence and uniqueness verbatim to $$\mathbb{R}^n$$—guaranteeing that distinct trajectories of an autonomous system never cross in phase space.
+
+### Step-by-Step Worked Example (Read Slowly): Converting a Coupled Second-Order System into a First-Order Vector System
+
+Convert the forced third-order scalar IVP
+$$y''' - 2y'' + 5y' - 4y = \cos(t), \qquad y(0) = 1,\; y'(0) = -2,\; y''(0) = 3$$
+into a first-order linear vector system $$\mathbf{x}' = A\mathbf{x} + \mathbf{g}(t)$$ and verify its characteristic polynomial.
+
+1. **Define the 3-dimensional state vector:**
+   $$x_1 = y, \qquad x_2 = y', \qquad x_3 = y''.$$
+2. **Differentiate each state variable and substitute the highest derivative from the ODE:**
+   $$\begin{aligned}
+   x_1' &= x_2, \\
+   x_2' &= x_3, \\
+   x_3' &= y''' = 4x_1 - 5x_2 + 2x_3 + \cos(t).
+   \end{aligned}$$
+3. **Write in compact matrix–vector form with initial state $$\mathbf{x}(0)$$:**
+   $$\mathbf{x}' = \underbrace{\begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 4 & -5 & 2 \end{pmatrix}}_{A}\mathbf{x} + \begin{pmatrix} 0 \\ 0 \\ \cos t \end{pmatrix}, \qquad \mathbf{x}(0) = \begin{pmatrix} 1 \\ -2 \\ 3 \end{pmatrix}.$$
+4. **Verify that $$\det(\lambda I - A)$$ matches the scalar characteristic polynomial:**
+   $$\det\begin{pmatrix} \lambda & -1 & 0 \\ 0 & \lambda & -1 \\ -4 & 5 & \lambda - 2 \end{pmatrix} = \lambda\bigl(\lambda(\lambda - 2) + 5\bigr) + 1(-4) = \lambda^3 - 2\lambda^2 + 5\lambda - 4.$$
+   Exact match! Every root of the scalar equation is an eigenvalue of the companion matrix $$A$$.
+
 ## Learning Objectives
 
 This lesson opens the chapter on systems of differential equations, helping students understand why many phenomena cannot be fully described by a single variable, how to write state in vector form, and see the connection between higher-order equations and first-order systems. After this lesson, students should shift from thinking "one function evolving in time" to thinking "the entire state of a system evolving in time."

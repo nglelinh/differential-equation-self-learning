@@ -9,7 +9,23 @@ categories:
 - chapter11
 lesson_type: required
 ---
+
 ![21 03 18 11 06 Greens Functions Laplace]({{ site.imgurl }}/chapter_img/chapter11/06_greens_functions_laplace.svg)
+
+Làm sao giải bài toán Dirichlet $-\Delta u = f$ với dữ liệu biên $u|_{\partial\Omega} = g$ một lần duy nhất cho *mọi* hàm $f$ và $g$ bất kỳ? George Green đã đưa ra một ý tưởng thiên tài: đặt một **điện tích điểm đơn vị** tại $y$ bên trong một vỏ kim loại nối đất ($G = 0$ trên $\partial\Omega$) và đo điện thế $G(x, y)$ nó sinh ra. Một khi biết được "phản ứng đơn vị" $G(x, y)$ ấy, mọi nghiệm phức tạp đến đâu cũng chỉ còn là phép xếp chồng tích phân!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Hàm Green cho Phương trình Laplace
+
+1. **Định nghĩa vật lý và cấu trúc $G(x, y) = \Phi(x - y) - h_y(x)$**:
+   Hàm Green thỏa mãn $-\Delta_x G(x, y) = \delta(x - y)$ trong $\Omega$ và $G(x, y) = 0$ trên $\partial\Omega$. Ta tách nó thành phần kỳ dị tự do $\Phi(x - y)$ trừ đi một hàm điều hòa trơn $h_y(x)$ đóng vai trò "bộ hiệu chỉnh biên".
+2. **Công thức biểu diễn Green (Giải đồng thời nguồn $f$ và biên $g$)**:
+   Từ đồng nhất thức Green bậc hai thu được công thức vạn năng:
+   $$u(y) = \int_\Omega G(x, y) f(x)\,dx - \int_{\partial\Omega} g(x) \frac{\partial G}{\partial n_x}(x, y)\,dS_x.$$
+   Đạo hàm pháp tuyến $-\partial G/\partial n_x$ chính là **nhân Poisson** của miền $\Omega$!
+3. **Tính đối xứng $G(x, y) = G(y, x)$ (Định luật Tương hỗ)**:
+   Thế tại $x$ do nguồn đơn vị ở $y$ luôn bằng thế tại $y$ do nguồn đơn vị ở $x$—một hệ quả trực tiếp của tính tự liên hợp của toán tử Laplace.
+4. **Phương pháp Ảnh (Method of Images) cho Miền đối xứng**:
+   Với nửa không gian $y > 0$ (phản xạ gương $y \mapsto -y$) và hình cầu/đĩa tròn $B(0, R)$ (phép nghịch đảo cầu $y \mapsto \frac{R^2}{|y|^2}y$), ta đặt thêm đúng một nguồn ảnh ảo ngoài miền để triệt tiêu thế trên biên một cách chính xác tuyệt đối.
 
 ## Mục tiêu
 
@@ -25,6 +41,17 @@ Từ nghiệm cơ bản của toán tử Laplace trong toàn không gian, ta bi�
 
 Hàm Green không chỉ là một công thức giải bài toán, mà còn thể hiện cách nhìn toàn bộ miền như một hệ phản ứng trước xung điểm: biên không còn là điều kiện phụ tách rời mà được mã hóa trực tiếp vào nhân đáp ứng.
 
+
+### Khung giải thích (nên đọc chậm): Dựng và kiểm chứng bằng tay Hàm Green nửa mặt phẳng trên $y > 0$
+
+Đặt một nguồn điểm đơn vị tại $\mathbf{x}_0 = (0, 1)$ trong nửa mặt phẳng trên $\mathbb{R}^2_+ = \{(x, y) : y > 0\}$. Để triệt tiêu thế dọc trục hoành $y = 0$, ta đặt một **nguồn ảnh âm** đối xứng qua trục $x$ tại $\mathbf{x}_0^* = (0, -1)$:
+1. **Viết biểu thức Hàm Green 2D** (dùng $\Phi(r) = -\frac{1}{2\pi}\ln r$):
+   $$G(x, y; 0, 1) = -\frac{1}{2\pi}\ln\sqrt{x^2 + (y - 1)^2} + \frac{1}{2\pi}\ln\sqrt{x^2 + (y + 1)^2} = \frac{1}{4\pi}\ln\frac{x^2 + (y + 1)^2}{x^2 + (y - 1)^2}.$$
+2. **Kiểm tra điều kiện biên $y = 0$**:
+   $$G(x, 0; 0, 1) = \frac{1}{4\pi}\ln\frac{x^2 + 1}{x^2 + 1} = \frac{1}{4\pi}\ln 1 = \mathbf{0} \quad \forall x \in \mathbb{R}.$$
+3. **Tính giá trị tại điểm $(0, 2)$**:
+   $$G(0, 2; 0, 1) = \frac{1}{4\pi}\ln\frac{(2+1)^2}{(2-1)^2} = \frac{\ln 9}{4\pi} = \frac{\ln 3}{2\pi} \approx \mathbf{0{,}1749} > 0.$$
+   (Đúng như dự đoán vật lý: hàm Green cho $-\Delta$ luôn dương chặt bên trong miền!)
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan

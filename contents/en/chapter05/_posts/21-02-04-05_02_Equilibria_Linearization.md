@@ -10,6 +10,37 @@ categories:
 lesson_type: required
 ---
 
+Zoom in far enough on a smooth curved mountain trail and it looks like a straight ramp; zoom in far enough on a smooth nonlinear vector field near an equilibrium $$\mathbf{x}^*$$ and it looks like a linear system $$\mathbf{u}' = J(\mathbf{x}^*)\mathbf{u}$$. The **Hartman–Grobman Theorem** tells us exactly when that local magnifying glass tells the complete topological truth—and exactly when higher-order nonlinear terms can hijack the outcome!
+
+## Background Knowledge Map: The Jacobian Magnifying Glass and Hartman–Grobman
+
+Four core principles govern linearization around an equilibrium $$\mathbf{x}^*$$ where $$\mathbf{f}(\mathbf{x}^*) = \mathbf{0}$$:
+
+1. **Multivariable Taylor Expansion:** Writing $$\mathbf{x} = \mathbf{x}^* + \mathbf{u}$$ for small perturbations $$\mathbf{u}$$,
+   $$\mathbf{u}' = \mathbf{f}(\mathbf{x}^* + \mathbf{u}) = \underbrace{\mathbf{f}(\mathbf{x}^*)}_{\mathbf{0}} + J(\mathbf{x}^*)\mathbf{u} + O(\|\mathbf{u}\|^2),$$
+   where $$J(\mathbf{x}^*) = D\mathbf{f}(\mathbf{x}^*)$$ is the Jacobian matrix of partial derivatives evaluated at $$\mathbf{x}^*$$.
+2. **Hyperbolic Equilibria:** An equilibrium $$\mathbf{x}^*$$ is **hyperbolic** if *every* eigenvalue of $$J(\mathbf{x}^*)$$ has **nonzero real part** ($$\operatorname{Re}(\lambda_k) \ne 0$$)—meaning no eigenvalues sit on the imaginary axis.
+3. **Hartman–Grobman Theorem:** Near any *hyperbolic* equilibrium, the nonlinear flow is topologically conjugate (continuously deformable with matching arrow directions) to its linearization $$\mathbf{u}' = J(\mathbf{x}^*)\mathbf{u}$$. Thus nonlinear saddles, nodes, and spirals faithfully inherit their linearized stability!
+4. **Non-Hyperbolic Warning (Centers & Zero Eigenvalues):** If $$\operatorname{Re}(\lambda) = 0$$ (e.g., a linear center $$\pm i\omega$$ or a zero eigenvalue $$\lambda = 0$$), the system sits on a knife-edge—arbitrarily tiny quadratic or cubic terms can turn a linear center into a stable spiral, an unstable spiral, or a true nonlinear center!
+
+### Step-by-Step Worked Example (Read Slowly): Linearizing the Nonlinear Damped Pendulum at Both Equilibria
+
+Consider the nonlinear damped pendulum
+$$x' = y, \qquad y' = -\sin x - 0.6\,y.$$
+
+1. **Locate the physically distinct equilibria ($$x' = 0,\; y' = 0$$):**
+   $$y = 0 \quad \text{and} \quad -\sin x = 0 \implies (0, 0) \text{ (hanging down)} \quad \text{and} \quad (\pi, 0) \text{ (balanced upright)}.$$
+2. **Compute the general Jacobian matrix:**
+   $$J(x, y) = \begin{pmatrix} 0 & 1 \\ -\cos x & -0.6 \end{pmatrix}.$$
+3. **Linearize at the downward equilibrium $$(0, 0)$$:**
+   $$J(0, 0) = \begin{pmatrix} 0 & 1 \\ -1 & -0.6 \end{pmatrix} \implies \tau = -0.6, \quad \Delta = +1.$$
+   Eigenvalues: $$\lambda = \frac{-0.6 \pm \sqrt{0.36 - 4}}{2} = -0.3 \pm i\sqrt{0.91} \approx -0.3 \pm 0.954i.$$
+   Since $$\operatorname{Re}(\lambda) = -0.3 \ne 0$$, $$(0,0)$$ is **hyperbolic**; by Hartman–Grobman, it is a genuine **asymptotically stable spiral sink** of the nonlinear pendulum!
+4. **Linearize at the upright equilibrium $$(\pi, 0)$$:**
+   $$J(\pi, 0) = \begin{pmatrix} 0 & 1 \\ +1 & -0.6 \end{pmatrix} \implies \tau = -0.6, \quad \Delta = -1.$$
+   Eigenvalues: $$\lambda = \frac{-0.6 \pm \sqrt{4.36}}{2} \approx +0.744,\; -1.344.$$
+   Since both eigenvalues have nonzero real part (opposite signs), $$(\pi, 0)$$ is a hyperbolic **unstable saddle**—matching our everyday experience that balancing a pencil upright fails under the slightest nudge!
+
 ## Learning Objectives
 
 This lesson helps students locate equilibrium points of nonlinear systems, compute the Jacobian matrix, use linearization to predict local behavior, and understand both the power and the limits of the linear approximation.

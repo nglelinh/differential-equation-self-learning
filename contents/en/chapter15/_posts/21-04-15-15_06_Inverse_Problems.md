@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** A forward PDE problem asks: given the rock layers beneath the Earth's crust, how do seismic waves travel to surface sensors? An **inverse problem** flips the arrow backward: listening *only* to surface echoes or boundary electrical currents, can you reconstruct the hidden interior? The catch is that forward operators smooth away fine details—so inverting them magnifies microscopic measurement noise exponentially unless you regularize.
+
 ![Inverse problems: reconstructing hidden parameters from measured data]({{ site.imgurl }}/chapter_img/chapter15/06_inverse_problems.svg )
 
 ## Objectives
@@ -19,6 +21,15 @@ This optional lesson introduces inverse problems as a natural application area o
 ## Prerequisites
 
 Students should know propagation of singularities, basic elliptic or wave equations, and the practical reality that measured data is noisy. It is also helpful to remember that in a forward problem the model is known, while in an inverse problem the hidden structure itself must be recovered.
+
+## Background Knowledge Map: Uniqueness, Ill-Posedness, and Regularization in Inverse Problems
+
+Four pillars define the mathematical theory of PDE inverse problems:
+
+1. **Hadamard Ill-Posedness:** Forward maps $F: \text{parameters} \to \text{data}$ are typically compact smoothing operators, so $F^{-1}$ is unbounded—arbitrarily tiny data noise $\delta$ can produce arbitrarily huge reconstruction errors unless extra prior information is imposed.
+2. **Calderón's Problem and the Dirichlet-to-Neumann Map:** Can you determine interior conductivity $\gamma(x)$ in $\nabla\cdot(\gamma\nabla u) = 0$ purely from boundary voltage-to-current measurements $\Lambda_\gamma: u|_{\partial\Omega} \mapsto \gamma\partial_n u|_{\partial\Omega}$? Sylvester–Uhlmann (1987) proved uniqueness in $d \ge 3$ using Complex Geometric Optics (CGO) solutions.
+3. **Stability Regimes (Logarithmic vs. Lipschitz):** Elliptic inverse problems (like Calderón's problem) exhibit notoriously weak *logarithmic* stability ($\|\gamma_1-\gamma_2\| \le C|\ln\delta|^{-\alpha}$), whereas hyperbolic wave/travel-time inverse problems often achieve much stronger Hölder or Lipschitz stability because waves carry sharp singularities to the boundary!
+4. **Tikhonov Regularization and Microlocal Visibility:** Minimizing $\|F(x) - y^\delta\|^2 + \alpha\|x\|_{H^s}^2$ trades bias against variance; microlocal analysis tells us precisely *which* internal edges (wave front covectors) are stably visible from the available sensor geometry.
 
 ## Introduction
 
@@ -104,6 +115,22 @@ Propagation and wave front ideas explain what the data can really detect.
 - Can they explain why visibility of singularities is central?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Hadamard's Classic Instability Example for Boundary Recovery
+
+Consider recovering an interior harmonic field $u(x,y)$ on the strip $y > 0$ from noisy Cauchy data on the boundary $y = 0$: $\Delta u = 0$, $u(x,0) = 0$, $\partial_y u(x,0) = g_n(x) = \frac{1}{n}\sin(nx)$. Quantify how a tiny boundary perturbation explodes at height $y = 1$ for $n = 10$.
+
+1. **Write the exact harmonic solution matching $u(x,0) = 0$ and $\partial_y u(x,0) = \frac{1}{n}\sin(nx)$:**
+   $$u_n(x,y) = \frac{1}{n^2}\sin(nx)\sinh(ny).$$
+   Check: $\Delta u_n = \frac{1}{n^2}(-n^2 + n^2)\sin(nx)\sinh(ny) = 0$, $u_n(x,0) = 0$, and $\partial_y u_n(x,0) = \frac{1}{n^2}\cdot n\sin(nx)\cosh(0) = \frac{1}{n}\sin(nx)$.
+2. **Measure the size of the boundary data perturbation as $n \to \infty$:**
+   $$\max_{x\in\mathbb{R}} |g_n(x)| = \frac{1}{n} \xrightarrow{n\to\infty} 0.$$
+   For $n = 10$, the boundary noise is just $0.10$.
+3. **Measure the resulting interior reconstruction at $y = 1$:**
+   $$\max_{x\in\mathbb{R}} |u_n(x,1)| = \frac{\sinh(n)}{n^2} = \frac{e^n - e^{-n}}{2n^2} \xrightarrow{n\to\infty} +\infty.$$
+   For $n = 10$: $\sinh(10) \approx 11013.2$, so $\max_x |u_{10}(x,1)| \approx \frac{11013.2}{100} \approx 110.13$!
+4. **Takeaway:** A boundary error of $0.10$ amplified by more than **$1100\times$** just one unit inside the domain (and at $n = 20$, a boundary error of $0.05$ amplifies to $6.06 \times 10^5$!). That exponential blow-up is why every practical inverse solver requires spectral filtering or Tikhonov regularization.
 
 ### Example 1: Computed tomography
 

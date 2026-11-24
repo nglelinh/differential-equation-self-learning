@@ -10,6 +10,23 @@ categories:
 lesson_type: optional
 ---
 
+
+Đôi khi bạn không hề cần biết giá trị chính xác của $y(t)$ ở giây thứ $3{,}72$—điều bạn thực sự quan tâm là **số phận dài hạn**: quần thể cá có bị tuyệt chủng không nếu tăng hạn mức đánh bắt, hay nhiệt độ lò phản ứng có ổn định không? Với **phương trình tự trị** $y' = f(y)$, chỉ cần vẽ duy nhất một trục thẳng gọi là **đường pha (phase line)** là ta đọc trọn vẹn tương lai của mọi điều kiện ban đầu mà không phải tính một phép tích phân nào!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Tự trị & Đường pha
+
+1. **Tính bất biến theo thời gian ($y' = f(y)$)**:
+   Vế phải không chứa $t$, nên nếu $y(t)$ là nghiệm thì mọi bản dịch ngang $y(t - c)$ cũng là nghiệm—toàn bộ họ đường cong tích phân chỉ là các bản sao tịnh tiến ngang của nhau.
+2. **Điểm cân bằng ($f(y^*) = 0$) & Phân loại ổn định**:
+   Dựa vào dấu của $f(y)$ hai bên $y^*$ (hoặc dấu của $f'(y^*)$):
+   - $f'(y^*) < 0$: **Điểm hút (ổn định tiệm cận)** — mũi tên hai bên đều chỉ vào $y^*$.
+   - $f'(y^*) > 0$: **Điểm đẩy (không ổn định)** — mũi tên hai bên đều chỉ ra xa.
+   - Đổi dấu một phía ($f'(y^*) = 0$): **Điểm bán ổn định (semi-stable)** — hút một phía, đẩy phía kia.
+3. **Đường pha 1D & Ngưỡng tới hạn (Threshold)**:
+   Các điểm cân bằng không ổn định đóng vai trò "vách chia nước" phân tách miền hút của các trạng thái cân bằng ổn định khác nhau.
+4. **Rẽ nhánh (Bifurcation) sơ khai**:
+   Khi thay đổi một tham số bên ngoài (như tốc độ đánh bắt $h$ trong $P' = rP(1-P/K) - h$), số lượng điểm cân bằng có thể đột ngột biến mất—dẫn đến sụp đổ hệ sinh thái!
+
 ## Mục tiêu
 Bài học này giúp sinh viên phân tích hành vi định tính của một phương trình vi phân tự trị cấp một mà không cần giải ra công thức nghiệm tường minh. Sau bài học, sinh viên có thể xác định các điểm cân bằng, sử dụng dấu của $$ f(y) $$ để dựng đường pha, phân loại tính ổn định và hiểu vì sao phân tích định tính là công cụ cốt lõi khi nghiệm dạng đóng khó tìm hoặc không cần thiết.
 
@@ -22,6 +39,17 @@ Sinh viên cần nắm dạng phương trình cấp một tự trị $$ y'=f(y) 
 Không phải lúc nào ta cũng cần công thức nghiệm tường minh để hiểu một hệ động lực. Chỉ cần biết tại mỗi giá trị trạng thái $$ y $$ thì hệ đang tăng hay giảm, ta đã có thể dự đoán hành vi dài hạn, xác định các ngưỡng chuyển trạng thái và phân loại các điểm cân bằng. Đây là bước chuyển tư duy quan trọng từ tính toán công thức sang phân tích cấu trúc định tính.
 
 Phương trình tự trị là điểm khởi đầu lý tưởng cho tư duy này vì vế phải chỉ phụ thuộc vào trạng thái hiện tại $$ y $$ mà không phụ thuộc tường minh vào thời gian $$ t $$. Nhờ vậy, toàn bộ động lực học có thể biểu diễn gọn trên một trục một chiều gọi là đường pha (phase line).
+
+### Khung giải thích (nên đọc chậm): Vẽ đường pha và tìm ngưỡng sụp đổ cho mô hình đánh bắt $y' = y(4 - y) - h$
+
+Xét hai kịch bản khai thác $h = 3$ và $h = 4$:
+1. **Khi $h = 3$**: $f(y) = -y^2 + 4y - 3 = -(y - 1)(y - 3) = 0$ có 2 điểm cân bằng $y_1 = 1$ và $y_2 = 3$.
+   - Tính $f'(y) = -2y + 4$:
+     - Tại $y_1 = 1$: $f'(1) = +2 > 0 \implies$ **không ổn định (điểm đẩy / ngưỡng sống còn)**.
+     - Tại $y_2 = 3$: $f'(3) = -2 < 0 \implies$ **ổn định (điểm hút)**.
+   - Kết luận: Nếu dân số ban đầu $y(0) > 1$, quần thể phục hồi về $3$; nhưng nếu rơi xuống $y(0) < 1$, quần thể lao thẳng về $0$ (tuyệt chủng)!
+2. **Khi $h = 4$**: $f(y) = -(y - 2)^2 \le 0$ với mọi $y$, chỉ còn đúng 1 điểm cân bằng **bán ổn định** $y^* = 2$.
+3. **Khi $h > 4$**: $f(y) < 0$ với mọi $y$ — **không còn điểm cân bằng nào**, quần thể chắc chắn tuyệt chủng dù ban đầu đông đến đâu! Vậy $h_c = 4$ là **ngưỡng khai thác tới hạn**.
 
 ## Khái niệm theo ba cách
 

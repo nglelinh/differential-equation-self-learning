@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Trước khi bước vào thế giới kỳ diệu của Toán tử Giả vi phân, hãy kiểm tra lại chiếc "kính lúp" mạnh nhất trong túi đồ giải tích của bạn: **Biến đổi Fourier**. Phép biến đổi này thực hiện một phép màu đại số khó tin—nó biến toán tử đạo hàm $D_x = -i\partial_x$ thành phép nhân đơn giản với biến số $\xi$. Nhờ chiếc kính lúp ấy, mọi toán tử vi phân phức tạp bỗng hiện nguyên hình thành một hàm đại số gọi là **ký hiệu (symbol)**!
+
+## Bản đồ kiến thức nền: Bốn viên gạch ôn tập trước khi học Toán tử Giả vi phân
+
+1. **Từ điển Fourier $\widehat{D_x^\alpha u}(\xi) = \xi^\alpha \widehat{u}(\xi)$**:
+   Đặt $D_j = -i\partial_{x_j}$ để triệt tiêu mọi yếu tố $i$ thừa thãi; khi đó mỗi toán tử vi phân hệ số hằng $P(D) = \sum_{|\alpha|\le m} c_\alpha D^\alpha$ tương ứng 1–1 với đa thức ký hiệu $p(\xi) = \sum c_\alpha \xi^\alpha$.
+2. **Bộ nhân Fourier (Fourier Multiplier) $m(D)$**:
+   Thay đa thức $p(\xi)$ bằng hàm tổng quát $m(\xi)$: $\widehat{m(D)u}(\xi) = m(\xi)\widehat{u}(\xi)$. Nhờ đẳng thức Plancherel, $m(D)$ bị chặn trên $L^2(\mathbb{R}^n)$ khi và chỉ khi $m \in L^\infty(\mathbb{R}^n)$!
+3. **Không gian Sobolev $H^s(\mathbb{R}^n)$ đo trực tiếp bằng Trọng số $\langle\xi\rangle^s$**:
+   $\|u\|_{H^s}^2 = \int_{\mathbb{R}^n} (1 + |\xi|^2)^s |\widehat{u}(\xi)|^2\,d\xi$—định nghĩa này hoạt động gọn gàng cho **mọi số thực $s \in \mathbb{R}$**, kể cả số lẻ (như $H^{1/2}$) hay số âm (như $H^{-1}$)!
+4. **Trực giác Elliptic ở Tần số cao $|\xi| \to \infty$**:
+   Một ký hiệu bậc $m$ là *elliptic* nếu phần bậc cao nhất $p_m(\xi)$ không triệt tiêu với mọi $\xi \neq 0$ (ví dụ $|\xi|^2$ của $-\Delta$ là elliptic, còn $\xi_1^2 - \xi_2^2$ của toán tử sóng bị triệt tiêu trên đường chéo $\xi_1 = \pm\xi_2$ nên **không** elliptic!).
+
 ## Mục tiêu
 
 Bài học bổ trợ này ôn lại cầu nối khái niệm từ toán tử vi phân cổ điển sang toán tử giả vi phân. Sau bài học, sinh viên cần hiểu vì sao bộ nhân Fourier là điểm xuất phát tự nhiên, cách toán tử vi phân được mã hóa bởi ký hiệu (symbol) đa thức, vì sao tính không địa phương tất yếu xuất hiện khi vượt ra khỏi lớp toán tử vi phân, và cách trực giác elliptic dẫn đến lớp toán tử rộng hơn trong lý thuyết PDE hiện đại.
@@ -24,6 +37,16 @@ Chương 14 thường gây khó khăn không phải vì toán tử giả vi phâ
 
 Sinh viên cần nắm vững biến đổi Fourier ở mức độ Chương 08, các toán tử vi phân cổ điển từ những chương PDE trước đó, cùng ý tưởng cơ bản về tính elliptic qua phương trình Laplace và Poisson. Bài học này không đòi hỏi người học phải biết trước phép tính ký hiệu đầy đủ; ngược lại, nó đóng vai trò chuẩn bị cho Bài 14.01 và 14.02.
 
+
+### Khung giải thích (nên đọc chậm): Tính tay tác động của toán tử Helmholtz và bộ nhân nghịch đảo lên một sóng phẳng
+
+Xét toán tử vi phân $P = -\partial_x^2 + 4 = D_x^2 + 4$ trên $\mathbb{R}$ (với $D_x = -i\partial_x$):
+1. **Đọc ký hiệu của $P$**: Thay $D_x \mapsto \xi$, ta có $p(\xi) = \xi^2 + 4 > 0$ với mọi $\xi \in \mathbb{R}$.
+2. **Tác động lên sóng phẳng $u(x) = e^{3ix}$** (tần số $\xi = 3$):
+   $$P(e^{3ix}) = p(3)\,e^{3ix} = (3^2 + 4)e^{3ix} = \mathbf{13\,e^{3ix}}.$$
+3. **Tác động của bộ nhân nghịch đảo $P^{-1}$** (ký hiệu $m(\xi) = \frac{1}{\xi^2 + 4}$):
+   $$P^{-1}(e^{3ix}) = \frac{1}{3^2 + 4}e^{3ix} = \mathbf{\frac{1}{13}e^{3ix}}.$$
+   Kiểm chứng tính bị chặn $L^2$: $\sup_{\xi \in \mathbb{R}} |m(\xi)| = m(0) = \frac{1}{4}$, nên $\|P^{-1}f\|_{L^2} \le \frac{1}{4}\|f\|_{L^2}$ với **mọi** hàm $f \in L^2(\mathbb{R})$!
 ## 1. Từ Đạo Hàm Đến Bộ Nhân Fourier
 
 Biến đổi Fourier là cơ sở đầu tiên dẫn tới sự hình thành của toán tử giả vi phân. Với một hàm đủ tốt $$ u $$ trên $$ \mathbb{R}^n $$, ta định nghĩa

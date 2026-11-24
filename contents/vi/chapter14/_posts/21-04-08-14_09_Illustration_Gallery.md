@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Toán tử Giả vi phân nghe có vẻ thuần túy trừu tượng, nhưng trên không gian pha $(x, \xi)$ nó lại mang một ngôn ngữ hình học cực kỳ sống động: nhìn vào bề mặt ký hiệu $p(x, \xi)$, ta thấy ngay mặt nón đặc trưng nơi tính elliptic sụp đổ, thấy tốc độ suy giảm của nhân parametrix $q(x, \xi)$, và thấy nhân Schwartz $K_P(x, y)$ chỉ mang kỳ dị dọc đúng đường chéo $x = y$ còn ngoài đường chéo thì phẳng mượt như lụa!
+
+## Bản đồ kiến thức nền: Bốn bức tranh trực quan cần khám phá trong Gallery Chương 14
+
+1. **Bề mặt Ký hiệu $p(x, \xi)$ — Elliptic vs. Hyperbolic**:
+   So sánh bát paraboloid dương chặt của $-\Delta$ ($|\xi|^2 > 0$) với mặt yên ngựa có đường cắt $0$ của toán tử sóng ($\xi_1^2 - \xi_2^2 = 0$).
+2. **Nhân Schwartz $K_P(x, y)$ và Đỉnh Kỳ dị trên Đường chéo $x = y$**:
+   Quan sát trực quan tính giả-địa phương: mọi kỳ dị tập trung khít trên đường $x = y$, còn khi $|x - y| > 0$, nhân $K_P$ trơn vô hạn!
+3. **Chuỗi Hội tụ của Parametrix $P(Q_0 + Q_1 + \dots) \to I$**:
+   Nhìn sai số ở miền tần số cao $|\xi| \to \infty$ bị bóp nhỏ theo từng bậc $O(|\xi|^{-1}) \to O(|\xi|^{-2}) \to O(|\xi|^{-3})$ sau mỗi vòng hiệu chỉnh Kohn–Nirenberg.
+4. **Cắt cụt Tần số và Bậc Làm trơn $S^{-m}$ vs. $S^{-\infty}$**:
+   Đối chiếu tốc độ tắt đại số $\langle\xi\rangle^{-2}$ của toán tử bậc $-2$ với tốc độ tắt siêu nhanh $e^{-|\xi|^2}$ của toán tử làm trơn $S^{-\infty}$.
+
 ## Mục Đích Của Bài Hỗ Trợ
 
 Bài học bổ trợ này tập hợp toàn bộ minh họa của Chương 14 vào một không gian ôn tập trực quan chung. Toán tử giả vi phân thường là giai đoạn người học chuyển từ các kỹ thuật PDE cổ điển sang ngôn ngữ giải tích hiện đại hơn; bộ minh họa giúp quá trình chuyển tiếp đó diễn ra mạch lạc, có cấu trúc thay vì gây cảm giác đột ngột và nặng tính hình thức.
@@ -22,6 +35,17 @@ Nên xem lần lượt các minh họa theo đúng thứ tự bài học. Sau m�
 
 Trang này cũng tạo cầu nối tự nhiên sang Chương 15, nơi góc nhìn ký hiệu được phát triển sâu hơn theo hướng hình học và vi địa phương.
 
+
+### Khung giải thích (nên đọc chậm): So sánh bằng số tốc độ suy giảm của ký hiệu bậc $-2$ và ký hiệu làm trơn $S^{-\infty}$
+
+Hãy đánh giá hai ký hiệu tại hai mốc tần số $|\xi| = 10$ và $|\xi| = 100$:
+1. **Ký hiệu Parametrix bậc $-2$**: $q(\xi) = (1 + |\xi|^2)^{-1} \in S^{-2}$:
+   - Tại $|\xi| = 10$: $q(10) = \frac{1}{101} \approx \mathbf{9{,}9 \times 10^{-3}}$.
+   - Tại $|\xi| = 100$: $q(100) = \frac{1}{10.001} \approx \mathbf{1{,}0 \times 10^{-4}}$ (tần số tăng $10\times$, giá trị giảm $100\times$).
+2. **Ký hiệu Làm trơn $S^{-\infty}$**: $r(\xi) = e^{-|\xi|^2}$:
+   - Tại $|\xi| = 10$: $r(10) = e^{-100} \approx \mathbf{3{,}7 \times 10^{-44}}$.
+   - Tại $|\xi| = 100$: $r(100) = e^{-10.000} \approx \mathbf{10^{-4.343}}$ (gần như bằng $0$ tuyệt đối!).
+Chính sự chênh lệch khổng lồ này giải thích vì sao trong lý thuyết $\Psi$DO ta hoàn toàn có quyền bỏ qua các sai số thuộc $S^{-\infty}$ khi phân tích kỳ dị!
 ## Gallery Nhúng Trực Tiếp
 
 {% include interactive-frame.html

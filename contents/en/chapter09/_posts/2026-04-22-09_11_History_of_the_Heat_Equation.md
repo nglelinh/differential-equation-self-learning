@@ -9,6 +9,27 @@ categories:
 - chapter09
 ---
 
+When Joseph Fourier served as prefect of Isère in Grenoble under Napoleon, he spent his spare hours measuring how iron rings and spheres cooled—and turned those experiments into a mathematical revolution. Before Fourier's 1822 *Théorie analytique de la chaleur*, mathematical physics was dominated by reversible Newtonian mechanics; Fourier opened the door to *irreversible* dissipative processes, introduced dimensional analysis, and forged the analytical toolkit of separation of variables and Fourier transforms that still dominates PDEs today.
+
+## Background Knowledge Map: Historical Milestones of Diffusion Theory
+
+1. **Fourier's Analytical Theory of Heat (1807–1822):** Derived $$ u_t = \alpha u_{xx} $$ from flux conservation, solved it via trigonometric series on bounded domains and Fourier integrals on unbounded domains, and formalized dimensional homogeneity in physics.
+2. **Lord Kelvin's Age of the Earth Debate (1862):** William Thomson (Lord Kelvin) applied the half-line $$ \operatorname{erf}(x/\sqrt{4\alpha t}) $$ solution to Earth's geothermal gradient, estimating Earth's age at 20–100 million years—a brilliant mathematical calculation that missed only radioactive heating (discovered decades later!) and mantle convection.
+3. **Einstein & Smoluchowski's Brownian Motion (1905–1906):** Albert Einstein proved that random microscopic molecular bombardments produce the macroscopic diffusion equation $$ \rho_t = D \rho_{xx} $$ with mean-square displacement $$ \langle x^2 \rangle = 2Dt $$, confirming the reality of atoms!
+4. **Black–Scholes & Modern Stochastic Diffusion (1973):** Fischer Black, Myron Scholes, and Robert Merton connected stochastic differential equations (Itô calculus) directly to the backward heat equation, creating modern quantitative finance.
+
+### Step-by-Step Worked Example (Read Slowly): Reproducing Lord Kelvin's 1862 Geothermal Gradient Formula
+
+**Problem:** From the half-line cooling solution $$ u(x, t) = T_0\,\operatorname{erf}\!\left(\frac{x}{\sqrt{4\alpha t}}\right) $$ (where $$ x $$ is depth below Earth's surface and $$ T_0 $$ is initial molten core temperature), compute the surface temperature gradient $$ g = u_x(0, t) $$, and solve for the cooling age $$ t $$ using Kelvin's parameters $$ T_0 = 3900\text{ K} $$, $$ g = 0.036\text{ K/m} $$, and rock diffusivity $$ \alpha = 1.2 \times 10^{-6}\text{ m}^2/\text{s} $$.
+
+1. **Differentiate $$ u(x, t) $$ with respect to $$ x $$ using $$ \frac{d}{dz}\operatorname{erf}(z) = \frac{2}{\sqrt{\pi}}e^{-z^2} $$:**
+   $$ u_x(x, t) = T_0 \cdot \frac{2}{\sqrt{\pi}} e^{-x^2 / (4\alpha t)} \cdot \frac{1}{\sqrt{4\alpha t}} = \frac{T_0}{\sqrt{\pi \alpha t}} e^{-x^2 / (4\alpha t)}. $$
+2. **Evaluate at the surface $$ x = 0 $$ and solve for $$ t $$:**
+   $$ g = u_x(0, t) = \frac{T_0}{\sqrt{\pi \alpha t}} \implies t = \frac{T_0^2}{\pi \alpha g^2}. $$
+3. **Plug in Kelvin's numbers:**
+   $$ t = \frac{(3900)^2}{\pi (1.2 \times 10^{-6})(0.036)^2} = \frac{1.521 \times 10^7}{4.886 \times 10^{-9}} \approx 3.11 \times 10^{15}\text{ s}. $$
+   Dividing by $$ 3.156 \times 10^7\text{ s/year} $$ gives $$ t \approx 98.6\text{ million years} $$—right on Kelvin's celebrated ~100-million-year benchmark!
+
 ## Objectives
 This lesson follows the history of the heat equation from Fourier's original theory to diffusion, probability, and numerical computation. Students should see Chapter 09 as one of the founding chapters of modern PDE.
 

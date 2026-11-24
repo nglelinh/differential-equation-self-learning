@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Gắn hai con lắc với nhau bằng một lò xo nhỏ rồi kéo lệch một bên: bạn sẽ chứng kiến màn "chuyền năng lượng" mê hoặc khi con lắc thứ nhất dừng hẳn lại để truyền toàn bộ dao động sang con lắc thứ hai, rồi lại nhận ngược về! Bí mật đằng sau chuyển động tưởng như rối rắm ấy—từ phân tử $\text{CO}_2$ đến hệ thống treo ô tô 4 bánh—nằm ở các **chế độ chuẩn (normal modes)** và **tần số riêng $\omega_k$** của ma trận độ cứng!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Dao động Liên kết
+
+1. **Hệ cấp hai dạng ma trận ($M\mathbf{x}'' = -K\mathbf{x}$ hay $\mathbf{x}'' = A\mathbf{x}$)**:
+   Thay vì hạ bậc sang hệ $4\times 4$ cồng kềnh, thử trực tiếp $\mathbf{x}(t) = \mathbf{v}\cos(\omega t)$ biến ngay bài toán thành **bài toán trị riêng $2\times 2$**: $A\mathbf{v} = -\omega^2 \mathbf{v}$!
+2. **Tần số chuẩn ($\omega_k$) & Vectơ chế độ chuẩn ($\mathbf{v}_k$)**:
+   Vì $M^{-1}K$ có các trị riêng dương $\omega_k^2 > 0$, mỗi chế độ chuẩn là một nhịp rung đồng bộ nơi **mọi khối lượng dao động cùng một tần số $\omega_k$** với tỷ lệ biên độ cố định theo $\mathbf{v}_k$.
+3. **Chế độ đối xứng (cùng pha) vs. Phản đối xứng (ngược pha)**:
+   Với hai vật giống hệt nhau nối lò xo: chế độ cùng pha có tần số **thấp hơn** (lò xo giữa không bị nén giãn), còn chế độ ngược pha có tần số **cao hơn** (lò xo giữa bị nén giãn gấp đôi!).
+4. **Hiện tượng Phách trao đổi năng lượng**:
+   Khi hai tần số chuẩn $\omega_1 \approx \omega_2$ gần nhau (liên kết yếu), chồng chất $\cos(\omega_1 t) + \cos(\omega_2 t)$ tạo nhịp phách chậm đưa năng lượng qua lại nhịp nhàng giữa hai vật!
+
 ## Mục tiêu
 
 Bài học này minh họa cách hệ phương trình và bài toán trị riêng xuất hiện tự nhiên trong mô hình hai vật dao động liên kết, làm rõ khái niệm chế độ dao động chuẩn (normal modes), đồng thời giải thích các hiện tượng dao động cùng pha, ngược pha, truyền năng lượng và phách.
@@ -25,6 +39,19 @@ Sinh viên cần nắm hệ phương trình tuyến tính, trị riêng, vector 
 Khi hai vật dao động được nối với nhau bằng lò xo, chuyển động của vật này phụ thuộc trực tiếp vào vị trí của vật kia. Thay vì phân tích rời rạc từng vật, câu hỏi trọng tâm là cả hệ có thể dao động đồng bộ theo những kiểu tự nhiên nào. Các kiểu dao động tự nhiên đó gọi là các chế độ dao động chuẩn (mode chuẩn) và được xác định trực tiếp qua bài toán trị riêng.
 
 Trong ứng dụng này, mọi khái niệm đại số tuyến tính đều mang ý nghĩa vật lý cụ thể: trị riêng xác định tần số dao động riêng, vector riêng mô tả hình dạng dao động của cả hệ, tổ hợp tuyến tính tái hiện chuyển động thực tế, và khi hai tần số riêng gần nhau ta quan sát được hiện tượng phách.
+
+### Khung giải thích (nên đọc chậm): Tìm 2 tần số chuẩn và chế độ chuẩn của hệ hai vật $m_1 = m_2 = 1$ nối 3 lò xo đều có $k = 1$
+
+Cân bằng lực Hooke cho hai độ lệch $x_1, x_2$:
+- $x_1'' = -x_1 + (x_2 - x_1) = -2x_1 + x_2$
+- $x_2'' = -x_2 + (x_1 - x_2) = x_1 - 2x_2$
+Viết gọn: $\mathbf{x}'' = \begin{pmatrix} -2 & 1 \\ 1 & -2 \end{pmatrix}\mathbf{x} = A\mathbf{x}$.
+1. **Tìm trị riêng $\lambda = -\omega^2$ của $A$**:
+   $(-2 - \lambda)^2 - 1 = 0 \implies \lambda_1 = \mathbf{-1}$ ($\omega_1 = \mathbf{1}$) và $\lambda_2 = \mathbf{-3}$ ($\omega_2 = \mathbf{\sqrt{3}}$).
+2. **Tìm vectơ chế độ chuẩn**:
+   - Với $\omega_1 = 1$ ($\lambda_1 = -1$): $\mathbf{v}_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$ — **chế độ cùng pha** (hai vật đi sang trái/phải cùng nhau, lò xo giữa giữ nguyên chiều dài!).
+   - Với $\omega_2 = \sqrt{3}$ ($\lambda_2 = -3$): $\mathbf{v}_2 = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$ — **chế độ ngược pha** (hai vật tiến vào–tách ra đối xứng, tần số cao gấp $\sqrt{3} \approx 1{,}73$ lần!).
+3. **Nghiệm tổng quát**: $\mathbf{x}(t) = \big(a_1\cos t + b_1\sin t\big)\begin{pmatrix} 1 \\ 1 \end{pmatrix} + \big(a_2\cos\sqrt{3}t + b_2\sin\sqrt{3}t\big)\begin{pmatrix} 1 \\ -1 \end{pmatrix}$.
 
 ## Khái niệm theo ba cách
 

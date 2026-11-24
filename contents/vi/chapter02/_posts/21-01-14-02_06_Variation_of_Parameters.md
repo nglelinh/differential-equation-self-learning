@@ -9,6 +9,21 @@ categories:
 - chapter02
 lesson_type: required
 ---
+
+Điều gì xảy ra nếu ngoại lực tác động lên lò xo là $\sec(t)$, $\ln(t)$, hay $e^t / t$—những hàm mà đạo hàm của chúng sinh ra vô hạn dạng mới khiến phương pháp hệ số bất định hoàn toàn bó tay? Năm 1774, Lagrange đã tạo ra chiếc chìa khóa vạn năng **Biến thiên hằng số (Variation of Parameters)**: chỉ cần biết hai nghiệm thuần nhất $y_1, y_2$, ta có thể giải **mọi** phương trình tuyến tính không thuần nhất, kể cả khi hệ số biến thiên!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Biến thiên Hằng số
+
+1. **Ý tưởng thay hằng số bằng hàm số ($y_p = u_1(t)y_1(t) + u_2(t)y_2(t)$)**:
+   Vì có 2 hàm ẩn $u_1, u_2$ nhưng chỉ có 1 phương trình, ta tự do áp đặt thêm điều kiện phụ thanh lịch $u_1' y_1 + u_2' y_2 = 0$ để loại bỏ toàn bộ đạo hàm cấp hai $u_1'', u_2''$.
+2. **Hệ đại số Cramer & Vai trò của Wronskian**:
+   Hai ẩn $u_1', u_2'$ thỏa hệ $\begin{cases} u_1' y_1 + u_2' y_2 = 0 \\ u_1' y_1' + u_2' y_2' = g(t) \end{cases}$ (nhớ đưa về dạng chuẩn $y'' + py' + qy = g(t)$!), cho nghiệm duy nhất nhờ $W(y_1, y_2) \ne 0$:
+   $$u_1' = \frac{-y_2 g}{W},\qquad u_2' = \frac{y_1 g}{W}.$$
+3. **Công thức Hàm Green tích phân**:
+   Gộp lại ta được $y_p(t) = \int_{t_0}^t \frac{y_1(s)y_2(t) - y_2(s)y_1(t)}{W(s)}\,g(s)\,ds$—biểu diễn nghiệm như tổng chồng chất đáp ứng xung của ngoại lực $g(s)$!
+4. **Tính tổng quát tuyệt đối**:
+   Áp dụng được cho cả phương trình hệ số biến thiên và mọi vế phải liên tục $g(t)$, đánh đổi duy nhất là phải tính hai tích phân.
+
 ## Mục tiêu
 Bài học này giúp sinh viên nắm vững phương pháp biến thiên hằng số như một công cụ tổng quát để tìm nghiệm riêng cho phương trình không thuần nhất, đặc biệt khi vế phải không phù hợp với phương pháp hệ số bất định. Sinh viên sẽ biết cách thay hằng số bằng hàm số, thiết lập hệ phương trình cho các đạo hàm tương ứng và hiểu vai trò của định thức Wronskian trong quy trình giải.
 
@@ -21,6 +36,17 @@ Sinh viên cần nắm cách tìm nghiệm thuần nhất của phương trình 
 Phương pháp hệ số bất định gọn gàng nhưng chỉ áp dụng được cho một số họ hàm nhất định. Khi vế phải là $$ \ln t $$, $$ \tan t $$ hoặc một hàm không đóng dưới phép đạo hàm, ta cần một phương pháp tổng quát hơn: biến thiên hằng số. Ý tưởng cốt lõi xuất phát trực tiếp từ nghiệm thuần nhất $$ c_1y_1+c_2y_2 $$: khi có ngoại lực, thay vì giữ $$ c_1,c_2 $$ là hằng số, ta cho chúng biến thiên theo thời gian.
 
 Cách làm này không dựa vào việc đoán dạng nghiệm từ bên ngoài mà dùng ngay cơ sở nghiệm của hệ thuần nhất để xây dựng đáp ứng cưỡng bức. Vì vậy, biến thiên hằng số là sự mở rộng tự nhiên của nguyên lý chồng chất.
+
+### Khung giải thích (nên đọc chậm): Giải $y'' + y = \sec(t)$ trên $(-\frac{\pi}{2}, \frac{\pi}{2})$ bằng Biến thiên Hằng số
+
+1. **Hệ nghiệm cơ bản & Wronskian**:
+   $y_1 = \cos t,\; y_2 = \sin t$, và $W = \cos t(\cos t) - (-\sin t)\sin t = \cos^2 t + \sin^2 t = \mathbf{1}$.
+2. **Tính $u_1'$ và $u_2'$** (với $g(t) = \sec t = \frac{1}{\cos t}$):
+   - $u_1'(t) = \frac{-\sin t \cdot \sec t}{1} = -\tan t \implies u_1(t) = \int -\tan t\,dt = \mathbf{\ln\vert\cos t\vert}$.
+   - $u_2'(t) = \frac{\cos t \cdot \sec t}{1} = 1 \implies u_2(t) = \int 1\,dt = \mathbf{t}$.
+3. **Ghép nghiệm riêng $y_p = u_1 y_1 + u_2 y_2$**:
+   $$y_p(t) = \cos t \ln(\cos t) + t\sin t.$$
+4. **Nghiệm tổng quát**: $y(t) = \mathbf{c_1\cos t + c_2\sin t + \cos t\ln(\cos t) + t\sin t}$ (lưu ý phương pháp hệ số bất định hoàn toàn bất lực trước $\sec t$!).
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan

@@ -10,6 +10,36 @@ categories:
 lesson_type: required
 ---
 
+Just as a single scalar second-order homogeneous ODE has a 2-dimensional vector space of solutions, an $$n\times n$$ linear system $$\mathbf{x}' = A(t)\mathbf{x}$$ has an $$n$$-dimensional solution space—and stacking $$n$$ linearly independent solution vectors side by side produces a single invertible **fundamental matrix** $$\Psi(t)$$ that encodes *every* possible trajectory of the system at once.
+
+## Background Knowledge Map: Fundamental Matrices and Liouville's Volume Law
+
+Four matrix-calculus pillars organize all linear systems theory:
+
+1. **Matrix Differentiation and Superposition:** Differentiating a matrix entrywise obeys the product rule $$(AB)' = A'B + AB'$$ (preserving order!). If $$\mathbf{x}^{(1)}, \dots, \mathbf{x}^{(n)}$$ solve $$\mathbf{x}' = A(t)\mathbf{x}$$, then $$\Psi(t) = [\mathbf{x}^{(1)}(t)\;\cdots\;\mathbf{x}^{(n)}(t)]$$ satisfies the matrix ODE $$\Psi'(t) = A(t)\Psi(t)$$.
+2. **Wronskian and Liouville's Formula (Abel's Matrix Generalization):** The determinant $$W(t) = \det\Psi(t)$$ measures the signed $$n$$-dimensional volume of the parallelepiped spanned by the columns and satisfies
+   $$W'(t) = \operatorname{tr}\bigl(A(t)\bigr)\,W(t) \implies W(t) = W(t_0)\exp\!\left(\int_{t_0}^t \operatorname{tr}\bigl(A(s)\bigr)\,ds\right).$$
+   Thus $$\operatorname{tr}(A) < 0$$ shrinks phase-space volume, $$\operatorname{tr}(A) = 0$$ preserves volume (Hamiltonian/incompressible flow!), and $$\operatorname{tr}(A) > 0$$ expands volume.
+3. **One-Line IVP Solution via $$\Psi(t)$$:** Given *any* fundamental matrix $$\Psi(t)$$, the unique solution to $$\mathbf{x}' = A(t)\mathbf{x},\; \mathbf{x}(t_0) = \mathbf{x}_0$$ is immediately
+   $$\mathbf{x}(t) = \Psi(t)\,\Psi(t_0)^{-1}\,\mathbf{x}_0.$$
+4. **Canonical Fundamental Matrix $$\Phi(t)$$:** Setting $$\Phi(t) = \Psi(t)\Psi(t_0)^{-1}$$ produces the unique fundamental matrix with $$\Phi(t_0) = I$$—which for constant $$A$$ is literally the matrix exponential $$e^{A(t-t_0)}$$.
+
+### Step-by-Step Worked Example (Read Slowly): Verifying a Fundamental Matrix, Liouville's Formula, and Solving an IVP
+
+Consider $$\mathbf{x}' = A\mathbf{x}$$ with $$A = \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}$$ and candidate fundamental matrix
+$$\Psi(t) = \begin{pmatrix} e^{3t} & e^{-t} \\ e^{3t} & -e^{-t} \end{pmatrix}, \qquad \mathbf{x}(0) = \begin{pmatrix} 4 \\ 2 \end{pmatrix}.$$
+
+1. **Verify $$\Psi'(t) = A\Psi(t)$$ directly:**
+   $$\Psi'(t) = \begin{pmatrix} 3e^{3t} & -e^{-t} \\ 3e^{3t} & e^{-t} \end{pmatrix}, \qquad A\Psi(t) = \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}\begin{pmatrix} e^{3t} & e^{-t} \\ e^{3t} & -e^{-t} \end{pmatrix} = \begin{pmatrix} 3e^{3t} & -e^{-t} \\ 3e^{3t} & e^{-t} \end{pmatrix}.$$
+   Exact match!
+2. **Compute $$W(t) = \det\Psi(t)$$ and verify Liouville's formula:**
+   $$W(t) = (e^{3t})(-e^{-t}) - (e^{-t})(e^{3t}) = -2e^{2t} \ne 0.$$
+   Check against Liouville: $$\operatorname{tr}(A) = 1 + 1 = 2$$ and $$W(0) = -2$$, so $$W(0)e^{\operatorname{tr}(A)t} = -2e^{2t}$$—exact match!
+3. **Compute $$\Psi(0)^{-1}$$ and solve the IVP $$\mathbf{x}(t) = \Psi(t)\Psi(0)^{-1}\mathbf{x}(0)$$:**
+   $$\Psi(0) = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \implies \Psi(0)^{-1} = -\frac{1}{2}\begin{pmatrix} -1 & -1 \\ -1 & 1 \end{pmatrix} = \frac{1}{2}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}.$$
+   Then $$\mathbf{c} = \Psi(0)^{-1}\mathbf{x}(0) = \frac{1}{2}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}\begin{pmatrix} 4 \\ 2 \end{pmatrix} = \begin{pmatrix} 3 \\ 1 \end{pmatrix}$$, yielding
+   $$\mathbf{x}(t) = \begin{pmatrix} 3e^{3t} + e^{-t} \\ 3e^{3t} - e^{-t} \end{pmatrix}.$$
+
 ## Learning Objectives
 
 This lesson helps students write linear systems in matrix form, understand why matrices are a dynamical summary of the system, and grasp the concept of fundamental matrix solution as the system version of general solution. This is the gateway to bringing linear algebra systematically into solving ODEs.

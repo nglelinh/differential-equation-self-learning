@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Nhiệt chảy từ nơi nóng sang nơi lạnh, chất lỏng xoáy quanh trụ cầu, còn điện trường tỏa ra từ điện tích—mọi định luật bảo toàn của vật lý đều được viết bằng ngôn ngữ của **giải tích vectơ**. Nắm vững bộ ba toán tử $\nabla$ (Gradient, Divergence, Curl) cùng hai định lý Gauss và Stokes chính là chiếc cầu trực tiếp biến định luật bảo toàn vật lý thành phương trình đạo hàm riêng (PDE) ở các chương cuối.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Giải tích Vectơ
+
+1. **Bộ ba toán tử vi phân ($\nabla f$, $\nabla \cdot \mathbf{F}$, $\nabla \times \mathbf{F}$)**:
+   Gradient đo độ dốc cực đại của trường vô hướng; Divergence đo mật độ "nguồn phát / hút" cục bộ của dòng chảy; Curl đo độ xoáy cục bộ quanh từng điểm.
+2. **Toán tử Laplace ($\Delta u = \nabla \cdot (\nabla u) = u_{xx} + u_{yy} + u_{zz}$)**:
+   Đo sự chênh lệch giữa giá trị của $u$ tại một điểm với trung bình xung quanh nó—xuất hiện ở tâm điểm của phương trình truyền nhiệt, phương trình sóng và phương trình Laplace.
+3. **Định lý Phân kỳ Gauss ($\iiint_V (\nabla \cdot \mathbf{F})\,dV = \iint_{\partial V} \mathbf{F} \cdot \mathbf{n}\,dS$)**:
+   Liên hệ tổng nguồn sinh ra bên trong thể tích $V$ với tổng thông lượng chảy qua mặt biên $\partial V$—cách chuẩn mực nhất để suy ra phương trình truyền nhiệt $u_t = \alpha \Delta u$.
+4. **Định lý Green & Stokes ($\iint_S (\nabla \times \mathbf{F}) \cdot d\mathbf{S} = \oint_{\partial S} \mathbf{F} \cdot d\mathbf{r}$)**:
+   Liên hệ độ xoáy trên mặt với lưu số dọc biên; khi $\nabla \times \mathbf{F} = \mathbf{0}$ trên miền đơn liên, trường vectơ là trường bảo toàn ($\mathbf{F} = \nabla \phi$)—tương ứng trực tiếp với phương trình vi phân toàn phần.
+
 ## Mục tiêu
 Bài học này giúp sinh viên nắm vững ba phép toán vi phân cơ bản trên trường vô hướng và trường vector (gradient, divergence, curl), hiểu **ba định lý tích phân (Green, Stokes, Gauss)** cùng mối liên hệ giữa chúng, và vận dụng các công cụ này vào việc mô hình hóa các hiện tượng vật lý. Đây là nền tảng trực tiếp cho phương trình đạo hàm riêng (PDE) và các phương pháp giải PDE.
 
@@ -20,6 +34,19 @@ Sinh viên cần nắm vững đạo hàm riêng và gradient từ các bài tr�
 Trong nhiều bài toán thực tế, ta không chỉ xét hàm một biến mà làm việc với các trường—những đại lượng phân bố trong không gian—như trường nhiệt độ $$ T(x,y,z) $$, trường vận tốc chất lưu $$ v(x,y,z) $$ hay điện trường $$ E(x,y,z) $$. Để mô tả và phân tích những trường này, ta cần các phép toán vi phân và tích phân trong không gian nhiều chiều.
 
 Hãy hình dung một dòng sông. Gradient của độ cao mặt nước cho biết hướng dốc lớn nhất (nước chảy từ cao xuống thấp theo hướng ngược gradient); divergence của trường vận tốc cho biết tại một điểm có nguồn chảy ra hay bể hút vào; còn curl của trường vận tốc cho biết dòng chảy tại đó có xoáy hay không. Ba phép toán này mô tả đầy đủ các đặc trưng cục bộ của một trường trong không gian.
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng định lý Phân kỳ Gauss bằng tay cho trường xuyên tâm $\mathbf{F}(x, y, z) = (x, y, z)$ trên hình cầu bán kính $R = 2$
+
+1. **Vế trái (Tích phân thể tích của Divergence)**:
+   $$\nabla \cdot \mathbf{F} = \frac{\partial x}{\partial x} + \frac{\partial y}{\partial y} + \frac{\partial z}{\partial z} = 1 + 1 + 1 = 3.$$
+   Tích phân trên hình cầu bán kính $R = 2$ (thể tích $V = \frac{4}{3}\pi R^3 = \frac{32\pi}{3}$):
+   $$\iiint_V 3\,dV = 3 \cdot \frac{32\pi}{3} = \mathbf{32\pi}.$$
+2. **Vế phải (Tích phân mặt thông lượng qua mặt cầu $x^2 + y^2 + z^2 = 4$)**:
+   Pháp vectơ đơn vị hướng ra ngoài tại $(x, y, z)$ là $\mathbf{n} = \frac{(x, y, z)}{R} = \frac{(x, y, z)}{2}$.
+   Tích vô hướng trên mặt cầu: $\mathbf{F} \cdot \mathbf{n} = \frac{x^2 + y^2 + z^2}{2} = \frac{4}{2} = 2$.
+   Diện tích mặt cầu bán kính $R = 2$ là $4\pi R^2 = 16\pi$, nên:
+   $$\iint_{\partial V} \mathbf{F} \cdot \mathbf{n}\,dS = 2 \cdot 16\pi = \mathbf{32\pi}.$$
+   Hai vế khớp tuyệt đối $32\pi = 32\pi$!
 
 ## Khái niệm theo ba cách
 

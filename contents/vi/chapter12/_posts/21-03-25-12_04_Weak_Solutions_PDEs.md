@@ -12,6 +12,20 @@ lesson_type: required
 
 ![Dạng yếu của PDE qua hàm thử và tích phân từng phần]({{ site.imgurl }}/chapter_img/chapter12/04_weak_solutions_pdes.svg )
 
+Một tấm vật liệu ghép từ hai lớp đồng và sắt có hệ số dẫn nhiệt $a(x)$ nhảy bậc đột ngột tại mối nối: nghiệm nhiệt độ $u(x)$ bị gãy khúc đạo hàm ngay tại mối nối nên **không thể có đạo hàm bậc hai $u''$ theo nghĩa cổ điển**! Thế nhưng nhiệt độ ngoài đời thực vẫn tồn tại một cách hiển nhiên. **Công thức Nghiệm Yếu (Weak Formulation)** giải cứu hoàn toàn tình thế: nhân PDE với hàm thử $v$, tích phân từng phần một lần để chia đều gánh nặng đạo hàm bậc hai thành **hai đạo hàm bậc nhất** $\nabla u \cdot \nabla v$!
+
+## Bản đồ kiến thức nền: Bốn bước chuyển PDE sang Dạng Biến phân (Weak Form)
+
+1. **Nhân với hàm thử $v$ và Tích phân từng phần (Công thức Green)**:
+   Từ $-\nabla \cdot (a\nabla u) = f$, ta chuyển sang tìm $u \in V$ sao cho $\int_\Omega a\nabla u \cdot \nabla v\,dx = \int_\Omega f v\,dx$ với mọi $v \in V$. Bậc đạo hàm đòi hỏi trên $u$ giảm ngay từ $C^2$ xuống chỉ còn $H^1$!
+2. **Phân biệt Điều kiện biên Thiết yếu (Essential) vs. Tự nhiên (Natural)**:
+   - *Biên Dirichlet* ($u = 0$) được **ép cứng vào không gian hàm** $V = H_0^1(\Omega)$.
+   - *Biên Neumann* ($a\partial_n u = g$) **tự động xuất hiện trong tích phân biên** $\int_{\partial\Omega} g v\,dS$ mà không cần ép lên không gian thử $V = H^1(\Omega)$!
+3. **Dạng song tuyến tính $a(u, v) = \ell(v)$**:
+   Mọi PDE elliptic tuyến tính bậc hai đều thu gọn về phương trình trừu tượng $a(u, v) = \ell(v)\; \forall v \in V$, chuẩn bị sẵn sàng cho định lý Lax–Milgram (Bài 12-05) và rời rạc hóa Galerkin/FEM (Chương 13).
+4. **Tương đương giữa Nghiệm Cổ điển và Nghiệm Yếu**:
+   Mọi nghiệm cổ điển $C^2$ đều là nghiệm yếu; ngược lại, nếu một nghiệm yếu tình cờ trơn $C^2$, tích phân từng phần ngược lại chứng minh nó thỏa mãn PDE theo đúng từng điểm!
+
 ## Mục tiêu
 
 Bài học này hướng dẫn cách chuyển một PDE cổ điển sang dạng yếu, giải thích vì sao nghiệm yếu là khuôn khổ phù hợp cho nhiều bài toán elliptic, và làm rõ cầu nối trực tiếp tới các định lý tồn tại như Lax–Milgram. Sau bài học, sinh viên cần tự suy ra được dạng yếu cho các bài toán mẫu.
@@ -26,6 +40,18 @@ Một PDE cổ điển đòi hỏi nghiệm đủ trơn để mọi đạo hàm 
 
 Cách tiếp cận nghiệm yếu khắc phục điều này bằng cách nhân PDE với một hàm thử rồi tích phân từng phần để giảm bậc đạo hàm đặt lên nghiệm. Phương trình thu được đòi hỏi ít độ trơn hơn nhưng vẫn bảo toàn nguyên lý cân bằng hoặc bảo toàn của mô hình vật lý.
 
+
+### Khung giải thích (nên đọc chậm): Chuyển đổi và kiểm chứng trực tiếp nghiệm yếu của $-u'' = 2$ trên $(0, 1)$
+
+Xét bài toán biên Dirichlet $-u''(x) = 2$ trên $(0, 1)$ với $u(0) = u(1) = 0$:
+1. **Lập dạng yếu**: Nhân hai vế với hàm thử bất kỳ $v \in H_0^1(0, 1)$ (có $v(0) = v(1) = 0$) và tích phân từng phần:
+   $$\int_0^1 (-u'') v\,dx = \Big[-u'(x)v(x)\Big]_0^1 + \int_0^1 u'(x)v'(x)\,dx = \int_0^1 u'(x)v'(x)\,dx.$$
+   Vậy dạng yếu là: tìm $u \in H_0^1(0, 1)$ sao cho
+   $$a(u, v) := \int_0^1 u'(x)v'(x)\,dx = \int_0^1 2v(x)\,dx =: \ell(v) \qquad \forall v \in H_0^1(0, 1).$$
+2. **Kiểm chứng trực tiếp nghiệm $u(x) = x(1 - x)$**:
+   Ta có $u(0) = u(1) = 0$ và $u'(x) = 1 - 2x$. Thay vào vế trái:
+   $$\int_0^1 (1 - 2x)v'(x)\,dx = \Big[(1 - 2x)v(x)\Big]_0^1 - \int_0^1 (-2)v(x)\,dx = 0 + \int_0^1 2v(x)\,dx = \ell(v).$$
+   Đẳng thức đúng với **mọi** hàm thử $v \in H_0^1(0,1)$—chứng tỏ $u(x) = x(1-x)$ là nghiệm yếu chính xác!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

@@ -10,6 +10,37 @@ categories:
 lesson_type: required
 ---
 
+Drop a glowing ember onto one spot of a cold iron bar and watch what happens: heat does not jump magically across the bar, nor does it bounce back and forth like a sound wave. Instead, it spreads outward relentlessly from hot regions to cold regions, driven purely by local temperature differences. In 1807, Joseph Fourier captured this universal transport process in just two physical laws—conservation of thermal energy and Fourier's law of conduction—and fused them into the **Heat Equation**, $$ u_t = \alpha u_{xx} $$.
+
+What makes this derivation extraordinary is its universality: replace temperature by dye concentration, financial option price, or probability density of a Brownian random walker, and the *exact same PDE* reappears.
+
+## Background Knowledge Map: Conservation Laws and Diffusive Flux
+
+1. **Integral Conservation Law (Balance on an Arbitrary Control Volume):** For any segment $$ [a, b] $$ of a 1D rod with cross-section $$ A $$, density $$ \rho $$, and specific heat $$ c $$, the rate of change of stored thermal energy $$ \frac{d}{dt}\int_a^b c\rho u(x,t)\,dx $$ equals net heat flowing in through the endpoints, $$ \phi(a,t) - \phi(b,t) $$, plus internal sources $$ \int_a^b Q(x,t)\,dx $$.
+2. **Fourier's Constitutive Law of Heat Flux:** Empirically, heat flows *down* the temperature gradient: $$ \phi(x, t) = -K_0 u_x(x, t) $$, where $$ K_0 > 0 $$ is thermal conductivity. The minus sign is the Second Law of Thermodynamics in algebraic form!
+3. **Curvature Drives Evolution (Geometric Meaning of $$ u_{xx} $$):** Combining conservation with Fourier's law yields $$ u_t = \alpha u_{xx} $$ with thermal diffusivity $$ \alpha = \frac{K_0}{c\rho} $$ (units $$ \text{m}^2/\text{s} $$). Where the temperature graph is concave down ($$ u_{xx} < 0 $$, a hot peak), $$ u_t < 0 $$ so the peak cools; where it is concave up ($$ u_{xx} > 0 $$, a cold valley), $$ u_t > 0 $$ so the valley warms!
+4. **Dimensional Scaling $$ L^2 / \alpha $$:** Because time enters as a first derivative and space as a second derivative, the equation is invariant under the parabolic scaling $$ (x, t) \mapsto (\lambda x, \lambda^2 t) $$—doubling length quadruples diffusion time.
+
+### Step-by-Step Worked Example (Read Slowly): Deriving $$ u_t = \alpha u_{xx} + q $$ and Computing Local Cooling Rate
+
+**Problem:** (a) Starting from the integral balance $$ \frac{d}{dt}\int_a^b c\rho u\,dx = \phi(a,t) - \phi(b,t) + \int_a^b Q(x,t)\,dx $$ with $$ \phi = -K_0 u_x $$, derive the PDE for constant $$ c, \rho, K_0 $$. (b) An aluminum rod ($$ \alpha = 9.7 \times 10^{-5}\text{ m}^2/\text{s} $$) has instantaneous temperature profile $$ u(x, 0) = 20 + 80\sin(\pi x) $$ on $$ [0, 1]\text{ m} $$ with no internal source. Compute the exact initial cooling rate $$ u_t(0.5, 0) $$ in $$ ^\circ\text{C/s} $$ and the heat flux $$ \phi(0, 0) $$ at the left end (using $$ K_0 = 237\text{ W/(m}\cdot\text{K)} $$).
+
+1. **Apply the Fundamental Theorem of Calculus to the boundary flux:**
+   $$ \phi(a, t) - \phi(b, t) = -\int_a^b \frac{\partial \phi}{\partial x}\,dx = \int_a^b \frac{\partial}{\partial x}(K_0 u_x)\,dx. $$
+2. **Collect all terms under one integral over arbitrary $$ [a, b] $$:**
+   $$ \int_a^b \bigl[c\rho u_t - K_0 u_{xx} - Q(x,t)\bigr]\,dx = 0. $$
+   Since $$ [a, b] $$ is arbitrary and the integrand is continuous, the integrand must vanish identically:
+   $$ u_t = \alpha u_{xx} + \frac{Q}{c\rho}, \qquad \alpha = \frac{K_0}{c\rho}. $$
+3. **Evaluate the initial cooling rate at the midpoint $$ x = 0.5\text{ m} $$:**
+   - $$ u_x(x, 0) = 80\pi\cos(\pi x) $$.
+   - $$ u_{xx}(x, 0) = -80\pi^2 \sin(\pi x) \implies u_{xx}(0.5, 0) = -80\pi^2 \approx -789.57\text{ }^\circ\text{C/m}^2 $$.
+   - Cooling rate:
+     $$ u_t(0.5, 0) = \alpha u_{xx}(0.5, 0) = (9.7 \times 10^{-5})(-789.57) \approx -0.0766\text{ }^\circ\text{C/s}. $$
+   Negative sign confirms the hot peak is cooling!
+4. **Compute the heat flux at $$ x = 0 $$:**
+   $$ \phi(0, 0) = -K_0 u_x(0, 0) = -(237)(80\pi \cos 0) \approx -59{,}565\text{ W/m}^2. $$
+   The negative flux means nearly $$ 60\text{ kW/m}^2 $$ of heat is rushing *leftward* out of the rod into the cold $$ 20^\circ\text{C} $$ bath at $$ x = 0 $$!
+
 ## Learning Objectives
 
 This lesson derives the heat equation from conservation of energy and Fourier's law. Students should understand why diffusion produces a second spatial derivative, how constitutive assumptions enter the model, and why the resulting PDE describes smoothing rather than oscillation.

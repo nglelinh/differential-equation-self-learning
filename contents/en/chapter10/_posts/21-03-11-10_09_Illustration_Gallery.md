@@ -10,6 +10,24 @@ categories:
 lesson_type: optional
 ---
 
+Waves are inherently kinetic—they split into left- and right-moving twins, flip upside down at a clamped wall, scatter into reflected and transmitted pulses at an impedance jump, and separate into leading swells and trailing ripples under dispersion. This interactive gallery lets you watch every single phenomenon of Chapter 10 unfold in motion, turning static PDE formulas into physical intuition.
+
+## Background Knowledge Map: Reading the Chapter 10 Visual Lab
+
+1. **D'Alembert Splitting & Light Cones:** Launch a localized initial bump with zero velocity and watch it cleave cleanly into two half-height pulses racing apart at $$ \pm c $$; switch to initial velocity and watch an expanding flat plateau appear!
+2. **Standing Waves vs. Traveling Waves:** Toggle between a single Fourier mode $$ \sin(n\pi x/L)\cos(\omega_n t) $$ and its two opposite traveling-wave components to see how interference creates fixed nodes.
+3. **Interface Reflection & Phase Flip:** Adjust the density ratio $$ \rho_2/\rho_1 $$ across the junction and observe how entering a heavier medium flips the reflected wave upside down ($$ R < 0 $$) while entering a lighter medium reflects it upright ($$ R > 0 $$).
+4. **Dispersion Packet Spreading:** In the dispersive frame, track an individual crest moving at $$ v_p $$ sliding *through* the slower-moving packet envelope traveling at $$ v_g $$!
+
+### Step-by-Step Worked Example (Read Slowly): Predicting a Double-Bounce Collision in the Gallery
+
+**Problem:** A finite string of length $$ L = 4 $$ with wave speed $$ c = 1 $$ and fixed ends ($$ u(0,t)=u(4,t)=0 $$) starts from rest with a narrow triangular pulse of height $$ 1 $$ centered at $$ x = 2 $$. Using d'Alembert's odd-periodic reflection rule, predict the exact string state at $$ t = 2 $$, $$ t = 4 $$, and $$ t = 8 $$.
+
+1. **At $$ t = 0^+ $$:** The height-$$ 1 $$ pulse splits into two height-$$ 0.5 $$ pulses moving left and right at speed $$ c = 1 $$.
+2. **At $$ t = 2 $$ (hitting the walls $$ x = 0 $$ and $$ x = 4 $$):** Both half-pulses arrive simultaneously at the clamped walls and reflect **inverted** (height $$ -0.5 $$). Right at $$ t = 2 $$, incoming $$ +0.5 $$ and reflected $$ -0.5 $$ cancel momentarily, leaving the string completely flat ($$ u(x, 2) = 0 $$ everywhere, with all energy stored as kinetic velocity!).
+3. **At $$ t = 4 $$ (mid-string collision):** Both inverted height-$$ (-0.5) $$ pulses meet at $$ x = 2 $$ and superpose to form an exact **upside-down copy** of the original triangle of height $$ -1 $$!
+4. **At $$ t = 8 $$ (one full period $$ T = 2L/c = 8 $$):** After bouncing and flipping upright a second time, the string returns identically to its original $$ t = 0 $$ shape of height $$ +1 $$ at $$ x = 2 $$!
+
 ## Purpose of This Companion Lesson
 
 This lesson gathers the Chapter 10 illustrations into one visual review space. The wave equation introduces students to a very different PDE worldview from the heat equation: information travels rather than immediately smooths, energy is transported rather than dissipated, and geometry enters through boundaries, interfaces, and domains of propagation. The gallery helps those themes remain visible as the chapter moves from derivation to applications.

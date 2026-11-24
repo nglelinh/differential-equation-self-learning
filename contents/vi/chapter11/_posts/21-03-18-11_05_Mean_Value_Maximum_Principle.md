@@ -9,7 +9,22 @@ categories:
 - chapter11
 lesson_type: required
 ---
+
 ![21 03 18 11 05 Mean Value Maximum Principle]({{ site.imgurl }}/chapter_img/chapter11/05_mean_value_maximum_principle.svg)
+
+Không cần giải ra một công thức nghiệm nào, chỉ nhìn vào bốn ký tự $\Delta u = 0$ ta đã có thể tuyên bố chắc nịch hai định luật thép: nhiệt độ tại tâm bất kỳ hình cầu nào luôn bằng **đúng trung bình cộng** nhiệt độ trên mặt cầu bao quanh nó, và điểm nóng nhất hay lạnh nhất của cả căn phòng cân bằng nhiệt **chỉ có thể nằm trên tường biên** chứ không bao giờ lơ lửng giữa phòng! Hai tính chất tưởng giản dị ấy—Tính chất Trung bình và Nguyên lý Cực đại—lại là vũ khí sắc bén nhất để chứng minh tính duy nhất và ổn định nghiệm của PDE elliptic.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Tính chất Trung bình & Nguyên lý Cực đại
+
+1. **Tính chất Giá trị Trung bình (Mean Value Property — MVP)**:
+   Với mọi hình cầu $B(x_0, r) \subset \Omega$, hàm điều hòa $u$ thỏa mãn $u(x_0) = \frac{1}{|\partial B|}\int_{\partial B(x_0, r)} u\,dS = \frac{1}{|B|}\int_{B(x_0, r)} u\,dx$. Đáng kinh ngạc hơn: tính chất này là **điều kiện cần và đủ** để một hàm liên tục là hàm điều hòa!
+2. **Nguyên lý Cực đại Yếu và Mạnh**:
+   - *Yếu*: $\max_{\bar{\Omega}} u = \max_{\partial\Omega} u$ và $\min_{\bar{\Omega}} u = \min_{\partial\Omega} u$.
+   - *Mạnh*: Nếu miền $\Omega$ liên thông và $u$ đạt cực đại (hoặc cực tiểu) tại một **điểm trong**, thì $u$ buộc phải là **hằng số trên toàn miền $\Omega$**.
+3. **Hệ quả tức thì: Tính duy nhất và Phụ thuộc liên tục vào Dữ liệu biên**:
+   Nếu $u_1, u_2$ có cùng dữ liệu biên thì $w = u_1 - u_2$ điều hòa với $w|_{\partial\Omega} = 0 \implies w \equiv 0$. Tổng quát hơn, $\|u_1 - u_2\|_{L^\infty(\Omega)} \le \|g_1 - g_2\|_{L^\infty(\partial\Omega)}$: sai số biên không bao giờ bị khuếch đại vào bên trong!
+4. **Định lý Liouville và Bất đẳng thức Harnack**:
+   Từ MVP suy ra ngay Định lý Liouville (mọi hàm điều hòa bị chặn trên toàn $\mathbb{R}^n$ đều là hằng số) và Bất đẳng thức Harnack (hàm điều hòa dương không thể dao động quá mạnh giữa hai điểm gần nhau).
 
 ## Mục tiêu
 
@@ -25,6 +40,20 @@ Sinh viên cần nắm phương trình Laplace, trực giác về trạng thái 
 
 Tại đây, trực giác về trạng thái cân bằng trở thành phát biểu toán học chính xác. Khi không có nguồn bên trong miền, không có cơ chế nào để đẩy giá trị nghiệm lên cực đại cục bộ hay kéo xuống cực tiểu cục bộ bên trong; mọi giá trị bên trong đều bị ràng buộc bởi lân cận và cuối cùng bởi dữ liệu trên biên.
 
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng trực tiếp cả MVP lẫn Nguyên lý Cực đại trên một đĩa đóng
+
+Xét hàm điều hòa $u(x, y) = x^2 - y^2 + 3$ trên đĩa đóng $\bar{D}: x^2 + y^2 \le 4$ (bán kính $R = 2$):
+1. **Kiểm tra Tính chất Trung bình trên đường tròn biên $r = 2$**:
+   Thay $x = 2\cos\theta$, $y = 2\sin\theta$:
+   $$u(2\cos\theta, 2\sin\theta) = 4(\cos^2\theta - \sin^2\theta) + 3 = 4\cos(2\theta) + 3.$$
+   Lấy trung bình trên $[0, 2\pi]$:
+   $$\frac{1}{2\pi}\int_0^{2\pi} \big(4\cos(2\theta) + 3\big)\,d\theta = 0 + 3 = \mathbf{3} = u(0, 0)!$$
+2. **Tìm cực đại và cực tiểu toàn cục mà không cần giải hệ đạo hàm**:
+   Theo Nguyên lý Cực đại, ta chỉ cần nhìn biểu thức trên biên $4\cos(2\theta) + 3$:
+   - **Cực đại**: $4(1) + 3 = \mathbf{7}$, đạt tại hai điểm biên $(\pm 2, 0)$.
+   - **Cực tiểu**: $4(-1) + 3 = \mathbf{-1}$, đạt tại hai điểm biên $(0, \pm 2)$.
+   Mọi điểm bên trong đĩa đều có giá trị nằm chặt trong khoảng $(-1, 7)$!
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan

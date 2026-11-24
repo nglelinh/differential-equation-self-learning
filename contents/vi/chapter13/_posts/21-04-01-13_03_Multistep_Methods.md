@@ -12,6 +12,20 @@ lesson_type: required
 
 ![Trực giác về phương pháp đa bước và predictor-corrector]({{ site.imgurl }}/chapter_img/chapter13/03_multistep_methods.svg )
 
+Phương pháp RK4 rất chính xác, nhưng ở mỗi bước nó phải đánh giá hàm vế phải $f(t, y)$ tới **4 lần** rồi ném bỏ toàn bộ kết quả sau khi bước sang $t_{n+1}$—một sự lãng phí lớn khi $f$ là một mô phỏng vật lý thiên văn hay khí quyển cực kỳ tốn CPU! **Phương pháp Đa bước Tuyến tính (Linear Multistep Methods)** như Adams–Bashforth, Adams–Moulton và BDF giải quyết bài toán ấy đầy thông minh: tận dụng lại lịch sử các giá trị $f_{n}, f_{n-1}, \dots, f_{n-k+1}$ đã tính sẵn để đạt bậc chính xác cao mà chỉ cần **đúng 1 lần gọi hàm $f$ mỗi bước**!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Đa bước (LMM)
+
+1. **Họ Adams (Nội suy đa thức cho vế phải $f$)**:
+   - *Adams–Bashforth (Hiện)*: nội suy $f$ qua các điểm quá khứ $t_n, t_{n-1}, \dots$ để ngoại suy sang $[t_n, t_{n+1}]$.
+   - *Adams–Moulton (Ẩn)*: thêm cả điểm đích $f_{n+1}$ vào đa thức nội suy—tăng bậc chính xác và mở rộng đáng kể miền ổn định (thường ghép thành cặp Dự báo–Hiệu chỉnh PEC/PECE!).
+2. **Họ BDF (Backward Differentiation Formulas — Khắc tinh của Bài toán Cứng)**:
+   Thay vì tích phân $f$, BDF xấp xỉ đạo hàm $y'_{n+1}$ bằng đa thức đi qua $y_{n+1}, y_n, \dots, y_{n-k+1}$—tạo ra các sơ đồ ẩn siêu ổn định (BDF1 đến BDF6; BDF7 trở đi mất ổn định 0!).
+3. **Định lý Tương đương Dahlquist (Ổn định 0 + Nhất quán $\iff$ Hội tụ)**:
+   Đa thức đặc trưng thứ nhất $\rho(\zeta) = \sum \alpha_j \zeta^j$ phải thỏa mãn **điều kiện nghiệm** (mọi nghiệm có $|\zeta| \le 1$, và nghiệm trên đường tròn đơn vị phải là nghiệm đơn) để phương pháp không tự sinh nghiệm giả bùng nổ!
+4. **Giai đoạn Khởi động (Starting Values)**:
+   Vì sơ đồ $k$-bước cần $k$ giá trị ban đầu $y_0, y_1, \dots, y_{k-1}$ trong khi bài toán chỉ cho $y_0$, ta luôn dùng một phương pháp đơn bước (như RK4) để chạy $k - 1$ bước đầu tiên rồi mới bàn giao cho sơ đồ đa bước!
+
 ## Mục tiêu
 
 Bài học này giới thiệu các phương pháp đa bước như Adams–Bashforth, Adams–Moulton và lược đồ dự đoán–hiệu chỉnh (predictor–corrector). Sau bài học, sinh viên cần hiểu lý do tận dụng lịch sử các bước trước, thiết lập được công thức đa bước cơ bản, nắm nhu cầu khởi động bằng phương pháp một bước, và nhận diện sự đánh đổi giữa hiệu quả tính toán, bộ nhớ và tính ổn định.
@@ -32,6 +46,15 @@ Trong khi Runge–Kutta lấy nhiều mẫu độ dốc bên trong một bước
 
 Chiến lược này đặc biệt có lợi trong các mô phỏng dài hạn có hàm vế phải $$ f $$ tốn kém về mặt tính toán, vì số lần đánh giá $$ f $$ trên mỗi bước giảm đi đáng kể.
 
+
+### Khung giải thích (nên đọc chậm): Tính tay 1 bước Adams–Bashforth bậc 2 (AB2) chỉ với 1 lần gọi hàm
+
+Giải $y' = -y$, $y(0) = 1$ với $h = 0{,}1$ bằng công thức AB2: $y_{n+1} = y_n + \frac{h}{2}(3f_n - f_{n-1})$:
+1. **Khởi động**: Ta có $y_0 = 1 \implies f_0 = -1$. Dùng giá trị khởi động chính xác $y_1 = e^{-0{,}1} \approx 0{,}904837 \implies f_1 = -0{,}904837$.
+2. **Bước AB2 tính $y_2$ tại $t_2 = 0{,}2$**:
+   $$y_2 = 0{,}904837 + \frac{0{,}1}{2}\big(3(-0{,}904837) - (-1)\big) = 0{,}904837 + 0{,}05(-1{,}714511) = \mathbf{0{,}819111}.$$
+3. **Đối chiếu nghiệm đúng $e^{-0{,}2} \approx 0{,}818731$**:
+   Sai số chỉ là $\mathbf{3{,}8 \times 10^{-4}}$—đạt bậc $O(h^2)$ mà chỉ tốn đúng **1 lần đánh giá $f$** ở mỗi bước mới (bằng một nửa chi phí của RK2)!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

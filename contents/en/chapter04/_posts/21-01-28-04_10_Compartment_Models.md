@@ -10,6 +10,40 @@ categories:
 lesson_type: optional
 ---
 
+When a patient swallows an antibiotic pill, the drug does not teleport directly to the infection site: it dissolves in the gut (Compartment 1), absorbs into the bloodstream (Compartment 2), and is cleared by the kidneys. Whether tracking pharmaceuticals in the human body, pollutants cascading through connected lakes, or carbon cycling between atmosphere and ocean, **compartment models** translate conservation of mass directly into structured linear systems $$\mathbf{x}' = A\mathbf{x} + \mathbf{u}(t)$$ whose sign patterns guarantee physical realism.
+
+## Background Knowledge Map: The Algebraic Signature of Compartmental Matrices
+
+Four mathematical properties hold for *every* well-posed linear compartment model:
+
+1. **Sign Pattern (Metzler Matrix):** Every off-diagonal entry $$a_{ij}$$ ($$i \ne j$$) represents flow *from* compartment $$j$$ *into* compartment $$i$$, so $$a_{ij} \ge 0$$; every diagonal entry $$a_{jj} \le 0$$ represents total fractional outflow from compartment $$j$$. This sign pattern guarantees **positivity**: non-negative initial amounts stay non-negative forever!
+2. **Column-Sum Conservation Law:** Summing column $$j$$ gives $$\sum_{i=1}^n a_{ij} = -k_{0j} \le 0$$, where $$k_{0j} \ge 0$$ is the fractional exit rate to the outside environment.
+3. **Closed vs. Open Systems (Gershgorin / Perron–Frobenius):**
+   - In a **closed** system (no exits to outside, every column sum $$= 0$$), $$\lambda = 0$$ is *always* an eigenvalue! Total mass $$\sum x_i(t) = \text{const}$$ is conserved, and all other eigenvalues satisfy $$\operatorname{Re}(\lambda) < 0$$, driving the system to a unique equilibrium distribution.
+   - In an **open** system with outflow from every trap, every eigenvalue satisfies $$\operatorname{Re}(\lambda) < 0$$, so an unforced dose clears completely ($$\mathbf{x}(t) \to \mathbf{0}$$).
+4. **Cascade (Triangular) vs. Recirculating Systems:** One-way cascades produce triangular matrices whose eigenvalues sit right on the diagonal; two-way exchange creates full coupling that mixes compartments smoothly.
+
+### Step-by-Step Worked Example (Read Slowly): Two-Compartment Pharmacokinetics (Gut $$\to$$ Bloodstream $$\to$$ Clearance)
+
+A patient takes an oral dose of $$100\text{ mg}$$ of a drug into the GI tract ($$x_1(0) = 100,\; x_2(0) = 0$$). The drug transfers from GI tract to bloodstream at rate $$0.6\text{ hr}^{-1}$$ and is cleared from the bloodstream by the kidneys at rate $$0.2\text{ hr}^{-1}$$. Find the blood concentration mass $$x_2(t)$$ and the exact time $$t_{\max}$$ of peak blood level.
+
+1. **Write the compartmental system and verify its sign pattern:**
+   $$\begin{cases} x_1' = -0.6 x_1 \\ x_2' = 0.6 x_1 - 0.2 x_2 \end{cases} \iff \mathbf{x}' = \begin{pmatrix} -0.6 & 0 \\ 0.6 & -0.2 \end{pmatrix}\mathbf{x}.$$
+   Check: off-diagonal $$a_{21} = +0.6 \ge 0$$; column 1 sums to $$0$$ (all gut outflow enters blood); column 2 sums to $$-0.2 < 0$$ (kidney clearance). Open system $$\implies$$ both eigenvalues negative!
+2. **Read eigenvalues directly from the lower-triangular diagonal and find eigenvectors:**
+   $$\lambda_1 = -0.6, \qquad \lambda_2 = -0.2.$$
+   - For $$\lambda_1 = -0.6$$: $$\begin{pmatrix} 0 & 0 \\ 0.6 & 0.4 \end{pmatrix}\mathbf{v}_1 = \mathbf{0} \implies \mathbf{v}_1 = \begin{pmatrix} 2 \\ -3 \end{pmatrix}$$.
+   - For $$\lambda_2 = -0.2$$: $$\begin{pmatrix} -0.4 & 0 \\ 0.6 & 0 \end{pmatrix}\mathbf{v}_2 = \mathbf{0} \implies \mathbf{v}_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$$.
+3. **Solve the IVP with $$\mathbf{x}(0) = (100, 0)^\top$$:**
+   $$\mathbf{x}(t) = c_1 e^{-0.6t}\begin{pmatrix} 2 \\ -3 \end{pmatrix} + c_2 e^{-0.2t}\begin{pmatrix} 0 \\ 1 \end{pmatrix}.$$
+   At $$t = 0$$: $$2c_1 = 100 \implies c_1 = 50$$, and $$-3(50) + c_2 = 0 \implies c_2 = 150$$.
+   Thus
+   $$x_1(t) = 100e^{-0.6t}\text{ mg}, \qquad x_2(t) = 150\bigl(e^{-0.2t} - e^{-0.6t}\bigr)\text{ mg}.$$
+4. **Find the exact time $$t_{\max}$$ and height of peak blood drug level ($$x_2'(t) = 0$$):**
+   $$x_2'(t) = 150\bigl(-0.2e^{-0.2t} + 0.6e^{-0.6t}\bigr) = 0 \implies e^{0.4t_{\max}} = 3 \implies t_{\max} = \frac{\ln 3}{0.4} \approx \mathbf{2.747\text{ hr}},$$
+   with peak bloodstream mass
+   $$x_2(t_{\max}) = 150\bigl(3^{-1/2} - 3^{-3/2}\bigr) = 150\cdot\frac{2}{3\sqrt{3}} = \frac{100}{\sqrt{3}} \approx \mathbf{57.74\text{ mg}}!$$
+
 ## Learning Objectives
 
 This lesson helps students see systems of differential equations as the natural language of compartment models in pharmacokinetics, ecology, and epidemiology. Students learn to write inflow-minus-outflow balance laws for each compartment, detect conservation or loss of total mass, and interpret the system matrix as a map of transfers between compartments.

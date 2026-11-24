@@ -9,6 +9,20 @@ categories:
 - chapter03
 ---
 
+
+Điều trớ trêu thú vị nhất của lịch sử toán học ứng dụng là: Pierre-Simon Laplace dùng phép biến đổi tích phân này năm 1785 để giải bài toán **xác suất**, nhưng người biến nó thành vũ khí tối thượng giải phương trình vi phân mạch điện lại là một kỹ sư điện báo tự học tên là **Oliver Heaviside** một thế kỷ sau đó! Hành trình từ "phép tính toán tử gây tranh cãi" của Heaviside tới nền tảng giải tích phức vững chắc của Bromwich và Doetsch chính là câu chuyện của Chương 03.
+
+## Bản đồ kiến thức nền: Bốn cột mốc lịch sử của Biến đổi Laplace
+
+1. **Euler (1737) & Laplace (1785) — Tiền thân hàm sinh liên tục**:
+   Laplace giới thiệu tích phân $\int e^{-st}f(t)\,dt$ trong tác phẩm kinh điển *Théorie analytique des probabilités* như phiên bản liên tục của chuỗi lũy thừa hàm sinh.
+2. **Oliver Heaviside (1880s–1890s) — Phép tính Toán tử (Operational Calculus)**:
+   Để phân tích cáp điện báo xuyên Đại Tây Dương với tín hiệu bật/tắt đột ngột, Heaviside thay thẳng đạo hàm $\frac{d}{dt}$ bằng ký hiệu đại số $p$ và đưa ra hàm bậc thang $H(t)$—bị các nhà toán học thuần túy chê "thiếu chặt chẽ" nhưng lại ra đáp số chính xác đến kinh ngạc!
+3. **Bromwich (1916) & Carson (1920s) — Hợp thức hóa bằng Biến đổi Laplace**:
+   Chứng minh rằng phép tính toán tử của Heaviside hoàn toàn khớp với biến đổi Laplace và xây dựng công thức tích phân ngược trên mặt phẳng phức (tích phân Bromwich).
+4. **Paul Dirac (1930) & Laurent Schwartz (1945) — Lý thuyết Phân bố**:
+   Đặt hàm xung Dirac $\delta(t)$ lên nền tảng toán học chặt chẽ thông qua không gian các phân bố (distributions), hoàn thiện bộ công cụ cho điều khiển học và xử lý tín hiệu hiện đại.
+
 ## Mục tiêu
 Bài học này trình bày quá trình phát triển của biến đổi Laplace từ giải tích tích phân thế kỷ XVIII đến một công cụ nền tảng của phương trình vi phân, lý thuyết tín hiệu và kỹ thuật. Sinh viên sẽ thấy Chương 03 là điểm giao thoa lịch sử giữa giải tích, đại số và ứng dụng kỹ thuật.
 
@@ -19,6 +33,17 @@ Sinh viên nên nắm các kỹ thuật tính toán của Chương 03. Trọng t
 London, khoảng năm 1887. Oliver Heaviside, một cựu nhân viên điện báo phần lớn tự học, đang tìm cách phân tích diễn biến trên đường dây truyền tín hiệu khi công tắc được đóng đột ngột. Bài toán mang tính thực tiễn trực tiếp: tín hiệu cần truyền đi xa, ít méo dạng và đủ nhanh để hệ thống điện báo hoạt động ổn định. Tuy nhiên, trong miền thời gian, các đạo hàm, điều kiện đầu và tín hiệu đóng-ngắt làm phương trình vi phân trở nên cồng kềnh.
 
 Heaviside áp dụng một hướng tiếp cận khác: thay vì chỉ theo dõi dòng điện từng thời điểm, ông gom toàn bộ diễn biến của nó qua phép tính toán tử (sau này được chuẩn hóa bằng tích phân có trọng số hàm mũ). Với mạch RC đơn giản, phương trình $$V'(t) + \frac{1}{RC}V(t) = \frac{E}{RC}$$ khi đóng nguồn tại $$t=0$$ chuyển thành $$\left(s + \frac{1}{RC}\right)V(s) = \frac{E}{RCs} + V(0)$$ sau khi lấy biến đổi Laplace. Phép lấy đạo hàm chuyển thành phép nhân với $$s$$, đưa bài toán vi phân về bài toán đại số. Giá trị cốt lõi của biến đổi Laplace nằm ở chỗ nó giữ nguyên thông tin vật lý nhưng đổi góc nhìn để việc tính toán trở nên gọn gàng hơn.
+
+### Khung giải thích (nên đọc chậm): Trải nghiệm "phép tính toán tử" kiểu Heaviside trên mạch RC $y' + 2y = u_0(t),\; y(0) = 0$
+
+Hãy xem vì sao Heaviside mê mẩn việc thay $\frac{d}{dt}$ bằng biến đại số $s$:
+1. **Biến đạo hàm thành phép nhân $s$** (với $y(0) = 0$ và $\mathcal{L}\{u_0(t)\} = \frac{1}{s}$):
+   $$(s + 2)Y(s) = \frac{1}{s} \implies Y(s) = \frac{1}{s(s + 2)}.$$
+2. **Tách phân thức hữu tỷ bằng đại số sơ cấp**:
+   $$\frac{1}{s(s + 2)} = \frac{1/2}{s} - \frac{1/2}{s + 2}.$$
+3. **Đọc ngược bảng Laplace**:
+   $$y(t) = \mathbf{\frac{1}{2}\big(1 - e^{-2t}\big)} \quad (t \ge 0).$$
+   Không cần thừa số tích phân, không cần tách nghiệm $y_h + y_p$, không cần giải hệ hằng số—mọi thứ chỉ gói gọn trong 3 dòng đại số!
 
 ## Mạch truyện lớn
 Lịch sử của chương là cuộc gặp gỡ giữa hai truyền thống vốn phát triển tách biệt. Một phía là giải tích cổ điển của Laplace, nơi các tích phân hàm mũ nảy sinh từ lý thuyết xác suất và cơ học thiên thể. Phía kia là kỹ thuật điện của Heaviside, nơi các kỹ sư sử dụng phép tính toán tử trước khi mọi bước được chứng minh chặt chẽ. Từ sự giao thoa đó, biến đổi Laplace dần trở thành một ngôn ngữ chung của cả toán học và kỹ thuật.

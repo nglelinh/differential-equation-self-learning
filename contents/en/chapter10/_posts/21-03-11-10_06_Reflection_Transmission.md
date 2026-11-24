@@ -10,6 +10,37 @@ categories:
 lesson_type: required
 ---
 
+Toss a stone into a canal and watch the ripple hit a concrete wall—it bounces right back. Now tie a thin silk thread to a heavy climbing rope and send a pulse down the thread toward the knot: part of the pulse bounces *upside down* back along the thread, while a shorter, slower pulse keeps marching forward into the heavy rope! This exact interface physics governs anti-reflective coatings on eyeglasses, ultrasound medical imaging of organs, seismic waves bouncing off Earth's mantle, and impedance matching in RF cables.
+
+Everything boils down to two simple continuity rules at the junction $$ x = 0 $$—and one magic number called the **characteristic impedance** $$ Z = \rho c $$!
+
+## Background Knowledge Map: Boundaries, Interfaces, and Impedance Matching
+
+1. **Method of Images on the Half-Line (Fixed vs. Free Reflection):**
+   - *Fixed wall ($$ u(0, t) = 0 $$):* Extend initial data **oddly** across $$ x = 0 $$. An incoming crest hits the wall and reflects **inverted** as a trough!
+   - *Free ring ($$ u_x(0, t) = 0 $$):* Extend initial data **evenly** across $$ x = 0 $$. An incoming crest reflects **upright** (momentarily doubling height to $$ 2A $$ right at the free end!).
+2. **Interface Continuity Conditions at $$ x = 0 $$:** Where two media with speeds $$ c_1, c_2 $$ and tensions/impedances meet, the string cannot tear ($$ u(0^-, t) = u(0^+, t) $$) and the massless knot cannot suffer infinite acceleration ($$ T_1 u_x(0^-, t) = T_2 u_x(0^+, t) $$).
+3. **Reflection & Transmission Coefficients ($$ R $$ and $$ T_{\text{tr}} $$):** For a string of uniform tension $$ T $$ with densities $$ \rho_1, \rho_2 $$ (so $$ c_1 = \sqrt{T/\rho_1}, c_2 = \sqrt{T/\rho_2} $$), solving the two interface equations yields
+   $$ R = \frac{c_2 - c_1}{c_2 + c_1} = \frac{Z_1 - Z_2}{Z_1 + Z_2}, \qquad T_{\text{tr}} = \frac{2c_2}{c_2 + c_1} = \frac{2Z_1}{Z_1 + Z_2}. $$
+   Notice $$ 1 + R = T_{\text{tr}} $$, and if $$ Z_2 > Z_1 $$ (entering a heavier medium), $$ R < 0 $$ (phase inversion)!
+4. **Energy Flux Conservation ($$ |R|^2 + \frac{Z_2}{Z_1}|T_{\text{tr}}|^2 = 1 $$):** Even when $$ T_{\text{tr}} > 1 $$ (entering a lighter rope!), energy is never created—the transmitted power fraction $$ \frac{Z_2}{Z_1} T_{\text{tr}}^2 $$ plus reflected power fraction $$ R^2 $$ always sums to *exact* $$ 1 $$!
+
+### Step-by-Step Worked Example (Read Slowly): Pulse Crossing from a Light Rope to a Heavy Rope (Energy Balance Check)
+
+**Problem:** A uniform tension $$ T $$ joins a light rope ($$ x < 0 $$, wave speed $$ c_1 = 30\text{ m/s} $$) to a heavier rope ($$ x > 0 $$, wave speed $$ c_2 = 10\text{ m/s} $$). An incident pulse of amplitude $$ A_i = 1.0\text{ cm} $$ travels rightward from $$ x < 0 $$. Compute the reflected amplitude $$ A_r $$, the transmitted amplitude $$ A_t $$, and verify that reflected + transmitted power equals 100% of incident power.
+
+1. **Compute the reflection and transmission ratios $$ R $$ and $$ T_{\text{tr}} $$:**
+   Using $$ c_1 = 30, c_2 = 10 $$ (so the heavy rope has $$ \rho_2 / \rho_1 = (c_1/c_2)^2 = 9 $$ and impedance ratio $$ Z_2 / Z_1 = c_1 / c_2 = 3 $$):
+   $$ R = \frac{c_2 - c_1}{c_2 + c_1} = \frac{10 - 30}{10 + 30} = -\frac{20}{40} = -\frac{1}{2}, \qquad T_{\text{tr}} = \frac{2c_2}{c_2 + c_1} = \frac{20}{40} = +\frac{1}{2}. $$
+2. **Compute physical amplitudes and check knot continuity:**
+   - Reflected pulse: $$ A_r = R A_i = -0.5\text{ cm} $$ (inverted!).
+   - Transmitted pulse: $$ A_t = T_{\text{tr}} A_i = +0.5\text{ cm} $$ (upright, squeezed to $$ \frac{1}{3} $$ the spatial width since $$ c_2 = c_1/3 $$!).
+   - Continuity check at $$ x = 0 $$: $$ A_i + A_r = 1.0 - 0.5 = 0.5\text{ cm} = A_t $$. Exact!
+3. **Verify exact power conservation:**
+   - Reflected power fraction: $$ R^2 = \left(-\frac{1}{2}\right)^2 = \frac{1}{4} = 25\% $$.
+   - Transmitted power fraction: $$ \frac{c_1}{c_2} T_{\text{tr}}^2 = 3 \cdot \left(\frac{1}{2}\right)^2 = \frac{3}{4} = 75\% $$.
+   - Total: $$ 25\% + 75\% = 100\% $$! Zero energy lost at the junction!
+
 ## Learning Objectives
 
 This lesson studies how waves respond to boundaries and interfaces. Students should understand reflection, transmission, and the role of impedance mismatch or boundary constraints.

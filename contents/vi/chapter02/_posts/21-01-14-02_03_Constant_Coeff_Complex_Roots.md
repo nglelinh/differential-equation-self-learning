@@ -9,6 +9,22 @@ categories:
 - chapter02
 lesson_type: required
 ---
+
+Khi biệt thức $\Delta = b^2 - 4ac < 0$, phương trình bậc hai không có nghiệm thực, nhưng hệ cơ–điện ngoài đời thực lại đang **dao động nhịp nhàng**! Nhờ công thức Euler $e^{(\alpha + i\beta)t} = e^{\alpha t}(\cos\beta t + i\sin\beta t)$, ta tách phần thực và phần ảo để thu được ngay hai nghiệm thực thuần túy—đồng thời đọc được tức thì tốc độ tắt dần $\alpha$ và tần số dao động $\beta$ chỉ từ một cặp số phức liên hợp.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Hệ số Hằng Nghiệm Phức
+
+1. **Cặp nghiệm phức liên hợp $r = \alpha \pm i\beta$ ($\beta > 0$)**:
+   Do các hệ số $a, b, c$ đều thực, nghiệm phức luôn đi theo cặp liên hợp $\alpha = -\frac{b}{2a}$ và $\beta = \frac{\sqrt{4ac - b^2}}{2a}$.
+2. **Tách phần thực & phần ảo thành cơ sở thực**:
+   $y_1(t) = e^{\alpha t}\cos(\beta t)$ và $y_2(t) = e^{\alpha t}\sin(\beta t)$ độc lập tuyến tính với Wronskian $W(y_1, y_2) = \beta e^{2\alpha t} > 0$.
+3. **Dạng biên độ–pha ($R e^{\alpha t}\cos(\beta t - \phi)$)**:
+   Gộp $c_1\cos\beta t + c_2\sin\beta t = R\cos(\beta t - \phi)$ với $R = \sqrt{c_1^2 + c_2^2}$ giúp đọc ngay biên độ cực đại $R$ và độ lệch pha $\phi$.
+4. **Ba chế độ hình học theo dấu của $\alpha$**:
+   - $\alpha < 0$: dao động **tắt dần** (ổn định).
+   - $\alpha = 0$: dao động **điều hòa bền vững** (chu kỳ $T = 2\pi/\beta$).
+   - $\alpha > 0$: dao động **phình to** (mất ổn định).
+
 ## Mục tiêu
 Bài học này giúp sinh viên hiểu nguồn gốc của nghiệm phức trong phương trình đặc trưng, chuyển chúng về nghiệm thực bằng công thức Euler, và diễn giải ý nghĩa của phần thực cùng phần ảo trong động học dao động. Đây là nền tảng để phân tích dao động điều hòa, dao động tắt dần và cộng hưởng ở các bài ứng dụng tiếp theo.
 
@@ -23,6 +39,19 @@ Nếu sinh viên chưa quen với số phức, giảng viên nên ôn lại ng�
 Khi phương trình đặc trưng không có nghiệm thực, nhiều sinh viên dễ lo rằng mô hình mất ý nghĩa vật lý. Thực tế lại ngược lại: nghiệm phức là dấu hiệu của dao động. Hệ lò xo lý tưởng, mạch LC và nhiều hiện tượng sóng đều dẫn tới nghiệm phức. Phần ảo không phải đại lượng "không có thật", mà là cách đại số mã hóa tần số dao động.
 
 Điểm đáng chú ý của bài học là số phức chỉ đóng vai trò công cụ trung gian, còn kết quả cuối cùng vẫn là nghiệm thực. Nhờ công thức Euler, cặp nghiệm phức liên hợp tạo ra hai hàm sin và cos, trong khi phần thực của nghiệm đặc trưng điều khiển biên độ tăng hay giảm theo thời gian.
+
+### Khung giải thích (nên đọc chậm): Giải IVP $y'' + 2y' + 5y = 0,\; y(0) = 1,\; y'(0) = 1$ và viết lại dưới dạng biên độ–pha
+
+1. **Giải phương trình đặc trưng**:
+   $$r^2 + 2r + 5 = 0 \implies r = \frac{-2 \pm \sqrt{4 - 20}}{2} = \mathbf{-1 \pm 2i} \quad (\alpha = -1,\; \beta = 2).$$
+2. **Nghiệm tổng quát thực**:
+   $$y(t) = e^{-t}\big(c_1\cos 2t + c_2\sin 2t\big).$$
+3. **Ghim điều kiện đầu**:
+   - $y(0) = c_1 = \mathbf{1}$.
+   - $y'(t) = -e^{-t}(c_1\cos 2t + c_2\sin 2t) + e^{-t}(-2c_1\sin 2t + 2c_2\cos 2t)$, nên $y'(0) = -c_1 + 2c_2 = 1 \implies 2c_2 = 2 \implies c_2 = \mathbf{1}$.
+4. **Chuyển sang dạng biên độ–pha**:
+   Với $c_1 = 1, c_2 = 1$: $R = \sqrt{1^2 + 1^2} = \sqrt{2}$ và $\tan\phi = \frac{c_2}{c_1} = 1 \implies \phi = \frac{\pi}{4}$.
+   Vậy $y(t) = \mathbf{\sqrt{2}\,e^{-t}\cos\!\left(2t - \frac{\pi}{4}\right)}$ — chu kỳ giả $T = \frac{2\pi}{2} = \pi$, sau mỗi nửa chu kỳ $\pi/2$ biên độ giảm đi hệ số $e^{-\pi/2} \approx 0{,}208$!
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan

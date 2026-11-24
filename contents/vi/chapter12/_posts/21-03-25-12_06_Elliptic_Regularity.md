@@ -12,6 +12,19 @@ lesson_type: required
 
 ![Elliptic regularity: dữ liệu trơn kéo theo nghiệm trơn hơn]({{ site.imgurl }}/chapter_img/chapter12/06_elliptic_regularity.svg )
 
+Định lý Lax–Milgram mới chỉ hứa hẹn rằng nghiệm yếu $u$ nằm trong $H^1(\Omega)$—một không gian vẫn chứa đầy những hàm gãy khúc không có đạo hàm bậc hai! Vậy làm sao ta biết khi nguồn $f$ trơn thì nghiệm $u$ thực sự là nghiệm cổ điển $C^2$, thậm chí trơn vô hạn $C^\infty$? Câu trả lời nằm ở phép màu của **Tính Trơn Elliptic (Elliptic Regularity)**: toán tử elliptic bậc hai luôn **tặng thêm đúng 2 bậc đạo hàm** cho nghiệm so với vế phải $f$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Lý thuyết Tính Trơn Elliptic
+
+1. **Quy tắc "Tăng 2 bậc đạo hàm" ($f \in H^k \implies u \in H^{k+2}$)**:
+   Với toán tử elliptic đều bậc hai có hệ số trơn và miền có biên trơn, nếu $f \in L^2$ thì $u \in H^2$; nếu $f \in H^k$ thì $u \in H^{k+2}$—và nếu $f \in C^\infty$ thì $u \in C^\infty$!
+2. **Kỹ thuật "Tự kéo dây giày" (Bootstrapping) kết hợp Nhúng Sobolev**:
+   Ta leo từng nấc thang $u \in H^1 \to H^2 \to H^3 \to \dots$, rồi dùng Định lý Nhúng Sobolev ($H^m(\Omega) \hookrightarrow C^k(\bar{\Omega})$ khi $m > k + n/2$) để kết luận nghiệm yếu thực sự là nghiệm cổ điển $C^2$ hay $C^\infty$!
+3. **Tính Trơn Nội tại vs. Tính Trơn Tới Biên (Góc lõm gây Kỳ dị!)**:
+   Bên trong miền $\Omega$, nghiệm luôn trơn theo độ trơn của $f$ và hệ số. Nhưng **tại biên**, nếu miền có góc lõm (như hình chữ L với góc trong $270^\circ$), nghiệm của $-\Delta u = 1$ chỉ có dạng $r^{2/3}\sin(2\theta/3)$ nên $u \notin H^2$ dù $f \equiv 1 \in C^\infty$!
+4. **Tác động Thực tế lên Phương pháp Số (FEM)**:
+   Sai số phần tử hữu hạn tuyến tính đạt bậc tối ưu $O(h)$ trong $H^1$ và $O(h^2)$ trong $L^2$ **chỉ khi** nghiệm có đủ tính trơn $u \in H^2(\Omega)$—đó là lý do lưới FEM phải được làm mịn cục bộ quanh các góc lõm!
+
 ## Mục tiêu
 
 Bài học này giải thích hiện tượng tính chính quy (regularity) của phương trình elliptic: khi dữ liệu và miền đủ tốt, nghiệm yếu thực tế trơn hơn mức dự kiến ban đầu. Sau bài học, sinh viên cần nắm trực giác về tác dụng làm trơn của toán tử elliptic, phân biệt tính chính quy bên trong miền và tính chính quy tới tận biên, và hiểu vì sao tính chính quy là cầu nối từ nghiệm yếu sang nghiệm cổ điển.
@@ -24,6 +37,14 @@ Sinh viên cần nắm khái niệm nghiệm yếu, không gian Sobolev, bài to
 
 Khi dữ liệu đầu vào đủ tốt, phương trình elliptic có xu hướng cải thiện độ trơn của nghiệm. Dù ban đầu ta chỉ chứng minh được nghiệm yếu thuộc $$ H^1 $$, các kết quả về tính chính quy cho phép suy ra nghiệm thực chất thuộc $$ H^2 $$, hoặc cao hơn nữa nếu nguồn và biên trơn hơn. Nói cách khác, toán tử elliptic không chỉ đảm bảo tồn tại nghiệm mà còn nâng bậc độ trơn của nghiệm so với dữ liệu nguồn.
 
+
+### Khung giải thích (nên đọc chậm): Tận mắt thấy nghiệm tăng đúng 2 bậc trơn từ một nguồn $f$ gián đoạn!
+
+Xét phương trình 1D $-u''(x) = f(x)$ trên $(0, 1)$ với nguồn bậc thang **gián đoạn** $f(x) = 0$ trên $(0, \tfrac{1}{2})$ và $f(x) = 1$ trên $(\tfrac{1}{2}, 1)$ (rõ ràng $f \in L^2(0,1)$ nhưng $f \notin C^0([0,1])$):
+1. **Tích phân lần 1 (tìm $u'$)**: $u'(x)$ là hằng số $C_1$ trên $(0, \tfrac{1}{2})$ và bằng $C_1 - (x - \tfrac{1}{2})$ trên $(\tfrac{1}{2}, 1)$. Nhận xét: $u'$ **liên tục** tại $x = \tfrac{1}{2}$ (chỉ có góc gãy, tức $u' \in H^1$)!
+2. **Tích phân lần 2 (tìm $u$)**: $u(x)$ tuyến tính trên $(0, \tfrac{1}{2})$ và là parabol bậc hai trên $(\tfrac{1}{2}, 1)$, khớp cả giá trị lẫn đạo hàm bậc nhất tại $x = \tfrac{1}{2}$:
+   $$u \in H^2(0, 1) \hookrightarrow C^1([0, 1])!$$
+3. **So sánh bậc trơn**: Vế phải $f$ nhảy gián đoạn (bậc $H^0 = L^2$), nhưng nghiệm $u$ đã vọt lên $H^2$ (liên tục khả vi $C^1$ khắp đoạn)—tăng **đúng 2 bậc đạo hàm** như định lý Tính trơn Elliptic khẳng định!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

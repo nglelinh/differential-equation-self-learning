@@ -10,6 +10,19 @@ categories:
 lesson_type: required
 ---
 
+Khi $x = 0$ là điểm kỳ dị (hệ số của $y''$ triệt tiêu), chuỗi Taylor thông thường $\sum a_n x^n$ có thể bị thiếu mất một hoặc cả hai nghiệm độc lập tuyến tính (vì nghiệm thật chứa $\sqrt{x}$, $1/x$, hoặc $\ln x$). **Phương pháp Frobenius** sửa chữa điều đó bằng một thay đổi thiên tài: nhân thêm thừa số lũy thừa $x^r$ vào trước chuỗi lũy thừa, $y(x) = x^r \sum_{n=0}^{\infty} a_n x^n$ ($a_0 \neq 0$)!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Frobenius
+
+1. **Điểm kỳ dị chính quy (Regular Singular Point)**:
+   Với $y'' + p(x)y' + q(x)y = 0$, điểm $x_0 = 0$ là kỳ dị chính quy nếu $x p(x)$ và $x^2 q(x)$ đều giải tích tại $0$ (độ kỳ dị không vượt quá $1/x$ ở $p$ và $1/x^2$ ở $q$).
+2. **Phương trình chỉ số $r(r - 1) + p_0 r + q_0 = 0$**:
+   Đồng nhất hệ số của lũy thừa thấp nhất $x^r$ cho hai nghiệm chỉ số $r_1 \ge r_2$ (với $p_0 = \lim_{x\to 0} x p(x)$, $q_0 = \lim_{x\to 0} x^2 q(x)$).
+3. **Định lý Frobenius (3 trường hợp theo $r_1 - r_2$)**:
+   Nghiệm thứ nhất $y_1 = x^{r_1}\sum a_n x^n$ **luôn tồn tại**. Nghiệm thứ hai phụ thuộc vào hiệu $r_1 - r_2$: không nguyên → chuỗi Frobenius thuần túy với $r_2$; bằng $0$ → chắc chắn có số hạng $y_1 \ln x$; nguyên dương → *có thể* xuất hiện $C y_1 \ln x$.
+4. **Sức mạnh thống nhất**:
+   Phương trình Bessel, Laguerre và siêu hình học (Hypergeometric) đều là những áp dụng trực tiếp của Frobenius.
+
 ## Mục tiêu
 
 Bài học này mở rộng phương pháp nghiệm chuỗi sang trường hợp tổng quát và quan trọng hơn: điểm kỳ dị chính quy. Sau bài học, sinh viên cần hiểu vì sao chuỗi lũy thừa thuần túy không còn đủ, vai trò của thừa số $$ x^r $$, cách lập phương trình chỉ số và cách phân loại các trường hợp nghiệm Frobenius.
@@ -25,6 +38,18 @@ Sinh viên cần nắm vững phương pháp nghiệm chuỗi quanh điểm thư
 Khi các hệ số của phương trình vi phân không giải tích tại điểm xét, liệu phương pháp chuỗi có hoàn toàn bất lực? Câu trả lời là không. Trong nhiều trường hợp quan trọng, nghiệm vẫn giữ được cấu trúc chuỗi có quy luật, chỉ khác là nó không còn khởi đầu bằng một chuỗi lũy thừa nguyên thông thường.
 
 Phương pháp Frobenius giải quyết tình huống này bằng cách nhân thêm một lũy thừa $$ x^r $$ (với số mũ $$ r $$ chưa biết) vào trước chuỗi lũy thừa thông thường. Chính phương trình vi phân sẽ xác định giá trị $$ r $$ thông qua phương trình chỉ số. Phần lớn các họ hàm đặc biệt cổ điển trong vật lý toán đều xuất phát từ khuôn khổ này.
+
+### Khung giải thích (nên đọc chậm): Tìm nghiệm chỉ số và 3 hệ số đầu bằng Phương pháp Frobenius cho $2x y'' + y' + y = 0$
+
+1. **Kiểm tra điểm kỳ dị chính quy tại $x = 0$**:
+   Viết về dạng chuẩn $y'' + \frac{1}{2x} y' + \frac{1}{2x} y = 0 \implies x p(x) = \frac{1}{2}$ ($p_0 = \frac{1}{2}$), $x^2 q(x) = \frac{x}{2}$ ($q_0 = 0$). Cả hai đều giải tích → **điểm kỳ dị chính quy**!
+2. **Giải phương trình chỉ số**:
+   $$r(r - 1) + \frac{1}{2} r + 0 = r\left(r - \frac{1}{2}\right) = 0 \implies r_1 = \frac{1}{2},\quad r_2 = 0.$$
+   Hiệu $r_1 - r_2 = \frac{1}{2} \notin \mathbb{Z}$ → **cả hai nghiệm đều là chuỗi Frobenius thuần túy không có $\ln x$**!
+3. **Rút hệ thức truy hồi**: Thế $y = \sum_{n=0}^\infty a_n x^{n+r}$ thu được:
+   $$a_n = -\frac{a_{n-1}}{(n + r)(2n + 2r - 1)} \qquad (n \ge 1).$$
+   - Với $r_1 = \frac{1}{2}$ ($a_0 = 1$): $a_1 = -\frac{1}{\frac{3}{2}\cdot 2} = -\frac{1}{3}$, $a_2 = \frac{1}{3 \cdot \frac{5}{2} \cdot 4} = \frac{1}{30} \implies y_1(x) = \sqrt{x}\left(1 - \frac{x}{3} + \frac{x^2}{30} - \dots\right)$.
+   - Với $r_2 = 0$ ($a_0 = 1$): $a_1 = -\frac{1}{1 \cdot 1} = -1$, $a_2 = \frac{1}{2 \cdot 3} = \frac{1}{6} \implies y_2(x) = 1 - x + \frac{x^2}{6} - \dots$ (thực ra chính là $\cos\sqrt{2x}$!).
 
 ## Khái niệm theo ba cách
 

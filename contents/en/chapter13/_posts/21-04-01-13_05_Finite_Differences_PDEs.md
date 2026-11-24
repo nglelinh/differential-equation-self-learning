@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Replace a continuous metal rod or 2D plate with a discrete lattice of evenly spaced nodes, and suddenly every partial derivative becomes a simple weighted combination of neighboring node values. The infinite-dimensional PDE collapses into a sparse linear system $A\mathbf{U} = \mathbf{b}$ that a computer can solve in microseconds.
+
 ## Learning Objectives
 
 This lesson introduces finite-difference discretization for PDEs such as the heat, wave, and Laplace equations. Students should understand how spatial and temporal derivatives are replaced on grids and why PDE discretization leads to structured algebraic systems.
@@ -17,6 +19,15 @@ This lesson introduces finite-difference discretization for PDEs such as the hea
 ## Prerequisites
 
 Students should know basic finite differences for ODEs and the PDE models from earlier chapters.
+
+## Background Knowledge Map: Turning PDEs into Sparse Grid Algebra
+
+Four structural concepts govern finite-difference discretizations of elliptic, parabolic, and hyperbolic PDEs:
+
+1. **Centered Stencils and Taylor Cancellation:** The 3-point stencil $\frac{u(x+h) - 2u(x) + u(x-h)}{h^2} = u''(x) + \frac{h^2}{12}u^{(4)}(\xi)$ cancels odd derivatives by symmetry, achieving $O(h^2)$ accuracy; in 2D, summing $x$ and $y$ stencils yields the classic 5-point discrete Laplacian.
+2. **Sparse Matrix Structure and M-Matrices:** Discretizing $-u'' = f$ produces a symmetric, positive-definite tridiagonal matrix with diagonal $2/h^2$ and off-diagonals $-1/h^2$. Its inverse has strictly positive entries—preserving a **discrete maximum principle** directly mirroring the continuous PDE.
+3. **Boundary Condition Implementation:** Dirichlet values enter directly into the right-hand side $\mathbf{b}$, whereas Neumann conditions ($\partial_n u = g$) are handled via one-sided differences or second-order **ghost points** just outside the boundary.
+4. **Method of Lines (Semi-Discretization):** For time-dependent PDEs like $u_t = \nu u_{xx}$, discretizing space first produces a stiff ODE system $\mathbf{U}'(t) = \nu L_h \mathbf{U}(t)$ whose eigenvalues scale like $-\nu/h^2$, directly linking PDE grids to Chapter 13's ODE solvers.
 
 ## Introduction
 
@@ -85,6 +96,23 @@ Boundary treatment is part of the numerical method, not an afterthought.
 - Can they compare the grid treatment of heat, wave, and Laplace equations?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Solving the 1D Discrete Poisson System by Hand
+
+Discretize the BVP $-u''(x) = 2$ on $(0,1)$ with $u(0) = u(1) = 0$ using centered second differences on a uniform grid with $h = 1/4$ (interior nodes $x_1 = 1/4, x_2 = 1/2, x_3 = 3/4$), and compare with the exact solution $u(x) = x(1-x)$.
+
+1. **Assemble the $3\times 3$ finite-difference system:** At each interior node $j \in \{1,2,3\}$, $\frac{-U_{j-1} + 2U_j - U_{j+1}}{h^2} = 2$ with $U_0 = U_4 = 0$ and $h^2 = 1/16$:
+   $$16\begin{pmatrix} 2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2 \end{pmatrix}\begin{pmatrix} U_1 \\ U_2 \\ U_3 \end{pmatrix} = \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix} \iff \begin{pmatrix} 2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2 \end{pmatrix}\begin{pmatrix} U_1 \\ U_2 \\ U_3 \end{pmatrix} = \begin{pmatrix} 1/8 \\ 1/8 \\ 1/8 \end{pmatrix}.$$
+2. **Solve using symmetry ($U_1 = U_3$):** The first two equations reduce to:
+   $$2U_1 - U_2 = \frac{1}{8}, \qquad -2U_1 + 2U_2 = \frac{1}{8}.$$
+   Adding the two equations eliminates $U_1$ immediately:
+   $$U_2 = \frac{1}{8} + \frac{1}{8} = \frac{1}{4} = 0.25.$$
+   Back-substituting into $2U_1 = U_2 + \frac{1}{8} = \frac{3}{8}$ gives:
+   $$U_1 = U_3 = \frac{3}{16} = 0.1875.$$
+3. **Compare with the exact solution $u(x) = x(1-x)$:**
+   $$u(1/4) = \frac{3}{16}, \qquad u(1/2) = \frac{1}{4}, \qquad u(3/4) = \frac{3}{16}.$$
+   The discrete solution is **exact** at every node! Why? Because the truncation error is $\frac{h^2}{12}u^{(4)}(\xi)$, and for a quadratic polynomial $u^{(4)} \equiv 0$.
 
 ### Example 1: Heat Equation Grid Update
 

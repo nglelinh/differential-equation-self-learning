@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Mỗi khi kỹ sư hàng không đổi hình dạng cánh máy bay hay kỹ sư chip thay đổi bố trí điện cực, họ lại phải chạy lại bộ giải phần tử hữu hạn (FEM) cho phương trình elliptic $-\nabla \cdot (a(x)\nabla u) = f$ từ đầu—tốn hàng giờ cho hàng nghìn cấu hình. **Toán tử Nơ-ron (Neural Operators)** như FNO và DeepONet đảo ngược cuộc chơi: thay vì học một nghiệm $u(x)$ đơn lẻ, mạng học thẳng **ánh xạ lời giải $\mathcal{G}: (a, f) \mapsto u$** giữa hai không gian hàm vô hạn chiều, dự đoán nghiệm mới chỉ trong vài mili-giây!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Học Toán tử cho Phương trình Elliptic
+
+1. **Ánh xạ Hàm–sang–Hàm và Toán tử Green học được**:
+   Với bài toán elliptic tuyến tính $-\Delta u = f$, nghiệm là phép tích phân $u(x) = \int_\Omega G(x, y) f(y)\,dy$. Các kiến trúc Neural Operator (GNO, FNO) mô phỏng trực tiếp cấu trúc toán tử tích phân phi địa phương này qua nhiều tầng phi tuyến.
+2. **Lọc Phổ Fourier (Fourier Neural Operator — FNO)**:
+   Biến đổi nhanh FFT đưa bài toán sang miền tần số, nhân trọng số học được trên các mode tần số thấp $|k| \le k_{\max}$ rồi biến đổi ngược—tận dụng bản chất làm trơn cực mạnh của nghịch đảo toán tử elliptic.
+3. **Bất biến Độ phân giải (Resolution Invariance)**:
+   Khác với mạng CNN gắn chết vào kích thước lưới ảnh, Neural Operator có thể huấn luyện trên lưới thô $64 \times 64$ rồi đánh giá không cần huấn luyện lại trên lưới mịn $256 \times 256$.
+4. **Ràng buộc Vật lý và Đánh giá Sai số Hậu nghiệm**:
+   Dù tốc độ vượt trội $100\times$–$1000\times$, mạng nơ-ron không tự động đảm bảo Nguyên lý Cực đại hay điều kiện biên tuyệt đối—do đó thực tiễn thường kết hợp vài bước làm mịn FEM/đa lưới để phục hồi độ chính xác kỹ thuật.
+
 ## Mục tiêu
 
 Bài học tùy chọn này đặt phương trình Laplace, phương trình Poisson, tính chất giá trị trung bình và hàm Green bên cạnh neural operator cùng PINN cho các bài toán elliptic. Sinh viên cần nhìn nhận dòng Darcy và bài toán tĩnh điện như các bài toán chuẩn (benchmark) của học toán tử, sử dụng nguyên lý cực đại như một phép kiểm tra chặt chẽ, đồng thời nắm được các công trình giai đoạn 2021–2024 đã đưa ánh xạ elliptic thành bài thử tiêu chuẩn cho FNO, DeepONet và PINO. Phần lý thuyết thế cổ điển của chương vẫn được giữ làm nền tảng.
@@ -26,6 +39,16 @@ Bài toán dòng Darcy — $$-\nabla\cdot(a\nabla u)=f$$ với độ thấm $$a$
 
 Tĩnh điện và dòng chảy không nén được, không xoáy — vốn đã xét trong chương — thực chất dùng cùng một toán tử dưới các ký hiệu khác nhau. Sinh viên đã biết cách viết hàm Green trên đĩa tròn tức là đã hiểu đối tượng toán học mà các mô hình mạng này đang cố gắng xấp xỉ.
 
+
+### Khung giải thích (nên đọc chậm): Tại sao FNO cắt bỏ tần số cao vẫn xấp xỉ cực tốt nghiệm phương trình Poisson?
+
+Xét phương trình Poisson tuần hoàn $-\Delta u = f$ trên miền $[0, 2\pi]^2$. Trong miền Fourier, đạo hàm trở thành phép nhân đại số:
+$$|k|^2 \hat{u}(k) = \hat{f}(k) \implies \hat{u}(k) = \frac{\hat{f}(k)}{k_1^2 + k_2^2}.$$
+So sánh hai mode nguồn có cùng biên độ $|\hat{f}(k)| = 1$:
+- **Mode tần số thấp** $k = (1, 0)$: biên độ nghiệm là $|\hat{u}(1, 0)| = \frac{1}{1^2 + 0^2} = \mathbf{1{,}00}$.
+- **Mode tần số cao** $k = (10, 0)$: biên độ nghiệm bị dập tắt xuống $|\hat{u}(10, 0)| = \frac{1}{10^2} = \mathbf{0{,}01}$ (giảm $100\times$!).
+- **Mode rất cao** $k = (20, 0)$: chỉ còn $\frac{1}{400} = \mathbf{0{,}0025}$.
+Chính hệ số suy giảm $1/|k|^2$ của toán tử elliptic giải thích vì sao giữ lại các mode thấp trong FNO đã nắm bắt gần như trọn vẹn năng lượng của nghiệm!
 ## Khái niệm then chốt
 
 ### Toán tử từ hệ số sang nghiệm

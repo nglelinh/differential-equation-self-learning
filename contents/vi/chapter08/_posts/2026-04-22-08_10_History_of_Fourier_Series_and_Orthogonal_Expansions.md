@@ -9,6 +9,19 @@ categories:
 - chapter08
 ---
 
+Năm 1807, khi Joseph Fourier trình lên Viện Hàn lâm Khoa học Pháp tuyên bố táo bạo rằng **mọi hàm số bất kỳ—kể cả hàm có góc gãy hay bước nhảy đứt đoạn—đều biểu diễn được thành tổng vô hạn các sóng sin và cosin**, chính Lagrange đã phản đối kịch liệt vì tin rằng tổng các hàm trơn không thể nào tạo ra điểm gián đoạn! Cuộc tranh luận nảy lửa đó đã thúc đẩy Dirichlet định nghĩa lại khái niệm "hàm số", Riemann phát minh tích phân Riemann, Cantor sáng lập Lý thuyết Tập hợp, và ngày nay định hình toàn bộ ngành xử lý tín hiệu, nén ảnh JPEG/MP3 và giải PTVP đạo hàm riêng!
+
+## Bản đồ kiến thức nền: Bốn cột mốc lịch sử của Giải tích Fourier
+
+1. **Fourier (1807/1822) — *Théorie analytique de la chaleur***:
+   Dùng chuỗi lượng giác giải phương trình nhiệt và tìm ra công thức tích phân cho hệ số $a_n, b_n$.
+2. **Dirichlet (1829) — Định nghĩa hàm hiện đại & Điều kiện hội tụ**:
+   Chứng minh định lý hội tụ đầu tiên của chuỗi Fourier cho hàm trơn từng khúc, đồng thời cho thấy tổng riêng tiến về **trung bình cộng hai giới hạn trái–phải** tại điểm nhảy!
+3. **Wilbraham (1848) & Gibbs (1899) — Hiện tượng vọt lố tại bước nhảy**:
+   Khám phá ra đỉnh nhọn vọt lố $\approx 9\%$ không bao giờ biến mất dù lấy bao nhiêu số hạng gần điểm gián đoạn.
+4. **Cooley & Tukey (1965) — Thuật toán FFT ($O(N \log N)$)**:
+   Đưa biến đổi Fourier từ công thức giấy bút thành phép tính siêu tốc chạy trong mọi điện thoại, Wi-Fi, 5G và mạng nơ-ron hiện đại!
+
 ## Mục tiêu
 Bài học này lần theo tiến trình lịch sử của chuỗi Fourier, từ các cuộc tranh luận về bài toán dây rung cho đến lý thuyết khai triển trực giao hiện đại. Qua đó, sinh viên thấy được Chương 08 là nơi hội tụ giữa trực giác lượng giác, tính chặt chẽ của giải tích và tư duy phổ.
 
@@ -19,6 +32,15 @@ Sinh viên nên nắm vững các nội dung tính toán của Chương 08, bao 
 Giữa thế kỷ XVIII tại Paris, cuộc tranh luận về bài toán dây rung diễn ra sôi nổi: d'Alembert đã có công thức nghiệm sóng, Euler đặt ra nhiều nghi vấn sắc bén, còn Daniel Bernoulli tin rằng một sợi dây bị gảy dù có hình dạng ban đầu gấp khúc đến đâu vẫn có thể biểu diễn như tổng của các mode điều hòa. Mâu thuẫn ở đây mang tính nền tảng: nếu Bernoulli đúng, một hình dạng không trơn vẫn có thể phân tích thành tổng các sóng sin trơn; nếu ông sai, toàn bộ cách tiếp cận theo mode sẽ mất tính tổng quát.
 
 Xét một ví dụ kinh điển: trên đoạn $$[0,\pi]$$, hàm $$f(x)=x$$ không phải là một sóng sin đơn lẻ, nhưng chuỗi $$2\sin x - \sin 2x + \frac{2}{3}\sin 3x - \cdots$$ lại có thể tái tạo dần hình dạng của nó. Ngay trong ví dụ này, hai trụ cột của giải tích Fourier hiện lên rõ ràng: hệ số đo mức đóng góp của từng mode, còn tính trực giao bảo đảm các mode không ảnh hưởng lẫn nhau khi tách riêng từng thành phần. Đó là lý do Chương 08 từng gây ra nhiều tranh luận lịch sử, bởi nó buộc toán học phải chấp nhận rằng các hình dạng phức tạp vẫn có thể được phân tích như một hợp âm.
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng cầm tay tổng 3 số hạng đầu của sóng vuông (hàm gián đoạn!)
+
+Sóng vuông $f(x) = +1$ trên $(0, \pi)$ và $-1$ trên $(-\pi, 0)$ có chuỗi Fourier chỉ gồm các họa âm lẻ:
+$$f(x) \sim \frac{4}{\pi}\left(\sin x + \frac{\sin 3x}{3} + \frac{\sin 5x}{5} + \dots\right).$$
+Thử tính tay tại điểm giữa $x = \pi/2$ (nơi $f(\pi/2) = 1$):
+- $S_1(\pi/2) = \frac{4}{\pi}(1) \approx \mathbf{1{,}273}$.
+- $S_3(\pi/2) = \frac{4}{\pi}\left(1 - \frac{1}{3}\right) = \frac{8}{3\pi} \approx \mathbf{0{,}849}$.
+- $S_5(\pi/2) = \frac{4}{\pi}\left(1 - \frac{1}{3} + \frac{1}{5}\right) = \frac{52}{15\pi} \approx \mathbf{1{,}103} \to 1$ (đồng thời rút ra ngay công thức Leibniz kinh điển $\frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \dots$!).
 
 ## Mạch truyện lớn
 Lịch sử chuỗi Fourier thường mở đầu bằng cuộc tranh luận về dây rung, trong đó Daniel Bernoulli ủng hộ mô tả theo các mode điều hòa, còn d'Alembert và Euler hoài nghi tính tổng quát của khẳng định đó. Về sau, Fourier đẩy ý tưởng này đi xa hơn khi tuyên bố rằng một lớp hàm rất rộng có thể khai triển thành chuỗi lượng giác để giải bài toán truyền nhiệt. Từ một trực giác vật lý táo bạo, chuỗi Fourier trở thành bài toán nền tảng đặt ra thách thức lớn cho toàn bộ ngành giải tích.

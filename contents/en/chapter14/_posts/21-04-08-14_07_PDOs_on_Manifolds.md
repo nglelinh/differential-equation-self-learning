@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** The Fourier transform lives on flat Euclidean space $\mathbb{R}^n$—there is no global plane wave $e^{ix\cdot\xi}$ on a curved sphere or torus. How, then, do mathematicians run pseudo-differential calculus on curved Riemannian manifolds (and prove landmark theorems like the Atiyah–Singer Index Theorem)? By patching local Euclidean $\Psi\text{DOs}$ with partitions of unity and discovering that the **principal symbol** lives intrinsically as a function on the cotangent bundle $T^*M$.
+
 ## Learning Objectives
 
 This lesson extends pseudo-differential operators from Euclidean space to manifolds. Students should understand why coordinate invariance matters and how local symbolic constructions are patched together geometrically.
@@ -17,6 +19,15 @@ This lesson extends pseudo-differential operators from Euclidean space to manifo
 ## Prerequisites
 
 Students should know basic pseudo-differential operators in Euclidean space and have some familiarity with manifolds, charts, and coordinate changes.
+
+## Background Knowledge Map: Lifting $\Psi\text{DOs}$ to Curved Manifolds
+
+Four geometric pillars make pseudo-differential operators completely coordinate-free on any smooth manifold $M$:
+
+1. **Diffeomorphism Invariance of $\Psi^m$:** Under a smooth change of coordinates $y = \kappa(x)$, the pullback of an operator $A \in \Psi^m$ remains in $\Psi^m$! Its full symbol transforms in a messy way involving higher derivatives of $\kappa$, *except* at leading order.
+2. **Principal Symbol as a Function on $T^*M$:** Under $y = \kappa(x)$, covectors transform by $\xi = (d\kappa_x)^\top \eta$, and the leading symbol satisfies $\tilde{a}_m(\kappa(x), \eta) = a_m(x, (d\kappa_x)^\top \eta)$—defining a canonical, chart-independent function $\sigma_m(A) \in S^m(T^*M)/S^{m-1}(T^*M)$.
+3. **Gluing via Partitions of Unity:** An operator $A: C_c^\infty(M) \to C^\infty(M)$ lies in $\Psi^m(M)$ iff (i) its localization $\psi A \varphi$ in every coordinate chart is a Euclidean $\Psi\text{DO}$ of order $m$, and (ii) whenever $\text{supp}(\psi) \cap \text{supp}(\varphi) = \emptyset$, $\psi A \varphi$ is infinitely smoothing (pseudolocal).
+4. **Elliptic Operators on Compact Manifolds Are Fredholm:** On a *compact* manifold $M$, Rellich's theorem makes smoothing remainders $R \in \Psi^{-\infty}(M)$ compact on $H^s(M)$, so a parametrix $QP = I + R$ immediately proves that every elliptic $P \in \Psi^m(M)$ has finite-dimensional kernel and cokernel!
 
 ## Introduction
 
@@ -85,6 +96,21 @@ The cotangent bundle becomes the natural home of the symbol.
 - Can they say why the cotangent bundle is the natural symbol space?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Checking Principal Symbol Invariance Under a Nonlinear Change of Coordinates
+
+Take the 1D operator $P = -\frac{d^2}{dx^2} = D_x^2$ (symbol $p(x,\xi) = \xi^2$) and transform it under the smooth diffeomorphism $y = \kappa(x) = x^3 + x$ (note $\kappa'(x) = 3x^2 + 1 \ge 1 > 0$ everywhere). Verify explicitly that the principal symbol is invariant on $T^*\mathbb{R}$ while the lower-order symbol is not!
+
+1. **Transform derivatives using the chain rule:** Since $\frac{dy}{dx} = \kappa'(x) = 3x^2 + 1$:
+   $$\frac{d}{dx} = \kappa'(x)\frac{d}{dy}, \qquad \frac{d^2}{dx^2} = \big(\kappa'(x)\big)^2\frac{d^2}{dy^2} + \kappa''(x)\frac{d}{dy}.$$
+2. **Rewrite $P$ in $y$-coordinates using $D_y = -i\frac{d}{dy}$ (so $\frac{d^2}{dy^2} = -D_y^2$ and $\frac{d}{dy} = i D_y$):**
+   $$\tilde{P} = \big(\kappa'(x)\big)^2 D_y^2 - i\kappa''(x) D_y = (3x^2 + 1)^2 D_y^2 - 6ix D_y.$$
+3. **Read off the full symbol $\tilde{p}(y,\eta)$ in the $y$-chart:**
+   $$\tilde{p}(y,\eta) = \underbrace{(3x^2 + 1)^2 \eta^2}_{\text{principal part } \tilde{p}_2} \; \underbrace{-\; 6ix\,\eta}_{\text{subprincipal part } \tilde{p}_1}.$$
+4. **Check cotangent-bundle invariance ($\xi = \kappa'(x)\eta = (3x^2+1)\eta$):**
+   $$\tilde{p}_2(y,\eta) = \big(\kappa'(x)\eta\big)^2 = \xi^2 = p_2(x,\xi) \quad \text{(EXACT MATCH!)}.$$
+   Meanwhile, the lower-order term $-6ix\eta$ appeared purely from the curvature $\kappa''(x) = 6x$ of the coordinate chart—proving why *only* the principal symbol $\sigma_m(P)$ is coordinate-invariant on $T^*M$.
 
 ### Example 1: Local Chart Construction
 

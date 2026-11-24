@@ -10,6 +10,35 @@ categories:
 lesson_type: optional
 ---
 
+What happens to a Fourier series when a signal is no longer periodic—like a single drumbeat, a seismic shockwave, or a localized heat pulse on an infinite metal wire? Imagine stretching the period $$ [-L, L] $$ outward toward $$ (-\infty, \infty) $$. As $$ L \to \infty $$, the spacing between adjacent discrete frequencies $$ \Delta\omega = \frac{\pi}{L} $$ shrinks to zero, the discrete spectrum of harmonics melts into a *continuous spectrum* $$ \hat{f}(\omega) $$, and the Fourier sum becomes the **Fourier Transform** integral!
+
+This limit is one of the most consequential bridges in all of mathematics: it converts differentiation on the whole real line into multiplication by $$ i\omega $$, turning PDEs on infinite domains into one-line algebraic equations.
+
+## Background Knowledge Map: From Discrete Harmonics to Continuous Spectra
+
+1. **The $$ L \to \infty $$ Riemann-Sum Limit:** Setting $$ \omega_n = \frac{n\pi}{L} $$ and $$ \Delta\omega = \frac{\pi}{L} $$, the complex Fourier series $$ \sum c_n e^{i\omega_n x} $$ becomes $$ \frac{1}{2\pi}\int_{-\infty}^\infty \hat{f}(\omega) e^{i\omega x}\,d\omega $$, where $$ \hat{f}(\omega) = \int_{-\infty}^\infty f(x) e^{-i\omega x}\,dx $$ (watch normalization conventions—some texts use $$ \frac{1}{\sqrt{2\pi}} $$ symmetrically).
+2. **Differentiation & Convolution Theorems (PDE Superpower):** For functions decaying at infinity, $$ \widehat{f'}(\omega) = i\omega \hat{f}(\omega) $$ and $$ \widehat{f''}(\omega) = -\omega^2 \hat{f}(\omega) $$. Meanwhile, convolution $$ (f * g)(x) = \int_{-\infty}^\infty f(y)g(x-y)\,dy $$ transforms into pointwise multiplication $$ \widehat{f * g}(\omega) = \hat{f}(\omega)\hat{g}(\omega) $$.
+3. **Plancherel's Theorem (Continuous Energy Conservation):** The Fourier transform is an isometry on $$ L^2(\mathbb{R}) $$: $$ \int_{-\infty}^\infty |f(x)|^2\,dx = \frac{1}{2\pi}\int_{-\infty}^\infty |\hat{f}(\omega)|^2\,d\omega $$.
+4. **Time–Frequency Uncertainty Principle:** Scaling $$ f(ax) $$ scales its transform to $$ \frac{1}{|a|}\hat{f}(\omega/a) $$. Squeezing a pulse narrowly in space/time inevitably spreads its spectrum wide in frequency—a pure Fourier law that underlies both radar resolution and Heisenberg's uncertainty principle in quantum mechanics.
+
+### Step-by-Step Worked Example (Read Slowly): Fourier Transform of the Two-Sided Exponential $$ e^{-a|x|} $$ and Plancherel Check
+
+**Problem:** Compute the Fourier transform $$ \hat{f}(\omega) = \int_{-\infty}^\infty e^{-a|x|} e^{-i\omega x}\,dx $$ for $$ a > 0 $$, check its scaling behavior as $$ a $$ doubles, and verify Plancherel's identity explicitly.
+
+1. **Split the integral at $$ x = 0 $$:**
+   $$ \hat{f}(\omega) = \int_{-\infty}^{0} e^{(a - i\omega)x}\,dx + \int_{0}^{\infty} e^{-(a + i\omega)x}\,dx. $$
+2. **Evaluate both improper integrals (convergent since $$ a > 0 $$):**
+   - Left half: $$ \left[\frac{e^{(a - i\omega)x}}{a - i\omega}\right]_{-\infty}^{0} = \frac{1}{a - i\omega} $$.
+   - Right half: $$ \left[\frac{e^{-(a + i\omega)x}}{-(a + i\omega)}\right]_{0}^{\infty} = \frac{1}{a + i\omega} $$.
+3. **Combine into a real Lorentzian spectrum:**
+   $$ \hat{f}(\omega) = \frac{1}{a - i\omega} + \frac{1}{a + i\omega} = \frac{(a + i\omega) + (a - i\omega)}{a^2 + \omega^2} = \frac{2a}{a^2 + \omega^2}. $$
+   Look at the uncertainty principle in action: doubling $$ a $$ makes $$ e^{-a|x|} $$ twice as narrow in $$ x $$, while the half-maximum width of $$ \frac{2a}{a^2 + \omega^2} $$ (at $$ \omega = \pm a $$) becomes twice as wide in $$ \omega $$!
+4. **Verify Plancherel's identity $$ \int_{-\infty}^\infty |f(x)|^2\,dx = \frac{1}{2\pi}\int_{-\infty}^\infty |\hat{f}(\omega)|^2\,d\omega $$:**
+   - Spatial energy: $$ \int_{-\infty}^\infty e^{-2a|x|}\,dx = 2\int_0^\infty e^{-2ax}\,dx = \frac{1}{a} $$.
+   - Spectral energy (using $$ \omega = a\tan\theta \implies d\omega = a\sec^2\theta\,d\theta $$):
+     $$ \frac{1}{2\pi}\int_{-\infty}^{\infty} \frac{4a^2}{(a^2 + \omega^2)^2}\,d\omega = \frac{2a^2}{\pi}\int_{-\pi/2}^{\pi/2} \frac{a\sec^2\theta}{a^4\sec^4\theta}\,d\theta = \frac{2}{\pi a}\int_{-\pi/2}^{\pi/2} \cos^2\theta\,d\theta = \frac{2}{\pi a}\cdot\frac{\pi}{2} = \frac{1}{a}. $$
+   Exact agreement!
+
 ## Learning Objectives
 
 This lesson introduces the Fourier transform as the continuous analogue of Fourier series. Students should understand how passing from periodic domains to infinite domains turns discrete frequencies into a continuum.

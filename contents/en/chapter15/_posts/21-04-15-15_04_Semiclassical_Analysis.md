@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** As Planck's constant $h \to 0$ (or equivalently, as the frequency of light approaches infinity), quantum wavefunctions stop behaving like diffuse clouds and concentrate tightly along Newton's classical particle trajectories. **Semiclassical analysis** turns that physical correspondence principle into a razor-sharp $h$-dependent pseudo-differential calculus.
+
 ![Semiclassical intuition when a small parameter tends to zero]({{ site.imgurl }}/chapter_img/chapter15/04_semiclassical_analysis.svg )
 
 ## Objectives
@@ -19,6 +21,15 @@ This optional lesson introduces semiclassical analysis as the bridge between hig
 ## Prerequisites
 
 Students should know the Fourier transform, pseudodifferential operators, basic Hamiltonian mechanics at an intuitive level, and the Schrodinger equation. Background in spectral theory and wave front sets also helps explain why a small parameter creates a new scale of observation.
+
+## Background Knowledge Map: Bridging Quantum Waves and Classical Mechanics as $h \to 0$
+
+Four pillars organize semiclassical PDE theory:
+
+1. **Semiclassical Quantization $\operatorname{Op}_h(a)$:** Scaling derivatives by $h$ ($hD_x = -ih\partial_x$) yields $\operatorname{Op}_h(a)u(x) = (2\pi h)^{-n}\iint e^{\frac{i}{h}(x-y)\cdot\xi} a(x,\xi)u(y)\,dy\,d\xi$, putting the small parameter $h$ directly in the oscillatory phase.
+2. **WKB Ansatz, Eikonal, and Transport Equations:** Substituting $u_h(x) = a(x)e^{iS(x)/h}$ into $(-h^2\Delta + V(x) - E)u_h = 0$ splits the PDE by powers of $h$: $O(h^0)$ gives the classical Hamilton–Jacobi equation $|\nabla S|^2 + V(x) = E$, while $O(h^1)$ gives the amplitude transport law $\nabla\cdot(a^2 \nabla S) = 0$.
+3. **Egorov's Theorem (Quantum-Classical Correspondence):** Evolving a quantum observable $A_h = \operatorname{Op}_h(a)$ under $U(t) = e^{-it P_h / h}$ satisfies $U(-t)\operatorname{Op}_h(a)U(t) = \operatorname{Op}_h(a \circ \Phi_t) + O(h)$, where $\Phi_t$ is the classical Hamiltonian flow of $p(x,\xi)$!
+4. **Semiclassical Defect Measures and Tunneling:** In classically forbidden regions where $V(x) > E$, solutions decay exponentially like $e^{-d_A(x)/h}$ (governed by the Agmon distance $d_A$), explaining quantum tunneling rigorously.
 
 ## Introduction
 
@@ -99,6 +110,24 @@ High-energy spectral questions are often reinterpreted as semiclassical limits.
 - Can they describe why wave packets are central?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Deriving the WKB Eikonal and Transport Equations from Scratch
+
+Substitute the semiclassical WKB ansatz $u_h(x) = a(x)e^{iS(x)/h}$ into the 1D stationary Schrödinger equation
+$$\big(-h^2\frac{d^2}{dx^2} + V(x) - E\big)u_h(x) = 0$$
+in the classically allowed region $E > V(x)$, and solve explicitly for the amplitude $a(x)$.
+
+1. **Differentiate $u_h(x) = a(x)e^{iS(x)/h}$ twice:**
+   $$u_h' = \left(a' + \frac{i}{h}S'a\right)e^{iS/h}, \qquad u_h'' = \left(a'' + \frac{i}{h}(2S'a' + S''a) - \frac{1}{h^2}(S')^2 a\right)e^{iS/h}.$$
+2. **Multiply by $-h^2$ and collect powers of $h$:**
+   $$\Big[\underbrace{\big((S')^2 + V(x) - E\big)a}_{O(h^0)} \;-\; ih\underbrace{\big(2S'a' + S''a\big)}_{O(h^1)} \;-\; h^2 a''\Big]e^{iS/h} = 0.$$
+3. **Solve the $O(h^0)$ Eikonal equation:**
+   $$(S'(x))^2 = E - V(x) \implies S(x) = \pm \int_{x_0}^x \sqrt{E - V(y)}\,dy.$$
+   Note that $S'(x) = \pm p(x)$ is literally the classical momentum!
+4. **Solve the $O(h^1)$ Transport equation:** Multiply $2S'a' + S''a = 0$ by $a$:
+   $$2a a' S' + a^2 S'' = \frac{d}{dx}\big(a^2 S'\big) = 0 \implies a(x)^2 |S'(x)| = C^2 \implies a(x) = \frac{C}{(E - V(x))^{1/4}}.$$
+   Physically, $|u_h(x)|^2 \propto \frac{1}{\sqrt{E - V(x)}} = \frac{1}{v(x)}$: the quantum probability density is inversely proportional to the classical speed $v(x)$—just like a classical particle spending more time where it moves slowest!
 
 ### Example 1: The free Schrodinger operator
 

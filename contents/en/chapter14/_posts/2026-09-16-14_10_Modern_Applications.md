@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** A standard Fourier Neural Operator (FNO) learns a constant-coefficient multiplier $R(\xi)$—essentially treating every medium as spatially uniform inside each linear layer. Real-world materials, seismic strata, and turbulent flows vary sharply in space $x$. Viewing neural operators through **pseudo-differential calculus** shows how to learn full space–frequency symbols $a(x,\xi)$ efficiently via low-rank factorizations.
+
 ## Objectives
 
 This optional lesson reads Fourier neural operators, spectral neural operators, and related 2022–2024 architectures as computational cousins of pseudodifferential operators. Students should be able to match a learned Fourier multiplier to a symbol in $$S^m$$, explain alias-free operator learning in Hörmander’s language, and see elliptic parametrices as the analytic model for learned inverses. The symbol calculus of the chapter is not rewritten.
@@ -17,6 +19,15 @@ This optional lesson reads Fourier neural operators, spectral neural operators, 
 ## Prerequisites
 
 Students should know Fourier multipliers, symbol classes, composition of ΨDOs, and the idea of an elliptic parametrix. The preparatory review on multipliers is the intended warm-up.
+
+## Background Knowledge Map: Neural Operators as Learned Symbols $a(x,\xi)$
+
+Four connections tie Chapter 14's symbol calculus directly to state-of-the-art operator learning:
+
+1. **FNOs as Constant-Coefficient $\Psi\text{DOs}$:** A single FNO spectral convolution $\mathcal{F}^{-1}(R_\theta(\xi)\mathcal{F}u)$ is literally a translation-invariant Fourier multiplier; stacking pointwise nonlinearities mixes frequencies, while adding spatial gating lifts it to a true variable-coefficient $\Psi\text{DO}$.
+2. **Low-Rank Symbol Factorization:** Storing a dense 2D symbol $a(x,\xi)$ costs $O(N^2)$, so modern architectures factor $a(x,\xi) \approx \sum_{r=1}^R c_r(x)\,m_r(\xi)$, enabling $O(R\,N\log N)$ evaluation via $R$ fast Fourier transforms while capturing heterogeneous media!
+3. **Elliptic Preconditioning and Multiscale Parametrices:** Learning an approximate parametrix $Q_\theta \approx P^{-1}$ accelerates iterative Krylov solvers (CG/GMRES) by an order of magnitude because $Q_\theta P = I + R$ clusters eigenvalues tightly around $1$.
+4. **Microlocal Inductive Bias:** Enforcing smooth decay of learned weights $m_r(\xi)$ as $|\xi| \to \infty$ mimics the Hörmander $S^m$ condition, preventing high-frequency aliasing when evaluating trained models on finer meshes.
 
 ## Introduction
 
@@ -57,6 +68,19 @@ A symbol-aware reading of a neural operator:
 Geo-FNO and convolutional neural operators are attempts to restore $$x$$-dependence and geometric invariance while keeping a continuum kernel.
 
 ## Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): How a Spatially Varying Learned Symbol Mixes Frequencies
+
+Consider a rank-2 factorized pseudo-differential layer $a(x,\xi) = c_1(x)m_1(\xi) + c_2(x)m_2(\xi)$ on $\mathbb{R}$ with spatial gates $c_1(x) = 1$, $c_2(x) = \cos(x)$ and learned spectral multipliers $m_1(\xi) = (1+\xi^2)^{-1}$, $m_2(\xi) = (1+\xi^2)^{-2}$. Apply $a(x,D)$ to the single pure mode $u(x) = \cos(2x)$ and observe the new frequencies created.
+
+1. **Apply the two Fourier multipliers to $u(x) = \cos(2x)$ (where $|\xi| = 2$, so $1 + \xi^2 = 5$):**
+   $$m_1(D)u = \frac{1}{5}\cos(2x), \qquad m_2(D)u = \frac{1}{25}\cos(2x).$$
+2. **Modulate by the spatial gates $c_1(x)$ and $c_2(x)$:**
+   $$\big(a(x,D)u\big)(x) = 1\cdot\frac{1}{5}\cos(2x) + \cos(x)\cdot\frac{1}{25}\cos(2x).$$
+3. **Expand the product using $\cos(x)\cos(2x) = \frac{1}{2}\big(\cos(x) + \cos(3x)\big)$:**
+   $$\big(a(x,D)u\big)(x) = \frac{1}{5}\cos(2x) + \frac{1}{50}\cos(x) + \frac{1}{50}\cos(3x).$$
+4. **Contrast with a pure FNO multiplier:** A spatially uniform multiplier $m(D)$ could *only* return a scalar multiple of $\cos(2x)$. By allowing $x$-dependence in $a(x,\xi)$, even a *linear* $\Psi\text{DO}$ layer couples frequency $k=2$ into sidebands $k=1$ and $k=3$—the exact mechanism needed to model wave scattering through inhomogeneous media!
 
 ### Example 1: Symbol of the Bessel potential
 

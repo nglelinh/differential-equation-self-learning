@@ -10,6 +10,40 @@ categories:
 lesson_type: required
 ---
 
+Push down slowly on the top of a thin plastic ruler. At first it stays perfectly straight—the trivial equilibrium $$ y \equiv 0 $$. Keep increasing the compressive load $$ P $$, and at a razor-sharp critical force $$ P_{\text{crit}} $$, the ruler suddenly snaps sideways into a smooth arch. Leonhard Euler discovered in 1744 that this buckling instability is governed by a boundary value problem $$ y'' + \lambda y = 0 $$ where *only discrete special values* of $$ \lambda $$ allow a nonzero solution to fit between the endpoints.
+
+Those special values are the **eigenvalues**, and the corresponding arches are the **eigenfunctions**. Just as matrix eigenvalues diagonalize finite-dimensional systems, differential eigenvalues unlock the natural resonant frequencies, buckling loads, and quantum energy levels of continuous physical systems.
+
+## Background Knowledge Map: Differential Eigenvalue Problems
+
+1. **Matrix vs. Differential Operator Analogy (Functional Analysis):** Writing $$ L[y] = -y'' $$, the problem $$ L[y] = \lambda y $$ with homogeneous BCs is the infinite-dimensional analogue of $$ A\mathbf{v} = \lambda \mathbf{v} $$. Crucially, the *boundary conditions are part of the operator's domain*: changing Dirichlet to Neumann changes the spectrum completely.
+2. **Exhaustive Sign Analysis ($$ \lambda < 0, \lambda = 0, \lambda > 0 $$):** Because the characteristic roots of $$ y'' + \lambda y = 0 $$ change character across $$ \lambda = 0 $$ (hyperbolic exponentials for $$ \lambda < 0 $$, linear polynomials for $$ \lambda = 0 $$, trigonometric oscillations for $$ \lambda > 0 $$), every eigenvalue problem must be checked cleanly across all three regimes.
+3. **Rayleigh Quotient Sign Check (Energy Intuition):** Multiplying $$ -y'' = \lambda y $$ by $$ y $$ and integrating by parts gives $$ \lambda = \frac{-[y y']_a^b + \int_a^b (y')^2\,dx}{\int_a^b y^2\,dx} $$. For Dirichlet or Neumann BCs, the boundary term vanishes, proving immediately that $$ \lambda \ge 0 $$ (and $$ \lambda > 0 $$ for Dirichlet)—zero guesswork!
+4. **Discrete Spectrum and Nodal Counting:** As $$ n $$ increases, eigenvalues grow quadratically ($$ \lambda_n \sim (n\pi/L)^2 $$) and the $$ n $$-th eigenfunction has increasingly many interior zeros, forming the natural harmonic ladder of the domain.
+
+### Step-by-Step Worked Example (Read Slowly): Complete Spectrum of the Mixed Dirichlet–Neumann Problem
+
+**Problem:** Find all eigenvalues $$ \lambda $$ and eigenfunctions $$ y(x) $$ of $$ y'' + \lambda y = 0 $$ on $$ [0, L] $$ subject to $$ y(0) = 0 $$ and $$ y'(L) = 0 $$, checking all three regimes $$ \lambda < 0 $$, $$ \lambda = 0 $$, and $$ \lambda > 0 $$.
+
+1. **Case 1 ($$ \lambda = -\mu^2 < 0 $$ with $$ \mu > 0 $$):**
+   General solution: $$ y(x) = c_1 \cosh(\mu x) + c_2 \sinh(\mu x) $$.
+   - $$ y(0) = c_1 = 0 \implies y(x) = c_2 \sinh(\mu x) $$.
+   - $$ y'(L) = c_2 \mu \cosh(\mu L) = 0 $$. Since $$ \mu > 0 $$ and $$ \cosh(\mu L) \ge 1 > 0 $$, we must have $$ c_2 = 0 $$.
+   Thus **no negative eigenvalues** exist.
+2. **Case 2 ($$ \lambda = 0 $$):**
+   General solution: $$ y(x) = c_1 + c_2 x $$.
+   - $$ y(0) = c_1 = 0 $$.
+   - $$ y'(L) = c_2 = 0 $$.
+   Only the trivial solution exists, so **$$ \lambda = 0 $$ is not an eigenvalue**.
+3. **Case 3 ($$ \lambda = \mu^2 > 0 $$ with $$ \mu > 0 $$):**
+   General solution: $$ y(x) = c_1 \cos(\mu x) + c_2 \sin(\mu x) $$.
+   - $$ y(0) = c_1 = 0 \implies y(x) = c_2 \sin(\mu x) $$.
+   - $$ y'(L) = c_2 \mu \cos(\mu L) = 0 $$. For a nontrivial solution ($$ c_2 \neq 0 $$), we require
+     $$ \cos(\mu L) = 0 \implies \mu_n L = \left(n - \frac{1}{2}\right)\pi = \frac{(2n-1)\pi}{2}, \qquad n = 1, 2, 3, \dots $$
+4. **State the spectrum and verify $$ n = 1 $$:**
+   $$ \lambda_n = \left(\frac{(2n-1)\pi}{2L}\right)^2, \qquad y_n(x) = \sin\!\left(\frac{(2n-1)\pi x}{2L}\right), \qquad n = 1, 2, 3, \dots $$
+   Check $$ n = 1 $$: $$ y_1(x) = \sin\!\left(\frac{\pi x}{2L}\right) $$ satisfies $$ y_1(0) = 0 $$, $$ y_1'(L) = \frac{\pi}{2L}\cos\!\left(\frac{\pi}{2}\right) = 0 $$, and $$ y_1'' = -\left(\frac{\pi}{2L}\right)^2 y_1 $$. Notice its fundamental frequency is *half* that of a Dirichlet–Dirichlet string—matching a clarinet pipe closed at one end!
+
 ## Learning Objectives
 
 This lesson introduces differential-equation eigenvalue problems as the bridge from ordinary BVPs to spectral theory. Students should learn what eigenvalues and eigenfunctions are in this setting, why only special parameter values permit nontrivial solutions, and how these solutions describe natural modes of a physical system.

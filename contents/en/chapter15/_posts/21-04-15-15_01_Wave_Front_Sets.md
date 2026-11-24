@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Two very different singularities—a point needle-poke $\delta_{(0,0)}$ and a straight knife-edge jump $H(x)$—both look singular at the origin $(0,0)$. Yet when you hit them with a wave equation, the needle-poke bursts outward in all directions while the knife-edge marches strictly perpendicular to its blade. Lars Hörmander's **wave front set** $\operatorname{WF}(u) \subset T^*\Omega \setminus \{0\}$ captures that exact directional DNA.
+
 ![Wave front set as a description of the location and direction of singularities]({{ site.imgurl }}/chapter_img/chapter15/01_wave_front_sets.svg )
 
 ## Objectives
@@ -19,6 +21,15 @@ This lesson opens the microlocal chapter with its most important concept: the wa
 ## Prerequisites
 
 Students should know distributions, the Fourier transform, smooth cutoff functions, singular support, and the basic intuition that a function may be smooth in some directions but not in others. These ideas are reviewed in Lesson 15.00. In earlier chapters, regularity was mostly asked pointwise in space. Here we refine the question by asking about both position and cotangent direction.
+
+## Background Knowledge Map: Geometry and Calculus of the Wave Front Set
+
+Four pillars make $\operatorname{WF}(u)$ the central organizing object of microlocal analysis:
+
+1. **Conic Subsets of the Punctured Cotangent Bundle $T^*\Omega \setminus \{0\}$:** A point $(x_0, \xi_0)$ ($\xi_0 \neq 0$) lies *outside* $\operatorname{WF}(u)$ iff there exists a cutoff $\varphi \in C_c^\infty(\Omega)$ with $\varphi(x_0) \neq 0$ and an open cone $\Gamma \ni \xi_0$ such that $|\widehat{\varphi u}(\xi)| \le C_N \langle\xi\rangle^{-N}$ for all $\xi \in \Gamma$ and all $N$.
+2. **Projection onto Singular Support:** Projecting $\operatorname{WF}(u)$ onto the base space $\pi(x,\xi) = x$ recovers $\operatorname{sing\,supp}(u)$ exactly—so $u \in C^\infty(\Omega) \iff \operatorname{WF}(u) = \emptyset$.
+3. **Conormal Bundles of Submanifolds:** For a smooth hypersurface $S \subset \mathbb{R}^n$, the jump across $S$ or surface delta $\delta_S$ has $\operatorname{WF}(u) = N^*S \setminus \{0\}$—only covectors *normal* to $S$ appear, never tangential ones.
+4. **Pullback and Multiplication Criterion:** Two distributions $u, v$ can be canonically multiplied whenever $\operatorname{WF}(u) + \operatorname{WF}(v)$ never hits the zero section—i.e., $(x,\xi) \in \operatorname{WF}(u) \implies (x,-\xi) \notin \operatorname{WF}(v)$—solving a decades-old mystery of Schwartz's distribution theory!
 
 ## Introduction
 
@@ -110,6 +121,20 @@ PDE rarely moves singular support as one large block. It moves singular directio
 - Can they explain why the decay test is performed inside an open cone rather than across all of frequency space?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Computing $\operatorname{WF}(\delta(x_1))$ on $\mathbb{R}^2$ Explicitly
+
+Compute the exact wave front set of the line-delta distribution $u(x_1, x_2) = \delta(x_1) \otimes 1_{x_2}$ on $\mathbb{R}^2$ (defined by $\langle u, \psi \rangle = \int_{\mathbb{R}} \psi(0, x_2)\,dx_2$).
+
+1. **Exclude points off the $x_2$-axis ($x_1 \neq 0$):** Since $u \equiv 0$ on the open set $\{x_1 \neq 0\}$, $\operatorname{sing\,supp}(u) \subseteq \{x_1 = 0\}$, so no point with $x_1 \neq 0$ lies in $\operatorname{WF}(u)$.
+2. **Localize at an arbitrary point $(0, a)$ on the $x_2$-axis:** Choose a product cutoff $\varphi(x_1, x_2) = \chi_1(x_1)\chi_2(x_2) \in C_c^\infty(\mathbb{R}^2)$ with $\chi_1(0) = 1$ and $\chi_2(a) = 1$. Compute the Fourier transform of $\varphi u$:
+   $$\widehat{\varphi u}(\xi_1, \xi_2) = \langle \varphi u,\, e^{-i(x_1\xi_1 + x_2\xi_2)} \rangle = \int_{-\infty}^{\infty} \chi_1(0)\chi_2(x_2)e^{-ix_2\xi_2}\,dx_2 = \widehat{\chi_2}(\xi_2).$$
+3. **Analyze decay in conic neighborhoods of $(\xi_1, \xi_2) \neq (0,0)$:**
+   - **Case 1 ($\xi_2 \neq 0$):** In a small cone $\Gamma$ around $(\xi_1, \xi_2)$, we have $|\xi_2| \ge c|\xi|$ for some $c > 0$. Because $\chi_2 \in C_c^\infty(\mathbb{R})$, $|\widehat{\chi_2}(\xi_2)| \le C_N \langle\xi_2\rangle^{-N} \le C_N' \langle\xi\rangle^{-N}$ for every $N$. Thus $((0,a), (\xi_1,\xi_2)) \notin \operatorname{WF}(u)$ whenever $\xi_2 \neq 0$!
+   - **Case 2 ($\xi_2 = 0, \xi_1 \neq 0$):** Along the ray $(t\xi_1, 0)$ ($t \to +\infty$), $\widehat{\varphi u}(t\xi_1, 0) = \widehat{\chi_2}(0) = \int \chi_2(x_2)\,dx_2$. Choosing $\chi_2 \ge 0$ with $\chi_2(a) > 0$ makes this a nonzero constant—failing to decay as $t \to \infty$!
+4. **Conclude the exact wave front set:**
+   $$\operatorname{WF}(\delta(x_1)) = \big\{\big((0, x_2),\, (\xi_1, 0)\big) : x_2 \in \mathbb{R},\; \xi_1 \neq 0\big\} = N^*\{x_1 = 0\} \setminus \{0\}.$$
 
 ### Example 1: A smooth function
 

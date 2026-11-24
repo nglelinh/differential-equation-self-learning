@@ -12,6 +12,19 @@ lesson_type: required
 
 ![Trực giác về ổn định, hội tụ và điều kiện CFL]({{ site.imgurl }}/chapter_img/chapter13/06_stability_convergence_cfl.svg )
 
+Một sơ đồ sai phân trông hoàn hảo trên giấy, nhất quán bậc hai hẳn hoi, nhưng khi bấm chạy thì chỉ sau 15 bước thời gian toàn bộ màn hình biến thành răng cưa dao động $10^{30}$! Vì sao? Vì **Nhất quán một mình không bao giờ đủ cho Hội tụ**! Định lý Tương đương Lax–Richtmyer và điều kiện CFL là bộ đôi định luật tối cao giải mã trọn vẹn bí ẩn sống còn này của mô phỏng PDE.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Ổn định, Hội tụ và Điều kiện CFL
+
+1. **Định lý Tương đương Lax–Richtmyer**:
+   Đối với một bài toán giá trị ban đầu tuyến tính đặt chỉnh, một sơ đồ sai phân **nhất quán** sẽ **hội tụ** khi và chỉ khi nó **ổn định**! Điều này chuyển bài toán khó (chứng minh hội tụ về nghiệm ẩn $u$) thành hai bài toán kiểm tra được (Taylor + Ổn định).
+2. **Điều kiện CFL (Courant–Friedrichs–Lewy) — Trực giác Hình học Vật lý**:
+   Sóng vật lý chạy với tốc độ $c$ đi được quãng đường $c\Delta t$ trong 1 bước thời gian; trong khi lưới sai phân hiện chỉ truyền thông tin được tối đa 1 ô $\Delta x$ mỗi bước. Do đó bắt buộc $c\Delta t \le \Delta x \iff \text{CFL} = \frac{c\Delta t}{\Delta x} \le 1$ (miền phụ thuộc số phải chứa miền phụ thuộc vật lý)!
+3. **Phân tích Ổn định von Neumann (Biến đổi Fourier Rời rạc)**:
+   Thay nghiệm thử dạng sóng phẳng $u_j^n = G^n e^{ij\theta}$ vào sơ đồ sai phân để tìm hệ số khuếch đại $G(\theta)$. Điều kiện cần và đủ để ổn định trong $L^2$ là $|G(\theta)| \le 1$ với mọi số sóng $\theta \in [-\pi, \pi]$!
+4. **Sơ đồ Upwind (Ngược chiều gió) cho Phương trình Truyền tải**:
+   Với $u_t + c u_x = 0$, sai phân trung tâm FTCS **luôn mất ổn định** với mọi $\Delta t > 0$! Ta buộc phải lấy sai phân lùi (nếu $c > 0$) hoặc sai phân tiến (nếu $c < 0$) để đón đúng hướng thông tin chảy tới.
+
 ## Mục tiêu
 
 Bài học này trình bày ba khái niệm trụ cột trong phân tích lược đồ số: tính nhất quán (consistency), tính ổn định (stability) và sự hội tụ (convergence). Sau bài học, sinh viên cần giải thích được mối liên hệ giữa ba khái niệm này qua định lý tương đương Lax, nắm trực giác vật lý của điều kiện CFL, và hiểu vì sao một lược đồ số đáng tin cậy phải đồng thời xấp xỉ đúng phương trình và kiểm soát được sự lan truyền sai số.
@@ -30,6 +43,17 @@ Ba tiêu chí nền tảng gồm:
 - **Tính ổn định (stability)**: sai số có được chặn mà không bị khuếch đại vô hạn hay không;
 - **Sự hội tụ (convergence)**: khi làm mịn lưới, nghiệm số có tiến về nghiệm chính xác hay không.
 
+
+### Khung giải thích (nên đọc chậm): Tính tay bước thời gian tối đa $\Delta t_{\max}$ và cú sốc "chia đôi lưới"
+
+So sánh hai PDE kinh điển cùng trên lưới không gian $\Delta x = 0{,}1$:
+1. **Phương trình truyền tải (Hyperbolic)** $u_t + 2 u_x = 0$ (sơ đồ Upwind, $\text{CFL} = \frac{c\Delta t}{\Delta x} \le 1$):
+   $$\Delta t \le \frac{\Delta x}{c} = \frac{0{,}1}{2} = \mathbf{0{,}05\text{ s}}.$$
+2. **Phương trình nhiệt (Parabolic)** $u_t = 0{,}5 u_{xx}$ (sơ đồ FTCS, $r = \frac{\alpha\Delta t}{\Delta x^2} \le 0{,}5$):
+   $$\Delta t \le \frac{0{,}5\,\Delta x^2}{\alpha} = \frac{0{,}5 \times 0{,}01}{0{,}5} = \mathbf{0{,}01\text{ s}}.$$
+3. **Nếu ta làm mịn lưới gấp đôi ($\Delta x \to 0{,}05$)**:
+   - Với sóng/truyền tải: $\Delta t_{\max}$ giảm $2\times$ xuống $\mathbf{0{,}025\text{ s}}$ (tuyến tính theo $\Delta x$).
+   - Với nhiệt FTCS: $\Delta t_{\max}$ giảm **$4\times$** xuống $\mathbf{0{,}0025\text{ s}}$ (tỷ lệ $\Delta x^2$)! Đó là lý do các bài toán khuếch tán lưới mịn hầu như luôn chuyển sang sơ đồ ẩn như Crank–Nicolson.
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

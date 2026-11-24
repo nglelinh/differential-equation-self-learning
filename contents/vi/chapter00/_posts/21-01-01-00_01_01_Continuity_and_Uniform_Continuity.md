@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Cùng là hai hàm liên tục hoàn hảo trên $(0, 1)$, tại sao hàm $f(x) = x^2$ lại "ngoan ngoãn" để xấp xỉ số, còn $g(x) = 1/x$ lại khiến mọi lưới chia đều bước $h$ đều thất bại thảm hại khi tiến gần $0$? Ranh giới mỏng manh nhưng quyết định đó chính là **tính liên tục đều (uniform continuity)** và phiên bản mạnh hơn nữa của nó trong phương trình vi phân: **điều kiện Lipschitz**.
+
+## Bản đồ kiến thức nền: Bốn cấp độ "độ mượt" của hàm số
+
+1. **Liên tục tại từng điểm (Pointwise Continuity)**:
+   Độ rộng $\delta$ phụ thuộc vào **cả $\varepsilon$ lẫn vị trí $x_0$**; hàm có thể dốc đứng dần khi tiến ra biên miền mở.
+2. **Liên tục đều (Uniform Continuity)**:
+   Một giá trị $\delta(\varepsilon)$ duy nhất dùng chung cho **mọi điểm $x, y$** trên toàn miền; theo định lý Heine–Cantor, mọi hàm liên tục trên đoạn compact $[a, b]$ đều liên tục đều.
+3. **Liên tục Lipschitz ($\vert f(x) - f(y)\vert \le L\vert x - y\vert$)**:
+   Độ dốc cát tuyến bị chặn toàn cục bởi hằng số $L$—chính là điều kiện vàng đảm bảo nghiệm của $y' = f(t, y)$ là **duy nhất**!
+4. **Cầu nối đến giải tích số**:
+   Tính liên tục đều cho phép kiểm soát sai số toàn cục khi xấp xỉ tích phân Riemann hay rời rạc hóa phương trình vi phân trên lưới.
+
 ## Mục tiêu
 Bài học này giúp sinh viên phân biệt tính liên tục điểm (cục bộ) với tính liên tục đều (toàn cục), hiểu mối liên hệ giữa tính compact và tính liên tục đều, đồng thời vận dụng các định lý liên quan khi khảo sát sự hội tụ của dãy hàm. Đây là kiến thức nền để tiếp cận các định lý tồn tại nghiệm trong lý thuyết phương trình vi phân.
 
@@ -20,6 +34,17 @@ Sinh viên cần nắm vững định nghĩa giới hạn và tính liên tục 
 Ở bài trước, ta thấy tính liên tục trên một đoạn đóng đem lại nhiều kết quả thuận lợi. Tuy nhiên, trong nhiều bài toán ODE, ta phải làm việc trên các khoảng mở hoặc trên toàn bộ đường thẳng thực $$ \mathbb{R} $$. Khi đó, tính liên tục thông thường chưa đủ mà cần đến một điều kiện chặt hơn là tính liên tục đều.
 
 Xét hàm $$ f(x) = x^2 $$ trên $$ \mathbb{R} $$. Đồ thị của hàm càng dốc khi $$ \lvert x \rvert $$ càng lớn: ở gần gốc tọa độ, đồ thị khá thoải, nhưng càng ra xa gốc, chỉ một bước dịch chuyển rất nhỏ theo phương ngang cũng làm giá trị hàm thay đổi lớn theo phương đứng. Do đó, với cùng một sai số $$ \varepsilon $$ cho trước, không tồn tại một giá trị $$ \delta $$ duy nhất dùng được tại mọi điểm $$ x \in \mathbb{R} $$. Đó chính là hiện tượng không liên tục đều.
+
+### Khung giải thích (nên đọc chậm): So sánh trực tiếp $\delta$ của $f(x) = x^2$ trên $[0, 1]$ và $g(x) = \frac{1}{x}$ trên $(0, 1)$ với $\varepsilon = 0{,}1$
+
+1. **Với $f(x) = x^2$ trên $[0, 1]$ (Liên tục đều & Lipschitz)**:
+   $$\vert x^2 - y^2\vert = \vert x + y\vert\,\vert x - y\vert \le 2\vert x - y\vert.$$
+   Chọn duy nhất $\delta = \frac{\varepsilon}{2} = \mathbf{0{,}05}$ cho *mọi* điểm trên $[0, 1]$: hễ $\vert x - y\vert < 0{,}05$ thì chắc chắn $\vert x^2 - y^2\vert < 0{,}1$. Hằng số Lipschitz là $L = 2$.
+2. **Với $g(x) = \frac{1}{x}$ trên $(0, 1)$ (Liên tục nhưng KHÔNG liên tục đều)**:
+   Xét hai điểm rất gần nhau $x_n = \frac{1}{n}$ và $y_n = \frac{1}{n+1}$:
+   - Khoảng cách đầu vào: $\vert x_n - y_n\vert = \frac{1}{n(n+1)} \to 0$ (ví dụ tại $n = 100$, khoảng cách chỉ là $0{,}000099$).
+   - Khoảng cách đầu ra: $\left\vert \frac{1}{x_n} - \frac{1}{y_n}\right\vert = \vert n - (n+1)\vert = \mathbf{1} > 0{,}1$ với mọi $n$!
+   Dù chọn $\delta$ bé đến đâu, gần $0$ luôn tồn tại cặp điểm lệch nhau $< \delta$ nhưng giá trị hàm nhảy vọt đúng $1$ đơn vị.
 
 ## Khái niệm theo ba cách
 

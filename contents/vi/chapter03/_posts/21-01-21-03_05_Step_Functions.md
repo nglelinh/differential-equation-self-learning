@@ -9,6 +9,21 @@ categories:
 - chapter03
 lesson_type: required
 ---
+
+Động cơ tên lửa cháy trong đúng 10 giây rồi tắt phụt, hay công tắc điện bật lên ở giây thứ 3 rồi ngắt ở giây thứ 7—ngoài đời thực, các ngoại lực hiếm khi trơn tru mãi mãi mà thường mang **bước nhảy gián đoạn**. Nếu giải theo Chương 02, bạn sẽ phải cắt trục thời gian thành từng đoạn rồi nối khớp thủ công cực kỳ mệt mỏi; còn với **hàm bậc thang Heaviside $u_c(t)$** và biến đổi Laplace, toàn bộ cú bật–tắt ấy được xử lý gọn trong một phương trình duy nhất!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Hàm Bậc thang & Lực Gián đoạn
+
+1. **Hàm bậc thang đơn vị $u_c(t)$ & Hàm cửa sổ $u_a(t) - u_b(t)$**:
+   $u_c(t) = 0$ khi $t < c$ và $= 1$ khi $t \ge c$. Hiệu $u_a(t) - u_b(t)$ bật bằng $1$ đúng trên đoạn $[a, b)$ rồi tắt về $0$—giúp viết mọi hàm từng khúc thành một biểu thức đại số duy nhất!
+2. **Định lý Dịch chuyển thứ hai (Dịch thời gian)**:
+   $$\mathcal{L}\big\{u_c(t)\,f(t - c)\big\} = e^{-cs}F(s),\qquad \mathcal{L}^{-1}\big\{e^{-cs}F(s)\big\} = u_c(t)\,f(t - c).$$
+   Nhân tử $e^{-cs}$ trong miền $s$ chính là chiếc đồng hồ hẹn giờ trễ đúng $c$ giây trong miền $t$!
+3. **Mẹo đồng bộ tham số $g(t) \mapsto g(t - c + c)$**:
+   Khi gặp $u_c(t)\,g(t)$ (chưa ở dạng $f(t - c)$), ta dùng công thức tương đương $\mathcal{L}\{u_c(t)\,g(t)\} = e^{-cs}\mathcal{L}\{g(t + c)\}$—tránh sai lầm phổ biến nhất của sinh viên!
+4. **Tính trơn của nghiệm dù lực gián đoạn**:
+   Với PTVP cấp hai $y'' + py' + qy = u_c(t)$, đạo hàm cấp hai $y''$ có bước nhảy tại $t = c$, nhưng cả $y(t)$ lẫn $y'(t)$ vẫn hoàn toàn **liên tục** tại $t = c$.
+
 ## Mục tiêu
 Bài học này hướng dẫn cách dùng hàm bước Heaviside để mô tả các tín hiệu bật/tắt đột ngột, nắm định lý dịch thời gian trong biến đổi Laplace, và giải các phương trình vi phân có vế phải từng khúc mà không cần chia nhỏ lời giải thủ công theo từng khoảng.
 
@@ -21,6 +36,16 @@ Sinh viên cần nắm bảng Laplace cơ bản, biến đổi ngược và quy 
 Trong thực tế, nhiều tín hiệu không tồn tại liên tục từ đầu đến cuối: nguồn điện có thể bật tại giây thứ 2, một lực có thể tác động trong một khoảng thời gian rồi ngắt, hoặc hệ chịu tải theo từng giai đoạn. Nếu giải phương trình vi phân trực tiếp trên từng khoảng rồi nối điều kiện liên tục bằng tay, phép tính sẽ rất rườm rà.
 
 Hàm bước Heaviside kết hợp với biến đổi Laplace giải quyết gọn gàng lớp bài toán này: ta viết tín hiệu gián đoạn bằng một biểu thức duy nhất và xử lý đại số trong miền $$ s $$ theo cùng quy trình đã học.
+
+### Khung giải thích (nên đọc chậm): Giải IVP có công tắc bật trễ $y' + y = u_2(t),\; y(0) = 0$
+
+1. **Biến đổi Laplace hai vế** (vì $\mathcal{L}\{u_2(t)\} = \frac{e^{-2s}}{s}$):
+   $$(s + 1)Y(s) = \frac{e^{-2s}}{s} \implies Y(s) = e^{-2s}\cdot\frac{1}{s(s + 1)}.$$
+2. **Tách phần không chứa $e^{-2s}$**:
+   $$F(s) = \frac{1}{s(s + 1)} = \frac{1}{s} - \frac{1}{s + 1} \implies f(t) = 1 - e^{-t}.$$
+3. **Áp dụng Định lý Dịch chuyển thứ hai** ($\mathcal{L}^{-1}\{e^{-2s}F(s)\} = u_2(t)f(t - 2)$):
+   $$y(t) = u_2(t)\big(1 - e^{-(t - 2)}\big) = \begin{cases} \mathbf{0}, & 0 \le t < 2, \\ \mathbf{1 - e^{-(t - 2)}}, & t \ge 2. \end{cases}$$
+4. **Kiểm tra tại điểm bật công tắc $t = 2$**: $y(2^-) = 0$ và $y(2^+) = 1 - e^0 = 0$ (liên tục!), nhưng vận tốc nhảy từ $y'(2^-) = 0$ lên $y'(2^+) = 1$ đúng bằng bước nhảy lực!
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan

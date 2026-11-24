@@ -9,6 +9,20 @@ categories:
 - chapter02
 lesson_type: required
 ---
+
+Trong thế giới thực, một cây cầu chịu gió thổi tuần hoàn hay một mạch điện cắm vào nguồn xoay chiều $g(t)$ đều là **phương trình không thuần nhất** $ay'' + by' + cy = g(t)$. Nếu vế phải $g(t)$ thuộc "câu lạc bộ khép kín dưới phép đạo hàm"—gồm đa thức, hàm mũ, $\sin/\cos$ và tích của chúng—thì **phương pháp Hệ số bất định** cho phép ta đoán chính xác hình dáng của nghiệm riêng $y_p$ rồi giải một hệ đại số tuyến tính nhỏ để tìm hệ số!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Hệ số Bất định
+
+1. **Phạm vi áp dụng (Lớp hàm đóng dưới đạo hàm)**:
+   Chỉ áp dụng khi phương trình có **hệ số hằng** và vế phải $g(t)$ là tổ hợp của $t^m$, $e^{\alpha t}$, $\cos(\beta t)$, $\sin(\beta t)$ (không dùng được cho $\tan t$, $\ln t$ hay $1/t$).
+2. **Nguyên lý chồng chất cho vế phải**:
+   Nếu $g(t) = g_1(t) + g_2(t)$, ta tìm riêng $y_{p1}$ cho $g_1$ và $y_{p2}$ cho $g_2$, rồi cộng lại $y_p = y_{p1} + y_{p2}$.
+3. **Quy tắc nhân $t^s$ khi trùng nghiệm thuần nhất (Cộng hưởng đại số)**:
+   Nếu dạng thử ban đầu chứa số hạng đã là nghiệm của phương trình thuần nhất $y_h$, ta phải nhân toàn bộ dạng thử đó với $t^s$ ($s = 1$ hoặc $2$, nhỏ nhất để không còn trùng nữa)—nếu quên nhân $t^s$, hệ phương trình sẽ vô nghiệm ($0 = 1$)!
+4. **Liên hệ với Toán tử triệt tiêu (Annihilator)**:
+   Thực chất phương pháp này tương đương với việc tác động một toán tử vi phân triệt tiêu $g(t)$ lên cả hai vế để đưa về phương trình thuần nhất bậc cao hơn.
+
 ## Mục tiêu
 Bài học này giúp sinh viên giải phương trình tuyến tính cấp hai không thuần nhất bằng phương pháp hệ số bất định, chọn đúng dạng nghiệm riêng thử, xử lý hiện tượng cộng hưởng bằng cách nhân thêm lũy thừa của $$ t $$, và hiểu vì sao phương pháp này chỉ áp dụng được cho những họ hàm đóng dưới phép đạo hàm.
 
@@ -21,6 +35,20 @@ Sinh viên cần nắm cách tìm nghiệm thuần nhất của phương trình 
 Khi vế phải của phương trình khác 0, ta cần tìm một nghiệm riêng biểu diễn đáp ứng của hệ trước ngoại lực. Nếu hàm cưỡng bức có dạng đặc biệt như đa thức, hàm mũ, hàm lượng giác sin-cos hoặc tích của chúng, ta không cần dùng đến công cụ tổng quát nặng nề mà có thể thử một nghiệm cùng họ rồi xác định các hệ số chưa biết. Đó là phương pháp hệ số bất định.
 
 Điểm cần lưu ý của phương pháp là không thể chỉ sao chép y nguyên biểu thức vế phải. Nếu dạng nghiệm thử trùng với một thành phần của nghiệm thuần nhất, ta phải nhân thêm $$ t $$ (hoặc $$ t^2 $$) để đảm bảo tính độc lập tuyến tính. Đây chính là biểu hiện đại số của hiện tượng cộng hưởng.
+
+### Khung giải thích (nên đọc chậm): Giải $y'' - 3y' + 2y = 4e^{2t}$ để thấy rõ quy tắc nhân $t$ khi xảy ra trùng nghiệm
+
+1. **Giải phương trình thuần nhất trước** (BẮT BUỘC làm trước khi đoán $y_p$!):
+   $r^2 - 3r + 2 = (r - 1)(r - 2) = 0 \implies y_h(t) = c_1 e^t + c_2 e^{2t}$.
+2. **Chọn dạng thử $y_p$**:
+   - Vế phải $4e^{2t}$ gợi ý thử $A e^{2t}$, nhưng $e^{2t}$ **đã nằm trong $y_h$** (nghiệm đơn $r = 2$)!
+   - Nhân thêm $t^1$: đặt $y_p(t) = \mathbf{A\,t\,e^{2t}}$.
+3. **Tính đạo hàm và thay vào phương trình**:
+   - $y_p' = A(1 + 2t)e^{2t}$
+   - $y_p'' = A(4 + 4t)e^{2t}$
+   - Thay vào vế trái: $A\big[(4+4t) - 3(1+2t) + 2t\big]e^{2t} = A\big[1 + 0\cdot t\big]e^{2t} = A e^{2t}$.
+4. **Đồng nhất hệ số**: $A e^{2t} = 4e^{2t} \implies A = \mathbf{4}$.
+   Vậy nghiệm tổng quát là $y(t) = \mathbf{c_1 e^t + c_2 e^{2t} + 4t\,e^{2t}}$.
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan

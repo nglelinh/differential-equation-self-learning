@@ -10,6 +10,20 @@ categories:
 lesson_type: optional
 ---
 
+
+Trong không gian định chuẩn, ta đo được độ dài nhưng chưa có khái niệm "góc vuông". Chỉ khi trang bị thêm **tích vô hướng $\langle f, g\rangle$**, toàn bộ hình học Euclid—định lý Pythagoras, phép chiếu vuông góc và trực giao hóa Gram–Schmidt—mới bừng sáng trong không gian hàm vô hạn chiều, mở thẳng cánh cửa tới chuỗi Fourier, đa thức Legendre và lý thuyết Sturm–Liouville!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Không gian Tích vô hướng & Hilbert
+
+1. **Tích vô hướng $\langle u, v\rangle$ & Bất đẳng thức Cauchy–Schwarz**:
+   Trên $L^2([a, b])$, tích vô hướng là $\langle f, g\rangle = \int_a^b f(x)\overline{g(x)}\,dx$; bất đẳng thức $\vert\langle f, g\rangle\vert \le \|f\|\,\|g\|$ đảm bảo khái niệm "góc giữa hai hàm số" luôn hợp lệ.
+2. **Tính trực giao ($\langle f, g\rangle = 0$) & Hệ trực chuẩn**:
+   Hai hàm trực giao (như $\sin(nx)$ và $\sin(mx)$ với $n \ne m$) đóng vai trò như các trục tọa độ vuông góc—giúp phân tích một hàm phức tạp thành tổng các thành phần độc lập mà không bị nhiễu chéo.
+3. **Phép chiếu trực giao & Xấp xỉ bình phương tối thiểu**:
+   Hình chiếu $\sum \frac{\langle f, e_k\rangle}{\|e_k\|^2} e_k$ là xấp xỉ **tốt nhất duy nhất** của $f$ theo chuẩn $L^2$ trong không gian con sinh bởi $\{e_k\}$.
+4. **Không gian Hilbert & Khai triển Fourier tổng quát**:
+   Không gian tích vô hướng đầy đủ gọi là không gian Hilbert (như $L^2$), nơi mọi hàm bình phương khả tích đều khai triển được thành chuỗi trực giao và thỏa đẳng thức Parseval $\|f\|^2 = \sum \vert c_k\vert^2$.
+
 ## Mục tiêu
 
 Bài học này giúp sinh viên hiểu không gian tích vô hướng như sự mở rộng hình học Euclid sang không gian hàm và không gian vô hạn chiều. Sau bài học, sinh viên có thể nắm định nghĩa tích vô hướng, hiểu mối liên hệ giữa tích vô hướng, chuẩn và góc, vận dụng bất đẳng thức Cauchy–Schwarz, nhận diện tính trực giao cùng phép chiếu trực giao, và thấy vai trò của chúng trong không gian Hilbert cũng như các khai triển trực giao cho phương trình vi phân.
@@ -27,6 +41,19 @@ $$
 Không gian định chuẩn cho phép đo độ lớn, nhưng chưa cung cấp khái niệm góc. Trong nhiều bài toán toán học và vật lý, ta không chỉ cần biết một vector hay một hàm lớn bao nhiêu mà còn cần biết hai đối tượng tương quan hay vuông góc với nhau ra sao. Tích vô hướng ra đời để đáp ứng đúng nhu cầu đó.
 
 Trong ODE và PDE, khái niệm trực giao là chìa khóa của chuỗi Fourier, bài toán Sturm–Liouville, khai triển theo hàm riêng (eigenfunctions) và phương pháp bình phương tối thiểu. Bài học này đóng vai trò cầu nối từ hình học tuyến tính sơ cấp sang giải tích hàm và lý thuyết phổ.
+
+### Khung giải thích (nên đọc chậm): Trực giao hóa Gram–Schmidt cho $\{1, x, x^2\}$ trên $[-1, 1]$ để tự sinh ra đa thức Legendre!
+
+Với tích vô hướng $\langle f, g\rangle = \int_{-1}^1 f(x)g(x)\,dx$:
+1. **Chọn $p_0(x) = 1$**: $\|p_0\|^2 = \int_{-1}^1 1\,dx = 2$.
+2. **Trực giao hóa $x$ với $p_0$**:
+   $\langle x, 1\rangle = \int_{-1}^1 x\,dx = 0$ (hàm lẻ trên miền đối xứng). Vậy $p_1(x) = \mathbf{x}$, với $\|p_1\|^2 = \int_{-1}^1 x^2\,dx = \frac{2}{3}$.
+3. **Trực giao hóa $x^2$ với $p_0$ và $p_1$**:
+   - $\langle x^2, 1\rangle = \int_{-1}^1 x^2\,dx = \frac{2}{3}$.
+   - $\langle x^2, x\rangle = \int_{-1}^1 x^3\,dx = 0$.
+   - Suy ra:
+     $$p_2(x) = x^2 - \frac{\langle x^2, 1\rangle}{\|1\|^2}\cdot 1 = x^2 - \frac{2/3}{2} = \mathbf{x^2 - \frac{1}{3}}.$$
+4. **Chuẩn hóa sao cho $P_2(1) = 1$**: Nhân $p_2(x)$ với $\frac{3}{2}$, ta thu được ngay đa thức Legendre $P_2(x) = \frac{3x^2 - 1}{2}$!
 
 ## Khái niệm theo ba cách
 

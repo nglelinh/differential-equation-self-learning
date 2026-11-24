@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Nhiều phương trình vi phân thoạt nhìn trông vừa không tách biến, vừa không tuyến tính, lại chẳng toàn phần—nhưng chỉ cần một phép đổi góc nhìn thông minh (phép thế biến), toàn bộ cấu trúc rắc rối lập tức sụp đổ thành bài toán quen thuộc! Trong toán học, **phép thế (substitution)** chính là nghệ thuật khai thác **đối xứng ẩn** của phương trình—như đối xứng co giãn ở phương trình đẳng cấp hay đối xứng lũy thừa ở phương trình Bernoulli.
+
+## Bản đồ kiến thức nền: Bốn họ Phép thế kinh điển cho PTVP Cấp Một
+
+1. **Phương trình đẳng cấp $y' = F(y/x)$ (Đối xứng co giãn)**:
+   Đặt $v = y/x \implies y = vx,\; y' = v + xv'$; phương trình lập tức tách biến được giữa $v$ và $x$.
+2. **Phương trình Bernoulli $y' + P(x)y = Q(x)y^n$ ($n \ne 0, 1$)**:
+   Đặt $u = y^{1-n}$ biến phương trình phi tuyến bậc $n$ thành phương trình **tuyến tính cấp một** cho $u(x)$.
+3. **Phép thế tổ hợp tuyến tính $y' = G(ax + by + c)$**:
+   Đặt $u = ax + by + c \implies u' = a + b\,G(u)$, đưa ngay về phương trình tách biến thuần túy.
+4. **Phương trình Riccati $y' = P(x) + Q(x)y + R(x)y^2$**:
+   Khi biết trước một nghiệm riêng $y_1(x)$, phép thế $y = y_1 + \frac{1}{u}$ biến phương trình phi tuyến bậc hai thành tuyến tính cấp một!
+
 ## Mục tiêu
 Bài học này giúp sinh viên nhận ra rằng nhiều phương trình vi phân phi tuyến có vẻ phức tạp thực chất ẩn chứa một biến phụ tự nhiên. Khi chọn đúng phép thế, phương trình được đưa về các dạng quen thuộc như tách biến, tuyến tính hoặc toàn phần. Trọng tâm bài học là nhận diện và giải thành thạo các dạng tiêu biểu gồm phương trình Bernoulli và phương trình thuần nhất cấp một.
 
@@ -22,6 +36,19 @@ Sinh viên cần nắm chắc phương trình tách biến, phương trình tuy�
 Trong toán học ứng dụng, hình thức ban đầu của một phương trình đôi khi che khuất cấu trúc đơn giản bên trong. Tương tự việc chọn hệ tọa độ thích hợp trong vật lý giúp rút gọn đáng kể phép tính, việc đổi biến trong ODE giúp chuyển một bài toán phi tuyến khó thành một dạng chuẩn đã biết cách giải.
 
 Vì vậy, phương pháp thế rèn luyện tư duy nhận diện cấu trúc: thay vì vội biến đổi rời rạc, ta đặt câu hỏi phương trình đang lặp lại tổ hợp, tỉ số hay lũy thừa nào để chọn phép đổi biến hợp lý.
+
+### Khung giải thích (nên đọc chậm): Giải phương trình đẳng cấp $\frac{dy}{dx} = \frac{x + y}{x}$ ($x > 0$) qua phép thế $v = y/x$
+
+1. **Nhận diện cấu trúc $y/x$**:
+   $$\frac{dy}{dx} = 1 + \frac{y}{x}.$$
+2. **Đặt $v = \frac{y}{x} \implies y = vx \implies \frac{dy}{dx} = v + x\frac{dv}{dx}$**:
+   Thay vào phương trình:
+   $$v + x\frac{dv}{dx} = 1 + v \implies x\frac{dv}{dx} = 1.$$
+3. **Tách biến và tích phân**:
+   $$dv = \frac{dx}{x} \implies v(x) = \ln x + C.$$
+4. **Trả về biến gốc $y = vx$**:
+   $$y(x) = \mathbf{x\ln x + C x}.$$
+   Kiểm chứng lại trực tiếp: $y' = (\ln x + 1) + C = 1 + \frac{x\ln x + Cx}{x} = 1 + \frac{y}{x}$, khớp 100%!
 
 ## Khái niệm theo ba cách
 

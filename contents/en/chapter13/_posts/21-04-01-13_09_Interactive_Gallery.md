@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** Nothing teaches numerical stability faster than dragging a step-size slider across the critical threshold and watching a smooth wave or orbit shatter into chaos in real time. This interactive gallery lets you experiment directly with Euler spirals, RK4 accuracy, CFL cones, and stochastic paths.
+
 ## Purpose of This Companion Lesson
 
 This lesson gathers the numerical-method visualizations of Chapter 13 into a single companion space. The main chapter develops discretization, local and global error, stiffness, stability regions, PDE finite-difference grids, finite-element intuition, and stochastic trajectories in a theorem-and-method sequence. The gallery gives these ideas a common visual setting so students can compare them without switching context from one lesson to another.
@@ -22,6 +24,15 @@ A good workflow is to revisit the gallery after reading a theorem or method from
 
 The page is also useful as a review sheet before students move from ODE solvers to PDE discretization, since it keeps the language of consistency, convergence, and stability in one place.
 
+## Background Knowledge Map: What to Watch in Numerical Simulation Widgets
+
+Keep four diagnostic signatures in mind as you manipulate the interactive controls:
+
+1. **Stability Regions in the Complex $z = h\lambda$ Plane:** Oscillatory systems place $z$ on the imaginary axis ($z = i\omega h$), while dissipative systems place $z$ on the negative real axis; a method's shaded stability region immediately tells you which physics it can handle.
+2. **Phase Error vs. Amplitude Error (Dispersion vs. Dissipation):** On wave and oscillator widgets, notice whether the numerical curve shrinks/grows in height (amplitude error) or drifts ahead/behind the exact wave (phase dispersion).
+3. **CFL Cone Violation:** When a hyperbolic Courant number exceeds $1$, watch how high-frequency grid-scale zigzags erupt first—because the stencil cannot "see" the physical information arriving from upstream.
+4. **Ensemble Mean vs. Sample Path Noise in SDEs:** Increasing the number of Monte Carlo trajectories shrinks the sampling error of the mean like $1/\sqrt{M}$, while each individual trajectory retains its full Brownian roughness.
+
 ## Embedded Interactive Gallery
 
 {% include interactive-frame.html
@@ -30,6 +41,20 @@ The page is also useful as a review sheet before students move from ODE solvers 
   path="interactives/chapter13/index-en.html"
   height="980px"
 %}
+
+### Step-by-Step Worked Example (Read Slowly): Testing Energy Conservation on the Imaginary Axis ($z = i\omega h$)
+
+Before experimenting with the oscillator widget, test three classic integrators on the undamped rotation $y' = i\omega y$ (whose exact solution $|y(t)| = |y_0|$ conserves energy forever) by computing $|R(i\theta)|$ where $\theta = \omega h > 0$.
+
+1. **Forward Euler ($R(z) = 1 + z$):**
+   $$|R(i\theta)| = |1 + i\theta| = \sqrt{1 + \theta^2} > 1 \quad \text{for every } \theta > 0.$$
+   No matter how tiny $h$ is, forward Euler spirals **outward**, pumping artificial energy into the oscillator!
+2. **Backward Euler ($R(z) = \frac{1}{1 - z}$):**
+   $$|R(i\theta)| = \frac{1}{|1 - i\theta|} = \frac{1}{\sqrt{1 + \theta^2}} < 1 \quad \text{for every } \theta > 0.$$
+   Backward Euler is unconditionally stable, yet it spirals **inward**, artificially damping a frictionless oscillator.
+3. **Crank–Nicolson / Trapezoidal Rule ($R(z) = \frac{1 + z/2}{1 - z/2}$):**
+   $$|R(i\theta)| = \frac{|1 + i\theta/2|}{|1 - i\theta/2|} = \frac{\sqrt{1 + \theta^2/4}}{\sqrt{1 + \theta^2/4}} = 1 \quad \text{for every } \theta > 0.$$
+   Crank–Nicolson preserves $|y_n| = |y_0|$ **identically** at every step—which is why you will see its phase-space orbit stay locked on the exact unit circle in the interactive gallery!
 
 ## Suggested Study Prompts
 

@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Hãy tưởng tượng bạn đang đi bộ trên một sườn núi có độ cao $F(x, y)$ sao cho độ cao không bao giờ đổi—nghĩa là bạn đang đi dọc theo một **đường đồng mức** $F(x, y) = C$. Khi lấy vi phân toàn phần $dF = F_x\,dx + F_y\,dy = 0$, ta thu được ngay một **phương trình vi phân toàn phần**! Giải phương trình toàn phần thực chất chính là bài toán ngược đầy thú vị: từ bản đồ độ dốc $(M, N)$, dựng lại địa hình $F(x, y)$ bị ẩn giấu.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Toàn phần
+
+1. **Dạng vi phân $M(x, y)\,dx + N(x, y)\,dy = 0$**:
+   Xem $x$ và $y$ bình đẳng nhau; nghiệm tổng quát là họ các đường mức $F(x, y) = C$ của một hàm thế $F$.
+2. **Tiêu chuẩn toàn phần ($M_y = N_x$)**:
+   Trên miền đơn liên, điều kiện cần và đủ để tồn tại hàm thế $F$ sao cho $F_x = M$ và $F_y = N$ chính là tính đối xứng đạo hàm hỗn hợp $M_y = N_x$ (định lý Clairaut–Schwarz).
+3. **Quy trình dựng hàm thế $F(x, y)$**:
+   Tích phân $M$ theo $x$ để được $F(x, y) = \int M\,dx + g(y)$, rồi lấy đạo hàm theo $y$ đối chiếu với $N(x, y)$ để tìm hàm "hằng số tích phân" $g(y)$.
+4. **Thừa số tích phân đặc biệt $\mu(x)$ hoặc $\mu(y)$**:
+   Khi $M_y \ne N_x$, nếu $\frac{M_y - N_x}{N}$ chỉ phụ thuộc $x$ (hoặc $\frac{N_x - M_y}{M}$ chỉ phụ thuộc $y$), ta nhân thêm thừa số tích phân để "chữa lành" phương trình thành toàn phần!
+
 ## Mục tiêu
 Bài học này giúp sinh viên hiểu phương trình vi phân toàn phần (exact equation) như bài toán tìm một hàm thế ẩn phía sau biểu thức vi phân, nắm điều kiện kiểm tra tính toàn phần và giải được các ODE dạng
 
@@ -34,6 +48,19 @@ là chìa khóa để kết nối tự nhiên giữa giải tích nhiều biến
 Trong cơ học, nhiều hệ bảo toàn có một đại lượng không đổi dọc theo quỹ đạo như cơ năng. Trong nhiệt động lực học, ta phân biệt rõ vi phân toàn phần của hàm trạng thái với vi phân phụ thuộc quá trình. Trong giải tích nhiều biến, câu hỏi liệu một trường vector có phải là gradient của một hàm thế hay không là một bài toán trung tâm. Phương trình vi phân toàn phần gắn kết tất cả những ý tưởng đó trong bối cảnh ODE cấp một.
 
 Thay vì tìm cách giải trực tiếp $$ y(t) $$, ta đặt câu hỏi: biểu thức $$ M(t,y)dt+N(t,y)dy $$ có phải là vi phân toàn phần của một hàm vô hướng $$ F(t,y) $$ hay không? Nếu câu trả lời là có, phương trình lập tức quy về $$ dF=0 $$, tức là $$ F(t,y)=C $$.
+
+### Khung giải thích (nên đọc chậm): Dựng hàm thế $F(x, y)$ bằng tay cho $(2xy + 3)\,dx + (x^2 - 1)\,dy = 0$
+
+1. **Kiểm tra điều kiện toàn phần**:
+   - $M(x, y) = 2xy + 3 \implies M_y = 2x$.
+   - $N(x, y) = x^2 - 1 \implies N_x = 2x$.
+   Vì $M_y = N_x = 2x$, phương trình là **toàn phần** trên toàn $\mathbb{R}^2$.
+2. **Tích phân $M$ theo $x$** (coi $y$ là hằng số):
+   $$F(x, y) = \int (2xy + 3)\,dx = x^2 y + 3x + g(y).$$
+3. **Tìm $g(y)$ bằng cách đối chiếu $F_y = N$**:
+   $$F_y(x, y) = x^2 + g'(y) \stackrel{!}{=} x^2 - 1 \implies g'(y) = -1 \implies g(y) = -y.$$
+   (Lưu ý: mọi số hạng chứa $x$ phải triệt tiêu sạch khi tìm $g'(y)$—nếu còn sót $x$, chắc chắn có lỗi tính toán!).
+4. **Nghiệm tổng quát**: $x^2 y + 3x - y = C$, hay giải tường minh $y(x) = \mathbf{\frac{C - 3x}{x^2 - 1}}$.
 
 ## Khái niệm theo ba cách
 

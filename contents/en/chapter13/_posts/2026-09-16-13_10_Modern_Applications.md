@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** For decades, numerical solvers were treated as black boxes: feed in parameters, run RK4, read out a trajectory. Today, **differentiable solvers** and **Neural ODEs/SDEs** run calculus *backward through time*—turning every adaptive time-stepper into a continuous-depth neural layer whose parameters can be trained directly by gradient descent.
+
 ## Objectives
 
 This optional lesson treats Euler, Runge–Kutta, stiffness, CFL, and Euler–Maruyama as the numerical backbone of differentiable scientific computing. Students should be able to explain reverse-mode differentiation through a solver, locate `torchdiffeq` and Diffrax, and connect neural SDEs to the score-based diffusion models that dominated generative modeling in 2021–2024. The classical consistency and stability theory of the chapter is not replaced.
@@ -17,6 +19,15 @@ This optional lesson treats Euler, Runge–Kutta, stiffness, CFL, and Euler–Ma
 ## Prerequisites
 
 Students should know forward and backward Euler, RK4, linear stability regions, CFL, and the Euler–Maruyama scheme for SDEs. The preparatory review on discretization error is the right warm-up.
+
+## Background Knowledge Map: Differentiable Physics and Continuous-Time Deep Learning
+
+Four foundational concepts power modern differentiable solvers and Neural SDEs:
+
+1. **Neural ODEs as Continuous ResNets:** Viewing a residual block $h_{k+1} = h_k + f_\theta(h_k)$ as a single forward Euler step with $h=1$ leads to the continuous-time model $\frac{dh}{dt} = f_\theta(h(t), t)$, decoupling model architecture from numerical step count.
+2. **Adjoint Sensitivity Method ($O(1)$ Memory Backpropagation):** Rather than storing every intermediate RK stage in GPU memory (discretize-then-optimize), the continuous adjoint ODE $\frac{da}{dt} = -a^\top \frac{\partial f_\theta}{\partial h}$ integrates gradients backward from $t=T$ to $t=0$ in constant memory.
+3. **Optimize-Then-Discretize vs. Discretize-Then-Optimize:** Integrating the continuous adjoint backward can suffer slight numerical drift on stiff or chaotic trajectories; checkpointed discrete reverse-mode AD trades modest memory for exact discrete gradients.
+4. **Neural SDEs and Generative Diffusion Models:** Adding a learned diffusion term $dX_t = f_\theta(X_t,t)\,dt + g_\theta(X_t,t)\,dW_t$ connects stochastic numerics directly to score-based generative modeling and uncertainty quantification.
 
 ## Introduction
 
@@ -61,6 +72,21 @@ A differentiable-solver workflow:
 Software documentation is part of the method. Diffrax’s solver API and `torchdiffeq`’s `odeint_adjoint` are the references students should open before inventing a new backprop rule.
 
 ## Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Computing an Exact Neural ODE Gradient via the Adjoint Equation
+
+Consider the scalar Neural ODE $\frac{dy}{dt} = \theta y$ on $t \in [0, 1]$ with $y(0) = 1$ and terminal squared-error loss $L(\theta) = \frac{1}{2}(y(1) - 2)^2$. Compute $\frac{dL}{d\theta}$ using the continuous adjoint method and verify it against direct differentiation.
+
+1. **Solve the forward ODE:**
+   $$y(t) = e^{\theta t} \implies y(1) = e^\theta.$$
+2. **Set up and solve the backward adjoint ODE:** For $f(y, \theta) = \theta y$, we have $\frac{\partial f}{\partial y} = \theta$ and $\frac{\partial f}{\partial \theta} = y$. The adjoint state $a(t) = \frac{\partial L}{\partial y(t)}$ satisfies:
+   $$\frac{da}{dt} = -a(t)\frac{\partial f}{\partial y} = -\theta a(t), \qquad a(1) = \frac{dL}{dy(1)} = y(1) - 2 = e^\theta - 2.$$
+   Solving backward from $t = 1$ gives:
+   $$a(t) = (e^\theta - 2)e^{\theta(1 - t)}.$$
+3. **Integrate to obtain the parameter gradient:**
+   $$\frac{dL}{d\theta} = \int_0^1 a(t)\frac{\partial f}{\partial \theta}\,dt = \int_0^1 (e^\theta - 2)e^{\theta(1-t)} \cdot e^{\theta t}\,dt = \int_0^1 (e^\theta - 2)e^\theta\,dt = e^\theta(e^\theta - 2).$$
+4. **Verify by direct calculus:** Since $L(\theta) = \frac{1}{2}(e^\theta - 2)^2$, differentiating directly gives $\frac{dL}{d\theta} = (e^\theta - 2)e^\theta$—an exact match! Notice that the adjoint integral needed *no* intermediate trajectory storage, scaling cleanly to million-parameter Neural ODEs.
 
 ### Example 1: Implicit Euler adjoint
 

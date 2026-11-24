@@ -9,7 +9,21 @@ categories:
 - chapter11
 lesson_type: required
 ---
+
 ![21 03 18 11 02 Separation Variables Rectangles]({{ site.imgurl }}/chapter_img/chapter11/02_separation_variables_rectangles.svg)
+
+Tưởng tượng một tấm kim loại hình chữ nhật có ba cạnh áp vào nước đá $0^\circ\text{C}$, còn cạnh trên cùng được nung theo một phân bố nhiệt độ cho trước $f(x)$. Làm sao biết chính xác nhiệt độ tại tâm tấm kim loại? Bí quyết tách biến $u(x, y) = X(x)Y(y)$ tách bài toán 2D thành hai ODE 1D với một nét đối lập tuyệt đẹp: **một chiều dao động bằng $\sin/\cos$**, còn **chiều vuông góc còn lại bắt buộc phải tăng–giảm đơn điệu bằng $\sinh/\cosh$**!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Tách biến trên Miền Chữ nhật
+
+1. **Cặp dấu hằng số tách biến trái ngược**:
+   Từ $X''/X = -Y''/Y = -\lambda$, nếu biên trên trục $x$ là thuần nhất ($u(0, y) = u(a, y) = 0$), ta buộc phải chọn $\lambda = (n\pi/a)^2 > 0$ để $X_n(x) = \sin(n\pi x/a)$ có nghiệm không tầm thường.
+2. **Hàm Hyperbolic $\sinh$ và $\cosh$ theo chiều còn lại**:
+   Với $\lambda > 0$, phương trình $Y'' - \lambda Y = 0$ cho nghiệm $A\cosh(\frac{n\pi y}{a}) + B\sinh(\frac{n\pi y}{a})$. Dùng dạng tổ hợp $\sinh\left(\frac{n\pi y}{a}\right)$ hoặc $\sinh\left(\frac{n\pi (b-y)}{a}\right)$ giúp thỏa mãn biên $0$ tại $y = 0$ hoặc $y = b$ ngay lập tức!
+3. **Nguyên lý Chồng chất cho Bốn Cạnh Không Thuần nhất**:
+   Khi cả 4 cạnh hình chữ nhật đều có nhiệt độ khác $0$, ta tách bài toán thành tổng 4 bài toán con $u = u_1 + u_2 + u_3 + u_4$, mỗi bài toán con chỉ có **đúng một cạnh khác $0$** và ba cạnh còn lại bằng $0$.
+4. **Suy giảm theo hàm mũ vào sâu bên trong**:
+   Tỷ số $\frac{\sinh(n\pi y/a)}{\sinh(n\pi b/a)} \approx e^{-n\pi(b-y)/a}$ cho thấy các gợn sóng tần số cao $n$ lớn trên biên tắt rất nhanh khi đi vào trong—lý giải trực quan vì sao nghiệm Laplace luôn trơn vô hạn $C^\infty$ bên trong miền!
 
 ## Mục tiêu
 
@@ -25,6 +39,19 @@ Trên hình chữ nhật, phương pháp tách biến phát huy hiệu quả rõ
 
 Về mặt sư phạm, bài học này đánh dấu lần đầu sinh viên thấy trực tiếp một nghiệm elliptic được xây dựng từ dữ liệu biên thay vì dữ liệu ban đầu, từ đó hình thành trực giác khác biệt so với phương trình nhiệt và phương trình sóng.
 
+
+### Khung giải thích (nên đọc chậm): Tính tay nhiệt độ chính xác tại tâm hình vuông $[0, \pi] \times [0, \pi]$
+
+Xét $\Delta u = 0$ trên hình vuông $(0, \pi) \times (0, \pi)$ với $u = 0$ trên ba cạnh $x = 0$, $x = \pi$, $y = 0$, và cạnh trên có nhiệt độ $u(x, \pi) = \sin(x)$:
+1. **Chọn dạng nghiệm tách biến**: Vì $u(0,y)=u(\pi,y)=0$ và $u(x,0)=0$, chỉ còn duy nhất mode $n = 1$:
+   $$u(x, y) = B_1 \sin(x) \sinh(y).$$
+2. **Áp điều kiện cạnh trên $y = \pi$**:
+   $$u(x, \pi) = B_1 \sin(x) \sinh(\pi) = \sin(x) \implies B_1 = \frac{1}{\sinh(\pi)}.$$
+   Vậy nghiệm chính xác là $u(x, y) = \frac{\sinh(y)}{\sinh(\pi)}\sin(x)$.
+3. **Tính số tại đúng tâm hình vuông $\left(\frac{\pi}{2}, \frac{\pi}{2}\right)$**:
+   Dùng $\sinh(\pi) = 2\sinh(\frac{\pi}{2})\cosh(\frac{\pi}{2})$ và $\sin(\frac{\pi}{2}) = 1$:
+   $$u\left(\frac{\pi}{2}, \frac{\pi}{2}\right) = \frac{1}{2\cosh(\pi/2)} \approx \frac{1}{2 \times 2{,}509} \approx \mathbf{0{,}1993}.$$
+   Kiểm tra nhanh: trung bình giá trị của $u$ trên cả 4 cạnh là $\frac{1}{4}\left(0 + 0 + 0 + \frac{1}{\pi}\int_0^\pi \sin x\,dx\right) = \frac{1}{2\pi} \approx 0{,}159$, cùng bậc độ lớn với $0{,}1993$!
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan

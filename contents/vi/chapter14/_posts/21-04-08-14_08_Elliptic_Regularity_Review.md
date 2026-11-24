@@ -12,6 +12,21 @@ lesson_type: optional
 
 ![Elliptic regularity nhìn qua parametrix và symbol calculus]({{ site.imgurl }}/chapter_img/chapter14/08_elliptic_regularity_review.svg )
 
+Ở Chương 12, để chứng minh một nghiệm yếu của PDE elliptic hệ số biến thiên thực sự trơn $C^\infty$, ta phải xoay xở với các thương sai phân (difference quotients), hàm cắt và ước lượng năng lượng dài nhiều trang giấy. Đến Chương 14, toàn bộ chứng minh ấy bỗng thu gọn lại thành **đúng 3 dòng đại số thần kỳ** nhờ Parametrix của $\Psi$DO! Bài học này nhìn lại Định lý Tính Chính quy Elliptic từ đỉnh cao của lý thuyết toán tử giả vi phân.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Chứng minh Tính Chính quy Elliptic bằng $\Psi$DO
+
+1. **Chứng minh 3 dòng qua Parametrix $Q \in \Psi^{-m}$**:
+   Từ $Pu = f \in H^s$, dựng parametrix $Q \in \Psi^{-m}$ thỏa mãn $QP = I + R$ ($R \in \Psi^{-\infty}$). Nhân trái hai vế với $Q$: $u = Qf - Ru$. Vì $Qf \in H^{s+m}$ và $Ru \in C^\infty$, lập tức suy ra $u \in H^{s+m}$!
+2. **Định lý Tính Giảm-elliptic (Hypoellipticity) cho Toán tử Elliptic**:
+   Nếu $P$ elliptic và $Pu \in C^\infty(U)$ trên một tập mở $U$, thì $u \in C^\infty(U)$ (thậm chí ngay cả khi $u$ ban đầu chỉ là một phân phối rất xấu trong $\mathcal{D}'$!).
+3. **Ước lượng Elliptic Tiên nghiệm (Elliptic A Priori Estimate)**:
+   Từ $u = Qf - Ru$ và tính bị chặn $\Psi^k: H^r \to H^{r-k}$, ta thu được ngay bất đẳng thức vàng:
+   $$\|u\|_{H^{s+m}} \le C\big(\|Pu\|_{H^s} + \|u\|_{H^s}\big),$$
+   khẳng định chuẩn bậc cao của nghiệm được khống chế chặt bởi vế phải và chuẩn bậc thấp!
+4. **Cầu nối sang Bước nhảy Chương 15 (Tính Chính quy Vi địa phương)**:
+   Thay vì đòi hỏi $p_m(x, \xi) \neq 0$ cho *mọi* hướng $\xi$, điều gì xảy ra nếu nó chỉ khác $0$ theo một *vài* hướng $\xi_0$? Ta vẫn dựng được parametrix *theo đúng hướng ấy*—đó chính là cửa ngõ mở ra **Phân tích Vi địa phương** ở Chương 15!
+
 ## Mục tiêu
 
 Bài học tùy chọn này khép lại chương bằng cách nhìn lại tính chính quy elliptic dưới góc độ hiện đại của toán tử giả vi phân. Sau bài học, sinh viên cần hiểu vì sao parametrix mang lại một chứng minh ngắn gọn và tổng quát cho tính chính quy, biết đọc tính chất ánh xạ giữa các không gian Sobolev từ bậc của toán tử, và so sánh được cách tiếp cận cổ điển với cách tiếp cận bằng ΨDO.
@@ -26,6 +41,17 @@ Sinh viên nên nắm vững không gian Sobolev, tính elliptic, khái niệm p
 
 Đây là một trong những lý do chính khiến toán tử giả vi phân trở thành ngôn ngữ chuẩn của lý thuyết elliptic hiện đại.
 
+
+### Khung giải thích (nên đọc chậm): Theo dõi từng bậc Sobolev trong chứng minh 3 dòng cho phương trình bậc 4 (Biharmonic)
+
+Xét phương trình đàn hồi bản mỏng (Biharmonic) $\Delta^2 u = f$ với $f \in H^1(\mathbb{R}^2)$ và giả sử ban đầu ta chỉ biết $u$ là một phân phối trong $H^{-10}(\mathbb{R}^2)$:
+1. **Nhận diện bậc và tính elliptic**: $P = \Delta^2$ có ký hiệu chính $p_4(\xi) = |\xi|^4 > 0$ với mọi $\xi \neq 0$, nên $P \in \Psi^4$ elliptic bậc $m = 4$.
+2. **Dựng parametrix $Q \in \Psi^{-4}$**: Thỏa mãn $QP = I + R$ với $R \in \Psi^{-\infty}$. Áp dụng lên $Pu = f$:
+   $$u = Qf - Ru.$$
+3. **Đọc bậc Sobolev của từng số hạng**:
+   - $Q \in \Psi^{-4}$ nâng bậc thêm $+4$, nên từ $f \in H^1$ ta có $Qf \in H^{1 + 4} = \mathbf{H^5(\mathbb{R}^2)}$.
+   - $R \in \Psi^{-\infty}$ làm trơn vô hạn nên dù $u \in H^{-10}$ rất gồ ghề, $Ru \in C^\infty \subset \mathbf{H^5(\mathbb{R}^2)}$.
+   - Kết luận tức thì: $u \in \mathbf{H^5(\mathbb{R}^2)}$ (và theo nhúng Sobolev ở 2D, $5 > 3 + 2/2$, nên $u \in C^3$ cổ điển!).
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

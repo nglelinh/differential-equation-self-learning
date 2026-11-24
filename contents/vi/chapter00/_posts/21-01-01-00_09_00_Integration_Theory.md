@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Mỗi phương trình vi phân $y' = f(t, y)$ thực chất là một phương trình tích phân $y(t) = y_0 + \int_{t_0}^t f(s, y(s))\,ds$ được viết gọn lại. Nhưng khi bước sang biến đổi Laplace (tích phân suy rộng đến $\infty$), hàm gián đoạn bậc thang, hay đổi thứ tự lấy giới hạn và tích phân, hiểu sâu lý thuyết tích phân sẽ giúp bạn tránh mọi cái bẫy phân kỳ và nắm chắc quyền sử dụng công thức Leibniz.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Lý thuyết Tích phân cho PTVP
+
+1. **Định lý Cơ bản của Giải tích (FTC) & Quy tắc Leibniz**:
+   Cho phép tính đạo hàm của hàm chứa tham số trong tích phân $\frac{d}{dt}\int_{a(t)}^{b(t)} F(t, s)\,ds$—công cụ trực tiếp để kiểm chứng công thức biến thiên hằng số và tích chập.
+2. **Tích phân suy rộng ($\int_0^\infty f(t)\,dt$) & Tiêu chuẩn so sánh**:
+   Quyết định miền hội tụ của biến đổi Laplace $\mathcal{L}\{f\}(s) = \int_0^\infty e^{-st}f(t)\,dt$ và hàm Gamma $\Gamma(z)$.
+3. **Tích phân Riemann vs. Tích phân Lebesgue**:
+   Riemann cắt trục hoành thành các dải dọc; Lebesgue cắt trục tung theo tập giá trị—nhờ đó xử lý gọn các hàm gián đoạn phức tạp và làm cho không gian $L^2$ trở nên đầy đủ.
+4. **Các định lý chuyển giới hạn dưới dấu tích phân (MCT, DCT) & Fubini**:
+   Định lý Hội tụ bị trội (Dominated Convergence Theorem) cho phép lấy đạo hàm dưới dấu tích phân suy rộng, còn định lý Fubini cho phép đổi thứ tự tích phân bội khi chứng minh định lý tích chập.
+
 ## Mục tiêu
 Bài học này giúp sinh viên nắm vững mối liên hệ giữa đạo hàm và tích phân thông qua định lý cơ bản của giải tích, sử dụng thành thạo các tiêu chuẩn hội tụ cho tích phân suy rộng và vận dụng định lý Fubini khi tính tích phân bội. Đây là kiến thức nền để tiếp cận biến đổi Laplace, phương trình đạo hàm riêng và các công cụ giải tích nâng cao trong lý thuyết phương trình vi phân.
 
@@ -20,6 +34,15 @@ Sinh viên cần nắm vững tích phân Riemann cơ bản, các kỹ thuật t
 Trong phương trình vi phân, tích phân không chỉ là phép tính kỹ thuật mà còn thể hiện sự tích lũy theo thời gian của hệ. Chẳng hạn, với phương trình $$ y' = f(t) $$, công thức nghiệm $$ y(t) = y(t_0) + \int_{t_0}^{t} f(s)\,ds $$ cho thấy trạng thái tại thời điểm $$ t $$ được tích lũy từ toàn bộ tốc độ biến thiên trong khoảng từ $$ t_0 $$ đến $$ t $$.
 
 Hãy hình dung nước chảy vào một bình chứa với lưu lượng tại mỗi thời điểm là $$ f(t) $$. Thể tích nước tích tụ trong bình đến thời điểm $$ t $$ chính là tích phân của $$ f $$ từ lúc bắt đầu đến $$ t $$. Hiểu theo cách này, tích phân là phép cộng dồn liên tục mọi biến thiên theo thời gian.
+
+### Khung giải thích (nên đọc chậm): Áp dụng quy tắc Leibniz để chứng minh $y(t) = \int_0^t \sin(t - s)\,g(s)\,ds$ giải đúng PTVP $y'' + y = g(t)$
+
+Nhớ quy tắc Leibniz: $\frac{d}{dt}\int_0^t K(t, s)\,ds = K(t, t) + \int_0^t \frac{\partial K}{\partial t}(t, s)\,ds$.
+1. **Đạo hàm cấp một $y'(t)$** với $K(t, s) = \sin(t - s)\,g(s)$:
+   $$y'(t) = \underbrace{\sin(t - t)}_{= 0}g(t) + \int_0^t \cos(t - s)\,g(s)\,ds = \int_0^t \cos(t - s)\,g(s)\,ds.$$
+2. **Đạo hàm cấp hai $y''(t)$** áp dụng lại quy tắc Leibniz cho $\cos(t - s)\,g(s)$:
+   $$y''(t) = \underbrace{\cos(t - t)}_{= 1}g(t) + \int_0^t \big(-\sin(t - s)\big)\,g(s)\,ds = g(t) - y(t).$$
+3. **Kết luận**: Chuyển vế ta được ngay $y''(t) + y(t) = g(t)$ cùng $y(0) = 0, y'(0) = 0$! Quy tắc Leibniz chính là trái tim của hàm Green và phép tích chập ở Chương 02 và Chương 03.
 
 ## Khái niệm theo ba cách
 

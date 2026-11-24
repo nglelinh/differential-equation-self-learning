@@ -12,6 +12,19 @@ lesson_type: required
 
 ![Trực giác của phương pháp Euler tiến và Euler lùi]({{ site.imgurl }}/chapter_img/chapter13/01_eulers_method.svg )
 
+Nếu bạn đang lái xe trong sương mù dày đặc và chỉ thấy độ dốc mặt đường ngay dưới bánh xe hiện tại, chiến lược đơn giản nhất là giữ nguyên hướng lái ấy đi thẳng một quãng ngắn $h$, rồi dừng lại đo độ dốc mới và lặp lại. Đó chính là **Phương pháp Euler (1768)**: $y_{n+1} = y_n + h f(t_n, y_n)$—thuật toán giải ODE lâu đời nhất, dễ hiểu nhất, và cũng là phòng thí nghiệm hoàn hảo nhất để tận mắt thấy hiện tượng mất ổn định số!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Euler
+
+1. **Ý nghĩa Hình học (Đường gấp khúc Tiếp tuyến) & Đại số (Taylor bậc 1)**:
+   Từ $y(t_n + h) = y(t_n) + h y'(t_n) + \frac{h^2}{2}y''(\xi)$, bỏ số hạng $O(h^2)$ cho ra bước cập nhật Euler hiện $y_{n+1} = y_n + h f(t_n, y_n)$.
+2. **Sai số Cục bộ $O(h^2)$ và Sai số Toàn cục $O(h)$**:
+   Euler là phương pháp **bậc 1**: muốn giảm sai số toàn cục đi $10$ lần, ta buộc phải giảm bước $h$ đi $10$ lần và tính toán tốn công gấp $10$ lần.
+3. **Miền Ổn định Tuyệt đối $|1 + h\lambda| \le 1$**:
+   Áp dụng cho phương trình kiểm thử Dahlquist $y' = \lambda y$ cho $y_n = (1 + h\lambda)^n y_0$. Khi $\lambda < 0$ thực, Euler hiện chỉ ổn định khi $0 < h \le \frac{2}{|\lambda|}$; vượt ngưỡng này, nghiệm số dao động trái dấu và nổ tung!
+4. **Euler Ẩn (Backward Euler) — Đánh đổi Giải phương trình lấy Ổn định Tuyệt đối**:
+   Dùng độ dốc tại điểm đích $y_{n+1} = y_n + h f(t_{n+1}, y_{n+1})$ cho hệ số khuếch đại $\frac{1}{1 - h\lambda}$, luôn có độ lớn $< 1$ với mọi $h > 0$ khi $\operatorname{Re}(\lambda) < 0$!
+
 ## Mục tiêu
 
 Bài học này giới thiệu phương pháp Euler như điểm xuất phát của giải tích số cho ODE. Sau bài học, sinh viên cần thiết lập được công thức Euler tiến và Euler lùi, giải thích được ý nghĩa hình học "đi theo tiếp tuyến", phân biệt sai số cục bộ với sai số toàn cục, và hiểu mối liên hệ giữa kích thước bước thời gian với tính ổn định số.
@@ -26,6 +39,18 @@ Nếu biết vị trí và vận tốc hiện tại của một vật, ta có th
 
 Dù có công thức rất đơn giản, phương pháp Euler giữ vai trò nền tảng vì hầu hết các phương pháp bậc cao hơn đều là sự cải tiến hoặc mở rộng từ trực giác này. Hiểu rõ phương pháp Euler giúp nắm vững ngôn ngữ cơ bản của mô phỏng phương trình vi phân.
 
+
+### Khung giải thích (nên đọc chậm): Tính tay 2 bước Euler hiện trên $y' = -2y$ để thấy rõ cả hội tụ lẫn nổ tung
+
+Xét bài toán $y' = -2y$, $y(0) = 1$ (nghiệm đúng $y(t) = e^{-2t}$, ngưỡng ổn định $h_{\max} = \frac{2}{|-2|} = 1{,}0$):
+1. **Bước nhỏ ổn định $h = 0{,}25 < 1$** (hệ số $1 + h\lambda = 1 - 0{,}5 = 0{,}5$):
+   - $y_1 = 1 + 0{,}25(-2)(1) = \mathbf{0{,}50}$ (so với $e^{-0{,}5} \approx 0{,}6065$).
+   - $y_2 = 0{,}5 + 0{,}25(-2)(0{,}5) = \mathbf{0{,}25}$ (so với $e^{-1} \approx 0{,}3679$).
+   Nghiệm giảm đều đúng xu hướng vật lý.
+2. **Bước lớn vượt ngưỡng $h = 1{,}2 > 1$** (hệ số $1 + h\lambda = 1 - 2{,}4 = -1{,}4$):
+   - $y_1 = 1 + 1{,}2(-2)(1) = \mathbf{-1{,}40}$ (âm vô lý!).
+   - $y_2 = (-1{,}40) \times (-1{,}4) = \mathbf{+1{,}96}$, $y_3 = \mathbf{-2{,}744} \to \pm\infty$!
+   Chỉ vì vượt ngưỡng $h = 1{,}0$, nghiệm số đã phản bội hoàn toàn nghiệm thật đang tắt êm ái về $0$!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

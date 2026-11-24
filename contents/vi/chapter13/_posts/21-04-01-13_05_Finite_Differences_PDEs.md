@@ -12,6 +12,21 @@ lesson_type: required
 
 ![Lưới sai phân cho PDE và xấp xỉ đạo hàm cục bộ]({{ site.imgurl }}/chapter_img/chapter13/05_finite_differences_pdes.svg )
 
+Làm sao dạy máy tính giải phương trình Poisson $-\Delta u = f$ hay phương trình nhiệt $u_t = \alpha u_{xx}$ khi máy tính chỉ hiểu mảng số hữu hạn? **Phương pháp Sai phân Hữu hạn (Finite Difference Method — FDM)** phủ lên miền $\Omega$ một mạng lưới tọa độ bước $h$, thay mọi đạo hàm riêng bằng tổ hợp tuyến tính của vài nút lân cận (*stencil*), và biến PDE vô hạn chiều thành một **hệ phương trình đại số tuyến tính $A\mathbf{u} = \mathbf{b}$** có ma trận cực thưa!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Sai phân Hữu hạn cho PDE
+
+1. **Xây dựng Stencil 3 điểm (1D) và 5 điểm (2D) cho Toán tử Laplace**:
+   Thay $u_{xx} \approx \frac{u_{i-1} - 2u_i + u_{i+1}}{h^2}$ ở 1D và cộng thêm chiều $y$ cho stencil 5 điểm 2D đạt bậc chính xác $O(h^2)$.
+2. **Cấu trúc Ma trận Thưa (Tam đường chéo / Khối tam đường chéo)**:
+   Mỗi phương trình chỉ dính đến $3$ (ở 1D) hoặc $5$ (ở 2D) ẩn số! Nhờ tính thưa và đối xứng xác định dương (SPD), ta giải $A\mathbf{u} = \mathbf{b}$ siêu nhanh bằng thuật toán Thomas $O(N)$ ở 1D hoặc Conjugate Gradient / Multigrid ở 2D–3D.
+3. **Ba sơ đồ kinh điển cho PDE Tiến hóa theo Thời gian**:
+   - *FTCS (Hiện)*: dễ lập trình nhưng bị trói bởi điều kiện $r = \alpha\Delta t/\Delta x^2 \le 1/2$.
+   - *BTCS (Ẩn)*: ổn định vô điều kiện, bậc $O(\Delta t + \Delta x^2)$.
+   - *Crank–Nicolson*: lấy trung bình bước cũ và mới, vừa ổn định vô điều kiện vừa đạt bậc hai cả thời gian lẫn không gian $O(\Delta t^2 + \Delta x^2)$!
+4. **Xử lý Điều kiện biên Dirichlet và Neumann (Nút Ảo — Ghost Nodes)**:
+   Biên Dirichlet thay thẳng giá trị đã biết sang vế phải $\mathbf{b}$; biên Neumann $u_x(0) = g$ dùng nút ảo $u_{-1}$ với sai phân trung tâm $\frac{u_1 - u_{-1}}{2h} = g$ để giữ nguyên độ chính xác bậc $O(h^2)$!
+
 ## Mục tiêu
 
 Bài học này giới thiệu phương pháp sai phân hữu hạn (finite difference method) như bước rời rạc hóa cơ bản cho PDE. Sau bài học, sinh viên cần xây dựng được các công thức sai phân trung tâm cơ bản, áp dụng cho phương trình nhiệt, phương trình sóng và phương trình Laplace, đồng thời hiểu cách một PDE liên tục chuyển thành hệ phương trình đại số trên lưới.
@@ -26,6 +41,18 @@ Máy tính không xử lý trực tiếp miền liên tục vô hạn điểm m�
 
 Việc lựa chọn công thức sai phân không chỉ là thao tác hình thức: nó quyết định bậc chính xác, tính ổn định và khả năng bảo toàn tính chất vật lý của PDE gốc.
 
+
+### Khung giải thích (nên đọc chậm): Giải tay trọn vẹn hệ ma trận sai phân 3 điểm cho $-u'' = 2$ trên $(0, 1)$
+
+Chia đoạn $[0, 1]$ thành $3$ đoạn bằng nhau ($h = \frac{1}{3}$), có 2 nút trong $x_1 = \frac{1}{3}$, $x_2 = \frac{2}{3}$ và biên $u_0 = u_3 = 0$:
+1. **Viết phương trình sai phân $\frac{-u_{i-1} + 2u_i - u_{i+1}}{h^2} = 2$** (với $1/h^2 = 9$):
+   - Tại $i = 1$: $9(0 + 2u_1 - u_2) = 2 \implies 2u_1 - u_2 = \frac{2}{9}$.
+   - Tại $i = 2$: $9(-u_1 + 2u_2 - 0) = 2 \implies -u_1 + 2u_2 = \frac{2}{9}$.
+2. **Giải hệ $2 \times 2$ đối xứng**:
+   Cộng hai phương trình: $u_1 + u_2 = \frac{4}{9}$. Do đối xứng $u_1 = u_2$, suy ra:
+   $$u_1 = u_2 = \mathbf{\frac{2}{9}} \approx 0{,}2222.$$
+3. **Kiểm chứng với nghiệm giải tích $u(x) = x(1 - x)$**:
+   $u\left(\frac{1}{3}\right) = \frac{1}{3}\cdot\frac{2}{3} = \mathbf{\frac{2}{9}}$ và $u\left(\frac{2}{3}\right) = \mathbf{\frac{2}{9}}$—**sai số bằng $0$ tuyệt đối** vì sai phân trung tâm $O(h^2)$ có phần dư chứa $u^{(4)}$, mà $u^{(4)} \equiv 0$ cho đa thức bậc hai!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

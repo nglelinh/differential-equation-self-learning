@@ -9,6 +9,19 @@ categories:
 - chapter09
 ---
 
+Có một phương trình nhỏ bé chỉ gồm hai đạo hàm—$u_t = \alpha u_{xx}$—nhưng lại kết nối bốn thế giới tưởng chừng xa lạ nhất của khoa học: **Joseph Fourier** viết nó để tính nhiệt độ trong đại bác và lõi Trái Đất (1822); **Albert Einstein** dùng đúng nó để chứng minh sự tồn tại của nguyên tử qua chuyển động Brown (1905); **Black và Scholes** biến đổi phương trình định giá quyền chọn tài chính về đúng phương trình nhiệt (1973, giải Nobel Kinh tế); và hôm nay các mô hình **AI tạo ảnh Diffusion** chạy ngược đúng phương trình khuếch tán này!
+
+## Bản đồ kiến thức nền: Bốn cột mốc lịch sử xuyên ngành của Phương trình Nhiệt
+
+1. **Fourier (1822) — Định luật dẫn nhiệt & Tách biến**:
+   Kết hợp bảo toàn năng lượng với định luật thông lượng nhiệt $q = -k u_x$ và khai sinh chuỗi Fourier.
+2. **Lord Kelvin (1862) — Tính tuổi Trái Đất bằng Phương trình Nhiệt**:
+   Dùng nghiệm hàm sai số ($\operatorname{erf}$) ước lượng thời gian nguội của vỏ Trái Đất (mặc dù bị hụt vì thời đó chưa phát hiện nguồn nhiệt phóng xạ trong lòng đất!).
+3. **Einstein (1905) & Bachelier (1900) — Cầu nối với Xác suất**:
+   Chứng minh mật độ xác suất của hạt đi ngẫu nhiên (Brownian motion) thỏa đúng phương trình nhiệt với độ lệch chuẩn lan rộng theo $\sqrt{2\alpha t}$!
+4. **Black–Scholes (1973) & AI Diffusion (2020–2026)**:
+   Định giá phái sinh tài chính và sinh ảnh/video chất lượng cao đều chia sẻ chung trái tim toán học là phương trình khuếch tán!
+
 ## Mục tiêu
 Bài học này lần theo tiến trình lịch sử của phương trình nhiệt, từ lý thuyết ban đầu của Fourier cho đến khuếch tán vật chất, lý thuyết xác suất và tính toán số. Qua đó, sinh viên thấy được Chương 09 là một trong những nền móng hình thành lý thuyết PDE hiện đại.
 
@@ -19,6 +32,14 @@ Sinh viên nên nắm các công cụ phân tích chính của Chương 09: thi�
 Năm 1807 tại Grenoble, Joseph Fourier — khi đó đang đảm nhiệm chức vụ hành chính của tỉnh nhưng vẫn duy trì nghiên cứu khoa học — trở lại với một bài toán vật lý cụ thể: nhiệt độ phân bố và biến thiên trong một thanh kim loại theo thời gian như thế nào. Thách thức của ông không chỉ nằm ở mô hình vật lý; ông cần một phương trình đủ chính xác để dự đoán phân bố nhiệt, trong khi giải tích đương thời chưa quen với những khai triển lượng giác tổng quát mà ông đề xuất.
 
 Khi hai đầu thanh giữ ở nhiệt độ $$0$$ và phân bố ban đầu trùng với mode cơ bản, Fourier thu được nghiệm dạng $$u(x,t)=e^{-k\pi^2 t/L^2}\sin\left(\frac{\pi x}{L}\right)$$. Công thức ngắn gọn này chứa đựng ý tưởng chủ đạo của cả chương: theo thời gian, thừa số mũ làm biên độ dao động không gian suy giảm dần, nghĩa là quá trình truyền nhiệt san bằng các chênh lệch. Khi Fourier khẳng định rằng các điều kiện ban đầu tổng quát cũng có thể phân rã thành tổng các mode như vậy, ông đã mở ra một hướng đi vừa giàu sức mạnh tính toán vừa gây ra tranh luận sâu rộng, qua đó góp phần định hình lại nền móng của giải tích.
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng quy luật căn bậc hai $x_{\text{rms}} = \sqrt{2\alpha t}$ của Einstein
+
+Một giọt mực nhỏ thả vào nước yên tĩnh có hệ số khuếch tán $\alpha = 10^{-9}\text{ m}^2/\text{s}$:
+- Để mực tự khuếch tán qua khoảng cách $1\text{ mm} = 10^{-3}\text{ m}$: $t_1 = \frac{x^2}{2\alpha} = \frac{10^{-6}}{2 \cdot 10^{-9}} = \mathbf{500\text{ giây}}$ ($\approx 8{,}3\text{ phút}$).
+- Để mực tự khuếch tán qua khoảng cách gấp $10\times$ ($1\text{ cm} = 10^{-2}\text{ m}$): $t_2 = \frac{10^{-4}}{2 \cdot 10^{-9}} = \mathbf{50.000\text{ giây}}$ ($\approx \mathbf{13{,}9\text{ giờ}}$ — lâu gấp **$100\times$**!).
+
+Quy luật bình phương khoảng cách $t \propto L^2$ này giải thích vì sao tế bào sống chỉ có kích thước vài micromet (nơi khuếch tán diễn ra trong mili-giây), còn cơ thể người buộc phải tiến hóa hệ tuần hoàn bơm máu!
 
 ## Mạch truyện lớn
 Lịch sử phương trình nhiệt khởi đầu từ nghiên cứu của Fourier vào đầu thế kỷ XIX. Xuất phát từ bài toán dẫn nhiệt trong vật rắn, ông phát triển chuỗi Fourier, phương pháp tách biến và một cách tiếp cận mới để giải PDE. Sự hoài nghi ban đầu của Biot, Laplace và Poisson có cơ sở rõ ràng: phương pháp của Fourier cho kết quả hiệu quả nhưng khi đó vẫn thiếu nền tảng hội tụ chặt chẽ.

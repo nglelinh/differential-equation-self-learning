@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Vật lý cổ điển đặt cược toàn bộ niềm tin vào tính **tất định (determinism)**: biết vị trí và vận tốc hôm nay thì tương lai phải được xác định duy nhất. Thế nhưng phương trình cực kỳ đơn giản $y' = 2\sqrt{\vert y\vert},\; y(0) = 0$ lại có **vô số nghiệm khác nhau** xuất phát từ cùng một điểm! **Định lý Tồn tại và Duy nhất Picard–Lindelöf** chính là bản án toán học phân định rạch ròi khi nào thế giới vận hành tất định và khi nào nghiệm có thể rẽ nhánh.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Định lý Tồn tại & Duy nhất
+
+1. **Điều kiện Tồn tại (Định lý Peano)**:
+   Chỉ cần $f(t, y)$ **liên tục** trong hình chữ nhật $R$ quanh $(t_0, y_0)$ là đủ đảm bảo tồn tại ít nhất một nghiệm cục bộ—nhưng **chưa đủ** để đảm bảo duy nhất!
+2. **Điều kiện Duy nhất (Điều kiện Lipschitz / $\partial f/\partial y$ liên tục)**:
+   Khi $\frac{\partial f}{\partial y}$ liên tục trên $R$ (suy ra $f$ thỏa điều kiện Lipschitz theo $y$), định lý Picard–Lindelöf khẳng định tồn tại **duy nhất** một nghiệm trên khoảng $[t_0 - h, t_0 + h]$.
+3. **Phép lặp Picard ($y_{n+1}(t) = y_0 + \int_{t_0}^t f(s, y_n(s))\,ds$)**:
+   Cơ chế chứng minh xây dựng nghiệm bằng cách lặp toán tử tích phân co trên không gian Banach $C([t_0-h, t_0+h])$.
+4. **Cục bộ vs. Toàn cục (Hiện tượng bùng nổ hữu hạn)**:
+   Định lý chỉ hứa hẹn nghiệm **cục bộ** gần $t_0$; nghiệm phi tuyến vẫn có thể thoát ra vô cùng trong thời gian hữu hạn (blow-up) nếu $f$ tăng nhanh hơn tuyến tính theo $y$.
+
 ## Mục tiêu
 Bài học này giúp sinh viên nắm vững hai câu hỏi nền tảng đứng sau mọi kỹ thuật giải ODE: bài toán giá trị đầu có nghiệm hay không, và nếu có thì nghiệm đó có duy nhất hay không. Sinh viên cần phân biệt vai trò của tính liên tục với điều kiện Lipschitz, hiểu ý nghĩa của tính duy nhất đối với độ tin cậy của mô hình và phân tích được các phản ví dụ khi giả thiết bị vi phạm.
 
@@ -22,6 +36,18 @@ Sinh viên cần nắm dạng phương trình cấp một $$ y'=f(t,y) $$, ý ng
 Ở các bài trước, ta tập trung vào các kỹ thuật tìm nghiệm. Tuy nhiên, có một câu hỏi nền tảng hơn: liệu bài toán đã cho có chắc chắn tồn tại nghiệm không, và điều kiện đầu có xác định duy nhất một quỹ đạo không? Trong mô hình hóa, đây không phải chi tiết hình thức: nếu nghiệm không duy nhất, trạng thái ban đầu không thể dự báo tương lai một cách xác định.
 
 Định lý tồn tại và duy nhất trả lời chính xác khi nào một bài toán giá trị đầu được đặt chỉnh (well-posed)—giúp ta biết trước khi giải rằng mô hình có cơ sở toán học nhất quán.
+
+### Khung giải thích (nên đọc chậm): Tính tay 3 vòng lặp Picard cho $y' = y,\; y(0) = 1$ và soi lỗi mất tính duy nhất ở $y' = 2\sqrt{y}$
+
+**Phần A — Phép lặp Picard cho $y' = y,\; y(0) = 1$** ($f(t, y) = y$, Lipschitz với $L = 1$):
+- $y_0(t) = 1$
+- $y_1(t) = 1 + \int_0^t 1\,ds = 1 + t$
+- $y_2(t) = 1 + \int_0^t (1 + s)\,ds = 1 + t + \frac{t^2}{2}$
+- $y_3(t) = 1 + \int_0^t \left(1 + s + \frac{s^2}{2}\right)\,ds = 1 + t + \frac{t^2}{2!} + \frac{t^3}{3!}$
+Chuỗi lặp hội tụ thẳng về chuỗi Taylor của nghiệm duy nhất $y(t) = e^t$!
+
+**Phần B — Tại sao $y' = 2\sqrt{\vert y\vert},\; y(0) = 0$ mất tính duy nhất?**
+Ta có $\frac{\partial f}{\partial y} = \frac{1}{\sqrt{y}} \to +\infty$ khi $y \to 0^+$ (vi phạm điều kiện Lipschitz tại $y = 0$). Hậu quả: cả $y_1(t) \equiv 0$, $y_2(t) = t^2$ ($t \ge 0$), lẫn mọi hàm "ngủ yên đến $t = c$ rồi mới cất cánh" $y_c(t) = (t-c)^2$ ($t \ge c$) đều là nghiệm hợp lệ!
 
 ## Khái niệm theo ba cách
 

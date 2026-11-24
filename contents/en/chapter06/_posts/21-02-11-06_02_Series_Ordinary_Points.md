@@ -10,6 +10,42 @@ categories:
 lesson_type: required
 ---
 
+When George Biddell Airy studied the optical caustics of a rainbow in 1838, he arrived at an equation of disarming simplicity: $$ y'' - xy = 0 $$. It has no singular coefficients, no nonlinearities, and no forcing—yet Liouville's differential Galois theory proves that its solutions cannot be written in terms of elementary functions. Instead of hitting a dead end, mathematicians realized that an ODE with analytic coefficients at $$ x_0 $$ *defines* its own analytic solutions via a recursive recipe for their Taylor coefficients.
+
+This lesson turns that insight into a systematic engine: whenever $$ x_0 $$ is an ordinary point, Fuchs's theorem guarantees two linearly independent power-series solutions whose radii of convergence reach at least to the nearest complex singularity of the equation's coefficients.
+
+## Background Knowledge Map: Ordinary Points and Fuchs's Theorem
+
+1. **Classification via Standard Form (Analyticity of Coefficients):** Writing $$ y'' + P(x)y' + Q(x)y = 0 $$, a point $$ x_0 $$ is an *ordinary point* if both $$ P(x) $$ and $$ Q(x) $$ are analytic at $$ x_0 $$. Analyticity guarantees that multiplying $$ P(x) $$ by $$ y'(x) $$ and $$ Q(x) $$ by $$ y(x) $$ yields valid Cauchy products of power series.
+2. **Fuchs's Existence & Radius Theorem (Complex-Plane Horizon):** If $$ P $$ and $$ Q $$ are analytic on the open disk $$ |z - x_0| < \rho $$ in $$ \mathbb{C} $$, then every solution of $$ y'' + P(x)y' + Q(x)y = 0 $$ is analytic on $$ |z - x_0| < \rho $$. Thus the radius of convergence of the series solution is *at least* the distance from $$ x_0 $$ to the nearest complex singularity of $$ P $$ or $$ Q $$—without ever computing a single coefficient!
+3. **Recurrence Relations as Infinite-Dimensional Linear Maps:** Equating the coefficient of $$ (x - x_0)^k $$ to zero expresses $$ a_{k+2} $$ in terms of earlier coefficients. Because the ODE is second-order, $$ a_0 = y(x_0) $$ and $$ a_1 = y'(x_0) $$ remain completely free, splitting the solution naturally into the fundamental pair $$ y(x) = a_0 y_1(x) + a_1 y_2(x) $$.
+4. **Truncation Error & Local Approximation:** Near $$ x_0 $$, the partial sums of $$ y_1 $$ and $$ y_2 $$ approximate the true solution with error $$ O(|x - x_0|^{N+1}) $$, making ordinary-point series both an exact theoretical representation and a high-precision local numerical scheme.
+
+### Step-by-Step Worked Example (Read Slowly): Airy's Equation $$ y'' - xy = 0 $$ Around $$ x_0 = 0 $$
+
+**Problem:** Find the recurrence relation and the first three nonzero terms of each fundamental solution $$ y_1(x) $$ and $$ y_2(x) $$ for $$ y'' - xy = 0 $$ around $$ x_0 = 0 $$, determine the guaranteed radius of convergence, and verify the ODE up to $$ O(x^4) $$.
+
+1. **Check analyticity and guaranteed radius:** Here $$ P(x) = 0 $$ and $$ Q(x) = -x $$, both entire functions (analytic on all of $$ \mathbb{C} $$). Therefore $$ x_0 = 0 $$ is an ordinary point, and Fuchs's theorem guarantees $$ R = \infty $$.
+2. **Substitute $$ y(x) = \sum_{n=0}^{\infty} a_n x^n $$:**
+   $$ y''(x) = \sum_{n=2}^{\infty} n(n-1) a_n x^{n-2}, \qquad x y(x) = \sum_{n=0}^{\infty} a_n x^{n+1}. $$
+3. **Align both sums to $$ x^k $$:**
+   - In $$ y'' $$, set $$ k = n - 2 $$ (so $$ n = k + 2 $$, $$ k \ge 0 $$): $$ \sum_{k=0}^{\infty} (k+2)(k+1) a_{k+2} x^k $$.
+   - In $$ xy $$, set $$ k = n + 1 $$ (so $$ n = k - 1 $$, $$ k \ge 1 $$): $$ \sum_{k=1}^{\infty} a_{k-1} x^k $$.
+4. **Separate $$ k = 0 $$ and extract the recurrence:**
+   $$ 2 a_2 + \sum_{k=1}^{\infty} \bigl[(k+2)(k+1) a_{k+2} - a_{k-1}\bigr] x^k = 0. $$
+   By the identity principle:
+   - $$ k = 0 $$: $$ 2a_2 = 0 \implies a_2 = 0 $$.
+   - $$ k \ge 1 $$: $$ a_{k+2} = \frac{a_{k-1}}{(k+2)(k+1)} $$.
+5. **Unroll the 3-step recurrence cleanly:**
+   - **Branch 1 ($$ a_0 = 1, a_1 = 0 $$):** $$ a_3 = \frac{a_0}{3 \cdot 2} = \frac{1}{6} $$, $$ a_6 = \frac{a_3}{6 \cdot 5} = \frac{1}{180} $$, and all indices $$ \equiv 1, 2 \pmod{3} $$ vanish:
+     $$ y_1(x) = 1 + \frac{x^3}{6} + \frac{x^6}{180} + \cdots $$
+   - **Branch 2 ($$ a_0 = 0, a_1 = 1 $$):** $$ a_4 = \frac{a_1}{4 \cdot 3} = \frac{1}{12} $$, $$ a_7 = \frac{a_4}{7 \cdot 6} = \frac{1}{504} $$, and all indices $$ \equiv 0, 2 \pmod{3} $$ vanish:
+     $$ y_2(x) = x + \frac{x^4}{12} + \frac{x^7}{504} + \cdots $$
+6. **Direct hand-verification up to $$ x^4 $$:**
+   - $$ y_1''(x) = x + \frac{x^4}{6} + \cdots = x\left(1 + \frac{x^3}{6} + \cdots\right) = x y_1(x) $$.
+   - $$ y_2''(x) = x^2 + \frac{x^5}{12} + \cdots = x\left(x + \frac{x^4}{12} + \cdots\right) = x y_2(x) $$.
+   Both satisfy $$ y'' - xy = 0 $$ identically term by term!
+
 This lesson develops the method for finding power series solutions of ODEs about ordinary points—the foundation for all series solution techniques.
 
 > **Teaching Notes**: Core technique for chapter. Walk through Example 1 completely. Emphasize how ODE becomes recurrence. Activity: "Recurrence Challenge" (20 min).

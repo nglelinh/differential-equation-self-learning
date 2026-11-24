@@ -9,7 +9,21 @@ categories:
 - chapter08
 lesson_type: required
 ---
+
 ![21 02 25 08 07 Complex Fourier Series]({{ site.imgurl }}/chapter_img/chapter08/07_complex_fourier_series.svg)
+
+Ghi nhớ cùng lúc ba công thức tách rời cho $a_0, a_n, b_n$ cùng các công thức tích lượng giác rườm rà sẽ trở nên hoàn toàn thừa thãi ngay khi bạn dùng **Công thức Euler** $e^{i\theta} = \cos\theta + i\sin\theta$. **Chuỗi Fourier Phức** hợp nhất toàn bộ $a_0, a_n, b_n$ vào **một công thức duy nhất siêu gọn**—và là cây cầu trực tiếp dẫn sang Biến đổi Fourier và FFT!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Chuỗi Fourier Phức
+
+1. **Một công thức duy nhất cho mọi $n \in \mathbb{Z}$ (từ $-\infty$ đến $+\infty$)**:
+   $$f(x) \sim \sum_{n=-\infty}^{\infty} c_n e^{i n\pi x / L}, \qquad c_n = \frac{1}{2L}\int_{-L}^{L} f(x)\, e^{-i n\pi x / L}\,dx.$$
+2. **Ánh xạ chính xác giữa $c_n$ và $(a_n, b_n)$**:
+   $c_0 = \frac{a_0}{2}$; với $n \ge 1$: $c_n = \frac{a_n - i b_n}{2}$ và $c_{-n} = \frac{a_n + i b_n}{2}$.
+3. **Đối xứng liên hợp cho tín hiệu thực**:
+   Khi $f(x)$ là hàm **thực**, ta luôn có $c_{-n} = \overline{c_n}$ (phổ biên độ $\vert c_n \vert$ đối xứng chẵn, phổ pha $\arg(c_n)$ đối xứng lẻ).
+4. **Sức mạnh đại số của hàm mũ $e^{inx}$**:
+   Tích phân hàm mũ nhân hàm mũ chỉ đơn giản là cộng số mũ, và đạo hàm chỉ là nhân với $i\frac{n\pi}{L}$—nhanh gấp đôi so với lượng giác!
 
 ## Mục tiêu
 
@@ -22,6 +36,14 @@ Sinh viên cần nắm chuỗi Fourier dạng thực và công thức Euler $$ e
 ## Dẫn nhập
 
 Ở dạng thực, chuỗi Fourier tách thành hai họ mode là sin và cos. Cách viết này rõ ràng về mặt hình học nhưng đôi khi dài dòng khi thao tác đại số. Dạng phức hợp nhất toàn bộ cấu trúc đó vào một biểu thức duy nhất theo các hàm mũ phức $$ e^{inx} $$. Cách biểu diễn này vừa rút gọn công thức vừa làm nổi bật bản chất phổ của chuỗi Fourier: mỗi chỉ số nguyên $$ n $$ ứng với một tần số, còn hệ số $$ c_n $$ là biên độ phức của tần số đó.
+
+### Khung giải thích (nên đọc chậm): Tính tay Chuỗi Fourier Phức của $f(x) = e^{x}$ trên $(-\pi, \pi)$ chỉ bằng 1 tích phân
+
+Với $L = \pi$, thay trực tiếp $f(x) = e^x$ vào công thức $c_n$ (không cần tách $a_n, b_n$!):
+$$c_n = \frac{1}{2\pi}\int_{-\pi}^{\pi} e^{x} e^{-inx}\,dx = \frac{1}{2\pi}\int_{-\pi}^{\pi} e^{(1 - in)x}\,dx = \frac{1}{2\pi}\left[\frac{e^{(1-in)x}}{1 - in}\right]_{-\pi}^{\pi}.$$
+Nhớ rằng $e^{-in\pi} = e^{in\pi} = (-1)^n$ và $\frac{e^{\pi} - e^{-\pi}}{2} = \sinh\pi$:
+$$c_n = \frac{(-1)^n (e^{\pi} - e^{-\pi})}{2\pi(1 - in)} = \frac{(-1)^n \sinh\pi}{\pi(1 - in)} = \mathbf{\frac{(-1)^n \sinh\pi}{\pi}\cdot\frac{1 + in}{1 + n^2}}.$$
+Kiểm tra nhanh đối xứng liên hợp cho hàm thực $e^x$: thay $n \to -n$ ta được $c_{-n} = \frac{(-1)^n\sinh\pi}{\pi}\cdot\frac{1 - in}{1 + n^2} = \overline{c_n}$ — chính xác tuyệt đối!
 
 ## Khái niệm theo ba cách
 

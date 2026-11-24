@@ -10,6 +10,36 @@ categories:
 lesson_type: required
 ---
 
+Isaac Newton built classical mechanics on a bold philosophical faith: if you know the exact state of a system right now, the laws of physics uniquely determine its entire future. Yet mathematically, that faith can *fail*! The innocent-looking equation $$y' = 3y^{2/3},\; y(0) = 0$$ admits infinitely many distinct futures from the exact same starting point. The Picard–Lindelöf theorem draws the razor-sharp boundary between deterministic predictability and non-uniqueness.
+
+## Background Knowledge Map: Four Pillars of Picard–Lindelöf Theory
+
+Understanding *why* existence and uniqueness hold requires connecting four analytical concepts:
+
+1. **Equivalent Integral Equation:** The IVP $$y' = f(t,y),\; y(t_0) = y_0$$ is completely equivalent to the fixed-point problem $$y(t) = (Ty)(t) := y_0 + \int_{t_0}^t f(s, y(s))\,ds$$, which replaces differentiation (unbounded) with integration (smoothing).
+2. **Peano Existence vs. Picard–Lindelöf Uniqueness:** Mere continuity of $$f(t,y)$$ guarantees *at least one* local solution (Peano), whereas a **Lipschitz condition in $$y$$** ($$\lvert f(t,y_1) - f(t,y_2)\rvert \le L\lvert y_1 - y_2\rvert$$, satisfied whenever $$\partial f/\partial y$$ is continuous) guarantees *uniqueness*.
+3. **Banach Contraction Mapping Principle:** On a sufficiently small interval $$[t_0 - h, t_0 + h]$$ with $$Lh < 1$$, the Picard operator $$T$$ contracts distances in the complete space $$C([t_0-h, t_0+h])$$—guaranteeing that Picard iterates $$y_{n+1} = T(y_n)$$ converge uniformly to a unique fixed point.
+4. **Local vs. Global Existence (Maximal Intervals):** Picard–Lindelöf is strictly *local*; a smooth nonlinear ODE can still escape to infinity in finite time (e.g., $$y' = y^2$$), so solutions persist only until they leave the domain or blow up.
+
+### Step-by-Step Worked Example (Read Slowly): Computing Picard Iterates and Spotting Non-Uniqueness
+
+**Part A — Picard Iteration for $$y' = 2t(1 + y),\; y(0) = 0$$:**
+1. **Set $$y_0(t) = 0$$ and apply $$y_{n+1}(t) = \int_0^t 2s\bigl(1 + y_n(s)\bigr)\,ds$$:**
+   - $$y_1(t) = \int_0^t 2s\,ds = t^2.$$
+   - $$y_2(t) = \int_0^t 2s(1 + s^2)\,ds = t^2 + \frac{t^4}{2}.$$
+   - $$y_3(t) = \int_0^t 2s\left(1 + s^2 + \frac{s^4}{2}\right)ds = t^2 + \frac{t^4}{2!} + \frac{t^6}{3!}.$$
+2. **Recognize the exact limit:**
+   $$y_n(t) = \sum_{k=1}^n \frac{(t^2)^k}{k!} \xrightarrow{n\to\infty} e^{t^2} - 1.$$
+   Verify: $$y'(t) = 2t e^{t^2} = 2t(1 + y)$$ and $$y(0) = 0$$!
+
+**Part B — Why Uniqueness Breaks for $$y' = 3y^{2/3},\; y(0) = 0$$:**
+3. **Check the Lipschitz condition at $$y = 0$$:**
+   $$\frac{\partial f}{\partial y} = 2y^{-1/3} \xrightarrow{y \to 0} \infty.$$
+   The slope with respect to $$y$$ is vertical at $$y = 0$$, so $$f$$ is continuous (Peano gives existence) but **not** Lipschitz in $$y$$.
+4. **Exhibit infinitely many solutions:** Both $$y(t) \equiv 0$$ and, for *any* delay time $$c \ge 0$$,
+   $$y_c(t) = \begin{cases} 0, & t \le c, \\ (t - c)^3, & t > c \end{cases}$$
+   satisfy $$y_c(0) = 0$$ and $$y_c'(t) = 3(t-c)^2 = 3(y_c(t))^{2/3}$$ for all $$t \in \mathbb{R}$$!
+
 ## Objectives
 
 This lesson introduces existence and uniqueness as the foundation of well-posed ODE models. After the lesson, students should understand the difference between "a solution exists" and "the solution is unique," know the role of continuity and Lipschitz conditions, and appreciate why these ideas matter for both theory and modeling.

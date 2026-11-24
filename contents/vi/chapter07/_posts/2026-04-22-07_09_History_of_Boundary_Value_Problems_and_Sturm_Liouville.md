@@ -9,6 +9,19 @@ categories:
 - chapter07
 ---
 
+Đầu thế kỷ 19, hàng loạt bài toán tưởng chừng không liên quan—dây đàn rung, thanh kim loại truyền nhiệt, màng trống tròn, trường hấp dẫn cầu—đều dẫn tới cùng một câu hỏi bí ẩn: *tại sao các tần số tự nhiên lại rời rạc và các hàm dao động riêng lại trực giao với nhau?* Năm 1836, hai người bạn thân Charles-François Sturm và Joseph Liouville đã khám phá ra một khuôn khổ toán học thống nhất trả lời trọn vẹn bí ẩn đó, đặt nền móng trực tiếp cho giải tích hàm và cơ học lượng tử thế kỷ 20!
+
+## Bản đồ kiến thức nền: Bốn dấu mốc lịch sử của Lý thuyết Bài toán Biên
+
+1. **Cuộc tranh luận dây rung thế kỷ 18 (d'Alembert, Euler, Daniel Bernoulli)**:
+   Bernoulli đề xuất mọi hình dạng dây rung đều là tổng vô hạn các sóng sin—ý tưởng bị Euler nghi ngờ nhưng sau này Fourier và Sturm–Liouville chứng minh là hoàn toàn chính xác.
+2. **Sturm & Liouville (1836–1837) — Lý thuyết Phổ cho Toán tử Vi phân**:
+   Nhận ra rằng mọi PTVP bậc hai dạng tự liên hợp $-\frac{d}{dx}[p(x)y'] + q(x)y = \lambda w(x)y$ đều hoạt động hệt như **ma trận đối xứng thực vô hạn chiều**: mọi trị riêng đều thực, đếm được và hàm riêng trực giao!
+3. **George Green (1828) — Thợ xay bột phát minh ra Hàm Green**:
+   Tự học toán trong cối xay gió gia đình ở Nottingham, Green xuất bản bài luận về điện từ học giới thiệu hàm đáp ứng xung $G(x, \xi)$—nay là công cụ xương sống từ kỹ thuật kết cấu đến lý thuyết trường lượng tử!
+4. **David Hilbert & Cơ học Lượng tử (1900–1930)**:
+   Không gian Hilbert $L^2$ chuẩn hóa hoàn toàn phép khai triển theo hàm riêng, và Erwin Schrödinger nhận ra phương trình lượng tử chính là một bài toán trị riêng Sturm–Liouville!
+
 ## Mục tiêu
 Bài học này trình bày lịch sử hình thành của bài toán giá trị biên, lý thuyết trị riêng, hàm Green và phân tích Sturm–Liouville. Qua đó, sinh viên thấy Chương 07 là bước ngoặt nối trực tiếp phương trình vi phân với tư duy phổ.
 
@@ -19,6 +32,13 @@ Sinh viên nên nắm vững các khái niệm và kỹ thuật tính toán củ
 Tại Paris vào khoảng những năm 1830, Jacques Sturm và Joseph Liouville khảo sát các bài toán truyền nhiệt và dao động mà ràng buộc quyết định không nằm ở thời điểm ban đầu, mà ở hai đầu của miền không gian. Một thanh dẫn nhiệt được giữ cố định nhiệt độ ở hai đầu hay một sợi dây được ghim chặt hai đầu đặt ra một vấn đề hoàn toàn khác với bài toán giá trị đầu: không phải mọi giá trị tham số đều cho nghiệm phù hợp với biên.
 
 Xét ví dụ $$y'' + \lambda y = 0$$ với điều kiện biên $$y(0)=0$$ và $$y(L)=0$$. Với $$\lambda$$ tùy ý, bài toán thường chỉ có nghiệm tầm thường $$y=0$$. Chỉ khi $$\lambda = \left(\frac{n\pi}{L}\right)^2$$, hệ mới xuất hiện các chế độ riêng không tầm thường $$y_n(x)=\sin\left(\frac{n\pi x}{L}\right)$$. Ví dụ này cho thấy trọng tâm của Chương 07: bài toán biên không chỉ hỏi cách tìm nghiệm, mà còn xác định những hình dạng và tần số nào được phép tồn tại. Từ đó, trị riêng, hàm riêng và tính trực giao trở thành khái niệm trung tâm.
+
+### Khung giải thích (nên đọc chậm): Đưa một phương trình bất kỳ về dạng tự liên hợp Sturm–Liouville bằng nhân tử tích phân
+
+Xét phương trình Legendre $(1 - x^2)y'' - 2x y' + \lambda y = 0$.
+- Kiểm tra ngay: đạo hàm của $(1 - x^2)$ chính là $-2x$! Do đó phương trình đã ở sẵn dạng tự liên hợp:
+  $$-\frac{d}{dx}\Big[(1 - x^2) y'\Big] = \lambda \cdot 1 \cdot y \qquad \big(p(x) = 1 - x^2,\; q(x) = 0,\; w(x) = 1\big).$$
+- Với phương trình tổng quát $a_2(x) y'' + a_1(x) y' + a_0(x) y = -\lambda y$, ta chỉ cần nhân hai vế với **nhân tử tích phân** $\mu(x) = \frac{1}{a_2(x)}\exp\!\left(\int \frac{a_1(x)}{a_2(x)}\,dx\right)$ để thu được ngay $p(x) = \mu(x) a_2(x)$ và trọng số $w(x) = \mu(x)$! Ví dụ với Hermite $y'' - 2xy' + 2ny = 0$: $\mu(x) = e^{-x^2} \implies -(e^{-x^2}y')' = 2n\, e^{-x^2} y$, giải thích tức thì nguồn gốc trọng số $w(x) = e^{-x^2}$!
 
 ## Mạch truyện lớn
 Lịch sử của chương đi từ bài toán dây rung, truyền nhiệt trong thanh và các bài toán biên cơ học sang lý thuyết Sturm–Liouville. Trong thế kỷ XIX, Sturm và Liouville chỉ ra rằng một lớp rộng lớn các bài toán biên sở hữu cấu trúc tự liên hợp chặt chẽ: hệ hàm riêng trực giao, dãy trị riêng rời rạc và khả năng khai triển hàm theo các chế độ riêng.

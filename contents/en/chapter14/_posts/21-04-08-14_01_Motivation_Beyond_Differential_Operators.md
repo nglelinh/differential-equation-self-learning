@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Differential operators form a comfortable algebra: you can add them, compose them, and take their adjoints—and you always stay inside the family of differential operators. Try to **invert** even the simplest elliptic operator $1 - \frac{d^2}{dx^2}$, however, and you are instantly ejected from the algebra: its inverse is a nonlocal integral operator! **Pseudo-differential operators ($\Psi\text{DOs}$)** enlarge the algebra just enough so that elliptic operators and their (approximate) inverses live under the same roof.
+
 ## Learning Objectives
 
 This lesson motivates pseudo-differential operators by explaining why classical differential operators are not always flexible enough for modern PDE analysis. Students should understand the role of Fourier multipliers, nonlocal behavior, and symbolic viewpoints.
@@ -17,6 +19,15 @@ This lesson motivates pseudo-differential operators by explaining why classical 
 ## Prerequisites
 
 Students should know Fourier transforms, classical differential operators, elliptic theory, and some basic symbol intuition from earlier chapters. These ideas are reviewed in Lesson 14.00.
+
+## Background Knowledge Map: Why PDE Theory Must Leave the Differential Algebra
+
+Four concrete phenomena force modern analysis beyond purely local differential operators:
+
+1. **Inverses Are Nonlocal:** A differential operator shrinks or preserves support ($\text{supp}(Pu) \subseteq \text{supp}(u)$), whereas $(1 - \Delta)^{-1}f$ is nonzero everywhere even when $f$ is supported in a tiny ball.
+2. **Boundary Reductions and Dirichlet-to-Neumann Maps:** Reducing an interior elliptic BVP to the boundary $\partial\Omega$ produces the Dirichlet-to-Neumann map $\Lambda: u|_{\partial\Omega} \mapsto \partial_n u|_{\partial\Omega}$, which behaves like the *square root* $(-\Delta_{\partial\Omega})^{1/2}$—a first-order nonlocal $\Psi\text{DO}$, not a differential operator!
+3. **Fractional Derivatives and Singular Integrals:** Operators like the Hilbert transform, Riesz potentials, and fractional Laplacians $(-\Delta)^s$ ($0 < s < 1$) arise naturally in anomalous diffusion, water waves, and harmonic analysis.
+4. **Closure Under Parametrices:** By enlarging differential operators to $\Psi\text{DOs}$ (with symbols $a(x,\xi)$ allowed to be smooth functions of both position and frequency), every elliptic operator gains an inverse modulo smooth errors inside the *exact same calculus*.
 
 ## Introduction
 
@@ -85,6 +96,19 @@ The chapter's broader purpose should already be visible.
 - Can they describe one reason these operators matter in elliptic or microlocal theory?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Computing the Nonlocal Kernel of $(1 - \frac{d^2}{dx^2})^{-1}$
+
+Prove that $Q = (1 - \frac{d^2}{dx^2})^{-1}$ on $\mathbb{R}$ is not a differential operator by computing its exact convolution kernel $K(x) = \mathcal{F}^{-1}\!\left[(1+\xi^2)^{-1}\right](x)$ using contour integration.
+
+1. **Write the inverse Fourier integral:**
+   $$K(x) = \frac{1}{2\pi}\int_{-\infty}^{\infty} \frac{e^{ix\xi}}{1 + \xi^2}\,d\xi = \frac{1}{2\pi}\int_{-\infty}^{\infty} \frac{e^{ix\xi}}{(\xi - i)(\xi + i)}\,d\xi.$$
+2. **Evaluate for $x \ge 0$ by closing in the upper half-plane:** For $x \ge 0$ and $\text{Im}(\xi) > 0$, $|e^{ix\xi}| = e^{-x\,\text{Im}(\xi)} \le 1$, so the upper semicircular arc vanishes by Jordan's Lemma. Only the simple pole at $\xi = +i$ lies inside:
+   $$K(x) = \frac{1}{2\pi}\cdot 2\pi i \cdot \operatorname{Res}_{\xi = i}\frac{e^{ix\xi}}{(\xi - i)(\xi + i)} = i \cdot \frac{e^{ix(i)}}{2i} = \frac{1}{2}e^{-x}.$$
+3. **Extend to all $x \in \mathbb{R}$ by even symmetry:** Since $(1+\xi^2)^{-1}$ is real and even, $K(-x) = K(x)$, giving:
+   $$K(x) = \frac{1}{2}e^{-|x|}, \qquad \big(Q f\big)(x) = \frac{1}{2}\int_{-\infty}^{\infty} e^{-|x-y|} f(y)\,dy.$$
+4. **Observe nonlocality directly:** Pick any nonnegative bump $f \ge 0$ supported on $[-1, 1]$ with $\int f = 1$. Then $(Qf)(x) > 0$ for *every* $x \in \mathbb{R}$ (even at $x = 1000$). Because differential operators never enlarge support, $Q$ cannot be a differential operator—it is our first genuine $\Psi\text{DO}$ of order $-2$!
 
 ### Example 1: Derivative as Multiplier
 

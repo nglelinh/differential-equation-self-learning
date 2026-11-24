@@ -9,7 +9,23 @@ categories:
 - chapter09
 lesson_type: required
 ---
+
 ![21 03 04 09 05 Heat Infinite Domain]({{ site.imgurl }}/chapter_img/chapter09/05_heat_infinite_domain.svg)
+
+Điều gì xảy ra nếu thanh kim loại dài vô hạn trên cả trục thực $(-\infty, +\infty)$? Không còn biên hai đầu để tạo ra các tần số rời rạc $n\pi/L$ nữa—thay vào Chuỗi Fourier, ta dùng **Biến đổi Fourier** và thu được một công thức nghiệm tích phân tuyệt đẹp: **Tích chập giữa nhiệt độ ban đầu $f(x)$ với Nhân Nhiệt Gaussian (Heat Kernel)**!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Nhiệt trên $\mathbb{R}$
+
+1. **Giải nhanh trong miền tần số Fourier**:
+   Áp dụng $\mathcal{F}_x$ vào $u_t = \alpha u_{xx}$ cho $\hat{u}_t(\omega, t) = -\alpha \omega^2 \hat{u}(\omega, t) \implies \hat{u}(\omega, t) = \hat{f}(\omega)\, e^{-\alpha\omega^2 t}$.
+2. **Nhân Nhiệt Gaussian (Heat Kernel $\Phi(x, t)$)**:
+   Biến đổi Fourier ngược của $e^{-\alpha\omega^2 t}$ chính là hàm chuông Gaussian:
+   $$\Phi(x, t) = \frac{1}{\sqrt{4\pi\alpha t}}\exp\!\left(-\frac{x^2}{4\alpha t}\right) \qquad (t > 0).$$
+3. **Công thức tích chập nghiệm**:
+   $$u(x, t) = (\Phi(\cdot, t) * f)(x) = \frac{1}{\sqrt{4\pi\alpha t}}\int_{-\infty}^{\infty} f(y)\exp\!\left(-\frac{(x - y)^2}{4\alpha t}\right)dy.$$
+   Nhiệt độ tại $(x, t)$ chính là **trung bình có trọng số Gaussian** của nhiệt độ ban đầu quanh $x$ với bán kính lan truyền $\sigma = \sqrt{2\alpha t}$!
+4. **Tốc độ lan truyền vô hạn (Nghịch lý lý thuyết)**:
+   Vì $\Phi(x, t) > 0$ tại mọi $x$ ngay cả với $t = 10^{-9}\text{ s}$, một nguồn nhiệt dương ở gốc tạo ra $u(x, t) > 0$ tức thì ở khoảng cách 1 triệu km (dù cực nhỏ đến mức không đo được!).
 
 ## Mục tiêu
 
@@ -24,6 +40,18 @@ Sinh viên cần nắm phương trình nhiệt trên đoạn hữu hạn, chuỗ
 Trên đoạn hữu hạn, điều kiện biên tạo ra một dãy mode riêng đếm được và bài toán được giải bằng chuỗi Fourier. Khi không còn biên tại $$ x=0 $$ hay $$ x=L $$, phổ tần số không còn rời rạc mà trở thành liên tục trên toàn trục thực. Do đó, biến đổi Fourier thay thế chuỗi Fourier một cách tự nhiên.
 
 Ý tưởng cốt lõi vẫn không đổi: nghiệm vẫn được phân rã thành các mode điều hòa, chỉ khác là chỉ số tần số giờ đây biến thiên liên tục. Đây là bước chuyển quan trọng từ chuỗi Fourier sang biến đổi Fourier trong lý thuyết PDE.
+
+### Khung giải thích (nên đọc chậm): Tính tay nghiệm bằng hàm sai số $\operatorname{erf}$ khi nửa thanh phải nóng $100^\circ\text{C}$ và nửa trái $0^\circ\text{C}$
+
+Cho $u_t = \alpha u_{xx}$ trên $\mathbb{R}$ với $f(y) = 100$ khi $y > 0$ và $f(y) = 0$ khi $y < 0$.
+1. Thay vào công thức tích chập (chỉ tích phân trên $y \in (0, +\infty)$):
+   $$u(x, t) = \frac{100}{\sqrt{4\pi\alpha t}}\int_0^{\infty} \exp\!\left(-\frac{(x - y)^2}{4\alpha t}\right)dy.$$
+2. Đổi biến $z = \frac{y - x}{\sqrt{4\alpha t}} \implies dy = \sqrt{4\alpha t}\,dz$ (khi $y = 0 \implies z = -\frac{x}{\sqrt{4\alpha t}}$):
+   $$u(x, t) = \frac{100}{\sqrt{\pi}}\int_{-x/\sqrt{4\alpha t}}^{\infty} e^{-z^2}\,dz = \mathbf{50\left[1 + \operatorname{erf}\!\left(\frac{x}{\sqrt{4\alpha t}}\right)\right]}.$$
+3. **Kiểm tra ngay 3 điểm đặc biệt**:
+   - Tại điểm tiếp giáp $x = 0$ với mọi $t > 0$: $\operatorname{erf}(0) = 0 \implies u(0, t) = \mathbf{50^\circ\text{C}}$ (đúng trung bình cộng $0$ và $100$ ngay lập tức!).
+   - Khi $x \to +\infty$: $\operatorname{erf}(+\infty) = 1 \implies u \to 100^\circ\text{C}$.
+   - Khi $x \to -\infty$: $\operatorname{erf}(-\infty) = -1 \implies u \to 0^\circ\text{C}$.
 
 ## Khái niệm theo ba cách
 

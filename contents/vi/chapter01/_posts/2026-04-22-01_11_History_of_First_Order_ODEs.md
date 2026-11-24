@@ -9,6 +9,20 @@ categories:
 - chapter01
 ---
 
+
+Cuối thế kỷ XVII, một thách thức nhỏ từ Jakob Bernoulli về hình dạng sợi dây xích treo tự do (catenary) và đường cong rơi nhanh nhất (brachistochrone) đã châm ngòi cho cuộc cách mạng mang tên **phương trình vi phân cấp một**. Từ những phép tách biến đầu tiên của Leibniz, thừa số tích phân của Euler cho tới định lý tồn tại–duy nhất chặt chẽ của Picard cuối thế kỷ XIX, Chương 01 tái hiện hành trình hai trăm năm biến nghệ thuật đoán nghiệm thành khoa học hệ thống.
+
+## Bản đồ kiến thức nền: Bốn cột mốc lịch sử của PTVP Cấp Một
+
+1. **Leibniz & Anh em nhà Bernoulli (1690–1700)**:
+   Phát minh thuật ngữ "tách biến" (separation of variables), giải phương trình Bernoulli $y' + P(x)y = Q(x)y^n$ bằng phép thế $u = y^{1-n}$ và biến bài toán hình học cổ điển thành PTVP.
+2. **Euler & Clairaut (Thế kỷ XVIII)**:
+   Hệ thống hóa phương trình toàn phần (điều kiện $M_y = N_x$), sáng chế **thừa số tích phân** $\mu(x, y)$ và đề xuất phương pháp bước rời rạc Euler—tiền thân của giải tích số hiện đại.
+3. **Cauchy, Lipschitz & Picard (Thế kỷ XIX)**:
+   Chuyển trọng tâm từ "cố tìm công thức đóng" sang câu hỏi nền tảng: *khi nào nghiệm tồn tại và duy nhất?*, khai sinh phép lặp Picard và điều kiện Lipschitz.
+4. **Poincaré & Hình học định tính (Cuối thế kỷ XIX)**:
+   Khi nhận ra đa số PTVP không có nghiệm sơ cấp, Poincaré mở ra hướng phân tích hình học qua trường hướng và đường pha—tiền đề cho toàn bộ động lực học hiện đại.
+
 ## Mục tiêu
 Bài lịch sử này tái hiện quá trình hình thành phương trình vi phân thường cấp một từ cơ học, thiên văn học, dân số học và kỹ thuật điện. Qua đó, sinh viên nhìn nhận Chương 01 không như một tập hợp mẹo giải rời rạc mà như câu trả lời có hệ thống đầu tiên của toán học cho bài toán mô hình hóa sự biến thiên.
 
@@ -19,6 +33,18 @@ Sinh viên nên đã nắm kiến thức nền của Chương 00 và các phươ
 Brussels, năm 1838. Khi đối chiếu các bảng số liệu dân số, Pierre-François Verhulst nhận ra hạn chế rõ rệt của quy luật tăng trưởng mũ của Malthus: mô hình đó dự báo dân số tăng mãi không giới hạn, bỏ qua nguồn lương thực, đất đai và dịch bệnh. Về mặt thực tiễn, việc dự báo nhu cầu lương thực và quy mô đô thị đòi hỏi một mô hình phản ánh được giới hạn tài nguyên.
 
 Verhulst giải quyết vấn đề bằng một chỉnh sửa gọn gàng ở phương trình cấp một: thay luật tăng trưởng mũ $$y' = ry$$ bằng phương trình logistic $$y' = ry\left(1 - \frac{y}{K}\right)$$. Cấu trúc phương trình thể hiện trực tiếp cơ chế tự điều chỉnh: khi $$y$$ còn nhỏ so với sức chứa $$K$$, tốc độ tăng gần bằng $$ry$$; khi $$y$$ tiến gần $$K$$, nhân tử $$1 - \frac{y}{K}$$ kéo tốc độ tăng về gần $$0$$. Chẳng hạn, với $$K = 1000$$ và $$y = 900$$, tốc độ tăng chỉ còn $$0.1ry$$, thấp hơn nhiều so với tăng trưởng mũ. Phương trình vi phân cấp một hiện lên như một ngôn ngữ mô hình hóa cô đọng: chỉ từ một quy luật cục bộ đã phản ánh được hành vi bão hòa của hệ thực.
+
+### Khung giải thích (nên đọc chậm): Giải lại bài toán lịch sử của Jakob Bernoulli (1695): $y' + y = y^2$
+
+Đây là ví dụ kinh điển khiến anh em nhà Bernoulli tranh luận sôi nổi trên tạp chí *Acta Eruditorum*:
+1. **Nhận dạng**: Phương trình Bernoulli với $n = 2$. Phép thế thiên tài của Leibniz là đặt $u = y^{1-2} = y^{-1}$, suy ra $u' = -y^{-2}y'$.
+2. **Chia hai vế cho $y^2$** (xét riêng nghiệm tầm thường $y \equiv 0$):
+   $$y^{-2}y' + y^{-1} = 1 \implies -u' + u = 1 \implies u' - u = -1.$$
+3. **Giải phương trình tuyến tính cho $u$** (nhân thừa số tích phân $e^{-t}$):
+   $$(e^{-t}u)' = -e^{-t} \implies e^{-t}u = e^{-t} + C \implies u(t) = 1 + C e^{t}.$$
+4. **Trả về $y = 1/u$**:
+   $$y(t) = \frac{1}{1 + C e^{t}}.$$
+   Với $y(0) = \frac{1}{2}$, ta có $C = 1$ và $y(t) = \frac{1}{1 + e^t}$—chính là **đường cong logistic** nổi tiếng trong sinh học và học máy ngày nay!
 
 ## Mạch truyện lớn
 Mạch phát triển của chương khởi đầu vào cuối thế kỷ XVII với Newton và Leibniz, khi đạo hàm gắn trực tiếp với chuyển động cơ học. Sang thế kỷ XVIII, anh em nhà Bernoulli, Euler, Clairaut và Riccati phát hiện nhiều lớp phương trình có cấu trúc đặc biệt giải được bằng tách biến, nhân tử tích phân hoặc đổi biến, từ đó hình thành hệ thống phân loại phương trình cấp một.

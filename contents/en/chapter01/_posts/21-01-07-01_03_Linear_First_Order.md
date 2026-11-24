@@ -10,6 +10,37 @@ categories:
 lesson_type: required
 ---
 
+Consider a lake being fed by a slightly polluted stream while fresh water flows out at the same rate: the pollutant decays naturally at a rate proportional to its current amount, yet an external inflow keeps adding more. Linear first-order ODEs $$y' + p(t)y = q(t)$$ capture this exact tug-of-war between internal decay/growth and external forcing—and unlike nonlinear equations, a single unifying device, the integrating factor, solves every single one of them in closed integral form.
+
+## Background Knowledge Map: Why the Integrating Factor Always Works
+
+Four structural insights elevate the integrating-factor method from a recipe into a deep principle:
+
+1. **Reverse Product Rule:** Multiplying $$y' + p(t)y = q(t)$$ by $$\mu(t) = \exp\!\left(\int p(t)\,dt\right)$$ forces $$\mu'(t) = \mu(t)p(t)$$, collapsing the entire left-hand side into a single exact derivative $$\frac{d}{dt}[\mu(t)y(t)] = \mu(t)q(t)$$.
+2. **Homogeneous + Particular Decomposition:** Every solution splits cleanly as $$y(t) = \frac{C}{\mu(t)} + \frac{1}{\mu(t)}\int \mu(s)q(s)\,ds = y_h(t) + y_p(t)$$, foreshadowing the superposition principle for higher-order linear ODEs.
+3. **Transient vs. Steady-State Behavior:** When $$p(t) = a > 0$$, the homogeneous piece $$C e^{-at}$$ decays exponentially to zero regardless of initial conditions (the *transient*), leaving only the long-term response driven by $$q(t)$$ (the *steady state*).
+4. **Global Existence on Coefficient Continuity:** Unlike separable nonlinear equations that can blow up spontaneously, a linear first-order IVP is guaranteed to exist on the *entire* largest open interval where $$p(t)$$ and $$q(t)$$ are continuous.
+
+### Step-by-Step Worked Example (Read Slowly): Solving a Forced Linear IVP and Identifying Transient vs. Steady State
+
+Solve the initial value problem
+$$t\,y' + 3y = 5t^2, \qquad t > 0, \qquad y(1) = 4.$$
+
+1. **Put the equation into standard form $$y' + p(t)y = q(t)$$:**
+   Divide by $$t > 0$$ (never skip this step before computing $$\mu(t)$$!):
+   $$y' + \frac{3}{t}y = 5t.$$
+   Here $$p(t) = \frac{3}{t}$$ and $$q(t) = 5t$$, both continuous on $$(0, \infty)$$.
+2. **Compute the integrating factor $$\mu(t)$$:**
+   $$\mu(t) = \exp\!\left(\int \frac{3}{t}\,dt\right) = e^{3\ln t} = t^3 \qquad (t > 0).$$
+3. **Multiply the standard-form equation by $$\mu(t) = t^3$$ and verify the product rule:**
+   $$t^3 y' + 3t^2 y = 5t^4 \iff \frac{d}{dt}\bigl(t^3 y\bigr) = 5t^4.$$
+   (Quick check: expanding $$\frac{d}{dt}(t^3 y)$$ gives $$t^3 y' + 3t^2 y$$—exact match!)
+4. **Integrate both sides and divide by $$t^3$$:**
+   $$t^3 y = \int 5t^4\,dt = t^5 + C \implies y(t) = t^2 + \frac{C}{t^3}.$$
+5. **Apply $$y(1) = 4$$ and interpret behavior:**
+   $$4 = 1^2 + \frac{C}{1^3} \implies C = 3 \implies y(t) = t^2 + \frac{3}{t^3}.$$
+   As $$t \to \infty$$, the initial-condition memory $$\frac{3}{t^3}$$ vanishes while the forced response $$t^2$$ dominates; as $$t \to 0^+$$, the singularity of $$p(t) = 3/t$$ causes $$y(t) \to +\infty$$.
+
 This lesson covers linear first-order differential equations and the integrating factor method.
 
 ## Topics to Cover

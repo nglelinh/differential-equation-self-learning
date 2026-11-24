@@ -9,6 +9,33 @@ categories:
 - chapter02
 ---
 
+In 1739, Leonhard Euler wrote to Johann Bernoulli announcing a startling breakthrough: he had solved a fourth-order equation with constant coefficients by factoring a polynomial—and when complex roots appeared, he was forced to invent the exact bridge $$e^{i\theta} = \cos\theta + i\sin\theta$$ to make sense of them! Higher-order linear ODEs did not merely *use* complex numbers and linear algebra—they helped *create* both fields.
+
+## Background Knowledge Map: Four Historical Breakthroughs That Built Chapter 02
+
+Seeing who invented each method and what problem forced it makes the chapter's logical sequence crystal clear:
+
+1. **Euler's Characteristic Equation (1739–1743):** Studying vibrating elastic rods and ships pitching on waves, Euler introduced the ansatz $$y = e^{rt}$$, reducing constant-coefficient $$n$$th-order ODEs to polynomial factorization and catalyzing Euler's formula.
+2. **d'Alembert's Reduction of Order (1766):** Facing repeated roots and variable coefficients in celestial mechanics, Jean le Rond d'Alembert introduced $$y_2 = v(t)y_1(t)$$ and rigorously derived the secular term $$t\,e^{rt}$$ as a limiting case of distinct roots.
+3. **Lagrange's Variation of Parameters (1774):** Trying to compute how Jupiter and Saturn perturb each other's elliptical orbits, Joseph-Louis Lagrange allowed orbital constants to vary slowly in time—giving birth to variation of parameters and Green's-function perturbation theory.
+4. **Wronski, Abel, and Sturm's Structural Turn (1812–1836):** Józef Hoene-Wroński introduced the determinant test, Niels Henrik Abel proved his 1827 Wronskian identity, and Charles-François Sturm initiated qualitative oscillation theory—shifting focus from formulas to solution spaces.
+
+### Step-by-Step Worked Example (Read Slowly): Reproducing d'Alembert's 1766 Limiting Derivation of $$t\,e^{rt}$$
+
+How did d'Alembert convince skeptical eighteenth-century readers that a repeated root $$r$$ genuinely produces $$t\,e^{rt}$$? By perturbing the root slightly to $$r + \varepsilon$$ and taking $$\varepsilon \to 0$$!
+
+1. **Start with a perturbed equation having distinct roots $$r$$ and $$r + \varepsilon$$ ($$\varepsilon \ne 0$$):**
+   $$y'' - (2r + \varepsilon)y' + r(r + \varepsilon)y = 0.$$
+   Two linearly independent solutions are $$e^{rt}$$ and $$e^{(r+\varepsilon)t}$$.
+2. **Form a normalized linear combination that does not collapse as $$\varepsilon \to 0$$:**
+   Instead of keeping $$e^{(r+\varepsilon)t}$$ (which merges with $$e^{rt}$$), form the valid homogeneous solution
+   $$y_\varepsilon(t) = \frac{e^{(r+\varepsilon)t} - e^{rt}}{\varepsilon} = e^{rt}\left(\frac{e^{\varepsilon t} - 1}{\varepsilon}\right).$$
+3. **Take the limit $$\varepsilon \to 0$$ using Taylor expansion or L'Hôpital's rule:**
+   $$\lim_{\varepsilon \to 0} y_\varepsilon(t) = e^{rt}\lim_{\varepsilon \to 0}\frac{\varepsilon t + \frac{1}{2}\varepsilon^2 t^2 + \dots}{\varepsilon} = t\,e^{rt}.$$
+4. **Check the Wronskian survives the limit:**
+   $$W(e^{rt},\; y_\varepsilon(t)) = \frac{W(e^{rt},\; e^{(r+\varepsilon)t})}{\varepsilon} = \frac{\varepsilon e^{(2r+\varepsilon)t}}{\varepsilon} = e^{(2r+\varepsilon)t} \xrightarrow{\varepsilon \to 0} e^{2rt} \ne 0.$$
+   The division by $$\varepsilon$$ rescues the collapsing parallelogram area right at the moment the two roots collide!
+
 ## Objectives
 This lesson traces the historical growth of higher-order linear ODEs from mechanics, oscillation theory, and electrical science. Students should see how Chapter 02 emerged from the need to describe vibration, resonance, forcing, and linear superposition.
 

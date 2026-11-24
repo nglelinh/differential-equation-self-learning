@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Symmetric diffusion equations can be solved by minimizing an energy functional—like a marble rolling to the bottom of a bowl. Add a wind current ($b \cdot \nabla u$) to the PDE, and the symmetry shatters: there is no longer any energy bowl to minimize! The **Lax–Milgram Theorem** rescues existence and uniqueness for non-symmetric elliptic PDEs by replacing energy minimization with a pure Hilbert-space fixed-point geometry.
+
 ![The intuition of coercivity in the Lax-Milgram theorem]({{ site.imgurl }}/chapter_img/chapter12/05_lax_milgram_theorem.svg )
 
 ## Objectives
@@ -19,6 +21,15 @@ This lesson presents the Lax-Milgram theorem as the fundamental existence-and-un
 ## Prerequisites
 
 Students should know Hilbert spaces, continuous linear functionals, bilinear forms, and weak formulations of PDE. It also helps to remember the finite-dimensional analogy: solving a linear system amounts to inverting a matrix. Lax-Milgram is the infinite-dimensional version of that idea.
+
+## Background Knowledge Map: The Machinery Behind Lax–Milgram
+
+Four Hilbert-space pillars explain both why Lax–Milgram works and how it delivers instant stability bounds:
+
+1. **Bilinear Forms and Linear Functionals on Hilbert Space $H$:** A weak PDE reads $B[u,v] = F(v)$ for all $v \in H$, where $F \in H^*$ encodes the forcing and $B: H \times H \to \mathbb{R}$ encodes the differential operator.
+2. **Continuity (Boundedness) vs. Coercivity (Ellipticity):** Continuity ($|B[u,v]| \le M\|u\|\|v\|$) ensures $B$ defines a bounded linear operator $A: H \to H$ via Riesz Representation ($B[u,v] = \langle Au, v\rangle$); coercivity ($B[u,u] \ge \alpha\|u\|^2$, $\alpha > 0$) prevents $A$ from collapsing any direction to zero.
+3. **Contraction Mapping Proof Strategy:** For small $\rho > 0$ (specifically $0 < \rho < 2\alpha / M^2$), the map $T(u) = u - \rho(Au - w_F)$ is a strict contraction on $H$, proving existence and uniqueness without requiring $B$ to be symmetric!
+4. **A Priori Stability Estimate:** Setting $v = u$ in $B[u,u] = F(u)$ immediately yields $\alpha\|u\|_H^2 \le \|F\|_{H^*}\|u\|_H \implies \|u\|_H \le \frac{1}{\alpha}\|F\|_{H^*}$, proving continuous dependence on data in one line.
 
 ## Introduction
 
@@ -91,6 +102,27 @@ Once the two hypotheses are checked, the existence and uniqueness of the weak so
 - Can they explain the estimate $$\lVert u\rVert_H\le \alpha^{-1}\lVert F\rVert_{H^*}$$ in words?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Checking Non-Symmetric Coercivity and Stability Constants
+
+Apply the Lax–Milgram Theorem to the advection–diffusion–reaction boundary-value problem
+$$-u'' + 2u' + 3u = f \quad \text{on } (0,1), \qquad u(0) = u(1) = 0,$$
+with $f \in L^2(0,1)$ and Hilbert space $H = H_0^1(0,1)$ equipped with $\|u\|_{H^1}^2 = \|u'\|_{L^2}^2 + \|u\|_{L^2}^2$.
+
+1. **Write the weak formulation:** Multiplying by $v \in H_0^1(0,1)$ and integrating $-u''v$ by parts gives $B[u,v] = F(v)$, where:
+   $$B[u,v] = \int_0^1 (u'v' + 2u'v + 3uv)\,dx, \qquad F(v) = \int_0^1 fv\,dx.$$
+   Because $2u'v \neq 2v'u$, $B$ is **not symmetric**, so Riesz Representation alone cannot solve it.
+2. **Prove coercivity ($\alpha = 1$):** Set $v = u$. The advection term integrates to a pure boundary term and vanishes!
+   $$\int_0^1 2u'u\,dx = \int_0^1 \frac{d}{dx}(u^2)\,dx = u(1)^2 - u(0)^2 = 0.$$
+   Therefore:
+   $$B[u,u] = \|u'\|_{L^2}^2 + 3\|u\|_{L^2}^2 \ge \|u'\|_{L^2}^2 + \|u\|_{L^2}^2 = 1 \cdot \|u\|_{H^1}^2.$$
+   Coercivity holds with $\alpha = 1$.
+3. **Prove continuity ($M = 4$):** Apply Cauchy–Schwarz to each term, noting $\|u'\|_{L^2} \le \|u\|_{H^1}$ and $\|u\|_{L^2} \le \|u\|_{H^1}$:
+   $$|B[u,v]| \le \|u'\|_{L^2}\|v'\|_{L^2} + 2\|u'\|_{L^2}\|v\|_{L^2} + 3\|u\|_{L^2}\|v\|_{L^2}.$$
+   Using $\|u'\|\|v'\| + 3\|u\|\|v\| \le 3(\|u'\|\|v'\| + \|u\|\|v\|) \le 3\|u\|_{H^1}\|v\|_{H^1}$ (or simply bounding $2ab \le a^2+b^2$): even more sharply, $|B[u,v]| \le 4\|u\|_{H^1}\|v\|_{H^1}$ since $\|u'\|\|v'\| + 3\|u\|\|v\| \le 3\|u\|_{H^1}\|v\|_{H^1}$ and $2\|u'\|\|v\| \le 2\|u\|_{H^1}\|v\|_{H^1}$ gives $M \le 5$, while Cauchy–Schwarz on $(u', u)$ gives $M \le 2 + \sqrt{2} \approx 3.414 < 4$.
+4. **Check boundedness of $F$ and conclude:** $|F(v)| \le \|f\|_{L^2}\|v\|_{L^2} \le \|f\|_{L^2}\|v\|_{H^1}$. By Lax–Milgram, a unique weak solution $u \in H_0^1(0,1)$ exists and obeys the explicit stability bound:
+   $$\|u\|_{H^1(0,1)} \le \frac{1}{\alpha}\|f\|_{L^2(0,1)} = \|f\|_{L^2(0,1)}.$$
 
 ### Example 1: Poisson's equation on $$ H^1_0(\Omega) $$
 

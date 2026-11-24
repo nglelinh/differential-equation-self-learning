@@ -10,6 +10,20 @@ categories:
 lesson_type: optional
 ---
 
+
+Năm 2018, một bài báo đạt giải Best Paper tại NeurIPS đã làm chấn động cộng đồng AI khi phát hiện ra rằng mạng nơ-ron sâu ResNet thực chất chỉ là **phương pháp Euler rời rạc** của một phương trình vi phân cấp một! Từ khoảnh khắc đó, **Neural ODE** và **Flow Matching** ra đời—biến chiều sâu rời rạc của mạng nơ-ron thành thời gian liên tục $t \in [0, T]$ và mở khóa các mô hình sinh ảnh, video hàng đầu hiện nay.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Neural ODE & Mạng độ sâu liên tục
+
+1. **ResNet là bước Euler của PTVP cấp một**:
+   Công thức cập nhật lớp $\mathbf{h}_{k+1} = \mathbf{h}_k + \Delta t\, f_\theta(\mathbf{h}_k, t_k)$ khi cho $\Delta t \to 0$ hội tụ trực tiếp về $\frac{d\mathbf{h}}{dt} = f_\theta(\mathbf{h}(t), t)$.
+2. **Phương pháp Liên hợp (Adjoint Sensitivity Method)**:
+   Thay vì lưu hàng nghìn bước trung gian trong bộ nhớ GPU để lan truyền ngược, ta giải ngược một PTVP liên hợp $\frac{d\mathbf{a}}{dt} = -\mathbf{a}^\top \frac{\partial f_\theta}{\partial \mathbf{h}}$ với chi phí bộ nhớ $O(1)$!
+3. **Tính bất khả giao của quỹ đạo & Biểu diễn đồng phôi (Diffeomorphism)**:
+   Theo định lý Picard–Lindelöf, quỹ đạo của Neural ODE không thể cắt nhau, giúp mô hình hóa các phép biến đổi mật độ xác suất khả nghịch (Continuous Normalizing Flows).
+4. **Flow Matching & Mô hình sinh hiện đại (2023–2026)**:
+   Thay vì mô phỏng ngẫu nhiên đắt đỏ, học trực tiếp trường vận tốc $v_\theta(\mathbf{x}, t)$ đưa phân phối nhiễu Gaussian về phân phối ảnh/dữ liệu theo đường thẳng mượt mà.
+
 ## Mục tiêu
 
 Bài học tùy chọn này trình bày cách bài toán giá trị đầu cấp một của Chương 01 được ứng dụng từ sau năm 2018—và đặc biệt trong giai đoạn 2022–2026—như nền tảng cho các mạng nơ-ron độ sâu liên tục (continuous-depth neural networks). Sau bài học, sinh viên có thể viết phương trình của một neural ODE, giải thích vì sao định lý tồn tại và duy nhất vẫn chi phối thiết kế kiến trúc, liên hệ mạng dư (residual network) với sơ đồ Euler và nhận diện các thư viện tính toán phổ biến.
@@ -29,6 +43,17 @@ $$
 và tính gradient theo tham số bằng phương pháp liên hợp (adjoint method). Các nghiên cứu tiếp theo, được Kidger tổng hợp năm 2022 ([arXiv:2202.02435](https://arxiv.org/abs/2202.02435)), đặt mạng dư, neural ODE, neural CDE và neural SDE trong cùng một họ mô hình độ sâu liên tục.
 
 Với người học ODE cấp một, điểm đáng chú ý là mọi kết quả định tính đã học trong chương đều trở thành ràng buộc thiết kế thực tế: nếu $$f_\theta$$ không thỏa điều kiện Lipschitz, tính duy nhất có thể bị phá vỡ; nếu $$f_\theta$$ cứng (stiff), bộ giải hiện sẽ phải dùng bước cực nhỏ; còn khi dữ liệu quan sát đến tại các mốc thời gian không đều, mô hình quỹ đạo liên tục tự nhiên hơn nhiều so với mạng lưới rời rạc cố định. Chính lý thuyết tồn tại–duy nhất dùng cho mô hình dân số và bể trộn nay quyết định việc mạng độ sâu liên tục có xác định một ánh xạ đặt chỉnh từ đầu vào sang đầu ra hay không.
+
+### Khung giải thích (nên đọc chậm): So sánh 1 bước ResNet (Euler) với nghiệm liên tục của Neural ODE tuyến tính $h'(t) = -\frac{1}{2}h(t),\; h(0) = 1$ trên $[0, 1]$
+
+1. **Nghiệm liên tục chính xác tại $t = 1$**:
+   $$h(1) = e^{-0{,}5} \approx \mathbf{0{,}60653}.$$
+2. **Xấp xỉ kiểu ResNet 2 lớp ($\Delta t = 0{,}5$, phương pháp Euler)**:
+   - Lớp 1 ($t = 0{,}5$): $h_1 = h_0 + 0{,}5(-0{,}5 h_0) = 1 - 0{,}25 = \mathbf{0{,}75}$.
+   - Lớp 2 ($t = 1{,}0$): $h_2 = 0{,}75 + 0{,}5(-0{,}5 \cdot 0{,}75) = 0{,}75 - 0{,}1875 = \mathbf{0{,}5625}$ (sai số $0{,}044$).
+3. **Xấp xỉ kiểu ResNet 4 lớp ($\Delta t = 0{,}25$)**:
+   $h_4 = (1 - 0{,}125)^4 = (0{,}875)^4 \approx \mathbf{0{,}58618}$ (sai số giảm một nửa còn $0{,}020$).
+4. **Định lý giới hạn**: Với $N$ lớp độ sâu, $(1 - \frac{0{,}5}{N})^N \to e^{-0{,}5}$ khi $N \to \infty$—Neural ODE dùng bộ giải thích nghi (như RK45) đạt sai số $10^{-6}$ mà không cần cố định số lớp!
 
 ## Khái niệm then chốt
 

@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Viết từng dòng $x_1' = a_{11}x_1 + a_{12}x_2 + \dots$ không chỉ dài dòng mà còn che lấp hoàn toàn cấu trúc hình học của hệ. Khi đưa vào ngôn ngữ **ma trận và ma trận cơ bản (fundamental matrix) $\Phi(t)$**, toàn bộ lý thuyết không gian nghiệm $n$ chiều, nguyên lý chồng chất, định thức Wronskian và công thức nghiệm cho mọi điều kiện đầu $\mathbf{x}(t) = \Phi(t)\Phi(t_0)^{-1}\mathbf{x}_0$ lập tức hiện ra trong suốt như pha lê!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Ma trận & Hệ Tuyến tính
+
+1. **Nguyên lý Chồng chất cho Hệ thuần nhất $\mathbf{x}' = A(t)\mathbf{x}$**:
+   Tập nghiệm tạo thành không gian vectơ đúng $n$ chiều; nếu $\mathbf{x}^{(1)}, \dots, \mathbf{x}^{(n)}$ là $n$ nghiệm độc lập tuyến tính thì mọi nghiệm đều viết được dưới dạng $\mathbf{x}(t) = \Phi(t)\mathbf{c}$.
+2. **Ma trận Cơ bản $\Phi(t)$ & Wronskian Hệ ($W(t) = \det\Phi(t)$)**:
+   Xếp $n$ nghiệm vectơ thành $n$ cột của ma trận $\Phi(t)$ cỡ $n \times n$; $\Phi(t)$ là ma trận cơ bản khi và chỉ khi $\det\Phi(t) \ne 0$.
+3. **Định lý Liouville–Abel ($\det\Phi(t) = \det\Phi(t_0)\exp\int_{t_0}^t \operatorname{tr}A(s)\,ds$)**:
+   Phiên bản nhiều chiều của định lý Abel: vết $\operatorname{tr}A(t)$ chính là **tốc độ giãn/nén thể tích** trong không gian pha! Nếu $\operatorname{tr}A \equiv 0$, dòng chảy bảo toàn thể tích!
+4. **Cấu trúc nghiệm Hệ không thuần nhất ($\mathbf{x} = \mathbf{x}_h + \mathbf{x}_p$)**:
+   Giống hệt PTVP vô hướng, nghiệm tổng quát của $\mathbf{x}' = A(t)\mathbf{x} + \mathbf{g}(t)$ là tổng của nghiệm thuần nhất $\Phi(t)\mathbf{c}$ và một nghiệm riêng $\mathbf{x}_p(t)$.
+
 ## Mục tiêu
 
 Bài học này hướng dẫn cách viết hệ phương trình vi phân tuyến tính dưới dạng ma trận, hiểu ý nghĩa động học của ma trận hệ số và nắm khái niệm ma trận nghiệm cơ bản như phiên bản nhiều chiều của nghiệm tổng quát. Đây là bước chuẩn bị trực tiếp để vận dụng đại số tuyến tính vào giải hệ ODE.
@@ -25,6 +39,16 @@ Sinh viên cần nắm vector, ma trận, phép nhân ma trận với vector và
 Viết một hệ phương trình thành một đẳng thức ma trận duy nhất không chỉ giúp rút gọn ký hiệu, mà còn thể hiện rõ cấu trúc tương tác của toàn hệ: mỗi hàng của ma trận cho biết tốc độ thay đổi của một biến trạng thái phụ thuộc vào toàn bộ các biến như thế nào, còn mỗi cột cho biết một thành phần trạng thái tác động ra sao lên cả hệ.
 
 Từ đây, thay vì nhìn hệ như một danh sách phương trình rời rạc, ta nhìn hệ như một thực thể tuyến tính thống nhất với toán tử tiến hóa là ma trận $$ A $$.
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng Ma trận cơ bản, định lý Liouville và giải nhanh IVP bằng $\Phi(t)\Phi(0)^{-1}\mathbf{x}_0$
+
+Cho hệ $\mathbf{x}' = \begin{pmatrix} 1 & 0 \\ 0 & -2 \end{pmatrix}\mathbf{x}$ với hai nghiệm cột $\mathbf{x}^{(1)} = \begin{pmatrix} e^t \\ 0 \end{pmatrix}$, $\mathbf{x}^{(2)} = \begin{pmatrix} 0 \\ e^{-2t} \end{pmatrix}$:
+1. **Lập ma trận cơ bản $\Phi(t)$**:
+   $$\Phi(t) = \begin{pmatrix} e^t & 0 \\ 0 & e^{-2t} \end{pmatrix} \implies W(t) = \det\Phi(t) = \mathbf{e^{-t}} \ne 0.$$
+2. **Kiểm chứng Định lý Liouville**:
+   $\operatorname{tr} A = 1 + (-2) = -1$, và $W(0) = 1$, nên $W(0)\exp\left(\int_0^t (-1)\,ds\right) = \mathbf{e^{-t}}$—khớp tuyệt đối! Diện tích hình vuông đơn vị trong không gian pha bị co lại theo hệ số $e^{-t}$.
+3. **Giải tức thì IVP với $\mathbf{x}(0) = \begin{pmatrix} 3 \\ -4 \end{pmatrix}$**:
+   Vì $\Phi(0) = I$, ta có ngay $\mathbf{x}(t) = \Phi(t)\mathbf{x}(0) = \begin{pmatrix} 3e^t \\ -4e^{-2t} \end{pmatrix}$!
 
 ## Khái niệm theo ba cách
 

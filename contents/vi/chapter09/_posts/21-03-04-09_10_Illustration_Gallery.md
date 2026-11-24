@@ -10,6 +10,15 @@ categories:
 lesson_type: optional
 ---
 
+Phương trình nhiệt là bài học trực quan bậc nhất về sự khác biệt giữa *tán xạ năng lượng* và *dao động*: chỉ cần nhìn đồ thị động theo thời gian $t$, bạn thấy ngay mọi góc nhọn tan chảy trong tích tắc, đường cong nhiệt độ hạ dần về đường thẳng dừng, và lưới sai phân FTCS bỗng nhảy loạn xạ khi $r$ vượt ngưỡng $0{,}5$.
+
+## Bản đồ kiến thức nền: Bốn hiện tượng cần quan sát kỹ trong Gallery Chương 09
+
+1. **Làm trơn tức thì (Instantaneous Smoothing)**: Góc gãy sắc của hàm ban đầu biến mất ngay tại $t = 0{,}01\text{ s}$.
+2. **Hội tụ về Trạng thái Dừng**: Đường cong $u(x, t)$ tiến về $0$ (Dirichlet), về đường nằm ngang trung bình (Neumann), hoặc đường thẳng nối $T_1 \to T_2$ (biên không thuần nhất).
+3. **Sự giãn nở của Nhân Nhiệt Gaussian**: Diện tích dưới đường chuông luôn bằng $1$, đỉnh giảm như $1/\sqrt{t}$ và chân loe rộng như $\sqrt{t}$.
+4. **Ngưỡng ổn định CFL $r = 0{,}5$**: Kéo thanh trượt $r$ từ $0{,}49$ lên $0{,}51$ để tận mắt thấy dao động răng cưa bùng nổ!
+
 ## Mục Đích Của Bài Hỗ Trợ
 
 Bài học này tập hợp toàn bộ hình minh họa của Chương 09 vào một không gian ôn tập trực quan chung. Phương trình nhiệt thường là PDE đầu tiên được học đầy đủ, nên khối lượng khái niệm của chương khá lớn: thiết lập phương trình từ nguyên lý vật lý, khai triển theo hàm riêng, tác động của điều kiện biên, nhân nhiệt và hàm Green, nguyên lý cực đại cũng như rời rạc hóa số. Bộ minh họa giúp kết nối các nội dung này thành một bức tranh thống nhất thay vì các kỹ thuật rời rạc.
@@ -21,6 +30,12 @@ Việc đối chiếu liên tục giữa công thức và hình ảnh giúp nắ
 Nên xem bộ minh họa theo đúng thứ tự các bài học trong chương. Sau mỗi hình, hãy đối chiếu lại bài học tương ứng để nhận diện ý tưởng toán học nào đang được thể hiện: định luật bảo toàn, phân rã phổ, lựa chọn mode theo điều kiện biên, chuẩn hóa bài toán không thuần nhất, phép tích chập, kiểm soát định tính hay điều kiện ổn định số. Nhờ vậy, bộ minh họa trở thành cầu nối giữa công thức ký hiệu và ý nghĩa vật lý.
 
 Trang này cũng thuận tiện để ôn tập trước khi chuyển sang Chương 10 và Chương 11, vì nhiều cấu trúc phương pháp từ phương trình nhiệt sẽ tiếp tục được dùng cho phương trình sóng và phương trình elliptic.
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng nhanh trên đồ thị tương tác tỷ lệ giảm đỉnh nhiệt độ $u_{\max}(t)$
+
+Với nguồn điểm ở gốc ($\alpha = 1$), đỉnh nhân nhiệt là $\Phi(0, t) = \frac{1}{\sqrt{4\pi t}}$:
+- Tại $t = 1\text{ s}$: $\Phi(0, 1) \approx \mathbf{0{,}282}$.
+- Tại $t = 4\text{ s}$ (thời gian tăng $4\times$): đỉnh giảm đi đúng $\sqrt{4} = 2\times$ xuống $\mathbf{0{,}141}$, còn độ rộng $\sigma = \sqrt{2t}$ tăng đúng $2\times$ từ $1{,}41$ lên $2{,}83$!
 
 ## Gallery Nhúng Trực Tiếp
 

@@ -12,6 +12,19 @@ lesson_type: optional
 
 ![Trực giác của phương trình vi phân ngẫu nhiên và đường đi Brownian]({{ site.imgurl }}/chapter_img/chapter13/08_stochastic_differential_equations.svg )
 
+Một hạt phấn hoa lơ lửng trong cốc nước không bao giờ trượt theo đường cong trơn mà giật cục hỗn loạn dưới hàng tỷ cú va chạm phân tử; giá cổ phiếu trên sàn giao dịch cũng nhảy múa từng giây bởi tin tức bất ngờ. Để mô tả những hệ động lực chịu tác động của nhiễu ngẫu nhiên liên tục, ta bổ sung thêm số hạng chuyển động Brown $dW_t$ vào ODE để có **Phương trình Vi phân Ngẫu nhiên (SDE)**—nơi quy tắc đạo hàm cổ điển bị phá vỡ bởi một luật chơi kỳ diệu mang tên **Bổ đề Itô**: $(dW_t)^2 = dt$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Vi phân Ngẫu nhiên (SDE)
+
+1. **Chuyển động Brown $W_t$ (Quá trình Wiener)**:
+   Các số gia $W_{t+\Delta t} - W_t \sim \mathcal{N}(0, \Delta t)$ độc lập nhau, đường đi liên tục khắp nơi nhưng **không khả vi ở bất kỳ điểm nào**, và có bậc độ lớn $|\Delta W_t| \sim \sqrt{\Delta t} \gg \Delta t$!
+2. **Bổ đề Itô (Quy tắc Chuỗi Ngẫu nhiên)**:
+   Vì $(dW_t)^2 = dt$ không thể bỏ qua như $(dt)^2 = 0$, khai triển Taylor của $f(X_t)$ buộc phải giữ thêm số hạng đạo hàm bậc hai: $df(X_t) = f'(X_t)\,dX_t + \frac{1}{2}f''(X_t)\sigma^2\,dt$—sinh ra hệ số điều chỉnh độ trôi $-\frac{1}{2}\sigma^2$ nổi tiếng trong mô hình Black–Scholes!
+3. **Sơ đồ Số Euler–Maruyama và Milstein**:
+   Euler–Maruyama rời rạc hóa $dX_t = \mu\,dt + \sigma\,dW_t$ thành $X_{n+1} = X_n + \mu\Delta t + \sigma\sqrt{\Delta t}\,Z_n$ ($Z_n \sim \mathcal{N}(0,1)$), đạt bậc hội tụ **mạnh $0{,}5$** và **yếu $1{,}0$**. Thêm số hạng hiệu chỉnh bậc hai $\frac{1}{2}\sigma\sigma'(\Delta W_n^2 - \Delta t)$ cho ra sơ đồ Milstein nâng bậc hội tụ mạnh lên $1{,}0$!
+4. **Cầu nối SDE $\leftrightarrow$ PDE (Phương trình Fokker–Planck / Kolmogorov)**:
+   Trong khi mỗi đường đi $X_t$ là ngẫu nhiên, mật độ xác suất $p(x, t)$ của nó lại tiến hóa hoàn toàn tất định theo một phương trình khuếch tán–đối lưu (Fokker–Planck)!
+
 ## Mục tiêu
 
 Bài học tùy chọn này giới thiệu phương trình vi phân ngẫu nhiên (SDE) như mô hình vi phân cho các hệ chịu tác động của nhiễu ngẫu nhiên. Sau bài học, sinh viên cần nắm vai trò của chuyển động Brown (Brownian motion), cấu trúc cơ bản của phương trình Itô, ý tưởng của lược đồ Euler–Maruyama, và sự khác biệt giữa nghiệm xác định của ODE với họ quỹ đạo ngẫu nhiên của SDE.
@@ -26,6 +39,16 @@ Nhiều hệ trong tự nhiên và tài chính không tiến hóa theo quy luậ
 
 SDE giữ lại thành phần xu hướng (drift) tương tự ODE và bổ sung thành phần nhiễu (diffusion). Sự xuất hiện của thành phần ngẫu nhiên làm thay đổi căn bản cách hiểu về nghiệm, quy tắc vi phân và cách xây dựng lược đồ số.
 
+
+### Khung giải thích (nên đọc chậm): Tính tay 1 bước Euler–Maruyama cho Chuyển động Brown Hình học (Giá cổ phiếu)
+
+Xét SDE $dS_t = \mu S_t\,dt + \sigma S_t\,dW_t$ với giá ban đầu $S_0 = 100$, lợi suất kỳ vọng $\mu = 0{,}10$, độ biến động $\sigma = 0{,}20$, bước thời gian $\Delta t = 0{,}25$ (1 quý), và mẫu ngẫu nhiên chuẩn $Z = +1{,}0$:
+1. **Tính số gia Brown**: $\Delta W = \sqrt{\Delta t}\,Z = \sqrt{0{,}25} \times 1{,}0 = \mathbf{0{,}50}$.
+2. **Bước Euler–Maruyama**:
+   $$S_1^{\text{EM}} = S_0 + \mu S_0\Delta t + \sigma S_0\Delta W = 100 + 0{,}10(100)(0{,}25) + 0{,}20(100)(0{,}50) = 100 + 2{,}5 + 10 = \mathbf{112{,}50}.$$
+3. **So với nghiệm Itô chính xác** $S_{\Delta t} = S_0\exp\!\big((\mu - \tfrac{1}{2}\sigma^2)\Delta t + \sigma\Delta W\big)$:
+   $$S_{0{,}25}^{\text{exact}} = 100\exp\!\big((0{,}10 - 0{,}02)(0{,}25) + 0{,}20(0{,}50)\big) = 100\,e^{0{,}12} \approx \mathbf{112{,}75}.$$
+   Lưu ý số hạng hiệu chỉnh Itô $-\frac{1}{2}\sigma^2 = -0{,}02$: chính biến động $\sigma$ làm giảm tốc độ tăng trưởng trung vị của tài sản!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

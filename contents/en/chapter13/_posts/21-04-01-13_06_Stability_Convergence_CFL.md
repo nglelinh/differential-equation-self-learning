@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Why does doubling the spatial resolution of an explicit heat-equation simulation force you to take *four times* as many time steps—and why does a wave simulation shatter into jagged noise the instant $\Delta t$ exceeds $\Delta x / c$? Two of the most famous results in computational mathematics—**von Neumann stability analysis** and the **CFL condition**—reveal the exact speed limits governing numerical PDEs.
+
 ## Learning Objectives
 
 This lesson develops the ideas of stability, convergence, and CFL-type restrictions in numerical PDE schemes. Students should understand why consistent discretization is not enough, how instability manifests computationally, and why the CFL condition captures a basic compatibility between mesh and propagation.
@@ -17,6 +19,15 @@ This lesson develops the ideas of stability, convergence, and CFL-type restricti
 ## Prerequisites
 
 Students should know finite-difference PDE schemes and basic numerical stability ideas from ODE methods.
+
+## Background Knowledge Map: Stability, Fourier Amplification, and the CFL Speed Limit
+
+Four foundational principles connect discrete PDE stencils to guaranteed convergence:
+
+1. **Lax Equivalence Theorem:** For a consistent finite-difference approximation to a well-posed linear initial-value PDE, **stability is both necessary and sufficient for convergence** as $\Delta x, \Delta t \to 0$.
+2. **Von Neumann (Fourier Mode) Stability Analysis:** Substituting a single discrete Fourier mode $U_j^n = G(k)^n e^{ikj\Delta x}$ into a linear constant-coefficient scheme isolates the amplification factor $G(k)$; stability in $L^2$ requires $|G(k)| \le 1 + O(\Delta t)$ for all wavenumbers $k\Delta x \in [-\pi, \pi]$.
+3. **The Courant–Friedrichs–Lewy (CFL) Necessary Condition:** For hyperbolic PDEs ($u_t + c u_x = 0$), the numerical domain of dependence must contain the physical characteristic cone—requiring the Courant number $\text{CFL} = |c|\Delta t / \Delta x \le 1$ for standard 3-point explicit schemes.
+4. **Parabolic vs. Hyperbolic Scaling:** Explicit diffusion stencils require $\nu\Delta t / (\Delta x)^2 \le \frac{1}{2}$ (quadratic time-step penalty!), motivating unconditionally stable implicit schemes like **Crank–Nicolson**, where $|G(k)| \le 1$ for every $\Delta t > 0$.
 
 ## Introduction
 
@@ -85,6 +96,19 @@ This completes the theoretical structure.
 - Can they explain the intuitive meaning of a CFL condition?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Von Neumann Analysis of Explicit FTCS for the Heat Equation
+
+Derive the exact stability threshold $r = \frac{\nu\Delta t}{(\Delta x)^2} \le \frac{1}{2}$ for the forward-time centered-space (FTCS) heat scheme $U_j^{n+1} = U_j^n + r(U_{j+1}^n - 2U_j^n + U_{j-1}^n)$, and test the worst-case sawtooth mode at $r = 0.4$ vs. $r = 0.6$.
+
+1. **Insert the Fourier ansatz $U_j^n = G^n e^{i\theta j}$** (where $\theta = k\Delta x \in [-\pi, \pi]$):
+   $$G = 1 + r\big(e^{i\theta} - 2 + e^{-i\theta}\big) = 1 + r\big(2\cos\theta - 2\big) = 1 - 4r\sin^2\!\left(\frac{\theta}{2}\right).$$
+2. **Enforce $|G(\theta)| \le 1$ for all $\theta \in [-\pi, \pi]$:** Since $0 \le \sin^2(\theta/2) \le 1$ and $r > 0$, we automatically have $G(\theta) \le 1$. The danger is the lower bound at the highest grid frequency $\theta = \pi$ (the alternating sawtooth $(-1)^j$, where $\sin^2(\pi/2) = 1$):
+   $$G(\pi) = 1 - 4r \ge -1 \iff 4r \le 2 \iff r = \frac{\nu\Delta t}{(\Delta x)^2} \le \frac{1}{2}.$$
+3. **Check numerically on the sawtooth mode $U_j^0 = (-1)^j$:**
+   - At $r = 0.4$ (stable): $G(\pi) = 1 - 1.6 = -0.6$, so after $5$ steps the sawtooth shrinks to $(-0.6)^5 = -0.0778$.
+   - At $r = 0.6$ (unstable): $G(\pi) = 1 - 2.4 = -1.4$, so after $10$ steps the sawtooth grows to $(-1.4)^{10} \approx +28.93$, and after $50$ steps to $2.0 \times 10^7$—exploding from pure round-off noise!
 
 ### Example 1: Stable Heat Scheme
 

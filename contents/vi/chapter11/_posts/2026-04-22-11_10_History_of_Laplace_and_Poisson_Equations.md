@@ -9,6 +9,19 @@ categories:
 - chapter11
 ---
 
+Câu chuyện của Chương 11 bắt đầu không phải trong phòng thí nghiệm điện hay nhiệt, mà giữa bầu trời đêm thế kỷ XVIII khi Pierre-Simon Laplace cố tính lực hấp dẫn của các hành tinh hình cầu dẹt như Sao Thổ và Trái Đất. Thay vì cộng trực tiếp vô số lực vector ba chiều rắc rối, Laplace đưa ra một hàm vô hướng duy nhất—**hàm thế**—và phát hiện bên ngoài khối vật chất, hàm ấy thỏa mãn một phương trình đẹp đến sững sờ: $\Delta u = 0$. Không lâu sau, Siméon Denis Poisson nhìn vào *bên trong* khối vật chất và nhận ra vế phải không còn bằng $0$ nữa mà tỷ lệ đúng với mật độ nguồn: $\Delta u = 4\pi G \rho$!
+
+## Bản đồ kiến thức nền: Bốn bước ngoặt lịch sử kiến tạo Lý thuyết Thế và PDE Elliptic
+
+1. **Laplace (1782–1785) — Cơ học thiên thể và Hàm điều hòa cầu**:
+   Chuyển bài toán lực hấp dẫn vector thành bài toán thế vô hướng thỏa mãn $\Delta \Phi = 0$ trong không gian trống, đồng thời phát minh khai triển theo hàm điều hòa cầu.
+2. **Poisson (1813) — Phương trình có nguồn và Cầu nối Vật lý**:
+   Sửa lỗi giả thiết $\Delta \Phi = 0$ bên trong vật thể có mật độ $\rho \neq 0$, mở đường cho phương trình Poisson thống trị cả hấp dẫn, tĩnh điện học ($-\Delta \varphi = \rho/\varepsilon_0$) lẫn truyền nhiệt dừng.
+3. **George Green (1828) — Công thức Green và Hàm Green**:
+   Một thợ xay bột tự học ở Nottingham đã công bố chuyên khảo *An Essay on the Application of Mathematical Analysis to the Theories of Electricity and Magnetism*, biến bài toán biên elliptic thành phép tích chập với đáp ứng nguồn điểm.
+4. **Dirichlet, Riemann & Hilbert (1850–1900) — Nguyên lý Dirichlet và Giải tích Hiện đại**:
+   Nhận ra nghiệm $\Delta u = 0$ chính là hàm cực tiểu hóa năng lượng $\frac{1}{2}\int |\nabla u|^2\,dx$; nỗ lực chứng minh chặt chẽ nguyên lý này (sau phản ví dụ của Weierstrass) đã trực tiếp khai sinh không gian Sobolev ở Chương 12!
+
 ## Mục tiêu
 Bài này trình bày quá trình hình thành và phát triển của phương trình Laplace, phương trình Poisson và lý thuyết thế cổ điển từ cơ học thiên thể, tĩnh điện và cơ học chất lưu. Qua đó, sinh viên có thể nhìn nhận Chương 11 như điểm giao thoa lịch sử giữa hình học, vật lý và giải tích.
 
@@ -20,6 +33,15 @@ Tại Nottingham năm 1828, George Green — khi ấy vẫn là một người t
 
 Trong vùng không có điện tích, điện thế thỏa mãn $$\Delta u = 0$$. Điều này có nghĩa là giá trị của $$u$$ bên trong miền bị ràng buộc chặt bởi giá trị trên biên. Chẳng hạn, khi đã biết điện thế trên bề mặt một vật dẫn, nghiệm điều hòa bên trong không thể tự tạo ra cực đại mới. Chính từ những câu hỏi như vậy mà hàm Green, lý thuyết thế và cặp phương trình Laplace–Poisson phát triển. Nhờ đó, Chương 11 mang sắc thái riêng: khảo sát những trạng thái cân bằng tưởng chừng tĩnh lặng nhưng ẩn chứa cấu trúc hình học nội tại sâu sắc.
 
+
+### Khung giải thích (nên đọc chậm): Kiểm tra trực tiếp vì sao thế hấp dẫn Newton $\Phi(r) = -GM/r$ thỏa mãn phương trình Laplace
+
+Trong không gian 3D với $r = \sqrt{x^2 + y^2 + z^2} > 0$, toán tử Laplace cho hàm chỉ phụ thuộc bán kính $r$ có dạng $\Delta \Phi = \frac{1}{r^2}\frac{d}{dr}\left(r^2 \frac{d\Phi}{dr}\right)$. Tính từng bước với $\Phi(r) = -\frac{GM}{r}$:
+1. **Đạo hàm bậc nhất**:
+   $$\frac{d\Phi}{dr} = -GM \cdot \left(-\frac{1}{r^2}\right) = \frac{GM}{r^2}.$$
+2. **Nhân thêm $r^2$ (thông lượng xuyên qua mặt cầu bán kính $r$)**:
+   $$r^2 \frac{d\Phi}{dr} = r^2 \cdot \frac{GM}{r^2} = GM = \text{hằng số không phụ thuộc } r!$$
+3. **Lấy đạo hàm theo $r$**: Vì $GM$ là hằng số, $\frac{d}{dr}(GM) = 0 \implies \Delta \Phi = \mathbf{0}$ tại mọi điểm $r > 0$. Mọi nguồn hấp dẫn chỉ tập trung tại điểm kỳ dị $r = 0$, nơi $\Delta\left(-\frac{1}{4\pi r}\right) = \delta(\mathbf{x})$!
 ## Mạch truyện lớn
 Mạch phát triển của chương trải dài từ thuyết vạn vật hấp dẫn của Newton, điện học của Coulomb, Green, Gauss và Maxwell đến lý thuyết hiện đại về hàm điều hòa. Một nhánh xuất phát từ vật lý trường, nơi thế năng và điện thế là các đối tượng tự nhiên; nhánh kia thuộc về giải tích, nơi các nguyên lý cực trị, hàm Green và lý thuyết bài toán biên dần được xây dựng.
 

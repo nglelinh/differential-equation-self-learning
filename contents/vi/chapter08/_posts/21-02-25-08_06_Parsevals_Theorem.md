@@ -9,7 +9,22 @@ categories:
 - chapter08
 lesson_type: required
 ---
+
 ![21 02 25 08 06 Parsevals Theorem]({{ site.imgurl }}/chapter_img/chapter08/06_parsevals_theorem.svg)
+
+Trong không gian Euclid 3 chiều, định lý Pythagoras nói rằng bình phương độ dài vectơ bằng tổng bình phương ba tọa độ trực giao: $\|\mathbf{v}\|^2 = v_x^2 + v_y^2 + v_z^2$. **Định lý Parseval** chính là **Định lý Pythagoras trong không gian hàm vô hạn chiều**: tổng năng lượng trung bình của tín hiệu trong miền thời gian bằng **đúng** tổng năng lượng các thành phần tần số trong miền Fourier!
+
+## Bản đồ kiến thức nền: Bốn ý nghĩa sâu sắc của Định lý Parseval
+
+1. **Đẳng thức Bảo toàn Năng lượng trên $[-L, L]$**:
+   $$\frac{1}{L}\int_{-L}^{L} [f(x)]^2\,dx = \frac{a_0^2}{2} + \sum_{n=1}^{\infty}(a_n^2 + b_n^2).$$
+   (Với chuỗi Fourier phức $c_n$: $\frac{1}{2L}\int_{-L}^{L} \vert f(x) \vert^2\,dx = \sum_{n=-\infty}^{\infty} \vert c_n \vert^2$).
+2. **Bất đẳng thức Bessel & Tính đầy đủ**:
+   Tổng hữu hạn $\frac{a_0^2}{2} + \sum_{n=1}^{N}(a_n^2 + b_n^2) \le \frac{1}{L}\int_{-L}^L f^2\,dx$ luôn bị chặn trên (Bessel); dấu bằng khi $N \to \infty$ (Parseval) khẳng định hệ lượng giác là **đầy đủ** (không bị thiếu chiều nào!).
+3. **Đo tỷ lệ năng lượng giữ lại khi nén tín hiệu (MP3 / JPEG)**:
+   Tính tỷ số $\frac{E_N}{E_{\text{tổng}}}$ cho biết giữ lại $N$ tần số đầu bảo toàn bao nhiêu phần trăm năng lượng gốc.
+4. **Vũ khí tính các tổng chuỗi số kinh điển**:
+   Áp dụng Parseval cho những hàm đơn giản như $f(x) = x$ hay $f(x) = x^2$ lập tức tính ra $\sum \frac{1}{n^2} = \frac{\pi^2}{6}$ và $\sum \frac{1}{n^4} = \frac{\pi^4}{90}$!
 
 ## Mục tiêu
 
@@ -24,6 +39,17 @@ Sinh viên cần nắm chuỗi Fourier, tính trực giao và khái niệm chu�
 Khi phân tách một hàm thành các mode Fourier, một câu hỏi tự nhiên đặt ra: liệu "năng lượng" của hàm có bị thay đổi khi chuyển từ miền không gian sang miền tần số hay không? Định lý Parseval cho câu trả lời rõ ràng: không. Năng lượng toàn phần trong miền không gian bằng đúng tổng năng lượng đóng góp bởi từng mode Fourier.
 
 Từ góc độ ứng dụng, kết quả này cho thấy chuỗi Fourier không chỉ là một cách viết lại hàm, mà là một phép phân rã bảo toàn năng lượng. Trong cơ học, truyền nhiệt, truyền sóng và xử lý tín hiệu, đây là nguyên lý nền tảng.
+
+### Khung giải thích (nên đọc chậm): Chứng minh Bài toán Basel $\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}$ chỉ trong 3 dòng bằng Parseval
+
+Ta đã biết ở bài 08-02: với $f(x) = x$ trên $(-\pi, \pi)$ ($L = \pi$), ta có $a_0 = a_n = 0$ và $b_n = \frac{2(-1)^{n+1}}{n}$.
+1. **Tính vế trái của Parseval (Năng lượng miền không gian)**:
+   $$\frac{1}{\pi}\int_{-\pi}^{\pi} x^2\,dx = \frac{2}{\pi}\left[\frac{x^3}{3}\right]_0^{\pi} = \mathbf{\frac{2\pi^2}{3}}.$$
+2. **Tính vế phải của Parseval (Năng lượng miền tần số)**:
+   $$\sum_{n=1}^{\infty} b_n^2 = \sum_{n=1}^{\infty} \frac{4}{n^2} = 4\sum_{n=1}^{\infty} \frac{1}{n^2}.$$
+3. **Cho hai vế bằng nhau**:
+   $$4\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{2\pi^2}{3} \implies \sum_{n=1}^{\infty} \frac{1}{n^2} = \mathbf{\frac{\pi^2}{6}} \approx 1{,}64493!$$
+Kiểm tra tỷ lệ năng lượng của chỉ 3 số hạng đầu: $1 + \frac{1}{4} + \frac{1}{9} = 1{,}3611 \implies \frac{1{,}3611}{1{,}6449} \approx \mathbf{82{,}7\%}$ toàn bộ năng lượng sóng răng cưa đã nằm gọn trong 3 tần số đầu tiên!
 
 ## Khái niệm theo ba cách
 

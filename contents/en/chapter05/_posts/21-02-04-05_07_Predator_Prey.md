@@ -10,6 +10,38 @@ categories:
 lesson_type: required
 ---
 
+During World War I, commercial fishing in the Adriatic Sea collapsed due to naval blockades—yet when marine biologist Umberto D'Ancona checked port records afterward, he found a paradox: the fraction of *predatory* sharks and rays had surged dramatically while edible prey fish barely rose! Vito Volterra solved the mystery in 1926 using a two-equation nonlinear system that revealed both endless ecological oscillations and the startling **Volterra Principle**: indiscriminate harvesting always hurts predators more than prey.
+
+## Background Knowledge Map: Four Surprises Inside the Lotka–Volterra Model
+
+Four analytical properties make the classic Lotka–Volterra system $$x' = x(\alpha - \beta y),\; y' = y(-\gamma + \delta x)$$ a cornerstone of nonlinear ODEs:
+
+1. **Two Equilibria (Extinction Saddle vs. Coexistence Center):** The origin $$(0, 0)$$ is a saddle (prey grow exponentially along $$y = 0$$, predators starve along $$x = 0$$), while the interior coexistence point $$(x^*, y^*) = (\gamma/\delta,\; \alpha/\beta)$$ has purely imaginary Jacobian eigenvalues $$\lambda = \pm i\sqrt{\alpha\gamma}$$.
+2. **Exact First Integral (Conserved Quantity $$H(x,y)$$):** Because $$(x^*, y^*)$$ is a non-hyperbolic linear center, linearization alone cannot prove closed orbits! Dividing $$\frac{dy}{dx} = \frac{y(-\gamma + \delta x)}{x(\alpha - \beta y)}$$ separates variables and yields the exact conserved quantity
+   $$H(x, y) = \delta x - \gamma\ln x + \beta y - \alpha\ln y = C,$$
+   whose convex level curves rigorously prove *every* positive orbit is a closed periodic loop!
+3. **Time-Averaged Populations Equal the Equilibrium:** Remarkably, integrating $$\frac{x'}{x} = \alpha - \beta y$$ over one full period $$T$$ gives $$\bar{y} = \frac{1}{T}\int_0^T y(t)\,dt = \frac{\alpha}{\beta} = y^*$$ and $$\bar{x} = \frac{\gamma}{\delta} = x^*$$—completely independent of the oscillation amplitude!
+4. **Volterra's Fishing/Pesticide Principle:** Adding uniform harvesting/spraying rate $$\varepsilon$$ to both species changes $$\alpha \mapsto \alpha - \varepsilon$$ and $$\gamma \mapsto \gamma + \varepsilon$$, which **raises** the average prey population $$\bar{x} = \frac{\gamma + \varepsilon}{\delta}$$ and **lowers** the average predator population $$\bar{y} = \frac{\alpha - \varepsilon}{\beta}$$—explaining both D'Ancona's Adriatic sharks and why broad-spectrum insecticides can trigger pest outbreaks!
+
+### Step-by-Step Worked Example (Read Slowly): Linearizing, Verifying the First Integral, and Testing Harvesting on Lotka–Volterra
+
+Analyze the predator–prey system ($$x$$ = rabbits, $$y$$ = foxes):
+$$x' = x(2 - y), \qquad y' = y(-3 + x), \qquad x > 0,\; y > 0.$$
+
+1. **Find the coexistence equilibrium and small-oscillation period:**
+   Setting $$2 - y = 0$$ and $$-3 + x = 0$$ gives $$(x^*, y^*) = (3, 2)$$.
+   Compute the Jacobian at $$(3, 2)$$:
+   $$J(x, y) = \begin{pmatrix} 2 - y & -x \\ y & -3 + x \end{pmatrix} \implies J(3, 2) = \begin{pmatrix} 0 & -3 \\ 2 & 0 \end{pmatrix}.$$
+   Eigenvalues: $$\lambda^2 + 6 = 0 \implies \lambda = \pm i\sqrt{6}$$.
+   So small oscillations around $$(3, 2)$$ have period $$T \approx \frac{2\pi}{\sqrt{6}} \approx 2.565$$ time units (and check direction at $$(3+1, 2) = (4, 2)$$: $$y' = 2(1) > 0 \implies$$ **counterclockwise**!).
+2. **Derive the exact first integral $$H(x, y)$$ to prove true closed orbits:**
+   $$\frac{dy}{dx} = \frac{y(x - 3)}{x(2 - y)} \implies \left(\frac{2}{y} - 1\right)dy = \left(1 - \frac{3}{x}\right)dx.$$
+   Integrating both sides gives
+   $$H(x, y) = (x - 3\ln x) + (y - 2\ln y) = C.$$
+   Check: $$\dot{H} = \left(1 - \frac{3}{x}\right)x(2-y) + \left(1 - \frac{2}{y}\right)y(x-3) = (x-3)(2-y) + (y-2)(x-3) = 0$$ identically!
+3. **Quantify the effect of uniform harvesting $$\varepsilon = 0.5$$:**
+   With $$x' = x(1.5 - y)$$ and $$y' = y(-3.5 + x)$$, the average rabbit population jumps from $$3$$ to **$$3.5$$** ($$+16.7\%$$) while the average fox population drops from $$2$$ to **$$1.5$$** ($$-25\%$$)!
+
 ## Learning Objectives
 
 This lesson helps students analyze predator-prey systems as nonlinear interacting populations, interpret biological parameters, find equilibria and nullclines, and understand how cyclical population behavior emerges from feedback.

@@ -10,6 +10,38 @@ categories:
 lesson_type: required
 ---
 
+Drop a stone from a bridge, brew a cup of coffee in a cool room, or track a viral post spreading across a campus: in every case, nature rarely hands us a finished formula for the state $$y(t)$$ directly. Instead, nature hands us a *local rule of change*—a differential equation telling us how fast $$y$$ changes given its current value. Learning to read, classify, and visualize that local rule is the first step from static algebra to dynamical science.
+
+## Background Knowledge Map: Reading the Anatomy of a Differential Equation
+
+Before memorizing solution formulas, master four structural distinctions that immediately tell you what kind of problem you face:
+
+1. **ODE vs. PDE and Order:** An ordinary differential equation (ODE) involves derivatives with respect to a single independent variable (usually time $$t$$ or space $$x$$); its *order* is the highest derivative present, which equals the number of free constants in its general solution.
+2. **Linearity vs. Nonlinearity:** An equation is linear if $$y, y', y'', \dots$$ appear only to the first power with coefficients depending solely on the independent variable. Linear equations obey superposition; nonlinear ones can exhibit finite-time blow-up, chaos, or multiple equilibria.
+3. **General Solution vs. Initial Value Problem (IVP):** Integrating a first-order ODE produces a one-parameter family of curves $$y(t; C)$$; specifying an initial condition $$y(t_0) = y_0$$ pins down a single trajectory from that family.
+4. **Direction Fields (Slope Fields):** Even when an ODE cannot be solved in elementary closed form (like $$y' = y^2 - t$$), plotting short segments of slope $$f(t,y)$$ at grid points reveals the exact geometry of all solutions at once.
+
+### Step-by-Step Worked Example (Read Slowly): Classifying an ODE, Verifying a Family, and Solving an IVP
+
+Consider the differential equation
+$$t\,y' + 2y = 4t^2, \qquad t > 0, \qquad y(1) = 3.$$
+
+1. **Classify the equation:**
+   - Independent variable: $$t$$; dependent variable: $$y(t)$$ $$\implies$$ **ODE**.
+   - Highest derivative is $$y'$$ $$\implies$$ **first-order**.
+   - Rewriting as $$y' + \frac{2}{t}y = 4t$$ shows $$y$$ and $$y'$$ appear linearly with $$t$$-only coefficients $$\implies$$ **linear, nonhomogeneous**.
+2. **Verify the candidate general solution** $$y(t) = t^2 + \frac{C}{t^2}$$:
+   Differentiate term by term:
+   $$y'(t) = 2t - \frac{2C}{t^3}.$$
+   Substitute into the left-hand side $$t\,y' + 2y$$:
+   $$t\left(2t - \frac{2C}{t^3}\right) + 2\left(t^2 + \frac{C}{t^2}\right) = \left(2t^2 - \frac{2C}{t^2}\right) + \left(2t^2 + \frac{2C}{t^2}\right) = 4t^2.$$
+   The $$C$$ terms cancel identically, confirming $$y(t) = t^2 + C/t^2$$ satisfies the ODE for every $$C \in \mathbb{R}$$.
+3. **Impose the initial condition $$y(1) = 3$$:**
+   $$3 = 1^2 + \frac{C}{1^2} \implies C = 2.$$
+4. **State the unique IVP solution and its domain:**
+   $$y(t) = t^2 + \frac{2}{t^2}, \qquad t \in (0, \infty).$$
+   Check the initial slope: from the ODE, $$y'(1) = 4(1) - 2(3) = -2$$; from our formula, $$y'(1) = 2(1) - 4(1) = -2$$. Exact match!
+
 This lesson introduces the fundamental concepts and classification of differential equations.
 
 ## Topics to Cover

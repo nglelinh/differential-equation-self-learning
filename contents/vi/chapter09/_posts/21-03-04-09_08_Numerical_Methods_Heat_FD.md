@@ -9,7 +9,22 @@ categories:
 - chapter09
 lesson_type: optional
 ---
+
 ![21 03 04 09 08 Numerical Methods Heat Fd]({{ site.imgurl }}/chapter_img/chapter09/08_numerical_methods_heat_fd.svg)
+
+Khi thanh kim loại có độ dẫn nhiệt thay đổi theo vị trí $\alpha(x)$ hoặc hình dạng 2D/3D phức tạp, nghiệm chuỗi Fourier không còn viết nổi bằng tay nữa. Lúc này máy tính vào cuộc bằng **Phương pháp Sai phân Hữu hạn (Finite Difference Method)**: thay không gian liên tục bằng lưới điểm cách đều $\Delta x$, thay thời gian bằng bước $\Delta t$, và xấp xỉ đạo hàm bằng hiệu chia đơn giản—nhưng chỉ cần chọn bước thời gian $\Delta t$ hơi quá tay, nghiệm số sẽ **nổ tung thành dao động vô cùng**!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Sai phân Hữu hạn cho Phương trình Nhiệt
+
+1. **Sơ đồ Hiện FTCS (Forward-Time Central-Space)**:
+   $$u_j^{n+1} = u_j^n + r\,(u_{j+1}^n - 2u_j^n + u_{j-1}^n), \qquad r = \frac{\alpha \Delta t}{(\Delta x)^2}.$$
+   Siêu dễ lập trình ($O(N)$ mỗi bước), nhưng chỉ ổn định khi thỏa **điều kiện CFL khuếch tán**: $\mathbf{r = \frac{\alpha \Delta t}{(\Delta x)^2} \le \frac{1}{2}}$!
+2. **Sơ đồ Ẩn BTCS (Backward Euler) — Ổn định Vô điều kiện**:
+   Đánh giá đạo hàm không gian ở bước $n+1$ tạo ra hệ ma trận **tam đường chéo (tridiagonal)** giải nhanh trong $O(N)$ bằng thuật toán Thomas; ổn định với **mọi $r > 0$**!
+3. **Sơ đồ Crank–Nicolson (Trung bình Hiện + Ẩn)**:
+   Vừa ổn định vô điều kiện, vừa đạt độ chính xác **bậc 2 theo cả thời gian lẫn không gian** $O(\Delta t^2 + \Delta x^2)$—chuẩn công nghiệp cho phương trình nhiệt và Black–Scholes!
+4. **Định lý Tương đương Lax (Consistency + Stability $\iff$ Convergence)**:
+   Một sơ đồ sai phân chỉ hội tụ về nghiệm thật khi nó vừa nhất quán (sai số cắt cụt $\to 0$) vừa ổn định (không khuếch đại sai số làm tròn).
 
 ## Mục tiêu
 
@@ -24,6 +39,21 @@ Sinh viên cần nắm phương trình nhiệt liên tục, công thức xấp x
 Ngay cả khi đã nắm các phương pháp giải tích, nhiều bài toán thực tế vẫn đòi hỏi mô phỏng số do dữ liệu ban đầu phức tạp, miền hình học không chuẩn hoặc nhu cầu tính toán nhanh. Phương pháp sai phân hữu hạn là công cụ nhập môn trực tiếp nhất cho phương trình nhiệt.
 
 Bài học này không chỉ dừng ở việc thay đạo hàm bằng tỉ số sai phân, mà nhấn mạnh một nguyên tắc quan trọng: một sơ đồ số đáng tin cậy phải phản ánh đúng bản chất vật lý của phương trình gốc. Với phương trình nhiệt, điều đó đòi hỏi sơ đồ phải ổn định, có tính làm mượt và không sinh ra dao động phi vật lý khi bước lưới được chọn hợp lý.
+
+### Khung giải thích (nên đọc chậm): Chạy tay 1 bước FTCS thấy tận mắt sự khác biệt giữa $r = 0{,}25$ (ổn định) và $r = 1{,}0$ (nổ dao động!)
+
+Giả sử lưới gồm 5 điểm với biên $u_0 = u_4 = 0$ và trạng thái ban đầu có 1 đỉnh nóng ở giữa: $\mathbf{u}^0 = [0,\; 0,\; 100,\; 0,\; 0]$.
+Áp dụng công thức FTCS $u_j^1 = (1 - 2r) u_j^0 + r(u_{j-1}^0 + u_{j+1}^0)$:
+- **Khi $r = 0{,}25 \le 0{,}5$ (Ổn định)**:
+  - $u_1^1 = 0{,}5(0) + 0{,}25(0 + 100) = \mathbf{25}$.
+  - $u_2^1 = 0{,}5(100) + 0{,}25(0 + 0) = \mathbf{50}$.
+  - $u_3^1 = \mathbf{25} \implies \mathbf{u}^1 = [0,\; 25,\; 50,\; 25,\; 0]$ (đỉnh hạ mượt, tổng nhiệt bảo toàn, thỏa Nguyên lý Cực đại $0 \le u \le 100$!).
+- **Khi $r = 1{,}0 > 0{,}5$ (Mất ổn định!)**:
+  - $u_1^1 = -1(0) + 1(0 + 100) = \mathbf{+100}$.
+  - $u_2^1 = (1 - 2)(100) + 1(0 + 0) = \mathbf{-100}$ (tâm đang $100^\circ\text{C}$ bỗng rớt xuống **$-100^\circ\text{C}$** — vi phạm trắng trợn Nguyên lý Cực đại!).
+  - Bước tiếp theo $u_2^2 = +300$, $u_2^3 = -900 \to \pm\infty$!
+
+Lưu ý kỹ thuật: nếu giảm $\Delta x$ đi $2\times$ để lưới mịn hơn, điều kiện $\Delta t \le \frac{(\Delta x)^2}{2\alpha}$ ép bạn phải giảm $\Delta t$ đi **$4\times$**—đó là lý do lưới siêu mịn luôn chuyển sang Crank–Nicolson!
 
 ## Khái niệm theo ba cách
 

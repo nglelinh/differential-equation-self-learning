@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Trong tự nhiên, hiếm khi nào một đại lượng biến đổi trong cô lập: số lượng thỏ ảnh hưởng đến số lượng cáo, dòng điện ở nhánh mạch này cảm ứng sang nhánh kia, và chuyển động của con lắc kéo theo phản lực lên điểm treo. **Hệ phương trình vi phân thường** gom tất cả những mối tương tác đan xen đó vào một vectơ trạng thái duy nhất $\mathbf{x}(t) \in \mathbb{R}^n$—và đáng kinh ngạc hơn nữa, **mọi** phương trình vi phân bậc $n$ bất kỳ đều quy đổi tương đương hoàn toàn về một hệ bậc một!
+
+## Bản đồ kiến thức nền: Bốn viên gạch đầu tiên của Hệ PTVP
+
+1. **Chuyển đổi PTVP bậc $n$ thành Hệ bậc một**:
+   Đặt $x_1 = y,\; x_2 = y', \dots, x_n = y^{(n-1)}$—mọi bộ giải số máy tính (như `scipy.integrate.solve_ivp`) thực chất chỉ cần một thuật toán duy nhất cho hệ bậc một $\mathbf{x}' = \mathbf{f}(t, \mathbf{x})$!
+2. **Không gian trạng thái (Phase Space) & Quỹ đạo vectơ**:
+   Thay vì $n$ đồ thị rời rạc theo $t$, trạng thái tức thời của toàn hệ là **một điểm duy nhất $\mathbf{x}(t) \in \mathbb{R}^n$** chuyển động theo trường vectơ vận tốc $\mathbf{f}(t, \mathbf{x})$.
+3. **Phân loại Tuyến tính vs. Phi tuyến & Tự trị vs. Không tự trị**:
+   Hệ tuyến tính có dạng $\mathbf{x}' = A(t)\mathbf{x} + \mathbf{g}(t)$; hệ tự trị không chứa $t$ tường minh ở vế phải nên trường vectơ cố định theo thời gian.
+4. **Định lý Tồn tại & Duy nhất cho Hệ**:
+   Với hệ tuyến tính $\mathbf{x}' = A(t)\mathbf{x} + \mathbf{g}(t)$, nếu mọi phần tử của $A(t)$ và $\mathbf{g}(t)$ liên tục trên $I \ni t_0$, thì bài toán giá trị đầu $\mathbf{x}(t_0) = \mathbf{x}_0$ có **duy nhất một nghiệm** trên toàn $I$.
+
 ## Mục tiêu
 
 Bài học này mở đầu chương về hệ phương trình vi phân, giúp sinh viên hiểu vì sao nhiều hiện tượng không thể mô tả đầy đủ bằng một ẩn duy nhất, biết cách biểu diễn trạng thái dưới dạng vector, và nắm mối liên hệ giữa phương trình bậc cao với hệ bậc nhất. Qua đó, sinh viên chuyển từ cách nhìn "một hàm theo thời gian" sang "toàn bộ vector trạng thái tiến hóa theo thời gian".
@@ -25,6 +39,18 @@ Sinh viên nên nắm ODE cấp một, ODE cấp hai, khái niệm điều kiệ
 Ở các chương trước, ta thường xét một phương trình cho một hàm ẩn duy nhất. Tuy nhiên, nhiều hiện tượng thực tế đòi hỏi nhiều biến cùng tiến hóa: một vật dao động cần cả vị trí và vận tốc, một mạch điện cần điện tích và dòng điện, còn một mô hình sinh thái cần theo dõi đồng thời nhiều loài. Khi nhiều đại lượng ảnh hưởng lẫn nhau, mô tả tự nhiên nhất là một hệ phương trình vi phân.
 
 Hệ phương trình không chỉ là cách viết dài hơn của ODE một ẩn, mà là ngôn ngữ chuẩn cho các mô hình nhiều biến trạng thái. Khi biểu diễn trạng thái bằng vector, ta có thể vận dụng ngay ma trận, trị riêng, hàm mũ ma trận và chân dung pha để phân tích hình học của chuyển động.
+
+### Khung giải thích (nên đọc chậm): Chuyển PTVP bậc ba không thuần nhất $y''' - 2y'' + 5y' - y = \sin t$ thành hệ bậc một dạng ma trận
+
+1. **Đặt 3 biến trạng thái**:
+   $x_1 = y$, $\;x_2 = y'$, $\;x_3 = y''$.
+2. **Viết đạo hàm từng biến** (chỉ dùng $x_1, x_2, x_3$ và $t$):
+   - $x_1' = x_2$
+   - $x_2' = x_3$
+   - $x_3' = y''' = x_1 - 5x_2 + 2x_3 + \sin t$
+3. **Đóng gói thành phương trình ma trận $\mathbf{x}' = A\mathbf{x} + \mathbf{g}(t)$**:
+   $$\begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix}' = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & -5 & 2 \end{pmatrix}\begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} + \begin{pmatrix} 0 \\ 0 \\ \sin t \end{pmatrix}.$$
+   Nếu điều kiện đầu là $y(0) = 2,\; y'(0) = -1,\; y''(0) = 0$, thì vectơ đầu vào chỉ đơn giản là $\mathbf{x}(0) = (2, -1, 0)^\top$!
 
 ## Khái niệm theo ba cách
 

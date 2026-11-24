@@ -10,6 +10,38 @@ categories:
 lesson_type: required
 ---
 
+Pluck a guitar string near the bridge and it rings bright and metallic; pluck the exact same string right at the middle and it sounds warm, hollow, and flute-like. The string's length, tension, and mass haven't changed by a single gram—so why did the timbre transform completely? Because the vibrating string is a physical Sturm–Liouville synthesizer: plucking at the center excites only odd harmonics (every even mode has a node at $$ x = L/2 $$!), whereas plucking near the bridge energizes a cascade of high-frequency overtones.
+
+Here we watch the spatial eigenvalue problem of Chapter 07 lock together with harmonic time oscillation to solve the 1D wave equation on a finite string.
+
+## Background Knowledge Map: Standing Waves and Spectral Superposition
+
+1. **Separation of Variables (Decoupling Space and Time):** Inserting $$ u(x, t) = X(x) T(t) $$ into $$ u_{tt} = c^2 u_{xx} $$ splits the PDE into a spatial Sturm–Liouville BVP $$ X'' + \lambda X = 0 $$ (whose eigenvalues $$ \lambda_n = (n\pi/L)^2 $$ depend only on geometry and BCs) and a temporal oscillator $$ T'' + c^2 \lambda T = 0 $$ (giving angular frequencies $$ \omega_n = c\sqrt{\lambda_n} = \frac{n\pi c}{L} $$).
+2. **Harmonic Overtone Series (Why Strings Sound Musical):** For a uniform clamped string, $$ \omega_n = n \omega_1 $$ are exact integer multiples of the fundamental frequency $$ \omega_1 = \frac{\pi}{L}\sqrt{T/\rho} $$. That arithmetic perfection is what makes stringed instruments sound pitched and consonant.
+3. **Initial Displacement vs. Initial Velocity (Cosine vs. Sine Time Phases):** Each normal mode carries two amplitudes: $$ A_n \cos(\omega_n t) $$ encodes the initial shape $$ f(x) = u(x, 0) $$, while $$ B_n \sin(\omega_n t) $$ encodes the initial velocity $$ g(x) = u_t(x, 0) $$ (e.g., a piano hammer strike).
+4. **Modal Energy Conservation:** By orthogonality of $$ \{\sin(n\pi x / L)\} $$, the total mechanical energy $$ E = \frac{1}{2}\int_0^L (\rho u_t^2 + T u_x^2)\,dx $$ splits cleanly into a sum of independent mode energies $$ \sum_{n=1}^\infty E_n $$, with zero energy leaking between modes in an ideal linear string.
+
+### Step-by-Step Worked Example (Read Slowly): Center-Plucked String and the Vanishing of Even Harmonics
+
+**Problem:** A string of length $$ L $$ with wave speed $$ c $$ is pulled up to height $$ h $$ at its midpoint $$ x = L/2 $$ (forming a symmetric triangle) and released from rest ($$ u_t(x, 0) = 0 $$). Compute the Fourier sine coefficients $$ A_n $$, prove every even harmonic vanishes, and evaluate the energy fraction carried by the fundamental mode $$ n = 1 $$.
+
+1. **Write the initial triangular shape:**
+   $$ f(x) = \begin{cases} \dfrac{2h}{L} x, & 0 \le x \le L/2, \\[6pt] \dfrac{2h}{L}(L - x), & L/2 \le x \le L. \end{cases} $$
+   Since $$ u_t(x, 0) = 0 $$, all $$ B_n = 0 $$, and $$ u(x, t) = \sum_{n=1}^{\infty} A_n \sin\!\left(\frac{n\pi x}{L}\right) \cos\!\left(\frac{n\pi c t}{L}\right) $$.
+2. **Use symmetry about $$ x = L/2 $$ to simplify $$ A_n $$:**
+   Because $$ f(L - x) = f(x) $$ while $$ \sin\!\left(\frac{n\pi(L-x)}{L}\right) = (-1)^{n+1}\sin\!\left(\frac{n\pi x}{L}\right) $$:
+   - For **even $$ n $$**, the integrand is odd about $$ x = L/2 $$, so $$ A_{2k} = 0 $$ identically!
+   - For **odd $$ n $$**, the integrand is even about $$ x = L/2 $$, so
+     $$ A_n = \frac{4}{L} \int_0^{L/2} \frac{2h}{L} x \sin\!\left(\frac{n\pi x}{L}\right) dx. $$
+3. **Integrate by parts carefully:**
+   Let $$ k = \frac{n\pi}{L} $$. Then
+   $$ \int_0^{L/2} x \sin(kx)\,dx = \left[-\frac{x\cos(kx)}{k}\right]_0^{L/2} + \frac{1}{k}\int_0^{L/2}\cos(kx)\,dx = 0 + \frac{\sin(n\pi/2)}{k^2} $$
+   (since $$ \cos(n\pi/2) = 0 $$ for all odd $$ n $$!). Substituting $$ k = n\pi/L $$ gives:
+   $$ A_n = \frac{8h}{L^2} \cdot \frac{L^2}{n^2 \pi^2} \sin\!\left(\frac{n\pi}{2}\right) = \frac{8h}{n^2 \pi^2} (-1)^{(n-1)/2} \qquad (n \text{ odd}). $$
+4. **Verify initial midpoint height and mode-1 energy share:**
+   At $$ x = L/2, t = 0 $$: $$ u(L/2, 0) = \frac{8h}{\pi^2}\left(1 + \frac{1}{3^2} + \frac{1}{5^2} + \cdots\right) = \frac{8h}{\pi^2} \cdot \frac{\pi^2}{8} = h $$. Exact!
+   Because mode energy scales as $$ n^2 A_n^2 \propto \frac{1}{n^2} $$, the fundamental mode $$ n = 1 $$ carries $$ \frac{1}{\sum_{m=0}^\infty (2m+1)^{-2}} = \frac{8}{\pi^2} \approx 81.1\% $$ of the total elastic energy—explaining that pure, warm midpoint sound!
+
 ## Learning Objectives
 
 This lesson connects the whole chapter to the classical vibrating-string model. Students should understand how boundary conditions, eigenvalues, eigenfunctions, and mode superposition all arise naturally in the analysis of standing waves.

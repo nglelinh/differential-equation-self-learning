@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Why does stepping inside a grounded metal Faraday cage shield you from a million-volt lightning strike, while a sharp metal rod attracts the bolt? Both phenomena are direct theorems of Laplace's equation: conductors enforce constant-potential Dirichlet boundaries, forcing the interior electric field to vanish while concentrating surface charge density where boundary curvature is sharpest.
+
 ## Learning Objectives
 
 This lesson connects Laplace and Poisson equations to electrostatics. Students should understand the interpretation of potential, field lines, and source distributions in terms of elliptic PDEs.
@@ -17,6 +19,15 @@ This lesson connects Laplace and Poisson equations to electrostatics. Students s
 ## Prerequisites
 
 Students should know Laplace's equation, Poisson's equation, and the meaning of source terms and boundary conditions in elliptic problems.
+
+## Background Knowledge Map: From Maxwell's Static Laws to Potential Theory
+
+Electrostatics translates directly into elliptic PDE theory through four core bridges:
+
+1. **Conservative Fields and Scalar Potential:** In the static limit, Faraday's law reduces to $\nabla \times \mathbf{E} = \mathbf{0}$, guaranteeing $\mathbf{E} = -\nabla \phi$ on simply connected domains. Combining this with Gauss's law $\nabla \cdot \mathbf{E} = \rho / \varepsilon_0$ produces Poisson's equation $-\Delta \phi = \rho / \varepsilon_0$ (and $\Delta \phi = 0$ in charge-free space).
+2. **Conductors as Equipotential Boundaries:** Free charges inside a conductor rearrange until $\mathbf{E} = \mathbf{0}$ inside, making every conducting surface an equipotential (Dirichlet condition $\phi = V_i$) with surface charge density $\sigma = -\varepsilon_0 \frac{\partial \phi}{\partial n}$.
+3. **Electrostatic Energy and Capacitance:** The stored field energy $U = \frac{\varepsilon_0}{2}\int_\Omega |\nabla \phi|^2\,dx$ is literally $\varepsilon_0$ times the Dirichlet energy. By Dirichlet's Principle, nature's equilibrium potential minimizes total electrostatic field energy, and capacitance $C = Q/\Delta V = 2U/(\Delta V)^2$ becomes a pure geometric invariant of the domain.
+4. **Multipole Expansion and Far-Field Decay:** Outside a bounded charge distribution, expanding $|\mathbf{x}-\mathbf{y}|^{-1}$ in spherical harmonics decomposes the potential into monopole ($1/r$), dipole ($1/r^2$), and quadrupole ($1/r^3$) terms.
 
 ## Introduction
 
@@ -85,6 +96,23 @@ This shows how the theory becomes computationally useful.
 - Can they connect boundary conditions to physical conductor behavior?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Coaxial Cable Potential, Capacitance, and Field Energy
+
+Consider a long coaxial cylindrical capacitor with inner conductor radius $a$ held at potential $V_0$ and grounded outer shield radius $b > a$ at potential $0$, with vacuum permittivity $\varepsilon_0$ between them. Compute the potential $\phi(r)$, electric field $\mathbf{E}$, capacitance per unit length $C/L$, and verify that field energy equals $\frac{1}{2}(C/L)V_0^2$.
+
+1. **Solve the radial Laplace equation:** Between $r=a$ and $r=b$, $\rho = 0$ and cylindrical symmetry gives:
+   $$\frac{1}{r}\frac{d}{dr}\left(r\frac{d\phi}{dr}\right) = 0 \implies r\frac{d\phi}{dr} = A \implies \phi(r) = A\ln r + B.$$
+2. **Apply Dirichlet boundary conditions $\phi(a) = V_0$, $\phi(b) = 0$:**
+   $$A\ln a + B = V_0, \qquad A\ln b + B = 0 \implies A = -\frac{V_0}{\ln(b/a)}, \qquad \phi(r) = V_0\frac{\ln(b/r)}{\ln(b/a)}.$$
+3. **Compute the electric field and inner surface charge per unit length:**
+   $$\mathbf{E}(r) = -\nabla \phi = -\frac{d\phi}{dr}\hat{\mathbf{r}} = \frac{V_0}{r\ln(b/a)}\hat{\mathbf{r}}.$$
+   At $r = a$, $\sigma(a) = \varepsilon_0 E(a) = \frac{\varepsilon_0 V_0}{a\ln(b/a)}$. Multiplying by the inner circumference $2\pi a$ gives the charge per unit length $\lambda = \frac{2\pi\varepsilon_0 V_0}{\ln(b/a)}$, hence:
+   $$\frac{C}{L} = \frac{\lambda}{V_0} = \frac{2\pi\varepsilon_0}{\ln(b/a)}.$$
+4. **Cross-check via the Dirichlet / electrostatic field energy per unit length:**
+   $$\frac{U}{L} = \frac{\varepsilon_0}{2}\int_a^b |\mathbf{E}(r)|^2 (2\pi r\,dr) = \pi\varepsilon_0\left(\frac{V_0}{\ln(b/a)}\right)^2 \int_a^b \frac{dr}{r} = \frac{\pi\varepsilon_0 V_0^2}{\ln(b/a)} = \frac{1}{2}\left(\frac{C}{L}\right)V_0^2.$$
+   Notice how the logarithmic singularity of 2D Green's functions appears directly in the geometry of every coaxial cable.
 
 ### Example 1: Charge-Free Region
 

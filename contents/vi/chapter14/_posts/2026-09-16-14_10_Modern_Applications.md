@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Nhìn vào công thức của một tầng mạng Fourier Neural Operator (FNO): biến đổi FFT dữ liệu sang miền tần số, nhân với một ma trận trọng số học được $R(\xi)$, rồi biến đổi ngược IFFT! Dưới con mắt của Chương 14, FNO không hề là một "hộp đen bí ẩn"—nó chính là một **toán tử giả vi phân (hoặc bộ nhân Fourier) có ký hiệu được học trực tiếp từ dữ liệu**! Kết nối này mở ra cách thiết kế kiến trúc AI vật lý vừa tiết kiệm tham số, vừa đảm bảo tính bị chặn trên không gian Sobolev $H^s$.
+
+## Bản đồ kiến thức nền: Bốn trụ cột nối Toán tử Giả vi phân với Neural Operators
+
+1. **Tầng FNO như Toán tử Giả vi phân Hệ số Hằng**:
+   Phép toán $\mathcal{F}^{-1}\big(R(\xi)\widehat{u}(\xi)\big)$ chính là $\operatorname{Op}(R)$ với ký hiệu chỉ phụ thuộc $\xi$. Cắt cụt tần số cao $|\xi| \le k_{\max}$ hoạt động như một toán tử làm trơn thuộc $\Psi^{-\infty}$!
+2. **Ký hiệu Phụ thuộc Không gian $p(x, \xi)$ và Kiến trúc Đa thang**:
+   Khi môi trường vật lý không đồng nhất (như đá địa chất hay vật liệu composite), một bộ nhân hằng không đủ; ta cần tổng các nhánh điều biến không gian $\sum_j a_j(x)\mathcal{F}^{-1}(R_j(\xi)\widehat{u}(\xi))$—xấp xỉ hạng thấp của ký hiệu đầy đủ $p(x, \xi)$!
+3. **Bậc $m$ của Ký hiệu quyết định Không gian Nguồn–Đích**:
+   Theo Định lý Calderón–Vaillancourt và tính bị chặn Sobolev, nếu ký hiệu học được suy giảm như $\langle\xi\rangle^m$ thì toán tử ánh xạ liên tục $H^s \to H^{s-m}$—giúp chẩn đoán ngay mô hình đang học toán tử làm trơn ($m < 0$) hay toán tử vi phân ($m > 0$).
+4. **Parametrix Học được làm Bộ Tiền điều kiện (Neural Preconditioners)**:
+   Thay vì ép mạng thay thế hoàn toàn bộ giải PDE, xu hướng tiên tiến nhất là dùng mạng học một **parametrix xấp xỉ** $Q_\theta \approx P^{-1}$ rồi dùng $Q_\theta$ làm bộ tiền điều kiện cho phương pháp lặp GMRES/CG đạt độ chính xác máy $10^{-12}$!
+
 ## Mục tiêu
 
 Bài học tùy chọn này trình bày cách nhìn nhận Fourier neural operator (FNO), spectral neural operator và các kiến trúc liên quan giai đoạn 2022–2024 như phiên bản tính toán của toán tử giả vi phân. Sau bài học, sinh viên cần biết cách đối chiếu bộ nhân Fourier học được với ký hiệu trong lớp $$S^m$$, giải thích bài toán học toán tử không aliasing bằng ngôn ngữ của Hörmander, và hiểu parametrix elliptic như mô hình giải tích cho toán tử nghịch đảo học được. Nội dung này bổ sung góc nhìn ứng dụng chứ không thay thế phép tính ký hiệu của chương.
@@ -26,6 +39,17 @@ Kovachki và cộng sự (*JMLR* 2023) đã mô tả FNO như một họ toán t
 
 Các công trình này trở nên dễ tiếp cận hơn nhiều khi người học đã nắm lớp ký hiệu $$S^m_{\rho,\delta}$$ và cách xây dựng parametrix. Về bản chất, việc học toán tử nghịch đảo của một toán tử elliptic từ dữ liệu chính là nỗ lực xấp xỉ một parametrix.
 
+
+### Khung giải thích (nên đọc chậm): Đọc trực tiếp ký hiệu $p(x, \xi)$ của một tầng FNO điều biến không gian
+
+Xét một tầng học toán tử 1D đơn giản kết hợp hai nhánh không gian–tần số:
+$$(Tu)(x) = a_1(x)\,\mathcal{F}^{-1}\!\left(\frac{1}{1 + \xi^2}\widehat{u}(\xi)\right)(x) + a_2(x)\,\mathcal{F}^{-1}\!\left(\frac{i\xi}{1 + \xi^2}\widehat{u}(\xi)\right)(x).$$
+1. **Ký hiệu tương đương của tầng mạng**:
+   $$p(x, \xi) = \frac{a_1(x) + i\xi\,a_2(x)}{1 + \xi^2}.$$
+2. **Xác định bậc ký hiệu khi $|\xi| \to \infty$**:
+   - Nhánh 1 suy giảm như $O(|\xi|^{-2}) \in S^{-2}$ (tăng 2 bậc trơn).
+   - Nhánh 2 suy giảm như $O(|\xi|^{-1}) \in S^{-1}$ (tăng 1 bậc trơn).
+   - Toàn tầng là một $\Psi$DO bậc $m = \mathbf{-1}$, nên nó ánh xạ liên tục từ $L^2(\mathbb{R})$ vào $H^1(\mathbb{R})$—giải thích chính xác bằng ngôn ngữ $\Psi$DO tại sao tầng FNO tự động tạo ra đầu ra mượt mà!
 ## Khái niệm then chốt
 
 ### Ký hiệu và bộ nhân học được

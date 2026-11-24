@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** Classical linear PDE theory is largely mapped out—so where do today's Fields Medalists and active researchers push the frontier? Into the wild territory where nonlinearity meets dispersion, geometry, and randomness: dispersive Strichartz estimates, black-hole stability in general relativity, Navier–Stokes regularity, and microlocal analysis on singular spaces.
+
 ![Modern research directions after microlocal analysis]({{ site.imgurl }}/chapter_img/chapter15/08_current_research_directions.svg )
 
 ## Objectives
@@ -19,6 +21,15 @@ This final lesson opens the door from textbook material to research. After the l
 ## Prerequisites
 
 Students should know the major topics of the chapter: wave front sets, propagation of singularities, FIO, semiclassical analysis, spectral asymptotics, inverse problems, quantum mechanics, and microlocal elliptic theory. The goal here is not more technique but a larger conceptual synthesis.
+
+## Background Knowledge Map: Four Active Frontiers of Modern PDE Research
+
+Understanding how Chapters 11–15 connect to current research highlights four booming arenas:
+
+1. **Nonlinear Dispersive Equations (NLS, KdV, Wave Maps):** Unlike the heat equation (which dissipates energy), dispersive PDEs conserve $L^2$ energy while spreading wave packets out in space; **Strichartz estimates** quantify this space–time dispersion to prove global well-posedness and scattering.
+2. **Geometric Flows and General Relativity:** Ricci flow ($\partial_t g = -2\operatorname{Ric}(g)$, used by Perelman to prove the Poincaré Conjecture) and the Einstein vacuum equations blend quasilinear elliptic/hyperbolic PDEs with microlocal energy estimates near black-hole horizons.
+3. **Fluid Mechanics and Blow-Up Questions:** Whether smooth 3D incompressible Navier–Stokes flows can develop finite-time singularities remains a Millennium Prize problem, while convex integration has recently revealed non-unique weak solutions to Euler and Navier–Stokes equations at low regularity.
+4. **Random PDEs, Microlocal Scattering, and Neural Surrogates:** Hairer's regularity structures tame singular SPDEs like KPZ, microlocal scattering characterizes resonances on asymptotically hyperbolic manifolds, and physics-grounded neural operators accelerate multiscale PDE discovery.
 
 ## Introduction
 
@@ -98,6 +109,19 @@ Students need not only topics, but also a way to continue learning.
 - Can they see the connections between the directions rather than remembering only a list?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Watching 1D Dispersive Decay at Work in the Free Schrödinger Equation
+
+Solve the 1D free Schrödinger equation $i\partial_t u + \partial_x^2 u = 0$ with Gaussian initial data $u(x,0) = e^{-x^2/2}$, and verify both exact $L^2$ conservation and the sharp $O(|t|^{-1/2})$ dispersive $L^\infty$ decay that underpins modern Strichartz theory.
+
+1. **Take the spatial Fourier transform:** Since $\mathcal{F}[e^{-x^2/2}](\xi) = \sqrt{2\pi}\,e^{-\xi^2/2}$ and $i\partial_t \hat{u} - \xi^2\hat{u} = 0$:
+   $$\hat{u}(\xi, t) = \sqrt{2\pi}\,e^{-\frac{1}{2}\xi^2 - it\xi^2} = \sqrt{2\pi}\,e^{-\frac{1 + 2it}{2}\xi^2}.$$
+2. **Invert the Gaussian Fourier transform:** Using $\frac{1}{2\pi}\int e^{ix\xi - \frac{\alpha}{2}\xi^2}\,d\xi = (2\pi\alpha)^{-1/2} e^{-x^2/(2\alpha)}$ for $\text{Re}(\alpha) > 0$ with $\alpha = 1 + 2it$:
+   $$u(x, t) = \frac{1}{\sqrt{1 + 2it}}\exp\!\left(-\frac{x^2}{2(1 + 2it)}\right).$$
+3. **Compute the peak amplitude $\|u(\cdot,t)\|_{L^\infty}$:** Since $\text{Re}\!\left(\frac{1}{1+2it}\right) = \frac{1}{1+4t^2} > 0$, the maximum occurs at $x = 0$:
+   $$\|u(\cdot,t)\|_{L^\infty(\mathbb{R})} = |u(0,t)| = \frac{1}{|1 + 2it|^{1/2}} = (1 + 4t^2)^{-1/4} \sim \frac{1}{\sqrt{2|t|}} \quad \text{as } |t| \to \infty.$$
+4. **Verify $L^2$ conservation simultaneously:** $|u(x,t)|^2 = (1+4t^2)^{-1/2}\exp\!\left(-\frac{x^2}{1+4t^2}\right)$, whose integral over $\mathbb{R}$ is $(1+4t^2)^{-1/2}\cdot\sqrt{\pi(1+4t^2)} = \sqrt{\pi} = \|u(\cdot,0)\|_{L^2}^2$ for *every* $t$! The wave never loses energy—it simply flattens and spreads, giving the exact $t^{-d/2}$ ($d=1$) decay engine of nonlinear dispersive PDEs.
 
 ### Example 1: Quantum chaos
 

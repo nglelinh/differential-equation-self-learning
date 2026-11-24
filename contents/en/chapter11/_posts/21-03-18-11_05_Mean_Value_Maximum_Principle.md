@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Suppose you measure the temperature on the walls of a source-free room and find every point on the boundary sits between $18^\circ\text{C}$ and $24^\circ\text{C}$. Without ever stepping inside, you can guarantee with mathematical certainty that no interior point is $24.1^\circ\text{C}$—and if even one interior point hits $24^\circ\text{C}$, the entire room must be a uniform $24^\circ\text{C}$. That astonishing rigidity flows from the **Mean Value Property** and **Maximum Principle**.
+
 ## Learning Objectives
 
 This lesson studies qualitative properties of harmonic functions. Students should understand the mean value property, maximum principle, and the resulting uniqueness phenomena.
@@ -17,6 +19,15 @@ This lesson studies qualitative properties of harmonic functions. Students shoul
 ## Prerequisites
 
 Students should know Laplace's equation and the idea that harmonic functions describe source-free equilibrium.
+
+## Background Knowledge Map: Rigidity, Averaging, and Stability of Harmonic Functions
+
+Four interlocking theorems turn the local statement $\Delta u = 0$ into global structural control:
+
+1. **Spherical and Solid Mean Value Identities:** For any harmonic function $u$ and any closed ball $\overline{B_R(x_0)} \subset \Omega$, $u(x_0)$ equals both the surface average on $\partial B_R(x_0)$ and the volume average over $B_R(x_0)$. Conversely, any continuous function with the Mean Value Property is automatically $C^\infty$ and harmonic.
+2. **Weak and Strong Maximum Principles:** On a bounded connected domain $\Omega$, a non-constant harmonic function attains its strict maximum and minimum exclusively on $\partial\Omega$. Reaching an extremum in the interior forces $u$ to be constant everywhere in $\Omega$.
+3. **Uniqueness and $L^\infty$ Stability:** If two harmonic functions $u_1, u_2$ satisfy $|u_1 - u_2| \le \varepsilon$ on $\partial\Omega$, applying the Maximum Principle to $w = u_1 - u_2$ proves $|u_1 - u_2| \le \varepsilon$ throughout $\Omega$—giving immediate uniqueness ($\varepsilon = 0$) and continuous dependence on boundary data.
+4. **Harnack's Inequality and Liouville's Theorem:** Positive harmonic functions cannot vary wildly on compact subsets (Harnack), and any bounded harmonic function on all of $\mathbb{R}^n$ must be constant (Liouville), echoing Liouville's theorem in complex analysis.
 
 ## Introduction
 
@@ -85,6 +96,24 @@ This is where the theory becomes operational.
 - Can they connect these principles to uniqueness of solutions?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Direct Verification of the Mean Value Property and Boundary Bounds
+
+Consider $u(x,y) = x^2 - y^2 + 3x - 2$. First verify directly that its average over *any* circle of radius $R > 0$ centered at $(1,2)$ equals $u(1,2)$, and then use the Maximum Principle to find the exact extrema of $u$ on the closed unit disk $\overline{B_1}$.
+
+1. **Verify harmonicity and center value:** $\Delta u = 2 - 2 = 0$, so $u$ is harmonic everywhere. At $(1,2)$,
+   $$u(1,2) = 1^2 - 2^2 + 3(1) - 2 = 1 - 4 + 3 - 2 = -2.$$
+2. **Parameterize the circle of radius $R$ around $(1,2)$:** Write $x = 1 + R\cos\theta$, $y = 2 + R\sin\theta$ for $\theta \in [0, 2\pi]$. Expanding $u$ on this circle:
+   $$u(1+R\cos\theta, 2+R\sin\theta) = (1 + 2R\cos\theta + R^2\cos^2\theta) - (4 + 4R\sin\theta + R^2\sin^2\theta) + (3 + 3R\cos\theta) - 2.$$
+   Collect terms using $\cos^2\theta - \sin^2\theta = \cos(2\theta)$:
+   $$u(1+R\cos\theta, 2+R\sin\theta) = -2 + 5R\cos\theta - 4R\sin\theta + R^2\cos(2\theta).$$
+3. **Take the circular average:** Since $\int_0^{2\pi} \cos\theta\,d\theta = \int_0^{2\pi} \sin\theta\,d\theta = \int_0^{2\pi} \cos(2\theta)\,d\theta = 0$,
+   $$\frac{1}{2\pi}\int_0^{2\pi} u(1+R\cos\theta, 2+R\sin\theta)\,d\theta = -2 = u(1,2),$$
+   independently of $R$!
+4. **Find the global maximum and minimum on $\overline{B_1}$:** By the Maximum Principle, extrema must lie on $x^2 + y^2 = 1$, where $y^2 = 1 - x^2$ for $x \in [-1,1]$. Substituting eliminates $y$:
+   $$g(x) = x^2 - (1 - x^2) + 3x - 2 = 2x^2 + 3x - 3, \qquad x \in [-1,1].$$
+   The critical point $g'(x) = 4x + 3 = 0$ gives $x = -3/4 \in [-1,1]$, where $g(-3/4) = 2(9/16) - 9/4 - 3 = -33/8 = -4.125$. Checking endpoints: $g(-1) = -4$, $g(1) = 2$. Thus on all of $\overline{B_1}$, $-4.125 \le u(x,y) \le 2$, attained on $\partial B_1$ at $(-3/4, \pm\sqrt{7}/4)$ and $(1,0)$, respectively.
 
 ### Example 1: Constant Function
 

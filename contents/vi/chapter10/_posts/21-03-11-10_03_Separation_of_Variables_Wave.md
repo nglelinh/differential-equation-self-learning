@@ -9,7 +9,22 @@ categories:
 - chapter10
 lesson_type: required
 ---
+
 ![21 03 11 10 03 Separation Of Variables Wave]({{ site.imgurl }}/chapter_img/chapter10/03_separation_of_variables_wave.svg)
+
+Khi sợi dây có chiều dài hữu hạn $[0, L]$ bị kẹp chặt hai đầu, sóng chạy tới biên sẽ phản xạ qua lại liên tục. Lúc này **Phương pháp Tách biến** cho bức tranh trong sáng hơn hẳn d'Alembert: thay vì theo dõi vô số lần phản xạ, ta phân rã dao động thành chồng chất các **mode sóng đứng (normal modes)** $\sin(n\pi x/L)$ dao động điều hòa với hai bộ hệ số Fourier $A_n$ (từ vị trí đầu $f(x)$) và $B_n$ (từ vận tốc đầu $g(x)$)!
+
+## Bản đồ kiến thức nền: Bốn bước Tách biến cho Phương trình Sóng hữu hạn
+
+1. **Nghiệm tổng quát trên $[0, L]$ với biên cố định $u(0, t) = u(L, t) = 0$**:
+   $$u(x, t) = \sum_{n=1}^{\infty}\left[A_n\cos\!\left(\frac{n\pi c t}{L}\right) + B_n\sin\!\left(\frac{n\pi c t}{L}\right)\right]\sin\!\left(\frac{n\pi x}{L}\right).$$
+2. **Hai công thức hệ số Fourier**:
+   $$A_n = \frac{2}{L}\int_0^L f(x)\sin\!\left(\frac{n\pi x}{L}\right)dx, \qquad B_n = \frac{2}{n\pi c}\int_0^L g(x)\sin\!\left(\frac{n\pi x}{L}\right)dx.$$
+   *(Đừng bao giờ quên hệ số chia $n\pi c$ khi tính $B_n$ do lấy đạo hàm $\frac{d}{dt}\sin(\frac{n\pi c t}{L})$!)*
+3. **Tính tuần hoàn hoàn hảo với chu kỳ $T = \frac{2L}{c}$**:
+   Mọi mode $\cos(n\pi c t/L)$ và $\sin(n\pi c t/L)$ đều lặp lại sau đúng $T = 2L/c$ (thời gian sóng đi hết chiều dài $L$ rồi phản xạ quay về!).
+4. **Dây có hai đầu tự do (Neumann $u_x(0,t)=u_x(L,t)=0$)**:
+   Chuyển sang cơ sở $\cos(n\pi x/L)$ và nhớ thêm mode $\lambda_0 = 0$: $T_0(t) = A_0 + B_0 t$ (dịch chuyển tịnh tiến tự do của cả sợi dây!).
 
 ## Mục tiêu
 
@@ -24,6 +39,19 @@ Sinh viên cần nắm bài toán trị riêng Sturm-Liouville, khai triển chu
 Trên toàn trục thực, nghiệm d'Alembert mô tả các sóng chạy tự do. Tuy nhiên, trên một đoạn hữu hạn có hai đầu cố định, sóng không thể truyền mãi mà liên tục phản xạ qua lại giữa hai biên. Sự giao thoa đó chọn lọc ra các dạng dao động đặc trưng tương thích với điều kiện biên: chúng không dịch chuyển tịnh tiến như sóng chạy đơn lẻ mà dao động tại chỗ, gọi là sóng dừng.
 
 Như vậy, hình học miền và điều kiện biên chuyển bài toán truyền sóng thành một bài toán phổ. Âm thanh phát ra từ một sợi dây đàn chính là sự chồng chất của các mode sóng dừng này.
+
+### Khung giải thích (nên đọc chậm): Giải cầm tay bài toán dây đàn bị búa piano gõ (có vận tốc đầu $g(x)$, vị trí đầu $f(x) \equiv 0$)
+
+Cho $u_{tt} = 9 u_{xx}$ ($c = 3$) trên $[0, \pi]$ với $u(0, t) = u(\pi, t) = 0$, $u(x, 0) = 0$ và vận tốc đầu $u_t(x, 0) = 6\sin x + 12\sin(2x)$.
+1. Vì $f(x) \equiv 0 \implies$ mọi **$A_n = 0$**.
+2. Tần số góc từng mode: $\omega_n = \frac{n\pi c}{L} = \frac{n\pi \cdot 3}{\pi} = 3n$.
+3. Khớp đạo hàm thời gian tại $t = 0$: $u_t(x, 0) = \sum_{n=1}^{\infty} (3n B_n)\sin(nx) = 6\sin x + 12\sin(2x)$:
+   - $n = 1$: $3(1) B_1 = 6 \implies B_1 = \mathbf{2}$.
+   - $n = 2$: $3(2) B_2 = 12 \implies B_2 = \mathbf{2}$.
+   - Mọi $B_n$ ($n \ge 3$) bằng $0$.
+4. **Nghiệm chính xác**:
+   $$u(x, t) = 2\sin(3t)\sin x + 2\sin(6t)\sin(2x).$$
+   Kiểm tra lại $u_t(x, 0)$: $2(3)\cos(0)\sin x + 2(6)\cos(0)\sin(2x) = 6\sin x + 12\sin(2x)$ — khớp 100%!
 
 ## Khái niệm theo ba cách
 

@@ -10,6 +10,40 @@ categories:
 lesson_type: optional
 ---
 
+Standard convolutional neural networks (CNNs) only see a tiny local stencil of neighboring grid cells, and if you change the mesh resolution you have to retrain them from scratch. In 2021, Li et al. asked a brilliantly classical question: what if a neural network layer applied its linear transformation in *Fourier space* instead of pixel space? By pairing the Fast Fourier Transform (FFT) with learnable complex weights on the lowest $$ k_{\max} $$ Fourier modes, **Fourier Neural Operators (FNOs)** achieved global receptive fields, mesh-invariant PDE evaluation, and 1000× speedups on Navier–Stokes and Darcy-flow benchmarks.
+
+Every single block inside an FNO is Chapter 08 in action: FFT into frequency space, truncate to low modes, multiply by a learned spectral filter $$ R_\phi(k) $$, and inverse-FFT back to physical space!
+
+## Background Knowledge Map: Fourier Neural Operators (FNO) Through Classical Analysis
+
+1. **Global Convolution Theorem in Neural Layers:** A nonlocal integral kernel $$ (\mathcal{K} v)(x) = \int \kappa(x - y) v(y)\,dy $$ costs $$ O(N^2) $$ in physical space, but by the Fourier Convolution Theorem it collapses to pointwise multiplication $$ \mathcal{F}^{-1}\bigl(R_\phi \cdot \mathcal{F}(v)\bigr) $$ costing only $$ O(N \log N) $$ via FFT.
+2. **Spectral Mode Truncation (Resolution Invariance):** Because FNO only parameterizes the lowest $$ k_{\max} $$ Fourier modes (independent of grid size $$ N $$), a network trained on a coarse $$ 64 \times 64 $$ grid can be evaluated zero-shot on a $$ 256 \times 256 $$ grid without changing a single weight!
+3. **Local Residual Bypass $$ W v(x) $$ (Handling Non-Periodic Boundaries & High Frequencies):** Pure low-mode Fourier layers assume periodicity and smooth away sharp edges; adding a pointwise linear skip connection $$ \sigma\bigl(W v(x) + \mathcal{F}^{-1}(R_\phi \cdot \mathcal{F}(v))(x)\bigr) $$ recovers non-periodic trends and high-frequency nonlinearities.
+4. **Aliasing & Padding Discipline:** Nonlinear activations $$ \sigma(\cdot) $$ generate higher harmonics beyond $$ k_{\max} $$ that can fold back onto low frequencies on coarse grids (aliasing); zero-padding and spectral filtering control this error directly.
+
+### Step-by-Step Worked Example (Read Slowly): Hand-Tracing One 1D Spectral FNO Layer on a 4-Point Grid
+
+**Problem:** Given a 1D periodic signal $$ v = [2, 0, -2, 0] $$ on $$ N = 4 $$ grid points, pass it through one scalar FNO spectral layer with mode cutoff $$ k_{\max} = 1 $$, learned spectral weights $$ R(0) = 0.5 $$, $$ R(1) = 2i $$, and skip weight $$ W = 1 $$, using the unnormalized DFT $$ \hat{v}_k = \sum_{j=0}^3 v_j e^{-i 2\pi j k / 4} $$ and inverse $$ \frac{1}{4}\sum_{k=0}^3 \hat{w}_k e^{+i 2\pi j k / 4} $$.
+
+1. **Compute the 4-point DFT $$ \hat{v}_k $$ (using $$ e^{-i\pi/2} = -i $$):**
+   - $$ k = 0 $$: $$ \hat{v}_0 = 2 + 0 - 2 + 0 = 0 $$.
+   - $$ k = 1 $$: $$ \hat{v}_1 = 2(1) + 0(-i) - 2(-1) + 0(i) = 4 $$.
+   - $$ k = 2 $$: $$ \hat{v}_2 = 2(1) + 0(-1) - 2(1) + 0(-1) = 0 $$.
+   - $$ k = 3 $$ (conjugate of $$ k = 1 $$): $$ \hat{v}_3 = 2(1) + 0(i) - 2(-1) + 0(-i) = 4 $$.
+2. **Apply the learned Hermitian spectral filter $$ R(k) $$ (with $$ R(3) = \overline{R(1)} = -2i $$ for real output, and $$ R(2) = 0 $$ by cutoff):**
+   - $$ \hat{w}_0 = 0.5 \cdot 0 = 0 $$.
+   - $$ \hat{w}_1 = (2i)(4) = 8i $$.
+   - $$ \hat{w}_2 = 0 \cdot 0 = 0 $$.
+   - $$ \hat{w}_3 = (-2i)(4) = -8i $$.
+3. **Compute the Inverse DFT $$ w_j = \frac{1}{4}\sum_{k=0}^3 \hat{w}_k e^{i \pi j k / 2} $$:**
+   - $$ j = 0 $$: $$ \frac{1}{4}(8i - 8i) = 0 $$.
+   - $$ j = 1 $$: $$ \frac{1}{4}(8i(i) - 8i(-i)) = \frac{1}{4}(-8 - 8) = -4 $$.
+   - $$ j = 2 $$: $$ \frac{1}{4}(8i(-1) - 8i(-1)) = 0 $$.
+   - $$ j = 3 $$: $$ \frac{1}{4}(8i(-i) - 8i(i)) = \frac{1}{4}(8 + 8) = +4 $$.
+   Look what happened: multiplying by $$ R(1) = 2i $$ in Fourier space transformed $$ 2\cos(\pi j/2) $$ into $$ -4\sin(\pi j/2) $$—literally learning a scaled spatial derivative $$ 2\frac{d}{dx} $$ globally in one multiplication!
+4. **Add the local residual skip $$ W v + w $$ (pre-activation):**
+   $$ y = [2, 0, -2, 0] + [0, -4, 0, 4] = [2, -4, -2, 4]. $$
+
 ## Objectives
 
 This optional lesson takes Fourier series, Parseval’s identity, and the passage from series to transforms and places them under the Fourier neural operator and its 2022–2024 descendants. Students should be able to read an FNO layer as a learned Fourier multiplier, explain discretization invariance in the language of this chapter, and see aliasing as the same phenomenon that already appears in truncated trigonometric expansions. The convergence theory of Fourier series is not rewritten.

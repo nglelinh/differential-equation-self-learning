@@ -10,6 +10,19 @@ categories:
 lesson_type: required
 ---
 
+Nếu hàm Bessel thống trị hình học trụ, thì **Phương trình Legendre** $(1 - x^2)y'' - 2x y' + \ell(\ell + 1) y = 0$ thống trị mọi bài toán có **đối xứng cầu**—từ trường hấp dẫn Trái Đất, bức xạ phông vi sóng vũ trụ (CMB) cho đến các vân đạo nguyên tử $s, p, d, f$ trong cơ học lượng tử!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Đa thức Legendre $P_n(x)$
+
+1. **Cắt cụt chuỗi thành Đa thức khi $\ell = n \in \mathbb{N}$**:
+   Điểm $x = 0$ là điểm thường, nhưng $x = \pm 1$ là điểm kỳ dị chính quy! Để nghiệm **hữu hạn tại hai cực $x = \pm 1$** ($\cos\theta = \pm 1$), chuỗi vô hạn buộc phải cắt cụt—điều này xảy ra **khi và chỉ khi** hằng số $\lambda = n(n + 1)$ với $n = 0, 1, 2, \dots$, tạo ra **Đa thức Legendre $P_n(x)$**!
+2. **Công thức Rodrigues & Hệ thức truy hồi Bonnet**:
+   $P_n(x) = \frac{1}{2^n n!}\frac{d^n}{dx^n}(x^2 - 1)^n$ và $(n+1)P_{n+1}(x) = (2n+1)x P_n(x) - n P_{n-1}(x)$.
+3. **Tính trực giao trên $[-1, 1]$**:
+   $\int_{-1}^{1} P_m(x) P_n(x)\,dx = \frac{2}{2n + 1}\delta_{mn}$, cho phép khai triển mọi hàm trơn $f(x)$ thành chuỗi Fourier–Legendre $\sum c_n P_n(x)$.
+4. **Tính chẵn/lẻ & Chuẩn hóa**:
+   $P_n(-x) = (-1)^n P_n(x)$ và luôn chuẩn hóa sao cho $P_n(1) = 1$.
+
 ## Mục tiêu
 
 Bài học này trình bày phương trình Legendre và đa thức Legendre như họ hàm riêng tự nhiên của các bài toán có đối xứng cầu. Sau bài học, sinh viên cần nhận dạng được phương trình Legendre, hiểu vì sao khi tham số là số nguyên không âm thì xuất hiện nghiệm đa thức, nắm được vai trò của tính trực giao và thấy rõ mối liên hệ giữa đa thức Legendre với phương pháp tách biến trong tọa độ cầu.
@@ -25,6 +38,16 @@ Sinh viên nên nắm ý tưởng trị riêng, tính trực giao cơ bản và 
 Nếu hàm Bessel xuất hiện trong các bài toán có đối xứng trụ, thì đa thức Legendre xuất hiện khi bài toán có đối xứng cầu. Trong bài toán thế hấp dẫn, điện thế tĩnh, trường ngoài một vật thể đối xứng trục cùng nhiều bài toán vật lý toán cổ điển khác, thành phần phụ thuộc góc dẫn trực tiếp đến phương trình Legendre, biến các đa thức Legendre thành họ chế độ góc (angular modes) tự nhiên.
 
 Từ một phương trình vi phân cấp hai, ta thu được một họ đa thức có đầy đủ cấu trúc trực giao trên đoạn $$ [-1,1] $$ — nơi giải tích vi phân, đại số trực giao và hình học vật lý kết nối chặt chẽ với nhau.
+
+### Khung giải thích (nên đọc chậm): Tính tay $P_3(x)$ bằng hệ thức Bonnet và kiểm chứng trực giao $\int_{-1}^1 P_2(x) P_3(x)\,dx = 0$
+
+Biết $P_0(x) = 1$, $P_1(x) = x$, $P_2(x) = \frac{1}{2}(3x^2 - 1)$.
+1. **Dùng hệ thức Bonnet với $n = 2$**:
+   $$3 P_3(x) = 5x P_2(x) - 2 P_1(x) = 5x \cdot \frac{3x^2 - 1}{2} - 2x = \frac{15x^3 - 5x - 4x}{2} = \frac{15x^3 - 9x}{2}$$
+   $$\implies P_3(x) = \mathbf{\frac{5x^3 - 3x}{2}}.$$
+2. **Kiểm tra chuẩn hóa**: $P_3(1) = \frac{5 - 3}{2} = 1$ (đúng!).
+3. **Kiểm chứng trực giao**: $P_2(x)$ là hàm chẵn, $P_3(x)$ là hàm lẻ → tích $P_2(x) P_3(x)$ là hàm **lẻ** trên đoạn đối xứng $[-1, 1]$, nên $\int_{-1}^{1} P_2(x) P_3(x)\,dx = \mathbf{0}$ ngay lập tức!
+4. **Tính chuẩn bình phương của $P_2$**: $\int_{-1}^{1} \left(\frac{3x^2 - 1}{2}\right)^2 dx = \frac{1}{4}\int_{-1}^{1}(9x^4 - 6x^2 + 1)\,dx = \frac{1}{4}\left(\frac{18}{5} - 4 + 2\right) = \mathbf{\frac{2}{5}} = \frac{2}{2(2)+1}$ (khớp công thức!).
 
 ## Khái niệm theo ba cách
 

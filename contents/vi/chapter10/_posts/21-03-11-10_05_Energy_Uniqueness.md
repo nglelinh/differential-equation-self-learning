@@ -9,7 +9,24 @@ categories:
 - chapter10
 lesson_type: required
 ---
+
 ![21 03 11 10 05 Energy Uniqueness]({{ site.imgurl }}/chapter_img/chapter10/05_energy_uniqueness.svg)
+
+Với phương trình nhiệt (Chương 9), ta chứng minh tính duy nhất nghiệm bằng Nguyên lý Cực đại. Nhưng phương trình sóng **không** thỏa Nguyên lý Cực đại (hai sóng nhỏ gặp nhau có thể cộng hưởng tạo đỉnh cao gấp đôi!). Thay vào đó, vũ khí sắc bén nhất cho phương trình sóng là **Phương pháp Năng lượng (Energy Method)**: chứng minh tổng động năng + thế năng không đổi (hoặc không tăng) theo thời gian!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Năng lượng cho Phương trình Sóng
+
+1. **Hàm Năng lượng của Sóng 1D**:
+   $$E(t) = \frac{1}{2}\int_0^L \big(u_t^2 + c^2 u_x^2\big)\,dx \ge 0$$
+   gồm động năng ($\frac{1}{2}\int u_t^2\,dx$) và thế năng đàn hồi ($\frac{1}{2}\int c^2 u_x^2\,dx$).
+2. **Định luật Bảo toàn Năng lượng ($E'(t) = 0$)**:
+   Lấy đạo hàm theo $t$, tích phân từng phần và thay $u_{tt} = c^2 u_{xx}$ cho:
+   $$E'(t) = \big[c^2 u_t u_x\big]_0^L.$$
+   Với biên cố định ($u_t = 0$) hoặc biên tự do ($u_x = 0$), vế biên triệt tiêu $\implies E'(t) = 0 \implies E(t) = E(0)$ không đổi mãi mãi!
+3. **Chứng minh Tính Duy nhất Nghiệm trong 4 dòng**:
+   Xét hiệu hai nghiệm $w = u_1 - u_2$: $w(x, 0) = 0,\; w_t(x, 0) = 0 \implies E_w(0) = 0 \implies E_w(t) = 0 \implies w_t \equiv 0, w_x \equiv 0 \implies w \equiv 0$!
+4. **Sóng có ma sát ($u_{tt} + \gamma u_t = c^2 u_{xx}$, $\gamma > 0$)**:
+   Khi có lực cản, $E'(t) = -\gamma \int_0^L u_t^2\,dx \le 0$ — năng lượng giảm dần (tiêu tán), tính duy nhất vẫn giữ nguyên hoàn toàn!
 
 ## Mục tiêu
 
@@ -24,6 +41,17 @@ Sinh viên cần nắm phương trình sóng, kỹ thuật tích phân từng ph
 Ở các bài trước, ta đã khảo sát cách sóng truyền đi và dao động. Tuy nhiên, làm thế nào để chắc chắn rằng nghiệm không tăng vọt bất thường, không mất ổn định và ứng với cùng một bộ dữ liệu ban đầu chỉ tồn tại duy nhất một nghiệm? Câu trả lời nằm ở phương pháp năng lượng.
 
 Khác với phương trình nhiệt vốn làm tiêu tán năng lượng theo thời gian, phương trình sóng thuần nhất chuyển hóa qua lại giữa động năng và thế năng đàn hồi mà không làm thất thoát tổng năng lượng. Chính định luật bảo toàn này mang lại phép chứng minh tính duy nhất ngắn gọn và chặt chẽ.
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng trực tiếp bảo toàn năng lượng $E(t) = \text{hằng số}$ trên 1 sóng đứng $u(x, t) = A\cos(\omega t)\sin(kx)$
+
+Với $L = \pi$, $k = 1$, $\omega = c$ (tức $u(x, t) = A\cos(ct)\sin x$):
+1. Tính các đạo hàm: $u_t = -Ac\sin(ct)\sin x$, $u_x = A\cos(ct)\cos x$.
+2. Tính động năng $K(t)$ và thế năng $U(t)$ (nhớ $\int_0^\pi \sin^2 x\,dx = \int_0^\pi \cos^2 x\,dx = \frac{\pi}{2}$):
+   $$K(t) = \frac{1}{2}\int_0^\pi A^2 c^2 \sin^2(ct)\sin^2 x\,dx = \frac{\pi}{4} A^2 c^2 \sin^2(ct),$$
+   $$U(t) = \frac{1}{2} c^2 \int_0^\pi A^2 \cos^2(ct)\cos^2 x\,dx = \frac{\pi}{4} A^2 c^2 \cos^2(ct).$$
+3. **Cộng tổng năng lượng**:
+   $$E(t) = K(t) + U(t) = \frac{\pi}{4} A^2 c^2 \big(\sin^2(ct) + \cos^2(ct)\big) = \mathbf{\frac{\pi}{4} A^2 c^2} \quad (\text{hằng số tuyệt đối!}).$$
+   Động năng và thế năng liên tục chuyển hóa qua lại cho nhau như con lắc, nhưng tổng năng lượng không hao hụt một giọt nào!
 
 ## Khái niệm theo ba cách
 

@@ -10,6 +10,22 @@ categories:
 lesson_type: required
 ---
 
+
+Muốn giải hệ tuyến tính hệ số hằng $\mathbf{x}' = A\mathbf{x}$, hãy thử đoán nghiệm có dạng $\mathbf{x}(t) = e^{\lambda t}\mathbf{v}$ (mọi thành phần cùng lớn lên hay co lại theo một nhịp mũ $e^{\lambda t}$ dọc theo hướng cố định $\mathbf{v}$). Khi thay vào hệ, đạo hàm biến mất và ta rơi thẳng vào phương trình đẹp nhất đại số tuyến tính: **$A\mathbf{v} = \lambda\mathbf{v}$**! Mỗi cặp trị riêng–vectơ riêng thực phân biệt trao ngay cho ta một nghiệm đường thẳng độc lập.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Trị riêng Thực Phân biệt
+
+1. **Từ hệ PTVP sang bài toán Trị riêng ($A\mathbf{v} = \lambda\mathbf{v}$)**:
+   Giải phương trình đặc trưng $\det(A - \lambda I) = 0$ để tìm $n$ trị riêng thực phân biệt $\lambda_1, \dots, \lambda_n$; với mỗi $\lambda_k$, giải hệ thuần nhất $(A - \lambda_k I)\mathbf{v}_k = \mathbf{0}$ tìm vectơ riêng khác $\mathbf{0}$.
+2. **Độc lập tuyến tính tự động**:
+   Các vectơ riêng ứng với các trị riêng phân biệt **luôn độc lập tuyến tính**, nên $\mathbf{x}(t) = c_1 e^{\lambda_1 t}\mathbf{v}_1 + \dots + c_n e^{\lambda_n t}\mathbf{v}_n$ chắc chắn là nghiệm tổng quát!
+3. **Chế độ trội (Dominant Mode) khi $t \to +\infty$**:
+   Khi $t$ lớn, số hạng ứng với trị riêng lớn nhất $\lambda_{\max}$ áp đảo các số hạng còn lại—nên hầu hết quỹ đạo tiến tiệm cận song song với hướng $\mathbf{v}_{\max}$ (hoặc chạm gốc dọc theo hướng của trị riêng âm gần $0$ nhất!).
+4. **Ba dáng hình học 2D theo dấu $(\lambda_1, \lambda_2)$**:
+   - $\lambda_1 < \lambda_2 < 0$: **Nút hút** (mọi quỹ đạo về $\mathbf{0}$).
+   - $\lambda_1 > \lambda_2 > 0$: **Nút đẩy** (mọi quỹ đạo ra $\infty$).
+   - $\lambda_1 < 0 < \lambda_2$: **Điểm yên ngựa** (hút dọc $\mathbf{v}_1$, đẩy dọc $\mathbf{v}_2$).
+
 ## Mục tiêu
 
 Bài học này hướng dẫn cách dùng trị riêng và vector riêng để giải hệ tuyến tính khi ma trận có các trị riêng thực phân biệt, hiểu ý nghĩa của từng thành phần nghiệm riêng như một phương động học bất biến, và nhận diện hành vi hút, đẩy hay yên ngựa từ dấu của các trị riêng.
@@ -25,6 +41,18 @@ Sinh viên cần nắm phương trình đặc trưng của ODE hệ số hằng,
 Với hệ tuyến tính $$ \mathbf{x}'=A\mathbf{x} $$, một câu hỏi tự nhiên là: tồn tại những phương nào mà khi hệ xuất phát dọc theo đó, quỹ đạo không bị bẻ lệch sang phương khác? Câu trả lời chính là các vector riêng của $$ A $$. Dọc theo những phương bất biến này, động lực học trở nên đơn giản nhất: trạng thái chỉ co lại hoặc giãn ra theo một hàm mũ.
 
 Khi ma trận có đủ các trị riêng thực phân biệt, toàn bộ hệ tách thành các thành phần nghiệm độc lập rõ ràng. Mỗi thành phần có tốc độ tiến hóa riêng, và nghiệm tổng quát là tổ hợp tuyến tính của chúng. Qua đó, trị riêng và vector riêng trở thành công cụ trực tiếp để đọc hành vi động học của hệ.
+
+### Khung giải thích (nên đọc chậm): Giải trọn vẹn IVP $\mathbf{x}' = \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}\mathbf{x},\; \mathbf{x}(0) = \begin{pmatrix} 5 \\ -1 \end{pmatrix}$
+
+1. **Tìm trị riêng**:
+   $\det(A - \lambda I) = (1 - \lambda)^2 - 4 = \lambda^2 - 2\lambda - 3 = (\lambda - 3)(\lambda + 1) = 0 \implies \lambda_1 = \mathbf{3},\; \lambda_2 = \mathbf{-1}$ (dấu trái ngược $\implies$ điểm yên ngựa!).
+2. **Tìm vectơ riêng**:
+   - $\lambda_1 = 3$: $\begin{pmatrix} -2 & 2 \\ 2 & -2 \end{pmatrix}\mathbf{v}_1 = \mathbf{0} \implies \mathbf{v}_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$.
+   - $\lambda_2 = -1$: $\begin{pmatrix} 2 & 2 \\ 2 & 2 \end{pmatrix}\mathbf{v}_2 = \mathbf{0} \implies \mathbf{v}_2 = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$.
+3. **Nghiệm tổng quát**: $\mathbf{x}(t) = c_1 e^{3t}\begin{pmatrix} 1 \\ 1 \end{pmatrix} + c_2 e^{-t}\begin{pmatrix} 1 \\ -1 \end{pmatrix}$.
+4. **Ghim điều kiện đầu $\mathbf{x}(0) = (5, -1)^\top$**:
+   $c_1 + c_2 = 5$ và $c_1 - c_2 = -1 \implies c_1 = \mathbf{2},\; c_2 = \mathbf{3}$.
+   Vậy $\mathbf{x}(t) = \mathbf{2e^{3t}\begin{pmatrix} 1 \\ 1 \end{pmatrix} + 3e^{-t}\begin{pmatrix} 1 \\ -1 \end{pmatrix}}$ (khi $t \to \infty$, $3e^{-t} \to 0$ và quỹ đạo lao ra vô cùng dọc đường $x_2 = x_1$!).
 
 ## Khái niệm theo ba cách
 

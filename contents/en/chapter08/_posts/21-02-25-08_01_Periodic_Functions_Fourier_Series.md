@@ -10,6 +10,33 @@ categories:
 lesson_type: required
 ---
 
+In December 1807, Joseph Fourier stood before the Institut de France and made a claim so outrageous that Lagrange publicly refused to believe it: *any* periodic function—even a jagged sawtooth or a discontinuous square wave with vertical cliffs—can be built entirely by adding together infinitely smooth sines and cosines. How could infinitely differentiable waves possibly add up to a sharp corner?
+
+That single audacious idea revolutionized mathematics, forced nineteenth-century analysts to invent the modern definition of a function and the Riemann/Lebesgue integrals, and today powers everything from MP3 audio compression and MRI scanners to PDE solvers.
+
+## Background Knowledge Map: Periodic Geometry and Trigonometric Series
+
+1. **Periodicity and Fundamental Period $$ T = 2L $$:** A function satisfies $$ f(x + T) = f(x) $$ for all $$ x $$. Any integer multiple of $$ T $$ is also a period, and integrating a $$ T $$-periodic function over *any* interval of length $$ T $$ (such as $$ [-L, L] $$ or $$ [0, 2L] $$) yields the exact same value—a translation symmetry we exploit constantly.
+2. **Harmonic Basis $$ \{1, \cos(n\pi x/L), \sin(n\pi x/L)\} $$:** Each integer $$ n \ge 1 $$ adds a wave that completes exactly $$ n $$ full cycles on $$ [-L, L] $$. Because every term shares the period $$ 2L $$, any convergent linear combination automatically inherits periodicity $$ 2L $$.
+3. **Orthogonality in $$ L^2([-L, L]) $$ (The Engine of Decomposition):** On $$ [-L, L] $$, distinct basis functions have zero inner product: $$ \int_{-L}^L \cos\!\left(\frac{m\pi x}{L}\right)\cos\!\left(\frac{n\pi x}{L}\right) dx = L\delta_{mn} $$, $$ \int_{-L}^L \sin\!\left(\frac{m\pi x}{L}\right)\sin\!\left(\frac{n\pi x}{L}\right) dx = L\delta_{mn} $$, and every cosine is orthogonal to every sine.
+4. **DC Offset $$ \frac{a_0}{2} $$ (Average Value):** The constant term $$ \frac{a_0}{2} = \frac{1}{2L}\int_{-L}^L f(x)\,dx $$ captures the vertical mean of the signal, while the oscillating modes sculpt all deviations around that mean.
+
+### Step-by-Step Worked Example (Read Slowly): Verifying Orthogonality and Finding the Fundamental Period of a Composite Signal
+
+**Problem:** (a) Find the fundamental period $$ T $$ of $$ f(x) = 3\cos(2x) - 5\sin(3x) $$. (b) Explicitly verify the orthogonality integral $$ \int_{-\pi}^{\pi} \cos(2x)\cos(3x)\,dx = 0 $$ and compute the squared norm $$ \int_{-\pi}^{\pi} \sin^2(3x)\,dx $$.
+
+1. **Find the fundamental period of $$ f(x) $$:**
+   - $$ \cos(2x) $$ has fundamental period $$ T_1 = \frac{2\pi}{2} = \pi $$.
+   - $$ \sin(3x) $$ has fundamental period $$ T_2 = \frac{2\pi}{3} $$.
+   We need the smallest positive $$ T $$ that is an integer multiple of both $$ \pi $$ and $$ \frac{2\pi}{3} $$. Testing multiples of $$ \pi $$: $$ T = \pi = \frac{3}{2} T_2 $$ (not an integer multiple of $$ T_2 $$); $$ T = 2\pi = 2 T_1 = 3 T_2 $$. Thus the fundamental period is $$ T = 2\pi $$ (so $$ L = \pi $$).
+2. **Verify $$ \int_{-\pi}^{\pi} \cos(2x)\cos(3x)\,dx = 0 $$ via product-to-sum:**
+   Use $$ \cos A \cos B = \frac{1}{2}\bigl[\cos(A - B) + \cos(A + B)\bigr] $$:
+   $$ \int_{-\pi}^{\pi} \cos(2x)\cos(3x)\,dx = \frac{1}{2}\int_{-\pi}^{\pi} \bigl[\cos(x) + \cos(5x)\bigr]\,dx = \frac{1}{2}\left[\sin x + \frac{\sin(5x)}{5}\right]_{-\pi}^{\pi} = 0. $$
+3. **Compute the squared norm of $$ \sin(3x) $$:**
+   Use $$ \sin^2\theta = \frac{1 - \cos(2\theta)}{2} $$:
+   $$ \int_{-\pi}^{\pi} \sin^2(3x)\,dx = \frac{1}{2}\int_{-\pi}^{\pi} \bigl[1 - \cos(6x)\bigr]\,dx = \frac{1}{2}\left[x - \frac{\sin(6x)}{6}\right]_{-\pi}^{\pi} = \frac{1}{2}(2\pi) = \pi. $$
+   Notice this equals $$ L = \pi $$, independent of the harmonic index $$ n = 3 $$—that uniform normalization is what makes the Euler–Fourier formulas so clean!
+
 ## Learning Objectives
 
 This lesson introduces Fourier series as the central method for representing periodic functions by trigonometric modes. Students should understand why periodic structure naturally leads to sine and cosine bases, how orthogonality makes the expansion possible, and why Fourier series become one of the main analytic tools for PDEs.

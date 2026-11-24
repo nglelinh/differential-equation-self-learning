@@ -9,6 +9,36 @@ categories:
 - chapter03
 lesson_type: required
 ---
+
+You might hope that the Laplace transform of a product $$f(t)g(t)$$ equals $$F(s)G(s)$$—it does not! Instead, multiplication in the $$s$$-domain corresponds to **convolution** in time, $$(f * g)(t) = \int_0^t f(t - \tau)g(\tau)\,d\tau$$. Far from being a nuisance, convolution is the physical memory integral of every linear system: it sums up the decaying echoes of every past impulse $$g(\tau)\,d\tau$$ weighted by the system's impulse response $$f(t - \tau)$$.
+
+## Background Knowledge Map: Why Convolution Is the Heart of Linear Systems
+
+Four properties connect the convolution integral to ODEs, integral equations, and signal processing:
+
+1. **The Convolution Theorem:** For piecewise continuous functions of exponential order,
+   $$\mathcal{L}\{f * g\}(s) = F(s)\,G(s) \iff \mathcal{L}^{-1}\{F(s)G(s)\} = \int_0^t f(t - \tau)g(\tau)\,d\tau.$$
+2. **Algebraic Laws (Commutative, Associative, Distributive):** Because $$F(s)G(s) = G(s)F(s)$$, convolution is commutative ($$f * g = g * f$$)—so you can always put the simpler function inside the shifted argument $$(t - \tau)$$! Note also that $$\delta * f = f$$ (the Dirac delta is the identity element, *not* the constant function $$1$$!).
+3. **Universal Zero-State ODE Solution:** Any constant-coefficient IVP $$L[y] = g(t)$$ with zero initial conditions has $$Y(s) = H(s)G(s)$$, so $$y(t) = (h * g)(t) = \int_0^t h(t - \tau)g(\tau)\,d\tau$$ solves the ODE for *any* forcing $$g(t)$$—even non-elementary ones like $$g(t) = e^{-t^2}$$!
+4. **Volterra Integral & Integro-Differential Equations:** Equations containing $$\int_0^t k(t - \tau)y(\tau)\,d\tau$$ collapse instantly into algebraic equations $$K(s)Y(s)$$ under the Laplace transform.
+
+### Step-by-Step Worked Example (Read Slowly): Solving a Volterra Integral Equation via Convolution
+
+Solve the Volterra integral equation
+$$y(t) + \int_0^t (t - \tau)\,y(\tau)\,d\tau = t.$$
+
+1. **Recognize the integral as an exact convolution:**
+   The integral $$\int_0^t (t - \tau)\,y(\tau)\,d\tau$$ is literally $$(t * y)(t)$$, where $$k(t) = t$$ has Laplace transform $$K(s) = \frac{1}{s^2}$$.
+2. **Take the Laplace transform of the entire equation:**
+   $$Y(s) + \frac{1}{s^2}Y(s) = \frac{1}{s^2}.$$
+3. **Solve algebraically for $$Y(s)$$:**
+   $$\left(1 + \frac{1}{s^2}\right)Y(s) = \frac{1}{s^2} \implies \frac{s^2 + 1}{s^2}Y(s) = \frac{1}{s^2} \implies Y(s) = \frac{1}{s^2 + 1}.$$
+4. **Invert to recover $$y(t)$$:**
+   $$y(t) = \mathcal{L}^{-1}\!\left\{\frac{1}{s^2 + 1}\right\} = \sin t.$$
+5. **Hand-verify by substituting $$y(\tau) = \sin\tau$$ directly back into the integral equation:**
+   $$\int_0^t (t - \tau)\sin\tau\,d\tau = \Bigl[-(t - \tau)\cos\tau - \sin\tau\Bigr]_0^t = (0 - \sin t) - (-t - 0) = t - \sin t.$$
+   Adding $$y(t) = \sin t$$ gives $$\sin t + (t - \sin t) = t$$—exact identity for all $$t \ge 0$$!
+
 ## Learning Objectives
 This lesson helps students understand convolution as a way to describe the output of a linear system based on accumulating responses to past inputs, learn to state and use the theorem
 $$ \mathcal{L}\{f*g\}=FG, $$

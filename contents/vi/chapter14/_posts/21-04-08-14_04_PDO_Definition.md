@@ -12,6 +12,19 @@ lesson_type: required
 
 ![Định nghĩa toán tử giả vi phân từ symbol]({{ site.imgurl }}/chapter_img/chapter14/04_pdo_definition.svg )
 
+Đã có lớp ký hiệu $S^m$, bước tiếp theo là biến mỗi hàm $p(x, \xi) \in S^m$ thành một toán tử tuyến tính $P = \operatorname{Op}(p)$ tác động lên hàm số và phân phối—nhưng có một rắc rối kỹ thuật tinh tế: khi bậc $m \ge 0$, tích phân $\int e^{ix\cdot\xi} p(x, \xi)\widehat{u}(\xi)\,d\xi$ và nhân phân phối $K(x, y) = \int e^{i(x-y)\cdot\xi} p(x, \xi)\,d\xi$ không hội tụ tuyệt đối theo nghĩa Lebesgue! Cách vượt qua rắc rối này—**Tích phân Dao động (Oscillatory Integrals)**—chính là trái tim của định nghĩa Toán tử Giả vi phân.
+
+## Bản đồ kiến thức nền: Bốn trụ cột trong Định nghĩa Toán tử Giả vi phân $\Psi^m$
+
+1. **Tác động trên Không gian Schwartz $\mathcal{S}(\mathbb{R}^n)$ và Mở rộng sang $\mathcal{S}'$**:
+   Với $u \in \mathcal{S}(\mathbb{R}^n)$, $\widehat{u}$ tắt siêu nhanh nên $(Pu)(x) = (2\pi)^{-n}\int e^{ix\cdot\xi} p(x, \xi)\widehat{u}(\xi)\,d\xi$ hội tụ tuyệt đối và ánh xạ liên tục $\mathcal{S} \to \mathcal{S}$; bằng phép đối ngẫu, $P$ mở rộng tự nhiên lên phân phối ôn hòa $\mathcal{S}'$!
+2. **Nhân Schwartz $K_P(x, y)$ và Tính Trơn ngoài Đường chéo $x \neq y$**:
+   Viết $(Pu)(x) = \int K_P(x, y) u(y)\,dy$ với $K_P(x, y) = (2\pi)^{-n}\int e^{i(x-y)\cdot\xi} p(x, \xi)\,d\xi$. Khi $x \neq y$, tích phân từng phần bằng toán tử $L = \frac{(x-y)\cdot\nabla_\xi}{i|x-y|^2}$ làm giảm bậc $\xi$ bao nhiêu lần tùy ý $\implies K_P(x, y) \in C^\infty$ tại mọi $x \neq y$!
+3. **Tính Giả-địa phương (Pseudolocality)**:
+   Chính vì nhân $K_P(x, y)$ trơn vô hạn ở mọi nơi $x \neq y$, ta suy ra ngay $\operatorname{sing\,supp}(Pu) \subset \operatorname{sing\,supp}(u)$—một $\Psi$DO không bao giờ lan truyền hay tạo thêm điểm kỳ dị mới!
+4. **Tính bị chặn trên Chuỗi Không gian Sobolev ($\Psi^m: H^s \to H^{s-m}$)**:
+   Định lý Calderón–Vaillancourt khẳng định mọi toán tử bậc $0$ ($P \in \Psi^0$) bị chặn trên $L^2$; tổng quát hơn, mọi $P \in \Psi^m$ ánh xạ liên tục từ $H^s(\mathbb{R}^n)$ sang $H^{s-m}(\mathbb{R}^n)$ với mọi $s \in \mathbb{R}$!
+
 ## Mục tiêu
 
 Bài học này trình bày định nghĩa chính thức của toán tử giả vi phân từ ký hiệu (symbol). Sau bài học, sinh viên cần đọc hiểu công thức lượng tử hóa cơ bản, giải thích vì sao toán tử vi phân là trường hợp riêng, nắm vai trò của không gian Schwartz và thấy rõ cách một ký hiệu tạo ra một toán tử tác động trực tiếp lên hàm số.
@@ -26,6 +39,14 @@ Sau khi có ngôn ngữ ký hiệu, câu hỏi trọng tâm đặt ra là: từ 
 
 Đây là bước chuyển từ mô tả sang cơ chế tác động: ký hiệu không còn chỉ là nhãn đại số mà trực tiếp sinh ra toán tử thông qua phép lượng tử hóa.
 
+
+### Khung giải thích (nên đọc chậm): Tính tay tác động của một $\Psi$DO hệ số biến thiên bậc $-2$ lên sóng phẳng
+
+Xét toán tử giả vi phân $P = \operatorname{Op}(p)$ với ký hiệu $p(x, \xi) = \frac{x}{1 + \xi^2} \in S^{-2}(\mathbb{R})$ (trên miền bị chặn theo $x$). Hãy tính $(Pu)(x)$ cho $u(x) = e^{2ix}$:
+1. **Biến đổi Fourier của $u$**: Trong $\mathcal{S}'(\mathbb{R})$, $\widehat{u}(\xi) = 2\pi\,\delta(\xi - 2)$.
+2. **Thay vào định nghĩa $\operatorname{Op}(p)$**:
+   $$(Pu)(x) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} e^{ix\xi}\frac{x}{1 + \xi^2}\,2\pi\delta(\xi - 2)\,d\xi = \frac{x}{1 + 2^2}e^{2ix} = \mathbf{\frac{x}{5}e^{2ix}}.$$
+3. **Nhận xét quan trọng về thứ tự tác động**: Trong lượng tử hóa trái (Kohn–Nirenberg), $P$ **áp dụng bộ nhân tần số $(1 + D_x^2)^{-1}$ trước** (biến $e^{2ix}$ thành $\frac{1}{5}e^{2ix}$), rồi **mới nhân hàm $x$ ở ngoài cùng**! Nếu đổi ngược thứ tự $(1 + D_x^2)^{-1}(x e^{2ix})$, kết quả sẽ khác hẳn do tính không giao hoán!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

@@ -12,6 +12,21 @@ lesson_type: required
 
 ![Các lớp symbol và kiểm soát tăng trưởng theo tần số]({{ site.imgurl }}/chapter_img/chapter14/03_symbol_classes.svg )
 
+Nếu ta cho phép $p(x, \xi)$ là một hàm tùy ý thì tích phân Fourier $\int e^{ix\xi} p(x, \xi)\widehat{u}(\xi)\,d\xi$ có thể phân kỳ, và hợp thành hai toán tử sẽ mất sạch cấu trúc đại số! Lars Hörmander đã tìm ra đúng "điều kiện tăng trưởng vàng" để mọi phép tính vi tích phân, hợp thành và đánh giá Sobolev chạy mượt như nhung: **lớp ký hiệu $S^m(\mathbb{R}^n \times \mathbb{R}^n)$**—nơi mỗi lần lấy đạo hàm theo $\xi$, bậc tăng trưởng phải **rơi xuống đúng 1 nấc**!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Các lớp Ký hiệu Hörmander $S^m_{\rho,\delta}$
+
+1. **Ước lượng Định nghĩa của Lớp chuẩn $S^m = S^m_{1,0}$**:
+   Hàm trơn $p \in C^\infty(\mathbb{R}^n \times \mathbb{R}^n)$ thuộc $S^m$ nếu với mọi đa chỉ số $\alpha, \beta$:
+   $$\big|\partial_x^\beta \partial_\xi^\alpha p(x, \xi)\big| \le C_{\alpha, \beta} \langle\xi\rangle^{m - |\alpha|}, \qquad \langle\xi\rangle = (1 + |\xi|^2)^{1/2}.$$
+   Đạo hàm theo $x$ **giữ nguyên bậc $m$**, còn mỗi đạo hàm theo $\xi$ **giảm bậc đi $1$** (y hệt như khi lấy đạo hàm một đa thức bậc $m$ theo $\xi$!).
+2. **Thang bậc Phân tầng và Lớp Làm trơn $S^{-\infty}$**:
+   Ta có chuỗi lồng nhau $S^{-\infty} = \bigcap_m S^m \subset \dots \subset S^{-1} \subset S^0 \subset S^1 \subset \dots$. Các ký hiệu thuộc $S^{-\infty}$ tắt nhanh hơn mọi lũy thừa $\langle\xi\rangle^{-N}$—chúng sinh ra các **toán tử làm trơn** biến mọi phân phối thành hàm $C^\infty$!
+3. **Ký hiệu Cổ điển (Classical / Polyhomogeneous Symbols)**:
+   Có khai triển tiệm cận $p(x, \xi) \sim \sum_{j=0}^\infty p_{m-j}(x, \xi)$ với mỗi $p_{m-j}$ thuần nhất bậc $m - j$ theo $\xi$ (khi $|\xi| \ge 1$). Nhờ Định lý Borel, ta luôn cộng lại được thành một ký hiệu thật sự trong $S^m$ sai khác một phần tử $S^{-\infty}$!
+4. **Lớp Tổng quát $S^m_{\rho, \delta}$ ($0 \le \delta \le \rho \le 1$)**:
+   Cho phép đạo hàm theo $\xi$ giảm bậc $\rho$ và đạo hàm theo $x$ tăng bậc $\delta$ (ví dụ bài toán nhiệt cần lớp $S^m_{1/2, 0}$ vì $\tau \sim |\xi|^2$).
+
 ## Mục tiêu
 
 Bài học này giải thích vì sao không phải ký hiệu (symbol) nào cũng đủ tốt để xây dựng một phép tính toán tử ổn định. Sau bài học, sinh viên cần đọc hiểu ký hiệu $$ S^m_{\rho,\delta} $$, nắm rõ ý nghĩa của bậc $$ m $$, vai trò của các tham số $$ \rho,\delta $$, và lý do cần kiểm soát các đạo hàm theo cả $$ x $$ lẫn $$ \xi $$ trong phép tính ký hiệu.
@@ -26,6 +41,17 @@ Một ký hiệu tùy ý có thể biến thiên quá thất thường: tăng tr
 
 Mục tiêu ở đây không phải là học thuộc một bất đẳng thức kỹ thuật, mà là hiểu rằng các lớp ký hiệu tạo nên khuôn khổ ổn định để phép tính giả vi phân vận hành nhất quán.
 
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng bằng tay rằng $p(\xi) = \langle\xi\rangle^{-1} = (1 + \xi^2)^{-1/2}$ thuộc lớp $S^{-1}(\mathbb{R})$
+
+Ta cần kiểm tra ước lượng $|\partial_\xi^k p(\xi)| \le C_k \langle\xi\rangle^{-1 - k}$ cho $k = 0, 1, 2$:
+1. **Với $k = 0$**: $|p(\xi)| = (1 + \xi^2)^{-1/2} = \mathbf{1 \cdot \langle\xi\rangle^{-1}}$ (đúng với $C_0 = 1$).
+2. **Với $k = 1$**:
+   $$\partial_\xi p(\xi) = -\frac{\xi}{(1 + \xi^2)^{3/2}} \implies |\partial_\xi p(\xi)| = \underbrace{\frac{|\xi|}{(1 + \xi^2)^{1/2}}}_{\le 1} \cdot (1 + \xi^2)^{-1} \le \mathbf{1 \cdot \langle\xi\rangle^{-2}}.$$
+   Bậc đã giảm đúng $1$ nấc từ $-1$ xuống $-2$!
+3. **Với $k = 2$**:
+   $$\partial_\xi^2 p(\xi) = \frac{2\xi^2 - 1}{(1 + \xi^2)^{5/2}} \implies |\partial_\xi^2 p(\xi)| \le \frac{2(1 + \xi^2)}{(1 + \xi^2)^{5/2}} = \mathbf{2 \cdot \langle\xi\rangle^{-3}}.$$
+   Ngược lại, thử hàm dao động $e^{i\xi}$: đạo hàm $\partial_\xi(e^{i\xi}) = i e^{i\xi}$ có độ lớn luôn bằng $1$ (không hề giảm bậc!), nên $e^{i\xi} \notin S^0_{1,0}$!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

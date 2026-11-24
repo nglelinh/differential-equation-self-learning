@@ -9,6 +9,20 @@ categories:
 - chapter02
 lesson_type: required
 ---
+
+Mỗi khi bạn xoay núm dò đài radio hoặc khi điện thoại lọc lấy đúng băng tần Wi-Fi giữa hàng trăm tín hiệu nhiễu trong không khí, bên trong thiết bị là một **mạch điện RLC** đang thực hiện phép cộng hưởng tần số! Kỳ diệu hơn nữa, phương trình Kirchhoff của mạch RLC giống hệt từng ký tự với phương trình lò xo–vật nặng—biến mọi trực giác cơ học của bạn thành hiểu biết sâu sắc về kỹ thuật điện tử.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Mạch điện RLC nối tiếp
+
+1. **Định luật điện áp Kirchhoff ($L q'' + R q' + \frac{1}{C} q = E(t)$)**:
+   Tổng độ sụt áp qua cuộn cảm ($L i'$), điện trở ($R i$) và tụ điện ($q/C$) bằng sức điện động nguồn $E(t)$, với dòng điện $i(t) = q'(t)$.
+2. **Từ điển tương đương Cơ – Điện hoàn hảo**:
+   Độ tự cảm $L \leftrightarrow$ khối lượng $m$ (quán tính dòng); điện trở $R \leftrightarrow$ lực cản $c$ (tỏa nhiệt); nghịch đảo điện dung $1/C \leftrightarrow$ độ cứng lò xo $k$ (tích trữ thế năng).
+3. **Trở kháng phức $Z(\omega) = R + i\left(\omega L - \frac{1}{\omega C}\right)$**:
+   Trong chế độ xoay chiều $E(t) = E_0\cos(\omega t)$, biên độ dòng điện xác lập gọn đẹp thành $I_0 = \frac{E_0}{\vert Z(\omega)\vert} = \frac{E_0}{\sqrt{R^2 + (\omega L - 1/(\omega C))^2}}$.
+4. **Cộng hưởng điện & Hệ số phẩm chất $Q$**:
+   Khi cảm kháng triệt tiêu dung kháng ($\omega_0 = \frac{1}{\sqrt{LC}}$), trở kháng đạt cực tiểu $\vert Z\vert = R$, dòng điện đạt đỉnh cực đại $I_{\max} = E_0/R$—chính là cơ chế chọn lọc tần số của bộ lọc thông dải!
+
 ## Mục tiêu
 Bài học này giúp sinh viên thấy cách phương trình cấp hai xuất hiện trong mạch điện RLC nối tiếp, nắm sự tương đồng cấu trúc giữa mạch điện và dao động cơ học, giải các bài toán đáp ứng tự do và cưỡng bức cơ bản, đồng thời diễn giải vai trò của điện trở, điện cảm và điện dung theo ngôn ngữ động học.
 
@@ -21,6 +35,17 @@ Sinh viên cần nắm ODE tuyến tính cấp hai hệ số hằng, bài học 
 Mạch RLC nối tiếp là ví dụ rõ nét về tính thống nhất của toán học ứng dụng: hệ khối lượng - lò xo - giảm chấn trong cơ học và mạch điện cảm - điện trở - tụ điện trong kỹ thuật điện tuy khác bản chất vật lý nhưng có chung một cấu trúc phương trình vi phân cấp hai.
 
 Trong mạch RLC, điện cảm đóng vai trò quán tính, điện trở đóng vai trò tiêu tán năng lượng (lực cản), còn tụ điện tạo cơ chế hồi phục. Nhờ sự tương ứng này, các chế độ quá tắt dần, tắt dần tới hạn, dưới tắt dần và cộng hưởng điện học đều có thể phân tích bằng chính công cụ của dao động cơ học.
+
+### Khung giải thích (nên đọc chậm): Tính tần số cộng hưởng và biên độ dòng xác lập cho mạch RLC ($L = 0{,}5\text{ H},\; R = 10\,\Omega,\; C = 2\times 10^{-3}\text{ F},\; E(t) = 20\cos(\omega t)$)
+
+1. **Tính tần số góc cộng hưởng $\omega_0$**:
+   $$\omega_0 = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{0{,}5 \times 2\times 10^{-3}}} = \frac{1}{\sqrt{10^{-3}}} \approx \mathbf{31{,}62\text{ rad/s}} \quad (f_0 \approx 5{,}03\text{ Hz}).$$
+2. **Tại đúng tần số cộng hưởng $\omega = \omega_0$**:
+   Cảm kháng $\omega_0 L = 15{,}81\,\Omega$ triệt tiêu đúng dung kháng $\frac{1}{\omega_0 C} = 15{,}81\,\Omega$, nên $\vert Z(\omega_0)\vert = R = 10\,\Omega$.
+   Biên độ dòng điện cực đại: $I_0(\omega_0) = \frac{20}{10} = \mathbf{2{,}0\text{ A}}$ (cùng pha với điện áp nguồn).
+3. **Khi lệch tần số sang $\omega = 50\text{ rad/s}$**:
+   - $\omega L - \frac{1}{\omega C} = 25 - \frac{1}{0{,}1} = 15\,\Omega$.
+   - $\vert Z(50)\vert = \sqrt{10^2 + 15^2} = \sqrt{325} \approx 18{,}03\,\Omega \implies I_0(50) = \frac{20}{18{,}03} \approx \mathbf{1{,}11\text{ A}}$ (giảm gần một nửa!).
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan

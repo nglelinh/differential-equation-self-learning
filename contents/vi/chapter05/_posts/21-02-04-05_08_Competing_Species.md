@@ -10,6 +10,19 @@ categories:
 lesson_type: required
 ---
 
+Khi hai loài sinh vật (hoặc hai doanh nghiệp công nghệ trên cùng một thị trường) cùng tranh giành một nguồn tài nguyên hữu hạn, liệu chúng có thể **cùng tồn tại hòa bình** hay một loài sẽ **đẩy loài kia đến tuyệt chủng**? Hệ phương trình cạnh tranh Lotka–Volterra trả lời câu hỏi này bằng một bất đẳng thức cực kỳ rõ nét: **Nguyên lý Loại trừ Cạnh tranh (Gause's Principle)**.
+
+## Bản đồ kiến thức nền: Bốn kịch bản của Hệ Cạnh tranh Hai Loài
+
+1. **Cạnh tranh nội loài vs. Cạnh tranh liên loài**:
+   Trong $\dot{x} = r_1 x\left(1 - \frac{x + a_{12} y}{K_1}\right)$ và $\dot{y} = r_2 y\left(1 - \frac{y + a_{21} x}{K_2}\right)$, $K_1, K_2$ là sức chứa môi trường còn $a_{12}, a_{21}$ đo cường độ loài này kìm hãm loài kia.
+2. **Hình học hai đường thẳng Nullcline**:
+   Hai đoạn thẳng $x + a_{12} y = K_1$ và $a_{21} x + y = K_2$ trong góc phần tư thứ nhất có đúng **4 vị trí tương đối**: không cắt nhau (2 trường hợp một loài thắng tuyệt đối) hoặc cắt nhau tại $E^*$ (ổn định hoặc yên ngựa).
+3. **Điều kiện Cùng tồn tại ổn định (Stable Coexistence)**:
+   Hai loài cùng sống bền vững khi và chỉ khi **cạnh tranh nội loài mạnh hơn cạnh tranh liên loài** ($a_{12} < K_1/K_2$ và $a_{21} < K_2/K_1$).
+4. **Lưỡng ổn định (Bistability — Người đến trước thắng)**:
+   Khi cạnh tranh liên loài quá mạnh ($a_{12} > K_1/K_2$ và $a_{21} > K_2/K_1$), điểm giao $E^*$ là **yên ngựa**, đường phân thủy (*separatrix*) chia mặt phẳng thành hai miền: loài nào có lợi thế ban đầu sẽ loại trừ hoàn toàn loài kia!
+
 ## Mục tiêu
 
 Bài học này giúp sinh viên phân tích mô hình hai loài cạnh tranh tài nguyên, sử dụng đường nullcline để đánh giá khả năng cùng tồn tại hay loại trừ lẫn nhau và hiểu cách các hệ số cạnh tranh quyết định kết cục sinh thái dài hạn.
@@ -25,6 +38,21 @@ Sinh viên cần nắm vững mặt phẳng pha, đường nullcline, điểm c�
 Không phải mọi tương tác sinh thái đều thuộc dạng săn mồi – con mồi. Trong nhiều trường hợp, hai loài không tiêu thụ nhau nhưng cùng khai thác một nguồn tài nguyên hữu hạn. Khi đó, tốc độ tăng trưởng của mỗi loài vừa bị giới hạn bởi mật độ của chính nó, vừa bị kìm hãm bởi sự hiện diện của loài kia. Câu hỏi động lực học đặt ra là: hai loài có thể cùng tồn tại lâu dài hay một loài sẽ chiếm ưu thế và đẩy loài còn lại đến tuyệt chủng?
 
 Mô hình cạnh tranh hai loài cho thấy chỉ với một số ít tham số định lượng, hệ đã có thể dẫn đến nhiều kịch bản sinh thái khác nhau. Qua đó, sinh viên thấy rằng "ổn định sinh thái" không phải khái niệm cảm tính mà là hệ quả trực tiếp của cấu trúc các hệ số tương tác.
+
+### Khung giải thích (nên đọc chậm): Xác định số phận hai loài bằng tay qua giao điểm Nullclines
+
+Xét hệ cạnh tranh cụ thể:
+$$\dot{x} = x(6 - 2x - y), \qquad \dot{y} = y(4 - x - y).$$
+
+1. **Tìm các giao điểm trục của hai Nullclines**:
+   - $x$-nullcline $2x + y = 6$: cắt trục $Ox$ tại $(3, 0)$, cắt trục $Oy$ tại $(0, 6)$.
+   - $y$-nullcline $x + y = 4$: cắt trục $Ox$ tại $(4, 0)$, cắt trục $Oy$ tại $(0, 4)$.
+2. **Tìm điểm cân bằng nội $E^*$**: Giải $2x + y = 6$ và $x + y = 4 \implies x^* = 2,\; y^* = 2$ (nằm trong góc phần tư thứ I!).
+3. **Kiểm tra ổn định tại $E^* = (2, 2)$ bằng Jacobian**:
+   $$J(x, y) = \begin{pmatrix} 6 - 4x - y & -x \\ -y & 4 - x - 2y \end{pmatrix} \implies J(2, 2) = \begin{pmatrix} -4 & -2 \\ -2 & -2 \end{pmatrix}.$$
+   - Vết $\tau = -4 + (-2) = -6 < 0$.
+   - Định thức $\Delta = (-4)(-2) - (-2)(-2) = 8 - 4 = +4 > 0$.
+   - Vì $\tau < 0$ và $\Delta > 0$, $E^* = (2, 2)$ là **Nút hút ổn định**! Dù khởi đầu với bao nhiêu cá thể ($x_0, y_0 > 0$), hai loài đều tiến về **cùng tồn tại ổn định tại $(2, 2)$**!
 
 ## Khái niệm theo ba cách
 

@@ -10,6 +10,21 @@ categories:
 lesson_type: required
 ---
 
+Trong vật lý và kỹ thuật, không phải lúc nào ta cũng biết cả vị trí lẫn vận tốc tại thời điểm đầu ($t = 0$). Khi tính độ võng của một cây cầu bắc qua sông hay nhiệt độ ổn định của thanh kim loại nối giữa hai bể nhiệt, điều kiện được cho ở **hai đầu không gian** $x = a$ và $x = b$. Đó là **Bài toán Giá trị Biên Hai điểm (Two-Point BVP)**—nơi sự tồn tại và duy nhất nghiệm trở nên tinh tế hơn hẳn bài toán giá trị ban đầu!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Bài toán Biên Hai điểm
+
+1. **Ba loại điều kiện biên kinh điển**:
+   - **Dirichlet**: ấn định giá trị hàm $u(a) = A$ (nhiệt độ cố định / đầu dây buộc chặt).
+   - **Neumann**: ấn định đạo hàm $u'(a) = A$ (thông lượng nhiệt / đầu cách nhiệt $u' = 0$).
+   - **Robin (hỗn hợp)**: $\alpha u(a) + \beta u'(a) = A$ (đối lưu nhiệt Newton ra môi trường).
+2. **Sự sụp đổ của Định lý Tồn tại–Duy nhất IVP**:
+   Một BVP tuyến tính có thể có 1 nghiệm duy nhất, vô nghiệm, hoặc vô số nghiệm—được quyết định bởi định thức của ma trận biên $2 \times 2$!
+3. **Chuyển BVP không thuần nhất về biên thuần nhất**:
+   Trừ đi một hàm tuyến tính đơn giản $v(x)$ thỏa điều kiện biên không thuần nhất để đưa bài toán về dạng biên bằng $0$, sẵn sàng cho khai triển hàm riêng.
+4. **Phương pháp Bắn (Shooting Method)**:
+   Ý tưởng số trực quan: đoán độ dốc ban đầu $y'(a) = s$, giải như IVP đến $x = b$, rồi hiệu chỉnh $s$ cho đến khi $y(b; s) = B$.
+
 ## Mục tiêu
 
 Bài học này mở đầu chương về bài toán giá trị biên hai điểm, giúp sinh viên chuyển từ tư duy "tiến hóa theo thời gian từ điều kiện ban đầu" sang tư duy "tìm cấu hình toàn cục thỏa mãn ràng buộc tại hai đầu miền". Sau bài học, sinh viên cần phân biệt rõ bài toán giá trị đầu (IVP) và bài toán giá trị biên (BVP), nhận diện các loại điều kiện biên cơ bản, giải thích vì sao BVP có thể vô nghiệm hoặc có vô số nghiệm và thấy được ý nghĩa vật lý của chúng trong các mô hình cân bằng và dao động.
@@ -25,6 +40,19 @@ Sinh viên nên nắm vững phương trình vi phân tuyến tính cấp hai, b
 Ở các chương trước, ta thường biết trạng thái của hệ tại một thời điểm ban đầu rồi dùng phương trình để xác định diễn biến tiếp theo — đó là bài toán giá trị đầu (IVP). Tuy nhiên, trong nhiều bài toán vật lý, thông tin cho trước lại là ràng buộc tại hai đầu không gian: một dây đàn cố định hai đầu, một thanh kim loại được giữ nhiệt độ tại hai mép hay một dầm đàn hồi được gối ở hai đầu. Những tình huống đó dẫn đến **bài toán giá trị biên** (BVP).
 
 Đặc điểm cốt lõi của BVP là nghiệm mang tính toàn cục: ta không thể giải tuần tự từ đầu trái rồi mặc nhiên khớp đầu phải, mà nghiệm phải thỏa mãn đồng thời phương trình vi phân và các ràng buộc ở cả hai đầu biên. Chính đặc điểm này mở đường sang các khái niệm trị riêng, hàm riêng và hàm Green.
+
+### Khung giải thích (nên đọc chậm): Giải cầm tay chỉ việc bài toán độ võng dầm $y'' = -12x,\; y(0) = 0,\; y(1) = 0$
+
+1. **Tích phân hai lần liên tiếp**:
+   $$y'(x) = -6x^2 + C_1 \implies y(x) = -2x^3 + C_1 x + C_2.$$
+2. **Áp hai điều kiện biên Dirichlet**:
+   - Tại $x = 0$: $y(0) = C_2 = 0$.
+   - Tại $x = 1$: $y(1) = -2(1)^3 + C_1(1) + 0 = 0 \implies \mathbf{C_1 = 2}$.
+3. **Nghiệm duy nhất**: $y(x) = 2x - 2x^3 = 2x(1 - x^2)$.
+4. **Kiểm tra ngược bằng tay**:
+   - $y(0) = 0$, $y(1) = 2(1 - 1) = 0$ (đúng biên!).
+   - $y'(x) = 2 - 6x^2$, $y''(x) = -12x$ (đúng phương trình!).
+   - Độ võng cực đại đạt tại $y'(x) = 0 \implies x = \frac{1}{\sqrt{3}} \approx 0{,}577$, với $y_{\max} = \frac{4}{3\sqrt{3}} \approx 0{,}770$.
 
 ## Khái niệm theo ba cách
 

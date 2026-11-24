@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Bessel và Legendre mới chỉ là hai đỉnh núi đầu tiên trong "hệ sinh thái" các **Hàm Đặc biệt**. Mỗi bài toán kinh điển của vật lý toán và giải tích số lại sinh ra một họ đa thức trực giao riêng gắn với đúng khoảng xác định và hàm trọng số $w(x)$ của nó: **Chebyshev**, **Hermite**, **Laguerre**, cùng **Hàm Gamma $\Gamma(z)$** mở rộng giai thừa ra số thực và số phức!
+
+## Bản đồ kiến thức nền: Bốn họ Hàm Đặc biệt quan trọng nhất ngoài Bessel & Legendre
+
+1. **Đa thức Chebyshev $T_n(x) = \cos(n \arccos x)$** trên $[-1, 1]$ với trọng số $w(x) = (1 - x^2)^{-1/2}$:
+   Giảm thiểu cực đại sai số xấp xỉ đa thức (*minimax property*) — công cụ số 1 trong thư viện tính toán hàm $\sin, \exp$ bên trong CPU và phương pháp phổ!
+2. **Đa thức Hermite $H_n(x)$** trên $(-\infty, +\infty)$ với trọng số $w(x) = e^{-x^2}$:
+   Nghiệm của $y'' - 2xy' + 2ny = 0$, mô tả chính xác các mức năng lượng rời rạc của **dao động tử điều hòa lượng tử**!
+3. **Đa thức Laguerre $L_n(x)$** trên $[0, +\infty)$ với trọng số $w(x) = e^{-x}$:
+   Nghiệm của $xy'' + (1 - x)y' + ny = 0$, xuất hiện trực tiếp trong phần bán kính của **nguyên tử Hydro**!
+4. **Hàm Gamma $\Gamma(z) = \int_0^\infty t^{z-1} e^{-t}\,dt$**:
+   Thỏa $\Gamma(z+1) = z\Gamma(z)$, $\Gamma(n+1) = n!$ và $\Gamma(1/2) = \sqrt{\pi}$—chiếc chìa khóa cho mọi hệ số trong chuỗi Bessel và thống kê!
+
 ## Mục tiêu
 
 Bài học tùy chọn này mở rộng tầm nhìn ra ngoài hai họ Bessel và Legendre. Mục tiêu không phải là ghi nhớ nhiều công thức mà là nhận diện khuôn mẫu chung: mỗi họ hàm đặc biệt gắn với một phương trình vi phân chuẩn, một hàm trọng số trực giao và một bối cảnh vật lý hoặc giải tích cụ thể. Sau bài học, sinh viên có cái nhìn tổng quan về các đa thức Hermite, Laguerre và Chebyshev cùng miền ứng dụng của chúng.
@@ -25,6 +38,15 @@ Sinh viên nên nắm khái niệm hàm đặc biệt như một họ nghiệm c
 Sau khi học Bessel và Legendre, một câu hỏi tự nhiên là còn bao nhiêu họ hàm đặc biệt khác và chúng liên hệ với nhau ra sao. Thực tế có nhiều họ hàm đặc biệt, nhưng chúng không tồn tại rời rạc: mỗi họ là nghiệm tự nhiên của một lớp phương trình vi phân gắn với một cấu trúc đối xứng, điều kiện biên và trọng số trực giao cụ thể.
 
 Các đa thức Hermite, Laguerre và Chebyshev là ba đại diện tiêu biểu mở rộng bức tranh phổ đó sang toàn trục thực, nửa trục dương và bài toán xấp xỉ trên đoạn hữu hạn.
+
+### Khung giải thích (nên đọc chậm): Tính tay $\Gamma(5/2)$ và kiểm chứng tính trực giao của đa thức Hermite $H_0, H_1, H_2$
+
+1. **Tính tay $\Gamma(5/2)$ bằng tính chất đệ quy $\Gamma(z+1) = z\Gamma(z)$**:
+   $$\Gamma\!\left(\frac{5}{2}\right) = \frac{3}{2}\,\Gamma\!\left(\frac{3}{2}\right) = \frac{3}{2}\cdot\frac{1}{2}\,\Gamma\!\left(\frac{1}{2}\right) = \mathbf{\frac{3\sqrt{\pi}}{4}} \approx 1{,}3293.$$
+2. **Kiểm chứng đa thức Hermite $H_0(x) = 1,\; H_1(x) = 2x,\; H_2(x) = 4x^2 - 2$ trực giao theo trọng số $e^{-x^2}$**:
+   Biết $\int_{-\infty}^\infty e^{-x^2}\,dx = \sqrt{\pi}$ và $\int_{-\infty}^\infty x^2 e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}$:
+   $$\int_{-\infty}^{\infty} H_0(x) H_2(x) e^{-x^2}\,dx = \int_{-\infty}^{\infty} (4x^2 - 2) e^{-x^2}\,dx = 4\cdot\frac{\sqrt{\pi}}{2} - 2\sqrt{\pi} = 2\sqrt{\pi} - 2\sqrt{\pi} = \mathbf{0}!$$
+   Hàm sóng lượng tử bậc $n$ chính là $\psi_n(x) \propto H_n(x) e^{-x^2/2}$ nên các trạng thái năng lượng khác nhau tự động trực giao hoàn hảo!
 
 ## Khái niệm theo ba cách
 

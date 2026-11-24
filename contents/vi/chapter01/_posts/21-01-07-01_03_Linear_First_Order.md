@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Đa số phương trình trong kỹ thuật—từ mạch điện RC chịu nguồn xoay chiều đến bể muối đang xả và bơm đồng thời—đều không tách biến được vì có thêm một "lực cưỡng bức" $q(t)$ tác động bên ngoài. May mắn thay, **phương trình tuyến tính cấp một** $y' + p(t)y = q(t)$ sở hữu một chiếc chìa khóa vạn năng mang tên **thừa số tích phân** $\mu(t) = e^{\int p(t)\,dt}$, giúp giải đóng mọi bài toán chỉ bằng hai phép tích phân!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Tuyến tính Cấp Một
+
+1. **Dạng chuẩn tắc $y' + p(t)y = q(t)$**:
+   Luôn chia hai vế cho hệ số của $y'$ để đưa về hệ số $1$ trước khi tính thừa số tích phân—sai lầm phổ biến nhất là quên chuẩn hóa!
+2. **Thừa số tích phân $\mu(t) = \exp\left(\int p(t)\,dt\right)$**:
+   Biến vế trái thành đúng đạo hàm của một tích: $\mu(t)y' + \mu(t)p(t)y = \frac{d}{dt}\big[\mu(t)y\big]$, nhờ đó chỉ cần lấy nguyên hàm một lần.
+3. **Cấu trúc nghiệm $y = y_h + y_p$ (Nguyên lý chồng chất)**:
+   Nghiệm tổng quát luôn tách đôi thành phần **đáp ứng tự do** $y_h = C/\mu(t)$ (phụ thuộc điều kiện đầu) và phần **đáp ứng cưỡng bức** $y_p = \frac{1}{\mu(t)}\int \mu(t)q(t)\,dt$.
+4. **Khoảng tồn tại toàn cục**:
+   Khác với phương trình phi tuyến dễ bùng nổ, nghiệm của PTVP tuyến tính cấp một tồn tại duy nhất trên **toàn bộ khoảng liên tục** của $p(t)$ và $q(t)$ chứa $t_0$.
+
 ## Mục tiêu
 Bài học này giúp sinh viên nhận diện phương trình vi phân tuyến tính cấp một, hiểu bản chất của nhân tử tích phân và giải được các mô hình cơ bản như làm nguội, bể trộn, mạch điện RL hoặc phương trình có hệ số biến thiên theo thời gian. Trọng tâm của bài là hiểu vì sao việc nhân phương trình với một hàm thích hợp lại đưa vế trái về đúng đạo hàm của một tích.
 
@@ -22,6 +36,18 @@ Sinh viên cần nắm vững quy tắc đạo hàm của tích, nguyên hàm c�
 Trong nhiều hệ thực tế, tốc độ biến thiên của đại lượng cần tìm gồm hai phần: một phần tỉ lệ với chính đại lượng đó và một phần do tác động bên ngoài. Nhiệt độ của vật tiến dần về nhiệt độ môi trường; dòng điện trong mạch RL tiến về trạng thái ổn định dưới điện áp nguồn; lượng muối trong bể trộn vừa giảm do dòng chảy ra vừa tăng do dòng chảy vào. Tất cả các mô hình này đều có chung một cấu trúc tuyến tính cấp một.
 
 Thay vì ghi nhớ công thức nhân tử tích phân một cách máy móc, bài học tập trung giải thích ý tưởng cốt lõi: tìm hệ số nhân để gom vế trái thành đạo hàm của một tích, từ đó lấy tích phân trực tiếp để tìm nghiệm.
+
+### Khung giải thích (nên đọc chậm): Giải từng bước $t y' + 2y = 4t^2$ với $y(1) = 2$ ($t > 0$)
+
+1. **Đưa về dạng chuẩn tắc** (chia hai vế cho $t > 0$):
+   $$y' + \frac{2}{t}y = 4t \implies p(t) = \frac{2}{t},\quad q(t) = 4t.$$
+2. **Tính thừa số tích phân**:
+   $$\mu(t) = \exp\left(\int \frac{2}{t}\,dt\right) = e^{2\ln t} = \mathbf{t^2}.$$
+3. **Nhân hai vế với $t^2$ và gộp đạo hàm tích**:
+   $$t^2 y' + 2t y = 4t^3 \implies \frac{d}{dt}(t^2 y) = 4t^3.$$
+4. **Tích phân và ghim điều kiện đầu**:
+   $$t^2 y = \int 4t^3\,dt = t^4 + C \implies y(t) = t^2 + \frac{C}{t^2}.$$
+   Thay $y(1) = 2$: $2 = 1 + C \implies C = 1$. Vậy nghiệm duy nhất trên $(0, +\infty)$ là $y(t) = \mathbf{t^2 + \frac{1}{t^2}}$ (kiểm tra nhanh: $t(2t - 2t^{-3}) + 2(t^2 + t^{-2}) = 4t^2$, chuẩn xác!).
 
 ## Khái niệm theo ba cách
 

@@ -9,7 +9,21 @@ categories:
 - chapter11
 lesson_type: optional
 ---
+
 ![21 03 18 11 08 Applications Fluid Flow]({{ site.imgurl }}/chapter_img/chapter11/08_applications_fluid_flow.svg)
+
+Làm thế nào các kỹ sư khí động học thời kỳ đầu có thể phác họa chính xác đường dòng không khí lướt quanh thân tàu ngầm hay cánh máy bay mà chưa hề có siêu máy tính CFD? Họ nhận ra một phép màu toán học: với dòng chảy lý tưởng **không nén được** ($\nabla \cdot \mathbf{v} = 0$) và **không xoáy** ($\nabla \times \mathbf{v} = \mathbf{0}$), vận tốc chất lỏng là gradient của một **thế vận tốc** $\mathbf{v} = \nabla \phi$ thỏa mãn đúng phương trình Laplace $\Delta \phi = 0$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Dòng chảy Thế (Potential Flow)
+
+1. **Thế vận tốc $\phi$ và Phương trình Laplace**:
+   Tính không xoáy cho phép viết $\mathbf{v} = \nabla \phi$; kết hợp tính không nén được $\nabla \cdot \mathbf{v} = 0$ lập tức cho $\Delta \phi = 0$.
+2. **Hàm dòng $\psi$ và Cặp Liên hợp Điều hòa Cauchy–Riemann**:
+   Trong dòng chảy 2D, ta có thêm hàm dòng $\psi$ sao cho $u = \phi_x = \psi_y$ và $v = \phi_y = -\psi_x$. Các đường đẳng thế ($\phi = \text{const}$) và các đường dòng ($\psi = \text{const}$) luôn **cắt nhau vuông góc**, và thế phức $W(z) = \phi + i\psi$ là một hàm giải tích!
+3. **Điều kiện biên Không xuyên thấu (Biên Neumann)**:
+   Chất lỏng không thể chảy xuyên qua thành rắn của vật cản, tức thành phần vận tốc pháp tuyến phải triệt tiêu: $\frac{\partial \phi}{\partial n} = \mathbf{v} \cdot \mathbf{n} = 0$ trên bề mặt vật cản.
+4. **Định luật Bernoulli, Nghịch lý d'Alembert và Vai trò của Tuần hoàn $\Gamma$**:
+   Từ vận tốc $\mathbf{v}$, định luật Bernoulli $p + \frac{1}{2}\rho |\mathbf{v}|^2 = \text{const}$ suy ra ngay phân bố áp suất: chỗ nào chảy nhanh thì áp suất thấp. Nghịch lý d'Alembert cho thấy dòng thế thuần túy quanh trụ tròn không tạo lực cản hay lực nâng—chỉ khi thêm **xoáy tuần hoàn $\Gamma$** (định lý Kutta–Joukowski $L = \rho U \Gamma$) máy bay mới cất cánh được!
 
 ## Mục tiêu
 
@@ -25,6 +39,20 @@ Trong dòng chảy chất lỏng thực, độ nhớt, chuyển động xoáy v�
 
 Thay vì theo dõi chuyển động của từng phần tử chất lỏng riêng lẻ, ta mô tả toàn bộ trường vận tốc bằng một hàm vô hướng. Các đường dòng, điểm dừng (stagnation) và cách dòng chảy vòng quanh vật cản đều thể hiện trực tiếp qua nghiệm của bài toán elliptic này.
 
+
+### Khung giải thích (nên đọc chậm): Tính tay vận tốc tại đỉnh và mũi một trụ tròn đặt trong dòng chảy đều
+
+Xét dòng chất lỏng đều có vận tốc $U = 2\text{ m/s}$ chảy ngang qua một trụ tròn bán kính $R = 1\text{ m}$. Thế vận tốc chuẩn tắc là:
+$$\phi(r, \theta) = U\left(r + \frac{R^2}{r}\right)\cos\theta = 2\left(r + \frac{1}{r}\right)\cos\theta.$$
+Tính các thành phần vận tốc ngay trên mặt trụ $r = 1$:
+1. **Vận tốc hướng kính $v_r = \frac{\partial \phi}{\partial r}$**:
+   $$v_r(1, \theta) = 2\left(1 - \frac{1}{1^2}\right)\cos\theta = \mathbf{0}$$
+   (thỏa mãn hoàn hảo điều kiện biên Neumann không xuyên qua thành trụ!).
+2. **Vận tốc tiếp tuyến $v_\theta = \frac{1}{r}\frac{\partial \phi}{\partial \theta}$**:
+   $$v_\theta(1, \theta) = \frac{1}{1} \cdot 2(1 + 1)(-\sin\theta) = \mathbf{-4\sin\theta\text{ m/s}}.$$
+3. **Đọc kết quả vật lý**:
+   - Tại mũi trước ($\theta = \pi$) và đuôi sau ($\theta = 0$): $|\mathbf{v}| = \mathbf{0}$ (hai **điểm đình trệ**, áp suất cực đại).
+   - Tại đỉnh trên ($\theta = \pi/2$) và đáy dưới ($\theta = -\pi/2$): $|\mathbf{v}| = \mathbf{4\text{ m/s}} = 2U$—tốc độ dòng tăng đúng **gấp đôi** dòng tự do và áp suất tụt xuống thấp nhất!
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan

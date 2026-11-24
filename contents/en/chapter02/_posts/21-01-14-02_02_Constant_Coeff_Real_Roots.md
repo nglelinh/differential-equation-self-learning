@@ -9,6 +9,39 @@ categories:
 - chapter02
 lesson_type: required
 ---
+
+In 1743, Leonhard Euler noticed a miracle: when you plug the trial function $$y = e^{rt}$$ into any constant-coefficient linear ODE $$ay'' + by' + cy = 0$$, differentiation simply multiplies by $$r$$, collapsing a calculus problem into an ordinary quadratic equation $$ar^2 + br + c = 0$$. When that quadratic has two real roots, the entire motion of a heavily damped shock absorber or decaying circuit decomposes into pure exponential modes.
+
+## Background Knowledge Map: From Characteristic Roots to Exponential Modes
+
+Four algebraic and physical ideas complete the real-root case:
+
+1. **Eigenfunction Property of $$e^{rt}$$:** Because $$\frac{d}{dt}e^{rt} = r\,e^{rt}$$, the exponential is an eigenfunction of the differential operator $$D = \frac{d}{dt}$$, turning $$aD^2 + bD + c$$ into multiplication by the characteristic polynomial $$P(r) = ar^2 + br + c$$.
+2. **Distinct Real Roots ($$b^2 - 4ac > 0$$):** Two distinct roots $$r_1 \ne r_2$$ automatically yield linearly independent solutions $$e^{r_1 t}$$ and $$e^{r_2 t}$$, because their Wronskian is $$W(t) = (r_2 - r_1)e^{(r_1+r_2)t} \ne 0$$ everywhere.
+3. **Repeated Real Root ($$b^2 - 4ac = 0$$):** When $$r_1 = r_2 = r$$, taking the limit $$\lim_{h\to 0}\frac{e^{(r+h)t} - e^{rt}}{h} = t\,e^{rt}$$ produces the second linearly independent solution, giving $$y(t) = (c_1 + c_2 t)e^{rt}$$.
+4. **Dominant Mode Asymptotics:** For $$r_1 > r_2$$, as $$t \to +\infty$$ the mode $$e^{r_1 t}$$ dominates exponentially; stability ($$y(t) \to 0$$ for all initial conditions) holds if and only if both roots satisfy $$r_1, r_2 < 0$$.
+
+### Step-by-Step Worked Example (Read Slowly): Solving an Overdamped IVP and Finding Its Turning Point
+
+Solve the initial value problem
+$$y'' + 5y' + 6y = 0, \qquad y(0) = 1, \quad y'(0) = 2,$$
+and determine the exact time $$t_{\max}$$ when $$y(t)$$ peaks before decaying to zero.
+
+1. **Solve the characteristic equation:**
+   $$r^2 + 5r + 6 = (r + 2)(r + 3) = 0 \implies r_1 = -2, \quad r_2 = -3.$$
+   General solution:
+   $$y(t) = c_1 e^{-2t} + c_2 e^{-3t}, \qquad y'(t) = -2c_1 e^{-2t} - 3c_2 e^{-3t}.$$
+2. **Match the initial conditions $$y(0) = 1,\; y'(0) = 2$$:**
+   $$\begin{cases} c_1 + c_2 = 1 \\ -2c_1 - 3c_2 = 2 \end{cases}$$
+   Multiply the first equation by $$2$$ and add to the second: $$-c_2 = 4 \implies c_2 = -4$$, hence $$c_1 = 5$$.
+   So
+   $$y(t) = 5e^{-2t} - 4e^{-3t}.$$
+3. **Find the exact peak time $$t_{\max}$$ where $$y'(t) = 0$$:**
+   $$y'(t) = -10e^{-2t} + 12e^{-3t} = 2e^{-3t}\bigl(-5e^t + 6\bigr) = 0 \implies e^t = \frac{6}{5} \implies t_{\max} = \ln\!\left(\frac{6}{5}\right) \approx 0.1823.$$
+4. **Compute the peak height and verify stability:**
+   $$y(t_{\max}) = 5\left(\frac{5}{6}\right)^2 - 4\left(\frac{5}{6}\right)^3 = \frac{125}{36} - \frac{500}{216} = \frac{750 - 500}{216} = \frac{250}{216} = \frac{125}{108} \approx 1.1574.$$
+   Even though both eigenvalues are negative (overdamped), the positive initial velocity $$y'(0) = 2$$ causes a brief overshoot to $$1.1574$$ before $$y(t) \to 0$$ smoothly without ever crossing zero!
+
 ## Learning Objectives
 This lesson helps students use the characteristic equation to solve second-order linear ODEs with constant coefficients, recognize the difference between distinct real roots and repeated roots, and interpret exponential modes as growth or decay components of the system. This is the foundational technical step for the entire chapter.
 

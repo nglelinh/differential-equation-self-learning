@@ -10,6 +10,22 @@ categories:
 lesson_type: required
 ---
 
+
+Điều gì xảy ra khi ma trận $A$ cỡ $2\times 2$ có trị riêng kép $\lambda$, nhưng khi giải $(A - \lambda I)\mathbf{v} = \mathbf{0}$ ta chỉ tìm được **duy nhất một hướng vectơ riêng**? Ta đang thiếu mất một nghiệm để tạo đủ không gian nghiệm 2 chiều! Lời giải không phải là nhân $t$ đơn thuần vào $e^{\lambda t}\mathbf{v}$ (thử thay vào sẽ thấy sai ngay!), mà là xây dựng một **vectơ riêng suy rộng (generalized eigenvector)** $\mathbf{w}$ thỏa $(A - \lambda I)\mathbf{w} = \mathbf{v}$ để tạo ra cặp nghiệm hoàn hảo $(t\mathbf{v} + \mathbf{w})e^{\lambda t}$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Trị riêng Trùng
+
+1. **Bội đại số (AM) vs. Bội hình học (GM)**:
+   - Nếu $\text{GM} = \text{AM}$ (ma trận đủ vectơ riêng, ví dụ $A = \lambda I$): vẫn đủ $n$ nghiệm dạng $e^{\lambda t}\mathbf{v}_k$—hình học là **nút sao (star node)**!
+   - Nếu $\text{GM} < \text{AM}$ (ma trận thiếu hụt / defective): bắt buộc dùng chuỗi vectơ riêng suy rộng.
+2. **Nghiệm thứ hai với Vectơ riêng suy rộng $\mathbf{w}$**:
+   Tìm $\mathbf{v} \ne \mathbf{0}$ thỏa $(A - \lambda I)\mathbf{v} = \mathbf{0}$, rồi giải hệ không thuần nhất $(A - \lambda I)\mathbf{w} = \mathbf{v}$; khi đó:
+   $$\mathbf{x}^{(2)}(t) = e^{\lambda t}(t\mathbf{v} + \mathbf{w}).$$
+3. **Mẹo tính ngược cực nhanh cho cấp $2\times 2$**:
+   Với ma trận $2\times 2$ thiếu hụt, $(A - \lambda I)^2 = 0$, nên bạn có thể chọn **bất kỳ vectơ $\mathbf{w}$ nào không phải vectơ riêng**, rồi đặt ngay $\mathbf{v} = (A - \lambda I)\mathbf{w}$—không cần giải hệ phương trình ngược!
+4. **Hình học của Nút suy biến (Improper / Defective Node)**:
+   Chỉ có đúng 1 đường thẳng bất biến dọc theo $\mathbf{v}$; mọi quỹ đạo khác uốn cong hình chữ S để tiếp xúc với hướng $\mathbf{v}$ khi tiến về gốc.
+
 ## Mục tiêu
 
 Bài học này hướng dẫn cách giải hệ tuyến tính khi ma trận có trị riêng lặp, phân biệt rõ trường hợp "trị riêng lặp nhưng đủ vector riêng" với "trị riêng lặp nhưng thiếu vector riêng", hiểu vai trò của vector riêng suy rộng và lý do xuất hiện các số hạng dạng $$ te^{\lambda t} $$ trong nghiệm.
@@ -25,6 +41,19 @@ Sinh viên cần nắm khái niệm trị riêng, vector riêng, cách giải h�
 Khi đa thức đặc trưng có nghiệm lặp, cách xử lý phụ thuộc vào số vector riêng độc lập tuyến tính tìm được. Nếu ma trận vẫn có đủ vector riêng (chéo hóa được), nghiệm vẫn chỉ gồm các hàm mũ thuần túy. Ngược lại, nếu thiếu vector riêng, ma trận không chéo hóa được và nghiệm xuất hiện thêm thành phần nhân với $$ t $$.
 
 Trường hợp này cho thấy đại số tuyến tính không chỉ hỗ trợ tính toán mà còn chỉ ra sự thiếu hụt phương bất biến, đòi hỏi bổ sung vector riêng suy rộng. Trên mặt phẳng pha, quỹ đạo khi đó có một phương chính kèm hiệu ứng trượt dọc theo phương đó.
+
+### Khung giải thích (nên đọc chậm): Giải hệ thiếu hụt $\mathbf{x}' = \begin{pmatrix} 3 & 1 \\ -1 & 1 \end{pmatrix}\mathbf{x}$ bằng mẹo vectơ suy rộng cực gọn
+
+1. **Tìm trị riêng**:
+   $\tau = 3 + 1 = 4$, $\Delta = 3 - (-1) = 4 \implies \lambda^2 - 4\lambda + 4 = (\lambda - 2)^2 = 0 \implies \lambda = \mathbf{2}$ (bội 2).
+2. **Tính ma trận $N = A - 2I$**:
+   $$N = \begin{pmatrix} 1 & 1 \\ -1 & -1 \end{pmatrix} \ne 0 \quad (\text{hạng } 1 \implies \text{GM} = 1 < 2).$$
+3. **Áp dụng mẹo chọn $\mathbf{w}$ trước**:
+   Chọn $\mathbf{w} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ (không nằm trong $\ker N$). Tính ngay vectơ riêng tương ứng:
+   $$\mathbf{v} = N\mathbf{w} = \begin{pmatrix} 1 & 1 \\ -1 & -1 \end{pmatrix}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \mathbf{\begin{pmatrix} 1 \\ -1 \end{pmatrix}}.$$
+   (Kiểm tra nhanh: $N\mathbf{v} = \begin{pmatrix} 1-1 \\ -1+1 \end{pmatrix} = \mathbf{0}$, đúng là vectơ riêng!).
+4. **Nghiệm tổng quát**:
+   $$\mathbf{x}(t) = c_1 e^{2t}\begin{pmatrix} 1 \\ -1 \end{pmatrix} + c_2 e^{2t}\left[t\begin{pmatrix} 1 \\ -1 \end{pmatrix} + \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right].$$
 
 ## Khái niệm theo ba cách
 

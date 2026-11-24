@@ -10,6 +10,22 @@ categories:
 lesson_type: required
 ---
 
+
+Trong thực tế kỹ thuật, hệ mạch điện nhiều nhánh hay chuỗi ngăn chứa hóa chất luôn chịu nguồn bơm, điện áp xoay chiều hoặc nhiễu ngoại lai $\mathbf{g}(t)$ tác động liên tục—dẫn đến **hệ không thuần nhất** $\mathbf{x}' = A\mathbf{x} + \mathbf{g}(t)$. Điều tuyệt vời là ta có tới **ba vũ khí sắc bén** để giải quyết hệ này: **Chéo hóa tách biến** (đưa về $n$ phương trình cấp một độc lập), **Biến thiên hằng số vectơ** (công thức Duhamel vạn năng), và **Hệ số bất định vectơ**!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Hệ Tuyến tính Không thuần nhất
+
+1. **Cấu trúc nghiệm tổng quát ($\mathbf{x}(t) = \Phi(t)\mathbf{c} + \mathbf{x}_p(t)$)**:
+   Mọi nghiệm là tổng của nghiệm thuần nhất $\mathbf{x}_h$ và một nghiệm riêng $\mathbf{x}_p$.
+2. **Phương pháp Chéo hóa ($\mathbf{x} = P\mathbf{y}$)**:
+   Khi $A = PDP^{-1}$, đổi biến sang $\mathbf{y} = P^{-1}\mathbf{x}$ biến hệ ghép nối thành $n$ phương trình cấp một **hoàn toàn độc lập** $y_i' = \lambda_i y_i + h_i(t)$ (với $\mathbf{h} = P^{-1}\mathbf{g}$), giải từng dòng bằng thừa số tích phân Chương 01!
+3. **Biến thiên hằng số vectơ (Công thức Duhamel)**:
+   Đặt $\mathbf{x}_p(t) = \Phi(t)\mathbf{u}(t)$ dẫn đến $\Phi(t)\mathbf{u}'(t) = \mathbf{g}(t)$, cho công thức tổng quát dùng được cho **mọi** $A(t)$ và **mọi** $\mathbf{g}(t)$:
+   $$\mathbf{x}_p(t) = \Phi(t)\int \Phi(s)^{-1}\mathbf{g}(s)\,ds.$$
+   Đặc biệt với $A$ hằng số: $\mathbf{x}(t) = e^{At}\mathbf{x}_0 + \int_0^t e^{A(t-s)}\mathbf{g}(s)\,ds$.
+4. **Cảnh báo quan trọng với Hệ số bất định vectơ**:
+   Khi vế phải $e^{\lambda t}\mathbf{b}$ trùng trị riêng $\lambda$ của $A$, dạng thử phải giữ **cả hai số hạng** $\mathbf{x}_p = t e^{\lambda t}\mathbf{a} + e^{\lambda t}\mathbf{c}$ (không được bỏ $e^{\lambda t}\mathbf{c}$ như ở phương trình vô hướng!).
+
 ## Mục tiêu
 
 Bài học này hướng dẫn giải hệ tuyến tính không thuần nhất, trình bày công thức biến thiên hằng số cho hệ vector và làm rõ cách nguồn ngoài tác động lên quỹ đạo tự nhiên của hệ. Sinh viên cũng nắm được công thức tích phân Duhamel như biểu diễn tích lũy của đáp ứng cưỡng bức.
@@ -27,6 +43,16 @@ $$ \mathbf{x}'=A\mathbf{x}+\mathbf{g}(t). $$
 Nghiệm của hệ không chỉ phụ thuộc vào các thành phần tự do mà còn tích lũy ảnh hưởng của toàn bộ lịch sử ngoại lực $$ \mathbf{g}(t) $$.
 
 Cấu trúc của hệ thuần nhất vẫn đóng vai trò nền tảng: ta mở rộng phương pháp biến thiên hằng số sang dạng vector hoặc biểu diễn trực tiếp nghiệm bằng công thức tích phân qua ma trận mũ.
+
+### Khung giải thích (nên đọc chậm): Giải hệ không thuần nhất $\mathbf{x}' = \begin{pmatrix} 1 & 0 \\ 0 & -2 \end{pmatrix}\mathbf{x} + \begin{pmatrix} e^t \\ 4 \end{pmatrix}$ với $\mathbf{x}(0) = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$ bằng Công thức Duhamel
+
+1. **Ma trận mũ**: $e^{At} = \begin{pmatrix} e^t & 0 \\ 0 & e^{-2t} \end{pmatrix} \implies e^{A(t-s)} = \begin{pmatrix} e^{t-s} & 0 \\ 0 & e^{-2(t-s)} \end{pmatrix}$.
+2. **Tính tích phân Duhamel $\int_0^t e^{A(t-s)}\mathbf{g}(s)\,ds$**:
+   - Thành phần 1: $\int_0^t e^{t-s}\cdot e^s\,ds = \int_0^t e^t\,ds = \mathbf{t e^t}$ (cộng hưởng vì $\lambda_1 = 1$ trùng số mũ $e^t$!).
+   - Thành phần 2: $\int_0^t e^{-2(t-s)}\cdot 4\,ds = 4e^{-2t}\left[\frac{e^{2s}}{2}\right]_0^t = \mathbf{2(1 - e^{-2t})}$.
+3. **Cộng với phần điều kiện đầu $e^{At}\mathbf{x}(0) = \begin{pmatrix} 0 \\ e^{-2t} \end{pmatrix}$**:
+   $$\mathbf{x}(t) = \begin{pmatrix} t e^t \\ e^{-2t} + 2 - 2e^{-2t} \end{pmatrix} = \mathbf{\begin{pmatrix} t e^t \\ 2 - e^{-2t} \end{pmatrix}}.$$
+   Kiểm chứng trong 3 giây: $x_1' - x_1 = (e^t + te^t) - te^t = e^t$; $x_2' + 2x_2 = 2e^{-2t} + 4 - 2e^{-2t} = 4$; $\mathbf{x}(0) = (0, 1)^\top$!
 
 ## Khái niệm theo ba cách
 

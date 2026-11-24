@@ -10,6 +10,37 @@ categories:
 lesson_type: required
 ---
 
+Suppose a symphony orchestra plays a single sustained chord and you record the air pressure wave $$ f(t) $$. How can a single formula reach inside that tangled waveform and isolate the exact volume of the cello's $$ 3\omega $$ overtone without being contaminated by the flute, violin, or drums? The answer is Euler's projection trick: multiply $$ f(t) $$ by $$ \cos(n\pi t/L) $$ and integrate over one full period. Every other harmonic cancels out to *exact zero*, leaving only the $$ n $$-th coefficient standing alone.
+
+Beyond mere formulas, the rate at which those coefficients $$ a_n, b_n $$ shrink as $$ n \to \infty $$ acts like an X-ray of the function's smoothness: jumps decay like $$ 1/n $$, corners decay like $$ 1/n^2 $$, and smooth analytic waves decay exponentially.
+
+## Background Knowledge Map: Euler–Fourier Projection and Coefficient Decay
+
+1. **Orthogonal Projection in $$ L^2([-L, L]) $$ (Geometric Meaning):** Just as $$ c_k = \frac{\mathbf{v}\cdot \mathbf{e}_k}{\|\mathbf{e}_k\|^2} $$ extracts coordinates in $$ \mathbb{R}^n $$, the Euler–Fourier integrals $$ a_n = \frac{1}{L}\int_{-L}^L f(x)\cos\!\left(\frac{n\pi x}{L}\right)dx $$ and $$ b_n = \frac{1}{L}\int_{-L}^L f(x)\sin\!\left(\frac{n\pi x}{L}\right)dx $$ project $$ f $$ onto each orthogonal axis of the Hilbert space $$ L^2([-L, L]) $$.
+2. **Best Mean-Square Approximation Property:** Among all trigonometric polynomials of degree $$ \le N $$, the $$ N $$-th Fourier partial sum $$ S_N(x) $$ uniquely minimizes the mean-square error $$ \int_{-L}^L |f(x) - T_N(x)|^2\,dx $$.
+3. **Smoothness Governs Decay Rate (Integration by Parts):** Each time you integrate by parts, a factor of $$ \frac{L}{n\pi} $$ drops into the denominator. Therefore, a jump discontinuity forces $$ |a_n|, |b_n| = O(1/n) $$, a continuous function with a jump in $$ f' $$ decays as $$ O(1/n^2) $$, and a $$ C^k $$ periodic function decays as $$ o(1/n^k) $$.
+4. **Riemann–Lebesgue Lemma:** For any integrable function $$ f \in L^1([-L, L]) $$, $$ a_n \to 0 $$ and $$ b_n \to 0 $$ as $$ n \to \infty $$—high-frequency oscillations eventually average out any integrable profile.
+
+### Step-by-Step Worked Example (Read Slowly): Full Fourier Coefficients of the Ramp $$ f(x) = x $$ on $$ (-\pi, \pi) $$
+
+**Problem:** Compute all Fourier coefficients $$ a_0, a_n, b_n $$ of the $$ 2\pi $$-periodic extension of $$ f(x) = x $$ on $$ (-\pi, \pi) $$, inspect the $$ O(1/n) $$ decay rate, and test the $$ N = 3 $$ partial sum at $$ x = \frac{\pi}{2} $$.
+
+1. **Exploit symmetry to find $$ a_0 $$ and $$ a_n $$ immediately:**
+   Since $$ f(x) = x $$ is odd on the symmetric interval $$ (-\pi, \pi) $$ and $$ \cos(nx) $$ is even, the product $$ x\cos(nx) $$ is odd, so
+   $$ a_0 = \frac{1}{\pi}\int_{-\pi}^{\pi} x\,dx = 0, \qquad a_n = \frac{1}{\pi}\int_{-\pi}^{\pi} x\cos(nx)\,dx = 0 \quad (n \ge 1). $$
+2. **Compute $$ b_n $$ using integration by parts:**
+   Because $$ x\sin(nx) $$ is even,
+   $$ b_n = \frac{1}{\pi}\int_{-\pi}^{\pi} x\sin(nx)\,dx = \frac{2}{\pi}\int_{0}^{\pi} x\sin(nx)\,dx. $$
+   Set $$ u = x, dv = \sin(nx)\,dx \implies du = dx, v = -\frac{\cos(nx)}{n} $$:
+   $$ \int_0^\pi x\sin(nx)\,dx = \left[-\frac{x\cos(nx)}{n}\right]_0^\pi + \frac{1}{n}\int_0^\pi \cos(nx)\,dx = -\frac{\pi(-1)^n}{n} + 0 = \frac{(-1)^{n+1}\pi}{n}. $$
+   Multiply by $$ \frac{2}{\pi} $$:
+   $$ b_n = \frac{2(-1)^{n+1}}{n} \implies f(x) \sim 2\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} \sin(nx). $$
+3. **Check decay rate and evaluate at $$ x = \frac{\pi}{2} $$:**
+   The periodic extension jumps from $$ +\pi $$ to $$ -\pi $$ at $$ x = \pm\pi $$, which explains why $$ |b_n| = \frac{2}{n} = O(1/n) $$.
+   At $$ x = \frac{\pi}{2} $$, $$ \sin(n\pi/2) $$ is $$ 1, 0, -1, 0, 1, \dots $$, so
+   $$ S_5\!\left(\frac{\pi}{2}\right) = 2\left(1 - \frac{1}{3} + \frac{1}{5}\right) = 2\left(\frac{13}{15}\right) = 1.7333 \quad \text{vs. exact } \frac{\pi}{2} \approx 1.5708. $$
+   (And in the limit, $$ 2(1 - \frac{1}{3} + \frac{1}{5} - \cdots) = 2 \cdot \frac{\pi}{4} = \frac{\pi}{2} $$—recovering the famous Leibniz formula for $$ \pi $$!)
+
 ## Learning Objectives
 
 This lesson explains how Fourier coefficients are computed and why orthogonality isolates each harmonic mode. Students should be able to derive coefficient formulas, interpret the coefficients as mode weights, and compute them for standard examples.

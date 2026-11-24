@@ -9,6 +9,20 @@ categories:
 - chapter03
 lesson_type: required
 ---
+
+Ở Chương 02, để giải một bài toán giá trị đầu không thuần nhất, bạn phải đi qua 4 chặng dài: giải thuần nhất $y_h$, tìm nghiệm riêng $y_p$, ghép $y = y_h + y_p$, rồi giải hệ phương trình tìm $c_1, c_2$. Với **Biến đổi Laplace**, tất cả 4 chặng đó sáp nhập thành **một đường ống duy nhất**: biến đổi sang miền $s$ (điều kiện đầu tự động cài sẵn) $\to$ rút $Y(s)$ bằng đại số $\to$ biến đổi ngược ra thẳng nghiệm cuối cùng!
+
+## Bản đồ kiến thức nền: Bốn bước của Đường ống Giải IVP bằng Laplace
+
+1. **Bước 1 — Biến đổi toàn bộ PTVP sang miền $s$**:
+   Thay $\mathcal{L}\{y'\} = sY - y(0)$ và $\mathcal{L}\{y''\} = s^2 Y - s y(0) - y'(0)$; toàn bộ phép vi phân biến mất!
+2. **Bước 2 — Tách bạch Đáp ứng trạng thái không (ZSR) & Đáp ứng đầu vào không (ZIR)**:
+   $$Y(s) = \underbrace{\frac{(as + b)y(0) + a y'(0)}{as^2 + bs + c}}_{\text{Đáp ứng điều kiện đầu (ZIR)}} + \underbrace{\frac{G(s)}{as^2 + bs + c}}_{\text{Đáp ứng ngoại lực (ZSR)}}.$$
+3. **Bước 3 — Phân tích $Y(s)$ về dạng bảng chuẩn**:
+   Tách phân thức hữu tỷ và bình phương đủ; lưu ý mẫu số chung $as^2 + bs + c$ chính là **đa thức đặc trưng** của hệ!
+4. **Bước 4 — Biến đổi ngược & Tự kiểm chứng**:
+   Lấy $\mathcal{L}^{-1}\{Y(s)\}$ ra thẳng nghiệm $y(t)$ đã thỏa sẵn $y(0), y'(0)$—không cần tìm $c_1, c_2$—và luôn kiểm tra lại $y(0), y'(0)$ trong 5 giây!
+
 ## Mục tiêu
 Bài học này hướng dẫn sử dụng biến đổi Laplace để giải trực tiếp các bài toán giá trị đầu (IVP) tuyến tính, giải thích vì sao điều kiện đầu được tích hợp tự động trong miền $$ s $$, và xác định khi nào phương pháp Laplace thuận lợi hơn các phương pháp cổ điển.
 
@@ -23,6 +37,18 @@ Kỹ năng phân tích phân thức đơn là yêu cầu bắt buộc cho bài h
 Ở Chương 02, ta đã giải nhiều ODE bằng phương trình đặc trưng, hệ số bất định và biến thiên hằng số. Tuy nhiên, khi gặp bài toán có điều kiện đầu kèm ngoại lực phức tạp hoặc gián đoạn, biến đổi Laplace thường mang lại quy trình gọn và nhất quán hơn. Ưu điểm nổi bật là điều kiện đầu không cần chờ đến bước cuối mới thay vào, mà xuất hiện ngay trong công thức biến đổi của đạo hàm.
 
 Như vậy, biến đổi Laplace chuyển toàn bộ bài toán vi phân kèm điều kiện đầu thành một phương trình đại số theo $$ Y(s) $$, rồi quay lại miền thời gian bằng biến đổi ngược.
+
+### Khung giải thích (nên đọc chậm): Giải trọn gói IVP $y'' + 4y = 8t,\; y(0) = 1,\; y'(0) = 2$ qua đường ống Laplace
+
+1. **Biến đổi hai vế** ($\mathcal{L}\{8t\} = \frac{8}{s^2}$):
+   $$\big[s^2 Y(s) - s(1) - 2\big] + 4Y(s) = \frac{8}{s^2} \implies (s^2 + 4)Y(s) = s + 2 + \frac{8}{s^2}.$$
+2. **Giải đại số cho $Y(s)$**:
+   $$Y(s) = \frac{s}{s^2 + 4} + \frac{2}{s^2 + 4} + \frac{8}{s^2(s^2 + 4)}.$$
+3. **Tách phân thức cho số hạng thứ ba** (để ý $\frac{1}{s^2} - \frac{1}{s^2 + 4} = \frac{4}{s^2(s^2 + 4)}$):
+   $$\frac{8}{s^2(s^2 + 4)} = \frac{2}{s^2} - \frac{2}{s^2 + 4}.$$
+4. **Gộp gọn bất ngờ**: Số hạng $+\frac{2}{s^2 + 4}$ và $-\frac{2}{s^2 + 4}$ **triệt tiêu sạch**! Còn lại đúng:
+   $$Y(s) = \frac{s}{s^2 + 4} + \frac{2}{s^2} \implies y(t) = \mathbf{\cos(2t) + 2t}.$$
+   Kiểm tra trong 3 giây: $y(0) = 1$, $y'(0) = -2\sin 0 + 2 = 2$, $y'' + 4y = -4\cos 2t + 4\cos 2t + 8t = 8t$!
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan

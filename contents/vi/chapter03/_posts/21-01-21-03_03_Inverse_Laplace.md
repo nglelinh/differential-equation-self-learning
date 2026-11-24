@@ -9,6 +9,20 @@ categories:
 - chapter03
 lesson_type: required
 ---
+
+Giải phương trình đại số trong miền Laplace thường chỉ mất ba mươi giây—thử thách thực sự nằm ở chặng đường quay về miền thời gian: từ một phân thức hữu tỷ $F(s)$ tìm lại hàm gốc $f(t) = \mathcal{L}^{-1}\{F(s)\}$! May mắn thay, **Định lý Lerch** đảm bảo hàm gốc liên tục là duy nhất, còn bộ ba kỹ thuật **tách phân thức hữu tỷ (partial fractions)**, **bình phương đủ** và **quy tắc che Heaviside** sẽ biến mọi phân thức phức tạp thành tổng các mảnh quen thuộc trong bảng.
+
+## Bản đồ kiến thức nền: Bốn kỹ thuật cốt lõi của Biến đổi Laplace Ngược
+
+1. **Tính duy nhất (Định lý Lerch) & Tính tuyến tính**:
+   Nếu hai hàm liên tục trên $[0, \infty)$ có cùng biến đổi Laplace thì chúng trùng nhau ở mọi nơi; ta luôn tách $F(s)$ thành tổng các phân thức đơn giản rồi tra ngược từng số hạng.
+2. **Tách phân thức hữu tỷ & Phương pháp che (Heaviside Cover-Up)**:
+   Với mẫu số có nghiệm đơn $(s - r_1)(s - r_2)\cdots$, hệ số $A_k$ của $\frac{A_k}{s - r_k}$ được tính nhẩm trong 2 giây bằng cách "che" $(s - r_k)$ ở mẫu rồi thay $s = r_k$!
+3. **Bình phương đủ cho tam thức bậc hai vô nghiệm thực**:
+   Đưa $s^2 + bs + c = (s + \alpha)^2 + \omega^2$, đồng thời viết tử số theo tổ hợp $A(s + \alpha) + B\omega$ để đọc ngay cặp $e^{-\alpha t}\cos(\omega t)$ và $e^{-\alpha t}\sin(\omega t)$.
+4. **Xử lý nghiệm bội $(s - r)^k$**:
+   Mỗi lũy thừa $\frac{1}{(s - r)^k}$ trả về $\frac{t^{k-1}}{(k-1)!}e^{rt}$—tương ứng chính xác với các số hạng nghiệm bội ta từng gặp ở Chương 02.
+
 ## Mục tiêu
 Bài học này giúp sinh viên hiểu vai trò của biến đổi Laplace ngược như bước quay về miền thời gian, biết áp dụng phân tích phân thức hữu tỉ thành phân thức đơn và luyện kỹ năng nhận diện mẫu từ bảng biến đổi ngược một cách có hệ thống.
 
@@ -25,6 +39,20 @@ Bài học kết hợp chặt chẽ giữa đại số phân thức hữu tỉ v
 Miền Laplace thuận lợi cho việc biến đổi đại số, nhưng các đại lượng vật lý được quan sát trong miền thời gian. Vì vậy, sau khi tìm được nghiệm trong miền $$ s $$, ta cần chuyển ngược về miền $$ t $$ để đọc hành vi thực của hệ. Biến đổi Laplace ngược thực hiện bước chuyển này.
 
 Thay vì dùng trực tiếp công thức tích phân phức Bromwich, khóa học sử dụng phương pháp thực dụng cho các bài toán phổ biến: phân tích phân thức hữu tỉ thành tổng các phân thức đơn rồi tra ngược theo bảng biến đổi cơ bản.
+
+### Khung giải thích (nên đọc chậm): Tìm $\mathcal{L}^{-1}\!\left\{\frac{3s + 5}{(s - 1)(s^2 + 2s + 5)}\right\}$ từng bước rõ ràng
+
+1. **Phân tích mẫu và tách phân thức**:
+   Lưu ý $s^2 + 2s + 5 = (s + 1)^2 + 2^2$ (vô nghiệm thực). Đặt:
+   $$\frac{3s + 5}{(s - 1)(s^2 + 2s + 5)} = \frac{A}{s - 1} + \frac{Bs + C}{s^2 + 2s + 5}.$$
+2. **Dùng mẹo che tìm $A$** (thay $s = 1$ vào phần còn lại):
+   $A = \frac{3(1) + 5}{1^2 + 2(1) + 5} = \frac{8}{8} = \mathbf{1}$.
+3. **Đồng nhất tử số tìm $B, C$**:
+   $3s + 5 = 1\cdot(s^2 + 2s + 5) + (Bs + C)(s - 1) = (1 + B)s^2 + (2 - B + C)s + (5 - C)$.
+   Suy ra $1 + B = 0 \implies B = \mathbf{-1}$; và $5 - C = 5 \implies C = \mathbf{0}$.
+4. **Bình phương đủ và tra ngược**:
+   $$\frac{-s}{(s+1)^2 + 4} = \frac{-(s + 1) + 1}{(s+1)^2 + 2^2} = -\frac{s+1}{(s+1)^2 + 2^2} + \frac{1}{2}\cdot\frac{2}{(s+1)^2 + 2^2}.$$
+   Tra bảng thu ngay: $f(t) = \mathbf{e^t - e^{-t}\cos(2t) + \frac{1}{2}e^{-t}\sin(2t)}$!
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan

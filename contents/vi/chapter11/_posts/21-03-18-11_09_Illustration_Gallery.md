@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Phương trình Laplace và Poisson là chương giàu trực giác hình học bậc nhất trong toàn khóa học: nhìn mặt cong yên ngựa của hàm điều hòa, ta thấy ngay vì sao cực đại không bao giờ nằm ở giữa miền; nhìn lưới đường đẳng thế và đường dòng cắt nhau vuông góc $90^\circ$, ta đọc được cả tĩnh điện học lẫn thủy động lực học trong cùng một bức tranh!
+
+## Bản đồ kiến thức nền: Bốn cấu trúc hình học cần quan sát trong Gallery Chương 11
+
+1. **Mặt Yên ngựa và Nguyên lý Cực đại**:
+   Mọi điểm bên trong của nghiệm $\Delta u = 0$ đều không có đỉnh nhô hay hố trũng; kéo thay đổi nhiệt độ trên một cạnh biên lập tức làm toàn bộ mặt bên trong điều chỉnh mượt mà theo.
+2. **Suy giảm Phổ trên Hình chữ nhật & Đĩa tròn**:
+   Quan sát các mode $\sinh(n\pi y/a)$ và $(r/R)^n$: dao động biên tần số cao bị xóa sạch ngay khi bước vào trong vài phần trăm kích thước miền.
+3. **Hàm Green và Nguồn Ảnh Đối xứng**:
+   Nhìn đỉnh logarit sắc nhọn tại vị trí đặt nguồn điểm $y$ và cách nguồn ảnh ảo ngoài biên kéo toàn bộ đường mức trên $\partial\Omega$ về đúng cao độ $0$.
+4. **Lưới Trực giao của Thế vận tốc / Điện thế và Đường dòng / Đường sức**:
+   Các đường $\phi = \text{const}$ và $\psi = \text{const}$ tạo thành mạng lưới các ô vuông nhỏ vô cùng ở mọi nơi (trừ điểm đình trệ)—dấu hiệu thị giác đặc trưng của hàm điều hòa 2D.
+
 ## Mục Đích Của Bài Hỗ Trợ
 
 Bài học này tập hợp toàn bộ các hình minh họa của Chương 11 vào một không gian ôn tập trực quan thống nhất. Phương trình Laplace và phương trình Poisson giới thiệu lớp bài toán elliptic ở dạng cổ điển rõ nét nhất: trạng thái cân bằng thay cho tiến hóa theo thời gian, dữ liệu biên chi phối phần bên trong miền, và các tính chất định tính giữ vai trò quan trọng ngang với các công thức nghiệm tường minh. Bộ minh họa giúp kết nối liền mạch các chủ đề này xuyên suốt chương.
@@ -22,6 +35,15 @@ Nên xem bộ minh họa theo đúng thứ tự các bài học. Sau mỗi hình
 
 Đây cũng là tài liệu ôn tập hữu ích trước khi bước sang Chương 12, vì nó làm rõ những đặc trưng của PDE elliptic sẽ được diễn đạt lại bằng ngôn ngữ giải tích hàm.
 
+
+### Khung giải thích (nên đọc chậm): Tự kiểm chứng Nguyên lý Trung bình rời rạc bằng phép tính 4 điểm lân cận
+
+Khi rời rạc hóa $\Delta u = 0$ trên lưới vuông bước $h$ bằng sai phân 5 điểm, ta có:
+$$\frac{u_{i+1,j} + u_{i-1,j} + u_{i,j+1} + u_{i,j-1} - 4u_{i,j}}{h^2} = 0 \iff u_{i,j} = \frac{u_{i+1,j} + u_{i-1,j} + u_{i,j+1} + u_{i,j-1}}{4}.$$
+Giả sử một nút lưới bên trong có 4 nút lân cận mang nhiệt độ lần lượt là $10^\circ\text{C}$, $20^\circ\text{C}$, $30^\circ\text{C}$ và $60^\circ\text{C}$:
+- Nhiệt độ cân bằng tại nút giữa bắt buộc là:
+  $$u_{i,j} = \frac{10 + 20 + 30 + 60}{4} = \mathbf{30^\circ\text{C}}.$$
+- Nhận xét ngay: $10 < \mathbf{30} < 60$! Chính quy tắc trung bình 4 lân cận giản dị này giải thích hoàn hảo vì sao không một nút bên trong nào có thể nóng hơn tất cả lân cận của nó!
 ## Gallery Nhúng Trực Tiếp
 
 {% include interactive-frame.html

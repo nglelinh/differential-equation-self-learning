@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Imagine navigating a winding mountain trail in dense fog using only a compass that tells you the slope right beneath your boots. Walk straight along that tangent for a short stride $h$, check your compass again, and repeat. That humble tangent-line march is **Euler's Method**—the ancestor of every time-stepping algorithm in computational science, and the clearest laboratory for seeing how numerical error behaves.
+
 ## Learning Objectives
 
 This lesson introduces Euler's method as the first numerical scheme for ordinary differential equations. Students should understand how tangent-line approximation leads to a step-by-step update rule, how forward and backward Euler differ, and why discretization error must be analyzed carefully.
@@ -17,6 +19,15 @@ This lesson introduces Euler's method as the first numerical scheme for ordinary
 ## Prerequisites
 
 Students should know first-order ODEs, slope fields, and the geometric meaning of a derivative as local linear approximation. These ideas are reviewed in Lesson 13.00.
+
+## Background Knowledge Map: Geometry and Error Structure of Euler's Method
+
+Understanding Euler's method deeply prepares you for every modern Runge–Kutta and implicit integrator:
+
+1. **Tangent-Line Approximation from Taylor's Theorem:** Writing $y(t_n + h) = y(t_n) + h y'(t_n) + \frac{h^2}{2}y''(\xi_n)$ shows that forward Euler drops the $O(h^2)$ curvature term at each step, incurring local truncation error $\frac{h}{2}y''(\xi_n) = O(h)$ per unit time.
+2. **Global Error Bound via Discrete Grönwall Inequality:** When $f(t,y)$ is Lipschitz in $y$ with constant $L$, global error satisfies $|y(t_N) - y_N| \le \frac{h M}{2L}(e^{L(t_N - t_0)} - 1) = O(h)$, proving first-order convergence as $h \to 0$.
+3. **Explicit vs. Implicit (Backward) Euler:** Evaluating the slope at the *new* point, $y_{n+1} = y_n + h f(t_{n+1}, y_{n+1})$, still has $O(h)$ accuracy but requires solving an equation at each step—rewarding you with unconditional A-stability for decaying modes.
+4. **Geometric Bias on Curved Trajectories:** Because forward Euler steps along the tangent, it systematically overshoots outward on convex orbits (such as circular harmonic oscillators, where energy grows by a factor of $1 + h^2\omega^2$ every step).
 
 ## Introduction
 
@@ -91,6 +102,22 @@ Students should see immediately that computation is not only about producing num
 - Can they say why repeated small local errors accumulate into global error?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Halving the Step Size to Verify $O(h)$ Convergence
+
+Approximate $y(1) = e \approx 2.71828$ for the IVP $y' = y$, $y(0) = 1$ using forward Euler with $h = 0.25$ ($N = 4$) and then with $h = 0.125$ ($N = 8$), and check the error ratio.
+
+1. **Write the closed-form Euler recurrence:** Since $f(t,y) = y$, $y_{n+1} = y_n + h y_n = (1 + h)y_n$, so $y_N = (1 + h)^N$.
+2. **Run with $h = 0.25$ ($N = 4$):**
+   $$y_1 = 1.25, \quad y_2 = 1.5625, \quad y_3 = 1.953125, \quad y_4 = (1.25)^4 = \frac{625}{256} \approx 2.44141.$$
+   Global error at $t = 1$: $E(0.25) = |e - y_4| \approx |2.71828 - 2.44141| = 0.27687$.
+3. **Halve the step size to $h = 0.125$ ($N = 8$):**
+   $$y_8 = (1.125)^8 = \left(\frac{9}{8}\right)^8 \approx 2.56578.$$
+   Global error at $t = 1$: $E(0.125) = |e - y_8| \approx |2.71828 - 2.56578| = 0.15250$.
+4. **Compute the empirical convergence order $p \approx \log_2\big(E(h)/E(h/2)\big)$:**
+   $$\frac{E(0.25)}{E(0.125)} \approx \frac{0.27687}{0.15250} \approx 1.816 \implies p \approx \log_2(1.816) \approx 0.86 \to 1.$$
+   Halving $h$ roughly halves the global error—precisely the signature of a first-order method (and note that as $N \to \infty$, $(1 + 1/N)^N \to e$ with asymptotic error $\frac{e}{2}h \approx 1.359 h$).
 
 ### Example 1: Exponential Growth
 

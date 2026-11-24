@@ -12,6 +12,19 @@ lesson_type: optional
 
 ![Các hướng nghiên cứu hiện đại sau microlocal analysis]({{ site.imgurl }}/chapter_img/chapter15/08_current_research_directions.svg )
 
+Kết thúc một hành trình dài từ phương trình vi phân cấp 1 đến tận phân tích vi địa phương, câu hỏi tự nhiên nhất sẽ là: *các nhà toán học PDE hàng đầu thế giới hôm nay đang giải quyết những bài toán mở nào?* Từ giải thưởng Thiên niên kỷ một triệu đô la về phương trình Navier–Stokes 3D, sự hình thành lỗ đen trong Thuyết Tương đối Rộng, đến giao thoa bùng nổ giữa Lý thuyết PDE với Học sâu Khoa học (SciML), bức tranh nghiên cứu hiện đại đang sôi động hơn bao giờ hết!
+
+## Bản đồ kiến thức nền: Bốn mũi nhọn nghiên cứu sôi động nhất của PDE Hiện đại
+
+1. **PDE Phi tuyến Sóng/Tán sắc & Tính Đều Toàn cục vs. Bùng nổ (Blow-up)**:
+   Hiểu cơ chế hình thành kỳ dị hữu hạn thời gian trong phương trình Euler/Navier–Stokes 3D (bài toán Thiên niên kỷ Clay), phương trình Schrödinger phi tuyến (NLS) và ổn định phi tuyến của lỗ đen Kerr trong phương trình Einstein!
+2. **Bài toán Ngược Phi tuyến, Chụp ảnh Siêu phân giải & Siêu vật liệu**:
+   Tái tạo môi trường bất đẳng hướng, bài toán ngược cho phương trình sóng phi tuyến (tận dụng tương tác sóng tạo ra tần số mới giúp nhìn rõ hơn cả bài toán tuyến tính!) và thiết kế vật liệu tàng hình (cloaking).
+3. **Hỗn loạn Lượng tử (Quantum Chaos) & Định lý Ergodic Lượng tử**:
+   Khi dòng chảy trắc địa cổ điển trên mặt cong là hỗn loạn (như sân billiard Bunimovich), các hàm riêng tần số cao $\phi_k$ của $-\Delta$ phân bố đều khắp mặt hay tập trung dọc các quỹ đạo tuần hoàn (*quantum scars*)?
+4. **Giao thoa PDE – Học máy Khoa học (SciML & Neural Operators)**:
+   Xây dựng nền tảng toán học chặt chẽ cho tốc độ hội tụ, khả năng tổng quát hóa và tính bảo toàn định luật vật lý (symplectic, bảo toàn năng lượng, điều kiện biên) của các bộ giải PDE dựa trên mạng nơ-ron.
+
 ## Mục tiêu
 
 Bài học này mở ra cầu nối từ giáo trình sang các hướng nghiên cứu đương đại. Sau bài học, sinh viên cần nhận diện được một số mảng nghiên cứu phát triển từ giải tích vi địa phương, lý thuyết phổ, giải tích bán cổ điển và bài toán ngược; hiểu vì sao các lĩnh vực này tiếp tục được quan tâm; và có một bản đồ khái niệm để tự tìm đọc sâu hơn sau khóa học.
@@ -26,6 +39,15 @@ Sinh viên nên nắm các chủ đề chính của chương: tập mặt sóng,
 
 Giải tích vi địa phương không đứng tách biệt mà giao thoa trực tiếp với hình học vi phân, vật lý lượng tử, khoa học ảnh y sinh, địa vật lý và phương pháp số cao tần.
 
+
+### Khung giải thích (nên đọc chậm): Tính nhanh giới hạn phân giải nhiễu xạ (Rayleigh) trong siêu âm y khoa—động lực của chụp ảnh siêu phân giải hiện đại
+
+Trong các bài toán ngược sóng hiện đại, giới hạn nhiễu xạ cơ bản cho biết sóng có bước sóng $\lambda = c/f$ chỉ phân giải được chi tiết kích thước cỡ $d_{\min} \approx \frac{\lambda}{2}$. Xét siêu âm y khoa trong mô mềm ($c \approx 1.540\text{ m/s}$):
+1. **Đầu dò tiêu chuẩn $f = 5\text{ MHz}$ ($5 \times 10^6\text{ Hz}$)**:
+   $$\lambda = \frac{1.540}{5 \times 10^6} = 0{,}308\text{ mm} \implies d_{\min} \approx \mathbf{0{,}154\text{ mm}}.$$
+2. **Đầu dò tần số cao $f = 10\text{ MHz}$**:
+   $$\lambda = 0{,}154\text{ mm} \implies d_{\min} \approx \mathbf{0{,}077\text{ mm}} \quad (\text{nét gấp đôi!}).$$
+3. **Đánh đổi nghiên cứu hiện đại**: Tăng tần số $f$ giúp tăng độ nét nhưng độ suy hao năng lượng trong mô cũng tăng mạnh khiến sóng không xuyên sâu được—đó là lý do nghiên cứu hiện nay tập trung vào **chụp ảnh đa tán xạ**, **sóng phi tuyến** và **prior học sâu** để phá vỡ giới hạn $\lambda/2$ mà không cần tăng tần số quá cao!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

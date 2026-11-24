@@ -12,6 +12,19 @@ lesson_type: optional
 
 ![Phân phối như nguồn kỳ dị và đạo hàm của hàm bước]({{ site.imgurl }}/chapter_img/chapter12/08_distributions.svg )
 
+Khi Paul Dirac giới thiệu "hàm" $\delta(x)$ bằng $0$ ở mọi nơi trừ $x = 0$ nhưng tích phân lại bằng $1$, các nhà toán học truyền thống lắc đầu vì không một hàm thực thụ nào làm nổi điều đó. Thế nhưng các nhà vật lý vẫn dùng nó tính toán chính xác tuyệt đối! Phải đến năm 1945, Laurent Schwartz mới giải oan ngoạn mục cho Dirac: $\delta_0$ không phải một hàm gán giá trị tại từng điểm, mà là một **phiếm hàm tuyến tính liên tục tác động lên các hàm thử trơn**—khai sinh **Lý thuyết Phân phối (Distributions)**, nơi *mọi* hàm khả tích đều khả vi vô hạn lần!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Lý thuyết Phân phối $\mathcal{D}'(\Omega)$
+
+1. **Không gian Hàm thử $\mathcal{D}(\Omega) = C_c^\infty(\Omega)$ và Đối ngẫu $\mathcal{D}'(\Omega)$**:
+   Một phân phối $T \in \mathcal{D}'(\Omega)$ là ánh xạ tuyến tính liên tục $\varphi \mapsto \langle T, \varphi \rangle$. Mọi hàm khả tích địa phương $f \in L^1_{\text{loc}}$ tự động sinh ra một phân phối chính quy $\langle T_f, \varphi \rangle = \int f\varphi\,dx$, còn $\langle \delta_{x_0}, \varphi \rangle = \varphi(x_0)$ là phân phối kỳ dị!
+2. **Đạo hàm Phân phối — Mọi phân phối đều khả vi vô hạn lần**:
+   Định nghĩa $\langle D^\alpha T, \varphi \rangle := (-1)^{|\alpha|}\langle T, D^\alpha \varphi \rangle$. Vì $\varphi$ trơn vô hạn nên $D^\alpha T$ luôn tồn tại với mọi bậc $\alpha$—hàm bậc thang có đạo hàm là $\delta_0$, và $\delta_0$ có đạo hàm là lưỡng cực $\delta_0'$!
+3. **Phân phối Ôn hòa $\mathcal{S}'(\mathbb{R}^n)$ và Biến đổi Fourier Mở rộng**:
+   Thu hẹp hàm thử sang không gian Schwartz $\mathcal{S}(\mathbb{R}^n)$ (tắt nhanh hơn mọi đa thức) cho phép định nghĩa biến đổi Fourier trên cả các hàm không khả tích như hằng số $1$, đa thức và hàm $\delta_0$: $\widehat{\delta_0} = 1$ và $\widehat{1} = 2\pi \delta_0$!
+4. **Nghiệm Cơ bản (Fundamental Solutions) của PDE**:
+   Phương trình $L E = \delta_0$ chỉ thực sự có nghĩa toán học chặt chẽ trong $\mathcal{D}'(\mathbb{R}^n)$—và phép tích chập $u = E * f$ lập tức giải tổng quát $L u = f$!
+
 ## Mục tiêu
 
 Bài học tùy chọn này giới thiệu khái niệm phân phối (distribution) như sự mở rộng của khái niệm hàm nhằm xử lý nguồn điểm và các đối tượng kỳ dị. Sau bài học, sinh viên cần nắm vai trò của hàm thử, phân phối sinh bởi hàm khả tích địa phương, đạo hàm phân phối, phân phối delta Dirac, và mối liên hệ giữa phân phối với đạo hàm yếu cũng như PDE có dữ liệu kỳ dị.
@@ -24,6 +37,16 @@ Sinh viên cần nắm không gian hàm thử $$ C_c^\infty(\Omega) $$, đạo h
 
 Nhiều đối tượng vật lý quen thuộc không thể biểu diễn bằng hàm thông thường: điện tích điểm, xung lực tức thời hay khối lượng tập trung tại một điểm. Lý thuyết phân phối giải quyết vấn đề này bằng cách không mô tả đối tượng thông qua giá trị tại từng điểm, mà thông qua tác động tuyến tính của nó lên các hàm thử trơn.
 
+
+### Khung giải thích (nên đọc chậm): Tính tay đạo hàm bậc nhất và bậc hai của hàm bậc thang Heaviside $H(x)$ trong $\mathcal{D}'(\mathbb{R})$
+
+Xét hàm bước nhảy $H(x) = 0$ khi $x < 0$ và $H(x) = 1$ khi $x \ge 0$. Lấy một hàm thử bất kỳ $\varphi \in C_c^\infty(\mathbb{R})$ (nên $\varphi(x) = 0$ khi $|x|$ đủ lớn):
+1. **Đạo hàm bậc nhất $H'$**:
+   $$\langle H', \varphi \rangle = -\langle H, \varphi' \rangle = -\int_0^{+\infty} \varphi'(x)\,dx = -\Big[\varphi(x)\Big]_0^{+\infty} = -(0 - \varphi(0)) = \varphi(0) = \langle \delta_0, \varphi \rangle.$$
+   Vậy theo nghĩa phân phối, $H' = \mathbf{\delta_0}$!
+2. **Đạo hàm bậc hai $H'' = \delta_0'$**:
+   $$\langle \delta_0', \varphi \rangle = -\langle \delta_0, \varphi' \rangle = \mathbf{-\varphi'(0)}.$$
+   Kiểm tra với $\varphi(x) = e^{-x^2}\sin(3x)$ (nếu cắt cụt ở xa): tại $x = 0$, $\varphi'(0) = 3$, nên $\langle \delta_0', \varphi \rangle = -3$—một con số hoàn toàn cụ thể dù $\delta_0'$ không có đồ thị thông thường!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

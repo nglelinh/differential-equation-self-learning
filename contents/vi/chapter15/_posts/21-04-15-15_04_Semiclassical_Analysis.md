@@ -12,6 +12,21 @@ lesson_type: optional
 
 ![Trực giác semiclassical khi tham số nhỏ tiến về 0]({{ site.imgurl }}/chapter_img/chapter15/04_semiclassical_analysis.svg )
 
+Làm sao một thế giới cơ học lượng tử đầy sóng xác suất, nhiễu xạ và bất định lại chuyển hóa êm ái thành thế giới cơ học cổ điển của Newton với các quỹ đạo hành tinh sắc nét khi hằng số Planck $h \to 0$? **Giải tích Bán cổ điển (Semiclassical Analysis)** đặt tham số nhỏ $h \in (0, 1]$ ngay trước mọi đạo hàm ($h D_x = -ih\partial_x$), biến ký hiệu $\Psi$DO thành hàm Hamilton cổ điển $H(x, \xi) = |\xi|^2 + V(x)$ và cho phép ta quan sát trực tiếp **ranh giới giữa Sóng và Hạt**!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Giải tích Bán cổ điển
+
+1. **Lượng tử hóa Bán cổ điển $\operatorname{Op}_h(a)$**:
+   Thay $D_x$ bằng $h D_x = -ih\partial_x$: $(Op_h(a) u)(x) = (2\pi h)^{-n}\iint e^{\frac{i}{h}(x-y)\cdot\xi} a(x, \xi) u(y)\,dy\,d\xi$. Khi $h \to 0$, tham số $1/h$ đóng vai trò tương đương tần số lớn $|\xi| \to \infty$ trong phân tích vi địa phương!
+2. **Xấp xỉ WKB ($u_h(x) \sim a(x) e^{i S(x)/h}$) & Phương trình Hamilton–Jacobi**:
+   Thay sóng dao động nhanh $e^{iS(x)/h}$ vào $(-h^2\Delta + V(x))u = E u$ rồi gom các lũy thừa của $h$:
+   - Bậc $h^0$: phương trình **Eikonal / Hamilton–Jacobi** $|\nabla S(x)|^2 + V(x) = E$ (động lực học cổ điển!).
+   - Bậc $h^1$: phương trình **Truyền tải (Transport)** quyết định biên độ $a(x)$.
+3. **Định lý Egorov — Tiến hóa Lượng tử bám sát Dòng chảy Cổ điển**:
+   Nếu $U(t) = e^{-it P_h / h}$ là toán tử tiến hóa Schrödinger, thì $U(-t)\operatorname{Op}_h(a) U(t) = \operatorname{Op}_h(a \circ \varphi_t) + O(h)$, với $\varphi_t$ là dòng chảy Hamilton cổ điển! Phép đo lượng tử tiến hóa theo đúng quỹ đạo Newton tới sai số $O(h)$!
+4. **Vùng Cấm Cổ điển & Hiệu ứng Xuyên hầm (Tunneling)**:
+   Tại nơi $V(x) > E$, phương trình $|\nabla S|^2 = E - V(x) < 0$ không có nghiệm thực—hạt cổ điển bị chặn đứng tại điểm quay đầu $V(x) = E$, nhưng hàm sóng lượng tử tắt theo hàm mũ $e^{-\phi(x)/h}$ và vẫn có thể xuyên qua rào thế!
+
 ## Mục tiêu
 
 Bài học tùy chọn này giới thiệu giải tích bán cổ điển (semiclassical analysis) như cầu nối giữa chế độ tần số cao, PDE và cơ học cổ điển. Sau bài học, sinh viên cần hiểu ý nghĩa của tham số nhỏ $$ h $$, vai trò của giới hạn $$ h\to 0 $$, và mối liên hệ giữa quỹ đạo cổ điển, gói sóng (wave packets) và toán tử Schrödinger.
@@ -26,6 +41,19 @@ Giải tích bán cổ điển nghiên cứu hành vi của nghiệm PDE khi m�
 
 Ưu điểm lớn của lý thuyết này là quy tụ nhiều câu hỏi tưởng như tách biệt — sự định xứ của nghiệm, quỹ đạo cổ điển và phân bố phổ năng lượng cao — vào cùng một ngôn ngữ thống nhất.
 
+
+### Khung giải thích (nên đọc chậm): Rút ra phương trình năng lượng cổ điển từ phương trình Schrödinger bán cổ điển bằng phép tính WKB 2 dòng
+
+Xét dao động tử điều hòa lượng tử bán cổ điển $P_h u = \big(-h^2\partial_x^2 + x^2\big)u = E u$ với thử nghiệm WKB $u_h(x) = e^{iS(x)/h}$:
+1. **Tính đạo hàm bậc nhất và bậc hai**:
+   - $u_h' = \frac{i}{h}S'(x) u_h$.
+   - $u_h'' = \left(-\frac{1}{h^2}(S'(x))^2 + \frac{i}{h}S''(x)\right) u_h$.
+2. **Thay vào $(-h^2\partial_x^2 + x^2)u_h = E u_h$ và chia cho $u_h$**:
+   $$\big(S'(x)\big)^2 - i h S''(x) + x^2 = E.$$
+3. **Lấy giới hạn bán cổ điển $h \to 0$**:
+   Số hạng $-ihS''(x)$ biến mất, để lại đúng phương trình bảo toàn năng lượng cổ điển với động lượng $p = S'(x)$:
+   $$\mathbf{p^2 + x^2 = E}!$$
+   Với $E = 1$, hạt cổ điển dao động qua lại giữa hai **điểm quay đầu** $x = \pm 1$ (nơi $p = 0$); còn vùng $|x| > 1$ là vùng cấm cổ điển nơi biên độ sóng tắt mũ!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

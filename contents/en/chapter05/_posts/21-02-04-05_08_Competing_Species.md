@@ -10,6 +10,36 @@ categories:
 lesson_type: required
 ---
 
+Place two species of paramecia in the same nutrient-rich petri dish: each thrives alone up to its own carrying capacity, yet together they compete for the same food. Will one drive the other completely extinct (**Gause's Competitive Exclusion Principle**), can both coexist peacefully, or does the winner depend entirely on who got a head start? A single visual comparison of two straight nullcline lines answers all three ecological questions cleanly.
+
+## Background Knowledge Map: The Four Nullcline Geometries of Competition
+
+For the competitive Lotka–Volterra system $$x' = r_1 x\bigl(1 - \frac{x + \alpha_{12} y}{K_1}\bigr),\; y' = r_2 y\bigl(1 - \frac{y + \alpha_{21} x}{K_2}\bigr)$$, comparing the two interior nullclines $$L_x: x + \alpha_{12}y = K_1$$ and $$L_y: \alpha_{21}x + y = K_2$$ yields exactly **four** mutually exclusive outcomes:
+
+1. **Species $$x$$ Dominates ($$L_x$$ Strictly Above $$L_y$$):** $$K_1 > K_2/\alpha_{21}$$ and $$K_1/\alpha_{12} > K_2$$; no interior equilibrium exists, and every positive initial state converges to $$(K_1, 0)$$.
+2. **Species $$y$$ Dominates ($$L_y$$ Strictly Above $$L_x$$):** Symmetric reversal; every positive initial state converges to $$(0, K_2)$$.
+3. **Stable Coexistence (Weak Interspecific Competition, $$\alpha_{12}\alpha_{21} < 1$$):** The nullclines cross with $$K_1 < K_2/\alpha_{21}$$ and $$K_2 < K_1/\alpha_{12}$$; each species inhibits *itself* more strongly than it inhibits its rival, making the interior equilibrium $$(x^*, y^*)$$ a **globally attracting stable node**!
+4. **Bistability / Founder Control (Strong Interspecific Competition, $$\alpha_{12}\alpha_{21} > 1$$):** The nullclines cross in the opposite orientation; $$(x^*, y^*)$$ is a **saddle** whose stable manifold (separatrix) divides the first quadrant into two competing basins—one ending at $$(K_1, 0)$$ and the other at $$(0, K_2)$$!
+
+### Step-by-Step Worked Example (Read Slowly): Classifying Stable Coexistence vs. Bistability by Jacobian and Nullclines
+
+Analyze the competing-species model
+$$x' = x(3 - x - 2y), \qquad y' = y(2 - x - y), \qquad x \ge 0,\; y \ge 0.$$
+
+1. **Locate all four equilibria:**
+   - Extinction: $$(0, 0)$$.
+   - Single-species carrying capacities: $$(3, 0)$$ and $$(0, 2)$$.
+   - Coexistence intersection of $$x + 2y = 3$$ and $$x + y = 2$$: subtracting gives $$y^* = 1$$, hence $$x^* = 1 \implies (1, 1)$$.
+2. **Compute the Jacobian matrix $$J(x,y)$$:**
+   $$J(x, y) = \begin{pmatrix} 3 - 2x - 2y & -2x \\ -y & 2 - x - 2y \end{pmatrix}.$$
+3. **Classify the interior equilibrium $$(1, 1)$$:**
+   $$J(1, 1) = \begin{pmatrix} -1 & -2 \\ -1 & -1 \end{pmatrix} \implies \tau = -2, \qquad \Delta = (-1)(-1) - (-2)(-1) = 1 - 2 = -1 < 0.$$
+   Because $$\Delta = -1 < 0$$, the coexistence equilibrium $$(1, 1)$$ is an **unstable saddle** (eigenvalues $$\lambda = -1 \pm \sqrt{2} \approx +0.414,\; -2.414$$)!
+4. **Check the single-species boundary equilibria $$(3, 0)$$ and $$(0, 2)$$:**
+   - At $$(3, 0)$$: $$J(3, 0) = \begin{pmatrix} -3 & -6 \\ 0 & -1 \end{pmatrix} \implies \lambda = -3, -1 < 0$$ (**stable node**!).
+   - At $$(0, 2)$$: $$J(0, 2) = \begin{pmatrix} -1 & 0 \\ -2 & -2 \end{pmatrix} \implies \lambda = -1, -2 < 0$$ (**stable node**!).
+5. **Ecological conclusion:** This is **bistability (founder control)**—coexistence at $$(1,1)$$ is impossible under real-world perturbations; whichever species starts on its favorable side of the saddle's stable separatrix drives the other completely extinct!
+
 ## Learning Objectives
 
 This lesson helps students analyze two-species competition models, interpret coexistence and exclusion, use nullclines to predict long-term outcomes, and connect nonlinear systems with ecological and economic competition.

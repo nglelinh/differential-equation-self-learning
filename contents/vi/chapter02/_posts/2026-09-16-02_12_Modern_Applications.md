@@ -10,6 +10,20 @@ categories:
 lesson_type: optional
 ---
 
+
+Nếu bạn huấn luyện một mạng nơ-ron thông thường để dự đoán chuyển động con lắc, chỉ sau vài chục chu kỳ, năng lượng dự đoán sẽ tự phình to hoặc tắt lịm—vì mạng không biết gì về định luật bảo toàn năng lượng! **Hamiltonian Neural Networks (HNN)** và **Lagrangian Neural Networks (LNN)** khắc phục triệt để điều này bằng cách nhúng thẳng cấu trúc phương trình vi phân cấp hai bảo toàn năng lượng vào kiến trúc mạng nơ-ron.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Mạng nơ-ron Cấp Hai & Bảo toàn Vật lý
+
+1. **Hamiltonian Neural Networks (HNN)**:
+   Thay vì học trực tiếp $(\dot{q}, \dot{p})$, mạng học một hàm vô hướng duy nhất—năng lượng $H_\theta(q, p)$—rồi suy ra động lực qua phương trình Hamilton $\dot{q} = \frac{\partial H_\theta}{\partial p},\; \dot{p} = -\frac{\partial H_\theta}{\partial q}$, bảo toàn $H_\theta$ chính xác theo cấu trúc!
+2. **Lagrangian Neural Networks (LNN)**:
+   Học trực tiếp hàm Lagrange $\mathcal{L}_\theta(q, \dot{q})$ và tự động lấy phương trình Euler–Lagrange bậc hai, lý tưởng cho robot nhiều khớp có tọa độ suy rộng phức tạp.
+3. **Bộ tích phân Symplectic (Verlet / Leapfrog)**:
+   Khi rời rạc hóa hệ cấp hai, bộ giải Euler làm trôi năng lượng theo thời gian; bộ giải symplectic bảo toàn thể tích không gian pha và giữ sai số năng lượng bị chặn suốt hàng triệu bước.
+4. **Second-Order Neural ODE (SONODE)**:
+   Mở rộng Neural ODE lên bậc hai $\ddot{\mathbf{x}} = f_\theta(\mathbf{x}, \dot{\mathbf{x}}, t)$, cho phép học trực tiếp các hệ dao động, quán tính và quỹ đạo cắt nhau trong không gian vị trí.
+
 ## Mục tiêu
 
 Bài đọc tùy chọn này kết nối phương trình hệ số hằng cấp hai, dao động cơ học và phương pháp năng lượng với các nghiên cứu giai đoạn 2019–2024 về mạng nơ-ron Hamiltonian, Lagrangian và neural ODE cấp hai. Sinh viên sẽ nhìn nhận một bộ dao động được học từ dữ liệu như phần mở rộng có cấu trúc của $$y''+p y'+q y=g(t)$$, hiểu vì sao các kiến trúc bảo toàn cấu trúc symplectic hoặc năng lượng thường hoạt động ổn định hơn mạng thông thường trên hệ bảo toàn, và liên hệ tính độc lập theo Wronskian với khả năng nhận dạng các chế độ dao động. Bài không nhắc lại các kỹ thuật giải cổ điển.
@@ -25,6 +39,16 @@ Phương trình $$y''+\omega^2 y=0$$ là mô hình dao động bảo toàn đơn
 Greydanus, Dzamba và Yosinski đã đề xuất mạng nơ-ron Hamiltonian (Hamiltonian Neural Networks) tại NeurIPS 2019 bằng cách học một hàm Hamiltonian vô hướng $$H_\theta(q,p)$$ rồi tích phân phương trình Hamilton thay vì học trực tiếp một trường vector không có cấu trúc. Cranmer và cộng sự (*Lagrangian Neural Networks*, 2020; [arXiv:2003.04630](https://arxiv.org/abs/2003.04630)) áp dụng phương trình Euler–Lagrange, vốn thuận tiện hơn khi dữ liệu quan sát là vị trí và vận tốc. Tiếp đó, Finzi, Wang và Wilson (*Simplifying Hamiltonian and Lagrangian Neural Networks*, NeurIPS 2020) tinh gọn cách xử lý ràng buộc và hệ tọa độ. Các công trình năm 2022 của Sosanya và Greydanus về mạng Hamiltonian tiêu tán, cùng nghiên cứu của Gruver, Finzi, Goldblum và Wilson (*Deconstructing the Inductive Biases of Hamiltonian Neural Networks*, ICLR 2022), đã làm rõ điều kiện để các giả định cấu trúc này thực sự phát huy hiệu quả.
 
 Tất cả các hướng nghiên cứu trên đều cho thấy một cách nhìn hiện đại đối với Chương 02: cấu trúc tuyến tính cấp hai, năng lượng và tính độc lập tuyến tính của các chế độ dao động không chỉ là công cụ giải tích mà còn là định hướng thiết kế kiến trúc mô hình.
+
+### Khung giải thích (nên đọc chậm): So sánh độ trôi năng lượng của Euler cổ điển vs. Symplectic Euler cho dao động tử $q'' + q = 0$ ($H = \frac{1}{2}(q^2 + p^2)$)
+
+Xuất phát từ $(q_0, p_0) = (1, 0)$ (năng lượng ban đầu $H_0 = 0{,}5$) với bước thời gian $h = 0{,}5$:
+1. **Euler hiện (không bảo toàn năng lượng)**:
+   - $q_1 = q_0 + h p_0 = 1 + 0 = 1$, $\;p_1 = p_0 - h q_0 = -0{,}5$.
+   - Năng lượng sau 1 bước: $H_1 = \frac{1}{2}(1^2 + 0{,}5^2) = \mathbf{0{,}625}$ (tăng vọt **$+25\%$** chỉ sau 1 bước! Sau $N$ bước tăng theo $(1+h^2)^N \to \infty$).
+2. **Symplectic Euler (dùng $p_1$ vừa cập nhật để tính $q_1$)**:
+   - $p_1 = p_0 - h q_0 = -0{,}5$, $\;q_1 = q_0 + h p_1 = 1 + 0{,}5(-0{,}5) = 0{,}75$.
+   - Năng lượng sau 1 bước: $H_1 = \frac{1}{2}(0{,}75^2 + 0{,}5^2) = \mathbf{0{,}40625}$—nó **dao động bị chặn** quanh $0{,}5$ chứ không bao giờ phình ra vô hạn! Đây là lý do HNN luôn đi cặp với bộ giải symplectic.
 
 ## Khái niệm then chốt
 

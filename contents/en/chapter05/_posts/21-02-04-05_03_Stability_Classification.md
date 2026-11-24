@@ -10,6 +10,37 @@ categories:
 lesson_type: required
 ---
 
+Saying an equilibrium is "stable" can mean two very different things in practice: a frictionless pendulum stays near the bottom forever without ever stopping there (**Lyapunov stable**), whereas a damped pendulum actually settles back to rest at the bottom (**asymptotically stable**). In nonlinear dynamics, mastering the exact hierarchy of stability definitions—and knowing which linear classifications survive nonlinear perturbation—prevents costly false conclusions.
+
+## Background Knowledge Map: The Exact Stability Hierarchy and Structural Robustness
+
+Four precise distinctions separate rigorous stability analysis from hand-waving:
+
+1. **Lyapunov Stability ($$\varepsilon$$–$$\delta$$ Containment):** An equilibrium $$\mathbf{x}^*$$ is *Lyapunov stable* if for every target ball of radius $$\varepsilon > 0$$, there exists a starting ball $$\delta > 0$$ such that $$\|\mathbf{x}(0) - \mathbf{x}^*\| < \delta \implies \|\mathbf{x}(t) - \mathbf{x}^*\| < \varepsilon$$ for all $$t \ge 0$$ (stays close forever, need not converge).
+2. **Asymptotic Stability (Stability + Attraction):** $$\mathbf{x}^*$$ is *asymptotically stable* if it is Lyapunov stable **and** there is a neighborhood where $$\lim_{t\to\infty} \mathbf{x}(t) = \mathbf{x}^*$$. (Subtle graduate fact: attraction alone without Lyapunov stability does *not* imply stability—some homoclinic loops attract every point after a huge excursion!)
+3. **Robust vs. Fragile Linear Classifications:**
+   - **Robust (Hyperbolic):** Asymptotically stable nodes/spirals ($$\tau < 0, \Delta > 0$$), unstable nodes/spirals ($$\tau > 0, \Delta > 0$$), and saddles ($$\Delta < 0$$) keep their exact stability under *any* smooth $$O(\|\mathbf{u}\|^2)$$ nonlinear perturbation.
+   - **Fragile (Borderline):** Linear centers ($$\tau = 0, \Delta > 0$$), degenerate nodes ($$\tau^2 = 4\Delta$$), and non-isolated equilibria ($$\Delta = 0$$) can switch stability or type when nonlinear terms are included!
+4. **Polar-Coordinate Stability Test for Centers:** For borderline centers $$x' = -y + P(x,y),\; y' = x + Q(x,y)$$, computing $$r r' = x x' + y y'$$ immediately exposes whether nonlinear terms push trajectories inward ($$r' < 0$$) or outward ($$r' > 0$$).
+
+### Step-by-Step Worked Example (Read Slowly): Two Nonlinear Systems with Identical Linear Centers—Opposite Stabilities!
+
+Compare the two systems near the equilibrium $$(0, 0)$$:
+$$\text{(A)}\quad \begin{cases} x' = -y - x(x^2 + y^2) \\ y' = x - y(x^2 + y^2) \end{cases} \qquad\text{vs.}\qquad \text{(B)}\quad \begin{cases} x' = -y + x(x^2 + y^2) \\ y' = x + y(x^2 + y^2). \end{cases}$$
+
+1. **Check the linearization at $$(0, 0)$$ for BOTH systems:**
+   Because the cubic terms vanish to first order at $$(0, 0)$$, both systems share the *exact same* Jacobian
+   $$J(0, 0) = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}, \qquad \lambda = \pm i.$$
+   Linearization predicts a neutrally stable **center** for both—completely blind to the sign of the cubic term!
+2. **Convert to polar coordinates using $$r^2 = x^2 + y^2 \implies r r' = x x' + y y'$$:**
+   - For **(A):**
+     $$r r' = x\bigl(-y - x r^2\bigr) + y\bigl(x - y r^2\bigr) = -(x^2 + y^2)r^2 = -r^4 \implies r' = -r^3 < 0 \quad (r > 0).$$
+   - For **(B):**
+     $$r r' = +(x^2 + y^2)r^2 = +r^4 \implies r' = +r^3 > 0 \quad (r > 0).$$
+3. **Solve $$r' = \mp r^3$$ explicitly to see the true nonlinear fate:**
+   - In **(A):** $$r(t) = \frac{r_0}{\sqrt{1 + 2r_0^2 t}} \xrightarrow{t\to\infty} 0$$ — **asymptotically stable spiral sink** (albeit algebraically slow, $$O(t^{-1/2})$$ rather than exponential!).
+   - In **(B):** $$r(t) = \frac{r_0}{\sqrt{1 - 2r_0^2 t}} \to \infty$$ at finite time $$t^* = \frac{1}{2r_0^2}$$ — **unstable spiral source** with finite-time blow-up!
+
 ## Learning Objectives
 
 This lesson helps students classify equilibria by stability type, connect eigenvalues of the Jacobian to geometric motion, and distinguish nodes, saddles, spirals, and centers in a nonlinear setting.

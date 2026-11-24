@@ -9,6 +9,19 @@ categories:
 - chapter15
 ---
 
+Vào cuối thập niên 1960, hai trường phái toán học độc lập ở hai đầu thế giới—Mikio Sato tại Nhật Bản và Lars Hörmander tại Thụy Điển—cùng đi tới một bước nhảy nhận thức làm rung chuyển toàn bộ giải tích PDE: chỉ hỏi một hàm *không trơn tại điểm $x$ nào* là chưa đủ; ta phải hỏi nó **không trơn theo hướng tần số $\xi$ nào**! Từ khám phá ấy ra đời **Phân tích Vi địa phương (Microlocal Analysis)**—đỉnh cao hiện đại nối liền PDE, hình học symplectic, cơ học lượng tử và chụp cắt lớp y khoa CT!
+
+## Bản đồ kiến thức nền: Bốn cột mốc lịch sử của Phân tích Vi địa phương
+
+1. **Sato (1969) & Hörmander (1970) — Tập Mặt sóng (Wave Front Set $\operatorname{WF}(u)$)**:
+   Nâng cấp giá kỳ dị $\operatorname{sing\,supp}(u) \subset \mathbb{R}^n$ lên không gian pha $T^*\mathbb{R}^n \setminus 0$: mỗi kỳ dị giờ có cả **vị trí $x$ lẫn hướng dao động $\xi$**!
+2. **Hörmander & Duistermaat (1971–1972) — Toán tử Tích phân Fourier (FIO) & Lan truyền Kỳ dị**:
+   Chứng minh định lý kiệt xuất: kỳ dị của nghiệm phương trình sóng hay PDE hyperbolic không lan tỏa ngẫu nhiên mà **trượt chính xác dọc theo các đường lưỡng đặc trưng (bicharacteristics)**—tức các tia sáng của quang học hình học!
+3. **Weyl (1911) $\to$ Hörmander (1968) & Duistermaat–Guillemin (1975) — Tiệm cận Phổ**:
+   Dùng FIO cho toán tử sóng $e^{it\sqrt{-\Delta}}$ để chứng minh công thức Weyl sắc bén với phần dư tối ưu, kết nối phổ giá trị riêng với độ dài các đường trắc địa tuần hoàn ("Liệu có nghe được hình dáng của cái trống không?").
+4. **Calderón (1980), Uhlmann & Kỷ nguyên Bài toán Ngược Vi cục bộ**:
+   Ứng dụng phân tích vi địa phương vào chụp ảnh y khoa CT, địa chấn và bài toán Calderón (EIT), xác định chính xác ranh giới mô nào nhìn thấy được hay bị mù trong ảnh cắt lớp!
+
 ## Mục tiêu
 Bài học này lần theo quá trình hình thành và phát triển của giải tích vi địa phương từ quang học hình học và các phương pháp Fourier đến tập mặt sóng (wave front set), toán tử tích phân Fourier, giải tích bán cổ điển, bài toán ngược và các hướng nghiên cứu hiện đại. Qua đó, người học thấy Chương 15 đánh dấu bước chuyển khi lý thuyết PDE không chỉ xác định vị trí của điểm kỳ dị mà còn theo dõi cách điểm kỳ dị lan truyền.
 
@@ -20,6 +33,16 @@ Tại Lund vào cuối thập niên 1960, Lars Hörmander theo đuổi một câ
 
 Xét hàm bậc thang có một bước nhảy tại $$x=0$$. Theo nghĩa cổ điển, ta biết hàm có kỳ dị tại $$0$$. Giải tích vi địa phương đặt câu hỏi tinh hơn: kỳ dị đó biểu hiện theo những hướng tần số nào? Với phương trình sóng, cấu trúc còn rõ nét hơn: kỳ dị không đứng yên mà lan truyền dọc theo các đường song đặc trưng (bicharacteristics) trong không gian pha. Chính từ nhu cầu mô tả kỳ dị bằng cả vị trí lẫn hướng mà tập mặt sóng, toán tử tích phân Fourier và giải tích bán cổ điển ra đời. Chương 15 trình bày cách giải tích hiện đại mô tả sự chuyển động của tính không trơn.
 
+
+### Khung giải thích (nên đọc chậm): So sánh Giá kỳ dị cổ điển và Tập Mặt sóng $\operatorname{WF}$ của một cạnh nhảy 2D
+
+Xét ảnh đen–trắng 2D có một bờ cạnh thẳng đứng dọc trục $y$: $u(x_1, x_2) = H(x_1)$ (bằng $0$ bên trái $x_1 < 0$, bằng $1$ bên phải $x_1 > 0$):
+1. **Giá kỳ dị cổ điển ($\operatorname{sing\,supp}(u)$)**:
+   Chỉ nói được rằng hàm không trơn trên toàn đường thẳng $x_1 = 0$: $\operatorname{sing\,supp}(u) = \{(0, x_2) : x_2 \in \mathbb{R}\}$.
+2. **Tập Mặt sóng vi địa phương ($\operatorname{WF}(u)$)**:
+   Theo hướng dọc $x_2$, hàm $u$ hoàn toàn hằng số (trơn vô hạn!), nên biến đổi Fourier tắt siêu nhanh theo mọi hướng có $\xi_2 \neq 0$. Kỳ dị **chỉ xảy ra theo hướng ngang vuông góc với bờ cạnh**:
+   $$\operatorname{WF}(u) = \big\{((0, x_2),\; (\xi_1, 0)) : x_2 \in \mathbb{R},\; \xi_1 \neq 0\big\}!$$
+   Chỉ một dòng ký hiệu đã ghi lại trọn vẹn cả **vị trí** lẫn **pháp tuyến của cạnh ảnh**!
 ## Mạch truyện lớn
 Mạch phát triển của chương đi qua nhiều lớp lý thuyết nối tiếp nhau: quang học hình học, cơ học Hamilton, các phương pháp tiệm cận, toán tử giả vi phân, toán tử tích phân Fourier và định lý lan truyền vi địa phương. Các nhà toán học như Sato, Hörmander, Duistermaat, Maslov, Weyl và Gutzwiller không chỉ bổ sung công cụ kỹ thuật mà còn thay đổi chính câu hỏi nghiên cứu đối với nghiệm PDE.
 

@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+Khác với dây đàn rung giữ nguyên năng lượng và dao động mãi mãi, nhiệt năng trong một thanh kim loại luôn tự san phẳng mọi chênh lệch cho đến khi đạt trạng thái cân bằng. Dùng đúng một bộ hàm riêng Sturm–Liouville như bài dây rung, nhưng đạo hàm bậc nhất theo thời gian $u_t = \alpha u_{xx}$ thay đổi hoàn toàn định mệnh của nghiệm: mọi dao động biến thành **suy giảm hàm mũ cực nhanh**!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Bài toán Dẫn nhiệt 1D
+
+1. **Phương trình nhiệt 1D ($u_t = \alpha u_{xx}$)**:
+   $\alpha = \frac{k}{\rho c_p} > 0$ là hệ số khuếch tán nhiệt; vùng có độ cong âm ($u_{xx} < 0$, đỉnh nóng) sẽ giảm nhiệt ($u_t < 0$) và vùng lõm lạnh ($u_{xx} > 0$) sẽ ấm lên.
+2. **Hiệu ứng làm trơn tức thì (Smoothing Effect)**:
+   Mỗi mode bậc $n$ suy giảm theo hệ số $e^{-\alpha (n\pi/L)^2 t}$. Do có **$n^2$ trên số mũ**, mode $n = 10$ tắt nhanh gấp **$100\times$** mode cơ bản $n = 1$!
+3. **Biên Dirichlet vs. Biên Neumann (Cách nhiệt)**:
+   - Biên giữ $0^\circ\text{C}$ ($u(0,t)=u(L,t)=0$): toàn bộ nhiệt thoát ra ngoài, $u(x,t) \to 0$.
+   - Biên cách nhiệt ($u_x(0,t)=u_x(L,t)=0$): tổng nhiệt năng bảo toàn, thanh tiến dần về **nhiệt độ trung bình ban đầu** $a_0 = \frac{1}{L}\int_0^L f(x)\,dx$!
+4. **Thời gian đặc trưng khuếch tán ($\tau \sim L^2 / \alpha$)**:
+   Tăng gấp đôi chiều dài thanh làm thời gian truyền nhiệt tăng gấp **4 lần**!
+
 ## Mục tiêu
 
 Bài học này vận dụng tư duy bài toán giá trị biên vào mô hình dẫn nhiệt ở trạng thái dừng. Sau bài học, sinh viên cần hiểu biên dạng nhiệt độ cân bằng như nghiệm của một BVP, biết diễn giải ý nghĩa vật lý của các điều kiện biên nhiệt học và thấy được cách hàm Green cùng khai triển theo hàm riêng hỗ trợ giải các bài toán dẫn nhiệt thực tế.
@@ -25,6 +39,16 @@ Sinh viên nên nắm vững BVP hai điểm, các điều kiện biên Dirichle
 Khi nhắc đến dẫn nhiệt, ta thường nghĩ ngay đến một quá trình phụ thuộc thời gian trong đó nhiệt lan truyền từ vùng nóng sang vùng lạnh. Tuy nhiên, khi hệ đạt đến trạng thái cân bằng ổn định sau thời gian đủ dài, biến thời gian biến mất và bài toán trở thành việc tìm phân bố nhiệt độ cố định theo không gian — tức là một bài toán giá trị biên.
 
 Bài học này cho thấy BVP mô tả trực tiếp một hiện tượng vật lý quen thuộc, đồng thời làm bước đệm cho chương phương trình nhiệt sau này, nơi trạng thái dừng đóng vai trò nghiệm nền của quá trình tiến hóa theo thời gian.
+
+### Khung giải thích (nên đọc chậm): Tính tay thời gian tắt dần của mode $n = 1$ so với mode $n = 3$ trên thanh dài $L = \pi$ ($\alpha = 1$)
+
+Giả sử thanh có nhiệt độ ban đầu $u(x, 0) = 100\sin x + 100\sin(3x)$ với hai đầu giữ ở $0^\circ\text{C}$.
+1. **Viết ngay nghiệm chính xác**:
+   $$u(x, t) = 100 e^{-1^2 t}\sin x + 100 e^{-3^2 t}\sin(3x) = 100 e^{-t}\sin x + 100 e^{-9t}\sin(3x).$$
+2. **Tính tay biên độ hai thành phần tại $t = 0{,}5\text{ s}$**:
+   - Mode $n = 1$: $100 e^{-0{,}5} \approx 100 \times 0{,}6065 = \mathbf{60{,}65^\circ\text{C}}$.
+   - Mode $n = 3$: $100 e^{-4{,}5} \approx 100 \times 0{,}0111 = \mathbf{1{,}11^\circ\text{C}}$ (đã gần như biến mất!).
+3. **Kết luận trực giác**: Chỉ sau $0{,}5\text{ s}$, thành phần gồ ghề $\sin(3x)$ bị dập tắt mạnh hơn gần **$55\times$** so với sóng mượt $\sin x$—đó chính là lý do bản chất của khuếch tán luôn "là phẳng" mọi nếp nhăn sắc cạnh ngay lập tức!
 
 ## Khái niệm theo ba cách
 

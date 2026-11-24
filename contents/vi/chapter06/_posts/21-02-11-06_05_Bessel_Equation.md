@@ -10,6 +10,19 @@ categories:
 lesson_type: required
 ---
 
+Mỗi khi bạn ném viên sỏi xuống mặt hồ phẳng lặng, gõ vào mặt trống tròn, hay dẫn sóng điện từ qua cáp quang hình trụ, phương trình vật lý tách biến trong tọa độ trụ đều dẫn về đúng một phương trình kinh điển: **Phương trình Bessel** $x^2 y'' + x y' + (x^2 - \nu^2) y = 0$.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình & Hàm Bessel
+
+1. **Hàm Bessel loại I ($J_\nu(x)$) & Hàm Bessel loại II ($Y_\nu(x)$)**:
+   Tại điểm kỳ dị chính quy $x = 0$, phương trình chỉ số $r^2 - \nu^2 = 0$ cho $r = \pm \nu$. Nghiệm hữu hạn tại gốc $x = 0$ là $J_\nu(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m!\,\Gamma(m+\nu+1)}\left(\frac{x}{2}\right)^{2m+\nu}$, còn $Y_\nu(x)$ chứa $\ln x$ và tiến ra $-\infty$ tại $x = 0$ (nên thường bị loại trong bài toán đĩa tròn đặc!).
+2. **Dạng tiệm cận khi $x$ lớn**:
+   $J_\nu(x) \approx \sqrt{\frac{2}{\pi x}}\cos\left(x - \frac{\nu\pi}{2} - \frac{\pi}{4}\right)$ — dao động tuần hoàn giống cosin nhưng biên độ suy giảm như $1/\sqrt{x}$ và có vô hạn nghiệm không $j_{\nu, k}$.
+3. **Tính trực giao có trọng số $w(x) = x$**:
+   Trên $[0, a]$, các hàm $J_\nu(j_{\nu, k} x / a)$ trực giao với trọng số $x$ ($\int_0^a x J_\nu(\alpha_m x) J_\nu(\alpha_n x)\,dx = 0$ khi $m \neq n$), tạo thành **chuỗi Fourier–Bessel**!
+4. **Hệ thức truy hồi & Đạo hàm gọn đẹp**:
+   $J_0'(x) = -J_1(x)$ và $\frac{d}{dx}[x^\nu J_\nu(x)] = x^\nu J_{\nu-1}(x)$.
+
 ## Mục tiêu
 
 Bài học này giới thiệu phương trình Bessel như ví dụ tiêu biểu cho sức mạnh của phương pháp Frobenius và cho cách hình học bài toán quyết định họ nghiệm xuất hiện. Sau bài học, sinh viên cần nhận dạng được phương trình Bessel, hiểu vì sao hàm Bessel loại một được chọn từ điều kiện hữu hạn tại gốc và thấy được mối liên hệ giữa các không điểm của hàm Bessel với trị riêng trong các bài toán đối xứng trụ.
@@ -25,6 +38,17 @@ Sinh viên nên nắm vững phương pháp Frobenius, khái niệm điểm kỳ
 Khi giải các bài toán có đối xứng tròn hoặc trụ — chẳng hạn dao động màng trống, truyền nhiệt trong thanh trụ, sóng trong ống dẫn tròn hay thế năng trong miền trụ — phương trình theo phương bán kính gần như luôn dẫn về phương trình Bessel. Điều này cho thấy hàm Bessel không phải một hàm nhân tạo, mà là nghiệm tự nhiên của giải tích trong hình học tròn.
 
 Nếu ở các chương đầu nghiệm quen thuộc là sin, cos và hàm mũ, thì ở đây ta thấy mỗi hình học đặc trưng sẽ sinh ra một họ hàm dao động riêng: với đoạn thẳng là sin và cos, còn với hình tròn và hình trụ là họ hàm Bessel.
+
+### Khung giải thích (nên đọc chậm): Tính tay giá trị $J_0(1)$ và kiểm chứng $J_0'(x) = -J_1(x)$
+
+Với bậc $\nu = 0$, chuỗi của $J_0(x)$ là:
+$$J_0(x) = \sum_{m=0}^{\infty} \frac{(-1)^m}{(m!)^2} \left(\frac{x}{2}\right)^{2m} = 1 - \frac{x^2}{4} + \frac{x^4}{64} - \frac{x^6}{2304} + \dots$$
+1. **Tính tay $J_0(1)$ đến 4 chữ số thập phân**:
+   $$J_0(1) \approx 1 - 0{,}2500 + 0{,}015625 - 0{,}000434 = \mathbf{0{,}7652}$$
+   (giá trị chính xác là $0{,}765197\dots$ — chỉ cần 4 số hạng đã đúng đến chữ số thứ 4!).
+2. **Kiểm chứng $J_0'(x) = -J_1(x)$ từng số hạng**:
+   $$J_0'(x) = -\frac{x}{2} + \frac{x^3}{16} - \frac{x^5}{384} + \dots = -\left[\frac{x}{2} - \frac{1}{1!\,2!}\left(\frac{x}{2}\right)^3 + \frac{1}{2!\,3!}\left(\frac{x}{2}\right)^5 - \dots\right] = -J_1(x).$$
+   Và nghiệm không dương đầu tiên $j_{0,1} \approx 2{,}4048$ chính là tần số cơ bản của màng trống tròn!
 
 ## Khái niệm theo ba cách
 

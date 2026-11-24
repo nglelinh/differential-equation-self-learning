@@ -9,6 +9,32 @@ categories:
 - chapter01
 ---
 
+In 1695, Jacob Bernoulli published a public challenge in *Acta Eruditorum* daring the leading mathematicians of Europe to solve the nonlinear equation $$y' + p(x)y = q(x)y^n$$. Within months, Gottfried Wilhelm Leibniz and Johann Bernoulli fired back with rival substitutions that sparked both a bitter sibling feud and the birth of systematic ODE theory. Every method in Chapter 01 was forged in real scientific rivalries over hanging chains, brachistochrone curves, and planetary motion.
+
+## Background Knowledge Map: Four Historical Milestones Behind Chapter 01
+
+Tracing the timeline of first-order ODEs shows how practical geometry matured into modern analysis:
+
+1. **Inverse Tangent Problems (1670s–1690s):** Before the term "differential equation" even existed, Newton and Leibniz asked: given a geometric property of a curve's tangent (like a constant subtangent), reconstruct the curve itself—producing separation of variables.
+2. **The Bernoulli–Leibniz Substitution Era (1690s):** Solving the catenary, tractrix, and Bernoulli's equation introduced change-of-variable tricks and established differential equations as an autonomous branch of mathematics.
+3. **Euler's Systematization and Integrating Factors (1730s–1760s):** Leonhard Euler unified exact differentials, integrating factors, and the first numerical stepping scheme (Euler's method), turning scattered tricks into a textbook discipline.
+4. **Cauchy, Lipschitz, and Picard's Rigor (1820s–1890s):** Realizing that most ODEs have *no* elementary closed-form formula, nineteenth-century analysts shifted from "how do we integrate this?" to "does a unique solution exist?"—culminating in Picard's 1890 method of successive approximations.
+
+### Step-by-Step Worked Example (Read Slowly): Solving Leibniz's 1690s "Inverse Tangent" Problem (The Tractrix)
+
+A classic seventeenth-century challenge asked: what curve in the first quadrant has the property that the segment of its tangent line from the point of tangency $$(x, y)$$ to the $$x$$-axis always has constant length $$a$$?
+
+1. **Translate the geometric condition into a first-order ODE:**
+   The right triangle formed by the tangent segment (hypotenuse $$a$$), vertical height $$y$$, and horizontal subtangent $$s$$ satisfies $$s = \sqrt{a^2 - y^2}$$. Since the curve descends toward the $$x$$-axis as $$x$$ increases,
+   $$\frac{dy}{dx} = -\frac{y}{\sqrt{a^2 - y^2}}, \qquad 0 < y \le a.$$
+2. **Separate variables:**
+   $$dx = -\frac{\sqrt{a^2 - y^2}}{y}\,dy.$$
+3. **Evaluate the integral using $$y = a\operatorname{sech} u$$ (so $$\sqrt{a^2 - y^2} = a\tanh u$$ and $$dy = -a\operatorname{sech} u \tanh u\,du$$):**
+   $$dx = -\frac{a\tanh u}{a\operatorname{sech} u}\bigl(-a\operatorname{sech} u \tanh u\,du\bigr) = a\tanh^2 u\,du = a(1 - \operatorname{sech}^2 u)\,du.$$
+   Integrating with $$x = 0$$ at $$y = a$$ ($$u = 0$$):
+   $$x = a(u - \tanh u) = a\ln\!\left(\frac{a + \sqrt{a^2 - y^2}}{y}\right) - \sqrt{a^2 - y^2}.$$
+4. **Historical payoff:** Rotating this tractrix around the $$x$$-axis generates Beltrami's **pseudosphere**—the first concrete surface of constant negative Gaussian curvature, which later proved non-Euclidean hyperbolic geometry was consistent!
+
 ## Objectives
 This lesson reconstructs the historical rise of first-order ordinary differential equations from mechanics, astronomy, population theory, and electrical engineering. Students should come away seeing Chapter 01 not as a list of techniques, but as the first organized answer to the problem of modeling change.
 

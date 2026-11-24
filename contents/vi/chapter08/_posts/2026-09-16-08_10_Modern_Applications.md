@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Mạng tích chập CNN truyền thống chỉ nhìn thấy các điểm ảnh lân cận trong cửa sổ $3 \times 3$—và nếu huấn luyện trên lưới $64 \times 64$ thì khi đổi sang lưới $256 \times 256$, mạng vỡ hoàn toàn. **Fourier Neural Operator (FNO)** (Li et al., 2021) đã tạo nên cuộc cách mạng trong AI mô phỏng vật lý bằng đúng một định lý Chương 8: **tích chập toàn cục trong không gian chính là phép nhân từng điểm trong miền tần số Fourier**!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Fourier Neural Operator (FNO)
+
+1. **Định lý Tích chập Fourier ($\mathcal{F}\{K * v\} = \mathcal{F}\{K\} \cdot \mathcal{F}\{v\}$)**:
+   Mỗi lớp Fourier trong FNO chạy FFT đưa tín hiệu sang miền tần số, **nhân tuyến tính** trên $k_{\max}$ tần số thấp nhất (bộ lọc toàn cục!), rồi chạy Inverse FFT (iFFT) quay về miền không gian—tốn chỉ $O(N\log N)$!
+2. **Bất biến độ phân giải (Zero-Shot Super-Resolution)**:
+   Vì trọng số học nằm trên các **mode tần số** (không gắn cứng vào kích thước pixel lưới), một mô hình FNO huấn luyện trên lưới thô $64 \times 64$ có thể suy luận thẳng trên lưới siêu mịn $256 \times 256$ mà không cần huấn luyện lại!
+3. **Cắt cụt tần số cao (Low-Pass Spectral Truncation)**:
+   Hầu hết năng lượng của dòng chảy chất lỏng (Navier–Stokes), khí tượng và truyền nhiệt tập trung ở các tần số thấp; giữ $k_{\max} = 12\text{–}32$ mode giúp mạng nhẹ, ít overfitting và chạy nhanh hơn bộ giải PDE truyền thống tới $1.000\times$.
+4. **Ứng dụng thực chiến (FourCastNet / Dự báo thời tiết toàn cầu)**:
+   Dự báo khí quyển toàn cầu 1 tuần chỉ trong vài giây thay vì hàng giờ trên siêu máy tính!
+
 ## Mục tiêu
 
 Bài tùy chọn này kết nối chuỗi Fourier, đẳng thức Parseval và bước chuyển từ chuỗi sang biến đổi Fourier với kiến trúc Fourier neural operator (FNO) cùng các mở rộng giai đoạn 2022–2024. Sau bài học, sinh viên có thể hiểu một lớp FNO như một phép nhân phổ có tham số học được, giải thích tính bất biến theo độ phân giải rời rạc bằng ngôn ngữ của chương này, và nhận ra hiện tượng chồng phổ (aliasing) có cùng bản chất với hiện tượng xuất hiện trong khai triển lượng giác cắt cụt. Các kết quả cổ điển về sự hội tụ của chuỗi Fourier vẫn giữ nguyên vai trò nền tảng.
@@ -25,6 +38,15 @@ Chuỗi Fourier biểu diễn một hàm tuần hoàn qua một tập rời rạ
 Công trình trên *JMLR* năm 2023 của Kovachki và cộng sự chứng minh rằng các mạng toán tử (neural operator) dạng này có thể xấp xỉ các ánh xạ liên tục giữa các không gian hàm, đồng thời dùng chung một bộ tham số trên nhiều độ phân giải lưới khác nhau. Pathak và cộng sự (*FourCastNet*, 2022; [arXiv:2202.11214](https://arxiv.org/abs/2202.11214)) sử dụng kiến trúc nền tảng kiểu FNO cho dự báo thời tiết toàn cầu. Li, Huang, Huang và Anandkumar (*Fourier Neural Operator with Learned Deformations*, *J. Comput. Phys.* 2023) mở rộng phương pháp cho các miền hình học không đều. Bonev, Kurth, Hundt, Kossaifi, Kashinath và Anandkumar (*Spherical Fourier Neural Operators*, ICML 2023) thay thế biến đổi FFT phẳng bằng hàm điều hòa cầu để giữ đúng cấu trúc giải tích Fourier trên mặt cầu.
 
 Kiến thức của Chương 08 giúp đọc hiểu trực tiếp các công trình này. Một lớp FNO thực chất là sự kết hợp giữa khai triển Fourier cắt cụt, biểu tượng phổ học được và phép biến đổi phi tuyến cục bộ.
+
+### Khung giải thích (nên đọc chậm): Tính tay tốc độ của 1 lớp FNO so với tích chập toàn cục trực tiếp trên lưới 1D cỡ $N = 1.024$
+
+- **Tích chập toàn cục trực tiếp trong miền không gian** (mọi điểm tương tác với mọi điểm): $N^2 = 1.024^2 = \mathbf{1.048.576}$ phép nhân!
+- **Một lớp FNO với $k_{\max} = 16$ mode tần số**:
+  1. FFT xuôi: $\sim N \log_2 N = 1.024 \times 10 = 10.240$ phép tính.
+  2. Nhân trọng số trên $16$ mode tần số thấp: chỉ **$16$** phép nhân phức (bỏ qua 1.008 mode tần số cao!).
+  3. iFFT ngược: $10.240$ phép tính.
+  - **Tổng cộng**: $\approx \mathbf{20.496}$ phép tính — nhanh hơn hơn **$51\times$** ngay ở 1D (và nhanh hơn hàng chục nghìn lần ở 2D/3D!).
 
 ## Khái niệm then chốt
 

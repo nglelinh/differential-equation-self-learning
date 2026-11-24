@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** Suppose a weak solution $u$ on $\mathbb{R}^n$ has finite gradient energy $\int |\nabla u|^p\,dx < \infty$. Does that force $u$ to be bounded, or continuous, or at least integrable to a higher power $q > p$? **Sobolev Theory** answers with breathtaking precision: everything is governed by a cosmic tug-of-war between differentiability $k$, integrability $p$, and spatial dimension $n$.
+
 ![Sobolev theory: embeddings, compactness, and traces]({{ site.imgurl }}/chapter_img/chapter12/10_sobolev_theory.svg )
 
 ## Objectives
@@ -19,6 +21,15 @@ This optional lesson extends Lesson 12.03 on Sobolev spaces to the results that 
 ## Prerequisites
 
 Students should already know $$ L^p $$ spaces, weak derivatives, the definitions of $$ W^{k,p} $$ and $$ H^1_0 $$, and the basic ideas of weak solutions and elliptic equations. Lessons 12.03 through 12.06 provide the most direct background, because Sobolev theory is the bridge from energy estimates to regularity and boundary interpretation.
+
+## Background Knowledge Map: Embeddings, Scaling, and Compactness in Sobolev Theory
+
+Four master theorems organize the entire landscape of Sobolev spaces $W^{1,p}(\Omega)$ in dimension $n$:
+
+1. **Dimensional Scaling and the Critical Exponent $p^*$:** Testing an inequality under spatial dilation $u_\lambda(x) = u(\lambda x)$ uniquely pins down the Sobolev conjugate $p^* = \frac{np}{n-p}$ (for $p < n$). Any continuous embedding $W^{1,p}(\mathbb{R}^n) \hookrightarrow L^q(\mathbb{R}^n)$ must respect this scaling law.
+2. **Subcritical Regime ($p < n$, Gagliardo–Nirenberg–Sobolev):** Functions in $W^{1,p}(\mathbb{R}^n)$ need not be bounded, but they automatically gain integrability up to $L^{p^*}$: $\|u\|_{L^{p^*}} \le C\|\nabla u\|_{L^p}$.
+3. **Supercritical Regime ($p > n$, Morrey's Inequality):** Once $p$ exceeds the spatial dimension $n$, weak gradients force genuine Hölder continuity: $W^{1,p}(\mathbb{R}^n) \hookrightarrow C^{0, 1 - n/p}(\mathbb{R}^n)$. (The borderline $p = n$ lies just short of $L^\infty$, allowing $\ln|\ln r|$ singularities!)
+4. **Rellich–Kondrachov Compactness:** On bounded domains, subcritical embeddings $W^{1,p}(\Omega) \hookrightarrow L^q(\Omega)$ ($1 \le q < p^*$) are *compact*, turning weak convergence into strong $L^q$ convergence—the linchpin for nonlinear PDEs and spectral theory.
 
 ## Introduction
 
@@ -123,6 +134,24 @@ Show students why weak solutions can still satisfy meaningful boundary condition
 - Can students say why trace needs its own theory and is not just point evaluation?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Deriving the Critical Sobolev Exponent $p^*$ by Pure Scaling
+
+Suppose a universal constant $C > 0$ exists such that the Sobolev inequality
+$$\|u\|_{L^q(\mathbb{R}^n)} \le C\|\nabla u\|_{L^p(\mathbb{R}^n)}$$
+holds for all $u \in C_c^\infty(\mathbb{R}^n)$ with $1 \le p < n$. Use spatial dilation alone to prove that $q$ *must* equal $p^* = \frac{np}{n-p}$, and evaluate $p^*$ in 3D for $H^1(\mathbb{R}^3)$.
+
+1. **Define the dilated function:** For any nonzero $u \in C_c^\infty(\mathbb{R}^n)$ and scale factor $\lambda > 0$, set $u_\lambda(x) = u(\lambda x)$.
+2. **Compute $\|u_\lambda\|_{L^q(\mathbb{R}^n)}$ via change of variables $y = \lambda x$ ($dy = \lambda^n\,dx$):**
+   $$\|u_\lambda\|_{L^q}^q = \int_{\mathbb{R}^n} |u(\lambda x)|^q\,dx = \lambda^{-n}\int_{\mathbb{R}^n} |u(y)|^q\,dy = \lambda^{-n}\|u\|_{L^q}^q \implies \|u_\lambda\|_{L^q} = \lambda^{-n/q}\|u\|_{L^q}.$$
+3. **Compute $\|\nabla u_\lambda\|_{L^p(\mathbb{R}^n)}$ using the chain rule $\nabla u_\lambda(x) = \lambda (\nabla u)(\lambda x)$:**
+   $$\|\nabla u_\lambda\|_{L^p}^p = \lambda^p \int_{\mathbb{R}^n} |(\nabla u)(\lambda x)|^p\,dx = \lambda^{p-n}\|\nabla u\|_{L^p}^p \implies \|\nabla u_\lambda\|_{L^p} = \lambda^{1 - n/p}\|\nabla u\|_{L^p}.$$
+4. **Match the powers of $\lambda$:** Substituting $u_\lambda$ into the Sobolev inequality yields:
+   $$\|u\|_{L^q} \le C\,\lambda^{1 - \frac{n}{p} + \frac{n}{q}}\|\nabla u\|_{L^p} \qquad \text{for all } \lambda > 0.$$
+   If the exponent of $\lambda$ were nonzero, sending $\lambda \to 0^+$ or $\lambda \to \infty$ would force $\|u\|_{L^q} = 0$, a contradiction! Thus:
+   $$1 - \frac{n}{p} + \frac{n}{q} = 0 \implies \frac{1}{q} = \frac{1}{p} - \frac{1}{n} \implies q = \frac{np}{n-p} = p^*.$$
+5. **Evaluate for $H^1(\mathbb{R}^3)$ ($n=3, p=2$):** $p^* = \frac{3 \cdot 2}{3 - 2} = 6$, yielding the famous 3D energy-to-integrability embedding $H^1(\mathbb{R}^3) \hookrightarrow L^6(\mathbb{R}^3)$.
 
 ### Example 1: One-dimensional regularity and continuity
 

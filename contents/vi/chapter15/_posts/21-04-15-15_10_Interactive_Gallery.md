@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Khép lại cả bộ giáo trình 15 chương, Gallery tương tác của Chương 15 đưa bạn vào buồng lái của **không gian pha $(x, \xi)$**: tại đây, bạn tận mắt nhìn thấy tập mặt sóng của một bờ cạnh chỉ sáng lên dọc theo hướng pháp tuyến, tia lưỡng đặc trưng lướt trên nón ánh sáng, hàm đếm bậc thang $N(\lambda)$ bám sát đường thẳng Weyl, và cả cơ chế mờ cạnh trong chụp cắt lớp CT góc hạn chế!
+
+## Bản đồ kiến thức nền: Bốn trải nghiệm tương tác đắt giá trong Gallery Chương 15
+
+1. **Bản đồ Không gian Pha & Tập Mặt sóng $\operatorname{WF}(u)$**:
+   Di chuyển cửa sổ cắt $\phi$ quanh một cạnh ảnh hoặc góc nhọn để xem biến đổi Fourier cục bộ chỉ bùng sáng dọc theo đúng các hướng $\xi$ vuông góc với bờ cạnh.
+2. **Dòng chảy Hamilton & Lan truyền Kỳ dị của Sóng**:
+   Thả một gói sóng trong môi trường có vận tốc $c(x)$ biến thiên và quan sát đồng thời chuyển động của sóng thật cùng quỹ đạo tia lưỡng đặc trưng $(x(t), \xi(t))$.
+3. **Bậc thang Phổ $N(\lambda)$ đối chiếu Đường tiệm cận Weyl**:
+   Tăng ngưỡng năng lượng $\lambda$ để thấy số giá trị riêng nhảy bậc nhưng luôn ôm chặt đường thẳng Weyl $\frac{\operatorname{Area}}{4\pi}\lambda - \frac{\operatorname{Perimeter}}{4\pi}\sqrt{\lambda}$.
+4. **Thí nghiệm CT Góc hạn chế & Hiệu ứng Mù Vi cục bộ**:
+   Thu hẹp góc quay đầu chụp tia X và quan sát lập tức các bờ cạnh nằm ngoài nón nhìn thấy nhòe mờ ra sao.
+
 ## Mục Đích Của Bài Hỗ Trợ
 
 Bài học bổ trợ này tập hợp các minh họa tương tác của Chương 15 vào một không gian ôn tập chung. Giải tích vi địa phương đòi hỏi trực giác hình học rõ ràng vì người học cần theo dõi đồng thời không gian vị trí, không gian tần số và không gian pha. Bộ minh họa giúp các khái niệm như tập mặt sóng, sự lan truyền kỳ dị, sự tập trung bán cổ điển và tốc độ tăng trưởng phổ trở nên cụ thể hơn qua hình ảnh trực quan và chuyển động.
@@ -22,6 +35,18 @@ Nên sử dụng bộ minh họa theo cách đối chiếu song song với bài 
 
 Trang này cũng tạo cầu nối giữa bài giảng sau đại học và tài liệu nghiên cứu, nơi góc nhìn hình học trên không gian pha thường được mặc định là đã quen thuộc.
 
+
+### Khung giải thích (nên đọc chậm): Đọc tọa độ không gian pha $(x_0, \xi_0)$ của một gói sóng Gaussian trên đồ thị tương tác
+
+Xét một gói sóng dao động nhanh 1D:
+$$u(x) = e^{-50(x - 1)^2}\,e^{i\cdot 20 x}.$$
+1. **Vị trí $x_0$ và độ rộng không gian $\Delta x$**:
+   Biên độ $|u(x)| = e^{-50(x - 1)^2}$ đạt cực đại tại $x_0 = \mathbf{1}$, với độ lệch chuẩn $\Delta x = \frac{1}{\sqrt{2 \times 100}} \approx \mathbf{0{,}071}$ (tập trung rất chặt quanh $x = 1$).
+2. **Tần số $\xi_0$ và độ rộng tần số $\Delta \xi$**:
+   Biến đổi Fourier dịch đỉnh sang đúng tần số dao động $\xi_0 = \mathbf{20}$, với độ lệch chuẩn $\Delta \xi = \frac{1}{2\Delta x} \approx \mathbf{7{,}07}$.
+3. **Kiểm tra Nguyên lý Bất định trên không gian pha**:
+   $$\Delta x \cdot \Delta \xi = 0{,}071 \times 7{,}07 = \mathbf{0{,}50} = \frac{1}{2}$$
+   (đạt đúng cận dưới nhỏ nhất có thể của Heisenberg!). Trên biểu đồ tương tác $T^*\mathbb{R}$, gói sóng này hiện ra như một đốm sáng gọn gàng tập trung ngay tại tọa độ **$(x_0, \xi_0) = (1,\; 20)$**!
 ## Gallery Tương Tác Nhúng Trực Tiếp
 
 {% include interactive-frame.html

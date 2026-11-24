@@ -10,6 +10,42 @@ categories:
 lesson_type: required
 ---
 
+Imagine hiking across a mountain range while keeping your altimeter glued to a fixed elevation: you trace a level contour line along which your total change in height is zero, $$d\Psi = \Psi_x\,dx + \Psi_y\,dy = 0$$. An exact differential equation is simply the reverse detective problem—you are handed the slope components $$M(x,y)\,dx + N(x,y)\,dy = 0$$ and asked to reconstruct the hidden elevation landscape $$\Psi(x,y) = C$$ whose contours are the solution curves.
+
+## Background Knowledge Map: Conservative Vector Fields and Exact 1-Forms
+
+Four ideas from multivariable calculus and differential geometry explain exact equations completely:
+
+1. **Exactness as a Conservative Field:** The equation $$M\,dx + N\,dy = 0$$ is exact on a simply connected domain $$D$$ if and only if the vector field $$\mathbf{F} = (M, N)$$ is a gradient $$\nabla \Psi = (\Psi_x, \Psi_y)$$ for some smooth potential $$\Psi(x,y)$$.
+2. **Clairaut's Integrability Test ($$M_y = N_x$$):** Because mixed partial derivatives commute ($$\Psi_{xy} = \Psi_{yx}$$), exactness requires $$M_y = N_x$$; on simply connected regions (no "holes"), this condition is also sufficient.
+3. **Path-Independent Potential Reconstruction:** Integrating $$M$$ with respect to $$x$$ determines $$\Psi(x,y)$$ up to an unknown function $$g(y)$$ (not merely a constant!), which is then pinned down uniquely by matching $$\Psi_y = N$$.
+4. **Special Integrating Factors:** When $$M_y \ne N_x$$, multiplying by a rescaling factor $$\mu(x,y)$$ can restore exactness—in particular, if $$\frac{M_y - N_x}{N}$$ depends only on $$x$$, then $$\mu(x) = \exp\!\left(\int \frac{M_y - N_x}{N}\,dx\right)$$ makes the equation exact.
+
+### Step-by-Step Worked Example (Read Slowly): Repairing a Non-Exact Equation with an Integrating Factor and Finding Its Potential
+
+Solve the differential equation
+$$(3xy + y^2)\,dx + (x^2 + xy)\,dy = 0.$$
+
+1. **Test for exactness:**
+   Here $$M(x,y) = 3xy + y^2$$ and $$N(x,y) = x^2 + xy$$. Compute the cross-partials:
+   $$M_y = 3x + 2y, \qquad N_x = 2x + y.$$
+   Since $$M_y \ne N_x$$, the equation is **not** exact as written.
+2. **Check for an $$x$$-only integrating factor:**
+   $$\frac{M_y - N_x}{N} = \frac{(3x + 2y) - (2x + y)}{x^2 + xy} = \frac{x + y}{x(x + y)} = \frac{1}{x}.$$
+   It depends solely on $$x$$! Thus
+   $$\mu(x) = \exp\!\left(\int \frac{1}{x}\,dx\right) = x.$$
+3. **Multiply through by $$\mu(x) = x$$ and re-verify exactness:**
+   $$(3x^2 y + xy^2)\,dx + (x^3 + x^2 y)\,dy = 0.$$
+   Check: $$\tilde{M}_y = 3x^2 + 2xy$$ and $$\tilde{N}_x = 3x^2 + 2xy$$. Exact!
+4. **Reconstruct the potential function $$\Psi(x,y)$$:**
+   Integrate $$\tilde{M}$$ with respect to $$x$$:
+   $$\Psi(x,y) = \int (3x^2 y + xy^2)\,dx = x^3 y + \frac{1}{2}x^2 y^2 + g(y).$$
+   Differentiate with respect to $$y$$ and set equal to $$\tilde{N}$$:
+   $$\Psi_y = x^3 + x^2 y + g'(y) = x^3 + x^2 y \implies g'(y) = 0 \implies g(y) = \text{const}.$$
+5. **Write the implicit general solution:**
+   $$x^3 y + \frac{1}{2}x^2 y^2 = C \qquad (\text{or } 2x^3 y + x^2 y^2 = \tilde{C}).$$
+   Differentiating $$2x^3 y + x^2 y^2 = \tilde{C}$$ immediately recovers $$(6x^2 y + 2xy^2)\,dx + (2x^3 + 2x^2 y)\,dy = 0$$!
+
 This lesson covers exact differential equations and potential functions.
 
 ## Topics to Cover

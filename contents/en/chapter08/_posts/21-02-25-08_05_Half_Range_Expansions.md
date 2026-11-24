@@ -10,6 +10,37 @@ categories:
 lesson_type: required
 ---
 
+Real physical rods, violin strings, and acoustic pipes do not live on $$ [-L, L] $$—they live on a finite physical interval $$ [0, L] $$. Yet we want to expand an arbitrary initial temperature or string shape $$ f(x) $$ on $$ [0, L] $$ using *only* sines (if the ends are fixed at zero) or *only* cosines (if the ends are insulated). How can we force a function defined only on $$ [0, L] $$ to have a pure sine or pure cosine series?
+
+The trick is pure mathematical artistry: we invent a "ghost mirror" on $$ [-L, 0] $$! Reflect $$ f(x) $$ oddly across $$ x = 0 $$ to generate a Fourier sine series; reflect $$ f(x) $$ evenly across $$ x = 0 $$ to generate a Fourier cosine series. Both series agree identically with $$ f(x) $$ on $$ (0, L) $$, yet behave completely differently at the endpoints $$ x = 0 $$ and $$ x = L $$!
+
+## Background Knowledge Map: Ghost Reflections and Boundary-Matched Bases
+
+1. **Odd Periodic Extension (Fourier Sine Series):** Defining $$ f_{\text{odd}}(-x) = -f(x) $$ on $$ (-L, 0) $$ and repeating with period $$ 2L $$ yields $$ f(x) \sim \sum_{n=1}^\infty b_n \sin\!\left(\frac{n\pi x}{L}\right) $$ with $$ b_n = \frac{2}{L}\int_0^L f(x)\sin\!\left(\frac{n\pi x}{L}\right)dx $$. Every basis function satisfies Dirichlet BCs $$ u(0) = u(L) = 0 $$.
+2. **Even Periodic Extension (Fourier Cosine Series):** Defining $$ f_{\text{even}}(-x) = f(x) $$ on $$ (-L, 0) $$ yields $$ f(x) \sim \frac{a_0}{2} + \sum_{n=1}^\infty a_n \cos\!\left(\frac{n\pi x}{L}\right) $$ with $$ a_n = \frac{2}{L}\int_0^L f(x)\cos\!\left(\frac{n\pi x}{L}\right)dx $$. Every basis function satisfies Neumann BCs $$ u'(0) = u'(L) = 0 $$.
+3. **Why Convergence Speed Differs Between the Two:** If $$ f(0) \neq 0 $$ or $$ f(L) \neq 0 $$, the odd extension introduces artificial jumps at $$ x = 0 $$ and $$ x = L $$, forcing slow $$ O(1/n) $$ sine decay and Gibbs oscillations at the endpoints. Meanwhile, the even extension automatically glues $$ f(0^-) = f(0^+) $$ and $$ f(L^-) = f(L^+) $$ continuously, giving faster $$ O(1/n^2) $$ cosine decay!
+4. **PDE Boundary Dictates the Choice:** You do not pick sine vs. cosine arbitrarily—Dirichlet BCs force the sine series, while Neumann BCs force the cosine series.
+
+### Step-by-Step Worked Example (Read Slowly): Half-Range Sine vs. Cosine Series for $$ f(x) = 1 - x $$ on $$ [0, 1] $$
+
+**Problem:** Compute *both* the Fourier sine series and the Fourier cosine series of $$ f(x) = 1 - x $$ on $$ (0, 1) $$, and compare their convergence rates and values at $$ x = 0 $$.
+
+1. **Fourier Sine Series (Odd extension on $$ [-1, 1] $$):**
+   $$ b_n = 2\int_0^1 (1 - x)\sin(n\pi x)\,dx. $$
+   Integrate by parts ($$ u = 1 - x, dv = \sin(n\pi x)\,dx $$):
+   $$ \int_0^1 (1 - x)\sin(n\pi x)\,dx = \left[-\frac{(1-x)\cos(n\pi x)}{n\pi}\right]_0^1 - \frac{1}{n\pi}\int_0^1 \cos(n\pi x)\,dx = \frac{1}{n\pi} - 0 = \frac{1}{n\pi}. $$
+   Thus $$ b_n = \frac{2}{n\pi} $$, giving
+   $$ f(x) \sim \frac{2}{\pi}\sum_{n=1}^{\infty} \frac{\sin(n\pi x)}{n} \qquad \text{on } (0, 1). $$
+   Notice: at $$ x = 0 $$, the sine series evaluates to $$ 0 \neq f(0) = 1 $$ (an artificial jump of height $$ 2 $$ in the odd extension!), causing slow $$ O(1/n) $$ decay.
+2. **Fourier Cosine Series (Even extension on $$ [-1, 1] $$):**
+   - $$ a_0 = 2\int_0^1 (1 - x)\,dx = 2\left(\frac{1}{2}\right) = 1 \implies \frac{a_0}{2} = \frac{1}{2} $$.
+   - For $$ n \ge 1 $$:
+     $$ a_n = 2\int_0^1 (1 - x)\cos(n\pi x)\,dx = 2\left\{\left[\frac{(1-x)\sin(n\pi x)}{n\pi}\right]_0^1 + \frac{1}{n\pi}\int_0^1 \sin(n\pi x)\,dx\right\} = \frac{2}{n^2\pi^2}\bigl[1 - (-1)^n\bigr]. $$
+   - Even $$ n $$ vanish; odd $$ n = 2k+1 $$ give $$ a_{2k+1} = \frac{4}{(2k+1)^2\pi^2} $$:
+     $$ f(x) = \frac{1}{2} + \frac{4}{\pi^2}\sum_{k=0}^{\infty} \frac{\cos((2k+1)\pi x)}{(2k+1)^2} \qquad \text{on } [0, 1]. $$
+3. **Compare at $$ x = 0 $$:**
+   The cosine series gives $$ \frac{1}{2} + \frac{4}{\pi^2}\cdot\frac{\pi^2}{8} = \frac{1}{2} + \frac{1}{2} = 1 = f(0) $$ with uniform $$ O(1/n^2) $$ convergence! Both series represent the exact same function on $$ (0, 1) $$, yet encode completely different boundary physics.
+
 ## Learning Objectives
 
 This lesson introduces half-range sine and cosine expansions. Students should understand why extensions from $$ [0,L] $$ to $$ [-L,L] $$ are useful, how even and odd extensions produce cosine-only or sine-only series, and why these expansions are important for PDE boundary conditions.

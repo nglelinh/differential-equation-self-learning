@@ -10,6 +10,38 @@ categories:
 lesson_type: required
 ---
 
+Real engineering rods rarely sit in zero-degree ice baths with no heaters attached: one end might be bolted to a $$ 100^\circ\text{C} $$ boiler while an electric current warms the interior at rate $$ Q(x, t) $$. Plug $$ X(x)T(t) $$ directly into $$ u_t = \alpha u_{xx} + Q(x, t) $$ with $$ u(0, t) = T_1, u(L, t) = T_2 $$, and separation of variables stalls immediately because the boundary conditions and source are nonhomogeneous!
+
+The rescue is a clean two-step superposition: first peel off a known reference profile $$ w(x, t) $$ (such as the steady state $$ u_{\text{ss}}(x) $$) to homogenize the boundary conditions, then expand the remaining transient $$ v(x, t) $$ in the spatial eigenbasis—converting the nonhomogeneous PDE into a decoupled family of first-order linear ODEs!
+
+## Background Knowledge Map: Homogenization and Eigenfunction Expansion
+
+1. **Steady-State Extraction (Time-Independent BCs & Sources):** When $$ Q = Q(x) $$ and BCs are constant in time, solve the 1D ODE $$ \alpha u_{\text{ss}}''(x) + Q(x) = 0 $$ with the given nonhomogeneous BCs. Setting $$ v(x, t) = u(x, t) - u_{\text{ss}}(x) $$ produces a *purely homogeneous* heat problem for $$ v $$!
+2. **Time-Dependent Boundary Lifting:** If $$ u(0, t) = g_1(t) $$ and $$ u(L, t) = g_2(t) $$ vary in time, subtract the linear bridge $$ w(x, t) = g_1(t) + \frac{x}{L}\bigl[g_2(t) - g_1(t)\bigr] $$. This homogenizes the BCs of $$ v = u - w $$ while shifting $$ -w_t $$ into the interior source term.
+3. **Modal Expansion of Driven Transients (Duhamel's Principle in Disguise):** Expanding $$ v(x, t) = \sum c_n(t) \phi_n(x) $$ and the effective source $$ \tilde{Q}(x, t) = \sum q_n(t) \phi_n(x) $$ turns $$ v_t = \alpha v_{xx} + \tilde{Q} $$ into first-order linear ODEs $$ c_n'(t) + \alpha \lambda_n c_n(t) = q_n(t) $$, solved immediately by integrating factor $$ e^{\alpha \lambda_n t} $$.
+4. **Physical Separation of Steady Equilibrium vs. Transient Memory:** The steady state remembers only the ongoing boundary temperatures and heaters; the transient remembers only the initial discrepancy $$ f(x) - u_{\text{ss}}(x) $$ and fades away exponentially.
+
+### Step-by-Step Worked Example (Read Slowly): Solving a Heated Rod with Nonzero Endpoint Temperatures
+
+**Problem:** Solve $$ u_t = u_{xx} + 2 $$ on $$ 0 < x < 1 $$, $$ t > 0 $$, with $$ u(0, t) = 1 $$, $$ u(1, t) = 3 $$, and $$ u(x, 0) = 1 + 3x - x^2 + 4\sin(\pi x) $$.
+
+1. **Solve for the steady-state temperature $$ u_{\text{ss}}(x) $$:**
+   Set $$ u_t = 0 $$: $$ u_{\text{ss}}''(x) = -2 $$. Integrating twice gives $$ u_{\text{ss}}(x) = -x^2 + Ax + B $$.
+   - $$ u_{\text{ss}}(0) = B = 1 $$.
+   - $$ u_{\text{ss}}(1) = -1 + A + 1 = 3 \implies A = 3 $$.
+   Thus $$ u_{\text{ss}}(x) = 1 + 3x - x^2 $$.
+2. **Form the homogeneous transient problem for $$ v(x, t) = u(x, t) - u_{\text{ss}}(x) $$:**
+   - PDE: $$ v_t = u_t = u_{xx} + 2 = (v_{xx} - 2) + 2 = v_{xx} $$.
+   - BCs: $$ v(0, t) = 1 - 1 = 0 $$, $$ v(1, t) = 3 - 3 = 0 $$.
+   - Initial condition: $$ v(x, 0) = u(x, 0) - u_{\text{ss}}(x) = 4\sin(\pi x) $$.
+3. **Solve for $$ v(x, t) $$ and reassemble $$ u(x, t) $$:**
+   Since $$ \sin(\pi x) $$ is the $$ n = 1 $$ Dirichlet eigenfunction with $$ \lambda_1 = \pi^2 $$,
+   $$ v(x, t) = 4 e^{-\pi^2 t} \sin(\pi x) \implies u(x, t) = 1 + 3x - x^2 + 4 e^{-\pi^2 t} \sin(\pi x). $$
+4. **Verify all three conditions directly:**
+   - PDE: $$ u_t = -4\pi^2 e^{-\pi^2 t}\sin(\pi x) $$, and $$ u_{xx} + 2 = (-2 - 4\pi^2 e^{-\pi^2 t}\sin(\pi x)) + 2 = u_t $$.
+   - BCs: $$ u(0, t) = 1 $$, $$ u(1, t) = 1 + 3 - 1 + 0 = 3 $$.
+   - Long-time peak: as $$ t \to \infty $$, the heated rod settles to the parabolic arch $$ 1 + 3x - x^2 $$ (since $$ u_{\text{ss}}'(x) = 3 - 2x > 0 $$ on $$ [0, 1] $$, it rises smoothly from $$ 1 $$ to $$ 3 $$ with a concave-down belly from the interior heater!).
+
 ## Learning Objectives
 
 This lesson handles heat equations with nonhomogeneous terms or boundary data. Students should understand steady-state decomposition and the idea of reducing nonhomogeneous problems to homogeneous ones plus correction terms.

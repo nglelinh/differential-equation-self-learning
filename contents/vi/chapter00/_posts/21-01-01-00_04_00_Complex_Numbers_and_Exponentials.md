@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Một lò xo rung lên xuống hoàn toàn thực trong phòng thí nghiệm, vậy tại sao phương trình đặc trưng của nó $r^2 + \omega^2 = 0$ lại trả về nghiệm "ảo" $r = \pm i\omega$? Bí mật đẹp nhất của giải tích nằm ở **công thức Euler** $e^{i\theta} = \cos\theta + i\sin\theta$: số phức không hề "ảo", mà chính là phép quay hình học biến mọi bài toán dao động lượng giác rắc rối thành đại số hàm mũ cực kỳ gọn nhẹ!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Số phức & Hàm mũ phức
+
+1. **Dạng đại số & Dạng cực ($z = a + bi = r e^{i\theta}$)**:
+   Phép cộng là tịnh tiến vectơ trên mặt phẳng Argand, còn phép nhân $z_1 z_2 = r_1 r_2 e^{i(\theta_1 + \theta_2)}$ là **co giãn theo môđun $r$ kết hợp quay theo góc pha $\theta$**.
+2. **Công thức Euler ($e^{i\theta} = \cos\theta + i\sin\theta$)**:
+   Cầu nối vàng giữa hàm mũ và hàm lượng giác: $\cos\theta = \frac{e^{i\theta}+e^{-i\theta}}{2}$ và $\sin\theta = \frac{e^{i\theta}-e^{-i\theta}}{2i}$.
+3. **Hàm mũ phức $e^{(\alpha + i\beta)t} = e^{\alpha t}(\cos\beta t + i\sin\beta t)$**:
+   Phần thực $\alpha$ quyết định biên độ **tăng trưởng ($\alpha > 0$) hay tắt dần ($\alpha < 0$)**; phần ảo $\beta$ quyết định **tần số góc dao động**.
+4. **Tính bảo toàn phép đạo hàm**:
+   $\frac{d}{dt}e^{\lambda t} = \lambda e^{\lambda t}$ vẫn đúng nguyên vẹn khi $\lambda \in \mathbb{C}$, giúp giải mạch RLC xoay chiều và PTVP cấp hai nghiệm phức chỉ trong một dòng.
+
 ## Mục tiêu
 
 Bài học này giúp sinh viên nắm vững số phức như một ngôn ngữ tự nhiên cho dao động và nghiệm của phương trình vi phân tuyến tính. Sau bài học, sinh viên có thể thực hiện các phép toán với số phức, chuyển đổi giữa dạng đại số và dạng cực, vận dụng công thức Euler để liên kết hàm mũ với hàm lượng giác, tìm căn bậc $$ n $$ của số phức và giải thích vì sao nghiệm phức của phương trình đặc trưng lại dẫn đến nghiệm thực dạng sin–cos trong ODE.
@@ -23,6 +37,18 @@ Sinh viên cần nắm vững căn bậc hai, hệ thức lượng trong tam gi�
 Khi giải phương trình vi phân tuyến tính hệ số hằng, ta thường gặp những phương trình đặc trưng như $$ r^2+2r+5=0 $$. Phương trình này không có nghiệm thực mà có hai nghiệm phức liên hợp $$ r=-1\pm 2i $$. Dù bước trung gian dùng đến số phức, **lời giải cuối cùng của ODE lại là các hàm thực như $$ e^{-t}\cos 2t $$ và $$ e^{-t}\sin 2t $$**. Vì thế, số phức là cầu nối trực tiếp giữa đại số và dao động.
 
 Bên cạnh đại số, số phức còn mang ý nghĩa hình học rõ ràng: thay vì chỉ là một ký hiệu thỏa mãn $$ i^2=-1 $$, **mỗi số phức là một điểm trong mặt phẳng, đồng thời biểu diễn phép quay kết hợp co giãn**. Đây là công cụ nền tảng cho ODE, PDE và biến đổi Fourier ở các chương sau.
+
+### Khung giải thích (nên đọc chậm): Dùng hàm mũ phức để tính $\int e^{2t}\cos(3t)\,dt$ không cần tích phân từng phần hai lần!
+
+Thay vì tích phân từng phần vòng lặp dễ nhầm dấu, hãy xem $\cos(3t) = \operatorname{Re}(e^{3it})$:
+1. **Chuyển sang hàm mũ phức**:
+   $$\int e^{2t}\cos(3t)\,dt = \operatorname{Re}\int e^{(2 + 3i)t}\,dt = \operatorname{Re}\left(\frac{e^{(2+3i)t}}{2 + 3i}\right) + C.$$
+2. **Khử mẫu số phức** bằng liên hợp $2 - 3i$ (vì $(2+3i)(2-3i) = 4 + 9 = 13$):
+   $$\frac{e^{2t}(\cos 3t + i\sin 3t)(2 - 3i)}{13} = \frac{e^{2t}}{13}\Big[(2\cos 3t + 3\sin 3t) + i(2\sin 3t - 3\cos 3t)\Big].$$
+3. **Lấy phần thực**:
+   $$\int e^{2t}\cos(3t)\,dt = \frac{e^{2t}}{13}(2\cos 3t + 3\sin 3t) + C.$$
+4. **Kiểm chứng nhanh bằng đạo hàm**:
+   $\frac{d}{dt}\left[\frac{e^{2t}}{13}(2\cos 3t + 3\sin 3t)\right] = \frac{e^{2t}}{13}\left[(4\cos 3t + 6\sin 3t) + (-6\sin 3t + 9\cos 3t)\right] = \frac{13}{13}e^{2t}\cos 3t = e^{2t}\cos 3t$!
 
 ## Khái niệm theo ba cách
 

@@ -10,6 +10,39 @@ categories:
 lesson_type: required
 ---
 
+How do you prove a nonlinear system settles into equilibrium when linearization fails (zero or purely imaginary eigenvalues) or when you need a *global* guarantee far beyond a tiny neighborhood? In 1892, Aleksandr Lyapunov generalized physical energy into one of the most ingenious arguments in mathematics: build an abstract bowl-shaped function $$V(\mathbf{x})$$ around $$\mathbf{x}^*$$ and show that trajectories can only slide *downhill* ($$\dot{V} \le 0$$)—proving stability without ever solving the ODE!
+
+## Background Knowledge Map: Lyapunov's Direct Method and LaSalle's Upgrade
+
+Four precision criteria make Lyapunov's method airtight:
+
+1. **Positive Definiteness (The Bowl Shape):** A smooth function $$V(\mathbf{x})$$ on a neighborhood $$D$$ of $$\mathbf{x}^*$$ is **positive definite** if $$V(\mathbf{x}^*) = 0$$ and $$V(\mathbf{x}) > 0$$ for all $$\mathbf{x} \in D \setminus \{\mathbf{x}^*\}$$; its level sets $$V(\mathbf{x}) = c$$ form nested closed shells trapping trajectories inside.
+2. **Orbital Derivative Without Solving the ODE:** Along any trajectory of $$\mathbf{x}' = \mathbf{f}(\mathbf{x})$$, the chain rule computes $$\dot{V}(\mathbf{x}) := \nabla V(\mathbf{x}) \cdot \mathbf{f}(\mathbf{x})$$ purely algebraically:
+   - **$$\dot{V}(\mathbf{x}) \le 0$$** (negative semidefinite) $$\implies$$ **Lyapunov stable** (trajectories never climb out of a level set).
+   - **$$\dot{V}(\mathbf{x}) < 0$$** for $$\mathbf{x} \ne \mathbf{x}^*$$ (negative definite) $$\implies$$ **asymptotically stable**.
+3. **Global Asymptotic Stability (Radial Unboundedness):** To prove *every* initial condition in $$\mathbb{R}^n$$ converges to $$\mathbf{x}^*$$, we additionally need $$V(\mathbf{x}) \to \infty$$ as $$\|\mathbf{x}\| \to \infty$$ so no level set leaks out to infinity!
+4. **LaSalle's Invariance Principle:** Often physical damping gives only $$\dot{V} \le 0$$ (e.g., $$\dot{E} = -\gamma y^2 = 0$$ along the entire $$x$$-axis!). LaSalle proves that trajectories still converge to $$\mathbf{x}^*$$ if no *entire trajectory* (other than $$\mathbf{x}^*$$ itself) can stay forever inside the set $$\{\mathbf{x} : \dot{V}(\mathbf{x}) = 0\}$$.
+
+### Step-by-Step Worked Example (Read Slowly): Proving Global Asymptotic Stability Using Lyapunov + LaSalle
+
+Prove that the origin $$(0, 0)$$ of the nonlinear cubic-spring oscillator
+$$x' = y, \qquad y' = -x^3 - y$$
+is **globally asymptotically stable** (notice linearization at $$(0,0)$$ has $$\lambda = 0, -1$$—so Hartman–Grobman is completely inconclusive!).
+
+1. **Construct a mechanical-energy candidate Lyapunov function:**
+   Potential energy for restoring force $$-x^3$$ is $$\int_0^x s^3\,ds = \frac{1}{4}x^4$$, and kinetic energy is $$\frac{1}{2}y^2$$:
+   $$V(x, y) = \frac{1}{4}x^4 + \frac{1}{2}y^2.$$
+   Check: $$V(0,0) = 0$$, $$V(x,y) > 0$$ for all $$(x,y) \ne (0,0)$$, and $$V(x,y) \to \infty$$ as $$x^2 + y^2 \to \infty$$ (radially unbounded!).
+2. **Compute the orbital derivative $$\dot{V} = V_x x' + V_y y'$$:**
+   $$\dot{V}(x, y) = (x^3)(y) + (y)(-x^3 - y) = -y^2 \le 0.$$
+   Immediately, Lyapunov's theorem guarantees $$(0,0)$$ is **Lyapunov stable** and every trajectory is bounded!
+3. **Apply LaSalle's Invariance Principle to upgrade to global asymptotic stability:**
+   The zero-dissipation set is $$S = \{(x,y) : \dot{V}(x,y) = 0\} = \{(x, 0) : x \in \mathbb{R}\}$$ (the entire $$x$$-axis).
+   Suppose a trajectory stays identically inside $$S$$ for all $$t$$: then $$y(t) \equiv 0 \implies y'(t) \equiv 0$$.
+   Plugging $$y = 0, y' = 0$$ into the second ODE $$y' = -x^3 - y$$ forces
+   $$0 = -x^3 - 0 \implies x(t) \equiv 0!$$
+4. **Conclusion:** The largest invariant subset inside $$S$$ is the single point $$\{(0,0)\}$$; therefore by LaSalle's Invariance Principle, **every** initial condition in $$\mathbb{R}^2$$ converges to $$(0,0)$$ as $$t \to \infty$$!
+
 ## Learning Objectives
 
 This lesson helps students understand Lyapunov's method as a way to prove stability without solving the system explicitly, identify useful Lyapunov candidates, and connect stability analysis with energy-style reasoning.

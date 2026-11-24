@@ -10,6 +10,38 @@ categories:
 lesson_type: required
 ---
 
+Step outside linear differential equations and the closed-form formulas of Chapters 1–4 vanish almost immediately: even a simple nonlinear system like a pendulum with friction or competing species has no elementary formula for $$(x(t), y(t))$$. Henri Poincaré's revolutionary insight was that we do not *need* a formula—by drawing just two curves called **nullclines** where $$x' = 0$$ and $$y' = 0$$, the entire phase plane carves up into directional regions that reveal equilibria, traps, and long-term fate at a glance.
+
+## Background Knowledge Map: Reading a Nonlinear Phase Plane Without Solving It
+
+Four geometric tools unlock every planar autonomous system $$x' = f(x,y),\; y' = g(x,y)$$:
+
+1. **Nullclines (Zero-Velocity Curves):** Along the $$x$$-nullcline $$f(x,y) = 0$$, all arrows are strictly **vertical** ($$x' = 0$$); along the $$y$$-nullcline $$g(x,y) = 0$$, all arrows are strictly **horizontal** ($$y' = 0$$).
+2. **Equilibria as Nullcline Intersections:** A point $$(x^*, y^*)$$ is an equilibrium ($$x' = y' = 0$$) if and only if an $$x$$-nullcline and a $$y$$-nullcline intersect there.
+3. **Sign-Region Compass:** Between nullclines, neither $$f$$ nor $$g$$ can change sign, so every connected region carries a single compass direction (NE, NW, SE, or SW)—telling you immediately whether trajectories are trapped or forced toward a specific equilibrium.
+4. **No-Crossing and Positively Invariant Sets:** Because $$f, g \in C^1$$ guarantees uniqueness, trajectories never cross each other; if arrows along the entire boundary of a box point inward, no trajectory can ever escape that trapping region!
+
+### Step-by-Step Worked Example (Read Slowly): Nullcline and Equilibrium Analysis of a Nonlinear Planar System
+
+Sketch the phase-plane skeleton of the autonomous system
+$$x' = x(3 - x - y), \qquad y' = y(2 - x - 2y), \qquad x \ge 0,\; y \ge 0.$$
+
+1. **Find the $$x$$-nullclines ($$x' = 0$$):**
+   Either $$x = 0$$ (the $$y$$-axis) or the line $$x + y = 3$$.
+   - Below $$x + y = 3$$ (e.g., at $$(1,1)$$): $$x' = 1(3-2) = +1 > 0$$ (arrows point **right**).
+   - Above $$x + y = 3$$: $$x' < 0$$ (arrows point **left**).
+2. **Find the $$y$$-nullclines ($$y' = 0$$):**
+   Either $$y = 0$$ (the $$x$$-axis) or the line $$x + 2y = 2$$ (connecting $$(2,0)$$ to $$(0,1)$$).
+   - Below $$x + 2y = 2$$ (e.g., at $$(0.5, 0.5)$$): $$y' = 0.5(2 - 1.5) = +0.25 > 0$$ (arrows point **up**).
+   - Above $$x + 2y = 2$$: $$y' < 0$$ (arrows point **down**).
+3. **Intersect every $$x$$-nullcline with every $$y$$-nullcline in the first quadrant:**
+   - $$x = 0 \cap y = 0 \implies (0, 0)$$.
+   - $$x = 0 \cap (x + 2y = 2) \implies (0, 1)$$.
+   - $$(x + y = 3) \cap y = 0 \implies (3, 0)$$.
+   - $$(x + y = 3) \cap (x + 2y = 2)$$: subtracting gives $$y = -1 < 0$$ (outside the first quadrant!).
+4. **Read the global fate directly from the strip between the two lines:**
+   Because $$x + 2y = 2$$ lies strictly below $$x + y = 3$$ across the entire first quadrant, in the strip between them $$x' > 0$$ (right) and $$y' < 0$$ (down)—funneling *every* positive initial condition $$(x_0, y_0)$$ straight toward the single surviving equilibrium $$(3, 0)$$!
+
 ## Learning Objectives
 
 This lesson opens the chapter on nonlinear dynamics by shifting attention from explicit solution formulas to the geometry of motion. Students should understand planar autonomous systems, vector fields, nullclines, trajectories in the phase plane, and why phase-plane reasoning remains useful even when closed-form solutions do not exist.

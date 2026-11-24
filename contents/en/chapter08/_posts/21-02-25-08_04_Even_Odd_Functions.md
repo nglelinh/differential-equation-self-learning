@@ -10,6 +10,31 @@ categories:
 lesson_type: required
 ---
 
+Before you ever touch integration by parts on a Fourier coefficient, pause and look at the mirror symmetry of $$ f(x) $$ across the vertical axis. A symmetric arch ($$ f(-x) = f(x) $$) cannot contain a single sine wave, because every sine wave is antisymmetric; an antisymmetric wave ($$ f(-x) = -f(x) $$) cannot contain a single cosine wave or constant offset. Recognizing parity instantly cuts your integration workload in half—and reveals a deep algebraic decomposition that every function on $$ [-L, L] $$ obeys.
+
+## Background Knowledge Map: Parity Symmetry and Orthogonal Subspaces
+
+1. **Direct-Sum Decomposition $$ L^2([-L, L]) = L^2_{\text{even}} \oplus L^2_{\text{odd}} $$:** Every function $$ f(x) $$ splits uniquely into an even part $$ f_e(x) = \frac{f(x) + f(-x)}{2} $$ and an odd part $$ f_o(x) = \frac{f(x) - f(-x)}{2} $$. Because $$ \int_{-L}^L f_e(x) f_o(x)\,dx = 0 $$, the even and odd subspaces are mutually orthogonal!
+2. **Even Functions Produce Pure Cosine Series:** If $$ f(-x) = f(x) $$, then $$ b_n = 0 $$ for all $$ n \ge 1 $$, and $$ a_n = \frac{2}{L}\int_0^L f(x)\cos\!\left(\frac{n\pi x}{L}\right)dx $$ for $$ n \ge 0 $$.
+3. **Odd Functions Produce Pure Sine Series:** If $$ f(-x) = -f(x) $$, then $$ a_n = 0 $$ for all $$ n \ge 0 $$, and $$ b_n = \frac{2}{L}\int_0^L f(x)\sin\!\left(\frac{n\pi x}{L}\right)dx $$ for $$ n \ge 1 $$.
+4. **Continuity Advantage of Even Extensions:** Notice that for $$ f(x) = |x| $$ on $$ [-\pi, \pi] $$, even symmetry matches $$ f(-\pi) = f(\pi) = \pi $$, eliminating the boundary jump and upgrading coefficient decay from $$ O(1/n) $$ to $$ O(1/n^2) $$!
+
+### Step-by-Step Worked Example (Read Slowly): Pure Cosine Series of $$ f(x) = |x| $$ on $$ [-\pi, \pi] $$ and Basel-Type Identity
+
+**Problem:** Compute the Fourier series of $$ f(x) = |x| $$ on $$ [-\pi, \pi] $$, verify its $$ O(1/n^2) $$ decay, and evaluate at $$ x = 0 $$ to prove $$ \sum_{k=0}^\infty \frac{1}{(2k+1)^2} = \frac{\pi^2}{8} $$.
+
+1. **Check parity:** $$ f(-x) = |-x| = |x| = f(x) $$ is **even**, so $$ b_n = 0 $$ for all $$ n \ge 1 $$.
+2. **Compute $$ a_0 $$:**
+   $$ a_0 = \frac{2}{\pi}\int_0^\pi x\,dx = \frac{2}{\pi}\left[\frac{x^2}{2}\right]_0^\pi = \pi \implies \frac{a_0}{2} = \frac{\pi}{2}. $$
+3. **Compute $$ a_n $$ for $$ n \ge 1 $$ via integration by parts:**
+   $$ a_n = \frac{2}{\pi}\int_0^\pi x\cos(nx)\,dx = \frac{2}{\pi}\left\{\left[\frac{x\sin(nx)}{n}\right]_0^\pi - \frac{1}{n}\int_0^\pi \sin(nx)\,dx\right\} = \frac{2}{\pi}\left[\frac{\cos(nx)}{n^2}\right]_0^\pi = \frac{2}{\pi}\cdot\frac{(-1)^n - 1}{n^2}. $$
+   - For **even $$ n $$**: $$ (-1)^n - 1 = 0 \implies a_{2k} = 0 $$.
+   - For **odd $$ n = 2k + 1 $$**: $$ (-1)^n - 1 = -2 \implies a_{2k+1} = -\frac{4}{\pi(2k+1)^2} $$.
+4. **Assemble the series and evaluate at $$ x = 0 $$:**
+   $$ |x| = \frac{\pi}{2} - \frac{4}{\pi}\sum_{k=0}^{\infty} \frac{\cos((2k+1)x)}{(2k+1)^2}. $$
+   Because $$ |x| $$ is continuous everywhere (including $$ f(-\pi) = f(\pi) = \pi $$), convergence is uniform! Plugging in $$ x = 0 $$ gives:
+   $$ 0 = \frac{\pi}{2} - \frac{4}{\pi}\sum_{k=0}^{\infty} \frac{1}{(2k+1)^2} \implies \sum_{k=0}^{\infty} \frac{1}{(2k+1)^2} = \frac{\pi^2}{8}. $$
+
 ## Learning Objectives
 
 This lesson shows how symmetry simplifies Fourier computation. Students should recognize even and odd functions, know why cosine series correspond to even symmetry and sine series to odd symmetry, and use symmetry to reduce coefficient calculations.

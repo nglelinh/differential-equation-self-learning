@@ -10,6 +10,20 @@ categories:
 lesson_type: optional
 ---
 
+
+Với phương trình cấp hai, chỉ cần xoay nhẹ hệ số cản $c$ hay tần số cưỡng bức $\omega$, đồ thị nghiệm lập tức biến hình ngoạn mục: từ tắt dần chậm chạp sang dao động tắt dần, rồi bất ngờ tạo ra hiệu ứng **phách (beats)** hay **cộng hưởng (resonance)** làm biên độ vọt lên vô hạn! Bộ minh họa tương tác Chương 02 biến những công thức đặc trưng thành phòng thí nghiệm cơ–điện sống động ngay trên màn hình của bạn.
+
+## Bản đồ kiến thức nền: Bốn hiện tượng cần khám phá trong Bộ Minh họa Chương 02
+
+1. **Chuyển pha theo biệt thức $\Delta = c^2 - 4mk$**:
+   Kéo thanh trượt $c$ để chứng kiến hệ lò xo chuyển mượt qua 3 chế độ: tắt dần yếu ($\Delta < 0$), tắt dần tới hạn ($\Delta = 0$, hồi vị nhanh nhất không vượt lố) và tắt dần mạnh ($\Delta > 0$).
+2. **Đường bao hàm mũ $e^{-\gamma t}$ của nghiệm phức**:
+   Khi nghiệm đặc trưng là $-\gamma \pm i\omega_d$, đồ thị dao động luôn bị kẹp chặt giữa hai đường bao $\pm A e^{-\gamma t}$.
+3. **Hiện tượng Phách (Beats) & Cộng hưởng (Resonance)**:
+   Khi hệ không cản chịu lực cưỡng bức $\cos(\omega t)$ với $\omega \approx \omega_0$, hai sóng giao thoa tạo nhịp phách; khi $\omega = \omega_0$, biên độ tăng tuyến tính theo $t$!
+4. **Phổ biên độ–tần số & Sự tương đồng Cơ–Điện**:
+   Quan sát đỉnh cộng hưởng thực tế dịch nhẹ sang trái khi có cản và đối chiếu trực tiếp giữa con lắc lò xo $(m, c, k)$ với mạch điện $(L, R, 1/C)$.
+
 ## Tổng quan
 
 Bài bổ sung này tập hợp toàn bộ các minh họa tương tác (JavaScript) của Chương 02 vào một trang, đóng vai trò tài liệu trực quan song hành cùng các phương pháp giải và ứng dụng trong chương.
@@ -27,6 +41,16 @@ Bài bổ sung này tập hợp toàn bộ các minh họa tương tác (JavaScr
   path="interactives/chapter02/index.html"
   height="920px"
 %}
+
+### Khung giải thích (nên đọc chậm): Tính nhanh ngưỡng tắt dần tới hạn $c_{\text{crit}}$ cho hệ lò xo $m = 1\text{ kg},\; k = 9\text{ N/m}$ trước khi kéo thanh trượt
+
+Phương trình dao động tự do: $y'' + c\,y' + 9y = 0 \implies r^2 + c\,r + 9 = 0$.
+- **Biệt thức**: $\Delta = c^2 - 4(1)(9) = c^2 - 36$.
+- **Ngưỡng tới hạn**: $\Delta = 0 \iff c_{\text{crit}} = \mathbf{6\text{ N}\cdot\text{s/m}}$.
+- Thử 3 điểm trên thanh trượt:
+  1. $c = 2 < 6$: $r = -1 \pm i\sqrt{8} \implies$ **dao động tắt dần** với đường bao $e^{-t}$.
+  2. $c = 6$: $r_1 = r_2 = -3 \implies y = (c_1 + c_2 t)e^{-3t}$ (**tắt dần tới hạn**—tiêu chuẩn thiết kế giảm xóc ô tô!).
+  3. $c = 10 > 6$: $r = -1, -9 \implies y = c_1 e^{-t} + c_2 e^{-9t}$ (**tắt dần mạnh**, trễ hơn do số hạng $e^{-t}$ tắt chậm).
 
 ## Video tham khảo
 

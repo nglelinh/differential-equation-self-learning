@@ -10,6 +10,27 @@ categories:
 lesson_type: optional
 ---
 
+Watching a jagged initial temperature profile melt into a single graceful arch—or seeing a finite-difference simulation explode the instant $$ r $$ crosses $$ 0.5 $$—makes parabolic PDE behavior unforgettable. This gallery pairs interactive visualizations of separation of variables, boundary-condition regimes, Gaussian kernel spreading, and finite-difference stability so you can experiment with every parameter of Chapter 09 directly.
+
+## Background Knowledge Map: Exploring Chapter 09 Visually
+
+1. **Low-Pass Spectral Filtering:** In the separation-of-variables frame, watch the high-$$ n $$ bars in the mode spectrum plummet exponentially faster than $$ n = 1 $$ ($$ e^{-\alpha n^2 \pi^2 t / L^2} $$), instantly rounding off sharp corners.
+2. **Dirichlet vs. Neumann Long-Time Limits:** Compare how ice-bath endpoints drain the entire curve to zero while insulated endpoints flatten the curve horizontally to its initial spatial average.
+3. **Gaussian Kernel Width $$ \sqrt{2\alpha t} $$:** In the infinite-domain frame, watch the bell curve widen like $$ \sqrt{t} $$ while its peak drops like $$ t^{-1/2} $$, keeping the shaded area strictly constant.
+4. **Numerical Stability Cliff at $$ r = 0.5 $$:** Slide $$ \Delta t $$ across the critical threshold $$ \frac{(\Delta x)^2}{2\alpha} $$ and witness alternating grid-scale oscillations grow exponentially in FTCS while Crank–Nicolson remains rock-solid.
+
+### Step-by-Step Worked Example (Read Slowly): Predicting the Mode-2 to Mode-1 Decay Ratio in the Gallery
+
+**Problem:** Suppose the gallery starts a rod of length $$ L = \pi $$ (with $$ \alpha = 1 $$ and Dirichlet BCs) at $$ u(x, 0) = \sin(x) + \sin(2x) $$. Compute the exact time $$ t^* $$ at which the $$ n = 2 $$ mode has shrunk to $$ 1\% $$ of the $$ n = 1 $$ mode's amplitude.
+
+1. **Write the exact two-mode evolution:**
+   $$ u(x, t) = e^{-t}\sin(x) + e^{-4t}\sin(2x). $$
+2. **Set the amplitude ratio equal to $$ 0.01 $$:**
+   $$ \frac{e^{-4t^*}}{e^{-t^*}} = e^{-3t^*} = 0.01 \implies -3t^* = \ln(0.01) = -\ln(100) \approx -4.6052. $$
+3. **Solve for $$ t^* $$:**
+   $$ t^* = \frac{\ln(100)}{3} \approx 1.535\text{ s}. $$
+   At $$ t = 1.535 $$ in the gallery animation, the $$ n = 1 $$ arch still holds $$ e^{-1.535} \approx 21.5\% $$ of its initial height, while the $$ n = 2 $$ ripple is already down to $$ 0.215\% $$—visually indistinguishable from a pure single sine wave!
+
 ## Purpose of This Companion Lesson
 
 This lesson gathers the Chapter 09 illustrations into one visual review space. The heat equation is often the first PDE students study in full detail, and its conceptual load is substantial: physical derivation, eigenfunction expansions, boundary effects, kernel methods, maximum principles, and numerical approximations all appear within a single chapter. The gallery helps those ideas remain connected rather than fragmented.

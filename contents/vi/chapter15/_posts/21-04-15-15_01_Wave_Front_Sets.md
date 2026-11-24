@@ -12,6 +12,19 @@ lesson_type: required
 
 ![Wave front set như mô tả vị trí và hướng của singularity]({{ site.imgurl }}/chapter_img/chapter15/01_wave_front_sets.svg )
 
+Hãy tưởng tượng bạn đứng trên một cánh đồng phẳng có một rãnh nứt kéo dài theo hướng Bắc–Nam. Nếu bạn đi dọc theo hướng Bắc–Nam, mặt đất phẳng lì trơn tru; nhưng nếu bạn bước ngang hướng Đông–Tây băng qua rãnh, bạn lập tức vấp phải bước nhảy! **Tập Mặt sóng $\operatorname{WF}(u)$ (Wave Front Set)** của Lars Hörmander nắm bắt chính xác trực giác ấy: nó không chỉ đánh dấu vị trí rãnh nứt $x$, mà còn chỉ rõ **hướng tần số $\xi$ nào bị vấp kỳ dị**—một bước nâng cấp vĩ đại biến không gian vị trí thành không gian pha $T^*\mathbb{R}^n \setminus 0$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Tập Mặt sóng $\operatorname{WF}(u)$
+
+1. **Định nghĩa Chặt chẽ trên $T^*\mathbb{R}^n \setminus 0$**:
+   Điểm $(x_0, \xi_0) \notin \operatorname{WF}(u)$ khi và chỉ khi tồn tại hàm cắt $\phi \in C_c^\infty$ ($\phi(x_0) \neq 0$) và một hình nón mở $\Gamma$ chứa $\xi_0$ sao cho $|\widehat{\phi u}(\xi)| \le C_N (1 + |\xi|)^{-N}$ với mọi $N$ và mọi $\xi \in \Gamma$.
+2. **Chiếu xuống không gian vị trí ra đúng Giá kỳ dị**:
+   $\pi_x(\operatorname{WF}(u)) = \operatorname{sing\,supp}(u)$! Nếu $\operatorname{WF}(u) = \emptyset$ thì $u \in C^\infty$. Hơn nữa $\operatorname{WF}(u)$ là một tập con **đóng và hình nón** (bất biến dưới phép nhân $\xi \mapsto \lambda\xi$ với $\lambda > 0$).
+3. **Tính Vi-địa phương (Microlocality) của $\Psi$DO**:
+   Mạnh hơn cả tính giả-địa phương ở Chương 14: $\operatorname{WF}(Pu) \subset \operatorname{WF}(u)$ với mọi $P \in \Psi^m$—một toán tử giả vi phân không những không tạo điểm kỳ dị mới, mà còn **không bao giờ xoay chuyển hướng tần số kỳ dị**!
+4. **Phép nhân hai Phân phối nhờ Điều kiện Hörmander**:
+   Bình thường ta không thể nhân hai phân phối (như $\delta_0^2$ vô nghĩa!). Nhưng định lý Hörmander khẳng định: tích $u \cdot v$ **hoàn toàn định nghĩa được** miễn là tổng hai hướng mặt sóng không bao giờ triệt tiêu nhau: $(x, 0) \notin \operatorname{WF}(u) + \operatorname{WF}(v)$!
+
 ## Mục tiêu
 
 Bài học này mở đầu chương giải tích vi địa phương bằng khái niệm trung tâm nhất: tập hợp mặt sóng (wave front set). Sau bài học, sinh viên cần hiểu vì sao giá kỳ dị (singular support) là chưa đủ, lý do tập mặt sóng phải lưu đồng thời vị trí và hướng tần số, và vai trò của định nghĩa này trong việc theo dõi điểm kỳ dị của PDE hiện đại.
@@ -26,6 +39,16 @@ Giá kỳ dị chỉ cho biết một phân phối không trơn ở đâu, chứ
 
 Tập mặt sóng ra đời để bổ sung đúng phần thông tin còn thiếu đó, cung cấp bản đồ kỳ dị trên không gian pha cục bộ, nơi mỗi vị trí được gắn kèm các hướng tần số mà tính trơn bị vi phạm.
 
+
+### Khung giải thích (nên đọc chậm): Tính trực tiếp Tập Mặt sóng $\operatorname{WF}(u)$ của hàm bước nhảy 2D $u(x_1, x_2) = H(x_1)$
+
+Xét phân phối 2D $u(x_1, x_2) = H(x_1)$ (nhảy từ $0$ lên $1$ qua đường thẳng $x_1 = 0$) tại điểm $x_0 = (0, 0)$. Chọn hàm cắt tách biến $\phi(x_1, x_2) = \phi_1(x_1)\phi_2(x_2) \in C_c^\infty(\mathbb{R}^2)$ với $\phi_1(0) = \phi_2(0) = 1$:
+1. **Tính biến đổi Fourier cục bộ hóa**:
+   $$\widehat{\phi u}(\xi_1, \xi_2) = \widehat{\phi_1 H}(\xi_1) \cdot \widehat{\phi_2}(\xi_2).$$
+2. **Kiểm tra hai trường hợp của hướng $\xi = (\xi_1, \xi_2) \neq (0, 0)$**:
+   - **Nếu $\xi_2 \neq 0$**: Trong hình nón đủ hẹp quanh $(\xi_1, \xi_2)$, ta có $|\xi_2| \ge c|\xi|$. Vì $\phi_2 \in C_c^\infty$ nên $|\widehat{\phi_2}(\xi_2)| \le C_N (1 + |\xi_2|)^{-N} \le C'_N (1 + |\xi|)^{-N}$ (tắt siêu nhanh!), còn $|\widehat{\phi_1 H}(\xi_1)|$ bị chặn! Do đó $(x_0, \xi) \notin \operatorname{WF}(u)$.
+   - **Nếu $\xi_2 = 0$ và $\xi_1 \neq 0$**: $\widehat{\phi_2}(0) \neq 0$, còn tích phân từng phần cho $\widehat{\phi_1 H}(\xi_1) \sim \frac{1}{i\xi_1}$ (chỉ tắt bậc $-1$, không tắt siêu nhanh!).
+3. **Kết luận**: $\operatorname{WF}(H(x_1)) = \mathbf{\{((0, x_2), (\xi_1, 0)) : x_2 \in \mathbb{R},\; \xi_1 \neq 0\}}$!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

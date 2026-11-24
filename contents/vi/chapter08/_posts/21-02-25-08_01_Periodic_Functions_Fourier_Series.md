@@ -9,7 +9,22 @@ categories:
 - chapter08
 lesson_type: required
 ---
+
 ![21 02 25 08 01 Periodic Functions Fourier Series]({{ site.imgurl }}/chapter_img/chapter08/01_periodic_functions_fourier_series.svg)
+
+Mọi tín hiệu lặp lại theo chu kỳ—từ sóng điện xoay chiều 50 Hz, nhịp tim điện tâm đồ ECG đến âm thanh một phím đàn—đều là **hàm tuần hoàn** thỏa $f(x + T) = f(x)$. Ý tưởng trung tâm của **Chuỗi Fourier** giống hệt lăng kính tách ánh sáng trắng thành cầu vồng: phân rã một sóng tuần hoàn phức tạp bất kỳ thành tổng các sóng sin và cosin tinh khiết ở các tần số bội nguyên $\frac{n\pi}{L}$!
+
+## Bản đồ kiến thức nền: Bốn viên gạch đầu tiên của Chuỗi Fourier
+
+1. **Chu kỳ cơ bản $T = 2L$ & Tần số góc cơ bản $\omega_0 = \frac{2\pi}{T} = \frac{\pi}{L}$**:
+   Nếu $f(x + T) = f(x)$ với mọi $x$, tích phân trên bất kỳ đoạn độ dài $T$ nào (như $[-L, L]$ hay $[0, 2L]$) đều có giá trị y hệt nhau.
+2. **Dạng chuẩn chuỗi Fourier trên $[-L, L]$**:
+   $$f(x) \sim \frac{a_0}{2} + \sum_{n=1}^{\infty}\left[a_n\cos\!\left(\frac{n\pi x}{L}\right) + b_n\sin\!\left(\frac{n\pi x}{L}\right)\right].$$
+   Số hạng $\frac{a_0}{2}$ chính là **giá trị trung bình (thành phần DC)** của tín hiệu trên một chu kỳ!
+3. **Tính trực giao của hệ lượng giác $\{1, \cos(n\pi x/L), \sin(n\pi x/L)\}$**:
+   Tích phân trên $[-L, L]$ của tích hai hàm bất kỳ *khác nhau* trong hệ đều bằng **$0$**, còn tích phân bình phương mỗi hàm $\cos^2$ hoặc $\sin^2$ đều bằng đúng **$L$**!
+4. **Dấu $\sim$ thay vì dấu $=$**:
+   Ta viết $f(x) \sim \dots$ trước khi kiểm chứng điều kiện hội tụ vì tại các điểm gián đoạn, chuỗi Fourier có thể hội tụ về giá trị khác $f(x)$.
 
 ## Mục tiêu
 
@@ -24,6 +39,14 @@ Sinh viên cần nắm vững tích phân xác định, các tính chất cơ b�
 Một tín hiệu âm thanh, một dao động cơ học hay một nhiệt độ biên biến thiên tuần hoàn theo thời gian thường có dạng phức tạp nếu chỉ quan sát trực tiếp trong miền không gian hoặc thời gian. Tuy nhiên, nhiều tín hiệu như vậy có thể được phân tách thành tổng của những dao động điều hòa đơn giản hơn. Chuỗi Fourier là công cụ giúp thực hiện phép phân tách này một cách có hệ thống.
 
 Đây là một trong những ý tưởng trọng tâm của toàn bộ học phần. Chuỗi Fourier không chỉ giải thích cách phân tích tín hiệu theo tần số mà còn chuẩn bị trực tiếp cho phương pháp tách biến khi giải phương trình đạo hàm riêng (PDE). Nói ngắn gọn, khai triển Fourier chuyển một hàm có hình dạng phức tạp thành tổ hợp của các mode cơ bản dễ phân tích hơn.
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng trực tiếp bằng tay tính trực giao $\int_{-\pi}^{\pi} \cos(2x)\cos(3x)\,dx = 0$
+
+Dùng công thức tích thành tổng $\cos A \cos B = \frac{1}{2}[\cos(A - B) + \cos(A + B)]$:
+$$\int_{-\pi}^{\pi} \cos(2x)\cos(3x)\,dx = \frac{1}{2}\int_{-\pi}^{\pi} [\cos(-x) + \cos(5x)]\,dx = \frac{1}{2}\left[\sin x + \frac{\sin 5x}{5}\right]_{-\pi}^{\pi} = \frac{1}{2}(0 - 0) = \mathbf{0}!$$
+Còn khi $m = n = 2$:
+$$\int_{-\pi}^{\pi} \cos^2(2x)\,dx = \frac{1}{2}\int_{-\pi}^{\pi} [1 + \cos(4x)]\,dx = \frac{1}{2}\left[x + \frac{\sin 4x}{4}\right]_{-\pi}^{\pi} = \frac{1}{2}(2\pi) = \mathbf{\pi} = L!$$
+Chính sự triệt tiêu tuyệt đối khi $m \neq n$ giúp ta "lọc" riêng từng hệ số $a_n, b_n$ độc lập nhau mà không cần giải hệ phương trình!
 
 ## Khái niệm theo ba cách
 

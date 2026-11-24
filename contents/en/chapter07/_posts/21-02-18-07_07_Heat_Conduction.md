@@ -10,6 +10,36 @@ categories:
 lesson_type: required
 ---
 
+Hold one end of a metal poker in ice water and heat the middle with a torch; remove the torch and watch the temperature profile evolve. Unlike a vibrating string that remembers its sharp corners forever as traveling waves, heat conduction ruthlessly erases jagged details. High-frequency spatial wiggles carry huge curvature $$ u_{xx} $$, which drives exponential decay factors $$ e^{-\alpha \lambda_n t} $$ that crush the $$ n = 10 $$ mode a *hundred times faster* in the exponent than the $$ n = 1 $$ mode!
+
+This lesson shows how the exact same Sturm–Liouville eigenfunctions from Chapter 07 turn the heat equation into a low-pass thermal filter—and how shifting by a steady-state profile handles nonhomogeneous boundary temperatures cleanly.
+
+## Background Knowledge Map: Thermal Modes, Steady States, and Decay Rates
+
+1. **Exponential Smoothing $$ e^{-\alpha \lambda_n t} $$ (Parabolic Dissipation):** Separating $$ u_t = \alpha u_{xx} $$ gives $$ T_n(t) = e^{-\alpha \lambda_n t} $$. Because $$ \lambda_n = (n\pi/L)^2 $$ grows quadratically with $$ n $$, high spatial frequencies die out almost instantaneously, leaving the fundamental mode $$ n = 1 $$ to dominate the long-time cooling tail.
+2. **Steady-State + Transient Decomposition:** When the rod ends are held at nonzero temperatures $$ u(0, t) = T_1 $$ and $$ u(L, t) = T_2 $$, we split $$ u(x, t) = u_{\text{ss}}(x) + v(x, t) $$. The steady state solves $$ u_{\text{ss}}'' = 0 $$ (a straight line connecting $$ T_1 $$ to $$ T_2 $$), while the transient $$ v $$ satisfies *homogeneous* Dirichlet BCs and decays to zero as $$ t \to \infty $$.
+3. **Insulated Ends and Energy Conservation (Neumann Spectrum):** If both ends are insulated ($$ u_x(0, t) = u_x(L, t) = 0 $$), $$ \lambda_0 = 0 $$ is an eigenvalue with constant eigenfunction $$ \phi_0(x) = 1 $$. Its coefficient $$ a_0 = \frac{1}{L}\int_0^L f(x)\,dx $$ never decays—the rod equilibrates to the exact spatial average of its initial temperature!
+4. **Characteristic Thermal Time Scale $$ \tau = L^2 / (\pi^2 \alpha) $$:** Doubling a rod's length $$ L $$ makes it take *four times longer* to cool, a universal diffusive scaling law ($$ t \sim L^2 / \alpha $$).
+
+### Step-by-Step Worked Example (Read Slowly): Nonhomogeneous Rod Cooling and Mode-Decay Ratio
+
+**Problem:** A copper rod of length $$ L = 1\text{ m} $$ with thermal diffusivity $$ \alpha = 10^{-4}\text{ m}^2/\text{s} $$ has endpoints fixed at $$ u(0, t) = 20^\circ\text{C} $$ and $$ u(1, t) = 60^\circ\text{C} $$, and starts with initial temperature $$ u(x, 0) = 20 + 40x + 30\sin(\pi x) + 10\sin(3\pi x) $$. Find $$ u(x, t) $$ explicitly, and compute the temperature at $$ x = 0.5\text{ m} $$ after $$ t = 1000\text{ s} $$.
+
+1. **Find the steady-state temperature $$ u_{\text{ss}}(x) $$:**
+   Solving $$ u_{\text{ss}}'' = 0 $$ with $$ u_{\text{ss}}(0) = 20 $$ and $$ u_{\text{ss}}(1) = 60 $$ gives
+   $$ u_{\text{ss}}(x) = 20 + 40x. $$
+2. **Extract the homogeneous transient initial condition $$ v(x, 0) $$:**
+   $$ v(x, 0) = u(x, 0) - u_{\text{ss}}(x) = 30\sin(\pi x) + 10\sin(3\pi x). $$
+   Notice $$ v(0, t) = v(1, t) = 0 $$, and $$ v(x, 0) $$ is already written in the Dirichlet eigenbasis $$ \sin(n\pi x) $$ with $$ \lambda_1 = \pi^2 $$ and $$ \lambda_3 = 9\pi^2 $$!
+3. **Attach the exact exponential decay factors:**
+   $$ u(x, t) = 20 + 40x + 30 e^{-\alpha \pi^2 t} \sin(\pi x) + 10 e^{-9\alpha \pi^2 t} \sin(3\pi x). $$
+4. **Evaluate at $$ x = 0.5\text{ m} $$, $$ t = 1000\text{ s} $$ (using $$ \alpha t = 0.1 $$):**
+   - Fundamental decay factor: $$ e^{-0.1 \pi^2} \approx e^{-0.98696} \approx 0.3727 $$.
+   - Third-harmonic decay factor: $$ e^{-0.9 \pi^2} \approx e^{-8.8826} \approx 0.000139 $$ (virtually wiped out!).
+   - Since $$ \sin(\pi/2) = 1 $$ and $$ \sin(3\pi/2) = -1 $$:
+     $$ u(0.5, 1000) \approx 40 + 30(0.3727)(1) + 10(0.000139)(-1) \approx 40 + 11.18 - 0.0014 \approx 51.18^\circ\text{C}. $$
+   Look at the physics in numbers: in 1000 seconds, the $$ n=1 $$ bump dropped to 37% of its original height, while the $$ n=3 $$ wiggle was crushed to 0.014%!
+
 ## Learning Objectives
 
 This lesson applies boundary-value methods to steady heat conduction. Students should learn to interpret steady-state temperature profiles as BVP solutions, connect boundary conditions to physical heat exchange, and see how Green's functions and eigenfunction thinking prepare the way for later PDE chapters.

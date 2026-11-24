@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** Train a standard neural network to predict stress fields on a $64\times 64$ grid, then ask it to predict on a $256\times 256$ grid, and the architecture breaks—its weights are hard-wired to finite pixel vectors. **Operator learning in Sobolev spaces** lifts deep learning into infinite-dimensional Hilbert spaces $H^s(\Omega)$ so models respect both physical derivatives and arbitrary mesh resolutions.
+
 ## Objectives
 
 This optional lesson uses $$L^p$$ spaces, weak derivatives, Sobolev norms, and Lax–Milgram well-posedness as the official language of neural-operator theory. Students should be able to say in which space a learned map is claimed to be continuous, why discretization invariance is a functional-analytic statement, and which 2022–2024 papers supply approximation rates. The weak-formulation theory of the chapter is not rewritten.
@@ -17,6 +19,15 @@ This optional lesson uses $$L^p$$ spaces, weak derivatives, Sobolev norms, and L
 ## Prerequisites
 
 Students should know $$L^p$$ norms, weak derivatives, the spaces $$H^1$$ and $$H^1_0$$, the Lax–Milgram theorem, and the idea of a weak solution of a linear elliptic PDE.
+
+## Background Knowledge Map: Sobolev Analysis Inside Modern Operator Learning
+
+Four functional-analytic concepts directly govern the design and generalization of neural PDE surrogates:
+
+1. **Operators Between Sobolev Spaces:** A PDE solution map $\mathcal{G}: H^{s_1}(\Omega) \to H^{s_2}(\Omega)$ is an infinite-dimensional mapping; training architectures directly on function-space representations (spectral modes or integral kernels) guarantees discretization invariance.
+2. **Sobolev Training Losses ($H^1$ vs. $L^2$):** Minimizing only $\|u_\theta - u\|_{L^2}$ allows spurious high-frequency oscillations with tiny amplitude but huge gradient error. Adding the derivative penalty $\|\nabla(u_\theta - u)\|_{L^2}$ trains in the true energy norm $H^1$.
+3. **Spectral Truncation Rates in $H^s$:** Projecting a function $u \in H^s$ onto its first $K$ Fourier modes incurs an $L^2$ error of $O(K^{-s})$ and an $H^1$ error of $O(K^{-(s-1)})$—quantifying the exact mode budget $K$ required by an FNO.
+4. **Compactness and Sample Complexity:** Because elliptic solution operators map bounded sets in $L^2$ into *compact* sets in $H^1$, the true solution manifold has rapidly decaying Kolmogorov $n$-widths, explaining why relatively few spectral modes capture complex PDE families.
 
 ## Introduction
 
@@ -61,6 +72,22 @@ A functional-analytic checklist for reading or building a learned operator:
 5. For linear problems, compare the learned operator with the Lax–Milgram solution operator on a basis of sources.
 
 ## Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Quantifying $L^2$ vs. $H^1$ Spectral Truncation Error
+
+Suppose a target PDE solution on $[0, 2\pi]$ has Fourier cosine expansion $u(x) = \sum_{k=1}^\infty k^{-3}\cos(kx)$, and a Fourier Neural Operator retains only modes $1 \le k \le K$ ($P_K u(x) = \sum_{k=1}^K k^{-3}\cos(kx)$). Compare the exact asymptotic $L^2$ and $H^1$ truncation errors for $K = 10$.
+
+1. **Verify Sobolev regularity of $u$:** Since $|a_k|^2 = k^{-6}$, $\sum_{k=1}^\infty k^{2s} k^{-6} < \infty \iff 6 - 2s > 1 \iff s < 2.5$. Thus $u \in H^2(0,2\pi)$.
+2. **Estimate the $L^2$ tail error using Parseval and an integral bound:**
+   $$\|u - P_K u\|_{L^2}^2 = \pi \sum_{k=K+1}^\infty k^{-6} \approx \pi \int_K^\infty x^{-6}\,dx = \frac{\pi}{5 K^5}.$$
+   For $K = 10$:
+   $$\|u - P_{10} u\|_{L^2} \approx \sqrt{\frac{\pi}{5 \cdot 10^5}} \approx 2.51 \times 10^{-3}.$$
+3. **Estimate the $H^1$ derivative tail error:** Differentiating multiplies mode $k$ by $k$, multiplying the squared tail by $k^2$:
+   $$\|(u - P_K u)'\|_{L^2}^2 = \pi \sum_{k=K+1}^\infty k^2 \cdot k^{-6} = \pi \sum_{k=K+1}^\infty k^{-4} \approx \pi \int_K^\infty x^{-4}\,dx = \frac{\pi}{3 K^3}.$$
+   For $K = 10$:
+   $$\|(u - P_{10} u)'\|_{L^2} \approx \sqrt{\frac{\pi}{3 \cdot 10^3}} \approx 3.24 \times 10^{-2}.$$
+4. **Takeaway for Sobolev training:** Even at $K = 10$, the gradient ($H^1$) truncation error is more than **12 times larger** than the $L^2$ error—illustrating mathematically why evaluating and training neural operators in $H^1$ is essential whenever fluxes, stresses, or velocities matter.
 
 ### Example 1: $$L^2$$ success, $$H^1$$ failure
 

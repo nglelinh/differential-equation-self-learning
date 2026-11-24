@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Làm sao các mô hình AI như Stable Diffusion, Midjourney hay Sora có thể biến một bức ảnh toàn nhiễu trắng ngẫu nhiên thành một bức tranh sắc nét như thật? Bí mật nằm ở đúng **Phương trình Nhiệt / Khuếch tán** Chương 9 chạy theo **hai chiều thời gian**: chiều xuôi làm nhòa dữ liệu ảnh thành nhiễu Gaussian thuần túy (phương trình Fokker–Planck), còn chiều ngược dùng mạng nơ-ron học **hàm điểm số (Score Function $\nabla_x \log p_t(x)$)** để đảo ngược quá trình khuếch tán!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Mô hình Khuếch tán & Score-Based AI
+
+1. **Quá trình Khuếch tán Xuôi (Forward SDE / Heat Smoothing)**:
+   Thêm dần nhiễu Gaussian qua $T$ bước $d\mathbf{x} = \mathbf{f}(\mathbf{x}, t)\,dt + g(t)\,d\mathbf{W}_t$; mật độ xác suất $p_t(\mathbf{x})$ tiến hóa theo phương trình Fokker–Planck (tổng quát hóa của phương trình nhiệt) về phân phối chuẩn $\mathcal{N}(\mathbf{0}, I)$.
+2. **Phương trình Đảo ngược Thời gian (Anderson, 1982)**:
+   Quá trình ngược cũng là một phương trình vi phân ngẫu nhiên, nhưng có thêm số hạng kéo về vùng dữ liệu thật nhờ **Score Function** $\mathbf{s}_\theta(\mathbf{x}, t) \approx \nabla_{\mathbf{x}} \log p_t(\mathbf{x})$!
+3. **Dòng xác suất ODE (Probability Flow ODE)**:
+   Song hành với SDE ngược là một **ODE xác định** có cùng mật độ biên $p_t(\mathbf{x})$, cho phép lấy mẫu siêu nhanh trong chỉ 10–20 bước (DDIM / DPM-Solver).
+4. **Bộ giải Nơ-ron cho Khuếch tán Vật lý (Neural PDE Solvers)**:
+   Bên cạnh AI tạo sinh, mạng nơ-ron còn học trực tiếp nhân Green khuếch tán để mô phỏng truyền nhiệt trong chip bán dẫn và pin xe điện nhanh gấp hàng trăm lần.
+
 ## Mục tiêu
 
 Bài tùy chọn này kết nối phương trình nhiệt, nhân Gaussian và nguyên lý cực đại với hai hướng phát triển giai đoạn 2021–2024: các bộ giải mạng nơ-ron tích hợp vật lý (PINN) cùng học toán tử cho bài toán khuếch tán, và mô hình sinh dựa trên hàm score (score-based generative model) có quá trình thuận là phương trình vi phân ngẫu nhiên (SDE) khuếch tán. Sau bài học, sinh viên có thể nhận diện nhân nhiệt trong cả hai lĩnh vực và giải thích vì sao nguyên lý cực đại đóng vai trò tiêu chuẩn kiểm chứng cơ bản cho trường nhiệt độ học được. Việc thiết lập và phân tích Fourier cho phương trình nhiệt vẫn là nền tảng lý thuyết chính thức.
@@ -25,6 +38,18 @@ Phương trình nhiệt $$u_t=\alpha^2 u_{xx}$$ là mô hình liên tục điể
 Trong mảng học máy khoa học (SciML), PINN, DeepONet và Fourier neural operator được huấn luyện làm bộ giải khuếch tán và mô hình thay thế theo tham số cho bài toán dẫn nhiệt, dòng chảy trong môi trường xốp và các PDE parabolic liên quan. Hao và cộng sự (*PINNacle*, NeurIPS 2024) đưa các bài toán dẫn nhiệt vào bộ hơn hai mươi chuẩn đánh giá PDE. Li và cộng sự (PINO, [arXiv:2111.03794](https://arxiv.org/abs/2111.03794)) kết hợp học toán tử với phần dư phương trình vật lý để dữ liệu huấn luyện trên lưới thô vẫn được tinh chỉnh trực tiếp bởi toán tử nhiệt.
 
 Trong mảng mô hình sinh, Song, Sohl-Dickstein, Kingma, Kumar, Ermon và Poole (*Score-Based Generative Modeling through Stochastic Differential Equations*, ICLR 2021; [arXiv:2011.13456](https://arxiv.org/abs/2011.13456)) lấy một phân bố dữ liệu, cho tiến hóa theo một SDE khuếch tán có mật độ xác suất thỏa mãn phương trình Fokker–Planck, rồi đảo ngược SDE theo thời gian để sinh mẫu mới. Quá trình thuận chính là một dòng khuếch tán trên hàm mật độ. Do đó, việc hiểu nhân nhiệt và nguyên lý cực đại không chỉ mang tính ví von, mà giải thích trực tiếp vì sao quá trình đảo ngược có thể đặt chỉnh sau khi học hàm score $$\nabla\log p_t$$.
+
+### Khung giải thích (nên đọc chậm): Tính tay Score Function $\nabla_x \log p_t(x)$ của một hạt khuếch tán Gaussian 1D
+
+Giả sử dữ liệu gốc chỉ là 1 điểm duy nhất tại $x_0 = 5$. Sau thời gian khuếch tán $t$ (với phương sai nhiễu $\sigma_t^2 = 2t$), phân phối nhiễu tại thời điểm $t$ chính là nhân nhiệt Gaussian:
+$$p_t(x) = \frac{1}{\sqrt{2\pi \sigma_t^2}} \exp\!\left(-\frac{(x - 5)^2}{2\sigma_t^2}\right).$$
+1. Lấy logarit tự nhiên: $\log p_t(x) = -\frac{(x - 5)^2}{2\sigma_t^2} + \text{hằng số}$.
+2. Lấy đạo hàm theo $x$ để tìm **Score Function**:
+   $$s(x, t) = \frac{\partial}{\partial x}\log p_t(x) = \mathbf{-\frac{x - 5}{\sigma_t^2}}.$$
+3. **Kiểm tra trực giác khử nhiễu**:
+   - Nếu điểm nhiễu đang ở $x = 8$ (lệch phải): $s(8, t) = -\frac{3}{\sigma_t^2} < 0$ → **mũi tên đẩy sang trái** về $5$!
+   - Nếu điểm nhiễu đang ở $x = 1$ (lệch trái): $s(1, t) = +\frac{4}{\sigma_t^2} > 0$ → **mũi tên kéo sang phải** về $5$!
+   Mạng nơ-ron trong Stable Diffusion thực chất chỉ đang học trường vectơ mũi tên chỉ hướng ngược về vùng ảnh thật này!
 
 ## Khái niệm then chốt
 

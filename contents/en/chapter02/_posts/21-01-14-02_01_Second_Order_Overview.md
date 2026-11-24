@@ -9,6 +9,38 @@ categories:
 - chapter02
 lesson_type: required
 ---
+
+Pluck a guitar string or watch a skyscraper sway in a gust of wind: knowing only *where* the object is right now is no longer enough to predict its next move—you also need its initial *velocity*. Because Newton's second law $$F = ma = m y''$$ ties force to acceleration, second-order linear ODEs are the native language of vibration, waves, and circuits, and their solution sets inherit the clean vector-space geometry of linear algebra.
+
+## Background Knowledge Map: The Linear Operator Architecture of Second-Order ODEs
+
+Four foundational theorems govern every second-order linear equation $$L[y] := y'' + p(t)y' + q(t)y = g(t)$$:
+
+1. **Two-Dimensional Solution Space:** The homogeneous equation $$L[y] = 0$$ has a solution space of dimension exactly $$2$$; once you find two linearly independent solutions $$y_1, y_2$$ (a *fundamental set*), every homogeneous solution is $$y_h = c_1 y_1 + c_2 y_2$$.
+2. **Principle of Superposition:** Because $$L[c_1 y_1 + c_2 y_2] = c_1 L[y_1] + c_2 L[y_2]$$, solutions to homogeneous equations can be scaled and added freely, and any nonhomogeneous solution decomposes cleanly as $$y = y_h + y_p$$.
+3. **Global Existence and Uniqueness:** Whenever $$p(t), q(t), g(t)$$ are continuous on an open interval $$I$$ containing $$t_0$$, the IVP $$L[y] = g(t),\; y(t_0) = y_0,\; y'(t_0) = v_0$$ has a **unique** solution defined on the *entire* interval $$I$$—no spontaneous nonlinear blow-up!
+4. **Independence via the Wronskian:** Two solutions $$y_1, y_2$$ span the solution space if and only if $$W(y_1, y_2)(t_0) = y_1(t_0)y_2'(t_0) - y_1'(t_0)y_2(t_0) \ne 0$$ at a single point $$t_0 \in I$$.
+
+### Step-by-Step Worked Example (Read Slowly): Verifying a Fundamental Set and Determining Maximal Interval of Existence
+
+Consider the variable-coefficient IVP
+$$(t - 2)y'' + 3y' - \frac{y}{t} = \ln(t + 1), \qquad y(1) = 4, \quad y'(1) = -1.$$
+
+1. **Put into standard form $$y'' + p(t)y' + q(t)y = g(t)$$:**
+   Divide by $$t - 2$$:
+   $$p(t) = \frac{3}{t - 2}, \qquad q(t) = -\frac{1}{t(t - 2)}, \qquad g(t) = \frac{\ln(t + 1)}{t - 2}.$$
+2. **Locate all discontinuities of $$p, q, g$$:**
+   - $$p(t)$$ fails at $$t = 2$$.
+   - $$q(t)$$ fails at $$t = 0$$ and $$t = 2$$.
+   - $$g(t)$$ requires $$t + 1 > 0 \iff t > -1$$ and $$t \ne 2$$.
+   Thus the maximal open intervals where all three are continuous are $$(-1, 0)$$, $$(0, 2)$$, and $$(2, \infty)$$.
+3. **Match the initial point $$t_0 = 1$$:**
+   Since $$1 \in (0, 2)$$, the Existence–Uniqueness Theorem guarantees a unique solution on the entire interval $$(0, 2)$$—without ever solving the equation!
+4. **Bonus check on superposition:** For the simpler homogeneous equation $$t^2 y'' - 2y = 0$$ ($$t > 0$$), check $$y_1 = t^2$$ and $$y_2 = t^{-1}$$:
+   - $$t^2(2) - 2(t^2) = 0$$ and $$t^2(2t^{-3}) - 2(t^{-1}) = 0$$.
+   - $$W(t^2, t^{-1}) = t^2(-t^{-2}) - (2t)(t^{-1}) = -1 - 2 = -3 \ne 0$$.
+   Hence $$y(t) = c_1 t^2 + c_2 t^{-1}$$ is the complete general solution on $$(0, \infty)$$.
+
 ## Learning Objectives
 This lesson opens the chapter on second-order linear equations, helping students understand why second order arises naturally in systems with inertia, distinguish between general and particular solutions, and interpret the meaning of linearity, the principle of superposition, and the role of two initial conditions. After this lesson, students should recognize that moving from first to second order is not merely adding one more derivative, but rather transitioning to a model with deeper dynamic memory.
 

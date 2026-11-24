@@ -10,6 +10,36 @@ categories:
 lesson_type: required
 ---
 
+In Euclidean geometry, Pythagoras's theorem states that the squared length of a vector equals the sum of the squares of its orthogonal coordinates: $$ \|\mathbf{v}\|^2 = \sum c_k^2 $$. In 1799, Marc-Antoine Parseval discovered that this exact geometric law survives intact in infinite dimensions: the total energy of a signal measured in the *time/space domain* equals the sum of the squared amplitudes of its harmonics in the *frequency domain*.
+
+Beyond physics and electrical engineering (where it guarantees conservation of signal power across a spectrum analyzer), Parseval's identity is a secret weapon in pure mathematics—effortlessly computing exact infinite sums like $$ \sum_{n=1}^\infty \frac{1}{n^4} = \frac{\pi^4}{90} $$ that defy elementary calculus!
+
+## Background Knowledge Map: Infinite-Dimensional Pythagoras and Spectral Energy
+
+1. **Bessel's Inequality vs. Parseval's Equality (Completeness Test):** For any orthonormal system, $$ \sum |c_n|^2 \le \|f\|^2 $$ (Bessel's inequality—the shadow cannot be longer than the vector). Equality holds for *all* $$ f \in L^2([-L, L]) $$ if and only if the trigonometric system is *complete* (no nonzero function is orthogonal to every mode).
+2. **Real Parseval Formula on $$ [-L, L] $$:**
+   $$ \frac{1}{L}\int_{-L}^{L} |f(x)|^2\,dx = \frac{a_0^2}{2} + \sum_{n=1}^{\infty} (a_n^2 + b_n^2). $$
+   Watch the factor of $$ \frac{1}{2} $$ on $$ a_0^2 $$—because $$ \frac{a_0}{2} $$ is the constant term while $$ \frac{1}{L}\int_{-L}^L \left(\frac{a_0}{2}\right)^2 dx = \frac{a_0^2}{2} $$!
+3. **Exact $$ L^2 $$ Truncation Error Accounting:** The mean-square error of the $$ N $$-th partial sum is literally the tail energy $$ \frac{1}{L}\|f - S_N\|_2^2 = \sum_{n=N+1}^\infty (a_n^2 + b_n^2) $$, giving engineers an exact criterion for how many harmonics are needed to capture 99% of a signal's power.
+4. **Evaluating Zeta Values $$ \zeta(2k) $$:** Plugging polynomial functions ($$ x, x^2, |x| $$) into Parseval's identity instantly evaluates $$ \zeta(2) = \frac{\pi^2}{6} $$, $$ \zeta(4) = \frac{\pi^4}{90} $$, and higher even zeta values in three lines of arithmetic.
+
+### Step-by-Step Worked Example (Read Slowly): Proving $$ \sum_{n=1}^{\infty} \frac{1}{n^4} = \frac{\pi^4}{90} $$ via Parseval's Theorem
+
+**Problem:** Use the Fourier series of $$ f(x) = x^2 $$ on $$ [-\pi, \pi] $$ together with Parseval's identity to compute the exact sum $$ \sum_{n=1}^{\infty} \frac{1}{n^4} $$, and verify how much energy the first two terms ($$ a_0, a_1 $$) capture.
+
+1. **Compute the Fourier coefficients of $$ f(x) = x^2 $$ on $$ [-\pi, \pi] $$:**
+   Since $$ x^2 $$ is even, $$ b_n = 0 $$ for all $$ n \ge 1 $$.
+   - $$ a_0 = \frac{2}{\pi}\int_0^\pi x^2\,dx = \frac{2\pi^2}{3} $$.
+   - For $$ n \ge 1 $$, integrate by parts twice:
+     $$ a_n = \frac{2}{\pi}\int_0^\pi x^2\cos(nx)\,dx = \frac{2}{\pi}\left[\frac{2x\cos(nx)}{n^2}\right]_0^\pi = \frac{4(-1)^n}{n^2}. $$
+2. **Compute the left-hand side of Parseval's identity:**
+   $$ \frac{1}{\pi}\int_{-\pi}^{\pi} (x^2)^2\,dx = \frac{2}{\pi}\int_0^\pi x^4\,dx = \frac{2}{\pi}\cdot\frac{\pi^5}{5} = \frac{2\pi^4}{5}. $$
+3. **Equate to the right-hand side $$ \frac{a_0^2}{2} + \sum_{n=1}^\infty a_n^2 $$:**
+   $$ \frac{2\pi^4}{5} = \frac{1}{2}\left(\frac{4\pi^4}{9}\right) + \sum_{n=1}^{\infty} \frac{16}{n^4} = \frac{2\pi^4}{9} + 16\sum_{n=1}^{\infty} \frac{1}{n^4}. $$
+4. **Solve for $$ \sum_{n=1}^\infty \frac{1}{n^4} $$:**
+   $$ 16\sum_{n=1}^{\infty} \frac{1}{n^4} = \left(\frac{2}{5} - \frac{2}{9}\right)\pi^4 = \frac{8}{45}\pi^4 \implies \sum_{n=1}^{\infty} \frac{1}{n^4} = \frac{\pi^4}{90} \approx 1.08232. $$
+5. **Energy capture check:** Total normalized energy is $$ \frac{2\pi^4}{5} \approx 38.9636 $$. Just the DC term $$ \frac{a_0^2}{2} = \frac{2\pi^4}{9} \approx 21.6465 $$ plus the $$ n = 1 $$ mode $$ a_1^2 = 16 $$ gives $$ 37.6465 $$—capturing **96.6%** of the entire signal energy in just two terms!
+
 ## Learning Objectives
 
 This lesson explains Parseval's theorem as an energy identity. Students should see that Fourier coefficients do not merely encode shape, but also distribute the total energy of a function among its harmonic modes.

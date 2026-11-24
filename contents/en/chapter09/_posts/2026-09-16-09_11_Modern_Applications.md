@@ -10,6 +10,34 @@ categories:
 lesson_type: optional
 ---
 
+Open any modern generative AI image model—Stable Diffusion, Flux, or Imagen—and look under the hood: you are staring straight at the heat equation of Chapter 09 running *forward* to melt a crisp photograph into pure Gaussian noise, and then running *backward* via a learned score function $$ \nabla_x \log p_t(x) $$ to crystallize a brand-new image out of static!
+
+The mathematical backbone of score-based generative modeling (Song et al., ICLR 2021) is the exact Fokker–Planck / reverse-time diffusion PDE: forward noise addition is heat diffusion on high-dimensional probability densities, and neural score matching learns the exact drift needed to reverse entropy!
+
+## Background Knowledge Map: From Heat Diffusion to Score-Based Generative AI
+
+1. **Forward Diffusion as a Heat/Fokker–Planck Equation:** Adding incremental Gaussian noise $$ dx = -\frac{1}{2}\beta(t) x\,dt + \sqrt{\beta(t)}\,dW_t $$ evolves the data probability density $$ p_t(x) $$ via the Fokker–Planck PDE $$ \partial_t p_t = \nabla\cdot\!\left(\frac{1}{2}\beta(t) x p_t\right) + \frac{1}{2}\beta(t)\Delta p_t $$, smoothing any complex data distribution into a standard Gaussian.
+2. **Anderson's Reverse-Time SDE & Score Function:** Running the diffusion backward from $$ t = T $$ to $$ t = 0 $$ requires only one unknown quantity—the **Stein score** $$ s(x, t) = \nabla_x \log p_t(x) $$—which pushes noisy samples uphill toward high-probability regions of the data manifold.
+3. **Denoising Score Matching (Training Objective):** Directly computing $$ \nabla_x \log p_t(x) $$ is intractable, but Vincent (2011) proved that training a neural network $$ s_\theta(x_t, t) $$ to predict the added Gaussian noise $$ -\frac{x_t - \mu_t}{\sigma_t^2} $$ recovers the exact score function!
+4. **Probability Flow ODE (Deterministic Sampling):** Every reverse diffusion SDE shares the exact same marginal densities $$ p_t(x) $$ as a deterministic ODE $$ dx = \bigl[f(x, t) - \frac{1}{2}g(t)^2 \nabla_x \log p_t(x)\bigr]dt $$, enabling fast Runge–Kutta samplers and exact likelihood evaluation.
+
+### Step-by-Step Worked Example (Read Slowly): Computing the Exact Score Function of a 1D Diffused Two-Point Distribution
+
+**Problem:** Suppose our "data distribution" consists of two sharp points at $$ x = -1 $$ and $$ x = +1 $$ with equal weight $$ \frac{1}{2} $$. After diffusing under the pure heat equation $$ \partial_t p = \frac{1}{2}\partial_{xx} p $$ for time $$ t > 0 $$, compute the diffused density $$ p_t(x) $$ and its exact score function $$ s(x, t) = \partial_x \log p_t(x) $$, then evaluate $$ s(0.5, t) $$ at $$ t = 0.25 $$ and $$ t = 4.0 $$.
+
+1. **Convolve the data with the heat kernel (variance $$ \sigma^2 = t $$):**
+   $$ p_t(x) = \frac{1}{2\sqrt{2\pi t}}\left[e^{-\frac{(x - 1)^2}{2t}} + e^{-\frac{(x + 1)^2}{2t}}\right]. $$
+   Factor out $$ e^{-(x^2 + 1)/(2t)} $$:
+   $$ p_t(x) = \frac{e^{-(x^2 + 1)/(2t)}}{\sqrt{2\pi t}} \cosh\!\left(\frac{x}{t}\right). $$
+2. **Differentiate $$ \log p_t(x) $$ to get the exact score function:**
+   $$ \log p_t(x) = -\frac{x^2 + 1}{2t} + \ln\cosh\!\left(\frac{x}{t}\right) - \frac{1}{2}\ln(2\pi t). $$
+   Differentiating with respect to $$ x $$ gives the remarkably clean closed form:
+   $$ s(x, t) = \frac{\partial}{\partial x}\log p_t(x) = \frac{1}{t}\left[\tanh\!\left(\frac{x}{t}\right) - x\right]. $$
+3. **Evaluate the reverse-time steering force at $$ x = 0.5 $$:**
+   - **Late time (high noise, $$ t = 4.0 $$):** $$ \tanh(0.5/4) = \tanh(0.125) \approx 0.1244 \implies s(0.5, 4) \approx \frac{0.1244 - 0.5}{4} \approx -0.0939 $$. It gently pulls $$ x = 0.5 $$ inward toward the center of mass $$ 0 $$!
+   - **Early time (low noise, $$ t = 0.25 $$):** $$ \tanh(0.5/0.25) = \tanh(2) \approx 0.9640 \implies s(0.5, 0.25) \approx \frac{0.9640 - 0.5}{0.25} \approx +1.856 $$. Now the score flips sign and pushes $$ x = 0.5 $$ strongly **rightward** toward the true data mode $$ x = +1 $$!
+   That sign flip is the exact mathematical moment when a diffusion model commits from global layout to sharp local detail!
+
 ## Objectives
 
 This optional lesson connects the heat equation, the Gaussian kernel, and maximum principles to two 2021–2024 developments: physics-informed and operator-learning solvers for diffusion, and score-based generative models whose forward process is a diffusion SDE. Students should be able to recognize the heat kernel inside both stories and explain why a maximum principle is a unit test for a learned temperature field. The derivation and Fourier analysis of the heat equation remain the official theory.

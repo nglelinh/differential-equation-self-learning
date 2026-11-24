@@ -9,7 +9,21 @@ categories:
 - chapter09
 lesson_type: required
 ---
+
 ![21 03 04 09 03 Homogeneous Bcs Heat]({{ site.imgurl }}/chapter_img/chapter09/03_homogeneous_bcs_heat.svg)
+
+Cùng một thanh kim loại, cùng một nhiệt độ ban đầu $f(x)$, nhưng chỉ cần bạn bọc bông cách nhiệt hai đầu thanh (biên Neumann) thay vì nhúng chúng vào nước đá $0^\circ\text{C}$ (biên Dirichlet), số phận dài hạn của thanh thay đổi hoàn toàn! Bài học này hệ thống hóa tác động của cả bốn loại **điều kiện biên thuần nhất**: Dirichlet, Neumann, Hỗn hợp và Tuần hoàn (vòng nhẫn).
+
+## Bản đồ kiến thức nền: Bốn chế độ Biên Thuần nhất của Phương trình Nhiệt
+
+1. **Biên Dirichlet ($u(0,t)=u(L,t)=0$)**:
+   Cơ sở $\sin(n\pi x/L)$, $\lambda_n = (n\pi/L)^2 > 0$. Mọi mode đều tắt về $0 \implies \lim_{t\to\infty} u(x,t) = 0$.
+2. **Biên Neumann cách nhiệt ($u_x(0,t)=u_x(L,t)=0$)**:
+   Cơ sở $\{1, \cos(n\pi x/L)\}$, có thêm trị riêng **$\lambda_0 = 0$**! Khi $t \to \infty$, mọi mode $n \ge 1$ tắt hết, còn lại duy nhất giá trị trung bình ban đầu $\frac{a_0}{2} = \frac{1}{L}\int_0^L f(x)\,dx$ (bảo toàn tổng nhiệt lượng!).
+3. **Biên Hỗn hợp ($u(0,t)=0,\; u_x(L,t)=0$)**:
+   Một đầu nhúng đá, một đầu cách nhiệt $\implies$ cơ sở $\sin\!\left(\frac{(2n-1)\pi x}{2L}\right)$; toàn bộ nhiệt cuối cùng vẫn thoát ra qua đầu $x = 0$ nên $u \to 0$ (nhưng chậm gấp 4 lần biên Dirichlet hai đầu!).
+4. **Biên Tuần hoàn (Vòng nhẫn khép kín chu vi $2L$)**:
+   $u(-L,t)=u(L,t)$ và $u_x(-L,t)=u_x(L,t)$ → dùng chuỗi Fourier đầy đủ (cả $\cos$ và $\sin$, kể cả hằng số $\lambda_0 = 0$).
 
 ## Mục tiêu
 
@@ -24,6 +38,17 @@ Sinh viên cần nắm phương pháp tách biến, bài toán trị riêng Stur
 Khi giải phương trình nhiệt, người học thường chú ý nhiều đến phương trình bên trong miền mà ít để ý rằng chính điều kiện biên mới quyết định tập mode nào được phép tồn tại. Trong phương pháp tách biến, điều kiện biên ràng buộc phần không gian $$ X(x) $$ thành một bài toán trị riêng, qua đó quy định toàn bộ phổ của hệ.
 
 Cùng một phương trình $$ u_t=\alpha^2u_{xx} $$, chỉ cần thay đổi điều kiện biên là không gian mode đã thay đổi theo. Nói cách khác, điều kiện biên là một bộ phận cấu thành của hệ vật lý chứ không phải dữ kiện phụ kèm theo đề bài.
+
+### Khung giải thích (nên đọc chậm): Giải bài toán thanh cách nhiệt hai đầu (Neumann) $u_t = u_{xx}$ trên $[0, \pi]$ với $u(x, 0) = 10 + 6\cos(2x)$
+
+1. **Cơ sở hàm riêng Neumann trên $[0, \pi]$**: $1$ ($\lambda_0 = 0$) và $\cos(nx)$ ($\lambda_n = n^2$).
+2. **Nghiệm tổng quát**: $u(x, t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} a_n \cos(nx) e^{-n^2 t}$.
+3. **Khớp trực tiếp $u(x, 0) = 10 + 6\cos(2x)$** (không cần tính tích phân!):
+   $\frac{a_0}{2} = 10$, $a_2 = 6$, mọi $a_n$ khác bằng $0$.
+4. **Nghiệm chính xác**:
+   $$u(x, t) = 10 + 6 e^{-4t}\cos(2x).$$
+   - Kiểm tra biên cách nhiệt: $u_x(x, t) = -12 e^{-4t}\sin(2x) \implies u_x(0, t) = u_x(\pi, t) = 0$ với mọi $t$!
+   - Giới hạn dài hạn $t \to \infty$: $u(x, t) \to \mathbf{10^\circ\text{C}}$ — đúng bằng nhiệt độ trung bình $\frac{1}{\pi}\int_0^\pi (10 + 6\cos 2x)\,dx = 10$!
 
 ## Khái niệm theo ba cách
 

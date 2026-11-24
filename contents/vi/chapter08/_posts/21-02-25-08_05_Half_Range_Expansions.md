@@ -9,7 +9,21 @@ categories:
 - chapter08
 lesson_type: required
 ---
+
 ![21 02 25 08 05 Half Range Expansions]({{ site.imgurl }}/chapter_img/chapter08/05_half_range_expansions.svg)
+
+Trong các bài toán thực tế như thanh dẫn nhiệt hay dây đàn dài $L$, hàm nhiệt độ ban đầu $f(x)$ chỉ được cho trên **nửa khoảng $[0, L]$** chứ không hề định nghĩa ở $x < 0$! Vậy ta phải chọn chuỗi nào? Câu trả lời hoàn toàn do **điều kiện biên** quyết định: mở rộng lẻ sang $[-L, 0)$ tạo ra **Chuỗi Sin nửa khoảng** (khớp biên Dirichlet $u(0)=u(L)=0$), còn mở rộng chẵn tạo ra **Chuỗi Cosin nửa khoảng** (khớp biên Neumann $u_x(0)=u_x(L)=0$)!
+
+## Bản đồ kiến thức nền: Bốn nguyên tắc của Khai triển Nửa Khoảng trên $[0, L]$
+
+1. **Mở rộng Lẻ (Odd Extension) → Chuỗi Sin Fourier**:
+   Đặt $f_{\text{odd}}(-x) = -f(x)$ trên $(-L, 0)$. Chỉ có hệ số $b_n = \frac{2}{L}\int_0^L f(x)\sin\!\left(\frac{n\pi x}{L}\right)dx$. Tự động triệt tiêu tại $x = 0$ và $x = L$.
+2. **Mở rộng Chẵn (Even Extension) → Chuỗi Cosin Fourier**:
+   Đặt $f_{\text{even}}(-x) = f(x)$ trên $(-L, 0)$. Chỉ có $a_0 = \frac{2}{L}\int_0^L f(x)\,dx$ và $a_n = \frac{2}{L}\int_0^L f(x)\cos\!\left(\frac{n\pi x}{L}\right)dx$. Tự động có đạo hàm bằng $0$ tại $x = 0, L$.
+3. **Cùng một hàm $f(x)$ trên $(0, L)$ nhưng tốc độ hội tụ khác hẳn nhau**:
+   Nếu $f(0) \neq 0$, mở rộng lẻ sẽ tạo bước nhảy gián đoạn ngay tại $x = 0$ (hội tụ chậm $O(1/n)$), trong khi mở rộng chẵn giữ liên tục tại $x = 0$ (hội tụ nhanh $O(1/n^2)$)!
+4. **Ứng dụng nén ảnh JPEG (DCT — Discrete Cosine Transform)**:
+   Chuẩn nén ảnh JPEG chọn phép biến đổi **Cosin** (mở rộng chẵn) thay vì Sin/FFT chính vì nó loại bỏ bước nhảy nhân tạo ở mép khối $8 \times 8$ pixel!
 
 ## Mục tiêu
 
@@ -24,6 +38,17 @@ Sinh viên cần nắm vững chuỗi Fourier trên miền đối xứng cùng v
 Nhiều bài toán vật lý không được phát biểu trên đoạn đối xứng $$ [-L,L] $$, mà chỉ trên miền có ý nghĩa thực tế là $$ [0,L] $$. Khi đó, nếu chỉ dùng chuỗi Fourier đầy đủ trên miền đối xứng, ta sẽ gặp vướng mắc. Khai triển nửa khoảng giải quyết bài toán này một cách tự nhiên bằng cách mở rộng dữ liệu sang miền đối xứng theo kiểu chẵn hoặc lẻ, rồi áp dụng các công thức Fourier quen thuộc.
 
 Cách làm này thể hiện rõ tính linh hoạt của phương pháp Fourier: dữ liệu gốc trên $$ [0,L] $$ không thay đổi, nhưng cách mở rộng phần ngoài miền gốc sẽ quyết định lớp mode xuất hiện trong khai triển. Đây chính là điểm giao nhau giữa điều kiện biên và phép mở rộng hàm.
+
+### Khung giải thích (nên đọc chậm): So sánh trực tiếp Chuỗi Sin và Chuỗi Cosin nửa khoảng cho cùng một hàm $f(x) = 1$ trên $(0, L)$
+
+1. **Khai triển Cosin nửa khoảng** (mở rộng chẵn → hàm hằng $f_{\text{even}}(x) \equiv 1$ trên $[-L, L]$):
+   - $a_0 = \frac{2}{L}\int_0^L 1\,dx = 2 \implies \frac{a_0}{2} = 1$; mọi $a_n = \frac{2}{L}\int_0^L \cos\left(\frac{n\pi x}{L}\right)dx = 0$!
+   - Kết quả: $f(x) = \mathbf{1}$ (chỉ cần đúng **1 số hạng**, chính xác tuyệt đối không có Gibbs!).
+2. **Khai triển Sin nửa khoảng** (mở rộng lẻ → sóng vuông nhảy từ $-1$ lên $+1$ tại $x = 0$!):
+   - $b_n = \frac{2}{L}\int_0^L \sin\!\left(\frac{n\pi x}{L}\right)dx = \frac{2(1 - (-1)^n)}{n\pi}$ (bằng $\frac{4}{n\pi}$ khi $n$ lẻ, bằng $0$ khi $n$ chẵn).
+   - Kết quả: $1 \sim \frac{4}{\pi}\left(\sin\frac{\pi x}{L} + \frac{1}{3}\sin\frac{3\pi x}{L} + \frac{1}{5}\sin\frac{5\pi x}{L} + \dots\right)$ (cần vô hạn số hạng và xuất hiện Gibbs ở $x = 0, L$!).
+
+Cùng một hàm $f(x) = 1$ trên $(0, L)$, nhưng chọn mở rộng phù hợp với biên tạo ra sự khác biệt một trời một vực!
 
 ## Khái niệm theo ba cách
 

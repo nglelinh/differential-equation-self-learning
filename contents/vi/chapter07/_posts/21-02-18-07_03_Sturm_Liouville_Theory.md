@@ -10,6 +10,19 @@ categories:
 lesson_type: required
 ---
 
+Trong đại số tuyến tính, ma trận đối xứng thực $A = A^T$ sở hữu những tính chất đẹp như mơ: mọi trị riêng đều thực, các vectơ riêng ứng với trị riêng khác nhau thì vuông góc với nhau, và chúng lập thành cơ sở cho toàn không gian. **Lý thuyết Sturm–Liouville** nâng toàn bộ định lý phổ tuyệt đẹp đó lên **không gian hàm vô hạn chiều** cho toán tử vi phân tự liên hợp $L[y] = -\frac{d}{dx}[p(x)y'] + q(x)y = \lambda w(x)y$!
+
+## Bản đồ kiến thức nền: Bốn định lý vàng của Lý thuyết Sturm–Liouville Chính quy
+
+1. **Tính tự liên hợp (Self-Adjointness) & Đồng nhất thức Lagrange**:
+   Tích phân từng phần hai lần cho $\int_a^b (u L[v] - v L[u])\,dx = -\big[p(x)(u v' - v u')\big]_a^b$. Với điều kiện biên tách rời chuẩn, vế biên triệt tiêu $\implies \langle u, L[v]\rangle = \langle L[u], v\rangle$!
+2. **Trị riêng thực, đơn và sắp thứ tự tăng dần**:
+   Mọi trị riêng của bài toán Sturm–Liouville chính quy ($p(x) > 0, w(x) > 0$ trên $[a, b]$) đều là **số thực**, mỗi trị riêng chỉ có 1 hàm riêng độc lập (bội 1), và $\lambda_1 < \lambda_2 < \lambda_3 < \dots \to +\infty$.
+3. **Tính trực giao theo hàm trọng số $w(x)$**:
+   Nếu $\lambda_m \neq \lambda_n$, thì $\langle \phi_m, \phi_n \rangle_w = \int_a^b \phi_m(x)\phi_n(x) w(x)\,dx = 0$!
+4. **Tính đầy đủ (Completeness) & Thương số Rayleigh**:
+   Hệ hàm riêng $\{\phi_n\}$ lập thành cơ sở trực giao của $L^2_w(a, b)$, và trị riêng nhỏ nhất thỏa nguyên lý biến phân $\lambda_1 = \min_{y \not\equiv 0} \frac{\int_a^b (p y'^2 + q y^2)\,dx}{\int_a^b w y^2\,dx}$!
+
 ## Mục tiêu
 
 Bài học này trình bày lý thuyết Sturm–Liouville như khuôn khổ thống nhất của bài toán trị riêng vi phân. Sau bài học, sinh viên cần nhận diện được dạng Sturm–Liouville chuẩn, hiểu ý nghĩa của tính tự liên hợp, giải thích được vì sao các trị riêng là số thực và các hàm riêng ứng với trị riêng khác nhau trực giao theo trọng số, đồng thời thấy rõ cầu nối giữa ODE, chuỗi Fourier tổng quát và các PDE tách biến.
@@ -25,6 +38,18 @@ Sinh viên nên nắm vững bài toán trị riêng cơ bản, kỹ thuật tí
 Đằng sau nhiều bài toán trị riêng có tham số trong vật lý toán tồn tại một cấu trúc chung rất chặt chẽ: một toán tử vi phân tự liên hợp, một hàm trọng số dương, một phổ trị riêng thực và một hệ hàm riêng trực giao. Lý thuyết mô tả cấu trúc tổng quát đó gọi là **lý thuyết Sturm–Liouville**.
 
 Nhờ lý thuyết này, các kết quả về hàm Bessel, đa thức Legendre, chuỗi Fourier tổng quát và khai triển theo hàm riêng được đặt vào cùng một hệ thống thống nhất thay vì tách rời từng công thức.
+
+### Khung giải thích (nên đọc chậm): Dùng Thương số Rayleigh ước lượng cực nhanh trị riêng nhỏ nhất $\lambda_1$ bằng một đa thức đơn giản
+
+Xét bài toán $-y'' = \lambda y$ trên $[0, 1]$ với $y(0) = y(1) = 0$. Ta biết giá trị chính xác là $\lambda_1 = \pi^2 \approx \mathbf{9{,}8696}$.
+Thử dùng một hàm thử đa thức cực đơn giản thỏa đúng điều kiện biên: $u(x) = x(1 - x) = x - x^2$ (thì $u'(x) = 1 - 2x$).
+1. **Tính tử số**:
+   $$\int_0^1 [u'(x)]^2\,dx = \int_0^1 (1 - 4x + 4x^2)\,dx = 1 - 2 + \frac{4}{3} = \frac{1}{3}.$$
+2. **Tính mẫu số**:
+   $$\int_0^1 [u(x)]^2\,dx = \int_0^1 (x^2 - 2x^3 + x^4)\,dx = \frac{1}{3} - \frac{1}{2} + \frac{1}{5} = \frac{1}{30}.$$
+3. **Thương số Rayleigh**:
+   $$R[u] = \frac{1/3}{1/30} = \mathbf{10{,}000} \ge \lambda_1 = 9{,}8696!$$
+Chỉ bằng một đa thức bậc 2 đơn giản tính trong 30 giây, ta đã ước lượng cận trên của $\pi^2$ với sai số chỉ **$1{,}3\%$**—đây chính là nền tảng của phương pháp Phần tử hữu hạn (FEM) và cơ học lượng tử biến phân!
 
 ## Khái niệm theo ba cách
 

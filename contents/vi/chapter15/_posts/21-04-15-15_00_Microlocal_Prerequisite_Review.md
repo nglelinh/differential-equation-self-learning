@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Một nghịch lý đẹp nhất của Giải tích Fourier là sự đối ngẫu giữa **độ trơn trong không gian thực** và **tốc độ tắt trong không gian tần số**: một hàm $u(x)$ càng trơn mịn thì biến đổi Fourier $\widehat{u}(\xi)$ tắt càng nhanh khi $|\xi| \to \infty$. Nhưng biến đổi Fourier lại là phép tích phân toàn cục—nó trộn lẫn mọi điểm $x$ với nhau! Muốn soi xem $u$ có trơn *tại đúng điểm $x_0$* hay không, ta chỉ cần một động tác đơn giản mà thiên tài: **nhân $u$ với một hàm cắt trơn $\phi$ tập trung quanh $x_0$ rồi mới lấy biến đổi Fourier**!
+
+## Bản đồ kiến thức nền: Ba công cụ tiên quyết bước vào Phân tích Vi địa phương
+
+1. **Phân phối $\mathcal{D}'$ và Giá Kỳ dị ($\operatorname{sing\,supp}$)**:
+   $\operatorname{sing\,supp}(u)$ là phần bù của tập mở lớn nhất trên đó $u$ là hàm trơn $C^\infty$. Ví dụ với hàm bậc thang $H(x)$ hay hàm $|x|$, $\operatorname{sing\,supp} = \{0\}$.
+2. **Biến đổi Fourier Cục bộ hóa ($\widehat{\phi u}(\xi)$)**:
+   Nhân $u$ với hàm cắt trơn $\phi \in C_c^\infty(\mathbb{R}^n)$ thỏa mãn $\phi(x_0) \neq 0$ giúp cô lập hành vi của $u$ ngay sát $x_0$ mà không tạo thêm góc gãy nhân tạo (khác với cắt sắc bằng hàm chỉ thị!).
+3. **Tiêu chuẩn Trơn bằng Tốc độ Tắt Siêu nhanh (Rapid Decay)**:
+   $x_0 \notin \operatorname{sing\,supp}(u)$ khi và chỉ khi tồn tại hàm cắt $\phi$ ($\phi(x_0) \neq 0$) sao cho với mọi $N \in \mathbb{N}$, $|\widehat{\phi u}(\xi)| \le C_N (1 + |\xi|)^{-N}$ theo **mọi hướng** $\xi$!
+4. **Bước đệm sang Tập Mặt sóng $\operatorname{WF}(u)$**:
+   Thay vì đòi hỏi tắt siêu nhanh theo *mọi* hướng $\xi$, ta chỉ kiểm tra xem $\widehat{\phi u}(\xi)$ có tắt siêu nhanh trong một **hình nón nhỏ quanh hướng $\xi_0$** hay không—chỉ một sửa đổi nhỏ ấy đã khai sinh toàn bộ Chương 15!
+
 ## Mục tiêu
 
 Bài học bổ trợ này ôn tập đúng những khái niệm mà Chương 15 sử dụng ngay từ phần mở đầu: phân phối (distribution), biến đổi Fourier như công cụ phát hiện dao động và tính chính quy, hàm cắt trơn, giá kỳ dị (singular support), cùng trực giác cốt lõi của giải tích vi địa phương rằng một hàm có thể trơn theo một số hướng nhưng không trơn theo các hướng khác. Sau bài học, sinh viên có thể tiếp cận định nghĩa tập mặt sóng một cách liền mạch và tự nhiên.
@@ -24,6 +37,16 @@ Thực chất, các mảnh ghép nền tảng đều đã quen thuộc: phân ph
 
 Sinh viên nên nắm vững giải tích cơ bản, giải tích nhiều biến và biến đổi Fourier ở mức độ Chương 08. Việc đã học phân phối ở Chương 12 và ký hiệu ở Chương 14 là lợi thế lớn, nhưng bài học này sẽ hệ thống lại đầy đủ các phần cần thiết cho đầu Chương 15.
 
+
+### Khung giải thích (nên đọc chậm): So sánh tốc độ tắt Fourier của một hàm có góc gãy vs. một hàm trơn vô hạn
+
+Đối chiếu hai hàm rất quen thuộc trên $\mathbb{R}$ đều tắt nhanh khi $|x| \to \infty$:
+1. **Hàm có góc gãy tại $x = 0$**: $f(x) = e^{-|x|}$ (liên tục $C^0$, không khả vi tại $0$):
+   $$\widehat{f}(\xi) = \int_{-\infty}^{+\infty} e^{-|x| - ix\xi}\,dx = \mathbf{\frac{2}{1 + \xi^2}} \sim O(|\xi|^{-2}).$$
+   Dù $|\widehat{f}(\xi)| \to 0$, nó chỉ tắt theo **lũy thừa đại số bậc $-2$** (tại $\xi = 100$ vẫn còn $2 \times 10^{-4}$)—báo hiệu chắc chắn $f$ có điểm kỳ dị!
+2. **Hàm trơn vô hạn $C^\infty$**: $g(x) = e^{-x^2/2}$:
+   $$\widehat{g}(\xi) = \mathbf{\sqrt{2\pi}\,e^{-\xi^2/2}} \ll C_N (1 + |\xi|)^{-N} \quad \forall N!$$
+   Tắt nhanh hơn **mọi** lũy thừa của $|\xi|$—chữ ký Fourier không thể nhầm lẫn của sự trơn vô hạn!
 ## 1. Phân Phối: Vì Sao Ta Cần Hàm Suy Rộng
 
 Đạo hàm cổ điển quá chật hẹp đối với nhiều hiện tượng PDE: hàm bậc thang có bước nhảy, nguồn điểm không phải hàm thông thường, và giới hạn yếu của các nghiệm trơn có thể không còn khả vi theo nghĩa từng điểm. Nếu chỉ giới hạn trong đạo hàm cổ điển, nhiều đối tượng cơ bản của vật lý và giải tích sẽ bị loại bỏ.

@@ -9,7 +9,22 @@ categories:
 - chapter09
 lesson_type: required
 ---
+
 ![21 03 04 09 02 Separation Of Variables Heat]({{ site.imgurl }}/chapter_img/chapter09/02_separation_of_variables_heat.svg)
+
+Đứng trước một phương trình đạo hàm riêng $u_t = \alpha u_{xx}$ nơi hai biến $x$ và $t$ quyện chặt vào nhau, **Phương pháp Tách biến (Separation of Variables)** của Fourier thực hiện một nước đi táo bạo: thử tìm các nghiệm cơ sở có dạng tích $u(x, t) = X(x)T(t)$, tách một PDE khó thành **hai ODE dễ giải**, rồi cộng chồng chất vô hạn chúng lại bằng Chuỗi Fourier để khớp điều kiện ban đầu!
+
+## Bản đồ kiến thức nền: Bốn bước chuẩn mực của Phương pháp Tách biến
+
+1. **Tách hằng số phân ly $-\lambda$**:
+   Thế $u = X(x)T(t)$ vào $u_t = \alpha u_{xx}$ và chia cho $\alpha X T$:
+   $$\frac{T'(t)}{\alpha T(t)} = \frac{X''(x)}{X(x)} = -\lambda \quad (\text{hằng số độc lập cả } x \text{ lẫn } t!).$$
+2. **Giải Bài toán Trị riêng cho $X(x)$**:
+   $X'' + \lambda X = 0$ kết hợp điều kiện biên thuần nhất ở $x = 0, L$ cho các cặp $(\lambda_n, X_n(x))$.
+3. **Giải ODE bậc nhất cho $T_n(t)$**:
+   $T_n'(t) = -\alpha \lambda_n T_n(t) \implies T_n(t) = e^{-\alpha \lambda_n t}$.
+4. **Nguyên lý Chồng chất & Khớp điều kiện ban đầu $u(x, 0) = f(x)$**:
+   Viết $u(x, t) = \sum c_n X_n(x) e^{-\alpha \lambda_n t}$ và tìm $c_n$ bằng đúng công thức hệ số Fourier của $f(x)$!
 
 ## Mục tiêu
 
@@ -24,6 +39,17 @@ Sinh viên cần nắm phương trình nhiệt, chuỗi Fourier, bài toán tr�
 Phương pháp tách biến là một kỹ thuật nền tảng của lý thuyết PDE cổ điển. Giả thiết mở đầu tưởng như rất hạn chế: tìm nghiệm có dạng tích của hai hàm một biến, một hàm chỉ phụ thuộc không gian và một hàm chỉ phụ thuộc thời gian. Tuy nhiên, trong các bài toán tuyến tính có miền và điều kiện biên phù hợp, giả thiết này sinh ra một họ mode riêng đủ để tổng hợp nghiệm tổng quát.
 
 Với phương trình nhiệt, kết quả thu được mang ý nghĩa vật lý rõ nét: mỗi mode không gian đại diện cho một dạng phân bố nhiệt cơ bản, còn thừa số thời gian quyết định tốc độ tắt dần của mode đó. Các mode tần số cao tắt nhanh hơn, còn các mode tần số thấp tồn tại lâu hơn — đây là cách diễn đạt định lượng cho hiệu ứng làm mượt của quá trình khuếch tán.
+
+### Khung giải thích (nên đọc chậm): Giải trọn vẹn bài toán thanh nhiệt $u_t = 2 u_{xx}$ trên $[0, \pi]$ với $u(0,t)=u(\pi,t)=0$ và $u(x,0) = 1$
+
+1. **Tách biến với $L = \pi, \alpha = 2$**:
+   Biên Dirichlet $X(0) = X(\pi) = 0 \implies \lambda_n = n^2,\; X_n(x) = \sin(nx)$ và $T_n(t) = e^{-2n^2 t}$.
+2. **Nghiệm chuỗi chồng chất**: $u(x, t) = \sum_{n=1}^{\infty} b_n \sin(nx)\, e^{-2n^2 t}$.
+3. **Khớp điều kiện đầu $u(x, 0) = 1$** (khai triển Sin nửa khoảng của $f(x) = 1$):
+   $$b_n = \frac{2}{\pi}\int_0^{\pi} 1\cdot\sin(nx)\,dx = \frac{2(1 - (-1)^n)}{n\pi} = \begin{cases} \frac{4}{n\pi}, & n \text{ lẻ}, \\ 0, & n \text{ chẵn}. \end{cases}$$
+4. **Nghiệm chính xác**:
+   $$u(x, t) = \frac{4}{\pi}\left(e^{-2t}\sin x + \frac{1}{3}e^{-18t}\sin(3x) + \frac{1}{5}e^{-50t}\sin(5x) + \dots\right).$$
+   Kiểm tra nhiệt độ tại tâm thanh $x = \pi/2$ lúc $t = 0{,}5\text{ s}$: số hạng $n = 3$ chỉ còn $\frac{1}{3}e^{-9} \approx 0{,}00004$ (bỏ qua được!), nên $u(\pi/2, 0{,}5) \approx \frac{4}{\pi}e^{-1} \approx \mathbf{0{,}468}$ — chỉ một số hạng đầu đã chính xác tới 4 chữ số!
 
 ## Khái niệm theo ba cách
 

@@ -9,6 +9,20 @@ categories:
 - chapter03
 lesson_type: required
 ---
+
+Điều gì xảy ra khi một chiếc búa gõ thật mạnh vào một cái chuông trong một phần nghìn giây, hay một tia sét đánh trúng mạch điện? Lực tác động đạt đỉnh khổng lồ trong khoảng thời gian gần như bằng $0$, nhưng tổng xung lượng $\int F(t)\,dt = 1$ lại hữu hạn! Để mô hình hóa cú đánh tức thời ấy, vật lý và toán học đưa ra **hàm xung Dirac $\delta(t - c)$**—không phải một hàm số thông thường mà là một **phân bố (generalized function)** kỳ diệu có biến đổi Laplace đơn giản đến bất ngờ: $\mathcal{L}\{\delta(t - c)\} = e^{-cs}$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Hàm Xung & Phân bố Dirac
+
+1. **Định nghĩa giới hạn & Tính chất lọc (Sifting Property)**:
+   Xem $\delta(t - c)$ là giới hạn của xung chữ nhật cao $1/\varepsilon$, rộng $\varepsilon$ (diện tích luôn bằng $1$); với mọi hàm liên tục $f$, $\int_{-\infty}^\infty f(t)\delta(t - c)\,dt = f(c)$.
+2. **Biến đổi Laplace siêu gọn**:
+   $\mathcal{L}\{\delta(t - c)\} = e^{-cs}$ ($c \ge 0$); đặc biệt tại $c = 0$, $\mathcal{L}\{\delta(t)\} = \mathbf{1}$—một cú xung tại $t = 0$ chứa đều mọi tần số!
+3. **Cơ chế vật lý: Xung Dirac tạo bước nhảy vận tốc**:
+   Trong hệ cơ học $m y'' + c y' + k y = I_0\,\delta(t - t_0)$, vị trí $y(t)$ vẫn liên tục tại $t_0$, nhưng vận tốc nhảy vọt tức thời một lượng $\Delta y' = \frac{I_0}{m}$ (chính là định lý xung lượng–động lượng $\Delta p = I_0$!).
+4. **Đáp ứng xung $h(t)$ — "ADN" của hệ tuyến tính**:
+   Nghiệm của hệ với điều kiện đầu bằng $0$ chịu kích thích $\delta(t)$ gọi là đáp ứng xung $h(t)$; biết $h(t)$ là biết phản ứng của hệ với **mọi** lực bất kỳ nhờ tích chập!
+
 ## Mục tiêu
 Bài học này giúp sinh viên hiểu hàm delta Dirac như mô hình lý tưởng của một xung tác động tức thời, nắm công thức biến đổi Laplace của delta, và diễn giải mối liên hệ giữa xung lực, bước nhảy của đạo hàm và đáp ứng xung của hệ tuyến tính.
 
@@ -21,6 +35,16 @@ Sinh viên cần nắm hàm bước Heaviside, biến đổi Laplace cơ bản v
 Một cú gõ búa, một xung điện cực ngắn hay một cú va chạm tức thời đều diễn ra trong khoảng thời gian rất ngắn nhưng truyền một tổng tác động hữu hạn. Nếu mô tả bằng các hàm thông thường, ta phải xét dãy xung ngày càng hẹp và cao. Hàm delta Dirac cung cấp một mô hình lý tưởng hóa gọn gàng cho loại tác động này.
 
 Bài học đồng thời mở ra khái niệm đáp ứng xung: trong lý thuyết hệ tuyến tính, khi biết đáp ứng của hệ trước một xung đơn vị delta, ta có thể xác định đáp ứng của hệ trước mọi đầu vào tổng quát.
+
+### Khung giải thích (nên đọc chậm): Giải hệ dao động bị búa gõ ở giây thứ $\pi$: $y'' + y = 3\delta(t - \pi),\; y(0) = 0,\; y'(0) = 0$
+
+1. **Biến đổi Laplace hai vế** ($\mathcal{L}\{3\delta(t - \pi)\} = 3e^{-\pi s}$):
+   $$(s^2 + 1)Y(s) = 3e^{-\pi s} \implies Y(s) = 3e^{-\pi s}\cdot\frac{1}{s^2 + 1}.$$
+2. **Biến đổi ngược bằng định lý dịch thời gian** ($\mathcal{L}^{-1}\{\frac{1}{s^2+1}\} = \sin t$):
+   $$y(t) = 3\,u_\pi(t)\sin(t - \pi) = \begin{cases} \mathbf{0}, & 0 \le t < \pi, \\ \mathbf{-3\sin t}, & t \ge \pi. \end{cases}$$
+3. **Kiểm chứng bước nhảy vận tốc tại $t = \pi$**:
+   - Trước cú gõ ($t = \pi^-$): $y(\pi^-) = 0$, $y'(\pi^-) = 0$ (hệ đang đứng yên).
+   - Ngay sau cú gõ ($t = \pi^+$): $y(\pi^+) = -3\sin\pi = \mathbf{0}$ (vị trí không nhảy!), còn $y'(\pi^+) = -3\cos\pi = \mathbf{+3}$ (vận tốc nhảy đúng $+3 = I_0/m$!).
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan

@@ -12,6 +12,23 @@ lesson_type: required
 
 ![Symbol calculus cho composition và adjoint của ΨDO]({{ site.imgurl }}/chapter_img/chapter14/05_composition_adjoints.svg )
 
+Sức mạnh thực sự của Toán tử Giả vi phân không nằm ở từng toán tử đơn lẻ, mà ở chỗ chúng tạo thành một **đại số có phép nhân và phép lấy liên hợp khép kín**: hợp thành của $P \in \Psi^{m_1}$ với $Q \in \Psi^{m_2}$ lại là một $\Psi$DO thuộc $\Psi^{m_1 + m_2}$, và ký hiệu của nó—thay vì chỉ là tích $p\cdot q$—được cho bởi chuỗi tiệm cận Kohn–Nirenberg kỳ diệu, trong đó số hạng hiệu chỉnh bậc nhất chính là **ngoặc Poisson** của cơ học cổ điển!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phép Hợp thành & Toán tử Liên hợp trong $\Psi$DO
+
+1. **Công thức Hợp thành Kohn–Nirenberg ($P \circ Q = \operatorname{Op}(p \# q)$)**:
+   $$\sigma(P \circ Q)(x, \xi) \sim \sum_{\alpha} \frac{(-i)^{|\alpha|}}{\alpha!} \big(\partial_\xi^\alpha p(x, \xi)\big)\big(\partial_x^\alpha q(x, \xi)\big).$$
+   - Số hạng đầu ($|\alpha| = 0$): tích đại số $p(x, \xi) q(x, \xi) \in S^{m_1 + m_2}$!
+   - Mỗi số hạng tiếp theo giảm bậc đi đúng $1$ ($\in S^{m_1 + m_2 - |\alpha|}$).
+2. **Giao hoán tử $[P, Q]$ và Ngoặc Poisson $\{p, q\}$**:
+   Phần bậc cao nhất $p q - q p$ tự triệt tiêu hoàn toàn! Do đó $[P, Q] = PQ - QP \in \Psi^{m_1 + m_2 - 1}$ (giảm $1$ bậc!), với ký hiệu chính là:
+   $$\sigma_{m_1 + m_2 - 1}([P, Q]) = \frac{1}{i}\{p, q\} = \frac{1}{i}\sum_{j=1}^n \left(\frac{\partial p}{\partial \xi_j}\frac{\partial q}{\partial x_j} - \frac{\partial p}{\partial x_j}\frac{\partial q}{\partial \xi_j}\right)!$$
+3. **Công thức Toán tử Liên hợp Hình thức $P^*$**:
+   $$\sigma(P^*)(x, \xi) \sim \sum_{\alpha} \frac{(-i)^{|\alpha|}}{\alpha!} \partial_\xi^\alpha \partial_x^\alpha \overline{p(x, \xi)}.$$
+   Ký hiệu chính của $P^*$ chỉ đơn giản là liên hợp phức $\overline{p_m(x, \xi)}$!
+4. **Hàm ý trực tiếp cho Cơ học Lượng tử & PDE**:
+   Khi hai toán tử có ký hiệu thực đối xứng, giao hoán tử lượng tử $\frac{i}{\hbar}[P, Q]$ hội tụ về đúng ngoặc Poisson cổ điển $\{p, q\}$—cầu nối toán học chuẩn xác cho Nguyên lý Tương ứng của Bohr và Giải tích Bán cổ điển ở Chương 15!
+
 ## Mục tiêu
 
 Bài học này giải thích vì sao các toán tử giả vi phân tạo thành một phép tính hoàn chỉnh chứ không chỉ là tập hợp các định nghĩa rời rạc. Sau bài học, sinh viên cần nắm trực giác của phép hợp thành $$ AB $$, ý nghĩa của ký hiệu hợp thành $$ a\# b $$, lý do toán tử liên hợp (adjoint) của một ΨDO vẫn là một ΨDO, và cách các khai triển tiệm cận cho phép thực hiện các phép toán đại số trực tiếp ở mức ký hiệu.
@@ -26,6 +43,19 @@ Một lý thuyết toán tử chỉ thực sự phát huy hiệu quả khi nó �
 
 Tính chất đóng này giữ vai trò nền tảng vì các công cụ trọng tâm như parametrix hay tính chính quy đều dựa trên khả năng thao tác đại số trên ký hiệu thay vì phải xử lý trực tiếp tích phân dao động của từng toán tử.
 
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng tay Công thức Hợp thành Kohn–Nirenberg và Ngoặc Poisson cho $x$ và $D_x$
+
+Xét hai toán tử cơ bản $P = x$ (bậc $0$, $p(x, \xi) = x$) và $Q = D_x = -i\partial_x$ (bậc $1$, $q(x, \xi) = \xi$):
+1. **Tính ký hiệu của $P \circ Q = x D_x$**:
+   Vì $\partial_\xi^\alpha p = 0$ với mọi $\alpha \ge 1$, chuỗi Kohn–Nirenberg dừng ngay tại $\alpha = 0$:
+   $$\sigma(P \circ Q) = p \cdot q = \mathbf{x\xi}.$$
+2. **Tính ký hiệu của $Q \circ P = D_x(x \cdot)$**:
+   Ta có $\partial_\xi q = 1$ và $\partial_x p = 1$ (các đạo hàm bậc $\ge 2$ bằng $0$), nên chuỗi gồm đúng 2 số hạng ($\alpha = 0$ và $\alpha = 1$):
+   $$\sigma(Q \circ P) = \xi \cdot x + (-i)\cdot (1)(1) = \mathbf{x\xi - i}.$$
+   Kiểm tra bằng quy tắc tích cổ điển: $D_x(x u) = -i(u + x u') = x D_x u - i u$—khớp từng dấu trừ!
+3. **Suy ra giao hoán tử $[Q, P]$**:
+   $$\sigma([Q, P]) = (x\xi - i) - x\xi = \mathbf{-i} = \frac{1}{i}\big((\partial_\xi \xi)(\partial_x x) - (\partial_x \xi)(\partial_\xi x)\big) = \frac{1}{i}\{q, p\}!$$
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

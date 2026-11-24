@@ -10,6 +10,19 @@ categories:
 lesson_type: required
 ---
 
+Nếu phóng to một đường cong trơn bất kỳ dưới kính hiển vi, nó trông gần như một đoạn thẳng. Ý tưởng **tuyến tính hóa (linearization)** làm điều hệt như vậy cho hệ phương trình vi phân phi tuyến: phóng to cực gần một **điểm cân bằng** $(x^*, y^*)$ để thay thế hệ phi tuyến rắc rối bằng một hệ tuyến tính ma trận Jacobian $J(x^*, y^*)$ giải được trọn vẹn bằng đại số tuyến tính!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Điểm Cân bằng & Tuyến tính hóa
+
+1. **Điểm cân bằng (Equilibrium / Fixed Point)**:
+   Nghiệm đại số của hệ $f(x^*, y^*) = 0$ và $g(x^*, y^*) = 0$—nơi vận tốc triệt tiêu hoàn toàn.
+2. **Ma trận Jacobian $J(x^*, y^*)$**:
+   Khai triển Taylor bậc nhất quanh $(x^*, y^*)$ với độ lệch $\mathbf{u} = (x - x^*, y - y^*)^T$ cho hệ tuyến tính hóa $\dot{\mathbf{u}} \approx J(x^*, y^*)\mathbf{u}$, trong đó $J = \begin{pmatrix} f_x & f_y \\ g_x & g_y \end{pmatrix}$.
+3. **Định lý Hartman–Grobman & Điểm Hyperbolic**:
+   Nếu mọi trị riêng của $J(x^*, y^*)$ đều có **phần thực khác 0** ($\operatorname{Re}(\lambda) \neq 0$, gọi là điểm *hyperbolic*), thì bức chân dung pha của hệ phi tuyến lân cận $(x^*, y^*)$ tương đương topo hoàn toàn với hệ tuyến tính hóa!
+4. **Trường hợp biên (Non-hyperbolic — $\operatorname{Re}(\lambda) = 0$)**:
+   Khi trị riêng thuần ảo (tâm tuyến tính) hoặc bằng $0$, các số hạng bậc cao (bậc 2, bậc 3) có thể phá vỡ quỹ đạo đóng thành xoáy hút hoặc xoáy đẩy—tuyến tính hóa không đủ kết luận!
+
 ## Mục tiêu
 
 Bài học này giúp sinh viên xác định điểm cân bằng của hệ phi tuyến, lập ma trận Jacobian, sử dụng phép tuyến tính hóa để dự đoán động học cục bộ gần điểm cân bằng và hiểu ý nghĩa của việc hệ phi tuyến có hành vi tương tự hệ tuyến tính trong lân cận điểm cân bằng hyperbolic.
@@ -25,6 +38,18 @@ Sinh viên cần nắm hệ phương trình vi phân tuyến tính hai chiều, 
 Hệ phi tuyến thường rất khó giải trực tiếp. Tuy nhiên, trong nhiều ứng dụng, ta không cần biết toàn bộ quỹ đạo ở mọi nơi mà chỉ cần hiểu diễn biến gần một **trạng thái quan trọng, chẳng hạn trạng thái cân bằng sinh học, vị trí đứng yên của cơ hệ hay điểm vận hành của một mạch điện**. Khi đó, tuyến tính hóa là công cụ phân tích tự nhiên và hiệu quả nhất.
 
 Ý tưởng của tuyến tính hóa khá trực tiếp: khi xét đủ gần một điểm cân bằng, số hạng bậc nhất trong khai triển Taylor giữ vai trò chi phối, còn các số hạng phi tuyến bậc cao chỉ tạo ra hiệu chỉnh nhỏ. Nhờ vậy, ma trận Jacobian đóng vai trò như một bản xấp xỉ tuyến tính cục bộ của hệ phi tuyến.
+
+### Khung giải thích (nên đọc chậm): Tuyến tính hóa cầm tay chỉ việc con lắc đơn không ma sát $\dot{\theta} = \omega,\; \dot{\omega} = -\sin\theta$
+
+1. **Tìm điểm cân bằng**: $\omega = 0$ và $\sin\theta = 0 \implies$ hai trạng thái vật lý chính: $(\theta^*, \omega^*) = (0, 0)$ (treo thẳng xuống) và $(\pi, 0)$ (dựng ngược lên trên).
+2. **Tính ma trận Jacobian tổng quát**:
+   $$J(\theta, \omega) = \begin{pmatrix} 0 & 1 \\ -\cos\theta & 0 \end{pmatrix}.$$
+3. **Tại điểm dựng ngược $(\pi, 0)$**:
+   $$J(\pi, 0) = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \implies \lambda^2 - 1 = 0 \implies \lambda_1 = +1,\; \lambda_2 = -1.$$
+   Cả hai phần thực đều khác 0 (hyperbolic) và trái dấu → **Điểm yên ngựa (Saddle — không ổn định)**; Định lý Hartman–Grobman khẳng định con lắc thật dựng ngược cũng không ổn định!
+4. **Tại điểm treo xuống $(0, 0)$**:
+   $$J(0, 0) = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} \implies \lambda = \pm i \quad (\operatorname{Re}(\lambda) = 0).$$
+   Đây là trường hợp **non-hyperbolic**: tuyến tính hóa cho tâm, nhưng phải dùng định luật bảo toàn năng lượng $E = \frac{1}{2}\omega^2 - \cos\theta$ mới kết luận chắc chắn $(0, 0)$ là tâm thực sự của con lắc phi tuyến!
 
 ## Khái niệm theo ba cách
 

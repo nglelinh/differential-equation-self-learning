@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Try imposing boundary temperatures around a circular silicon wafer using Cartesian $(x,y)$ coordinates and the boundary $x^2 + y^2 = R^2$ couples $x$ and $y$ inextricably. Switch to polar coordinates $(r,\theta)$, and the geometry clicks into place: the angular direction wraps around smoothly with $2\pi$-periodicity, while the radial direction obeys a classic Euler–Cauchy equation whose power laws $r^n$ filter out every boundary ripple as you approach the center.
+
 ## Learning Objectives
 
 This lesson solves Laplace's equation on circular domains using polar coordinates. Students should understand why coordinate adaptation matters and how radial-angular separation works.
@@ -17,6 +19,15 @@ This lesson solves Laplace's equation on circular domains using polar coordinate
 ## Prerequisites
 
 Students should know Laplace's equation, the basics of polar coordinates, and separation of variables in rectangular domains.
+
+## Background Knowledge Map: Circular Symmetry and Polar Potential Theory
+
+Mastering Laplace's equation on disks, annuli, and wedges relies on four structural pillars:
+
+1. **Curvilinear Laplacian and Area Scaling:** Transforming $\Delta u = u_{xx} + u_{yy}$ to $(r,\theta)$ produces $u_{rr} + \frac{1}{r}u_r + \frac{1}{r^2}u_{\theta\theta} = 0$. The factor $1/r$ reflects the circumference $2\pi r$ growing linearly with radius, while $1/r^2$ converts angular change into arc length.
+2. **Periodicity on $S^1$ and Full Fourier Series:** On a full disk or annulus, there are no side walls in $\theta$; instead, single-valuedness demands $u(r,\theta+2\pi) = u(r,\theta)$, yielding integer angular modes $\cos(n\theta)$ and $\sin(n\theta)$ ($n \ge 0$).
+3. **Euler–Cauchy Radial Solutions and Regularity at the Origin:** Separating variables gives $r^2 R'' + r R' - n^2 R = 0$, whose solutions are $r^n$ and $r^{-n}$ (for $n \ge 1$), and $1, \ln r$ (for $n=0$). On an interior disk containing $r=0$, boundedness discards $r^{-n}$ and $\ln r$; on an exterior domain ($r > a$), decay at infinity discards $r^n$.
+4. **Poisson's Integral Formula as a Geometric Kernel:** Summing the polar Fourier series in closed form yields $u(r,\theta) = \frac{1}{2\pi}\int_0^{2\pi} \frac{a^2 - r^2}{a^2 - 2ar\cos(\theta-\phi) + r^2} f(\phi)\,d\phi$, turning infinite series into a single positive averaging kernel.
 
 ## Introduction
 
@@ -89,6 +100,24 @@ Students should connect the formulas back to disks and annuli.
 - Can they distinguish radial and angular contributions to the solution?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Solving the Disk Dirichlet Problem and Verifying Directly
+
+Find the bounded harmonic function $u(r,\theta)$ on the disk $r < 2$ satisfying the boundary condition $u(2,\theta) = 4 + 6\cos(2\theta) - 2\sin(3\theta)$, and verify directly that the resulting formula satisfies the polar Laplace equation.
+
+1. **Write the general bounded polar series on $r < a$ (here $a = 2$):** Rejecting the singular radial modes $\ln r$ and $r^{-n}$ at $r=0$ leaves:
+   $$u(r,\theta) = A_0 + \sum_{n=1}^{\infty} \left(\frac{r}{2}\right)^n \big(A_n \cos(n\theta) + B_n \sin(n\theta)\big).$$
+2. **Match boundary modes at $r = 2$:** Setting $r = 2$ makes $(r/2)^n = 1$, so we read off the Fourier coefficients directly:
+   $$A_0 = 4, \qquad A_2 = 6, \qquad B_3 = -2,$$
+   with all other $A_n, B_n = 0$.
+3. **Assemble the explicit solution:**
+   $$u(r,\theta) = 4 + 6\left(\frac{r}{2}\right)^2\cos(2\theta) - 2\left(\frac{r}{2}\right)^3\sin(3\theta) = 4 + \frac{3}{2}r^2\cos(2\theta) - \frac{1}{4}r^3\sin(3\theta).$$
+4. **Verify the polar PDE on the $n=2$ mode $v(r,\theta) = \frac{3}{2}r^2\cos(2\theta)$:**
+   $$v_r = 3r\cos(2\theta), \qquad v_{rr} = 3\cos(2\theta), \qquad v_{\theta\theta} = -6r^2\cos(2\theta).$$
+   Substituting into the polar Laplacian gives:
+   $$v_{rr} + \frac{1}{r}v_r + \frac{1}{r^2}v_{\theta\theta} = 3\cos(2\theta) + 3\cos(2\theta) - 6\cos(2\theta) = 0.$$
+5. **Check the center value:** Evaluating at $r = 0$ yields $u(0,\theta) = 4$, which equals $\frac{1}{2\pi}\int_0^{2\pi} u(2,\theta)\,d\theta = 4$—confirming the Mean Value Property in one glance.
 
 ### Example 1: Purely Radial Harmonic Function
 

@@ -9,6 +9,20 @@ categories:
 - chapter03
 lesson_type: required
 ---
+
+Biến đổi Laplace bảo toàn phép cộng, nhưng **tuyệt đối không** bảo toàn phép nhân thông thường: $\mathcal{L}\{f \cdot g\} \ne F(s)G(s)$! Vậy phép toán nào trong miền thời gian tương ứng với phép nhân $F(s)G(s)$ trong miền Laplace? Câu trả lời là một phép toán trung tâm của toàn bộ giải tích, xử lý tín hiệu và mạng nơ-ron tích chập (CNN): **phép Tích chập (Convolution)** $(f * g)(t) = \int_0^t f(\tau)g(t - \tau)\,d\tau$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Định lý Tích chập
+
+1. **Định nghĩa & Ý nghĩa vật lý ("Bộ nhớ của hệ")**:
+   $(f * g)(t) = \int_0^t f(\tau)g(t - \tau)\,d\tau$ cộng dồn ảnh hưởng của mọi ngoại lực $g(\tau)$ trong quá khứ ($0 \le \tau \le t$), mỗi lực được nhân trọng số bởi đáp ứng xung $f(t - \tau)$ sau khoảng thời gian trôi qua $t - \tau$.
+2. **Định lý Tích chập ($\mathcal{L}\{f * g\} = F(s)\cdot G(s)$)**:
+   Chiều xuôi giúp tính nhanh biến đổi Laplace của tích phân tích chập; chiều ngược $\mathcal{L}^{-1}\{F(s)G(s)\} = (f * g)(t)$ giúp giải PTVP với **mọi** ngoại lực $g(t)$ kể cả khi không có công thức tường minh cho $G(s)$!
+3. **Các tính chất đại số đẹp mắt**:
+   Giao hoán ($f * g = g * f$), kết hợp và phân phối—và đặc biệt hàm xung Dirac $\delta(t)$ chính là **phần tử đơn vị**: $(f * \delta)(t) = f(t)$!
+4. **Giải phương trình tích phân Volterra**:
+   Phương trình dạng $y(t) + \int_0^t k(t - \tau)y(\tau)\,d\tau = g(t)$ lập tức trở thành phương trình đại số $Y(s) + K(s)Y(s) = G(s)$ trong miền Laplace!
+
 ## Mục tiêu
 Bài học này giúp sinh viên hiểu tích chập như phép cộng dồn đáp ứng của một hệ tuyến tính đối với toàn bộ lịch sử đầu vào, nắm vững và vận dụng định lý $$ \mathcal{L}\{f*g\}=FG $$, đồng thời thấy vai trò cầu nối của tích chập giữa phương trình vi phân, đáp ứng xung và lý thuyết hệ thống.
 
@@ -21,6 +35,16 @@ Sinh viên cần nắm biến đổi Laplace, hàm delta, hàm bước Heaviside
 Nếu biết một hệ phản ứng ra sao trước một xung tức thời, liệu ta có thể xây dựng đáp ứng của nó cho một tín hiệu đầu vào bất kỳ hay không? Đối với các hệ tuyến tính bất biến theo thời gian (LTI), câu trả lời là có: ta xem tín hiệu đầu vào như tổng liên tục của vô số xung nhỏ tại các thời điểm quá khứ rồi cộng dồn các đáp ứng tương ứng. Phép toán mô tả quá trình này chính là tích chập.
 
 Với tích chập, biến đổi Laplace vượt ra khỏi vai trò công cụ giải từng phương trình riêng lẻ để trở thành ngôn ngữ thống nhất cho đầu vào, đầu ra, đáp ứng xung và bộ nhớ của hệ thống.
+
+### Khung giải thích (nên đọc chậm): Tính $\mathcal{L}^{-1}\!\left\{\frac{1}{s(s^2 + 1)}\right\}$ bằng Định lý Tích chập và đối chiếu với tách phân thức
+
+Chọn $F(s) = \frac{1}{s} \leftrightarrow f(t) = 1$ và $G(s) = \frac{1}{s^2 + 1} \leftrightarrow g(t) = \sin t$:
+1. **Áp dụng Định lý Tích chập**:
+   $$\mathcal{L}^{-1}\!\left\{\frac{1}{s}\cdot\frac{1}{s^2 + 1}\right\} = (1 * \sin)(t) = \int_0^t 1 \cdot \sin(t - \tau)\,d\tau.$$
+2. **Tính tích phân** (đổi biến $u = t - \tau$, hoặc dùng giao hoán $\int_0^t \sin\tau\,d\tau$):
+   $$\int_0^t \sin\tau\,d\tau = \big[-\cos\tau\big]_0^t = \mathbf{1 - \cos t}.$$
+3. **Đối chiếu với tách phân thức**:
+   $\frac{1}{s(s^2+1)} = \frac{1}{s} - \frac{s}{s^2+1} \implies \mathcal{L}^{-1} = \mathbf{1 - \cos t}$—khớp từng ký tự! Đặc biệt, nhân $G(s)$ với $\frac{1}{s}$ trong miền Laplace luôn tương đương với **lấy tích phân $\int_0^t g(\tau)\,d\tau$** trong miền thời gian!
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan

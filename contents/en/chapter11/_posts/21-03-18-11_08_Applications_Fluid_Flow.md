@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** Watch wind glide smoothly around a sleek wing or water part around a smooth river pillar. Away from thin viscous boundary layers, the fluid neither compresses nor spins—and those two physical ideals collapse the notoriously difficult Navier–Stokes equations into the serene linearity of Laplace's equation, $\Delta \phi = 0$.
+
 ## Learning Objectives
 
 This lesson applies harmonic and potential-theoretic ideas to ideal fluid flow. Students should understand irrotational incompressible flow and why harmonic potentials naturally describe these systems.
@@ -17,6 +19,15 @@ This lesson applies harmonic and potential-theoretic ideas to ideal fluid flow. 
 ## Prerequisites
 
 Students should know Laplace's equation, the idea of a potential function, and the physical meaning of source-free equilibrium fields.
+
+## Background Knowledge Map: Potential Flow, Complex Potentials, and Aerodynamic Paradoxes
+
+Ideal fluid mechanics connects directly to harmonic analysis through four pillars:
+
+1. **Incompressibility + Irrotationality $\implies$ Harmonic Potential:** Zero vorticity ($\nabla \times \mathbf{v} = \mathbf{0}$) implies a velocity potential $\mathbf{v} = \nabla \phi$; zero divergence ($\nabla \cdot \mathbf{v} = 0$) then forces $\Delta \phi = 0$.
+2. **Impermeability as a Neumann Boundary Condition:** Fluid cannot penetrate a solid obstacle, so $\mathbf{v} \cdot \mathbf{n} = \frac{\partial \phi}{\partial n} = 0$ along the body's surface, while at infinity $\nabla \phi \to \mathbf{U}_\infty$.
+3. **Stream Function and Complex Potential in 2D:** In two dimensions, the harmonic conjugate $\psi$ of $\phi$ satisfies $v_x = \psi_y$, $v_y = -\psi_x$, so level curves of $\psi$ are physical streamlines orthogonal to equipotentials of $\phi$, packaged cleanly into $W(z) = \phi + i\psi$.
+4. **Bernoulli's Equation, Lift, and d'Alembert's Paradox:** Once $\mathbf{v} = \nabla \phi$ is known, steady pressure follows algebraically from $p + \frac{1}{2}\rho|\mathbf{v}|^2 = \text{const}$. For symmetric non-circulating flow around a cylinder, fore-aft symmetry predicts zero drag (d'Alembert's paradox); adding circulation $\Gamma$ breaks symmetry and yields Kutta–Joukowski lift $L = \rho U \Gamma$.
 
 ## Introduction
 
@@ -85,6 +96,24 @@ Obstacles and channel walls should be understood as boundary conditions on the p
 - Can they describe why boundaries matter for potential flow?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Uniform Potential Flow Past a Circular Cylinder
+
+Analyze the 2D steady potential flow of speed $U$ past a circular cylinder of radius $a$ given by $\phi(r,\theta) = U\left(r + \frac{a^2}{r}\right)\cos\theta$. Verify harmonicity, check the no-penetration boundary condition, find the stagnation points and peak surface speed, and compute the surface pressure coefficient.
+
+1. **Verify $\Delta \phi = 0$ for $r > a$:** Both $r\cos\theta$ and $r^{-1}\cos\theta$ are $n=1$ polar harmonic modes (solutions of $r^2 R'' + r R' - R = 0$ times $\cos\theta$), so $\Delta \phi = 0$ identically, and as $r \to \infty$, $\phi \sim U r\cos\theta = U x$, recovering uniform rightward flow $(U, 0)$.
+2. **Compute velocity components in polar coordinates:**
+   $$v_r = \frac{\partial \phi}{\partial r} = U\left(1 - \frac{a^2}{r^2}\right)\cos\theta, \qquad v_\theta = \frac{1}{r}\frac{\partial \phi}{\partial \theta} = -U\left(1 + \frac{a^2}{r^2}\right)\sin\theta.$$
+3. **Verify impermeability on the cylinder $r = a$:**
+   $$v_r(a,\theta) = U(1 - 1)\cos\theta = 0 \quad \text{for all } \theta,$$
+   confirming no fluid crosses the cylinder wall.
+4. **Locate stagnation points and maximum speed on $r = a$:** Along the surface, the speed is $|v_\theta(a,\theta)| = 2U|\sin\theta|$.
+   - **Stagnation points ($|\mathbf{v}| = 0$):** $\theta = 0$ (rear) and $\theta = \pi$ (front nose).
+   - **Peak speed:** $|\mathbf{v}| = 2U$ (double the freestream speed!) at the top and bottom shoulders $\theta = \pm \pi/2$.
+5. **Compute the pressure coefficient $C_p(\theta) = \frac{p - p_\infty}{\frac{1}{2}\rho U^2} = 1 - \left(\frac{|\mathbf{v}|}{U}\right)^2$:**
+   $$C_p(\theta) = 1 - 4\sin^2\theta.$$
+   At the nose and tail ($\theta = \pi, 0$), $C_p = +1$ (stagnation pressure); at the shoulders ($\theta = \pm\pi/2$), $C_p = -3$ (strong suction). Because $C_p(\pi - \theta) = C_p(\theta)$, the horizontal pressure force integrates to $\int_0^{2\pi} C_p(\theta)\cos\theta\,d\theta = 0$—d'Alembert's zero-drag paradox in one line.
 
 ### Example 1: Uniform Flow
 

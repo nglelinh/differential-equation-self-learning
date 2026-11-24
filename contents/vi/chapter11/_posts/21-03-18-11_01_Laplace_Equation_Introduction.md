@@ -9,7 +9,21 @@ categories:
 - chapter11
 lesson_type: required
 ---
+
 ![21 03 18 11 01 Laplace Equation Introduction]({{ site.imgurl }}/chapter_img/chapter11/01_laplace_equation_introduction.svg)
+
+Hãy nhúng một khung dây thép uốn cong bất kỳ vào chậu nước xà phòng rồi nhấc lên: màng xà phòng căng mịn hiện ra trong nháy mắt không có một đỉnh nhọn hay hố lõm nào bên trong. Ở trạng thái cân bằng, mọi điểm trên màng chỉ làm đúng một việc đơn giản: **trung bình hóa độ cao của các điểm lân cận quanh nó**. Khi viết sự cân bằng ấy thành ngôn ngữ vi phân, ta thu được **Phương trình Laplace** $\Delta u = u_{xx} + u_{yy} = 0$—trái tim của thế giới PDE elliptic!
+
+## Bản đồ kiến thức nền: Bốn trực giác cốt lõi để làm chủ Phương trình Laplace
+
+1. **Ý nghĩa hình học của Toán tử Laplace $\Delta u$**:
+   Đạo hàm bậc hai $u_{xx}$ đo độ cong theo trục $x$, còn $u_{yy}$ đo độ cong theo trục $y$. Điều kiện $u_{xx} + u_{yy} = 0$ buộc mọi điểm bên trong phải có dạng **yên ngựa** (cong lên theo hướng này bao nhiêu thì phải cong xuống theo hướng vuông góc bấy nhiêu).
+2. **Trạng thái dừng của Nhiệt và Sóng**:
+   Khi nhiệt độ $u_t = \alpha \Delta u$ hoặc màng rung $u_{tt} = c^2 \Delta u$ ngừng biến đổi theo thời gian ($u_t = 0, u_{tt} = 0$), cả hai đều hội tụ về cùng một phương trình cân bằng $\Delta u = 0$.
+3. **Bài toán Biên (BVP) thay vì Bài toán Giá trị Ban đầu (IVP)**:
+   Phương trình Laplace không có biến thời gian: nghiệm tại mọi điểm bên trong miền $\Omega$ được quyết định đồng thời và tức thì bởi toàn bộ dữ liệu trên biên $\partial \Omega$ (Dirichlet cho $u$, Neumann cho $\partial u/\partial n$, hoặc Robin).
+4. **Tính đặt chỉnh (Well-posedness) và Điều kiện tương thích**:
+   Bài toán Dirichlet đặt chỉnh duy nhất; bài toán Neumann chỉ có nghiệm khi tổng thông lượng qua biên bằng $0$ ($\oint_{\partial\Omega} \frac{\partial u}{\partial n}\,ds = 0$) và nghiệm duy nhất sai khác một hằng số cộng.
 
 ## Mục tiêu
 
@@ -25,6 +39,16 @@ Với phương trình nhiệt, ta khảo sát hệ tiến hóa theo thời gian 
 
 Đáng chú ý là cùng một phương trình $$ \Delta u=0 $$ lại xuất hiện trong nhiều lĩnh vực khác nhau: điện thế trong vùng không có điện tích, nhiệt độ ổn định khi không có nguồn nhiệt và thế vận tốc của dòng chảy không nén được, không xoáy. Bài học này giúp sinh viên nhận thấy sự thống nhất đó ngay từ đầu.
 
+
+### Khung giải thích (nên đọc chậm): Kiểm tra bằng tay hàm nào là hàm điều hòa và hình dáng mặt yên ngựa
+
+So sánh hai đa thức bậc hai rất giống nhau trên mặt phẳng $\mathbb{R}^2$:
+1. **Hàm thứ nhất $u(x, y) = x^2 - y^2$**:
+   - $u_{xx} = 2$, $u_{yy} = -2 \implies \Delta u = 2 + (-2) = \mathbf{0}$.
+   - **Kết luận**: $u$ là **hàm điều hòa**! Tại gốc $(0, 0)$, đi dọc trục $x$ thì $u$ tăng lên (cong lên), đi dọc trục $y$ thì $u$ giảm xuống (cong xuống)—một mặt yên ngựa hoàn hảo, không có cực đại hay cực tiểu nội tại.
+2. **Hàm thứ hai $v(x, y) = x^2 + y^2$**:
+   - $v_{xx} = 2$, $v_{yy} = 2 \implies \Delta v = 2 + 2 = \mathbf{4} \neq 0$.
+   - **Kết luận**: $v$ **không** điều hòa! Nó có một cực tiểu chặt $v(0,0) = 0$ ngay bên trong miền—điều mà một hàm điều hòa khác hằng không bao giờ có thể có.
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan

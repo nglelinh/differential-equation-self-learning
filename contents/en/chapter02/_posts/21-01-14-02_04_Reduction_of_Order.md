@@ -9,6 +9,45 @@ categories:
 - chapter02
 lesson_type: required
 ---
+
+Suppose a physics problem hands you a variable-coefficient second-order equation—like Legendre's or Bessel's equation—where the constant-coefficient characteristic polynomial fails completely, yet by inspection or symmetry you spot *one* nonzero solution $$y_1(t)$$. Jean le Rond d'Alembert discovered in 1766 that you never need to guess a second solution from scratch: replacing the constant multiplier $$c$$ in $$c\,y_1(t)$$ by a varying function $$v(t)$$ automatically knocks the equation down to a solvable first-order ODE.
+
+## Background Knowledge Map: Why the Ansatz $$y_2(t) = v(t)y_1(t)$$ Always Succeeds
+
+Four structural facts explain the elegance and universality of reduction of order:
+
+1. **Exact Cancellation of the $$v$$-Term:** Substituting $$y = v y_1$$ into $$y'' + p(t)y' + q(t)y = 0$$ collects the undifferentiated $$v$$ coefficient as $$v\bigl(y_1'' + p y_1' + q y_1\bigr) = 0$$; because $$y_1$$ is already a solution, $$v$$ vanishes completely, leaving an equation in $$w = v'$$ alone!
+2. **Closed-Form Integral Formula (Abel's Connection):** Solving the resulting separable first-order ODE for $$w = v'$$ gives
+   $$y_2(t) = y_1(t)\int \frac{\exp\!\left(-\int p(t)\,dt\right)}{[y_1(t)]^2}\,dt,$$
+   directly reflecting Abel's Wronskian identity $$W(y_1, y_2) = y_1^2 v' = C e^{-\int p\,dt}$$.
+3. **Why Repeated Roots Produce $$t\,e^{rt}$$:** Applying reduction of order to $$y'' - 2ry' + r^2 y = 0$$ with $$y_1 = e^{rt}$$ gives $$p(t) = -2r$$, so $$v' = \frac{e^{2rt}}{(e^{rt})^2} = 1 \implies v(t) = t \implies y_2 = t\,e^{rt}$$—proving the repeated-root rule from first principles!
+4. **Domain Caution (Zeros of $$y_1$$):** The integral divides by $$[y_1(t)]^2$$, so perform reduction of order on an interval where $$y_1(t) \ne 0$$ and normalize the ODE to standard form $$y'' + p(t)y' + q(t)y = 0$$ first.
+
+### Step-by-Step Worked Example (Read Slowly): Finding a Second Solution to a Variable-Coefficient ODE
+
+Given that $$y_1(t) = t$$ solves
+$$t^2 y'' - t(t + 2)y' + (t + 2)y = 0, \qquad t > 0,$$
+find a second linearly independent solution $$y_2(t)$$.
+
+1. **Quickly verify $$y_1(t) = t$$:**
+   $$t^2(0) - t(t+2)(1) + (t+2)(t) = 0$$. Confirmed!
+2. **Substitute $$y = v(t)\,t$$, $$y' = v't + v$$, $$y'' = v''t + 2v'$$ into the ODE:**
+   $$t^2(v''t + 2v') - t(t+2)(v't + v) + (t+2)(vt) = 0.$$
+   Expand and group by derivatives of $$v$$:
+   - Coefficient of $$v''$$: $$t^3$$
+   - Coefficient of $$v'$$: $$2t^2 - t^2(t+2) = -t^3$$
+   - Coefficient of $$v$$: $$-t(t+2) + t(t+2) = 0$$ (exact cancellation check!)
+3. **Solve the first-order equation for $$w = v'$$:**
+   $$t^3 w' - t^3 w = 0 \implies w' - w = 0 \quad (t > 0).$$
+   Thus $$w(t) = C_1 e^t$$. Choosing the simplest nontrivial constant $$C_1 = 1$$ gives $$v'(t) = e^t$$.
+4. **Integrate $$v'$$ and assemble $$y_2(t)$$:**
+   $$v(t) = \int e^t\,dt = e^t + C_2.$$
+   Setting $$C_2 = 0$$ (since $$C_2 t$$ just repeats $$y_1$$) yields
+   $$y_2(t) = v(t)\,y_1(t) = t\,e^t.$$
+5. **Verify independence via Wronskian:**
+   $$W(t,\; t e^t) = t(e^t + te^t) - (1)(te^t) = t^2 e^t > 0 \quad \text{for all } t > 0.$$
+   General solution: $$y(t) = c_1 t + c_2 t e^t$$.
+
 ## Learning Objectives
 This lesson helps students understand how to find a second solution of a second-order linear homogeneous equation when one nontrivial solution is already known. Students will learn the nature of the substitution
 $$ y_2=v(t)y_1(t), $$

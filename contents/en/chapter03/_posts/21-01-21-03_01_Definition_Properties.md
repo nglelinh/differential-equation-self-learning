@@ -9,6 +9,33 @@ categories:
 - chapter03
 lesson_type: required
 ---
+
+Flip a light switch on an RLC circuit or strike a drumhead with a mallet: the forcing jumps abruptly or hits in an instant, breaking the smooth textbook assumptions of undetermined coefficients. The Laplace transform $$\mathcal{L}\{f\}(s) = \int_0^\infty e^{-st}f(t)\,dt$$ is an algebraic portal that translates calculus in time $$t$$—derivatives, discontinuous switches, and impulses—into ordinary polynomial algebra in the frequency variable $$s$$.
+
+## Background Knowledge Map: Why the Improper Integral Exists and Behaves Cleanly
+
+Four analytical pillars anchor the Laplace transform from the very first definition:
+
+1. **Integral Operator & Linearity:** Because integration is linear, $$\mathcal{L}\{c_1 f + c_2 g\} = c_1\mathcal{L}\{f\} + c_2\mathcal{L}\{g\}$$, turning linear constant-coefficient ODEs into linear algebraic equations in $$Y(s)$$.
+2. **Piecewise Continuity + Exponential Order (Sufficient Existence):** If $$f(t)$$ is piecewise continuous on $$[0,\infty)$$ and grows no faster than an exponential ($$\lvert f(t)\rvert \le M e^{at}$$ for $$t \ge T$$), then the damping kernel $$e^{-st}$$ overpowers $$f(t)$$ for all $$s > a$$, guaranteeing absolute convergence.
+3. **Abscissa of Convergence:** Functions like $$e^{t^2}$$ outrun *every* exponential $$e^{st}$$ and therefore have no classical Laplace transform, whereas every polynomial, sinusoid, and exponential has a well-defined half-plane of convergence $$\operatorname{Re}(s) > a$$.
+4. **Decay at Infinity ($$F(s) \to 0$$ as $$s \to \infty$$):** Every classical Laplace transform of a piecewise continuous function of exponential order satisfies $$\lim_{s\to\infty} F(s) = 0$$—giving an instant sanity check to reject invalid rational functions like $$\frac{s^2+1}{s^2+4}$$.
+
+### Step-by-Step Worked Example (Read Slowly): Computing a Piecewise Laplace Transform Directly from the Definition
+
+Compute $$\mathcal{L}\{f\}(s)$$ directly from the improper integral for the piecewise function
+$$f(t) = \begin{cases} t, & 0 \le t < 2, \\ 3, & t \ge 2. \end{cases}$$
+
+1. **Split the integral at the jump discontinuity $$t = 2$$:**
+   $$F(s) = \int_0^2 t\,e^{-st}\,dt + \int_2^\infty 3\,e^{-st}\,dt \qquad (s > 0).$$
+2. **Evaluate the first piece via integration by parts ($$u = t,\; dv = e^{-st}\,dt$$):**
+   $$\int_0^2 t\,e^{-st}\,dt = \left[-\frac{t}{s}e^{-st} - \frac{1}{s^2}e^{-st}\right]_0^2 = -\frac{2}{s}e^{-2s} - \frac{1}{s^2}e^{-2s} + \frac{1}{s^2}.$$
+3. **Evaluate the improper tail integral for $$s > 0$$:**
+   $$\int_2^\infty 3\,e^{-st}\,dt = \lim_{B\to\infty}\left[-\frac{3}{s}e^{-st}\right]_2^B = 0 - \left(-\frac{3}{s}e^{-2s}\right) = \frac{3}{s}e^{-2s}.$$
+4. **Combine terms and run the $$s \to \infty$$ sanity check:**
+   $$F(s) = \frac{1}{s^2} + \frac{1}{s}e^{-2s} - \frac{1}{s^2}e^{-2s} = \frac{1 - e^{-2s}}{s^2} + \frac{e^{-2s}}{s}, \qquad s > 0.$$
+   Check: as $$s \to \infty$$, $$F(s) \to 0$$; and notice the $$+e^{-2s}/s$$ term directly encodes the upward jump of $$3 - 2 = +1$$ at $$t = 2$$!
+
 ## Learning Objectives
 This lesson introduces the Laplace transform as a tool that converts problems from the time domain into an algebraic domain in terms of the variable $$ s $$. Students will understand the definition, existence conditions, the meaning of the parameter $$ s $$, basic properties such as linearity and exponential shifting, and see why the Laplace transform is especially powerful when handling differential equations with initial conditions.
 

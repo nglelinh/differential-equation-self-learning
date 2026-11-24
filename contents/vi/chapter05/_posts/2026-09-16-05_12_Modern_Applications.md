@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Hơn một thế kỷ qua, phương pháp trực tiếp của Lyapunov là chuẩn vàng để chứng minh robot hay máy bay tự hành ổn định mà không cần giải tường minh hệ phi tuyến. Tuy nhiên, tìm bằng tay một hàm năng lượng $V(\mathbf{x})$ cho hệ 12 chiều là bài toán cực khó. Ngày nay, các nhà nghiên cứu dùng **mạng nơ-ron** để *học* hàm Lyapunov $V_\theta(\mathbf{x})$ và dùng bộ giải **SMT/SDP** để cấp chứng chỉ toán học tuyệt đối cho tính an toàn của nó.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Chứng chỉ Lyapunov Nơ-ron
+
+1. **Điều kiện Lyapunov toàn cục/địa phương**:
+   $V(\mathbf{0}) = 0$, $V(\mathbf{x}) > 0$ ($\mathbf{x} \neq \mathbf{0}$) và đạo hàm dọc quỹ đạo $\dot{V}(\mathbf{x}) = \nabla V(\mathbf{x}) \cdot \mathbf{f}(\mathbf{x}) < 0$ trên miền hấp dẫn $\mathcal{D}$.
+2. **Hàm mất mát Lyapunov (Lyapunov Risk)**:
+   Huấn luyện mạng $V_\theta$ bằng cách phạt $\max(0, -V_\theta(\mathbf{x}))$ và $\max(0, \nabla V_\theta \cdot \mathbf{f}(\mathbf{x}) + \epsilon)$ trên các điểm lấy mẫu.
+3. **Vòng lặp Người học – Người kiểm chứng (Learner–Verifier / CEGIS)**:
+   Bộ giải SMT (như dReal/Z3) tìm **phản ví dụ** nơi $\dot{V}_\theta \ge 0$; nếu có, bổ sung điểm đó vào tập huấn luyện; nếu trả về `UNSAT`, $V_\theta$ chính thức trở thành chứng chỉ an toàn!
+4. **Hàm rào chắn điều khiển (Control Barrier Functions — CBF)**:
+   Người anh em của hàm Lyapunov, đảm bảo quỹ đạo robot không bao giờ vượt ra khỏi vùng an toàn định trước.
+
 ## Mục tiêu
 
 Bài học tùy chọn này kết nối ổn định Lyapunov, tuyến tính hóa và lập luận trên mặt phẳng pha với các nghiên cứu giai đoạn 2019–2023 về chứng chỉ nơ-ron. Sinh viên cần nêu được một hàm Lyapunov học được có nhiệm vụ chứng minh điều gì, phân biệt sự suy giảm trên tập mẫu với sự suy giảm đã được kiểm chứng, đồng thời nắm được các kết quả chính từ bài khảo sát và hội nghị NeurIPS tiêu biểu. Các định lý ổn định cổ điển của chương vẫn đóng vai trò chuẩn mực kiểm định.
@@ -23,6 +36,15 @@ Sinh viên cần nắm hệ tự trị, tuyến tính hóa bằng ma trận Jaco
 Hàm Lyapunov đóng vai trò như một chứng chỉ dạng năng lượng: nếu $$V$$ xác định dương và $$\dot V\le 0$$ dọc theo quỹ đạo, điểm cân bằng là ổn định. Tuy nhiên, việc tìm hàm $$V$$ bằng tay thường rất khó. Ý tưởng hiện đại là tham số hóa $$V_\theta$$ bằng mạng nơ-ron và huấn luyện nó — thường đồng thời với bộ điều khiển $$u_\theta$$ — sao cho các bất đẳng thức Lyapunov được đưa vào hàm mất mát. Chang, Roohi và Gao (*Neural Lyapunov Control*, NeurIPS 2019) đã đề xuất một khuôn khổ nền tảng có ảnh hưởng lớn cho hướng tiếp cận này. Sau đó, Dawson, Gao và Fan khảo sát toàn cảnh về các chứng chỉ Lyapunov, barrier và contraction nơ-ron trên *IEEE Transactions on Robotics* 39 (2023): 1749–1767 ([https://doi.org/10.1109/TRO.2022.3232542](https://doi.org/10.1109/TRO.2022.3232542); [arXiv:2202.11762](https://arxiv.org/abs/2202.11762)).
 
 Wu, Clark, Kantaros và Vorobeychik (*Neural Lyapunov Control for Discrete-Time Systems*, NeurIPS 2023; [arXiv:2305.06547](https://arxiv.org/abs/2305.06547)) mở rộng ý tưởng này sang hệ thời gian rời rạc bằng kiểm chứng quy hoạch nguyên hỗn hợp (mixed-integer), tạo ra các bộ điều khiển ổn định có chứng minh trên những bài toán chuẩn phi tuyến. Thông điệp khái niệm cốt lõi cho chương này rất rõ ràng: mạng nơ-ron không nới lỏng định lý Lyapunov, mà chỉ tìm kiếm một hàm đáp ứng đúng các điều kiện của định lý.
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng cầm tay chỉ việc một ứng viên hàm Lyapunov $V(x_1, x_2)$ và tìm phản ví dụ
+
+Xét hệ phi tuyến 2 chiều $\dot{x}_1 = -x_1 + x_2^2$, $\dot{x}_2 = -x_2$ quanh gốc $(0, 0)$ với ứng viên $V(x_1, x_2) = \frac{1}{2}(x_1^2 + x_2^2)$:
+1. Rõ ràng $V(0, 0) = 0$ và $V > 0$ với mọi $(x_1, x_2) \neq (0, 0)$.
+2. Tính đạo hàm dọc quỹ đạo:
+   $$\dot{V} = x_1 \dot{x}_1 + x_2 \dot{x}_2 = x_1(-x_1 + x_2^2) - x_2^2 = -x_1^2 + x_2^2(x_1 - 1).$$
+3. **Kiểm chứng trên miền $\mathcal{D} = \{x_1 < 1\}$**: Khi $x_1 < 1$, ta có $x_1 - 1 < 0 \implies \dot{V} < 0$ với mọi $(x_1, x_2) \neq (0, 0)$ → **chứng chỉ ổn định tiệm cận hợp lệ trên đĩa $x_1^2 + x_2^2 < 1$**!
+4. **Phản ví dụ ngoài miền**: Thử điểm $(x_1, x_2) = (2, 3)$: $\dot{V} = -4 + 9(2 - 1) = +5 > 0$ — đây chính là kiểu phản ví dụ mà bộ Verifier trả về để thu hẹp miền hoặc huấn luyện lại $V_\theta$.
 
 ## Khái niệm then chốt
 

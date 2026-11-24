@@ -10,6 +10,19 @@ categories:
 lesson_type: required
 ---
 
+Trong Thế chiến thứ nhất, sản lượng cá mập ở biển Adriatic bất ngờ tăng vọt trong khi tàu đánh cá phải ngừng ra khơi. Nhà toán học Vito Volterra (và độc lập với ông là Alfred Lotka) đã lập ra một hệ hai phương trình phi tuyến đơn giản nhưng vang danh suốt một thế kỷ—**Mô hình Săn mồi – Con mồi (Lotka–Volterra)**—để giải thích vì sao quần thể thỏ và cáo tự dao động tuần hoàn mãi mãi mà không cần tác động bên ngoài.
+
+## Bản đồ kiến thức nền: Bốn trục phân tích Mô hình Lotka–Volterra
+
+1. **Bốn tham số sinh thái của hệ $\dot{x} = \alpha x - \beta xy,\; \dot{y} = -\gamma y + \delta xy$**:
+   $\alpha$: tốc độ sinh trưởng tự nhiên của con mồi $x$; $\beta$: tỷ lệ bị săn khi gặp thú săn mồi $y$; $\gamma$: tỷ lệ chết tự nhiên của thú săn mồi khi thiếu thức ăn; $\delta$: hiệu suất chuyển hóa con mồi thành thú săn mồi mới.
+2. **Hai điểm cân bằng**:
+   Gốc $(0, 0)$ (tuyệt chủng — điểm yên ngựa) và điểm cùng tồn tại $E^* = (\gamma/\delta,\; \alpha/\beta)$ (tâm trung tính!).
+3. **Bất biến bảo toàn (Hàm hằng dọc quỹ đạo)**:
+   Khử $dt$ và tách biến cho ra đại lượng bảo toàn $H(x, y) = \delta x - \gamma \ln x + \beta y - \alpha \ln y = \text{hằng số}$, chứng minh mọi quỹ đạo quanh $E^*$ đều là các đường cong đóng tuần hoàn!
+4. **Nguyên lý Volterra (Đánh bắt đều cả hai loài)**:
+   Đánh bắt làm giảm $\alpha \to \alpha - \epsilon$ và tăng $\gamma \to \gamma + \epsilon$, khiến mật độ trung bình con mồi $x^* = (\gamma+\epsilon)/\delta$ **tăng** còn thú săn mồi $y^* = (\alpha-\epsilon)/\beta$ **giảm**—giải thích trọn vẹn bí ẩn cá mập ở biển Adriatic!
+
 ## Mục tiêu
 
 Bài học này giúp sinh viên phân tích mô hình Lotka–Volterra săn mồi – con mồi, đọc các đường nullcline, điểm cân bằng và quỹ đạo trên mặt phẳng pha, đồng thời hiểu vì sao phản hồi chéo giữa hai quần thể có thể tạo ra dao động tự nhiên mà không cần lực cưỡng bức tuần hoàn từ bên ngoài.
@@ -25,6 +38,21 @@ Sinh viên cần nắm vững hệ tự trị, mặt phẳng pha, điểm cân b
 Nếu xét riêng quần thể con mồi, số lượng của chúng có xu hướng tăng trưởng; nếu xét riêng quần thể săn mồi, số lượng của chúng sẽ suy giảm khi thiếu nguồn thức ăn. Khi hai quần thể tương tác, một vòng phản hồi hình thành: nhiều con mồi giúp loài săn mồi tăng lên, loài săn mồi tăng lại làm con mồi suy giảm, con mồi giảm khiến loài săn mồi thiếu thức ăn và giảm theo, nhờ đó con mồi lại phục hồi. Quá trình này tạo nên một hệ động lực học hoàn chỉnh.
 
 Mô hình Lotka–Volterra có ý nghĩa quan trọng vì cho thấy dao động không nhất thiết xuất phát từ lực cưỡng bức tuần hoàn bên ngoài, mà có thể nảy sinh thuần túy từ cơ chế phản hồi nội tại giữa các biến trạng thái.
+
+### Khung giải thích (nên đọc chậm): Tính tay điểm cân bằng và chu kỳ dao động nhỏ của hệ Lotka–Volterra cụ thể
+
+Xét hệ cụ thể với $\alpha = 2,\; \beta = 1,\; \gamma = 3,\; \delta = 1$:
+$$\dot{x} = 2x - xy, \qquad \dot{y} = -3y + xy.$$
+
+1. **Tìm điểm cân bằng cùng tồn tại $E^*$**:
+   $x(2 - y) = 0 \implies y^* = 2$; $y(-3 + x) = 0 \implies x^* = 3$. Vậy $E^* = (3, 2)$.
+2. **Tính Jacobian tại $E^* = (3, 2)$**:
+   $$J(x, y) = \begin{pmatrix} 2 - y & -x \\ y & -3 + x \end{pmatrix} \implies J(3, 2) = \begin{pmatrix} 0 & -3 \\ 2 & 0 \end{pmatrix}.$$
+3. **Tính trị riêng & Chu kỳ dao động nhỏ quanh $E^*$**:
+   $$\det(J - \lambda I) = \lambda^2 + 6 = 0 \implies \lambda = \pm i\sqrt{6}.$$
+   - Tần số góc $\omega = \sqrt{\alpha\gamma} = \sqrt{6} \approx 2{,}45\text{ rad/năm}$.
+   - Chu kỳ dao động nhỏ quanh điểm cân bằng $(3, 2)$: $T = \frac{2\pi}{\sqrt{6}} \approx \mathbf{2{,}57\text{ năm}}$!
+   - Lưu ý pha: khi con mồi $x$ đạt đỉnh ($x > 3, y = 2$), ta có $\dot{y} = 2(x - 3) > 0$, tức quần thể thú săn mồi **đạt đỉnh trễ hơn con mồi 1/4 chu kỳ**.
 
 ## Khái niệm theo ba cách
 

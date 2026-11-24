@@ -10,6 +10,19 @@ categories:
 lesson_type: required
 ---
 
+Chỉ cần biết hai con số duy nhất của ma trận $2 \times 2$—**vết (trace) $\tau = \operatorname{tr}(J)$** và **định thức (determinant) $\Delta = \det(J)$**—bạn có thể phân loại ngay lập tức điểm cân bằng thuộc loại nào trong toàn bộ "vườn thú" động lực học: nút hút, nút đẩy, điểm yên ngựa, xoáy hút, xoáy đẩy hay tâm!
+
+## Bản đồ kiến thức nền: Bốn vùng trên Mặt phẳng Vết – Định thức $(\tau, \Delta)$
+
+1. **Phương trình đặc trưng theo $\tau$ và $\Delta$**:
+   $\lambda^2 - \tau\lambda + \Delta = 0 \implies \lambda_{1,2} = \frac{\tau \pm \sqrt{\tau^2 - 4\Delta}}{2}$, với $\lambda_1 + \lambda_2 = \tau$ và $\lambda_1 \lambda_2 = \Delta$.
+2. **Parabol phân cách $\Delta = \tau^2 / 4$**:
+   Bên dưới parabol ($\tau^2 - 4\Delta > 0$): hai trị riêng **thực** (nút hoặc yên ngựa). Bên trên parabol ($\tau^2 - 4\Delta < 0$): cặp trị riêng **phức liên hợp** (xoáy hoặc tâm).
+3. **Điều kiện ổn định tiệm cận cho hệ 2D**:
+   Cả hai trị riêng đều có phần thực âm $\iff \mathbf{\tau < 0 \text{ và } \Delta > 0}$ (toàn bộ góc phần tư thứ II của mặt phẳng $(\tau, \Delta)$!).
+4. **Điểm yên ngựa ($\Delta < 0$)**:
+   Hễ $\Delta = \lambda_1\lambda_2 < 0$, hai trị riêng chắc chắn thực và trái dấu → luôn là **Yên ngựa (Saddle)**, bất kể dấu của $\tau$!
+
 ## Mục tiêu
 
 Bài học này giúp sinh viên phân biệt các khái niệm ổn định Lyapunov, ổn định tiệm cận và không ổn định, sử dụng trị riêng hoặc cặp vết–định thức (trace–determinant) để phân loại điểm cân bằng của hệ phẳng, đồng thời hiểu rằng tính ổn định phản ánh phản ứng của hệ trước nhiễu nhỏ chứ không chỉ là tên gọi hình học.
@@ -25,6 +38,16 @@ Sinh viên cần nắm vững phép tuyến tính hóa và trị riêng của ma
 Trong ngôn ngữ đời thường, từ "ổn định" thường được dùng khá mơ hồ. Tuy nhiên, trong động lực học, khái niệm này cần được định nghĩa chặt chẽ. Khi tác động một nhiễu nhỏ làm hệ lệch khỏi vị trí cân bằng, hệ sẽ duy trì gần vị trí đó, quay trở về đúng vị trí đó, hay rời xa dần? Ba tình huống này tuy gần nhau về trực giác nhưng tương ứng với ba khái niệm toán học khác biệt.
 
 Bài học này giúp sinh viên chuyển từ cách hiểu cảm tính sang phân tích chính xác tính ổn định thông qua phổ trị riêng của ma trận Jacobian và hình dạng chân dung pha.
+
+### Khung giải thích (nên đọc chậm): Phân loại nhanh 3 ma trận $2 \times 2$ chỉ bằng $(\tau, \Delta)$ không cần giải nghiệm phức tạp
+
+| Ma trận $A$ | Vết $\tau = a+d$ | Định thức $\Delta = ad-bc$ | Biệt thức $\tau^2 - 4\Delta$ | Phân loại & Độ ổn định |
+| :--- | :---: | :---: | :---: | :--- |
+| $A_1 = \begin{pmatrix} -2 & 1 \\ -1 & -2 \end{pmatrix}$ | $-4 < 0$ | $5 > 0$ | $16 - 20 = -4 < 0$ | **Xoáy hút (Stable Spiral)** — ổn định tiệm cận ($\lambda = -2 \pm i$) |
+| $A_2 = \begin{pmatrix} 1 & 2 \\ 3 & 2 \end{pmatrix}$ | $3$ | $2 - 6 = -4 < 0$ | $9 + 16 = 25 > 0$ | **Điểm yên ngựa (Saddle)** — không ổn định ($\lambda = 4, -1$) |
+| $A_3 = \begin{pmatrix} -3 & 0 \\ 0 & -1 \end{pmatrix}$ | $-4 < 0$ | $3 > 0$ | $16 - 12 = 4 > 0$ | **Nút hút (Stable Node)** — ổn định tiệm cận ($\lambda = -3, -1$) |
+
+Chỉ mất 5 giây tính $\tau$ và $\Delta$, bạn định vị ngay được trạng thái cân bằng của mọi hệ 2D!
 
 ## Khái niệm theo ba cách
 

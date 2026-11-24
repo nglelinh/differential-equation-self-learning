@@ -10,6 +10,26 @@ categories:
 lesson_type: optional
 ---
 
+Seeing a square wave assemble itself harmonic by harmonic—watching the flat plateau tighten while the tiny Gibbs horns refuse to shrink—teaches more about Fourier convergence in ten seconds than a page of inequalities. This companion gallery brings every core concept of Chapter 08 to life: partial-sum synthesis, even/odd reflections, Parseval energy bars, and the continuous frequency limit of the Fourier transform.
+
+## Background Knowledge Map: Reading the Chapter 08 Visual Lab
+
+1. **Harmonic Addition & Gibbs Persistence:** As you increase $$ N $$ in the partial-sum frames, verify that smooth regions converge rapidly while the peak overshoot next to a jump stays stubbornly locked at $$ \approx 8.95\% $$ of the jump height.
+2. **Even vs. Odd Half-Range Extensions:** Toggle between sine and cosine extensions on $$ [0, L] $$ and look at the endpoints $$ x = 0 $$ and $$ x = L $$—watch how artificial jumps in the odd extension slow convergence compared to a continuous even reflection.
+3. **Spectral Decay vs. Regularity:** Compare the bar-chart heights of $$ |a_n|, |b_n| $$ across a square wave ($$ 1/n $$), a triangle wave ($$ 1/n^2 $$), and a smooth periodic bump (exponential decay).
+4. **Discrete-to-Continuous Spectrum Morphing:** In the Fourier transform frame, stretch the period $$ 2L $$ and watch the discrete vertical spectral lines pack together into a smooth continuous envelope $$ \hat{f}(\omega) $$.
+
+### Step-by-Step Worked Example (Read Slowly): Predicting the First Three Harmonics of a Triangle Wave Before Moving the Slider
+
+**Problem:** For the $$ 2\pi $$-periodic triangle wave $$ f(x) = |x| $$ on $$ [-\pi, \pi] $$, we found $$ f(x) = \frac{\pi}{2} - \frac{4}{\pi}\bigl(\cos x + \frac{1}{9}\cos 3x + \frac{1}{25}\cos 5x + \cdots\bigr) $$. Compute the maximum error of the $$ 2 $$-harmonic approximation $$ S_1(x) = \frac{\pi}{2} - \frac{4}{\pi}\cos x $$ at the corner $$ x = 0 $$ and at $$ x = \frac{\pi}{2} $$.
+
+1. **At the sharp corner $$ x = 0 $$ (where $$ f(0) = 0 $$):**
+   $$ S_1(0) = \frac{\pi}{2} - \frac{4}{\pi} \approx 1.5708 - 1.2732 = 0.2976. $$
+   Adding just the $$ n = 3 $$ term subtracts $$ \frac{4}{9\pi} \approx 0.1415 $$, dropping the corner error in half to $$ 0.1561 $$.
+2. **At the smooth midpoint $$ x = \frac{\pi}{2} $$ (where $$ f(\pi/2) = \frac{\pi}{2} $$):**
+   Since $$ \cos((2k+1)\pi/2) = 0 $$ for *every* odd harmonic, $$ S_1(\pi/2) = \frac{\pi}{2} $$ is already **exact** (error $$ = 0 $$)!
+3. **What to check in the gallery:** Watch how the error concentrates exclusively at the sharp corners $$ x = 0, \pm\pi $$—and notice zero Gibbs overshoot because $$ |x| $$ is continuous!
+
 ## Purpose of This Companion Lesson
 
 This lesson gathers the Chapter 08 illustrations into one visual study space so students can move back and forth between the formal theory of Fourier series and a more geometric intuition. Instead of reading each figure only in isolation inside a single lesson, the gallery lets us compare periodic extension, coefficient decay, convergence behavior, symmetry, half-range constructions, Parseval energy balance, complex modes, and the transition from Fourier series to the Fourier transform on one page.

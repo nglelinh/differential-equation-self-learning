@@ -12,6 +12,21 @@ lesson_type: optional
 
 ![Bài toán ngược: tái dựng tham số từ dữ liệu quan sát]({{ site.imgurl }}/chapter_img/chapter15/06_inverse_problems.svg )
 
+Mọi bài toán thuận từ Chương 1 đến Chương 14 đều đi theo chiều xuôi: biết vật liệu bên trong, dự đoán kết quả đo bên ngoài. **Bài toán Ngược (Inverse Problems)** lật ngược toàn bộ câu hỏi: bác sĩ chỉ đo tia X hay dòng điện **trên mặt da**, nhà địa chất chỉ nghe sóng rung **trên mặt đất**, vậy có thể suy ngược ra chính xác hình ảnh cơ quan nội tạng hay túi dầu nằm sâu bên trong không? Câu hỏi tưởng giản dị ấy lại ẩn chứa thách thức lớn nhất của toán ứng dụng: **tính đặt không chỉnh (ill-posedness)** theo nghĩa Hadamard!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Bài toán Ngược trong PDE
+
+1. **Ba câu hỏi cốt lõi: Tính Duy nhất, Ổn định và Tái tạo (Reconstruction)**:
+   Một bài toán đặt chỉnh theo Hadamard cần tồn tại, duy nhất và ổn định. Bài toán ngược thường vi phạm nặng nề điều kiện thứ ba: nhiễu đo $10^{-4}$ trên dữ liệu có thể thổi phồng thành sai số khổng lồ trong nghiệm phục hồi!
+2. **Ba bài toán ngược kinh điển trong khoa học & y học**:
+   - *Chụp cắt lớp X-quang (Biến đổi Radon)*: tính không ổn định nhẹ (mất $1/2$ bậc đạo hàm—giải được bằng chiếu ngược lọc FBP).
+   - *Bài toán Calderón (Chụp ảnh trở kháng điện EIT)*: khôi phục độ dẫn điện $\sigma(x)$ từ ánh xạ Dirichlet-to-Neumann—chỉ đạt **ổn định logarit** cực yếu!
+   - *Tán xạ ngược & Địa chấn (FWI)*: khôi phục tốc độ sóng $c(x)$ từ sóng phản xạ.
+3. **Điều chuẩn hóa (Regularization — Tikhonov, Total Variation & Prior Bayes)**:
+   Thay vì giải trực tiếp $A u = y^\delta$ (nổ nhiễu), ta giải bài toán tối ưu $\min_u \|Au - y^\delta\|^2 + \alpha \mathcal{R}(u)$: tham số $\alpha > 0$ cân bằng giữa độ khớp dữ liệu và độ mượt/thưa của nghiệm!
+4. **Sức mạnh của Phân tích Vi địa phương trong Bài toán Ngược**:
+   Dù bài toán ngược phi tuyến toàn cục rất khó, công cụ $\operatorname{WF}$ và FIO chỉ ra chính xác phần ranh giới (kỳ dị) nào của vật thể bên trong có thể phục hồi ổn định từ dữ liệu biên!
+
 ## Mục tiêu
 
 Bài học tùy chọn này giới thiệu bài toán ngược như một hướng ứng dụng quan trọng của giải tích vi địa phương và PDE. Sau bài học, sinh viên cần phân biệt rõ bài toán thuận với bài toán ngược, hiểu vì sao bài toán ngược thường không ổn định, và nắm vai trò của chính quy hóa (regularization), sự lan truyền kỳ dị và tính không đầy đủ của dữ liệu trong quá trình tái tạo.
@@ -26,6 +41,15 @@ Trong bài toán thuận, ta biết phương trình, hệ số và nguồn, từ
 
 Thách thức lớn nhất của bài toán ngược là tính không ổn định: một nhiễu rất nhỏ trong dữ liệu đo có thể dẫn tới sai lệch lớn trong kết quả tái tạo. Vì thế, đây là điểm giao thoa thực tiễn giữa giải tích PDE, thống kê và tính toán khoa học.
 
+
+### Khung giải thích (nên đọc chậm): Tận mắt thấy sự khuếch đại nhiễu khủng khiếp trong bài toán ngược truyền nhiệt
+
+Xét bài toán ngược của phương trình nhiệt 1D $u_t = u_{xx}$ trên $(0, \pi)$ với $u(0,t)=u(\pi,t)=0$: ta đo được nhiệt độ $u(x, T)$ tại $T = 0{,}1\text{ s}$ và muốn suy ngược lại nhiệt độ ban đầu $u_0(x) = u(x, 0)$!
+1. **Chiều thuận (làm trơn mũ)**: Mỗi mode $\sin(nx)$ bị suy giảm bởi thừa số $e^{-n^2 T}$:
+   $$u_0(x) = \sin(nx) \xrightarrow{\text{thuận}} u(x, 0{,}1) = e^{-0{,}1 n^2}\sin(nx).$$
+2. **Chiều ngược (khuếch đại nhiễu nổ tung!)**: Giả sử cảm biến tại $T = 0{,}1$ có một nhiễu đo siêu nhỏ $\delta u(x, 0{,}1) = 10^{-4}\sin(10x)$ (chỉ $0{,}01\%$ ở mode $n = 10$). Khi đảo ngược về $t = 0$:
+   $$\delta u_0(x) = e^{+0{,}1 \times 10^2} \cdot 10^{-4}\sin(10x) = e^{10} \cdot 10^{-4}\sin(10x) \approx 22.026 \times 10^{-4}\sin(10x) \approx \mathbf{2{,}20\,\sin(10x)}!$$
+   Nhiễu $0{,}0001$ bị thổi phồng gấp **$22.026$ lần** thành sai số $2{,}20$—chứng minh bằng con số vì sao bài toán ngược bắt buộc phải có **điều chuẩn hóa (regularization)**!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

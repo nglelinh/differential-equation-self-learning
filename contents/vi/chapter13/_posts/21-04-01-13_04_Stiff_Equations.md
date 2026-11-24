@@ -12,6 +12,20 @@ lesson_type: required
 
 ![Trực giác về phương trình cứng và miền ổn định của phương pháp số]({{ site.imgurl }}/chapter_img/chapter13/04_stiff_equations.svg )
 
+Hãy hình dung một phản ứng hóa học có hai quá trình xảy ra đồng thời: một chất trung gian phân hủy sạch trong $10^{-6}$ giây, còn sản phẩm chính biến đổi chậm rãi suốt $10$ giây. Sau vài micro-giây đầu tiên, đường cong nghiệm trông phẳng lì và êm đềm—vậy mà nếu bạn chạy RK4 với bước $h = 0{,}01$ giây, nghiệm số lập tức nổ tung ra `NaN`! Chào mừng đến với thế giới **Phương trình Cứng (Stiff Equations)**—nơi **ổn định**, chứ không phải độ chính xác, mới là kẻ bóp nghẹt bước thời gian của mọi phương pháp hiện!
+
+## Bản đồ kiến thức nền: Bốn trụ cột để nhận diện và thuần hóa Phương trình Cứng
+
+1. **Dấu hiệu nhận diện: Tỷ số Độ cứng (Stiffness Ratio) lớn**:
+   Một hệ $y' = f(t, y)$ có tính cứng khi ma trận Jacobian $J = \partial f/\partial y$ có các giá trị riêng với phần thực âm chênh lệch nhau nhiều bậc độ lớn ($\max |\operatorname{Re}\lambda_i| \gg \min |\operatorname{Re}\lambda_i|$)—xuất hiện dày đặc trong động học hóa học, mạch điện và PDE khuếch tán sau bán rời rạc hóa!
+2. **Nghịch lý của Phương pháp Hiện**:
+   Dù thành phần nhanh $e^{-1000t}$ đã tắt hẳn về $0$, mọi phương pháp hiện (Euler hiện, RK4) đều có miền ổn định **hữu hạn**, buộc $h \lesssim 1/|\lambda_{\max}|$ trong suốt toàn bộ quá trình mô phỏng!
+3. **Tính Ổn định A (A-stability) và Ổn định L (L-stability)**:
+   - *A-ổn định*: miền ổn định chứa trọn nửa mặt phẳng trái $\operatorname{Re}(z) < 0$ (như Euler ẩn, Hình thang/Crank–Nicolson).
+   - *L-ổn định*: thêm điều kiện $\lim_{\operatorname{Re}(z)\to -\infty} R(z) = 0$ để dập tắt hẳn các mode siêu nhanh thay vì để chúng dao động $\pm 1$ như quy tắc Hình thang!
+4. **Chi phí của Phương pháp Ẩn (BDF, Radau) và Phép lặp Newton**:
+   Mỗi bước ẩn đòi hỏi giải hệ phương trình phi tuyến $y_{n+1} - h\beta f(y_{n+1}) = g_n$ bằng Newton–Raphson—tốn hơn mỗi bước, nhưng vì bước $h$ có thể lớn gấp $1000\times$ phương pháp hiện, tổng thời gian tính lại nhanh hơn hàng trăm lần!
+
 ## Mục tiêu
 
 Bài học này giúp sinh viên hiểu độ cứng (stiffness) như một thách thức giải tích số chứ không chỉ là đặc điểm hình dạng của nghiệm. Sau bài học, sinh viên cần giải thích được vì sao một bài toán có nghiệm trơn nhưng vẫn khó giải bằng sơ đồ tường minh, biết dùng phương trình kiểm thử $$ y'=\lambda y $$ để phân tích miền ổn định, và hiểu lý do các phương pháp ẩn được ưu tiên cho bài toán cứng.
@@ -26,6 +40,16 @@ Một tình huống thường gây ngạc nhiên khi mới học phương pháp 
 
 Bài toán cứng thường xuất hiện ở các hệ có nhiều thang thời gian chênh lệch nhau lớn: một thành phần suy giảm rất nhanh có thể không còn đáng kể sau thời gian ngắn, nhưng vẫn ép sơ đồ tường minh phải duy trì bước thời gian cực nhỏ trong suốt quá trình tính.
 
+
+### Khung giải thích (nên đọc chậm): Đối đầu trực diện Euler Hiện vs. Euler Ẩn trên phương trình cứng $y' = -1000y$
+
+Xét bài toán cứng $y' = -1000y$, $y(0) = 1$ (nghiệm đúng tại $t = 0{,}01$ là $e^{-10} \approx 4{,}5 \times 10^{-5}$). Ta chọn bước thời gian hoàn toàn vừa phải $h = 0{,}01$:
+1. **Euler Hiện** ($y_{n+1} = (1 - 1000h) y_n = -9 y_n$):
+   $$y_1 = \mathbf{-9}, \qquad y_2 = \mathbf{+81}, \qquad y_3 = \mathbf{-729}, \qquad y_{10} \approx \mathbf{+3{,}49 \times 10^9}!$$
+   Nổ tung hoàn toàn vì $h = 0{,}01 > 2/1000 = 0{,}002$!
+2. **Euler Ẩn** ($y_{n+1} = y_n - 1000h y_{n+1} \implies y_{n+1} = \frac{y_n}{1 + 1000h} = \frac{y_n}{11}$):
+   $$y_1 = \frac{1}{11} \approx \mathbf{0{,}0909}, \qquad y_2 = \frac{1}{121} \approx \mathbf{0{,}00826}, \qquad y_3 \approx \mathbf{0{,}00075} \to 0!$$
+   Ổn định tuyệt đối và tắt êm ái về $0$ với mọi $h > 0$—minh chứng sống động cho sức mạnh của tính L-ổn định!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

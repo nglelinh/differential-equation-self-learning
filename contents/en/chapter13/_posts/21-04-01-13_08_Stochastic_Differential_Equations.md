@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** Watch a pollen grain jittering under a microscope or a stock price zigzagging across a trading screen: its path is continuous everywhere yet differentiable *nowhere*, because random kicks scale like $\sqrt{dt}$ rather than $dt$. That square-root scaling breaks ordinary calculus—giving birth to **Itô's Lemma** and **Stochastic Differential Equations (SDEs)**.
+
 ## Learning Objectives
 
 This lesson introduces stochastic differential equations and the Euler-Maruyama method. Students should understand why randomness enters differential models, how stochastic increments differ from deterministic time steps, and why numerical simulation remains essential in this setting.
@@ -17,6 +19,15 @@ This lesson introduces stochastic differential equations and the Euler-Maruyama 
 ## Prerequisites
 
 Students should know deterministic ODE methods and have some familiarity with random variables and Brownian motion at an intuitive level.
+
+## Background Knowledge Map: Calculus and Numerics Driven by Brownian Motion
+
+Four core ideas bridge deterministic ODEs to stochastic differential equations $dX_t = \mu(X_t,t)\,dt + \sigma(X_t,t)\,dW_t$:
+
+1. **Brownian Motion and Quadratic Variation $(dW_t)^2 = dt$:** Increments $\Delta W_t = W_{t+\Delta t} - W_t \sim \mathcal{N}(0, \Delta t)$ are independent with standard deviation $\sqrt{\Delta t}$. Summing $(\Delta W_k)^2$ over a partition does *not* vanish—it converges to $T$, generating a mandatory second-order correction in the chain rule.
+2. **Itô's Lemma:** For a smooth function $f(X_t)$, Taylor expanding to second order yields $df(X_t) = \big(f'\mu + \frac{1}{2}f''\sigma^2\big)\,dt + f'\sigma\,dW_t$. That extra $\frac{1}{2}f''\sigma^2\,dt$ drift separates Itô calculus from classical calculus.
+3. **Euler–Maruyama and Milstein Discretization:** Replacing $dt \to \Delta t$ and $dW_t \to \sqrt{\Delta t}\,Z_n$ ($Z_n \sim \mathcal{N}(0,1)$) gives Euler–Maruyama, which achieves **strong order $1/2$** (pathwise) and **weak order $1$** (in expectation); adding the Milstein term $\frac{1}{2}\sigma\sigma'((\Delta W_n)^2 - \Delta t)$ lifts strong convergence to order $1$.
+4. **Fokker–Planck (Kolmogorov Forward) Bridge to PDEs:** While individual trajectories $X_t$ are random, their probability density $p(x,t)$ evolves deterministically via the parabolic PDE $\partial_t p = -\partial_x(\mu p) + \frac{1}{2}\partial_{xx}(\sigma^2 p)$.
 
 ## Introduction
 
@@ -87,6 +98,22 @@ This highlights the new nature of the problem.
 - Can they describe the idea behind Euler-Maruyama simulation?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Itô's Lemma and One Euler–Maruyama Step for Geometric Brownian Motion
+
+Solve the geometric Brownian motion SDE $dS_t = \mu S_t\,dt + \sigma S_t\,dW_t$ analytically using Itô's Lemma, then compare the exact value after one step against Euler–Maruyama for $S_0 = 100$, $\mu = 0.05$, $\sigma = 0.2$, $\Delta t = 0.25$, and random draw $Z_0 = +1$ (so $\Delta W_0 = \sqrt{0.25}(1) = 0.5$).
+
+1. **Apply Itô's Lemma to $f(S) = \ln S$:** Compute $f'(S) = \frac{1}{S}$ and $f''(S) = -\frac{1}{S^2}$. Then:
+   $$d(\ln S_t) = \frac{1}{S_t}(\mu S_t\,dt + \sigma S_t\,dW_t) + \frac{1}{2}\left(-\frac{1}{S_t^2}\right)(\sigma^2 S_t^2\,dt) = \left(\mu - \frac{1}{2}\sigma^2\right)dt + \sigma\,dW_t.$$
+   Integrating from $0$ to $t$ yields the exact solution:
+   $$S_t = S_0 \exp\!\left[\left(\mu - \frac{1}{2}\sigma^2\right)t + \sigma W_t\right].$$
+   Notice the Itô drag $-\frac{1}{2}\sigma^2$: volatility lowers the median growth rate!
+2. **Evaluate the exact solution at $t_1 = 0.25$ with $W_{0.25} = 0.5$:**
+   $$\mu - \frac{1}{2}\sigma^2 = 0.05 - \frac{1}{2}(0.04) = 0.03, \qquad S_{0.25}^{\text{exact}} = 100\exp\big(0.03(0.25) + 0.2(0.5)\big) = 100 e^{0.1075} \approx 111.349.$$
+3. **Compute one Euler–Maruyama step:**
+   $$S_1^{\text{EM}} = S_0 + \mu S_0 \Delta t + \sigma S_0 \Delta W_0 = 100\big(1 + 0.05(0.25) + 0.2(0.5)\big) = 100(1.1125) = 111.250.$$
+   Notice that adding the Milstein correction $\frac{1}{2}\sigma^2 S_0((\Delta W_0)^2 - \Delta t) = \frac{1}{2}(0.04)(100)(0.25 - 0.25) = 0$ happens to vanish when $Z_0 = \pm 1$, leaving $S_1^{\text{EM}}$ within $0.09\%$ of the exact sample path!
 
 ### Example 1: Noisy Exponential Growth
 

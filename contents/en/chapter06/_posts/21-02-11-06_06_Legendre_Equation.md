@@ -10,6 +10,39 @@ categories:
 lesson_type: required
 ---
 
+In 1782, Adrien-Marie Legendre wanted to calculate the gravitational pull of a slightly flattened oblate planet—a problem that refused to yield to elementary geometry. When he expanded the inverse distance $$ |\mathbf{r} - \mathbf{r}'|^{-1} $$ in powers of $$ r'/r $$, the coefficients of $$ \cos\theta $$ turned out to be a remarkable sequence of polynomials $$ P_0(x), P_1(x), P_2(x), \dots $$ satisfying $$ (1 - x^2) y'' - 2x y' + n(n+1) y = 0 $$.
+
+Why does the eigenvalue parameter take the exact quantized form $$ \lambda = n(n+1) $$? Because $$ x = \pm 1 $$ (the North and South Poles of a sphere!) are regular singular points: for any non-integer $$ \nu $$, *every* series solution blows up logarithmically at the poles. Only when $$ \lambda = n(n+1) $$ does the infinite series truncate into a finite polynomial $$ P_n(x) $$ that stays smooth everywhere on the sphere.
+
+## Background Knowledge Map: Legendre's Equation and Spherical Symmetry
+
+1. **Regular Singularities at the Poles $$ x = \pm 1 $$ (Quantization Mechanism):** Writing $$ y'' - \frac{2x}{1-x^2} y' + \frac{\lambda}{1-x^2} y = 0 $$, the origin $$ x = 0 $$ is an ordinary point with guaranteed radius $$ R = 1 $$. The singularities at $$ x = \pm 1 $$ force the infinite series to diverge at the endpoints *unless* $$ \lambda = n(n+1) $$, which kills the recurrence at index $$ n $$ and produces a polynomial.
+2. **Self-Adjoint Form and $$ L^2([-1,1]) $$ Orthogonality:** Rewriting the ODE as $$ \frac{d}{dx}\bigl[(1 - x^2) y'\bigr] + n(n+1) y = 0 $$ reveals its Sturm–Liouville structure with unit weight $$ w(x) = 1 $$. Integration by parts immediately proves $$ \int_{-1}^{1} P_m(x) P_n(x)\,dx = \frac{2}{2n+1}\delta_{mn} $$.
+3. **Rodrigues' Formula and Generating Function (Compact Engines):** Rather than re-solving recurrences every time, $$ P_n(x) = \frac{1}{2^n n!} \frac{d^n}{dx^n}\bigl[(x^2 - 1)^n\bigr] $$ and $$ (1 - 2xt + t^2)^{-1/2} = \sum_{n=0}^\infty P_n(x) t^n $$ package all orthogonality, normalization $$ P_n(1) = 1 $$, and three-term recurrence relations into two lines.
+4. **Multipole & Quantum Angular Momentum Bridge:** Expanding a potential or wavefunction in $$ P_n(\cos\theta) $$ decomposes it into monopole ($$ n=0 $$), dipole ($$ n=1 $$), quadrupole ($$ n=2 $$), and higher spherical harmonics—the foundation of electrostatics, geodesy, and atomic orbitals.
+
+### Step-by-Step Worked Example (Read Slowly): Deriving $$ P_3(x) $$ from the Recurrence and Expanding $$ f(x) = x^3 $$
+
+**Problem:** Derive $$ P_3(x) $$ from the ordinary-point recurrence of Legendre's equation with $$ n = 3 $$ (normalized so $$ P_3(1) = 1 $$), verify orthogonality $$ \int_{-1}^1 P_1(x) P_3(x)\,dx = 0 $$, and express $$ x^3 $$ as a linear combination of Legendre polynomials.
+
+1. **Set up the recurrence for $$ (1 - x^2) y'' - 2x y' + n(n+1) y = 0 $$:**
+   Substituting $$ y = \sum_{k=0}^\infty a_k x^k $$ yields
+   $$ a_{k+2} = -\frac{(n - k)(n + k + 1)}{(k+2)(k+1)} a_k \qquad (k \ge 0). $$
+2. **Specialize to $$ n = 3 $$ (odd branch $$ a_0 = 0 $$):**
+   - For $$ k = 1 $$: $$ a_3 = -\frac{(3 - 1)(3 + 2)}{3 \cdot 2} a_1 = -\frac{2 \cdot 5}{6} a_1 = -\frac{5}{3} a_1 $$.
+   - For $$ k = 3 $$: $$ a_5 = -\frac{(3 - 3)(3 + 4)}{5 \cdot 4} a_3 = 0 $$, so all higher odd coefficients vanish!
+   Thus the polynomial solution is $$ y(x) = a_1 \left(x - \frac{5}{3} x^3\right) $$.
+3. **Normalize by $$ P_3(1) = 1 $$:**
+   $$ P_3(1) = a_1\left(1 - \frac{5}{3}\right) = -\frac{2}{3} a_1 = 1 \implies a_1 = -\frac{3}{2}. $$
+   Therefore,
+   $$ P_3(x) = \frac{1}{2}(5x^3 - 3x). $$
+4. **Verify orthogonality against $$ P_1(x) = x $$:**
+   $$ \int_{-1}^{1} x \cdot \frac{1}{2}(5x^3 - 3x)\,dx = \frac{1}{2}\left[x^5 - x^3\right]_{-1}^{1} = \frac{1}{2}\bigl[(1 - 1) - (-1 + 1)\bigr] = 0. $$
+5. **Expand $$ f(x) = x^3 $$ in the Legendre basis:**
+   Solving $$ P_3(x) = \frac{5}{2}x^3 - \frac{3}{2}P_1(x) $$ for $$ x^3 $$ gives immediately:
+   $$ x^3 = \frac{2}{5} P_3(x) + \frac{3}{5} P_1(x). $$
+   Check at $$ x = 1 $$: $$ \frac{2}{5}(1) + \frac{3}{5}(1) = 1 = 1^3 $$. Check at $$ x = \frac{1}{2} $$: $$ P_3(1/2) = \frac{1}{2}(5/8 - 3/2) = -\frac{7}{16} $$, so $$ \frac{2}{5}\left(-\frac{7}{16}\right) + \frac{3}{5}\left(\frac{1}{2}\right) = \frac{-14 + 24}{80} = \frac{10}{80} = \frac{1}{8} = \left(\frac{1}{2}\right)^3 $$. Exact!
+
 This lesson introduces Legendre's equation and Legendre polynomials—the fundamental solutions for spherical symmetry. They appear in potential theory, quantum mechanics, and expand arbitrary functions on the sphere.
 
 > **Teaching Notes**: Similar structure to Bessel but simpler (regular singular point at $$ x = \pm 1 $$). Show orthogonality—key for Fourier-Legendre expansions. Activity: "Verify Orthogonality" (15 min)—compute $$ \int_{-1}^1 P_m(x)P_n(x)dx $$ or show zeros interlace.

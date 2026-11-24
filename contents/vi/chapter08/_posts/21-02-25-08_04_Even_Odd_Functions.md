@@ -9,7 +9,24 @@ categories:
 - chapter08
 lesson_type: required
 ---
+
 ![21 02 25 08 04 Even Odd Functions]({{ site.imgurl }}/chapter_img/chapter08/04_even_odd_functions.svg)
+
+Trước khi cắm đầu tính ba tích phân dài lê thê cho $a_0, a_n, b_n$, một người làm toán kinh nghiệm luôn dừng lại 2 giây để nhìn **tính đối xứng** của hàm $f(x)$ trên đoạn $[-L, L]$. Chỉ một phép kiểm tra $f(-x)$ so với $f(x)$ có thể cắt bỏ ngay lập tức **một nửa số tích phân** và tránh hoàn toàn sai sót tính toán!
+
+## Bản đồ kiến thức nền: Bốn quy tắc đối xứng Chẵn – Lẻ trong Chuỗi Fourier
+
+1. **Định nghĩa & Hình học**:
+   - **Hàm chẵn** ($f(-x) = f(x)$): đồ thị đối xứng qua trục tung $Oy$ (ví dụ $1, x^2, \vert x \vert, \cos(nx)$).
+   - **Hàm lẻ** ($f(-x) = -f(x)$): đồ thị đối xứng qua gốc tọa độ $O$ (ví dụ $x, x^3, \sin(nx)$).
+2. **Quy tắc nhân dấu (giống hệt nhân $+1$ và $-1$)**:
+   $\text{Chẵn} \times \text{Chẵn} = \text{Chẵn}$; $\text{Lẻ} \times \text{Lẻ} = \text{Chẵn}$; $\text{Chẵn} \times \text{Lẻ} = \text{Lẻ}$.
+3. **Hệ quả tích phân trên đoạn đối xứng $[-L, L]$**:
+   - Nếu $g$ **lẻ**: $\int_{-L}^{L} g(x)\,dx = 0$.
+   - Nếu $g$ **chẵn**: $\int_{-L}^{L} g(x)\,dx = 2\int_{0}^{L} g(x)\,dx$.
+4. **Chuỗi Cosin cho hàm Chẵn & Chuỗi Sin cho hàm Lẻ**:
+   - $f$ **chẵn** $\implies$ mọi $b_n = 0$ (chỉ còn $a_0, a_n$ — Chuỗi Cosin Fourier).
+   - $f$ **lẻ** $\implies$ $a_0 = 0$ và mọi $a_n = 0$ (chỉ còn $b_n$ — Chuỗi Sin Fourier).
 
 ## Mục tiêu
 
@@ -24,6 +41,18 @@ Sinh viên cần nắm định nghĩa chuỗi Fourier và công thức tính h�
 Trong toán học và vật lý, tính đối xứng không chỉ mang ý nghĩa hình học mà còn giúp đơn giản hóa bài toán một cách đáng kể. Trong khai triển Fourier, tính chẵn lẻ có thể làm một nửa số hệ số bằng 0 ngay từ đầu. Điều này vừa tiết kiệm công sức tính tích phân vừa cho biết dữ liệu ban đầu tương thích với lớp mode nào.
 
 Trước khi tính bất kỳ tích phân hệ số nào, câu hỏi đầu tiên nên đặt ra là: hàm số đang xét là chẵn hay lẻ? Chỉ riêng nhận xét này thường đã giải quyết được một nửa khối lượng công việc.
+
+### Khung giải thích (nên đọc chậm): Khai triển cầm tay hàm chẵn $f(x) = \vert x \vert$ trên $[-\pi, \pi]$ và rút ra tổng nổi tiếng $\sum \frac{1}{(2k-1)^2} = \frac{\pi^2}{8}$
+
+1. Vì $\vert -x \vert = \vert x \vert$ là **hàm chẵn**, lập tức suy ra **$b_n = 0$ với mọi $n \ge 1$**!
+2. Tính $a_0$: $a_0 = \frac{2}{\pi}\int_0^{\pi} x\,dx = \frac{2}{\pi}\cdot\frac{\pi^2}{2} = \mathbf{\pi} \implies \frac{a_0}{2} = \frac{\pi}{2}$.
+3. Tính $a_n$ ($n \ge 1$) bằng tích phân từng phần:
+   $$a_n = \frac{2}{\pi}\int_0^{\pi} x\cos(nx)\,dx = \frac{2}{\pi}\left[\frac{x\sin(nx)}{n} + \frac{\cos(nx)}{n^2}\right]_0^{\pi} = \frac{2}{\pi}\cdot\frac{(-1)^n - 1}{n^2}.$$
+   - Khi $n$ chẵn: $(-1)^n - 1 = 0 \implies a_{2k} = 0$.
+   - Khi $n = 2k - 1$ lẻ: $(-1)^n - 1 = -2 \implies a_{2k-1} = -\frac{4}{\pi(2k-1)^2}$.
+4. **Chuỗi Fourier** (hội tụ đều vì $\vert x \vert$ liên tục trên $[-\pi, \pi]$ với $f(-\pi) = f(\pi) = \pi$!):
+   $$\vert x \vert = \frac{\pi}{2} - \frac{4}{\pi}\sum_{k=1}^{\infty} \frac{\cos((2k-1)x)}{(2k-1)^2}.$$
+   Thế $x = 0$ vào hai vế: $0 = \frac{\pi}{2} - \frac{4}{\pi}\sum_{k=1}^{\infty}\frac{1}{(2k-1)^2} \implies \mathbf{1 + \frac{1}{3^2} + \frac{1}{5^2} + \dots = \frac{\pi^2}{8}}$!
 
 ## Khái niệm theo ba cách
 

@@ -10,6 +10,35 @@ categories:
 lesson_type: optional
 ---
 
+Ask a standard deep neural network to solve a differential equation with sharp oscillations or boundary layers, and you will witness a striking pathology called *spectral bias*: gradient descent learns smooth low-frequency shapes almost instantly, while stalling for thousands of epochs on high-frequency modes. Yet classical mathematicians solved this exact problem two centuries ago—by expanding solutions in Chebyshev, Legendre, and Bessel bases that already diagonalize the underlying differential operators.
+
+Today's most reliable Physics-Informed Neural Networks (PINNs) and Neural Operators (DeepONet, Spectral Neural Operators) do not replace Chapter 06; they *embed* Chapter 06 inside modern architectures, letting neural networks learn only the expansion coefficients in a well-conditioned classical basis.
+
+## Background Knowledge Map: Classical Spectral Bases in Modern SciML
+
+1. **Spectral Bias vs. Orthogonal Basis Conditioning:** In a standard MLP, high-frequency features have tiny Neural Tangent Kernel (NTK) eigenvalues, causing slow convergence. Expanding $$ u_N(x) = \sum_{n=0}^N c_n \phi_n(x) $$ in Chebyshev or Legendre polynomials preconditions the optimization landscape so high-order modes train cleanly.
+2. **Exponential (Spectral) Convergence for Analytic Solutions:** When the true ODE/PDE solution is analytic on $$ [-1, 1] $$, Chebyshev/Legendre coefficients decay geometrically ($$ |c_n| \le C \rho^{-n} $$ for some $$ \rho > 1 $$), achieving machine precision with far fewer degrees of freedom than finite differences or raw MLPs.
+3. **Branch–Trunk Factorization (DeepONet as Learned Generalized Series):** DeepONet approximates an operator $$ \mathcal{G}(a)(x) \approx \sum_{k=1}^p b_k(a)\,t_k(x) $$, directly mirroring a truncated series solution where branch outputs $$ b_k(a) $$ play the role of generalized coefficients and trunk outputs $$ t_k(x) $$ play the role of learned basis functions.
+4. **Exact Boundary & Singularity Enforcement:** Multiplying a spectral/neural ansatz by distance functions or Frobenius factors $$ x^r $$ bakes boundary conditions and regular singular behavior into the architecture by construction, eliminating stiff penalty terms from the loss function.
+
+### Step-by-Step Worked Example (Read Slowly): Chebyshev Galerkin Spectral Residual vs. Monomial Basis Conditioning
+
+**Problem:** Approximate the solution of the BVP $$ -u''(x) + u(x) = 1 $$ on $$ [-1, 1] $$ with $$ u(\pm 1) = 0 $$ using a 1-mode Chebyshev basis function $$ \phi_0(x) = T_0(x) - T_2(x) = 2(1 - x^2) $$ via Galerkin projection, and compare the midpoint value $$ u_1(0) $$ to the exact solution $$ u(x) = 1 - \frac{\cosh x}{\cosh 1} $$.
+
+1. **Verify exact boundary satisfaction:**
+   Since $$ T_0(\pm 1) = 1 $$ and $$ T_2(\pm 1) = 2(\pm 1)^2 - 1 = 1 $$, we have $$ \phi_0(\pm 1) = 0 $$ automatically—zero boundary penalty needed!
+2. **Set up the 1-mode ansatz $$ u_1(x) = c_0 \phi_0(x) = 2c_0(1 - x^2) $$:**
+   Compute $$ u_1''(x) = -4c_0 $$, so the PDE residual is
+   $$ R(x) = -u_1''(x) + u_1(x) - 1 = 4c_0 + 2c_0(1 - x^2) - 1 = 6c_0 - 2c_0 x^2 - 1. $$
+3. **Enforce the Galerkin orthogonality condition $$ \int_{-1}^{1} R(x)\,\phi_0(x)\,dx = 0 $$:**
+   Using $$ \int_{-1}^{1} (1 - x^2)\,dx = \frac{4}{3} $$ and $$ \int_{-1}^{1} x^2(1 - x^2)\,dx = \frac{2}{3} - \frac{2}{5} = \frac{4}{15} $$:
+   $$ 2\left[6c_0\left(\frac{4}{3}\right) - 2c_0\left(\frac{4}{15}\right) - \frac{4}{3}\right] = 0 \implies \left(8 - \frac{8}{15}\right) c_0 = \frac{4}{3} \implies \frac{112}{15} c_0 = \frac{4}{3}. $$
+   Solving gives $$ c_0 = \frac{4}{3} \cdot \frac{15}{112} = \frac{5}{28} \approx 0.17857 $$.
+4. **Compare $$ u_1(0) $$ against the exact analytical value:**
+   - Spectral 1-mode approximation: $$ u_1(0) = 2 c_0 = \frac{5}{14} \approx 0.35714 $$.
+   - Exact solution: $$ u(0) = 1 - \frac{1}{\cosh 1} = 1 - \frac{1}{1.54308} \approx 0.35195 $$.
+   With literally **one single Chebyshev basis parameter** $$ c_0 $$, we land within $$ 0.0052 $$ (1.5%) of the exact solution across the domain—illustrating why spectral bases dramatically accelerate modern neural solvers!
+
 ## Objectives
 
 This optional lesson links power series, Frobenius solutions, and classical special functions to the 2021–2024 practice of spectral PINNs and operator learning. Students should see Chebyshev, Legendre, and Fourier bases as more than textbook families: they are the function-space coordinates in which modern surrogate models are most stable. The Frobenius method and the classical identities for Bessel and Legendre functions are left unchanged.

@@ -9,6 +9,19 @@ categories:
 - chapter10
 ---
 
+Nếu Chương 9 thuộc về lửa và sự tiêu tán, thì Chương 10 thuộc về **âm thanh, ánh sáng và sự truyền tin**: **Phương trình Sóng** $u_{tt} = c^2 u_{xx}$ là phương trình đạo hàm riêng **đầu tiên trong lịch sử nhân loại** được viết ra và giải thành công bởi Jean le Rond d'Alembert năm 1747! Cuộc tranh luận kịch tính suốt 50 năm sau đó giữa d'Alembert, Euler và Daniel Bernoulli về sợi dây đàn rung đã đặt nền móng cho toàn bộ lý thuyết PDE, giải tích Fourier và cả phương trình Maxwell về sóng điện từ!
+
+## Bản đồ kiến thức nền: Bốn cột mốc lịch sử vĩ đại của Phương trình Sóng
+
+1. **d'Alembert (1747) — Nghiệm sóng chạy $F(x - ct) + G(x + ct)$**:
+   Chứng minh mọi sóng 1D đơn giản là chồng chất của một sóng chạy sang phải và một sóng chạy sang trái với cùng vận tốc hữu hạn $c$.
+2. **Euler (1748) & Bernoulli (1753) — Hai góc nhìn Sóng chạy vs. Sóng đứng**:
+   Euler mở rộng nghiệm d'Alembert cho cả hình dạng dây có góc gãy (nghiệm yếu!), còn Bernoulli biểu diễn bằng chuỗi vô hạn sóng đứng sin—hai bức tranh tưởng đối lập nhưng thực chất tương đương hoàn toàn nhờ công thức lượng giác!
+3. **James Clerk Maxwell (1865) — Thống nhất Ánh sáng và Điện từ**:
+   Từ 4 phương trình điện từ, Maxwell rút ra phương trình sóng 3D cho điện trường $\mathbf{E}$ và từ trường $\mathbf{B}$ với vận tốc $c = 1/\sqrt{\mu_0 \varepsilon_0} \approx 3 \times 10^8\text{ m/s}$—khám phá ra ánh sáng chính là sóng điện từ!
+4. **Einstein (1916) & LIGO (2015) — Sóng hấp dẫn**:
+   Ngay cả không–thời gian cong trong Thuyết Tương đối Rộng cũng truyền dao động theo phương trình sóng với vận tốc ánh sáng $c$!
+
 ## Mục tiêu
 Bài học này tái hiện lịch sử phát triển của phương trình sóng, từ bài toán dây rung cho đến âm học, quang học và điện từ học. Qua đó, sinh viên thấy được Chương 10 là nơi lý thuyết PDE bắt đầu mô hình hóa sự lan truyền, quá trình truyền tín hiệu và tốc độ truyền hữu hạn.
 
@@ -19,6 +32,14 @@ Sinh viên nên nắm các nội dung giải tích và vật lý chính của Ch
 Năm 1747 tại Paris, Jean le Rond d'Alembert khảo sát một sợi dây đàn bị gảy và đặt ra câu hỏi mang cả ý nghĩa cơ học lẫn nền tảng toán học: hình dạng nhiễu loạn sẽ di chuyển theo thời gian ra sao, và thông tin có lan truyền tức thời hay không? Bài toán này khác hẳn truyền nhiệt: sóng không làm phẳng tức thì mà truyền tín hiệu đi với vận tốc hữu hạn, đòi hỏi toán học mô tả được sự lan truyền thay vì chỉ sự tiêu tán.
 
 Từ đó ra đời công thức nổi tiếng $$u(x,t)=F(x-ct)+G(x+ct)$$. Chỉ trong một dòng, biểu thức này diễn đạt trọn vẹn cơ chế vật lý: một xung ban đầu tách thành hai thành phần, một truyền sang phải và một truyền sang trái với tốc độ $$c$$. Chẳng hạn, một xung hẹp ban đầu trên dây không biến mất ngay mà dịch chuyển dọc theo dây. Phát hiện này đánh dấu bước ngoặt của Chương 10: PDE bắt đầu mô tả quá trình truyền tin, phản xạ và tốc độ lan truyền hữu hạn.
+
+### Khung giải thích (nên đọc chậm): Cầu nối 1 dòng giữa Sóng đứng (Bernoulli) và Sóng chạy (d'Alembert)
+
+Tại sao một sóng đứng $\sin(kx)\cos(kct)$ lại chính là tổng của hai sóng chạy ngược chiều? Chỉ cần dùng đúng công thức tích thành tổng lớp 10:
+$$\sin(kx)\cos(kct) = \mathbf{\frac{1}{2}\sin\big(k(x - ct)\big) + \frac{1}{2}\sin\big(k(x + ct)\big)}!$$
+- Số hạng thứ nhất $\frac{1}{2}\sin(k(x - ct))$ là sóng chạy sang **phải** tốc độ $c$.
+- Số hạng thứ hai $\frac{1}{2}\sin(k(x + ct))$ là sóng chạy sang **trái** tốc độ $c$.
+Cuộc tranh cãi nảy lửa nửa thế kỷ giữa d'Alembert và Bernoulli hóa ra chỉ là hai mặt của cùng một đồng xu lượng giác!
 
 ## Mạch truyện lớn
 Lịch sử phương trình sóng khởi nguồn từ cuộc tranh luận thế kỷ XVIII về bài toán dây rung giữa d'Alembert, Euler và Daniel Bernoulli. Đây không chỉ là tranh luận quanh một phương trình riêng lẻ, mà xoay quanh bản chất của khái niệm nghiệm, mức độ trơn của dữ liệu ban đầu và câu hỏi liệu khai triển theo mode lượng giác có đủ tổng quát để mô tả mọi dao động hay không.

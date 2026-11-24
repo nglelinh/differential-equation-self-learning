@@ -9,7 +9,21 @@ categories:
 - chapter08
 lesson_type: required
 ---
+
 ![21 02 25 08 02 Fourier Coefficients]({{ site.imgurl }}/chapter_img/chapter08/02_fourier_coefficients.svg)
+
+Biết một tín hiệu phân tích được thành tổng các sóng sin/cosin là một chuyện; làm sao đo chính xác biên độ $a_n, b_n$ của từng tần số lại là chuyện khác. Nhờ tính trực giao của hệ lượng giác, ta có bộ **Công thức Euler–Fourier** cực kỳ trong sáng: muốn đo lượng tần số thứ $n$ chứa trong $f(x)$, chỉ cần nhân $f(x)$ với đúng sóng $\cos(n\pi x/L)$ hoặc $\sin(n\pi x/L)$ rồi lấy tích phân trung bình trên một chu kỳ!
+
+## Bản đồ kiến thức nền: Bốn kỹ năng tính Hệ số Fourier không sai dấu
+
+1. **Bộ công thức Euler–Fourier trên $[-L, L]$**:
+   $$a_0 = \frac{1}{L}\int_{-L}^{L} f(x)\,dx, \quad a_n = \frac{1}{L}\int_{-L}^{L} f(x)\cos\!\left(\frac{n\pi x}{L}\right)dx, \quad b_n = \frac{1}{L}\int_{-L}^{L} f(x)\sin\!\left(\frac{n\pi x}{L}\right)dx.$$
+2. **Mẹo dấu vàng cần thuộc nằm lòng**:
+   $\sin(n\pi) = 0$ với mọi $n \in \mathbb{Z}$, còn $\cos(n\pi) = (-1)^n$ (bằng $-1$ khi $n$ lẻ và $+1$ khi $n$ chẵn).
+3. **Tích phân từng phần theo bảng (Tabular Integration)**:
+   Khi $f(x)$ là đa thức ($x, x^2$) nhân $\sin(nx)$ hoặc $\cos(nx)$, dùng bảng dấu đan xen $(+, -, +)$ giúp tránh 90% lỗi dấu cơ học.
+4. **Tính chất tối ưu bình phương tối thiểu (Best $L^2$ Approximation)**:
+   Tổng riêng $S_N(x)$ dùng các hệ số Euler–Fourier chính là hàm lượng giác bậc $N$ có sai số bình phương trung bình $\int_{-L}^{L} [f(x) - T_N(x)]^2\,dx$ **nhỏ nhất có thể**!
 
 ## Mục tiêu
 
@@ -24,6 +38,16 @@ Sinh viên cần nắm vững khái niệm chuỗi Fourier cơ bản, tích phâ
 Việc viết chuỗi Fourier sẽ không mang lại nhiều giá trị thực hành nếu ta không có cách xác định các hệ số. Điểm thuận lợi là ta không cần phải đoán: tương tự như trong đại số tuyến tính, khi có một cơ sở trực giao, các tọa độ của một vectơ được tách ra gọn gàng nhờ tích vô hướng. Các hệ số Fourier xuất hiện theo đúng nguyên lý đó.
 
 Khi nắm chắc cơ chế này, sinh viên sẽ không phải học thuộc lòng các công thức tích phân một cách máy móc, mà hiểu chúng là hệ quả trực tiếp của tính trực giao. Nhờ vậy, các bài toán Fourier tiếp theo sẽ trở nên dễ tiếp cận hơn nhiều.
+
+### Khung giải thích (nên đọc chậm): Tính tay đầy đủ các hệ số Fourier của sóng răng cưa $f(x) = x$ trên $(-\pi, \pi)$
+
+1. **Nhận xét tính chẵn/lẻ trước khi tích phân**: $f(x) = x$ là hàm **lẻ** trên đoạn đối xứng $(-\pi, \pi)$ ⇒ lập tức có **$a_0 = 0$** và **$a_n = 0$ với mọi $n \ge 1$**!
+2. **Tính $b_n$ bằng tích phân từng phần** ($u = x \implies du = dx$; $dv = \sin(nx)\,dx \implies v = -\frac{\cos(nx)}{n}$):
+   $$b_n = \frac{1}{\pi}\int_{-\pi}^{\pi} x\sin(nx)\,dx = \frac{2}{\pi}\int_{0}^{\pi} x\sin(nx)\,dx = \frac{2}{\pi}\left[\left.-\frac{x\cos(nx)}{n}\right|_0^{\pi} + \frac{1}{n}\int_0^{\pi}\cos(nx)\,dx\right].$$
+   Tích phân thứ hai bằng $\left.\frac{\sin(nx)}{n^2}\right|_0^\pi = 0$. Phần biên cho $-\frac{\pi\cos(n\pi)}{n} = -\frac{\pi(-1)^n}{n} = \frac{\pi(-1)^{n+1}}{n}$.
+3. **Kết quả cuối cùng**:
+   $$b_n = \frac{2(-1)^{n+1}}{n} \implies x \sim 2\left(\sin x - \frac{\sin 2x}{2} + \frac{\sin 3x}{3} - \frac{\sin 4x}{4} + \dots\right).$$
+   Kiểm tra tốc độ giảm hệ số: $\vert b_n \vert = \frac{2}{n}$ giảm chậm như $O(1/n)$ vì sóng răng cưa có bước nhảy đứt đoạn tại $x = \pm\pi$!
 
 ## Khái niệm theo ba cách
 

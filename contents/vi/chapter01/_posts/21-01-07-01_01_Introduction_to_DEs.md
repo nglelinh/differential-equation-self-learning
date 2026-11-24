@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Tự nhiên hiếm khi nói thẳng cho ta biết vị trí của một hành tinh hay nhiệt độ của một tách cà phê tại mọi thời điểm; thay vào đó, tự nhiên chỉ tiết lộ **quy luật thay đổi** của chúng ngay tại khoảnh khắc hiện tại. Phương trình vi phân chính là ngôn ngữ dịch những quy luật thay đổi cục bộ đó thành dự đoán toàn cục theo thời gian!
+
+## Bản đồ kiến thức nền: Bốn viên gạch đầu tiên của Phương trình Vi phân
+
+1. **Phân loại ODE vs. PDE**:
+   Phương trình vi phân thường (ODE) chỉ có **một biến độc lập** (thường là thời gian $t$); phương trình đạo hàm riêng (PDE) có từ hai biến độc lập trở lên (như vị trí $x$ và thời gian $t$).
+2. **Bậc (Order) & Tính tuyến tính (Linearity)**:
+   Bậc là cấp đạo hàm cao nhất xuất hiện trong phương trình; phương trình tuyến tính chỉ chứa $y, y', y'', \dots$ ở bậc nhất và không nhân chúng với nhau—đây là đường ranh phân chia phương pháp giải.
+3. **Nghiệm tổng quát, Nghiệm riêng & Bài toán giá trị đầu (IVP)**:
+   PTVP cấp $n$ thường chứa $n$ hằng số tùy ý tạo thành một họ đường cong; gắn thêm $n$ điều kiện ban đầu (IVP) sẽ ghim chặt duy nhất một quỹ đạo vật lý.
+4. **Trường hướng (Direction Field)**:
+   Cho phép "nhìn thấy" hình dạng nghiệm trực tiếp từ phương trình $y' = f(t, y)$ ngay cả trước khi đặt bút giải.
+
 ## Mục tiêu
 Bài học này giúp sinh viên hiểu phương trình vi phân như một quy luật mô tả sự biến thiên, biết phân loại phương trình vi phân thường (ODE) theo bậc, tính tuyến tính, tính tự trị và điều kiện đầu, đồng thời tập nhìn nghiệm không chỉ như một công thức đại số mà như quỹ đạo tiến hóa của một quá trình thực. Sau bài học, sinh viên sẽ thấy rõ vì sao phương trình vi phân xuất hiện tự nhiên trong khoa học, kỹ thuật, kinh tế và sinh học.
 
@@ -22,6 +36,16 @@ Sinh viên cần nắm vững đạo hàm, tích phân, ý nghĩa hình học c�
 Khi một cốc cà phê nguội dần, điều quyết định quá trình không chỉ là nhiệt độ tại một thời điểm mà là tốc độ nguội đi tỉ lệ với chênh lệch nhiệt độ so với môi trường. Khi một quần thể vi khuẩn sinh trưởng, ta quan tâm tốc độ tăng số lượng ở mỗi thời điểm. Khi một tài khoản ngân hàng sinh lãi liên tục, quỹ đạo số dư được chi phối bởi tốc độ tăng tỉ lệ với chính số dư hiện có. Các tình huống này đều dẫn đến một câu hỏi chung: đại lượng cần tìm biến thiên theo quy luật nào?
 
 Phương trình vi phân là ngôn ngữ toán học trả lời câu hỏi đó. Thay vì cho trực tiếp giá trị của hàm số, nó đưa ra mối liên hệ giữa hàm số và đạo hàm của nó. Vì vậy, giải một ODE không chỉ là thao tác biến đổi ký hiệu mà là quá trình tái dựng quỹ đạo, sự tích lũy hoặc cơ chế phản hồi từ thông tin về tốc độ biến thiên.
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng nghiệm và ghim hằng số cho bài toán làm nguội Newton $T'(t) = -0{,}2(T - 20),\; T(0) = 90$
+
+Giả sử một tách cà phê $90^\circ\text{C}$ đặt trong phòng $20^\circ\text{C}$, và ta nghi ngờ nghiệm có dạng $T(t) = 20 + C e^{-0{,}2 t}$:
+1. **Kiểm tra vế trái (đạo hàm)**: $T'(t) = -0{,}2 C e^{-0{,}2 t}$.
+2. **Kiểm tra vế phải**: $-0{,}2(T(t) - 20) = -0{,}2(C e^{-0{,}2 t}) = -0{,}2 C e^{-0{,}2 t}$. Hai vế khớp nhau với mọi $C \in \mathbb{R}$!
+3. **Áp dụng điều kiện đầu $T(0) = 90$**:
+   $$20 + C e^0 = 90 \implies C = \mathbf{70}.$$
+4. **Dự đoán thực tế**: Sau $t = 5$ phút, nhiệt độ tách cà phê là:
+   $$T(5) = 20 + 70 e^{-1} \approx 20 + 70(0{,}3679) \approx \mathbf{45{,}75^\circ\text{C}}.$$
 
 ## Khái niệm theo ba cách
 

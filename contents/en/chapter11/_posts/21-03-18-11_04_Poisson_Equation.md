@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Place a steady heat lamp over a cooled metal plate, or inject electric charge into a vacuum chamber, and the peaceful flatness of Laplace's equation breaks: the equilibrium surface must now bend upward or downward to carry away the newly generated flux. That inhomogeneous balance, $-\Delta u = f$, is **Poisson's equation**—the workhorse governing everything from gravitational fields inside planets to viscous Poiseuille flow through pipes.
+
 ## Learning Objectives
 
 This lesson introduces Poisson's equation as the sourced version of Laplace's equation. Students should understand how forcing changes the elliptic problem and why Poisson models arise in gravitation, electrostatics, and diffusion equilibrium.
@@ -17,6 +19,15 @@ This lesson introduces Poisson's equation as the sourced version of Laplace's eq
 ## Prerequisites
 
 Students should know Laplace's equation, the meaning of steady-state equilibrium, and the idea that forcing or source terms alter balance laws.
+
+## Background Knowledge Map: Sources, Compatibility, and Inhomogeneous Elliptic Theory
+
+Understanding $-\Delta u = f$ requires connecting four core mathematical concepts:
+
+1. **Superposition of Homogeneous and Particular Solutions:** Because $-\Delta$ is linear, any solution splits into $u = u_p + u_h$, where $-\Delta u_p = f$ absorbs the interior source and $\Delta u_h = 0$ adjusts the boundary values to match the prescribed data.
+2. **Divergence Theorem and Neumann Compatibility:** Integrating $-\Delta u = f$ over $\Omega$ gives $-\int_{\partial\Omega} \frac{\partial u}{\partial n}\,dS = \int_\Omega f\,dx$. For a pure Neumann problem, a solution exists *only* if the total interior source balances the total boundary flux—and then it is unique only up to an additive constant.
+3. **Eigenfunction Expansion of Sources:** Expanding both $u$ and $f$ in the Dirichlet eigenfunctions $\{\phi_k\}$ of $-\Delta$ (with eigenvalues $\lambda_k > 0$) turns the PDE into algebraic division $\hat{u}_k = \hat{f}_k / \lambda_k$, immediately revealing why the inverse operator $(-\Delta)^{-1}$ gains two derivatives of smoothness.
+4. **Newtonian Potential and Fundamental Solutions:** On $\mathbb{R}^n$, convolving $f$ with the fundamental solution $\Phi(x)$ ($-\frac{1}{2\pi}\ln|x|$ in 2D, $\frac{1}{4\pi|x|}$ in 3D) produces an explicit particular solution $u(x) = (\Phi * f)(x)$.
 
 ## Introduction
 
@@ -89,6 +100,22 @@ This shows where the lesson is heading next.
 - Can they identify application areas where sources naturally appear?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Viscous Pipe Flow / Uniformly Loaded Membrane on the Unit Disk
+
+Solve Poisson's equation $-\Delta u = 2$ on the unit disk $B_1 = \{x^2 + y^2 < 1\}$ with zero Dirichlet boundary condition $u = 0$ on $\partial B_1$, and check both the differential equation and the total flux balance.
+
+1. **Exploit rotational symmetry:** Both the domain $B_1$, the constant source $f \equiv 2$, and the boundary data $0$ are rotationally invariant, so we seek a radial solution $u = u(r)$. The polar Laplacian reduces to:
+   $$-\frac{1}{r}\frac{d}{dr}\left(r\frac{du}{dr}\right) = 2 \implies \frac{d}{dr}\left(r\frac{du}{dr}\right) = -2r.$$
+2. **Integrate once:**
+   $$r\frac{du}{dr} = -r^2 + C_1 \implies \frac{du}{dr} = -r + \frac{C_1}{r}.$$
+3. **Enforce regularity at the origin $r = 0$:** To avoid a logarithmic singularity $\ln r$ (which would introduce an unwanted Dirac delta point source at the origin), we must set $C_1 = 0$.
+4. **Integrate a second time and apply $u(1) = 0$:**
+   $$u(r) = -\frac{1}{2}r^2 + C_2, \qquad u(1) = 0 \implies C_2 = \frac{1}{2}.$$
+   In Cartesian coordinates, the exact solution is the paraboloid:
+   $$u(x,y) = \frac{1 - x^2 - y^2}{2}.$$
+5. **Double-check PDE and flux balance:** Compute $u_{xx} = -1$ and $u_{yy} = -1$, so $-\Delta u = -(-1 - 1) = 2$ everywhere. On $\partial B_1$, the outward normal derivative is $\frac{\partial u}{\partial r}\big|_{r=1} = -1$, so the boundary flux is $-\oint_{\partial B_1} \frac{\partial u}{\partial r}\,ds = 2\pi$, which matches $\iint_{B_1} 2\,dA = 2(\pi \cdot 1^2) = 2\pi$ exactly.
 
 ### Example 1: Constant Source
 

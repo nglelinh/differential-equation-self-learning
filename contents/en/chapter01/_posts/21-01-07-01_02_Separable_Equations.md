@@ -10,6 +10,37 @@ categories:
 lesson_type: required
 ---
 
+Imagine a snowball melting in warm air so that its volume shrinks at a rate proportional to its surface area, or a chemical reaction whose speed depends on the product of reactant concentrations. Whenever the right-hand side of $$y' = f(x,y)$$ factors cleanly into an $$x$$-part times a $$y$$-part, you can decouple the two variables onto opposite sides of the equals sign and integrate directly—the oldest and most versatile exact technique in all of differential equations.
+
+## Background Knowledge Map: What Makes Separation of Variables Rigorous
+
+At the university level, separation of variables is more than "multiplying by $$dx$$"—four subtleties govern every problem:
+
+1. **Chain-Rule Justification:** Writing $$g(y)\,y' = h(x)$$ and integrating with respect to $$x$$ yields $$\int g(y(x))\,y'(x)\,dx = \int h(x)\,dx$$; by substitution $$u = y(x)$$, this rigorously becomes $$\int g(y)\,dy = \int h(x)\,dx + C$$.
+2. **Lost Equilibrium (Singular) Solutions:** Dividing both sides by $$q(y)$$ requires $$q(y) \ne 0$$; every root $$y = y^*$$ of $$q(y) = 0$$ is a constant equilibrium solution that must be checked separately so it is never dropped.
+3. **Implicit vs. Explicit Solutions and Interval of Validity:** Integration often produces an implicit curve $$G(y) = H(x) + C$$; solving for $$y(x)$$ can introduce square-root branches (fixed by the initial condition) and vertical asymptotes that restrict the maximal interval of existence.
+4. **Exponential Sign Absorption:** When $$\ln\lvert y \rvert = H(x) + C_1$$, exponentiating gives $$\lvert y \rvert = e^{C_1} e^{H(x)}$$, and allowing $$C = \pm e^{C_1}$$ (plus $$C = 0$$ from the equilibrium $$y \equiv 0$$) smoothly recovers all real constants $$C \in \mathbb{R}$$.
+
+### Step-by-Step Worked Example (Read Slowly): Solving a Separable IVP with Blow-Up and Equilibrium Check
+
+Solve the initial value problem
+$$\frac{dy}{dx} = x\,(y^2 - 1), \qquad y(0) = 2,$$
+and find its maximal interval of existence.
+
+1. **Check for constant (equilibrium) solutions first:**
+   Setting $$y^2 - 1 = 0$$ gives $$y \equiv 1$$ and $$y \equiv -1$$. Neither passes through $$y(0) = 2$$, so near $$x = 0$$ we safely have $$y^2 - 1 \ne 0$$.
+2. **Separate variables and integrate using partial fractions:**
+   $$\frac{dy}{y^2 - 1} = x\,dx \implies \frac{1}{2}\left(\frac{1}{y-1} - \frac{1}{y+1}\right)dy = x\,dx.$$
+   Integrating both sides:
+   $$\frac{1}{2}\ln\left\lvert \frac{y-1}{y+1} \right\rvert = \frac{x^2}{2} + C_1 \implies \left\lvert \frac{y-1}{y+1} \right\rvert = K e^{x^2}.$$
+3. **Pin down the sign and constant using $$y(0) = 2$$:**
+   At $$x = 0, y = 2$$, $$\frac{y-1}{y+1} = \frac{1}{3} > 0$$, so we drop the absolute value with $$K = \frac{1}{3}$$:
+   $$\frac{y-1}{y+1} = \frac{1}{3}e^{x^2}.$$
+4. **Solve explicitly for $$y(x)$$:**
+   $$3(y - 1) = (y + 1)e^{x^2} \implies y(3 - e^{x^2}) = 3 + e^{x^2} \implies y(x) = \frac{3 + e^{x^2}}{3 - e^{x^2}}.$$
+5. **Determine the maximal interval of existence:**
+   The denominator vanishes when $$e^{x^2} = 3 \iff x = \pm\sqrt{\ln 3} \approx \pm 1.048$$. Because the initial point $$x = 0$$ lies between these vertical asymptotes, the maximal interval of existence is $$(-\sqrt{\ln 3},\; \sqrt{\ln 3})$$—even though the ODE itself is smooth everywhere on $$\mathbb{R}^2$$!
+
 This lesson covers the method of separation of variables for first-order ODEs.
 
 ## Topics to Cover

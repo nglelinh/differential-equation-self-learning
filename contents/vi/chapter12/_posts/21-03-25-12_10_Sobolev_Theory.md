@@ -12,6 +12,19 @@ lesson_type: optional
 
 ![Lý thuyết Sobolev: nhúng, compact và trace]({{ site.imgurl }}/chapter_img/chapter12/10_sobolev_theory.svg )
 
+Một hàm nằm trong không gian Sobolev $W^{1,p}(\Omega)$ có bị chặn hay liên tục hay không? Câu trả lời hóa ra phụ thuộc kịch tính vào **cuộc đua giữa số bậc tích phân $p$ và số chiều không gian $n$**! Trong 1 chiều ($n = 1$), mọi hàm $H^1$ đều liên tục; nhưng sang 2 chiều và 3 chiều, một hàm $H^1$ có thể tiến ra vô cực tại một điểm (như $\ln|\ln r|$ ở 2D)! **Lý thuyết Nhúng Sobolev** (Gagliardo–Nirenberg–Sobolev, Morrey và Rellich–Kondrachov) lập nên bản đồ chính xác cho cuộc đua kỳ thú ấy.
+
+## Bản đồ kiến thức nền: Bốn định lý trụ cột của Lý thuyết Sobolev
+
+1. **Chế độ dưới tới hạn ($p < n$) — Nhúng Gagliardo–Nirenberg–Sobolev**:
+   $W^{1,p}(\mathbb{R}^n) \hookrightarrow L^{p^*}(\mathbb{R}^n)$ với số mũ liên hợp Sobolev $p^* = \frac{np}{n - p} > p$. Có đạo hàm trong $L^p$ giúp hàm **tăng bậc khả tích** lên tận $L^{p^*}$, nhưng chưa đủ để liên tục!
+2. **Chế độ vượt tới hạn ($p > n$) — Bất đẳng thức Morrey**:
+   $W^{1,p}(\mathbb{R}^n) \hookrightarrow C^{0, \gamma}(\mathbb{R}^n)$ với số mũ Hölder $\gamma = 1 - \frac{n}{p}$: hàm tự động có đại diện **liên tục Hölder** khắp nơi!
+3. **Chế độ tới hạn ($p = n$) — Biên giới Logarit**:
+   Ví dụ $W^{1,2}(\Omega)$ ở 2D nhúng vào mọi $L^q$ ($q < \infty$) nhưng **không** nhúng vào $L^\infty$—chứa các kỳ dị logarit tinh vi!
+4. **Định lý Nhúng Compact Rellich–Kondrachov**:
+   Trên miền bị chặn biên tốt $\Omega$, phép nhúng $W^{1,p}(\Omega) \Subset L^q(\Omega)$ là **compact** với mọi $q < p^*$—chính tính compact này giúp trích ra dãy con hội tụ mạnh để giải PDE phi tuyến và chứng minh phổ rời rạc của $-\Delta$!
+
 ## Mục tiêu
 
 Bài học tùy chọn này mở rộng bài 12.03 sang các định lý nền tảng của lý thuyết Sobolev trong PDE hiện đại: định lý nhúng Sobolev, tính compact Rellich–Kondrachov, định lý vết biên (trace) và bất đẳng thức Poincaré. Sau bài học, sinh viên không chỉ nắm định nghĩa "hàm có đạo hàm yếu khả tích" mà còn hiểu điều kiện đó mang lại những tính chất gì về độ trơn, sự hội tụ dãy con và ý nghĩa của điều kiện biên.
@@ -26,6 +39,18 @@ Sinh viên cần nắm không gian $$ L^p $$, đạo hàm yếu, định nghĩa 
 
 Tập hợp các câu trả lời đó tạo nên lý thuyết Sobolev — không phải một định lý đơn lẻ mà là một hệ thống kết quả cho thấy việc kiểm soát đạo hàm yếu đủ để đảm bảo tính khả tích cao hơn (hoặc tính liên tục), tính compact và sự tồn tại của vết biên. Nhờ vậy, không gian Sobolev không chỉ là nơi đặt nghiệm yếu mà còn là công cụ phân tích cấu trúc của nghiệm.
 
+
+### Khung giải thích (nên đọc chậm): Tính nhanh số mũ nhúng Sobolev $p^*$ theo số chiều $n$ cho không gian năng lượng $H^1$ ($p = 2$)
+
+Hãy xem cùng một không gian $H^1 = W^{1,2}$ thay đổi mạnh mẽ ra sao khi đổi số chiều $n$:
+1. **Chiều $n = 1$ ($p = 2 > n = 1$, chế độ Morrey)**:
+   Số mũ Hölder $\gamma = 1 - \frac{1}{2} = \mathbf{\frac{1}{2}}$, nên $H^1(\mathbb{R}) \hookrightarrow C^{0, 1/2}(\mathbb{R})$—mọi hàm năng lượng hữu hạn 1D đều liên tục và bị chặn!
+2. **Chiều $n = 2$ ($p = 2 = n$, chế độ tới hạn)**:
+   $H^1(\Omega) \hookrightarrow L^q(\Omega)$ với mọi $q < \infty$, nhưng **không** vào $L^\infty$ (ví dụ $u(x) = \ln|\ln|x||$ thuộc $H^1$ trên đĩa nhỏ nhưng tiến tới $+\infty$ tại gốc!).
+3. **Chiều $n = 3$ ($p = 2 < n = 3$, chế độ dưới tới hạn)**:
+   Tính số mũ Sobolev $2^*$:
+   $$2^* = \frac{n p}{n - p} = \frac{3 \times 2}{3 - 2} = \mathbf{6} \implies H^1(\mathbb{R}^3) \hookrightarrow L^6(\mathbb{R}^3)!$$
+   Nhờ vậy, các số hạng phi tuyến bậc 3 hay bậc 5 (như $|u|^4 u$ trong phương trình Schrödinger phi tuyến 3D) vẫn kiểm soát được hoàn toàn bằng chuẩn $H^1$!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Khi giải bài toán biên trên các hình học 3D phức tạp (cánh tuabin, mạch máu tim) hoặc khi ta có sẵn một ít dữ liệu đo đạc thực nghiệm nhưng chưa biết chính xác hệ số vật lý, chia lưới phần tử hữu hạn (FEM) trở nên cực kỳ tốn công. **Mạng nơ-ron tích hợp vật lý (PINN — Physics-Informed Neural Networks)** mở ra một hướng tiếp cận đột phá: biểu diễn nghiệm $u_\theta(x)$ bằng một mạng nơ-ron trơn, dùng **đạo hàm tự động (Autodiff)** để tính $u_\theta', u_\theta''$ chính xác, và đưa thẳng phần dư PTVP cùng điều kiện biên vào hàm mất mát!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của PINN cho Bài toán Biên
+
+1. **Đạo hàm tự động (Automatic Differentiation) thay cho sai phân lưới**:
+   Không cần chia lưới xấp xỉ đạo hàm: PyTorch/JAX tính chính xác $\frac{\partial^2 u_\theta}{\partial x^2}$ bằng quy tắc dây chuyền trên đồ thị tính toán của mạng nơ-ron.
+2. **Hàm mất mát vật lý tổng hợp ($\mathcal{L} = \mathcal{L}_{\text{PDE}} + \lambda_{\text{BC}} \mathcal{L}_{\text{BC}}$)**:
+   $\mathcal{L}_{\text{PDE}}$ ép mạng thỏa phương trình tại các điểm lấy mẫu bên trong (*collocation points*); $\mathcal{L}_{\text{BC}}$ ép mạng thỏa điều kiện biên tại $x = a, b$.
+3. **Áp đặt biên cứng (Hard Boundary Enforcement)**:
+   Thay vì chỉ phạt mềm ở biên, ta thiết kế trực tiếp kiến trúc mạng như $\hat{u}_\theta(x) = x(1 - x)\, N_\theta(x)$ để điều kiện $u(0) = u(1) = 0$ được thỏa mãn **chính xác 100% theo cấu trúc**!
+4. **Bài toán ngược (Inverse Problems) — Thế mạnh lớn nhất của PINN**:
+   PINN vừa tìm trường nghiệm $u(x)$, vừa tối ưu đồng thời tham số vật lý chưa biết (như hệ số dẫn nhiệt $\alpha$) khớp với vài cảm biến đo thật.
+
 ## Mục tiêu
 
 Bài học tùy chọn này đặt bài toán giá trị biên hai điểm, bài toán trị riêng Sturm–Liouville và hàm Green cạnh mạng nơ-ron tích hợp vật lý (PINN) cùng các bộ giải nơ-ron biến phân. Sinh viên cần viết được hàm mất mát PINN cho bài toán giá trị biên (BVP), giải thích vì sao bài toán trị riêng khó hơn bài toán nguồn tuyến tính và biết sử dụng các kết quả nghiên cứu giai đoạn 2021–2024 về chế độ thất bại làm công cụ chẩn đoán. Lý thuyết Sturm–Liouville cổ điển của chương vẫn là chuẩn mực kiểm chứng.
@@ -25,6 +38,19 @@ Bài toán giá trị biên đòi hỏi nghiệm phải đồng thời thỏa ph
 Raissi, Perdikaris và Karniadakis (2019) đã đặt nền móng cho khuôn khổ PINN hiện đại. Sau đó, Krishnapriyan, Gholami, Zhe, Kirby và Mahoney (*Characterizing possible failure modes in physics-informed neural networks*, NeurIPS 2021) chỉ ra rằng ngay cả các BVP đối lưu, phản ứng và tần số cao đơn giản cũng có thể khiến PINN thất bại. Wang, Yu và Perdikaris phân tích hiện tượng bất ổn gradient và tính cứng (stiffness) trong hàm mất mát của PINN. Cuomo và cộng sự (*J. Sci. Comput.*, 2022) khảo sát sự phát triển của phương pháp, còn Hao và cộng sự (*PINNacle*, NeurIPS 2024) hệ thống hóa các quan sát này thành một bộ kiểm chuẩn công khai.
 
 Song song với đó, nhánh biến phân — tiêu biểu là phương pháp Deep Ritz của E và Yu (2018) cùng các mở rộng sau này — cực tiểu hóa phiếm hàm năng lượng thay vì phần dư dạng mạnh, gần gũi hơn với dạng yếu trong lý thuyết Sturm–Liouville. Ở chiều ngược lại, quan điểm hàm Green cho thấy khi toán tử đã khả nghịch, việc học trực tiếp toán tử nghịch đảo (DeepONet, toán tử nơ-ron) sẽ giải quyết bài toán ở cấp độ toàn bộ lớp BVP thay vì từng nghiệm đơn lẻ.
+
+### Khung giải thích (nên đọc chậm): Tính tay hàm mất mát PINN cho BVP $-u''(x) = 2,\; u(0) = 0,\; u(1) = 0$
+
+Nghiệm chính xác của bài toán là $u^*(x) = x(1 - x) = x - x^2$ (vì $-(x - x^2)'' = 2$).
+Giả sử một mạng siêu nhỏ (1 tham số học $w$) có kiến trúc áp biên cứng: $\hat{u}_w(x) = w \cdot x(1 - x)$.
+1. **Kiểm tra điều kiện biên**: $\hat{u}_w(0) = 0$ và $\hat{u}_w(1) = 0$ với **mọi $w$** → $\mathcal{L}_{\text{BC}} \equiv 0$!
+2. **Tính phần dư PDE bằng đạo hàm tự động**:
+   $$\hat{u}_w''(x) = -2w \implies r(x; w) = -\hat{u}_w''(x) - 2 = 2w - 2.$$
+3. **Tính hàm mất mát trên $M$ điểm collocation**:
+   $$\mathcal{L}_{\text{PDE}}(w) = \frac{1}{M}\sum_{i=1}^{M} (2w - 2)^2 = 4(w - 1)^2.$$
+4. **Một bước Gradient Descent** (khởi đầu $w_0 = 0$, tốc độ học $\eta = 0{,}1$):
+   $$\frac{d\mathcal{L}}{dw} = 8(w - 1) \implies w_1 = 0 - 0{,}1 \cdot (-8) = 0{,}8 \to \dots \to \mathbf{w^* = 1}.$$
+   Mạng hội tụ về đúng $w^* = 1$, khôi phục chính xác nghiệm $u^*(x) = x(1 - x)$ mà không hề cần một điểm dữ liệu nhãn nào bên trong miền!
 
 ## Khái niệm then chốt
 

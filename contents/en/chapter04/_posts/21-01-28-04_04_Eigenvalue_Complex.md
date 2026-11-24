@@ -10,6 +10,42 @@ categories:
 lesson_type: required
 ---
 
+When a real $$2\times 2$$ matrix has no real eigenvectors, no straight-line invariant highways exist in the plane—instead, the matrix continuously *rotates* vectors while stretching or shrinking them. Complex conjugate eigenvalues $$\lambda = \alpha \pm i\beta$$ turn those rotations into exact spirals and closed ellipses, and you only ever need to compute *one* complex eigenvector to harvest *both* real basis solutions!
+
+## Background Knowledge Map: Extracting Real Spirals from One Complex Eigenpair
+
+Four insights make complex-eigenvalue systems fast and geometrically transparent:
+
+1. **Half the Work (Conjugate Symmetry):** For real $$A$$, if $$A\mathbf{v} = (\alpha + i\beta)\mathbf{v}$$ with $$\mathbf{v} = \mathbf{a} + i\mathbf{b}$$, then $$A\bar{\mathbf{v}} = (\alpha - i\beta)\bar{\mathbf{v}}$$ automatically; taking the real and imaginary parts of $$\mathbf{z}(t) = e^{(\alpha+i\beta)t}(\mathbf{a} + i\mathbf{b})$$ yields two linearly independent real solutions:
+   $$\mathbf{x}^{(1)}(t) = e^{\alpha t}(\mathbf{a}\cos\beta t - \mathbf{b}\sin\beta t), \qquad \mathbf{x}^{(2)}(t) = e^{\alpha t}(\mathbf{a}\sin\beta t + \mathbf{b}\cos\beta t).$$
+2. **Stability from $$\alpha = \operatorname{Re}(\lambda)$$:** $$\alpha < 0$$ yields an asymptotically stable **spiral sink**; $$\alpha = 0$$ yields a neutrally stable **center** (closed ellipses); $$\alpha > 0$$ yields an unstable **spiral source**.
+3. **Instant Rotation Direction Test (No Guessing!):** Never guess whether a spiral turns clockwise or counterclockwise from $$\beta$$—simply plug the test point $$\mathbf{x} = (1, 0)^\top$$ into $$\mathbf{x}' = A\mathbf{x} = (a_{11}, a_{21})^\top$$! If $$a_{21} > 0$$, the arrow on the positive $$x_1$$-axis points up (**counterclockwise**); if $$a_{21} < 0$$, it points down (**clockwise**).
+4. **Real Canonical Form:** Setting $$P = [\mathbf{a}\;\; \mathbf{b}]$$ transforms $$A$$ into $$P^{-1}AP = \begin{pmatrix} \alpha & \beta \\ -\beta & \alpha \end{pmatrix}$$ (a pure scaled rotation matrix!).
+
+### Step-by-Step Worked Example (Read Slowly): Solving a Spiral Sink IVP and Determining Its Rotation Sense
+
+Solve the initial value problem
+$$\mathbf{x}' = \begin{pmatrix} -1 & -2 \\ 2 & -1 \end{pmatrix}\mathbf{x}, \qquad \mathbf{x}(0) = \begin{pmatrix} 3 \\ 1 \end{pmatrix}.$$
+
+1. **Find the complex eigenvalues:**
+   $$\operatorname{tr}(A) = -2, \qquad \det(A) = 1 - (-4) = 5.$$
+   Characteristic equation: $$\lambda^2 + 2\lambda + 5 = (\lambda + 1)^2 + 4 = 0 \implies \lambda = -1 \pm 2i$$ ($$\alpha = -1,\; \beta = 2$$).
+   Since $$\alpha = -1 < 0$$, the origin is a **spiral sink**.
+2. **Test rotation direction at $$(1, 0)^\top$$:**
+   $$A\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} -1 \\ 2 \end{pmatrix}.$$
+   Because the second component $$a_{21} = +2 > 0$$, trajectories spiral inward **counterclockwise**!
+3. **Find one complex eigenvector for $$\lambda_1 = -1 + 2i$$:**
+   $$(A - (-1+2i)I)\mathbf{v} = \begin{pmatrix} -2i & -2 \\ 2 & -2i \end{pmatrix}\begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = \mathbf{0} \implies -2i v_1 - 2v_2 = 0 \implies v_2 = -i v_1.$$
+   Pick $$v_1 = 1 \implies \mathbf{v} = \begin{pmatrix} 1 \\ -i \end{pmatrix} = \underbrace{\begin{pmatrix} 1 \\ 0 \end{pmatrix}}_{\mathbf{a}} + i\underbrace{\begin{pmatrix} 0 \\ -1 \end{pmatrix}}_{\mathbf{b}}.$$
+4. **Expand $$\mathbf{z}(t) = e^{(-1+2i)t}(\mathbf{a} + i\mathbf{b})$$ and read real & imaginary parts:**
+   $$\mathbf{z}(t) = e^{-t}(\cos 2t + i\sin 2t)\begin{pmatrix} 1 \\ -i \end{pmatrix} = e^{-t}\begin{pmatrix} \cos 2t + i\sin 2t \\ \sin 2t - i\cos 2t \end{pmatrix}.$$
+   Thus $$\mathbf{x}^{(1)}(t) = e^{-t}\begin{pmatrix} \cos 2t \\ \sin 2t \end{pmatrix}$$ and $$\mathbf{x}^{(2)}(t) = e^{-t}\begin{pmatrix} \sin 2t \\ -\cos 2t \end{pmatrix}$$.
+5. **Apply $$\mathbf{x}(0) = (3, 1)^\top$$:**
+   $$\mathbf{x}(0) = c_1\begin{pmatrix} 1 \\ 0 \end{pmatrix} + c_2\begin{pmatrix} 0 \\ -1 \end{pmatrix} = \begin{pmatrix} 3 \\ 1 \end{pmatrix} \implies c_1 = 3,\quad c_2 = -1.$$
+   Final IVP solution:
+   $$\mathbf{x}(t) = e^{-t}\begin{pmatrix} 3\cos 2t - \sin 2t \\ 3\sin 2t + \cos 2t \end{pmatrix}.$$
+   Check at $$t = 0$$: $$\mathbf{x}(0) = (3, 1)^\top$$ and $$\mathbf{x}'(0) = (-5, 5)^\top = A(3, 1)^\top$$. Exact!
+
 ## Learning Objectives
 
 This lesson helps students handle linear systems when the matrix has complex conjugate eigenvalue pairs, convert complex solutions to real solutions, and read the phenomena of rotation, inward spirals, or outward spirals from the real and imaginary parts of eigenvalues.

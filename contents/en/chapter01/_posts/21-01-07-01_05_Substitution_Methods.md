@@ -10,6 +10,40 @@ categories:
 lesson_type: required
 ---
 
+Many nonlinear differential equations look impenetrable in their original coordinates—until a single clever change of variables unravels them into a separable or linear equation you already know how to solve. Just as polar coordinates turn a messy circle equation $$x^2 + y^2 = r^2$$ into a constant, substitution methods exploit hidden scaling or algebraic symmetries to straighten curved differential equations.
+
+## Background Knowledge Map: Three Symmetry-Driven Substitutions
+
+Each classical substitution targets a specific structural symmetry of the ODE:
+
+1. **Scale-Invariant (Homogeneous) ODEs ($$v = y/x$$):** When $$y' = F(y/x)$$, rescaling $$(x, y) \mapsto (kx, ky)$$ leaves the slope field invariant along every ray through the origin; setting $$y = vx$$ (so $$y' = v + xv'$$) always converts the ODE into a separable equation in $$v$$ and $$x$$.
+2. **Bernoulli Equations ($$u = y^{1-n}$$):** An equation $$y' + p(x)y = q(x)y^n$$ ($$n \ne 0, 1$$) is nonlinear only because of the power $$y^n$$; dividing by $$y^n$$ and setting $$u = y^{1-n}$$ transforms it into an exact linear first-order ODE for $$u$$.
+3. **Linear-Combination Substitutions ($$u = ax + by + c$$):** When $$y' = F(ax + by + c)$$, the slope depends only on distance from parallel lines $$ax + by = \text{const}$$; setting $$u = ax + by + c$$ immediately makes the equation separable.
+4. **Riccati Reduction ($$y = y_1 + 1/u$$):** A quadratic ODE $$y' = p(x) + q(x)y + r(x)y^2$$ cannot generally be solved by quadrature, yet knowing just *one* particular solution $$y_1(x)$$ reduces it to a Bernoulli (hence linear) equation via $$y = y_1 + u^{-1}$$.
+
+### Step-by-Step Worked Example (Read Slowly): Linearizing a Bernoulli IVP via $$u = y^{1-n}$$
+
+Solve the Bernoulli initial value problem
+$$y' + \frac{1}{x}y = x\,y^2, \qquad x > 0, \qquad y(1) = 1.$$
+
+1. **Identify the Bernoulli exponent and choose the substitution:**
+   Here $$p(x) = \frac{1}{x}$$, $$q(x) = x$$, and $$n = 2$$. Set
+   $$u = y^{1-2} = y^{-1} \implies y = u^{-1}, \qquad \frac{du}{dx} = -y^{-2}\frac{dy}{dx}.$$
+2. **Divide the ODE by $$y^2$$ and substitute $$u$$:**
+   $$y^{-2}y' + \frac{1}{x}y^{-1} = x \implies -u' + \frac{1}{x}u = x \implies u' - \frac{1}{x}u = -x.$$
+   The nonlinear $$y^2$$ term has vanished—we now have a standard linear first-order ODE!
+3. **Solve the linear ODE for $$u(x)$$ using an integrating factor:**
+   $$\mu(x) = \exp\!\left(\int -\frac{1}{x}\,dx\right) = e^{-\ln x} = \frac{1}{x} \qquad (x > 0).$$
+   Multiply by $$1/x$$:
+   $$\frac{1}{x}u' - \frac{1}{x^2}u = -1 \iff \frac{d}{dx}\!\left(\frac{u}{x}\right) = -1.$$
+   Integrate:
+   $$\frac{u}{x} = -x + C \implies u(x) = Cx - x^2.$$
+4. **Back-substitute $$y = 1/u$$ and apply $$y(1) = 1$$:**
+   $$y(x) = \frac{1}{Cx - x^2}, \qquad 1 = \frac{1}{C(1) - 1^2} \implies C = 2.$$
+   Therefore,
+   $$y(x) = \frac{1}{2x - x^2} = \frac{1}{x(2 - x)}, \qquad x \in (0, 2).$$
+   Notice that the solution blows up at both $$x = 0$$ and $$x = 2$$—a nonlinear finite-time blow-up hidden inside a deceptively simple equation!
+
 ## Objectives
 
 This lesson helps students see that many first-order ODE that initially look nonlinear and complicated actually hide a better variable. Once the right substitution is chosen, the equation often becomes separable, linear, or exact. Students should learn to recognize the most important patterns, especially Bernoulli equations and first-order homogeneous equations.

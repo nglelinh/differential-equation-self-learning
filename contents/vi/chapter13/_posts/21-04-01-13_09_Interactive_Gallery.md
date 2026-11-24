@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Không có cách nào học giải tích số thấm nhanh bằng việc tự tay kéo thanh trượt bước lưới $h$ và nhìn điều gì xảy ra trên màn hình: đường gấp khúc Euler rời dần quỹ đạo thật, RK4 ôm sát đường cong như phép màu, lưới FTCS lập tức bốc cháy răng cưa ngay khoảnh khắc $r$ nhích từ $0{,}50$ lên $0{,}51$, còn các quỹ đạo SDE tỏa ra thành đám mây phân bố Gaussian sống động!
+
+## Bản đồ kiến thức nền: Bốn thí nghiệm trực quan nên thử ngay trong Gallery Chương 13
+
+1. **Đường dốc Bậc Hội tụ trên Biểu đồ Log–Log**:
+   Quan sát đồ thị $\log(\text{Sai số})$ theo $\log(h)$: độ dốc đường thẳng chính là bậc hội tụ $p$ ($p=1$ cho Euler, $p=2$ cho Midpoint/Heun, $p=4$ cho RK4).
+2. **Bản đồ Miền Ổn định trên Mặt phẳng Phức $z = h\lambda$**:
+   So sánh hình tròn nhỏ bé của Euler hiện, hình "bốn cánh" của RK4 với toàn bộ nửa mặt phẳng trái của Euler ẩn và BDF.
+3. **Hiệu ứng Vượt ngưỡng CFL & Phân tán Số**:
+   Chạy phương trình sóng/nhiệt ở sát biên ổn định và vượt biên ổn định để phân biệt giữa sai số tắt dần (numerical dissipation) và mất ổn định bùng nổ.
+4. **Hội tụ Mạnh (từng quỹ đạo) vs. Hội tụ Yếu (phân bố) của SDE**:
+   Nhìn cùng một hạt giống ngẫu nhiên $W_t$ khi mịn hóa $\Delta t$ trong Euler–Maruyama so với biểu đồ histogram mật độ xác suất khớp nghiệm Fokker–Planck.
+
 ## Mục Đích Của Bài Hỗ Trợ
 
 Bài học này tập hợp toàn bộ các minh họa tương tác của Chương 13 vào một không gian học tập thống nhất. Các bài chính trong chương lần lượt phát triển trực giác về rời rạc hóa, sai số cục bộ và toàn cục, độ cứng, miền ổn định, lưới sai phân hữu hạn cho PDE, hàm cơ sở phần tử hữu hạn và quỹ đạo ngẫu nhiên. Bộ minh họa đặt các ý niệm đó cạnh nhau để người học thấy rõ chúng cùng thuộc một khuôn khổ thống nhất của giải tích số.
@@ -22,6 +35,14 @@ Nên quay lại bộ minh họa sau khi hoàn thành từng phương pháp hoặ
 
 Trang này cũng phù hợp để ôn tập khi chuyển từ giải số ODE sang giải số PDE, vì nó hệ thống hóa cùng một chỗ các khái niệm nhất quán, ổn định và hội tụ.
 
+
+### Khung giải thích (nên đọc chậm): Đọc nhanh bậc hội tụ $p$ bằng quy tắc "chia đôi bước $h$"
+
+Nếu sai số toàn cục tuân theo $E(h) \approx C h^p$, thì khi ta **chia đôi bước thời gian** ($h \to h/2$), tỷ số giảm sai số là $\frac{E(h)}{E(h/2)} \approx 2^p$:
+- **Euler ($p = 1$)**: chia đôi $h \implies$ sai số giảm **$2\times$** (giảm $h$ đi $10\times$ thì sai số giảm $10\times$).
+- **RK2 / Crank–Nicolson ($p = 2$)**: chia đôi $h \implies$ sai số giảm **$4\times$** (giảm $h$ đi $10\times$ thì sai số giảm $100\times$).
+- **RK4 ($p = 4$)**: chia đôi $h \implies$ sai số giảm **$16\times$** (giảm $h$ đi $10\times$ thì sai số giảm tới **$10.000\times$**!).
+Chỉ cần bấm nút chia đôi $h$ hai lần trên đồ thị tương tác và lấy $\log_2\!\big(E(h)/E(h/2)\big)$, bạn sẽ kiểm chứng được ngay bậc chính xác thực nghiệm của bất kỳ bộ giải nào!
 ## Gallery Tương Tác Nhúng Trực Tiếp
 
 {% include interactive-frame.html

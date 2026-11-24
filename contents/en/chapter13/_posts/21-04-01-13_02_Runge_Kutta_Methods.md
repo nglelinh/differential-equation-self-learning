@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Forward Euler takes one blind glance at the slope at the start of a step and commits to it; to achieve $10^{-8}$ accuracy on a satellite orbit, Euler would need billions of tiny steps. Carl Runge and Wilhelm Kutta discovered a far smarter strategy: sample the slope at carefully weighted midpoint and endpoint probes *inside* each step so that low-order Taylor errors cancel out automatically—without ever computing a single analytical derivative of $f$.
+
 ## Learning Objectives
 
 This lesson introduces Runge-Kutta methods as higher-accuracy one-step schemes. Students should understand why multiple slope evaluations improve accuracy, how RK4 is constructed, and why Runge-Kutta methods are the standard workhorses of numerical ODE solving.
@@ -17,6 +19,15 @@ This lesson introduces Runge-Kutta methods as higher-accuracy one-step schemes. 
 ## Prerequisites
 
 Students should know Euler's method, local linearization, and the idea of truncation error.
+
+## Background Knowledge Map: Inside Runge–Kutta Stage Design
+
+Four pillars explain how Runge–Kutta (RK) methods achieve dramatic accuracy while remaining single-step:
+
+1. **Quadrature Analogy (Midpoint, Heun, Simpson):** When $f(t,y) = f(t)$ depends only on $t$, RK2 reduces to the trapezoidal or midpoint rule and classical RK4 reduces directly to Simpson's rule $\frac{h}{6}(f_0 + 4f_{1/2} + f_1)$.
+2. **Butcher Tableaux and Order Conditions:** An $s$-stage RK method is encoded by nodes $c_i$, stage weights $a_{ij}$, and quadrature weights $b_i$. Matching the Taylor expansion of $y(t_n+h)$ through $O(h^p)$ yields algebraic order conditions—for $p \le 4$, $s = p$ stages suffice, whereas $p = 5$ requires $s = 6$ stages (Butcher barrier).
+3. **Embedded Pairs and Adaptive Step Control:** Modern solvers like Dormand–Prince RK45 (`solve_ivp`) compute a 4th- and 5th-order estimate from the *same* stages, using their difference to shrink $h$ near sharp features and stretch $h$ across smooth regions.
+4. **Expanded Stability Regions:** For $y' = \lambda y$, classical RK4 has stability polynomial $R(z) = 1 + z + \frac{z^2}{2} + \frac{z^3}{6} + \frac{z^4}{24}$, expanding the negative real stability interval to $[-2.785, 0]$ and even capturing a segment of the imaginary axis $[-2\sqrt{2}i, 2\sqrt{2}i]$.
 
 ## Introduction
 
@@ -87,6 +98,22 @@ Students should understand the practical tradeoff.
 - Can they compare Runge-Kutta and Euler conceptually?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Executing One Complete Classical RK4 Step by Hand
+
+Take a single large step $h = 0.5$ of classical 4th-order Runge–Kutta (RK4) on $y' = y$, $y(0) = 1$, and compare the result against the exact value $e^{0.5} \approx 1.6487213$.
+
+1. **Compute the four stage slopes ($f(t,y) = y$, $y_0 = 1$, $h = 0.5$):**
+   - Stage 1 (left endpoint): $k_1 = f(0, y_0) = 1$.
+   - Stage 2 (first midpoint probe): $k_2 = f\!\left(0.25,\; 1 + \frac{0.5}{2}k_1\right) = 1 + 0.25(1) = 1.25$.
+   - Stage 3 (refined midpoint probe): $k_3 = f\!\left(0.25,\; 1 + \frac{0.5}{2}k_2\right) = 1 + 0.25(1.25) = 1.3125$.
+   - Stage 4 (right endpoint probe): $k_4 = f(0.5,\; 1 + 0.5 k_3) = 1 + 0.5(1.3125) = 1.65625$.
+2. **Form the Simpson-weighted update:**
+   $$y_1 = y_0 + \frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4) = 1 + \frac{0.5}{6}(1 + 2.5 + 2.625 + 1.65625) = 1 + \frac{7.78125}{12} = 1.6484375.$$
+3. **Verify against the 4th-degree Taylor polynomial of $e^{0.5}$:**
+   $$1 + 0.5 + \frac{0.5^2}{2} + \frac{0.5^3}{6} + \frac{0.5^4}{24} = 1 + 0.5 + 0.125 + 0.0208333\dots + 0.0026041\dots = 1.6484375.$$
+   It matches to *every* digit! Even with a huge step $h = 0.5$, the error $|e^{0.5} - y_1| \approx 2.84 \times 10^{-4}$ is nearly **1000 times smaller** than one step of forward Euler ($y_1^{\text{Euler}} = 1.5$, error $0.1487$).
 
 ### Example 1: RK2 as Improved Euler
 

@@ -10,6 +10,36 @@ categories:
 lesson_type: required
 ---
 
+At first glance, sine series, Legendre polynomials, Bessel functions, and Hermite polynomials look like completely unrelated mathematical species born in different centuries from different physical problems. Then, in 1836–1837, Jacques Charles François Sturm and Joseph Liouville proved one of the great unifying theorems of analysis: every one of them is an eigenfunction of a single self-adjoint differential operator $$ L[y] = -\frac{d}{dx}\bigl(p(x) y'\bigr) + q(x) y = \lambda w(x) y $$.
+
+Just as the Spectral Theorem for symmetric matrices guarantees real eigenvalues and an orthogonal eigenbasis in $$ \mathbb{R}^n $$, Sturm–Liouville theory guarantees real eigenvalues, weighted orthogonality, and completeness in the infinite-dimensional Hilbert space $$ L^2_w([a, b]) $$.
+
+## Background Knowledge Map: The Sturm–Liouville Spectral Machine
+
+1. **Conversion to Self-Adjoint Form (Integrating Factor $$ \mu(x) $$):** Any second-order linear ODE $$ a_2(x) y'' + a_1(x) y' + (a_0(x) + \lambda \rho(x)) y = 0 $$ can be converted into $$ \bigl(p(x) y'\bigr)' + \bigl(q(x) + \lambda w(x)\bigr) y = 0 $$ by multiplying through by $$ \mu(x) = \frac{1}{a_2(x)} \exp\!\left(\int \frac{a_1(x)}{a_2(x)}\,dx\right) $$. This immediately reveals the hidden weight function $$ w(x) $$ under which eigenfunctions are orthogonal!
+2. **Lagrange's Identity & Green's Formula (Why Self-Adjointness Works):** Integrating by parts twice yields $$ \int_a^b (u L[v] - v L[u])\,dx = -\bigl[p(x)(u v' - v u')\bigr]_a^b $$. Under separated regular BCs (or singular vanishing of $$ p $$ at endpoints), the boundary bracket vanishes identically—making $$ L $$ symmetric in $$ L^2_w([a, b]) $$.
+3. **The Four Spectral Guarantees (Regular S–L Theorem):** For $$ p(x) > 0, w(x) > 0 $$ on $$ [a, b] $$: (i) all eigenvalues $$ \lambda_n $$ are real and simple; (ii) $$ \lambda_1 < \lambda_2 < \cdots \to \infty $$; (iii) eigenfunctions for $$ \lambda_m \neq \lambda_n $$ satisfy $$ \int_a^b y_m(x) y_n(x) w(x)\,dx = 0 $$; (iv) $$ y_n $$ has exactly $$ n - 1 $$ zeros inside $$ (a, b) $$ (Sturm oscillation).
+4. **Completeness in $$ L^2_w([a, b]) $$:** The normalized eigenfunctions form a complete orthonormal basis of $$ L^2_w([a, b]) $$, legitimizing every eigenfunction expansion in PDEs and quantum mechanics.
+
+### Step-by-Step Worked Example (Read Slowly): Converting Cauchy–Euler to Sturm–Liouville Form and Finding Its Exact Weight
+
+**Problem:** Convert the Cauchy–Euler eigenvalue problem $$ x^2 y'' + x y' + \lambda y = 0 $$ on $$ [1, e] $$ with $$ y(1) = y(e) = 0 $$ into Sturm–Liouville form, identify $$ p(x), q(x), w(x) $$, find the eigenvalues/eigenfunctions, and explicitly verify weighted orthogonality between $$ y_1 $$ and $$ y_2 $$.
+
+1. **Compute the integrating factor $$ \mu(x) $$:**
+   Here $$ a_2(x) = x^2 $$, $$ a_1(x) = x $$, so
+   $$ \mu(x) = \frac{1}{x^2} \exp\!\left(\int \frac{x}{x^2}\,dx\right) = \frac{1}{x^2} \cdot x = \frac{1}{x}. $$
+2. **Multiply the ODE by $$ \frac{1}{x} $$:**
+   $$ x y'' + y' + \frac{\lambda}{x} y = 0 \implies \frac{d}{dx}\bigl(x y'\bigr) + \lambda \frac{1}{x} y = 0. $$
+   Thus $$ p(x) = x > 0 $$, $$ q(x) = 0 $$, and the orthogonality weight is $$ w(x) = \frac{1}{x} > 0 $$ on $$ [1, e] $$!
+3. **Solve for the eigenvalues and eigenfunctions:**
+   Substitute $$ t = \ln x \in [0, 1] $$, transforming the ODE to $$ \frac{d^2 y}{dt^2} + \lambda y = 0 $$ with $$ y(0) = y(1) = 0 $$. This immediately gives
+   $$ \lambda_n = (n\pi)^2, \qquad y_n(x) = \sin(n\pi \ln x), \qquad n = 1, 2, 3, \dots $$
+4. **Verify weighted orthogonality directly for $$ y_1 $$ and $$ y_2 $$:**
+   $$ \int_1^e y_1(x) y_2(x) w(x)\,dx = \int_1^e \sin(\pi \ln x)\sin(2\pi \ln x)\,\frac{dx}{x}. $$
+   With $$ t = \ln x $$ ($$ dt = dx/x $$), this becomes
+   $$ \int_0^1 \sin(\pi t)\sin(2\pi t)\,dt = \frac{1}{2}\int_0^1 \bigl[\cos(\pi t) - \cos(3\pi t)\bigr]\,dt = \frac{1}{2}\left[\frac{\sin(\pi t)}{\pi} - \frac{\sin(3\pi t)}{3\pi}\right]_0^1 = 0. $$
+   Without the Sturm–Liouville weight $$ w(x) = 1/x $$, $$ \sin(\pi \ln x) $$ and $$ \sin(2\pi \ln x) $$ would *not* be orthogonal—the weight is the exact key!
+
 ## Learning Objectives
 
 This lesson develops Sturm-Liouville theory as the structured framework behind differential eigenvalue problems. Students should understand the standard form, the role of self-adjointness, and the resulting properties of real eigenvalues and orthogonal eigenfunctions.

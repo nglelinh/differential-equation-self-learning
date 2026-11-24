@@ -10,6 +10,37 @@ categories:
 lesson_type: required
 ---
 
+What happens when a $$2\times 2$$ matrix has a repeated eigenvalue $$\lambda$$, yet when you solve $$(A - \lambda I)\mathbf{v} = \mathbf{0}$$ you only find *one* line of eigenvectors instead of two? You have hit a **defective** (non-diagonalizable) matrix—the exact vector-system twin of critical damping! To recover the missing second dimension of the solution space, linear algebra hands us a **generalized eigenvector** that restores completeness and generates the signature secular term $$t\,e^{\lambda t}$$.
+
+## Background Knowledge Map: Algebraic vs. Geometric Multiplicity and Jordan Chains
+
+Four linear-algebraic concepts completely demystify repeated eigenvalues:
+
+1. **Complete vs. Defective Repeated Eigenvalues:** Compare the **algebraic multiplicity** $$m_a$$ (root multiplicity in $$\det(A-\lambda I)=0$$) against the **geometric multiplicity** $$m_g = \dim\ker(A - \lambda I)$$. If $$m_g = m_a$$ (e.g., $$A = \lambda I$$, a *proper/star node*), no $$t$$-terms appear; if $$m_g < m_a$$, $$A$$ is **defective** (*improper/degenerate node*) and requires generalized eigenvectors.
+2. **The Generalized Eigenvector Chain:** For a $$2\times 2$$ defective matrix with $$m_a = 2, m_g = 1$$, choose a **generalized eigenvector** $$\mathbf{w}$$ solving $$(A - \lambda I)\mathbf{w} = \mathbf{v}$$ (equivalently, pick any $$\mathbf{w} \notin \ker(A-\lambda I)$$ and *define* $$\mathbf{v} := (A - \lambda I)\mathbf{w}$$—even faster!).
+3. **Why $$\mathbf{x}^{(2)}(t) = (t\mathbf{v} + \mathbf{w})e^{\lambda t}$$ Solves $$\mathbf{x}' = A\mathbf{x}$$:** Differentiating gives $$(\mathbf{v} + \lambda t\mathbf{v} + \lambda\mathbf{w})e^{\lambda t}$$, while $$A(t\mathbf{v} + \mathbf{w})e^{\lambda t} = (\lambda t\mathbf{v} + \lambda\mathbf{w} + \mathbf{v})e^{\lambda t}$$ because $$A\mathbf{w} = \lambda\mathbf{w} + \mathbf{v}$$!
+4. **Warning on Independent Choice:** Never pick $$\mathbf{v}$$ first and then plug in an arbitrary $$\mathbf{w}$$ that does not satisfy $$(A-\lambda I)\mathbf{w} = \mathbf{v}$$—the pair $$(\mathbf{v}, \mathbf{w})$$ is rigidly linked by the Jordan chain!
+
+### Step-by-Step Worked Example (Read Slowly): Solving a Defective $$2\times 2$$ IVP via the Fast Jordan-Chain Trick
+
+Solve the initial value problem
+$$\mathbf{x}' = \begin{pmatrix} 3 & -4 \\ 1 & -1 \end{pmatrix}\mathbf{x}, \qquad \mathbf{x}(0) = \begin{pmatrix} 2 \\ 1 \end{pmatrix}.$$
+
+1. **Find the repeated eigenvalue and check defectiveness:**
+   $$\operatorname{tr}(A) = 2, \qquad \det(A) = -3 - (-4) = 1 \implies \lambda^2 - 2\lambda + 1 = (\lambda - 1)^2 = 0.$$
+   So $$\lambda = 1$$ has $$m_a = 2$$. Compute $$N := A - I$$:
+   $$N = A - I = \begin{pmatrix} 2 & -4 \\ 1 & -2 \end{pmatrix}.$$
+   Since $$N \ne 0$$ has rank $$1$$, $$m_g = 2 - 1 = 1 < 2$$—defective! (Also check Cayley–Hamilton: $$N^2 = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}$$!)
+2. **Build the Jordan chain $$(\mathbf{v}, \mathbf{w})$$ with zero guesswork:**
+   Pick the simplest vector not in $$\ker(N)$$, say $$\mathbf{w} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$$, and set
+   $$\mathbf{v} = N\mathbf{w} = \begin{pmatrix} 2 & -4 \\ 1 & -2 \end{pmatrix}\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}.$$
+   Verify $$N\mathbf{v} = N^2\mathbf{w} = \mathbf{0}$$: $$\begin{pmatrix} 2 & -4 \\ 1 & -2 \end{pmatrix}\begin{pmatrix} 2 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}$$! So $$\mathbf{v} = (2,1)^\top$$ is automatically the exact linked eigenvector!
+3. **Write the general solution:**
+   $$\mathbf{x}(t) = c_1 e^t\begin{pmatrix} 2 \\ 1 \end{pmatrix} + c_2 e^t\left[t\begin{pmatrix} 2 \\ 1 \end{pmatrix} + \begin{pmatrix} 1 \\ 0 \end{pmatrix}\right].$$
+4. **Match $$\mathbf{x}(0) = (2, 1)^\top$$ (or use $$e^{At} = e^t(I + tN)$$ directly!):**
+   At $$t = 0$$: $$c_1\begin{pmatrix} 2 \\ 1 \end{pmatrix} + c_2\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 2 \\ 1 \end{pmatrix} \implies c_1 = 1,\; c_2 = 0$$.
+   Wait—our initial condition happens to lie *right on* the eigenvector $$\mathbf{v} = (2, 1)^\top$$, so $$\mathbf{x}(t) = e^t\begin{pmatrix} 2 \\ 1 \end{pmatrix}$$ stays on that straight line forever! What if $$\mathbf{x}(0) = (1, 0)^\top$$ instead? Then $$c_1 = 0, c_2 = 1$$, yielding $$\mathbf{x}(t) = e^t\begin{pmatrix} 2t + 1 \\ t \end{pmatrix}$$, which bends asymptotically onto the single eigen-line $$x_1 = 2x_2$$!
+
 ## Learning Objectives
 
 This lesson helps students handle the case of repeated eigenvalues, distinguish between "repeated eigenvalue but enough eigenvectors" and "repeated eigenvalue lacking eigenvectors," understand the role of generalized eigenvectors, and recognize why terms like $$ te^{\lambda t} $$ appear in solutions.

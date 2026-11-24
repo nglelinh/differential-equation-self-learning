@@ -12,6 +12,20 @@ lesson_type: required
 
 ![Elliptic operator và parametrix xấp xỉ nghịch đảo]({{ site.imgurl }}/chapter_img/chapter14/06_elliptic_operators_parametrices.svg )
 
+Làm sao nghịch đảo một toán tử vi phân elliptic hệ số biến thiên $P = -\nabla \cdot (a(x)\nabla) + \dots$ khi ta không thể đơn giản chia cho đa thức như trường hợp hệ số hằng? Câu trả lời của đại số $\Psi$DO đẹp như một ván cờ: ta không cần tìm nghịch đảo chính xác ngay lập tức, mà xây dựng từng nấc một **nghịch đảo xấp xỉ tới sai số làm trơn** gọi là **Parametrix** $Q \in \Psi^{-m}$ sao cho $PQ = I + R_1$ và $QP = I + R_2$ với $R_1, R_2 \in \Psi^{-\infty}$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Toán tử Elliptic và Xây dựng Parametrix
+
+1. **Điều kiện Elliptic Toàn cục của Ký hiệu $p \in S^m$**:
+   Tồn tại hằng số $c > 0$ và $R > 0$ sao cho $|p(x, \xi)| \ge c\langle\xi\rangle^m$ với mọi $|\xi| \ge R$. Điều kiện này đảm bảo $1/p(x, \xi)$ hoàn toàn trơn và thuộc $S^{-m}$ ở vùng tần số cao $|\xi| \ge R$!
+2. **Thuật toán Xây dựng Parametrix bằng Truy hồi Đại số (Neumann Series trong $\Psi$DO)**:
+   - Bước 0: chọn $q_0(x, \xi) = \chi(\xi)/p(x, \xi) \in S^{-m}$ (với hàm cắt $\chi(\xi) = 0$ khi $|\xi| \le R$ và $1$ khi $|\xi| \ge 2R$). Khi đó $P Q_0 = I - E$ với sai số $E \in \Psi^{-1}$!
+   - Bước nâng cấp: dùng chuỗi Neumann hình thức $(I - E)^{-1} \sim I + E + E^2 + \dots$ (mỗi lũy thừa $E^k \in \Psi^{-k}$ giảm thêm $1$ bậc!) rồi cộng tiệm cận bằng Định lý Borel để thu được $Q \sim Q_0(I + E + E^2 + \dots)$ với $PQ - I \in \Psi^{-\infty}$!
+3. **Hai hệ quả lập tức: Tính Trơn Elliptic & Tính Fredholm**:
+   Vì $QP = I + R$ với $R$ làm trơn vô hạn, mọi kỳ dị của $u$ đều đến từ $Pu$ (nếu $Pu \in C^\infty$ thì $u \in C^\infty$!). Trên đa tạp compact, $R$ còn là toán tử **compact**, chứng minh ngay $P$ là **toán tử Fredholm** (hạt nhân và đối hạt nhân hữu hạn chiều!).
+4. **So sánh Parametrix với Hàm Green Chính xác**:
+   Hàm Green đòi hỏi biết chính xác điều kiện biên toàn cục và khó tính đóng; Parametrix dễ xây dựng hoàn toàn bằng đạo hàm đại số trên ký hiệu nhưng đã nắm bắt **100% cấu trúc kỳ dị cục bộ** của nghiệm!
+
 ## Mục tiêu
 
 Bài học này là trọng tâm của chương. Sau bài học, sinh viên cần hiểu tính elliptic trong ngôn ngữ ký hiệu, nắm định nghĩa parametrix, giải thích vì sao parametrix đóng vai trò nghịch đảo xấp xỉ của toán tử elliptic, và thấy cách phần dư làm trơn (smoothing remainder) đủ để suy ra tính chính quy cũng như tính giải được cục bộ.
@@ -26,6 +40,18 @@ Trong lý thuyết PDE cổ điển, toán tử elliptic được nhận diện 
 
 Điểm nổi bật của cách tiếp cận này là ta không cần tìm nghịch đảo chính xác; chỉ cần dựng một nghịch đảo gần đúng sao cho phần sai khác là một toán tử làm trơn. Trong lý thuyết elliptic, sai số làm trơn thường đã đủ để rút ra các kết luận giải tích quan trọng.
 
+
+### Khung giải thích (nên đọc chậm): Tính tay hai số hạng đầu tiên của Parametrix cho toán tử elliptic hệ số biến thiên
+
+Xét toán tử elliptic bậc $2$ trên $\mathbb{R}$: $P = D_x^2 + x D_x + 1$, có ký hiệu $p(x, \xi) = \xi^2 + x\xi + 1$. Với $|\xi|$ lớn, ta tìm ký hiệu parametrix $q \sim q_{-2} + q_{-3} + \dots$ sao cho $p \# q \sim 1$:
+1. **Tìm số hạng chính $q_{-2} \in S^{-2}$** (khử phần bậc $0$ của $p \# q$):
+   $$\xi^2 \cdot q_{-2}(x, \xi) = 1 \implies q_{-2}(x, \xi) = \mathbf{\xi^{-2}} \quad (|\xi| \ge 1).$$
+2. **Tính phần dư sau bước 1 bằng công thức Kohn–Nirenberg** (vì $\partial_x q_{-2} = 0$, chỉ còn tích thường):
+   $$p \# q_{-2} = (\xi^2 + x\xi + 1)\xi^{-2} = 1 + \mathbf{x\xi^{-1}} + \xi^{-2}.$$
+   Sai số lớn nhất còn lại là $+x\xi^{-1}$ (bậc $-1$).
+3. **Chọn số hạng hiệu chỉnh $q_{-3} \in S^{-3}$ để triệt tiêu $+x\xi^{-1}$**:
+   Ta cần $\xi^2 q_{-3} + x\xi^{-1} = 0 \implies q_{-3}(x, \xi) = \mathbf{-x\xi^{-3}}$.
+   Khi đó $p \# (q_{-2} + q_{-3}) = 1 + O(\xi^{-2})$—sai số đã giảm xuống bậc $-2$, và tiếp tục lặp sẽ đẩy sai số xuống $S^{-\infty}$!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

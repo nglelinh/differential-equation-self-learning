@@ -9,7 +9,22 @@ categories:
 - chapter10
 lesson_type: optional
 ---
+
 ![21 03 11 10 07 Dispersion Dissipation]({{ site.imgurl }}/chapter_img/chapter10/07_dispersion_dissipation.svg)
+
+Phương trình sóng lý tưởng $u_{tt} = c^2 u_{xx}$ đưa mọi xung sóng đi xa mãi mãi mà không hề méo dạng hay yếu đi. Thế nhưng ngoài đời thực, một xung ánh sáng đi qua lăng kính thủy tinh bị tách thành cầu vồng (sóng đỏ chạy nhanh hơn sóng tím!), còn tiếng hô trong rừng cứ yếu dần rồi tắt hẳn. Hai cơ chế vật lý làm thay đổi hình dạng và biên độ sóng đó chính là **Tán sắc (Dispersion)** và **Hấp thụ / Tiêu tán (Dissipation)**—được đọc trọn vẹn chỉ từ một biểu thức đại số duy nhất: **Hệ thức Tán sắc $\omega(k)$**!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Hệ thức Tán sắc $\omega(k)$
+
+1. **Cách tìm Hệ thức Tán sắc $\omega(k)$**:
+   Thế sóng phẳng thử $u(x, t) = e^{i(kx - \omega t)}$ vào bất kỳ PDE tuyến tính hệ số hằng nào (thay $\partial_t \to -i\omega$, $\partial_x \to ik$) sẽ thu ngay phương trình đại số liên hệ tần số $\omega$ và số sóng $k$!
+2. **Vận tốc Pha ($v_p = \omega/k$) vs. Vận tốc Nhóm ($v_g = d\omega/dk$)**:
+   - $v_p$ là tốc độ của từng đỉnh sóng đơn sắc.
+   - $v_g = \frac{d\omega}{dk}$ mới là tốc độ truyền **bao hình gói sóng và năng lượng**! Sóng có **tán sắc** khi $v_p$ phụ thuộc vào $k$ (tức $\omega''(k) \neq 0$, như phương trình Klein–Gordon $u_{tt} = c^2 u_{xx} - m^2 u$ hay sóng mặt nước).
+3. **Hấp thụ / Tiêu tán ($\operatorname{Im}(\omega) < 0$)**:
+   Khi $\omega(k) = \omega_R - i\gamma$ ($\gamma > 0$), nhân tử thời gian trở thành $e^{-i\omega t} = e^{-\gamma t} e^{-i\omega_R t}$ — biên độ suy giảm hàm mũ theo thời gian (ví dụ phương trình điện báo có cản $u_{tt} + 2\beta u_t = c^2 u_{xx}$)!
+4. **Cân bằng Tán sắc – Phi tuyến (Soliton)**:
+   Khi tán sắc (làm bè xung sóng) cân bằng hoàn hảo với phi tuyến (làm dốc xung sóng) trong phương trình KdV, ta thu được **sóng cô lập (Soliton)** đi hàng nghìn km không biến dạng—nền tảng của truyền dẫn cáp quang tốc độ cao!
 
 ## Mục tiêu
 
@@ -24,6 +39,18 @@ Sinh viên cần nắm khái niệm sóng phẳng, phương trình sóng cơ b�
 Trong phương trình sóng lý tưởng, mọi thành phần tần số truyền đi với cùng một vận tốc nên gói sóng giữ nguyên hình dạng. Tuy nhiên, trong thực tế — như sóng trên nước sâu, sóng trong plasma, sợi quang hay vật liệu đàn hồi — các tần số khác nhau thường truyền với tốc độ khác nhau, khiến gói sóng trải rộng và biến dạng theo thời gian. Hiện tượng này gọi là tán sắc.
 
 Bên cạnh đó, môi trường thực luôn tồn tại tổn hao do ma sát, độ nhớt hoặc hấp thụ điện từ, làm biên độ và năng lượng sóng giảm dần. Kết hợp cả tán sắc và tiêu tán giúp mô tả sát thực tế hơn nhiều hệ sóng vật lý.
+
+### Khung giải thích (nên đọc chậm): Tính tay Vận tốc Pha $v_p$ và Vận tốc Nhóm $v_g$ cho phương trình Klein–Gordon $u_{tt} = c^2 u_{xx} - m^2 u$
+
+1. **Thế sóng phẳng $e^{i(kx - \omega t)}$** ($\partial_t \to -i\omega$, $\partial_x \to ik$):
+   $$(-i\omega)^2 = c^2(ik)^2 - m^2 \implies \omega^2 = c^2 k^2 + m^2 \implies \omega(k) = \sqrt{c^2 k^2 + m^2}.$$
+   Vì $\omega(k)$ thực nên **không có hấp thụ**, nhưng không tuyến tính theo $k$ nên **có tán sắc**!
+2. **Tính $v_p$ và $v_g$ với con số cụ thể $c = 1,\; m = 3,\; k = 4$**:
+   - Tần số: $\omega = \sqrt{4^2 + 3^2} = \mathbf{5}$.
+   - **Vận tốc pha**: $v_p = \frac{\omega}{k} = \frac{5}{4} = \mathbf{1{,}25 > c}$ (đỉnh sóng chạy *nhanh hơn* tốc độ ánh sáng $c = 1$!).
+   - **Vận tốc nhóm** (tốc độ truyền năng lượng & thông tin):
+     $$v_g = \frac{d\omega}{dk} = \frac{c^2 k}{\sqrt{c^2 k^2 + m^2}} = \frac{4}{5} = \mathbf{0{,}80 < c}!$$
+3. **Kiểm tra hệ thức đẹp mắt**: $v_p \cdot v_g = 1{,}25 \times 0{,}80 = \mathbf{1} = c^2$! Tín hiệu và năng lượng luôn truyền với vận tốc $v_g < c$, bảo toàn tuyệt đối nguyên lý nhân quả của Thuyết Tương đối!
 
 ## Khái niệm theo ba cách
 

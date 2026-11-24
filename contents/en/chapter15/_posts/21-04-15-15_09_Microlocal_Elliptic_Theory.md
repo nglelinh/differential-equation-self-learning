@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** An operator like the wave equation $\partial_t^2 - \partial_x^2$ fails to be elliptic, so classical elliptic regularity walks away empty-handed. Yet at almost every direction $(\tau,\xi)$ in phase space—everywhere *off* the light cone $|\tau| = |\xi|$—the wave symbol $-\tau^2 + \xi^2$ is completely nonzero! **Microlocal elliptic theory** rescues elliptic regularity cone by cone, proving that even hyperbolic equations smooth out every non-characteristic direction.
+
 ![Microlocal elliptic theory]({{ site.imgurl }}/chapter_img/chapter15/09_microlocal_elliptic_theory.svg )
 
 ## Objectives
@@ -19,6 +21,17 @@ This optional lesson introduces elliptic theory at the microlocal level, meaning
 ## Prerequisites
 
 Students should already know principal symbols of differential or pseudodifferential operators, characteristic sets, wave front sets, and the basic idea of microlocal regularity from Lessons 15.01 and 15.02. Background from classical elliptic PDE is also useful, because this lesson extends the same regularity philosophy into the language of phase space.
+
+## Background Knowledge Map: Conic Inversion and Microlocal Regularity
+
+Four pillars localize Chapter 14's elliptic theory to individual cones in $T^*\Omega \setminus \{0\}$:
+
+1. **Microlocal Elliptic Set $\operatorname{Ell}(P)$ vs. Characteristic Set $\operatorname{Char}(P)$:** A point $(x_0, \xi_0)$ lies in $\operatorname{Ell}(P)$ if $|p_m(x,\xi)| \ge c|\xi|^m$ in some conic neighborhood of $(x_0, \xi_0)$; its complement is $\operatorname{Char}(P)$.
+2. **Microlocal Parametrix Construction:** Choosing a conic cutoff $a \in S^0$ supported strictly inside $\operatorname{Ell}(P)$, one constructs $Q \in \Psi^{-m}$ such that $QP = A + R$ with $R \in \Psi^{-\infty}$—inverting $P$ cleanly inside the elliptic cone without touching $\operatorname{Char}(P)$!
+3. **Microlocal Elliptic Regularity Theorem:** For *any* $\Psi\text{DO}$ $P$ and *any* distribution $u$,
+   $$\operatorname{WF}(u) \subseteq \operatorname{WF}(Pu) \cup \operatorname{Char}(P).$$
+   In plain English: wherever $P$ is microlocally elliptic, $u$ cannot have any singularity that was not already present in $Pu$.
+4. **Microlocal Sobolev Regularity ($u \in H^s_{\text{mcl}}(x_0,\xi_0)$):** Refining wave front sets quantitatively, if $Pu \in H^s$ microlocally at $(x_0,\xi_0) \in \operatorname{Ell}(P)$, then $u \in H^{s+m}$ microlocally at $(x_0,\xi_0)$—upgrading regularity in specific directions even when $u$ is rough elsewhere.
 
 ## Introduction
 
@@ -105,6 +118,20 @@ State clearly that elliptic regions remove singularities, while characteristic r
 - Can they paraphrase $$ WF(u)\subset WF(Pu)\cup \operatorname{Char}(P) $$ in plain language?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Microlocal Ellipticity of the Wave Operator Off the Light Cone
+
+Consider the 1D wave operator $P = \partial_t^2 - \partial_x^2$ with principal symbol $p_2(t,x;\tau,\xi) = -\tau^2 + \xi^2$. Determine $\operatorname{Ell}(P)$ and $\operatorname{Char}(P)$, test two explicit covectors $(\tau,\xi) = (3,1)$ and $(2,2)$, and verify what microlocal elliptic regularity guarantees for any solution of $Pu = 0$.
+
+1. **Partition the punctured cotangent space $T^*\mathbb{R}^2 \setminus \{0\}$:**
+   - $\operatorname{Char}(P) = \{(t,x;\tau,\xi) : \tau^2 = \xi^2,\; (\tau,\xi) \neq (0,0)\}$ (the two null lines $\tau = \pm\xi$).
+   - $\operatorname{Ell}(P) = \{(t,x;\tau,\xi) : \tau^2 \neq \xi^2\}$ (every direction strictly inside or outside the light cone!).
+2. **Test the non-characteristic covector $(\tau_0, \xi_0) = (3, 1)$:**
+   $$|p_2(3, 1)| = |-3^2 + 1^2| = 8 = \frac{8}{10}(\tau_0^2 + \xi_0^2) = 0.8\,|(\tau_0,\xi_0)|^2 > 0.$$
+   By homogeneity, inside the open cone $\Gamma = \{|\tau| > 2|\xi|\}$, $|p_2(\tau,\xi)| = \tau^2 - \xi^2 > \frac{3}{5}(\tau^2 + \xi^2)$, so $Q_0$ with symbol $\chi(\tau,\xi)/(-\tau^2 + \xi^2) \in S^{-2}$ is a valid microlocal parametrix on $\Gamma$!
+3. **Test the characteristic covector $(\tau_0, \xi_0) = (2, 2)$:** $p_2(2,2) = -4 + 4 = 0$, so $(t,x; 2,2) \in \operatorname{Char}(P)$—no conic inverse exists there.
+4. **Apply Microlocal Elliptic Regularity to $Pu = 0$:** Since $\operatorname{WF}(Pu) = \emptyset$, we immediately conclude $\operatorname{WF}(u) \subseteq \{\tau = \pm\xi\}$! Thus no solution of the wave equation can ever have a purely spatial jump at fixed time ($\tau = 0, \xi \neq 0$) or a purely temporal jump at fixed space ($\tau \neq 0, \xi = 0$)—every singularity is forced onto the light cone $\tau = \pm\xi$.
 
 ### Example 1: The operator $$ 1-\Delta $$ is elliptic in every nonzero direction
 

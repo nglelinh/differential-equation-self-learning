@@ -10,6 +10,40 @@ categories:
 lesson_type: optional
 ---
 
+Drop a stone into deep ocean water and watch closely: long swells race ahead while tiny capillary ripples trail behind, spreading the original splash out into a long train of separated wavelengths. Meanwhile, clap inside a velvet-lined studio and the sound dies away exponentially without separating its pitches. Those two distinct physical mechanisms—**dispersion** (different wavelengths travel at different speeds) and **dissipation** (wave energy drains into heat)—modify the ideal wave equation in fundamentally different ways!
+
+How can you tell instantly from a PDE whether a wave will disperse, decay, or both? Substitute a single plane wave $$ e^{i(kx - \omega t)} $$ and read the **dispersion relation** $$ \omega = \omega(k) $$!
+
+## Background Knowledge Map: The Dispersion Relation $$ \omega(k) $$ as a Diagnostic X-Ray
+
+1. **Plane-Wave Ansatz & Dispersion Relation:** Substituting $$ u(x, t) = e^{i(kx - \omega t)} $$ replaces $$ \partial_t \mapsto -i\omega $$ and $$ \partial_x \mapsto ik $$, converting any constant-coefficient linear PDE into an algebraic polynomial relating frequency $$ \omega $$ to wavenumber $$ k $$.
+2. **Phase Velocity vs. Group Velocity (The Core of Dispersion):**
+   - *Phase velocity* $$ v_p(k) = \frac{\omega(k)}{k} $$ is the speed of individual wave crests.
+   - *Group velocity* $$ v_g(k) = \frac{d\omega}{dk} $$ is the speed of the **wave packet envelope and its energy**!
+   - A PDE is *nondispersive* iff $$ \omega(k) = c k $$ (so $$ v_p = v_g = c $$ for all $$ k $$); it is *dispersive* whenever $$ \omega''(k) \neq 0 $$ (e.g., Klein–Gordon $$ u_{tt} = c^2 u_{xx} - m^2 u $$, beam equation $$ u_{tt} + \beta u_{xxxx} = 0 $$, or Schrödinger's equation).
+3. **Real vs. Complex $$ \omega(k) $$ (Dispersion vs. Dissipation):**
+   - If $$ \omega(k) $$ is **purely real** with $$ \omega''(k) \neq 0 $$, energy is conserved while the wave packet spreads out (*pure dispersion*).
+   - If $$ \operatorname{Im}(\omega(k)) < 0 $$, the factor $$ e^{-i\omega t} = e^{\operatorname{Im}(\omega) t} e^{-i\operatorname{Re}(\omega) t} $$ decays exponentially in time (*dissipation*, as in the telegraph/damped wave equation $$ u_{tt} + 2\gamma u_t = c^2 u_{xx} $$).
+4. **Even vs. Odd Spatial Derivatives (Quick Visual Rule):** In $$ u_t + \cdots = 0 $$, odd spatial derivatives ($$ u_x, u_{xxx} $$) yield real $$ \omega(k) $$ (transport/dispersion, e.g., KdV), while even spatial derivatives ($$ u_{xx} $$) yield imaginary $$ \omega(k) $$ (dissipation/diffusion)!
+
+### Step-by-Step Worked Example (Read Slowly): Phase Velocity, Group Velocity, and Cutoff in the Klein–Gordon Equation
+
+**Problem:** Analyze the 1D Klein–Gordon equation $$ u_{tt} = c^2 u_{xx} - m^2 u $$ (with $$ c > 0, m > 0 $$). (a) Derive the dispersion relation $$ \omega(k) $$ and confirm it is purely dispersive (zero dissipation). (b) Compute $$ v_p(k) $$ and $$ v_g(k) $$, prove $$ v_p(k) v_g(k) = c^2 $$ with $$ v_g < c < v_p $$, and evaluate both for $$ c = 1, m = 3, k = 4 $$.
+
+1. **Substitute $$ u(x, t) = e^{i(kx - \omega t)} $$:**
+   $$ (-\omega^2) = c^2(-k^2) - m^2 \implies \omega^2(k) = c^2 k^2 + m^2 \implies \omega(k) = \sqrt{c^2 k^2 + m^2}. $$
+   Since $$ c^2 k^2 + m^2 > 0 $$ for all real $$ k $$, $$ \omega(k) $$ is strictly **real**: zero dissipation! Yet $$ \omega(k) $$ is nonlinear in $$ k $$, so the PDE is **dispersive** (with minimum cutoff frequency $$ \omega(0) = m $$).
+2. **Compute phase velocity $$ v_p $$ and group velocity $$ v_g $$:**
+   - Phase velocity:
+     $$ v_p(k) = \frac{\omega(k)}{k} = \frac{\sqrt{c^2 k^2 + m^2}}{k} = c\sqrt{1 + \frac{m^2}{c^2 k^2}} > c. $$
+   - Group velocity (differentiate $$ \omega^2 = c^2 k^2 + m^2 $$ implicitly: $$ 2\omega\frac{d\omega}{dk} = 2c^2 k $$):
+     $$ v_g(k) = \frac{d\omega}{dk} = \frac{c^2 k}{\omega(k)} = \frac{c^2 k}{\sqrt{c^2 k^2 + m^2}} < c. $$
+3. **Verify the relativistic product identity and plug in $$ c = 1, m = 3, k = 4 $$:**
+   - Product: $$ v_p(k) \cdot v_g(k) = \frac{\omega}{k} \cdot \frac{c^2 k}{\omega} = c^2 $$ identically!
+   - For $$ c = 1, m = 3, k = 4 $$: $$ \omega = \sqrt{16 + 9} = 5 $$, giving
+     $$ v_p = \frac{5}{4} = 1.25 > c, \qquad v_g = \frac{4}{5} = 0.80 < c, \qquad v_p v_g = 1.25 \times 0.80 = 1 = c^2. $$
+   Even though individual crests glide faster than $$ c $$ ($$ 1.25c $$), **no signal or energy ever breaks the speed limit $$ c $$** because the packet envelope travels at $$ v_g = 0.80c < c $$!
+
 ## Learning Objectives
 
 This lesson introduces wave packets, dispersion, and damping. Students should understand the difference between loss of coherence from varying phase speeds and loss of energy from dissipative effects.

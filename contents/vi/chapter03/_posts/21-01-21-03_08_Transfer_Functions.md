@@ -9,6 +9,20 @@ categories:
 - chapter03
 lesson_type: optional
 ---
+
+Kỹ sư hàng không hay kỹ sư âm thanh thiết kế một bộ lọc phức tạp như thế nào mà không bị chìm nghỉm trong rừng phương trình vi phân ghép nối? Họ đóng gói toàn bộ tính chất nội tại của hệ thống vào một phân thức duy nhất gọi là **Hàm truyền (Transfer Function)** $H(s) = \frac{Y(s)}{U(s)}$! Khi đã có $H(s)$, mọi hệ nối tiếp chỉ là phép nhân $H_1(s)H_2(s)$, hệ song song là phép cộng, còn vòng điều khiển phản hồi âm gọn đẹp thành $\frac{H}{1 + HK}$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Hàm Truyền & Phân tích Hệ thống
+
+1. **Định nghĩa Hàm truyền $H(s) = \frac{Y(s)}{U(s)}$ (với điều kiện đầu bằng $0$)**:
+   $H(s)$ là biến đổi Laplace của đáp ứng xung $h(t)$, chỉ phụ thuộc vào cấu tạo bên trong của hệ ($m, c, k$ hay $R, L, C$), hoàn toàn độc lập với tín hiệu đầu vào $u(t)$.
+2. **Ổn định BIBO (Bounded-Input Bounded-Output) & Vị trí các Cực**:
+   Một hệ hữu tỷ hợp lệ ổn định BIBO (đầu vào bị chặn luôn cho đầu ra bị chặn) khi và chỉ khi **mọi cực của $H(s)$ đều có phần thực âm ngặt** ($\operatorname{Re}(p_k) < 0$).
+3. **Đáp ứng tần số $H(i\omega)$ & Biểu đồ Bode**:
+   Thay $s = i\omega$ vào hàm truyền ta thu được ngay **độ khuếch đại biên độ** $\vert H(i\omega)\vert$ và **độ lệch pha** $\arg H(i\omega)$ của hệ trước mọi sóng sin tần số $\omega$!
+4. **Đại số Sơ đồ khối & Điều khiển Phản hồi (Feedback)**:
+   Nối tiếp: $H_1 H_2$; song song: $H_1 + H_2$; phản hồi âm với bộ điều khiển $K(s)$: $H_{\text{cl}}(s) = \frac{H(s)}{1 + H(s)K(s)}$—cho phép dịch chuyển cực bất ổn sang nửa trái mặt phẳng phức!
+
 ## Mục tiêu
 Bài học này giới thiệu hàm truyền như biểu diễn đại số đặc trưng cho một hệ tuyến tính bất biến theo thời gian (LTI), hướng dẫn cách suy ra hàm truyền từ ODE với điều kiện đầu bằng 0, và phân tích mối liên hệ giữa các cực, đáp ứng xung, tín hiệu vào và tín hiệu ra.
 
@@ -21,6 +35,17 @@ Sinh viên cần nắm giải IVP bằng Laplace, hàm bước Heaviside, hàm d
 Khi một hệ vật lý phải chịu nhiều tín hiệu đầu vào khác nhau, việc giải lại phương trình vi phân từ đầu cho từng đầu vào là không hiệu quả. Ta cần một biểu diễn tóm gọn bản chất nội tại của hệ, tách rời khỏi từng đầu vào cụ thể — đó chính là hàm truyền.
 
 Với điều kiện đầu bằng 0, một hệ LTI được mô tả hoàn toàn bởi tỉ số giữa ảnh Laplace của đầu ra và đầu vào. Từ biểu thức duy nhất này, ta có thể khảo sát tính ổn định, đáp ứng xung, đặc tính lọc tần số và hành vi dài hạn của hệ.
+
+### Khung giải thích (nên đọc chậm): Dùng bộ điều khiển phản hồi tỷ lệ $K$ để "cứu" một hệ bất ổn $H(s) = \frac{1}{s - 2}$ thành hệ ổn định!
+
+1. **Hệ vòng hở (Open-loop)**:
+   $H(s) = \frac{1}{s - 2}$ ứng với PTVP $y' - 2y = u(t)$. Cực nằm tại $s = +2 > 0$ (nửa phải) $\implies$ **bất ổn** (đáp ứng xung $e^{2t} \to \infty$)!
+2. **Đóng vòng phản hồi âm với độ lợi $K > 0$**:
+   $$H_{\text{cl}}(s) = \frac{H(s)}{1 + K H(s)} = \frac{\frac{1}{s - 2}}{1 + \frac{K}{s - 2}} = \mathbf{\frac{1}{s + (K - 2)}}.$$
+3. **Đọc cực vòng kín mới**:
+   Cực duy nhất dịch sang $s = 2 - K$.
+   - Để hệ ổn định BIBO, chỉ cần $2 - K < 0 \iff \mathbf{K > 2}$!
+   - Ví dụ chọn $K = 5$: cực nhảy về $s = -3$, hàm truyền thành $\frac{1}{s + 3}$, và độ khuếch đại tĩnh tại $\omega = 0$ là $H_{\text{cl}}(0) = \frac{1}{3}$. Phản hồi âm đã thuần hóa một hệ bùng nổ chỉ bằng một phép nhân đại số!
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan

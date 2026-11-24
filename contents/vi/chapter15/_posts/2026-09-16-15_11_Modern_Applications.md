@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Khi máy chụp cắt lớp CT bệnh viện chỉ quay được một góc hạn chế (ví dụ $120^\circ$ thay vì đủ $180^\circ$ để giảm liều tia X), ảnh tái tạo truyền thống luôn xuất hiện những vệt nhòe và cạnh bị "biến mất" đầy bí ẩn. Phân tích vi địa phương giải thích chính xác từng milimet **cạnh nào bị mù (invisible singularities)** theo định lý Quinto—và ngày nay, các mô hình AI tái tạo ảnh y khoa kết hợp **prior vi cục bộ** chính để khôi phục thông minh phần mặt sóng bị thiếu mà không bịa ra khối u giả!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Bài toán Ngược Học được & Prior Vi cục bộ
+
+1. **Biến đổi Radon như một Toán tử Tích phân Fourier (FIO)**:
+   Chụp CT đo tích phân đường thẳng $Rf(\theta, s)$ của mật độ mô $f(x)$; quan hệ chính tắc của $R$ chỉ ra một cạnh ảnh ở $(x, \xi)$ chỉ được ghi nhận nếu có tia X đi **tiếp tuyến với cạnh** (tức vuông góc với pháp tuyến $\xi$)!
+2. **Phân loại Kỳ dị Nhìn thấy (Visible) vs. Bị mù (Invisible)**:
+   Trong CT góc hạn chế, mặt nón các hướng $\xi$ không có tia X vuông góc trở thành vùng mù; toán tử chiếu ngược lọc (FBP) vừa làm mờ cạnh thật trong vùng mù, vừa sinh ra **vệt sọc giả (streak artifacts)** dọc theo các tia biên!
+3. **Prior Học được (Learned Priors / Diffusion / Unrolled Networks)**:
+   Các mạng học sâu (như Primal–Dual học được hay Diffusion Posterior Sampling) cung cấp thông tin tiên nghiệm về giải phẫu người để điền vào nón tần số bị thiếu trong không gian pha.
+4. **Ràng buộc An toàn Vi cục bộ (Microlocal Safety)**:
+   Kiểm chứng các bộ giải ngược AI bằng Tập Mặt sóng giúp phân biệt đâu là phần dữ liệu đo thật sự đảm bảo tính duy nhất (vùng visible) và đâu là phần do mạng suy đoán (vùng invisible) cần cảnh báo bác sĩ!
+
 ## Mục tiêu
 
 Bài học tùy chọn này kết nối tập mặt sóng, sự lan truyền kỳ dị và bài toán ngược với các hướng thực hành giai đoạn 2022–2024 về neural inverse operator và tái tạo ảnh dựa trên hàm score. Sau bài học, sinh viên cần xác định được những kỳ dị nào một mô hình tái tạo ảnh học được có cơ sở để khôi phục, giải thích vì sao một hình ảnh trông hợp lý về mặt thị giác vẫn có thể sai lệch về mặt vi địa phương, và nhận diện giao điểm giữa bài “Các hướng nghiên cứu hiện nay” của chương với học máy khoa học (SciML). Nội dung này bổ sung góc nhìn tính toán chứ không thay thế các định lý vi địa phương đã học.
@@ -26,6 +39,15 @@ Ba hướng phát triển trong giai đoạn 2022–2024 minh họa rõ giao đi
 
 Trong mọi trường hợp trên, ánh xạ thuận ở tần số cao là một FIO hoặc hợp thành các FIO. Một nghịch đảo học được không tôn trọng quan hệ chính tắc không phải là một lý thuyết ảnh học mới; nó chỉ là một tiên nghiệm (prior) có thể phản ánh đúng hoặc sai những gì dữ liệu đo thực sự chứa.
 
+
+### Khung giải thích (nên đọc chậm): Kiểm tra nhanh bằng góc tia X xem cạnh mô nào "nhìn thấy" hay "bị mù" trong CT góc hạn chế
+
+Giả sử máy CT góc hạn chế chỉ chiếu tia X theo các phương tạo góc $\theta_{\text{tia}} \in [-60^\circ, +60^\circ]$ so với trục ngang $Ox$:
+1. **Điều kiện nhìn thấy vi cục bộ (Định lý Quinto)**: Một bờ cạnh có vector pháp tuyến $\xi$ chỉ hiện rõ nét nếu có ít nhất một tia X song song với bờ cạnh (tức $\theta_{\text{tia}} \perp \xi$).
+2. **Kiểm tra hai bờ cạnh cụ thể**:
+   - **Bờ cạnh nằm ngang** (chạy dọc $Ox$, góc $0^\circ \in [-60^\circ, 60^\circ]$): có tia X chạy dọc theo đúng bờ cạnh $\implies$ **NHÌN THẤY RÕ NÉT**!
+   - **Bờ cạnh thẳng đứng** (chạy dọc $Oy$, góc $90^\circ \notin [-60^\circ, 60^\circ]$): không có bất kỳ tia X nào đi tiếp tuyến với bờ cạnh $\implies$ **BỊ MÙ (nhòe mờ hoàn toàn trong FBP)**!
+3. **Ý nghĩa ứng dụng**: Đây chính là lý do prior vi cục bộ được thiết kế tập trung vào việc nội suy các hướng sóng bị thiếu quanh $90^\circ$ mà giữ nguyên dữ liệu đo ở vùng $[-60^\circ, 60^\circ]$!
 ## Khái niệm then chốt
 
 ### Tập mặt sóng khả kiến và không khả kiến

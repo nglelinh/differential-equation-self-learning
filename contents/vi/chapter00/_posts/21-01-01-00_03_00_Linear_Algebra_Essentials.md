@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Nếu bạn từng ngạc nhiên khi thấy không gian nghiệm của phương trình vi phân tuyến tính bậc $n$ giống hệt không gian vectơ $\mathbb{R}^n$, thì đó không hề là sự trùng hợp! Đại số tuyến tính không chỉ là công cụ tính định thức—nó chính là **bộ khung kiến trúc** của mọi phương trình vi phân tuyến tính, từ nguyên lý chồng chất đến phương pháp trị riêng–vectơ riêng giải hệ phương trình.
+
+## Bản đồ kiến thức nền: Bốn trụ cột Đại số Tuyến tính trong PTVP
+
+1. **Không gian vectơ, Độc lập tuyến tính & Cơ sở**:
+   Tập nghiệm của PTVP tuyến tính thuần nhất cấp $n$ là một không gian vectơ $n$ chiều; tìm nghiệm tổng quát thực chất là tìm một **cơ sở gồm $n$ nghiệm độc lập tuyến tính**.
+2. **Ánh xạ tuyến tính, Hạt nhân (Kernel) & Nguyên lý chồng chất**:
+   Toán tử vi phân $L(y) = y'' + p y' + q y$ là ánh xạ tuyến tính: nghiệm thuần nhất tạo thành $\ker(L)$, còn nghiệm tổng quát không thuần nhất có dạng $y = y_p + \ker(L)$.
+3. **Định thức & Khả nghịch**:
+   Định thức khác $0$ đảm bảo hệ phương trình đại số xác định hằng số $c_1, \dots, c_n$ từ điều kiện ban đầu luôn có nghiệm duy nhất (và trong PTVP, định thức đó mang tên **Wronskian**).
+4. **Trị riêng, Vectơ riêng & Chéo hóa ($A = PDP^{-1}$)**:
+   Dọc theo hướng vectơ riêng $\mathbf{v}$, tác động phức tạp của ma trận $A$ thu gọn thành phép nhân vô hướng đơn giản $A\mathbf{v} = \lambda \mathbf{v}$, giúp giải tách biến hệ $\mathbf{x}' = A\mathbf{x}$ ngay lập tức.
+
 ## Mục tiêu
 Bài học này giúp sinh viên củng cố các kiến thức cốt lõi của đại số tuyến tính gồm trị riêng, vector riêng, phép chéo hóa và dạng toàn phương. Qua đó, sinh viên hiểu cách đại số tuyến tính cung cấp ngôn ngữ để giải và phân tích hệ phương trình vi phân tuyến tính, cũng như đánh giá tính ổn định của hệ thông qua phổ của ma trận hệ số.
 
@@ -20,6 +34,18 @@ Sinh viên cần nắm vững các phép toán ma trận cơ bản (cộng, nhâ
 Khi mở rộng từ một phương trình vi phân đơn lẻ sang hệ nhiều phương trình—chẳng hạn mô hình hệ sinh thái hai loài, mạch điện hai vòng hoặc hệ dao động ghép—ta cần đến đại số tuyến tính. Hệ $$ x' = Ax $$, trong đó $$ x $$ là vector trạng thái và $$ A $$ là ma trận hệ số, là đối tượng trung tâm khi nghiên cứu hệ phương trình vi phân tuyến tính.
 
 Có thể hình dung hệ hai phương trình như sự chuyển động đồng thời của hai đại lượng biểu diễn bởi vector $$ x = (x_1, x_2) $$. Ma trận $$ A $$ quy định cách tốc độ biến thiên của mỗi thành phần phụ thuộc vào giá trị của cả hai thành phần. Nếu chọn được hệ tọa độ thích hợp theo các vector riêng, hệ phương trình sẽ tách rời và trở nên đơn giản hơn: mỗi thành phần tăng giảm hoặc dao động độc lập theo quy luật riêng.
+
+### Khung giải thích (nên đọc chậm): Chéo hóa bằng tay ma trận $A = \begin{pmatrix} 4 & 1 \\ 2 & 3 \end{pmatrix}$ để thấy sức mạnh của trị riêng
+
+1. **Tìm đa thức đặc trưng**:
+   $$\det(A - \lambda I) = (4 - \lambda)(3 - \lambda) - 2 = \lambda^2 - 7\lambda + 10 = (\lambda - 5)(\lambda - 2) = 0.$$
+   Vậy hai trị riêng là $\lambda_1 = \mathbf{5}$ và $\lambda_2 = \mathbf{2}$ (kiểm tra nhanh: vết $\text{tr}(A) = 4+3 = 7 = 5+2$, định thức $\det(A) = 12-2 = 10 = 5\cdot 2$).
+2. **Tìm vectơ riêng tương ứng**:
+   - Với $\lambda_1 = 5$: $(A - 5I)\mathbf{v} = \begin{pmatrix}-1 & 1\\ 2 & -2\end{pmatrix}\mathbf{v} = \mathbf{0} \implies \mathbf{v}_1 = \begin{pmatrix}1\\ 1\end{pmatrix}$.
+   - Với $\lambda_2 = 2$: $(A - 2I)\mathbf{v} = \begin{pmatrix}2 & 1\\ 2 & 1\end{pmatrix}\mathbf{v} = \mathbf{0} \implies \mathbf{v}_2 = \begin{pmatrix}1\\ -2\end{pmatrix}$.
+3. **Ý nghĩa cho PTVP $\mathbf{x}' = A\mathbf{x}$**:
+   Nếu xuất phát tại $\mathbf{x}(0) = \begin{pmatrix}3\\ 0\end{pmatrix} = 2\mathbf{v}_1 + 1\mathbf{v}_2$, ta đọc ngay nghiệm ở mọi thời điểm mà không cần tích phân phức tạp:
+   $$\mathbf{x}(t) = 2e^{5t}\begin{pmatrix}1\\ 1\end{pmatrix} + e^{2t}\begin{pmatrix}1\\ -2\end{pmatrix}.$$
 
 ## Khái niệm theo ba cách
 

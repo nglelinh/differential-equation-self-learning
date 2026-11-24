@@ -10,6 +10,36 @@ categories:
 lesson_type: required
 ---
 
+Why do trigonometric waves $$\cos(\omega t)$$ and $$\sin(\omega t)$$ suddenly emerge when you solve a differential equation whose characteristic polynomial has no real roots? Because in the complex plane, rotation and exponential growth are two sides of the exact same operation: Euler's identity $$e^{(\alpha + i\beta)t} = e^{\alpha t}(\cos \beta t + i\sin \beta t)$$ unifies damping, growth, and oscillation into a single algebraic symbol.
+
+## Background Knowledge Map: Complex Analysis as the Engine of Oscillation
+
+Four complex-variable ideas simplify differential equations dramatically:
+
+1. **Polar Form and Geometric Multiplication:** Writing $$z = r e^{i\theta}$$ turns multiplication into scaling moduli ($$r_1 r_2$$) and adding angles ($$\theta_1 + \theta_2$$), making phase shifts and frequency response transparent.
+2. **Euler's Formula and Complex Exponentials:** The identity $$e^{i\theta} = \cos\theta + i\sin\theta$$ converts messy trigonometric identities and integrals into one-line exponential algebra—essential for complex characteristic roots, RLC phasors, and Fourier/Laplace transforms.
+3. **Complex Conjugate Pairs:** For any real differential equation, non-real roots occur in conjugate pairs $$\alpha \pm i\beta$$; taking real and imaginary parts of a single complex solution $$e^{(\alpha + i\beta)t}$$ immediately yields two linearly independent real solutions.
+4. **Holomorphic Functions and Cauchy–Riemann Equations:** Complex differentiability enforces $$u_x = v_y$$ and $$u_y = -v_x$$, which forces both $$u$$ and $$v$$ to be harmonic ($$\nabla^2 u = 0$$) and guarantees convergent power-series representations.
+
+### Step-by-Step Worked Example (Read Slowly): Evaluating a Real Integral and ODE Trial Solution via Complex Exponentials
+
+Suppose we need the real antiderivative $$I = \int e^{2t}\cos(3t)\,dt$$ (the exact integral that appears when solving forced damped oscillators):
+
+1. **Lift the real integrand into the complex plane:**
+   Since $$\cos(3t) = \operatorname{Re}\bigl(e^{i3t}\bigr)$$, we write
+   $$e^{2t}\cos(3t) = \operatorname{Re}\!\left(e^{(2+3i)t}\right).$$
+2. **Integrate the complex exponential in one line:**
+   $$\int e^{(2+3i)t}\,dt = \frac{1}{2+3i}\,e^{(2+3i)t} + C.$$
+3. **Rationalize the complex denominator using the conjugate $$2 - 3i$$:**
+   $$\frac{1}{2+3i} = \frac{2-3i}{(2+3i)(2-3i)} = \frac{2-3i}{4 + 9} = \frac{2-3i}{13}.$$
+4. **Expand with Euler's formula and extract the real part:**
+   $$\frac{2-3i}{13}\,e^{2t}\bigl(\cos 3t + i\sin 3t\bigr) = \frac{e^{2t}}{13}\Bigl[\bigl(2\cos 3t + 3\sin 3t\bigr) + i\bigl(2\sin 3t - 3\cos 3t\bigr)\Bigr].$$
+   Taking the real part gives
+   $$\int e^{2t}\cos(3t)\,dt = \frac{e^{2t}}{13}\bigl(2\cos 3t + 3\sin 3t\bigr) + C.$$
+5. **Hand-verify by differentiating:**
+   $$\frac{d}{dt}\!\left[\frac{e^{2t}}{13}(2\cos 3t + 3\sin 3t)\right] = \frac{e^{2t}}{13}\bigl[(4\cos 3t + 6\sin 3t) + (-6\sin 3t + 9\cos 3t)\bigr] = \frac{13}{13}e^{2t}\cos 3t = e^{2t}\cos 3t.$$
+   No double integration by parts needed!
+
 This lesson develops the complex analysis foundations that are essential for solving differential equations and understanding advanced topics in mathematical physics.
 
 > **Teaching Notes**: This lesson takes 2-3 class periods. Key activities: "Find the Error" (10 min), "Residue Hunt" (20 min). Formative assessment: derivation of Euler's formula (quiz), verify holomorphy using CR equations.

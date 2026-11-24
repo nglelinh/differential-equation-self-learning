@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Trước khi lao vào hàng loạt công thức Euler, Runge–Kutta, sai phân hữu hạn hay phần tử hữu hạn, hãy dừng lại một nhịp để nắm vững "bộ luật giao thông" chung của mọi phương pháp số. Mọi thuật toán giải phương trình vi phân—dù đơn giản hay tối tân—đều xoay quanh đúng **ba câu hỏi sống còn**: ta xấp xỉ đạo hàm chính xác bậc mấy (*nhất quán*), sai số làm tròn có bị khuếch đại nổ tung hay không (*ổn định*), và khi bước lưới $h \to 0$ nghiệm số có thực sự tiến về nghiệm thật không (*hội tụ*)?
+
+## Bản đồ kiến thức nền: Bốn khái niệm nền tảng của Rời rạc hóa và Ổn định Số
+
+1. **Khai triển Taylor — Máy đo Bậc Sai số Cắt cụt**:
+   Khai triển $u(x \pm h)$ cho biết ngay sai phân tiến $\frac{u(x+h)-u(x)}{h}$ mắc sai số $O(h)$, còn sai phân trung tâm $\frac{u(x+h)-u(x-h)}{2h}$ triệt tiêu số hạng bậc $h$ để nhảy vọt lên $O(h^2)$!
+2. **Sai số Cục bộ (LTE) vs. Sai số Toàn cục (GTE)**:
+   Mỗi bước đi lệch $O(h^{p+1})$ (sai số cục bộ), nhưng để đi hết đoạn $[0, T]$ ta phải thực hiện $N = T/h$ bước cộng dồn—nên sai số toàn cục giảm đi đúng 1 bậc xuống $O(h^p)$!
+3. **Ổn định Số và Hệ số Khuếch đại $|G| \le 1$**:
+   Sai số nhỏ $10^{-16}$ từ máy tính nếu bị nhân với hệ số $1{,}1$ qua $500$ bước sẽ phình thành $1{,}1^{500} \approx 5 \times 10^{20}$! Một sơ đồ chỉ dùng được khi hệ số khuếch đại thỏa mãn $|G| \le 1$.
+4. **Đánh đổi Sai số Cắt cụt vs. Sai số Làm tròn Dấu phẩy động**:
+   Giảm $h$ làm nhỏ sai số cắt cụt $O(h^p)$, nhưng nếu $h$ quá nhỏ ($h \lesssim 10^{-8}$ ở chuẩn `float64`), phép trừ hai số gần bằng nhau $u(x+h) - u(x)$ sẽ bị mất chữ số có nghĩa do sai số làm tròn $O(\varepsilon_{\text{mach}}/h)$!
+
 ## Mục tiêu
 
 Bài hỗ trợ này xây dựng nền tảng khái niệm cho toàn bộ giải tích số phương trình vi phân trước khi đi vào từng lược đồ cụ thể. Sau bài học, sinh viên cần hiểu vì sao phải rời rạc hóa, cách khai triển Taylor làm cơ sở cho các công thức tiến thời gian, sự khác biệt giữa sai số cục bộ và sai số toàn cục, và vì sao tính ổn định là thuộc tính của chính phương pháp số chứ không chỉ của phương trình vi phân gốc.
@@ -28,6 +41,15 @@ Bài học này làm rõ bước chuyển đổi đó trước khi sinh viên ti
 
 Sinh viên cần nắm bài toán giá trị ban đầu cho ODE, khai triển Taylor, ý nghĩa hình học của đạo hàm và thực tế rằng nhiều mô hình không có nghiệm đóng. Bài học chưa đòi hỏi kiến thức trước về lý thuyết ổn định số.
 
+
+### Khung giải thích (nên đọc chậm): So sánh trực tiếp bằng số sai phân tiến $O(h)$ và sai phân trung tâm $O(h^2)$
+
+Ước lượng đạo hàm $f'(0) = 1$ của hàm $f(x) = e^x$ tại $x = 0$ với bước $h = 0{,}1$ (biết $e^{0{,}1} \approx 1{,}105171$ và $e^{-0{,}1} \approx 0{,}904837$):
+1. **Sai phân tiến (bậc 1)**:
+   $$D_+ f(0) = \frac{e^{0{,}1} - 1}{0{,}1} = \frac{0{,}105171}{0{,}1} = \mathbf{1{,}05171} \quad (\text{sai số } = 0{,}05171 \approx \tfrac{h}{2}).$$
+2. **Sai phân trung tâm (bậc 2)**:
+   $$D_0 f(0) = \frac{e^{0{,}1} - e^{-0{,}1}}{0{,}2} = \frac{0{,}200334}{0{,}2} = \mathbf{1{,}00167} \quad (\text{sai số } = 0{,}00167 \approx \tfrac{h^2}{6}).$$
+Chỉ bằng cách đặt đối xứng hai điểm $\pm h$, sai số đã giảm ngay hơn **$30$ lần**—và nếu giảm tiếp $h$ đi $10$ lần, sai phân trung tâm sẽ nhỏ đi $100$ lần trong khi sai phân tiến chỉ nhỏ đi $10$ lần!
 ## 1. Từ Mô Hình Liên Tục Sang Quá Trình Rời Rạc
 
 Xét bài toán giá trị ban đầu $$ y'(t)=f(t,y(t)), \qquad y(t_0)=y_0 $$. Về mặt giải tích, ẩn số là một hàm xác định trên cả một khoảng thời gian liên tục. Về mặt tính toán, máy tính không thể lưu vô hạn giá trị mà chỉ lưu các giá trị xấp xỉ tại các mốc thời gian rời rạc $$ t_n=t_0+nh $$. Do đó, bước đầu tiên của giải tích số là thay miền liên tục bằng một lưới điểm: thay vì tìm hàm chính xác $$ y(t) $$ tại mọi $$ t $$, ta xây dựng một dãy số $$ y_0, y_1, y_2, \dots $$ xấp xỉ nghiệm thật tại các điểm lưới.

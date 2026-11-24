@@ -9,6 +9,44 @@ categories:
 - chapter02
 lesson_type: required
 ---
+
+Push a child on a swing at a random rhythm and the swing responds at your pushing frequency; push at the swing's *exact natural frequency* and the amplitude grows linearly with every cycle. The method of undetermined coefficients captures this exact physics algebraically: constant-coefficient linear operators map polynomials, exponentials, and sinusoids back into the *same finite-dimensional families*, letting us find particular solutions by solving a small system of linear algebraic equations—with one crucial resonance twist.
+
+## Background Knowledge Map: Why Guessing Works (and When to Multiply by $$t^s$$)
+
+Four structural rules eliminate guesswork and prevent the classic resonance trap:
+
+1. **Invariant UC Families (Annihilator Viewpoint):** The operator $$L = aD^2 + bD + c$$ preserves the span of $$t^k e^{\alpha t}\cos(\beta t)$$ and $$t^k e^{\alpha t}\sin(\beta t)$$. Outside this family (e.g., $$\tan t$$, $$\ln t$$, $$1/t$$), undetermined coefficients does *not* apply—use variation of parameters instead.
+2. **Always Solve the Homogeneous Equation First:** Never write down a trial $$y_p(t)$$ before computing the characteristic roots $$r_1, r_2$$; you must compare the forcing frequency/exponent against the natural modes!
+3. **The Resonance (Modification) Rule:** If any term in your initial trial $$y_p$$ duplicates a homogeneous solution, $$L$$ will annihilate it (returning $$0$$ instead of $$g(t)$$); multiply the *entire* affected trial block by $$t^s$$, where $$s \in \{1, 2\}$$ is the smallest integer that eliminates all overlap with $$y_h$$.
+4. **Superposition of Forcing Terms:** If $$g(t) = g_1(t) + g_2(t)$$, solve $$L[y_{p1}] = g_1$$ and $$L[y_{p2}] = g_2$$ separately and add $$y_p = y_{p1} + y_{p2}$$—keeping each linear system tiny and clean.
+
+### Step-by-Step Worked Example (Read Slowly): Handling Resonance in a Forced Second-Order ODE
+
+Find the general solution of
+$$y'' - 4y' + 4y = 6e^{2t} + 4t.$$
+
+1. **Solve the homogeneous equation first:**
+   $$r^2 - 4r + 4 = (r - 2)^2 = 0 \implies r = 2 \text{ (multiplicity 2)}.$$
+   Thus $$y_h(t) = (c_1 + c_2 t)e^{2t}$$.
+2. **Split the forcing into $$g_1(t) = 6e^{2t}$$ and $$g_2(t) = 4t$$:**
+   - For $$g_1(t) = 6e^{2t}$$: the naive trial $$A e^{2t}$$ AND $$A t e^{2t}$$ are *both* already in $$y_h$$! Therefore we must multiply by $$t^2$$ ($$s = 2$$):
+     $$y_{p1}(t) = A t^2 e^{2t}.$$
+   - For $$g_2(t) = 4t$$: no constant or $$t$$ term appears in $$y_h$$ ($$r = 0$$ is not a root), so no modification is needed:
+     $$y_{p2}(t) = B t + C.$$
+3. **Solve for $$A$$ in $$y_{p1} = A t^2 e^{2t}$$:**
+   Differentiate carefully:
+   - $$y_{p1}' = A(2t + 2t^2)e^{2t}$$
+   - $$y_{p1}'' = A(2 + 8t + 4t^2)e^{2t}$$
+   Substitute into $$y'' - 4y' + 4y$$:
+   $$A\bigl[(2 + 8t + 4t^2) - 4(2t + 2t^2) + 4(t^2)\bigr]e^{2t} = 2A e^{2t} = 6e^{2t} \implies A = 3.$$
+   (Notice how all $$t$$ and $$t^2$$ terms canceled automatically—a built-in arithmetic check!)
+4. **Solve for $$B, C$$ in $$y_{p2} = B t + C$$:**
+   $$y_{p2}' = B, \quad y_{p2}'' = 0 \implies 0 - 4B + 4(Bt + C) = 4Bt + (4C - 4B) = 4t + 0.$$
+   Matching coefficients: $$4B = 4 \implies B = 1$$, and $$4C - 4(1) = 0 \implies C = 1$$.
+5. **Assemble the complete general solution:**
+   $$y(t) = (c_1 + c_2 t)e^{2t} + 3t^2 e^{2t} + t + 1.$$
+
 ## Learning Objectives
 This lesson helps students solve second-order linear nonhomogeneous equations using the method of undetermined coefficients, know how to choose the correct trial particular solution form, handle resonance phenomena by multiplying by powers of $$ t $$, and understand why this method is only suitable for families of functions closed under differentiation.
 

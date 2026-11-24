@@ -10,6 +10,33 @@ categories:
 lesson_type: required
 ---
 
+Snap a taut jump rope sharply with your wrist and watch a crisp pulse race down the line, bounce off the far wall, and return almost completely unchanged. Contrast that with Chapter 09's heat equation, which blurs every sharp pulse into a flat puddle instantly. Why does a single change—replacing the first time derivative $$ u_t $$ by the second time derivative $$ u_{tt} $$—transform irreversible melting into reversible, finite-speed wave propagation?
+
+In 1747, Jean le Rond d'Alembert applied Newton's second law $$ F = ma $$ to an infinitesimal slice of a vibrating string and wrote down the first PDE in history: $$ u_{tt} = c^2 u_{xx} $$, where $$ c = \sqrt{T/\rho} $$ is the exact speed at which information travels along the medium.
+
+## Background Knowledge Map: Newton's Law on a Continuum
+
+1. **Force Balance on an Infinitesimal Element ($$ F = ma $$):** On a string segment $$ [x, x + \Delta x] $$ of mass $$ \rho \Delta x $$, vertical acceleration $$ \rho \Delta x\, u_{tt} $$ is driven by the net vertical tension $$ T\sin\theta(x + \Delta x) - T\sin\theta(x) $$.
+2. **Small-Slope Linearization ($$ \sin\theta \approx \tan\theta = u_x $$):** Assuming small transverse deflections ($$ |u_x| \ll 1 $$), tension stays nearly uniform and $$ \sin\theta \approx u_x $$. Dividing by $$ \Delta x $$ and letting $$ \Delta x \to 0 $$ produces $$ u_{tt} = c^2 u_{xx} $$ with wave speed $$ c = \sqrt{T/\rho} $$.
+3. **Hyperbolic vs. Parabolic Physics (Curvature Drives *Acceleration*, Not Velocity):** In the heat equation, concave-down curvature $$ u_{xx} < 0 $$ makes a peak move downward and stop when flat. In the wave equation, $$ u_{xx} < 0 $$ gives downward *acceleration* $$ u_{tt} < 0 $$, so the string shoots past equilibrium with momentum and oscillates!
+4. **Universal Wave Structure:** The same derivation—restoring force proportional to spatial strain balanced against inertia—yields acoustic waves in air ($$ c = \sqrt{B/\rho} $$), longitudinal elastic bars ($$ c = \sqrt{E/\rho} $$), and electromagnetic waves in vacuum ($$ c = 1/\sqrt{\mu_0\varepsilon_0} $$).
+
+### Step-by-Step Worked Example (Read Slowly): Wave Speed, Tension Scaling, and Local Acceleration on a Concert Guitar String
+
+**Problem:** A guitar E-string has linear mass density $$ \rho = 6.5 \times 10^{-4}\text{ kg/m} $$, vibrating length $$ L = 0.65\text{ m} $$, and tension $$ T = 72.8\text{ N} $$. (a) Compute the wave speed $$ c = \sqrt{T/\rho} $$ and fundamental frequency $$ f_1 = \frac{c}{2L} $$. (b) If the string's instantaneous shape is $$ u(x, 0) = 0.002\sin(\pi x / L)\text{ m} $$, compute the exact midpoint transverse acceleration $$ u_{tt}(L/2, 0) $$ in units of $$ g = 9.81\text{ m/s}^2 $$.
+
+1. **Compute wave speed $$ c $$:**
+   $$ c = \sqrt{\frac{T}{\rho}} = \sqrt{\frac{72.8}{6.5 \times 10^{-4}}} = \sqrt{112{,}000} \approx 334.66\text{ m/s}. $$
+2. **Compute fundamental pitch $$ f_1 $$:**
+   $$ f_1 = \frac{c}{2L} = \frac{334.66}{2(0.65)} = \frac{334.66}{1.30} \approx 257.4\text{ Hz} $$
+   (right near middle C, $$ 261.6\text{ Hz} $$—tightening $$ T $$ by $$ 3.3\% $$ raises $$ c $$ by $$ 1.65\% $$ right onto concert pitch!).
+3. **Compute midpoint curvature $$ u_{xx}(L/2, 0) $$ and acceleration $$ u_{tt}(L/2, 0) $$:**
+   - $$ u_{xx}(x, 0) = -0.002\left(\frac{\pi}{L}\right)^2 \sin\!\left(\frac{\pi x}{L}\right) $$.
+   - At $$ x = L/2 $$: $$ u_{xx}(L/2, 0) = -0.002 \cdot \frac{\pi^2}{(0.65)^2} \approx -0.04672\text{ m}^{-1} $$.
+   - Multiply by $$ c^2 = 112{,}000\text{ m}^2/\text{s}^2 $$:
+     $$ u_{tt}(L/2, 0) = c^2 u_{xx}(L/2, 0) = (112{,}000)(-0.04672) \approx -5{,}233\text{ m/s}^2 \approx -533\,g! $$
+   Even a tiny $$ 2\text{ mm} $$ pluck subjects the center of a guitar string to over **500 g's** of restoring acceleration!
+
 ## Learning Objectives
 
 This lesson derives the wave equation from force balance and elasticity. Students should understand how local restoring forces and inertia produce propagation, why the second derivative in time appears, and how the wave speed is determined by physical parameters.

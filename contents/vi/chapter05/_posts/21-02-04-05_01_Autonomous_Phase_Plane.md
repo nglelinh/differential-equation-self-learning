@@ -10,6 +10,19 @@ categories:
 lesson_type: required
 ---
 
+Hầu hết các phương trình vi phân phi tuyến trong tự nhiên—từ con lắc biên độ lớn đến hệ sinh thái—đều **không có nghiệm công thức sơ cấp**. Thay vì cố viết $x(t)$ dưới dạng biểu thức tường minh, Henri Poincaré đã mở ra một góc nhìn thiên tài: vẽ trực tiếp quỹ đạo chuyển động $(x(t), y(t))$ trên **mặt phẳng pha (phase plane)** để đọc trọn vẹn số phận của hệ chỉ bằng hình học!
+
+## Bản đồ kiến thức nền: Bốn viên gạch của Hệ Tự trị & Mặt phẳng Pha
+
+1. **Hệ tự trị (Autonomous System)**:
+   Hệ $\dot{x} = f(x, y),\; \dot{y} = g(x, y)$ không chứa biến thời gian $t$ tường minh ở vế phải; quy luật vận tốc tại mỗi điểm $(x, y)$ là bất biến theo thời gian.
+2. **Trường vectơ (Vector Field) & Đường quỹ đạo (Trajectories)**:
+   Tại mỗi điểm $(x, y)$, vectơ $(f(x, y), g(x, y))$ chỉ hướng tiếp tuyến và tốc độ di chuyển. Theo định lý tồn tại–duy nhất, **hai quỹ đạo khác nhau của hệ tự trị trơn không bao giờ cắt nhau** trên mặt phẳng pha!
+3. **Đường đẳng khuynh không (Nullclines)**:
+   Đường $x$-nullcline ($f(x, y) = 0$) có trường vectơ thẳng đứng; đường $y$-nullcline ($g(x, y) = 0$) có trường vectơ nằm ngang. Giao điểm của chúng chính là các **điểm cân bằng (equilibria)**.
+4. **Bức chân dung pha (Phase Portrait)**:
+   Bản đồ hình học tổng hợp các điểm cân bằng, nullclines và quỹ đạo đại diện cho phép dự đoán hành vi dài hạn của mọi điều kiện ban đầu.
+
 ## Mục tiêu
 
 Bài học này mở đầu chương **động lực học phi tuyến**, chuyển trọng tâm từ việc tìm công thức nghiệm sang phân tích hình học của quỹ đạo. Sinh viên sẽ nắm được khái niệm hệ tự trị hai chiều, trường vector, đường nullcline và quỹ đạo trên mặt phẳng pha, qua đó hiểu vì sao mặt phẳng pha là công cụ trung tâm để khảo sát hệ phi tuyến ngay cả khi không có nghiệm tường minh.
@@ -60,6 +73,16 @@ Hãy hình dung việc quan sát một con cá voi bơi trong đại dương. N�
 Ở các chương trước, nhiều bài toán có thể giải bằng công thức rõ ràng. Tuy nhiên, trong **động lực học phi tuyến, công thức nghiệm không còn là trọng tâm**. Điều quan trọng hơn là xác định **hệ tiến về đâu, quay quanh đâu, có bị chặn không và có dao động bền vững hay không**. Những câu hỏi này thiên về hình học hơn là tính toán đại số.
 
 **Hệ tự trị** là điểm khởi đầu phù hợp cho hướng tiếp cận này. Do vế phải không phụ thuộc tường minh vào thời gian, hình học quỹ đạo chỉ phụ thuộc vào vị trí trong không gian trạng thái. Thay vì khảo sát từng biến riêng lẻ theo thời gian, ta quan sát trực tiếp chuyển động của cả hệ trên mặt phẳng pha.
+
+### Khung giải thích (nên đọc chậm): Vẽ bằng tay Nullclines và xác định hướng quỹ đạo cho hệ con lắc tuyến tính $\dot{x} = y,\; \dot{y} = -x$
+
+1. **Tìm Nullclines**:
+   - $x$-nullcline: $\dot{x} = y = 0$ (trục hoành $Ox$). Tại $x > 0, y = 0$ ta có $\dot{y} = -x < 0$ (mũi tên đi thẳng **xuống**); tại $x < 0, y = 0$ ta có $\dot{y} > 0$ (đi **lên**).
+   - $y$-nullcline: $\dot{y} = -x = 0$ (trục tung $Oy$). Tại $y > 0, x = 0$ ta có $\dot{x} = y > 0$ (đi sang **phải**); tại $y < 0, x = 0$ ta có $\dot{x} < 0$ (đi sang **trái**).
+2. **Tìm điểm cân bằng**: Giao của $y = 0$ và $x = 0$ là gốc $(0, 0)$.
+3. **Tìm phương trình quỹ đạo bằng cách khử $dt$**:
+   $$\frac{dy}{dx} = \frac{-x}{y} \implies y\,dy + x\,dx = 0 \implies x^2 + y^2 = C.$$
+   Mọi quỹ đạo là các **đường tròn đồng tâm** quanh gốc, quay theo **chiều kim đồng hồ** (phù hợp với mũi tên phải–xuống–trái–lên vừa xác định!).
 
 ## Khái niệm theo ba cách
 

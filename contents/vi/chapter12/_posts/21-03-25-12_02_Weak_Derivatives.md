@@ -12,6 +12,21 @@ lesson_type: required
 
 ![Đạo hàm yếu được hiểu qua tích phân từng phần]({{ site.imgurl }}/chapter_img/chapter12/02_weak_derivatives.svg )
 
+Một sợi dây đàn bị gảy kéo căng thành hình tam giác nhọn tại giữa dây: rõ ràng nó là trạng thái vật lý hoàn toàn hợp lệ, nhưng tại đỉnh tam giác, đạo hàm cổ điển $u'(x)$ **không tồn tại**! Làm sao giải phương trình sóng hay phương trình đàn hồi cho những hình dạng có góc gãy như thế? Sergei Sobolev đã nghĩ ra một cú xoay chuyển tuyệt diệu: thay vì lấy giới hạn tỷ số sai phân tại từng điểm, hãy **đẩy phép đạo hàm sang một hàm thử trơn vô hạn $\varphi$** thông qua công thức tích phân từng phần!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Đạo hàm Yếu (Weak Derivative)
+
+1. **Công thức Tích phân Từng phần làm Định nghĩa**:
+   Hàm $v \in L^1_{\text{loc}}(\Omega)$ là đạo hàm yếu bậc $\alpha$ của $u$ nếu với mọi hàm thử $\varphi \in C_c^\infty(\Omega)$:
+   $$\int_\Omega u\, D^\alpha \varphi\,dx = (-1)^{|\alpha|} \int_\Omega v\, \varphi\,dx.$$
+   Vì $\varphi$ triệt tiêu gần biên $\partial\Omega$, mọi số hạng biên đều tự động biến mất!
+2. **Tính nhất quán và Tính duy nhất (a.e.)**:
+   Nếu $u$ khả vi cổ điển thì đạo hàm yếu trùng khít với đạo hàm cổ điển; và nếu đạo hàm yếu tồn tại, nó là **duy nhất hầu khắp nơi** (nhờ bổ đề cơ bản của phép tính biến phân).
+3. **Góc gãy (liên tục) có Đạo hàm Yếu; Bước nhảy (gián đoạn) thì KHÔNG**:
+   Hàm có góc gãy như $|x|$ có đạo hàm yếu là hàm bậc thang $\operatorname{sgn}(x) \in L^\infty$. Ngược lại, hàm bậc thang Heaviside $H(x)$ có đạo hàm là $\delta_0$—không phải một hàm khả tích địa phương, nên $H(x)$ **không có đạo hàm yếu dạng hàm**!
+4. **Quy tắc tính toán quen thuộc vẫn sống sót**:
+   Tính tuyến tính, quy tắc tích (với hàm trơn) và quy tắc đạo hàm hàm hợp (với hàm Lipschitz) đều giữ nguyên cho đạo hàm yếu, tạo nền tảng để xây dựng không gian Sobolev $W^{k,p}$.
+
 ## Mục tiêu
 
 Bài học này giúp sinh viên hiểu vì sao cần khái niệm đạo hàm yếu, cách định nghĩa đạo hàm yếu thông qua hàm thử, và vì sao đây là bước chuyển quan trọng từ giải tích cổ điển sang lý thuyết PDE hiện đại. Sau bài học, sinh viên cần tính được một số đạo hàm yếu cơ bản và giải thích được mối liên hệ giữa đạo hàm yếu, tích phân từng phần và nghiệm yếu.
@@ -26,6 +41,18 @@ Trong nhiều bài toán thực tế, nghiệm không trơn mà có thể xuất
 
 Đạo hàm yếu khắc phục hạn chế đó bằng cách không tính trực tiếp độ dốc tại từng điểm mà khảo sát cách hàm tương tác với mọi hàm thử trơn. Thông qua tích phân từng phần, phép lấy đạo hàm được chuyển sang hàm thử; nếu đẳng thức tích phân vẫn đúng với mọi hàm thử, ta xác định được đạo hàm theo nghĩa rộng hơn.
 
+
+### Khung giải thích (nên đọc chậm): Tính từng bước đạo hàm yếu của hàm giá trị tuyệt đối $u(x) = |x|$ trên $(-1, 1)$
+
+Xét $u(x) = |x|$ trên $\Omega = (-1, 1)$ và lấy một hàm thử bất kỳ $\varphi \in C_c^\infty(-1, 1)$ (nên $\varphi(-1) = \varphi(1) = 0$):
+1. **Tách tích phân tại điểm gãy $x = 0$**:
+   $$\int_{-1}^{1} |x|\varphi'(x)\,dx = \int_{-1}^{0} (-x)\varphi'(x)\,dx + \int_{0}^{1} x\varphi'(x)\,dx.$$
+2. **Tích phân từng phần trên từng nửa khoảng**:
+   - Nửa trái: $\big[-x\varphi(x)\big]_{-1}^0 + \int_{-1}^0 \varphi(x)\,dx = 0 + \int_{-1}^0 \varphi(x)\,dx$.
+   - Nửa phải: $\big[x\varphi(x)\big]_0^1 - \int_0^1 \varphi(x)\,dx = 0 - \int_0^1 \varphi(x)\,dx$.
+3. **Cộng hai vế lại**:
+   $$\int_{-1}^{1} |x|\varphi'(x)\,dx = -\int_{-1}^{1} \operatorname{sgn}(x)\varphi(x)\,dx, \qquad \operatorname{sgn}(x) = \begin{cases} -1 & x < 0, \\ +1 & x > 0. \end{cases}$$
+   Đối chiếu với định nghĩa $\int u\varphi' = -\int v\varphi$, ta kết luận ngay đạo hàm yếu của $|x|$ chính là $v(x) = \mathbf{\operatorname{sgn}(x)}$!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

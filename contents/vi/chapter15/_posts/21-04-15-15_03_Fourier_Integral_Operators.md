@@ -12,6 +12,19 @@ lesson_type: required
 
 ![Fourier integral operators và biến đổi mặt sóng]({{ site.imgurl }}/chapter_img/chapter15/03_fourier_integral_operators.svg )
 
+Toán tử Giả vi phân ($\Psi$DO) ở Chương 14 có một điểm yếu chí mạng khi gặp phương trình sóng: vì pha của nó cố định là $(x - y)\cdot\xi$, mọi $\Psi$DO đều **giữ nguyên vị trí kỳ dị** ($\operatorname{WF}(Pu) \subset \operatorname{WF}(u)$), nên nó **không bao giờ có thể biểu diễn toán tử tiến hóa sóng** $e^{it\sqrt{-\Delta}}$ vốn dịch chuyển xung sóng từ $y$ sang $x = y \pm ct$! Để giải quyết bài toán này, Lars Hörmander thay pha tuyến tính $(x - y)\cdot\xi$ bằng một **hàm pha tổng quát $\Phi(x, y, \theta)$**—khai sinh **Toán tử Tích phân Fourier (FIO)**!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Toán tử Tích phân Fourier (FIO)
+
+1. **Cấu trúc Tổng quát $(Au)(x) = \iint e^{i\Phi(x, y, \theta)} a(x, y, \theta) u(y)\,dy\,d\theta$**:
+   Khi $\Phi(x, y, \theta) = (x - y)\cdot\theta$, ta quay về đúng $\Psi$DO. Khi $\Phi$ tổng quát hơn (thuần nhất bậc $1$ theo $\theta$ và không suy biến), FIO có thể **dịch chuyển, xoay và hội tụ các tập mặt sóng** trong không gian pha!
+2. **Nguyên lý Pha Dừng (Stationary Phase) & Quan hệ Chính tắc $C_\Phi$**:
+   Tích phân dao động triệt tiêu nhanh ở mọi nơi trừ tập tới hạn $\nabla_\theta \Phi(x, y, \theta) = 0$. Điểm $(y, \eta = -\nabla_y\Phi)$ được FIO ánh xạ sang $(x, \xi = \nabla_x\Phi)$, tạo thành **quan hệ chính tắc (canonical relation)** $C_\Phi \subset (T^*X \setminus 0) \times (T^*Y \setminus 0)$—một phép biến đổi symplectic của cơ học cổ điển!
+3. **Định luật Dịch chuyển Mặt sóng $\operatorname{WF}(Au) \subset C_\Phi \circ \operatorname{WF}(u)$**:
+   Đây là quy tắc tính toán đẹp bậc nhất của giải tích hiện đại: muốn biết FIO đưa kỳ dị đi đâu, chỉ cần áp dụng phép biến đổi chính tắc $C_\Phi$ lên tập mặt sóng ban đầu $\operatorname{WF}(u)$!
+4. **Ví dụ Vàng: Bộ giải Phương trình Sóng và Biến đổi Radon**:
+   Cả bộ giải sóng $u(t) = \cos(t\sqrt{-\Delta})u_0 + \frac{\sin(t\sqrt{-\Delta})}{\sqrt{-\Delta}}u_1$ lẫn phép chụp CT (Biến đổi Radon) đều là những FIO kinh điển—biến hình học tia sáng thành công cụ giải tích chính xác!
+
 ## Mục tiêu
 
 Bài học này giới thiệu toán tử tích phân Fourier (FIO) như lớp toán tử tự nhiên để mô tả quá trình truyền sóng và biến đổi mặt sóng. Sau bài học, sinh viên cần phân biệt được FIO với ΨDO, nắm vai trò của hàm pha (phase function) và biên độ (amplitude), và hiểu vì sao FIO là công cụ phù hợp cho sự lan truyền kỳ dị.
@@ -26,6 +39,17 @@ Toán tử giả vi phân rất hiệu quả nhưng về bản chất vẫn hàn
 
 Nếu ΨDO là ngôn ngữ của việc “điều chỉnh biên độ theo tần số tại chỗ”, thì FIO là ngôn ngữ của việc “vận chuyển và biến dạng mặt sóng”.
 
+
+### Khung giải thích (nên đọc chậm): Dùng điều kiện Pha dừng đọc ngay quan hệ chính tắc của FIO truyền sóng 1D
+
+Xét toán tử tiến hóa nhánh sóng chạy sang phải $(U(t)u)(x) = \frac{1}{2\pi}\iint e^{i[(x - y)\xi - ct\xi]} u(y)\,dy\,d\xi$ (với $\xi > 0$). Hàm pha là:
+$$\Phi(x, y, \xi) = (x - y - ct)\xi.$$
+Áp dụng công thức tìm quan hệ chính tắc $C_\Phi$:
+1. **Tập pha dừng theo biến tần số $\xi$**:
+   $$\frac{\partial \Phi}{\partial \xi} = x - y - ct = 0 \iff \mathbf{x = y + ct}.$$
+2. **Liên hệ đối vector vào ($\eta$) và ra ($\xi_{\text{ra}}$)**:
+   $$\eta = -\frac{\partial \Phi}{\partial y} = \mathbf{\xi}, \qquad \xi_{\text{ra}} = \frac{\partial \Phi}{\partial x} = \mathbf{\xi}.$$
+3. **Đọc kết quả hình học**: Quan hệ chính tắc là phép dịch chuyển symplectic $(y, \eta) \mapsto \mathbf{(y + ct,\; \eta)}$! Mọi gói sóng hay kỳ dị ban đầu ở vị trí $y$ với tần số $\eta > 0$ đều được FIO nhấc nguyên vẹn sang vị trí mới $x = y + ct$ sau thời gian $t$!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

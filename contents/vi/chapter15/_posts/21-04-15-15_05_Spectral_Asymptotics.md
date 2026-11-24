@@ -12,6 +12,20 @@ lesson_type: optional
 
 ![Asymptotics của phổ và đếm eigenvalue]({{ site.imgurl }}/chapter_img/chapter15/05_spectral_asymptotics.svg )
 
+Năm 1911, Hermann Weyl chứng minh một định lý khiến giới vật lý và toán học kinh ngạc: nếu bạn chỉ được nghe toàn bộ danh sách các tần số dao động riêng $\lambda_1 \le \lambda_2 \le \dots$ của một mặt trống phẳng $\Omega$ mà **không hề nhìn thấy hình dạng của nó**, bạn vẫn có thể tính chính xác **diện tích** của cái trống! Công thức đếm $N(\lambda) \sim \frac{\operatorname{Area}(\Omega)}{4\pi}\lambda$—**Định luật Weyl**—là viên ngọc mở đầu cho **Tiệm cận Phổ (Spectral Asymptotics)**, nơi giải tích vi địa phương đọc ra hình học của không gian từ âm thanh của nó!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Tiệm cận Phổ & Định luật Weyl
+
+1. **Hàm Đếm Giá trị riêng $N(\lambda) = \#\{k : \lambda_k \le \lambda\}$ và Thể tích Không gian Pha**:
+   Theo nguyên lý bán cổ điển, mỗi trạng thái lượng tử chiếm đúng một ô thể tích $(2\pi)^n$ trong không gian pha $T^*\Omega$. Do đó số giá trị riêng $\le \lambda$ của $-\Delta$ tiệm cận bằng thể tích vùng $\{(x, \xi) \in T^*\Omega : |\xi|^2 \le \lambda\}$ chia cho $(2\pi)^n$:
+   $$N(\lambda) \sim \frac{\omega_n \operatorname{Vol}(\Omega)}{(2\pi)^n}\,\lambda^{n/2}.$$
+2. **Số hạng Hiệu chỉnh Biên (Biên Dirichlet vs. Biên Neumann)**:
+   Giả thuyết Weyl (được Ivrii chứng minh năm 1980 dưới điều kiện tia phản xạ tuần hoàn có độ đo $0$) cho biết số hạng bậc hai tiết lộ luôn **chu vi** $|\partial\Omega|$: dấu **trừ** cho biên Dirichlet ($-\frac{|\partial\Omega|}{4\pi}\sqrt{\lambda}$ ở 2D) và dấu **cộng** cho biên Neumann!
+3. **Hai công cụ chứng minh: Vết Nhân Nhiệt (Tauberian) vs. Vết Sóng (FIO)**:
+   Dùng vết nhiệt $\operatorname{Tr}(e^{t\Delta}) = \sum e^{-t\lambda_k}$ cho nhanh số hạng chính (nhưng phần dư yếu); dùng vết sóng $\operatorname{Tr}(e^{it\sqrt{-\Delta}})$ bằng FIO (Hörmander 1968) cho phần dư sắc bén $O(\lambda^{(n-1)/2})$!
+4. **Câu hỏi Mark Kac (1966): "Có nghe được hình dáng cái trống không?"**:
+   Phổ cho biết diện tích, chu vi, thậm chí số lỗ thủng (đặc trưng Euler)—nhưng năm 1992, Gordon, Webb và Wolpert đã dựng hai đa giác khác nhau có phổ giống hệt nhau: ta nghe được *rất nhiều* hình học, nhưng không phải toàn bộ!
+
 ## Mục tiêu
 
 Bài học tùy chọn này giới thiệu tiệm cận phổ (spectral asymptotics), trọng tâm là định luật Weyl, như cầu nối giữa phổ năng lượng cao, hình học và giải tích vi địa phương. Sau bài học, sinh viên cần hiểu ý nghĩa của hàm đếm trị riêng, trực giác của định luật Weyl, và lý do phổ năng lượng cao phản ánh thể tích không gian pha chứ không chỉ là một dãy số rời rạc.
@@ -26,6 +40,18 @@ Khi xét từng trị riêng riêng lẻ, phổ toán tử có vẻ như một d
 
 Điểm đáng chú ý là phổ không chỉ mô tả các tần số dao động mà còn mã hóa thông tin về hình học miền, metric và thể tích không gian pha, đặt bài toán phổ vào giao điểm của PDE, hình học và vật lý.
 
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng số trực tiếp Định luật Weyl (2 số hạng) trên hình vuông $[0, \pi]^2$
+
+Xét bài toán Dirichlet $-\Delta u = \lambda u$ trên hình vuông $\Omega = [0, \pi]^2$ (Diện tích $= \pi^2$, Chu vi $= 4\pi$). Các giá trị riêng chính xác là $\lambda_{m, n} = m^2 + n^2$ với $m, n \in \mathbb{Z}_{\ge 1}$. Hãy đếm $N(100)$ (số cặp nguyên dương thỏa mãn $m^2 + n^2 \le 100$):
+1. **Đếm tay chính xác**:
+   - $m = 1, 2, 3, 4$: mỗi hàng có $9$ giá trị $n$ ($4 \times 9 = 36$).
+   - $m = 5, 6$: mỗi hàng có $8$ giá trị $n$ ($2 \times 8 = 16$).
+   - $m = 7$: $7$ giá trị ($7^2 + 7^2 = 98 \le 100$); $m = 8$: $6$ giá trị; $m = 9$: $4$ giá trị.
+   - **Tổng chính xác**: $N(100) = 36 + 16 + 7 + 6 + 4 = \mathbf{69}$.
+2. **Dự đoán bằng Định luật Weyl 2 số hạng** (biên Dirichlet có dấu trừ):
+   $$N_{\text{Weyl}}(100) = \frac{\operatorname{Area}}{4\pi}\lambda - \frac{\operatorname{Perimeter}}{4\pi}\sqrt{\lambda} = \frac{\pi^2}{4\pi}(100) - \frac{4\pi}{4\pi}(10) = 25\pi - 10 \approx 78{,}54 - 10 = \mathbf{68{,}54}!$$
+   Sai lệch chưa tới **$0{,}5$ giá trị riêng** trên tổng số $69$—một độ chính xác đáng kinh ngạc!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

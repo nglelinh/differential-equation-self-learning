@@ -9,7 +9,21 @@ categories:
 - chapter10
 lesson_type: required
 ---
+
 ![21 03 11 10 01 Derivation Wave Equation]({{ site.imgurl }}/chapter_img/chapter10/01_derivation_wave_equation.svg)
+
+Để suy ra phương trình sóng 1D $u_{tt} = c^2 u_{xx}$, ta chẳng cần công cụ cao siêu nào ngoài **Định luật II Newton ($F = ma$)** áp dụng cho một đoạn dây đàn vô cùng ngắn $[x, x + \Delta x]$ dưới giả thiết dao động biên độ nhỏ ($\vert u_x \vert \ll 1$).
+
+## Bản đồ kiến thức nền: Bốn bước suy diễn Phương trình Sóng từ $F = ma$
+
+1. **Giả thiết dây đàn lý tưởng**:
+   Dây mềm hoàn toàn (không chống uốn), khối lượng riêng dài đều $\rho$, dao động thẳng đứng nhỏ ($\vert u_x \vert \ll 1 \implies \cos\theta \approx 1,\; \sin\theta \approx \tan\theta = u_x$), nên lực căng ngang $T$ không đổi dọc dây.
+2. **Hợp lực thẳng đứng trên đoạn $[x, x + \Delta x]$**:
+   $$F_y = T\sin\theta(x + \Delta x) - T\sin\theta(x) \approx T\big[u_x(x + \Delta x, t) - u_x(x, t)\big].$$
+3. **Áp dụng $F = ma$ và lấy giới hạn $\Delta x \to 0$**:
+   $$\rho \Delta x\, u_{tt} = T\big[u_x(x + \Delta x, t) - u_x(x, t)\big] \implies u_{tt} = \frac{T}{\rho} u_{xx} = c^2 u_{xx}, \qquad c = \sqrt{\frac{T}{\rho}}.$$
+4. **Phân loại PDE Hyperbolic vs. Parabolic**:
+   Khác với phương trình nhiệt ($u_t = \alpha u_{xx}$ — Parabolic, bất đối xứng thời gian), phương trình sóng ($u_{tt} = c^2 u_{xx}$ — Hyperbolic) **đối xứng hoàn toàn khi đảo ngược thời gian $t \to -t$**, bảo toàn năng lượng và truyền tín hiệu với **tốc độ hữu hạn đúng bằng $c$**!
 
 ## Mục tiêu
 
@@ -24,6 +38,15 @@ Sinh viên cần nắm đạo hàm riêng, định luật II Newton, khái niệ
 Ở chương trước, phương trình nhiệt xuất phát từ định luật bảo toàn năng lượng kết hợp với dòng khuếch tán. Sang chương này, ta xét một cơ chế vật lý hoàn toàn khác: sự lan truyền do tương tác giữa quán tính và lực phục hồi. Khi kéo một sợi dây căng lệch khỏi vị trí cân bằng rồi thả ra, dây không phẳng dần ngay như nhiệt độ mà dao động, truyền xung dọc theo dây và bảo toàn cơ năng.
 
 Đây là điểm phân biệt cơ bản về mặt mô hình: trong phương trình nhiệt, nhiễu loạn bị san phẳng; trong phương trình sóng, nhiễu loạn được truyền đi. Vì vậy, bài mở đầu chương cần làm rõ cơ sở cơ học phía sau từng số hạng của phương trình.
+
+### Khung giải thích (nên đọc chậm): Tính tay vận tốc sóng và tần số cơ bản của một dây đàn guitar thật
+
+Một dây đàn guitar dài $L = 0{,}65\text{ m}$, khối lượng riêng dài $\rho = 0{,}001\text{ kg/m}$ ($1\text{ g/m}$), được lên dây với lực căng $T = 72{,}9\text{ N}$:
+1. **Tốc độ truyền sóng dọc dây**:
+   $$c = \sqrt{\frac{T}{\rho}} = \sqrt{\frac{72{,}9}{0{,}001}} = \sqrt{72.900} = \mathbf{270\text{ m/s}}.$$
+2. **Tần số âm cơ bản $f_1 = \frac{c}{2L}$**:
+   $$f_1 = \frac{270}{2 \times 0{,}65} \approx \mathbf{207{,}7\text{ Hz}} \quad (\text{nốt G\#3}).$$
+3. **Kiểm tra trực giác lên dây**: Muốn nâng cao độ lên đúng 1 quãng tám (tần số tăng $2\times$), ta phải tăng lực căng $T$ lên gấp **$4\times$** (vì $c \propto \sqrt{T}$)!
 
 ## Khái niệm theo ba cách
 

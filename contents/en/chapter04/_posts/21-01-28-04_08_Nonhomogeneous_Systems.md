@@ -10,6 +10,36 @@ categories:
 lesson_type: required
 ---
 
+Real systems rarely coast unforced: a multi-room building receives fluctuating solar heat, a circuit network is driven by an AC generator, and a multi-compartment drug model receives scheduled infusions. For any forced linear system $$\mathbf{x}' = A(t)\mathbf{x} + \mathbf{g}(t)$$, superposition still splits the answer into $$\mathbf{x} = \mathbf{x}_h + \mathbf{x}_p$$—and matrix variation of parameters hands us a single universal formula that works for *every* continuous forcing vector $$\mathbf{g}(t)$$.
+
+## Background Knowledge Map: Three Methods for Forced Linear Systems
+
+Choose the sharpest tool depending on the structure of $$A$$ and $$\mathbf{g}(t)$$:
+
+1. **Matrix Variation of Parameters (Universal):** Given *any* fundamental matrix $$\Psi(t)$$ of $$\mathbf{x}' = A(t)\mathbf{x}$$, setting $$\mathbf{x}_p(t) = \Psi(t)\mathbf{u}(t)$$ cancels $$A\Psi\mathbf{u}$$ immediately and leaves $$\Psi(t)\mathbf{u}'(t) = \mathbf{g}(t)$$, giving
+   $$\mathbf{x}_p(t) = \Psi(t)\int_{t_0}^t \Psi(s)^{-1}\mathbf{g}(s)\,ds.$$
+   For constant $$A$$ with $$\Psi(t) = e^{At}$$, this simplifies cleanly to Duhamel's convolution $$\mathbf{x}_p(t) = \int_{t_0}^t e^{A(t-s)}\mathbf{g}(s)\,ds$$.
+2. **Diagonalization Decoupling (Fastest When $$A = PDP^{-1}$$):** Setting $$\mathbf{x} = P\mathbf{y}$$ converts $$\mathbf{x}' = A\mathbf{x} + \mathbf{g}(t)$$ into $$n$$ independent scalar first-order linear ODEs $$y_k' = \lambda_k y_k + h_k(t)$$ where $$\mathbf{h}(t) = P^{-1}\mathbf{g}(t)$$, solvable by Chapter 1 integrating factors!
+3. **Vector Undetermined Coefficients (With Resonance Caution):** For polynomial/exponential/sinusoidal $$\mathbf{g}(t)$$, a trial vector works—*but* if the forcing exponent $$\mu$$ matches an eigenvalue of $$A$$, you must include **both** $$\mathbf{a}\,t\,e^{\mu t} + \mathbf{b}\,e^{\mu t}$$ (unlike scalar ODEs, you cannot drop the $$\mathbf{b}\,e^{\mu t}$$ term because $$\mathbf{b}$$ has components orthogonal to the eigenvector!).
+4. **Equilibrium Shift for Constant Forcing:** When $$\mathbf{g}(t) \equiv \mathbf{b}$$ is constant and $$A$$ is invertible, the steady-state particular solution is immediately $$\mathbf{x}_p = -A^{-1}\mathbf{b}$$!
+
+### Step-by-Step Worked Example (Read Slowly): Solving a Forced System via Diagonalization Decoupling
+
+Solve the forced initial value problem
+$$\mathbf{x}' = \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}\mathbf{x} + \begin{pmatrix} 2e^t \\ 0 \end{pmatrix}, \qquad \mathbf{x}(0) = \begin{pmatrix} 0 \\ 0 \end{pmatrix}.$$
+
+1. **Diagonalize $$A = P D P^{-1}$$:**
+   From earlier, $$\lambda_1 = 3$$ with $$\mathbf{v}_1 = (1, 1)^\top$$ and $$\lambda_2 = -1$$ with $$\mathbf{v}_2 = (1, -1)^\top$$, so
+   $$P = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}, \qquad D = \begin{pmatrix} 3 & 0 \\ 0 & -1 \end{pmatrix}, \qquad P^{-1} = \frac{1}{2}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}.$$
+2. **Transform the forcing $$\mathbf{h}(t) = P^{-1}\mathbf{g}(t)$$ and initial condition $$\mathbf{y}(0) = P^{-1}\mathbf{x}(0) = \mathbf{0}$$:**
+   $$\mathbf{h}(t) = \frac{1}{2}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}\begin{pmatrix} 2e^t \\ 0 \end{pmatrix} = \begin{pmatrix} e^t \\ e^t \end{pmatrix}.$$
+3. **Solve the two decoupled scalar first-order IVPs:**
+   - $$y_1' - 3y_1 = e^t,\; y_1(0) = 0 \implies y_1(t) = \frac{1}{2}\bigl(e^{3t} - e^t\bigr)$$ (check: $$y_1' - 3y_1 = \frac{3}{2}e^{3t} - \frac{1}{2}e^t - \frac{3}{2}e^{3t} + \frac{3}{2}e^t = e^t$$!).
+   - $$y_2' + y_2 = e^t,\; y_2(0) = 0 \implies y_2(t) = \frac{1}{2}\bigl(e^t - e^{-t}\bigr)$$ (check: $$y_2' + y_2 = \frac{1}{2}e^t + \frac{1}{2}e^{-t} + \frac{1}{2}e^t - \frac{1}{2}e^{-t} = e^t$$!).
+4. **Transform back via $$\mathbf{x}(t) = P\mathbf{y}(t)$$:**
+   $$\mathbf{x}(t) = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}\begin{pmatrix} \frac{1}{2}(e^{3t} - e^t) \\ \frac{1}{2}(e^t - e^{-t}) \end{pmatrix} = \frac{1}{2}\begin{pmatrix} e^{3t} - e^{-t} \\ e^{3t} - 2e^t + e^{-t} \end{pmatrix}.$$
+   Verify at $$t = 0$$: $$\mathbf{x}(0) = (0, 0)^\top$$ and $$\mathbf{x}'(0) = \frac{1}{2}(3+1,\; 3-2-1)^\top = (2, 0)^\top = A\mathbf{0} + \mathbf{g}(0)$$. Exact!
+
 ## Learning Objectives
 
 This lesson helps students solve nonhomogeneous linear systems, understand variation of parameters for systems, and interpret how forcing or external input reshapes the natural motion of a system. Students should also see Duhamel's integral formula as the system-level version of forced response from single-equation ODEs.

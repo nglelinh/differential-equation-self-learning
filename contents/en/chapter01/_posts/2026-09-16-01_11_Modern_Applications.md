@@ -10,6 +10,34 @@ categories:
 lesson_type: optional
 ---
 
+In 2018, a landmark NeurIPS Best Paper asked a deceptively simple question: a deep Residual Network updates its hidden state via $$h_{k+1} = h_k + f_\theta(h_k, k)$$, which looks suspiciously like Euler's method with step size $$\Delta t = 1$$—so what happens if you take $$\Delta t \to 0$$? Out popped **Neural ODEs**: continuous-depth neural networks whose forward pass is an adaptive ODE solver and whose backpropagation is a reverse-time adjoint ODE requiring $$O(1)$$ memory.
+
+## Background Knowledge Map: Chapter 01 Theory Inside Neural ODEs
+
+Four core ideas from first-order ODEs directly explain why Neural ODEs work and where they fail:
+
+1. **ResNets as Euler Discretization:** Letting layer index become continuous time $$t \in [0, T]$$ turns discrete residual blocks into $$\frac{dh}{dt} = f_\theta(h(t), t)$$, letting adaptive Runge–Kutta solvers choose accuracy vs. speed dynamically.
+2. **Picard–Lindelöf and Diffeomorphism Constraints:** Because unique ODE trajectories in $$\mathbb{R}^d$$ can *never cross*, a Neural ODE map $$h(0) \mapsto h(T)$$ is strictly a homeomorphism (topology-preserving)—explaining why a 1D Neural ODE cannot learn $$x \mapsto -x$$ without augmenting dimensions!
+3. **Adjoint Sensitivity Method:** Instead of storing every intermediate activation during the forward pass, Neural ODEs define an adjoint state $$a(t) = \frac{\partial \mathcal{L}}{\partial h(t)}$$ that satisfies the linear backward ODE $$\frac{da}{dt} = -a(t)^\top \frac{\partial f_\theta}{\partial h}$$, cutting memory cost from $$O(L)$$ to $$O(1)$$.
+4. **Continuous Normalizing Flows (Instantaneous Change of Variables):** Tracking probability density $$p(h(t))$$ along a Neural ODE replaces an expensive $$O(d^3)$$ Jacobian determinant with a cheap $$O(d)$$ trace via Liouville's formula $$\frac{d}{dt}\log p(h(t)) = -\operatorname{tr}\!\left(\frac{\partial f_\theta}{\partial h}\right)$$.
+
+### Step-by-Step Worked Example (Read Slowly): Computing the Exact Adjoint Gradient for a 1D Linear Neural ODE
+
+Consider a 1D Neural ODE $$\frac{dh}{dt} = \theta\,h(t)$$ on $$t \in [0, 1]$$ with initial input $$h(0) = 2$$, parameter $$\theta = 1$$, and target loss $$\mathcal{L} = \frac{1}{2}\bigl(h(1) - 10\bigr)^2$$.
+
+1. **Forward pass (solve the state ODE):**
+   $$h(t) = 2e^{\theta t}. \quad \text{At } \theta = 1:\; h(1) = 2e \approx 5.4366.$$
+2. **Set the terminal adjoint condition at $$t = 1$$:**
+   $$a(1) = \frac{\partial \mathcal{L}}{\partial h(1)} = h(1) - 10 = 2e - 10 \approx -4.5634.$$
+3. **Solve the backward adjoint ODE:**
+   Since $$f_\theta(h) = \theta h$$, we have $$\frac{\partial f_\theta}{\partial h} = \theta$$, so
+   $$\frac{da}{dt} = -a(t)\,\theta \implies a(t) = a(1)\,e^{\theta(1-t)}.$$
+   At $$\theta = 1$$: $$a(t) = (2e - 10)e^{1 - t}$$.
+4. **Integrate the parameter gradient $$\frac{d\mathcal{L}}{d\theta} = \int_0^1 a(t)\frac{\partial f_\theta}{\partial \theta}\,dt$$:**
+   Since $$\frac{\partial f_\theta}{\partial \theta} = h(t) = 2e^t$$:
+   $$\frac{d\mathcal{L}}{d\theta} = \int_0^1 (2e - 10)e^{1-t} \cdot 2e^t\,dt = \int_0^1 2e(2e - 10)\,dt = 2e(2e - 10) \approx \mathbf{-24.809}.$$
+5. **Direct verification:** Differentiating $$\mathcal{L}(\theta) = \frac{1}{2}(2e^\theta - 10)^2$$ directly gives $$(2e^\theta - 10)(2e^\theta) = 2e(2e - 10)$$ at $$\theta = 1$$—exact match, computed purely by solving two ODEs!
+
 ## Objectives
 
 This optional lesson shows how the first-order initial-value problem studied throughout the chapter reappeared, after 2018 and especially in the 2022–2026 literature, as a model for continuous-depth neural networks. Students should be able to write a neural ODE, explain why existence and uniqueness still govern the architecture, relate residual networks to Euler steps, and locate the main software implementations. The classical theory is left unchanged; the new material is an application layer.

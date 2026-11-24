@@ -9,7 +9,25 @@ categories:
 - chapter11
 lesson_type: required
 ---
+
 ![21 03 18 11 03 Laplace Polar Coordinates]({{ site.imgurl }}/chapter_img/chapter11/03_laplace_polar_coordinates.svg)
+
+Trên một đĩa tròn hay hình vành khăn, hệ tọa độ Descartes $(x, y)$ trở nên vụng về vì biên cong không khớp với lưới vuông góc. Chuyển sang tọa độ cực $(r, \theta)$ làm hình học trở nên gọn gàng ngay lập tức, nhưng đổi lại xuất hiện một "người khách quen" đầy thú vị từ Chương 6: phương trình hướng kính biến thành **phương trình Cauchy–Euler** $r^2 R'' + r R' - n^2 R = 0$, kéo theo công thức tích phân Poisson tuyệt đẹp cho giá trị tại mọi điểm bên trong hình tròn!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Laplace trong Tọa độ Cực
+
+1. **Biến đổi Toán tử Laplace sang $(r, \theta)$**:
+   $$\Delta u = u_{rr} + \frac{1}{r} u_r + \frac{1}{r^2} u_{\theta\theta} = 0.$$
+   Tính tuần hoàn góc $u(r, \theta + 2\pi) = u(r, \theta)$ tự động đóng vai trò "điều kiện biên" theo $\theta$, ép hằng số tách biến phải là số nguyên bình phương $\lambda = n^2$ ($n = 0, 1, 2, \dots$).
+2. **Nghiệm Cauchy–Euler và Chọn nhánh theo Hình học Miền**:
+   Với $n = 0$: $R_0(r) = A_0 + B_0 \ln r$; với $n \ge 1$: $R_n(r) = A_n r^n + B_n r^{-n}$.
+   - **Trong đĩa tròn $r < R$**: đòi hỏi bị chặn tại $r = 0$ nên loại bỏ $\ln r$ và $r^{-n}$.
+   - **Ngoài đĩa tròn $r > R$**: đòi hỏi bị chặn khi $r \to \infty$ nên loại bỏ $\ln r$ và $r^n$.
+   - **Hình vành khăn $R_1 < r < R_2$**: giữ nguyên cả hai nhánh!
+3. **Chuỗi Fourier trên Đường tròn Biên**:
+   Nghiệm tổng quát trong đĩa bán kính $R$ có dạng $u(r, \theta) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left(\frac{r}{R}\right)^n (a_n \cos n\theta + b_n \sin n\theta)$, trong đó $a_n, b_n$ chính là hệ số Fourier của dữ liệu biên $f(\theta)$.
+4. **Công thức Tích phân Poisson (Poisson Kernel)**:
+   Cộng đóng chuỗi hình học $\sum (r/R)^n \cos(n(\theta - \phi))$ thu được biểu thức tích phân trực tiếp $u(r, \theta) = \frac{1}{2\pi}\int_0^{2\pi} \frac{R^2 - r^2}{R^2 - 2Rr\cos(\theta-\phi) + r^2} f(\phi)\,d\phi$—chứng minh tức thì Tính chất Trung bình tại tâm $r = 0$!
 
 ## Mục tiêu
 
@@ -25,6 +43,17 @@ Nếu giải bài toán trên đĩa tròn bằng tọa độ Descartes, công th
 
 Về mặt khái niệm, bài học này cho thấy việc chọn đúng hệ tọa độ không chỉ rút gọn phép tính mà còn làm nổi bật tính đối xứng của bài toán. Hình học tròn khiến nghiệm biểu diễn tự nhiên nhất theo góc và bán kính.
 
+
+### Khung giải thích (nên đọc chậm): Giải nhanh bằng tay bài toán Dirichlet trên đĩa tròn bán kính $R = 2$
+
+Tìm nghiệm điều hòa $\Delta u = 0$ trong đĩa $r < 2$ biết nhiệt độ trên vành tròn $r = 2$ là:
+$$u(2, \theta) = 10 + 4\cos\theta - 8\sin(2\theta).$$
+1. **Khớp từng mode điều hòa (không cần tính tích phân!)**:
+   Vì dữ liệu biên đã là một đa thức lượng giác hữu hạn, ta chỉ cần nhân mỗi mode bậc $n$ với thừa số suy giảm $\left(\frac{r}{R}\right)^n = \left(\frac{r}{2}\right)^n$:
+   $$u(r, \theta) = 10 + 4\left(\frac{r}{2}\right)\cos\theta - 8\left(\frac{r}{2}\right)^2\sin(2\theta) = \mathbf{10 + 2r\cos\theta - 2r^2\sin(2\theta)}.$$
+2. **Kiểm tra tại tâm $r = 0$**: $u(0, \theta) = \mathbf{10}$—đúng bằng giá trị trung bình của $u(2, \theta)$ trên cả đường tròn!
+3. **Tính tại điểm $(r = 1, \theta = \pi/4)$**:
+   $$u\left(1, \frac{\pi}{4}\right) = 10 + 2(1)\frac{\sqrt{2}}{2} - 2(1)^2(1) = 8 + \sqrt{2} \approx \mathbf{9{,}414}.$$
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan

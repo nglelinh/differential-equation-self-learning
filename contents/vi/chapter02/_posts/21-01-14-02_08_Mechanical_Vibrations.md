@@ -9,6 +9,20 @@ categories:
 - chapter02
 lesson_type: required
 ---
+
+Tại sao một đoàn binh phải bước đi lệch nhịp khi qua cầu treo, còn hệ thống treo trên ô tô lại được kỹ sư tinh chỉnh chính xác đến từng phần trăm hệ số cản? Tất cả đều là biểu hiện vật lý trực tiếp của phương trình dao động cơ học $m x'' + c x' + k x = F(t)$—nơi các đại lượng đại số như phần thực nghiệm đặc trưng hay đỉnh hàm truyền biến thành cảm giác êm ái hay thảm họa cộng hưởng ngoài đời thực!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Dao động Cơ học
+
+1. **Cân bằng động lực $m x'' + c x' + k x = F(t)$**:
+   Ba lực cạnh tranh nhau: lực quán tính ($m x''$), lực cản nhớt tiêu tán năng lượng ($c x'$) và lực hồi phục Hooke ($k x$); tần số tự nhiên không cản là $\omega_0 = \sqrt{k/m}$.
+2. **Tỷ số cản $\zeta = \frac{c}{2\sqrt{mk}}$ & Ba chế độ dao động tự do**:
+   $\zeta < 1$ (tắt dần yếu—dao động với $\omega_d = \omega_0\sqrt{1-\zeta^2}$), $\zeta = 1$ (tắt dần tới hạn—hồi vị nhanh nhất không dao động), $\zeta > 1$ (tắt dần mạnh—ì ạch).
+3. **Dao động cưỡng bức: Trạng thái quá độ (Transient) vs. Xác lập (Steady-State)**:
+   Khi $c > 0$, phần $y_h(t) \to 0$ theo hàm mũ; sau một thời gian ngắn, hệ hoàn toàn bị dẫn dắt bởi đáp ứng xác lập $y_p(t) = A(\omega)\cos(\omega t - \delta)$.
+4. **Hiện tượng Phách & Cộng hưởng (Resonance)**:
+   Biên độ xác lập $A(\omega) = \frac{F_0}{\sqrt{(k - m\omega^2)^2 + (c\omega)^2}}$ đạt đỉnh cực đại tại $\omega_{\text{res}} = \sqrt{\omega_0^2 - \frac{c^2}{2m^2}}$ (khi $c$ nhỏ); nếu $c = 0$ và $\omega = \omega_0$, biên độ tăng vô hạn theo $t$!
+
 ## Mục tiêu
 Bài học này áp dụng các kỹ thuật của Chương 02 vào một mô hình vật lý trọng tâm: hệ khối lượng - lò xo - giảm chấn. Sinh viên sẽ học cách thiết lập phương trình, phân biệt dao động tự do với dao động cưỡng bức, nhận diện ba chế độ quá tắt dần, tắt dần tới hạn và dưới tắt dần, đồng thời hiểu hiện tượng cộng hưởng dưới góc nhìn cơ học.
 
@@ -21,6 +35,15 @@ Sinh viên cần nắm phương trình tuyến tính cấp hai hệ số hằng,
 Dao động cơ học là ứng dụng tiêu biểu của ODE cấp hai vì mỗi hệ số trong phương trình đều mang ý nghĩa vật lý trực tiếp: khối lượng $$ m $$ đại diện cho quán tính, độ cứng lò xo $$ k $$ tạo lực hồi phục, còn hệ số cản $$ c $$ biểu diễn sự tiêu tán năng lượng. Từ ba tham số này, mô hình tái hiện được nhiều hiện tượng quen thuộc như dao động điều hòa, tắt dần, quay về cân bằng nhanh nhất không dao động và cộng hưởng dưới ngoại lực tuần hoàn.
 
 Bài học cũng nhấn mạnh kỹ năng diễn giải nghiệm: mỗi dấu và tham số trả lời trực tiếp một câu hỏi cơ học như hệ có dao động không, dao động kéo dài bao lâu, trở về cân bằng theo cách nào và khi nào ngoại lực gây ra cộng hưởng.
+
+### Khung giải thích (nên đọc chậm): Tính biên độ xác lập và độ khuếch đại cộng hưởng cho hệ $x'' + 0{,}4 x' + 4 x = 2\cos(\omega t)$
+
+Hệ có $m = 1,\; c = 0{,}4,\; k = 4,\; F_0 = 2 \implies$ tần số riêng $\omega_0 = \sqrt{4/1} = \mathbf{2\text{ rad/s}}$, tỷ số cản $\zeta = \frac{0{,}4}{2\cdot 2} = \mathbf{0{,}1}$.
+1. **Khi kích thích ở tần số thấp $\omega = 0$ (tải tĩnh $F = 2$)**:
+   $A(0) = \frac{2}{4} = \mathbf{0{,}5\text{ m}}$.
+2. **Khi kích thích đúng tần số riêng $\omega = \omega_0 = 2$**:
+   $$A(2) = \frac{2}{\sqrt{(4 - 4)^2 + (0{,}4 \times 2)^2}} = \frac{2}{0{,}8} = \mathbf{2{,}5\text{ m}}.$$
+3. **Hệ số khuếch đại động lực**: $\frac{A(2)}{A(0)} = \frac{2{,}5}{0{,}5} = \mathbf{5\text{ lần}}$ (đúng bằng $\frac{1}{2\zeta} = \frac{1}{0{,}2} = 5$)! Dù lực cưỡng bức không đổi cường độ $F_0 = 2$, chỉ cần chỉnh tần số trùng $\omega_0 = 2$ là biên độ rung vọt lên gấp 5 lần!
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan

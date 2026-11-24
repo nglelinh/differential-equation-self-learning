@@ -10,6 +10,34 @@ categories:
 lesson_type: required
 ---
 
+At first sight, a partial differential equation like $$ u_t = \alpha u_{xx} $$ looks vastly harder than an ODE because $$ u(x, t) $$ varies across two coupled dimensions simultaneously. Yet Fourier discovered a disarmingly elegant divide-and-conquer strategy: ask whether there exist special "product" solutions $$ u(x, t) = X(x) T(t) $$ whose spatial shape stays frozen while its overall amplitude scales smoothly in time.
+
+Once you plug $$ X(x)T(t) $$ into the heat equation, space and time pull apart onto opposite sides of the equals sign—reducing one PDE to two elementary ODEs linked only by a single separation constant $$ -\lambda $$!
+
+## Background Knowledge Map: The Separation-of-Variables Engine
+
+1. **The Product Ansatz & Separation Constant:** Substituting $$ u = X(x)T(t) $$ into $$ u_t = \alpha u_{xx} $$ and dividing by $$ \alpha X T $$ gives $$ \frac{T'(t)}{\alpha T(t)} = \frac{X''(x)}{X(x)} = -\lambda $$. Because a function of $$ t $$ alone can equal a function of $$ x $$ alone only if both equal a constant, the PDE splits cleanly into $$ X'' + \lambda X = 0 $$ and $$ T' + \alpha\lambda T = 0 $$.
+2. **Spatial BVP Quantizes $$ \lambda_n $$:** Homogeneous boundary conditions on $$ X(x) $$ select the discrete eigenvalues $$ \lambda_n $$ and orthogonal eigenfunctions $$ X_n(x) $$, guaranteeing every mode satisfies the BCs automatically.
+3. **Principle of Linear Superposition:** A single product solution $$ X_n(x) T_n(t) $$ almost never matches an arbitrary initial temperature $$ f(x) $$. Because the PDE and homogeneous BCs are linear, any convergent series $$ u(x, t) = \sum c_n X_n(x) e^{-\alpha \lambda_n t} $$ remains an exact solution.
+4. **Initial Condition via Orthogonality:** Setting $$ t = 0 $$ gives $$ f(x) = \sum c_n X_n(x) $$, determining every coefficient $$ c_n $$ by a Fourier projection integral.
+
+### Step-by-Step Worked Example (Read Slowly): Separating $$ u_t = 2 u_{xx} $$ on $$ [0, \pi] $$ with $$ u(0, t) = u(\pi, t) = 0 $$
+
+**Problem:** Solve $$ u_t = 2 u_{xx} $$ on $$ 0 < x < \pi $$, $$ t > 0 $$, with $$ u(0, t) = u(\pi, t) = 0 $$ and $$ u(x, 0) = 5\sin(x) - 3\sin(4x) $$, and compute the ratio of the $$ n=4 $$ amplitude to the $$ n=1 $$ amplitude at $$ t = 0.1 $$.
+
+1. **Separate variables $$ u(x, t) = X(x)T(t) $$:**
+   $$ \frac{T'}{2T} = \frac{X''}{X} = -\lambda \implies \begin{cases} X'' + \lambda X = 0, & X(0) = X(\pi) = 0, \\ T' + 2\lambda T = 0. \end{cases} $$
+2. **Solve the spatial and temporal ODEs:**
+   - Spatial BVP gives $$ \lambda_n = n^2 $$, $$ X_n(x) = \sin(nx) $$ for $$ n = 1, 2, 3, \dots $$
+   - Temporal ODE gives $$ T_n(t) = e^{-2n^2 t} $$.
+   - General superposed solution: $$ u(x, t) = \sum_{n=1}^{\infty} b_n \sin(nx)\,e^{-2n^2 t} $$.
+3. **Match the initial condition $$ u(x, 0) = 5\sin(x) - 3\sin(4x) $$:**
+   By orthogonality of $$ \{\sin(nx)\} $$, we read off immediately $$ b_1 = 5 $$, $$ b_4 = -3 $$, and all other $$ b_n = 0 $$:
+   $$ u(x, t) = 5\sin(x)\,e^{-2t} - 3\sin(4x)\,e^{-32t}. $$
+4. **Verify the PDE and compare mode decay at $$ t = 0.1 $$:**
+   - PDE check: $$ u_t = -10\sin(x)e^{-2t} + 96\sin(4x)e^{-32t} = 2\bigl[-5\sin(x)e^{-2t} + 48\sin(4x)e^{-32t}\bigr] = 2 u_{xx} $$. Exact!
+   - At $$ t = 0.1 $$: mode 1 amplitude is $$ 5 e^{-0.2} \approx 4.0937 $$, while mode 4 amplitude is $$ 3 e^{-3.2} \approx 0.1223 $$. The ratio dropped from $$ 3/5 = 0.60 $$ at $$ t = 0 $$ down to $$ 0.030 $$—a 20-fold suppression of the higher ripple in just 0.1 seconds!
+
 ## Learning Objectives
 
 This lesson applies separation of variables to the heat equation. Students should see how product solutions reduce the PDE to coupled ODE problems and why eigenvalue structure controls the solution modes.

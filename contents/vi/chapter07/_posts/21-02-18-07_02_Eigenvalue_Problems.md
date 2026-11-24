@@ -10,6 +10,19 @@ categories:
 lesson_type: required
 ---
 
+Tại sao một sợi dây đàn guitar chiều dài $L$ chỉ phát ra đúng những nốt nhạc rời rạc (âm cơ bản và các họa âm bậc $2, 3, \dots$) chứ không rung ở bất kỳ tần số nào tùy thích? Tại sao một cây cột mảnh chỉ bị oằn gãy đột ngột ở đúng những mức tải trọng tới hạn nhất định (tải trọng Euler)? Câu trả lời toán học chung cho mọi hiện tượng cộng hưởng và lượng tử hóa trong tự nhiên chính là **Bài toán Trị riêng (Eigenvalue Problem)** cho toán tử vi phân!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Bài toán Trị riêng Vi phân
+
+1. **Nghiệm không tầm thường ($y \not\equiv 0$)**:
+   Với bài toán biên thuần nhất $y'' + \lambda y = 0$, $y \equiv 0$ luôn là nghiệm tầm thường. Giá trị $\lambda$ làm xuất hiện nghiệm **khác không** gọi là **trị riêng (eigenvalue)**, và nghiệm tương ứng gọi là **hàm riêng (eigenfunction)**.
+2. **Xét đầy đủ 3 miền dấu của $\lambda$ ($\lambda < 0,\; \lambda = 0,\; \lambda > 0$)**:
+   Quy trình bắt buộc khi giải bài toán trị riêng: không bao giờ bỏ sót $\lambda = 0$ (ví dụ với biên Neumann $y'(0) = y'(L) = 0$, $\lambda_0 = 0$ với hàm hằng $y_0 = 1$ **là** một trị riêng quan trọng!).
+3. **Biên tổng quát & Phương trình siêu việt**:
+   Với biên Robin ($y(0) = 0,\; y'(L) + h y(L) = 0$), trị riêng không còn công thức đóng mà là nghiệm của phương trình siêu việt $\tan(\mu L) = -\mu / h$ tìm được bằng giao điểm đồ thị.
+4. **Ý nghĩa vật lý của phổ rời rạc**:
+   Biên hữu hạn $[0, L]$ biến phổ liên tục thành **phổ rời rạc đếm được** $\lambda_1 < \lambda_2 < \lambda_3 < \dots \to +\infty$.
+
 ## Mục tiêu
 
 Bài học này giới thiệu bài toán trị riêng cho phương trình vi phân thường như bước chuyển tiếp từ BVP thông thường sang lý thuyết phổ. Sau bài học, sinh viên cần hiểu khái niệm trị riêng và hàm riêng, giải thích được vì sao chỉ một số giá trị tham số đặc biệt mới cho nghiệm không tầm thường, giải thành thạo bài toán mẫu trên đoạn hữu hạn và nhận ra mối liên hệ giữa trị riêng, chế độ riêng và tần số tự nhiên trong vật lý.
@@ -25,6 +38,17 @@ Sinh viên cần nắm vững BVP hai điểm, phương trình vi phân tuyến 
 Trong một BVP thông thường, phương trình và điều kiện biên được cho trước để tìm nghiệm. Khi phương trình thuần nhất chứa một tham số chưa biết $$ \lambda $$, bài toán chuyển thành câu hỏi mới: với những giá trị nào của $$ \lambda $$ thì bài toán tồn tại nghiệm không tầm thường thỏa mãn điều kiện biên? Đó là **bài toán trị riêng**.
 
 Cấu trúc này hoàn toàn song song với đại số tuyến tính: thay vì tìm $$ \lambda $$ để phương trình ma trận $$ A\mathbf{v}=\lambda \mathbf{v} $$ có vector riêng khác 0, ở đây ta tìm các giá trị $$ \lambda $$ để toán tử vi phân có nghiệm khác không thỏa điều kiện biên. Các nghiệm đó là **hàm riêng**, và trong vật lý chúng tương ứng với các chế độ dao động tự nhiên hoặc trạng thái dừng.
+
+### Khung giải thích (nên đọc chậm): Giải đầy đủ 3 trường hợp dấu của $\lambda$ cho $y'' + \lambda y = 0,\; y(0) = 0,\; y'(L) = 0$ (biên hỗn hợp Dirichlet–Neumann)
+
+1. **Trường hợp 1 ($\lambda = -\mu^2 < 0$, $\mu > 0$)**:
+   $y = c_1 \cosh(\mu x) + c_2 \sinh(\mu x)$. Từ $y(0) = c_1 = 0 \implies y = c_2\sinh(\mu x) \implies y'(L) = c_2 \mu \cosh(\mu L) = 0$. Vì $\cosh(\mu L) \ge 1 > 0 \implies c_2 = 0$ (chỉ có nghiệm tầm thường → **loại**).
+2. **Trường hợp 2 ($\lambda = 0$)**:
+   $y = c_1 + c_2 x$. Từ $y(0) = 0 \implies c_1 = 0$; $y'(L) = c_2 = 0$ → **loại**.
+3. **Trường hợp 3 ($\lambda = \mu^2 > 0$, $\mu > 0$)**:
+   $y = c_1\cos(\mu x) + c_2\sin(\mu x)$. Từ $y(0) = 0 \implies c_1 = 0$. Điều kiện $y'(L) = c_2 \mu \cos(\mu L) = 0$. Để $c_2 \neq 0$, ta cần:
+   $$\cos(\mu L) = 0 \implies \mu_n L = \left(n - \frac{1}{2}\right)\pi \implies \lambda_n = \left(\frac{(2n-1)\pi}{2L}\right)^2, \quad y_n(x) = \sin\!\left(\frac{(2n-1)\pi x}{2L}\right)$$
+   với $n = 1, 2, 3, \dots$ (chính là các họa âm lẻ $1:3:5$ của ống sáo kín một đầu!).
 
 ## Khái niệm theo ba cách
 

@@ -9,6 +9,21 @@ categories:
 - chapter02
 lesson_type: required
 ---
+
+Với phương trình hệ số biến thiên $y'' + p(t)y' + q(t)y = 0$, phương trình đặc trưng không còn dùng được nữa—nhưng giả sử bằng trực giác hay quan sát vật lý bạn tìm được **một nghiệm $y_1(t)$**. Liệu có cách nào vắt kiệt thông tin từ $y_1$ để tự động sinh ra nghiệm độc lập thứ hai $y_2(t)$? Câu trả lời chính là **phương pháp Hạ bậc (Reduction of Order)**: đặt $y_2(t) = v(t)y_1(t)$ sẽ làm triệt tiêu sạch số hạng chứa $v$ và đưa bài toán về phương trình tách biến cấp một cho $w = v'$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Hạ bậc
+
+1. **Phép thế d'Alembert ($y_2(t) = v(t)\,y_1(t)$)**:
+   Nếu $v$ là hằng số thì $v y_1$ phụ thuộc tuyến tính với $y_1$; để độc lập tuyến tính, ta cho $v(t)$ biến thiên không hằng!
+2. **Cơ chế triệt tiêu số hạng $v$**:
+   Khi thay $y_2 = v y_1$ vào $y'' + p y' + q y = 0$, hệ số của $v$ chính là $y_1'' + p y_1' + q y_1 = 0$, nên phương trình chỉ còn $y_1 v'' + (2y_1' + p y_1)v' = 0$.
+3. **Công thức tích phân đóng qua Định lý Abel**:
+   Đặt $w = v'$ và giải tách biến ta thu được ngay công thức vạn năng:
+   $$y_2(t) = y_1(t)\int \frac{e^{-\int p(t)\,dt}}{[y_1(t)]^2}\,dt.$$
+4. **Sức mạnh thống nhất**:
+   Hạ bậc không chỉ giải thích nguồn gốc nghiệm $t e^{rt}$ (nghiệm kép) và $x^r \ln x$ (phương trình Euler), mà còn dùng được cho mọi phương trình hệ số biến thiên như Legendre hay Bessel!
+
 ## Mục tiêu
 Bài học này giúp sinh viên hiểu cách tìm nghiệm thứ hai của phương trình tuyến tính cấp hai thuần nhất khi đã biết một nghiệm không tầm thường. Sinh viên sẽ nắm bản chất của phép đặt $$ y_2=v(t)y_1(t) $$, biết khi nào nên dùng phương pháp hạ bậc, và thấy rằng một nghiệm đã biết có thể dùng để xây dựng toàn bộ không gian nghiệm.
 
@@ -21,6 +36,18 @@ Sinh viên cần nắm phương trình tuyến tính cấp hai, nguyên lý ch�
 Trong một số bài toán, ta biết trước một nghiệm nhờ trực giác vật lý, tính đối xứng hoặc quan sát trực tiếp. Tuy nhiên, một nghiệm chưa đủ để viết nghiệm tổng quát của phương trình cấp hai thuần nhất. Câu hỏi đặt ra là liệu có thể tận dụng chính nghiệm đã biết để tìm nghiệm độc lập còn lại hay không.
 
 Phương pháp hạ bậc giải quyết trực tiếp câu hỏi này. Thay vì tìm nghiệm mới từ đầu, ta tìm nó dưới dạng tích của một hàm biến thiên với nghiệm đã biết. Cách tiếp cận này thể hiện rõ tinh thần khai thác cấu trúc sẵn có của phương trình tuyến tính.
+
+### Khung giải thích (nên đọc chậm): Dùng Hạ bậc tìm nghiệm thứ hai của $t^2 y'' - 3t y' + 4y = 0$ ($t > 0$) khi biết sẵn $y_1(t) = t^2$
+
+1. **Đưa về dạng chuẩn tắc**: Chia cho $t^2 > 0$:
+   $$y'' - \frac{3}{t}y' + \frac{4}{t^2}y = 0 \implies p(t) = -\frac{3}{t}.$$
+2. **Tính thừa số Abel $e^{-\int p(t)\,dt}$**:
+   $$e^{-\int (-3/t)\,dt} = e^{3\ln t} = \mathbf{t^3}.$$
+3. **Áp dụng công thức Hạ bậc** với $[y_1(t)]^2 = (t^2)^2 = t^4$:
+   $$y_2(t) = t^2 \int \frac{t^3}{t^4}\,dt = t^2 \int \frac{1}{t}\,dt = \mathbf{t^2 \ln t}.$$
+4. **Kiểm chứng trực tiếp**:
+   $y_2' = 2t\ln t + t$, $\;y_2'' = 2\ln t + 3$. Thay vào vế trái:
+   $t^2(2\ln t + 3) - 3t(2t\ln t + t) + 4(t^2\ln t) = (2 - 6 + 4)t^2\ln t + (3 - 3)t^2 = \mathbf{0}$!
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan

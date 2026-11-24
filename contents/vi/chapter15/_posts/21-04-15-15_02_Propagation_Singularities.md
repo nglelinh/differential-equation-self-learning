@@ -12,6 +12,23 @@ lesson_type: required
 
 ![Lan truyền singularity dọc theo đặc tuyến của PDE]({{ site.imgurl }}/chapter_img/chapter15/02_propagation_singularities.svg )
 
+Một tia chớp lóe lên trên bầu trời và tiếng sấm sắc gọn truyền đến tai bạn sau vài giây mà không hề tan loãng thành tiếng ù mờ như sự khuếch tán nhiệt. Tại sao phương trình sóng lại **vận chuyển các điểm kỳ dị đi xa nguyên vẹn** dọc theo những quỹ đạo sắc nét? **Định lý Lan truyền Kỳ dị của Hörmander (1971)** tiết lộ câu trả lời đầy kinh ngạc: tập mặt sóng $\operatorname{WF}(u)$ của nghiệm $Pu = 0$ bị giam chặt trong tập đặc trưng $\operatorname{Char}(P)$ và **chảy theo đúng phương trình Hamilton của cơ học cổ điển**!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Định lý Lan truyền Kỳ dị
+
+1. **Tập Đặc trưng $\operatorname{Char}(P) = \{(x, \xi) \in T^*M \setminus 0 : p_m(x, \xi) = 0\}$**:
+   Bên ngoài $\operatorname{Char}(P)$, toán tử $P$ là elliptic vi địa phương nên nghiệm tự động trơn ($\operatorname{WF}(u) \subset \operatorname{Char}(P)$ khi $Pu \in C^\infty$). Mọi kỳ dị chỉ có thể cư trú trên mặt đặc trưng!
+2. **Trường Vector Hamilton $H_{p_m}$ và Đường Lưỡng đặc trưng (Null Bicharacteristics)**:
+   Với ký hiệu chính thực $p_m(x, \xi)$, hệ phương trình Hamilton trên không gian pha:
+   $$\dot{x}_j = \frac{\partial p_m}{\partial \xi_j}, \qquad \dot{\xi}_j = -\frac{\partial p_m}{\partial x_j}$$
+   với điều kiện $p_m(x(0), \xi(0)) = 0$ định nghĩa các đường lưỡng đặc trưng—hình chiếu của chúng xuống không gian vị trí $x(t)$ chính là **các tia sáng (rays)** hay **đường trắc địa**!
+3. **Định lý Lan truyền Kỳ dị của Hörmander**:
+   Nếu $P$ có kiểu chính thực ($dp_m \neq 0$ trên $\operatorname{Char}(P)$) và $Pu \in C^\infty$, thì $\operatorname{WF}(u)$ **bất biến dọc theo dòng chảy Hamilton** của $H_{p_m}$: nếu một điểm trên đường lưỡng đặc trưng có kỳ dị, thì *toàn bộ* đường lưỡng đặc trưng ấy đều mang kỳ dị!
+4. **Phân biệt Triệt để Ba lớp PDE qua Hành vi Kỳ dị**:
+   - *Elliptic*: $\operatorname{Char}(P) = \emptyset \implies$ không có kỳ dị nào tồn tại.
+   - *Parabolic* (Nhiệt): làm trơn tức thì mọi kỳ dị khi $t > 0$.
+   - *Hyperbolic* (Sóng): bảo toàn và vận chuyển kỳ dị dọc theo các đường lưỡng đặc trưng với tốc độ hữu hạn!
+
 ## Mục tiêu
 
 Bài học này giới thiệu một trong những định lý nền tảng nhất của giải tích vi địa phương: điểm kỳ dị không lan truyền ngẫu nhiên mà di chuyển theo cấu trúc hình học của phương trình. Sau bài học, sinh viên cần nắm trực giác của sự lan truyền kỳ dị, vai trò của đường đặc trưng và đường song đặc trưng (bicharacteristics), đồng thời phân biệt rõ cách phương trình hyperbolic và phương trình elliptic xử lý điểm kỳ dị.
@@ -26,6 +43,20 @@ Một kết quả cốt lõi của giải tích vi địa phương là điểm k
 
 Kết quả này vừa sâu sắc về mặt lý thuyết vừa giàu ứng dụng thực tiễn, làm nền tảng cho phân tích truyền sóng, bài toán ngược, quang học hình học và chụp cắt lớp.
 
+
+### Khung giải thích (nên đọc chậm): Giải tay hệ phương trình Hamilton để tìm quỹ đạo lan truyền kỳ dị của phương trình sóng 1D
+
+Xét phương trình sóng 1D $P u = (\partial_t^2 - c^2 \partial_x^2) u = 0$. Thay $\partial_t \mapsto i\tau$ và $\partial_x \mapsto i\xi$, ký hiệu chính thực là:
+$$p_2(t, x; \tau, \xi) = -\tau^2 + c^2\xi^2.$$
+1. **Tìm tập đặc trưng $\operatorname{Char}(P)$**:
+   $$p_2 = 0 \iff \tau^2 = c^2\xi^2 \iff \tau = \mathbf{+c\xi} \quad \text{hoặc} \quad \tau = \mathbf{-c\xi}.$$
+2. **Viết hệ phương trình Hamilton theo tham số đường cong $s$**:
+   $$\frac{dt}{ds} = \frac{\partial p_2}{\partial \tau} = -2\tau, \qquad \frac{dx}{ds} = \frac{\partial p_2}{\partial \xi} = 2c^2\xi, \qquad \frac{d\tau}{ds} = -\frac{\partial p_2}{\partial t} = 0, \qquad \frac{d\xi}{ds} = -\frac{\partial p_2}{\partial x} = 0.$$
+3. **Đọc vận tốc tia kỳ dị**:
+   Tần số $(\tau, \xi)$ giữ nguyên không đổi dọc đường đi, và tỷ số $\frac{dx}{dt} = \frac{2c^2\xi}{-2\tau} = -\frac{c^2\xi}{\tau}$:
+   - Nhánh $\tau = -c\xi$: $\frac{dx}{dt} = \mathbf{+c}$ (kỳ dị chạy sang phải $x(t) = x_0 + ct$).
+   - Nhánh $\tau = +c\xi$: $\frac{dx}{dt} = \mathbf{-c}$ (kỳ dị chạy sang trái $x(t) = x_0 - ct$).
+   Định lý Hörmander tái hiện chính xác **100%** hai đường đặc trưng d'Alembert $x \pm ct = \text{const}$—và tổng quát hóa được ngay sang môi trường có vận tốc $c(x)$ biến thiên hay đa tạp cong!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

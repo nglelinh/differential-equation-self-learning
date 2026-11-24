@@ -9,6 +9,43 @@ categories:
 - chapter02
 lesson_type: required
 ---
+
+Undetermined coefficients is fast, yet the moment a forcing term becomes $$\sec t$$, $$\ln t$$, or $$e^{-t^2}$$—or the left-hand side has variable coefficients—the guessing table breaks down completely. Joseph-Louis Lagrange solved this once and for all in 1774: replace the constants $$c_1, c_2$$ in the homogeneous solution $$c_1 y_1 + c_2 y_2$$ with varying functions $$u_1(t), u_2(t)$$, and out drops a universal integral formula that works for *every* continuous forcing function $$g(t)$$.
+
+## Background Knowledge Map: Lagrange's Universal Formula and Its Green's-Function Soul
+
+Four key ideas make variation of parameters transparent rather than a formula to memorize blindly:
+
+1. **The Auxiliary Condition $$u_1' y_1 + u_2' y_2 = 0$$:** We have *two* unknown functions $$(u_1, u_2)$$ to satisfy *one* ODE, giving us one degree of freedom; imposing $$u_1' y_1 + u_2' y_2 = 0$$ eliminates second derivatives $$u_1'', u_2''$$ completely so we solve a clean $$2\times 2$$ algebraic system for $$(u_1', u_2')$$.
+2. **Cramer's Rule and the Wronskian Denominator:** Solving $$\begin{pmatrix} y_1 & y_2 \\ y_1' & y_2' \end{pmatrix}\begin{pmatrix} u_1' \\ u_2' \end{pmatrix} = \begin{pmatrix} 0 \\ g(t) \end{pmatrix}$$ yields
+   $$u_1'(t) = \frac{-y_2(t)\,g(t)}{W(t)}, \qquad u_2'(t) = \frac{y_1(t)\,g(t)}{W(t)},$$
+   which is why $$W(t) \ne 0$$ is indispensable and why the ODE **must** be normalized to leading coefficient $$1$$ ($$y'' + p y' + q y = g(t)$$) before identifying $$g(t)$$!
+3. **Green's Function / Impulse-Response Viewpoint:** Combining $$y_p = u_1 y_1 + u_2 y_2$$ into a single integral gives
+   $$y_p(t) = \int_{t_0}^t \frac{y_1(s)y_2(t) - y_2(s)y_1(t)}{W(s)}\,g(s)\,ds,$$
+   the exact continuous superposition of unit-impulse responses!
+4. **Zero-Integration-Constant Convention:** When integrating $$u_1'$$ and $$u_2'$$, set integration constants to $$0$$ because any constant shift in $$u_1, u_2$$ merely adds a piece of $$y_h$$.
+
+### Step-by-Step Worked Example (Read Slowly): Solving a Non-UC Forced Oscillator with $$\sec t$$
+
+Find the general solution of
+$$y'' + y = \sec t, \qquad t \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right).$$
+
+1. **Find the homogeneous fundamental set and Wronskian:**
+   $$r^2 + 1 = 0 \implies y_1(t) = \cos t, \quad y_2(t) = \sin t.$$
+   Compute the Wronskian:
+   $$W(\cos t, \sin t) = \cos t(\cos t) - (-\sin t)(\sin t) = \cos^2 t + \sin^2 t = 1.$$
+2. **Verify standard form:** The coefficient of $$y''$$ is already $$1$$, so $$g(t) = \sec t = \frac{1}{\cos t}$$.
+3. **Compute $$u_1'(t)$$ and $$u_2'(t)$$ and integrate:**
+   - $$u_1'(t) = \frac{-y_2(t)\,g(t)}{W(t)} = \frac{-\sin t \cdot \sec t}{1} = -\tan t \implies u_1(t) = \int (-\tan t)\,dt = \ln(\cos t)$$ (since $$\cos t > 0$$ on $$(-\pi/2, \pi/2)$$).
+   - $$u_2'(t) = \frac{y_1(t)\,g(t)}{W(t)} = \frac{\cos t \cdot \sec t}{1} = 1 \implies u_2(t) = \int 1\,dt = t.$$
+4. **Assemble $$y_p(t) = u_1 y_1 + u_2 y_2$$ and the general solution:**
+   $$y_p(t) = \cos t\,\ln(\cos t) + t\sin t,$$
+   $$y(t) = c_1 \cos t + c_2 \sin t + \cos t\,\ln(\cos t) + t\sin t.$$
+5. **Hand-verify $$y_p'$$ and $$y_p'' + y_p$$:**
+   $$y_p' = -\sin t\,\ln(\cos t) - \sin t + \sin t + t\cos t = -\sin t\,\ln(\cos t) + t\cos t,$$
+   $$y_p'' = -\cos t\,\ln(\cos t) + \frac{\sin^2 t}{\cos t} + \cos t - t\sin t \implies y_p'' + y_p = \frac{\sin^2 t + \cos^2 t}{\cos t} = \sec t.$$
+   Exact match!
+
 ## Learning Objectives
 This lesson helps students understand variation of parameters as a general tool for finding particular solutions to nonhomogeneous equations, especially when the right-hand side does not fit undetermined coefficients. Students will learn how to replace constants with functions, set up the system of equations for those functions, and interpret the role of the Wronskian throughout the process.
 

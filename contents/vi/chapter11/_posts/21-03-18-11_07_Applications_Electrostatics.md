@@ -9,7 +9,21 @@ categories:
 - chapter11
 lesson_type: required
 ---
+
 ![21 03 18 11 07 Applications Electrostatics]({{ site.imgurl }}/chapter_img/chapter11/07_applications_electrostatics.svg)
+
+Mỗi chiếc tụ điện trên bo mạch chủ, lồng Faraday chống sét cho máy bay hay ống cáp đồng trục dẫn tín hiệu Internet đều được thiết kế bằng chính những công cụ bạn vừa học trong Chương 11. Khi điện tích đứng yên, trường tĩnh điện $\mathbf{E}$ hoàn toàn không xoáy ($\nabla \times \mathbf{E} = \mathbf{0}$), nên mọi thông tin của trường vector 3 chiều thu gọn vào một hàm thế vô hướng duy nhất $\varphi$ thỏa mãn phương trình Poisson $-\Delta \varphi = \rho / \varepsilon_0$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột kết nối PDE Elliptic với Tĩnh điện học
+
+1. **Từ Định luật Gauss đến Phương trình Poisson & Laplace**:
+   Kết hợp $\mathbf{E} = -\nabla \varphi$ với $\nabla \cdot \mathbf{E} = \rho / \varepsilon_0$ cho ra $-\Delta \varphi = \rho / \varepsilon_0$ (Poisson) trong vùng có điện tích và $\Delta \varphi = 0$ (Laplace) trong không gian điện môi trống.
+2. **Vật dẫn ở Cân bằng = Điều kiện biên Dirichlet hằng số**:
+   Trên bề mặt kim loại dẫn điện, điện thế $\varphi = V_0$ là hằng số (mặt đẳng thế), điện trường luôn vuông góc với bề mặt và mật độ điện tích cảm ứng tỷ lệ với đạo hàm pháp tuyến $\sigma = -\varepsilon_0 \frac{\partial \varphi}{\partial n}$.
+3. **Nguyên lý Cực đại & Hiện tượng Che chắn Lồng Faraday**:
+   Bên trong một khoang rỗng hoàn toàn bao bọc bởi vật dẫn ở thế $V_0$ không chứa điện tích, $\Delta \varphi = 0$ và $\varphi|_{\partial\Omega} = V_0 \implies \varphi \equiv V_0$ mọi nơi bên trong, suy ra $\mathbf{E} = -\nabla \varphi = \mathbf{0}$—bất kể ngoài lồng có điện trường mạnh cỡ nào!
+4. **Năng lượng Tĩnh điện và Nguyên lý Dirichlet**:
+   Năng lượng trường điện $W = \frac{\varepsilon_0}{2}\int_\Omega |\nabla \varphi|^2\,dx$ đạt giá trị **nhỏ nhất có thể** tại đúng nghiệm của phương trình Laplace—tự nhiên luôn chọn cấu hình thế tiết kiệm năng lượng nhất.
 
 ## Mục tiêu
 
@@ -25,6 +39,19 @@ Trong tĩnh điện học, ta không quan sát trực tiếp điện trường b
 
 Bài học này cho thấy PDE không chỉ là công cụ giải tích mà còn là ngôn ngữ mô tả trực tiếp trường vật lý: điện thế, điện trường, năng lượng và điều kiện biên của vật dẫn đều liên kết trong cùng một cấu trúc toán học.
 
+
+### Khung giải thích (nên đọc chậm): Tính tay phân bố điện thế và cường độ điện trường trong cáp đồng trục
+
+Xét một đoạn cáp đồng trục dài có lõi trong bán kính $a = 1\text{ cm}$ giữ ở hiệu điện thế $V(a) = 100\text{ V}$ và vỏ ngoài nối đất bán kính $b = e \approx 2{,}718\text{ cm}$ với $V(b) = 0\text{ V}$:
+1. **Giải phương trình Laplace đối xứng trụ** $\frac{1}{r}\frac{d}{dr}(r V'(r)) = 0$:
+   $$r V'(r) = A \implies V(r) = A\ln r + B.$$
+2. **Xác định hằng số từ hai biên Dirichlet**:
+   - $V(1) = A\ln 1 + B = 100 \implies B = 100$.
+   - $V(e) = A\ln e + 100 = 0 \implies A = -100$.
+   Vậy điện thế giữa hai lớp là $V(r) = \mathbf{100(1 - \ln r)}\text{ V}$.
+3. **Tính cường độ điện trường $E(r) = -V'(r) = \frac{100}{r}\text{ V/cm}$**:
+   - Tại sát lõi trong ($r = 1\text{ cm}$): $E(1) = \mathbf{100\text{ V/cm}}$ (cực đại—đây là nơi lớp cách điện dễ bị đánh thủng nhất!).
+   - Tại sát vỏ ngoài ($r = e\text{ cm}$): $E(e) \approx \mathbf{36{,}8\text{ V/cm}}$.
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan

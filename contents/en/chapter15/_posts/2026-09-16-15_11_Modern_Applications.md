@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** When a hospital CT scanner can only rotate through a limited arc—say $90^\circ$ instead of $180^\circ$—classical back-projection produces severe streaking artifacts and erases entire organ boundaries. Modern **microlocal priors and learned inverse solvers** combine Hörmander's wave front geometry with deep neural networks: letting analytical FIO theory recover every *visible* edge cleanly while training data-driven priors to hallucinate only the mathematically *invisible* cone.
+
 ## Objectives
 
 This optional lesson connects wavefront sets, propagation of singularities, and inverse problems to the 2022–2024 practice of neural inverse operators and score-based reconstruction. Students should be able to say which singularities a learned imager is allowed to recover, why a plausible image can still be microlocally dishonest, and where the current-research lesson of this chapter meets scientific ML. The microlocal theorems already developed are not rewritten.
@@ -17,6 +19,15 @@ This optional lesson connects wavefront sets, propagation of singularities, and 
 ## Prerequisites
 
 Students should know wavefront sets, the propagation theorem for real principal-type operators, the idea of a Fourier integral operator, and the optional inverse-problems lesson. The existing “Current Research Directions” lesson is complementary: it maps the analytic landscape; this one adds the machine-learning layer.
+
+## Background Knowledge Map: Microlocal Geometry Inside Learned Inverse Imaging
+
+Four concepts unite Chapter 15's microlocal theory with modern computational imaging:
+
+1. **The Radon Transform as an Elliptic FIO:** X-ray tomography integrates an image $f(x)$ along lines $x\cdot\theta = s$; as an FIO of order $-1/2$, its canonical relation links an image edge $(x,\xi)$ directly to the sinogram angle $\theta \parallel \xi$.
+2. **Visible vs. Invisible Singularities (Quinto's Theorem):** In limited-angle tomography ($\theta \in [\theta_{\min}, \theta_{\max}]$), an edge at $(x,\xi) \in \operatorname{WF}(f)$ is stably recoverable *if and only if* a measured ray is tangent to the edge ($\xi \parallel \theta$); edges outside the measured angular wedge fall into the **invisible cone**.
+3. **Unrolled Primal-Dual and Plug-and-Play Networks:** Instead of treating reconstruction as an end-to-end black box, modern solvers unroll iterative variational steps—applying the exact physics operator $R$ and adjoint $R^*$ at every layer while using a neural network solely as a learned denoiser/prior.
+4. **Wave-Front-Aware Regularization:** Shearlet, curvelet, and microlocal neural priors explicitly model directional edges $(x,\xi)$, preventing deep networks from corrupting visible edges while constraining how missing-wedge singularities are filled in.
 
 ## Introduction
 
@@ -57,6 +68,22 @@ A microlocally literate inverse-learning pipeline:
 This pipeline does not compete with the current-research lesson; it adds a computational column to the same map (inverse problems, spectral geometry, imaging artifacts).
 
 ## Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Radon Transform of a Disk and the Limited-Angle Invisible Cone
+
+Compute the exact 2D Radon transform $Rf(\theta, s) = \int_{x\cdot\theta = s} f(x)\,d\ell$ of the unit-radius disk $f(x) = \mathbf{1}_{|x| \le R}$, and use the Fourier Slice Theorem $\widehat{Rf}(\theta, \sigma) = \hat{f}(\sigma\theta)$ to identify which boundary edges vanish under a limited angular scan $\theta \in [-\pi/4, \pi/4]$.
+
+1. **Compute the chord length along the line $x \cdot \theta = s$:** By rotational symmetry, $Rf(\theta, s)$ is independent of $\theta = (\cos\varphi, \sin\varphi)$. The perpendicular distance from the origin to the line is $|s|$.
+   - For $|s| \le R$: by the Pythagorean theorem, the half-chord length is $\sqrt{R^2 - s^2}$, so:
+     $$Rf(\theta, s) = 2\sqrt{R^2 - s^2}, \qquad |s| \le R.$$
+   - For $|s| > R$: the line misses the disk, so $Rf(\theta, s) = 0$.
+   Check total mass: $\int_{-R}^R 2\sqrt{R^2 - s^2}\,ds = \pi R^2 = \iint f(x)\,dx$!
+2. **Locate the wave front set of $f = \mathbf{1}_{|x| \le R}$:** The disk boundary is the circle $|x| = R$, so its conormal bundle is:
+   $$\operatorname{WF}(f) = \big\{\big((R\cos\alpha, R\sin\alpha),\; \sigma(\cos\alpha, \sin\alpha)\big) : \alpha \in [0, 2\pi),\; \sigma \neq 0\big\}.$$
+3. **Apply the Fourier Slice / Quinto visibility test for $\varphi \in [-\pi/4, \pi/4]$:** A boundary point at angle $\alpha$ has normal direction $(\cos\alpha, \sin\alpha)$, which is measured iff $\alpha \pmod\pi \in [-\pi/4, \pi/4]$.
+   - **Visible arcs:** The left and right edges of the disk ($\alpha \in [-\pi/4, \pi/4] \cup [3\pi/4, 5\pi/4]$) are reconstructed razor-sharp!
+   - **Invisible arcs:** The top and bottom caps ($\alpha \in (\pi/4, 3\pi/4) \cup (5\pi/4, 7\pi/4)$) have purely vertical/near-vertical normals outside the Fourier wedge—so no linear inverse can recover them without a learned microlocal prior!
 
 ### Example 1: Limited-angle tomography
 

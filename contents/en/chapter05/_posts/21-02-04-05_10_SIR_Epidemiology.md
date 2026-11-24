@@ -10,6 +10,36 @@ categories:
 lesson_type: optional
 ---
 
+During an outbreak, why does an epidemic peak and fade out long before every single person gets infected—and why does vaccinating just 75% of a population stop a disease with $$R_0 = 4$$ dead in its tracks? In 1927, William Kermack and Anderson McKendrick answered both questions with a three-equation nonlinear system (Susceptible–Infected–Recovered) whose exact phase-plane curve reduces one of public health's deepest puzzles to a single logarithmic formula.
+
+## Background Knowledge Map: Thresholds, Conservation, and Final Size in the SIR Model
+
+Four mathematical structures inside the SIR model $$S' = -\beta SI,\; I' = \beta SI - \gamma I,\; R' = \gamma I$$ explain every epidemic curve:
+
+1. **Total Population Conservation (3D $$\to$$ 2D Reduction):** Adding the three equations gives $$(S + I + R)' = 0$$, so $$S(t) + I(t) + R(t) \equiv N$$ is constant; knowing $$(S(t), I(t))$$ determines $$R(t) = N - S(t) - I(t)$$ automatically!
+2. **Basic Reproduction Number ($$R_0$$) and Epidemic Threshold:** Factoring $$I' = \gamma I\left(\frac{\beta S}{\gamma} - 1\right)$$ reveals that an outbreak grows ($$I'(0) > 0$$) if and only if the effective reproduction number $$R_{\text{eff}} = \frac{\beta S(0)}{\gamma} > 1$$. At a fully susceptible population ($$S(0) \approx N$$), $$R_0 := \frac{\beta N}{\gamma}$$ is the average number of secondary infections caused by one patient.
+3. **Herd Immunity Threshold:** The infection peaks ($$I' = 0$$) the exact moment $$S(t)$$ drops to $$S_{\text{peak}} = \frac{\gamma}{\beta} = \frac{N}{R_0}$$. Thus vaccinating a fraction $$p > 1 - \frac{1}{R_0}$$ keeps $$S(0) < S_{\text{peak}}$$ so no epidemic can take off!
+4. **Exact Phase-Plane Trajectory $$I(S)$$:** Dividing $$I'/S'$$ eliminates time $$t$$ completely:
+   $$\frac{dI}{dS} = -1 + \frac{\gamma}{\beta S} \implies I(S) = -S + \frac{\gamma}{\beta}\ln S + C,$$
+   giving both the exact peak infection height $$I_{\max}$$ and the transcendental equation for the final unaffected fraction $$S_\infty > 0$$ (proving the epidemic ends from *depletion of susceptibles*, never from hitting $$S = 0$$!).
+
+### Step-by-Step Worked Example (Read Slowly): Computing $$R_0$$, Peak Infections, and Herd Immunity for a Normalized SIR Outbreak
+
+Model an outbreak in a normalized population $$N = 1$$ (so $$S, I, R$$ are population fractions) with transmission rate $$\beta = 0.6\text{ day}^{-1}$$, recovery rate $$\gamma = 0.2\text{ day}^{-1}$$ (mean infectious period $$1/\gamma = 5\text{ days}$$), and initial state $$S(0) = 0.99,\; I(0) = 0.01,\; R(0) = 0$$.
+
+1. **Compute $$R_0$$ and the herd immunity threshold:**
+   $$R_0 = \frac{\beta N}{\gamma} = \frac{0.6 \times 1}{0.2} = \mathbf{3.0}, \qquad p_{\text{herd}} = 1 - \frac{1}{R_0} = 1 - \frac{1}{3} = \frac{2}{3} \approx \mathbf{66.7\%}.$$
+2. **Find the susceptible fraction $$S_{\text{peak}}$$ at the exact epidemic peak ($$I' = 0$$):**
+   $$S_{\text{peak}} = \frac{\gamma}{\beta} = \frac{1}{R_0} = \frac{1}{3} \approx 0.3333.$$
+3. **Use the exact phase-plane invariant $$I + S - \frac{1}{R_0}\ln S = \text{const}$$ to compute the exact peak infected fraction $$I_{\max}$$:**
+   Evaluate the constant at $$t = 0$$ ($$S_0 = 0.99,\; I_0 = 0.01$$):
+   $$I_0 + S_0 - \frac{1}{3}\ln(0.99) = 1 - \frac{1}{3}(-0.01005) \approx 1.00335.$$
+   Now evaluate at the peak $$S_{\text{peak}} = \frac{1}{3}$$:
+   $$I_{\max} = 1.00335 - \frac{1}{3} + \frac{1}{3}\ln\!\left(\frac{1}{3}\right) = 1.00335 - 0.33333 - \frac{1.09861}{3} \approx \mathbf{0.3038}.$$
+   At the peak of the outbreak, **$$30.4\%$$** of the entire population is simultaneously infected!
+4. **Verify that $$S_\infty > 0$$ (not everyone gets sick):**
+   At the end of the epidemic ($$I_\infty = 0$$), $$S_\infty - \frac{1}{3}\ln S_\infty = 1.00335$$. Testing $$S_\infty \approx 0.059$$ gives $$0.059 - \frac{1}{3}(-2.830) \approx 1.002$$—so roughly **$$5.9\%$$** of the population escapes infection completely without vaccination!
+
 ## Learning Objectives
 
 This lesson helps students analyze the SIR model as a nonlinear three-compartment system, interpret the outbreak threshold $$ \mathcal{R}_0 $$, understand the meaning of herd immunity, and see why differential equations are a natural language for basic epidemiology.

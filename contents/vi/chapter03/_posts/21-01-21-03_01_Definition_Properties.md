@@ -9,6 +9,21 @@ categories:
 - chapter03
 lesson_type: required
 ---
+
+Giống như logarit biến phép nhân rắc rối thành phép cộng đơn giản, **Biến đổi Laplace** $\mathcal{L}\{f\}(s) = \int_0^\infty e^{-st}f(t)\,dt$ là một "cây cầu toán tử" biến phép **lấy đạo hàm** thành phép **nhân đại số với $s$**! Điều kỳ diệu hơn nữa là các điều kiện ban đầu $y(0), y'(0)$ tự động chui ngay vào phương trình đại số mà không cần bước tìm hằng số riêng lẻ ở cuối bài.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Định nghĩa & Tính chất Biến đổi Laplace
+
+1. **Định nghĩa tích phân suy rộng $\mathcal{L}\{f\}(s) = \int_0^\infty e^{-st}f(t)\,dt$**:
+   Nhân hàm $f(t)$ với "bộ giảm chấn mũ" $e^{-st}$ rồi tích phân trên $[0, \infty)$; tích phân hội tụ với mọi $s > a$ nếu $f$ liên tục từng khúc và có **cấp mũ $\vert f(t)\vert \le M e^{at}$**.
+2. **Tính tuyến tính**:
+   $\mathcal{L}\{\alpha f + \beta g\} = \alpha \mathcal{L}\{f\} + \beta \mathcal{L}\{g\}$—cho phép biến đổi từng số hạng độc lập trong mọi PTVP tuyến tính.
+3. **Tính chất vàng của Đạo hàm**:
+   $$\mathcal{L}\{f'(t)\} = sF(s) - f(0),\qquad \mathcal{L}\{f''(t)\} = s^2 F(s) - s f(0) - f'(0).$$
+   Chính phép tích phân từng phần này là "động cơ" biến PTVP thành phương trình đại số!
+4. **Định lý Dịch chuyển thứ nhất ($\mathcal{L}\{e^{at}f(t)\} = F(s - a)$)**:
+   Nhân với $e^{at}$ trong miền thời gian chỉ đơn giản là tịnh tiến $s \mapsto s - a$ trong miền tần số.
+
 ## Mục tiêu
 Bài học này giới thiệu biến đổi Laplace như một công cụ chuyển bài toán từ miền thời gian sang miền đại số theo biến $$ s $$. Sinh viên sẽ nắm định nghĩa, điều kiện tồn tại, ý nghĩa của tham số $$ s $$, hai tính chất nền tảng là tuyến tính và dịch chuyển theo hàm mũ, đồng thời hiểu vì sao biến đổi Laplace đặc biệt hiệu quả khi giải phương trình vi phân kèm điều kiện đầu.
 
@@ -21,6 +36,16 @@ Sinh viên cần nắm tích phân suy rộng, hàm mũ, đạo hàm cơ bản v
 Ở các chương trước, ta giải phương trình vi phân trực tiếp trên miền thời gian $$ t $$. Tuy nhiên, khi gặp nhiều điều kiện đầu hoặc ngoại lực phức tạp, cách làm trực tiếp dễ trở nên dài dòng. Biến đổi Laplace đưa ra hướng tiếp cận khác: thay vì theo dõi biến thiên tức thời, ta tổng hợp toàn bộ diễn biến của hàm từ $$ t=0 $$ trở đi bằng một tích phân có trọng số hàm mũ.
 
 Cách tiếp cận này có hai lợi thế lớn. Thứ nhất, phép lấy đạo hàm trong miền thời gian chuyển thành phép nhân với $$ s $$ trong miền Laplace, đưa bài toán vi phân về bài toán đại số. Thứ hai, các điều kiện đầu được đưa trực tiếp vào công thức biến đổi. Vì vậy, biến đổi Laplace không chỉ là một phép đổi biến, mà là một cách biểu diễn mới cho hệ động lực.
+
+### Khung giải thích (nên đọc chậm): Tính trực tiếp $\mathcal{L}\{e^{at}\}$ từ định nghĩa và kiểm chứng công thức đạo hàm $\mathcal{L}\{f'\} = sF(s) - f(0)$
+
+1. **Tính từ định nghĩa tích phân suy rộng** với $f(t) = e^{at}$:
+   $$\mathcal{L}\{e^{at}\}(s) = \int_0^\infty e^{-st}e^{at}\,dt = \lim_{B\to\infty}\left[\frac{e^{-(s-a)t}}{-(s-a)}\right]_0^B.$$
+   - Nếu $s > a$: $e^{-(s-a)B} \to 0$, nên kết quả là $\mathbf{\frac{1}{s - a}}$ (miền hội tụ $s > a$).
+   - Nếu $s \le a$: tích phân phân kỳ!
+2. **Kiểm chứng công thức đạo hàm với $f(t) = e^{3t}$** ($f(0) = 1$, $f'(t) = 3e^{3t}$):
+   - Tính trực tiếp: $\mathcal{L}\{f'\} = \mathcal{L}\{3e^{3t}\} = \mathbf{\frac{3}{s - 3}}$.
+   - Dùng công thức $sF(s) - f(0)$: $s\cdot\frac{1}{s - 3} - 1 = \frac{s - (s - 3)}{s - 3} = \mathbf{\frac{3}{s - 3}}$! Hai cách khớp tuyệt đối.
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan

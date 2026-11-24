@@ -10,6 +10,20 @@ categories:
 lesson_type: optional
 ---
 
+
+Dữ liệu y tế trong phòng hồi sức tích cực, cảm biến rung trên tuabin gió hay chuỗi quỹ đạo tài chính thường có hàng chục biến đo không đều theo thời gian và bị thiếu dữ liệu. Các mô hình **Latent ODE**, **Koopman Operator (DMD)** và **State-Space Models (S4/Mamba)** hiện đại giải quyết bài toán này bằng chính ngôn ngữ của Chương 04: chiếu thế giới phức tạp vào một không gian ẩn $\mathbf{z}(t) \in \mathbb{R}^d$ nơi động lực vận hành theo một hệ phương trình vi phân gọn gàng $\mathbf{z}' = A\mathbf{z} + B\mathbf{u}$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Hệ PTVP trong AI & Khoa học Dữ liệu
+
+1. **Latent ODE (Rubanova et al.)**:
+   Mã hóa chuỗi thời gian lấy mẫu bất quy tắc thành trạng thái ẩn ban đầu $\mathbf{z}_0$, tiến hóa liên tục qua $\dot{\mathbf{z}} = f_\theta(\mathbf{z}, t)$, rồi giải mã tại bất kỳ thời điểm $t$ nào để dự báo hoặc điền khuyết.
+2. **Phân rã chế độ động lực (DMD) & Toán tử Koopman**:
+   Nâng hệ phi tuyến lên không gian quan sát cao chiều sao cho động lực trở nên **tuyến tính** $\dot{\mathbf{g}} = K\mathbf{g}$—khi đó trị riêng của $K$ tách ngay ra các tần số và tốc độ suy giảm chủ đạo của dòng chảy chất lỏng hay khí hậu!
+3. **Deep State-Space Models (HiPPO, S4, Mamba)**:
+   Dùng ma trận $A$ có cấu trúc phổ đặc biệt (chéo hoặc chéo cộng hạng thấp) để rời rạc hóa hệ tuyến tính $\dot{\mathbf{x}} = A\mathbf{x} + B u(t)$ qua $e^{A\Delta t}$, xử lý chuỗi dài hàng trăm nghìn token trong thời gian tuyến tính $O(L)$!
+4. **Ràng buộc ổn định phổ**:
+   Trong hệ tuyến tính học được, ép phần thực mọi trị riêng của $A$ âm ($\operatorname{Re}(\lambda_i) < 0$, ví dụ $A = S - S^\top - D$ với $D \succ 0$) đảm bảo mô hình không bao giờ bùng nổ gradient khi dự báo dài hạn.
+
 ## Mục tiêu
 
 Bài đọc tùy chọn này kết nối hệ ma trận, trị riêng và ma trận nghiệm cơ bản của Chương 04 với mô hình latent neural ODE và các phương pháp nhận dạng hệ hiện đại. Sinh viên sẽ nhìn nhận latent ODE như một hệ trạng thái ẩn (tuyến tính hoặc phi tuyến), giải thích vì sao cấu trúc trị riêng vẫn chi phối hành vi dài hạn, và hiểu vai trò của các công trình giai đoạn 2019–2022 trong việc đưa mô hình không gian trạng thái liên tục vào học sâu. Bài không thay thế các phương pháp trị riêng cổ điển của chương.
@@ -23,6 +37,15 @@ Sinh viên cần biết biểu diễn hệ bậc nhất $$\mathbf{x}'=A\mathbf{x
 Hệ ODE là ngôn ngữ tự nhiên cho các đại lượng tương tác như bộ dao động ghép, bể pha trộn nối tiếp hay mô hình ngăn dịch tễ. Cách biểu diễn này hiện cũng được tích hợp trực tiếp vào mạng nơ-ron. Rubanova, Chen và Duvenaud (*Latent ODEs for Irregularly-Sampled Time Series*, NeurIPS 2019) mã hóa một chuỗi thời gian lấy mẫu không đều thành trạng thái khởi đầu trong không gian ẩn, rồi dự đoán tương lai bằng cách tích phân một neural ODE trong không gian ẩn đó. Chuỗi quan sát là đầu ra đọc từ một hệ thời gian liên tục mà mạng không viết ở dạng công thức đóng, nhưng vẫn có ma trận Jacobian, phổ trị riêng và chân dung pha.
 
 Khảo sát năm 2022 của Kidger ([arXiv:2202.02435](https://arxiv.org/abs/2202.02435)) cùng bài báo về Neural CDE (Kidger, Morrill, Foster và Lyons, ICLR 2021) mở rộng hướng tiếp cận từ hệ ẩn tự trị sang hệ chịu dẫn dắt bởi một đường tín hiệu đầu vào. Cộng đồng học máy khoa học (SciML) xoay quanh các thư viện như Diffrax và DiffEqFlux xem hệ phương trình cơ chế và hệ nơ-ron là các thành phần có thể kết hợp hoặc thay thế lẫn nhau. Hàm mũ ma trận của Chương 04 chính là nghiệm giải tích đúng trong trường hợp tuyến tính, nên đóng vai trò công cụ kiểm chứng đầu tiên cho các mô hình này.
+
+### Khung giải thích (nên đọc chậm): Thấy tận mắt cách tham số hóa phản đối xứng $A = \begin{pmatrix} -d_1 & -\omega \\ \omega & -d_2 \end{pmatrix}$ đảm bảo hệ tuyến tính học được luôn ổn định!
+
+Trong nhiều mạng Neural State-Space, thay vì học ma trận $A$ tự do dễ bị mất ổn định, người ta chọn $d_1, d_2 > 0$:
+1. **Thử với $d_1 = 0{,}2,\; d_2 = 0{,}2,\; \omega = 2$**:
+   $A = \begin{pmatrix} -0{,}2 & -2 \\ 2 & -0{,}2 \end{pmatrix}$ có $\tau = -0{,}4 < 0$ và $\Delta = 0{,}04 + 4 = 4{,}04 > 0$, trị riêng $\lambda = \mathbf{-0{,}2 \pm 2i}$.
+2. **Tính đạo hàm năng lượng trạng thái $E(t) = \frac{1}{2}\|\mathbf{x}(t)\|_2^2 = \frac{1}{2}(x_1^2 + x_2^2)$**:
+   $$\frac{dE}{dt} = \mathbf{x}^\top A \mathbf{x} = -d_1 x_1^2 - \omega x_1 x_2 + \omega x_2 x_1 - d_2 x_2^2 = \mathbf{-d_1 x_1^2 - d_2 x_2^2 \le 0}!$$
+   Hai số hạng $\pm\omega x_1 x_2$ **triệt tiêu tuyệt đối** nhờ tính phản đối xứng, nên năng lượng chỉ giảm chứ không bao giờ tăng—bảo chứng toán học 100% cho sự ổn định khi huấn luyện!
 
 ## Khái niệm then chốt
 

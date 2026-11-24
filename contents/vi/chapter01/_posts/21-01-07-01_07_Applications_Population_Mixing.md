@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Một quần thể vi khuẩn trong đĩa Petri hay nồng độ muối trong bể pha trộn công nghiệp trông có vẻ thuộc hai thế giới khác nhau, nhưng dưới lăng kính phương trình vi phân cấp một, chúng cùng tuân theo một nguyên lý kế toán duy nhất: **Tốc độ thay đổi = Tốc độ vào − Tốc độ ra**. Hiểu cách dịch ngôn ngữ thực tế sang phương trình vi phân sẽ biến toán học trừu tượng thành công cụ dự báo sống động.
+
+## Bản đồ kiến thức nền: Bốn mô hình ứng dụng cốt lõi của PTVP Cấp Một
+
+1. **Mô hình Malthus ($P' = rP$) & Thời gian nhân đôi**:
+   Tốc độ tăng trưởng tỷ lệ thuận với dân số hiện tại dẫn đến tăng trưởng hàm mũ $P(t) = P_0 e^{rt}$ với chu kỳ nhân đôi $T_2 = \frac{\ln 2}{r}$—chính xác trong giai đoạn đầu khi tài nguyên dồi dào.
+2. **Mô hình Logistic Verhulst ($P' = rP(1 - P/K)$)**:
+   Đưa thêm **sức chứa môi trường $K$** tạo ra lực hãm phi tuyến; đồ thị hình chữ S tăng nhanh nhất tại điểm uốn $P = K/2$ rồi tiệm cận bền vững về $K$.
+3. **Bài toán Pha trộn (Mixing Tank)**:
+   Đặt $A(t)$ là *khối lượng* chất tan trong bể thể tích $V(t)$; khi đó $A'(t) = c_{\text{in}} r_{\text{in}} - \frac{A(t)}{V(t)} r_{\text{out}}$—luôn là **phương trình tuyến tính cấp một**!
+4. **Phân rã phóng xạ & Định tuổi Carbon-14**:
+   Trường hợp $r < 0$ với chu kỳ bán rã $T_{1/2} = \frac{\ln 2}{\lambda}$, giúp xác định niên đại cổ vật từ tỷ lệ đồng vị còn lại.
+
 ## Mục tiêu
 Bài học này giúp sinh viên vận dụng phương trình vi phân cấp một để mô hình hóa các quá trình thực tế qua hai lớp bài toán kinh điển là tăng trưởng dân số và bể pha trộn. Sau bài học, sinh viên có thể chuyển mô tả hiện tượng sang phương trình, giải và diễn giải ý nghĩa nghiệm, đồng thời đánh giá phạm vi hợp lý của các giả thiết mô hình.
 
@@ -22,6 +36,18 @@ Sinh viên cần nắm vững phương trình tách biến, phương trình tuy�
 Một mô hình toán học tốt bắt đầu từ việc xác định đúng biến trạng thái và các cơ chế làm biến trạng thái đó thay đổi: quần thể biến động do sinh và chết; lượng chất tan trong bể biến động do dòng chảy vào và dòng chảy ra. Khi viết tốc độ biến thiên dưới dạng tổng hợp các cơ chế đó, ODE trở thành công cụ trực tiếp để phân tích và dự báo.
 
 Hai lớp bài toán trong bài học bổ trợ chặt chẽ cho nhau: mô hình dân số minh họa sự tăng trưởng, bão hòa và vai trò của điểm cân bằng; mô hình pha trộn rèn luyện nguyên lý bảo toàn khối lượng "tốc độ thay đổi bằng tốc độ vào trừ tốc độ ra".
+
+### Khung giải thích (nên đọc chậm): Tính nồng độ muối trong bể pha trộn 100 lít theo từng bước
+
+Một bể chứa sẵn $100\text{ L}$ nước tinh khiết ($A(0) = 0$). Nước muối nồng độ $0{,}5\text{ kg/L}$ chảy vào với tốc độ $2\text{ L/phút}$, hỗn hợp khuấy đều chảy ra cũng với tốc độ $2\text{ L/phút}$ (nên thể tích giữ nguyên $V(t) = 100\text{ L}$).
+1. **Thiết lập phương trình cân bằng khối lượng**:
+   - Lượng muối vào: $0{,}5 \times 2 = 1\text{ kg/phút}$.
+   - Lượng muối ra: $\frac{A(t)}{100} \times 2 = 0{,}02\,A(t)\text{ kg/phút}$.
+   - Phương trình tuyến tính: $A'(t) + 0{,}02 A(t) = 1$.
+2. **Giải với thừa số tích phân $\mu(t) = e^{0{,}02 t}$**:
+   $$\frac{d}{dt}\big(e^{0{,}02 t}A\big) = e^{0{,}02 t} \implies A(t) = 50 + C e^{-0{,}02 t}.$$
+3. **Ghim điều kiện $A(0) = 0$**: $C = -50 \implies A(t) = \mathbf{50(1 - e^{-0{,}02 t})}\text{ kg}$.
+4. **Kiểm tra trực giác vật lý**: Sau $t = 50$ phút, $A(50) = 50(1 - e^{-1}) \approx \mathbf{31{,}61\text{ kg}}$; khi $t \to \infty$, $A(t) \to 50\text{ kg}$ (tương ứng nồng độ $50/100 = 0{,}5\text{ kg/L}$, khớp hoàn toàn với nồng độ dòng chảy vào!).
 
 ## Khái niệm theo ba cách
 

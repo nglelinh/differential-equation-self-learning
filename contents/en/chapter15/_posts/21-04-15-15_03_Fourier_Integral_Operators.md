@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Pseudo-differential operators are strictly **pseudolocal**—they can never move a singularity from point $y$ to point $x \neq y$. That makes them powerless to represent wave propagators $e^{it\sqrt{-\Delta}}$, which physically transport singularities across space! Replacing the flat phase $(x-y)\cdot\xi$ by a general nonlinear phase function $\phi(x,y,\xi)$ unlocks **Fourier Integral Operators (FIOs)**, the exact language of wave evolution and caustics.
+
 ![Fourier integral operators and the transformation of wave fronts]({{ site.imgurl }}/chapter_img/chapter15/03_fourier_integral_operators.svg )
 
 ## Objectives
@@ -19,6 +21,15 @@ This lesson introduces Fourier integral operators as the natural class of operat
 ## Prerequisites
 
 Students should know pseudodifferential operators, wave front sets, and the idea that propagation of singularities requires more than frequency-local filtering. Some intuition from oscillatory phases and Hamilton-Jacobi ideas is also useful.
+
+## Background Knowledge Map: Oscillatory Integrals, Phase Functions, and Canonical Relations
+
+Four geometric pillars govern Fourier Integral Operators $(Au)(x) = (2\pi)^{-n}\iint e^{i\phi(x,y,\xi)} a(x,y,\xi) u(y)\,dy\,d\xi$:
+
+1. **Non-Degenerate Phase Functions $\phi(x,y,\xi)$:** Homogeneous of degree $1$ in $\xi$ with no critical points in $(x,y,\xi)$ ($\nabla\phi \neq 0$), generalizing the flat $\Psi\text{DO}$ phase $(x-y)\cdot\xi$ to curved wave fronts.
+2. **Stationary Phase and the Canonical Relation $C_\phi$:** Integration by parts kills the integral away from the stationary set $\Sigma_\phi = \{\nabla_\xi \phi = 0\}$. Mapping $(x,y,\xi) \in \Sigma_\phi$ to $\big((x, \nabla_x\phi),\; (y, -\nabla_y\phi)\big)$ defines a Lagrangian submanifold $C_\phi \subset (T^*X \setminus 0) \times (T^*Y \setminus 0)$—the **canonical relation**.
+3. **Wave Front Set Transformation Law:** Every FIO maps singularities strictly along its canonical relation: $\operatorname{WF}(Au) \subseteq C_\phi \circ \operatorname{WF}(u)$, generalizing pseudolocality ($C_{\Psi\text{DO}} = \text{Diagonal}$) to arbitrary symplectic transformations!
+4. **Hyperbolic Parametrices and Caustics:** The solution operator of the wave equation is a sum of two FIOs whose canonical relations are the forward/backward geodesic flows; even when rays focus at a caustic in physical space, the canonical relation remains completely smooth in phase space!
 
 ## Introduction
 
@@ -94,6 +105,24 @@ Many solution operators for hyperbolic PDE can be represented microlocally by FI
 - Can they connect FIO with propagation of singularities?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Computing the Canonical Relation of the 1D Half-Wave Propagator
+
+Consider the exact solution operator $U(t) = e^{it|D_x|}$ of the 1D half-wave equation $(D_t - |D_x|)u = 0$ on $\mathbb{R}$, written as an FIO:
+$$(U(t)f)(x) = \frac{1}{2\pi}\iint_{\mathbb{R}^2} e^{i\big((x-y)\xi + t|\xi|\big)} f(y)\,dy\,d\xi.$$
+Compute its phase function $\phi_t(x,y,\xi)$ and canonical relation $C_t$ for fixed $t \neq 0$.
+
+1. **Identify the phase function (for $\xi \neq 0$):**
+   $$\phi_t(x, y, \xi) = (x - y)\xi + t|\xi|.$$
+   Note that $\phi_t$ is smooth on $\xi \neq 0$ and homogeneous of degree $1$ in $\xi$, with $\partial_\xi |\xi| = \operatorname{sgn}(\xi)$.
+2. **Find the stationary set $\Sigma_{\phi_t} = \{\partial_\xi \phi_t = 0\}$:**
+   $$\partial_\xi \phi_t = (x - y) + t\operatorname{sgn}(\xi) = 0 \iff x = y - t\operatorname{sgn}(\xi).$$
+3. **Compute the output and input covectors $(\xi_{\text{out}}, \eta_{\text{in}}) = (\partial_x \phi_t,\; -\partial_y \phi_t)$:**
+   $$\partial_x \phi_t = \xi, \qquad -\partial_y \phi_t = -(-\xi) = \xi.$$
+4. **Assemble the canonical relation $C_t$:**
+   $$C_t = \big\{\big((y - t\operatorname{sgn}(\xi),\; \xi),\; (y, \xi)\big) : y \in \mathbb{R},\; \xi \neq 0\big\}.$$
+   Look at what $C_t$ says: $U(t)$ leaves frequencies $\xi$ unchanged while translating every singularity with $\xi > 0$ left by $t$ ($x = y - t$) and every singularity with $\xi < 0$ right by $t$ ($x = y + t$)!
 
 ### Example 1: Recovering a pseudodifferential operator
 

@@ -9,11 +9,22 @@ categories:
 - chapter12
 ---
 
+> **Storytelling Hook:** In 1870, Karl Weierstrass dropped a bombshell on nineteenth-century mathematics: he constructed a simple, nonnegative integral functional whose infimum is zero yet which *never* attains its minimum among smooth functions—threatening to collapse Riemann's proofs in complex analysis and potential theory. Rescuing Dirichlet's Principle over the next eighty years forced mathematicians to invent Lebesgue integration, Hilbert spaces, Sobolev spaces, and distributions.
+
 ## Objectives
 This lesson traces the rise of functional analysis as the language of modern PDE. Students should see Chapter 12 as the point where differential equations move from formulas and classical derivatives to spaces, weak structure, compactness, and operators.
 
 ## Prerequisites
 Students should know the main concepts of Chapter 12, including $$ L^p $$ spaces, weak derivatives, Sobolev spaces, weak solutions, distributions, spectral ideas, and key inequalities.
+
+## Background Knowledge Map: The Historical Forging of Modern PDE Analysis
+
+Four landmark milestones explain why PDE theory migrated from classical calculus into functional analysis:
+
+1. **Crisis of Dirichlet's Principle (1850–1900):** Riemann assumed any bounded-below energy integral attains a minimum; Weierstrass's 1870 counterexample exposed the gap between a minimizing sequence and an actual smooth minimizer, prompting Hilbert's 1900 Direct Method in the Calculus of Variations.
+2. **Lebesgue Integration and Hilbert-Space Completeness (1902–1907):** Lebesgue's measure theory and the Riesz–Fischer theorem finally guaranteed that energy-bounded Cauchy sequences actually converge to well-defined functions in $L^2$.
+3. **Sobolev's Weak Derivatives and Embeddings (1936–1938):** Sergei Sobolev formalized generalized derivatives and proved the embedding theorems that connect integral energy norms back to classical smoothness.
+4. **Distributions and Lax–Milgram Unification (1945–1954):** Laurent Schwartz unified Dirac deltas and generalized solutions into $\mathcal{D}'$, while Peter Lax and Arthur Milgram gave elliptic existence theory its clean, non-symmetric Hilbert-space formulation.
 
 ## Introduction
 The history of functional analysis for PDE is the history of mathematics learning to relax the notion of solution without losing rigor. Classical derivatives were too rigid for many physically meaningful problems. Integrals, weak derivatives, norms, and distributions made it possible to enlarge the space of admissible functions while still extracting structure and estimates.
@@ -47,6 +58,24 @@ The nineteenth century prepared the ground with rigorous integration and integra
 Chapter 12 is the chapter where PDE becomes recognizably modern. It teaches that the right space is often as important as the equation itself.
 
 Historically, this chapter also cures a common misunderstanding: weak solutions are not second-class solutions. They are often the natural level at which the mathematics and the physics first make sense together.
+
+### Step-by-Step Worked Example (Read Slowly): Reproducing Weierstrass's 1870 Counterexample
+
+Verify Weierstrass's celebrated counterexample showing that the nonnegative variational functional
+$$J[u] = \int_{-1}^1 x^2 \big(u'(x)\big)^2\,dx$$
+over $C^1([-1,1])$ functions satisfying $u(-1) = -1$ and $u(1) = 1$ has infimum $0$, yet **no** $C^1$ (or even continuous) function achieves $J[u] = 0$.
+
+1. **Construct a smooth minimizing sequence:** For $\varepsilon > 0$, define the smooth transition curve
+   $$u_\varepsilon(x) = \frac{\arctan(x/\varepsilon)}{\arctan(1/\varepsilon)}.$$
+   Check the boundary conditions: $u_\varepsilon(-1) = -1$ and $u_\varepsilon(1) = 1$.
+2. **Compute $u_\varepsilon'(x)$ and bound $J[u_\varepsilon]$:**
+   $$u_\varepsilon'(x) = \frac{1}{\arctan(1/\varepsilon)}\cdot\frac{\varepsilon}{x^2 + \varepsilon^2}.$$
+   Since $\frac{x^2}{x^2 + \varepsilon^2} \le 1$ everywhere, we can bound the integrand cleanly:
+   $$J[u_\varepsilon] = \frac{\varepsilon}{\big(\arctan(1/\varepsilon)\big)^2} \int_{-1}^1 \frac{x^2}{x^2 + \varepsilon^2}\cdot\frac{\varepsilon}{x^2 + \varepsilon^2}\,dx \le \frac{\varepsilon}{\big(\arctan(1/\varepsilon)\big)^2} \int_{-1}^1 \frac{\varepsilon}{x^2 + \varepsilon^2}\,dx.$$
+3. **Evaluate the elementary integral:** $\int_{-1}^1 \frac{\varepsilon}{x^2+\varepsilon^2}\,dx = 2\arctan(1/\varepsilon)$, leaving:
+   $$0 \le J[u_\varepsilon] \le \frac{2\varepsilon}{\arctan(1/\varepsilon)} \xrightarrow{\varepsilon \to 0^+} \frac{0}{\pi/2} = 0.$$
+   Hence $\inf J = 0$.
+4. **Show no $C^1$ minimizer exists:** If $J[u] = 0$ for some $u \in C^1([-1,1])$, then $x^2 (u'(x))^2 = 0$ for all $x \in [-1,1]$, forcing $u'(x) = 0$ for $x \neq 0$, hence $u$ is constant on $[-1,1]$—contradicting $u(-1) = -1 \neq 1 = u(1)$! The minimizing sequence converges pointwise to the discontinuous sign function $\operatorname{sgn}(x)$, proving why completeness and coercivity in the right function space are non-negotiable.
 
 ## Discussion Prompts
 1. Why was enlarging the concept of derivative such a revolutionary step?

@@ -9,6 +9,41 @@ categories:
 - chapter02
 lesson_type: required
 ---
+
+Every time you tune an AM radio to a single broadcast station while rejecting dozens of neighboring frequencies, you are exploiting a series RLC circuit operating at electrical resonance. Remarkably, Kirchhoff's voltage law $$L q'' + R q' + \frac{1}{C} q = E(t)$$ is mathematically identical to a mechanical mass–spring–damper—meaning inductance plays the role of inertia, resistance plays the role of friction, and inverse capacitance plays the role of spring stiffness.
+
+## Background Knowledge Map: The Electrical–Mechanical Dictionary and Impedance
+
+Four principles connect second-order ODEs directly to circuit analysis:
+
+1. **Exact Mechanical–Electrical Isomorphism:** Charge $$q \leftrightarrow$$ position $$u$$; current $$I = q' \leftrightarrow$$ velocity $$u'$$; inductance $$L \leftrightarrow$$ mass $$m$$; resistance $$R \leftrightarrow$$ damping $$\gamma$$; elastance $$1/C \leftrightarrow$$ spring stiffness $$k$$; voltage $$E(t) \leftrightarrow$$ external force $$F(t)$$.
+2. **Damping Criterion in Terms of $$R, L, C$$:** The characteristic roots $$r = \frac{-R \pm \sqrt{R^2 - 4L/C}}{2L}$$ classify the circuit as underdamped ($$R < 2\sqrt{L/C}$$, ringing/oscillatory), critically damped ($$R = 2\sqrt{L/C}$$), or overdamped ($$R > 2\sqrt{L/C}$$).
+3. **AC Impedance and Complex Phasors:** For sinusoidal input $$E(t) = E_0\cos(\omega t)$$, steady-state current has amplitude $$I_0 = E_0 / \lvert Z(i\omega)\rvert$$ where the complex impedance is
+   $$Z(i\omega) = R + i\left(\omega L - \frac{1}{\omega C}\right), \qquad \lvert Z(i\omega)\rvert = \sqrt{R^2 + \left(\omega L - \frac{1}{\omega C}\right)^2}.$$
+4. **Sharp Resonance and Quality Factor ($$Q$$):** Impedance hits its minimum $$\lvert Z \rvert = R$$ (maximum current $$I_{\max} = E_0/R$$) at the exact resonant frequency $$\omega_0 = \frac{1}{\sqrt{LC}}$$, where inductive reactance $$\omega_0 L$$ cancels capacitive reactance $$1/(\omega_0 C)$$; the sharpness of tuning is measured by $$Q = \frac{1}{R}\sqrt{\frac{L}{C}}$$.
+
+### Step-by-Step Worked Example (Read Slowly): Designing and Solving a Series RLC Circuit Driven at Resonance
+
+A series RLC circuit has $$L = 0.5\text{ H}$$, $$R = 10\;\Omega$$, $$C = 0.02\text{ F}$$, and AC voltage source $$E(t) = 100\cos(10t)\text{ V}$$. Find the natural resonant frequency, the steady-state current $$I_p(t)$$, and the steady-state charge $$q_p(t)$$.
+
+1. **Write the governing ODE for charge $$q(t)$$:**
+   $$0.5\,q'' + 10\,q' + 50\,q = 100\cos(10t) \iff q'' + 20\,q' + 100\,q = 200\cos(10t).$$
+2. **Check the natural damping regime and resonant frequency:**
+   - Characteristic equation: $$r^2 + 20r + 100 = (r + 10)^2 = 0 \implies r = -10$$ (repeated!). So the unforced circuit is **critically damped** ($$R = 10 = 2\sqrt{0.5 / 0.02} = 2\sqrt{25}$$).
+   - Resonant frequency: $$\omega_0 = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{0.5 \times 0.02}} = \frac{1}{\sqrt{0.01}} = 10\text{ rad/s}$$. Our source $$\omega = 10\text{ rad/s}$$ is driving right at resonance!
+3. **Compute complex impedance $$Z(i\omega)$$ at $$\omega = 10$$:**
+   $$\omega L = (10)(0.5) = 5\;\Omega, \qquad \frac{1}{\omega C} = \frac{1}{(10)(0.02)} = 5\;\Omega.$$
+   The reactive parts cancel identically:
+   $$Z(10i) = 10 + i(5 - 5) = 10\;\Omega.$$
+4. **Read off steady-state current $$I_p(t)$$ and charge $$q_p(t)$$:**
+   - Because $$Z(10i) = 10$$ is purely real, current is completely **in phase** with voltage:
+     $$I_p(t) = \frac{100}{10}\cos(10t) = \mathbf{10\cos(10t)\text{ A}}.$$
+   - Integrating $$I_p(t) = q_p'(t)$$ gives the steady-state charge:
+     $$q_p(t) = \int 10\cos(10t)\,dt = \mathbf{\sin(10t)\text{ C}}.$$
+5. **Hand-verify by plugging $$q_p(t) = \sin(10t)$$ into $$q'' + 20q' + 100q$$:**
+   $$-100\sin(10t) + 20\bigl(10\cos 10t\bigr) + 100\sin(10t) = 200\cos(10t).$$
+   Exact match!
+
 ## Learning Objectives
 This lesson helps students see how second-order equations arise in RLC electrical circuits, understand the structural analogy between circuits and mechanical oscillations, solve basic free and forced problems, and interpret the parameters resistance, inductance, and capacitance in dynamic language.
 

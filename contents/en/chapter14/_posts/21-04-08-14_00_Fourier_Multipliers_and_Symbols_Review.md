@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** In physical space, a differential operator like $-\Delta + 4$ is a tangle of partial derivatives that is awkward to invert. Step through the looking glass of the Fourier transform, and differentiation turns into ordinary multiplication by polynomials in $\xi$—so inverting the PDE becomes simple division by $|\xi|^2 + 4$. That simple algebraic miracle is the launchpad of **pseudo-differential operator theory**.
+
 ## Learning Objectives
 
 This preparatory lesson reviews the conceptual bridge from classical differential operators to pseudo-differential operators. After completing it, students should understand why Fourier multipliers are the natural starting point, how differential operators are encoded by polynomial symbols, why nonlocality is unavoidable once one leaves the differential setting, and how elliptic intuition motivates the broader operator class used in modern PDE.
@@ -23,6 +25,15 @@ The central transition is this: instead of thinking of an operator only as a for
 ## Prerequisites
 
 Students should already know the Fourier transform at the level of Chapter 08, classical differential operators from the PDE chapters, and the main idea of ellipticity from Laplace and Poisson theory. No full symbolic calculus is assumed here; this lesson is designed to build exactly the background that Lesson 14.01 and Lesson 14.02 need.
+
+## Background Knowledge Map: From Polynomial Symbols to Fourier Multipliers
+
+Four foundational ideas bridge classical Fourier analysis to Chapter 14's symbol calculus:
+
+1. **Derivatives Become Polynomial Multipliers:** Using $D_j = -i\partial_{x_j}$, the Fourier transform converts $D^\alpha u$ into $\xi^\alpha \hat{u}(\xi)$, turning any constant-coefficient PDE $P(D)u = f$ into $p(\xi)\hat{u}(\xi) = \hat{f}(\xi)$ with polynomial symbol $p(\xi)$.
+2. **Beyond Polynomials (General Multipliers):** Replacing $p(\xi)$ by a non-polynomial function $m(\xi)$—such as $(1+|\xi|^2)^{-1}$ or $|\xi|^s$—defines a **Fourier multiplier** $m(D)u = \mathcal{F}^{-1}(m(\xi)\hat{u}(\xi))$, unlocking inverses, fractional derivatives, and smoothing operators.
+3. **Nonlocality via Convolution Kernels:** By the convolution theorem, $m(D)u = K * u$ where $K = \mathcal{F}^{-1}(m)$. Unlike local differential operators (whose kernels are derivatives of $\delta_0$ supported at a single point), non-polynomial multipliers spread information across space.
+4. **Ellipticity as High-Frequency Invertibility:** An operator is elliptic when its principal symbol $p_m(\xi)$ never vanishes for $\xi \neq 0$, ensuring $|p(\xi)| \ge c|\xi|^m$ for large $|\xi|$ so $1/p(\xi)$ is a well-behaved multiplier at high frequencies.
 
 ## 1. From Derivatives to Fourier Multipliers
 
@@ -169,6 +180,21 @@ But that symbol is not polynomial, so the inverse is not a differential operator
 If the principal symbol of an operator does not vanish at high frequency, then the operator should be invertible up to lower-order terms. This is the seed of the parametrix construction. The full symbolic calculus of Chapter 14 makes this heuristic precise.
 
 ## 6. Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Inverting $-\Delta + 4$ as a Fourier Multiplier
+
+Apply the Fourier multiplier symbol calculus to solve $(-\Delta + 4)u = f$ on $\mathbb{R}^2$ for the plane wave $f(x,y) = e^{i(3x - 4y)}$, and verify directly.
+
+1. **Compute the symbol of $P = -\Delta + 4 = D_x^2 + D_y^2 + 4$:** Replacing $D_x \mapsto \xi_1$ and $D_y \mapsto \xi_2$ gives:
+   $$p(\xi_1, \xi_2) = \xi_1^2 + \xi_2^2 + 4 = |\xi|^2 + 4.$$
+   Since $p(\xi) \ge 4 > 0$ for *all* $\xi \in \mathbb{R}^2$, $P$ is globally elliptic and invertible on $\mathcal{S}'(\mathbb{R}^2)$.
+2. **Form the inverse multiplier symbol:**
+   $$q(\xi) = \frac{1}{|\xi|^2 + 4}.$$
+3. **Apply $q(D)$ to $f(x,y) = e^{i(3x - 4y)}$:** A plane wave $e^{ix\cdot\xi_0}$ is an exact eigenfunction of any constant-coefficient multiplier $q(D)$ with eigenvalue $q(\xi_0)$. Here $\xi_0 = (3, -4)$, so $|\xi_0|^2 = 3^2 + (-4)^2 = 25$ and:
+   $$u(x,y) = q(3, -4)e^{i(3x-4y)} = \frac{1}{25 + 4}e^{i(3x-4y)} = \frac{1}{29}e^{i(3x-4y)}.$$
+4. **Verify directly in physical space:** Compute $u_{xx} = -\frac{9}{29}e^{i(3x-4y)}$ and $u_{yy} = -\frac{16}{29}e^{i(3x-4y)}$, so:
+   $$(-\Delta + 4)u = \frac{9 + 16 + 4}{29}e^{i(3x-4y)} = e^{i(3x-4y)} = f(x,y).$$
 
 ### Example 1: Symbol of the derivative
 

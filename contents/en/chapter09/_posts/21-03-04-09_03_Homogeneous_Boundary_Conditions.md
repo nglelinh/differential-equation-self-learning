@@ -10,6 +10,33 @@ categories:
 lesson_type: required
 ---
 
+Dip both ends of a metal rod in ice water and every drop of heat eventually escapes until the rod sits flat at $$ 0^\circ\text{C} $$. Now wrap both ends in perfect thermal insulation instead: no heat can leave, so the rod's total thermal energy is conserved forever and the temperature settles to the exact spatial average of its initial state. Change one end to Newton convective cooling ($$ u_x + h u = 0 $$), and the eigenvalues stop being neat multiples of $$ \pi $$ and become roots of a transcendental equation!
+
+This lesson shows how the three classical homogeneous boundary conditions—Dirichlet, Neumann, and Robin—sculpt both the eigenbasis and the long-time fate of a diffusing rod.
+
+## Background Knowledge Map: How Homogeneous BCs Control Thermal Fate
+
+1. **Dirichlet BCs ($$ u(0,t) = u(L,t) = 0 $$ — Ice Baths):** Eigenfunctions are $$ \sin(n\pi x/L) $$ with $$ \lambda_n = (n\pi/L)^2 > 0 $$. Since $$ \lambda_1 > 0 $$, *every* mode decays exponentially and $$ u(x, t) \to 0 $$ as $$ t \to \infty $$.
+2. **Neumann BCs ($$ u_x(0,t) = u_x(L,t) = 0 $$ — Insulated Ends):** Eigenfunctions are $$ \cos(n\pi x/L) $$ for $$ n = 0, 1, 2, \dots $$ including the **zero eigenvalue** $$ \lambda_0 = 0 $$ ($$ X_0(x) = 1 $$). Thus $$ u(x, t) \to \frac{a_0}{2} = \frac{1}{L}\int_0^L f(x)\,dx $$ as $$ t \to \infty $$, reflecting exact energy conservation!
+3. **Mixed & Robin BCs ($$ u_x(L,t) + h u(L,t) = 0 $$ — Convective Cooling):** Mixing value and flux yields transcendental eigenvalue equations like $$ \tan(\mu L) = -\frac{\mu}{h} $$. For $$ h > 0 $$, heat leaks out into the ambient medium, so all eigenvalues remain strictly positive and $$ u \to 0 $$.
+4. **Spectral Gap & Equilibration Speed:** The smallest nonzero eigenvalue $$ \lambda_{\min} $$ sets the exact asymptotic relaxation rate $$ e^{-\alpha \lambda_{\min} t} $$.
+
+### Step-by-Step Worked Example (Read Slowly): Insulated Rod Equilibration and Energy Conservation Check
+
+**Problem:** A thermally insulated rod of length $$ L = 2 $$ with $$ \alpha = 1 $$ satisfies $$ u_t = u_{xx} $$, $$ u_x(0, t) = u_x(2, t) = 0 $$, and initial temperature $$ u(x, 0) = 10 + 6\cos(\pi x) $$. Solve for $$ u(x, t) $$, verify total thermal energy $$ E(t) = \int_0^2 u(x, t)\,dx $$ is constant in time, and find $$ \lim_{t\to\infty} u(x, t) $$.
+
+1. **Identify the Neumann eigenvalues on $$ [0, 2] $$:**
+   For $$ X'' + \lambda X = 0 $$ with $$ X'(0) = X'(2) = 0 $$, the eigenfunctions are $$ X_n(x) = \cos\!\left(\frac{n\pi x}{2}\right) $$ with $$ \lambda_n = \left(\frac{n\pi}{2}\right)^2 $$ for $$ n = 0, 1, 2, \dots $$
+2. **Match $$ u(x, 0) = 10 + 6\cos(\pi x) $$ to the eigenbasis:**
+   - $$ 10 = 10 \cdot X_0(x) $$ corresponds to $$ n = 0 $$ ($$ \lambda_0 = 0 $$).
+   - $$ 6\cos(\pi x) = 6\cos\!\left(\frac{2\pi x}{2}\right) $$ corresponds to $$ n = 2 $$ ($$ \lambda_2 = \pi^2 $$)!
+3. **Write the exact time-dependent solution:**
+   $$ u(x, t) = 10 + 6 e^{-\pi^2 t} \cos(\pi x). $$
+4. **Verify boundary conditions, energy conservation, and equilibrium:**
+   - BCs: $$ u_x(x, t) = -6\pi e^{-\pi^2 t}\sin(\pi x) $$, which vanishes at both $$ x = 0 $$ and $$ x = 2 $$ for all $$ t > 0 $$.
+   - Total energy: $$ E(t) = \int_0^2 \bigl[10 + 6 e^{-\pi^2 t}\cos(\pi x)\bigr]\,dx = 20 + 6 e^{-\pi^2 t}\left[\frac{\sin(\pi x)}{\pi}\right]_0^2 = 20 $$ (strictly constant for all $$ t \ge 0 $$!).
+   - Long-time limit: as $$ t \to \infty $$, $$ e^{-\pi^2 t} \to 0 $$, so $$ u(x, t) \to 10 = \frac{E(0)}{L} $$ uniformly across the rod!
+
 ## Learning Objectives
 
 This lesson studies Dirichlet and Neumann boundary conditions for the heat equation. Students should understand how different boundary conditions select different eigenfunction families and encode different physical constraints.

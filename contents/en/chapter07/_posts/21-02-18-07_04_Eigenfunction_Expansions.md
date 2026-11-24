@@ -10,6 +10,37 @@ categories:
 lesson_type: required
 ---
 
+Once you know that a Sturm–Liouville operator provides a complete orthogonal basis $$ \{\phi_n(x)\} $$, something magical happens to nonhomogeneous boundary value problems $$ L[y] = f(x) $$. Instead of wrestling with differential operators directly, you project both the unknown $$ y(x) $$ and the forcing $$ f(x) $$ onto the eigenbasis. Instantly, differentiation evaporates into simple scalar division: $$ c_n = \frac{f_n}{\lambda_n} $$ (or $$ \frac{f_n}{\lambda_n - \mu} $$).
+
+This is the infinite-dimensional version of diagonalizing a symmetric matrix $$ A = Q \Lambda Q^T $$ to solve $$ A\mathbf{y} = \mathbf{f} $$—and it reveals at a glance why forcing at a resonant eigenvalue ($$ \mu = \lambda_k $$) blows up unless the forcing is orthogonal to the resonant mode (the Fredholm Alternative).
+
+## Background Knowledge Map: Spectral Decomposition of Nonhomogeneous BVPs
+
+1. **Generalized Fourier Coefficients (Orthogonal Projection):** For any $$ f \in L^2_w([a,b]) $$, its projection onto the $$ n $$-th eigenfunction is $$ f_n = \frac{\langle f, \phi_n \rangle_w}{\langle \phi_n, \phi_n \rangle_w} $$. By Bessel's inequality and Parseval's identity, the partial sums $$ \sum_{n=1}^N f_n \phi_n $$ give the best $$ L^2_w $$ approximation to $$ f $$ among all linear combinations of the first $$ N $$ modes.
+2. **Diagonalizing the Differential Operator:** Because $$ L[\phi_n] = \lambda_n w \phi_n $$, substituting $$ y = \sum c_n \phi_n $$ and $$ f = \sum f_n w \phi_n $$ into $$ L[y] - \mu w y = f $$ turns the ODE into decoupled scalar equations $$ (\lambda_n - \mu) c_n = f_n $$.
+3. **The Fredholm Alternative (Resonance Condition):** If $$ \mu \neq \lambda_n $$ for all $$ n $$, the solution $$ y = \sum \frac{f_n}{\lambda_n - \mu} \phi_n $$ is unique. If $$ \mu = \lambda_k $$, a solution exists if and only if $$ f_k = 0 $$ (i.e., $$ \langle f, \phi_k \rangle = 0 $$), in which case $$ c_k $$ is arbitrary.
+4. **Smoothing Effect of Inversion:** Dividing by $$ \lambda_n \sim n^2 $$ makes the solution coefficients $$ c_n = f_n / \lambda_n $$ decay two powers of $$ n $$ faster than $$ f_n $$, which is why BVP solutions are always smoother than their forcing terms.
+
+### Step-by-Step Worked Example (Read Slowly): Solving $$ -y'' = x $$ on $$ [0, \pi] $$ via Eigenfunction Expansion
+
+**Problem:** Solve $$ -y''(x) = x $$ on $$ [0, \pi] $$ with $$ y(0) = y(\pi) = 0 $$ using the Dirichlet eigenbasis $$ \phi_n(x) = \sin(nx) $$ ($$ \lambda_n = n^2 $$), and verify the midpoint value $$ y(\pi/2) $$ against the exact closed-form solution.
+
+1. **Compute the expansion coefficients $$ f_n $$ of $$ f(x) = x $$:**
+   Since $$ \int_0^\pi \sin^2(nx)\,dx = \frac{\pi}{2} $$,
+   $$ f_n = \frac{2}{\pi} \int_0^\pi x \sin(nx)\,dx. $$
+   Integrate by parts ($$ u = x, dv = \sin(nx)\,dx $$):
+   $$ \int_0^\pi x \sin(nx)\,dx = \left[-\frac{x \cos(nx)}{n}\right]_0^\pi + \frac{1}{n}\int_0^\pi \cos(nx)\,dx = -\frac{\pi (-1)^n}{n} + 0 = \frac{(-1)^{n+1}\pi}{n}. $$
+   Hence $$ f_n = \frac{2(-1)^{n+1}}{n} $$.
+2. **Divide each mode by $$ \lambda_n = n^2 $$:**
+   $$ c_n = \frac{f_n}{\lambda_n} = \frac{2(-1)^{n+1}}{n^3} \implies y(x) = \sum_{n=1}^{\infty} \frac{2(-1)^{n+1}}{n^3} \sin(nx). $$
+   Notice how the $$ 1/n^3 $$ decay guarantees rapid, uniform convergence!
+3. **Compare numerically at $$ x = \frac{\pi}{2} $$:**
+   - **Exact closed form:** Integrating $$ y'' = -x $$ twice with $$ y(0) = y(\pi) = 0 $$ gives $$ y(x) = \frac{1}{6}(\pi^2 x - x^3) $$. At $$ x = \frac{\pi}{2} $$:
+     $$ y\!\left(\frac{\pi}{2}\right) = \frac{1}{6}\left(\frac{\pi^3}{2} - \frac{\pi^3}{8}\right) = \frac{\pi^3}{16} \approx \frac{31.0063}{16} \approx 1.9379. $$
+   - **First two nonzero series terms** (since $$ \sin(n\pi/2) = 0 $$ for even $$ n $$, $$ +1 $$ for $$ n=1,5,\dots $$, $$ -1 $$ for $$ n=3,7,\dots $$):
+     $$ S_3\!\left(\frac{\pi}{2}\right) = \frac{2}{1^3}(1) + \frac{2}{3^3}(-1) = 2 - \frac{2}{27} \approx 1.9259. $$
+     Adding $$ n = 5 $$ ($$ +\frac{2}{125} = +0.0160 $$) gives $$ 1.9419 $$—within $$ 0.2\% $$ of the exact value after just three odd modes!
+
 ## Learning Objectives
 
 This lesson helps students understand eigenfunction expansions as generalized Fourier series, compute expansion coefficients in simple settings, and interpret arbitrary states as superpositions of boundary-adapted modes.

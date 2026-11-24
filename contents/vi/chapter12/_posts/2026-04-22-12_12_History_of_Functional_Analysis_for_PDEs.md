@@ -9,6 +9,19 @@ categories:
 - chapter12
 ---
 
+Cuối thế kỷ XIX, giải tích cổ điển rơi vào một cuộc khủng hoảng chấn động: Karl Weierstrass chỉ ra rằng Nguyên lý Dirichlet mà Riemann và các nhà vật lý tin dùng suốt hàng thập kỷ hóa ra **có thể không có nghiệm trơn nào cả**! Chính vết nứt lịch sử ấy đã buộc Hilbert, Lebesgue, Sobolev và Laurent Schwartz phải tái thiết toàn bộ khái niệm "hàm số" và "đạo hàm"—mở ra kỷ nguyên Giải tích Hàm hiện đại cho PDE ở Chương 12.
+
+## Bản đồ kiến thức nền: Bốn cột mốc lịch sử khai sinh Giải tích Hàm cho PDE
+
+1. **Lebesgue (1902) & Riesz–Fischer (1907) — Tích phân mới và Sự đầy đủ của $L^p$**:
+   Tích phân Riemann bị "thủng lỗ" khi lấy giới hạn dãy hàm; tích phân Lebesgue lấp kín mọi lỗ hổng ấy để tạo ra các không gian Banach/Hilbert đầy đủ $L^p$.
+2. **Hilbert (1900–1910) — Cứu vãn Nguyên lý Dirichlet & Lý thuyết Phổ**:
+   David Hilbert phục hồi phương pháp trực tiếp của phép tính biến phân và hình học hóa không gian vô hạn chiều (không gian Hilbert) để phân tích toán tử tích phân và phương trình elliptic.
+3. **Sergei Sobolev (1936–1938) — Đạo hàm yếu và Không gian Sobolev $W^{k,p}$**:
+   Thay vì đòi hỏi hàm khả vi cổ điển tại từng điểm, Sobolev định nghĩa đạo hàm qua công thức tích phân từng phần với hàm thử—tạo ra ngôi nhà đúng nghĩa cho nghiệm yếu của PDE.
+4. **Laurent Schwartz (1945–1950) & Lax–Milgram (1954) — Phân phối và Khung Biến phân Hiện đại**:
+   Schwartz hợp thức hóa hàm delta Dirac thành lý thuyết phân phối $\mathcal{D}'$, còn Peter Lax và Arthur Milgram biến việc chứng minh tồn tại–duy nhất nghiệm PDE elliptic thành bài toán kiểm tra tính liên tục và tính cưỡng bức trên không gian Hilbert!
+
 ## Mục tiêu
 Bài này trình bày sự hình thành của giải tích hàm như ngôn ngữ chuẩn của lý thuyết phương trình đạo hàm riêng (PDE) hiện đại. Qua đó, sinh viên thấy được bước chuyển của Chương 12 từ công thức tường minh và đạo hàm cổ điển sang không gian hàm, cấu trúc yếu, tính compact và lý thuyết toán tử.
 
@@ -20,6 +33,14 @@ Tại Moscow vào giữa thập niên 1930, Sergei Sobolev đối mặt với nh
 
 Sobolev đã đề xuất một cách tiếp cận mới: thay vì hỏi hàm có đạo hàm cổ điển tại từng điểm hay không, hãy xem đạo hàm có thể được hiểu thông qua tích phân với các hàm thử trơn hay không. Chẳng hạn, hàm $$u(x)=|x|$$ không có đạo hàm cổ điển tại $$x=0$$, nhưng theo nghĩa yếu nó vẫn mang đầy đủ thông tin đạo hàm để tham gia vào PDE. Từ bước ngoặt đó, không gian $$L^p$$, không gian Sobolev, nghiệm yếu và lý thuyết phân bố dần gắn kết với nhau. Chương 12 vì thế không phải là bước rẽ sang toán trừu tượng tách rời PDE, mà là sự mở rộng chính khái niệm nghiệm để các bài toán vật lý được xử lý chặt chẽ.
 
+
+### Khung giải thích (nên đọc chậm): Phản ví dụ kinh điển của Weierstrass phơi bày "lỗ hổng" của không gian $C^1$
+
+Xét bài toán cực tiểu hóa phiếm hàm năng lượng sau trên các hàm khả vi liên tục $u \in C^1([-1, 1])$ thỏa mãn $u(-1) = -1$ và $u(1) = 1$:
+$$I(u) = \int_{-1}^{1} x^2 \big(u'(x)\big)^2\,dx \ge 0.$$
+1. **Dựng dãy hàm trơn tiến gần $0$**: Chọn $u_n(x) = \frac{\arctan(nx)}{\arctan(n)}$. Dễ thấy $u_n(-1) = -1$, $u_n(1) = 1$, và:
+   $$I(u_n) = \frac{1}{(\arctan n)^2} \int_{-1}^1 \frac{n^2 x^2}{(1 + n^2 x^2)^2}\,dx \le \frac{1}{(\arctan n)^2} \int_{-1}^1 \frac{1}{1 + n^2 x^2}\,dx = \frac{2}{n\,\arctan n} \xrightarrow{n\to\infty} \mathbf{0}.$$
+2. **Nghịch lý**: Cận dưới đúng $\inf I(u) = 0$, nhưng **không có bất kỳ hàm $C^1$ nào đạt $I(u) = 0$** (vì $x^2(u')^2 = 0 \implies u' = 0$ ngoài $0$, buộc hàm phải là hàm bậc thang nhảy gián đoạn $\operatorname{sgn}(x)$)! Chính nghịch lý này thôi thúc toán học phát minh không gian đầy đủ $L^p$ và $W^{k,p}$.
 ## Mạch truyện lớn
 Tiến trình phát triển của chủ đề này đi từ phương trình tích phân và không gian Hilbert tới đạo hàm yếu, phân bố và giải tích hàm cho PDE. Hilbert, Riesz, Banach, Sobolev, Schwartz cùng nhiều nhà toán học khác đã xây dựng khuôn khổ trong đó chuẩn, tính trực giao và tính chất toán tử giữ vai trò quan trọng ngang với các công thức vi phân cổ điển.
 

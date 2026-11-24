@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Một mạng nơ-ron huấn luyện bằng sai số $L^2$ có thể dự đoán trường nhiệt độ sai lệch chưa tới $1\%$ về giá trị, nhưng khi kỹ sư lấy đạo hàm để tính **dòng nhiệt** $-k\nabla u$ hay **ứng suất cơ học**, kết quả lại rung lắc hỗn loạn và sai hàng trăm phần trăm! Giải pháp của học máy khoa học hiện đại (Sobolev Training & Neural Operators trong $H^s$) quay trở về đúng trực giác cốt lõi của Chương 12: muốn xấp xỉ vật lý trung thực, ta phải đo sai số trong **chuẩn Sobolev $H^1$** chứ không chỉ chuẩn $L^2$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Học Toán tử trong Không gian Sobolev
+
+1. **Chuẩn $H^s$ kiểm soát đồng thời giá trị và đạo hàm**:
+   Sai số trong $L^2$ mù trước các dao động nhỏ biên độ nhưng tần số cao; chuẩn Sobolev $\|e\|_{H^1}^2 = \|e\|_{L^2}^2 + \|\nabla e\|_{L^2}^2$ trừng phạt ngay lập tức mọi nhiễu răng cưa phá hủy gradient vật lý.
+2. **Ánh xạ liên tục giữa các không gian Sobolev**:
+   Trong lý thuyết PDE elliptic, toán tử lời giải $(-\Delta)^{-1}$ ánh xạ liên tục từ $H^{-1}(\Omega)$ vào $H_0^1(\Omega)$ (hoặc từ $L^2$ vào $H^2$). Huấn luyện mạng nơ-ron theo đúng cặp không gian nguồn–đích này bảo toàn tính ổn định của bài toán.
+3. **Định lý Xấp xỉ Phổ quát trong $H^s$ và Học có Trọng số Năng lượng**:
+   Nhiều bài toán biên elliptic tương đương cực tiểu hóa phiếm hàm năng lượng $J(u) = \frac{1}{2}a(u,u) - \ell(u)$ (Deep Ritz Method)—tận dụng trực tiếp dạng yếu $H^1$ để giảm bậc đạo hàm cần tính bằng tự động vi phân (autodiff).
+4. **Học Toán tử trên Hình học Bất kỳ và Miền Rời rạc**:
+   Kết hợp không gian hàm Sobolev với lưới đồ thị (GNO) hoặc không gian phần tử hữu hạn (FEM-informed operators) giúp mô hình tổng quát hóa vượt qua lưới chữ nhật đều.
+
 ## Mục tiêu
 
 Bài học tùy chọn này sử dụng không gian $$L^p$$, đạo hàm yếu, chuẩn Sobolev và tính đặt chỉnh từ định lý Lax–Milgram làm ngôn ngữ chính thức cho lý thuyết neural operator. Sinh viên cần xác định được ánh xạ học được có tính liên tục trên không gian hàm nào, hiểu vì sao tính bất biến rời rạc hóa là một phát biểu của giải tích hàm, và nắm các công trình giai đoạn 2022–2024 cung cấp tốc độ hội tụ xấp xỉ. Phần lý thuyết dạng yếu của chương vẫn giữ nguyên vai trò nền tảng.
@@ -26,6 +39,16 @@ Lanthaler, Mishra và Karniadakis (*Error estimates for DeepONets*, *Transaction
 
 Chương 12 chính là nền tảng mà các công trình đó sử dụng. Khái niệm đạo hàm yếu cho thấy một mô hình có thể hội tụ trong $$L^2$$ nhưng gradient vẫn sai lệch hoàn toàn. Định lý Lax–Milgram khẳng định toán tử nghiệm thực bị chặn từ $$H^{-1}$$ vào $$H^1_0$$; do đó một toán tử học được chỉ bị chặn trên không gian vector nút $$\ell^2$$ thực chất đang trả lời một câu hỏi khác.
 
+
+### Khung giải thích (nên đọc chậm): Một nhiễu nhỏ $1\%$ trong $L^2$ có thể phá nát đạo hàm trong $H^1$ như thế nào?
+
+Giả sử sai số dự đoán của mạng nơ-ron trên $[0, 2\pi]$ là một gợn sóng biên độ rất nhỏ $e(x) = 0{,}01\sin(100x)$:
+1. **Đo bằng chuẩn $L^2$**:
+   $$\|e\|_{L^2}^2 = \int_0^{2\pi} (0{,}01)^2 \sin^2(100x)\,dx = 10^{-4} \cdot \pi \approx \mathbf{0{,}000314} \quad (\|e\|_{L^2} \approx 0{,}0177).$$
+   Nhìn vào $L^2$ loss, mô hình trông như đã hội tụ cực kỳ đẹp!
+2. **Đo phần đạo hàm $e'(x) = 1{,}00\cos(100x)$ trong $H^1$**:
+   $$\|e'\|_{L^2}^2 = \int_0^{2\pi} \cos^2(100x)\,dx = \pi \approx \mathbf{3{,}1416} \quad (\|e'\|_{L^2} \approx 1{,}772).$$
+   Chỉ vì tần số $k = 100$, bình phương sai số đạo hàm lớn gấp **$10.000$ lần** bình phương sai số $L^2$! Đó là lý do huấn luyện với hàm mất mát Sobolev $H^1$ là bắt buộc khi cần dự đoán gradient hay ứng suất.
 ## Khái niệm then chốt
 
 ### Chỉ rõ không gian và chuẩn sai số

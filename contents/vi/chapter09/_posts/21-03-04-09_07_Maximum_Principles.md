@@ -9,7 +9,21 @@ categories:
 - chapter09
 lesson_type: required
 ---
+
 ![21 03 04 09 07 Maximum Principles]({{ site.imgurl }}/chapter_img/chapter09/07_maximum_principles.svg)
+
+Chẳng cần giải ra một công thức nghiệm nào, trực giác vật lý mách bảo ta một điều hiển nhiên: trong một thanh kim loại không có nguồn nhiệt bên trong, **điểm nóng nhất không bao giờ có thể tự dưng bùng lên ở giữa thanh ở thời điểm sau**—nhiệt độ lớn nhất (và nhỏ nhất!) chắc chắn phải nằm ở **trạng thái ban đầu $t = 0$** hoặc trên **hai đầu biên $x = 0, L$**! Phát biểu hình học mộc mạc đó chính là **Nguyên lý Cực đại (Maximum Principle)**—vũ khí chứng minh **tính duy nhất** và **tính ổn định** nghiệm nhanh nhất toàn ngành PDE!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Nguyên lý Cực đại cho Phương trình Nhiệt
+
+1. **Biên Parabol ($\Gamma_T$)**:
+   Trên hình chữ nhật không–thời gian $Q_T = (0, L) \times (0, T]$, biên parabol $\Gamma_T$ gồm đúng **3 cạnh**: đáy ban đầu ($t = 0$), vách trái ($x = 0$) và vách phải ($x = L$) — **không bao gồm nắp trên $t = T$**!
+2. **Nguyên lý Cực đại Yếu & Cực tiểu**:
+   Với $u_t = \alpha u_{xx}$ (không nguồn), $\max_{\overline{Q_T}} u = \max_{\Gamma_T} u$ và $\min_{\overline{Q_T}} u = \min_{\Gamma_T} u$.
+3. **Hệ quả 1 — Tính duy nhất nghiệm trong 3 dòng**:
+   Nếu $u_1, u_2$ cùng thỏa phương trình, biên và điều kiện đầu, xét hiệu $w = u_1 - u_2$: $w \equiv 0$ trên toàn biên $\Gamma_T \implies 0 \le w(x, t) \le 0$ trên toàn miền $\implies u_1 \equiv u_2$!
+4. **Hệ quả 2 — Ổn định liên tục theo dữ liệu (Well-posedness)**:
+   Sai số ban đầu $\vert f_1 - f_2 \vert \le \varepsilon$ không bao giờ khuếch đại: $\vert u_1(x, t) - u_2(x, t) \vert \le \varepsilon$ với mọi $(x, t)$!
 
 ## Mục tiêu
 
@@ -24,6 +38,17 @@ Sinh viên cần nắm phương trình nhiệt, điều kiện cực trị của
 Ở các bài trước, ta đã xây dựng nghiệm phương trình nhiệt thông qua chuỗi mode và hàm Green. Tuy nhiên, trong nhiều tình huống ta không cần công thức nghiệm chi tiết mà cần những đánh giá định tính chặt chẽ: nhiệt độ lớn nhất và nhỏ nhất có thể đạt bao nhiêu, và liệu có thể xuất hiện một đỉnh nhiệt mới bên trong miền hay không. Nguyên lý cực đại trả lời trực tiếp các câu hỏi đó.
 
 Kết quả này cho thấy quá trình khuếch tán chịu một ràng buộc chặt chẽ: giá trị nghiệm trên toàn miền được kiểm soát bởi dữ liệu trên biên parabolic chứ không thể tự tăng vọt bên trong. Đây là nền tảng để chứng minh tính duy nhất, tính ổn định và nhiều ước lượng sai số.
+
+### Khung giải thích (nên đọc chậm): Dùng Nguyên lý Cực đại chặn ngay nhiệt độ và ước lượng sai số đo không cần giải PDE
+
+Giả sử một thanh kim loại dài $1\text{ m}$ có nhiệt độ ban đầu $f(x) = 20 + 60\sin(\pi x)$, đầu trái giữ $20^\circ\text{C}$, đầu phải giữ $40^\circ\text{C}$ ($u_t = \alpha u_{xx}$).
+1. **Tìm cực trị trên biên parabol $\Gamma_T$**:
+   - Đáy $t = 0$: $f(x) \in [20, 80]$ (đạt cực đại $80^\circ\text{C}$ tại $x = 0{,}5$).
+   - Vách trái $x = 0$: $20^\circ\text{C}$. Vách phải $x = 1$: $40^\circ\text{C}$.
+2. **Kết luận tức thì cho mọi $(x, t) \in [0, 1] \times [0, \infty)$**:
+   $$\mathbf{20^\circ\text{C} \le u(x, t) \le 80^\circ\text{C}}.$$
+   Nếu một chương trình mô phỏng số báo ra $u(0{,}3, 2) = 85^\circ\text{C}$ hoặc $18^\circ\text{C}$, bạn biết chắc **100% mã nguồn bị lỗi hoặc mất ổn định số** mà không cần biết nghiệm giải tích!
+3. **Ứng dụng ngược (Phương trình nhiệt ngược thời gian là ill-posed!)**: Khi chạy ngược $t < 0$, cực đại ở $t = 0$ không còn chặn được quá khứ—nhiễu $10^{-6}$ lập tức bùng nổ thành vô cùng!
 
 ## Khái niệm theo ba cách
 

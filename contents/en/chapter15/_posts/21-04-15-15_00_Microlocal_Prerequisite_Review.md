@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** Picture a razor-sharp crease running straight down the middle of a smooth sheet of paper. Walk *along* the crease and the paper feels completely flat and smooth; step *across* the crease and you hit an abrupt kink. Classical calculus only tells you *where* the crease sits—**microlocal analysis** upgrades your microscope to see both *where* a singularity lives and *which direction* it points.
+
 ## Objectives
 
 This preparatory lesson reviews the precise ideas that Chapter 15 uses immediately but quickly: distributions, the Fourier transform as a detector of regularity, smooth cutoff functions, singular support, and the central microlocal intuition that a function may be smooth in some directions while failing to be smooth in others. After working through this lesson, students should be ready to read the definition of a wave front set without feeling that the theory suddenly changed language.
@@ -23,6 +25,15 @@ The background ideas are not new in substance. Distributions already appeared in
 ## Prerequisites
 
 Students should already know basic real analysis, multivariable calculus, and the Fourier transform at the level of Chapter 08. Familiarity with distributions from Chapter 12 and symbols from Chapter 14 is helpful, but this lesson reviews the specific pieces needed for the opening lessons of Chapter 15.
+
+## Background Knowledge Map: The Four Tools Behind Microlocal Analysis
+
+Before defining wave front sets, four analytical instruments must work together effortlessly:
+
+1. **Distributions $\mathcal{D}'(\Omega)$ and Compactly Supported Distributions $\mathcal{E}'(\Omega)$:** Multiplying any distribution $u$ by a smooth cutoff $\varphi \in C_c^\infty(\Omega)$ produces a compactly supported distribution $\varphi u \in \mathcal{E}'(\mathbb{R}^n)$ whose Fourier transform $\widehat{\varphi u}(\xi)$ is an entire analytic function of at most polynomial growth (Paley–Wiener–Schwartz).
+2. **Fourier Decay as a Smoothness Detector:** A compactly supported distribution $v$ is $C^\infty$ if and only if $|\hat{v}(\xi)| \le C_N \langle\xi\rangle^{-N}$ for *every* $N \ge 1$. Slow decay in frequency is the exact spectral fingerprint of a singularity.
+3. **Smooth Cutoff Localization:** Because global Fourier transforms mix singularities from everywhere in $\mathbb{R}^n$, multiplying by a bump $\varphi$ supported near $x_0$ isolates the regularity of $u$ strictly around $x_0$ without introducing artificial jumps.
+4. **Singular Support vs. Directional Smoothness:** $\operatorname{sing\,supp}(u)$ marks every point $x_0$ where $\widehat{\varphi u}$ fails to decay rapidly in *some* direction; microlocal analysis refines this by tracking the exact conic set of frequency directions $\xi$ where rapid decay fails.
 
 ## 1. Distributions: Why Generalized Functions Are Unavoidable
 
@@ -168,6 +179,19 @@ Consider $$ u(x_1,x_2)=H(x_1)H(x_2) $$. Away from the axes, the function is smoo
 Propagation theorems do not usually say that singular support moves as a whole geometric set in physical space. They say that singular directions move along Hamiltonian trajectories in phase space. That is why microlocal analysis needs a directional refinement of singular support.
 
 ## 6. Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Separating Smooth Directions from Singular Directions on $\mathbb{R}^2$
+
+Consider $u(x,y) = H(x)\,e^{-y^2}$ on $\mathbb{R}^2$ (where $H(x) = \mathbf{1}_{x > 0}$ is the Heaviside step), which has singular support along the entire $y$-axis $\{x = 0\}$. Localize near $(0,0)$ with a product cutoff $\varphi(x,y) = \chi_1(x)\chi_2(y) \in C_c^\infty(\mathbb{R}^2)$ (with $\chi_1(0) = \chi_2(0) = 1$) and compare the decay of $\widehat{\varphi u}(\xi_1, \xi_2)$ along the $\xi_1$-axis versus the $\xi_2$-axis.
+
+1. **Factor the 2D Fourier transform:**
+   $$\widehat{\varphi u}(\xi_1, \xi_2) = \left(\int_0^\infty \chi_1(x)e^{-ix\xi_1}\,dx\right)\left(\int_{-\infty}^\infty \chi_2(y)e^{-y^2}e^{-iy\xi_2}\,dy\right) =: I_1(\xi_1)\cdot I_2(\xi_2).$$
+2. **Test the $\xi_1$-axis ($\xi_2 = 0$, $|\xi_1| \to \infty$):** Integrate $I_1(\xi_1)$ by parts once:
+   $$I_1(\xi_1) = \left[\frac{\chi_1(x)e^{-ix\xi_1}}{-i\xi_1}\right]_0^\infty + \frac{1}{i\xi_1}\int_0^\infty \chi_1'(x)e^{-ix\xi_1}\,dx = \frac{1}{i\xi_1} + O(|\xi_1|^{-2}).$$
+   Since $I_2(0) = \int \chi_2(y)e^{-y^2}\,dy \neq 0$, we get $|\widehat{\varphi u}(\xi_1, 0)| \sim \frac{|I_2(0)|}{|\xi_1|}$—**slow $O(|\xi_1|^{-1})$ decay**!
+3. **Test the $\xi_2$-axis ($\xi_1 = 0$, $|\xi_2| \to \infty$):** Because $\chi_2(y)e^{-y^2} \in C_c^\infty(\mathbb{R})$, integrating $I_2(\xi_2)$ by parts $N$ times gives $|I_2(\xi_2)| \le C_N \langle\xi_2\rangle^{-N}$ for *every* $N$, while $I_1(0)$ is just a constant. Thus $\widehat{\varphi u}(0, \xi_2)$ decays **faster than any power** of $|\xi_2|^{-1}$!
+4. **Microlocal lesson:** At $(0,0)$, $u$ is singular purely in the horizontal covector directions $(\pm 1, 0)$ normal to the jump line, and completely smooth along the vertical direction $(0, \pm 1)$!
 
 ### Example 1: The derivative of the Heaviside function
 

@@ -9,6 +9,33 @@ categories:
 - chapter05
 ---
 
+In 1887, King Oscar II of Sweden offered a gold medal and 2,500 crowns to anyone who could prove the solar system is stable forever. Henri Poincaré submitted a brilliant memoir—only to discover a subtle error right before publication that shattered two centuries of Laplacian clockwork determinism! Fixing that error invented homoclinic tangles, qualitative phase-plane geometry, and the entire field of chaos theory.
+
+## Background Knowledge Map: Four Historical Revolutions Behind Chapter 05
+
+Every theorem in Chapter 05 marks a paradigm shift in how humanity thinks about prediction and stability:
+
+1. **Poincaré's Qualitative Revolution (1881–1892):** Realizing the three-body problem cannot be integrated in closed form, Henri Poincaré invented phase-plane topology, limit cycles, Poincaré sections, and homoclinic tangles—shifting ODEs from symbolic formulas to global geometry.
+2. **Lyapunov's General Stability Theory (1892):** In his doctoral dissertation *The General Problem of the Stability of Motion*, Aleksandr Lyapunov unified linearization (First Method) and energy-like certificates (Direct Method), laying the mathematical bedrock of modern control engineering.
+3. **Oscillators, Ecology, and Epidemics (1920s):** Balthasar van der Pol discovered relaxation limit cycles in radio vacuum tubes (1926); Lotka (1925) and Volterra (1926) launched mathematical ecology; Kermack and McKendrick (1927) created the SIR epidemic threshold theory.
+4. **Lorenz, Smale, and the Chaos Era (1960s–1970s):** Edward Lorenz's 1963 atmospheric convection paper, Stephen Smale's horseshoe map, and Robert May's logistic-map bifurcations proved that simple deterministic equations generate irreducibly unpredictable dynamics.
+
+### Step-by-Step Worked Example (Read Slowly): Analyzing Van der Pol's 1926 Self-Excited Vacuum-Tube Oscillator
+
+In 1926, Balthasar van der Pol modeled a triode vacuum-tube radio oscillator with the nonlinear damping equation
+$$x'' - \mu(1 - x^2)x' + x = 0, \qquad \mu > 0.$$
+
+1. **Rewrite as an autonomous planar system ($$y = x'$$) and linearize at the origin:**
+   $$x' = y, \qquad y' = -x + \mu(1 - x^2)y.$$
+   At $$(0,0)$$: $$J(0,0) = \begin{pmatrix} 0 & 1 \\ -1 & \mu \end{pmatrix} \implies \tau = \mu > 0,\; \Delta = 1 > 0.$$
+   For $$\mu > 0$$, the origin is **unstable** (unstable spiral for $$0 < \mu < 2$$, unstable node for $$\mu \ge 2$$)—so tiny thermal noise spontaneously kicks the circuit into oscillation!
+2. **Check the physical energy rate $$\dot{E}$$ for $$E(x,y) = \frac{1}{2}(x^2 + y^2)$$:**
+   $$\dot{E} = x x' + y y' = xy + y\bigl(-x + \mu(1 - x^2)y\bigr) = \mu(1 - x^2)y^2.$$
+3. **Read the self-regulating feedback mechanism directly from the sign of $$\dot{E}$$:**
+   - **Small amplitude ($$\lvert x \rvert < 1$$):** $$\dot{E} > 0$$ — **negative damping** pumps energy *into* the oscillation!
+   - **Large amplitude ($$\lvert x \rvert > 1$$):** $$\dot{E} < 0$$ — **positive damping** drains excess energy *out*!
+4. **Historical payoff:** Energy injection inside $$\lvert x \rvert < 1$$ balances energy dissipation outside $$\lvert x \rvert > 1$$, locking the circuit onto a unique, rock-solid limit cycle (amplitude $$\approx 2$$ for small $$\mu$$)—the exact principle behind modern quartz oscillators and pacemakers!
+
 ## Objectives
 This lesson traces the history of nonlinear dynamics from celestial mechanics to chaos, biology, and epidemiology. Students should see Chapter 05 as the chapter where differential equations stop promising exact formulas and begin revealing structure, geometry, and long-term behavior.
 

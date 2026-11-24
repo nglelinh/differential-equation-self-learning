@@ -9,6 +9,20 @@ categories:
 - chapter00
 ---
 
+
+Suốt gần hai thế kỷ kể từ Newton và Leibniz, các nhà toán học đã giải thành công vô số phương trình vi phân mô tả quỹ đạo hành tinh và dao động dây đàn, nhưng lại đứng trên một nền móng đầy vết nứt: "vô cùng bé" là gì, và khi nào một chuỗi vô hạn thực sự hội tụ về nghiệm đúng? Chính cuộc khủng hoảng nền tảng thế kỷ XIX đã thôi thúc Cauchy, Weierstrass, Hilbert và Banach dựng nên toàn bộ bộ khung giải tích hiện đại để lý thuyết phương trình vi phân đứng vững như đá tảng.
+
+## Bản đồ kiến thức nền: Bốn cột mốc dựng nền móng cho Phương trình Vi phân
+
+1. **Giải tích hình học & Vô cùng bé (Thế kỷ XVII–XVIII)**:
+   Newton, Leibniz và Euler coi đạo hàm là tỷ số các đại lượng vô cùng bé, mở đường cho cơ học cổ điển nhưng dễ vấp nghịch lý khi gặp hàm không trơn hoặc chuỗi phân kỳ.
+2. **Số học hóa Giải tích (Cauchy & Weierstrass, Thế kỷ XIX)**:
+   Ngôn ngữ $\varepsilon\text{--}\delta$, dãy Cauchy và tính liên tục đều thay thế hoàn toàn trực giác mơ hồ, giúp chứng minh chặt chẽ định lý tồn tại–duy nhất nghiệm Picard–Lindelöf.
+3. **Không gian hàm & Giải tích Hàm (Hilbert, Banach, Fréchet)**:
+   Coi mỗi hàm số $y(t)$ như một *điểm* trong không gian vô hạn chiều giúp biến phương trình vi phân thành phương trình điểm bất động $T(y) = y$ hoặc phương trình toán tử tuyến tính $Ly = f$.
+4. **Lý thuyết Độ đo & Tích phân Lebesgue (Thế kỷ XX)**:
+   Mở rộng tích phân Riemann sang tích phân Lebesgue tạo ra không gian đầy đủ $L^2$ và không gian Sobolev $H^k$—ngôn ngữ chuẩn mực của PDE hiện đại và phân tích số.
+
 ## Mục tiêu
 Bài lịch sử này giúp sinh viên thấy rằng các kiến thức nền của khóa học không xuất hiện cùng lúc mà được tích lũy qua hơn hai nghìn năm phát triển toán học. Sau bài học, sinh viên có thể gắn kết giải tích thực, vi tích phân, đại số tuyến tính, số phức, lý thuyết tích phân, giải tích vector và hàm đặc biệt với những nhà toán học, bài toán khoa học và công trình lịch sử đã thúc đẩy chúng ra đời.
 
@@ -19,6 +33,15 @@ Sinh viên nên đã làm quen với các nội dung chính của Chương 00. B
 Paris, năm 1821, tại giảng đường của École Polytechnique, Augustin-Louis Cauchy đối mặt với một bài toán sư phạm và nền tảng rõ rệt. Các kỹ sư tương lai cần giải tích để tính quỹ đạo, diện tích, vận tốc và dao động, nhưng nền giải tích kế thừa từ thế kỷ XVIII vẫn dựa nhiều vào các lập luận trực giác về "vô cùng bé". Euler đã vận dụng lối tính đó rất hiệu quả, song hiệu quả thực hành chưa đồng nghĩa với sự chặt chẽ về mặt chứng minh. Cauchy nhận ra rằng nếu nền móng còn lỏng lẻo, toàn bộ lý thuyết phương trình vi phân xây dựng phía trên sẽ thiếu cơ sở vững chắc.
 
 Vì thế, công việc của ông không chỉ là giảng lại kỹ thuật tính toán mà là đặt ra tiêu chuẩn chính xác cho giới hạn, tính liên tục và sự biến thiên. Khi khẳng định dãy $$1, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \dots$$ tiến về $$0$$, khẳng định đó cần một định nghĩa rõ ràng thay vì cảm nhận định tính. Khi xét thương sai phân $$\frac{(1+h)^2-1}{h} = 2 + h$$ và cho $$h \to 0$$ để thu được đạo hàm của $$x^2$$ tại $$x=1$$ bằng $$2$$, ông cho thấy lý do giới hạn, tính liên tục và phép xấp xỉ nghiêm ngặt phải được phát biểu minh bạch. Từ nhu cầu đó, toàn bộ ngôn ngữ hiện đại về chuẩn, không gian, ma trận và số phức từng bước trở thành phần không thể tách rời của giải tích.
+
+### Khung giải thích (nên đọc chậm): Thấy tận mắt vì sao ngôn ngữ $\varepsilon\text{--}\delta$ và hội tụ đều cứu vãn phép lấy đạo hàm dưới dấu giới hạn
+
+Xét dãy hàm trơn $f_n(x) = \frac{\sin(nx)}{n}$ trên $\mathbb{R}$ khi $n \to \infty$:
+1. **Giới hạn của chính dãy hàm**: Với mọi $x \in \mathbb{R}$, $\left\vert f_n(x) - 0 \right\vert \le \frac{1}{n} \to 0$. Vậy $f_n \to f \equiv 0$ **hội tụ đều** trên toàn $\mathbb{R}$, và $f'(x) \equiv 0$.
+2. **Giới hạn của dãy đạo hàm**: Tính đạo hàm từng số hạng ta được $f_n'(x) = \cos(nx)$.
+   - Tại $x = 0$: $f_n'(0) = \cos(0) = 1 \not\to 0 = f'(0)$!
+   - Tại $x = \pi$: $f_n'(\pi) = (-1)^n$, thậm chí **không có giới hạn**!
+3. **Bài học lịch sử**: Ngay cả khi $f_n \to f$ hội tụ đều, ta vẫn **không được tự ý đổi chỗ** $\lim$ và $\frac{d}{dx}$ trừ khi chính dãy đạo hàm $f_n'$ hội tụ đều. Chính những phản ví dụ sắc bén như thế này đã buộc toán học thế kỷ XIX phải xây dựng nền tảng chặt chẽ ở Chương 00.
 
 ## Mạch truyện lớn
 Mạch phát triển của chương này chia thành ba chặng rõ rệt. Chặng thứ nhất thuộc thời cổ đại, khi Euclid và Archimedes đặt chuẩn mực cho chứng minh, phép xấp xỉ và cách kiểm soát sai số. Chặng thứ hai là giai đoạn bùng nổ của thế kỷ XVII–XVIII: Descartes gắn hình học với phương trình đại số, Newton và Leibniz xây dựng phép tính vi tích phân để mô tả chuyển động, còn Euler phát triển các công cụ đó thành bộ máy tính toán mạnh mẽ.

@@ -10,6 +10,20 @@ categories:
 lesson_type: optional
 ---
 
+
+Định nghĩa $\varepsilon\text{--}\delta$, hội tụ đều, hình cầu đơn vị của chuẩn $\ell^p$ hay phép chiếu trực giao sẽ mất đi một nửa sức sống nếu chỉ nằm yên trong các dòng bất đẳng thức. Bộ minh họa tương tác của Chương 00 cho phép bạn chạm tay trực tiếp vào những đối tượng giải tích nền tảng này: kéo thanh trượt $\varepsilon$ để thấy $\delta$ co lại, xoay vectơ riêng của ma trận $2\times 2$, và nhìn tận mắt sự khác biệt giữa chuẩn $\ell^1$, $\ell^2$ và $\ell^\infty$.
+
+## Bản đồ kiến thức nền: Bốn trực giác hình học cần nắm trong Bộ Minh họa Chương 00
+
+1. **Dải $\varepsilon\text{--}\delta$ & Tính liên tục đều**:
+   Quan sát khi nào một độ rộng $\delta$ cố định giữ được đồ thị nằm gọn trong dải ngang $\pm\varepsilon$ trên toàn miền, và khi nào độ dốc lớn phá vỡ điều đó.
+2. **Biến đổi tuyến tính & Hướng bất biến (Vectơ riêng)**:
+   Khi ma trận $A$ tác động lên lưới tọa độ, hầu hết các vectơ bị xoay hướng; chỉ đúng các vectơ riêng nằm yên trên đường thẳng ban đầu và chỉ bị kéo giãn theo hệ số $\lambda$.
+3. **Hình học quả cầu đơn vị trong các chuẩn $\ell^p$**:
+   Hình thoi ($\ell^1$), hình tròn ($\ell^2$) và hình vuông ($\ell^\infty$) cho thấy trực quan cách chọn chuẩn làm thay đổi khái niệm "gần" và "tối ưu".
+4. **Trường vectơ, Gradient & Đường mức**:
+   Thấy ngay vectơ $\nabla f$ luôn vuông góc với các đường đồng mức $f(x, y) = C$ và mật độ đường mức càng dày thì độ lớn $\|\nabla f\|$ càng lớn.
+
 ## Mục Đích Của Bài Hỗ Trợ
 
 Bài học này tập hợp toàn bộ các minh họa trực quan của Chương 00 vào một không gian ôn tập thống nhất. Các kiến thức nền tảng toán học thường dễ bị tiếp nhận như những mảng rời rạc, nhưng thực chất toàn bộ khóa học phương trình vi phân đều vận hành trên chúng như một ngôn ngữ chung. Bộ minh họa giúp người học nhận ra rằng giải tích thực, tính liên tục đều, giải tích đa biến, đại số tuyến tính, số phức, không gian metric, không gian định chuẩn, không gian tích vô hướng, lý thuyết tích phân, giải tích vector và hàm đặc biệt đều gắn kết chặt chẽ với nhau—tạo thành khung nền cho các định lý tồn tại nghiệm, phép tuyến tính hóa, khai triển trực giao và các mô hình PDE ở những chương tiếp theo.
@@ -30,6 +44,15 @@ Cách tiếp cận này giúp Chương 00 trở thành khung kiến thức cốt
   path="interactives/chapter00/index.html"
   height="980px"
 %}
+
+### Khung giải thích (nên đọc chậm): Tự kiểm chứng hình học quả cầu đơn vị $\ell^1, \ell^2, \ell^\infty$ tại cùng một điểm $(0{,}6,\; 0{,}8)$
+
+Hãy đặt điểm $P = (0{,}6,\; 0{,}8)$ lên cả ba "hình tròn đơn vị" $\{ (x,y) : \|(x,y)\|_p \le 1 \}$ trong bộ minh họa:
+- **Theo chuẩn Euclid $\ell^2$**: $\sqrt{0{,}6^2 + 0{,}8^2} = \sqrt{0{,}36 + 0{,}64} = \mathbf{1{,}0}$ → điểm $P$ nằm **đúng trên biên** đường tròn đơn vị.
+- **Theo chuẩn Manhattan $\ell^1$**: $\vert 0{,}6\vert + \vert 0{,}8\vert = \mathbf{1{,}4} > 1$ → điểm $P$ nằm **hẳn bên ngoài** hình thoi đơn vị!
+- **Theo chuẩn cực đại $\ell^\infty$**: $\max(0{,}6,\; 0{,}8) = \mathbf{0{,}8} < 1$ → điểm $P$ nằm **gọn bên trong** hình vuông đơn vị!
+
+Một điểm duy nhất có thể đồng thời nằm ngoài, trên biên và bên trong quả cầu đơn vị tùy theo thước đo bạn chọn—đó là trực giác cốt lõi nhất khi kéo thanh trượt đổi chuẩn.
 
 ## Câu Hỏi Gợi Ý Khi Học
 

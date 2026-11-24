@@ -9,7 +9,25 @@ categories:
 - chapter09
 lesson_type: required
 ---
+
 ![21 03 04 09 06 Fundamental Solution Greens Functions]({{ site.imgurl }}/chapter_img/chapter09/06_fundamental_solution_greens_functions.svg)
+
+Điều gì xảy ra nếu ta tập trung toàn bộ một đơn vị nhiệt năng vào **đúng một điểm duy nhất** $x = 0$ lúc $t = 0$ (xung Dirac $\delta(x)$) rồi thả ra? Ngọn lửa điểm vô cùng sắc nhọn đó lập tức tỏa rộng thành một đường cong chuông Gaussian mượt mà: chính là **Nghiệm Cơ bản (Fundamental Solution)** $\Phi(x, t)$—viên gạch nền tạo ra mọi nghiệm của phương trình nhiệt cả khi có nguồn ngoài $q(x, t)$ lẫn trên miền nửa trục $[0, \infty)$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Nghiệm Cơ bản & Hàm Green Nhiệt
+
+1. **Ba tính chất vàng của Nghiệm Cơ bản $\Phi(x, t) = \frac{1}{\sqrt{4\pi\alpha t}} e^{-x^2/(4\alpha t)}$**:
+   - Bảo toàn tổng nhiệt lượng: $\int_{-\infty}^{\infty} \Phi(x, t)\,dx = 1$ với mọi $t > 0$.
+   - Đỉnh hạ dần theo $t^{-1/2}$ và bề rộng nở dần theo $t^{1/2}$ (tự đồng dạng!).
+   - Khi $t \to 0^+$: $\Phi(x, t) \to \delta(x)$ (phân phối Dirac).
+2. **Phương pháp Ảnh gương (Method of Images) trên nửa trục $x > 0$**:
+   - Biên Dirichlet $u(0, t) = 0$: đặt một **nguồn âm đối xứng** tại $-y \implies G_D(x, y, t) = \Phi(x - y, t) - \Phi(x + y, t)$.
+   - Biên Neumann $u_x(0, t) = 0$: đặt một **nguồn dương đối xứng** tại $-y \implies G_N(x, y, t) = \Phi(x - y, t) + \Phi(x + y, t)$.
+3. **Nguyên lý Duhamel cho nguồn nhiệt ngoài $q(x, t)$**:
+   Coi nguồn liên tục $q(x, \tau)$ là chồng chất vô số xung nhiệt bắn vào từng thời điểm $\tau \in [0, t]$:
+   $$u_{\text{nguồn}}(x, t) = \int_0^t \int G(x, y, t - \tau)\, q(y, \tau)\,dy\,d\tau.$$
+4. **Tính làm trơn $C^\infty$ tức thì**:
+   Dù $f(x)$ gián đoạn tùy ý, tích chập với $\Phi \in C^\infty$ khiến $u(x, t)$ khả vi vô hạn lần ngay tại mọi $t > 0$!
 
 ## Mục tiêu
 
@@ -24,6 +42,14 @@ Sinh viên cần nắm phương trình nhiệt trên miền vô hạn, phép tí
 Một cách tiếp cận tự nhiên để khảo sát hệ tuyến tính là đặt câu hỏi: nếu tác động lên hệ bằng một xung đơn giản nhất, hệ sẽ đáp ứng ra sao? Đối với phương trình nhiệt, xung cơ bản nhất là một lượng nhiệt đơn vị tập trung tại đúng một điểm ở thời điểm ban đầu. Nghiệm tương ứng với xung đó chính là nghiệm cơ bản.
 
 Từ nghiệm cơ bản, ta xây dựng nên hàm Green. Cách nhìn này tạo ra bước chuyển quan trọng trong giải PDE: thay vì giải lại bài toán từ đầu cho mỗi điều kiện ban đầu hoặc mỗi hàm nguồn mới, ta chỉ cần xác định đáp ứng với xung đơn vị rồi chồng chất các đáp ứng đó bằng phép tích phân.
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng cầm tay Hàm Green ảnh gương $G_D(x, y, t) = \Phi(x - y, t) - \Phi(x + y, t)$ trên nửa trục $x > 0$
+
+Với $y > 0$ cố định, kiểm tra 3 điều kiện bắt buộc của Hàm Green biên Dirichlet $u(0, t) = 0$:
+1. **Thỏa phương trình nhiệt**: Cả $\Phi(x - y, t)$ và $\Phi(x + y, t)$ đều là nghiệm của $u_t = \alpha u_{xx}$, nên hiệu của chúng cũng là nghiệm!
+2. **Triệt tiêu chính xác tại biên $x = 0$**:
+   $$G_D(0, y, t) = \Phi(-y, t) - \Phi(y, t) = \frac{1}{\sqrt{4\pi\alpha t}}\big(e^{-y^2/(4\alpha t)} - e^{-y^2/(4\alpha t)}\big) = \mathbf{0} \quad (\forall t > 0!).$$
+3. **Điều kiện xung ban đầu trên $x > 0$**: Khi $t \to 0^+$, vì $x > 0$ và $y > 0$ nên $x + y > 0 \implies \Phi(x + y, t) \to 0$ (nguồn ảnh nằm ở miền ảo $x = -y < 0$ không hề ảnh hưởng miền thật lúc $t = 0$!), còn $\Phi(x - y, t) \to \delta(x - y)$!
 
 ## Khái niệm theo ba cách
 

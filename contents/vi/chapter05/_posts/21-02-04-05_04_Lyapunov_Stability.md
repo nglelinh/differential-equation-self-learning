@@ -10,6 +10,21 @@ categories:
 lesson_type: required
 ---
 
+Điều gì xảy ra khi tuyến tính hóa bó tay—chẳng hạn trị riêng bằng $0$ hoặc thuần ảo, hoặc bạn muốn chứng minh ổn định trên một **miền lớn** chứ không chỉ trong lân cận vô cùng bé? Aleksandr Lyapunov (1892) đã đưa ra một ý tưởng trực quan tuyệt đẹp lấy cảm hứng từ vật lý: nếu tìm được một "hàm năng lượng tổng quát" $V(\mathbf{x})$ có đáy duy nhất tại điểm cân bằng và **luôn giảm dần** theo thời gian dọc theo mọi quỹ đạo, thì hệ chắc chắn phải lăn xuống đáy và đứng yên!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Lý thuyết Ổn định Lyapunov
+
+1. **Ba bậc ổn định (Lyapunov, Tiệm cận, Toàn cục)**:
+   - **Ổn định Lyapunov**: Khởi đầu đủ gần gốc thì mãi mãi ở gần gốc ($\forall \varepsilon > 0, \exists \delta > 0$).
+   - **Ổn định tiệm cận**: Ổn định Lyapunov VÀ $\lim_{t\to\infty}\mathbf{x}(t) = \mathbf{0}$.
+   - **Ổn định tiệm cận toàn cục**: Mọi quỹ đạo xuất phát từ bất kỳ đâu trong $\mathbb{R}^n$ đều hội tụ về gốc (cần thêm điều kiện $V(\mathbf{x}) \to \infty$ khi $\|\mathbf{x}\| \to \infty$).
+2. **Hàm xác định dương ($V > 0$) và Đạo hàm quỹ đạo ($\dot{V} = \nabla V \cdot \mathbf{f}$)**:
+   Ta tính trực tiếp tốc độ biến thiên của $V$ mà **không cần biết nghiệm $\mathbf{x}(t)$** nhờ quy tắc dây chuyền $\frac{d}{dt}V(\mathbf{x}(t)) = \nabla V(\mathbf{x}) \cdot \mathbf{f}(\mathbf{x})$.
+3. **Định lý trực tiếp Lyapunov**:
+   Nếu $\dot{V} \le 0$ → ổn định Lyapunov; nếu $\dot{V} < 0$ (xác định âm) → ổn định tiệm cận!
+4. **Nguyên lý bất biến LaSalle**:
+   Ngay cả khi $\dot{V} \le 0$ chỉ bán xác định âm (ví dụ con lắc có ma sát với $\dot{E} = -c\dot{\theta}^2 \le 0$), nếu tập $\{\dot{V} = 0\}$ không chứa quỹ đạo trọn vẹn nào khác ngoài gốc, hệ vẫn ổn định tiệm cận!
+
 ## Mục tiêu
 
 Bài học này giúp sinh viên nắm được phương pháp Lyapunov như một công cụ chứng minh tính ổn định mà không cần tìm nghiệm tường minh, hiểu các tiêu chuẩn của một hàm Lyapunov phù hợp và nhận thấy vai trò của tư duy năng lượng trong phân tích hệ phi tuyến.
@@ -25,6 +40,16 @@ Sinh viên cần nắm vững khái niệm điểm cân bằng, đạo hàm theo
 Nhiều hệ phi tuyến quan trọng không thể giải được bằng công thức tường minh. Nếu chỉ xét tính ổn định sau khi tìm được nghiệm đóng, ta sẽ không thể phân tích phần lớn các mô hình thực tế. Phương pháp Lyapunov mở ra một hướng tiếp cận khác: thay vì theo dõi trực tiếp quỹ đạo, ta xây dựng một hàm vô hướng đóng vai trò tương tự năng lượng rồi khảo sát xem đại lượng đó tăng, giảm hay giữ nguyên dọc theo chuyển động.
 
 Ý tưởng cốt lõi là tìm một "thước đo độ lệch khỏi vị trí cân bằng" mà hệ không thể làm tăng lên. Nếu thước đo này giảm nghiêm ngặt theo thời gian, ta suy ra hệ bị kéo dần về điểm cân bằng. Cách tiếp cận này vừa có ý nghĩa hình học và vật lý rõ ràng, vừa có tính ứng dụng cao.
+
+### Khung giải thích (nên đọc chậm): Chứng minh ổn định tiệm cận cho hệ phi tuyến $\dot{x} = -x^3 + y,\; \dot{y} = -x - y^3$ nơi tuyến tính hóa bó tay
+
+Kiểm tra nhanh tuyến tính hóa tại $(0, 0)$: $J(0,0) = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$ có trị riêng $\lambda = \pm i$ (non-hyperbolic → tuyến tính hóa **bó tay**!).
+
+Bây giờ áp dụng hàm năng lượng Lyapunov $V(x, y) = \frac{1}{2}(x^2 + y^2)$:
+1. **Xác định dương**: $V(0, 0) = 0$ và $V(x, y) > 0$ với mọi $(x, y) \neq (0, 0)$, lại có $V \to \infty$ khi $x^2 + y^2 \to \infty$.
+2. **Tính $\dot{V}$ dọc quỹ đạo**:
+   $$\dot{V} = x\dot{x} + y\dot{y} = x(-x^3 + y) + y(-x - y^3) = -x^4 + xy - xy - y^4 = -(x^4 + y^4).$$
+3. **Kết luận ngay**: $-(x^4 + y^4) < 0$ với mọi $(x, y) \neq (0, 0)$! Vậy gốc $(0, 0)$ **ổn định tiệm cận toàn cục**—một kết quả mạnh mẽ mà tuyến tính hóa không bao giờ nhìn thấy được!
 
 ## Khái niệm theo ba cách
 

@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Imagine tapping a taut drumhead at a single point with a needle—an idealized unit impulse $\delta_y(x)$. If you record the static equilibrium shape $G(x,y)$ produced by that single needle poke while keeping the rim clamped at zero, then by linearity you can immediately compute the equilibrium for *any* distributed force or *any* rim height simply by integrating against $G(x,y)$.
+
 ## Learning Objectives
 
 This lesson introduces Green's functions for elliptic problems. Students should understand the fundamental solution, boundary correction, and the method of images as core tools for Laplace and Poisson problems.
@@ -17,6 +19,15 @@ This lesson introduces Green's functions for elliptic problems. Students should 
 ## Prerequisites
 
 Students should know Poisson's equation, the idea of a point source, and earlier Green's-function concepts from ODE or heat-kernel contexts.
+
+## Background Knowledge Map: Impulse Response and Integral Representation
+
+Green's functions unify boundary-value problems into a single integral operator built on four pillars:
+
+1. **Fundamental Solution of $-\Delta$ on $\mathbb{R}^n$:** The free-space response $\Phi(x-y)$ satisfies $-\Delta_x \Phi(x-y) = \delta_y(x)$, taking the form $-\frac{1}{2\pi}\ln|x-y|$ in $\mathbb{R}^2$ and $\frac{1}{4\pi|x-y|}$ in $\mathbb{R}^3$.
+2. **Corrector Function and Boundary Cancellation:** On a bounded or half-space domain $\Omega$, we write $G(x,y) = \Phi(x-y) - h_y(x)$, where the smooth harmonic corrector $h_y$ solves $\Delta_x h_y = 0$ in $\Omega$ with $h_y(x) = \Phi(x-y)$ on $\partial\Omega$, forcing $G(\cdot,y) = 0$ on $\partial\Omega$.
+3. **Green's Second Identity and Representation Formula:** Applying $\int_\Omega (u\Delta v - v\Delta u)\,dx = \int_{\partial\Omega}(u\frac{\partial v}{\partial n} - v\frac{\partial u}{\partial n})\,dS$ to $u$ and $v = G(x,\cdot)$ expresses any solution of $-\Delta u = f$, $u|_{\partial\Omega} = g$ as $u(x) = \int_\Omega G(x,y)f(y)\,dy - \int_{\partial\Omega} g(y)\frac{\partial G}{\partial n_y}(x,y)\,dS_y$.
+4. **Method of Images and Reciprocity Symmetry:** For highly symmetric domains (half-spaces, spheres), $h_y$ is built by placing a mirror charge outside $\Omega$. Moreover, $G(x,y) = G(y,x)$ always holds—the response at $x$ to a source at $y$ equals the response at $y$ to a source at $x$.
 
 ## Introduction
 
@@ -85,6 +96,21 @@ This gives a concrete and memorable example of boundary correction.
 - Can they describe how a source term is reconstructed from point-source responses?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Method of Images and the 3D Half-Space Poisson Kernel
+
+Construct the Dirichlet Green's function $G(\mathbf{x},\mathbf{y})$ for the upper half-space $\mathbb{R}^3_+ = \{(x_1,x_2,x_3) : x_3 > 0\}$, derive its boundary Poisson kernel, and verify that the kernel integrates to $1$.
+
+1. **Place the mirror image:** For a source at $\mathbf{y} = (y_1, y_2, y_3)$ with $y_3 > 0$, reflect across the plane $y_3 = 0$ to define the image point $\mathbf{y}^* = (y_1, y_2, -y_3) \notin \mathbb{R}^3_+$. Set:
+   $$G(\mathbf{x},\mathbf{y}) = \frac{1}{4\pi|\mathbf{x}-\mathbf{y}|} - \frac{1}{4\pi|\mathbf{x}-\mathbf{y}^*|}.$$
+2. **Verify boundary cancellation and PDE:** When $x_3 = 0$, $(x_3 - y_3)^2 = (-y_3)^2 = (x_3 + y_3)^2$, so $|\mathbf{x}-\mathbf{y}| = |\mathbf{x}-\mathbf{y}^*|$ and $G(\mathbf{x},\mathbf{y}) = 0$. Inside $\mathbb{R}^3_+$, $\mathbf{y}^*$ lies outside the domain, so $-\Delta_{\mathbf{x}} G(\mathbf{x},\mathbf{y}) = \delta_{\mathbf{y}}(\mathbf{x}) - 0 = \delta_{\mathbf{y}}(\mathbf{x})$.
+3. **Compute the outward normal derivative on $y_3 = 0$:** The outward unit normal to $\mathbb{R}^3_+$ points downward, so $\frac{\partial}{\partial n_{\mathbf{y}}} = -\frac{\partial}{\partial y_3}$. Differentiating with respect to $y_3$:
+   $$\frac{\partial}{\partial y_3}\Big(|\mathbf{x}-\mathbf{y}|^{-1}\Big) = \frac{x_3 - y_3}{|\mathbf{x}-\mathbf{y}|^3}, \qquad \frac{\partial}{\partial y_3}\Big(|\mathbf{x}-\mathbf{y}^*|^{-1}\Big) = \frac{-(x_3 + y_3)}{|\mathbf{x}-\mathbf{y}^*|^3}.$$
+   Evaluating at $y_3 = 0$ (where both denominators equal $R^3$ with $R = \sqrt{(x_1-y_1)^2 + (x_2-y_2)^2 + x_3^2}$), the two terms add:
+   $$P(\mathbf{x}; y_1, y_2) = -\frac{\partial G}{\partial n_{\mathbf{y}}}\bigg|_{y_3=0} = \frac{\partial G}{\partial y_3}\bigg|_{y_3=0} = \frac{1}{4\pi}\left(\frac{x_3}{R^3} - \frac{-x_3}{R^3}\right) = \frac{x_3}{2\pi\big((x_1-y_1)^2 + (x_2-y_2)^2 + x_3^2\big)^{3/2}}.$$
+4. **Verify unit total mass (reproducing constant boundary data $g \equiv 1$):** Shift to polar coordinates $\rho = \sqrt{(y_1-x_1)^2 + (y_2-x_2)^2}$ on $\mathbb{R}^2$:
+   $$\iint_{\mathbb{R}^2} P(\mathbf{x}; y_1, y_2)\,dy_1\,dy_2 = \frac{x_3}{2\pi}\int_0^{2\pi}\int_0^\infty \frac{\rho\,d\rho\,d\theta}{(\rho^2 + x_3^2)^{3/2}} = x_3\left[-\frac{1}{\sqrt{\rho^2 + x_3^2}}\right]_0^\infty = x_3\left(0 + \frac{1}{x_3}\right) = 1.$$
 
 ### Example 1: Fundamental Solution in Free Space
 

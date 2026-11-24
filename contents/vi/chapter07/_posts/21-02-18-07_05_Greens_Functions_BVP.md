@@ -10,6 +10,22 @@ categories:
 lesson_type: required
 ---
 
+Hãy hình dung bạn ấn nhẹ ngón tay vào một điểm duy nhất $\xi$ trên một cây cầu treo và ghi lại hình dáng độ võng $G(x, \xi)$ dọc toàn bộ cây cầu. Nhờ tính tuyến tính, khi có hàng trăm chiếc xe phân bố thành tải trọng bất kỳ $f(x)$ chạy qua, tổng độ võng chỉ đơn giản là **tích phân chồng chất** $y(x) = \int_a^b G(x, \xi) f(\xi)\,d\xi$! Hàm $G(x, \xi)$ kỳ diệu đó chính là **Hàm Green**—toán tử nghịch đảo $L^{-1}$ của toán tử vi phân!
+
+## Bản đồ kiến thức nền: Bốn tính chất đặc trưng của Hàm Green $G(x, \xi)$
+
+1. **Nghiệm của phương trình với nguồn xung Dirac**:
+   $L_x[G(x, \xi)] = \delta(x - \xi)$ kèm điều kiện biên thuần nhất tại $x = a$ và $x = b$.
+2. **Bốn điều kiện xây dựng $G(x, \xi)$ (chia hai nhánh $x < \xi$ và $x > \xi$)**:
+   - (i) Thỏa $L[G] = 0$ ở hai bên $x \neq \xi$;
+   - (ii) Thỏa biên trái ở $x < \xi$ (tỷ lệ với $y_1(x)$) và biên phải ở $x > \xi$ (tỷ lệ với $y_2(x)$);
+   - (iii) **Liên tục** tại $x = \xi$: $G(\xi^+, \xi) = G(\xi^-, \xi)$;
+   - (iv) **Bước nhảy đạo hàm** tại $x = \xi$: $G_x(\xi^+, \xi) - G_x(\xi^-, \xi) = -\frac{1}{p(\xi)}$ (cho dạng $-(py')' + qy = \delta$).
+3. **Công thức đóng qua Wronskian**:
+   $G(x, \xi) = \frac{y_1(\min(x,\xi))\, y_2(\max(x,\xi))}{-p(\xi)\, W(y_1, y_2)(\xi)}$.
+4. **Tính đối xứng vật lý (Định lý tương hỗ Maxwell–Betti)**:
+   Với toán tử tự liên hợp, $G(x, \xi) = G(\xi, x)$: độ võng tại $x$ do lực đặt ở $\xi$ bằng đúng độ võng tại $\xi$ do lực đặt ở $x$!
+
 ## Mục tiêu
 
 Bài học này giới thiệu hàm Green như một công cụ tổng quát và hiệu quả để giải bài toán giá trị biên tuyến tính không thuần nhất. Sau bài học, sinh viên cần hiểu hàm Green là đáp ứng của hệ đối với nguồn điểm, biết đọc và áp dụng công thức tích phân nghiệm, nắm được tính liên tục cùng bước nhảy đạo hàm tại vị trí nguồn và nhìn nhận hàm Green như hạt nhân của toán tử nghịch đảo.
@@ -25,6 +41,19 @@ Sinh viên nên nắm vững BVP tuyến tính, nguyên lý chồng chất và t
 Nếu biết một hệ tuyến tính phản ứng ra sao trước một nguồn tập trung tại một điểm duy nhất, ta có thể chồng chất các đáp ứng điểm đó để tìm nghiệm cho bất kỳ nguồn phân bố nào. Đó chính là tư tưởng cốt lõi của **hàm Green**, chuyển việc phải giải lại bài toán cho từng hàm nguồn riêng biệt sang việc xác định một đáp ứng cơ bản duy nhất rồi tích phân.
 
 Về mặt vật lý và kỹ thuật, hàm Green tương tự đáp ứng xung của hệ thống; về mặt toán học, nó là hạt nhân tích phân (kernel) của toán tử nghịch đảo.
+
+### Khung giải thích (nên đọc chậm): Xây dựng cầm tay chỉ việc Hàm Green cho $-y'' = f(x),\; y(0) = y(1) = 0$ và kiểm tra lại độ võng dầm
+
+1. **Tìm hai nghiệm thuần nhất ($y'' = 0$) thỏa từng đầu biên**:
+   - Biên trái $y_1(0) = 0 \implies y_1(x) = x$.
+   - Biên phải $y_2(1) = 0 \implies y_2(x) = 1 - x$.
+2. **Tính Wronskian**: $W(y_1, y_2) = x(-1) - (1-x)(1) = -1$. Với $p(x) = 1$, ta có $-p W = -1 \cdot (-1) = +1$!
+3. **Viết ngay Hàm Green**:
+   $$G(x, \xi) = \begin{cases} x(1 - \xi), & 0 \le x \le \xi, \\ \xi(1 - x), & \xi \le x \le 1. \end{cases}$$
+   Kiểm tra bước nhảy đạo hàm tại $x = \xi$: $G_x(\xi^+, \xi) - G_x(\xi^-, \xi) = (-\xi) - (1 - \xi) = \mathbf{-1} = -\frac{1}{p(\xi)}$ (khớp!).
+4. **Áp dụng tìm nghiệm cho $f(x) = 1$** ($-y'' = 1$):
+   $$y(x) = \int_0^x \xi(1 - x)\,d\xi + \int_x^1 x(1 - \xi)\,d\xi = (1 - x)\frac{x^2}{2} + x\frac{(1 - x)^2}{2} = \mathbf{\frac{x(1 - x)}{2}}.$$
+   Kiểm tra: $-y'' = -\left(-1\right) = 1$ và $y(0) = y(1) = 0$ — khớp 100%!
 
 ## Khái niệm theo ba cách
 

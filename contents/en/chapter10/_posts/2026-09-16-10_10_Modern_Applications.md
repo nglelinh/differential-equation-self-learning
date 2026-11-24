@@ -10,6 +10,33 @@ categories:
 lesson_type: optional
 ---
 
+How do geophysicists map subterranean oil reservoirs, earthquake fault zones, or Earth's liquid core miles beneath our feet without digging a single hole? They fire acoustic pulses at the surface, record the returning echoes on thousands of seismometers, and invert the wave equation $$ u_{tt} = c(x)^2 \Delta u $$ for the unknown subsurface wave-speed map $$ c(x) $$—a notoriously non-convex inverse problem called **Full-Waveform Inversion (FWI)**.
+
+Traditional finite-difference wave simulations must run millions of times during FWI optimization. Today, neural wave surrogates (FNOs, wave-informed PINNs, and adjoint-state differentiable solvers) accelerate forward wave propagation by orders of magnitude—yet they succeed *only* when they respect the exact hyperbolic physics of Chapter 10: CFL causality, frequency continuation (avoiding cycle skipping), and absorbing boundary layers!
+
+## Background Knowledge Map: Wave Physics Meets Modern Neural Imaging
+
+1. **Cycle Skipping & Multi-Scale Frequency Continuation:** Because seismic waveforms oscillate, comparing a predicted sine wave shifted by more than half a wavelength against data traps gradient descent in false local minima (*cycle skipping*). Both classical FWI and neural solvers overcome this by inverting low frequencies first, then progressively unlocking higher frequencies.
+2. **Causal Training for Hyperbolic PINNs:** Unlike elliptic/parabolic PDEs, hyperbolic wave PINNs fail catastrophically if trained uniformly over all time $$ [0, T] $$ at once—the network cheats by driving $$ u \approx 0 $$ at late times. Causal weighting (Wang et al., 2022) enforces low residual at early times $$ t $$ before unlocking later times, honoring the wave light cone!
+3. **Adjoint-State Method & Automatic Differentiation:** Computing the gradient of seismic misfit with respect to millions of subsurface wave-speed pixels $$ c(x) $$ requires only *one* forward wave simulation and *one* backward-in-time adjoint wave simulation—identical mathematically to reverse-mode backpropagation through time!
+4. **Absorbing Boundaries (PML) & Neural Operators:** Simulating an unbounded Earth on a finite box requires Perfectly Matched Layers (PML) to prevent artificial wall echoes; Fourier/Neural operators trained across families of velocity models $$ c(x) \mapsto u(x, t) $$ amortize wave-solving cost across thousands of inverse iterations.
+
+### Step-by-Step Worked Example (Read Slowly): Diagnosing Cycle Skipping and Computing the Travel-Time Sensitivity of $$ c(x) $$
+
+**Problem:** A 1D seismic pulse of frequency $$ f = 10\text{ Hz} $$ travels from a surface source $$ x = 0 $$ to a reflector at depth $$ L = 1000\text{ m} $$ and back (total path $$ 2L = 2000\text{ m} $$). The true rock wave speed is $$ c_{\text{true}} = 2000\text{ m/s} $$, while our initial guess is $$ c_0 = 2500\text{ m/s} $$. Compute the travel-time error $$ \Delta t $$, check whether $$ |\Delta t| $$ exceeds the half-period cycle-skipping limit $$ \frac{1}{2f} $$, and find the maximum safe starting frequency $$ f_{\text{safe}} $$!
+
+1. **Compute true and predicted two-way travel times:**
+   - True arrival time: $$ t_{\text{true}} = \frac{2L}{c_{\text{true}}} = \frac{2000}{2000} = 1.00\text{ s} $$.
+   - Initial model arrival time: $$ t_0 = \frac{2L}{c_0} = \frac{2000}{2500} = 0.80\text{ s} $$.
+   - Travel-time mismatch: $$ |\Delta t| = |t_0 - t_{\text{true}}| = 0.20\text{ s} $$.
+2. **Test the half-cycle criterion at $$ f = 10\text{ Hz} $$:**
+   - Wave period: $$ T = \frac{1}{f} = 0.10\text{ s} $$.
+   - Half-period cycle-skipping threshold: $$ \frac{T}{2} = 0.05\text{ s} $$.
+   Since $$ |\Delta t| = 0.20\text{ s} = 2T > 0.05\text{ s} $$, our predicted echo is off by **two full wavelengths**! Gradient-based FWI at $$ 10\text{ Hz} $$ will align the wrong crest and converge to a completely false velocity model!
+3. **Find the safe starting frequency $$ f_{\text{safe}} $$:**
+   Require $$ |\Delta t| < \frac{1}{2 f_{\text{safe}}} \implies f_{\text{safe}} < \frac{1}{2 |\Delta t|} = \frac{1}{2(0.20)} = 2.5\text{ Hz} $$.
+   Starting the inversion at $$ f \le 2\text{ Hz} $$ pulls $$ c_0 $$ cleanly into the basin of attraction of $$ c_{\text{true}} $$, after which $$ 10\text{ Hz} $$ refinement locks onto crisp subsurface detail!
+
 ## Objectives
 
 This optional lesson relates d’Alembert’s formula, finite propagation speed, and energy conservation to physics-informed and operator-learning models of waves, with emphasis on seismic and acoustic applications from 2022–2024. Students should be able to say which wave identities a learned solver is obligated to respect and why inverse wave problems remain microlocal even after a network is introduced. The classical well-posedness theory is not rewritten.

@@ -10,6 +10,35 @@ categories:
 lesson_type: required
 ---
 
+Slowly load weight onto the top of a plastic ruler standing vertically on a desk: for a long time it barely budges, staying perfectly straight—until one tiny extra gram crosses a critical threshold and the ruler suddenly buckles violently to the left or right! A **bifurcation** is that exact qualitative tipping point where smoothly tuning a parameter $$\mu$$ causes equilibria to be born out of thin air, swap stability, split in two, or erupt into a self-sustained limit cycle.
+
+## Background Knowledge Map: The Four Canonical Local Bifurcations
+
+Recognizing these four normal forms lets you classify almost every tipping point in science and engineering:
+
+1. **Saddle-Node Bifurcation ($$x' = \mu - x^2$$):** The fundamental mechanism by which equilibria are *created or destroyed in pairs*—zero equilibria for $$\mu < 0$$, a single semistable equilibrium at $$\mu = 0$$, and a stable/unstable pair $$\pm\sqrt{\mu}$$ for $$\mu > 0$$ (models tipping points & fishery collapse).
+2. **Transcritical Bifurcation ($$x' = \mu x - x^2$$):** Two equilibria exist on both sides of $$\mu = 0$$, collide at $$\mu = 0$$, and **exchange stability** as $$\mu$$ passes through $$0$$ (the exact mechanism of the epidemic threshold $$R_0 = 1$$ and laser threshold!).
+3. **Pitchfork Bifurcation ($$x' = \mu x \mp x^3$$):** Occurs in systems with $$\pm x$$ reflection symmetry (like buckling beams or magnets). In a **supercritical** pitchfork ($$-x^3$$), a stable center splits gently into two symmetric stable branches; in a **subcritical** pitchfork ($$+x^3$$), instability triggers sudden catastrophic jumps and hysteresis.
+4. **Hopf Bifurcation (2D Oscillatory Birth):** When a complex conjugate eigenvalue pair $$\alpha(\mu) \pm i\beta(\mu)$$ crosses the imaginary axis with $$\alpha(0) = 0,\; \beta(0) \ne 0,\; \alpha'(0) \ne 0$$, a stable equilibrium loses stability and gives birth to a **limit cycle** of amplitude $$O(\sqrt{\mu})$$!
+
+### Step-by-Step Worked Example (Read Slowly): Computing the Exact Saddle-Node Tipping Point of a Harvested Fishery
+
+Consider a logistic fishery harvested at constant rate $$h \ge 0$$:
+$$y' = y(6 - y) - h.$$
+Find all equilibria, their stability, and the exact critical harvesting rate $$h_c$$ above which the fishery collapses to extinction.
+
+1. **Set $$y' = 0$$ and solve the quadratic for equilibria:**
+   $$y^2 - 6y + h = 0 \implies y_\pm(h) = \frac{6 \pm \sqrt{36 - 4h}}{2} = 3 \pm \sqrt{9 - h}.$$
+2. **Identify the critical bifurcation parameter $$h_c$$ where the discriminant vanishes:**
+   $$9 - h = 0 \implies h_c = \mathbf{9}.$$
+3. **Classify the three parameter regimes using $$f'(y) = 6 - 2y$$:**
+   - **$$0 \le h < 9$$ (Two equilibria):**
+     - Upper equilibrium $$y_+(h) = 3 + \sqrt{9 - h} > 3 \implies f'(y_+) = -2\sqrt{9 - h} < 0$ (**asymptotically stable sink**).
+     - Lower equilibrium $$y_-(h) = 3 - \sqrt{9 - h} < 3 \implies f'(y_-) = +2\sqrt{9 - h} > 0$ (**unstable source / extinction threshold**).
+   - **$$h = 9$$ (Saddle-node collision):** Both equilibria collide at $$y^* = 3$$ (semistable; $$f'(3) = 0$$).
+   - **$$h > 9$$ (Collapse):** $$y' = -(y - 3)^2 - (h - 9) < 0$$ everywhere—**no equilibria exist**, and *every* initial population crashes to $$0$$ in finite time!
+4. **Practical warning:** At $$h = 8.9$$, the fishery still looks healthy around $$y_+ \approx 3.32$$—yet increasing harvesting by just $$1.2\%$$ to $$h = 9.01$$ annihilates the equilibrium completely!
+
 ## Learning Objectives
 
 This lesson helps students understand bifurcation as a qualitative change in dynamics under parameter variation, distinguish standard local bifurcation types, and interpret why small parameter changes can produce large changes in system behavior.

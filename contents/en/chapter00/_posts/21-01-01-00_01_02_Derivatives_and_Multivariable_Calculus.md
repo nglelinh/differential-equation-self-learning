@@ -10,6 +10,34 @@ categories:
 lesson_type: required
 ---
 
+Picture a weather balloon drifting through a three-dimensional wind field while its altitude, latitude, and longitude all change at once: the rate at which its thermometer reading changes depends simultaneously on how temperature varies in space and how fast the balloon moves along each axis. Multivariable calculus is the exact language that connects partial derivatives, total differentials, and vector fields—the geometric machinery behind exact ODEs, Jacobians, and nonlinear linearization.
+
+## Background Knowledge Map: Multivariable Tools You Will Use in Every Chapter
+
+Four concepts from multivariable calculus reappear constantly from Chapter 1 through Chapter 5:
+
+1. **Total Differential and Fréchet Derivative:** Differentiability of $$\mathbf{F}: \mathbb{R}^n \to \mathbb{R}^m$$ means $$\mathbf{F}(\mathbf{x} + \mathbf{h}) = \mathbf{F}(\mathbf{x}) + D\mathbf{F}(\mathbf{x})\mathbf{h} + o(\|\mathbf{h}\|)$$, where the Jacobian matrix $$D\mathbf{F}(\mathbf{x})$$ is the best linear approximation to a nonlinear system near an equilibrium.
+2. **Gradient and Level Curves:** For a scalar potential $$\Psi(x,y)$$, the gradient $$\nabla \Psi = (\Psi_x, \Psi_y)$$ points perpendicular to level curves $$\Psi(x,y) = C$$; along any solution curve of an exact ODE, $$d\Psi = \Psi_x\,dx + \Psi_y\,dy = 0$$.
+3. **Multivariable Chain Rule:** Tracking a scalar energy or Lyapunov function $$V(x(t), y(t))$$ along an ODE trajectory $$\mathbf{x}'(t) = \mathbf{f}(\mathbf{x}(t))$$ relies directly on $$\frac{d}{dt}V(\mathbf{x}(t)) = \nabla V(\mathbf{x}) \cdot \mathbf{f}(\mathbf{x})$$.
+4. **Clairaut's Mixed-Partials Theorem:** When second partials are continuous, $$\Psi_{xy} = \Psi_{yx}$$; this symmetry is the exact test $$M_y = N_x$$ that detects whether a first-order differential form $$M\,dx + N\,dy$$ is exact.
+
+### Step-by-Step Worked Example (Read Slowly): Computing a Jacobian and Orbital Derivative Along a Flow
+
+Consider the nonlinear planar system
+$$x' = f_1(x,y) = y, \qquad y' = f_2(x,y) = -\sin x - \frac{1}{2}y$$
+(a damped pendulum) together with its mechanical energy $$E(x,y) = \frac{1}{2}y^2 + (1 - \cos x)$$.
+
+1. **Compute the Jacobian matrix $$J(x,y) = D\mathbf{f}(x,y)$$:**
+   $$J(x,y) = \begin{pmatrix} \frac{\partial f_1}{\partial x} & \frac{\partial f_1}{\partial y} \\[4pt] \frac{\partial f_2}{\partial x} & \frac{\partial f_2}{\partial y} \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ -\cos x & -\frac{1}{2} \end{pmatrix}.$$
+2. **Evaluate the linear approximation at the downward equilibrium $$(0,0)$$ and upright equilibrium $$(\pi, 0)$$:**
+   - At $$(0,0)$$: $$J(0,0) = \begin{pmatrix} 0 & 1 \\ -1 & -\frac{1}{2} \end{pmatrix}$$ (trace $$-\frac{1}{2} < 0$$, determinant $$+1 > 0$$ — stable spiral!).
+   - At $$(\pi,0)$$: $$J(\pi,0) = \begin{pmatrix} 0 & 1 \\ 1 & -\frac{1}{2} \end{pmatrix}$$ (determinant $$-1 < 0$$ — unstable saddle!).
+3. **Compute the rate of change of energy using the multivariable chain rule:**
+   $$\nabla E(x,y) = \bigl(\sin x,\; y\bigr).$$
+   Taking the dot product with the vector field $$\mathbf{f}(x,y) = (y,\; -\sin x - \tfrac{1}{2}y)$$:
+   $$\frac{dE}{dt} = \nabla E \cdot \mathbf{f} = (\sin x)(y) + y\left(-\sin x - \frac{1}{2}y\right) = -\frac{1}{2}y^2 \le 0.$$
+4. **Interpret the result:** Without solving the nonlinear ODE at all, multivariable calculus proves that energy strictly dissipates whenever the pendulum moves ($$y \ne 0$$), forcing trajectories to settle into equilibrium.
+
 This lesson covers derivatives and essential multivariable calculus concepts that form the foundation for optimization theory and algorithms.
 
 ---

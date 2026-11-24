@@ -10,6 +10,33 @@ categories:
 lesson_type: required
 ---
 
+At first glance, a skydiver falling through air resistance and an electrical current building up inside a laptop power-supply inductor seem to belong to completely different worlds. Yet when you write down Newton's second law $$m v' + b v = mg$$ beside Kirchhoff's voltage law $$L I' + R I = E$$, you discover they are the *exact same differential equation* with different letters. Recognizing that structural isomorphism lets you transfer physical intuition effortlessly between mechanics and electronics.
+
+## Background Knowledge Map: Universal First-Order Relaxation Dynamics
+
+Four physical principles unify first-order mechanical and electrical models:
+
+1. **Force Balance (Newton's Second Law):** Writing $$m\frac{dv}{dt} = \sum F$$ with linear drag $$-bv$$ yields a linear ODE with exponential approach to terminal velocity $$v_T = mg/b$$; quadratic drag $$-kv^2$$ yields a separable Riccati-type ODE with $$\tanh$$ velocity profiles.
+2. **Kirchhoff's Loop Law for RC and RL Circuits:** Summing voltage drops around a single loop gives $$R\frac{dq}{dt} + \frac{1}{C}q = E(t)$$ (RC) and $$L\frac{di}{dt} + Ri = E(t)$$ (RL).
+3. **Characteristic Time Constant ($$\tau$$):** Every linear first-order relaxation process has an intrinsic timescale—$$\tau = m/b$$ (mechanics), $$\tau = RC$$ (capacitive), or $$\tau = L/R$$ (inductive)—after $$1\tau$$, the system covers $$1 - e^{-1} \approx 63.2\%$$ of the gap to steady state; after $$5\tau$$, it is $$99.3\%$$ settled.
+4. **Energy Dissipation vs. Storage:** Drag converts mechanical energy into heat, just as resistance $$R$$ dissipates electrical energy at rate $$I^2 R$$ while $$L$$ or $$C$$ stores it.
+
+### Step-by-Step Worked Example (Read Slowly): Charging an RL Circuit and Computing Its Settling Time
+
+An RL circuit with inductance $$L = 2\text{ H}$$, resistance $$R = 10\;\Omega$$, and constant battery voltage $$E = 30\text{ V}$$ starts with zero current $$I(0) = 0$$. Find $$I(t)$$, the steady-state current, and the exact time to reach $$90\%$$ of steady state.
+
+1. **Formulate the IVP from Kirchhoff's voltage law:**
+   $$2\frac{dI}{dt} + 10I = 30 \implies \frac{dI}{dt} + 5I = 15, \qquad I(0) = 0.$$
+   Read off the time constant immediately: $$\tau = \frac{L}{R} = \frac{2}{10} = 0.2\text{ s}$$.
+2. **Solve using the integrating factor $$\mu(t) = e^{5t}$$:**
+   $$\frac{d}{dt}\bigl(e^{5t}I\bigr) = 15e^{5t} \implies e^{5t}I(t) = 3e^{5t} + C \implies I(t) = 3 + Ce^{-5t}.$$
+3. **Apply the initial condition $$I(0) = 0$$:**
+   $$0 = 3 + C \implies C = -3 \implies I(t) = 3\bigl(1 - e^{-5t}\bigr)\text{ A}.$$
+   Steady-state current as $$t \to \infty$$ is $$I_\infty = \frac{E}{R} = \frac{30}{10} = 3\text{ A}$$ (the inductor acts like a plain wire once $$dI/dt \to 0$$).
+4. **Find the exact time $$t_{90}$$ to reach $$90\%$$ of $$I_\infty$$ (i.e., $$2.7\text{ A}$$):**
+   $$3\bigl(1 - e^{-5t_{90}}\bigr) = 2.7 \implies e^{-5t_{90}} = 0.1 \implies -5t_{90} = -\ln 10 \implies t_{90} = \frac{\ln 10}{5} \approx \frac{2.3026}{5} \approx \mathbf{0.4605\text{ s}}.$$
+   Notice $$t_{90} = \tau \ln 10 \approx 2.30\tau$$—a universal rule for *every* first-order RL, RC, or linear-drag system!
+
 ## Objectives
 
 This lesson shows students that basic physical laws lead to ODE almost automatically. Through falling motion with drag, RC circuits, and RL circuits, students learn how Newton's law and Kirchhoff's law become differential equations, how to solve those equations, and how to interpret parameters such as time constants, terminal velocity, and response speed.

@@ -12,6 +12,19 @@ lesson_type: optional
 
 ![Bất đẳng thức Minkowski và hình học $$ L^p $$]({{ site.imgurl }}/chapter_img/chapter12/09_minkowski_inequality.svg )
 
+Trong mặt phẳng Euclid, ta thuộc lòng rằng tổng độ dài hai cạnh tam giác luôn lớn hơn hoặc bằng cạnh thứ ba. Khi bước vào thế giới vô hạn chiều của các không gian hàm $L^p(\Omega)$, câu hỏi sống còn lập tức xuất hiện: liệu đại lượng $\|f\|_{L^p} = (\int |f|^p\,dx)^{1/p}$ có còn tuân theo bất đẳng thức tam giác để thực sự là một **khoảng cách hình học** hợp lệ hay không? **Bất đẳng thức Minkowski** trả lời "CÓ" cho mọi $1 \le p \le \infty$—và phiên bản tích phân của nó còn là vũ khí bí mật để ước lượng nghiệm PDE qua phép tích chập!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Bất đẳng thức Minkowski
+
+1. **Bất đẳng thức Tam giác cho $L^p$ ($1 \le p \le \infty$)**:
+   $\|f + g\|_{L^p} \le \|f\|_{L^p} + \|g\|_{L^p}$. Đây là viên gạch biến $L^p$ thành không gian định chuẩn (và chứng minh hình cầu đơn vị $\{\|f\|_{L^p} \le 1\}$ là tập lồi!).
+2. **Cơ chế Chứng minh qua Bất đẳng thức Hölder**:
+   Với $1 < p < \infty$, ta tách $|f+g|^p \le |f||f+g|^{p-1} + |g||f+g|^{p-1}$ rồi áp dụng Hölder với cặp $(p, q)$ ($q = p/(p-1)$) và chia hai vế cho $\|f+g\|_{L^p}^{p-1}$.
+3. **Ngược dấu khi $0 < p < 1$ (Mất tính lồi!)**:
+   Khi $0 < p < 1$, bất đẳng thức tam giác **bị đảo chiều** ($\|f+g\|_{L^p} \ge \|f\|_{L^p} + \|g\|_{L^p}$ cho $f, g \ge 0$), hình cầu đơn vị lõm vào trong nên $L^p$ không còn là không gian Banach.
+4. **Bất đẳng thức Minkowski Dạng Tích phân (Integral Minkowski)**:
+   $\left\|\int F(\cdot, y)\,dy\right\|_{L^p_x} \le \int \|F(\cdot, y)\|_{L^p_x}\,dy$—cho phép "đẩy chuẩn $L^p$ vào trong dấu tích phân", từ đó chứng minh ngay bất đẳng thức tích chập Young $\|K * f\|_{L^p} \le \|K\|_{L^1}\|f\|_{L^p}$ cho nhân nhiệt và hàm Green!
+
 ## Mục tiêu
 
 Bài học tùy chọn này trình bày riêng bất đẳng thức Minkowski như một kết quả trung tâm của hình học không gian $$ L^p $$, thay vì chỉ nhắc lướt qua như một bước kỹ thuật phụ. Sau bài học, sinh viên cần hiểu vì sao bất đẳng thức Minkowski chính là bất đẳng thức tam giác cho chuẩn $$ L^p $$, nắm mối liên hệ giữa nó với bất đẳng thức Hölder, và biết áp dụng để ước lượng tổng, sai số hay sự chồng chất của nhiều thành phần trong PDE và giải tích hàm.
@@ -34,6 +47,17 @@ tính chất tam giác không còn hiển nhiên. Bất đẳng thức Minkowski
 
 Không chỉ hợp thức hóa cấu trúc chuẩn, bất đẳng thức Minkowski còn mang ý nghĩa hình học rõ ràng: trong không gian $$ L^p $$, việc cộng hai hàm không làm độ lớn tích lũy vượt quá tổng độ lớn riêng lẻ của từng hàm. Đây là nguyên lý thường xuyên dùng khi tách nghiệm thành nhiều thành phần, tách tín hiệu và nhiễu, hoặc chặn sai số trong các phép xấp xỉ.
 
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng số trực tiếp Bất đẳng thức Minkowski trên $[0, 1]$ với $p = 2$
+
+Chọn hai hàm đơn giản $f(x) = 1$ và $g(x) = x$ trên $\Omega = [0, 1]$:
+1. **Tính vế phải $\|f\|_{L^2} + \|g\|_{L^2}$**:
+   - $\|f\|_{L^2} = \sqrt{\int_0^1 1^2\,dx} = \mathbf{1}$.
+   - $\|g\|_{L^2} = \sqrt{\int_0^1 x^2\,dx} = \sqrt{\frac{1}{3}} \approx \mathbf{0{,}5774}$.
+   - Tổng vế phải: $1 + 0{,}5774 = \mathbf{1{,}5774}$.
+2. **Tính vế trái $\|f + g\|_{L^2}$**:
+   $$\|f + g\|_{L^2} = \sqrt{\int_0^1 (1 + x)^2\,dx} = \sqrt{\left[\frac{(1+x)^3}{3}\right]_0^1} = \sqrt{\frac{8 - 1}{3}} = \sqrt{\frac{7}{3}} \approx \mathbf{1{,}5275}.$$
+3. **So sánh**: $\mathbf{1{,}5275} < \mathbf{1{,}5774}$! Dấu bằng chỉ xảy ra khi $f$ và $g$ tỷ lệ dương với nhau ($g = c f, c \ge 0$); ở đây góc giữa $1$ và $x$ trong $L^2$ khác $0$, nên đường chéo ngắn hơn tổng hai cạnh!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

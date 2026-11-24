@@ -9,7 +9,21 @@ categories:
 - chapter09
 lesson_type: optional
 ---
+
 ![21 03 04 09 09 Applications Diffusion]({{ site.imgurl }}/chapter_img/chapter09/09_applications_diffusion.svg)
+
+Rời khỏi thanh kim loại, cùng một cấu trúc phương trình khuếch tán $c_t = D c_{xx}$ (có thể kèm dòng chảy đối lưu $v c_x$ và phản ứng hóa học/sinh học $R(c)$) xuất hiện khắp mọi ngóc ngách khoa học: **Định luật Fick** trong kỹ thuật hóa học, lan truyền thuốc trong mạch máu, định giá quyền chọn **Black–Scholes** trong tài chính, và **làm mờ Gaussian (Gaussian Blur)** trong xử lý ảnh!
+
+## Bản đồ kiến thức nền: Bốn miền ứng dụng lớn của Phương trình Khuếch tán
+
+1. **Định luật Fick I & II (Khuếch tán vật chất)**:
+   Thông lượng mol $J = -D c_x \implies c_t = D c_{xx}$ (hệt như nhiệt độ, thay $u$ bằng nồng độ $c$ và $\alpha$ bằng hệ số khuếch tán $D$).
+2. **Phương trình Đối lưu – Khuếch tán (Advection–Diffusion)**:
+   $c_t + v c_x = D c_{xx}$ mô tả vết dầu loang hay chất ô nhiễm vừa **trôi theo dòng sông** vận tốc $v$ vừa **lan rộng** do khuếch tán $D$; số **Péclet** $\text{Pe} = \frac{v L}{D}$ đo xem trôi hay khuếch tán thắng thế.
+3. **Phương trình Phản ứng – Khuếch tán (Reaction–Diffusion — Fisher–KPP & Turing Patterns)**:
+   $u_t = D u_{xx} + r u(1 - u)$ sinh ra sóng lan truyền loài xâm lấn; hệ 2 chất phản ứng–khuếch tán của Alan Turing (1952) tự sinh ra **vằn ngựa vằn và đốm báo** từ trạng thái đồng nhất!
+4. **Xử lý ảnh (Scale-Space & Gaussian Blur)**:
+   Chạy phương trình nhiệt 2D $I_t = \nabla^2 I$ trên ma trận điểm ảnh $I(x, y)$ trong thời gian $t$ tương đương hoàn toàn với tích chập bộ lọc Gaussian có độ lệch chuẩn $\sigma = \sqrt{2t}$!
 
 ## Mục tiêu
 
@@ -24,6 +38,16 @@ Sinh viên cần nắm bản chất khuếch tán của phương trình nhiệt,
 Tên gọi "phương trình nhiệt" dễ tạo cảm giác rằng mô hình này chỉ gắn với nhiệt độ. Trên thực tế, yếu tố cốt lõi nằm ở cơ chế toán học chung: một đại lượng được bảo toàn cục bộ và dịch chuyển từ nơi có mật độ cao sang nơi có mật độ thấp. Bất cứ khi nào cơ chế này xuất hiện, một phương trình dạng phương trình nhiệt thường hình thành.
 
 Việc tiếp cận bài học qua các ví dụ liên ngành giúp sinh viên thấy rằng nghiên cứu PDE không chỉ là học kỹ thuật giải phương trình, mà còn là khả năng nhận diện cùng một mô hình trong nhiều lĩnh vực khác nhau.
+
+### Khung giải thích (nên đọc chậm): Tính tay vị trí tâm và độ rộng của vết thuốc nhuộm trôi trên sông bằng phương trình Đối lưu – Khuếch tán
+
+Một lượng thuốc nhuộm $M$ đổ tức thời tại $x = 0, t = 0$ xuống con sông chảy với vận tốc $v = 0{,}5\text{ m/s}$ và hệ số khuếch tán $D = 2\text{ m}^2/\text{s}$ ($c_t + v c_x = D c_{xx}$).
+1. **Đổi sang hệ quy chiếu trôi theo dòng nước** $\xi = x - vt$: phương trình trở về phương trình nhiệt thuần $c_t = D c_{\xi\xi}$!
+2. **Nghiệm chính xác**:
+   $$c(x, t) = \frac{M}{\sqrt{4\pi D t}}\exp\!\left(-\frac{(x - vt)^2}{4Dt}\right).$$
+3. **Dự báo sau $t = 100\text{ giây}$**:
+   - Tâm đám mây thuốc nhuộm đã trôi tới vị trí: $x_{\text{tâm}} = v t = 0{,}5 \times 100 = \mathbf{50\text{ m}}$ về phía hạ lưu.
+   - Độ rộng đặc trưng (độ lệch chuẩn): $\sigma = \sqrt{2Dt} = \sqrt{2 \times 2 \times 100} = \mathbf{20\text{ m}}$ (95% thuốc nhuộm nằm trong dải $50 \pm 40\text{ m}$, tức từ $10\text{ m}$ đến $90\text{ m}$!).
 
 ## Khái niệm theo ba cách
 

@@ -10,6 +10,40 @@ categories:
 lesson_type: required
 ---
 
+In 1838, Belgian mathematician Pierre-François Verhulst realized that Thomas Malthus's exponential growth model $$P' = rP$$ predicts an impossible world where bacteria outmass the Earth within days. By subtracting a single crowding term, he created the logistic equation—a model so universal it describes fisheries, tumor growth, and technology adoption. Paired with conservation-of-mass mixing tanks, these two models show how translating physical balance laws into first-order ODEs yields sharp quantitative predictions.
+
+## Background Knowledge Map: From Conservation Laws to First-Order Models
+
+Four modeling principles turn real-world word problems into accurate differential equations:
+
+1. **Rate-In Minus Rate-Out Balance:** Every compartment or mixing problem obeys $$\frac{dQ}{dt} = (\text{inflow rate}) - (\text{outflow rate})$$, where each rate equals $$(\text{concentration}) \times (\text{volumetric flow rate})$$.
+2. **Dimensional Consistency Check:** Before solving any physical ODE, check units on both sides (e.g., $$\text{kg/min} = (\text{kg/L})(\text{L/min})$$); a mismatched unit catches modeling errors instantly.
+3. **Carrying Capacity and Inflection Point (Logistic Model):** In $$P' = rP(1 - P/K)$$, growth is steepest not at $$P = K$$ but at $$P = K/2$$ (where $$P'' = 0$$), which defines the maximum sustainable harvest rate in ecology.
+4. **Asymptotic Equilibrium Limits:** Taking $$t \to \infty$$ in both mixing tanks and logistic populations reveals whether the system approaches a stable equilibrium concentration or carrying capacity independent of initial conditions.
+
+### Step-by-Step Worked Example (Read Slowly): A Variable-Volume Brine Mixing Tank
+
+A tank initially holds $$100\text{ L}$$ of pure water. Brine containing $$0.5\text{ kg/L}$$ of salt enters at $$4\text{ L/min}$$, while the well-stirred mixture leaves at $$2\text{ L/min}$$. Find the salt mass $$Q(t)$$ (in kg) at $$t = 50\text{ min}$$.
+
+1. **Track the fluid volume $$V(t)$$ first:**
+   Net flow is $$4 - 2 = +2\text{ L/min}$$, so $$V(t) = 100 + 2t\text{ L}$$.
+2. **Write the mass-balance ODE and check units:**
+   $$\text{Rate in} = (0.5\text{ kg/L})(4\text{ L/min}) = 2\text{ kg/min}, \qquad \text{Rate out} = \left(\frac{Q(t)}{100 + 2t}\text{ kg/L}\right)(2\text{ L/min}) = \frac{Q}{50 + t}.$$
+   Thus we obtain the linear first-order IVP:
+   $$\frac{dQ}{dt} + \frac{1}{50 + t}Q = 2, \qquad Q(0) = 0.$$
+3. **Solve via integrating factor $$\mu(t)$$:**
+   $$\mu(t) = \exp\!\left(\int \frac{dt}{50 + t}\right) = 50 + t.$$
+   Multiply through:
+   $$\frac{d}{dt}\bigl[(50 + t)Q\bigr] = 2(50 + t) = 100 + 2t.$$
+   Integrate:
+   $$(50 + t)Q(t) = 100t + t^2 + C.$$
+4. **Apply $$Q(0) = 0$$ and evaluate at $$t = 50\text{ min}$$:**
+   Setting $$t = 0$$ gives $$C = 0$$, so
+   $$Q(t) = \frac{t(100 + t)}{50 + t}.$$
+   At $$t = 50\text{ min}$$ (when volume has doubled to $$200\text{ L}$$):
+   $$Q(50) = \frac{50(150)}{100} = \mathbf{75\text{ kg}}, \qquad \text{concentration} = \frac{75}{200} = 0.375\text{ kg/L}$$
+   (already 75% of the incoming $$0.5\text{ kg/L}$$ concentration!).
+
 ## Objectives
 
 This lesson shows how ODE leave the page and become working models of real systems. Through population growth and mixing problems, students learn how to translate everyday language into differential equations, solve the resulting models, interpret the meaning of solutions, and judge whether a model is too simple or reasonably persuasive for the question at hand.

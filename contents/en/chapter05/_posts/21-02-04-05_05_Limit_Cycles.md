@@ -10,6 +10,38 @@ categories:
 lesson_type: required
 ---
 
+Your heartbeat does not die down like a damped pendulum, nor does it depend delicately on its initial amplitude like a frictionless spring: whether you rest or sprint, your cardiac pacemaker snaps reliably back onto the exact same self-sustained oscillation. Linear ODEs can *never* produce an isolated, self-correcting periodic orbit—only nonlinear systems exhibit **limit cycles**, the mathematical heartbeat of clocks, neurons, lasers, and circadian rhythms.
+
+## Background Knowledge Map: Proving and Ruling Out Limit Cycles in the Plane
+
+Four theorems form the complete toolkit for planar periodic orbits:
+
+1. **Isolated Periodic Orbit (Stable vs. Unstable vs. Semistable):** Unlike a linear center (a continuous family of nested ellipses), a **limit cycle** $$\Gamma$$ is an *isolated* closed trajectory; nearby trajectories spiral onto $$\Gamma$$ (stable/attracting), away from $$\Gamma$$ (unstable/repelling), or one of each (semistable).
+2. **Poincaré–Bendixson Theorem (Existence):** If a closed, bounded, positively invariant region $$R \subset \mathbb{R}^2$$ (such as an annulus with inward-pointing arrows on both inner and outer boundaries) contains **no equilibria**, then $$R$$ MUST contain at least one periodic orbit! (Strictly 2D—fails in $$\mathbb{R}^3$$ where strange attractors exist!)
+3. **Bendixson–Dulac Criterion (Non-Existence):** If $$\operatorname{div}(B\mathbf{f}) = \frac{\partial(Bf)}{\partial x} + \frac{\partial(Bg)}{\partial y}$$ has a strict constant sign ($$> 0$$ or $$< 0$$) across a simply connected region $$D$$ for some smooth weighting function $$B(x,y)$$, then Green's Theorem forbids *any* closed orbit inside $$D$$!
+4. **Index / Gradient Obstructions:** Every planar closed orbit must enclose at least one equilibrium point (index sum $$= +1$$), and a pure gradient system $$\mathbf{x}' = -\nabla V(\mathbf{x})$$ can *never* have a limit cycle because $$V$$ strictly decreases along every non-constant orbit!
+
+### Step-by-Step Worked Example (Read Slowly): Trapping a Stable Limit Cycle in Polar Coordinates and Testing Bendixson
+
+**Part A — Exact Stable Limit Cycle in Polar Form:**
+Analyze the nonlinear planar system (Hopf normal form):
+$$x' = -y + x\bigl(4 - x^2 - y^2\bigr), \qquad y' = x + y\bigl(4 - x^2 - y^2\bigr).$$
+
+1. **Convert to polar coordinates $$(r, \theta)$$ using $$r r' = x x' + y y'$$ and $$r^2 \theta' = x y' - y x'$$:**
+   $$r r' = (x^2 + y^2)(4 - r^2) = r^2(4 - r^2) \implies r' = r(4 - r^2), \qquad \theta' = 1.$$
+2. **Read the radial phase line for $$r \ge 0$$:**
+   - $$r = 0$$ is an unstable equilibrium ($$r' > 0$$ for $$0 < r < 2$$).
+   - $$r = 2$$ is a **stable periodic orbit** (the circle $$x^2 + y^2 = 4$$ traversed counterclockwise at period $$T = 2\pi$$):
+     - Inside ($$0 < r < 2$$): $$r' > 0$$ (trajectories spiral **outward** toward $$r = 2$$).
+     - Outside ($$r > 2$$): $$r' < 0$$ (trajectories spiral **inward** toward $$r = 2$$).
+   - Notice the annulus $$1 \le r \le 3$$ has $$r'\vert_{r=1} = +3 > 0$$ (inward) and $$r'\vert_{r=3} = -15 < 0$$ (inward) with zero equilibria inside—a textbook Poincaré–Bendixson trapping region!
+
+**Part B — Ruling Out Closed Orbits with Bendixson's Criterion:**
+Consider $$x' = y - x^3,\; y' = -x - y^3$$ on $$\mathbb{R}^2$$:
+3. **Compute the divergence:**
+   $$\frac{\partial f}{\partial x} + \frac{\partial g}{\partial y} = -3x^2 - 3y^2 = -3(x^2 + y^2) < 0 \quad \text{for all } (x,y) \ne (0,0).$$
+   Because the divergence is strictly negative everywhere except a single point, Bendixson's theorem guarantees this system has **zero limit cycles** anywhere in $$\mathbb{R}^2$$!
+
 ## Learning Objectives
 
 This lesson helps students understand limit cycles as isolated periodic orbits, distinguish them from families of closed curves, interpret attracting and repelling periodic motion, and see why self-sustained oscillation is one of the hallmark behaviors of nonlinear systems.

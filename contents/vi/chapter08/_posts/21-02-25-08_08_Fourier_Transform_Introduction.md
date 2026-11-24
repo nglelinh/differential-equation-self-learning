@@ -9,7 +9,21 @@ categories:
 - chapter08
 lesson_type: optional
 ---
+
 ![21 02 25 08 08 Fourier Transform Introduction]({{ site.imgurl }}/chapter_img/chapter08/08_fourier_transform_introduction.svg)
+
+Chuỗi Fourier chỉ xử lý được các hàm **tuần hoàn** trên đoạn hữu hạn $[-L, L]$, nơi phổ tần số rời rạc thành từng vạch $\omega_n = n\pi/L$. Nhưng thế giới thực đầy rẫy những tín hiệu **không tuần hoàn**—một tiếng vỗ tay, một xung ánh sáng laser, hay nhiệt độ trên một thanh dài vô hạn $(-\infty, +\infty)$. Khi cho chu kỳ $L \to \infty$, khoảng cách giữa các vạch phổ $\Delta\omega = \pi/L \to 0$, tổng rời rạc biến thành tích phân liên tục—và **Biến đổi Fourier (Fourier Transform)** ra đời!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Biến đổi Fourier
+
+1. **Cặp Biến đổi Fourier thuận và ngược**:
+   $$\hat{f}(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t}\,dt, \qquad f(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty} \hat{f}(\omega) e^{i\omega t}\,d\omega.$$
+2. **Biến Đạo hàm thành Phép nhân Đại số**:
+   $\mathcal{F}\{f'(t)\}(\omega) = i\omega\,\hat{f}(\omega)$ và $\mathcal{F}\{f''(t)\}(\omega) = -\omega^2\,\hat{f}(\omega)$—công cụ thần kỳ biến PTVP đạo hàm riêng (như phương trình nhiệt trên $\mathbb{R}$) thành PTVP thường bậc nhất giải trong 1 dòng!
+3. **Định lý Tích chập (Convolution Theorem)**:
+   $\mathcal{F}\{f * g\} = \hat{f}\cdot\hat{g}$ (biến tích phân tích chập phức tạp thành phép nhân đơn giản!).
+4. **Nguyên lý Bất định Thời gian – Tần số (Heisenberg–Gabor)**:
+   Co hẹp tín hiệu trong miền thời gian ($f(at)$) làm **giãn rộng** phổ trong miền tần số ($\frac{1}{\vert a \vert}\hat{f}(\omega/a)$)—một xung cực ngắn bắt buộc phải chứa dải tần số cực rộng!
 
 ## Mục tiêu
 
@@ -24,6 +38,14 @@ Sinh viên cần nắm chuỗi Fourier phức, trực giác về phổ tần s�
 Chuỗi Fourier phù hợp với các tín hiệu tuần hoàn, khi tập hợp tần số tạo thành một dãy rời rạc. Tuy nhiên, nhiều hiện tượng vật lý và kỹ thuật không tuần hoàn trên một chu kỳ cố định. Khi miền xét mở rộng ra toàn trục thực, phổ tần số không còn rời rạc nữa mà trở thành liên tục. Biến đổi Fourier là công cụ tự nhiên cho tình huống này.
 
 Bài học này đóng vai trò chuẩn bị quan trọng cho các chương PDE tiếp theo. Trên miền vô hạn, thay vì phân rã nghiệm theo tập mode đếm được như ở chuỗi Fourier, ta phân rã theo một dải tần số liên tục và xử lý riêng từng tần số.
+
+### Khung giải thích (nên đọc chậm): Tính tay Biến đổi Fourier của xung mũ đối xứng $f(t) = e^{-a\vert t \vert}$ ($a > 0$)
+
+Tách tích phân thành hai nhánh $t < 0$ (nơi $\vert t \vert = -t$) và $t \ge 0$ (nơi $\vert t \vert = t$):
+$$\hat{f}(\omega) = \int_{-\infty}^{0} e^{(a - i\omega)t}\,dt + \int_{0}^{\infty} e^{-(a + i\omega)t}\,dt = \left[\frac{e^{(a - i\omega)t}}{a - i\omega}\right]_{-\infty}^{0} + \left[\frac{e^{-(a + i\omega)t}}{-(a + i\omega)}\right]_{0}^{\infty}.$$
+Vì $a > 0$, các số hạng ở $\pm\infty$ đều tiến về $0$, chỉ còn tại $t = 0$:
+$$\hat{f}(\omega) = \frac{1}{a - i\omega} + \frac{1}{a + i\omega} = \frac{(a + i\omega) + (a - i\omega)}{a^2 + \omega^2} = \mathbf{\frac{2a}{a^2 + \omega^2}}.$$
+**Kiểm chứng Nguyên lý Bất định bằng con số**: Với $a = 1$, nửa bề rộng phổ tại một nửa chiều cao là $\omega_{1/2} = 1$; khi co hẹp xung $10\times$ ($a = 10$), phổ giãn rộng gấp đúng $10\times$ ($\omega_{1/2} = 10$)!
 
 ## Khái niệm theo ba cách
 

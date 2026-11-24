@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** In a chemical combustion reaction, one radical species decays in a microsecond ($e^{-10^6 t}$) while the flame front evolves over whole seconds. Even after the fast radical has vanished to $10^{-100}$, an explicit solver like RK4 is held hostage—forced to crawl at microsecond steps just to keep the dead mode from exploding. That tyranny of separated timescales is **stiffness**, and breaking it requires implicit methods.
+
 ## Learning Objectives
 
 This lesson introduces stiff differential equations and the numerical challenges they create. Students should understand why explicit methods may fail despite smooth true solutions, how stability regions become decisive, and why implicit methods are often preferred.
@@ -17,6 +19,15 @@ This lesson introduces stiff differential equations and the numerical challenges
 ## Prerequisites
 
 Students should know Euler methods, stability ideas for numerical schemes, and basic test equations such as exponential decay.
+
+## Background Knowledge Map: Anatomy of Stiffness and Implicit Stability
+
+Four core concepts separate stiff ODEs from ordinary non-stiff problems:
+
+1. **Timescale Separation and Eigenvalue Spread:** A system $y' = Ay$ is stiff when its Jacobian has eigenvalues with large negative real parts ($\text{Re}(\lambda_i) \ll 0$) alongside slow modes—meaning the stiffness ratio $\max |\text{Re}(\lambda_i)| / \min |\text{Re}(\lambda_i)| \gg 1$ forces stability, not accuracy, to dictate the explicit step size.
+2. **A-Stability (Left Half-Plane Inclusion):** A solver is **A-stable** if its stability region $\{z \in \mathbb{C} : |R(z)| \le 1\}$ contains the entire left half-plane $\text{Re}(z) \le 0$. Backward Euler ($R(z) = (1-z)^{-1}$) and the trapezoidal rule ($R(z) = \frac{1+z/2}{1-z/2}$) are A-stable; no explicit RK method can ever be A-stable.
+3. **L-Stability and Fast Transient Damping:** Even among A-stable methods, the trapezoidal rule has $\lim_{\text{Re}(z)\to -\infty} R(z) = -1$, causing persistent ringing on ultra-stiff modes. **L-stable** methods (like Backward Euler and Radau IIA) satisfy $\lim_{z\to\infty} R(z) = 0$, killing dead modes cleanly.
+4. **Newton Iteration Inside Implicit Steps:** Solving $y_{n+1} - h f(t_{n+1}, y_{n+1}) = y_n$ for nonlinear stiff systems requires Newton's method with the Jacobian $I - h J_f$, trading slightly higher per-step linear-algebra cost for $10^3\times$–$10^6\times$ larger time steps.
 
 ## Introduction
 
@@ -87,6 +98,22 @@ The point is not only that stiffness exists, but that method choice must adapt t
 - Can they say why implicit methods help?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Explicit vs. Implicit Euler on a Stiff Decay-Forcing ODE
+
+Consider the stiff IVP $y' = -1000(y - \cos t) - \sin t$ with $y(0) = 2$, whose exact solution is $y(t) = \cos t + e^{-1000 t}$. Take a single step of size $h = 0.01$ (well suited to track $\cos t$, yet $10\times$ larger than the fast timescale $10^{-3}$) with both forward Euler and backward Euler.
+
+1. **Exact solution at $t_1 = 0.01$:**
+   $$y(0.01) = \cos(0.01) + e^{-10} \approx 0.999950 + 0.000045 = 0.999995.$$
+2. **Forward (Explicit) Euler step ($h = 0.01$):** At $t_0 = 0, y_0 = 2$, $f(0, 2) = -1000(2 - 1) - 0 = -1000$. Thus:
+   $$y_1^{\text{FE}} = 2 + 0.01(-1000) = -8.0.$$
+   At the next step, $y_2^{\text{FE}} \approx +82$, blowing up exponentially because $|1 - 1000h| = |-9| = 9 > 1$!
+3. **Backward (Implicit) Euler step ($h = 0.01$):** Solve $y_1 = y_0 + h\big(-1000(y_1 - \cos(0.01)) - \sin(0.01)\big)$ algebraically for $y_1$:
+   $$y_1 + 10 y_1 = 2 + 10\cos(0.01) - 0.01\sin(0.01) \implies 11 y_1 \approx 2 + 9.99950 - 0.00010 = 11.99940.$$
+   Dividing by $11$ gives:
+   $$y_1^{\text{BE}} \approx 1.09085.$$
+   On step 2 ($t_2 = 0.02$), $y_2^{\text{BE}} \approx 1.0080$, snapping right onto the slow curve $\cos t$ with zero instability—demonstrating why L-stable implicit solvers conquer stiffness.
 
 ### Example 1: Large Negative Decay Constant
 

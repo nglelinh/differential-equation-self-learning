@@ -9,6 +9,20 @@ categories:
 - chapter02
 lesson_type: required
 ---
+
+Hàm số nào có đạo hàm tỷ lệ với chính nó? Chỉ có hàm mũ $e^{rt}$! Chính phép thử giản dị ấy của Euler đã biến phương trình vi phân cấp hai hệ số hằng $ay'' + by' + cy = 0$ thành một phương trình bậc hai quen thuộc từ trung học $ar^2 + br + c = 0$. Khi biệt thức $\Delta \ge 0$, bài học này giải mã trọn vẹn hai kịch bản nghiệm thực phân biệt và nghiệm thực kép—từ mạch tiêu tán năng lượng đến bộ giảm xóc tắt dần tới hạn.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Hệ số Hằng Nghiệm Thực
+
+1. **Phương trình đặc trưng $ar^2 + br + c = 0$**:
+   Thay $y = e^{rt}$ vào $ay'' + by' + cy = 0$ cho $e^{rt}(ar^2 + br + c) = 0$; vì $e^{rt} > 0$, toàn bộ bài toán vi phân quy về tìm nghiệm đa thức bậc hai.
+2. **Trường hợp $\Delta > 0$ (Hai nghiệm thực phân biệt $r_1 \ne r_2$)**:
+   Nghiệm tổng quát $y(t) = c_1 e^{r_1 t} + c_2 e^{r_2 t}$; khi $t \to +\infty$, số hạng ứng với nghiệm lớn hơn $\max(r_1, r_2)$ thống trị hành vi dài hạn.
+3. **Trường hợp $\Delta = 0$ (Nghiệm thực kép $r_1 = r_2 = r = -b/(2a)$)**:
+   Để đủ hai nghiệm độc lập tuyến tính, nghiệm thứ hai là $t e^{rt}$, cho nghiệm tổng quát $y(t) = (c_1 + c_2 t)e^{rt}$.
+4. **Dấu của nghiệm & Tính ổn định dài hạn**:
+   Mọi nghiệm tiến về $0$ khi $t \to +\infty$ khi và chỉ khi cả hai nghiệm đều âm ($r_1, r_2 < 0$), tương đương $a, b, c$ cùng dấu!
+
 ## Mục tiêu
 Bài học này giúp sinh viên sử dụng phương trình đặc trưng để giải các ODE tuyến tính cấp hai hệ số hằng, phân biệt trường hợp nghiệm thực phân biệt với nghiệm kép, và diễn giải các thành phần hàm mũ như các thành phần tăng trưởng hoặc suy giảm của hệ. Đây là kỹ thuật nền tảng cho toàn bộ chương.
 
@@ -23,6 +37,20 @@ $$ ay''+by'+cy=0, $$
 ta có cơ sở để thử nghiệm dạng $$ y=e^{rt} $$. Nhờ cách đặt này, bài toán vi phân liên tục được chuyển về bài toán đại số thông qua đa thức đặc trưng.
 
 Quan trọng hơn bản thân công thức là cách đọc ý nghĩa động học của nghiệm. Hai nghiệm thực phân biệt tạo ra hai thành phần nghiệm độc lập với hai tốc độ tăng hoặc suy giảm khác nhau. Nghiệm kép cho thấy hai thành phần bị trùng nhau và cần bổ sung thêm nghiệm dạng $$ te^{rt} $$. Do đó, bài học này vừa cung cấp kỹ thuật giải vừa làm rõ cấu trúc không gian nghiệm.
+
+### Khung giải thích (nên đọc chậm): Giải đối chiếu cả hai trường hợp $\Delta > 0$ và $\Delta = 0$ với cùng điều kiện đầu $y(0) = 1,\; y'(0) = 0$
+
+**Trường hợp 1 ($\Delta > 0$)**: $y'' + 5y' + 6y = 0$.
+- Đặc trưng: $r^2 + 5r + 6 = (r + 2)(r + 3) = 0 \implies r_1 = -2,\; r_2 = -3$.
+- Nghiệm tổng quát: $y(t) = c_1 e^{-2t} + c_2 e^{-3t}$.
+- Điều kiện đầu: $c_1 + c_2 = 1$ và $-2c_1 - 3c_2 = 0 \implies c_1 = 3,\; c_2 = -2$.
+- Kết quả: $y_A(t) = \mathbf{3e^{-2t} - 2e^{-3t}}$ (tại $t = 1$: $y_A(1) \approx 0{,}306$).
+
+**Trường hợp 2 ($\Delta = 0$)**: $y'' + 6y' + 9y = 0$.
+- Đặc trưng: $(r + 3)^2 = 0 \implies r = -3$ (kép).
+- Nghiệm tổng quát: $y(t) = (c_1 + c_2 t)e^{-3t}$.
+- Điều kiện đầu: $y(0) = c_1 = 1$; $y'(0) = c_2 - 3c_1 = 0 \implies c_2 = 3$.
+- Kết quả: $y_B(t) = \mathbf{(1 + 3t)e^{-3t}}$ (tại $t = 1$: $y_B(1) = 4e^{-3} \approx 0{,}199$, hồi về $0$ nhanh hơn hẳn $y_A$!).
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan

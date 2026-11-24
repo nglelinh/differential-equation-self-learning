@@ -10,6 +10,32 @@ categories:
 lesson_type: optional
 ---
 
+If you train a standard black-box neural network to predict the motion of a frictionless pendulum or orbiting planet from trajectory data, something frustrating happens: over long rollouts, the predicted orbit spirals artificially inward or outward because the network violates conservation of energy. **Hamiltonian Neural Networks (HNNs)** and **Second-Order Neural ODEs** fix this by baking Chapter 02's second-order mechanics and symplectic geometry directly into the neural architecture.
+
+## Background Knowledge Map: Classical Second-Order Mechanics Inside Modern SciML
+
+Four structural ideas connect Chapter 02 directly to physics-informed deep learning:
+
+1. **Phase-Space Lifting (Second Order $$\to$$ First-Order Pair):** Writing $$q'' = f(q, q')$$ as $$\dot{q} = p,\; \dot{p} = f(q,p)$$ ensures learned models respect the kinematic identity that velocity is the time derivative of position—impossible to guarantee in an unconstrained first-order Neural ODE.
+2. **Hamiltonian Neural Networks (HNNs):** Instead of learning the vector field $$(f_1, f_2)$$ directly, an HNN learns a single scalar neural energy $$H_\theta(q, p)$$ and enforces Hamilton's equations $$\dot{q} = \frac{\partial H_\theta}{\partial p},\; \dot{p} = -\frac{\partial H_\theta}{\partial q}$$ via automatic differentiation—guaranteeing $$\frac{dH_\theta}{dt} = 0$$ identically!
+3. **Symplectic Integration vs. Standard Euler:** Even with an exact Hamiltonian, explicit Euler artificially pumps energy into an oscillator at rate $$O(\Delta t)$$, whereas symplectic (Leapfrog/Verlet) integrators preserve a shadow Hamiltonian for millions of steps.
+4. **Lagrangian Neural Networks (LNNs):** When canonical momenta $$p$$ are unavailable and only generalized coordinates $$(q, \dot{q})$$ are observed, LNNs learn $$\mathcal{L}_\theta(q, \dot{q})$$ and recover accelerations via the Euler–Lagrange equation.
+
+### Step-by-Step Worked Example (Read Slowly): Quantifying Energy Drift of Explicit Euler vs. Symplectic Euler on a Harmonic Oscillator
+
+Compare one step of step size $$h = 0.2$$ on the unit harmonic oscillator $$q'' + q = 0$$ (written $$\dot{q} = p,\; \dot{p} = -q$$, exact energy $$H(q,p) = \frac{1}{2}(q^2 + p^2)$$) starting from $$(q_0, p_0) = (1, 0)$$ (so $$H_0 = 0.5000$$):
+
+1. **Explicit Euler update** $$(q_{n+1}, p_{n+1}) = (q_n + h p_n,\; p_n - h q_n)$$:
+   - Compute energy after one step symbolically:
+     $$H_{n+1} = \frac{1}{2}\bigl[(q_n + h p_n)^2 + (p_n - h q_n)^2\bigr] = \frac{1}{2}(1 + h^2)(q_n^2 + p_n^2) = (1 + h^2)H_n.$$
+   - At $$h = 0.2$$: after 1 step $$H_1 = 1.04 \times 0.5 = 0.5200$$ ($$+4\%$$ error!); after 50 steps $$H_{50} = (1.04)^{50}(0.5) \approx 3.553$$—over **$$7\times$$** the true energy!
+2. **Symplectic (Semi-Implicit) Euler update** (update $$p$$ first, then use the *new* $$p_{n+1}$$ to update $$q$$):
+   $$p_{n+1} = p_n - h q_n, \qquad q_{n+1} = q_n + h p_{n+1}.$$
+   - Check the Jacobian determinant of this step map:
+     $$\det\begin{pmatrix} 1 - h^2 & h \\ -h & 1 \end{pmatrix} = (1 - h^2) + h^2 = \mathbf{1}$$
+     (exact area preservation in phase space—unlike Explicit Euler's $$1 + h^2 > 1$$!).
+   - Numerically at $$(1,0)$$ with $$h = 0.2$$: $$p_1 = -0.2$$, $$q_1 = 1 + 0.2(-0.2) = 0.96$$, giving $$H_1 = \frac{1}{2}(0.96^2 + 0.2^2) = 0.4808$$; the energy oscillates tightly around $$0.5$$ forever instead of blowing up exponentially!
+
 ## Objectives
 
 This optional lesson relates constant-coefficient second-order equations, mechanical vibrations, and energy methods to the 2019–2024 literature on Hamiltonian, Lagrangian, and second-order neural networks. Students should be able to see a learned oscillator as a structured residual of $$y''+p y'+q y=g(t)$$, explain why symplectic or energy-preserving architectures outperform generic networks on conservative systems, and connect Wronskian independence to identifiability of learned modes. The classical solution techniques of the chapter are not rewritten.

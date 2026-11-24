@@ -10,6 +10,20 @@ categories:
 lesson_type: required
 ---
 
+
+Tại sao ta có thể yên tâm rằng phương trình vi phân $y' = f(t, y)$ thực sự có một nghiệm liên tục thay vì "rơi vào lỗ hổng" trên trục số? Câu trả lời nằm ở tính **đầy đủ (completeness)** của tập số thực $\mathbb{R}$—tính chất tinh tế ngăn không cho một dãy xấp xỉ hội tụ tiến tới một điểm... không tồn tại!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Giải tích Thực cho PTVP
+
+1. **Tiên đề Cận trên đúng (Supremum) & Tính đầy đủ của $\mathbb{R}$**:
+   Mọi tập con khác rỗng bị chặn trên trong $\mathbb{R}$ đều có $\sup$, và mọi dãy Cauchy trong $\mathbb{R}$ đều hội tụ về một số thực—nền móng cho phép lặp Picard và phương pháp Euler.
+2. **Dãy số & Tiêu chuẩn hội tụ**:
+   Định lý hội tụ đơn điệu, định lý kẹp và định lý Bolzano–Weierstrass cho phép trích dãy con hội tụ từ các họ nghiệm xấp xỉ bị chặn.
+3. **Hội tụ điểm vs. Hội tụ đều của dãy hàm**:
+   Hội tụ đều bảo toàn tính liên tục và cho phép đưa giới hạn vào trong dấu tích phân $\lim \int f_n = \int \lim f_n$, điều kiện sống còn khi giải PTVP bằng chuỗi lũy thừa và lặp tích phân.
+4. **Tính Compact (Định lý Heine–Borel)**:
+   Trên đoạn đóng bị chặn $[a, b]$, mọi hàm liên tục đều đạt giá trị lớn nhất, nhỏ nhất—giúp chặn trên $\vert f(t, y) \vert \le M$ trong mọi chứng minh định lý tồn tại nghiệm.
+
 ## Mục tiêu
 Bài học này giúp sinh viên củng cố nền tảng giải tích thực, nắm vững các khái niệm giới hạn, tính liên tục và tính compact, đồng thời hiểu vì sao các công cụ này đóng vai trò nền tảng trong việc phân tích phương trình vi phân. Sau bài học, sinh viên có thể vận dụng định lý giá trị trung gian, định lý Weierstrass và các tính chất hội tụ của dãy số trong bối cảnh phương trình vi phân thường (ODE).
 
@@ -20,6 +34,19 @@ Sinh viên cần nắm vững giới hạn dãy số, đạo hàm, tích phân c
 Khi khảo sát một phương trình vi phân, câu hỏi đầu tiên không chỉ là "nghiệm có dạng gì?" mà còn là "nghiệm có tồn tại không?" và "nếu tồn tại thì có duy nhất không?". Để trả lời những câu hỏi đó, ta cần kiểm soát hành vi của hàm số trên miền xác định. Đây chính là vai trò của giải tích thực.
 
 Chẳng hạn, xét bài toán mô hình hóa phân bố nhiệt độ trên một thanh kim loại. Nếu hàm nhiệt độ bị gián đoạn tại một điểm, mô hình sẽ không phù hợp về mặt vật lý; nếu giá trị hàm tăng không bị chặn khi tiến tới một điểm, ta không thể dự đoán trạng thái của hệ. Giải tích thực cung cấp các điều kiện và định lý cần thiết để đảm bảo mô hình toán học có hành vi hợp lý.
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng dãy lặp Newton $x_{n+1} = \frac{1}{2}\left(x_n + \frac{2}{x_n}\right)$ là dãy Cauchy nhưng "lọt hố" trong $\mathbb{Q}$
+
+Xuất phát từ $x_0 = 1 \in \mathbb{Q}$:
+1. **Tính tay 4 số hạng đầu**:
+   - $x_1 = \frac{1}{2}\left(1 + \frac{2}{1}\right) = \mathbf{1{,}5}$
+   - $x_2 = \frac{1}{2}\left(1{,}5 + \frac{2}{1{,}5}\right) = \frac{17}{12} \approx \mathbf{1{,}416667}$
+   - $x_3 = \frac{1}{2}\left(\frac{17}{12} + \frac{24}{17}\right) = \frac{577}{408} \approx \mathbf{1{,}4142157}$
+2. **Quan sát khoảng cách giữa các số hạng**:
+   - $\vert x_2 - x_1 \vert \approx 0{,}0833$
+   - $\vert x_3 - x_2 \vert \approx 0{,}00245$
+   - Sai số giảm theo bình phương: $\vert x_{n+1} - \sqrt{2}\vert = \frac{(x_n - \sqrt{2})^2}{2x_n}$, nên $(x_n)$ là dãy Cauchy cực nhanh.
+3. **Điểm mấu chốt**: Mọi $x_n$ đều là **số hữu tỷ**, nhưng giới hạn $\sqrt{2} \notin \mathbb{Q}$. Nếu làm việc trên $\mathbb{Q}$, dãy xấp xỉ này không có đích đến; chỉ trong $\mathbb{R}$ đầy đủ thì giới hạn mới tồn tại.
 
 ## Khái niệm theo ba cách
 

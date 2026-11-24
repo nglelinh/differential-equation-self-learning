@@ -10,6 +10,8 @@ categories:
 lesson_type: optional
 ---
 
+> **Storytelling Hook:** For decades, physicists happily wrote down the Dirac delta "function"—zero everywhere except at the origin, where it is infinitely tall with area $1$—and differentiated it at will, while mathematicians protested that no such function exists. In the late 1940s, Laurent Schwartz vindicated physics with a single brilliant shift in perspective: stop asking for a distribution's value at a point, and define it instead by how it averages smooth test functions.
+
 ![Distributions as singular sources and derivatives of step functions]({{ site.imgurl }}/chapter_img/chapter12/08_distributions.svg )
 
 ## Objectives
@@ -19,6 +21,15 @@ This lesson introduces distributions as an extension of the notion of function, 
 ## Prerequisites
 
 Students should know test functions $$ C_c^\infty(\Omega) $$, weak derivatives, integration by parts, and the physical idea of concentrated sources. This is an optional lesson, but it is especially valuable because it shows that the language of PDE extends beyond Sobolev spaces.
+
+## Background Knowledge Map: Laurent Schwartz's Theory of Distributions
+
+Four pillars make distributions the universal language of modern linear PDEs:
+
+1. **Test Function Space $\mathcal{D}(\Omega) = C_c^\infty(\Omega)$:** Equipped with convergence in a fixed compact support (uniform convergence of all derivatives), $\mathcal{D}(\Omega)$ serves as the ultra-smooth probe space against which rough objects are measured.
+2. **Distributions $\mathcal{D}'(\Omega)$ as Dual Functionals:** A distribution $T \in \mathcal{D}'(\Omega)$ is a continuous linear functional $\varphi \mapsto \langle T, \varphi \rangle$. Every $f \in L^1_{\text{loc}}$ embeds as a regular distribution $\langle T_f, \varphi \rangle = \int f\varphi$, alongside singular objects like $\langle \delta_{x_0}, \varphi \rangle = \varphi(x_0)$.
+3. **Infinite Differentiability:** Defining $\langle D^\alpha T, \varphi \rangle := (-1)^{|\alpha|}\langle T, D^\alpha \varphi \rangle$ makes *every* distribution infinitely differentiable—turning jump discontinuities into Dirac deltas and making fundamental solutions ($P(D)E = \delta_0$) completely rigorous.
+4. **Tempered Distributions $\mathcal{S}'(\mathbb{R}^n)$ and Fourier Analysis:** Restricting to distributions of at most polynomial growth (dual to the Schwartz space $\mathcal{S}(\mathbb{R}^n)$) makes the Fourier transform an isomorphism $\mathcal{F}: \mathcal{S}' \to \mathcal{S}'$, paving the way for Chapters 14 and 15.
 
 ## Introduction
 
@@ -101,6 +112,21 @@ The delta is the canonical example that shows why the framework is needed.
 - Can they connect weak derivatives to distributional derivatives?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Differentiating the Ramp Function Twice in $\mathcal{D}'(\mathbb{R})$
+
+Let $r(x) = \max(x, 0)$ be the ramp (ReLU) function on $\mathbb{R}$. Compute its first and second distributional derivatives $r'$ and $r''$ rigorously using only the definition $\langle T', \varphi \rangle = -\langle T, \varphi' \rangle$ for $\varphi \in C_c^\infty(\mathbb{R})$.
+
+1. **Compute the first distributional derivative $r'$:**
+   $$\langle r', \varphi \rangle = -\langle r, \varphi' \rangle = -\int_{-\infty}^{\infty} \max(x,0)\varphi'(x)\,dx = -\int_0^\infty x\varphi'(x)\,dx.$$
+   Integrate by parts (noting $\varphi(x) = 0$ for large $x$ and $x\varphi(x) = 0$ at $x=0$):
+   $$-\int_0^\infty x\varphi'(x)\,dx = -\big[x\varphi(x)\big]_0^\infty + \int_0^\infty \varphi(x)\,dx = \int_0^\infty \varphi(x)\,dx = \langle H, \varphi \rangle,$$
+   where $H = \mathbf{1}_{(0,\infty)}$ is the Heaviside step function. Thus $r' = H$ in $\mathcal{D}'(\mathbb{R})$.
+2. **Compute the second distributional derivative $r'' = H'$:**
+   $$\langle r'', \varphi \rangle = -\langle H, \varphi' \rangle = -\int_0^\infty \varphi'(x)\,dx = -\big[\varphi(x)\big]_0^\infty = -(0 - \varphi(0)) = \varphi(0) = \langle \delta_0, \varphi \rangle.$$
+   Hence $r'' = \delta_0$ in $\mathcal{D}'(\mathbb{R})$!
+3. **Check the third derivative for good measure:** $\langle r''', \varphi \rangle = \langle \delta_0', \varphi \rangle = -\varphi'(0)$, demonstrating how every rough function becomes infinitely differentiable in $\mathcal{D}'(\mathbb{R})$.
 
 ### Example 1: A regular function as a distribution
 

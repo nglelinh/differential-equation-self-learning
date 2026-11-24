@@ -12,6 +12,19 @@ lesson_type: optional
 
 ![Phổ của toán tử elliptic và các mode riêng cơ bản]({{ site.imgurl }}/chapter_img/chapter12/07_spectral_theory.svg )
 
+Tại sao phương pháp tách biến ở các chương trước luôn "may mắn" tìm ra một họ hàm riêng $\{\sin(n\pi x/L)\}$ vừa trực giao, vừa đầy đủ để khai triển **mọi** hàm $L^2$ trên miền hình chữ nhật, hình tròn hay bất kỳ hình dạng méo mó nào? Bí mật nằm ở **Lý thuyết Phổ của Toán tử Compact Tự liên hợp**: nghịch đảo $T = (-\Delta)^{-1}$ là một toán tử compact đối xứng trên $L^2(\Omega)$, nên định lý phổ vô hạn chiều đảm bảo tồn tại một cơ sở trực chuẩn đầy đủ các hàm riêng—y hệt định lý chéo hóa ma trận đối xứng trong Đại số Tuyến tính!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Lý thuyết Phổ cho Toán tử PDE
+
+1. **Từ Toán tử Không bị chặn $(-\Delta)$ sang Toán tử Compact $T = (-\Delta)^{-1}$**:
+   Toán tử vi phân $-\Delta$ không bị chặn trên $L^2$, nhưng nhờ Lax–Milgram kết hợp Nhúng Compact Rellich–Kondrachov ($H_0^1(\Omega) \Subset L^2(\Omega)$), toán tử giải $T: f \mapsto u$ là toán tử **tuyến tính, compact và tự liên hợp** trên $L^2(\Omega)$!
+2. **Định lý Phổ (Hilbert–Schmidt)**:
+   Mọi toán tử compact tự liên hợp đều có cơ sở trực chuẩn các hàm riêng $\{\phi_k\}$ với giá trị riêng thực $\mu_k \to 0$. Đảo ngược lại cho $-\Delta$, ta thu được dãy giá trị riêng dương rời rạc $0 < \lambda_1 < \lambda_2 \le \lambda_3 \le \dots \to +\infty$!
+3. **Thương số Rayleigh (Rayleigh Quotient) và Nguyên lý Min–Max**:
+   Giá trị riêng cơ bản (tần số trầm nhất của mặt trống $\Omega$) được đặc trưng biến phân bởi $\lambda_1 = \min_{u \in H_0^1 \setminus \{0\}} \frac{\int_\Omega |\nabla u|^2\,dx}{\int_\Omega u^2\,dx}$—mở đường ước lượng tần số mà không cần giải PDE chính xác!
+4. **Phổ Rời rạc (Miền Bị chặn) vs. Phổ Liên tục (Toàn Không gian $\mathbb{R}^n$)**:
+   Trên miền bị chặn, tính compact làm phổ rời rạc (nốt nhạc rời rạc của dây đàn, mức năng lượng nguyên tử bị giam); trên toàn $\mathbb{R}^n$, tính compact biến mất nên phổ của $-\Delta$ trở thành nửa trục liên tục $[0, \infty)$!
+
 ## Mục tiêu
 
 Bài học tùy chọn này giới thiệu lý thuyết phổ như phương pháp phân tích toán tử vi phân thông qua các mode riêng. Sau bài học, sinh viên cần nắm khái niệm trị riêng, hàm riêng, tính trực giao, và hiểu vì sao toán tử tự liên hợp trên không gian Hilbert giữ vai trò tương tự ma trận đối xứng trong không gian hữu hạn chiều. Nội dung này tạo cầu nối trực tiếp giữa giải tích hàm, chuỗi Fourier và PDE.
@@ -24,6 +37,17 @@ Sinh viên cần nắm không gian Hilbert, tích vô hướng, tính trực gia
 
 Khi một hệ dao động hoặc khuếch tán được phân tách thành các mode cơ bản, mỗi mode tiến hóa theo quy luật đơn giản hơn rất nhiều. Lý thuyết phổ hệ thống hóa ý tưởng này: thay vì xem toán tử như một khối phức tạp, ta phân rã nó theo các phương riêng mà trên đó tác động của toán tử chỉ quy về phép nhân với một hằng số.
 
+
+### Khung giải thích (nên đọc chậm): Đối chiếu trực tiếp phổ của $-\Delta$ và nghịch đảo compact $T = (-\Delta)^{-1}$ trên $(0, \pi)$
+
+Xét bài toán giá trị riêng $-u'' = \lambda u$ trên $\Omega = (0, \pi)$ với $u(0) = u(\pi) = 0$:
+1. **Dãy giá trị riêng và hàm riêng chuẩn hóa**:
+   $$\lambda_n = n^2 \quad (1, 4, 9, 16, \dots \to +\infty), \qquad \phi_n(x) = \sqrt{\frac{2}{\pi}}\sin(nx).$$
+2. **Phổ của toán tử nghịch đảo compact $T = (-\Delta)^{-1}$**:
+   Vì $T\phi_n = \frac{1}{\lambda_n}\phi_n$, các giá trị riêng của $T$ là $\mu_n = \frac{1}{n^2} \in \{1, \tfrac{1}{4}, \tfrac{1}{9}, \tfrac{1}{16}, \dots\} \to \mathbf{0}$ (hội tụ về $0$ đúng như định lý phổ cho toán tử compact!).
+3. **Kiểm tra trực chuẩn và thương số Rayleigh cho mode $n = 1$**:
+   - $\|\phi_1\|_{L^2}^2 = \frac{2}{\pi}\int_0^\pi \sin^2(x)\,dx = \mathbf{1}$, và $\langle \phi_1, \phi_2 \rangle = \frac{2}{\pi}\int_0^\pi \sin(x)\sin(2x)\,dx = \mathbf{0}$.
+   - Thương số Rayleigh: $R(\phi_1) = \frac{\int_0^\pi (\cos x)^2\,dx}{\int_0^\pi (\sin x)^2\,dx} = \frac{\pi/2}{\pi/2} = \mathbf{1} = \lambda_1$!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

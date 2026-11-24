@@ -9,6 +9,41 @@ categories:
 - chapter03
 lesson_type: required
 ---
+
+Solving an ODE in the $$s$$-domain is the easy half of the journey—you end up with a compact rational expression like $$\frac{3s^2 + 4s + 11}{(s - 1)(s^2 + 4s + 13)}$$. Translating that rational function back into a time-domain trajectory $$y(t)$$ is where algebra meets artistry: partial fractions isolate the real exponential modes, and completing the square isolates the damped oscillations.
+
+## Background Knowledge Map: Four Tools for Inverting Rational Transforms
+
+Every proper rational function $$P(s)/Q(s)$$ yields cleanly to four systematic tools:
+
+1. **Lerch's Uniqueness Theorem:** If two continuous functions on $$[0,\infty)$$ have the same Laplace transform on some half-line $$s > s_0$$, they are identical everywhere—so table-matching produces the *unique* continuous inverse $$\mathcal{L}^{-1}\{F(s)\}$$.
+2. **Partial Fraction Decomposition (Factoring $$Q(s)$$ Over $$\mathbb{R}$$):** Linear factors $$(s - r)^m$$ expand into $$\sum_{k=1}^m \frac{A_k}{(s - r)^k}$$ (giving $$t^{k-1}e^{rt}$$), while irreducible quadratic factors $$(s - \alpha)^2 + \beta^2$$ expand into $$\frac{Bs + C}{(s - \alpha)^2 + \beta^2}$$.
+3. **Heaviside Cover-Up Shortcut:** For any simple real pole $$s = r$$, the residue $$A$$ in $$\frac{A}{s - r}$$ is computed instantly by covering up $$(s - r)$$ in $$F(s)$$ and evaluating at $$s = r$$: $$A = \lim_{s\to r}(s - r)F(s)$$.
+4. **Completing the Square + Numerator Alignment:** For an irreducible quadratic denominator $$(s - \alpha)^2 + \beta^2$$, rewrite the numerator $$Bs + C$$ as $$B(s - \alpha) + \frac{C + B\alpha}{\beta}\cdot\beta$$ so the two pieces invert directly to $$e^{\alpha t}\cos(\beta t)$$ and $$e^{\alpha t}\sin(\beta t)$$.
+
+### Step-by-Step Worked Example (Read Slowly): Inverting a Mixed Linear + Irreducible Quadratic Transform
+
+Find the inverse Laplace transform of
+$$F(s) = \frac{3s^2 + 4s + 11}{(s - 1)(s^2 + 4s + 13)}.$$
+
+1. **Check denominator factoring and set up partial fractions:**
+   The quadratic $$s^2 + 4s + 13 = (s + 2)^2 + 9$$ has discriminant $$16 - 52 = -36 < 0$$ (irreducible). Write
+   $$\frac{3s^2 + 4s + 11}{(s - 1)(s^2 + 4s + 13)} = \frac{A}{s - 1} + \frac{Bs + C}{s^2 + 4s + 13}.$$
+2. **Find $$A$$ immediately by Heaviside cover-up at $$s = 1$$:**
+   $$A = \left.\frac{3s^2 + 4s + 11}{s^2 + 4s + 13}\right|_{s=1} = \frac{3 + 4 + 11}{1 + 4 + 13} = \frac{18}{18} = 1.$$
+3. **Clear denominators to find $$B$$ and $$C$$:**
+   $$3s^2 + 4s + 11 = 1(s^2 + 4s + 13) + (Bs + C)(s - 1).$$
+   Subtract $$(s^2 + 4s + 13)$$ from both sides:
+   $$2s^2 - 2 = (Bs + C)(s - 1) \implies 2(s - 1)(s + 1) = (Bs + C)(s - 1) \implies Bs + C = 2s + 2.$$
+   So $$B = 2,\; C = 2$$! (Exact factorization is an instant arithmetic verification.)
+4. **Align the numerator $$2s + 2$$ with the shifted denominator $$(s + 2)^2 + 3^2$$:**
+   $$2s + 2 = 2(s + 2) - 2 = 2(s + 2) - \frac{2}{3}(3).$$
+   Therefore
+   $$F(s) = \frac{1}{s - 1} + 2\frac{s + 2}{(s + 2)^2 + 3^2} - \frac{2}{3}\frac{3}{(s + 2)^2 + 3^2}.$$
+5. **Invert term by term:**
+   $$f(t) = e^t + 2e^{-2t}\cos(3t) - \frac{2}{3}e^{-2t}\sin(3t).$$
+   Check at $$t = 0$$: $$f(0) = 1 + 2 - 0 = 3$$, matching the Initial Value Theorem $$\lim_{s\to\infty} sF(s) = 3$$!
+
 ## Learning Objectives
 This lesson helps students understand the role of the inverse Laplace transform as the step back to the time domain, learn to use partial fraction decomposition for rational expressions, and recognize that solving in the $$ s $$ domain only makes sense when we can read the solution back in time. Students will also practice systematically recognizing patterns from inverse tables.
 

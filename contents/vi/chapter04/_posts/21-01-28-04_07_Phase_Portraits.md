@@ -10,6 +10,23 @@ categories:
 lesson_type: required
 ---
 
+
+Đứng trước một hệ hai phương trình vi phân tuyến tính $\mathbf{x}' = A\mathbf{x}$, bạn không cần máy tính hay hàng trang giấy tính toán để biết toàn bộ bức tranh vận động của nó. Chỉ cần liếc qua hai con số—vết $\tau = a + d$ và định thức $\Delta = ad - bc$—kèm hướng của hai vectơ riêng (nếu thực), bạn có thể phác thảo bằng tay **chân dung pha (phase portrait)** chính xác gần như tuyệt đối trong vòng một phút!
+
+## Bản đồ kiến thức nền: Bốn chìa khóa đọc & vẽ Chân dung Pha 2D
+
+1. **Bản đồ phân loại theo $(\tau, \Delta)$ và biệt thức $D = \tau^2 - 4\Delta$**:
+   - $\Delta < 0$: **Điểm yên ngựa** (luôn bất ổn).
+   - $\Delta > 0,\; D > 0$: **Nút** (hút nếu $\tau < 0$, đẩy nếu $\tau > 0$).
+   - $\Delta > 0,\; D < 0$: **Xoáy ốc** (hút nếu $\tau < 0$, đẩy nếu $\tau > 0$) hoặc **Tâm** (nếu $\tau = 0$).
+   - $\Delta > 0,\; D = 0$: **Nút sao** hoặc **Nút suy biến**.
+2. **Quy tắc tiếp tuyến tại gốc của Nút (Fast vs. Slow Eigendirection)**:
+   Với nút hút $\lambda_1 < \lambda_2 < 0$, thành phần $e^{\lambda_1 t}$ tắt nhanh hơn $e^{\lambda_2 t}$ nên mọi quỹ đạo (trừ đường thẳng dọc $\mathbf{v}_1$) đều **tiếp xúc với trục chậm $\mathbf{v}_2$** khi tiến về $(0, 0)$!
+3. **Tính nhạy cảm cấu trúc (Structural Stability)**:
+   Nút, yên ngựa và xoáy ốc là bền vững cấu trúc; ngược lại **Tâm ($\tau = 0$)** và **Nút suy biến ($D = 0$)** nằm đúng trên đường ranh giới—chỉ cần nhiễu cực nhỏ $10^{-6}$ là Tâm biến thành Xoáy ốc!
+4. **Cầu nối trực tiếp sang Hệ phi tuyến Chương 05**:
+   Theo định lý Hartman–Grobman, chân dung pha của hệ phi tuyến quanh điểm cân bằng hyperbol giống hệt chân dung pha tuyến tính của ma trận Jacobi tại điểm đó!
+
 ## Mục tiêu
 
 Bài học này hướng dẫn cách đọc và phác họa chân dung pha của hệ tuyến tính hai chiều, phân loại điểm cân bằng bằng trị riêng hoặc bằng cặp vết – định thức, và cho thấy sức mạnh của phân tích định tính ngay cả khi không viết công thức nghiệm tường minh.
@@ -25,6 +42,16 @@ Sinh viên cần nắm trị riêng thực, trị riêng phức và các dạng 
 Một công thức nghiệm tường minh cho giá trị chính xác tại từng thời điểm nhưng không phải lúc nào cũng giúp hình dung nhanh bức tranh tổng thể. Chân dung pha làm điều ngược lại: bỏ qua chi tiết đại số để thể hiện trực tiếp hình học của chuyển động — quỹ đạo đi về đâu, rời khỏi đâu, có xoắn hay không và có những phương bất biến nào.
 
 Chỉ từ ma trận $$ A $$, ta đã có thể phân loại gốc tọa độ thành điểm yên ngựa, nút hút, nút đẩy, tâm hay tiêu điểm. Kỹ năng định tính này rất cần thiết vì trong nhiều mô hình phức tạp, việc đọc cấu trúc pha là bước mở đầu trước khi tính toán chi tiết.
+
+### Khung giải thích (nên đọc chậm): Phác thảo bằng tay chân dung pha cho hệ nút hút $\mathbf{x}' = \begin{pmatrix} -4 & 0 \\ 0 & -1 \end{pmatrix}\mathbf{x}$ và kiểm tra độ cong
+
+Hệ đã chéo sẵn: $\lambda_1 = -4$ (trục nhanh $\mathbf{v}_1 = (1, 0)^\top$ là trục $Ox$), $\lambda_2 = -1$ (trục chậm $\mathbf{v}_2 = (0, 1)^\top$ là trục $Oy$).
+1. **Nghiệm tường minh**: $x_1(t) = c_1 e^{-4t},\; x_2(t) = c_2 e^{-t}$.
+2. **Khử $t$ để tìm phương trình quỹ đạo**:
+   Vì $e^{-t} = x_2/c_2$, thay vào $x_1$ ta được:
+   $$x_1 = c_1\left(\frac{x_2}{c_2}\right)^4 = \mathbf{k\,x_2^4}!$$
+3. **Đọc dáng hình học tại gốc $(0, 0)$**:
+   Đường cong $x_1 = k x_2^4$ (ví dụ $x_1 = x_2^4$) khi tiến về $(0, 0)$ có $\frac{dx_1}{dx_2} = 4kx_2^3 \to 0$, tức là **ép sát và tiếp tuyến thẳng đứng với trục chậm $Oy$**! Ngược lại khi $t \to -\infty$, $x_1$ phình nhanh hơn $x_2$ rất nhiều nên quỹ đạo vươn gần như nằm ngang song song với trục nhanh $Ox$!
 
 ## Khái niệm theo ba cách
 

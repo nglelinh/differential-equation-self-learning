@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** How do you rigorously define the integral $(2\pi)^{-n}\iint e^{i(x-y)\cdot\xi} a(x,\xi) u(y)\,dy\,d\xi$ when $a(x,\xi)$ grows like $|\xi|^m$ so the integrand does not even decay in $\xi$? Through the magic of **oscillatory integrals**—integrating by parts using the phase $e^{i(x-y)\cdot\xi}$ to convert rapid oscillation into rapid decay.
+
 ## Learning Objectives
 
 This lesson gives the basic definition of pseudo-differential operators. Students should understand how symbols generate operators through oscillatory integrals and how this extends the familiar action of differential operators and Fourier multipliers.
@@ -17,6 +19,15 @@ This lesson gives the basic definition of pseudo-differential operators. Student
 ## Prerequisites
 
 Students should know Fourier transforms, symbols, and the idea of oscillatory representation from the previous lessons.
+
+## Background Knowledge Map: Defining $\Psi\text{DOs}$, Pseudolocality, and Sobolev Boundedness
+
+Four core properties establish $\Psi^m(\mathbb{R}^n)$ as a rock-solid class of linear operators:
+
+1. **Oscillatory Integrals and Schwartz Kernels:** Writing $Au(x) = (2\pi)^{-n}\int e^{ix\cdot\xi} a(x,\xi)\hat{u}(\xi)\,d\xi$ is well-defined on $\mathcal{S}(\mathbb{R}^n)$ and extends by duality to $\mathcal{S}'(\mathbb{R}^n)$; its Schwartz kernel $K_A(x,y) = (2\pi)^{-n}\int e^{i(x-y)\cdot\xi}a(x,\xi)\,d\xi$ is $C^\infty$ strictly off the diagonal $x = y$.
+2. **Pseudolocality (Never Creating New Singularities):** Because $K_A(x,y)$ is smooth for $x \neq y$, $\operatorname{sing\,supp}(Au) \subseteq \operatorname{sing\,supp}(u)$! Even though a $\Psi\text{DO}$ is nonlocal, it can *never* move or invent singularities outside where $u$ was already singular.
+3. **Calderón–Vaillancourt & $L^2$ Boundedness:** Every operator $A \in \Psi^0(\mathbb{R}^n)$ with uniformly bounded symbol derivatives is a bounded linear operator $L^2(\mathbb{R}^n) \to L^2(\mathbb{R}^n)$.
+4. **Sobolev Mapping Theorem:** Conjugating by $\langle D\rangle^s$ upgrades $L^2$ boundedness to the universal mapping law: every $A \in \Psi^m$ maps $H^s(\mathbb{R}^n) \to H^{s-m}(\mathbb{R}^n)$ continuously for all $s \in \mathbb{R}$.
 
 ## Introduction
 
@@ -85,6 +96,23 @@ This helps anchor the generalization.
 - Can they identify Fourier multipliers and differential operators as special cases?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Evaluating the Fractional Laplacian $(-\Delta)^{1/2}$ as a $\Psi\text{DO}$
+
+Consider the first-order pseudo-differential operator $(-\Delta)^{1/2}$ on $\mathbb{R}$ with symbol $p(\xi) = |\xi|$ (smoothed near $\xi = 0$ if strict $S^1$ membership is required, though exact on nonzero frequencies). Apply $(-\Delta)^{1/2}$ to $u(x) = \cos(3x) + 2\sin(5x)$, and verify that applying it twice reproduces $-u''(x)$.
+
+1. **Decompose $u$ into Fourier exponentials:**
+   $$u(x) = \frac{1}{2}\big(e^{3ix} + e^{-3ix}\big) + \frac{2}{2i}\big(e^{5ix} - e^{-5ix}\big).$$
+   Its Fourier transform is $\hat{u}(\xi) = \pi\big(\delta(\xi-3) + \delta(\xi+3)\big) - 2\pi i\big(\delta(\xi-5) - \delta(\xi+5)\big)$.
+2. **Multiply by the symbol $|\xi|$ and invert the Fourier transform:**
+   - At $\xi = \pm 3$: $|\xi| = 3$, multiplying $\cos(3x)$ by $3$.
+   - At $\xi = \pm 5$: $|\xi| = 5$, multiplying $2\sin(5x)$ by $5$.
+   Therefore:
+   $$(-\Delta)^{1/2} u(x) = 3\cos(3x) + 10\sin(5x).$$
+3. **Apply $(-\Delta)^{1/2}$ a second time:** Multiplying mode $\pm 3$ by $3$ and mode $\pm 5$ by $5$ again yields:
+   $$(-\Delta)^{1/2}\big((-\Delta)^{1/2} u\big)(x) = 9\cos(3x) + 50\sin(5x).$$
+4. **Verify against $-u''(x)$:** Differentiating $u(x) = \cos(3x) + 2\sin(5x)$ twice gives $u''(x) = -9\cos(3x) - 50\sin(5x)$, so $-u''(x) = 9\cos(3x) + 50\sin(5x)$—confirming $(-\Delta)^{1/2} \circ (-\Delta)^{1/2} = -\Delta$!
 
 ### Example 1: Constant Multiplier Operator
 

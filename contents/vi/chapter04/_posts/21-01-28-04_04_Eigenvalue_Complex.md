@@ -10,6 +10,23 @@ categories:
 lesson_type: required
 ---
 
+
+Khi ma trận thực $A$ không có hướng thẳng nào giữ nguyên mà xoay toàn bộ mặt phẳng, phương trình đặc trưng của nó sẽ trả về một cặp **trị riêng phức liên hợp** $\lambda = \alpha \pm i\beta$! Thay vì phải tính cả hai cặp phức, bạn chỉ cần làm việc với **duy nhất một trị riêng $\lambda = \alpha + i\beta$** và một vectơ riêng phức $\mathbf{v} = \mathbf{a} + i\mathbf{b}$: tách phần thực và phần ảo của $e^{(\alpha + i\beta)t}(\mathbf{a} + i\mathbf{b})$ sẽ trao ngay cho bạn trọn bộ hai nghiệm thực độc lập!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Trị riêng Phức
+
+1. **Cặp liên hợp tự động ($\lambda = \alpha \pm i\beta,\; \mathbf{v} = \mathbf{a} \pm i\mathbf{b}$)**:
+   Do $A$ là ma trận thực, chỉ cần tìm $\mathbf{v} = \mathbf{a} + i\mathbf{b}$ cho một trị riêng $\alpha + i\beta$ (với $\beta > 0$) là đủ—không cần giải lại cho $\alpha - i\beta$!
+2. **Tách phần thực và phần ảo thành hai nghiệm thực**:
+   Từ $e^{\alpha t}(\cos\beta t + i\sin\beta t)(\mathbf{a} + i\mathbf{b})$, thu ngay hai nghiệm thực cơ sở:
+   $$\mathbf{x}^{(1)}(t) = e^{\alpha t}(\mathbf{a}\cos\beta t - \mathbf{b}\sin\beta t),\qquad \mathbf{x}^{(2)}(t) = e^{\alpha t}(\mathbf{b}\cos\beta t + \mathbf{a}\sin\beta t).$$
+3. **Ý nghĩa hình học của $\alpha$ và $\beta$**:
+   - $\alpha < 0$: **Xoáy ốc hút** (ổn định tiệm cận).
+   - $\alpha = 0$: **Tâm (Center)** — các quỹ đạo elip khép kín quay đều với chu kỳ $T = 2\pi/\beta$.
+   - $\alpha > 0$: **Xoáy ốc đẩy** (không ổn định).
+4. **Dạng chuẩn tắc thực $A = P\begin{pmatrix}\alpha & -\beta\\ \beta & \alpha\end{pmatrix}P^{-1}$**:
+   Trong hệ cơ sở $\{\mathbf{a}, \mathbf{b}\}$, hệ thực sự chỉ là phép quay góc $\beta t$ kết hợp co giãn $e^{\alpha t}$!
+
 ## Mục tiêu
 
 Bài học này hướng dẫn cách giải hệ tuyến tính khi ma trận có cặp trị riêng phức liên hợp, chuyển nghiệm phức về hai nghiệm thực độc lập và đọc trực tiếp chuyển động quay, xoắn ốc hút hay xoắn ốc đẩy từ phần thực và phần ảo của trị riêng.
@@ -25,6 +42,19 @@ Sinh viên cần nắm kiến thức cơ bản về số phức, công thức Eu
 Ở phương trình một ẩn, nghiệm đặc trưng phức dẫn đến dao động. Trong hệ tuyến tính, ý nghĩa hình học còn trực quan hơn: khi ma trận có cặp trị riêng phức liên hợp, quỹ đạo trên mặt phẳng pha quay quanh gốc tọa độ; nếu phần thực khác 0, quỹ đạo vừa quay vừa co lại hoặc giãn ra tạo thành đường xoắn ốc.
 
 Chỉ từ cặp trị riêng $$ \alpha\pm i\beta $$, ta xác định được ngay ba đặc tính: hệ có quay quanh gốc, tần số góc tỉ lệ với $$ \beta $$, và biên độ co lại hay giãn ra tùy dấu của $$ \alpha $$.
+
+### Khung giải thích (nên đọc chậm): Giải hệ $\mathbf{x}' = \begin{pmatrix} -1 & -2 \\ 2 & -1 \end{pmatrix}\mathbf{x}$ bằng cách tách phần thực và phần ảo
+
+1. **Tìm trị riêng**:
+   $\det(A - \lambda I) = (-1 - \lambda)^2 + 4 = 0 \implies \lambda = \mathbf{-1 \pm 2i}$ ($\alpha = -1,\; \beta = 2$).
+2. **Tìm 1 vectơ riêng phức cho $\lambda = -1 + 2i$**:
+   $(A - (-1 + 2i)I)\mathbf{v} = \begin{pmatrix} -2i & -2 \\ 2 & -2i \end{pmatrix}\begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = \mathbf{0} \implies -2i v_1 - 2v_2 = 0 \implies v_2 = -i v_1$.
+   Chọn $v_1 = 1 \implies \mathbf{v} = \begin{pmatrix} 1 \\ -i \end{pmatrix} = \underbrace{\begin{pmatrix} 1 \\ 0 \end{pmatrix}}_{\mathbf{a}} + i\underbrace{\begin{pmatrix} 0 \\ -1 \end{pmatrix}}_{\mathbf{b}}$.
+3. **Khai triển $e^{(-1+2i)t}\mathbf{v}$**:
+   $$e^{-t}(\cos 2t + i\sin 2t)\begin{pmatrix} 1 \\ -i \end{pmatrix} = e^{-t}\begin{pmatrix} \cos 2t + i\sin 2t \\ \sin 2t - i\cos 2t \end{pmatrix}.$$
+4. **Đọc ngay hai nghiệm thực (phần thực & phần ảo)**:
+   $$\mathbf{x}(t) = c_1 e^{-t}\begin{pmatrix} \cos 2t \\ \sin 2t \end{pmatrix} + c_2 e^{-t}\begin{pmatrix} \sin 2t \\ -\cos 2t \end{pmatrix}$$
+   — một **xoáy ốc hút** quay ngược chiều kim đồng hồ quanh gốc $(0, 0)$!
 
 ## Khái niệm theo ba cách
 

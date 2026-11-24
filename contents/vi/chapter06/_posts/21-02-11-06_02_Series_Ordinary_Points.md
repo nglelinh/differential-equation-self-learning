@@ -10,6 +10,19 @@ categories:
 lesson_type: required
 ---
 
+Xét phương trình Airy $y'' - xy = 0$ (mô tả cầu vồng quang học và hạt lượng tử trong trường lực đều): nhìn tưởng cực kỳ đơn giản nhưng nó **không có nghiệm sơ cấp**! May mắn thay, tại $x_0 = 0$ các hệ số đều giải tích (trơn mượt hoàn hảo), nên $x_0 = 0$ là một **điểm thường (ordinary point)**—và Định lý Fuchs đảm bảo ta luôn tìm được hai nghiệm chuỗi lũy thừa độc lập tuyến tính hội tụ ít nhất tới điểm kỳ dị gần nhất trên mặt phẳng phức!
+
+## Bản đồ kiến thức nền: Bốn bước chuẩn mực giải PTVP gần Điểm Thường
+
+1. **Nhận diện Điểm Thường ($x_0$)**:
+   Viết phương trình về dạng chuẩn $y'' + p(x)y' + q(x)y = 0$. Điểm $x_0$ là **điểm thường** nếu cả $p(x)$ và $q(x)$ đều giải tích (khai triển được thành chuỗi Taylor) tại $x_0$.
+2. **Định lý Bán kính Hội tụ tối thiểu**:
+   Nghiệm chuỗi quanh $x_0$ chắc chắn hội tụ với bán kính $R \ge \text{khoảng cách từ } x_0 \text{ đến điểm kỳ dị phức gần nhất}$ của $p(x)$ hoặc $q(x)$ (ví dụ với $p(x) = \frac{1}{1+x^2}$, điểm kỳ dị là $x = \pm i \implies R \ge \vert 0 - i \vert = 1$!).
+3. **Bốn bước cơ học tìm nghiệm**:
+   (1) Giả sử $y = \sum_{n=0}^\infty a_n x^n$; (2) Tính $y', y''$ và thế vào PTVP; (3) Dịch chỉ số để gộp về $\sum [\dots] x^k = 0$ và rút hệ thức truy hồi; (4) Tách hai nghiệm cơ sở $y_1(x)$ (chọn $a_0 = 1, a_1 = 0$) và $y_2(x)$ (chọn $a_0 = 0, a_1 = 1$).
+4. **Kiểm chứng nghiệm cắt cụt**:
+   Luôn kiểm tra 3–4 số hạng đầu bằng cách thế ngược vào PTVP để đảm bảo không sai dấu hay giai thừa.
+
 ## Mục tiêu
 
 Bài học này giới thiệu trường hợp thuận lợi nhất của phương pháp nghiệm chuỗi: giải phương trình vi phân tuyến tính quanh một điểm thường. Sau bài học, sinh viên cần nắm điều kiện cho phép sử dụng chuỗi lũy thừa thuần túy, biết thay chuỗi vào phương trình để thiết lập hệ thức truy hồi cho các hệ số và hiểu vì sao tính giải tích của hệ số kéo theo tính giải tích của nghiệm.
@@ -29,6 +42,24 @@ Khi các hệ số của phương trình vi phân có tính giải tích quanh m
 $$ y=\sum_{n=0}^{\infty}a_n(x-x_0)^n $$
 
 rồi để chính phương trình xác định các hệ số $$ a_n $$. Cách tiếp cận này mở đường cho việc giải nhiều phương trình không có nghiệm sơ cấp.
+
+### Khung giải thích (nên đọc chậm): Giải cầm tay chỉ việc phương trình Airy $y'' - xy = 0$ quanh điểm thường $x_0 = 0$
+
+1. **Thế chuỗi $y = \sum_{n=0}^\infty a_n x^n$**:
+   $$\sum_{n=2}^{\infty} n(n-1) a_n x^{n-2} - \sum_{n=0}^{\infty} a_n x^{n+1} = 0.$$
+2. **Dịch chỉ số về $x^k$**:
+   - Tổng 1 ($k = n - 2$): $\sum_{k=0}^\infty (k+2)(k+1) a_{k+2} x^k = 2a_2 + \sum_{k=1}^\infty (k+2)(k+1) a_{k+2} x^k$.
+   - Tổng 2 ($k = n + 1$): $\sum_{k=1}^\infty a_{k-1} x^k$.
+3. **Đồng nhất hệ số**:
+   - Với $k = 0$: $2a_2 = 0 \implies \mathbf{a_2 = 0}$.
+   - Với $k \ge 1$: $(k+2)(k+1) a_{k+2} - a_{k-1} = 0 \implies \mathbf{a_{k+2} = \frac{a_{k-1}}{(k+2)(k+1)}}$ (nhảy bước 3!).
+4. **Tính tay 6 hệ số đầu**:
+   - Nhánh $a_0$: $a_3 = \frac{a_0}{3 \cdot 2} = \frac{a_0}{6}$; $a_6 = \frac{a_3}{6 \cdot 5} = \frac{a_0}{180}$.
+   - Nhánh $a_1$: $a_4 = \frac{a_1}{4 \cdot 3} = \frac{a_1}{12}$; $a_7 = \frac{a_4}{7 \cdot 6} = \frac{a_1}{504}$.
+   - Nhánh $a_2 = 0$: kéo theo $a_5 = a_8 = \dots = 0$!
+5. **Nghiệm tổng quát**:
+   $$y(x) = a_0\left(1 + \frac{x^3}{6} + \frac{x^6}{180} + \dots\right) + a_1\left(x + \frac{x^4}{12} + \frac{x^7}{504} + \dots\right).$$
+   Kiểm tra nhanh $y_1'' - xy_1$: $y_1'' = x + \frac{x^4}{6} + \dots = x\left(1 + \frac{x^3}{6} + \dots\right) = x y_1$ — khớp chính xác tuyệt đối!
 
 ## Khái niệm theo ba cách
 

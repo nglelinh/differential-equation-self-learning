@@ -12,6 +12,19 @@ lesson_type: required
 
 ![Trực giác của Runge-Kutta bậc bốn]({{ site.imgurl }}/chapter_img/chapter13/02_runge_kutta_methods.svg )
 
+Nhược điểm chí mạng của phương pháp Euler là nó mù quáng tin vào độ dốc tại đầu đoạn $[t_n, t_n + h]$ trong khi đường cong nghiệm đang uốn lượn liên tục. Vậy nếu ta thử bước ra giữa đoạn, thăm dò độ dốc tại đó, sửa lại ước lượng một lần nữa, rồi lấy **trung bình có trọng số** của 4 độ dốc thăm dò thì sao? Bạn vừa phát minh lại **Runge–Kutta bậc 4 (RK4)**—cỗ máy giải ODE kinh điển thống trị khoa học kỹ thuật suốt hơn một thế kỷ!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Họ Phương pháp Runge–Kutta
+
+1. **Ý tưởng Lấy mẫu Đa điểm Nội bộ (Stages $k_1, \dots, k_s$)**:
+   Thay vì tính đạo hàm bậc cao $y'', y''', y^{(4)}$ phức tạp, RK chỉ gọi hàm $f(t, y)$ nhiều lần trong cùng một bước $[t_n, t_n + h]$ rồi ghép trọng số sao cho khớp chuỗi Taylor tới bậc $p$.
+2. **Cấu trúc Bảng Butcher và Công thức RK4 cổ điển**:
+   RK4 dùng 4 độ dốc: $k_1$ (đầu đoạn), $k_2, k_3$ (hai ước lượng giữa đoạn), $k_4$ (cuối đoạn), ghép theo quy tắc Simpson $\frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4)$ đạt sai số toàn cục $O(h^4)$!
+3. **Phương pháp RK Nhúng & Điều chỉnh Bước Thích nghi (RK45 / Dormand–Prince)**:
+   Các bộ giải thực chiến như `scipy.integrate.solve_ivp` dùng hai công thức bậc 4 và bậc 5 chia sẻ chung các điểm đánh giá $k_i$: hiệu $|\tilde{y}_{n+1} - y_{n+1}|$ ước lượng ngay sai số cục bộ để tự động phóng to $h$ ở vùng êm và thu nhỏ $h$ ở vùng biến thiên gắt!
+4. **Hàng rào Butcher & RK Ẩn (Implicit RK)**:
+   Từ bậc $p \ge 5$, số lần gọi hàm $s$ buộc phải lớn hơn $p$ (ví dụ RK5 cần ít nhất 6 tầng); và với bài toán cứng, RK ẩn (như Gauss–Legendre, Radau) mở rộng miền ổn định ra toàn nửa mặt phẳng trái!
+
 ## Mục tiêu
 
 Bài học này giới thiệu họ phương pháp Runge–Kutta như sự cải tiến có hệ thống của phương pháp Euler. Sau bài học, sinh viên cần hiểu ý tưởng lấy nhiều mẫu độ dốc trong cùng một bước, thiết lập được công thức RK4, giải thích vì sao RK4 chính xác hơn Euler đáng kể, và nhận biết khi nào Runge–Kutta là lựa chọn thích hợp hay chưa phù hợp.
@@ -26,6 +39,18 @@ Nếu phương pháp Euler chỉ dựa vào hướng đi tại điểm xuất ph
 
 Chỉ bằng cách lấy một vài mẫu độ dốc có chọn lọc trong mỗi bước, Runge–Kutta nâng cao bậc chính xác đáng kể mà không cần tính đạo hàm bậc cao của $$ f $$. Nhờ ưu điểm này, họ Runge–Kutta trở thành công cụ tiêu chuẩn cho nhiều bài toán ODE không cứng.
 
+
+### Khung giải thích (nên đọc chậm): Thực hành tay trọn vẹn 1 bước RK4 và đối chiếu độ chính xác đến $10^{-6}$
+
+Giải $y' = y + t$, $y(0) = 1$ tại $t_1 = 0{,}2$ với $h = 0{,}2$ (nghiệm giải tích $y(t) = 2e^t - t - 1$, nên $y(0{,}2) \approx \mathbf{1{,}2428055}$):
+1. **Tính 4 độ dốc thăm dò**:
+   - $k_1 = f(0,\; 1) = 1 + 0 = \mathbf{1{,}000}$.
+   - $k_2 = f(0{,}1,\; 1 + 0{,}1 \times 1{,}000) = 1{,}100 + 0{,}1 = \mathbf{1{,}200}$.
+   - $k_3 = f(0{,}1,\; 1 + 0{,}1 \times 1{,}200) = 1{,}120 + 0{,}1 = \mathbf{1{,}220}$.
+   - $k_4 = f(0{,}2,\; 1 + 0{,}2 \times 1{,}220) = 1{,}244 + 0{,}2 = \mathbf{1{,}444}$.
+2. **Ghép trọng số Simpson**:
+   $$y_1 = 1 + \frac{0{,}2}{6}\big(1{,}000 + 2(1{,}200) + 2(1{,}220) + 1{,}444\big) = 1 + \frac{0{,}2}{6}(7{,}284) = \mathbf{1{,}2428000}.$$
+3. **So sánh sai số**: $|1{,}2428055 - 1{,}2428000| = \mathbf{5{,}5 \times 10^{-6}}$—đúng tới tận chữ số thập phân thứ 5 chỉ trong một bước $h = 0{,}2$ duy nhất!
 ## Khái niệm theo ba cách
 
 ### Cách trực giác

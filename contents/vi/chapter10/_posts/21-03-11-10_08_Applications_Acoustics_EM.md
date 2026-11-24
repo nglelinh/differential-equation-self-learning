@@ -9,7 +9,21 @@ categories:
 - chapter10
 lesson_type: optional
 ---
+
 ![21 03 11 10 08 Applications Acoustics Em]({{ site.imgurl }}/chapter_img/chapter10/08_applications_acoustics_em.svg)
+
+Một tiếng vỗ tay vang qua sân trường ở tốc độ $343\text{ m/s}$ và một tín hiệu Wi-Fi băng qua căn phòng ở gần $300.000\text{ km/s}$ tưởng chừng thuộc về hai thế giới vật lý hoàn toàn khác nhau—một bên là va chạm cơ học của phân tử không khí, bên kia là trường điện từ dao động ngay cả trong chân không tuyệt đối. Vậy mà khi đặt phương trình Euler tuyến tính hóa của âm học cạnh hệ phương trình Maxwell của điện từ học, cả hai đều rút gọn về **cùng một phương trình sóng duy nhất** $\partial_{tt} u = c^2 \Delta u$!
+
+## Bản đồ kiến thức nền: Bốn trụ cột nối Âm học và Điện từ học qua Phương trình Sóng
+
+1. **Âm học tuyến tính (Phương trình sóng vô hướng cho áp suất)**:
+   Tuyến tính hóa bảo toàn khối lượng và bảo toàn động lượng quanh trạng thái nghỉ $(\rho_0, p_0)$ cho ra phương trình sóng cho nhiễu động áp suất $p'$ với tốc độ âm thanh $c_s = \sqrt{\gamma p_0 / \rho_0}$—sóng dọc dao động song song với phương truyền.
+2. **Hệ Maxwell và Sóng điện từ (Phương trình sóng vector)**:
+   Lấy toán tử $\nabla \times$ trên định luật Faraday và Ampère–Maxwell trong môi trường đồng nhất không nguồn tạo ra $\mathbf{E}_{tt} = c^2 \Delta \mathbf{E}$ và $\mathbf{B}_{tt} = c^2 \Delta \mathbf{B}$ với $c = 1/\sqrt{\mu \varepsilon}$—sóng ngang mà $\mathbf{E} \perp \mathbf{B} \perp \mathbf{k}$.
+3. **Trở kháng đặc trưng và Năng lượng truyền tải**:
+   Âm học dùng trở kháng âm $Z = \rho_0 c_s$ và cường độ $I = p' v$; điện từ học dùng trở kháng sóng $\eta = \sqrt{\mu/\varepsilon}$ và vector Poynting $\mathbf{S} = \frac{1}{\mu}\mathbf{E} \times \mathbf{B}$. Chính sự chênh lệch trở kháng tại mặt phân cách quyết định phần sóng phản xạ hay truyền qua.
+4. **Ống dẫn sóng, Hốc cộng hưởng và Điều kiện biên**:
+   Ống sáo (biên mở $p' = 0$ hay kín $\partial_n p' = 0$) và ống dẫn sóng vi ba (biên dẫn điện hoàn hảo $\mathbf{E}_\parallel = \mathbf{0}$) đều tạo ra phổ tần số rời rạc và tần số cắt—cùng một bài toán giá trị riêng của toán tử Laplace!
 
 ## Mục tiêu
 
@@ -25,6 +39,15 @@ Nếu chỉ nhìn phương trình sóng qua mô hình dây đàn rung, ta dễ �
 
 Thông điệp xuyên suốt của bài học là tính thống nhất của toán học ứng dụng: dù đại lượng vật lý thay đổi, các khái niệm cốt lõi vẫn là sự lan truyền với tốc độ hữu hạn, hệ mode riêng, điều kiện biên và năng lượng.
 
+
+### Khung giải thích (nên đọc chậm): So sánh trực tiếp bước sóng âm thanh và sóng điện từ bằng phép tính tay
+
+Cùng dùng một hệ thức phổ quát $\lambda = c / f$, hãy tính hai sóng quen thuộc trong đời sống:
+1. **Sóng âm trong không khí ở $20^\circ\text{C}$** ($c_s \approx 343\text{ m/s}$) với nốt nhạc chuẩn $f = 1.000\text{ Hz}$:
+   $$\lambda_{\text{âm}} = \frac{343}{1.000} = \mathbf{0{,}343\text{ m}} \quad (34{,}3\text{ cm}).$$
+2. **Sóng phát thanh FM trong không khí** ($c_0 \approx 3{,}0 \times 10^8\text{ m/s}$) ở tần số $f = 100\text{ MHz} = 10^8\text{ Hz}$:
+   $$\lambda_{\text{FM}} = \frac{3{,}0 \times 10^8}{10^8} = \mathbf{3{,}0\text{ m}}.$$
+3. **Ánh sáng đi vào lõi sợi quang thủy tinh** có chiết suất $n = 1{,}5$: tốc độ sóng giảm xuống $v = c_0 / n = 2{,}0 \times 10^8\text{ m/s}$, nên bước sóng co ngắn đi đúng $1{,}5$ lần trong khi tần số $f$ giữ nguyên tuyệt đối! Đó là lý do ăng-ten radio dài vài chục cm còn màng nhĩ chỉ cần vài mm.
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan

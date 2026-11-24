@@ -9,7 +9,21 @@ categories:
 - chapter11
 lesson_type: required
 ---
+
 ![21 03 18 11 04 Poisson Equation]({{ site.imgurl }}/chapter_img/chapter11/04_poisson_equation.svg)
+
+Nếu phương trình Laplace $\Delta u = 0$ mô tả một căn phòng cân bằng nhiệt không có lò sưởi hay máy lạnh bên trong, thì **Phương trình Poisson** $-\Delta u = f$ là lúc ta bật nguồn nhiệt phân bố $f(x, y)$ ngay giữa phòng—hoặc đặt điện tích mật độ $\rho(x, y)$ vào không gian, hay đổ tải trọng $f$ lên màng đàn hồi. Nhờ tính tuyến tính, bài toán phức tạp này luôn tách gọn thành hai mảnh ghép rõ ràng: tìm một nghiệm riêng chịu trách nhiệm cho nguồn $f$, rồi cộng thêm nghiệm điều hòa để chỉnh đúng điều kiện biên!
+
+## Bản đồ kiến thức nền: Bốn trụ cột giải Phương trình Poisson $-\Delta u = f$
+
+1. **Tách nghiệm $u = u_p + u_h$ (Nghiệm riêng + Nghiệm điều hòa)**:
+   Tìm một hàm $u_p$ bất kỳ thỏa mãn $-\Delta u_p = f$; khi đó hiệu $u_h = u - u_p$ thỏa mãn phương trình Laplace thuần nhất $\Delta u_h = 0$ với điều kiện biên mới $u_h|_{\partial\Omega} = g - u_p|_{\partial\Omega}$.
+2. **Khai triển theo Hàm riêng của Toán tử Laplace**:
+   Nếu $-\Delta \phi_k = \lambda_k \phi_k$ với biên thuần nhất, khai triển $f = \sum c_k \phi_k$ và $u = \sum u_k \phi_k$ biến PDE thành phép chia đại số đơn giản $u_k = c_k / \lambda_k$—cho thấy ngay mỗi mode nguồn bị làm trơn bởi hệ số $1/\lambda_k$.
+3. **Nghiệm cơ bản và Tích phân Thế Newton**:
+   Trên toàn không gian $\mathbb{R}^n$, nghiệm được viết qua tích chập với nghiệm cơ bản $\Phi$: ở 2D là $-\frac{1}{2\pi}\ln|x - y|$, ở 3D là $\frac{1}{4\pi|x - y|}$.
+4. **Điều kiện Tương thích cho Biên Neumann**:
+   Theo định lý Divergence, $\int_\Omega (-\Delta u)\,dx = -\oint_{\partial\Omega} \frac{\partial u}{\partial n}\,ds$, nên bài toán Poisson với biên Neumann $\partial_n u = h$ chỉ có nghiệm khi tổng nguồn sinh ra bên trong cân bằng chính xác với tổng thông lượng thoát ra qua biên: $\int_\Omega f\,dx + \oint_{\partial\Omega} h\,ds = 0$.
 
 ## Mục tiêu
 
@@ -25,6 +39,19 @@ Nếu phương trình Laplace mô tả trạng thái cân bằng thuần túy kh
 
 Cần lưu ý rằng phương trình Poisson vẫn nằm trọn trong khuôn khổ elliptic: phương trình Laplace là trường hợp riêng với vế phải bằng 0, còn số hạng nguồn $$ f $$ là tác nhân làm uốn cong trường thế bên trong miền.
 
+
+### Khung giải thích (nên đọc chậm): Giải trọn vẹn bằng tay phương trình Poisson đối xứng tâm trên đĩa đơn vị
+
+Xét tấm tròn bán kính $R = 1$ có nguồn nhiệt đều $f = 4$ và vành ngoài giữ ở $0^\circ\text{C}$:
+$$-\Delta u = 4 \quad (r < 1), \qquad u(1) = 0.$$
+1. **Viết theo bán kính $r$**: Do tính đối xứng tròn, $u = u(r)$ thỏa mãn:
+   $$-\frac{1}{r}\frac{d}{dr}\left(r u'(r)\right) = 4 \implies \frac{d}{dr}\left(r u'(r)\right) = -4r.$$
+2. **Tích phân lần thứ nhất**:
+   $$r u'(r) = -2r^2 + C_1 \implies u'(r) = -2r + \frac{C_1}{r}.$$
+   Để nhiệt độ bị chặn (không có kỳ dị $\ln r$) tại tâm $r = 0$, ta bắt buộc chọn $C_1 = 0$.
+3. **Tích phân lần thứ hai và áp điều kiện biên $u(1) = 0$**:
+   $$u(r) = -r^2 + C_2, \qquad u(1) = -1 + C_2 = 0 \implies C_2 = 1.$$
+   Vậy nghiệm chính xác là $u(r) = \mathbf{1 - r^2} = 1 - x^2 - y^2$. Kiểm chứng nhanh: $-\Delta(1 - x^2 - y^2) = -(-2 - 2) = \mathbf{4}$, và đỉnh nóng nhất $u(0) = 1$ nằm ngay tại tâm—vượt trên biên $0$ vì nguồn $f = 4 > 0$!
 ## Khái niệm theo ba cách
 
 ### Cách nhìn trực quan

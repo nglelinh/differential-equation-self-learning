@@ -10,6 +10,39 @@ categories:
 lesson_type: required
 ---
 
+Press a single fingertip onto a taut string at position $$ s $$, and the string bends into a sharp triangular tent with a kink right under your finger. Now imagine replacing a distributed load $$ f(x) $$ along the entire bridge or string with a continuum of tiny fingertip pokes of strength $$ f(s)\,ds $$. By linearity, the total deflection is simply the superposition of all those individual tent shapes: $$ y(x) = \int_a^b G(x, s) f(s)\,ds $$.
+
+That tent shape $$ G(x, s) $$ is the **Green's function**—named after the self-taught Nottingham miller George Green, who introduced it in an 1828 essay printed at his own expense. Mathematically, $$ G(x, s) $$ is the exact integral kernel of the inverse differential operator $$ L^{-1} $$, turning differential equations into explicit integration formulas.
+
+## Background Knowledge Map: Green's Functions as Continuous Inverse Matrices
+
+1. **Distributional Definition $$ L_x[G(x,s)] = \delta(x - s) $$ (Impulse Response):** Just as column $$ j $$ of $$ A^{-1} $$ solves $$ A \mathbf{g}_j = \mathbf{e}_j $$, the function $$ x \mapsto G(x, s) $$ solves the homogeneous equation $$ L_x[G] = 0 $$ everywhere except at $$ x = s $$, while satisfying both homogeneous boundary conditions.
+2. **Continuity and Jump Condition (The Kink at $$ x = s $$):** Integrating $$ -\frac{d}{dx}(p(x) G_x) + q(x) G = \delta(x - s) $$ across an infinitesimal window $$ [s - \varepsilon, s + \varepsilon] $$ forces two stitching rules: (i) $$ G(x, s) $$ is continuous at $$ x = s $$, and (ii) its derivative jumps by $$ G_x(s^+, s) - G_x(s^-, s) = -\frac{1}{p(s)} $$ (or $$ +\frac{1}{p(s)} $$ depending on sign convention for $$ L $$).
+3. **Reciprocity Symmetry $$ G(x, s) = G(s, x) $$ (Self-Adjointness):** For any self-adjoint Sturm–Liouville operator, the deflection at $$ x $$ caused by a unit load at $$ s $$ equals the deflection at $$ s $$ caused by a unit load at $$ x $$—Maxwell's reciprocity theorem in mechanics and the symmetry of $$ A^{-1} $$ in linear algebra.
+4. **Bilinear Spectral Expansion (Bridge to Eigenfunctions):** Expanding $$ G(x, s) $$ in orthonormal eigenfunctions yields $$ G(x, s) = \sum_{n=1}^{\infty} \frac{\phi_n(x)\phi_n(s)}{\lambda_n} $$, unifying Lesson 07-04 and Lesson 07-05 into two views of the exact same inverse operator!
+
+### Step-by-Step Worked Example (Read Slowly): Constructing $$ G(x, s) $$ for $$ -y'' = f(x) $$ on $$ [0, L] $$ and Verifying on $$ f(x) = 1 $$
+
+**Problem:** Construct the Green's function for $$ -y'' = f(x) $$ on $$ [0, L] $$ with $$ y(0) = y(L) = 0 $$, then use $$ y(x) = \int_0^L G(x, s) f(s)\,ds $$ to solve $$ -y'' = 1 $$ and verify directly.
+
+1. **Solve $$ -G_{xx} = 0 $$ on each side of $$ x = s $$:**
+   - For $$ 0 \le x < s $$, $$ G(0, s) = 0 \implies G(x, s) = A(s)\,x $$.
+   - For $$ s < x \le L $$, $$ G(L, s) = 0 \implies G(x, s) = B(s)\,(L - x) $$.
+2. **Enforce continuity and the unit derivative jump at $$ x = s $$:**
+   Since $$ p(x) = 1 $$ in $$ -(p G_x)' = \delta(x - s) $$, integrating across $$ s $$ gives $$ -G_x(s^+, s) + G_x(s^-, s) = 1 \implies G_x(s^+, s) - G_x(s^-, s) = -1 $$.
+   - Continuity: $$ A s = B (L - s) $$.
+   - Jump: $$ -B - A = -1 \implies A + B = 1 $$.
+3. **Solve the $$ 2 \times 2 $$ system for $$ A(s) $$ and $$ B(s) $$:**
+   From $$ B = 1 - A $$, substitute into $$ A s = (1 - A)(L - s) = L - s - A L + A s \implies A L = L - s $$, so
+   $$ A(s) = \frac{L - s}{L}, \qquad B(s) = \frac{s}{L}. $$
+   Therefore, the symmetric tent-shaped Green's function is
+   $$ G(x, s) = \begin{cases} \dfrac{x(L - s)}{L}, & 0 \le x \le s, \\[6pt] \dfrac{s(L - x)}{L}, & s \le x \le L. \end{cases} $$
+   Notice $$ G(x, s) = G(s, x) $$ visibly!
+4. **Apply to $$ f(x) = 1 $$ and verify:**
+   Split the integral at $$ s = x $$:
+   $$ y(x) = \int_0^x \frac{s(L - x)}{L}\,ds + \int_x^L \frac{x(L - s)}{L}\,ds = \frac{L - x}{L} \cdot \frac{x^2}{2} + \frac{x}{L} \cdot \frac{(L - x)^2}{2} = \frac{x(L - x)}{2L}\bigl[x + (L - x)\bigr] = \frac{x(L - x)}{2}. $$
+   Check: $$ y(0) = 0 $$, $$ y(L) = 0 $$, and $$ -y''(x) = -\frac{d^2}{dx^2}\left(\frac{Lx - x^2}{2}\right) = 1 $$. Exact!
+
 ## Learning Objectives
 
 This lesson introduces Green's functions as a powerful method for solving linear nonhomogeneous BVPs. Students should learn to interpret a Green's function as the system's response to a point source, construct it in simple one-dimensional problems, and use the resulting integral formula for solutions.

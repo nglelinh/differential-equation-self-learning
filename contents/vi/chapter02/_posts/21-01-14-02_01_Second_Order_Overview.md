@@ -9,6 +9,20 @@ categories:
 - chapter02
 lesson_type: required
 ---
+
+Bước từ phương trình cấp một sang **phương trình tuyến tính cấp hai** $y'' + p(t)y' + q(t)y = g(t)$ là bước nhảy vọt từ chuyển động đơn điệu sang thế giới phong phú của **dao động, sóng và cộng hưởng**. Điểm tựa vững chắc nhất của cả chương là một sự thật đại số đẹp đẽ: toàn bộ vô số nghiệm của phương trình thuần nhất đều được sinh ra từ chỉ **hai nghiệm cơ sở độc lập tuyến tính**.
+
+## Bản đồ kiến thức nền: Bốn trụ cột Tổng quan PTVP Tuyến tính Cấp Hai
+
+1. **Nguyên lý Chồng chất (Superposition Principle)**:
+   Nếu $y_1, y_2$ là nghiệm của phương trình thuần nhất $L[y] = 0$, thì mọi tổ hợp tuyến tính $c_1 y_1 + c_2 y_2$ cũng là nghiệm—điều hoàn toàn **sai** với phương trình phi tuyến!
+2. **Tồn tại & Duy nhất cho IVP cấp hai**:
+   Nếu $p(t), q(t), g(t)$ liên tục trên khoảng mở $I \ni t_0$, thì với mọi cặp điều kiện đầu $(y(t_0), y'(t_0))$, tồn tại **duy nhất** một nghiệm trên toàn bộ khoảng $I$.
+3. **Hệ nghiệm cơ bản (Fundamental Set) & Wronskian**:
+   Hai nghiệm $y_1, y_2$ tạo thành cơ sở của không gian nghiệm 2 chiều khi và chỉ khi định thức Wronskian $W(y_1, y_2) = y_1 y_2' - y_1' y_2 \ne 0$.
+4. **Cấu trúc nghiệm không thuần nhất ($y = y_h + y_p$)**:
+   Mọi nghiệm của $L[y] = g(t)$ đều tách làm tổng của nghiệm tổng quát thuần nhất $y_h = c_1 y_1 + c_2 y_2$ và một nghiệm riêng bất kỳ $y_p$.
+
 ## Mục tiêu
 Bài học này mở đầu chương về phương trình tuyến tính cấp hai, giúp sinh viên hiểu vì sao cấp hai xuất hiện tự nhiên trong các hệ có quán tính, phân biệt nghiệm tổng quát với nghiệm riêng, đồng thời nắm ý nghĩa của tính tuyến tính, nguyên lý chồng chất và vai trò của hai điều kiện đầu. Sau bài học, sinh viên cần thấy rằng chuyển từ cấp một sang cấp hai không chỉ là thêm một bậc đạo hàm, mà là chuyển sang lớp mô hình có trạng thái động học phong phú hơn.
 
@@ -21,6 +35,17 @@ Sinh viên nên nắm vững đạo hàm cấp một, cấp hai, các kỹ thu�
 Phương trình cấp một thường mô tả các hệ mà tốc độ thay đổi phụ thuộc trực tiếp vào trạng thái hiện tại. Tuy nhiên, trong nhiều hiện tượng thực tế, trạng thái không chỉ có vận tốc mà còn chịu chi phối bởi gia tốc. Chuyển động của một vật gắn lò xo không chỉ phụ thuộc vào vị trí hiện tại mà còn phụ thuộc vào tốc độ thay đổi của vận tốc theo thời gian. Tương tự, một mạch điện RLC không chỉ liên quan đến điện tích mà còn liên quan đến tốc độ biến thiên của điện tích và dòng điện. Các hiện tượng dao động, rung động, cộng hưởng và đáp ứng quá độ đều thuộc phạm vi của phương trình cấp hai.
 
 Điểm trọng tâm của bài học mở đầu này là xây dựng trực giác về cấu trúc nghiệm. Với phương trình tuyến tính cấp hai thuần nhất, tập nghiệm tạo thành một không gian hai chiều, nên hai điều kiện đầu thường đủ để xác định duy nhất một nghiệm. Khi vế phải bằng 0, nghiệm phản ánh động học tự nhiên của hệ; khi vế phải khác 0, nghiệm là sự kết hợp giữa động học tự nhiên và đáp ứng trước ngoại lực.
+
+### Khung giải thích (nên đọc chậm): Ghim duy nhất nghiệm cho IVP $y'' - y = 0$ biết hai nghiệm cơ sở $y_1 = e^t,\; y_2 = e^{-t}$ và $y(0) = 3,\; y'(0) = -1$
+
+1. **Kiểm tra độc lập tuyến tính bằng Wronskian tại $t = 0$**:
+   $$W(e^t, e^{-t})(0) = \begin{vmatrix} 1 & 1 \\ 1 & -1 \end{vmatrix} = -1 - 1 = \mathbf{-2} \ne 0.$$
+   Vậy $\{e^t, e^{-t}\}$ là một hệ nghiệm cơ bản; mọi nghiệm đều có dạng $y(t) = c_1 e^t + c_2 e^{-t}$.
+2. **Thiết lập hệ phương trình từ điều kiện đầu**:
+   - $y(0) = c_1 + c_2 = 3$
+   - $y'(0) = c_1 - c_2 = -1$
+3. **Giải hệ**: Cộng hai phương trình được $2c_1 = 2 \implies c_1 = \mathbf{1}$, suy ra $c_2 = \mathbf{2}$.
+4. **Kết quả**: Nghiệm duy nhất trên toàn $\mathbb{R}$ là $y(t) = e^t + 2e^{-t}$ (kiểm tra lại: $y(0) = 3$, $y'(0) = 1 - 2 = -1$, $y'' - y = (e^t + 2e^{-t}) - (e^t + 2e^{-t}) = 0$).
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan

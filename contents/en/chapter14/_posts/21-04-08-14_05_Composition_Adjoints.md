@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** If multiplying two pseudo-differential operators meant computing four nested oscillatory integrals every time, the theory would be unusable. Instead, the **Moyal–Kohn–Nirenberg asymptotic composition theorem** compresses operator composition into an explicit derivative series on symbols—turning operator algebra into pencil-and-paper differentiation.
+
 ## Learning Objectives
 
 This lesson studies composition and adjoint rules in pseudo-differential calculus. Students should understand why operator algebra corresponds to symbolic asymptotics and how adjoints are reflected at the symbol level.
@@ -17,6 +19,17 @@ This lesson studies composition and adjoint rules in pseudo-differential calculu
 ## Prerequisites
 
 Students should know symbols, pseudo-differential operator definitions, and basic operator adjoint ideas.
+
+## Background Knowledge Map: The Symbolic Algebra of Composition and Adjoints
+
+Four structural theorems make $\Psi^*(\mathbb{R}^n) = \bigcup_m \Psi^m$ a closed $*$-algebra modulo smoothing operators:
+
+1. **Asymptotic Composition Formula ($a \# b$):** If $A = a(x,D) \in \Psi^{m_1}$ and $B = b(x,D) \in \Psi^{m_2}$, then $A \circ B \in \Psi^{m_1 + m_2}$ with symbol
+   $$(a \# b)(x,\xi) \sim \sum_{\alpha} \frac{1}{\alpha!}\,\partial_\xi^\alpha a(x,\xi)\,D_x^\alpha b(x,\xi).$$
+2. **Principal Symbol Homomorphism:** At leading order ($\alpha = 0$), $(a\# b) \equiv a(x,\xi)b(x,\xi) \pmod{S^{m_1+m_2-1}}$. Thus $\Psi\text{DOs}$ commute *to leading order*, and their commutator $[A, B]$ drops by a full order to $\Psi^{m_1+m_2-1}$ with principal symbol $\frac{1}{i}\{a, b\}$!
+3. **Formal $L^2$-Adjoint Formula ($a^*$):** The adjoint $A^*$ satisfying $\langle Au, v\rangle_{L^2} = \langle u, A^*v\rangle_{L^2}$ also lies in $\Psi^m$, with asymptotic symbol
+   $$a^*(x,\xi) \sim \sum_{\alpha} \frac{1}{\alpha!}\,\partial_\xi^\alpha D_x^\alpha \overline{a(x,\xi)}.$$
+4. **Finite Termination for Differential Operators:** Whenever $a(x,\xi)$ is a polynomial in $\xi$ of degree $m$, $\partial_\xi^\alpha a = 0$ for $|\alpha| > m$, so the asymptotic expansion terminates in finitely many terms and becomes an *exact* identity.
 
 ## Introduction
 
@@ -85,6 +98,22 @@ This completes the basic operator algebra picture.
 - Can they describe the importance of lower-order correction terms?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Verifying the Composition Formula $a \# b$ on $D_x^2 \circ x^2$
+
+Let $A = D_x^2 = -\frac{d^2}{dx^2}$ (symbol $a(x,\xi) = \xi^2 \in S^2$) and $B = x^2$ (multiplication operator, symbol $b(x,\xi) = x^2 \in S^0$ on compact sets). Compute the symbol of $A \circ B$ using the composition formula $a \# b = \sum_{k=0}^\infty \frac{1}{k!}\partial_\xi^k a\,D_x^k b$, and cross-check by applying $-\frac{d^2}{dx^2}$ directly to $x^2 u(x)$.
+
+1. **Compute the derivatives of $a(\xi) = \xi^2$ and $b(x) = x^2$ (with $D_x = -i\partial_x$):**
+   - $k = 0$: $a = \xi^2$, $b = x^2$.
+   - $k = 1$: $\partial_\xi a = 2\xi$, $D_x b = -i(2x) = -2ix$.
+   - $k = 2$: $\partial_\xi^2 a = 2$, $D_x^2 b = (-i)^2(2) = -2$.
+   - $k \ge 3$: $\partial_\xi^k a = 0$ (series terminates!).
+2. **Sum the three terms of $a \# b$:**
+   $$(a \# b)(x,\xi) = \frac{1}{0!}(\xi^2)(x^2) + \frac{1}{1!}(2\xi)(-2ix) + \frac{1}{2!}(2)(-2) = x^2\xi^2 - 4ix\xi - 2.$$
+3. **Cross-check directly in physical space:** Apply $A \circ B = -\frac{d^2}{dx^2}(x^2 \cdot)$ to a smooth function $u(x)$:
+   $$-\frac{d}{dx}\big(2x u + x^2 u'\big) = -\big(2u + 4x u' + x^2 u''\big) = x^2\left(-\frac{d^2 u}{dx^2}\right) - 4ix\left(-i\frac{du}{dx}\right) - 2u = (x^2 D_x^2 - 4ix D_x - 2)u.$$
+   Every coefficient and sign matches $(a \# b)(x, D)$ identically!
 
 ### Example 1: Multiplier Composition
 

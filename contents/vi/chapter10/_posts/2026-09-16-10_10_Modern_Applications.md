@@ -10,6 +10,19 @@ categories:
 lesson_type: optional
 ---
 
+Làm sao các nhà địa chất biết bên dưới lớp đất đá sâu 5 km có túi dầu, mỏ địa nhiệt hay đứt gãy động đất mà không thể đào cả thành phố lên? Họ tạo một xung chấn nhỏ trên mặt đất, ghi lại tiếng vang bằng hàng nghìn cảm biến (*geophones*), rồi giải bài toán ngược **Full Waveform Inversion (FWI)** trên phương trình sóng $u_{tt} = c(x, z)^2 \nabla^2 u$—và ngày nay kết hợp với **mạng nơ-ron lan truyền sóng** để dựng bản đồ lòng đất nhanh gấp hàng chục lần!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Ảnh Địa chấn & Lan truyền Sóng Nơ-ron
+
+1. **Bài toán Thuận (Forward Modeling) vs. Bài toán Ngược (Inversion / FWI)**:
+   Bài toán thuận biết vận tốc đá $c(x, z)$ và mô phỏng sóng $u(x, z, t)$. Bài toán ngược chỉ đo được $u$ trên mặt đất $z = 0$ và phải khôi phục lại bản đồ ẩn $c(x, z)$ sâu hàng km bên dưới!
+2. **Phương pháp Trạng thái Liên hợp (Adjoint-State Method)**:
+   Cơ chế lan truyền ngược (backpropagation) trong vật lý sóng: chạy sóng dư sai số ngược thời gian từ các cảm biến xuống lòng đất rồi tương quan chéo với sóng nguồn xuôi để tìm gradient $\nabla_c \mathcal{L}$!
+3. **Mô hình thay thế Nơ-ron (FNO / PINN cho sóng)**:
+   Huấn luyện mạng nơ-ron xấp xỉ bản đồ từ trường vận tốc $c(x, z)$ sang địa chấn đồ, rút thời gian mỗi lượt lặp FWI từ hàng giờ xuống mili-giây.
+4. **Thách thức đặc thù của Sóng (Cycle Skipping & Tần số cao)**:
+   Khác với khuếch tán mượt mà, sóng dao động mạnh nên hàm mất mát $L^2$ có vô số cực tiểu địa phương (*cycle skipping*)—đòi hỏi chiến lược tối ưu đa tỷ lệ (từ tần số thấp lên tần số cao).
+
 ## Mục tiêu
 
 Bài tùy chọn này kết nối công thức d’Alembert, tính chất lan truyền hữu hạn tốc độ và định luật bảo toàn năng lượng với các mô hình mạng nơ-ron tích hợp vật lý (PINN) và học toán tử cho bài toán sóng, tập trung vào các ứng dụng địa chấn và âm học giai đoạn 2022–2024. Sau bài học, sinh viên cần chỉ ra được những đồng nhất thức sóng nào mà một bộ giải học được bắt buộc phải tôn trọng, và giải thích vì sao bài toán ngược sóng vẫn mang bản chất phân tích vi cục bộ ngay cả khi áp dụng mạng nơ-ron. Lý thuyết đặt chỉnh cổ điển của phương trình sóng vẫn giữ nguyên vai trò nền tảng.
@@ -25,6 +38,14 @@ Sóng truyền thông tin với tốc độ hữu hạn. Đặc tính này phân
 Rasht-Behesht, de Hoop và cộng sự đã minh họa việc dùng PINN cho bài toán ngược địa chấn và nhận dạng vận tốc sóng vào đầu thập niên 2020, bao gồm công trình trên *Journal of Geophysical Research* năm 2022 về PINN theo hướng nghịch đảo toàn dạng sóng (full-waveform). Moseley, Markham và Nissen-Meyer (*Finite Basis Physics-Informed Neural Networks*, *Advances in Computational Mathematics* 2023; [arXiv:2109.09355](https://arxiv.org/abs/2109.09355)) đề xuất PINN phân rã miền, đạt hiệu quả cao hơn đáng kể trên sóng tần số cao so với một mạng toàn cục đơn lẻ. Ở hướng học toán tử, FNO và các biến thể được huấn luyện làm bộ lan truyền sóng tốc độ cao, trong khi các toán tử ngược nơ-ron và mô hình dựa trên score (Molinaro, Yang, Li, Azizzadenesheli, Stuart và Anandkumar, 2023; [arXiv:2201.12904](https://arxiv.org/abs/2201.12904)) giải quyết bài toán ngược khôi phục trường hệ số từ dữ liệu đo trên biên.
 
 Đẳng thức năng lượng và định lý miền phụ thuộc của chương đóng vai trò các phép kiểm chứng đầu vào cho mọi mô hình loại này.
+
+### Khung giải thích (nên đọc chậm): Tính tay độ sâu lớp đá phản xạ từ thời gian dội sóng địa chấn
+
+Giả sử lớp đất mặt có vận tốc sóng $c_1 = 2.000\text{ m/s}$. Một nguồn nổ ở bề mặt phát xung tại $t = 0$, và cảm biến đặt ngay sát nguồn thu được tiếng vang phản xạ đầu tiên ở $t = 1{,}6\text{ giây}$:
+- Tổng quãng đường sóng đi xuống tới mặt phân cách rồi dội ngược lên là $2d = c_1 \cdot t$.
+- Độ sâu của tầng đá phản xạ:
+  $$d = \frac{c_1 t}{2} = \frac{2.000 \times 1{,}6}{2} = \mathbf{1.600\text{ m}} \quad (1{,}6\text{ km}).$$
+Nếu cảm biến thứ hai đặt cách nguồn $x = 2.400\text{ m}$ thu được sóng phản xạ tại $t_2 = 2{,}0\text{ s}$, theo Pythagoras $\sqrt{(x/2)^2 + d^2} = \frac{c_1 t_2}{2} \implies \sqrt{1200^2 + 1600^2} = 2000 = \frac{2000 \times 2{,}0}{2}$ — cho phép đồng thời ước lượng **cả độ sâu $d$ lẫn vận tốc $c_1$** mà chưa biết trước!
 
 ## Khái niệm then chốt
 

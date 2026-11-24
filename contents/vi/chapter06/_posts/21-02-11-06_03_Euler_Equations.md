@@ -10,6 +10,21 @@ categories:
 lesson_type: required
 ---
 
+Trước khi chinh phục điểm kỳ dị tổng quát bằng phương pháp Frobenius, ta có một "phòng tập" hoàn hảo giải được bằng công thức đóng: **Phương trình Cauchy–Euler** $x^2 y'' + \alpha x y' + \beta y = 0$. Điểm kỳ dị tại $x = 0$ trông có vẻ đáng sợ, nhưng chỉ cần đặt nghiệm thử $y = x^r$ (hoặc đổi biến $x = e^t$), phương trình biến đổi kỳ diệu thành một phương trình đặc trưng bậc hai quen thuộc!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Cauchy–Euler
+
+1. **Đối xứng co giãn (Scale Invariance)**:
+   Thay $x \to kx$ giữ nguyên hoàn toàn cấu trúc phương trình—đó là lý do sâu xa giải thích vì sao nghiệm tự nhiên có dạng lũy thừa $y = x^r$.
+2. **Phương trình chỉ số (Indicial Equation)**:
+   Thế $y = x^r$ cho $r(r - 1) + \alpha r + \beta = 0 \iff r^2 + (\alpha - 1)r + \beta = 0$.
+3. **Ba dạng nghiệm theo biệt thức ($\Delta$)**:
+   - Hai nghiệm thực phân biệt $r_1 \neq r_2$: $y = c_1 x^{r_1} + c_2 x^{r_2}$.
+   - Nghiệm kép $r_1 = r_2 = r$: $y = (c_1 + c_2 \ln x) x^r$ (xuất hiện $\ln x$!).
+   - Cặp nghiệm phức $\lambda \pm i\mu$: $y = x^\lambda\big(c_1 \cos(\mu \ln x) + c_2 \sin(\mu \ln x)\big)$.
+4. **Cầu nối sang Phương pháp Frobenius**:
+   Mọi phương trình có điểm kỳ dị chính quy tại $x = 0$ đều hành xử *gần giống* phương trình Euler khi $x \to 0$!
+
 ## Mục tiêu
 
 Bài học này giúp sinh viên nhận dạng và giải phương trình Euler (hay Cauchy–Euler), xem đây là cầu nối giữa nghiệm dạng lũy thừa, phương trình chỉ số và phép đổi biến logarit. Sau bài học, sinh viên cần hiểu vì sao dạng thử $$ x^r $$ xuất hiện tự nhiên, biết phân loại ba trường hợp nghiệm và nắm được phép đổi biến đưa phương trình Euler về phương trình hệ số hằng.
@@ -25,6 +40,16 @@ Sinh viên nên nắm vững phương trình vi phân tuyến tính cấp hai h�
 Phương trình Euler có hệ số biến thiên theo $$ x $$, khác với phương trình hệ số hằng. Tuy nhiên, cấu trúc của nó rất đặc biệt: mỗi đạo hàm bậc $$ k $$ đều nhân với $$ x^k $$, nhờ đó phương trình bất biến dưới phép co giãn biến độc lập. Tính chất đối xứng này khiến hàm lũy thừa $$ x^r $$ xuất hiện một cách tự nhiên, tương tự như hàm mũ $$ e^{rx} $$ đối với phương trình hệ số hằng (bất biến theo phép tịnh tiến).
 
 Qua đó, sinh viên thấy rằng việc chọn dạng nghiệm thử không phải thủ thuật tùy tiện mà phản ánh trực tiếp tính đối xứng ẩn của phương trình — ở đây là đối xứng co giãn.
+
+### Khung giải thích (nên đọc chậm): Giải cầm tay chỉ việc 2 phương trình Euler cho trường hợp nghiệm kép và nghiệm phức ($x > 0$)
+
+1. **Trường hợp 1**: $x^2 y'' - 3x y' + 4y = 0$ ($\alpha = -3,\; \beta = 4$).
+   - Phương trình chỉ số: $r(r - 1) - 3r + 4 = r^2 - 4r + 4 = (r - 2)^2 = 0 \implies r = 2$ (nghiệm kép!).
+   - Nghiệm tổng quát: $y(x) = c_1 x^2 + c_2 x^2 \ln x$.
+   - Kiểm tra nhanh $y_2 = x^2 \ln x$: $y_2' = 2x\ln x + x$, $y_2'' = 2\ln x + 3 \implies x^2(2\ln x + 3) - 3x(2x\ln x + x) + 4x^2\ln x = (2 - 6 + 4)x^2\ln x + (3 - 3)x^2 = \mathbf{0}$!
+2. **Trường hợp 2**: $x^2 y'' + x y' + 4y = 0$ ($\alpha = 1,\; \beta = 4$).
+   - Phương trình chỉ số: $r(r-1) + r + 4 = r^2 + 4 = 0 \implies r = \pm 2i$ ($\lambda = 0, \mu = 2$).
+   - Nghiệm tổng quát: $y(x) = c_1 \cos(2\ln x) + c_2 \sin(2\ln x)$ (dao động ngày càng dày đặc khi $x \to 0^+$!).
 
 ## Khái niệm theo ba cách
 

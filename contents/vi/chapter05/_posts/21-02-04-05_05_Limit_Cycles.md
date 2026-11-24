@@ -10,6 +10,19 @@ categories:
 lesson_type: required
 ---
 
+Trái tim của bạn đập đều đặn khoảng 70 nhịp/phút; đồng hồ thạch anh dao động với biên độ không đổi; mạch điện tử Van der Pol tự duy trì sóng đều dù ban đầu điện áp nhỏ li ti hay quá lớn. Hệ tuyến tính không bao giờ làm được điều kỳ diệu đó (dao động tuyến tính phụ thuộc hoàn toàn vào biên độ ban đầu). Chỉ **hệ phi tuyến** mới sinh ra **Chu trình giới hạn (Limit Cycle)**—những quỹ đạo đóng cô lập tự hút hoặc tự đẩy mọi quỹ đạo lân cận!
+
+## Bản đồ kiến thức nền: Bốn công cụ phân tích Chu trình Giới hạn
+
+1. **Chu trình giới hạn (Isolated Closed Orbit)**:
+   Quỹ đạo tuần hoàn cô lập (không có quỹ đạo đóng nào khác sát bên nó). Chu trình ổn định hút cả quỹ đạo bên trong (bơm năng lượng) lẫn bên ngoài (tản năng lượng).
+2. **Tọa độ cực $(r, \theta)$**:
+   Chuyển sang $r\dot{r} = x\dot{x} + y\dot{y}$ thường tách ngay phương trình bán kính $\dot{r} = g(r)$: các nghiệm $r^* > 0$ của $g(r^*) = 0$ chính là bán kính của các chu trình giới hạn tròn!
+3. **Định lý Poincaré–Bendixson (Chứng minh TỒN TẠI)**:
+   Trong mặt phẳng 2D, nếu một miền đóng, bị chặn $R$ là **miền bẫy** (trường vectơ trên biên hướng vào trong) và **không chứa điểm cân bằng nào**, thì $R$ chắc chắn chứa ít nhất một chu trình giới hạn!
+4. **Tiêu chuẩn Bendixson–Dulac (Chứng minh KHÔNG TỒN TẠI)**:
+   Nếu $\operatorname{div}(\mathbf{f}) = \frac{\partial f}{\partial x} + \frac{\partial g}{\partial y}$ không đổi dấu (luôn $> 0$ hoặc luôn $< 0$) trên miền đơn liên, thì không thể tồn tại quỹ đạo đóng nào trong miền đó!
+
 ## Mục tiêu
 
 Bài học này giúp sinh viên hiểu chu trình giới hạn như một dạng dao động tự duy trì trong hệ phi tuyến, phân biệt chu trình giới hạn với tâm tuyến tính và nắm được vai trò của định lý Poincaré–Bendixson trong việc chứng minh sự tồn tại quỹ đạo đóng cô lập trên mặt phẳng.
@@ -25,6 +38,20 @@ Sinh viên cần nắm vững mặt phẳng pha, điểm cân bằng, tính ổn
 Không phải mọi hệ động lực đều hội tụ về một điểm cân bằng. Nhiều hệ thực tế — từ nhịp đập của tim, mạch dao động điện tử tự kích đến các phản ứng hóa học dao động — duy trì chuyển động lặp lại theo chu kỳ và bền vững trước nhiễu nhỏ. Trong động lực học, quỹ đạo như vậy thường là một chu trình giới hạn.
 
 Đặc trưng quan trọng nhất của chu trình giới hạn là tính cô lập. Một tâm tuyến tính cũng có vô số quỹ đạo khép kín, nhưng chúng không cô lập và rất dễ bị phá vỡ khi mô hình thay đổi nhỏ. Ngược lại, chu trình giới hạn là một quỹ đạo đóng cô lập mà các quỹ đạo lân cận bị hút vào hoặc đẩy ra, nên mang ý nghĩa động lực học bền vững hơn nhiều.
+
+### Khung giải thích (nên đọc chậm): Tìm chính xác chu trình giới hạn của hệ phi tuyến bằng tọa độ cực
+
+Xét hệ:
+$$\dot{x} = -y + x(1 - x^2 - y^2), \qquad \dot{y} = x + y(1 - x^2 - y^2).$$
+
+1. **Đổi sang tọa độ cực** ($r^2 = x^2 + y^2$, $\dot{r} = \frac{x\dot{x} + y\dot{y}}{r}$, $\dot{\theta} = \frac{x\dot{y} - y\dot{x}}{r^2}$):
+   $$r\dot{r} = x\big(-y + x(1 - r^2)\big) + y\big(x + y(1 - r^2)\big) = (x^2 + y^2)(1 - r^2) = r^2(1 - r^2) \implies \dot{r} = r(1 - r^2).$$
+   $$\dot{\theta} = \frac{x^2 + y^2}{r^2} = 1 \quad (\text{quay ngược chiều kim đồng hồ tốc độ } 1\text{ rad/s}).$$
+2. **Phân tích dấu của $\dot{r} = r(1 - r^2)$**:
+   - Tại $r = 1$: $\dot{r} = 0$, $\dot{\theta} = 1$ → đường tròn đơn vị $x^2 + y^2 = 1$ là một **quỹ đạo đóng**!
+   - Khi $0 < r < 1$: $\dot{r} > 0$ → mọi quỹ đạo bên trong xoáy bung **ra** tiến tới $r = 1$.
+   - Khi $r > 1$: $\dot{r} < 0$ → mọi quỹ đạo bên ngoài xoáy thu **vào** tiến tới $r = 1$.
+3. **Kết luận**: Đường tròn $r = 1$ là **chu trình giới hạn ổn định duy nhất** (dù khởi đầu ở $r_0 = 0{,}01$ hay $r_0 = 100$, hệ đều tiến về dao động biên độ đúng bằng $1$!).
 
 ## Khái niệm theo ba cách
 

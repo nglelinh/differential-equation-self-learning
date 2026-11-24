@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Runge–Kutta methods have short-term amnesia: at every new time step, they throw away all the expensive slope evaluations they just computed and start from scratch. **Linear multistep methods** (Adams–Bashforth, Adams–Moulton, and BDF) remember the past—reusing stored history $(f_n, f_{n-1}, \dots)$ to achieve high order with just **one** new function evaluation per step, at the price of a subtle new danger called parasitic-root instability.
+
 ## Learning Objectives
 
 This lesson introduces multistep methods such as Adams-Bashforth and Adams-Moulton schemes. Students should understand how past solution values are reused, why these methods can be efficient, and what new issues arise when several previous steps are involved.
@@ -17,6 +19,15 @@ This lesson introduces multistep methods such as Adams-Bashforth and Adams-Moult
 ## Prerequisites
 
 Students should know one-step methods, especially Euler and Runge-Kutta methods, and have some familiarity with interpolation ideas.
+
+## Background Knowledge Map: Memory, Characteristic Polynomials, and Dahlquist Barriers
+
+Four core ideas govern the theory and practice of linear multistep methods $\sum_{j=0}^k \alpha_j y_{n+j} = h\sum_{j=0}^k \beta_j f_{n+j}$:
+
+1. **Polynomial Interpolation of Past Slopes (Adams Family):** Integrating $y' = f$ over $[t_n, t_{n+1}]$ and replacing $f$ by an interpolating polynomial through past points yields explicit **Adams–Bashforth** (extrapolation) and implicit **Adams–Moulton** (interpolation, often paired as predictor–corrector).
+2. **Backward Differentiation Formulas (BDF):** Instead of integrating $f$, differentiating a polynomial interpolating past *solution* values $y_{n+1}, y_n, \dots$ produces BDF1–BDF6, the gold-standard workhorses for stiff ODEs.
+3. **Zero-Stability and the Root Condition:** A multistep scheme introduces $k-1$ spurious "parasitic" roots to $\rho(\zeta) = \sum_{j=0}^k \alpha_j \zeta^j = 0$. The method is **zero-stable** iff all roots satisfy $|\zeta| \le 1$ and any root with $|\zeta| = 1$ is simple.
+4. **Dahlquist's Stability Barriers:** You cannot have everything at once: (i) the maximum order of a zero-stable $k$-step method is $k+1$ ($k$ odd) or $k+2$ ($k$ even); (ii) no *explicit* multistep method is A-stable, and no A-stable linear multistep method can exceed order $2$ (the trapezoidal rule)!
 
 ## Introduction
 
@@ -85,6 +96,20 @@ This distinguishes multistep methods sharply from one-step schemes.
 - Can they describe one difference between Adams-Bashforth and Adams-Moulton methods?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Deriving and Testing 2-Step Adams–Bashforth (AB2)
+
+Derive the 2-step Adams–Bashforth formula from scratch, verify its zero-stability via the root condition, and take one step on $y' = y$ with $h = 0.1$.
+
+1. **Interpolate $f(t, y(t))$ linearly through $(t_n, f_n)$ and $(t_{n+1}, f_{n+1})$:**
+   $$P_1(t) = f_{n+1} + \frac{f_{n+1} - f_n}{h}(t - t_{n+1}).$$
+2. **Integrate $P_1(t)$ over $[t_{n+1}, t_{n+2}]$:** Substitute $s = (t - t_{n+1})/h \in [0, 1]$ ($dt = h\,ds$):
+   $$y_{n+2} - y_{n+1} = \int_{t_{n+1}}^{t_{n+2}} P_1(t)\,dt = h\int_0^1 \big(f_{n+1} + s(f_{n+1} - f_n)\big)\,ds = h\left(f_{n+1} + \frac{1}{2}(f_{n+1} - f_n)\right) = h\left(\frac{3}{2}f_{n+1} - \frac{1}{2}f_n\right).$$
+3. **Check zero-stability (the root condition):** The first characteristic polynomial is $\rho(\zeta) = \zeta^2 - \zeta = \zeta(\zeta - 1)$, whose roots are $\zeta_1 = 1$ (simple) and $\zeta_2 = 0$ ($|\zeta_2| < 1$). Thus AB2 is **zero-stable**.
+4. **Run one step on $y' = y$ with $h = 0.1$:** Given $y_0 = 1$ ($f_0 = 1$) and exact startup $y_1 = e^{0.1} \approx 1.10517$ ($f_1 = 1.10517$):
+   $$y_2 = 1.10517 + 0.1\big(1.5(1.10517) - 0.5(1)\big) = 1.10517 + 0.1(1.15776) = 1.22095.$$
+   Compare with $e^{0.2} \approx 1.22140$: the single-step error is just $4.5 \times 10^{-4}$ using only **one** new slope evaluation!
 
 ### Example 1: Two-Step Adams-Bashforth
 

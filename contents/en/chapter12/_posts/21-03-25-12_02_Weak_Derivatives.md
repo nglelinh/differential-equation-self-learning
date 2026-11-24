@@ -10,6 +10,8 @@ categories:
 lesson_type: required
 ---
 
+> **Storytelling Hook:** Pluck a guitar string at its midpoint and release it: at the instant of release, the string forms a sharp triangular tent with a corner right in the middle. Classical calculus throws up its hands—no derivative exists at the tip! Yet the string has finite elastic tension and obeys the wave equation effortlessly. **Weak derivatives** resolve this paradox by shifting differentiation onto infinitely smooth test functions via integration by parts.
+
 ![Weak derivatives understood through integration by parts]({{ site.imgurl }}/chapter_img/chapter12/02_weak_derivatives.svg )
 
 ## Objectives
@@ -19,6 +21,15 @@ This lesson explains why weak derivatives are needed, how they are defined using
 ## Prerequisites
 
 Students should know classical derivatives, integration by parts, smooth compactly supported test functions, and the idea of working with integrals rather than pointwise values. Some familiarity with $$ L^1_{\mathrm{loc}} $$ is also helpful because weak derivatives do not require classical smoothness.
+
+## Background Knowledge Map: Extending Differentiation Beyond Smooth Functions
+
+Weak derivatives generalize calculus without sacrificing rigor by resting on four pillars:
+
+1. **Smooth Compactly Supported Test Functions $C_c^\infty(\Omega)$:** Test functions vanish near $\partial\Omega$, killing all boundary terms in integration by parts and isolating the interior behavior of $u$.
+2. **Integration by Parts as a Definition:** We call $v \in L^1_{\text{loc}}(\Omega)$ the $\alpha$-th weak derivative of $u \in L^1_{\text{loc}}(\Omega)$ if $\int_\Omega u\,D^\alpha \varphi\,dx = (-1)^{|\alpha|}\int_\Omega v\,\varphi\,dx$ for every $\varphi \in C_c^\infty(\Omega)$.
+3. **Uniqueness Almost Everywhere:** By the Fundamental Lemma of the Calculus of Variations, if two locally integrable functions $v_1, v_2$ satisfy the weak-derivative identity for all $\varphi \in C_c^\infty(\Omega)$, then $v_1 = v_2$ a.e.
+4. **Kinks Survive, Jumps Break:** In 1D, continuous piecewise-$C^1$ functions (kinks like $|x|$) possess weak derivatives in $L^1_{\text{loc}}$, whereas jump discontinuities (like the Heaviside step) produce boundary leftovers that no $L^1_{\text{loc}}$ function can represent—requiring distributions instead.
 
 ## Introduction
 
@@ -98,6 +109,22 @@ Corners and kinks are the right place to build intuition because they show exact
 - Can they say why weak differentiation is the right language for PDE?
 
 ## Worked Examples
+
+
+### Step-by-Step Worked Example (Read Slowly): Why $|x|$ Has a Weak Derivative While the Step Function Does Not
+
+Test both $u(x) = |x|$ and the Heaviside step $H(x) = \mathbf{1}_{(0,1)}(x)$ on $\Omega = (-1,1)$ against an arbitrary test function $\varphi \in C_c^\infty(-1,1)$.
+
+1. **Compute $\int_{-1}^1 |x|\varphi'(x)\,dx$ by splitting at the corner $x = 0$:**
+   $$\int_{-1}^1 |x|\varphi'(x)\,dx = \int_{-1}^0 (-x)\varphi'(x)\,dx + \int_0^1 x\varphi'(x)\,dx.$$
+   Integrate each piece by parts, remembering $\varphi(-1) = \varphi(1) = 0$:
+   $$= \big[-x\varphi(x)\big]_{-1}^0 + \int_{-1}^0 \varphi(x)\,dx + \big[x\varphi(x)\big]_0^1 - \int_0^1 \varphi(x)\,dx = 0 + \int_{-1}^0 \varphi(x)\,dx + 0 - \int_0^1 \varphi(x)\,dx.$$
+   Combining the two integrals gives:
+   $$\int_{-1}^1 |x|\varphi'(x)\,dx = -\int_{-1}^1 \operatorname{sgn}(x)\varphi(x)\,dx.$$
+   Since $v(x) = \operatorname{sgn}(x) \in L^1_{\text{loc}}(-1,1)$, $u' = \operatorname{sgn}(x)$ is the exact weak derivative of $|x|$! Notice that the boundary terms at $x=0$ vanished because $|x|$ is continuous there.
+2. **Now test the step function $H(x) = \mathbf{1}_{(0,1)}(x)$:**
+   $$\int_{-1}^1 H(x)\varphi'(x)\,dx = \int_0^1 \varphi'(x)\,dx = \varphi(1) - \varphi(0) = -\varphi(0).$$
+   Suppose for contradiction that some $g \in L^1_{\text{loc}}(-1,1)$ satisfied $\int_{-1}^1 g(x)\varphi(x)\,dx = \varphi(0)$ for all $\varphi \in C_c^\infty(-1,1)$. Choosing a sequence of smooth bumps $\varphi_n$ supported in $(-1/n, 1/n)$ with $0 \le \varphi_n \le 1$ and $\varphi_n(0) = 1$, the right-hand side stays fixed at $1$, whereas the left-hand side satisfies $\left|\int_{-1/n}^{1/n} g\varphi_n\,dx\right| \le \int_{-1/n}^{1/n} |g(x)|\,dx \to 0$ by dominated convergence—a contradiction! Thus $H$ has no weak derivative in $L^1_{\text{loc}}$.
 
 ### Example 1: A smooth function
 

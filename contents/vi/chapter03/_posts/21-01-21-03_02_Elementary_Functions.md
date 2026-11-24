@@ -9,6 +9,20 @@ categories:
 - chapter03
 lesson_type: required
 ---
+
+Bạn không bao giờ cần tính lại tích phân $\int_0^\infty e^{-st}f(t)\,dt$ từ đầu mỗi khi giải bài toán thực tế—cũng như bạn không chứng minh lại bảng cửu chương mỗi khi nhân hai số! Chỉ cần nắm chắc **6 công thức hạt giống** ($1, t^n, e^{at}, \cos\omega t, \sin\omega t, \cosh/\sinh$) kết hợp với hai quy tắc dịch chuyển và đạo hàm theo $s$, bạn có thể đọc ngay biến đổi Laplace của hàng trăm tổ hợp hàm sơ cấp trong tích tắc.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Bảng Biến đổi Hàm Sơ cấp
+
+1. **Họ lũy thừa $t^n$ & Hàm Gamma**:
+   $\mathcal{L}\{t^n\} = \frac{n!}{s^{n+1}}$ ($s > 0$); với số mũ thực $p > -1$, công thức tổng quát dùng hàm Gamma: $\mathcal{L}\{t^p\} = \frac{\Gamma(p+1)}{s^{p+1}}$.
+2. **Họ lượng giác & Hyperbolic từ Công thức Euler**:
+   Từ $\mathcal{L}\{e^{i\omega t}\} = \frac{1}{s - i\omega} = \frac{s + i\omega}{s^2 + \omega^2}$, tách phần thực và phần ảo thu ngay $\mathcal{L}\{\cos\omega t\} = \frac{s}{s^2 + \omega^2}$ và $\mathcal{L}\{\sin\omega t\} = \frac{\omega}{s^2 + \omega^2}$!
+3. **Quy tắc Dịch tần số ($e^{at}f(t) \leftrightarrow F(s-a)$)**:
+   Nhân thêm $e^{at}$ chỉ thay mọi chữ $s$ thành $(s - a)$: ví dụ $\mathcal{L}\{e^{-2t}\sin 3t\} = \frac{3}{(s+2)^2 + 9}$.
+4. **Quy tắc Nhân với $t^n$ ($\mathcal{L}\{t^n f(t)\} = (-1)^n F^{(n)}(s)$)**:
+   Nhân thêm $t$ trong miền thời gian tương ứng với lấy đạo hàm $-\frac{d}{ds}$ trong miền Laplace—cách nhanh nhất để tìm $\mathcal{L}\{t\sin\omega t\}$ hay $\mathcal{L}\{t\cos\omega t\}$.
+
 ## Mục tiêu
 Bài học này giúp sinh viên xây dựng bảng biến đổi Laplace cho các hàm cơ bản: hằng số, lũy thừa, hàm mũ, sin, cos và các tổ hợp đơn giản. Trọng tâm không phải học thuộc máy móc mà là hiểu mối liên hệ giữa hình dạng hàm trong miền thời gian với cấu trúc phân thức trong miền $$ s $$, đồng thời biết dùng tính tuyến tính và tính dịch chuyển để suy ra công thức mới.
 
@@ -21,6 +35,16 @@ Sinh viên cần nắm định nghĩa biến đổi Laplace, kỹ thuật tích 
 Để sử dụng biến đổi Laplace hiệu quả, ta cần nắm một hệ thống công thức nền tảng. Thay vì học thuộc rời rạc từng dòng trong bảng, cách bền vững hơn là nhận diện quy luật: đa thức tạo ra các lũy thừa của $$ 1/s $$, hàm mũ làm dịch chuyển biến $$ s $$, còn sin và cos tạo ra mẫu số bậc hai $$ s^2+b^2 $$.
 
 Vì vậy, bài học này hướng dẫn cách xây dựng bảng biến đổi từ định nghĩa. Khi tự suy ra được vài công thức gốc, các công thức mở rộng trở nên có hệ thống và dễ nhớ hơn.
+
+### Khung giải thích (nên đọc chậm): Tính nhanh $\mathcal{L}\{t\,e^{-2t}\cos(3t)\}$ bằng hai quy tắc liên tiếp mà KHÔNG cần tích phân!
+
+1. **Xuất phát từ hàm gốc**:
+   $$\mathcal{L}\{\cos(3t)\} = \frac{s}{s^2 + 9}.$$
+2. **Áp dụng quy tắc nhân $t$** ($\mathcal{L}\{t f(t)\} = -F'(s)$):
+   $$\mathcal{L}\{t\cos(3t)\} = -\frac{d}{ds}\left(\frac{s}{s^2 + 9}\right) = -\frac{(s^2 + 9) - s(2s)}{(s^2 + 9)^2} = \frac{s^2 - 9}{(s^2 + 9)^2}.$$
+3. **Áp dụng quy tắc dịch $e^{-2t}$** (thay mọi $s$ bằng $s + 2$):
+   $$\mathcal{L}\{t\,e^{-2t}\cos(3t)\} = \mathbf{\frac{(s + 2)^2 - 9}{\big[(s + 2)^2 + 9\big]^2}} = \frac{s^2 + 4s - 5}{(s^2 + 4s + 13)^2} \quad (s > -2).$$
+   Chỉ mất 3 dòng đại số cho một tích phân suy rộng nếu tính tay trực tiếp sẽ mất cả trang giấy!
 
 ## Khái niệm theo ba cách
 ### Cách nhìn trực quan
