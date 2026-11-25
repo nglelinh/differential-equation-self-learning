@@ -1,6 +1,6 @@
 # Setup
 title:               "Differential Equation Self-Learning"
-description:         'Differential Equation Self-Learning Course by Your Name'
+description:         'Differential Equation Self-Learning Course'
 url:                 https://nglelinh.github.io
 baseurl:             '/differential-equation-self-learning'
 imgurl:              https://nglelinh.github.io/differential-equation-self-learning/img
@@ -17,7 +17,7 @@ parallel_localization: true
 t:
   en:
     title: "Differential Equation Self-Learning"
-    description: "Differential Equation Self-Learning Course by Your Name"
+    description: "Differential Equation Self-Learning Course"
     home: "Home"
     chapters: "Chapters"
     chapter_overview: "Chapter overview"
