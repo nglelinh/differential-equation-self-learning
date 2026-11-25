@@ -14,14 +14,14 @@ In 1898, Albert Michelson built a mechanical harmonic analyzer capable of summin
 
 This lesson separates three distinct modes of convergence—pointwise, uniform, and mean-square ($$ L^2 $$)—so you know *exactly* what a Fourier series converges to at smooth points, at jumps, and in energy norm.
 
-## Background Knowledge Map: Pointwise, Uniform, and Mean-Square Convergence
+## Key ideas: Pointwise, Uniform, and Mean-Square Convergence
 
 1. **Dirichlet's Pointwise Theorem (Midpoint Rule at Jumps):** If $$ f $$ is piecewise smooth on $$ [-L, L] $$, its Fourier series converges at every point $$ x $$ to the symmetric average $$ \frac{1}{2}\bigl[f(x^+) + f(x^-)\bigr] $$. At points of continuity this equals $$ f(x) $$; at jump discontinuities it lands squarely halfway up the cliff.
 2. **Uniform Convergence Criterion (Continuity + Periodicity):** If $$ f $$ is continuous *everywhere* on $$ \mathbb{R} $$ (including matching endpoints $$ f(-L) = f(L) $$) and piecewise smooth, then $$ \sum (|a_n| + |b_n|) < \infty $$, so by the Weierstrass M-test the Fourier series converges *uniformly*—no Gibbs horns!
 3. **The Gibbs Phenomenon (Universal $$ \approx 8.95\% $$ Overshoot):** Near a jump of height $$ \Delta = f(x_0^+) - f(x_0^-) $$, the $$ N $$-th partial sum overshoots by $$ \frac{1}{\pi}\int_0^\pi \frac{\sin t}{t}\,dt - \frac{1}{2} \approx 0.08949 $$ times $$ \Delta $$. As $$ N \to \infty $$, the spike gets narrower (width $$ O(1/N) $$) but never shorter!
 4. **Mean-Square ($$ L^2 $$) Convergence (Energy Disappears):** Even with Gibbs horns, the *area* under the squared spike shrinks as $$ O(1/N) \to 0 $$, so $$ \|f - S_N\|_{L^2} \to 0 $$ for *every* $$ f \in L^2([-L, L]) $$.
 
-### Step-by-Step Worked Example (Read Slowly): Computing Dirichlet's Midpoint Limit and Quantifying the Gibbs Peak
+### Worked example: Computing Dirichlet's Midpoint Limit and Quantifying the Gibbs Peak
 
 **Problem:** Consider the $$ 2\pi $$-periodic square wave defined on $$ (-\pi, \pi) $$ by $$ f(x) = -1 $$ for $$ -\pi < x < 0 $$ and $$ f(x) = +1 $$ for $$ 0 < x < \pi $$, whose Fourier series is $$ \frac{4}{\pi}\sum_{k=0}^\infty \frac{\sin((2k+1)x)}{2k+1} $$. (a) Find the exact pointwise limit of the series at $$ x = 0 $$ and $$ x = \pi $$. (b) Compute the peak value of $$ S_3(x) = \frac{4}{\pi}\bigl[\sin x + \frac{1}{3}\sin(3x)\bigr] $$ at $$ x = \frac{\pi}{4} $$ and measure its percentage overshoot relative to the jump $$ \Delta = 2 $$.
 

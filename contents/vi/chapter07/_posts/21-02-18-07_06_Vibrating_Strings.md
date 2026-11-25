@@ -12,7 +12,7 @@ lesson_type: required
 
 Khi bạn gảy một dây đàn guitar dài $L$ căng cố định ở hai đầu, sợi dây không dao động theo một hình sin đơn lẻ mà là bản giao hưởng chồng chất của vô hạn **sóng đứng (standing waves)** ở các tần số riêng $\omega_n = \frac{n\pi c}{L}$. Phương pháp tách biến nối thẳng Lý thuyết trị riêng Sturm–Liouville sang vật lý âm nhạc!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Bài toán Dây đàn rung
+## Kiến thức cần nhớ: Bốn trụ cột của Bài toán Dây đàn rung
 
 1. **Phương trình sóng 1D**:
    $u_{tt} = c^2 u_{xx}$ với tốc độ truyền sóng $c = \sqrt{T/\rho}$ ($T$: lực căng dây, $\rho$: khối lượng riêng dài).
@@ -39,7 +39,7 @@ Dây rung là ví dụ vật lý tiêu biểu nhất minh họa trọn vẹn lý
 
 Bài học này tổng hợp các khái niệm đã học thành một mạch logic thống nhất: BVP xác định toán tử không gian, bài toán trị riêng chọn ra các chế độ sóng đứng, còn tính trực giao cho phép khai triển điều kiện ban đầu thành tổng các chế độ đó.
 
-### Khung giải thích (nên đọc chậm): Tính tay dao động của dây đàn dài $L = \pi$ ($c = 2$) thả nhẹ từ hình dạng $u(x, 0) = 3\sin x - \sin(2x)$
+### Giải thích: Tính tay dao động của dây đàn dài $L = \pi$ ($c = 2$) thả nhẹ từ hình dạng $u(x, 0) = 3\sin x - \sin(2x)$
 
 Cho điều kiện ban đầu: $u(x, 0) = 3\sin x - \sin(2x)$ và vận tốc đầu $u_t(x, 0) = 0$ (thả không vận tốc đầu).
 1. **Tìm tần số góc từng mode** ($\omega_n = \frac{n\pi c}{L} = \frac{n\pi \cdot 2}{\pi} = 2n$):

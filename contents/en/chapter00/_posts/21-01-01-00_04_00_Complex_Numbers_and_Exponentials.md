@@ -12,7 +12,7 @@ lesson_type: required
 
 Why do trigonometric waves $$\cos(\omega t)$$ and $$\sin(\omega t)$$ suddenly emerge when you solve a differential equation whose characteristic polynomial has no real roots? Because in the complex plane, rotation and exponential growth are two sides of the exact same operation: Euler's identity $$e^{(\alpha + i\beta)t} = e^{\alpha t}(\cos \beta t + i\sin \beta t)$$ unifies damping, growth, and oscillation into a single algebraic symbol.
 
-## Background Knowledge Map: Complex Analysis as the Engine of Oscillation
+## Key ideas: Complex Analysis as the Engine of Oscillation
 
 Four complex-variable ideas simplify differential equations dramatically:
 
@@ -21,7 +21,7 @@ Four complex-variable ideas simplify differential equations dramatically:
 3. **Complex Conjugate Pairs:** For any real differential equation, non-real roots occur in conjugate pairs $$\alpha \pm i\beta$$; taking real and imaginary parts of a single complex solution $$e^{(\alpha + i\beta)t}$$ immediately yields two linearly independent real solutions.
 4. **Holomorphic Functions and Cauchy–Riemann Equations:** Complex differentiability enforces $$u_x = v_y$$ and $$u_y = -v_x$$, which forces both $$u$$ and $$v$$ to be harmonic ($$\nabla^2 u = 0$$) and guarantees convergent power-series representations.
 
-### Step-by-Step Worked Example (Read Slowly): Evaluating a Real Integral and ODE Trial Solution via Complex Exponentials
+### Worked example: Evaluating a Real Integral and ODE Trial Solution via Complex Exponentials
 
 Suppose we need the real antiderivative $$I = \int e^{2t}\cos(3t)\,dt$$ (the exact integral that appears when solving forced damped oscillators):
 

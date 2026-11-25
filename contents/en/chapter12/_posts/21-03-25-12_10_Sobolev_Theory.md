@@ -22,7 +22,7 @@ This optional lesson extends Lesson 12.03 on Sobolev spaces to the results that 
 
 Students should already know $$ L^p $$ spaces, weak derivatives, the definitions of $$ W^{k,p} $$ and $$ H^1_0 $$, and the basic ideas of weak solutions and elliptic equations. Lessons 12.03 through 12.06 provide the most direct background, because Sobolev theory is the bridge from energy estimates to regularity and boundary interpretation.
 
-## Background Knowledge Map: Embeddings, Scaling, and Compactness in Sobolev Theory
+## Key ideas: Embeddings, Scaling, and Compactness in Sobolev Theory
 
 Four master theorems organize the entire landscape of Sobolev spaces $W^{1,p}(\Omega)$ in dimension $n$:
 
@@ -136,7 +136,7 @@ Show students why weak solutions can still satisfy meaningful boundary condition
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Deriving the Critical Sobolev Exponent $p^*$ by Pure Scaling
+### Worked example: Deriving the Critical Sobolev Exponent $p^*$ by Pure Scaling
 
 Suppose a universal constant $C > 0$ exists such that the Sobolev inequality
 $$\|u\|_{L^q(\mathbb{R}^n)} \le C\|\nabla u\|_{L^p(\mathbb{R}^n)}$$

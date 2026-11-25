@@ -22,7 +22,7 @@ This lesson explains why weak derivatives are needed, how they are defined using
 
 Students should know classical derivatives, integration by parts, smooth compactly supported test functions, and the idea of working with integrals rather than pointwise values. Some familiarity with $$ L^1_{\mathrm{loc}} $$ is also helpful because weak derivatives do not require classical smoothness.
 
-## Background Knowledge Map: Extending Differentiation Beyond Smooth Functions
+## Key ideas: Extending Differentiation Beyond Smooth Functions
 
 Weak derivatives generalize calculus without sacrificing rigor by resting on four pillars:
 
@@ -111,7 +111,7 @@ Corners and kinks are the right place to build intuition because they show exact
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Why $|x|$ Has a Weak Derivative While the Step Function Does Not
+### Worked example: Why $|x|$ Has a Weak Derivative While the Step Function Does Not
 
 Test both $u(x) = |x|$ and the Heaviside step $H(x) = \mathbf{1}_{(0,1)}(x)$ on $\Omega = (-1,1)$ against an arbitrary test function $\varphi \in C_c^\infty(-1,1)$.
 

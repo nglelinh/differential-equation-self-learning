@@ -20,7 +20,7 @@ This optional lesson connects wavefront sets, propagation of singularities, and 
 
 Students should know wavefront sets, the propagation theorem for real principal-type operators, the idea of a Fourier integral operator, and the optional inverse-problems lesson. The existing “Current Research Directions” lesson is complementary: it maps the analytic landscape; this one adds the machine-learning layer.
 
-## Background Knowledge Map: Microlocal Geometry Inside Learned Inverse Imaging
+## Key ideas: Microlocal Geometry Inside Learned Inverse Imaging
 
 Four concepts unite Chapter 15's microlocal theory with modern computational imaging:
 
@@ -70,7 +70,7 @@ This pipeline does not compete with the current-research lesson; it adds a compu
 ## Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Radon Transform of a Disk and the Limited-Angle Invisible Cone
+### Worked example: Radon Transform of a Disk and the Limited-Angle Invisible Cone
 
 Compute the exact 2D Radon transform $Rf(\theta, s) = \int_{x\cdot\theta = s} f(x)\,d\ell$ of the unit-radius disk $f(x) = \mathbf{1}_{|x| \le R}$, and use the Fourier Slice Theorem $\widehat{Rf}(\theta, \sigma) = \hat{f}(\sigma\theta)$ to identify which boundary edges vanish under a limited angular scan $\theta \in [-\pi/4, \pi/4]$.
 

@@ -22,7 +22,7 @@ This final lesson opens the door from textbook material to research. After the l
 
 Students should know the major topics of the chapter: wave front sets, propagation of singularities, FIO, semiclassical analysis, spectral asymptotics, inverse problems, quantum mechanics, and microlocal elliptic theory. The goal here is not more technique but a larger conceptual synthesis.
 
-## Background Knowledge Map: Four Active Frontiers of Modern PDE Research
+## Key ideas: Four Active Frontiers of Modern PDE Research
 
 Understanding how Chapters 11–15 connect to current research highlights four booming arenas:
 
@@ -111,7 +111,7 @@ Students need not only topics, but also a way to continue learning.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Watching 1D Dispersive Decay at Work in the Free Schrödinger Equation
+### Worked example: Watching 1D Dispersive Decay at Work in the Free Schrödinger Equation
 
 Solve the 1D free Schrödinger equation $i\partial_t u + \partial_x^2 u = 0$ with Gaussian initial data $u(x,0) = e^{-x^2/2}$, and verify both exact $L^2$ conservation and the sharp $O(|t|^{-1/2})$ dispersive $L^\infty$ decay that underpins modern Strichartz theory.
 

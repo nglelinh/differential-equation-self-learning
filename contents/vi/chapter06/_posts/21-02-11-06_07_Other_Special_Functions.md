@@ -12,7 +12,7 @@ lesson_type: optional
 
 Bessel và Legendre mới chỉ là hai đỉnh núi đầu tiên trong "hệ sinh thái" các **Hàm Đặc biệt**. Mỗi bài toán kinh điển của vật lý toán và giải tích số lại sinh ra một họ đa thức trực giao riêng gắn với đúng khoảng xác định và hàm trọng số $w(x)$ của nó: **Chebyshev**, **Hermite**, **Laguerre**, cùng **Hàm Gamma $\Gamma(z)$** mở rộng giai thừa ra số thực và số phức!
 
-## Bản đồ kiến thức nền: Bốn họ Hàm Đặc biệt quan trọng nhất ngoài Bessel & Legendre
+## Kiến thức cần nhớ: Bốn họ Hàm Đặc biệt quan trọng nhất ngoài Bessel & Legendre
 
 1. **Đa thức Chebyshev $T_n(x) = \cos(n \arccos x)$** trên $[-1, 1]$ với trọng số $w(x) = (1 - x^2)^{-1/2}$:
    Giảm thiểu cực đại sai số xấp xỉ đa thức (*minimax property*) — công cụ số 1 trong thư viện tính toán hàm $\sin, \exp$ bên trong CPU và phương pháp phổ!
@@ -39,7 +39,7 @@ Sau khi học Bessel và Legendre, một câu hỏi tự nhiên là còn bao nhi
 
 Các đa thức Hermite, Laguerre và Chebyshev là ba đại diện tiêu biểu mở rộng bức tranh phổ đó sang toàn trục thực, nửa trục dương và bài toán xấp xỉ trên đoạn hữu hạn.
 
-### Khung giải thích (nên đọc chậm): Tính tay $\Gamma(5/2)$ và kiểm chứng tính trực giao của đa thức Hermite $H_0, H_1, H_2$
+### Giải thích: Tính tay $\Gamma(5/2)$ và kiểm chứng tính trực giao của đa thức Hermite $H_0, H_1, H_2$
 
 1. **Tính tay $\Gamma(5/2)$ bằng tính chất đệ quy $\Gamma(z+1) = z\Gamma(z)$**:
    $$\Gamma\!\left(\frac{5}{2}\right) = \frac{3}{2}\,\Gamma\!\left(\frac{3}{2}\right) = \frac{3}{2}\cdot\frac{1}{2}\,\Gamma\!\left(\frac{1}{2}\right) = \mathbf{\frac{3\sqrt{\pi}}{4}} \approx 1{,}3293.$$

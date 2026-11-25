@@ -12,7 +12,7 @@ lesson_type: required
 
 Tại sao một đoàn binh phải bước đi lệch nhịp khi qua cầu treo, còn hệ thống treo trên ô tô lại được kỹ sư tinh chỉnh chính xác đến từng phần trăm hệ số cản? Tất cả đều là biểu hiện vật lý trực tiếp của phương trình dao động cơ học $m x'' + c x' + k x = F(t)$—nơi các đại lượng đại số như phần thực nghiệm đặc trưng hay đỉnh hàm truyền biến thành cảm giác êm ái hay thảm họa cộng hưởng ngoài đời thực!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Dao động Cơ học
+## Kiến thức cần nhớ: Bốn trụ cột của Dao động Cơ học
 
 1. **Cân bằng động lực $m x'' + c x' + k x = F(t)$**:
    Ba lực cạnh tranh nhau: lực quán tính ($m x''$), lực cản nhớt tiêu tán năng lượng ($c x'$) và lực hồi phục Hooke ($k x$); tần số tự nhiên không cản là $\omega_0 = \sqrt{k/m}$.
@@ -36,7 +36,7 @@ Dao động cơ học là ứng dụng tiêu biểu của ODE cấp hai vì mỗ
 
 Bài học cũng nhấn mạnh kỹ năng diễn giải nghiệm: mỗi dấu và tham số trả lời trực tiếp một câu hỏi cơ học như hệ có dao động không, dao động kéo dài bao lâu, trở về cân bằng theo cách nào và khi nào ngoại lực gây ra cộng hưởng.
 
-### Khung giải thích (nên đọc chậm): Tính biên độ xác lập và độ khuếch đại cộng hưởng cho hệ $x'' + 0{,}4 x' + 4 x = 2\cos(\omega t)$
+### Giải thích: Tính biên độ xác lập và độ khuếch đại cộng hưởng cho hệ $x'' + 0{,}4 x' + 4 x = 2\cos(\omega t)$
 
 Hệ có $m = 1,\; c = 0{,}4,\; k = 4,\; F_0 = 2 \implies$ tần số riêng $\omega_0 = \sqrt{4/1} = \mathbf{2\text{ rad/s}}$, tỷ số cản $\zeta = \frac{0{,}4}{2\cdot 2} = \mathbf{0{,}1}$.
 1. **Khi kích thích ở tần số thấp $\omega = 0$ (tải tĩnh $F = 2$)**:

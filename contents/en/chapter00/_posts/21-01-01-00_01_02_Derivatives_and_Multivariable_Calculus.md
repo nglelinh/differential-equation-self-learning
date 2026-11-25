@@ -12,7 +12,7 @@ lesson_type: required
 
 Picture a weather balloon drifting through a three-dimensional wind field while its altitude, latitude, and longitude all change at once: the rate at which its thermometer reading changes depends simultaneously on how temperature varies in space and how fast the balloon moves along each axis. Multivariable calculus is the exact language that connects partial derivatives, total differentials, and vector fields—the geometric machinery behind exact ODEs, Jacobians, and nonlinear linearization.
 
-## Background Knowledge Map: Multivariable Tools You Will Use in Every Chapter
+## Key ideas: Multivariable Tools You Will Use in Every Chapter
 
 Four concepts from multivariable calculus reappear constantly from Chapter 1 through Chapter 5:
 
@@ -21,7 +21,7 @@ Four concepts from multivariable calculus reappear constantly from Chapter 1 thr
 3. **Multivariable Chain Rule:** Tracking a scalar energy or Lyapunov function $$V(x(t), y(t))$$ along an ODE trajectory $$\mathbf{x}'(t) = \mathbf{f}(\mathbf{x}(t))$$ relies directly on $$\frac{d}{dt}V(\mathbf{x}(t)) = \nabla V(\mathbf{x}) \cdot \mathbf{f}(\mathbf{x})$$.
 4. **Clairaut's Mixed-Partials Theorem:** When second partials are continuous, $$\Psi_{xy} = \Psi_{yx}$$; this symmetry is the exact test $$M_y = N_x$$ that detects whether a first-order differential form $$M\,dx + N\,dy$$ is exact.
 
-### Step-by-Step Worked Example (Read Slowly): Computing a Jacobian and Orbital Derivative Along a Flow
+### Worked example: Computing a Jacobian and Orbital Derivative Along a Flow
 
 Consider the nonlinear planar system
 $$x' = f_1(x,y) = y, \qquad y' = f_2(x,y) = -\sin x - \frac{1}{2}y$$

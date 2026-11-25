@@ -11,7 +11,7 @@ categories:
 
 Vào cuối thập niên 1960, hai trường phái toán học độc lập ở hai đầu thế giới—Mikio Sato tại Nhật Bản và Lars Hörmander tại Thụy Điển—cùng đi tới một bước nhảy nhận thức làm rung chuyển toàn bộ giải tích PDE: chỉ hỏi một hàm *không trơn tại điểm $x$ nào* là chưa đủ; ta phải hỏi nó **không trơn theo hướng tần số $\xi$ nào**! Từ khám phá ấy ra đời **Phân tích Vi địa phương (Microlocal Analysis)**—đỉnh cao hiện đại nối liền PDE, hình học symplectic, cơ học lượng tử và chụp cắt lớp y khoa CT!
 
-## Bản đồ kiến thức nền: Bốn cột mốc lịch sử của Phân tích Vi địa phương
+## Kiến thức cần nhớ: Bốn cột mốc lịch sử của Phân tích Vi địa phương
 
 1. **Sato (1969) & Hörmander (1970) — Tập Mặt sóng (Wave Front Set $\operatorname{WF}(u)$)**:
    Nâng cấp giá kỳ dị $\operatorname{sing\,supp}(u) \subset \mathbb{R}^n$ lên không gian pha $T^*\mathbb{R}^n \setminus 0$: mỗi kỳ dị giờ có cả **vị trí $x$ lẫn hướng dao động $\xi$**!
@@ -34,7 +34,7 @@ Tại Lund vào cuối thập niên 1960, Lars Hörmander theo đuổi một câ
 Xét hàm bậc thang có một bước nhảy tại $$x=0$$. Theo nghĩa cổ điển, ta biết hàm có kỳ dị tại $$0$$. Giải tích vi địa phương đặt câu hỏi tinh hơn: kỳ dị đó biểu hiện theo những hướng tần số nào? Với phương trình sóng, cấu trúc còn rõ nét hơn: kỳ dị không đứng yên mà lan truyền dọc theo các đường song đặc trưng (bicharacteristics) trong không gian pha. Chính từ nhu cầu mô tả kỳ dị bằng cả vị trí lẫn hướng mà tập mặt sóng, toán tử tích phân Fourier và giải tích bán cổ điển ra đời. Chương 15 trình bày cách giải tích hiện đại mô tả sự chuyển động của tính không trơn.
 
 
-### Khung giải thích (nên đọc chậm): So sánh Giá kỳ dị cổ điển và Tập Mặt sóng $\operatorname{WF}$ của một cạnh nhảy 2D
+### Giải thích: So sánh Giá kỳ dị cổ điển và Tập Mặt sóng $\operatorname{WF}$ của một cạnh nhảy 2D
 
 Xét ảnh đen–trắng 2D có một bờ cạnh thẳng đứng dọc trục $y$: $u(x_1, x_2) = H(x_1)$ (bằng $0$ bên trái $x_1 < 0$, bằng $1$ bên phải $x_1 > 0$):
 1. **Giá kỳ dị cổ điển ($\operatorname{sing\,supp}(u)$)**:

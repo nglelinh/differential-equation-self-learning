@@ -20,7 +20,7 @@ This lesson introduces symbol classes such as $$ S^m_{\rho,\delta} $$. Students 
 
 Students should know the basic idea of a symbol from Lesson 14-02 and be comfortable with partial derivatives in both position and frequency variables.
 
-## Background Knowledge Map: Hörmander's Symbol Classes $S^m_{\rho,\delta}$
+## Key ideas: Hörmander's Symbol Classes $S^m_{\rho,\delta}$
 
 Four structural principles explain why the $S^m_{1,0}$ inequalities are written exactly the way they are:
 
@@ -102,7 +102,7 @@ Students should see the chapter-wide purpose of these classes.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Proving $\langle\xi\rangle^s \in S^s_{1,0}(\mathbb{R})$ Directly
+### Worked example: Proving $\langle\xi\rangle^s \in S^s_{1,0}(\mathbb{R})$ Directly
 
 Verify the Hörmander symbol bounds $|\partial_\xi^k \langle\xi\rangle^s| \le C_k \langle\xi\rangle^{s-k}$ explicitly for $k = 0, 1, 2$ in 1D, where $\langle\xi\rangle = (1 + \xi^2)^{1/2}$ and $s \in \mathbb{R}$ is any real order.
 

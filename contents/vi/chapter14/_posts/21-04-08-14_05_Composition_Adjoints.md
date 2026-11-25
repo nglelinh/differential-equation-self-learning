@@ -14,7 +14,7 @@ lesson_type: required
 
 Sức mạnh thực sự của Toán tử Giả vi phân không nằm ở từng toán tử đơn lẻ, mà ở chỗ chúng tạo thành một **đại số có phép nhân và phép lấy liên hợp khép kín**: hợp thành của $P \in \Psi^{m_1}$ với $Q \in \Psi^{m_2}$ lại là một $\Psi$DO thuộc $\Psi^{m_1 + m_2}$, và ký hiệu của nó—thay vì chỉ là tích $p\cdot q$—được cho bởi chuỗi tiệm cận Kohn–Nirenberg kỳ diệu, trong đó số hạng hiệu chỉnh bậc nhất chính là **ngoặc Poisson** của cơ học cổ điển!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phép Hợp thành & Toán tử Liên hợp trong $\Psi$DO
+## Kiến thức cần nhớ: Bốn trụ cột của Phép Hợp thành & Toán tử Liên hợp trong $\Psi$DO
 
 1. **Công thức Hợp thành Kohn–Nirenberg ($P \circ Q = \operatorname{Op}(p \# q)$)**:
    $$\sigma(P \circ Q)(x, \xi) \sim \sum_{\alpha} \frac{(-i)^{|\alpha|}}{\alpha!} \big(\partial_\xi^\alpha p(x, \xi)\big)\big(\partial_x^\alpha q(x, \xi)\big).$$
@@ -44,7 +44,7 @@ Một lý thuyết toán tử chỉ thực sự phát huy hiệu quả khi nó �
 Tính chất đóng này giữ vai trò nền tảng vì các công cụ trọng tâm như parametrix hay tính chính quy đều dựa trên khả năng thao tác đại số trên ký hiệu thay vì phải xử lý trực tiếp tích phân dao động của từng toán tử.
 
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng tay Công thức Hợp thành Kohn–Nirenberg và Ngoặc Poisson cho $x$ và $D_x$
+### Giải thích: Kiểm chứng tay Công thức Hợp thành Kohn–Nirenberg và Ngoặc Poisson cho $x$ và $D_x$
 
 Xét hai toán tử cơ bản $P = x$ (bậc $0$, $p(x, \xi) = x$) và $Q = D_x = -i\partial_x$ (bậc $1$, $q(x, \xi) = \xi$):
 1. **Tính ký hiệu của $P \circ Q = x D_x$**:

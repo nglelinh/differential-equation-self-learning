@@ -14,7 +14,7 @@ In Euclidean geometry, Pythagoras's theorem states that the squared length of a 
 
 Beyond physics and electrical engineering (where it guarantees conservation of signal power across a spectrum analyzer), Parseval's identity is a secret weapon in pure mathematics—effortlessly computing exact infinite sums like $$ \sum_{n=1}^\infty \frac{1}{n^4} = \frac{\pi^4}{90} $$ that defy elementary calculus!
 
-## Background Knowledge Map: Infinite-Dimensional Pythagoras and Spectral Energy
+## Key ideas: Infinite-Dimensional Pythagoras and Spectral Energy
 
 1. **Bessel's Inequality vs. Parseval's Equality (Completeness Test):** For any orthonormal system, $$ \sum |c_n|^2 \le \|f\|^2 $$ (Bessel's inequality—the shadow cannot be longer than the vector). Equality holds for *all* $$ f \in L^2([-L, L]) $$ if and only if the trigonometric system is *complete* (no nonzero function is orthogonal to every mode).
 2. **Real Parseval Formula on $$ [-L, L] $$:**
@@ -23,7 +23,7 @@ Beyond physics and electrical engineering (where it guarantees conservation of s
 3. **Exact $$ L^2 $$ Truncation Error Accounting:** The mean-square error of the $$ N $$-th partial sum is literally the tail energy $$ \frac{1}{L}\|f - S_N\|_2^2 = \sum_{n=N+1}^\infty (a_n^2 + b_n^2) $$, giving engineers an exact criterion for how many harmonics are needed to capture 99% of a signal's power.
 4. **Evaluating Zeta Values $$ \zeta(2k) $$:** Plugging polynomial functions ($$ x, x^2, |x| $$) into Parseval's identity instantly evaluates $$ \zeta(2) = \frac{\pi^2}{6} $$, $$ \zeta(4) = \frac{\pi^4}{90} $$, and higher even zeta values in three lines of arithmetic.
 
-### Step-by-Step Worked Example (Read Slowly): Proving $$ \sum_{n=1}^{\infty} \frac{1}{n^4} = \frac{\pi^4}{90} $$ via Parseval's Theorem
+### Worked example: Proving $$ \sum_{n=1}^{\infty} \frac{1}{n^4} = \frac{\pi^4}{90} $$ via Parseval's Theorem
 
 **Problem:** Use the Fourier series of $$ f(x) = x^2 $$ on $$ [-\pi, \pi] $$ together with Parseval's identity to compute the exact sum $$ \sum_{n=1}^{\infty} \frac{1}{n^4} $$, and verify how much energy the first two terms ($$ a_0, a_1 $$) capture.
 

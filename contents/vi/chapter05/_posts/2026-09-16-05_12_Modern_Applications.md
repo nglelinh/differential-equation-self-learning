@@ -12,7 +12,7 @@ lesson_type: optional
 
 Hơn một thế kỷ qua, phương pháp trực tiếp của Lyapunov là chuẩn vàng để chứng minh robot hay máy bay tự hành ổn định mà không cần giải tường minh hệ phi tuyến. Tuy nhiên, tìm bằng tay một hàm năng lượng $V(\mathbf{x})$ cho hệ 12 chiều là bài toán cực khó. Ngày nay, các nhà nghiên cứu dùng **mạng nơ-ron** để *học* hàm Lyapunov $V_\theta(\mathbf{x})$ và dùng bộ giải **SMT/SDP** để cấp chứng chỉ toán học tuyệt đối cho tính an toàn của nó.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Chứng chỉ Lyapunov Nơ-ron
+## Kiến thức cần nhớ: Bốn trụ cột của Chứng chỉ Lyapunov Nơ-ron
 
 1. **Điều kiện Lyapunov toàn cục/địa phương**:
    $V(\mathbf{0}) = 0$, $V(\mathbf{x}) > 0$ ($\mathbf{x} \neq \mathbf{0}$) và đạo hàm dọc quỹ đạo $\dot{V}(\mathbf{x}) = \nabla V(\mathbf{x}) \cdot \mathbf{f}(\mathbf{x}) < 0$ trên miền hấp dẫn $\mathcal{D}$.
@@ -37,7 +37,7 @@ Hàm Lyapunov đóng vai trò như một chứng chỉ dạng năng lượng: n�
 
 Wu, Clark, Kantaros và Vorobeychik (*Neural Lyapunov Control for Discrete-Time Systems*, NeurIPS 2023; [arXiv:2305.06547](https://arxiv.org/abs/2305.06547)) mở rộng ý tưởng này sang hệ thời gian rời rạc bằng kiểm chứng quy hoạch nguyên hỗn hợp (mixed-integer), tạo ra các bộ điều khiển ổn định có chứng minh trên những bài toán chuẩn phi tuyến. Thông điệp khái niệm cốt lõi cho chương này rất rõ ràng: mạng nơ-ron không nới lỏng định lý Lyapunov, mà chỉ tìm kiếm một hàm đáp ứng đúng các điều kiện của định lý.
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng cầm tay chỉ việc một ứng viên hàm Lyapunov $V(x_1, x_2)$ và tìm phản ví dụ
+### Giải thích: Kiểm chứng làm từng bước một ứng viên hàm Lyapunov $V(x_1, x_2)$ và tìm phản ví dụ
 
 Xét hệ phi tuyến 2 chiều $\dot{x}_1 = -x_1 + x_2^2$, $\dot{x}_2 = -x_2$ quanh gốc $(0, 0)$ với ứng viên $V(x_1, x_2) = \frac{1}{2}(x_1^2 + x_2^2)$:
 1. Rõ ràng $V(0, 0) = 0$ và $V > 0$ với mọi $(x_1, x_2) \neq (0, 0)$.

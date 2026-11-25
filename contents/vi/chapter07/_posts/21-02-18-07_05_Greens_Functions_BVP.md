@@ -12,7 +12,7 @@ lesson_type: required
 
 Hãy hình dung bạn ấn nhẹ ngón tay vào một điểm duy nhất $\xi$ trên một cây cầu treo và ghi lại hình dáng độ võng $G(x, \xi)$ dọc toàn bộ cây cầu. Nhờ tính tuyến tính, khi có hàng trăm chiếc xe phân bố thành tải trọng bất kỳ $f(x)$ chạy qua, tổng độ võng chỉ đơn giản là **tích phân chồng chất** $y(x) = \int_a^b G(x, \xi) f(\xi)\,d\xi$! Hàm $G(x, \xi)$ kỳ diệu đó chính là **Hàm Green**—toán tử nghịch đảo $L^{-1}$ của toán tử vi phân!
 
-## Bản đồ kiến thức nền: Bốn tính chất đặc trưng của Hàm Green $G(x, \xi)$
+## Kiến thức cần nhớ: Bốn tính chất đặc trưng của Hàm Green $G(x, \xi)$
 
 1. **Nghiệm của phương trình với nguồn xung Dirac**:
    $L_x[G(x, \xi)] = \delta(x - \xi)$ kèm điều kiện biên thuần nhất tại $x = a$ và $x = b$.
@@ -42,7 +42,7 @@ Nếu biết một hệ tuyến tính phản ứng ra sao trước một nguồn
 
 Về mặt vật lý và kỹ thuật, hàm Green tương tự đáp ứng xung của hệ thống; về mặt toán học, nó là hạt nhân tích phân (kernel) của toán tử nghịch đảo.
 
-### Khung giải thích (nên đọc chậm): Xây dựng cầm tay chỉ việc Hàm Green cho $-y'' = f(x),\; y(0) = y(1) = 0$ và kiểm tra lại độ võng dầm
+### Giải thích: Xây dựng làm từng bước Hàm Green cho $-y'' = f(x),\; y(0) = y(1) = 0$ và kiểm tra lại độ võng dầm
 
 1. **Tìm hai nghiệm thuần nhất ($y'' = 0$) thỏa từng đầu biên**:
    - Biên trái $y_1(0) = 0 \implies y_1(x) = x$.

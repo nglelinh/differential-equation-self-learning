@@ -14,7 +14,7 @@ lesson_type: optional
 
 Nhiều người bất ngờ khi biết rằng hàng loạt khái niệm trụ cột của giải tích hiện đại—không gian Hilbert, toán tử tự liên hợp, lý thuyết phổ, ký hiệu $\Psi$DO và giải tích bán cổ điển—đều trưởng thành song hành cùng **Cơ học Lượng tử**! Phương trình Schrödinger $i\hbar \partial_t \psi = \hat{H}\psi$ không chỉ là một PDE vật lý, mà là tấm gương phản chiếu sâu sắc nhất toàn bộ lý thuyết toán tử ta đã xây dựng suốt khóa học.
 
-## Bản đồ kiến thức nền: Bốn trụ cột kết nối Lý thuyết PDE với Cơ học Lượng tử
+## Kiến thức cần nhớ: Bốn trụ cột kết nối Lý thuyết PDE với Cơ học Lượng tử
 
 1. **Không gian Trạng thái $L^2(\mathbb{R}^n)$ và Diễn giải Xác suất Born**:
    Hàm sóng $\psi(x, t) \in L^2$ với $\|\psi\|_{L^2} = 1$ mã hóa mật độ xác suất $|\psi(x, t)|^2$ tìm thấy hạt tại vị trí $x$. Tính **tự liên hợp** của Hamilton $\hat{H} = -\frac{\hbar^2}{2m}\Delta + V(x)$ đảm bảo toán tử tiến hóa $U(t) = e^{-it\hat{H}/\hbar}$ là **toán tử unita** (Định lý Stone), nên tổng xác suất $\int |\psi|^2\,dx = 1$ được bảo toàn vĩnh viễn!
@@ -40,7 +40,7 @@ Cơ học lượng tử là lĩnh vực mà lý thuyết toán tử không chỉ
 Bài học này không nhằm trình bày toàn bộ vật lý lượng tử mà tập trung làm rõ mối liên hệ mật thiết giữa PDE hiện đại và cơ học lượng tử.
 
 
-### Khung giải thích (nên đọc chậm): Tính tay Giao hoán tử Chính tắc $[\hat{x}, \hat{p}] = i\hbar$ và ý nghĩa Bất định
+### Giải thích: Tính tay Giao hoán tử Chính tắc $[\hat{x}, \hat{p}] = i\hbar$ và ý nghĩa Bất định
 
 Cho hai toán tử vị trí $(\hat{x}\psi)(x) = x\psi(x)$ và động lượng $(\hat{p}\psi)(x) = -i\hbar\psi'(x)$ tác động lên hàm sóng trơn $\psi \in \mathcal{S}(\mathbb{R})$:
 1. **Tính từng thứ tự tác động**:

@@ -17,7 +17,7 @@ This lesson explains how pseudo-differential operators grew out of Fourier analy
 ## Prerequisites
 Students should know the symbolic and analytical content of Chapter 14: Fourier multipliers, symbol classes, operator definitions, compositions, adjoints, parametrices, manifold extensions, and elliptic regularity.
 
-## Background Knowledge Map: From Singular Integrals to Symbolic Calculus
+## Key ideas: From Singular Integrals to Symbolic Calculus
 
 Four historical milestones trace how $\Psi\text{DOs}$ unified harmonic analysis, PDEs, and topology:
 
@@ -57,7 +57,7 @@ Chapter 14 marks a major expansion of what it means to "solve" or "invert" a dif
 
 Historically, the chapter also prepares the language of microlocal analysis. Without pseudo-differential operators, many of the deeper results in Chapter 15 would not even have a precise setting.
 
-### Step-by-Step Worked Example (Read Slowly): The Hilbert Transform—Grandfather of All $\Psi\text{DOs}$
+### Worked example: The Hilbert Transform—Grandfather of All $\Psi\text{DOs}$
 
 The 1D Hilbert transform $(Hf)(x) = \frac{1}{\pi}\,\text{p.v.}\int_{-\infty}^\infty \frac{f(y)}{x-y}\,dy$ is the historical prototype of a zero-order singular integral operator, with Fourier symbol $m(\xi) = -i\operatorname{sgn}(\xi)$. Apply $H$ to $f(x) = \cos(\omega x)$ ($\omega > 0$) via its symbol and verify the classic identity $H^2 = -I$.
 

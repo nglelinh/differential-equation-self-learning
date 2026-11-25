@@ -14,7 +14,7 @@ lesson_type: optional
 
 Chuỗi Fourier chỉ xử lý được các hàm **tuần hoàn** trên đoạn hữu hạn $[-L, L]$, nơi phổ tần số rời rạc thành từng vạch $\omega_n = n\pi/L$. Nhưng thế giới thực đầy rẫy những tín hiệu **không tuần hoàn**—một tiếng vỗ tay, một xung ánh sáng laser, hay nhiệt độ trên một thanh dài vô hạn $(-\infty, +\infty)$. Khi cho chu kỳ $L \to \infty$, khoảng cách giữa các vạch phổ $\Delta\omega = \pi/L \to 0$, tổng rời rạc biến thành tích phân liên tục—và **Biến đổi Fourier (Fourier Transform)** ra đời!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Biến đổi Fourier
+## Kiến thức cần nhớ: Bốn trụ cột của Biến đổi Fourier
 
 1. **Cặp Biến đổi Fourier thuận và ngược**:
    $$\hat{f}(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t}\,dt, \qquad f(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty} \hat{f}(\omega) e^{i\omega t}\,d\omega.$$
@@ -39,7 +39,7 @@ Chuỗi Fourier phù hợp với các tín hiệu tuần hoàn, khi tập hợp 
 
 Bài học này đóng vai trò chuẩn bị quan trọng cho các chương PDE tiếp theo. Trên miền vô hạn, thay vì phân rã nghiệm theo tập mode đếm được như ở chuỗi Fourier, ta phân rã theo một dải tần số liên tục và xử lý riêng từng tần số.
 
-### Khung giải thích (nên đọc chậm): Tính tay Biến đổi Fourier của xung mũ đối xứng $f(t) = e^{-a\vert t \vert}$ ($a > 0$)
+### Giải thích: Tính tay Biến đổi Fourier của xung mũ đối xứng $f(t) = e^{-a\vert t \vert}$ ($a > 0$)
 
 Tách tích phân thành hai nhánh $t < 0$ (nơi $\vert t \vert = -t$) và $t \ge 0$ (nơi $\vert t \vert = t$):
 $$\hat{f}(\omega) = \int_{-\infty}^{0} e^{(a - i\omega)t}\,dt + \int_{0}^{\infty} e^{-(a + i\omega)t}\,dt = \left[\frac{e^{(a - i\omega)t}}{a - i\omega}\right]_{-\infty}^{0} + \left[\frac{e^{-(a + i\omega)t}}{-(a + i\omega)}\right]_{0}^{\infty}.$$

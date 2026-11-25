@@ -14,7 +14,7 @@ lesson_type: required
 
 Khi phương trình elliptic có thêm số hạng đối lưu $\mathbf{b} \cdot \nabla u$ (như dòng chất lỏng vừa khuếch tán vừa cuốn nhiệt đi theo gió), dạng song tuyến tính $a(u, v)$ **không còn đối xứng** ($a(u, v) \neq a(v, u)$), nên ta không thể xem nó là tích vô hướng để dùng Định lý Biểu diễn Riesz hay cực tiểu hóa năng lượng được nữa! **Định lý Lax–Milgram (1954)** chính là chiếc chìa khóa vạn năng bẻ khóa cả trường hợp không đối xứng: chỉ cần kiểm tra đúng **ba điều kiện**—liên tục của $a$, cưỡng bức của $a$, và liên tục của $\ell$—là có ngay tồn tại, duy nhất và ổn định nghiệm!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Định lý Lax–Milgram
+## Kiến thức cần nhớ: Bốn trụ cột của Định lý Lax–Milgram
 
 1. **Ba giả thiết vàng trên Không gian Hilbert $V$**:
    - *Liên tục (bị chặn)*: $|a(u, v)| \le M \|u\|_V \|v\|_V$.
@@ -40,7 +40,7 @@ Sinh viên cần nắm không gian Hilbert, phiếm hàm tuyến tính liên t�
 Sau khi chuyển PDE sang dạng yếu, ta không còn giải trực tiếp một phương trình vi phân từng điểm mà giải đẳng thức song tuyến tính $$ a(u,v)=F(v) $$. Ba câu hỏi đặt ra là: bài toán có nghiệm hay không, nghiệm có duy nhất hay không, và nghiệm có phụ thuộc liên tục vào dữ liệu hay không? Định lý Lax–Milgram trả lời đồng thời cả ba câu hỏi trong một khuôn khổ gọn gàng.
 
 
-### Khung giải thích (nên đọc chậm): Kiểm tra tay đầy đủ 3 điều kiện Lax–Milgram cho một PDE không đối xứng
+### Giải thích: Kiểm tra tay đầy đủ 3 điều kiện Lax–Milgram cho một PDE không đối xứng
 
 Xét phương trình đối lưu–khuếch tán–phản ứng trên $(0, 1)$: $-u'' + u' + 2u = f$ với $u(0) = u(1) = 0$. Dạng song tuyến tính trên $V = H_0^1(0, 1)$ là:
 $$a(u, v) = \int_0^1 \big(u'v' + u'v + 2uv\big)\,dx.$$

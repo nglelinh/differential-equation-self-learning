@@ -12,7 +12,7 @@ lesson_type: optional
 
 When an aerospace engineer designs an autopilot or an audio engineer designs an equalizer, they rarely rewrite differential equations every time two components are wired in series or wrapped in a feedback loop. Instead, they summarize each subsystem by a single rational function—its **transfer function** $$H(s) = \frac{Y(s)}{U(s)}$$—whose poles in the complex $$s$$-plane instantly reveal stability, overshoot, bandwidth, and resonance.
 
-## Background Knowledge Map: Reading System Behavior Directly from $$H(s)$$
+## Key ideas: Reading System Behavior Directly from $$H(s)$$
 
 Four system-theory pillars turn $$H(s) = N(s)/D(s)$$ into a complete engineering dashboard:
 
@@ -21,7 +21,7 @@ Four system-theory pillars turn $$H(s) = N(s)/D(s)$$ into a complete engineering
 3. **Block-Diagram Algebra (Series & Feedback):** Cascading two systems multiplies their transfer functions ($$H_{\text{series}} = H_1 H_2$$); closing a negative feedback loop with gain $$K$$ yields $$H_{\text{closed}}(s) = \frac{K H(s)}{1 + K H(s)}$$—allowing engineers to move unstable poles into the left half-plane!
 4. **Sinusoidal Frequency Response $$H(i\omega)$$:** For a BIBO-stable system driven by $$u(t) = \cos(\omega t)$$, the steady-state output is simply $$\lvert H(i\omega)\rvert\cos\bigl(\omega t + \arg H(i\omega)\bigr)$$—the mathematical foundation of Bode plots and filters.
 
-### Step-by-Step Worked Example (Read Slowly): Stabilizing an Unstable Plant with Feedback and Computing Frequency Gain
+### Worked example: Stabilizing an Unstable Plant with Feedback and Computing Frequency Gain
 
 Consider an unstable open-loop system (like an inverted-pendulum actuator) with plant ODE $$y' - 2y = u(t)$$.
 

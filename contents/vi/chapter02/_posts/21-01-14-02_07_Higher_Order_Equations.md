@@ -12,7 +12,7 @@ lesson_type: required
 
 Độ võng của một thanh dầm cầu chịu tải trọng được mô tả bởi phương trình vi phân **cấp bốn** $EI\,y^{(4)} = q(x)$! Tin vui là bạn không cần học lại lý thuyết mới từ đầu: toàn bộ bộ máy của phương trình cấp hai—nguyên lý chồng chất, đa thức đặc trưng, Wronskian $n\times n$ và biến thiên hằng số—đều mở rộng cực kỳ mượt mà lên **cấp $n$ bất kỳ**.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của PTVP Tuyến tính Bậc Cao ($n \ge 3$)
+## Kiến thức cần nhớ: Bốn trụ cột của PTVP Tuyến tính Bậc Cao ($n \ge 3$)
 
 1. **Không gian nghiệm $n$ chiều & Wronskian cấp $n$**:
    PTVP tuyến tính thuần nhất cấp $n$ có không gian nghiệm $n$ chiều; $n$ nghiệm $y_1, \dots, y_n$ tạo thành cơ sở khi định thức Wronskian $n\times n$ khác $0$.
@@ -37,7 +37,7 @@ Khi mô hình gồm nhiều tầng quán tính hoặc nhiều phần tử liên 
 
 Các tư tưởng nền tảng của chương vẫn giữ nguyên: thử hàm mũ đối với hệ số hằng, lập phương trình đặc trưng và dựng cơ sở cho không gian nghiệm hữu hạn chiều. Điểm khác biệt chỉ là thay vì hai thành phần nghiệm cơ bản, hệ có ba, bốn hoặc nhiều thành phần hơn.
 
-### Khung giải thích (nên đọc chậm): Giải phương trình dầm đàn hồi cấp bốn $y^{(4)} - 16y = 0$ để thấy sự kết hợp nghiệm thực và nghiệm phức
+### Giải thích: Giải phương trình dầm đàn hồi cấp bốn $y^{(4)} - 16y = 0$ để thấy sự kết hợp nghiệm thực và nghiệm phức
 
 1. **Phương trình đặc trưng bậc 4**:
    $$r^4 - 16 = 0 \implies (r^2 - 4)(r^2 + 4) = 0 \implies (r - 2)(r + 2)(r - 2i)(r + 2i) = 0.$$

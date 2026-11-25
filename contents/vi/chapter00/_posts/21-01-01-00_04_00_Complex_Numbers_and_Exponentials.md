@@ -13,7 +13,7 @@ lesson_type: required
 
 Một lò xo rung lên xuống hoàn toàn thực trong phòng thí nghiệm, vậy tại sao phương trình đặc trưng của nó $r^2 + \omega^2 = 0$ lại trả về nghiệm "ảo" $r = \pm i\omega$? Bí mật đẹp nhất của giải tích nằm ở **công thức Euler** $e^{i\theta} = \cos\theta + i\sin\theta$: số phức không hề "ảo", mà chính là phép quay hình học biến mọi bài toán dao động lượng giác rắc rối thành đại số hàm mũ cực kỳ gọn nhẹ!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Số phức & Hàm mũ phức
+## Kiến thức cần nhớ: Bốn trụ cột của Số phức & Hàm mũ phức
 
 1. **Dạng đại số & Dạng cực ($z = a + bi = r e^{i\theta}$)**:
    Phép cộng là tịnh tiến vectơ trên mặt phẳng Argand, còn phép nhân $z_1 z_2 = r_1 r_2 e^{i(\theta_1 + \theta_2)}$ là **co giãn theo môđun $r$ kết hợp quay theo góc pha $\theta$**.
@@ -38,7 +38,7 @@ Khi giải phương trình vi phân tuyến tính hệ số hằng, ta thường
 
 Bên cạnh đại số, số phức còn mang ý nghĩa hình học rõ ràng: thay vì chỉ là một ký hiệu thỏa mãn $$ i^2=-1 $$, **mỗi số phức là một điểm trong mặt phẳng, đồng thời biểu diễn phép quay kết hợp co giãn**. Đây là công cụ nền tảng cho ODE, PDE và biến đổi Fourier ở các chương sau.
 
-### Khung giải thích (nên đọc chậm): Dùng hàm mũ phức để tính $\int e^{2t}\cos(3t)\,dt$ không cần tích phân từng phần hai lần!
+### Giải thích: Dùng hàm mũ phức để tính $\int e^{2t}\cos(3t)\,dt$ không cần tích phân từng phần hai lần!
 
 Thay vì tích phân từng phần vòng lặp dễ nhầm dấu, hãy xem $\cos(3t) = \operatorname{Re}(e^{3it})$:
 1. **Chuyển sang hàm mũ phức**:

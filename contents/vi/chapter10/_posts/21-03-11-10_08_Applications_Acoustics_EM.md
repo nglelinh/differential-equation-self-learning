@@ -14,7 +14,7 @@ lesson_type: optional
 
 Một tiếng vỗ tay vang qua sân trường ở tốc độ $343\text{ m/s}$ và một tín hiệu Wi-Fi băng qua căn phòng ở gần $300.000\text{ km/s}$ tưởng chừng thuộc về hai thế giới vật lý hoàn toàn khác nhau—một bên là va chạm cơ học của phân tử không khí, bên kia là trường điện từ dao động ngay cả trong chân không tuyệt đối. Vậy mà khi đặt phương trình Euler tuyến tính hóa của âm học cạnh hệ phương trình Maxwell của điện từ học, cả hai đều rút gọn về **cùng một phương trình sóng duy nhất** $\partial_{tt} u = c^2 \Delta u$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột nối Âm học và Điện từ học qua Phương trình Sóng
+## Kiến thức cần nhớ: Bốn trụ cột nối Âm học và Điện từ học qua Phương trình Sóng
 
 1. **Âm học tuyến tính (Phương trình sóng vô hướng cho áp suất)**:
    Tuyến tính hóa bảo toàn khối lượng và bảo toàn động lượng quanh trạng thái nghỉ $(\rho_0, p_0)$ cho ra phương trình sóng cho nhiễu động áp suất $p'$ với tốc độ âm thanh $c_s = \sqrt{\gamma p_0 / \rho_0}$—sóng dọc dao động song song với phương truyền.
@@ -40,7 +40,7 @@ Nếu chỉ nhìn phương trình sóng qua mô hình dây đàn rung, ta dễ �
 Thông điệp xuyên suốt của bài học là tính thống nhất của toán học ứng dụng: dù đại lượng vật lý thay đổi, các khái niệm cốt lõi vẫn là sự lan truyền với tốc độ hữu hạn, hệ mode riêng, điều kiện biên và năng lượng.
 
 
-### Khung giải thích (nên đọc chậm): So sánh trực tiếp bước sóng âm thanh và sóng điện từ bằng phép tính tay
+### Giải thích: So sánh trực tiếp bước sóng âm thanh và sóng điện từ bằng phép tính tay
 
 Cùng dùng một hệ thức phổ quát $\lambda = c / f$, hãy tính hai sóng quen thuộc trong đời sống:
 1. **Sóng âm trong không khí ở $20^\circ\text{C}$** ($c_s \approx 343\text{ m/s}$) với nốt nhạc chuẩn $f = 1.000\text{ Hz}$:

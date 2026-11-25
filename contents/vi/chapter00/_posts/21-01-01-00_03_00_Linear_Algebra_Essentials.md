@@ -13,7 +13,7 @@ lesson_type: required
 
 Nếu bạn từng ngạc nhiên khi thấy không gian nghiệm của phương trình vi phân tuyến tính bậc $n$ giống hệt không gian vectơ $\mathbb{R}^n$, thì đó không hề là sự trùng hợp! Đại số tuyến tính không chỉ là công cụ tính định thức—nó chính là **bộ khung kiến trúc** của mọi phương trình vi phân tuyến tính, từ nguyên lý chồng chất đến phương pháp trị riêng–vectơ riêng giải hệ phương trình.
 
-## Bản đồ kiến thức nền: Bốn trụ cột Đại số Tuyến tính trong PTVP
+## Kiến thức cần nhớ: Bốn trụ cột Đại số Tuyến tính trong PTVP
 
 1. **Không gian vectơ, Độc lập tuyến tính & Cơ sở**:
    Tập nghiệm của PTVP tuyến tính thuần nhất cấp $n$ là một không gian vectơ $n$ chiều; tìm nghiệm tổng quát thực chất là tìm một **cơ sở gồm $n$ nghiệm độc lập tuyến tính**.
@@ -35,7 +35,7 @@ Khi mở rộng từ một phương trình vi phân đơn lẻ sang hệ nhiều
 
 Có thể hình dung hệ hai phương trình như sự chuyển động đồng thời của hai đại lượng biểu diễn bởi vector $$ x = (x_1, x_2) $$. Ma trận $$ A $$ quy định cách tốc độ biến thiên của mỗi thành phần phụ thuộc vào giá trị của cả hai thành phần. Nếu chọn được hệ tọa độ thích hợp theo các vector riêng, hệ phương trình sẽ tách rời và trở nên đơn giản hơn: mỗi thành phần tăng giảm hoặc dao động độc lập theo quy luật riêng.
 
-### Khung giải thích (nên đọc chậm): Chéo hóa bằng tay ma trận $A = \begin{pmatrix} 4 & 1 \\ 2 & 3 \end{pmatrix}$ để thấy sức mạnh của trị riêng
+### Giải thích: Chéo hóa bằng tay ma trận $A = \begin{pmatrix} 4 & 1 \\ 2 & 3 \end{pmatrix}$ để thấy sức mạnh của trị riêng
 
 1. **Tìm đa thức đặc trưng**:
    $$\det(A - \lambda I) = (4 - \lambda)(3 - \lambda) - 2 = \lambda^2 - 7\lambda + 10 = (\lambda - 5)(\lambda - 2) = 0.$$

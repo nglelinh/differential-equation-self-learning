@@ -11,7 +11,7 @@ categories:
 
 In 1887, King Oscar II of Sweden offered a gold medal and 2,500 crowns to anyone who could prove the solar system is stable forever. Henri Poincaré submitted a brilliant memoir—only to discover a subtle error right before publication that shattered two centuries of Laplacian clockwork determinism! Fixing that error invented homoclinic tangles, qualitative phase-plane geometry, and the entire field of chaos theory.
 
-## Background Knowledge Map: Four Historical Revolutions Behind Chapter 05
+## Key ideas: Four Historical Revolutions Behind Chapter 05
 
 Every theorem in Chapter 05 marks a paradigm shift in how humanity thinks about prediction and stability:
 
@@ -20,7 +20,7 @@ Every theorem in Chapter 05 marks a paradigm shift in how humanity thinks about 
 3. **Oscillators, Ecology, and Epidemics (1920s):** Balthasar van der Pol discovered relaxation limit cycles in radio vacuum tubes (1926); Lotka (1925) and Volterra (1926) launched mathematical ecology; Kermack and McKendrick (1927) created the SIR epidemic threshold theory.
 4. **Lorenz, Smale, and the Chaos Era (1960s–1970s):** Edward Lorenz's 1963 atmospheric convection paper, Stephen Smale's horseshoe map, and Robert May's logistic-map bifurcations proved that simple deterministic equations generate irreducibly unpredictable dynamics.
 
-### Step-by-Step Worked Example (Read Slowly): Analyzing Van der Pol's 1926 Self-Excited Vacuum-Tube Oscillator
+### Worked example: Analyzing Van der Pol's 1926 Self-Excited Vacuum-Tube Oscillator
 
 In 1926, Balthasar van der Pol modeled a triode vacuum-tube radio oscillator with the nonlinear damping equation
 $$x'' - \mu(1 - x^2)x' + x = 0, \qquad \mu > 0.$$

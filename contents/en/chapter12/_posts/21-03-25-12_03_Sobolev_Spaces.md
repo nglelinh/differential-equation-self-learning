@@ -22,7 +22,7 @@ This lesson builds Sobolev spaces as the setting in which we measure both a func
 
 Students should know $$ L^p $$ spaces, weak derivatives, norms, inner products, and the basic intuition of Dirichlet boundary conditions. It is also helpful to remember that in PDE, smoothness is often not assumed at the start but derived later.
 
-## Background Knowledge Map: Structure of Sobolev Spaces $W^{k,p}(\Omega)$ and $H^k(\Omega)$
+## Key ideas: Structure of Sobolev Spaces $W^{k,p}(\Omega)$ and $H^k(\Omega)$
 
 Four structural pillars make Sobolev spaces indispensable across modern analysis and numerical PDEs:
 
@@ -108,7 +108,7 @@ Controlling weak derivatives forces extra structure. This is the bridge from ene
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Computing the $H^1(0,1)$ Norm and Verifying Poincaré's Inequality
+### Worked example: Computing the $H^1(0,1)$ Norm and Verifying Poincaré's Inequality
 
 Consider the continuous tent function $u(x) = \min(x, 1-x)$ on $\Omega = (0,1)$. Verify $u \in H_0^1(0,1)$, compute $\|u\|_{H^1(0,1)}$ exactly, and check the sharp 1D Poincaré inequality $\|u\|_{L^2(0,1)} \le \frac{1}{\pi}\|u'\|_{L^2(0,1)}$.
 

@@ -11,7 +11,7 @@ categories:
 
 Năm 1807, khi Joseph Fourier trình lên Viện Hàn lâm Khoa học Pháp tuyên bố táo bạo rằng **mọi hàm số bất kỳ—kể cả hàm có góc gãy hay bước nhảy đứt đoạn—đều biểu diễn được thành tổng vô hạn các sóng sin và cosin**, chính Lagrange đã phản đối kịch liệt vì tin rằng tổng các hàm trơn không thể nào tạo ra điểm gián đoạn! Cuộc tranh luận nảy lửa đó đã thúc đẩy Dirichlet định nghĩa lại khái niệm "hàm số", Riemann phát minh tích phân Riemann, Cantor sáng lập Lý thuyết Tập hợp, và ngày nay định hình toàn bộ ngành xử lý tín hiệu, nén ảnh JPEG/MP3 và giải PTVP đạo hàm riêng!
 
-## Bản đồ kiến thức nền: Bốn cột mốc lịch sử của Giải tích Fourier
+## Kiến thức cần nhớ: Bốn cột mốc lịch sử của Giải tích Fourier
 
 1. **Fourier (1807/1822) — *Théorie analytique de la chaleur***:
    Dùng chuỗi lượng giác giải phương trình nhiệt và tìm ra công thức tích phân cho hệ số $a_n, b_n$.
@@ -33,7 +33,7 @@ Giữa thế kỷ XVIII tại Paris, cuộc tranh luận về bài toán dây ru
 
 Xét một ví dụ kinh điển: trên đoạn $$[0,\pi]$$, hàm $$f(x)=x$$ không phải là một sóng sin đơn lẻ, nhưng chuỗi $$2\sin x - \sin 2x + \frac{2}{3}\sin 3x - \cdots$$ lại có thể tái tạo dần hình dạng của nó. Ngay trong ví dụ này, hai trụ cột của giải tích Fourier hiện lên rõ ràng: hệ số đo mức đóng góp của từng mode, còn tính trực giao bảo đảm các mode không ảnh hưởng lẫn nhau khi tách riêng từng thành phần. Đó là lý do Chương 08 từng gây ra nhiều tranh luận lịch sử, bởi nó buộc toán học phải chấp nhận rằng các hình dạng phức tạp vẫn có thể được phân tích như một hợp âm.
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng cầm tay tổng 3 số hạng đầu của sóng vuông (hàm gián đoạn!)
+### Giải thích: Kiểm chứng cầm tay tổng 3 số hạng đầu của sóng vuông (hàm gián đoạn!)
 
 Sóng vuông $f(x) = +1$ trên $(0, \pi)$ và $-1$ trên $(-\pi, 0)$ có chuỗi Fourier chỉ gồm các họa âm lẻ:
 $$f(x) \sim \frac{4}{\pi}\left(\sin x + \frac{\sin 3x}{3} + \frac{\sin 5x}{5} + \dots\right).$$

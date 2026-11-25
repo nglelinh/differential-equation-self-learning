@@ -12,7 +12,7 @@ lesson_type: required
 
 Plug the trial vector $$\mathbf{x}(t) = \mathbf{v}\,e^{\lambda t}$$ into the constant-coefficient system $$\mathbf{x}' = A\mathbf{x}$$: differentiation brings down $$\lambda$$, and canceling $$e^{\lambda t} > 0$$ turns a coupled calculus problem into the pure eigenvalue equation $$A\mathbf{v} = \lambda\mathbf{v}$$. Geometrically, each real eigenvector defines an invisible highway through the origin along which trajectories travel in a pure straight line without ever bending!
 
-## Background Knowledge Map: Straight-Line Solutions and Spectral Decoupling
+## Key ideas: Straight-Line Solutions and Spectral Decoupling
 
 Four principles explain why distinct real eigenvalues yield the cleanest possible dynamics:
 
@@ -21,7 +21,7 @@ Four principles explain why distinct real eigenvalues yield the cleanest possibl
 3. **Asymptotic Tangency (Fast vs. Slow Eigendirections):** For a stable node with $$\lambda_2 < \lambda_1 < 0$$, the fast mode $$e^{\lambda_2 t}$$ dies out far quicker than $$e^{\lambda_1 t}$$, so almost every trajectory bends to enter the origin **tangent to the slow eigenvector** $$\mathbf{v}_1$$!
 4. **Saddle Geometry ($$\lambda_1 > 0 > \lambda_2$$):** Trajectories on the stable line $$\operatorname{span}(\mathbf{v}_2)$$ head directly into the origin, trajectories on the unstable line $$\operatorname{span}(\mathbf{v}_1)$$ flee away, and all other trajectories sweep in along $$\mathbf{v}_2$$ and curve out parallel to $$\mathbf{v}_1$$.
 
-### Step-by-Step Worked Example (Read Slowly): Solving a 2D Real-Distinct System and Predicting Asymptotic Direction
+### Worked example: Solving a 2D Real-Distinct System and Predicting Asymptotic Direction
 
 Solve the initial value problem
 $$\mathbf{x}' = \begin{pmatrix} -4 & 2 \\ 1 & -3 \end{pmatrix}\mathbf{x}, \qquad \mathbf{x}(0) = \begin{pmatrix} 3 \\ 0 \end{pmatrix},$$

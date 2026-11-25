@@ -12,7 +12,7 @@ lesson_type: optional
 
 When a patient swallows an antibiotic pill, the drug does not teleport directly to the infection site: it dissolves in the gut (Compartment 1), absorbs into the bloodstream (Compartment 2), and is cleared by the kidneys. Whether tracking pharmaceuticals in the human body, pollutants cascading through connected lakes, or carbon cycling between atmosphere and ocean, **compartment models** translate conservation of mass directly into structured linear systems $$\mathbf{x}' = A\mathbf{x} + \mathbf{u}(t)$$ whose sign patterns guarantee physical realism.
 
-## Background Knowledge Map: The Algebraic Signature of Compartmental Matrices
+## Key ideas: The Algebraic Signature of Compartmental Matrices
 
 Four mathematical properties hold for *every* well-posed linear compartment model:
 
@@ -23,7 +23,7 @@ Four mathematical properties hold for *every* well-posed linear compartment mode
    - In an **open** system with outflow from every trap, every eigenvalue satisfies $$\operatorname{Re}(\lambda) < 0$$, so an unforced dose clears completely ($$\mathbf{x}(t) \to \mathbf{0}$$).
 4. **Cascade (Triangular) vs. Recirculating Systems:** One-way cascades produce triangular matrices whose eigenvalues sit right on the diagonal; two-way exchange creates full coupling that mixes compartments smoothly.
 
-### Step-by-Step Worked Example (Read Slowly): Two-Compartment Pharmacokinetics (Gut $$\to$$ Bloodstream $$\to$$ Clearance)
+### Worked example: Two-Compartment Pharmacokinetics (Gut $$\to$$ Bloodstream $$\to$$ Clearance)
 
 A patient takes an oral dose of $$100\text{ mg}$$ of a drug into the GI tract ($$x_1(0) = 100,\; x_2(0) = 0$$). The drug transfers from GI tract to bloodstream at rate $$0.6\text{ hr}^{-1}$$ and is cleared from the bloodstream by the kidneys at rate $$0.2\text{ hr}^{-1}$$. Find the blood concentration mass $$x_2(t)$$ and the exact time $$t_{\max}$$ of peak blood level.
 

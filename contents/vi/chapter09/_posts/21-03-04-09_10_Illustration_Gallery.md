@@ -12,7 +12,7 @@ lesson_type: optional
 
 Phương trình nhiệt là bài học trực quan bậc nhất về sự khác biệt giữa *tán xạ năng lượng* và *dao động*: chỉ cần nhìn đồ thị động theo thời gian $t$, bạn thấy ngay mọi góc nhọn tan chảy trong tích tắc, đường cong nhiệt độ hạ dần về đường thẳng dừng, và lưới sai phân FTCS bỗng nhảy loạn xạ khi $r$ vượt ngưỡng $0{,}5$.
 
-## Bản đồ kiến thức nền: Bốn hiện tượng cần quan sát kỹ trong Gallery Chương 09
+## Kiến thức cần nhớ: Bốn hiện tượng cần quan sát kỹ trong Gallery Chương 09
 
 1. **Làm trơn tức thì (Instantaneous Smoothing)**: Góc gãy sắc của hàm ban đầu biến mất ngay tại $t = 0{,}01\text{ s}$.
 2. **Hội tụ về Trạng thái Dừng**: Đường cong $u(x, t)$ tiến về $0$ (Dirichlet), về đường nằm ngang trung bình (Neumann), hoặc đường thẳng nối $T_1 \to T_2$ (biên không thuần nhất).
@@ -31,7 +31,7 @@ Nên xem bộ minh họa theo đúng thứ tự các bài học trong chương. 
 
 Trang này cũng thuận tiện để ôn tập trước khi chuyển sang Chương 10 và Chương 11, vì nhiều cấu trúc phương pháp từ phương trình nhiệt sẽ tiếp tục được dùng cho phương trình sóng và phương trình elliptic.
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng nhanh trên đồ thị tương tác tỷ lệ giảm đỉnh nhiệt độ $u_{\max}(t)$
+### Giải thích: Kiểm chứng nhanh trên đồ thị tương tác tỷ lệ giảm đỉnh nhiệt độ $u_{\max}(t)$
 
 Với nguồn điểm ở gốc ($\alpha = 1$), đỉnh nhân nhiệt là $\Phi(0, t) = \frac{1}{\sqrt{4\pi t}}$:
 - Tại $t = 1\text{ s}$: $\Phi(0, 1) \approx \mathbf{0{,}282}$.

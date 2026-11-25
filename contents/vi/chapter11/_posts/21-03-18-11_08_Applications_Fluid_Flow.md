@@ -14,7 +14,7 @@ lesson_type: optional
 
 Làm thế nào các kỹ sư khí động học thời kỳ đầu có thể phác họa chính xác đường dòng không khí lướt quanh thân tàu ngầm hay cánh máy bay mà chưa hề có siêu máy tính CFD? Họ nhận ra một phép màu toán học: với dòng chảy lý tưởng **không nén được** ($\nabla \cdot \mathbf{v} = 0$) và **không xoáy** ($\nabla \times \mathbf{v} = \mathbf{0}$), vận tốc chất lỏng là gradient của một **thế vận tốc** $\mathbf{v} = \nabla \phi$ thỏa mãn đúng phương trình Laplace $\Delta \phi = 0$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Dòng chảy Thế (Potential Flow)
+## Kiến thức cần nhớ: Bốn trụ cột của Dòng chảy Thế (Potential Flow)
 
 1. **Thế vận tốc $\phi$ và Phương trình Laplace**:
    Tính không xoáy cho phép viết $\mathbf{v} = \nabla \phi$; kết hợp tính không nén được $\nabla \cdot \mathbf{v} = 0$ lập tức cho $\Delta \phi = 0$.
@@ -40,7 +40,7 @@ Trong dòng chảy chất lỏng thực, độ nhớt, chuyển động xoáy v�
 Thay vì theo dõi chuyển động của từng phần tử chất lỏng riêng lẻ, ta mô tả toàn bộ trường vận tốc bằng một hàm vô hướng. Các đường dòng, điểm dừng (stagnation) và cách dòng chảy vòng quanh vật cản đều thể hiện trực tiếp qua nghiệm của bài toán elliptic này.
 
 
-### Khung giải thích (nên đọc chậm): Tính tay vận tốc tại đỉnh và mũi một trụ tròn đặt trong dòng chảy đều
+### Giải thích: Tính tay vận tốc tại đỉnh và mũi một trụ tròn đặt trong dòng chảy đều
 
 Xét dòng chất lỏng đều có vận tốc $U = 2\text{ m/s}$ chảy ngang qua một trụ tròn bán kính $R = 1\text{ m}$. Thế vận tốc chuẩn tắc là:
 $$\phi(r, \theta) = U\left(r + \frac{R^2}{r}\right)\cos\theta = 2\left(r + \frac{1}{r}\right)\cos\theta.$$

@@ -12,7 +12,7 @@ categories:
 
 Năm 1889, nhân dịp sinh nhật lần thứ 60 của Vua Oscar II nước Thụy Điển, một giải thưởng toán học danh giá được treo cho câu hỏi: *Hệ Mặt Trời có ổn định mãi mãi không?* Câu trả lời của **Henri Poincaré** không chỉ phơi bày rằng bài toán ba vật thể không có nghiệm đóng mà còn khai sinh ra cả một kỷ nguyên mới: **lý thuyết định tính, ổn định Lyapunov, chu trình giới hạn và khoa học hỗn loạn (Chaos Theory)**!
 
-## Bản đồ kiến thức nền: Bốn cột mốc lịch sử định hình Động lực học Phi tuyến
+## Kiến thức cần nhớ: Bốn cột mốc lịch sử định hình Động lực học Phi tuyến
 
 1. **Henri Poincaré (1880s–1890s) — Khai sinh Hình học Định tính**:
    Thay câu hỏi "công thức nghiệm là gì?" bằng "hình dáng quỹ đạo ra sao?", sáng chế mặt phẳng pha, lát cắt Poincaré và chứng minh định lý Poincaré–Bendixson khẳng định **hỗn loạn không thể xảy ra trong hệ tự trị liên tục 2 chiều**!
@@ -34,7 +34,7 @@ Tại Paris vào cuối những năm 1880, Henri Poincaré nghiên cứu bài to
 
 Từ phát hiện này, toán học hình thành một hướng tiếp cận mới: thay vì chỉ tìm nghiệm tường minh, ta phân tích cấu trúc hình học của hệ. Với một hệ như $$x' = x(1-x) - ay$$, $$y' = by - xy$$, dù không có công thức nghiệm đóng đơn giản, các điểm cân bằng, đường nullcline và quỹ đạo lân cận vẫn cho thấy rõ hệ sẽ ổn định hay dao động. Về sau, Lyapunov hệ thống hóa trực giác này thành lý thuyết ổn định chặt chẽ, còn Lorenz phát triển xa hơn khi chỉ ra rằng hai quỹ đạo xuất phát rất gần nhau vẫn có thể tách xa nhanh chóng. Tính phi tuyến vì vậy không còn được xem là một trở ngại đại số, mà trở thành đối tượng nghiên cứu trọng tâm về hành vi dài hạn.
 
-### Khung giải thích (nên đọc chậm): Áp dụng trực tiếp Hàm Lyapunov $V(x, y) = \frac{1}{2}y^2 + (1 - \cos x)$ để chứng minh con lắc phi tuyến có cản luôn dừng về đáy!
+### Giải thích: Áp dụng trực tiếp Hàm Lyapunov $V(x, y) = \frac{1}{2}y^2 + (1 - \cos x)$ để chứng minh con lắc phi tuyến có cản luôn dừng về đáy!
 
 Xét con lắc phi tuyến góc lớn có ma sát $\dot{x} = y,\; \dot{y} = -\sin x - 0{,}5 y$ (không có nghiệm sơ cấp!):
 1. **Chọn hàm Lyapunov là cơ năng toàn phần**:

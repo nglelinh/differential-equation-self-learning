@@ -12,7 +12,7 @@ lesson_type: optional
 
 Một nghịch lý đẹp nhất của Giải tích Fourier là sự đối ngẫu giữa **độ trơn trong không gian thực** và **tốc độ tắt trong không gian tần số**: một hàm $u(x)$ càng trơn mịn thì biến đổi Fourier $\widehat{u}(\xi)$ tắt càng nhanh khi $|\xi| \to \infty$. Nhưng biến đổi Fourier lại là phép tích phân toàn cục—nó trộn lẫn mọi điểm $x$ với nhau! Muốn soi xem $u$ có trơn *tại đúng điểm $x_0$* hay không, ta chỉ cần một động tác đơn giản mà thiên tài: **nhân $u$ với một hàm cắt trơn $\phi$ tập trung quanh $x_0$ rồi mới lấy biến đổi Fourier**!
 
-## Bản đồ kiến thức nền: Ba công cụ tiên quyết bước vào Phân tích Vi địa phương
+## Kiến thức cần nhớ: Ba công cụ tiên quyết bước vào Phân tích Vi địa phương
 
 1. **Phân phối $\mathcal{D}'$ và Giá Kỳ dị ($\operatorname{sing\,supp}$)**:
    $\operatorname{sing\,supp}(u)$ là phần bù của tập mở lớn nhất trên đó $u$ là hàm trơn $C^\infty$. Ví dụ với hàm bậc thang $H(x)$ hay hàm $|x|$, $\operatorname{sing\,supp} = \{0\}$.
@@ -38,7 +38,7 @@ Thực chất, các mảnh ghép nền tảng đều đã quen thuộc: phân ph
 Sinh viên nên nắm vững giải tích cơ bản, giải tích nhiều biến và biến đổi Fourier ở mức độ Chương 08. Việc đã học phân phối ở Chương 12 và ký hiệu ở Chương 14 là lợi thế lớn, nhưng bài học này sẽ hệ thống lại đầy đủ các phần cần thiết cho đầu Chương 15.
 
 
-### Khung giải thích (nên đọc chậm): So sánh tốc độ tắt Fourier của một hàm có góc gãy vs. một hàm trơn vô hạn
+### Giải thích: So sánh tốc độ tắt Fourier của một hàm có góc gãy vs. một hàm trơn vô hạn
 
 Đối chiếu hai hàm rất quen thuộc trên $\mathbb{R}$ đều tắt nhanh khi $|x| \to \infty$:
 1. **Hàm có góc gãy tại $x = 0$**: $f(x) = e^{-|x|}$ (liên tục $C^0$, không khả vi tại $0$):

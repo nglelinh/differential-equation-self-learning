@@ -14,7 +14,7 @@ Before Fourier series even existed, Jean le Rond d'Alembert factored the 1D wave
 
 Even more profoundly, d'Alembert's formula introduces the relativistic-looking geometry of **characteristics**, **domains of dependence**, and **ranges of influence**—proving that disturbances in the wave equation strictly obey a finite speed limit $$ c $$.
 
-## Background Knowledge Map: Characteristics, Causality, and d'Alembert's Formula
+## Key ideas: Characteristics, Causality, and d'Alembert's Formula
 
 1. **Characteristic Coordinates ($$ \xi = x - ct, \eta = x + ct $$):** Changing variables from $$ (x, t) $$ to the moving wave frames $$ (\xi, \eta) $$ collapses $$ u_{tt} - c^2 u_{xx} = 0 $$ into the trivial mixed-derivative PDE $$ u_{\xi\eta} = 0 $$, whose general solution is immediately $$ F(\xi) + G(\eta) $$.
 2. **D'Alembert's Closed-Form Cauchy Solution:** Matching $$ u(x, 0) = f(x) $$ and $$ u_t(x, 0) = g(x) $$ gives
@@ -23,7 +23,7 @@ Even more profoundly, d'Alembert's formula introduces the relativistic-looking g
 3. **Domain of Dependence & Finite Speed of Propagation:** The value $$ u(x_0, t_0) $$ depends *only* on initial data inside the closed interval $$ [x_0 - c t_0, x_0 + c t_0] $$. Nothing happening outside that light-cone base can influence $$ (x_0, t_0) $$!
 4. **Persistence of Singularities:** Unlike the heat equation, d'Alembert's formula does *not* smooth away corners or kinks—they travel intact along the characteristic lines $$ x \pm ct = \text{const} $$ forever.
 
-### Step-by-Step Worked Example (Read Slowly): Tracking a Pluck + Hammer Impulse via d'Alembert's Formula
+### Worked example: Tracking a Pluck + Hammer Impulse via d'Alembert's Formula
 
 **Problem:** An infinite string with wave speed $$ c = 2 $$ starts with zero initial displacement $$ f(x) = 0 $$ and localized boxcar initial velocity $$ g(x) = 4 $$ for $$ |x| < 1 $$ and $$ g(x) = 0 $$ for $$ |x| > 1 $$. Use d'Alembert's formula to compute the exact string displacement $$ u(x, t) $$ at $$ t = 1 $$ for $$ x = 0, 2, 4 $$, and sketch the expanding plateau!
 

@@ -13,7 +13,7 @@ lesson_type: required
 
 Trong không gian một chiều, đạo hàm chỉ là độ dốc của một đường tiếp tuyến; nhưng thế giới thực của phương trình vi phân là không gian nhiều biến—nơi nhiệt độ thay đổi theo cả vị trí lẫn thời gian, và hệ động lực có hàng chục trạng thái tương tác lẫn nhau. Khi bước lên nhiều chiều, đạo hàm biến hóa thành **ma trận Jacobi**, **vectơ gradient** và **vi phân toàn phần**—chiếc kính hiển vi tuyến tính hóa cục bộ mọi hiện tượng phi tuyến.
 
-## Bản đồ kiến thức nền: Bốn công cụ cốt lõi của Giải tích Đa biến
+## Kiến thức cần nhớ: Bốn công cụ cốt lõi của Giải tích Đa biến
 
 1. **Đạo hàm riêng & Gradient ($\nabla f$)**:
    Đạo hàm riêng đo tốc độ biến thiên dọc từng trục tọa độ; vectơ $\nabla f$ chỉ hướng tăng nhanh nhất của hàm vô hướng và vuông góc với mọi đường mức $f(x, y) = C$.
@@ -35,7 +35,7 @@ Sinh viên cần thành thạo đạo hàm và vi phân cơ bản của hàm m�
 
 Hãy hình dung bạn đang đứng trên một sườn núi mô tả bởi mặt $$ z = f(x,y) $$. Độ dốc theo phương đông–tây là $$ \partial z/\partial x $$, còn theo phương bắc–nam là $$ \partial z/\partial y $$. Vector gradient $$ \left(\partial z/\partial x, \partial z/\partial y\right) $$ chỉ hướng leo dốc nhanh nhất. Nhờ gradient, ta xác định được ngay hướng tăng nhanh nhất và hướng giảm nhanh nhất của hàm số—thông tin rất hữu ích trong tối ưu hóa và phân tích ODE.
 
-### Khung giải thích (nên đọc chậm): Tính tay Gradient, Ma trận Jacobi và kiểm tra định lý Clairaut cho $f(x, y) = x^2 y + \sin(xy)$ tại $(1, 0)$
+### Giải thích: Tính tay Gradient, Ma trận Jacobi và kiểm tra định lý Clairaut cho $f(x, y) = x^2 y + \sin(xy)$ tại $(1, 0)$
 
 1. **Tính các đạo hàm riêng cấp một**:
    - $f_x(x, y) = 2xy + y\cos(xy)$

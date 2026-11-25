@@ -14,14 +14,14 @@ Standard convolutional neural networks (CNNs) only see a tiny local stencil of n
 
 Every single block inside an FNO is Chapter 08 in action: FFT into frequency space, truncate to low modes, multiply by a learned spectral filter $$ R_\phi(k) $$, and inverse-FFT back to physical space!
 
-## Background Knowledge Map: Fourier Neural Operators (FNO) Through Classical Analysis
+## Key ideas: Fourier Neural Operators (FNO) Through Classical Analysis
 
 1. **Global Convolution Theorem in Neural Layers:** A nonlocal integral kernel $$ (\mathcal{K} v)(x) = \int \kappa(x - y) v(y)\,dy $$ costs $$ O(N^2) $$ in physical space, but by the Fourier Convolution Theorem it collapses to pointwise multiplication $$ \mathcal{F}^{-1}\bigl(R_\phi \cdot \mathcal{F}(v)\bigr) $$ costing only $$ O(N \log N) $$ via FFT.
 2. **Spectral Mode Truncation (Resolution Invariance):** Because FNO only parameterizes the lowest $$ k_{\max} $$ Fourier modes (independent of grid size $$ N $$), a network trained on a coarse $$ 64 \times 64 $$ grid can be evaluated zero-shot on a $$ 256 \times 256 $$ grid without changing a single weight!
 3. **Local Residual Bypass $$ W v(x) $$ (Handling Non-Periodic Boundaries & High Frequencies):** Pure low-mode Fourier layers assume periodicity and smooth away sharp edges; adding a pointwise linear skip connection $$ \sigma\bigl(W v(x) + \mathcal{F}^{-1}(R_\phi \cdot \mathcal{F}(v))(x)\bigr) $$ recovers non-periodic trends and high-frequency nonlinearities.
 4. **Aliasing & Padding Discipline:** Nonlinear activations $$ \sigma(\cdot) $$ generate higher harmonics beyond $$ k_{\max} $$ that can fold back onto low frequencies on coarse grids (aliasing); zero-padding and spectral filtering control this error directly.
 
-### Step-by-Step Worked Example (Read Slowly): Hand-Tracing One 1D Spectral FNO Layer on a 4-Point Grid
+### Worked example: Hand-Tracing One 1D Spectral FNO Layer on a 4-Point Grid
 
 **Problem:** Given a 1D periodic signal $$ v = [2, 0, -2, 0] $$ on $$ N = 4 $$ grid points, pass it through one scalar FNO spectral layer with mode cutoff $$ k_{\max} = 1 $$, learned spectral weights $$ R(0) = 0.5 $$, $$ R(1) = 2i $$, and skip weight $$ W = 1 $$, using the unnormalized DFT $$ \hat{v}_k = \sum_{j=0}^3 v_j e^{-i 2\pi j k / 4} $$ and inverse $$ \frac{1}{4}\sum_{k=0}^3 \hat{w}_k e^{+i 2\pi j k / 4} $$.
 

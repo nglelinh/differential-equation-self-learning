@@ -12,7 +12,7 @@ lesson_type: required
 
 You might hope that the Laplace transform of a product $$f(t)g(t)$$ equals $$F(s)G(s)$$—it does not! Instead, multiplication in the $$s$$-domain corresponds to **convolution** in time, $$(f * g)(t) = \int_0^t f(t - \tau)g(\tau)\,d\tau$$. Far from being a nuisance, convolution is the physical memory integral of every linear system: it sums up the decaying echoes of every past impulse $$g(\tau)\,d\tau$$ weighted by the system's impulse response $$f(t - \tau)$$.
 
-## Background Knowledge Map: Why Convolution Is the Heart of Linear Systems
+## Key ideas: Why Convolution Is the Heart of Linear Systems
 
 Four properties connect the convolution integral to ODEs, integral equations, and signal processing:
 
@@ -22,7 +22,7 @@ Four properties connect the convolution integral to ODEs, integral equations, an
 3. **Universal Zero-State ODE Solution:** Any constant-coefficient IVP $$L[y] = g(t)$$ with zero initial conditions has $$Y(s) = H(s)G(s)$$, so $$y(t) = (h * g)(t) = \int_0^t h(t - \tau)g(\tau)\,d\tau$$ solves the ODE for *any* forcing $$g(t)$$—even non-elementary ones like $$g(t) = e^{-t^2}$$!
 4. **Volterra Integral & Integro-Differential Equations:** Equations containing $$\int_0^t k(t - \tau)y(\tau)\,d\tau$$ collapse instantly into algebraic equations $$K(s)Y(s)$$ under the Laplace transform.
 
-### Step-by-Step Worked Example (Read Slowly): Solving a Volterra Integral Equation via Convolution
+### Worked example: Solving a Volterra Integral Equation via Convolution
 
 Solve the Volterra integral equation
 $$y(t) + \int_0^t (t - \tau)\,y(\tau)\,d\tau = t.$$

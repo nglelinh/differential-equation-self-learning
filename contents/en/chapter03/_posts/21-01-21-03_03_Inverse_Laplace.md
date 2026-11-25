@@ -12,7 +12,7 @@ lesson_type: required
 
 Solving an ODE in the $$s$$-domain is the easy half of the journey—you end up with a compact rational expression like $$\frac{3s^2 + 4s + 11}{(s - 1)(s^2 + 4s + 13)}$$. Translating that rational function back into a time-domain trajectory $$y(t)$$ is where algebra meets artistry: partial fractions isolate the real exponential modes, and completing the square isolates the damped oscillations.
 
-## Background Knowledge Map: Four Tools for Inverting Rational Transforms
+## Key ideas: Four Tools for Inverting Rational Transforms
 
 Every proper rational function $$P(s)/Q(s)$$ yields cleanly to four systematic tools:
 
@@ -21,7 +21,7 @@ Every proper rational function $$P(s)/Q(s)$$ yields cleanly to four systematic t
 3. **Heaviside Cover-Up Shortcut:** For any simple real pole $$s = r$$, the residue $$A$$ in $$\frac{A}{s - r}$$ is computed instantly by covering up $$(s - r)$$ in $$F(s)$$ and evaluating at $$s = r$$: $$A = \lim_{s\to r}(s - r)F(s)$$.
 4. **Completing the Square + Numerator Alignment:** For an irreducible quadratic denominator $$(s - \alpha)^2 + \beta^2$$, rewrite the numerator $$Bs + C$$ as $$B(s - \alpha) + \frac{C + B\alpha}{\beta}\cdot\beta$$ so the two pieces invert directly to $$e^{\alpha t}\cos(\beta t)$$ and $$e^{\alpha t}\sin(\beta t)$$.
 
-### Step-by-Step Worked Example (Read Slowly): Inverting a Mixed Linear + Irreducible Quadratic Transform
+### Worked example: Inverting a Mixed Linear + Irreducible Quadratic Transform
 
 Find the inverse Laplace transform of
 $$F(s) = \frac{3s^2 + 4s + 11}{(s - 1)(s^2 + 4s + 13)}.$$

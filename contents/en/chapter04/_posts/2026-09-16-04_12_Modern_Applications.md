@@ -12,7 +12,7 @@ lesson_type: optional
 
 From predicting ICU patient trajectories measured at irregular hospital hours to processing million-token text sequences faster than Transformers, modern AI has rediscovered Chapter 04's linear systems at massive scale. **Latent ODEs**, **Koopman/DMD linearizations**, and **Structured State-Space Models (S4 / Mamba)** all rely on a single profound idea: lift messy, nonlinear observations into a higher-dimensional latent space where the dynamics evolve as a clean, diagonalizable linear system $$\mathbf{z}' = A\mathbf{z} + B\mathbf{u}(t)$$.
 
-## Background Knowledge Map: Linear Systems Theory Inside Modern Sequence & Scientific AI
+## Key ideas: Linear Systems Theory Inside Modern Sequence & Scientific AI
 
 Four Chapter 04 pillars sit directly inside state-of-the-art machine learning architectures:
 
@@ -21,7 +21,7 @@ Four Chapter 04 pillars sit directly inside state-of-the-art machine learning ar
 3. **Diagonal State-Space Models (S4D / Mamba):** Restricting $$A = \operatorname{diag}(\lambda_1, \dots, \lambda_d)$$ with $$\operatorname{Re}(\lambda_k) < 0$$ eliminates expensive matrix exponentials completely: discretizing with Zero-Order Hold (ZOH) step $$\Delta$$ turns $$e^{A\Delta}$$ into an $$O(d)$$ elementwise exponential!
 4. **Exact ZOH Discretization Formula:** Passing from continuous time $$\mathbf{z}' = A\mathbf{z} + B u$$ to discrete step $$\Delta$$ yields $$\mathbf{z}_{k+1} = \bar{A}\mathbf{z}_k + \bar{B}u_k$$ where $$\bar{A} = e^{A\Delta}$$ and $$\bar{B} = A^{-1}(e^{A\Delta} - I)B$$—pure Chapter 04 variation of parameters!
 
-### Step-by-Step Worked Example (Read Slowly): Computing Exact ZOH Discretization for a Diagonal State-Space Layer
+### Worked example: Computing Exact ZOH Discretization for a Diagonal State-Space Layer
 
 Consider a 2-channel diagonal continuous state-space layer (as in S4D/Mamba) with
 $$A = \begin{pmatrix} -1 & 0 \\ 0 & -4 \end{pmatrix}, \qquad B = \begin{pmatrix} 1 \\ 2 \end{pmatrix}, \qquad \mathbf{z}(0) = \begin{pmatrix} 0 \\ 0 \end{pmatrix},$$

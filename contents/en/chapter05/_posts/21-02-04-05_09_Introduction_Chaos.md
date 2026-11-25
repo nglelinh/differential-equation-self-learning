@@ -12,7 +12,7 @@ lesson_type: optional
 
 In 1961, MIT meteorologist Edward Lorenz paused a weather simulation halfway through and restarted it by typing `0.506` from his printout instead of the computer's internal `0.506127`. Within minutes, the new forecast diverged completely from the original—not because of a bug or randomness, but because a completely deterministic three-equation ODE can amplify microscopic perturbations exponentially fast while remaining trapped forever inside a bounded **strange attractor**.
 
-## Background Knowledge Map: Four Mathematical Ingredients of Deterministic Chaos
+## Key ideas: Four Mathematical Ingredients of Deterministic Chaos
 
 Chaos is *not* randomness—it is strict deterministic geometry governed by four exact rules:
 
@@ -21,7 +21,7 @@ Chaos is *not* randomness—it is strict deterministic geometry governed by four
 3. **Dissipative Volume Contraction ($$\operatorname{div}\mathbf{f} < 0$$):** In the Lorenz system, phase-space volumes shrink exponentially at constant rate $$\operatorname{div}\mathbf{f} = -(\sigma + 1 + \beta) < 0$$—meaning trajectories collapse onto a zero-volume fractal object (the **strange attractor**, dimension $$\approx 2.06$$) even while stretching apart *along* the attractor!
 4. **Stretching + Folding = Bounded Aperiodicity:** Linear systems with $$\lambda > 0$$ just blow up to infinity; chaotic nonlinear systems combine local exponential stretching with global nonlinear folding that keeps trajectories bounded yet never repeating.
 
-### Step-by-Step Worked Example (Read Slowly): Volume Contraction, Equilibria, and Predictability Horizon in the Lorenz System
+### Worked example: Volume Contraction, Equilibria, and Predictability Horizon in the Lorenz System
 
 Consider the classic Lorenz equations with standard chaotic parameters $$\sigma = 10,\; \rho = 28,\; \beta = \frac{8}{3}$$:
 $$x' = 10(y - x), \qquad y' = x(28 - z) - y, \qquad z' = xy - \frac{8}{3}z.$$

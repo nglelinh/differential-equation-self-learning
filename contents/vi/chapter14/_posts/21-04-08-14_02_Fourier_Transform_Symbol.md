@@ -14,7 +14,7 @@ lesson_type: required
 
 Một toán tử vi phân hệ số biến thiên như $P = a(x)(-\partial_x^2) + b(x)(-i\partial_x) + c(x)$ vừa nhân với hàm theo vị trí $x$, vừa lấy đạo hàm tương ứng với tần số $\xi$. Làm sao biểu diễn nó qua Biến đổi Fourier khi $a(x)$ không còn là hằng số để kéo ra ngoài dấu tích phân? Bí quyết vô cùng thanh lịch: viết $u(x)$ thành tổng sóng phẳng $e^{ix\xi}\widehat{u}(\xi)$ trước, rồi để $P$ tác động trực tiếp lên $e^{ix\xi}$—hệ số hiện ra chính là **ký hiệu toàn phần $p(x, \xi)$**!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Biểu diễn Biến đổi Fourier và Ký hiệu $p(x, \xi)$
+## Kiến thức cần nhớ: Bốn trụ cột của Biểu diễn Biến đổi Fourier và Ký hiệu $p(x, \xi)$
 
 1. **Công thức Tác động qua Ký hiệu Toàn phần**:
    $$\big(P u\big)(x) = \frac{1}{(2\pi)^n}\int_{\mathbb{R}^n} e^{i x \cdot \xi}\, p(x, \xi)\, \widehat{u}(\xi)\,d\xi,$$
@@ -41,7 +41,7 @@ Biến đổi Fourier mang lại một cách tiếp cận rất hiệu quả cho
 Trong chương này, biến đổi Fourier không chỉ là một công cụ tính tích phân mà còn là khung biểu diễn giúp ta đọc bản chất của toán tử thông qua tác động của nó lên từng mode tần số.
 
 
-### Khung giải thích (nên đọc chậm): Đọc chính xác Ký hiệu toàn phần và Ký hiệu chính của một toán tử hệ số biến thiên
+### Giải thích: Đọc chính xác Ký hiệu toàn phần và Ký hiệu chính của một toán tử hệ số biến thiên
 
 Xét toán tử vi phân bậc 2 trên $\mathbb{R}$:
 $$P = (1 + x^2)(-\partial_x^2) + 3x(-i\partial_x) + 5 = (1 + x^2)D_x^2 + 3x D_x + 5.$$

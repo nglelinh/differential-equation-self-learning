@@ -20,7 +20,7 @@ This lesson revisits elliptic regularity from the pseudo-differential viewpoint.
 
 Students should know elliptic regularity from earlier chapters and the pseudo-differential ideas of symbols, composition, and parametrices.
 
-## Background Knowledge Map: The Symbolic Shortcut to Elliptic Regularity
+## Key ideas: The Symbolic Shortcut to Elliptic Regularity
 
 Four ingredients combine to make the $\Psi\text{DO}$ proof of elliptic regularity both shorter and far more general than Chapter 12's energy method:
 
@@ -100,7 +100,7 @@ This prepares for the final transition into Chapter 15.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): The Four-Line Parametrix Proof and Exact Sobolev Gain
+### Worked example: The Four-Line Parametrix Proof and Exact Sobolev Gain
 
 Suppose $P \in \Psi^m(\mathbb{R}^n)$ is elliptic with parametrix $Q \in \Psi^{-m}$ ($QP = I + R$, $R \in \Psi^{-\infty}$), and $u \in H^{-10}(\mathbb{R}^n)$ is a very rough distribution satisfying $Pu = f \in H^s(\mathbb{R}^n)$. Prove that $u \in H^{s+m}(\mathbb{R}^n)$ with an explicit norm bound, then evaluate the exact bound for $P = 1 - \Delta$ ($m=2$) and $f \in H^1(\mathbb{R}^n)$.
 

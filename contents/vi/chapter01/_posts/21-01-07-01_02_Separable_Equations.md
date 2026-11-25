@@ -13,7 +13,7 @@ lesson_type: required
 
 Giữa rừng phương trình vi phân cấp một, **phương trình tách biến** là lớp bài toán đầu tiên—và cũng thanh lịch nhất—mà ta có thể giải triệt để bằng phép tích phân trực tiếp. Ý tưởng đơn giản đến bất ngờ: dồn toàn bộ biến phụ thuộc $y$ sang vế trái, biến độc lập $x$ sang vế phải, rồi tích phân hai vế—nhưng ẩn sau sự đơn giản ấy lại có những cạm bẫy tinh tế như **nghiệm kỳ dị bị mất khi chia** và **nghiệm ẩn không giải tường minh được**!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Tách biến
+## Kiến thức cần nhớ: Bốn trụ cột của Phương trình Tách biến
 
 1. **Cấu trúc nhân tử hóa $\frac{dy}{dx} = g(x)\,h(y)$**:
    Nhận diện nhanh khi vế phải tách được thành tích của một hàm chỉ phụ thuộc $x$ và một hàm chỉ phụ thuộc $y$.
@@ -37,7 +37,7 @@ Nhiều mô hình cơ bản trong khoa học có tốc độ biến thiên bằn
 
 Ưu điểm của phương pháp tách biến nằm ở chỗ nó khai thác trực tiếp cấu trúc nhân tử của mô hình để tích lũy riêng phần ảnh hưởng của từng biến qua phép tích phân. Khi thực hiện cẩn thận, phương pháp này không chỉ cho công thức nghiệm mà còn giúp phát hiện các nghiệm cân bằng và giới hạn miền tồn tại của nghiệm.
 
-### Khung giải thích (nên đọc chậm): Giải trọn vẹn IVP $\frac{dy}{dx} = -2xy^2,\; y(0) = \frac{1}{2}$ và phát hiện khoảng bùng nổ
+### Giải thích: Giải trọn vẹn IVP $\frac{dy}{dx} = -2xy^2,\; y(0) = \frac{1}{2}$ và phát hiện khoảng bùng nổ
 
 1. **Kiểm tra nghiệm cân bằng**: $h(y) = y^2 = 0 \implies y \equiv 0$ là nghiệm hằng (nhưng không thỏa $y(0) = 1/2$).
 2. **Tách biến và tích phân** (với $y \ne 0$):

@@ -22,7 +22,7 @@ This lesson presents the Lax-Milgram theorem as the fundamental existence-and-un
 
 Students should know Hilbert spaces, continuous linear functionals, bilinear forms, and weak formulations of PDE. It also helps to remember the finite-dimensional analogy: solving a linear system amounts to inverting a matrix. Lax-Milgram is the infinite-dimensional version of that idea.
 
-## Background Knowledge Map: The Machinery Behind Lax–Milgram
+## Key ideas: The Machinery Behind Lax–Milgram
 
 Four Hilbert-space pillars explain both why Lax–Milgram works and how it delivers instant stability bounds:
 
@@ -104,7 +104,7 @@ Once the two hypotheses are checked, the existence and uniqueness of the weak so
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Checking Non-Symmetric Coercivity and Stability Constants
+### Worked example: Checking Non-Symmetric Coercivity and Stability Constants
 
 Apply the Lax–Milgram Theorem to the advection–diffusion–reaction boundary-value problem
 $$-u'' + 2u' + 3u = f \quad \text{on } (0,1), \qquad u(0) = u(1) = 0,$$

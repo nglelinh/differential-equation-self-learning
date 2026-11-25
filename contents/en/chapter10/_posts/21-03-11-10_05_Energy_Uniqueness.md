@@ -14,14 +14,14 @@ In Chapter 09, we proved uniqueness of the heat equation using the Maximum Princ
 
 The answer is the **Energy Method**: define the total mechanical energy $$ E(t) = \frac{1}{2}\int \bigl(u_t^2 + c^2 |\nabla u|^2\bigr)\,dx $$, differentiate in time, integrate by parts, and watch $$ \frac{dE}{dt} = 0 $$ prove uniqueness in three lines—and when integrated over a *shrinking light cone*, prove finite speed of propagation in any dimension!
 
-## Background Knowledge Map: Energy Conservation and Light-Cone Uniqueness
+## Key ideas: Energy Conservation and Light-Cone Uniqueness
 
 1. **Kinetic + Potential Wave Energy:** For $$ u_{tt} = c^2 u_{xx} $$ on $$ [0, L] $$, the quadratic functional $$ E(t) = \frac{1}{2}\int_0^L \bigl(u_t^2 + c^2 u_x^2\bigr)\,dx $$ sums kinetic energy ($$ \frac{1}{2}u_t^2 $$) and elastic stretching energy ($$ \frac{1}{2}c^2 u_x^2 $$).
 2. **Conservation Law via Integration by Parts:** Differentiating under the integral gives $$ E'(t) = \int_0^L \bigl(u_t u_{tt} + c^2 u_x u_{xt}\bigr)\,dx = \bigl[c^2 u_t u_x\bigr]_0^L + \int_0^L u_t(u_{tt} - c^2 u_{xx})\,dx = \bigl[c^2 u_t u_x\bigr]_0^L $$. Under Dirichlet ($$ u_t = 0 $$), Neumann ($$ u_x = 0 $$), or periodic BCs, the boundary flux vanishes identically, so $$ E(t) = E(0) $$ for all $$ t $$!
 3. **Instant Proof of Uniqueness:** For the difference $$ w = u_1 - u_2 $$ of two solutions with identical initial and boundary data, $$ E_w(0) = 0 \implies E_w(t) = 0 $$ for all $$ t \ge 0 $$. Since $$ w_t^2 + c^2 w_x^2 \ge 0 $$, both $$ w_t \equiv 0 $$ and $$ w_x \equiv 0 $$, forcing $$ w \equiv 0 $$!
 4. **Local Light-Cone Energy (Finite Speed of Propagation):** Integrating $$ \frac{1}{2}(u_t^2 + c^2 u_x^2) $$ over the shrinking interval $$ [x_0 - c(t_0 - t), x_0 + c(t_0 - t)] $$ yields $$ \frac{d}{dt} E_{\text{loc}}(t) \le 0 $$ via the Cauchy–Schwarz inequality $$ |2 c u_t u_x| \le u_t^2 + c^2 u_x^2 $$. Thus zero data on the base forces $$ u \equiv 0 $$ inside the entire backward light cone!
 
-### Step-by-Step Worked Example (Read Slowly): Computing Exact Energy Conservation and Damped Energy Decay
+### Worked example: Computing Exact Energy Conservation and Damped Energy Decay
 
 **Problem:** (a) For the standing wave $$ u(x, t) = A \sin(kx)\cos(\omega t) $$ on $$ [0, \pi] $$ with $$ k = 2, c = 3, \omega = kc = 6 $$, compute the kinetic energy $$ K(t) = \frac{1}{2}\int_0^\pi u_t^2\,dx $$ and potential energy $$ P(t) = \frac{c^2}{2}\int_0^\pi u_x^2\,dx $$ explicitly, and verify $$ K(t) + P(t) $$ is strictly constant. (b) Show that adding friction $$ u_{tt} + \gamma u_t = c^2 u_{xx} $$ ($$ \gamma > 0 $$) forces $$ E'(t) \le 0 $$.
 

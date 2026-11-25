@@ -12,7 +12,7 @@ lesson_type: required
 
 During World War I, commercial fishing in the Adriatic Sea collapsed due to naval blockades—yet when marine biologist Umberto D'Ancona checked port records afterward, he found a paradox: the fraction of *predatory* sharks and rays had surged dramatically while edible prey fish barely rose! Vito Volterra solved the mystery in 1926 using a two-equation nonlinear system that revealed both endless ecological oscillations and the startling **Volterra Principle**: indiscriminate harvesting always hurts predators more than prey.
 
-## Background Knowledge Map: Four Surprises Inside the Lotka–Volterra Model
+## Key ideas: Four Surprises Inside the Lotka–Volterra Model
 
 Four analytical properties make the classic Lotka–Volterra system $$x' = x(\alpha - \beta y),\; y' = y(-\gamma + \delta x)$$ a cornerstone of nonlinear ODEs:
 
@@ -23,7 +23,7 @@ Four analytical properties make the classic Lotka–Volterra system $$x' = x(\al
 3. **Time-Averaged Populations Equal the Equilibrium:** Remarkably, integrating $$\frac{x'}{x} = \alpha - \beta y$$ over one full period $$T$$ gives $$\bar{y} = \frac{1}{T}\int_0^T y(t)\,dt = \frac{\alpha}{\beta} = y^*$$ and $$\bar{x} = \frac{\gamma}{\delta} = x^*$$—completely independent of the oscillation amplitude!
 4. **Volterra's Fishing/Pesticide Principle:** Adding uniform harvesting/spraying rate $$\varepsilon$$ to both species changes $$\alpha \mapsto \alpha - \varepsilon$$ and $$\gamma \mapsto \gamma + \varepsilon$$, which **raises** the average prey population $$\bar{x} = \frac{\gamma + \varepsilon}{\delta}$$ and **lowers** the average predator population $$\bar{y} = \frac{\alpha - \varepsilon}{\beta}$$—explaining both D'Ancona's Adriatic sharks and why broad-spectrum insecticides can trigger pest outbreaks!
 
-### Step-by-Step Worked Example (Read Slowly): Linearizing, Verifying the First Integral, and Testing Harvesting on Lotka–Volterra
+### Worked example: Linearizing, Verifying the First Integral, and Testing Harvesting on Lotka–Volterra
 
 Analyze the predator–prey system ($$x$$ = rabbits, $$y$$ = foxes):
 $$x' = x(2 - y), \qquad y' = y(-3 + x), \qquad x > 0,\; y > 0.$$

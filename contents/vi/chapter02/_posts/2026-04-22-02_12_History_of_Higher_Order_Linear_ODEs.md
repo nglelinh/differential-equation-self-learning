@@ -12,7 +12,7 @@ categories:
 
 Định luật thứ hai của Newton $F = m\ddot{x}$ gắn chặt vật lý cổ điển với **đạo hàm cấp hai**, và ngay lập tức đẩy toán học thế kỷ XVIII vào một câu hỏi sâu sắc: làm thế nào giải hệ thống các phương trình tuyến tính bậc hai, bậc ba trở lên? Từ cú đột phá thay hàm thử $e^{rt}$ của Leonhard Euler năm 1743 đến phương pháp biến thiên hằng số của Lagrange và định thức Wronskian thế kỷ XIX, Chương 02 là bản giao hưởng giữa đại số đa thức và giải tích.
 
-## Bản đồ kiến thức nền: Bốn cột mốc lịch sử của PTVP Tuyến tính Bậc Cao
+## Kiến thức cần nhớ: Bốn cột mốc lịch sử của PTVP Tuyến tính Bậc Cao
 
 1. **Leonhard Euler (1743) — Đa thức đặc trưng**:
    Euler phát hiện rằng thử $y = e^{rt}$ biến phương trình vi phân hệ số hằng bậc $n$ thành một phương trình đại số bậc $n$—và dùng công thức $e^{i\theta} = \cos\theta + i\sin\theta$ thống nhất nghiệm phức với dao động thực.
@@ -34,7 +34,7 @@ Turin, năm 1788. Joseph-Louis Lagrange đang nghiên cứu các hệ dao độn
 
 Khi tuyến tính hóa các dao động nhỏ, Lagrange gặp những phương trình dạng $$x'' + \omega^2 x = 0$$. Nếu bổ sung lực cản nhẹ, phương trình trở thành $$x'' + 2\beta x' + \omega^2 x = 0$$. Chỉ một thay đổi nhỏ ở các hệ số cũng làm thay đổi hoàn toàn hành vi vật lý: nghiệm có thể dao động tuần hoàn, tắt dần hoặc tiến về cân bằng mà không dao động. Chẳng hạn, với phương trình đặc trưng $$r^2 + 2r + 5 = 0$$, nghiệm có phần ảo khác không và hệ dao động tắt dần; còn với $$r^2 - 3r + 2 = 0$$, hai nghiệm thực dương khiến chuyển động tăng không bị chặn thay vì ổn định. Chính nhu cầu phân biệt các dạng hành vi động học này đã đưa phương trình đặc trưng, nghiệm phức và nguyên lý chồng chất trở thành nội dung trung tâm của Chương 02.
 
-### Khung giải thích (nên đọc chậm): Tái hiện phép lấy giới hạn tuyệt đẹp của d'Alembert để thấy nhân tử $t e^{rt}$ từ đâu chui ra!
+### Giải thích: Tái hiện phép lấy giới hạn tuyệt đẹp của d'Alembert để thấy nhân tử $t e^{rt}$ từ đâu chui ra!
 
 Xét phương trình $y'' - 2r y' + r^2 y = 0$ có nghiệm kép $r$. Hãy xét phiên bản nhiễu nhẹ với hai nghiệm phân biệt $r$ và $r + \varepsilon$:
 1. Hai nghiệm độc lập là $e^{rt}$ và $e^{(r+\varepsilon)t}$.

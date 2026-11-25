@@ -12,7 +12,7 @@ lesson_type: optional
 
 Mọi hàm đặc biệt ở Chương 6 không phải do các nhà toán học "bịa ra cho khó"—chúng là chữ ký tự nhiên của **hình học không gian 3 chiều** khi ta tách biến phương trình Laplace, sóng hay Schrödinger. Đổi từ hộp chữ nhật sang hình trụ ta gặp Bessel; đổi sang hình cầu ta gặp Legendre và cầu điều hòa; đổi sang giếng thế parabol ta gặp Hermite!
 
-## Bản đồ kiến thức nền: Bốn bài toán Vật lý kinh điển gắn với Hàm Đặc biệt
+## Kiến thức cần nhớ: Bốn bài toán Vật lý kinh điển gắn với Hàm Đặc biệt
 
 1. **Màng trống tròn rung (Phương trình sóng 2D cực → Bessel)**:
    Điều kiện biên cố định ở vành $r = R$ buộc $J_m(k R) = 0 \implies$ tần số riêng của trống tỷ lệ với các nghiệm không $j_{m,n}$ (không còn là bội nguyên $1:2:3$ như dây đàn guitar!).
@@ -39,7 +39,7 @@ Các hàm đặc biệt không xuất hiện một cách ngẫu nhiên mà đư�
 
 Nói cách khác, khi hình học của bài toán vật lý thay đổi, họ hàm cơ sở dùng để mô tả nghiệm cũng phải thay đổi tương ứng.
 
-### Khung giải thích (nên đọc chậm): Tính tỷ số hòa âm của màng trống tròn (Bessel) so với dây đàn guitar
+### Giải thích: Tính tỷ số hòa âm của màng trống tròn (Bessel) so với dây đàn guitar
 
 Một dây đàn guitar có các tần số riêng tỷ lệ nguyên hoàn hảo $1 : 2 : 3 : 4$. Với màng trống tròn bán kính $R$, các tần số riêng tỷ lệ với các nghiệm không $j_{m, n}$ của $J_m$:
 - Mode cơ bản $(m=0, n=1)$: $j_{0,1} \approx 2{,}405 \implies$ tỷ số $= \mathbf{1{,}00}$.

@@ -22,7 +22,7 @@ This optional lesson introduces semiclassical analysis as the bridge between hig
 
 Students should know the Fourier transform, pseudodifferential operators, basic Hamiltonian mechanics at an intuitive level, and the Schrodinger equation. Background in spectral theory and wave front sets also helps explain why a small parameter creates a new scale of observation.
 
-## Background Knowledge Map: Bridging Quantum Waves and Classical Mechanics as $h \to 0$
+## Key ideas: Bridging Quantum Waves and Classical Mechanics as $h \to 0$
 
 Four pillars organize semiclassical PDE theory:
 
@@ -112,7 +112,7 @@ High-energy spectral questions are often reinterpreted as semiclassical limits.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Deriving the WKB Eikonal and Transport Equations from Scratch
+### Worked example: Deriving the WKB Eikonal and Transport Equations from Scratch
 
 Substitute the semiclassical WKB ansatz $u_h(x) = a(x)e^{iS(x)/h}$ into the 1D stationary Schrödinger equation
 $$\big(-h^2\frac{d^2}{dx^2} + V(x) - E\big)u_h(x) = 0$$

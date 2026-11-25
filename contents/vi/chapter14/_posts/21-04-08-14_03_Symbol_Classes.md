@@ -14,7 +14,7 @@ lesson_type: required
 
 Nếu ta cho phép $p(x, \xi)$ là một hàm tùy ý thì tích phân Fourier $\int e^{ix\xi} p(x, \xi)\widehat{u}(\xi)\,d\xi$ có thể phân kỳ, và hợp thành hai toán tử sẽ mất sạch cấu trúc đại số! Lars Hörmander đã tìm ra đúng "điều kiện tăng trưởng vàng" để mọi phép tính vi tích phân, hợp thành và đánh giá Sobolev chạy mượt như nhung: **lớp ký hiệu $S^m(\mathbb{R}^n \times \mathbb{R}^n)$**—nơi mỗi lần lấy đạo hàm theo $\xi$, bậc tăng trưởng phải **rơi xuống đúng 1 nấc**!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Các lớp Ký hiệu Hörmander $S^m_{\rho,\delta}$
+## Kiến thức cần nhớ: Bốn trụ cột của Các lớp Ký hiệu Hörmander $S^m_{\rho,\delta}$
 
 1. **Ước lượng Định nghĩa của Lớp chuẩn $S^m = S^m_{1,0}$**:
    Hàm trơn $p \in C^\infty(\mathbb{R}^n \times \mathbb{R}^n)$ thuộc $S^m$ nếu với mọi đa chỉ số $\alpha, \beta$:
@@ -42,7 +42,7 @@ Một ký hiệu tùy ý có thể biến thiên quá thất thường: tăng tr
 Mục tiêu ở đây không phải là học thuộc một bất đẳng thức kỹ thuật, mà là hiểu rằng các lớp ký hiệu tạo nên khuôn khổ ổn định để phép tính giả vi phân vận hành nhất quán.
 
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng bằng tay rằng $p(\xi) = \langle\xi\rangle^{-1} = (1 + \xi^2)^{-1/2}$ thuộc lớp $S^{-1}(\mathbb{R})$
+### Giải thích: Kiểm chứng bằng tay rằng $p(\xi) = \langle\xi\rangle^{-1} = (1 + \xi^2)^{-1/2}$ thuộc lớp $S^{-1}(\mathbb{R})$
 
 Ta cần kiểm tra ước lượng $|\partial_\xi^k p(\xi)| \le C_k \langle\xi\rangle^{-1 - k}$ cho $k = 0, 1, 2$:
 1. **Với $k = 0$**: $|p(\xi)| = (1 + \xi^2)^{-1/2} = \mathbf{1 \cdot \langle\xi\rangle^{-1}}$ (đúng với $C_0 = 1$).

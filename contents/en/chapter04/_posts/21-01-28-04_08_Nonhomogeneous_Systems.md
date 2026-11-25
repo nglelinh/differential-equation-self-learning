@@ -12,7 +12,7 @@ lesson_type: required
 
 Real systems rarely coast unforced: a multi-room building receives fluctuating solar heat, a circuit network is driven by an AC generator, and a multi-compartment drug model receives scheduled infusions. For any forced linear system $$\mathbf{x}' = A(t)\mathbf{x} + \mathbf{g}(t)$$, superposition still splits the answer into $$\mathbf{x} = \mathbf{x}_h + \mathbf{x}_p$$—and matrix variation of parameters hands us a single universal formula that works for *every* continuous forcing vector $$\mathbf{g}(t)$$.
 
-## Background Knowledge Map: Three Methods for Forced Linear Systems
+## Key ideas: Three Methods for Forced Linear Systems
 
 Choose the sharpest tool depending on the structure of $$A$$ and $$\mathbf{g}(t)$$:
 
@@ -23,7 +23,7 @@ Choose the sharpest tool depending on the structure of $$A$$ and $$\mathbf{g}(t)
 3. **Vector Undetermined Coefficients (With Resonance Caution):** For polynomial/exponential/sinusoidal $$\mathbf{g}(t)$$, a trial vector works—*but* if the forcing exponent $$\mu$$ matches an eigenvalue of $$A$$, you must include **both** $$\mathbf{a}\,t\,e^{\mu t} + \mathbf{b}\,e^{\mu t}$$ (unlike scalar ODEs, you cannot drop the $$\mathbf{b}\,e^{\mu t}$$ term because $$\mathbf{b}$$ has components orthogonal to the eigenvector!).
 4. **Equilibrium Shift for Constant Forcing:** When $$\mathbf{g}(t) \equiv \mathbf{b}$$ is constant and $$A$$ is invertible, the steady-state particular solution is immediately $$\mathbf{x}_p = -A^{-1}\mathbf{b}$$!
 
-### Step-by-Step Worked Example (Read Slowly): Solving a Forced System via Diagonalization Decoupling
+### Worked example: Solving a Forced System via Diagonalization Decoupling
 
 Solve the forced initial value problem
 $$\mathbf{x}' = \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}\mathbf{x} + \begin{pmatrix} 2e^t \\ 0 \end{pmatrix}, \qquad \mathbf{x}(0) = \begin{pmatrix} 0 \\ 0 \end{pmatrix}.$$

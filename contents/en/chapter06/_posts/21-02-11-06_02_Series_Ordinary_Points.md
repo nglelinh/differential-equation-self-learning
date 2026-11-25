@@ -14,14 +14,14 @@ When George Biddell Airy studied the optical caustics of a rainbow in 1838, he a
 
 This lesson turns that insight into a systematic engine: whenever $$ x_0 $$ is an ordinary point, Fuchs's theorem guarantees two linearly independent power-series solutions whose radii of convergence reach at least to the nearest complex singularity of the equation's coefficients.
 
-## Background Knowledge Map: Ordinary Points and Fuchs's Theorem
+## Key ideas: Ordinary Points and Fuchs's Theorem
 
 1. **Classification via Standard Form (Analyticity of Coefficients):** Writing $$ y'' + P(x)y' + Q(x)y = 0 $$, a point $$ x_0 $$ is an *ordinary point* if both $$ P(x) $$ and $$ Q(x) $$ are analytic at $$ x_0 $$. Analyticity guarantees that multiplying $$ P(x) $$ by $$ y'(x) $$ and $$ Q(x) $$ by $$ y(x) $$ yields valid Cauchy products of power series.
 2. **Fuchs's Existence & Radius Theorem (Complex-Plane Horizon):** If $$ P $$ and $$ Q $$ are analytic on the open disk $$ |z - x_0| < \rho $$ in $$ \mathbb{C} $$, then every solution of $$ y'' + P(x)y' + Q(x)y = 0 $$ is analytic on $$ |z - x_0| < \rho $$. Thus the radius of convergence of the series solution is *at least* the distance from $$ x_0 $$ to the nearest complex singularity of $$ P $$ or $$ Q $$—without ever computing a single coefficient!
 3. **Recurrence Relations as Infinite-Dimensional Linear Maps:** Equating the coefficient of $$ (x - x_0)^k $$ to zero expresses $$ a_{k+2} $$ in terms of earlier coefficients. Because the ODE is second-order, $$ a_0 = y(x_0) $$ and $$ a_1 = y'(x_0) $$ remain completely free, splitting the solution naturally into the fundamental pair $$ y(x) = a_0 y_1(x) + a_1 y_2(x) $$.
 4. **Truncation Error & Local Approximation:** Near $$ x_0 $$, the partial sums of $$ y_1 $$ and $$ y_2 $$ approximate the true solution with error $$ O(|x - x_0|^{N+1}) $$, making ordinary-point series both an exact theoretical representation and a high-precision local numerical scheme.
 
-### Step-by-Step Worked Example (Read Slowly): Airy's Equation $$ y'' - xy = 0 $$ Around $$ x_0 = 0 $$
+### Worked example: Airy's Equation $$ y'' - xy = 0 $$ Around $$ x_0 = 0 $$
 
 **Problem:** Find the recurrence relation and the first three nonzero terms of each fundamental solution $$ y_1(x) $$ and $$ y_2(x) $$ for $$ y'' - xy = 0 $$ around $$ x_0 = 0 $$, determine the guaranteed radius of convergence, and verify the ODE up to $$ O(x^4) $$.
 

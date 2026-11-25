@@ -14,7 +14,7 @@ lesson_type: required
 
 Nếu bạn đang lái xe trong sương mù dày đặc và chỉ thấy độ dốc mặt đường ngay dưới bánh xe hiện tại, chiến lược đơn giản nhất là giữ nguyên hướng lái ấy đi thẳng một quãng ngắn $h$, rồi dừng lại đo độ dốc mới và lặp lại. Đó chính là **Phương pháp Euler (1768)**: $y_{n+1} = y_n + h f(t_n, y_n)$—thuật toán giải ODE lâu đời nhất, dễ hiểu nhất, và cũng là phòng thí nghiệm hoàn hảo nhất để tận mắt thấy hiện tượng mất ổn định số!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Euler
+## Kiến thức cần nhớ: Bốn trụ cột của Phương pháp Euler
 
 1. **Ý nghĩa Hình học (Đường gấp khúc Tiếp tuyến) & Đại số (Taylor bậc 1)**:
    Từ $y(t_n + h) = y(t_n) + h y'(t_n) + \frac{h^2}{2}y''(\xi)$, bỏ số hạng $O(h^2)$ cho ra bước cập nhật Euler hiện $y_{n+1} = y_n + h f(t_n, y_n)$.
@@ -40,7 +40,7 @@ Nếu biết vị trí và vận tốc hiện tại của một vật, ta có th
 Dù có công thức rất đơn giản, phương pháp Euler giữ vai trò nền tảng vì hầu hết các phương pháp bậc cao hơn đều là sự cải tiến hoặc mở rộng từ trực giác này. Hiểu rõ phương pháp Euler giúp nắm vững ngôn ngữ cơ bản của mô phỏng phương trình vi phân.
 
 
-### Khung giải thích (nên đọc chậm): Tính tay 2 bước Euler hiện trên $y' = -2y$ để thấy rõ cả hội tụ lẫn nổ tung
+### Giải thích: Tính tay 2 bước Euler hiện trên $y' = -2y$ để thấy rõ cả hội tụ lẫn nổ tung
 
 Xét bài toán $y' = -2y$, $y(0) = 1$ (nghiệm đúng $y(t) = e^{-2t}$, ngưỡng ổn định $h_{\max} = \frac{2}{|-2|} = 1{,}0$):
 1. **Bước nhỏ ổn định $h = 0{,}25 < 1$** (hệ số $1 + h\lambda = 1 - 0{,}5 = 0{,}5$):

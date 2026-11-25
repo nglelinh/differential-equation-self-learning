@@ -12,14 +12,14 @@ lesson_type: optional
 
 Reading a recurrence relation like $$ a_{k+2} = -\frac{a_k}{(k+2)(k+1)} $$ on paper tells you the algebra, but watching partial sums peel off the true curve at the exact radius of convergence $$ R $$—or seeing a circular drumhead snap between Bessel nodal circles—locks the geometry into intuition permanently. This gallery turns every static series and special function from Chapter 06 into a live visual laboratory.
 
-## Background Knowledge Map: How to Read Chapter 06 Visuals
+## Key ideas: How to Read Chapter 06 Visuals
 
 1. **Truncation Horizon vs. Radius of Convergence:** When exploring power-series plots, notice that adding more terms improves accuracy dramatically inside $$ |x - x_0| < R $$, yet causes catastrophic divergence outside $$ R $$—a direct visual signature of complex-plane singularities.
 2. **Indicial Exponents at Regular Singular Points:** In Euler and Frobenius visualizations, watch the slope and curvature right at $$ x = 0^+ $$: fractional powers create vertical tangents, negative powers blow up algebraically, and repeated roots bend with a subtle $$ \ln x $$ twist.
 3. **Zero Distribution and Oscillation Decay (Bessel & Legendre):** Observe how $$ J_n(x) $$ decays like $$ x^{-1/2} $$ with nearly $$ \pi $$-spaced zeros for large $$ x $$, while $$ P_n(x) $$ packs all $$ n $$ of its zeros inside $$ (-1, 1) $$ with denser clustering near the endpoints $$ \pm 1 $$.
 4. **Spectral Mode Synthesis:** In the physics frames, see how complicated radial or angular profiles are assembled by superposing orthogonal Bessel or Legendre modes—previewing Sturm–Liouville and Fourier analysis in Chapters 07–08.
 
-### Step-by-Step Worked Example (Read Slowly): Predicting What the Truncation Slider Will Show for $$ \frac{1}{1+x^2} $$
+### Worked example: Predicting What the Truncation Slider Will Show for $$ \frac{1}{1+x^2} $$
 
 **Problem:** Before moving the truncation slider $$ N $$ in the gallery, compute the $$ N = 4 $$ partial sum $$ S_4(x) = 1 - x^2 + x^4 $$ of $$ f(x) = \frac{1}{1+x^2} $$ at $$ x = 0.5 $$ (inside $$ R = 1 $$) and at $$ x = 1.2 $$ (outside $$ R = 1 $$), and compare with the exact values.
 

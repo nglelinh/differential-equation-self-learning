@@ -12,7 +12,7 @@ lesson_type: required
 
 Điều gì xảy ra nếu ngoại lực tác động lên lò xo là $\sec(t)$, $\ln(t)$, hay $e^t / t$—những hàm mà đạo hàm của chúng sinh ra vô hạn dạng mới khiến phương pháp hệ số bất định hoàn toàn bó tay? Năm 1774, Lagrange đã tạo ra chiếc chìa khóa vạn năng **Biến thiên hằng số (Variation of Parameters)**: chỉ cần biết hai nghiệm thuần nhất $y_1, y_2$, ta có thể giải **mọi** phương trình tuyến tính không thuần nhất, kể cả khi hệ số biến thiên!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Biến thiên Hằng số
+## Kiến thức cần nhớ: Bốn trụ cột của Biến thiên Hằng số
 
 1. **Ý tưởng thay hằng số bằng hàm số ($y_p = u_1(t)y_1(t) + u_2(t)y_2(t)$)**:
    Vì có 2 hàm ẩn $u_1, u_2$ nhưng chỉ có 1 phương trình, ta tự do áp đặt thêm điều kiện phụ thanh lịch $u_1' y_1 + u_2' y_2 = 0$ để loại bỏ toàn bộ đạo hàm cấp hai $u_1'', u_2''$.
@@ -37,7 +37,7 @@ Phương pháp hệ số bất định gọn gàng nhưng chỉ áp dụng đư�
 
 Cách làm này không dựa vào việc đoán dạng nghiệm từ bên ngoài mà dùng ngay cơ sở nghiệm của hệ thuần nhất để xây dựng đáp ứng cưỡng bức. Vì vậy, biến thiên hằng số là sự mở rộng tự nhiên của nguyên lý chồng chất.
 
-### Khung giải thích (nên đọc chậm): Giải $y'' + y = \sec(t)$ trên $(-\frac{\pi}{2}, \frac{\pi}{2})$ bằng Biến thiên Hằng số
+### Giải thích: Giải $y'' + y = \sec(t)$ trên $(-\frac{\pi}{2}, \frac{\pi}{2})$ bằng Biến thiên Hằng số
 
 1. **Hệ nghiệm cơ bản & Wronskian**:
    $y_1 = \cos t,\; y_2 = \sin t$, và $W = \cos t(\cos t) - (-\sin t)\sin t = \cos^2 t + \sin^2 t = \mathbf{1}$.

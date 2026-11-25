@@ -12,14 +12,14 @@ lesson_type: optional
 
 Waves are inherently kinetic—they split into left- and right-moving twins, flip upside down at a clamped wall, scatter into reflected and transmitted pulses at an impedance jump, and separate into leading swells and trailing ripples under dispersion. This interactive gallery lets you watch every single phenomenon of Chapter 10 unfold in motion, turning static PDE formulas into physical intuition.
 
-## Background Knowledge Map: Reading the Chapter 10 Visual Lab
+## Key ideas: Reading the Chapter 10 Visual Lab
 
 1. **D'Alembert Splitting & Light Cones:** Launch a localized initial bump with zero velocity and watch it cleave cleanly into two half-height pulses racing apart at $$ \pm c $$; switch to initial velocity and watch an expanding flat plateau appear!
 2. **Standing Waves vs. Traveling Waves:** Toggle between a single Fourier mode $$ \sin(n\pi x/L)\cos(\omega_n t) $$ and its two opposite traveling-wave components to see how interference creates fixed nodes.
 3. **Interface Reflection & Phase Flip:** Adjust the density ratio $$ \rho_2/\rho_1 $$ across the junction and observe how entering a heavier medium flips the reflected wave upside down ($$ R < 0 $$) while entering a lighter medium reflects it upright ($$ R > 0 $$).
 4. **Dispersion Packet Spreading:** In the dispersive frame, track an individual crest moving at $$ v_p $$ sliding *through* the slower-moving packet envelope traveling at $$ v_g $$!
 
-### Step-by-Step Worked Example (Read Slowly): Predicting a Double-Bounce Collision in the Gallery
+### Worked example: Predicting a Double-Bounce Collision in the Gallery
 
 **Problem:** A finite string of length $$ L = 4 $$ with wave speed $$ c = 1 $$ and fixed ends ($$ u(0,t)=u(4,t)=0 $$) starts from rest with a narrow triangular pulse of height $$ 1 $$ centered at $$ x = 2 $$. Using d'Alembert's odd-periodic reflection rule, predict the exact string state at $$ t = 2 $$, $$ t = 4 $$, and $$ t = 8 $$.
 

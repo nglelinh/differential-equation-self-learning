@@ -30,7 +30,7 @@ The aim of this lesson is to make that shift explicit before students meet the f
 
 Students should know initial value problems for ODEs, Taylor expansions, the geometric meaning of derivatives, and the basic idea that exact solutions of many realistic models are unavailable in closed form. No prior stability theory is assumed.
 
-## Background Knowledge Map: The Four Pillars of Numerical Discretization
+## Key ideas: The Four Pillars of Numerical Discretization
 
 Every numerical ODE and PDE solver rests on four interlocking concepts:
 
@@ -117,7 +117,7 @@ This is why backward Euler and other implicit methods matter. They are not merel
 ## 6. Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Watching Stability Flip on the Dahlquist Test Equation
+### Worked example: Watching Stability Flip on the Dahlquist Test Equation
 
 Apply forward Euler $y_{n+1} = y_n + h f(t_n, y_n)$ to the decaying ODE $y' = -10y$, $y(0) = 1$ (exact solution $y(t) = e^{-10t}$) using two step sizes: $h = 0.1$ and $h = 0.25$.
 

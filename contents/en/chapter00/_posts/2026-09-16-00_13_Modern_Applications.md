@@ -12,7 +12,7 @@ lesson_type: optional
 
 When a modern weather model or physics-informed neural network predicts tomorrow's atmospheric flow in seconds instead of hours on a supercomputer, it is not bypassing classical analysis—it is executing millions of multivariable chain rules, Jacobian–vector products, and Banach-space norm estimates per second. Scientific Machine Learning (SciML) sits directly on top of Chapter 00's mathematical foundations.
 
-## Background Knowledge Map: Classical Foundations Inside Scientific Machine Learning
+## Key ideas: Classical Foundations Inside Scientific Machine Learning
 
 Four foundational concepts from this chapter translate one-to-one into modern SciML primitives:
 
@@ -21,7 +21,7 @@ Four foundational concepts from this chapter translate one-to-one into modern Sc
 3. **Eigenvalues and Conditioning $$\leftrightarrow$$ Gradient Descent Dynamics:** Near a minimum of a loss landscape, gradient descent $$\theta_{k+1} = \theta_k - \eta \nabla \mathcal{L}(\theta_k)$$ is a discrete linear system governed by the eigenvalues of the Hessian; ill-conditioned ratios $$\lambda_{\max}/\lambda_{\min}$$ dictate convergence speed.
 4. **Banach/Hilbert Function Spaces $$\leftrightarrow$$ Neural Operators:** Rather than mapping fixed grids to fixed grids, neural operators learn maps $$\mathcal{G}: \mathcal{A} \to \mathcal{U}$$ between infinite-dimensional function spaces so predictions stay consistent when the mesh is refined.
 
-### Step-by-Step Worked Example (Read Slowly): Exact Reverse-Mode AutoDiff vs. Finite Differences on a Tiny Physics Loss
+### Worked example: Exact Reverse-Mode AutoDiff vs. Finite Differences on a Tiny Physics Loss
 
 Suppose a 1-parameter model predicts $$u_\theta(x) = \sin(\theta x)$$ and we minimize the residual loss $$\mathcal{L}(\theta) = \frac{1}{2}\bigl(u_\theta'(1) - 1\bigr)^2$$ at $$\theta = \frac{\pi}{3}$$ (where $$u_\theta'(x) = \theta\cos(\theta x)$$).
 

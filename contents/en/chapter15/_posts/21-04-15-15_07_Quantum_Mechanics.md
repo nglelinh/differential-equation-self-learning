@@ -22,7 +22,7 @@ This optional lesson connects the ideas of the chapter with quantum mechanics. A
 
 Students should know Hilbert spaces, eigenvalues, self-adjoint operators, and the basic Schrodinger equation. Background in semiclassical analysis and spectral theory will make the larger picture more unified.
 
-## Background Knowledge Map: PDE Foundations of Quantum Mechanics
+## Key ideas: PDE Foundations of Quantum Mechanics
 
 Four mathematical pillars connect the Schrödinger equation $i\hbar\partial_t\psi = \hat{H}\psi$ directly to functional and microlocal analysis:
 
@@ -110,7 +110,7 @@ Small $$ \hbar $$ reveals the classical geometric structure behind the quantum d
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Verifying $[\hat{x}, \hat{p}] = i\hbar$ and Exact Uncertainty Saturation
+### Worked example: Verifying $[\hat{x}, \hat{p}] = i\hbar$ and Exact Uncertainty Saturation
 
 For the 1D position operator $(\hat{x}\psi)(x) = x\psi(x)$ and momentum operator $(\hat{p}\psi)(x) = -i\hbar\psi'(x)$, compute their commutator $[\hat{x}, \hat{p}]$ and verify that the normalized Gaussian ground state $\psi(x) = (\pi \sigma^2)^{-1/4} e^{-x^2/(2\sigma^2)}$ ($\sigma > 0$) attains the exact Heisenberg minimum $\Delta x\,\Delta p = \hbar/2$.
 

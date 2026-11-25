@@ -14,7 +14,7 @@ lesson_type: required
 
 Khi bước từ sợi dây 1D sang mặt trống 2D ($u_{tt} = c^2(u_{xx} + u_{yy})$) và không gian âm thanh/ánh sáng 3D ($u_{tt} = c^2 \nabla^2 u$), một hiện tượng vật lý ngoạn mục xuất hiện: **Nguyên lý Huygens**! Tại sao ta có thể nói chuyện rõ ràng trong không gian 3D (tiếng vỗ tay đi qua là dứt hẳn, không kéo đuôi), nhưng nếu sống trong thế giới phẳng 2D (như mặt ao nước), mọi âm thanh đều để lại một "cái đuôi vang" mờ ảo kéo dài vô tận?
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Sóng 2D & 3D
+## Kiến thức cần nhớ: Bốn trụ cột của Phương trình Sóng 2D & 3D
 
 1. **Màng chữ nhật 2D ($[0, a] \times [0, b]$)**:
    Tách biến $u = X(x)Y(y)T(t)$ cho các mode $\sin\!\left(\frac{m\pi x}{a}\right)\sin\!\left(\frac{n\pi y}{b}\right)$ với tần số góc $\omega_{mn} = c\pi\sqrt{\frac{m^2}{a^2} + \frac{n^2}{b^2}}$. Khi $a = b$ (màng vuông), xuất hiện hiện tượng **suy biến (degeneracy)**: $(m, n) = (1, 2)$ và $(2, 1)$ có cùng tần số, tạo nên các họa tiết cát **Chladni** tuyệt đẹp!
@@ -39,7 +39,7 @@ Trong một chiều, sóng gắn với dao động của sợi dây. Sang hai v�
 
 Bài học này nhấn mạnh rằng một bài toán PDE không chỉ gồm phương trình và điều kiện biên mà còn phụ thuộc chặt chẽ vào hình học miền: cùng một phương trình sóng, nhưng trên hình chữ nhật, đĩa tròn hay hình cầu, hệ mode riêng và phổ tần số sẽ khác hẳn nhau.
 
-### Khung giải thích (nên đọc chậm): Tính tay các tần số suy biến đầu tiên của màng vuông $[0, \pi] \times [0, \pi]$ ($c = 1$)
+### Giải thích: Tính tay các tần số suy biến đầu tiên của màng vuông $[0, \pi] \times [0, \pi]$ ($c = 1$)
 
 Với $a = b = \pi$ và $c = 1$, công thức tần số rút gọn cực đẹp: $\omega_{mn} = \sqrt{m^2 + n^2}$ ($m, n \ge 1$):
 

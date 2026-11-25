@@ -14,14 +14,14 @@ Hold one end of a metal poker in ice water and heat the middle with a torch; rem
 
 This lesson shows how the exact same Sturm–Liouville eigenfunctions from Chapter 07 turn the heat equation into a low-pass thermal filter—and how shifting by a steady-state profile handles nonhomogeneous boundary temperatures cleanly.
 
-## Background Knowledge Map: Thermal Modes, Steady States, and Decay Rates
+## Key ideas: Thermal Modes, Steady States, and Decay Rates
 
 1. **Exponential Smoothing $$ e^{-\alpha \lambda_n t} $$ (Parabolic Dissipation):** Separating $$ u_t = \alpha u_{xx} $$ gives $$ T_n(t) = e^{-\alpha \lambda_n t} $$. Because $$ \lambda_n = (n\pi/L)^2 $$ grows quadratically with $$ n $$, high spatial frequencies die out almost instantaneously, leaving the fundamental mode $$ n = 1 $$ to dominate the long-time cooling tail.
 2. **Steady-State + Transient Decomposition:** When the rod ends are held at nonzero temperatures $$ u(0, t) = T_1 $$ and $$ u(L, t) = T_2 $$, we split $$ u(x, t) = u_{\text{ss}}(x) + v(x, t) $$. The steady state solves $$ u_{\text{ss}}'' = 0 $$ (a straight line connecting $$ T_1 $$ to $$ T_2 $$), while the transient $$ v $$ satisfies *homogeneous* Dirichlet BCs and decays to zero as $$ t \to \infty $$.
 3. **Insulated Ends and Energy Conservation (Neumann Spectrum):** If both ends are insulated ($$ u_x(0, t) = u_x(L, t) = 0 $$), $$ \lambda_0 = 0 $$ is an eigenvalue with constant eigenfunction $$ \phi_0(x) = 1 $$. Its coefficient $$ a_0 = \frac{1}{L}\int_0^L f(x)\,dx $$ never decays—the rod equilibrates to the exact spatial average of its initial temperature!
 4. **Characteristic Thermal Time Scale $$ \tau = L^2 / (\pi^2 \alpha) $$:** Doubling a rod's length $$ L $$ makes it take *four times longer* to cool, a universal diffusive scaling law ($$ t \sim L^2 / \alpha $$).
 
-### Step-by-Step Worked Example (Read Slowly): Nonhomogeneous Rod Cooling and Mode-Decay Ratio
+### Worked example: Nonhomogeneous Rod Cooling and Mode-Decay Ratio
 
 **Problem:** A copper rod of length $$ L = 1\text{ m} $$ with thermal diffusivity $$ \alpha = 10^{-4}\text{ m}^2/\text{s} $$ has endpoints fixed at $$ u(0, t) = 20^\circ\text{C} $$ and $$ u(1, t) = 60^\circ\text{C} $$, and starts with initial temperature $$ u(x, 0) = 20 + 40x + 30\sin(\pi x) + 10\sin(3\pi x) $$. Find $$ u(x, t) $$ explicitly, and compute the temperature at $$ x = 0.5\text{ m} $$ after $$ t = 1000\text{ s} $$.
 

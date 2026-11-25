@@ -12,7 +12,7 @@ lesson_type: required
 
 Your heartbeat does not die down like a damped pendulum, nor does it depend delicately on its initial amplitude like a frictionless spring: whether you rest or sprint, your cardiac pacemaker snaps reliably back onto the exact same self-sustained oscillation. Linear ODEs can *never* produce an isolated, self-correcting periodic orbit—only nonlinear systems exhibit **limit cycles**, the mathematical heartbeat of clocks, neurons, lasers, and circadian rhythms.
 
-## Background Knowledge Map: Proving and Ruling Out Limit Cycles in the Plane
+## Key ideas: Proving and Ruling Out Limit Cycles in the Plane
 
 Four theorems form the complete toolkit for planar periodic orbits:
 
@@ -21,7 +21,7 @@ Four theorems form the complete toolkit for planar periodic orbits:
 3. **Bendixson–Dulac Criterion (Non-Existence):** If $$\operatorname{div}(B\mathbf{f}) = \frac{\partial(Bf)}{\partial x} + \frac{\partial(Bg)}{\partial y}$$ has a strict constant sign ($$> 0$$ or $$< 0$$) across a simply connected region $$D$$ for some smooth weighting function $$B(x,y)$$, then Green's Theorem forbids *any* closed orbit inside $$D$$!
 4. **Index / Gradient Obstructions:** Every planar closed orbit must enclose at least one equilibrium point (index sum $$= +1$$), and a pure gradient system $$\mathbf{x}' = -\nabla V(\mathbf{x})$$ can *never* have a limit cycle because $$V$$ strictly decreases along every non-constant orbit!
 
-### Step-by-Step Worked Example (Read Slowly): Trapping a Stable Limit Cycle in Polar Coordinates and Testing Bendixson
+### Worked example: Trapping a Stable Limit Cycle in Polar Coordinates and Testing Bendixson
 
 **Part A — Exact Stable Limit Cycle in Polar Form:**
 Analyze the nonlinear planar system (Hopf normal form):

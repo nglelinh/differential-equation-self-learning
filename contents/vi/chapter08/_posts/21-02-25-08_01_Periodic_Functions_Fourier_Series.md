@@ -14,7 +14,7 @@ lesson_type: required
 
 Mọi tín hiệu lặp lại theo chu kỳ—từ sóng điện xoay chiều 50 Hz, nhịp tim điện tâm đồ ECG đến âm thanh một phím đàn—đều là **hàm tuần hoàn** thỏa $f(x + T) = f(x)$. Ý tưởng trung tâm của **Chuỗi Fourier** giống hệt lăng kính tách ánh sáng trắng thành cầu vồng: phân rã một sóng tuần hoàn phức tạp bất kỳ thành tổng các sóng sin và cosin tinh khiết ở các tần số bội nguyên $\frac{n\pi}{L}$!
 
-## Bản đồ kiến thức nền: Bốn viên gạch đầu tiên của Chuỗi Fourier
+## Kiến thức cần nhớ: Bốn viên gạch đầu tiên của Chuỗi Fourier
 
 1. **Chu kỳ cơ bản $T = 2L$ & Tần số góc cơ bản $\omega_0 = \frac{2\pi}{T} = \frac{\pi}{L}$**:
    Nếu $f(x + T) = f(x)$ với mọi $x$, tích phân trên bất kỳ đoạn độ dài $T$ nào (như $[-L, L]$ hay $[0, 2L]$) đều có giá trị y hệt nhau.
@@ -40,7 +40,7 @@ Một tín hiệu âm thanh, một dao động cơ học hay một nhiệt độ
 
 Đây là một trong những ý tưởng trọng tâm của toàn bộ học phần. Chuỗi Fourier không chỉ giải thích cách phân tích tín hiệu theo tần số mà còn chuẩn bị trực tiếp cho phương pháp tách biến khi giải phương trình đạo hàm riêng (PDE). Nói ngắn gọn, khai triển Fourier chuyển một hàm có hình dạng phức tạp thành tổ hợp của các mode cơ bản dễ phân tích hơn.
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng trực tiếp bằng tay tính trực giao $\int_{-\pi}^{\pi} \cos(2x)\cos(3x)\,dx = 0$
+### Giải thích: Kiểm chứng trực tiếp bằng tay tính trực giao $\int_{-\pi}^{\pi} \cos(2x)\cos(3x)\,dx = 0$
 
 Dùng công thức tích thành tổng $\cos A \cos B = \frac{1}{2}[\cos(A - B) + \cos(A + B)]$:
 $$\int_{-\pi}^{\pi} \cos(2x)\cos(3x)\,dx = \frac{1}{2}\int_{-\pi}^{\pi} [\cos(-x) + \cos(5x)]\,dx = \frac{1}{2}\left[\sin x + \frac{\sin 5x}{5}\right]_{-\pi}^{\pi} = \frac{1}{2}(0 - 0) = \mathbf{0}!$$

@@ -14,14 +14,14 @@ Suppose a symphony orchestra plays a single sustained chord and you record the a
 
 Beyond mere formulas, the rate at which those coefficients $$ a_n, b_n $$ shrink as $$ n \to \infty $$ acts like an X-ray of the function's smoothness: jumps decay like $$ 1/n $$, corners decay like $$ 1/n^2 $$, and smooth analytic waves decay exponentially.
 
-## Background Knowledge Map: Euler–Fourier Projection and Coefficient Decay
+## Key ideas: Euler–Fourier Projection and Coefficient Decay
 
 1. **Orthogonal Projection in $$ L^2([-L, L]) $$ (Geometric Meaning):** Just as $$ c_k = \frac{\mathbf{v}\cdot \mathbf{e}_k}{\|\mathbf{e}_k\|^2} $$ extracts coordinates in $$ \mathbb{R}^n $$, the Euler–Fourier integrals $$ a_n = \frac{1}{L}\int_{-L}^L f(x)\cos\!\left(\frac{n\pi x}{L}\right)dx $$ and $$ b_n = \frac{1}{L}\int_{-L}^L f(x)\sin\!\left(\frac{n\pi x}{L}\right)dx $$ project $$ f $$ onto each orthogonal axis of the Hilbert space $$ L^2([-L, L]) $$.
 2. **Best Mean-Square Approximation Property:** Among all trigonometric polynomials of degree $$ \le N $$, the $$ N $$-th Fourier partial sum $$ S_N(x) $$ uniquely minimizes the mean-square error $$ \int_{-L}^L |f(x) - T_N(x)|^2\,dx $$.
 3. **Smoothness Governs Decay Rate (Integration by Parts):** Each time you integrate by parts, a factor of $$ \frac{L}{n\pi} $$ drops into the denominator. Therefore, a jump discontinuity forces $$ |a_n|, |b_n| = O(1/n) $$, a continuous function with a jump in $$ f' $$ decays as $$ O(1/n^2) $$, and a $$ C^k $$ periodic function decays as $$ o(1/n^k) $$.
 4. **Riemann–Lebesgue Lemma:** For any integrable function $$ f \in L^1([-L, L]) $$, $$ a_n \to 0 $$ and $$ b_n \to 0 $$ as $$ n \to \infty $$—high-frequency oscillations eventually average out any integrable profile.
 
-### Step-by-Step Worked Example (Read Slowly): Full Fourier Coefficients of the Ramp $$ f(x) = x $$ on $$ (-\pi, \pi) $$
+### Worked example: Full Fourier Coefficients of the Ramp $$ f(x) = x $$ on $$ (-\pi, \pi) $$
 
 **Problem:** Compute all Fourier coefficients $$ a_0, a_n, b_n $$ of the $$ 2\pi $$-periodic extension of $$ f(x) = x $$ on $$ (-\pi, \pi) $$, inspect the $$ O(1/n) $$ decay rate, and test the $$ N = 3 $$ partial sum at $$ x = \frac{\pi}{2} $$.
 

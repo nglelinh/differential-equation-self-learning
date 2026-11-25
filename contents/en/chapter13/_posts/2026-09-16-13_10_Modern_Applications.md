@@ -20,7 +20,7 @@ This optional lesson treats Euler, Runge–Kutta, stiffness, CFL, and Euler–Ma
 
 Students should know forward and backward Euler, RK4, linear stability regions, CFL, and the Euler–Maruyama scheme for SDEs. The preparatory review on discretization error is the right warm-up.
 
-## Background Knowledge Map: Differentiable Physics and Continuous-Time Deep Learning
+## Key ideas: Differentiable Physics and Continuous-Time Deep Learning
 
 Four foundational concepts power modern differentiable solvers and Neural SDEs:
 
@@ -74,7 +74,7 @@ Software documentation is part of the method. Diffrax’s solver API and `torchd
 ## Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Computing an Exact Neural ODE Gradient via the Adjoint Equation
+### Worked example: Computing an Exact Neural ODE Gradient via the Adjoint Equation
 
 Consider the scalar Neural ODE $\frac{dy}{dt} = \theta y$ on $t \in [0, 1]$ with $y(0) = 1$ and terminal squared-error loss $L(\theta) = \frac{1}{2}(y(1) - 2)^2$. Compute $\frac{dL}{d\theta}$ using the continuous adjoint method and verify it against direct differentiation.
 

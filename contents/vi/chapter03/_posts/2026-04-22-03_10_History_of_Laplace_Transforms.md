@@ -12,7 +12,7 @@ categories:
 
 Điều trớ trêu thú vị nhất của lịch sử toán học ứng dụng là: Pierre-Simon Laplace dùng phép biến đổi tích phân này năm 1785 để giải bài toán **xác suất**, nhưng người biến nó thành vũ khí tối thượng giải phương trình vi phân mạch điện lại là một kỹ sư điện báo tự học tên là **Oliver Heaviside** một thế kỷ sau đó! Hành trình từ "phép tính toán tử gây tranh cãi" của Heaviside tới nền tảng giải tích phức vững chắc của Bromwich và Doetsch chính là câu chuyện của Chương 03.
 
-## Bản đồ kiến thức nền: Bốn cột mốc lịch sử của Biến đổi Laplace
+## Kiến thức cần nhớ: Bốn cột mốc lịch sử của Biến đổi Laplace
 
 1. **Euler (1737) & Laplace (1785) — Tiền thân hàm sinh liên tục**:
    Laplace giới thiệu tích phân $\int e^{-st}f(t)\,dt$ trong tác phẩm kinh điển *Théorie analytique des probabilités* như phiên bản liên tục của chuỗi lũy thừa hàm sinh.
@@ -34,7 +34,7 @@ London, khoảng năm 1887. Oliver Heaviside, một cựu nhân viên điện b�
 
 Heaviside áp dụng một hướng tiếp cận khác: thay vì chỉ theo dõi dòng điện từng thời điểm, ông gom toàn bộ diễn biến của nó qua phép tính toán tử (sau này được chuẩn hóa bằng tích phân có trọng số hàm mũ). Với mạch RC đơn giản, phương trình $$V'(t) + \frac{1}{RC}V(t) = \frac{E}{RC}$$ khi đóng nguồn tại $$t=0$$ chuyển thành $$\left(s + \frac{1}{RC}\right)V(s) = \frac{E}{RCs} + V(0)$$ sau khi lấy biến đổi Laplace. Phép lấy đạo hàm chuyển thành phép nhân với $$s$$, đưa bài toán vi phân về bài toán đại số. Giá trị cốt lõi của biến đổi Laplace nằm ở chỗ nó giữ nguyên thông tin vật lý nhưng đổi góc nhìn để việc tính toán trở nên gọn gàng hơn.
 
-### Khung giải thích (nên đọc chậm): Trải nghiệm "phép tính toán tử" kiểu Heaviside trên mạch RC $y' + 2y = u_0(t),\; y(0) = 0$
+### Giải thích: Trải nghiệm "phép tính toán tử" kiểu Heaviside trên mạch RC $y' + 2y = u_0(t),\; y(0) = 0$
 
 Hãy xem vì sao Heaviside mê mẩn việc thay $\frac{d}{dt}$ bằng biến đại số $s$:
 1. **Biến đạo hàm thành phép nhân $s$** (với $y(0) = 0$ và $\mathcal{L}\{u_0(t)\} = \frac{1}{s}$):

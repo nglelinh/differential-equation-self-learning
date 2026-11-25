@@ -20,7 +20,7 @@ This lesson introduces Poisson's equation as the sourced version of Laplace's eq
 
 Students should know Laplace's equation, the meaning of steady-state equilibrium, and the idea that forcing or source terms alter balance laws.
 
-## Background Knowledge Map: Sources, Compatibility, and Inhomogeneous Elliptic Theory
+## Key ideas: Sources, Compatibility, and Inhomogeneous Elliptic Theory
 
 Understanding $-\Delta u = f$ requires connecting four core mathematical concepts:
 
@@ -102,7 +102,7 @@ This shows where the lesson is heading next.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Viscous Pipe Flow / Uniformly Loaded Membrane on the Unit Disk
+### Worked example: Viscous Pipe Flow / Uniformly Loaded Membrane on the Unit Disk
 
 Solve Poisson's equation $-\Delta u = 2$ on the unit disk $B_1 = \{x^2 + y^2 < 1\}$ with zero Dirichlet boundary condition $u = 0$ on $\partial B_1$, and check both the differential equation and the total flux balance.
 

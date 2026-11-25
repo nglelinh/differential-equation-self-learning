@@ -13,7 +13,7 @@ lesson_type: required
 
 Đứng trước một hệ hai phương trình vi phân tuyến tính $\mathbf{x}' = A\mathbf{x}$, bạn không cần máy tính hay hàng trang giấy tính toán để biết toàn bộ bức tranh vận động của nó. Chỉ cần liếc qua hai con số—vết $\tau = a + d$ và định thức $\Delta = ad - bc$—kèm hướng của hai vectơ riêng (nếu thực), bạn có thể phác thảo bằng tay **chân dung pha (phase portrait)** chính xác gần như tuyệt đối trong vòng một phút!
 
-## Bản đồ kiến thức nền: Bốn chìa khóa đọc & vẽ Chân dung Pha 2D
+## Kiến thức cần nhớ: Bốn chìa khóa đọc & vẽ Chân dung Pha 2D
 
 1. **Bản đồ phân loại theo $(\tau, \Delta)$ và biệt thức $D = \tau^2 - 4\Delta$**:
    - $\Delta < 0$: **Điểm yên ngựa** (luôn bất ổn).
@@ -43,7 +43,7 @@ Một công thức nghiệm tường minh cho giá trị chính xác tại từn
 
 Chỉ từ ma trận $$ A $$, ta đã có thể phân loại gốc tọa độ thành điểm yên ngựa, nút hút, nút đẩy, tâm hay tiêu điểm. Kỹ năng định tính này rất cần thiết vì trong nhiều mô hình phức tạp, việc đọc cấu trúc pha là bước mở đầu trước khi tính toán chi tiết.
 
-### Khung giải thích (nên đọc chậm): Phác thảo bằng tay chân dung pha cho hệ nút hút $\mathbf{x}' = \begin{pmatrix} -4 & 0 \\ 0 & -1 \end{pmatrix}\mathbf{x}$ và kiểm tra độ cong
+### Giải thích: Phác thảo bằng tay chân dung pha cho hệ nút hút $\mathbf{x}' = \begin{pmatrix} -4 & 0 \\ 0 & -1 \end{pmatrix}\mathbf{x}$ và kiểm tra độ cong
 
 Hệ đã chéo sẵn: $\lambda_1 = -4$ (trục nhanh $\mathbf{v}_1 = (1, 0)^\top$ là trục $Ox$), $\lambda_2 = -1$ (trục chậm $\mathbf{v}_2 = (0, 1)^\top$ là trục $Oy$).
 1. **Nghiệm tường minh**: $x_1(t) = c_1 e^{-4t},\; x_2(t) = c_2 e^{-t}$.

@@ -24,7 +24,7 @@ The best use of this gallery is comparative. After studying a formal concept suc
 
 The page also serves as a bridge between the advanced chapter text and later research reading, where the geometric viewpoint is usually assumed rather than explained from scratch.
 
-## Background Knowledge Map: Navigating Phase-Space Visualizations in Chapter 15
+## Key ideas: Navigating Phase-Space Visualizations in Chapter 15
 
 Keep four visual cues in focus as you interact with the widgets in this gallery:
 
@@ -42,7 +42,7 @@ Keep four visual cues in focus as you interact with the widgets in this gallery:
   height="980px"
 %}
 
-### Step-by-Step Worked Example (Read Slowly): Checking Bohr–Sommerfeld Area Quantization for the Harmonic Oscillator
+### Worked example: Checking Bohr–Sommerfeld Area Quantization for the Harmonic Oscillator
 
 In the semiclassical phase-space widget for the 1D quantum harmonic oscillator $\hat{H} = -\frac{d^2}{dx^2} + x^2$ ($\hbar = 1$, classical symbol $H(x,\xi) = \xi^2 + x^2$), verify that the phase-space circle $H(x,\xi) \le E_n$ at the $n=2$ exact eigenvalue $E_2 = 2(2) + 1 = 5$ satisfies Bohr–Sommerfeld area quantization $\frac{\operatorname{Area}}{2\pi} = n + \frac{1}{2}$.
 

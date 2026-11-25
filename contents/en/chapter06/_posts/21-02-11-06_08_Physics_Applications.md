@@ -14,14 +14,14 @@ Why does a concert kettledrum sound rich and percussive rather than purely harmo
 
 In this lesson, series solutions stop being abstract algebraic exercises and become the exact language of resonant cavities, atomic orbitals, and cylindrical thermal diffusion.
 
-## Background Knowledge Map: Special Functions in Mathematical Physics
+## Key ideas: Special Functions in Mathematical Physics
 
 1. **Curvilinear Separation of Variables (Geometry Dictates the ODE):** Separating the Helmholtz or Schrödinger equation in cylindrical coordinates $$ (r, \theta, z) $$ yields Bessel's equation in $$ r $$; separating in spherical coordinates $$ (r, \theta, \phi) $$ yields Legendre's associated equation in $$ \cos\theta $$ and Laguerre's equation in $$ r $$; separating a 1D parabolic quantum well yields Hermite's equation.
 2. **Physical Regularity Selects the Solution Branch:** At the center of a circular drum ($$ r = 0 $$), $$ Y_m(kr) \to -\infty $$, so finite displacement eliminates $$ Y_m $$ and leaves $$ J_m(kr) $$. At the poles of a sphere ($$ \theta = 0, \pi $$), $$ Q_\ell(\cos\theta) $$ diverges, leaving only $$ P_\ell(\cos\theta) $$. At $$ r \to \infty $$ in the hydrogen atom, normalizability forces the confluent series to terminate into Laguerre polynomials.
 3. **Boundary Conditions Quantize the Spectrum:** Clamping a drumhead of radius $$ a $$ requires $$ J_m(k a) = 0 $$, locking the allowed wavenumbers to $$ k_{mn} = \alpha_{mn}/a $$, where $$ \alpha_{mn} $$ is the $$ n $$-th positive zero of $$ J_m $$. Because Bessel zeros are not integer multiples of one another, drum overtones are inharmonic!
 4. **Normalizability and Energy Quantization (Quantum Mechanics):** In the quantum harmonic oscillator $$ -\frac{\hbar^2}{2m}\psi'' + \frac{1}{2}m\omega^2 x^2 \psi = E\psi $$, factoring out the Gaussian tail $$ e^{-\xi^2/2} $$ leaves Hermite's equation; square-integrability forces $$ E_n = \hbar\omega(n + \frac{1}{2}) $$ for $$ n = 0, 1, 2, \dots $$.
 
-### Step-by-Step Worked Example (Read Slowly): Circular Drum Overtone Ratios and Quantum Harmonic Oscillator Ground/First Excited States
+### Worked example: Circular Drum Overtone Ratios and Quantum Harmonic Oscillator Ground/First Excited States
 
 **Problem:** (a) A circular drumhead of radius $$ a = 0.30\text{ m} $$ has wave speed $$ c = 120\text{ m/s} $$. Using the Bessel zeros $$ \alpha_{01} \approx 2.4048 $$, $$ \alpha_{11} \approx 3.8317 $$, and $$ \alpha_{02} \approx 5.5201 $$, compute the fundamental frequency $$ f_{01} $$ and the first two overtone ratios $$ f_{11}/f_{01} $$ and $$ f_{02}/f_{01} $$. (b) Verify explicitly that $$ \psi_1(\xi) = H_1(\xi) e^{-\xi^2/2} = 2\xi e^{-\xi^2/2} $$ satisfies the dimensionless quantum harmonic oscillator equation $$ \psi'' + (2\varepsilon - \xi^2)\psi = 0 $$ with $$ \varepsilon = \frac{3}{2} $$.
 

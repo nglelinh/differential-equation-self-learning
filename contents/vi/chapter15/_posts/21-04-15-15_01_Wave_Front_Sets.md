@@ -14,7 +14,7 @@ lesson_type: required
 
 Hãy tưởng tượng bạn đứng trên một cánh đồng phẳng có một rãnh nứt kéo dài theo hướng Bắc–Nam. Nếu bạn đi dọc theo hướng Bắc–Nam, mặt đất phẳng lì trơn tru; nhưng nếu bạn bước ngang hướng Đông–Tây băng qua rãnh, bạn lập tức vấp phải bước nhảy! **Tập Mặt sóng $\operatorname{WF}(u)$ (Wave Front Set)** của Lars Hörmander nắm bắt chính xác trực giác ấy: nó không chỉ đánh dấu vị trí rãnh nứt $x$, mà còn chỉ rõ **hướng tần số $\xi$ nào bị vấp kỳ dị**—một bước nâng cấp vĩ đại biến không gian vị trí thành không gian pha $T^*\mathbb{R}^n \setminus 0$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Tập Mặt sóng $\operatorname{WF}(u)$
+## Kiến thức cần nhớ: Bốn trụ cột của Tập Mặt sóng $\operatorname{WF}(u)$
 
 1. **Định nghĩa Chặt chẽ trên $T^*\mathbb{R}^n \setminus 0$**:
    Điểm $(x_0, \xi_0) \notin \operatorname{WF}(u)$ khi và chỉ khi tồn tại hàm cắt $\phi \in C_c^\infty$ ($\phi(x_0) \neq 0$) và một hình nón mở $\Gamma$ chứa $\xi_0$ sao cho $|\widehat{\phi u}(\xi)| \le C_N (1 + |\xi|)^{-N}$ với mọi $N$ và mọi $\xi \in \Gamma$.
@@ -40,7 +40,7 @@ Giá kỳ dị chỉ cho biết một phân phối không trơn ở đâu, chứ
 Tập mặt sóng ra đời để bổ sung đúng phần thông tin còn thiếu đó, cung cấp bản đồ kỳ dị trên không gian pha cục bộ, nơi mỗi vị trí được gắn kèm các hướng tần số mà tính trơn bị vi phạm.
 
 
-### Khung giải thích (nên đọc chậm): Tính trực tiếp Tập Mặt sóng $\operatorname{WF}(u)$ của hàm bước nhảy 2D $u(x_1, x_2) = H(x_1)$
+### Giải thích: Tính trực tiếp Tập Mặt sóng $\operatorname{WF}(u)$ của hàm bước nhảy 2D $u(x_1, x_2) = H(x_1)$
 
 Xét phân phối 2D $u(x_1, x_2) = H(x_1)$ (nhảy từ $0$ lên $1$ qua đường thẳng $x_1 = 0$) tại điểm $x_0 = (0, 0)$. Chọn hàm cắt tách biến $\phi(x_1, x_2) = \phi_1(x_1)\phi_2(x_2) \in C_c^\infty(\mathbb{R}^2)$ với $\phi_1(0) = \phi_2(0) = 1$:
 1. **Tính biến đổi Fourier cục bộ hóa**:

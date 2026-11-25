@@ -22,7 +22,7 @@ This lesson introduces one of the most beautiful results in microlocal analysis:
 
 Students should know wave front sets, principal symbols, and the basic idea of characteristics from transport or wave equations. It is also helpful to remember from earlier PDE chapters that wave equations tend to carry singular features along moving fronts rather than smoothing them immediately.
 
-## Background Knowledge Map: Characteristics, Hamiltonian Flow, and Singularity Transport
+## Key ideas: Characteristics, Hamiltonian Flow, and Singularity Transport
 
 Four pillars unite hyperbolic PDEs with classical symplectic mechanics:
 
@@ -109,7 +109,7 @@ This is where students see why microlocal analysis is necessary.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Deriving Wave Propagation Rays from Hamilton's Equations
+### Worked example: Deriving Wave Propagation Rays from Hamilton's Equations
 
 Apply Hörmander's bicharacteristic equations to the 1D wave operator $P = \partial_t^2 - c^2 \partial_x^2$ ($c > 0$) to recover d'Alembert's left- and right-moving rays directly from the principal symbol.
 

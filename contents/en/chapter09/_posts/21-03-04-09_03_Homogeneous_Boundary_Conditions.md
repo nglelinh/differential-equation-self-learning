@@ -14,14 +14,14 @@ Dip both ends of a metal rod in ice water and every drop of heat eventually esca
 
 This lesson shows how the three classical homogeneous boundary conditions—Dirichlet, Neumann, and Robin—sculpt both the eigenbasis and the long-time fate of a diffusing rod.
 
-## Background Knowledge Map: How Homogeneous BCs Control Thermal Fate
+## Key ideas: How Homogeneous BCs Control Thermal Fate
 
 1. **Dirichlet BCs ($$ u(0,t) = u(L,t) = 0 $$ — Ice Baths):** Eigenfunctions are $$ \sin(n\pi x/L) $$ with $$ \lambda_n = (n\pi/L)^2 > 0 $$. Since $$ \lambda_1 > 0 $$, *every* mode decays exponentially and $$ u(x, t) \to 0 $$ as $$ t \to \infty $$.
 2. **Neumann BCs ($$ u_x(0,t) = u_x(L,t) = 0 $$ — Insulated Ends):** Eigenfunctions are $$ \cos(n\pi x/L) $$ for $$ n = 0, 1, 2, \dots $$ including the **zero eigenvalue** $$ \lambda_0 = 0 $$ ($$ X_0(x) = 1 $$). Thus $$ u(x, t) \to \frac{a_0}{2} = \frac{1}{L}\int_0^L f(x)\,dx $$ as $$ t \to \infty $$, reflecting exact energy conservation!
 3. **Mixed & Robin BCs ($$ u_x(L,t) + h u(L,t) = 0 $$ — Convective Cooling):** Mixing value and flux yields transcendental eigenvalue equations like $$ \tan(\mu L) = -\frac{\mu}{h} $$. For $$ h > 0 $$, heat leaks out into the ambient medium, so all eigenvalues remain strictly positive and $$ u \to 0 $$.
 4. **Spectral Gap & Equilibration Speed:** The smallest nonzero eigenvalue $$ \lambda_{\min} $$ sets the exact asymptotic relaxation rate $$ e^{-\alpha \lambda_{\min} t} $$.
 
-### Step-by-Step Worked Example (Read Slowly): Insulated Rod Equilibration and Energy Conservation Check
+### Worked example: Insulated Rod Equilibration and Energy Conservation Check
 
 **Problem:** A thermally insulated rod of length $$ L = 2 $$ with $$ \alpha = 1 $$ satisfies $$ u_t = u_{xx} $$, $$ u_x(0, t) = u_x(2, t) = 0 $$, and initial temperature $$ u(x, 0) = 10 + 6\cos(\pi x) $$. Solve for $$ u(x, t) $$, verify total thermal energy $$ E(t) = \int_0^2 u(x, t)\,dx $$ is constant in time, and find $$ \lim_{t\to\infty} u(x, t) $$.
 

@@ -14,7 +14,7 @@ lesson_type: required
 
 Nếu phương trình Laplace $\Delta u = 0$ mô tả một căn phòng cân bằng nhiệt không có lò sưởi hay máy lạnh bên trong, thì **Phương trình Poisson** $-\Delta u = f$ là lúc ta bật nguồn nhiệt phân bố $f(x, y)$ ngay giữa phòng—hoặc đặt điện tích mật độ $\rho(x, y)$ vào không gian, hay đổ tải trọng $f$ lên màng đàn hồi. Nhờ tính tuyến tính, bài toán phức tạp này luôn tách gọn thành hai mảnh ghép rõ ràng: tìm một nghiệm riêng chịu trách nhiệm cho nguồn $f$, rồi cộng thêm nghiệm điều hòa để chỉnh đúng điều kiện biên!
 
-## Bản đồ kiến thức nền: Bốn trụ cột giải Phương trình Poisson $-\Delta u = f$
+## Kiến thức cần nhớ: Bốn trụ cột giải Phương trình Poisson $-\Delta u = f$
 
 1. **Tách nghiệm $u = u_p + u_h$ (Nghiệm riêng + Nghiệm điều hòa)**:
    Tìm một hàm $u_p$ bất kỳ thỏa mãn $-\Delta u_p = f$; khi đó hiệu $u_h = u - u_p$ thỏa mãn phương trình Laplace thuần nhất $\Delta u_h = 0$ với điều kiện biên mới $u_h|_{\partial\Omega} = g - u_p|_{\partial\Omega}$.
@@ -40,7 +40,7 @@ Nếu phương trình Laplace mô tả trạng thái cân bằng thuần túy kh
 Cần lưu ý rằng phương trình Poisson vẫn nằm trọn trong khuôn khổ elliptic: phương trình Laplace là trường hợp riêng với vế phải bằng 0, còn số hạng nguồn $$ f $$ là tác nhân làm uốn cong trường thế bên trong miền.
 
 
-### Khung giải thích (nên đọc chậm): Giải trọn vẹn bằng tay phương trình Poisson đối xứng tâm trên đĩa đơn vị
+### Giải thích: Giải trọn vẹn bằng tay phương trình Poisson đối xứng tâm trên đĩa đơn vị
 
 Xét tấm tròn bán kính $R = 1$ có nguồn nhiệt đều $f = 4$ và vành ngoài giữ ở $0^\circ\text{C}$:
 $$-\Delta u = 4 \quad (r < 1), \qquad u(1) = 0.$$

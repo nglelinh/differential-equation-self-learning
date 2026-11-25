@@ -12,7 +12,7 @@ lesson_type: required
 
 Khi biệt thức $\Delta = b^2 - 4ac < 0$, phương trình bậc hai không có nghiệm thực, nhưng hệ cơ–điện ngoài đời thực lại đang **dao động nhịp nhàng**! Nhờ công thức Euler $e^{(\alpha + i\beta)t} = e^{\alpha t}(\cos\beta t + i\sin\beta t)$, ta tách phần thực và phần ảo để thu được ngay hai nghiệm thực thuần túy—đồng thời đọc được tức thì tốc độ tắt dần $\alpha$ và tần số dao động $\beta$ chỉ từ một cặp số phức liên hợp.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Hệ số Hằng Nghiệm Phức
+## Kiến thức cần nhớ: Bốn trụ cột của Hệ số Hằng Nghiệm Phức
 
 1. **Cặp nghiệm phức liên hợp $r = \alpha \pm i\beta$ ($\beta > 0$)**:
    Do các hệ số $a, b, c$ đều thực, nghiệm phức luôn đi theo cặp liên hợp $\alpha = -\frac{b}{2a}$ và $\beta = \frac{\sqrt{4ac - b^2}}{2a}$.
@@ -40,7 +40,7 @@ Khi phương trình đặc trưng không có nghiệm thực, nhiều sinh viên
 
 Điểm đáng chú ý của bài học là số phức chỉ đóng vai trò công cụ trung gian, còn kết quả cuối cùng vẫn là nghiệm thực. Nhờ công thức Euler, cặp nghiệm phức liên hợp tạo ra hai hàm sin và cos, trong khi phần thực của nghiệm đặc trưng điều khiển biên độ tăng hay giảm theo thời gian.
 
-### Khung giải thích (nên đọc chậm): Giải IVP $y'' + 2y' + 5y = 0,\; y(0) = 1,\; y'(0) = 1$ và viết lại dưới dạng biên độ–pha
+### Giải thích: Giải IVP $y'' + 2y' + 5y = 0,\; y(0) = 1,\; y'(0) = 1$ và viết lại dưới dạng biên độ–pha
 
 1. **Giải phương trình đặc trưng**:
    $$r^2 + 2r + 5 = 0 \implies r = \frac{-2 \pm \sqrt{4 - 20}}{2} = \mathbf{-1 \pm 2i} \quad (\alpha = -1,\; \beta = 2).$$

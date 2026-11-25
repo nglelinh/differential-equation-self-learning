@@ -14,7 +14,7 @@ lesson_type: optional
 
 Một hàm nằm trong không gian Sobolev $W^{1,p}(\Omega)$ có bị chặn hay liên tục hay không? Câu trả lời hóa ra phụ thuộc kịch tính vào **cuộc đua giữa số bậc tích phân $p$ và số chiều không gian $n$**! Trong 1 chiều ($n = 1$), mọi hàm $H^1$ đều liên tục; nhưng sang 2 chiều và 3 chiều, một hàm $H^1$ có thể tiến ra vô cực tại một điểm (như $\ln|\ln r|$ ở 2D)! **Lý thuyết Nhúng Sobolev** (Gagliardo–Nirenberg–Sobolev, Morrey và Rellich–Kondrachov) lập nên bản đồ chính xác cho cuộc đua kỳ thú ấy.
 
-## Bản đồ kiến thức nền: Bốn định lý trụ cột của Lý thuyết Sobolev
+## Kiến thức cần nhớ: Bốn định lý trụ cột của Lý thuyết Sobolev
 
 1. **Chế độ dưới tới hạn ($p < n$) — Nhúng Gagliardo–Nirenberg–Sobolev**:
    $W^{1,p}(\mathbb{R}^n) \hookrightarrow L^{p^*}(\mathbb{R}^n)$ với số mũ liên hợp Sobolev $p^* = \frac{np}{n - p} > p$. Có đạo hàm trong $L^p$ giúp hàm **tăng bậc khả tích** lên tận $L^{p^*}$, nhưng chưa đủ để liên tục!
@@ -40,7 +40,7 @@ Sinh viên cần nắm không gian $$ L^p $$, đạo hàm yếu, định nghĩa 
 Tập hợp các câu trả lời đó tạo nên lý thuyết Sobolev — không phải một định lý đơn lẻ mà là một hệ thống kết quả cho thấy việc kiểm soát đạo hàm yếu đủ để đảm bảo tính khả tích cao hơn (hoặc tính liên tục), tính compact và sự tồn tại của vết biên. Nhờ vậy, không gian Sobolev không chỉ là nơi đặt nghiệm yếu mà còn là công cụ phân tích cấu trúc của nghiệm.
 
 
-### Khung giải thích (nên đọc chậm): Tính nhanh số mũ nhúng Sobolev $p^*$ theo số chiều $n$ cho không gian năng lượng $H^1$ ($p = 2$)
+### Giải thích: Tính nhanh số mũ nhúng Sobolev $p^*$ theo số chiều $n$ cho không gian năng lượng $H^1$ ($p = 2$)
 
 Hãy xem cùng một không gian $H^1 = W^{1,2}$ thay đổi mạnh mẽ ra sao khi đổi số chiều $n$:
 1. **Chiều $n = 1$ ($p = 2 > n = 1$, chế độ Morrey)**:

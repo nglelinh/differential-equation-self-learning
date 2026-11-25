@@ -12,7 +12,7 @@ lesson_type: optional
 
 Watching a single slider move the damping coefficient $$\gamma$$ across the critical threshold $$2\sqrt{mk}$$ does in five seconds what three pages of algebra struggle to convey: two real roots collide on the negative real axis, bounce off into the complex plane as a conjugate pair, and suddenly the sluggish curve springs into damped ripples. This gallery turns every algebraic concept of Chapter 02 into live motion.
 
-## Background Knowledge Map: Four Visual Phenomena to Explore in This Gallery
+## Key ideas: Four Visual Phenomena to Explore in This Gallery
 
 Use the interactive widgets below to link root locations in the complex plane directly to time-domain trajectories:
 
@@ -21,7 +21,7 @@ Use the interactive widgets below to link root locations in the complex plane di
 3. **Frequency-Response (Bode) Peak:** Varying $$\gamma$$ shows how lightly damped oscillators exhibit a razor-sharp gain spike near $$\omega_0$$ accompanied by an abrupt $$180^\circ$$ phase flip from in-phase ($$\omega \ll \omega_0$$) to anti-phase ($$\omega \gg \omega_0$$).
 4. **Wronskian Parallelogram Evolution:** Plotting $$\bigl(y_1(t), y_1'(t)\bigr)$$ and $$\bigl(y_2(t), y_2'(t)\bigr)$$ in the phase plane visualizes Abel's identity as the parallelogram area shrinking at exact rate $$e^{-p t}$$.
 
-### Step-by-Step Worked Example (Read Slowly): Predicting the Exact Beat Period and Envelope Before Running the Simulation
+### Worked example: Predicting the Exact Beat Period and Envelope Before Running the Simulation
 
 Consider the undamped driven oscillator
 $$u'' + 25u = 9\cos(4t), \qquad u(0) = 0, \quad u'(0) = 0.$$

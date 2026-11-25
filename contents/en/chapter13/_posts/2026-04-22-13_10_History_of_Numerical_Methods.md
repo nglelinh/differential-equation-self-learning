@@ -17,7 +17,7 @@ This lesson traces the history of numerical differential equations from Euler's 
 ## Prerequisites
 Students should know the main ideas of Chapter 13: Euler's method, Runge-Kutta methods, multistep schemes, stiffness, finite differences, stability, CFL thinking, finite elements, and stochastic differential equations.
 
-## Background Knowledge Map: Four Historical Revolutions in Scientific Computing
+## Key ideas: Four Historical Revolutions in Scientific Computing
 
 Tracing numerical differential equations from quill pens to supercomputers highlights four defining breakthroughs:
 
@@ -57,7 +57,7 @@ Chapter 13 teaches that approximation is not merely second best. Numerical metho
 
 It also reminds students that a good algorithm must respect the mathematics of the problem. Stability, conservation, stiffness, and geometry are not afterthoughts; they are the history of the field written into method design.
 
-### Step-by-Step Worked Example (Read Slowly): Reconstructing the 1928 CFL Domain-of-Dependence Argument
+### Worked example: Reconstructing the 1928 CFL Domain-of-Dependence Argument
 
 Reproduce the classic geometric argument of Courant, Friedrichs, and Lewy for the 1D wave equation $u_{tt} = c^2 u_{xx}$ discretized by the explicit leapfrog stencil
 $$U_j^{n+1} = 2U_j^n - U_j^{n-1} + \left(\frac{c\Delta t}{\Delta x}\right)^2 (U_{j+1}^n - 2U_j^n + U_{j-1}^n).$$

@@ -20,7 +20,7 @@ This lesson introduces finite-difference discretization for PDEs such as the hea
 
 Students should know basic finite differences for ODEs and the PDE models from earlier chapters.
 
-## Background Knowledge Map: Turning PDEs into Sparse Grid Algebra
+## Key ideas: Turning PDEs into Sparse Grid Algebra
 
 Four structural concepts govern finite-difference discretizations of elliptic, parabolic, and hyperbolic PDEs:
 
@@ -98,7 +98,7 @@ Boundary treatment is part of the numerical method, not an afterthought.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Solving the 1D Discrete Poisson System by Hand
+### Worked example: Solving the 1D Discrete Poisson System by Hand
 
 Discretize the BVP $-u''(x) = 2$ on $(0,1)$ with $u(0) = u(1) = 0$ using centered second differences on a uniform grid with $h = 1/4$ (interior nodes $x_1 = 1/4, x_2 = 1/2, x_3 = 3/4$), and compare with the exact solution $u(x) = x(1-x)$.
 

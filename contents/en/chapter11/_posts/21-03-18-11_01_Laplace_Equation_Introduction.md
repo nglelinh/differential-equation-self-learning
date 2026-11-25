@@ -20,7 +20,7 @@ This lesson introduces Laplace's equation as the prototype steady-state elliptic
 
 Students should know partial derivatives, basic boundary conditions, and the idea of steady state from earlier heat-equation examples. Some familiarity with separation of variables is also helpful.
 
-## Background Knowledge Map: Foundations of Harmonic Equilibrium
+## Key ideas: Foundations of Harmonic Equilibrium
 
 To appreciate why $\Delta u = 0$ behaves so differently from time-evolution PDEs, anchor your intuition in four connected mathematical pillars:
 
@@ -106,7 +106,7 @@ The equation belongs naturally to a boundary-value setting rather than an initia
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Verifying Harmonicity, Zero Net Flux, and Dirichlet Energy
+### Worked example: Verifying Harmonicity, Zero Net Flux, and Dirichlet Energy
 
 Let us test all three pillars of Laplace's equation—pointwise vanishing Laplacian, zero net boundary flux, and finite Dirichlet energy—on the canonical saddle function $u(x,y) = x^2 - y^2$ over the unit disk $B_1 = \{(x,y) : x^2 + y^2 < 1\}$.
 

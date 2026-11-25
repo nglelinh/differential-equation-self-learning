@@ -12,7 +12,7 @@ lesson_type: required
 
 In 1743, Leonhard Euler noticed a miracle: when you plug the trial function $$y = e^{rt}$$ into any constant-coefficient linear ODE $$ay'' + by' + cy = 0$$, differentiation simply multiplies by $$r$$, collapsing a calculus problem into an ordinary quadratic equation $$ar^2 + br + c = 0$$. When that quadratic has two real roots, the entire motion of a heavily damped shock absorber or decaying circuit decomposes into pure exponential modes.
 
-## Background Knowledge Map: From Characteristic Roots to Exponential Modes
+## Key ideas: From Characteristic Roots to Exponential Modes
 
 Four algebraic and physical ideas complete the real-root case:
 
@@ -21,7 +21,7 @@ Four algebraic and physical ideas complete the real-root case:
 3. **Repeated Real Root ($$b^2 - 4ac = 0$$):** When $$r_1 = r_2 = r$$, taking the limit $$\lim_{h\to 0}\frac{e^{(r+h)t} - e^{rt}}{h} = t\,e^{rt}$$ produces the second linearly independent solution, giving $$y(t) = (c_1 + c_2 t)e^{rt}$$.
 4. **Dominant Mode Asymptotics:** For $$r_1 > r_2$$, as $$t \to +\infty$$ the mode $$e^{r_1 t}$$ dominates exponentially; stability ($$y(t) \to 0$$ for all initial conditions) holds if and only if both roots satisfy $$r_1, r_2 < 0$$.
 
-### Step-by-Step Worked Example (Read Slowly): Solving an Overdamped IVP and Finding Its Turning Point
+### Worked example: Solving an Overdamped IVP and Finding Its Turning Point
 
 Solve the initial value problem
 $$y'' + 5y' + 6y = 0, \qquad y(0) = 1, \quad y'(0) = 2,$$

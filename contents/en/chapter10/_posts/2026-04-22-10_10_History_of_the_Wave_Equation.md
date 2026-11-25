@@ -11,14 +11,14 @@ categories:
 
 The wave equation holds a unique place in the history of science: it was the **very first partial differential equation ever written down** (d'Alembert, 1747), and the fierce argument it sparked between d'Alembert, Euler, and Daniel Bernoulli over what counts as a "legitimate function" launched two centuries of modern analysis. A century later, Maxwell discovered that light itself obeys the 3D wave equation, and in 1916 Einstein showed that ripples in spacetime curvature—gravitational waves, finally detected by LIGO in 2015—obey the exact same hyperbolic PDE!
 
-## Background Knowledge Map: Four Historical Landmarks of Wave Theory
+## Key ideas: Four Historical Landmarks of Wave Theory
 
 1. **D'Alembert, Euler & Bernoulli (1747–1755):** D'Alembert derived $$ u_{tt} = c^2 u_{xx} $$ and solved it via $$ F(x - ct) + G(x + ct) $$; Euler generalized it to arbitrary drawn shapes; Bernoulli insisted every vibration is a sum of harmonic sines—setting up the grand synthesis of Fourier analysis.
 2. **Huygens, Fresnel & Kirchhoff (1690–1882):** Christiaan Huygens explained optical wavefronts as envelopes of secondary spherical wavelets; Augustin-Jean Fresnel added interference; Gustav Kirchhoff derived the exact 3D integral solution proving why sharp wave propagation holds in odd dimensions $$ d \ge 3 $$ but fails in 2D!
 3. **Maxwell's Electromagnetic Synthesis (1865):** James Clerk Maxwell unified electricity, magnetism, and light by deriving $$ \mathbf{E}_{tt} = c^2\nabla^2\mathbf{E} $$ from his four field equations—predicting radio waves two decades before Heinrich Hertz built the first transmitter in 1887.
 4. **Relativity & Gravitational Waves (1905–2015):** The invariance of the wave operator $$ \frac{1}{c^2}\partial_{tt} - \nabla^2 $$ under Lorentz transformations inspired Einstein's Special Relativity, and linearized General Relativity predicts transverse spacetime ripples traveling at $$ c $$, directly observed from colliding black holes in 2015.
 
-### Step-by-Step Worked Example (Read Slowly): Reproducing Maxwell's 1865 Speed-of-Light Calculation
+### Worked example: Reproducing Maxwell's 1865 Speed-of-Light Calculation
 
 **Problem:** Starting from Faraday's law $$ \nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t} $$ and the Ampère–Maxwell law in vacuum $$ \nabla \times \mathbf{B} = \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} $$ (with $$ \nabla\cdot\mathbf{E} = 0 $$), derive the wave equation for $$ \mathbf{E} $$ and compute $$ c = 1/\sqrt{\mu_0\varepsilon_0} $$ using $$ \mu_0 = 4\pi \times 10^{-7}\text{ N/A}^2 $$ and $$ \varepsilon_0 = 8.854 \times 10^{-12}\text{ F/m} $$.
 

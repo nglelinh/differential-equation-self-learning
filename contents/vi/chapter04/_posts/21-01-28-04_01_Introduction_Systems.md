@@ -13,7 +13,7 @@ lesson_type: required
 
 Trong tự nhiên, hiếm khi nào một đại lượng biến đổi trong cô lập: số lượng thỏ ảnh hưởng đến số lượng cáo, dòng điện ở nhánh mạch này cảm ứng sang nhánh kia, và chuyển động của con lắc kéo theo phản lực lên điểm treo. **Hệ phương trình vi phân thường** gom tất cả những mối tương tác đan xen đó vào một vectơ trạng thái duy nhất $\mathbf{x}(t) \in \mathbb{R}^n$—và đáng kinh ngạc hơn nữa, **mọi** phương trình vi phân bậc $n$ bất kỳ đều quy đổi tương đương hoàn toàn về một hệ bậc một!
 
-## Bản đồ kiến thức nền: Bốn viên gạch đầu tiên của Hệ PTVP
+## Kiến thức cần nhớ: Bốn viên gạch đầu tiên của Hệ PTVP
 
 1. **Chuyển đổi PTVP bậc $n$ thành Hệ bậc một**:
    Đặt $x_1 = y,\; x_2 = y', \dots, x_n = y^{(n-1)}$—mọi bộ giải số máy tính (như `scipy.integrate.solve_ivp`) thực chất chỉ cần một thuật toán duy nhất cho hệ bậc một $\mathbf{x}' = \mathbf{f}(t, \mathbf{x})$!
@@ -40,7 +40,7 @@ Sinh viên nên nắm ODE cấp một, ODE cấp hai, khái niệm điều kiệ
 
 Hệ phương trình không chỉ là cách viết dài hơn của ODE một ẩn, mà là ngôn ngữ chuẩn cho các mô hình nhiều biến trạng thái. Khi biểu diễn trạng thái bằng vector, ta có thể vận dụng ngay ma trận, trị riêng, hàm mũ ma trận và chân dung pha để phân tích hình học của chuyển động.
 
-### Khung giải thích (nên đọc chậm): Chuyển PTVP bậc ba không thuần nhất $y''' - 2y'' + 5y' - y = \sin t$ thành hệ bậc một dạng ma trận
+### Giải thích: Chuyển PTVP bậc ba không thuần nhất $y''' - 2y'' + 5y' - y = \sin t$ thành hệ bậc một dạng ma trận
 
 1. **Đặt 3 biến trạng thái**:
    $x_1 = y$, $\;x_2 = y'$, $\;x_3 = y''$.

@@ -14,7 +14,7 @@ lesson_type: required
 
 Chẳng cần giải ra một công thức nghiệm nào, trực giác vật lý mách bảo ta một điều hiển nhiên: trong một thanh kim loại không có nguồn nhiệt bên trong, **điểm nóng nhất không bao giờ có thể tự dưng bùng lên ở giữa thanh ở thời điểm sau**—nhiệt độ lớn nhất (và nhỏ nhất!) chắc chắn phải nằm ở **trạng thái ban đầu $t = 0$** hoặc trên **hai đầu biên $x = 0, L$**! Phát biểu hình học mộc mạc đó chính là **Nguyên lý Cực đại (Maximum Principle)**—vũ khí chứng minh **tính duy nhất** và **tính ổn định** nghiệm nhanh nhất toàn ngành PDE!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Nguyên lý Cực đại cho Phương trình Nhiệt
+## Kiến thức cần nhớ: Bốn trụ cột của Nguyên lý Cực đại cho Phương trình Nhiệt
 
 1. **Biên Parabol ($\Gamma_T$)**:
    Trên hình chữ nhật không–thời gian $Q_T = (0, L) \times (0, T]$, biên parabol $\Gamma_T$ gồm đúng **3 cạnh**: đáy ban đầu ($t = 0$), vách trái ($x = 0$) và vách phải ($x = L$) — **không bao gồm nắp trên $t = T$**!
@@ -39,7 +39,7 @@ Sinh viên cần nắm phương trình nhiệt, điều kiện cực trị của
 
 Kết quả này cho thấy quá trình khuếch tán chịu một ràng buộc chặt chẽ: giá trị nghiệm trên toàn miền được kiểm soát bởi dữ liệu trên biên parabolic chứ không thể tự tăng vọt bên trong. Đây là nền tảng để chứng minh tính duy nhất, tính ổn định và nhiều ước lượng sai số.
 
-### Khung giải thích (nên đọc chậm): Dùng Nguyên lý Cực đại chặn ngay nhiệt độ và ước lượng sai số đo không cần giải PDE
+### Giải thích: Dùng Nguyên lý Cực đại chặn ngay nhiệt độ và ước lượng sai số đo không cần giải PDE
 
 Giả sử một thanh kim loại dài $1\text{ m}$ có nhiệt độ ban đầu $f(x) = 20 + 60\sin(\pi x)$, đầu trái giữ $20^\circ\text{C}$, đầu phải giữ $40^\circ\text{C}$ ($u_t = \alpha u_{xx}$).
 1. **Tìm cực trị trên biên parabol $\Gamma_T$**:

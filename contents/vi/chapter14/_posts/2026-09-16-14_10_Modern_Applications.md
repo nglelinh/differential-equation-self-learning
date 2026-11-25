@@ -12,7 +12,7 @@ lesson_type: optional
 
 Nhìn vào công thức của một tầng mạng Fourier Neural Operator (FNO): biến đổi FFT dữ liệu sang miền tần số, nhân với một ma trận trọng số học được $R(\xi)$, rồi biến đổi ngược IFFT! Dưới con mắt của Chương 14, FNO không hề là một "hộp đen bí ẩn"—nó chính là một **toán tử giả vi phân (hoặc bộ nhân Fourier) có ký hiệu được học trực tiếp từ dữ liệu**! Kết nối này mở ra cách thiết kế kiến trúc AI vật lý vừa tiết kiệm tham số, vừa đảm bảo tính bị chặn trên không gian Sobolev $H^s$.
 
-## Bản đồ kiến thức nền: Bốn trụ cột nối Toán tử Giả vi phân với Neural Operators
+## Kiến thức cần nhớ: Bốn trụ cột nối Toán tử Giả vi phân với Neural Operators
 
 1. **Tầng FNO như Toán tử Giả vi phân Hệ số Hằng**:
    Phép toán $\mathcal{F}^{-1}\big(R(\xi)\widehat{u}(\xi)\big)$ chính là $\operatorname{Op}(R)$ với ký hiệu chỉ phụ thuộc $\xi$. Cắt cụt tần số cao $|\xi| \le k_{\max}$ hoạt động như một toán tử làm trơn thuộc $\Psi^{-\infty}$!
@@ -40,7 +40,7 @@ Kovachki và cộng sự (*JMLR* 2023) đã mô tả FNO như một họ toán t
 Các công trình này trở nên dễ tiếp cận hơn nhiều khi người học đã nắm lớp ký hiệu $$S^m_{\rho,\delta}$$ và cách xây dựng parametrix. Về bản chất, việc học toán tử nghịch đảo của một toán tử elliptic từ dữ liệu chính là nỗ lực xấp xỉ một parametrix.
 
 
-### Khung giải thích (nên đọc chậm): Đọc trực tiếp ký hiệu $p(x, \xi)$ của một tầng FNO điều biến không gian
+### Giải thích: Đọc trực tiếp ký hiệu $p(x, \xi)$ của một tầng FNO điều biến không gian
 
 Xét một tầng học toán tử 1D đơn giản kết hợp hai nhánh không gian–tần số:
 $$(Tu)(x) = a_1(x)\,\mathcal{F}^{-1}\!\left(\frac{1}{1 + \xi^2}\widehat{u}(\xi)\right)(x) + a_2(x)\,\mathcal{F}^{-1}\!\left(\frac{i\xi}{1 + \xi^2}\widehat{u}(\xi)\right)(x).$$

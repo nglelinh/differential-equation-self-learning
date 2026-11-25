@@ -22,7 +22,7 @@ This optional lesson treats the Minkowski inequality as a central geometric idea
 
 Students should already know the definition of the $$ L^p $$ norm, Holder's inequality, vector norms in $$ \mathbb{R}^n $$, and the basic idea of integrating nonnegative functions. Lesson 12.01 on $$ L^p $$ spaces is the direct foundation, because this lesson explains why the usual formula really defines a norm and not just a formal quantity.
 
-## Background Knowledge Map: Convexity, Triangle Geometry, and Integral Norms
+## Key ideas: Convexity, Triangle Geometry, and Integral Norms
 
 Four analytical pillars explain Minkowski's inequality and its far-reaching integral extension:
 
@@ -142,7 +142,7 @@ Show students that the inequality appears naturally whenever a solution, approxi
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Verifying Minkowski for $p=3$ and Watching It Fail for $p=1/2$
+### Worked example: Verifying Minkowski for $p=3$ and Watching It Fail for $p=1/2$
 
 First verify $\|f+g\|_{L^3(0,1)} \le \|f\|_{L^3(0,1)} + \|g\|_{L^3(0,1)}$ explicitly for $f(x) = 1$ and $g(x) = x$ on $(0,1)$; then show why the triangle inequality breaks for $p = 1/2$ on $\mathbb{R}^2$.
 

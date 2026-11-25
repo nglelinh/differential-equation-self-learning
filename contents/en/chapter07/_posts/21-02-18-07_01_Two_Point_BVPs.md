@@ -14,14 +14,14 @@ In an initial-value problem, you stand at $$ t = 0 $$, launch a projectile with 
 
 Understanding why pinning both ends breaks Picard–Lindelöf intuition is the gateway to resonance, eigenvalues, and the entire theory of partial differential equations.
 
-## Background Knowledge Map: From Initial Values to Two-Point Boundaries
+## Key ideas: From Initial Values to Two-Point Boundaries
 
 1. **IVP vs. BVP Well-Posedness (Global Coupling):** An IVP specifies all data at one point $$ x_0 $$, making existence and uniqueness local and unconditional for linear ODEs with continuous coefficients. A two-point BVP couples $$ x = a $$ and $$ x = b $$ globally, reducing existence/uniqueness to whether a $$ 2 \times 2 $$ boundary determinant vanishes.
 2. **The Shooting Method Intuition (Geometric View):** Imagine launching solutions from $$ x = a $$ with $$ y(a) = \alpha $$ and varying the initial slope $$ s = y'(a) $$. Solving the BVP means finding a slope $$ s $$ that hits the target $$ y(b; s) = \beta $$. If every trajectory arrives at the same height regardless of $$ s $$, the target is either unreachable (no solution) or hit by every slope (infinitely many solutions).
 3. **Homogeneous vs. Nonhomogeneous Dichotomy (Fredholm Alternative):** A linear BVP $$ L[y] = f $$ with homogeneous BCs has a unique solution for *every* continuous $$ f $$ if and only if the homogeneous problem $$ L[y] = 0 $$ has only the trivial solution $$ y \equiv 0 $$.
 4. **Physical Boundary Types (Dirichlet, Neumann, Robin):** Fixing the value (Dirichlet, e.g., clamped string), fixing the derivative/flux (Neumann, e.g., insulated rod end), or coupling value and flux (Robin, e.g., Newton cooling) directly encodes the physics at the domain boundary.
 
-### Step-by-Step Worked Example (Read Slowly): All Three Existence/Uniqueness Regimes for $$ y'' + y = 0 $$
+### Worked example: All Three Existence/Uniqueness Regimes for $$ y'' + y = 0 $$
 
 **Problem:** Analyze the BVP $$ y'' + y = 0 $$ on $$ [0, b] $$ with $$ y(0) = 0 $$, $$ y(b) = \beta $$ for three cases: (a) $$ b = \frac{\pi}{2}, \beta = 3 $$; (b) $$ b = \pi, \beta = 3 $$; (c) $$ b = \pi, \beta = 0 $$.
 

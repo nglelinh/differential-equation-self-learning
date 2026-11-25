@@ -14,7 +14,7 @@ lesson_type: required
 
 Hãy hình dung một phản ứng hóa học có hai quá trình xảy ra đồng thời: một chất trung gian phân hủy sạch trong $10^{-6}$ giây, còn sản phẩm chính biến đổi chậm rãi suốt $10$ giây. Sau vài micro-giây đầu tiên, đường cong nghiệm trông phẳng lì và êm đềm—vậy mà nếu bạn chạy RK4 với bước $h = 0{,}01$ giây, nghiệm số lập tức nổ tung ra `NaN`! Chào mừng đến với thế giới **Phương trình Cứng (Stiff Equations)**—nơi **ổn định**, chứ không phải độ chính xác, mới là kẻ bóp nghẹt bước thời gian của mọi phương pháp hiện!
 
-## Bản đồ kiến thức nền: Bốn trụ cột để nhận diện và thuần hóa Phương trình Cứng
+## Kiến thức cần nhớ: Bốn trụ cột để nhận diện và thuần hóa Phương trình Cứng
 
 1. **Dấu hiệu nhận diện: Tỷ số Độ cứng (Stiffness Ratio) lớn**:
    Một hệ $y' = f(t, y)$ có tính cứng khi ma trận Jacobian $J = \partial f/\partial y$ có các giá trị riêng với phần thực âm chênh lệch nhau nhiều bậc độ lớn ($\max |\operatorname{Re}\lambda_i| \gg \min |\operatorname{Re}\lambda_i|$)—xuất hiện dày đặc trong động học hóa học, mạch điện và PDE khuếch tán sau bán rời rạc hóa!
@@ -41,7 +41,7 @@ Một tình huống thường gây ngạc nhiên khi mới học phương pháp 
 Bài toán cứng thường xuất hiện ở các hệ có nhiều thang thời gian chênh lệch nhau lớn: một thành phần suy giảm rất nhanh có thể không còn đáng kể sau thời gian ngắn, nhưng vẫn ép sơ đồ tường minh phải duy trì bước thời gian cực nhỏ trong suốt quá trình tính.
 
 
-### Khung giải thích (nên đọc chậm): Đối đầu trực diện Euler Hiện vs. Euler Ẩn trên phương trình cứng $y' = -1000y$
+### Giải thích: Đối đầu trực diện Euler Hiện vs. Euler Ẩn trên phương trình cứng $y' = -1000y$
 
 Xét bài toán cứng $y' = -1000y$, $y(0) = 1$ (nghiệm đúng tại $t = 0{,}01$ là $e^{-10} \approx 4{,}5 \times 10^{-5}$). Ta chọn bước thời gian hoàn toàn vừa phải $h = 0{,}01$:
 1. **Euler Hiện** ($y_{n+1} = (1 - 1000h) y_n = -9 y_n$):

@@ -14,7 +14,7 @@ lesson_type: required
 
 Ngoài đời thực, hiếm khi hai đầu thanh kim loại đều giữ đúng ở $0^\circ\text{C}$ và không có nguồn nhiệt bên trong. Một thanh đồng có thể có đầu trái nhúng nước sôi $100^\circ\text{C}$, đầu phải giữ $20^\circ\text{C}$, lại có dòng điện chạy qua tự sinh nhiệt $q(x)$! Khi đó ta không thể tách biến trực tiếp—mà dùng một phép tách cực kỳ thanh lịch: **Trạng thái Dừng $v(x)$ + Phần Quá độ $w(x, t)$**!
 
-## Bản đồ kiến thức nền: Bốn bước giải Bài toán Nhiệt Không Thuần nhất
+## Kiến thức cần nhớ: Bốn bước giải Bài toán Nhiệt Không Thuần nhất
 
 1. **Phân tách $u(x, t) = v(x) + w(x, t)$**:
    Chọn **nghiệm dừng (steady-state)** $v(x)$ thỏa $0 = \alpha v''(x) + q(x)$ cùng **đúng điều kiện biên không thuần nhất** ($v(0)=T_1, v(L)=T_2$).
@@ -39,7 +39,7 @@ Trong thực tế, hai đầu thanh hiếm khi cùng giữ ở nhiệt độ 0 v
 
 Cách tiếp cận này mang tính chiến lược rõ ràng: thay vì xử lý toàn bộ bài toán cùng lúc, ta phân tách nghiệm thành phần cân bằng và phần quá độ. Phần cân bằng mô tả trạng thái dài hạn, còn phần quá độ cho biết hệ tiến dần về trạng thái đó như thế nào.
 
-### Khung giải thích (nên đọc chậm): Tìm nghiệm dừng $v(x)$ và thiết lập bài toán quá độ $w(x, t)$ cho thanh có biên $20^\circ\text{C}$ và $80^\circ\text{C}$
+### Giải thích: Tìm nghiệm dừng $v(x)$ và thiết lập bài toán quá độ $w(x, t)$ cho thanh có biên $20^\circ\text{C}$ và $80^\circ\text{C}$
 
 Xét $u_t = u_{xx}$ trên $[0, 10]$ với $u(0, t) = 20,\; u(10, t) = 80$ và nhiệt độ ban đầu $u(x, 0) = 50$.
 1. **Tìm nghiệm dừng $v(x)$** ($v''(x) = 0 \implies v(x) = ax + b$):
@@ -244,7 +244,7 @@ $$ u_t=\alpha^2 u_{xx}+f(x,t). $$
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Bài toán không thuần nhất thường không đòi hỏi một phương pháp hoàn toàn mới; điểm mấu chốt là tách đúng phần xử lý biên hoặc nguồn. Một lỗi phổ biến là áp dụng trực tiếp cơ sở sin chuẩn cho bài toán biên không thuần nhất mà quên bước đổi biến trước.
+Bài toán không thuần nhất thường không đòi hỏi một phương pháp hoàn toàn mới; điểm chính là tách đúng phần xử lý biên hoặc nguồn. Một lỗi phổ biến là áp dụng trực tiếp cơ sở sin chuẩn cho bài toán biên không thuần nhất mà quên bước đổi biến trước.
 
 ### 3. Trực quan hóa bằng Python
 

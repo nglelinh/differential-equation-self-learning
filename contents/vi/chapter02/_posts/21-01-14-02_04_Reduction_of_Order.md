@@ -12,7 +12,7 @@ lesson_type: required
 
 Với phương trình hệ số biến thiên $y'' + p(t)y' + q(t)y = 0$, phương trình đặc trưng không còn dùng được nữa—nhưng giả sử bằng trực giác hay quan sát vật lý bạn tìm được **một nghiệm $y_1(t)$**. Liệu có cách nào vắt kiệt thông tin từ $y_1$ để tự động sinh ra nghiệm độc lập thứ hai $y_2(t)$? Câu trả lời chính là **phương pháp Hạ bậc (Reduction of Order)**: đặt $y_2(t) = v(t)y_1(t)$ sẽ làm triệt tiêu sạch số hạng chứa $v$ và đưa bài toán về phương trình tách biến cấp một cho $w = v'$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Hạ bậc
+## Kiến thức cần nhớ: Bốn trụ cột của Phương pháp Hạ bậc
 
 1. **Phép thế d'Alembert ($y_2(t) = v(t)\,y_1(t)$)**:
    Nếu $v$ là hằng số thì $v y_1$ phụ thuộc tuyến tính với $y_1$; để độc lập tuyến tính, ta cho $v(t)$ biến thiên không hằng!
@@ -37,7 +37,7 @@ Trong một số bài toán, ta biết trước một nghiệm nhờ trực giá
 
 Phương pháp hạ bậc giải quyết trực tiếp câu hỏi này. Thay vì tìm nghiệm mới từ đầu, ta tìm nó dưới dạng tích của một hàm biến thiên với nghiệm đã biết. Cách tiếp cận này thể hiện rõ tinh thần khai thác cấu trúc sẵn có của phương trình tuyến tính.
 
-### Khung giải thích (nên đọc chậm): Dùng Hạ bậc tìm nghiệm thứ hai của $t^2 y'' - 3t y' + 4y = 0$ ($t > 0$) khi biết sẵn $y_1(t) = t^2$
+### Giải thích: Dùng Hạ bậc tìm nghiệm thứ hai của $t^2 y'' - 3t y' + 4y = 0$ ($t > 0$) khi biết sẵn $y_1(t) = t^2$
 
 1. **Đưa về dạng chuẩn tắc**: Chia cho $t^2 > 0$:
    $$y'' - \frac{3}{t}y' + \frac{4}{t^2}y = 0 \implies p(t) = -\frac{3}{t}.$$

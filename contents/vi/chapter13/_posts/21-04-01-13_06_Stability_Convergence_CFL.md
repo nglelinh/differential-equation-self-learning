@@ -12,9 +12,9 @@ lesson_type: required
 
 ![Trực giác về ổn định, hội tụ và điều kiện CFL]({{ site.imgurl }}/chapter_img/chapter13/06_stability_convergence_cfl.svg )
 
-Một sơ đồ sai phân trông hoàn hảo trên giấy, nhất quán bậc hai hẳn hoi, nhưng khi bấm chạy thì chỉ sau 15 bước thời gian toàn bộ màn hình biến thành răng cưa dao động $10^{30}$! Vì sao? Vì **Nhất quán một mình không bao giờ đủ cho Hội tụ**! Định lý Tương đương Lax–Richtmyer và điều kiện CFL là bộ đôi định luật tối cao giải mã trọn vẹn bí ẩn sống còn này của mô phỏng PDE.
+Một sơ đồ sai phân trông hoàn hảo trên giấy, nhất quán bậc hai hẳn hoi, nhưng khi bấm chạy thì chỉ sau 15 bước thời gian toàn bộ màn hình biến thành răng cưa dao động $10^{30}$! Vì sao? Vì **Nhất quán một mình không bao giờ đủ cho Hội tụ**! Định lý Tương đương Lax–Richtmyer và điều kiện CFL là bộ đôi định luật tối cao giải mã trọn vẹn bí ẩn quan trọng này của mô phỏng PDE.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Ổn định, Hội tụ và Điều kiện CFL
+## Kiến thức cần nhớ: Bốn trụ cột của Ổn định, Hội tụ và Điều kiện CFL
 
 1. **Định lý Tương đương Lax–Richtmyer**:
    Đối với một bài toán giá trị ban đầu tuyến tính đặt chỉnh, một sơ đồ sai phân **nhất quán** sẽ **hội tụ** khi và chỉ khi nó **ổn định**! Điều này chuyển bài toán khó (chứng minh hội tụ về nghiệm ẩn $u$) thành hai bài toán kiểm tra được (Taylor + Ổn định).
@@ -44,7 +44,7 @@ Ba tiêu chí nền tảng gồm:
 - **Sự hội tụ (convergence)**: khi làm mịn lưới, nghiệm số có tiến về nghiệm chính xác hay không.
 
 
-### Khung giải thích (nên đọc chậm): Tính tay bước thời gian tối đa $\Delta t_{\max}$ và cú sốc "chia đôi lưới"
+### Giải thích: Tính tay bước thời gian tối đa $\Delta t_{\max}$ và cú sốc "chia đôi lưới"
 
 So sánh hai PDE kinh điển cùng trên lưới không gian $\Delta x = 0{,}1$:
 1. **Phương trình truyền tải (Hyperbolic)** $u_t + 2 u_x = 0$ (sơ đồ Upwind, $\text{CFL} = \frac{c\Delta t}{\Delta x} \le 1$):

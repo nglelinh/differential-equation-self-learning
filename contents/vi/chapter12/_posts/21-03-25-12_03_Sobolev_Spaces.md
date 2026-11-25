@@ -14,7 +14,7 @@ lesson_type: required
 
 Không gian $L^2(\Omega)$ đủ rộng và đầy đủ nhưng lại không hề kiểm soát đạo hàm; không gian $C^1(\bar{\Omega})$ kiểm soát được đạo hàm nhưng lại bị "thủng" khi lấy giới hạn (như phản ví dụ Weierstrass đã chỉ ra). **Không gian Sobolev $W^{k,p}(\Omega)$**—và đặc biệt là không gian Hilbert $H^1(\Omega) = W^{1,2}(\Omega)$—là giao điểm hoàn hảo của cả hai thế giới: vừa đo được cả hàm lẫn các đạo hàm yếu tới bậc $k$, vừa **đầy đủ tuyệt đối**!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Không gian Sobolev $W^{k,p}(\Omega)$
+## Kiến thức cần nhớ: Bốn trụ cột của Không gian Sobolev $W^{k,p}(\Omega)$
 
 1. **Định nghĩa và Chuẩn Sobolev**:
    $W^{k,p}(\Omega)$ gồm mọi hàm $u \in L^p(\Omega)$ sao cho mọi đạo hàm yếu $D^\alpha u$ ($|\alpha| \le k$) đều nằm trong $L^p(\Omega)$, với chuẩn $\|u\|_{W^{k,p}} = \left(\sum_{|\alpha|\le k} \|D^\alpha u\|_{L^p}^p\right)^{1/p}$.
@@ -38,7 +38,7 @@ Sinh viên cần nắm không gian $$ L^p $$, đạo hàm yếu, chuẩn, tích 
 Khi nghiên cứu PDE, chỉ biết hàm có tích phân hữu hạn trong $$ L^p $$ thường chưa đủ; ta cần kiểm soát thêm độ dốc, độ cong hoặc các đạo hàm bậc cao hơn. Tuy nhiên, nếu đòi hỏi đạo hàm cổ điển thì lớp hàm lại quá hẹp và loại bỏ nhiều nghiệm có ý nghĩa vật lý. Không gian Sobolev giải quyết cân bằng này: đủ rộng để chứa nghiệm yếu nhưng vẫn đủ chặt để bảo toàn cấu trúc hình học và năng lượng.
 
 
-### Khung giải thích (nên đọc chậm): Tính tay chính xác chuẩn $H^1(0, 1)$ của một "hàm mũ nón" phần tử hữu hạn
+### Giải thích: Tính tay chính xác chuẩn $H^1(0, 1)$ của một "hàm mũ nón" phần tử hữu hạn
 
 Xét hàm mũ nón (hat function) có góc nhọn tại giữa đoạn $\Omega = (0, 1)$:
 $$u(x) = \begin{cases} x, & 0 \le x \le \tfrac{1}{2}, \\ 1 - x, & \tfrac{1}{2} \le x \le 1. \end{cases}$$

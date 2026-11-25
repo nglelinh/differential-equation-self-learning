@@ -12,7 +12,7 @@ lesson_type: required
 
 Many nonlinear differential equations look impenetrable in their original coordinates—until a single clever change of variables unravels them into a separable or linear equation you already know how to solve. Just as polar coordinates turn a messy circle equation $$x^2 + y^2 = r^2$$ into a constant, substitution methods exploit hidden scaling or algebraic symmetries to straighten curved differential equations.
 
-## Background Knowledge Map: Three Symmetry-Driven Substitutions
+## Key ideas: Three Symmetry-Driven Substitutions
 
 Each classical substitution targets a specific structural symmetry of the ODE:
 
@@ -21,7 +21,7 @@ Each classical substitution targets a specific structural symmetry of the ODE:
 3. **Linear-Combination Substitutions ($$u = ax + by + c$$):** When $$y' = F(ax + by + c)$$, the slope depends only on distance from parallel lines $$ax + by = \text{const}$$; setting $$u = ax + by + c$$ immediately makes the equation separable.
 4. **Riccati Reduction ($$y = y_1 + 1/u$$):** A quadratic ODE $$y' = p(x) + q(x)y + r(x)y^2$$ cannot generally be solved by quadrature, yet knowing just *one* particular solution $$y_1(x)$$ reduces it to a Bernoulli (hence linear) equation via $$y = y_1 + u^{-1}$$.
 
-### Step-by-Step Worked Example (Read Slowly): Linearizing a Bernoulli IVP via $$u = y^{1-n}$$
+### Worked example: Linearizing a Bernoulli IVP via $$u = y^{1-n}$$
 
 Solve the Bernoulli initial value problem
 $$y' + \frac{1}{x}y = x\,y^2, \qquad x > 0, \qquad y(1) = 1.$$

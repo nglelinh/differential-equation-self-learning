@@ -14,7 +14,7 @@ lesson_type: required
 
 Để suy ra phương trình sóng 1D $u_{tt} = c^2 u_{xx}$, ta chẳng cần công cụ cao siêu nào ngoài **Định luật II Newton ($F = ma$)** áp dụng cho một đoạn dây đàn vô cùng ngắn $[x, x + \Delta x]$ dưới giả thiết dao động biên độ nhỏ ($\vert u_x \vert \ll 1$).
 
-## Bản đồ kiến thức nền: Bốn bước suy diễn Phương trình Sóng từ $F = ma$
+## Kiến thức cần nhớ: Bốn bước suy diễn Phương trình Sóng từ $F = ma$
 
 1. **Giả thiết dây đàn lý tưởng**:
    Dây mềm hoàn toàn (không chống uốn), khối lượng riêng dài đều $\rho$, dao động thẳng đứng nhỏ ($\vert u_x \vert \ll 1 \implies \cos\theta \approx 1,\; \sin\theta \approx \tan\theta = u_x$), nên lực căng ngang $T$ không đổi dọc dây.
@@ -39,7 +39,7 @@ Sinh viên cần nắm đạo hàm riêng, định luật II Newton, khái niệ
 
 Đây là điểm phân biệt cơ bản về mặt mô hình: trong phương trình nhiệt, nhiễu loạn bị san phẳng; trong phương trình sóng, nhiễu loạn được truyền đi. Vì vậy, bài mở đầu chương cần làm rõ cơ sở cơ học phía sau từng số hạng của phương trình.
 
-### Khung giải thích (nên đọc chậm): Tính tay vận tốc sóng và tần số cơ bản của một dây đàn guitar thật
+### Giải thích: Tính tay vận tốc sóng và tần số cơ bản của một dây đàn guitar thật
 
 Một dây đàn guitar dài $L = 0{,}65\text{ m}$, khối lượng riêng dài $\rho = 0{,}001\text{ kg/m}$ ($1\text{ g/m}$), được lên dây với lực căng $T = 72{,}9\text{ N}$:
 1. **Tốc độ truyền sóng dọc dây**:

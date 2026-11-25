@@ -12,7 +12,7 @@ lesson_type: required
 
 Trước khi chinh phục điểm kỳ dị tổng quát bằng phương pháp Frobenius, ta có một "phòng tập" hoàn hảo giải được bằng công thức đóng: **Phương trình Cauchy–Euler** $x^2 y'' + \alpha x y' + \beta y = 0$. Điểm kỳ dị tại $x = 0$ trông có vẻ đáng sợ, nhưng chỉ cần đặt nghiệm thử $y = x^r$ (hoặc đổi biến $x = e^t$), phương trình biến đổi kỳ diệu thành một phương trình đặc trưng bậc hai quen thuộc!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Cauchy–Euler
+## Kiến thức cần nhớ: Bốn trụ cột của Phương trình Cauchy–Euler
 
 1. **Đối xứng co giãn (Scale Invariance)**:
    Thay $x \to kx$ giữ nguyên hoàn toàn cấu trúc phương trình—đó là lý do sâu xa giải thích vì sao nghiệm tự nhiên có dạng lũy thừa $y = x^r$.
@@ -41,7 +41,7 @@ Phương trình Euler có hệ số biến thiên theo $$ x $$, khác với phư
 
 Qua đó, sinh viên thấy rằng việc chọn dạng nghiệm thử không phải thủ thuật tùy tiện mà phản ánh trực tiếp tính đối xứng ẩn của phương trình — ở đây là đối xứng co giãn.
 
-### Khung giải thích (nên đọc chậm): Giải cầm tay chỉ việc 2 phương trình Euler cho trường hợp nghiệm kép và nghiệm phức ($x > 0$)
+### Giải thích: Giải làm từng bước 2 phương trình Euler cho trường hợp nghiệm kép và nghiệm phức ($x > 0$)
 
 1. **Trường hợp 1**: $x^2 y'' - 3x y' + 4y = 0$ ($\alpha = -3,\; \beta = 4$).
    - Phương trình chỉ số: $r(r - 1) - 3r + 4 = r^2 - 4r + 4 = (r - 2)^2 = 0 \implies r = 2$ (nghiệm kép!).

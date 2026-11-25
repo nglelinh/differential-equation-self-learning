@@ -22,7 +22,7 @@ This lesson opens the microlocal chapter with its most important concept: the wa
 
 Students should know distributions, the Fourier transform, smooth cutoff functions, singular support, and the basic intuition that a function may be smooth in some directions but not in others. These ideas are reviewed in Lesson 15.00. In earlier chapters, regularity was mostly asked pointwise in space. Here we refine the question by asking about both position and cotangent direction.
 
-## Background Knowledge Map: Geometry and Calculus of the Wave Front Set
+## Key ideas: Geometry and Calculus of the Wave Front Set
 
 Four pillars make $\operatorname{WF}(u)$ the central organizing object of microlocal analysis:
 
@@ -123,7 +123,7 @@ PDE rarely moves singular support as one large block. It moves singular directio
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Computing $\operatorname{WF}(\delta(x_1))$ on $\mathbb{R}^2$ Explicitly
+### Worked example: Computing $\operatorname{WF}(\delta(x_1))$ on $\mathbb{R}^2$ Explicitly
 
 Compute the exact wave front set of the line-delta distribution $u(x_1, x_2) = \delta(x_1) \otimes 1_{x_2}$ on $\mathbb{R}^2$ (defined by $\langle u, \psi \rangle = \int_{\mathbb{R}} \psi(0, x_2)\,dx_2$).
 

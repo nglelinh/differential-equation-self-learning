@@ -14,7 +14,7 @@ lesson_type: optional
 
 Khi Paul Dirac giới thiệu "hàm" $\delta(x)$ bằng $0$ ở mọi nơi trừ $x = 0$ nhưng tích phân lại bằng $1$, các nhà toán học truyền thống lắc đầu vì không một hàm thực thụ nào làm nổi điều đó. Thế nhưng các nhà vật lý vẫn dùng nó tính toán chính xác tuyệt đối! Phải đến năm 1945, Laurent Schwartz mới giải oan ngoạn mục cho Dirac: $\delta_0$ không phải một hàm gán giá trị tại từng điểm, mà là một **phiếm hàm tuyến tính liên tục tác động lên các hàm thử trơn**—khai sinh **Lý thuyết Phân phối (Distributions)**, nơi *mọi* hàm khả tích đều khả vi vô hạn lần!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Lý thuyết Phân phối $\mathcal{D}'(\Omega)$
+## Kiến thức cần nhớ: Bốn trụ cột của Lý thuyết Phân phối $\mathcal{D}'(\Omega)$
 
 1. **Không gian Hàm thử $\mathcal{D}(\Omega) = C_c^\infty(\Omega)$ và Đối ngẫu $\mathcal{D}'(\Omega)$**:
    Một phân phối $T \in \mathcal{D}'(\Omega)$ là ánh xạ tuyến tính liên tục $\varphi \mapsto \langle T, \varphi \rangle$. Mọi hàm khả tích địa phương $f \in L^1_{\text{loc}}$ tự động sinh ra một phân phối chính quy $\langle T_f, \varphi \rangle = \int f\varphi\,dx$, còn $\langle \delta_{x_0}, \varphi \rangle = \varphi(x_0)$ là phân phối kỳ dị!
@@ -38,7 +38,7 @@ Sinh viên cần nắm không gian hàm thử $$ C_c^\infty(\Omega) $$, đạo h
 Nhiều đối tượng vật lý quen thuộc không thể biểu diễn bằng hàm thông thường: điện tích điểm, xung lực tức thời hay khối lượng tập trung tại một điểm. Lý thuyết phân phối giải quyết vấn đề này bằng cách không mô tả đối tượng thông qua giá trị tại từng điểm, mà thông qua tác động tuyến tính của nó lên các hàm thử trơn.
 
 
-### Khung giải thích (nên đọc chậm): Tính tay đạo hàm bậc nhất và bậc hai của hàm bậc thang Heaviside $H(x)$ trong $\mathcal{D}'(\mathbb{R})$
+### Giải thích: Tính tay đạo hàm bậc nhất và bậc hai của hàm bậc thang Heaviside $H(x)$ trong $\mathcal{D}'(\mathbb{R})$
 
 Xét hàm bước nhảy $H(x) = 0$ khi $x < 0$ và $H(x) = 1$ khi $x \ge 0$. Lấy một hàm thử bất kỳ $\varphi \in C_c^\infty(\mathbb{R})$ (nên $\varphi(x) = 0$ khi $|x|$ đủ lớn):
 1. **Đạo hàm bậc nhất $H'$**:

@@ -12,7 +12,7 @@ lesson_type: required
 
 Trong Thế chiến thứ nhất, sản lượng cá mập ở biển Adriatic bất ngờ tăng vọt trong khi tàu đánh cá phải ngừng ra khơi. Nhà toán học Vito Volterra (và độc lập với ông là Alfred Lotka) đã lập ra một hệ hai phương trình phi tuyến đơn giản nhưng vang danh suốt một thế kỷ—**Mô hình Săn mồi – Con mồi (Lotka–Volterra)**—để giải thích vì sao quần thể thỏ và cáo tự dao động tuần hoàn mãi mãi mà không cần tác động bên ngoài.
 
-## Bản đồ kiến thức nền: Bốn trục phân tích Mô hình Lotka–Volterra
+## Kiến thức cần nhớ: Bốn trục phân tích Mô hình Lotka–Volterra
 
 1. **Bốn tham số sinh thái của hệ $\dot{x} = \alpha x - \beta xy,\; \dot{y} = -\gamma y + \delta xy$**:
    $\alpha$: tốc độ sinh trưởng tự nhiên của con mồi $x$; $\beta$: tỷ lệ bị săn khi gặp thú săn mồi $y$; $\gamma$: tỷ lệ chết tự nhiên của thú săn mồi khi thiếu thức ăn; $\delta$: hiệu suất chuyển hóa con mồi thành thú săn mồi mới.
@@ -39,7 +39,7 @@ Nếu xét riêng quần thể con mồi, số lượng của chúng có xu hư�
 
 Mô hình Lotka–Volterra có ý nghĩa quan trọng vì cho thấy dao động không nhất thiết xuất phát từ lực cưỡng bức tuần hoàn bên ngoài, mà có thể nảy sinh thuần túy từ cơ chế phản hồi nội tại giữa các biến trạng thái.
 
-### Khung giải thích (nên đọc chậm): Tính tay điểm cân bằng và chu kỳ dao động nhỏ của hệ Lotka–Volterra cụ thể
+### Giải thích: Tính tay điểm cân bằng và chu kỳ dao động nhỏ của hệ Lotka–Volterra cụ thể
 
 Xét hệ cụ thể với $\alpha = 2,\; \beta = 1,\; \gamma = 3,\; \delta = 1$:
 $$\dot{x} = 2x - xy, \qquad \dot{y} = -3y + xy.$$

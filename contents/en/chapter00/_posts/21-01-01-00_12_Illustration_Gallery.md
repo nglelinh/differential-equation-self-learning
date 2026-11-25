@@ -12,7 +12,7 @@ lesson_type: optional
 
 A formula like $$e^{At}$$ or $$\lvert f(x) - f(y)\rvert \le L\lvert x - y\rvert$$ can look dry on paper, yet each one encodes a vivid geometric picture: a cone bounding slopes, a vector field twisting space into eigen-axes, or a complex spiral pulsing in the plane. This gallery brings those invisible mental models into view so that when you meet Picard iteration, phase portraits, and Laplace poles in later chapters, you recognize their geometry immediately.
 
-## Background Knowledge Map: Four Visual Languages of Mathematical Foundations
+## Key ideas: Four Visual Languages of Mathematical Foundations
 
 As you explore the interactive figures below, connect each visual to the analytical pillar it represents:
 
@@ -21,7 +21,7 @@ As you explore the interactive figures below, connect each visual to the analyti
 3. **Invariant Lines and Eigen-Deformations (Linear Algebra):** Reveals eigenvectors as the rare directions that a linear map stretches without rotating—the straight-line trajectories of linear ODE systems.
 4. **Unit-Circle Rotation and Spirals (Complex Exponentials):** Maps $$\alpha + i\beta$$ directly to radial growth/decay ($$\alpha$$) and angular frequency ($$\beta$$), turning abstract complex roots into immediate motion.
 
-### Step-by-Step Worked Example (Read Slowly): Reading Four Foundational Quantities from One Visual Model
+### Worked example: Reading Four Foundational Quantities from One Visual Model
 
 Consider the planar linear map $$\mathbf{F}(x,y) = (x - 2y,\; 2x + y)$$, which combines every pillar in this gallery:
 

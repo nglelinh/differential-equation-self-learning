@@ -11,7 +11,7 @@ categories:
 
 For nearly 150 years after Newton and Leibniz invented calculus, mathematicians solved astonishing differential equations about vibrating strings and planetary orbits—yet nobody could rigorously define what a "function," a "limit," or "convergence" even meant. The dramatic nineteenth-century crisis over Fourier series forced mathematicians to rebuild the entire floor beneath calculus, turning intuitive physical tricks into the airtight real analysis, linear algebra, and functional analysis we use today.
 
-## Background Knowledge Map: How Historical Crises Shaped Our Prerequisite Toolkit
+## Key ideas: How Historical Crises Shaped Our Prerequisite Toolkit
 
 Viewing Chapter 00 chronologically explains *why* seemingly abstract definitions exist:
 
@@ -20,7 +20,7 @@ Viewing Chapter 00 chronologically explains *why* seemingly abstract definitions
 3. **From Coordinate Elimination to Spectral Structure (1809–1890s):** Gauss's least-squares astronomy, Cayley–Sylvester matrix algebra, and Jordan's canonical form replaced ad-hoc elimination with invariant subspaces and eigenvalues.
 4. **Abstract Spaces for Infinite-Dimensional Problems (1900–1930s):** Lebesgue's measure theory, Fréchet's metric spaces, Hilbert's inner-product spaces, and Banach's complete normed spaces elevated functions themselves into points of geometric spaces—the modern home of ODE and PDE existence theory.
 
-### Step-by-Step Worked Example (Read Slowly): The 1821 Cauchy Mistake That Invented Uniform Convergence
+### Worked example: The 1821 Cauchy Mistake That Invented Uniform Convergence
 
 In his 1821 *Cours d'Analyse*, Cauchy famously claimed that a convergent series of continuous functions is always continuous. Niels Henrik Abel soon spotted a counterexample using a Fourier-type series; an even simpler classroom example shows the exact gap:
 

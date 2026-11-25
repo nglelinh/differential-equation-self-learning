@@ -12,7 +12,7 @@ lesson_type: optional
 
 Trước khi bước vào thế giới kỳ diệu của Toán tử Giả vi phân, hãy kiểm tra lại chiếc "kính lúp" mạnh nhất trong túi đồ giải tích của bạn: **Biến đổi Fourier**. Phép biến đổi này thực hiện một phép màu đại số khó tin—nó biến toán tử đạo hàm $D_x = -i\partial_x$ thành phép nhân đơn giản với biến số $\xi$. Nhờ chiếc kính lúp ấy, mọi toán tử vi phân phức tạp bỗng hiện nguyên hình thành một hàm đại số gọi là **ký hiệu (symbol)**!
 
-## Bản đồ kiến thức nền: Bốn viên gạch ôn tập trước khi học Toán tử Giả vi phân
+## Kiến thức cần nhớ: Bốn viên gạch ôn tập trước khi học Toán tử Giả vi phân
 
 1. **Từ điển Fourier $\widehat{D_x^\alpha u}(\xi) = \xi^\alpha \widehat{u}(\xi)$**:
    Đặt $D_j = -i\partial_{x_j}$ để triệt tiêu mọi yếu tố $i$ thừa thãi; khi đó mỗi toán tử vi phân hệ số hằng $P(D) = \sum_{|\alpha|\le m} c_\alpha D^\alpha$ tương ứng 1–1 với đa thức ký hiệu $p(\xi) = \sum c_\alpha \xi^\alpha$.
@@ -38,7 +38,7 @@ Chương 14 thường gây khó khăn không phải vì toán tử giả vi phâ
 Sinh viên cần nắm vững biến đổi Fourier ở mức độ Chương 08, các toán tử vi phân cổ điển từ những chương PDE trước đó, cùng ý tưởng cơ bản về tính elliptic qua phương trình Laplace và Poisson. Bài học này không đòi hỏi người học phải biết trước phép tính ký hiệu đầy đủ; ngược lại, nó đóng vai trò chuẩn bị cho Bài 14.01 và 14.02.
 
 
-### Khung giải thích (nên đọc chậm): Tính tay tác động của toán tử Helmholtz và bộ nhân nghịch đảo lên một sóng phẳng
+### Giải thích: Tính tay tác động của toán tử Helmholtz và bộ nhân nghịch đảo lên một sóng phẳng
 
 Xét toán tử vi phân $P = -\partial_x^2 + 4 = D_x^2 + 4$ trên $\mathbb{R}$ (với $D_x = -i\partial_x$):
 1. **Đọc ký hiệu của $P$**: Thay $D_x \mapsto \xi$, ta có $p(\xi) = \xi^2 + 4 > 0$ với mọi $\xi \in \mathbb{R}$.

@@ -11,7 +11,7 @@ categories:
 
 Câu chuyện của Chương 11 bắt đầu không phải trong phòng thí nghiệm điện hay nhiệt, mà giữa bầu trời đêm thế kỷ XVIII khi Pierre-Simon Laplace cố tính lực hấp dẫn của các hành tinh hình cầu dẹt như Sao Thổ và Trái Đất. Thay vì cộng trực tiếp vô số lực vector ba chiều rắc rối, Laplace đưa ra một hàm vô hướng duy nhất—**hàm thế**—và phát hiện bên ngoài khối vật chất, hàm ấy thỏa mãn một phương trình đẹp đến sững sờ: $\Delta u = 0$. Không lâu sau, Siméon Denis Poisson nhìn vào *bên trong* khối vật chất và nhận ra vế phải không còn bằng $0$ nữa mà tỷ lệ đúng với mật độ nguồn: $\Delta u = 4\pi G \rho$!
 
-## Bản đồ kiến thức nền: Bốn bước ngoặt lịch sử kiến tạo Lý thuyết Thế và PDE Elliptic
+## Kiến thức cần nhớ: Bốn bước ngoặt lịch sử kiến tạo Lý thuyết Thế và PDE Elliptic
 
 1. **Laplace (1782–1785) — Cơ học thiên thể và Hàm điều hòa cầu**:
    Chuyển bài toán lực hấp dẫn vector thành bài toán thế vô hướng thỏa mãn $\Delta \Phi = 0$ trong không gian trống, đồng thời phát minh khai triển theo hàm điều hòa cầu.
@@ -34,7 +34,7 @@ Tại Nottingham năm 1828, George Green — khi ấy vẫn là một người t
 Trong vùng không có điện tích, điện thế thỏa mãn $$\Delta u = 0$$. Điều này có nghĩa là giá trị của $$u$$ bên trong miền bị ràng buộc chặt bởi giá trị trên biên. Chẳng hạn, khi đã biết điện thế trên bề mặt một vật dẫn, nghiệm điều hòa bên trong không thể tự tạo ra cực đại mới. Chính từ những câu hỏi như vậy mà hàm Green, lý thuyết thế và cặp phương trình Laplace–Poisson phát triển. Nhờ đó, Chương 11 mang sắc thái riêng: khảo sát những trạng thái cân bằng tưởng chừng tĩnh lặng nhưng ẩn chứa cấu trúc hình học nội tại sâu sắc.
 
 
-### Khung giải thích (nên đọc chậm): Kiểm tra trực tiếp vì sao thế hấp dẫn Newton $\Phi(r) = -GM/r$ thỏa mãn phương trình Laplace
+### Giải thích: Kiểm tra trực tiếp vì sao thế hấp dẫn Newton $\Phi(r) = -GM/r$ thỏa mãn phương trình Laplace
 
 Trong không gian 3D với $r = \sqrt{x^2 + y^2 + z^2} > 0$, toán tử Laplace cho hàm chỉ phụ thuộc bán kính $r$ có dạng $\Delta \Phi = \frac{1}{r^2}\frac{d}{dr}\left(r^2 \frac{d\Phi}{dr}\right)$. Tính từng bước với $\Phi(r) = -\frac{GM}{r}$:
 1. **Đạo hàm bậc nhất**:

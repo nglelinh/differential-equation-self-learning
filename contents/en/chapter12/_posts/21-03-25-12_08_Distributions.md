@@ -22,7 +22,7 @@ This lesson introduces distributions as an extension of the notion of function, 
 
 Students should know test functions $$ C_c^\infty(\Omega) $$, weak derivatives, integration by parts, and the physical idea of concentrated sources. This is an optional lesson, but it is especially valuable because it shows that the language of PDE extends beyond Sobolev spaces.
 
-## Background Knowledge Map: Laurent Schwartz's Theory of Distributions
+## Key ideas: Laurent Schwartz's Theory of Distributions
 
 Four pillars make distributions the universal language of modern linear PDEs:
 
@@ -114,7 +114,7 @@ The delta is the canonical example that shows why the framework is needed.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Differentiating the Ramp Function Twice in $\mathcal{D}'(\mathbb{R})$
+### Worked example: Differentiating the Ramp Function Twice in $\mathcal{D}'(\mathbb{R})$
 
 Let $r(x) = \max(x, 0)$ be the ramp (ReLU) function on $\mathbb{R}$. Compute its first and second distributional derivatives $r'$ and $r''$ rigorously using only the definition $\langle T', \varphi \rangle = -\langle T, \varphi' \rangle$ for $\varphi \in C_c^\infty(\mathbb{R})$.
 

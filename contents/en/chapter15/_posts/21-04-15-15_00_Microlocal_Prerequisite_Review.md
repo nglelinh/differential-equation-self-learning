@@ -26,7 +26,7 @@ The background ideas are not new in substance. Distributions already appeared in
 
 Students should already know basic real analysis, multivariable calculus, and the Fourier transform at the level of Chapter 08. Familiarity with distributions from Chapter 12 and symbols from Chapter 14 is helpful, but this lesson reviews the specific pieces needed for the opening lessons of Chapter 15.
 
-## Background Knowledge Map: The Four Tools Behind Microlocal Analysis
+## Key ideas: The Four Tools Behind Microlocal Analysis
 
 Before defining wave front sets, four analytical instruments must work together effortlessly:
 
@@ -181,7 +181,7 @@ Propagation theorems do not usually say that singular support moves as a whole g
 ## 6. Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Separating Smooth Directions from Singular Directions on $\mathbb{R}^2$
+### Worked example: Separating Smooth Directions from Singular Directions on $\mathbb{R}^2$
 
 Consider $u(x,y) = H(x)\,e^{-y^2}$ on $\mathbb{R}^2$ (where $H(x) = \mathbf{1}_{x > 0}$ is the Heaviside step), which has singular support along the entire $y$-axis $\{x = 0\}$. Localize near $(0,0)$ with a product cutoff $\varphi(x,y) = \chi_1(x)\chi_2(y) \in C_c^\infty(\mathbb{R}^2)$ (with $\chi_1(0) = \chi_2(0) = 1$) and compare the decay of $\widehat{\varphi u}(\xi_1, \xi_2)$ along the $\xi_1$-axis versus the $\xi_2$-axis.
 

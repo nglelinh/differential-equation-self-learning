@@ -12,7 +12,7 @@ lesson_type: optional
 
 During an outbreak, why does an epidemic peak and fade out long before every single person gets infected—and why does vaccinating just 75% of a population stop a disease with $$R_0 = 4$$ dead in its tracks? In 1927, William Kermack and Anderson McKendrick answered both questions with a three-equation nonlinear system (Susceptible–Infected–Recovered) whose exact phase-plane curve reduces one of public health's deepest puzzles to a single logarithmic formula.
 
-## Background Knowledge Map: Thresholds, Conservation, and Final Size in the SIR Model
+## Key ideas: Thresholds, Conservation, and Final Size in the SIR Model
 
 Four mathematical structures inside the SIR model $$S' = -\beta SI,\; I' = \beta SI - \gamma I,\; R' = \gamma I$$ explain every epidemic curve:
 
@@ -23,7 +23,7 @@ Four mathematical structures inside the SIR model $$S' = -\beta SI,\; I' = \beta
    $$\frac{dI}{dS} = -1 + \frac{\gamma}{\beta S} \implies I(S) = -S + \frac{\gamma}{\beta}\ln S + C,$$
    giving both the exact peak infection height $$I_{\max}$$ and the transcendental equation for the final unaffected fraction $$S_\infty > 0$$ (proving the epidemic ends from *depletion of susceptibles*, never from hitting $$S = 0$$!).
 
-### Step-by-Step Worked Example (Read Slowly): Computing $$R_0$$, Peak Infections, and Herd Immunity for a Normalized SIR Outbreak
+### Worked example: Computing $$R_0$$, Peak Infections, and Herd Immunity for a Normalized SIR Outbreak
 
 Model an outbreak in a normalized population $$N = 1$$ (so $$S, I, R$$ are population fractions) with transmission rate $$\beta = 0.6\text{ day}^{-1}$$, recovery rate $$\gamma = 0.2\text{ day}^{-1}$$ (mean infectious period $$1/\gamma = 5\text{ days}$$), and initial state $$S(0) = 0.99,\; I(0) = 0.01,\; R(0) = 0$$.
 

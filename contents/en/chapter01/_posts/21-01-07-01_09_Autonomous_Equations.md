@@ -12,7 +12,7 @@ lesson_type: optional
 
 Suppose a conservation biologist models a fish population under constant harvesting: $$y' = y(4 - y) - 3$$. Before you spend ten minutes integrating partial fractions, pause—what if you could tell in ten seconds which initial populations thrive, which crash to extinction, and where the tipping point lies? Autonomous equations $$y' = f(y)$$ have no explicit time dependence, so a single one-dimensional phase line reveals the complete long-term fate of every possible initial condition.
 
-## Background Knowledge Map: Qualitative Analysis Without Closed-Form Solutions
+## Key ideas: Qualitative Analysis Without Closed-Form Solutions
 
 Four geometric concepts make phase-line analysis extraordinarily powerful:
 
@@ -21,7 +21,7 @@ Four geometric concepts make phase-line analysis extraordinarily powerful:
 3. **Stability Classification via Sign Chart and $$f'(y^*)$$:** Arrows point up where $$f(y) > 0$$ and down where $$f(y) < 0$$. An equilibrium is an **asymptotically stable sink** if $$f'(y^*) < 0$$ (arrows point in), an **unstable source** if $$f'(y^*) > 0$$ (arrows point out), or a **semistable node** if $$f(y)$$ does not change sign across $$y^*$$.
 4. **Concavity and Inflection Points:** Differentiating $$y' = f(y)$$ gives $$y'' = f'(y)f(y)$$, so solution curves change concavity precisely where $$f'(y) = 0$$—giving you an accurate sketch of $$y(t)$$ with zero integration.
 
-### Step-by-Step Worked Example (Read Slowly): Complete Phase-Line Analysis of a Harvested Population
+### Worked example: Complete Phase-Line Analysis of a Harvested Population
 
 Analyze the autonomous cubic equation
 $$\frac{dy}{dt} = f(y) = (y - 1)^2(4 - y).$$

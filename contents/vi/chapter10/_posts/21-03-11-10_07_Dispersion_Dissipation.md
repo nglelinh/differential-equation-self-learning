@@ -14,7 +14,7 @@ lesson_type: optional
 
 Phương trình sóng lý tưởng $u_{tt} = c^2 u_{xx}$ đưa mọi xung sóng đi xa mãi mãi mà không hề méo dạng hay yếu đi. Thế nhưng ngoài đời thực, một xung ánh sáng đi qua lăng kính thủy tinh bị tách thành cầu vồng (sóng đỏ chạy nhanh hơn sóng tím!), còn tiếng hô trong rừng cứ yếu dần rồi tắt hẳn. Hai cơ chế vật lý làm thay đổi hình dạng và biên độ sóng đó chính là **Tán sắc (Dispersion)** và **Hấp thụ / Tiêu tán (Dissipation)**—được đọc trọn vẹn chỉ từ một biểu thức đại số duy nhất: **Hệ thức Tán sắc $\omega(k)$**!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Hệ thức Tán sắc $\omega(k)$
+## Kiến thức cần nhớ: Bốn trụ cột của Hệ thức Tán sắc $\omega(k)$
 
 1. **Cách tìm Hệ thức Tán sắc $\omega(k)$**:
    Thế sóng phẳng thử $u(x, t) = e^{i(kx - \omega t)}$ vào bất kỳ PDE tuyến tính hệ số hằng nào (thay $\partial_t \to -i\omega$, $\partial_x \to ik$) sẽ thu ngay phương trình đại số liên hệ tần số $\omega$ và số sóng $k$!
@@ -40,7 +40,7 @@ Trong phương trình sóng lý tưởng, mọi thành phần tần số truyề
 
 Bên cạnh đó, môi trường thực luôn tồn tại tổn hao do ma sát, độ nhớt hoặc hấp thụ điện từ, làm biên độ và năng lượng sóng giảm dần. Kết hợp cả tán sắc và tiêu tán giúp mô tả sát thực tế hơn nhiều hệ sóng vật lý.
 
-### Khung giải thích (nên đọc chậm): Tính tay Vận tốc Pha $v_p$ và Vận tốc Nhóm $v_g$ cho phương trình Klein–Gordon $u_{tt} = c^2 u_{xx} - m^2 u$
+### Giải thích: Tính tay Vận tốc Pha $v_p$ và Vận tốc Nhóm $v_g$ cho phương trình Klein–Gordon $u_{tt} = c^2 u_{xx} - m^2 u$
 
 1. **Thế sóng phẳng $e^{i(kx - \omega t)}$** ($\partial_t \to -i\omega$, $\partial_x \to ik$):
    $$(-i\omega)^2 = c^2(ik)^2 - m^2 \implies \omega^2 = c^2 k^2 + m^2 \implies \omega(k) = \sqrt{c^2 k^2 + m^2}.$$

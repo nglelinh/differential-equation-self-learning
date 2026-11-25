@@ -26,7 +26,7 @@ The central transition is this: instead of thinking of an operator only as a for
 
 Students should already know the Fourier transform at the level of Chapter 08, classical differential operators from the PDE chapters, and the main idea of ellipticity from Laplace and Poisson theory. No full symbolic calculus is assumed here; this lesson is designed to build exactly the background that Lesson 14.01 and Lesson 14.02 need.
 
-## Background Knowledge Map: From Polynomial Symbols to Fourier Multipliers
+## Key ideas: From Polynomial Symbols to Fourier Multipliers
 
 Four foundational ideas bridge classical Fourier analysis to Chapter 14's symbol calculus:
 
@@ -182,7 +182,7 @@ If the principal symbol of an operator does not vanish at high frequency, then t
 ## 6. Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Inverting $-\Delta + 4$ as a Fourier Multiplier
+### Worked example: Inverting $-\Delta + 4$ as a Fourier Multiplier
 
 Apply the Fourier multiplier symbol calculus to solve $(-\Delta + 4)u = f$ on $\mathbb{R}^2$ for the plane wave $f(x,y) = e^{i(3x - 4y)}$, and verify directly.
 

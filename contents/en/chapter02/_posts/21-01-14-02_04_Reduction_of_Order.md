@@ -12,7 +12,7 @@ lesson_type: required
 
 Suppose a physics problem hands you a variable-coefficient second-order equation—like Legendre's or Bessel's equation—where the constant-coefficient characteristic polynomial fails completely, yet by inspection or symmetry you spot *one* nonzero solution $$y_1(t)$$. Jean le Rond d'Alembert discovered in 1766 that you never need to guess a second solution from scratch: replacing the constant multiplier $$c$$ in $$c\,y_1(t)$$ by a varying function $$v(t)$$ automatically knocks the equation down to a solvable first-order ODE.
 
-## Background Knowledge Map: Why the Ansatz $$y_2(t) = v(t)y_1(t)$$ Always Succeeds
+## Key ideas: Why the Ansatz $$y_2(t) = v(t)y_1(t)$$ Always Succeeds
 
 Four structural facts explain the elegance and universality of reduction of order:
 
@@ -23,7 +23,7 @@ Four structural facts explain the elegance and universality of reduction of orde
 3. **Why Repeated Roots Produce $$t\,e^{rt}$$:** Applying reduction of order to $$y'' - 2ry' + r^2 y = 0$$ with $$y_1 = e^{rt}$$ gives $$p(t) = -2r$$, so $$v' = \frac{e^{2rt}}{(e^{rt})^2} = 1 \implies v(t) = t \implies y_2 = t\,e^{rt}$$—proving the repeated-root rule from first principles!
 4. **Domain Caution (Zeros of $$y_1$$):** The integral divides by $$[y_1(t)]^2$$, so perform reduction of order on an interval where $$y_1(t) \ne 0$$ and normalize the ODE to standard form $$y'' + p(t)y' + q(t)y = 0$$ first.
 
-### Step-by-Step Worked Example (Read Slowly): Finding a Second Solution to a Variable-Coefficient ODE
+### Worked example: Finding a Second Solution to a Variable-Coefficient ODE
 
 Given that $$y_1(t) = t$$ solves
 $$t^2 y'' - t(t + 2)y' + (t + 2)y = 0, \qquad t > 0,$$

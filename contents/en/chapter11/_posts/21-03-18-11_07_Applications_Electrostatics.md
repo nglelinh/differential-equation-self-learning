@@ -20,7 +20,7 @@ This lesson connects Laplace and Poisson equations to electrostatics. Students s
 
 Students should know Laplace's equation, Poisson's equation, and the meaning of source terms and boundary conditions in elliptic problems.
 
-## Background Knowledge Map: From Maxwell's Static Laws to Potential Theory
+## Key ideas: From Maxwell's Static Laws to Potential Theory
 
 Electrostatics translates directly into elliptic PDE theory through four core bridges:
 
@@ -98,7 +98,7 @@ This shows how the theory becomes computationally useful.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Coaxial Cable Potential, Capacitance, and Field Energy
+### Worked example: Coaxial Cable Potential, Capacitance, and Field Energy
 
 Consider a long coaxial cylindrical capacitor with inner conductor radius $a$ held at potential $V_0$ and grounded outer shield radius $b > a$ at potential $0$, with vacuum permittivity $\varepsilon_0$ between them. Compute the potential $\phi(r)$, electric field $\mathbf{E}$, capacitance per unit length $C/L$, and verify that field energy equals $\frac{1}{2}(C/L)V_0^2$.
 

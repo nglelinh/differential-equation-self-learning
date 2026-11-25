@@ -14,9 +14,9 @@ lesson_type: required
 
 Điều gì xảy ra nếu ta tập trung toàn bộ một đơn vị nhiệt năng vào **đúng một điểm duy nhất** $x = 0$ lúc $t = 0$ (xung Dirac $\delta(x)$) rồi thả ra? Ngọn lửa điểm vô cùng sắc nhọn đó lập tức tỏa rộng thành một đường cong chuông Gaussian mượt mà: chính là **Nghiệm Cơ bản (Fundamental Solution)** $\Phi(x, t)$—viên gạch nền tạo ra mọi nghiệm của phương trình nhiệt cả khi có nguồn ngoài $q(x, t)$ lẫn trên miền nửa trục $[0, \infty)$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Nghiệm Cơ bản & Hàm Green Nhiệt
+## Kiến thức cần nhớ: Bốn trụ cột của Nghiệm Cơ bản & Hàm Green Nhiệt
 
-1. **Ba tính chất vàng của Nghiệm Cơ bản $\Phi(x, t) = \frac{1}{\sqrt{4\pi\alpha t}} e^{-x^2/(4\alpha t)}$**:
+1. **Ba tính chất của Nghiệm Cơ bản $\Phi(x, t) = \frac{1}{\sqrt{4\pi\alpha t}} e^{-x^2/(4\alpha t)}$**:
    - Bảo toàn tổng nhiệt lượng: $\int_{-\infty}^{\infty} \Phi(x, t)\,dx = 1$ với mọi $t > 0$.
    - Đỉnh hạ dần theo $t^{-1/2}$ và bề rộng nở dần theo $t^{1/2}$ (tự đồng dạng!).
    - Khi $t \to 0^+$: $\Phi(x, t) \to \delta(x)$ (phân phối Dirac).
@@ -43,7 +43,7 @@ Một cách tiếp cận tự nhiên để khảo sát hệ tuyến tính là đ
 
 Từ nghiệm cơ bản, ta xây dựng nên hàm Green. Cách nhìn này tạo ra bước chuyển quan trọng trong giải PDE: thay vì giải lại bài toán từ đầu cho mỗi điều kiện ban đầu hoặc mỗi hàm nguồn mới, ta chỉ cần xác định đáp ứng với xung đơn vị rồi chồng chất các đáp ứng đó bằng phép tích phân.
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng cầm tay Hàm Green ảnh gương $G_D(x, y, t) = \Phi(x - y, t) - \Phi(x + y, t)$ trên nửa trục $x > 0$
+### Giải thích: Kiểm chứng cầm tay Hàm Green ảnh gương $G_D(x, y, t) = \Phi(x - y, t) - \Phi(x + y, t)$ trên nửa trục $x > 0$
 
 Với $y > 0$ cố định, kiểm tra 3 điều kiện bắt buộc của Hàm Green biên Dirichlet $u(0, t) = 0$:
 1. **Thỏa phương trình nhiệt**: Cả $\Phi(x - y, t)$ và $\Phi(x + y, t)$ đều là nghiệm của $u_t = \alpha u_{xx}$, nên hiệu của chúng cũng là nghiệm!

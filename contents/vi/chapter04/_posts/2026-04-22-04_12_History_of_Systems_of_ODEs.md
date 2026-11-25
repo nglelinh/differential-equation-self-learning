@@ -12,7 +12,7 @@ categories:
 
 Khi Newton và Lagrange nghiên cứu chuyển động đồng thời của Mặt Trời, Trái Đất và Sao Mộc—hay khi các nhà vật lý khảo sát mạng lưới lò xo liên kết—một phương trình vi phân đơn lẻ không còn đủ nữa: họ buộc phải giải hàng loạt phương trình móc nối chặt chẽ vào nhau. Sự kết hôn lịch sử giữa **phương trình vi phân** và **đại số ma trận** (Cayley, Sylvester, Jordan, Peano) ở thế kỷ XIX đã biến hệ phương trình cồng kềnh thành một biểu thức ngắn gọn đến kinh ngạc: $\mathbf{x}(t) = e^{At}\mathbf{x}_0$!
 
-## Bản đồ kiến thức nền: Bốn cột mốc lịch sử của Hệ PTVP Thường
+## Kiến thức cần nhớ: Bốn cột mốc lịch sử của Hệ PTVP Thường
 
 1. **Lagrange & Bài toán Dao động nhỏ (1760s–1788)**:
    Khi nghiên cứu chuỗi hạt nối lò xo và nhiễu loạn hành tinh, Lagrange phát hiện các "tần số riêng" (trị riêng) giúp tách rời hoàn toàn hệ phương trình ghép nối.
@@ -34,7 +34,7 @@ Turin, nửa sau thế kỷ XVIII. Khi nghiên cứu các hệ cơ học có nhi
 
 Bước ngoặt đến khi nhiều biến được gom thành một vector trạng thái. Chẳng hạn, phương trình dao động điều hòa $$x'' + \omega^2 x = 0$$ có thể viết lại thành hệ bậc nhất $$x_1' = x_2$$, $$x_2' = -\omega^2 x_1$$. Từ dạng biểu diễn này, ma trận, trị riêng, vector riêng và chân dung pha cho phép xác định trực tiếp hệ sẽ quay, hội tụ hay phân kỳ theo những phương nào. Ví dụ đơn giản đó cho thấy hệ ODE không chỉ là nhiều phương trình đặt cạnh nhau, mà là cách nhìn chuyển động như một quỹ đạo hình học trong không gian trạng thái.
 
-### Khung giải thích (nên đọc chậm): Tái hiện bước chuyển lịch sử—biến PTVP cấp hai $y'' + 3y' + 2y = 0$ thành hệ ma trận đồng hành (Companion Matrix)
+### Giải thích: Tái hiện bước chuyển lịch sử—biến PTVP cấp hai $y'' + 3y' + 2y = 0$ thành hệ ma trận đồng hành (Companion Matrix)
 
 1. **Đặt vectơ trạng thái** $\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} y \\ y' \end{pmatrix}$:
    - $x_1' = y' = x_2$

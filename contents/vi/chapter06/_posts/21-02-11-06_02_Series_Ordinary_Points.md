@@ -12,7 +12,7 @@ lesson_type: required
 
 Xét phương trình Airy $y'' - xy = 0$ (mô tả cầu vồng quang học và hạt lượng tử trong trường lực đều): nhìn tưởng cực kỳ đơn giản nhưng nó **không có nghiệm sơ cấp**! May mắn thay, tại $x_0 = 0$ các hệ số đều giải tích (trơn mượt hoàn hảo), nên $x_0 = 0$ là một **điểm thường (ordinary point)**—và Định lý Fuchs đảm bảo ta luôn tìm được hai nghiệm chuỗi lũy thừa độc lập tuyến tính hội tụ ít nhất tới điểm kỳ dị gần nhất trên mặt phẳng phức!
 
-## Bản đồ kiến thức nền: Bốn bước chuẩn mực giải PTVP gần Điểm Thường
+## Kiến thức cần nhớ: Bốn bước chuẩn mực giải PTVP gần Điểm Thường
 
 1. **Nhận diện Điểm Thường ($x_0$)**:
    Viết phương trình về dạng chuẩn $y'' + p(x)y' + q(x)y = 0$. Điểm $x_0$ là **điểm thường** nếu cả $p(x)$ và $q(x)$ đều giải tích (khai triển được thành chuỗi Taylor) tại $x_0$.
@@ -43,7 +43,7 @@ $$ y=\sum_{n=0}^{\infty}a_n(x-x_0)^n $$
 
 rồi để chính phương trình xác định các hệ số $$ a_n $$. Cách tiếp cận này mở đường cho việc giải nhiều phương trình không có nghiệm sơ cấp.
 
-### Khung giải thích (nên đọc chậm): Giải cầm tay chỉ việc phương trình Airy $y'' - xy = 0$ quanh điểm thường $x_0 = 0$
+### Giải thích: Giải làm từng bước phương trình Airy $y'' - xy = 0$ quanh điểm thường $x_0 = 0$
 
 1. **Thế chuỗi $y = \sum_{n=0}^\infty a_n x^n$**:
    $$\sum_{n=2}^{\infty} n(n-1) a_n x^{n-2} - \sum_{n=0}^{\infty} a_n x^{n+1} = 0.$$

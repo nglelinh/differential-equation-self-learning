@@ -12,7 +12,7 @@ lesson_type: required
 
 How do you prove a nonlinear system settles into equilibrium when linearization fails (zero or purely imaginary eigenvalues) or when you need a *global* guarantee far beyond a tiny neighborhood? In 1892, Aleksandr Lyapunov generalized physical energy into one of the most ingenious arguments in mathematics: build an abstract bowl-shaped function $$V(\mathbf{x})$$ around $$\mathbf{x}^*$$ and show that trajectories can only slide *downhill* ($$\dot{V} \le 0$$)—proving stability without ever solving the ODE!
 
-## Background Knowledge Map: Lyapunov's Direct Method and LaSalle's Upgrade
+## Key ideas: Lyapunov's Direct Method and LaSalle's Upgrade
 
 Four precision criteria make Lyapunov's method airtight:
 
@@ -23,7 +23,7 @@ Four precision criteria make Lyapunov's method airtight:
 3. **Global Asymptotic Stability (Radial Unboundedness):** To prove *every* initial condition in $$\mathbb{R}^n$$ converges to $$\mathbf{x}^*$$, we additionally need $$V(\mathbf{x}) \to \infty$$ as $$\|\mathbf{x}\| \to \infty$$ so no level set leaks out to infinity!
 4. **LaSalle's Invariance Principle:** Often physical damping gives only $$\dot{V} \le 0$$ (e.g., $$\dot{E} = -\gamma y^2 = 0$$ along the entire $$x$$-axis!). LaSalle proves that trajectories still converge to $$\mathbf{x}^*$$ if no *entire trajectory* (other than $$\mathbf{x}^*$$ itself) can stay forever inside the set $$\{\mathbf{x} : \dot{V}(\mathbf{x}) = 0\}$$.
 
-### Step-by-Step Worked Example (Read Slowly): Proving Global Asymptotic Stability Using Lyapunov + LaSalle
+### Worked example: Proving Global Asymptotic Stability Using Lyapunov + LaSalle
 
 Prove that the origin $$(0, 0)$$ of the nonlinear cubic-spring oscillator
 $$x' = y, \qquad y' = -x^3 - y$$

@@ -12,7 +12,7 @@ lesson_type: required
 
 Zoom in far enough on a smooth curved mountain trail and it looks like a straight ramp; zoom in far enough on a smooth nonlinear vector field near an equilibrium $$\mathbf{x}^*$$ and it looks like a linear system $$\mathbf{u}' = J(\mathbf{x}^*)\mathbf{u}$$. The **Hartman–Grobman Theorem** tells us exactly when that local magnifying glass tells the complete topological truth—and exactly when higher-order nonlinear terms can hijack the outcome!
 
-## Background Knowledge Map: The Jacobian Magnifying Glass and Hartman–Grobman
+## Key ideas: The Jacobian Magnifying Glass and Hartman–Grobman
 
 Four core principles govern linearization around an equilibrium $$\mathbf{x}^*$$ where $$\mathbf{f}(\mathbf{x}^*) = \mathbf{0}$$:
 
@@ -23,7 +23,7 @@ Four core principles govern linearization around an equilibrium $$\mathbf{x}^*$$
 3. **Hartman–Grobman Theorem:** Near any *hyperbolic* equilibrium, the nonlinear flow is topologically conjugate (continuously deformable with matching arrow directions) to its linearization $$\mathbf{u}' = J(\mathbf{x}^*)\mathbf{u}$$. Thus nonlinear saddles, nodes, and spirals faithfully inherit their linearized stability!
 4. **Non-Hyperbolic Warning (Centers & Zero Eigenvalues):** If $$\operatorname{Re}(\lambda) = 0$$ (e.g., a linear center $$\pm i\omega$$ or a zero eigenvalue $$\lambda = 0$$), the system sits on a knife-edge—arbitrarily tiny quadratic or cubic terms can turn a linear center into a stable spiral, an unstable spiral, or a true nonlinear center!
 
-### Step-by-Step Worked Example (Read Slowly): Linearizing the Nonlinear Damped Pendulum at Both Equilibria
+### Worked example: Linearizing the Nonlinear Damped Pendulum at Both Equilibria
 
 Consider the nonlinear damped pendulum
 $$x' = y, \qquad y' = -\sin x - 0.6\,y.$$

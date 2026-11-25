@@ -14,7 +14,7 @@ lesson_type: required
 
 Một tấm vật liệu ghép từ hai lớp đồng và sắt có hệ số dẫn nhiệt $a(x)$ nhảy bậc đột ngột tại mối nối: nghiệm nhiệt độ $u(x)$ bị gãy khúc đạo hàm ngay tại mối nối nên **không thể có đạo hàm bậc hai $u''$ theo nghĩa cổ điển**! Thế nhưng nhiệt độ ngoài đời thực vẫn tồn tại một cách hiển nhiên. **Công thức Nghiệm Yếu (Weak Formulation)** giải cứu hoàn toàn tình thế: nhân PDE với hàm thử $v$, tích phân từng phần một lần để chia đều gánh nặng đạo hàm bậc hai thành **hai đạo hàm bậc nhất** $\nabla u \cdot \nabla v$!
 
-## Bản đồ kiến thức nền: Bốn bước chuyển PDE sang Dạng Biến phân (Weak Form)
+## Kiến thức cần nhớ: Bốn bước chuyển PDE sang Dạng Biến phân (Weak Form)
 
 1. **Nhân với hàm thử $v$ và Tích phân từng phần (Công thức Green)**:
    Từ $-\nabla \cdot (a\nabla u) = f$, ta chuyển sang tìm $u \in V$ sao cho $\int_\Omega a\nabla u \cdot \nabla v\,dx = \int_\Omega f v\,dx$ với mọi $v \in V$. Bậc đạo hàm đòi hỏi trên $u$ giảm ngay từ $C^2$ xuống chỉ còn $H^1$!
@@ -41,7 +41,7 @@ Một PDE cổ điển đòi hỏi nghiệm đủ trơn để mọi đạo hàm 
 Cách tiếp cận nghiệm yếu khắc phục điều này bằng cách nhân PDE với một hàm thử rồi tích phân từng phần để giảm bậc đạo hàm đặt lên nghiệm. Phương trình thu được đòi hỏi ít độ trơn hơn nhưng vẫn bảo toàn nguyên lý cân bằng hoặc bảo toàn của mô hình vật lý.
 
 
-### Khung giải thích (nên đọc chậm): Chuyển đổi và kiểm chứng trực tiếp nghiệm yếu của $-u'' = 2$ trên $(0, 1)$
+### Giải thích: Chuyển đổi và kiểm chứng trực tiếp nghiệm yếu của $-u'' = 2$ trên $(0, 1)$
 
 Xét bài toán biên Dirichlet $-u''(x) = 2$ trên $(0, 1)$ với $u(0) = u(1) = 0$:
 1. **Lập dạng yếu**: Nhân hai vế với hàm thử bất kỳ $v \in H_0^1(0, 1)$ (có $v(0) = v(1) = 0$) và tích phân từng phần:

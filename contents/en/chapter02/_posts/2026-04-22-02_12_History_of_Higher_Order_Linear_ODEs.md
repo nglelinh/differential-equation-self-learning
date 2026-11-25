@@ -11,7 +11,7 @@ categories:
 
 In 1739, Leonhard Euler wrote to Johann Bernoulli announcing a startling breakthrough: he had solved a fourth-order equation with constant coefficients by factoring a polynomial—and when complex roots appeared, he was forced to invent the exact bridge $$e^{i\theta} = \cos\theta + i\sin\theta$$ to make sense of them! Higher-order linear ODEs did not merely *use* complex numbers and linear algebra—they helped *create* both fields.
 
-## Background Knowledge Map: Four Historical Breakthroughs That Built Chapter 02
+## Key ideas: Four Historical Breakthroughs That Built Chapter 02
 
 Seeing who invented each method and what problem forced it makes the chapter's logical sequence crystal clear:
 
@@ -20,7 +20,7 @@ Seeing who invented each method and what problem forced it makes the chapter's l
 3. **Lagrange's Variation of Parameters (1774):** Trying to compute how Jupiter and Saturn perturb each other's elliptical orbits, Joseph-Louis Lagrange allowed orbital constants to vary slowly in time—giving birth to variation of parameters and Green's-function perturbation theory.
 4. **Wronski, Abel, and Sturm's Structural Turn (1812–1836):** Józef Hoene-Wroński introduced the determinant test, Niels Henrik Abel proved his 1827 Wronskian identity, and Charles-François Sturm initiated qualitative oscillation theory—shifting focus from formulas to solution spaces.
 
-### Step-by-Step Worked Example (Read Slowly): Reproducing d'Alembert's 1766 Limiting Derivation of $$t\,e^{rt}$$
+### Worked example: Reproducing d'Alembert's 1766 Limiting Derivation of $$t\,e^{rt}$$
 
 How did d'Alembert convince skeptical eighteenth-century readers that a repeated root $$r$$ genuinely produces $$t\,e^{rt}$$? By perturbing the root slightly to $$r + \varepsilon$$ and taking $$\varepsilon \to 0$$!
 

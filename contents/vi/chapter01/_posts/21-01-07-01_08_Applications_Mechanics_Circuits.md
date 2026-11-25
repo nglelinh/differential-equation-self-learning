@@ -13,7 +13,7 @@ lesson_type: required
 
 Một vận động viên nhảy dù rơi qua không khí và một tụ điện đang nạp dòng trong mạch RC nhìn bề ngoài chẳng liên quan gì đến nhau—nhưng khi viết định luật Newton $F = ma$ và định luật Kirchhoff về điện áp, cả hai lại sinh ra **cùng một phương trình vi phân tuyến tính cấp một**! Đó chính là vẻ đẹp thống nhất của toán học ứng dụng: giải một phương trình, ta hiểu đồng thời cả cơ học lẫn điện học.
 
-## Bản đồ kiến thức nền: Bốn trụ cột Cơ học & Mạch điện Cấp Một
+## Kiến thức cần nhớ: Bốn trụ cột Cơ học & Mạch điện Cấp Một
 
 1. **Chuyển động có lực cản không khí ($m\frac{dv}{dt} = mg - kv$ hoặc $mg - kv^2$)**:
    Khi lực cản cân bằng trọng lực ($dv/dt = 0$), vật đạt **vận tốc giới hạn (terminal velocity)** $v_T = mg/k$ (cản tuyến tính) hoặc $v_T = \sqrt{mg/k}$ (cản bậc hai).
@@ -37,7 +37,7 @@ Khi thả một vật rơi trong không khí, vận tốc không tăng mãi mà 
 
 Ưu điểm của nhóm bài toán cơ học và mạch điện là mỗi tham số đều mang ý nghĩa vật lý trực quan: hệ số nào tạo ra sự cản trở, tổ hợp tham số nào quyết định tốc độ đáp ứng và vì sao hệ tiến tới trạng thái ổn định.
 
-### Khung giải thích (nên đọc chậm): Tính vận tốc giới hạn và thời gian đạt 90% vận tốc giới hạn của vật rơi có cản tuyến tính
+### Giải thích: Tính vận tốc giới hạn và thời gian đạt 90% vận tốc giới hạn của vật rơi có cản tuyến tính
 
 Xét vật khối lượng $m = 10\text{ kg}$ thả rơi tự do từ nghỉ ($v(0) = 0$) với $g = 9{,}8\text{ m/s}^2$ và hệ số cản $k = 2\text{ kg/s}$:
 1. **Phương trình Newton**:

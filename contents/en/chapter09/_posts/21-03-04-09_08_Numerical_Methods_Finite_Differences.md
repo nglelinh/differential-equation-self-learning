@@ -14,14 +14,14 @@ Try stepping the heat equation forward in time on a computer using the most natu
 
 Why does $$ r = \frac{1}{2} $$ act like a razor-sharp cliff between stability and numerical catastrophe? Understanding von Neumann Fourier stability analysis—and how implicit schemes like Backward Euler and Crank–Nicolson abolish the $$ \Delta t \le \frac{(\Delta x)^2}{2\alpha} $$ barrier—is essential for every scientist who simulates PDEs.
 
-## Background Knowledge Map: Discretization, Stability Cliffs, and Implicit Solvers
+## Key ideas: Discretization, Stability Cliffs, and Implicit Solvers
 
 1. **FTCS (Explicit) Scheme & Discrete Maximum Principle:** Rewriting $$ u_j^{n+1} = r u_{j-1}^n + (1 - 2r) u_j^n + r u_{j+1}^n $$ reveals a weighted average of three neighbors *if and only if* $$ 1 - 2r \ge 0 \iff r \le \frac{1}{2} $$. The moment $$ r > \frac{1}{2} $$, the center weight turns negative and alternating oscillations amplify every step!
 2. **Von Neumann Stability Analysis (Fourier Mode Amplification):** Substituting a discrete spatial wave $$ u_j^n = G^n e^{i k j \Delta x} $$ yields the amplification factor $$ G(k) = 1 - 4r \sin^2\!\left(\frac{k\Delta x}{2}\right) $$. Stability requires $$ |G(k)| \le 1 $$ for all $$ k $$, which at the highest grid mode ($$ \sin^2 = 1 $$) enforces $$ 1 - 4r \ge -1 \iff r \le \frac{1}{2} $$.
 3. **Backward Euler & Crank–Nicolson (Unconditional Stability):** Evaluating $$ u_{xx} $$ at the *new* time level $$ n+1 $$ (Backward Euler) gives $$ G = \frac{1}{1 + 4r\sin^2(k\Delta x/2)} \in (0, 1] $$ for *every* $$ r > 0 $$. Averaging levels $$ n $$ and $$ n+1 $$ (Crank–Nicolson) achieves **second-order accuracy** $$ O((\Delta t)^2 + (\Delta x)^2) $$ while staying unconditionally stable—at the modest cost of solving a fast $$ O(M) $$ tridiagonal Thomas system per step!
 4. **Lax Equivalence Theorem:** For a consistent linear finite-difference scheme, *stability is both necessary and sufficient for convergence* to the true PDE solution as $$ \Delta x, \Delta t \to 0 $$.
 
-### Step-by-Step Worked Example (Read Slowly): Hand-Stepping FTCS Across the $$ r = 0.5 $$ Stability Cliff
+### Worked example: Hand-Stepping FTCS Across the $$ r = 0.5 $$ Stability Cliff
 
 **Problem:** Simulate $$ u_t = u_{xx} $$ on $$ [0, 1] $$ with $$ u(0, t) = u(1, t) = 0 $$, grid spacing $$ \Delta x = 0.25 $$ (interior nodes $$ j = 1, 2, 3 $$ at $$ x = 0.25, 0.50, 0.75 $$), and initial vector $$ u^0 = [0, 0, 1, 0, 0] $$ (a unit spike at the midpoint). Compute two FTCS steps for (a) $$ r = 0.25 $$ (stable) and (b) $$ r = 0.75 $$ (unstable), and check the amplification factor $$ G $$ of the sawtooth mode.
 

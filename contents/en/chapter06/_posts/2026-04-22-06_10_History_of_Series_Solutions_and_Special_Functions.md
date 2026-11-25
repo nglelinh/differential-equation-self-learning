@@ -13,14 +13,14 @@ For much of the eighteenth century, "solving" a differential equation meant expr
 
 Understanding this historical pivot explains why special functions are not arbitrary textbook curiosities, but the natural alphabet of geometry and physics.
 
-## Background Knowledge Map: Four Historical Turning Points
+## Key ideas: Four Historical Turning Points
 
 1. **Newton–Euler Formal Power Series (1669–1750s):** Newton's generalized binomial theorem and Euler's bold manipulation of infinite series proved that differential equations could be solved coefficient by coefficient long before rigorous convergence theory existed.
 2. **Cauchy–Fuchs Complex Analyticity (1820s–1860s):** Augustin-Louis Cauchy and Lazarus Fuchs explained *why* real series unexpectedly stopped converging, tying radii of convergence to singularities in the complex plane $$ \mathbb{C} $$ and classifying regular singular points.
 3. **Frobenius's Systematic Indicial Method (1873):** Ferdinand Georg Frobenius unified the treatment of regular singular points by introducing the $$ x^r $$ factor and resolving the logarithmic resonance cases when indicial roots differ by an integer.
 4. **Canonization by Physics (Legendre 1782, Bessel 1824, Schrödinger 1926):** Celestial potential theory (Legendre), planetary orbits and drumheads (Bessel), and quantum mechanics (Hermite and Laguerre) transformed special functions into the standard orthogonal bases of mathematical physics.
 
-### Step-by-Step Worked Example (Read Slowly): Reproducing Legendre's 1782 Gravitational Multipole Expansion
+### Worked example: Reproducing Legendre's 1782 Gravitational Multipole Expansion
 
 **Problem:** Expand the Newtonian inverse-distance potential $$ V(r, \theta) = \frac{1}{\sqrt{1 - 2xt + t^2}} $$ (where $$ x = \cos\theta $$ and $$ t = r'/r < 1 $$) up to $$ O(t^2) $$ using Newton's binomial series, and verify that the coefficients are exactly $$ P_0(x), P_1(x), P_2(x) $$.
 

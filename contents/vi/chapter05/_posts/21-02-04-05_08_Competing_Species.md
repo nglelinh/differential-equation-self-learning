@@ -12,7 +12,7 @@ lesson_type: required
 
 Khi hai loài sinh vật (hoặc hai doanh nghiệp công nghệ trên cùng một thị trường) cùng tranh giành một nguồn tài nguyên hữu hạn, liệu chúng có thể **cùng tồn tại hòa bình** hay một loài sẽ **đẩy loài kia đến tuyệt chủng**? Hệ phương trình cạnh tranh Lotka–Volterra trả lời câu hỏi này bằng một bất đẳng thức cực kỳ rõ nét: **Nguyên lý Loại trừ Cạnh tranh (Gause's Principle)**.
 
-## Bản đồ kiến thức nền: Bốn kịch bản của Hệ Cạnh tranh Hai Loài
+## Kiến thức cần nhớ: Bốn kịch bản của Hệ Cạnh tranh Hai Loài
 
 1. **Cạnh tranh nội loài vs. Cạnh tranh liên loài**:
    Trong $\dot{x} = r_1 x\left(1 - \frac{x + a_{12} y}{K_1}\right)$ và $\dot{y} = r_2 y\left(1 - \frac{y + a_{21} x}{K_2}\right)$, $K_1, K_2$ là sức chứa môi trường còn $a_{12}, a_{21}$ đo cường độ loài này kìm hãm loài kia.
@@ -39,7 +39,7 @@ Không phải mọi tương tác sinh thái đều thuộc dạng săn mồi –
 
 Mô hình cạnh tranh hai loài cho thấy chỉ với một số ít tham số định lượng, hệ đã có thể dẫn đến nhiều kịch bản sinh thái khác nhau. Qua đó, sinh viên thấy rằng "ổn định sinh thái" không phải khái niệm cảm tính mà là hệ quả trực tiếp của cấu trúc các hệ số tương tác.
 
-### Khung giải thích (nên đọc chậm): Xác định số phận hai loài bằng tay qua giao điểm Nullclines
+### Giải thích: Xác định số phận hai loài bằng tay qua giao điểm Nullclines
 
 Xét hệ cạnh tranh cụ thể:
 $$\dot{x} = x(6 - 2x - y), \qquad \dot{y} = y(4 - x - y).$$

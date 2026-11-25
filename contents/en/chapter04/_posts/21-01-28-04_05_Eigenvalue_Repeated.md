@@ -12,7 +12,7 @@ lesson_type: required
 
 What happens when a $$2\times 2$$ matrix has a repeated eigenvalue $$\lambda$$, yet when you solve $$(A - \lambda I)\mathbf{v} = \mathbf{0}$$ you only find *one* line of eigenvectors instead of two? You have hit a **defective** (non-diagonalizable) matrix—the exact vector-system twin of critical damping! To recover the missing second dimension of the solution space, linear algebra hands us a **generalized eigenvector** that restores completeness and generates the signature secular term $$t\,e^{\lambda t}$$.
 
-## Background Knowledge Map: Algebraic vs. Geometric Multiplicity and Jordan Chains
+## Key ideas: Algebraic vs. Geometric Multiplicity and Jordan Chains
 
 Four linear-algebraic concepts completely demystify repeated eigenvalues:
 
@@ -21,7 +21,7 @@ Four linear-algebraic concepts completely demystify repeated eigenvalues:
 3. **Why $$\mathbf{x}^{(2)}(t) = (t\mathbf{v} + \mathbf{w})e^{\lambda t}$$ Solves $$\mathbf{x}' = A\mathbf{x}$$:** Differentiating gives $$(\mathbf{v} + \lambda t\mathbf{v} + \lambda\mathbf{w})e^{\lambda t}$$, while $$A(t\mathbf{v} + \mathbf{w})e^{\lambda t} = (\lambda t\mathbf{v} + \lambda\mathbf{w} + \mathbf{v})e^{\lambda t}$$ because $$A\mathbf{w} = \lambda\mathbf{w} + \mathbf{v}$$!
 4. **Warning on Independent Choice:** Never pick $$\mathbf{v}$$ first and then plug in an arbitrary $$\mathbf{w}$$ that does not satisfy $$(A-\lambda I)\mathbf{w} = \mathbf{v}$$—the pair $$(\mathbf{v}, \mathbf{w})$$ is rigidly linked by the Jordan chain!
 
-### Step-by-Step Worked Example (Read Slowly): Solving a Defective $$2\times 2$$ IVP via the Fast Jordan-Chain Trick
+### Worked example: Solving a Defective $$2\times 2$$ IVP via the Fast Jordan-Chain Trick
 
 Solve the initial value problem
 $$\mathbf{x}' = \begin{pmatrix} 3 & -4 \\ 1 & -1 \end{pmatrix}\mathbf{x}, \qquad \mathbf{x}(0) = \begin{pmatrix} 2 \\ 1 \end{pmatrix}.$$

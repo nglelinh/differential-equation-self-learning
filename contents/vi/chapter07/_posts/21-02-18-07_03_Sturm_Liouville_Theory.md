@@ -12,7 +12,7 @@ lesson_type: required
 
 Trong đại số tuyến tính, ma trận đối xứng thực $A = A^T$ sở hữu những tính chất đẹp như mơ: mọi trị riêng đều thực, các vectơ riêng ứng với trị riêng khác nhau thì vuông góc với nhau, và chúng lập thành cơ sở cho toàn không gian. **Lý thuyết Sturm–Liouville** nâng toàn bộ định lý phổ tuyệt đẹp đó lên **không gian hàm vô hạn chiều** cho toán tử vi phân tự liên hợp $L[y] = -\frac{d}{dx}[p(x)y'] + q(x)y = \lambda w(x)y$!
 
-## Bản đồ kiến thức nền: Bốn định lý vàng của Lý thuyết Sturm–Liouville Chính quy
+## Kiến thức cần nhớ: Bốn định lý vàng của Lý thuyết Sturm–Liouville Chính quy
 
 1. **Tính tự liên hợp (Self-Adjointness) & Đồng nhất thức Lagrange**:
    Tích phân từng phần hai lần cho $\int_a^b (u L[v] - v L[u])\,dx = -\big[p(x)(u v' - v u')\big]_a^b$. Với điều kiện biên tách rời chuẩn, vế biên triệt tiêu $\implies \langle u, L[v]\rangle = \langle L[u], v\rangle$!
@@ -39,7 +39,7 @@ Sinh viên nên nắm vững bài toán trị riêng cơ bản, kỹ thuật tí
 
 Nhờ lý thuyết này, các kết quả về hàm Bessel, đa thức Legendre, chuỗi Fourier tổng quát và khai triển theo hàm riêng được đặt vào cùng một hệ thống thống nhất thay vì tách rời từng công thức.
 
-### Khung giải thích (nên đọc chậm): Dùng Thương số Rayleigh ước lượng cực nhanh trị riêng nhỏ nhất $\lambda_1$ bằng một đa thức đơn giản
+### Giải thích: Dùng Thương số Rayleigh ước lượng cực nhanh trị riêng nhỏ nhất $\lambda_1$ bằng một đa thức đơn giản
 
 Xét bài toán $-y'' = \lambda y$ trên $[0, 1]$ với $y(0) = y(1) = 0$. Ta biết giá trị chính xác là $\lambda_1 = \pi^2 \approx \mathbf{9{,}8696}$.
 Thử dùng một hàm thử đa thức cực đơn giản thỏa đúng điều kiện biên: $u(x) = x(1 - x) = x - x^2$ (thì $u'(x) = 1 - 2x$).

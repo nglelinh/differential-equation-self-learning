@@ -17,7 +17,7 @@ This lesson explains how Laplace's equation, Poisson's equation, and classical p
 ## Prerequisites
 Students should know the main analytical content of Chapter 11: separation of variables, polar coordinates, harmonic functions, Green's functions, electrostatic applications, and potential flow.
 
-## Background Knowledge Map: Four Historical Turning Points in Potential Theory
+## Key ideas: Four Historical Turning Points in Potential Theory
 
 Tracing how potential theory matured from astronomy into functional analysis highlights four pivotal shifts:
 
@@ -56,7 +56,7 @@ Chapter 11 is historically important because it turns equilibrium into geometry.
 
 It also explains why elliptic PDE feel different from heat and wave equations. Instead of evolution or propagation, the governing idea is compatibility across space.
 
-### Step-by-Step Worked Example (Read Slowly): Reconstructing Laplace's 1782 Calculation for Newton's Potential
+### Worked example: Reconstructing Laplace's 1782 Calculation for Newton's Potential
 
 Let us reproduce Laplace's landmark verification that the 3D Newtonian potential $\Phi(x,y,z) = \frac{1}{r}$ (where $r = \sqrt{x^2 + y^2 + z^2} > 0$) satisfies $\Delta \Phi = 0$ away from the origin, and then compute its boundary flux to see why Poisson's source term appears at $r = 0$.
 

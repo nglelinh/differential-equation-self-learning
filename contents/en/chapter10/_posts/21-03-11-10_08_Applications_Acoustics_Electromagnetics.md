@@ -14,14 +14,14 @@ In 1865, James Clerk Maxwell took four coupled first-order PDEs describing elect
 
 This lesson shows how the wave equation of Chapter 10 unifies longitudinal acoustic pressure waves in air, transverse electromagnetic radiation in vacuum, and cutoff modes inside hollow metallic waveguides.
 
-## Background Knowledge Map: From Coupled First-Order Systems to Scalar & Vector Waves
+## Key ideas: From Coupled First-Order Systems to Scalar & Vector Waves
 
 1. **Linearized Acoustics (Euler + Continuity $$ \to $$ Wave Equation):** Linearizing fluid mass conservation ($$ \rho_t + \rho_0 \nabla\cdot\mathbf{v} = 0 $$) and momentum balance ($$ \rho_0 \mathbf{v}_t = -\nabla p $$) with equation of state $$ p = c_s^2 \rho $$ eliminates $$ \mathbf{v} $$ to give the 3D acoustic wave equation $$ p_{tt} = c_s^2 \nabla^2 p $$ (longitudinal compression waves).
 2. **Maxwell's Equations $$ \to $$ Electromagnetic Wave Equation:** Taking $$ \nabla \times (\nabla \times \mathbf{E}) = \nabla(\nabla\cdot\mathbf{E}) - \nabla^2\mathbf{E} $$ in charge-free vacuum ($$ \nabla\cdot\mathbf{E} = 0 $$) decouples into $$ \mathbf{E}_{tt} = c^2 \nabla^2\mathbf{E} $$ and $$ \mathbf{B}_{tt} = c^2 \nabla^2\mathbf{B} $$, with $$ \mathbf{E} \perp \mathbf{B} \perp \mathbf{k} $$ (transverse waves) and $$ |\mathbf{E}| = c|\mathbf{B}| $$.
 3. **Acoustic Organ Pipes vs. Electromagnetic Waveguides:** Open vs. closed organ pipes impose Dirichlet ($$ p = 0 $$) vs. Neumann ($$ p_x = 0 $$) acoustic BCs, selecting all harmonics vs. odd harmonics only. Metallic waveguides impose $$ E_{\parallel} = 0 $$ on conducting walls, creating a **cutoff frequency** $$ \omega_c $$ below which waves decay evanescently instead of propagating!
 4. **Poynting Flux & Acoustic Intensity (Energy Transport):** Both domains carry exact energy-flux vectors—acoustic intensity $$ \mathbf{I} = p\mathbf{v} $$ and electromagnetic Poynting vector $$ \mathbf{S} = \frac{1}{\mu_0}\mathbf{E} \times \mathbf{B} $$—satisfying local conservation $$ \partial_t \mathcal{E} + \nabla\cdot\mathbf{S} = 0 $$.
 
-### Step-by-Step Worked Example (Read Slowly): Cutoff Frequency and Dispersion in a Rectangular Microwave Waveguide
+### Worked example: Cutoff Frequency and Dispersion in a Rectangular Microwave Waveguide
 
 **Problem:** A rectangular metallic waveguide of width $$ a = 2.286\text{ cm} $$ (standard X-band WR-90 radar guide) propagates a $$ \text{TE}_{10} $$ mode of the form $$ E_y(x, z, t) = E_0 \sin\!\left(\frac{\pi x}{a}\right) e^{i(k_z z - \omega t)} $$ satisfying $$ \frac{\partial^2 E_y}{\partial t^2} = c^2\left(\frac{\partial^2 E_y}{\partial x^2} + \frac{\partial^2 E_y}{\partial z^2}\right) $$ with $$ c = 3.00 \times 10^8\text{ m/s} $$. Compute the cutoff frequency $$ f_c $$, and for an operating radar frequency $$ f = 10.0\text{ GHz} $$, compute the guide group velocity $$ v_g $$.
 

@@ -12,7 +12,7 @@ lesson_type: required
 
 Drop a stone from a bridge, brew a cup of coffee in a cool room, or track a viral post spreading across a campus: in every case, nature rarely hands us a finished formula for the state $$y(t)$$ directly. Instead, nature hands us a *local rule of change*—a differential equation telling us how fast $$y$$ changes given its current value. Learning to read, classify, and visualize that local rule is the first step from static algebra to dynamical science.
 
-## Background Knowledge Map: Reading the Anatomy of a Differential Equation
+## Key ideas: Reading the Anatomy of a Differential Equation
 
 Before memorizing solution formulas, master four structural distinctions that immediately tell you what kind of problem you face:
 
@@ -21,7 +21,7 @@ Before memorizing solution formulas, master four structural distinctions that im
 3. **General Solution vs. Initial Value Problem (IVP):** Integrating a first-order ODE produces a one-parameter family of curves $$y(t; C)$$; specifying an initial condition $$y(t_0) = y_0$$ pins down a single trajectory from that family.
 4. **Direction Fields (Slope Fields):** Even when an ODE cannot be solved in elementary closed form (like $$y' = y^2 - t$$), plotting short segments of slope $$f(t,y)$$ at grid points reveals the exact geometry of all solutions at once.
 
-### Step-by-Step Worked Example (Read Slowly): Classifying an ODE, Verifying a Family, and Solving an IVP
+### Worked example: Classifying an ODE, Verifying a Family, and Solving an IVP
 
 Consider the differential equation
 $$t\,y' + 2y = 4t^2, \qquad t > 0, \qquad y(1) = 3.$$

@@ -11,7 +11,7 @@ categories:
 
 Có một phương trình nhỏ bé chỉ gồm hai đạo hàm—$u_t = \alpha u_{xx}$—nhưng lại kết nối bốn thế giới tưởng chừng xa lạ nhất của khoa học: **Joseph Fourier** viết nó để tính nhiệt độ trong đại bác và lõi Trái Đất (1822); **Albert Einstein** dùng đúng nó để chứng minh sự tồn tại của nguyên tử qua chuyển động Brown (1905); **Black và Scholes** biến đổi phương trình định giá quyền chọn tài chính về đúng phương trình nhiệt (1973, giải Nobel Kinh tế); và hôm nay các mô hình **AI tạo ảnh Diffusion** chạy ngược đúng phương trình khuếch tán này!
 
-## Bản đồ kiến thức nền: Bốn cột mốc lịch sử xuyên ngành của Phương trình Nhiệt
+## Kiến thức cần nhớ: Bốn cột mốc lịch sử xuyên ngành của Phương trình Nhiệt
 
 1. **Fourier (1822) — Định luật dẫn nhiệt & Tách biến**:
    Kết hợp bảo toàn năng lượng với định luật thông lượng nhiệt $q = -k u_x$ và khai sinh chuỗi Fourier.
@@ -33,7 +33,7 @@ Năm 1807 tại Grenoble, Joseph Fourier — khi đó đang đảm nhiệm chứ
 
 Khi hai đầu thanh giữ ở nhiệt độ $$0$$ và phân bố ban đầu trùng với mode cơ bản, Fourier thu được nghiệm dạng $$u(x,t)=e^{-k\pi^2 t/L^2}\sin\left(\frac{\pi x}{L}\right)$$. Công thức ngắn gọn này chứa đựng ý tưởng chủ đạo của cả chương: theo thời gian, thừa số mũ làm biên độ dao động không gian suy giảm dần, nghĩa là quá trình truyền nhiệt san bằng các chênh lệch. Khi Fourier khẳng định rằng các điều kiện ban đầu tổng quát cũng có thể phân rã thành tổng các mode như vậy, ông đã mở ra một hướng đi vừa giàu sức mạnh tính toán vừa gây ra tranh luận sâu rộng, qua đó góp phần định hình lại nền móng của giải tích.
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng quy luật căn bậc hai $x_{\text{rms}} = \sqrt{2\alpha t}$ của Einstein
+### Giải thích: Kiểm chứng quy luật căn bậc hai $x_{\text{rms}} = \sqrt{2\alpha t}$ của Einstein
 
 Một giọt mực nhỏ thả vào nước yên tĩnh có hệ số khuếch tán $\alpha = 10^{-9}\text{ m}^2/\text{s}$:
 - Để mực tự khuếch tán qua khoảng cách $1\text{ mm} = 10^{-3}\text{ m}$: $t_1 = \frac{x^2}{2\alpha} = \frac{10^{-6}}{2 \cdot 10^{-9}} = \mathbf{500\text{ giây}}$ ($\approx 8{,}3\text{ phút}$).

@@ -12,7 +12,7 @@ lesson_type: required
 
 Một khi hệ hàm riêng $\{\phi_n(x)\}$ đã lập thành một "hệ trục tọa độ trực giao" cho không gian hàm, việc giải một phương trình vi phân biên **không thuần nhất** $L[y] - \mu w(x) y = f(x)$ trở nên dễ đến bất ngờ: chỉ cần chiếu cả nghiệm $y$ lẫn vế phải $f$ lên hệ trục $\{\phi_n\}$, phương trình vi phân lập tức tách rã thành vô hạn phương trình đại số 1 ẩn siêu đơn giản!
 
-## Bản đồ kiến thức nền: Bốn bước của Phương pháp Khai triển Hàm riêng
+## Kiến thức cần nhớ: Bốn bước của Phương pháp Khai triển Hàm riêng
 
 1. **Công thức hệ số Fourier tổng quát**:
    Vì $\langle \phi_m, \phi_n \rangle_w = 0$ khi $m \neq n$, ta chiếu hàm bất kỳ $f(x) = \sum_{n=1}^\infty c_n \phi_n(x)$ bằng công thức:
@@ -40,7 +40,7 @@ Chuỗi Fourier cho thấy một hàm phức tạp có thể được phân tíc
 
 Nhờ vậy, nhiều bài toán BVP không thuần nhất và PDE tách biến được giải gọn gàng: thay vì xử lý toàn bộ phương trình cùng lúc, ta chiếu dữ liệu lên từng chế độ riêng rồi giải từng phương trình độc lập.
 
-### Khung giải thích (nên đọc chậm): Giải cầm tay chỉ việc BVP không thuần nhất $-y'' - 2y = 5\sin(3x),\; y(0) = y(\pi) = 0$
+### Giải thích: Giải làm từng bước BVP không thuần nhất $-y'' - 2y = 5\sin(3x),\; y(0) = y(\pi) = 0$
 
 Bài toán trị riêng tương ứng $-y'' = \lambda y,\; y(0)=y(\pi)=0$ có trị riêng $\lambda_n = n^2$ và hàm riêng $\phi_n(x) = \sin(nx)$ ($n = 1, 2, 3, \dots$).
 1. **Nhận diện vế phải trong cơ sở hàm riêng**: $f(x) = 5\sin(3x)$ chỉ có đúng **1 thành phần** ứng với $n = 3$ ($b_3 = 5$, mọi $b_n = 0$ với $n \neq 3$).

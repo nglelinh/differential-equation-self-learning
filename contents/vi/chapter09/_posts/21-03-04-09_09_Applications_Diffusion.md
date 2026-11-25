@@ -14,7 +14,7 @@ lesson_type: optional
 
 Rời khỏi thanh kim loại, cùng một cấu trúc phương trình khuếch tán $c_t = D c_{xx}$ (có thể kèm dòng chảy đối lưu $v c_x$ và phản ứng hóa học/sinh học $R(c)$) xuất hiện khắp mọi ngóc ngách khoa học: **Định luật Fick** trong kỹ thuật hóa học, lan truyền thuốc trong mạch máu, định giá quyền chọn **Black–Scholes** trong tài chính, và **làm mờ Gaussian (Gaussian Blur)** trong xử lý ảnh!
 
-## Bản đồ kiến thức nền: Bốn miền ứng dụng lớn của Phương trình Khuếch tán
+## Kiến thức cần nhớ: Bốn miền ứng dụng lớn của Phương trình Khuếch tán
 
 1. **Định luật Fick I & II (Khuếch tán vật chất)**:
    Thông lượng mol $J = -D c_x \implies c_t = D c_{xx}$ (hệt như nhiệt độ, thay $u$ bằng nồng độ $c$ và $\alpha$ bằng hệ số khuếch tán $D$).
@@ -39,7 +39,7 @@ Tên gọi "phương trình nhiệt" dễ tạo cảm giác rằng mô hình nà
 
 Việc tiếp cận bài học qua các ví dụ liên ngành giúp sinh viên thấy rằng nghiên cứu PDE không chỉ là học kỹ thuật giải phương trình, mà còn là khả năng nhận diện cùng một mô hình trong nhiều lĩnh vực khác nhau.
 
-### Khung giải thích (nên đọc chậm): Tính tay vị trí tâm và độ rộng của vết thuốc nhuộm trôi trên sông bằng phương trình Đối lưu – Khuếch tán
+### Giải thích: Tính tay vị trí tâm và độ rộng của vết thuốc nhuộm trôi trên sông bằng phương trình Đối lưu – Khuếch tán
 
 Một lượng thuốc nhuộm $M$ đổ tức thời tại $x = 0, t = 0$ xuống con sông chảy với vận tốc $v = 0{,}5\text{ m/s}$ và hệ số khuếch tán $D = 2\text{ m}^2/\text{s}$ ($c_t + v c_x = D c_{xx}$).
 1. **Đổi sang hệ quy chiếu trôi theo dòng nước** $\xi = x - vt$: phương trình trở về phương trình nhiệt thuần $c_t = D c_{\xi\xi}$!

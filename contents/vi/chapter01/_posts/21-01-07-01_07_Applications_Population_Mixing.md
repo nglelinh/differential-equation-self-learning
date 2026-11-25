@@ -13,7 +13,7 @@ lesson_type: required
 
 Một quần thể vi khuẩn trong đĩa Petri hay nồng độ muối trong bể pha trộn công nghiệp trông có vẻ thuộc hai thế giới khác nhau, nhưng dưới lăng kính phương trình vi phân cấp một, chúng cùng tuân theo một nguyên lý kế toán duy nhất: **Tốc độ thay đổi = Tốc độ vào − Tốc độ ra**. Hiểu cách dịch ngôn ngữ thực tế sang phương trình vi phân sẽ biến toán học trừu tượng thành công cụ dự báo sống động.
 
-## Bản đồ kiến thức nền: Bốn mô hình ứng dụng cốt lõi của PTVP Cấp Một
+## Kiến thức cần nhớ: Bốn mô hình ứng dụng cốt lõi của PTVP Cấp Một
 
 1. **Mô hình Malthus ($P' = rP$) & Thời gian nhân đôi**:
    Tốc độ tăng trưởng tỷ lệ thuận với dân số hiện tại dẫn đến tăng trưởng hàm mũ $P(t) = P_0 e^{rt}$ với chu kỳ nhân đôi $T_2 = \frac{\ln 2}{r}$—chính xác trong giai đoạn đầu khi tài nguyên dồi dào.
@@ -37,7 +37,7 @@ Một mô hình toán học tốt bắt đầu từ việc xác định đúng b
 
 Hai lớp bài toán trong bài học bổ trợ chặt chẽ cho nhau: mô hình dân số minh họa sự tăng trưởng, bão hòa và vai trò của điểm cân bằng; mô hình pha trộn rèn luyện nguyên lý bảo toàn khối lượng "tốc độ thay đổi bằng tốc độ vào trừ tốc độ ra".
 
-### Khung giải thích (nên đọc chậm): Tính nồng độ muối trong bể pha trộn 100 lít theo từng bước
+### Giải thích: Tính nồng độ muối trong bể pha trộn 100 lít theo từng bước
 
 Một bể chứa sẵn $100\text{ L}$ nước tinh khiết ($A(0) = 0$). Nước muối nồng độ $0{,}5\text{ kg/L}$ chảy vào với tốc độ $2\text{ L/phút}$, hỗn hợp khuấy đều chảy ra cũng với tốc độ $2\text{ L/phút}$ (nên thể tích giữ nguyên $V(t) = 100\text{ L}$).
 1. **Thiết lập phương trình cân bằng khối lượng**:

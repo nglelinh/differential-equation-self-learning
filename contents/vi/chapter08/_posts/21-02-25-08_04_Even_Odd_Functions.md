@@ -14,7 +14,7 @@ lesson_type: required
 
 Trước khi cắm đầu tính ba tích phân dài lê thê cho $a_0, a_n, b_n$, một người làm toán kinh nghiệm luôn dừng lại 2 giây để nhìn **tính đối xứng** của hàm $f(x)$ trên đoạn $[-L, L]$. Chỉ một phép kiểm tra $f(-x)$ so với $f(x)$ có thể cắt bỏ ngay lập tức **một nửa số tích phân** và tránh hoàn toàn sai sót tính toán!
 
-## Bản đồ kiến thức nền: Bốn quy tắc đối xứng Chẵn – Lẻ trong Chuỗi Fourier
+## Kiến thức cần nhớ: Bốn quy tắc đối xứng Chẵn – Lẻ trong Chuỗi Fourier
 
 1. **Định nghĩa & Hình học**:
    - **Hàm chẵn** ($f(-x) = f(x)$): đồ thị đối xứng qua trục tung $Oy$ (ví dụ $1, x^2, \vert x \vert, \cos(nx)$).
@@ -42,7 +42,7 @@ Trong toán học và vật lý, tính đối xứng không chỉ mang ý nghĩa
 
 Trước khi tính bất kỳ tích phân hệ số nào, câu hỏi đầu tiên nên đặt ra là: hàm số đang xét là chẵn hay lẻ? Chỉ riêng nhận xét này thường đã giải quyết được một nửa khối lượng công việc.
 
-### Khung giải thích (nên đọc chậm): Khai triển cầm tay hàm chẵn $f(x) = \vert x \vert$ trên $[-\pi, \pi]$ và rút ra tổng nổi tiếng $\sum \frac{1}{(2k-1)^2} = \frac{\pi^2}{8}$
+### Giải thích: Khai triển cầm tay hàm chẵn $f(x) = \vert x \vert$ trên $[-\pi, \pi]$ và rút ra tổng nổi tiếng $\sum \frac{1}{(2k-1)^2} = \frac{\pi^2}{8}$
 
 1. Vì $\vert -x \vert = \vert x \vert$ là **hàm chẵn**, lập tức suy ra **$b_n = 0$ với mọi $n \ge 1$**!
 2. Tính $a_0$: $a_0 = \frac{2}{\pi}\int_0^{\pi} x\,dx = \frac{2}{\pi}\cdot\frac{\pi^2}{2} = \mathbf{\pi} \implies \frac{a_0}{2} = \frac{\pi}{2}$.

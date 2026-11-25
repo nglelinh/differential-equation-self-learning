@@ -12,7 +12,7 @@ lesson_type: optional
 
 Solving a first-order ODE algebraically gives you a formula, but watching a family of solution curves flow through a slope field gives you physical intuition you can trust under pressure. This interactive gallery lets you drag initial conditions, adjust parameters, and see instantly why trajectories never cross when Lipschitz conditions hold—and why phase-line equilibria act like invisible magnets or cliffs.
 
-## Background Knowledge Map: Connecting Visual Geometry to Chapter 01 Techniques
+## Key ideas: Connecting Visual Geometry to Chapter 01 Techniques
 
 Each interactive visualization in this gallery illuminates a core analytical tool from Chapter 01:
 
@@ -21,7 +21,7 @@ Each interactive visualization in this gallery illuminates a core analytical too
 3. **Phase Lines and Basin Boundaries:** Dragging an initial condition across an unstable equilibrium on an autonomous phase line dramatically illustrates tipping points and basins of attraction.
 4. **Uniqueness Breakdown vs. Finite-Time Blow-Up:** Comparing $$y' = y^2$$ (smooth, unique, yet blows up in finite time) against $$y' = 3y^{2/3}$$ (curves merge and branch at $$y = 0$$) makes Picard–Lindelöf's hypotheses unforgettable.
 
-### Step-by-Step Worked Example (Read Slowly): Sketching Solutions of $$y' = y - t$$ Using Isoclines
+### Worked example: Sketching Solutions of $$y' = y - t$$ Using Isoclines
 
 Before touching a computer, use three isoclines to predict the exact geometry of $$y' = y - t$$:
 

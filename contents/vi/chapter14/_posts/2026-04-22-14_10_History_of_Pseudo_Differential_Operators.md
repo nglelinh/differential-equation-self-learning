@@ -11,7 +11,7 @@ categories:
 
 Khi ta nghịch đảo một phương trình vi phân elliptic đơn giản như $(1 - \Delta)u = f$, kết quả $(1 - \Delta)^{-1}$ **không còn là một toán tử vi phân nữa** mà biến thành một toán tử tích phân kỳ dị phi địa phương! Suốt nửa đầu thế kỷ XX, các nhà toán học vất vả xử lý từng loại tích phân kỳ dị rời rạc, cho đến những năm 1960 khi Kohn, Nirenberg và Lars Hörmander thực hiện cuộc thống nhất lịch sử: gói gọn cả toán tử vi phân lẫn nghịch đảo xấp xỉ của chúng vào chung một đại số duy nhất—**Toán tử Giả vi phân ($\Psi$DO)**!
 
-## Bản đồ kiến thức nền: Bốn cột mốc lịch sử kiến tạo Lý thuyết Toán tử Giả vi phân
+## Kiến thức cần nhớ: Bốn cột mốc lịch sử kiến tạo Lý thuyết Toán tử Giả vi phân
 
 1. **Calderón–Zygmund (1952–1957) — Tích phân Kỳ dị & Tính bị chặn $L^p$**:
    Xây dựng lý thuyết các toán tử tích phân kỳ dị dạng nhân đồng bậc, mở ra cách giải bài toán biên elliptic hệ số biến thiên bằng công cụ giải tích điều hòa.
@@ -34,7 +34,7 @@ Tại New York vào đầu thập niên 1960, Louis Nirenberg và Joseph Kohn l�
 Xét toán tử $$1-\partial_x^2$$. Trong miền Fourier, phép lấy đạo hàm chuyển thành phép nhân với $$i\xi$$, nên toán tử này có ký hiệu là $$1+\xi^2$$. Khi muốn tìm một nghịch đảo gần đúng, ta tự nhiên dẫn tới ký hiệu $$\frac{1}{1+\xi^2}$$, nhưng đối tượng này không còn tương ứng với một toán tử vi phân cổ điển. Ví dụ đơn giản này giải thích lý do toán tử giả vi phân ra đời: nó cung cấp một khuôn khổ chặt chẽ cho các phép toán “gần nghịch đảo”, cho bài toán tính chính quy và cho việc phân tích hành vi đồng thời theo vị trí lẫn tần số mà PDE hiện đại đòi hỏi.
 
 
-### Khung giải thích (nên đọc chậm): Vì sao nghịch đảo của toán tử vi phân $1 - \Delta$ buộc ta phải phát minh $\Psi$DO?
+### Giải thích: Vì sao nghịch đảo của toán tử vi phân $1 - \Delta$ buộc ta phải phát minh $\Psi$DO?
 
 Xét phương trình $(1 - \Delta)u = f$ trên $\mathbb{R}^n$:
 1. **Trong không gian Fourier**: Đạo hàm $-\Delta$ trở thành phép nhân với $|\xi|^2$, nên:

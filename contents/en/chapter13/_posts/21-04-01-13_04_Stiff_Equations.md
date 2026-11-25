@@ -20,7 +20,7 @@ This lesson introduces stiff differential equations and the numerical challenges
 
 Students should know Euler methods, stability ideas for numerical schemes, and basic test equations such as exponential decay.
 
-## Background Knowledge Map: Anatomy of Stiffness and Implicit Stability
+## Key ideas: Anatomy of Stiffness and Implicit Stability
 
 Four core concepts separate stiff ODEs from ordinary non-stiff problems:
 
@@ -100,7 +100,7 @@ The point is not only that stiffness exists, but that method choice must adapt t
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Explicit vs. Implicit Euler on a Stiff Decay-Forcing ODE
+### Worked example: Explicit vs. Implicit Euler on a Stiff Decay-Forcing ODE
 
 Consider the stiff IVP $y' = -1000(y - \cos t) - \sin t$ with $y(0) = 2$, whose exact solution is $y(t) = \cos t + e^{-1000 t}$. Take a single step of size $h = 0.01$ (well suited to track $\cos t$, yet $10\times$ larger than the fast timescale $10^{-3}$) with both forward Euler and backward Euler.
 

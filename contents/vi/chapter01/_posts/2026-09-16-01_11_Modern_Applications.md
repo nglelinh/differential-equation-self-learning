@@ -13,7 +13,7 @@ lesson_type: optional
 
 Năm 2018, một bài báo đạt giải Best Paper tại NeurIPS đã làm chấn động cộng đồng AI khi phát hiện ra rằng mạng nơ-ron sâu ResNet thực chất chỉ là **phương pháp Euler rời rạc** của một phương trình vi phân cấp một! Từ khoảnh khắc đó, **Neural ODE** và **Flow Matching** ra đời—biến chiều sâu rời rạc của mạng nơ-ron thành thời gian liên tục $t \in [0, T]$ và mở khóa các mô hình sinh ảnh, video hàng đầu hiện nay.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Neural ODE & Mạng độ sâu liên tục
+## Kiến thức cần nhớ: Bốn trụ cột của Neural ODE & Mạng độ sâu liên tục
 
 1. **ResNet là bước Euler của PTVP cấp một**:
    Công thức cập nhật lớp $\mathbf{h}_{k+1} = \mathbf{h}_k + \Delta t\, f_\theta(\mathbf{h}_k, t_k)$ khi cho $\Delta t \to 0$ hội tụ trực tiếp về $\frac{d\mathbf{h}}{dt} = f_\theta(\mathbf{h}(t), t)$.
@@ -44,7 +44,7 @@ và tính gradient theo tham số bằng phương pháp liên hợp (adjoint met
 
 Với người học ODE cấp một, điểm đáng chú ý là mọi kết quả định tính đã học trong chương đều trở thành ràng buộc thiết kế thực tế: nếu $$f_\theta$$ không thỏa điều kiện Lipschitz, tính duy nhất có thể bị phá vỡ; nếu $$f_\theta$$ cứng (stiff), bộ giải hiện sẽ phải dùng bước cực nhỏ; còn khi dữ liệu quan sát đến tại các mốc thời gian không đều, mô hình quỹ đạo liên tục tự nhiên hơn nhiều so với mạng lưới rời rạc cố định. Chính lý thuyết tồn tại–duy nhất dùng cho mô hình dân số và bể trộn nay quyết định việc mạng độ sâu liên tục có xác định một ánh xạ đặt chỉnh từ đầu vào sang đầu ra hay không.
 
-### Khung giải thích (nên đọc chậm): So sánh 1 bước ResNet (Euler) với nghiệm liên tục của Neural ODE tuyến tính $h'(t) = -\frac{1}{2}h(t),\; h(0) = 1$ trên $[0, 1]$
+### Giải thích: So sánh 1 bước ResNet (Euler) với nghiệm liên tục của Neural ODE tuyến tính $h'(t) = -\frac{1}{2}h(t),\; h(0) = 1$ trên $[0, 1]$
 
 1. **Nghiệm liên tục chính xác tại $t = 1$**:
    $$h(1) = e^{-0{,}5} \approx \mathbf{0{,}60653}.$$

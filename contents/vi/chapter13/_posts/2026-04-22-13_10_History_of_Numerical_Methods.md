@@ -11,7 +11,7 @@ categories:
 
 Hầu hết các phương trình vi phân thực tế—từ quỹ đạo tàu Apollo bay lên Mặt Trăng đến dự báo đường đi của siêu bão—đều **không có công thức nghiệm đóng**! Suốt gần 300 năm từ khi Leonhard Euler vẽ những đoạn gấp khúc tiếp tuyến đầu tiên năm 1768 cho đến kỷ nguyên máy tính điện tử với Courant, Friedrichs, Lewy, von Neumann và Lax, nhân loại đã xây dựng một bộ môn khoa học kiệt xuất: biến thế giới vi phân liên tục thành những phép cộng–nhân hữu hạn chính xác đến từng chữ số thập phân.
 
-## Bản đồ kiến thức nền: Bốn bước ngoặt lịch sử của Giải tích Số cho ODE & PDE
+## Kiến thức cần nhớ: Bốn bước ngoặt lịch sử của Giải tích Số cho ODE & PDE
 
 1. **Euler (1768) & Runge–Kutta (1895–1901) — Đột phá độ chính xác cho ODE**:
    Euler đề xuất bước tiếp tuyến bậc 1 $O(h)$; hơn một thế kỷ sau, Carl Runge và Martin Kutta tạo ra sơ đồ 4 điểm thử đạt sai số $O(h^4)$ mà không cần tính đạo hàm bậc cao bằng tay!
@@ -34,7 +34,7 @@ Tại St. Petersburg vào thế kỷ XVIII, Leonhard Euler và các nhà tính t
 Với phương trình $$y' = y$$ và bước lưới $$h=0.1$$, phương pháp Euler cho quy tắc lặp $$y_{n+1}=y_n + 0.1y_n$$. Xuất phát từ $$y_0=1$$, ta thu được $$y_1=1.1$$, $$y_2=1.21$$ và tiếp tục tiến từng bước theo thời gian. Ví dụ đơn giản này thể hiện tinh thần cốt lõi của Chương 13: thay vì chờ đợi công thức nghiệm tường minh, ta xây dựng thuật toán cập nhật trạng thái theo từng bước rời rạc. Từ đây, lịch sử phương pháp số phát triển thành lịch sử của việc kiểm soát sai số, độ ổn định và cấu trúc xấp xỉ.
 
 
-### Khung giải thích (nên đọc chậm): So sánh trực tiếp 1 bước Euler (1768) và 1 bước RK4 (1901) bằng phép tính tay
+### Giải thích: So sánh trực tiếp 1 bước Euler (1768) và 1 bước RK4 (1901) bằng phép tính tay
 
 Giải $y' = y$, $y(0) = 1$ để ước lượng $y(0{,}5) = e^{0{,}5} \approx \mathbf{1{,}648721}$ chỉ với đúng **1 bước** $h = 0{,}5$:
 1. **Phương pháp Euler (bậc 1)**:

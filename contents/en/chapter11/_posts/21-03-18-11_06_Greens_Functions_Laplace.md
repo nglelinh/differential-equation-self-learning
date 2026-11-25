@@ -20,7 +20,7 @@ This lesson introduces Green's functions for elliptic problems. Students should 
 
 Students should know Poisson's equation, the idea of a point source, and earlier Green's-function concepts from ODE or heat-kernel contexts.
 
-## Background Knowledge Map: Impulse Response and Integral Representation
+## Key ideas: Impulse Response and Integral Representation
 
 Green's functions unify boundary-value problems into a single integral operator built on four pillars:
 
@@ -98,7 +98,7 @@ This gives a concrete and memorable example of boundary correction.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Method of Images and the 3D Half-Space Poisson Kernel
+### Worked example: Method of Images and the 3D Half-Space Poisson Kernel
 
 Construct the Dirichlet Green's function $G(\mathbf{x},\mathbf{y})$ for the upper half-space $\mathbb{R}^3_+ = \{(x_1,x_2,x_3) : x_3 > 0\}$, derive its boundary Poisson kernel, and verify that the kernel integrates to $1$.
 

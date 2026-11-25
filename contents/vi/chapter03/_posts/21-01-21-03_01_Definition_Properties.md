@@ -12,7 +12,7 @@ lesson_type: required
 
 Giống như logarit biến phép nhân rắc rối thành phép cộng đơn giản, **Biến đổi Laplace** $\mathcal{L}\{f\}(s) = \int_0^\infty e^{-st}f(t)\,dt$ là một "cây cầu toán tử" biến phép **lấy đạo hàm** thành phép **nhân đại số với $s$**! Điều kỳ diệu hơn nữa là các điều kiện ban đầu $y(0), y'(0)$ tự động chui ngay vào phương trình đại số mà không cần bước tìm hằng số riêng lẻ ở cuối bài.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Định nghĩa & Tính chất Biến đổi Laplace
+## Kiến thức cần nhớ: Bốn trụ cột của Định nghĩa & Tính chất Biến đổi Laplace
 
 1. **Định nghĩa tích phân suy rộng $\mathcal{L}\{f\}(s) = \int_0^\infty e^{-st}f(t)\,dt$**:
    Nhân hàm $f(t)$ với "bộ giảm chấn mũ" $e^{-st}$ rồi tích phân trên $[0, \infty)$; tích phân hội tụ với mọi $s > a$ nếu $f$ liên tục từng khúc và có **cấp mũ $\vert f(t)\vert \le M e^{at}$**.
@@ -37,7 +37,7 @@ Sinh viên cần nắm tích phân suy rộng, hàm mũ, đạo hàm cơ bản v
 
 Cách tiếp cận này có hai lợi thế lớn. Thứ nhất, phép lấy đạo hàm trong miền thời gian chuyển thành phép nhân với $$ s $$ trong miền Laplace, đưa bài toán vi phân về bài toán đại số. Thứ hai, các điều kiện đầu được đưa trực tiếp vào công thức biến đổi. Vì vậy, biến đổi Laplace không chỉ là một phép đổi biến, mà là một cách biểu diễn mới cho hệ động lực.
 
-### Khung giải thích (nên đọc chậm): Tính trực tiếp $\mathcal{L}\{e^{at}\}$ từ định nghĩa và kiểm chứng công thức đạo hàm $\mathcal{L}\{f'\} = sF(s) - f(0)$
+### Giải thích: Tính trực tiếp $\mathcal{L}\{e^{at}\}$ từ định nghĩa và kiểm chứng công thức đạo hàm $\mathcal{L}\{f'\} = sF(s) - f(0)$
 
 1. **Tính từ định nghĩa tích phân suy rộng** với $f(t) = e^{at}$:
    $$\mathcal{L}\{e^{at}\}(s) = \int_0^\infty e^{-st}e^{at}\,dt = \lim_{B\to\infty}\left[\frac{e^{-(s-a)t}}{-(s-a)}\right]_0^B.$$

@@ -14,14 +14,14 @@ At first sight, a partial differential equation like $$ u_t = \alpha u_{xx} $$ l
 
 Once you plug $$ X(x)T(t) $$ into the heat equation, space and time pull apart onto opposite sides of the equals sign—reducing one PDE to two elementary ODEs linked only by a single separation constant $$ -\lambda $$!
 
-## Background Knowledge Map: The Separation-of-Variables Engine
+## Key ideas: The Separation-of-Variables Engine
 
 1. **The Product Ansatz & Separation Constant:** Substituting $$ u = X(x)T(t) $$ into $$ u_t = \alpha u_{xx} $$ and dividing by $$ \alpha X T $$ gives $$ \frac{T'(t)}{\alpha T(t)} = \frac{X''(x)}{X(x)} = -\lambda $$. Because a function of $$ t $$ alone can equal a function of $$ x $$ alone only if both equal a constant, the PDE splits cleanly into $$ X'' + \lambda X = 0 $$ and $$ T' + \alpha\lambda T = 0 $$.
 2. **Spatial BVP Quantizes $$ \lambda_n $$:** Homogeneous boundary conditions on $$ X(x) $$ select the discrete eigenvalues $$ \lambda_n $$ and orthogonal eigenfunctions $$ X_n(x) $$, guaranteeing every mode satisfies the BCs automatically.
 3. **Principle of Linear Superposition:** A single product solution $$ X_n(x) T_n(t) $$ almost never matches an arbitrary initial temperature $$ f(x) $$. Because the PDE and homogeneous BCs are linear, any convergent series $$ u(x, t) = \sum c_n X_n(x) e^{-\alpha \lambda_n t} $$ remains an exact solution.
 4. **Initial Condition via Orthogonality:** Setting $$ t = 0 $$ gives $$ f(x) = \sum c_n X_n(x) $$, determining every coefficient $$ c_n $$ by a Fourier projection integral.
 
-### Step-by-Step Worked Example (Read Slowly): Separating $$ u_t = 2 u_{xx} $$ on $$ [0, \pi] $$ with $$ u(0, t) = u(\pi, t) = 0 $$
+### Worked example: Separating $$ u_t = 2 u_{xx} $$ on $$ [0, \pi] $$ with $$ u(0, t) = u(\pi, t) = 0 $$
 
 **Problem:** Solve $$ u_t = 2 u_{xx} $$ on $$ 0 < x < \pi $$, $$ t > 0 $$, with $$ u(0, t) = u(\pi, t) = 0 $$ and $$ u(x, 0) = 5\sin(x) - 3\sin(4x) $$, and compute the ratio of the $$ n=4 $$ amplitude to the $$ n=1 $$ amplitude at $$ t = 0.1 $$.
 

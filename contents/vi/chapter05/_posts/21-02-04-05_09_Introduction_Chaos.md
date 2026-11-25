@@ -12,7 +12,7 @@ lesson_type: optional
 
 Năm 1961, nhà khí tượng học Edward Lorenz nhập lại một con số vào mô hình dự báo thời tiết đơn giản chỉ có **3 phương trình vi phân xác định**—làm tròn `0.506127` thành `0.506`—và sửng sốt thấy sau vài tuần mô phỏng, thời tiết rẽ sang một trạng thái hoàn toàn trái ngược! Phát hiện ấy khai sinh **Lý thuyết Hỗn loạn (Chaos Theory)**: một hệ hoàn toàn xác định (không hề có nhiễu ngẫu nhiên) vẫn có thể bất khả dự báo trong dài hạn!
 
-## Bản đồ kiến thức nền: Bốn đặc trưng định nghĩa Hỗn loạn Xác định
+## Kiến thức cần nhớ: Bốn đặc trưng định nghĩa Hỗn loạn Xác định
 
 1. **Yêu cầu tối thiểu 3 chiều cho hệ tự trị liên tục**:
    Theo Định lý Poincaré–Bendixson, hệ tự trị trơn 2D chỉ có thể tiến về điểm cân bằng hoặc chu trình giới hạn—**không thể hỗn loạn**! Phải từ $n \ge 3$ chiều (như hệ Lorenz $\dot{x}, \dot{y}, \dot{z}$) quỹ đạo mới có đủ không gian để kéo giãn và gấp nếp mà không tự cắt nhau.
@@ -39,7 +39,7 @@ Trong đời sống hằng ngày, từ "hỗn loạn" thường bị đồng nh�
 
 Bài học này mang lại một nhận thức quan trọng cho toàn khóa học: sở hữu một mô hình toán học chính xác và tất định không đồng nghĩa với khả năng dự báo vô hạn trong tương lai. Động lực học phi tuyến có thể khuếch đại những sai lệch ban đầu cực nhỏ đến mức dự báo dài hạn mất ý nghĩa thực tiễn.
 
-### Khung giải thích (nên đọc chậm): Tính tay "Chân trời dự báo" từ Số mũ Lyapunov của hệ Lorenz ($\lambda \approx 0{,}906$)
+### Giải thích: Tính tay "Chân trời dự báo" từ Số mũ Lyapunov của hệ Lorenz ($\lambda \approx 0{,}906$)
 
 Giả sử hệ Lorenz có số mũ Lyapunov lớn nhất $\lambda \approx 0{,}906\text{ s}^{-1}$, và ta coi dự báo hết giá trị khi sai số vượt ngưỡng $\Delta = 1$.
 

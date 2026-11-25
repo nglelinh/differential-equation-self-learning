@@ -13,7 +13,7 @@ lesson_type: required
 
 Muốn giải hệ tuyến tính hệ số hằng $\mathbf{x}' = A\mathbf{x}$, hãy thử đoán nghiệm có dạng $\mathbf{x}(t) = e^{\lambda t}\mathbf{v}$ (mọi thành phần cùng lớn lên hay co lại theo một nhịp mũ $e^{\lambda t}$ dọc theo hướng cố định $\mathbf{v}$). Khi thay vào hệ, đạo hàm biến mất và ta rơi thẳng vào phương trình đẹp nhất đại số tuyến tính: **$A\mathbf{v} = \lambda\mathbf{v}$**! Mỗi cặp trị riêng–vectơ riêng thực phân biệt trao ngay cho ta một nghiệm đường thẳng độc lập.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Trị riêng Thực Phân biệt
+## Kiến thức cần nhớ: Bốn trụ cột của Phương pháp Trị riêng Thực Phân biệt
 
 1. **Từ hệ PTVP sang bài toán Trị riêng ($A\mathbf{v} = \lambda\mathbf{v}$)**:
    Giải phương trình đặc trưng $\det(A - \lambda I) = 0$ để tìm $n$ trị riêng thực phân biệt $\lambda_1, \dots, \lambda_n$; với mỗi $\lambda_k$, giải hệ thuần nhất $(A - \lambda_k I)\mathbf{v}_k = \mathbf{0}$ tìm vectơ riêng khác $\mathbf{0}$.
@@ -42,7 +42,7 @@ Với hệ tuyến tính $$ \mathbf{x}'=A\mathbf{x} $$, một câu hỏi tự nh
 
 Khi ma trận có đủ các trị riêng thực phân biệt, toàn bộ hệ tách thành các thành phần nghiệm độc lập rõ ràng. Mỗi thành phần có tốc độ tiến hóa riêng, và nghiệm tổng quát là tổ hợp tuyến tính của chúng. Qua đó, trị riêng và vector riêng trở thành công cụ trực tiếp để đọc hành vi động học của hệ.
 
-### Khung giải thích (nên đọc chậm): Giải trọn vẹn IVP $\mathbf{x}' = \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}\mathbf{x},\; \mathbf{x}(0) = \begin{pmatrix} 5 \\ -1 \end{pmatrix}$
+### Giải thích: Giải trọn vẹn IVP $\mathbf{x}' = \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}\mathbf{x},\; \mathbf{x}(0) = \begin{pmatrix} 5 \\ -1 \end{pmatrix}$
 
 1. **Tìm trị riêng**:
    $\det(A - \lambda I) = (1 - \lambda)^2 - 4 = \lambda^2 - 2\lambda - 3 = (\lambda - 3)(\lambda + 1) = 0 \implies \lambda_1 = \mathbf{3},\; \lambda_2 = \mathbf{-1}$ (dấu trái ngược $\implies$ điểm yên ngựa!).

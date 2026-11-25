@@ -13,7 +13,7 @@ lesson_type: optional
 
 Biến đổi Laplace đưa một bài toán vi phân trong miền thời gian $t$ sang miền tần số phức $s$, nơi chỉ cần nhìn vào vị trí vài dấu chấm—các **cực (poles)** của hàm truyền $H(s)$ trên mặt phẳng phức—bạn đọc ngay được toàn bộ hành vi của hệ: dao động hay không, tắt dần nhanh hay chậm, ổn định hay bùng nổ! Bộ minh họa tương tác Chương 03 giúp bạn kéo trực tiếp các cực trên mặt phẳng $s$ và quan sát đáp ứng thời gian biến hình ngay tức thì.
 
-## Bản đồ kiến thức nền: Bốn trực giác cần quan sát trong Bộ Minh họa Chương 03
+## Kiến thức cần nhớ: Bốn trực giác cần quan sát trong Bộ Minh họa Chương 03
 
 1. **Bản đồ Cực–Không (Pole–Zero Map) & Miền ổn định**:
    Cực nằm bên nửa trái ($\operatorname{Re}(s) < 0$) cho đáp ứng tắt dần ổn định; nằm trên trục ảo cho dao động điều hòa; chỉ cần một cực trượt sang nửa phải ($\operatorname{Re}(s) > 0$) là hệ bùng nổ!
@@ -42,7 +42,7 @@ Bài bổ sung này tập hợp toàn bộ các minh họa tương tác (JavaScr
   height="920px"
 %}
 
-### Khung giải thích (nên đọc chậm): Đọc hành vi hệ trực tiếp từ vị trí 3 cặp cực $s$ trên bản đồ mặt phẳng phức
+### Giải thích: Đọc hành vi hệ trực tiếp từ vị trí 3 cặp cực $s$ trên bản đồ mặt phẳng phức
 
 Giả sử hàm truyền có mẫu số $s^2 + 2\zeta\omega_0 s + \omega_0^2$ với $\omega_0 = 2$:
 1. **Cặp cực $s = -1 \pm i\sqrt{3}$** ($\operatorname{Re}(s) = -1 < 0$, $\operatorname{Im}(s) = \pm\sqrt{3}$):

@@ -13,7 +13,7 @@ lesson_type: optional
 
 Đôi khi bạn không hề cần biết giá trị chính xác của $y(t)$ ở giây thứ $3{,}72$—điều bạn thực sự quan tâm là **số phận dài hạn**: quần thể cá có bị tuyệt chủng không nếu tăng hạn mức đánh bắt, hay nhiệt độ lò phản ứng có ổn định không? Với **phương trình tự trị** $y' = f(y)$, chỉ cần vẽ duy nhất một trục thẳng gọi là **đường pha (phase line)** là ta đọc trọn vẹn tương lai của mọi điều kiện ban đầu mà không phải tính một phép tích phân nào!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Tự trị & Đường pha
+## Kiến thức cần nhớ: Bốn trụ cột của Phương trình Tự trị & Đường pha
 
 1. **Tính bất biến theo thời gian ($y' = f(y)$)**:
    Vế phải không chứa $t$, nên nếu $y(t)$ là nghiệm thì mọi bản dịch ngang $y(t - c)$ cũng là nghiệm—toàn bộ họ đường cong tích phân chỉ là các bản sao tịnh tiến ngang của nhau.
@@ -40,12 +40,12 @@ Không phải lúc nào ta cũng cần công thức nghiệm tường minh để
 
 Phương trình tự trị là điểm khởi đầu lý tưởng cho tư duy này vì vế phải chỉ phụ thuộc vào trạng thái hiện tại $$ y $$ mà không phụ thuộc tường minh vào thời gian $$ t $$. Nhờ vậy, toàn bộ động lực học có thể biểu diễn gọn trên một trục một chiều gọi là đường pha (phase line).
 
-### Khung giải thích (nên đọc chậm): Vẽ đường pha và tìm ngưỡng sụp đổ cho mô hình đánh bắt $y' = y(4 - y) - h$
+### Giải thích: Vẽ đường pha và tìm ngưỡng sụp đổ cho mô hình đánh bắt $y' = y(4 - y) - h$
 
 Xét hai kịch bản khai thác $h = 3$ và $h = 4$:
 1. **Khi $h = 3$**: $f(y) = -y^2 + 4y - 3 = -(y - 1)(y - 3) = 0$ có 2 điểm cân bằng $y_1 = 1$ và $y_2 = 3$.
    - Tính $f'(y) = -2y + 4$:
-     - Tại $y_1 = 1$: $f'(1) = +2 > 0 \implies$ **không ổn định (điểm đẩy / ngưỡng sống còn)**.
+     - Tại $y_1 = 1$: $f'(1) = +2 > 0 \implies$ **không ổn định (điểm đẩy / ngưỡng quan trọng)**.
      - Tại $y_2 = 3$: $f'(3) = -2 < 0 \implies$ **ổn định (điểm hút)**.
    - Kết luận: Nếu dân số ban đầu $y(0) > 1$, quần thể phục hồi về $3$; nhưng nếu rơi xuống $y(0) < 1$, quần thể lao thẳng về $0$ (tuyệt chủng)!
 2. **Khi $h = 4$**: $f(y) = -(y - 2)^2 \le 0$ với mọi $y$, chỉ còn đúng 1 điểm cân bằng **bán ổn định** $y^* = 2$.

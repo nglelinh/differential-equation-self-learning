@@ -12,7 +12,7 @@ lesson_type: optional
 
 In 2018, a landmark NeurIPS Best Paper asked a deceptively simple question: a deep Residual Network updates its hidden state via $$h_{k+1} = h_k + f_\theta(h_k, k)$$, which looks suspiciously like Euler's method with step size $$\Delta t = 1$$—so what happens if you take $$\Delta t \to 0$$? Out popped **Neural ODEs**: continuous-depth neural networks whose forward pass is an adaptive ODE solver and whose backpropagation is a reverse-time adjoint ODE requiring $$O(1)$$ memory.
 
-## Background Knowledge Map: Chapter 01 Theory Inside Neural ODEs
+## Key ideas: Chapter 01 Theory Inside Neural ODEs
 
 Four core ideas from first-order ODEs directly explain why Neural ODEs work and where they fail:
 
@@ -21,7 +21,7 @@ Four core ideas from first-order ODEs directly explain why Neural ODEs work and 
 3. **Adjoint Sensitivity Method:** Instead of storing every intermediate activation during the forward pass, Neural ODEs define an adjoint state $$a(t) = \frac{\partial \mathcal{L}}{\partial h(t)}$$ that satisfies the linear backward ODE $$\frac{da}{dt} = -a(t)^\top \frac{\partial f_\theta}{\partial h}$$, cutting memory cost from $$O(L)$$ to $$O(1)$$.
 4. **Continuous Normalizing Flows (Instantaneous Change of Variables):** Tracking probability density $$p(h(t))$$ along a Neural ODE replaces an expensive $$O(d^3)$$ Jacobian determinant with a cheap $$O(d)$$ trace via Liouville's formula $$\frac{d}{dt}\log p(h(t)) = -\operatorname{tr}\!\left(\frac{\partial f_\theta}{\partial h}\right)$$.
 
-### Step-by-Step Worked Example (Read Slowly): Computing the Exact Adjoint Gradient for a 1D Linear Neural ODE
+### Worked example: Computing the Exact Adjoint Gradient for a 1D Linear Neural ODE
 
 Consider a 1D Neural ODE $$\frac{dh}{dt} = \theta\,h(t)$$ on $$t \in [0, 1]$$ with initial input $$h(0) = 2$$, parameter $$\theta = 1$$, and target loss $$\mathcal{L} = \frac{1}{2}\bigl(h(1) - 10\bigr)^2$$.
 

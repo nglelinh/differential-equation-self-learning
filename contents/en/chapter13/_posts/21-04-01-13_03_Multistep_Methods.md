@@ -20,7 +20,7 @@ This lesson introduces multistep methods such as Adams-Bashforth and Adams-Moult
 
 Students should know one-step methods, especially Euler and Runge-Kutta methods, and have some familiarity with interpolation ideas.
 
-## Background Knowledge Map: Memory, Characteristic Polynomials, and Dahlquist Barriers
+## Key ideas: Memory, Characteristic Polynomials, and Dahlquist Barriers
 
 Four core ideas govern the theory and practice of linear multistep methods $\sum_{j=0}^k \alpha_j y_{n+j} = h\sum_{j=0}^k \beta_j f_{n+j}$:
 
@@ -98,7 +98,7 @@ This distinguishes multistep methods sharply from one-step schemes.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Deriving and Testing 2-Step Adams–Bashforth (AB2)
+### Worked example: Deriving and Testing 2-Step Adams–Bashforth (AB2)
 
 Derive the 2-step Adams–Bashforth formula from scratch, verify its zero-stability via the root condition, and take one step on $y' = y$ with $h = 0.1$.
 

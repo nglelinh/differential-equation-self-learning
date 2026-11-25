@@ -12,7 +12,7 @@ lesson_type: required
 
 Remove the walls completely and imagine an infinitely long metal wire stretching from $$ -\infty $$ to $$ +\infty $$. With no boundary conditions to quantize spatial wavelengths, there are no discrete eigenvalues $$ \lambda_n $$ and no Fourier series. Instead, every continuous wavenumber $$ \omega \in \mathbb{R} $$ participates simultaneously via the Fourier Transform—and when you invert the Gaussian damping factor $$ e^{-\alpha \omega^2 t} $$ back into physical space, out pops one of the most famous formulas in analysis: convolution with the **Gaussian Heat Kernel**!
 
-## Background Knowledge Map: Fourier Transform Solution and Infinite Speed of Propagation
+## Key ideas: Fourier Transform Solution and Infinite Speed of Propagation
 
 1. **Fourier Transform Diagonalization on $$ \mathbb{R} $$:** Transforming $$ u_t = \alpha u_{xx} $$ in $$ x $$ turns $$ \partial_{xx} $$ into $$ -\omega^2 $$, yielding the elementary ODE $$ \hat{u}_t(\omega, t) = -\alpha \omega^2 \hat{u}(\omega, t) \implies \hat{u}(\omega, t) = \hat{f}(\omega) e^{-\alpha \omega^2 t} $$.
 2. **Gaussian Heat Kernel (Inverse Transform of $$ e^{-\alpha\omega^2 t} $$):** Because the inverse Fourier transform of a Gaussian is another Gaussian, convolution gives
@@ -20,7 +20,7 @@ Remove the walls completely and imagine an infinitely long metal wire stretching
 3. **Instantaneous Smoothing & Infinite Propagation Speed:** Even if $$ f(x) $$ is a discontinuous step function supported only on $$ [-1, 1] $$, for *every* $$ t > 0 $$ (even $$ t = 10^{-100} $$!), $$ u(x, t) $$ is $$ C^\infty $$ smooth and strictly positive everywhere on $$ \mathbb{R} $$. Heat mathematically travels with infinite speed (though exponentially tiny far away).
 4. **Error Function $$ \operatorname{erf}(z) $$ & Similarity Variable $$ \eta = \frac{x}{\sqrt{4\alpha t}} $$:** For step initial data, the Gaussian integral reduces directly to the error function $$ \operatorname{erf}(z) = \frac{2}{\sqrt{\pi}}\int_0^z e^{-s^2}\,ds $$, revealing that temperature depends only on the self-similar ratio $$ x / \sqrt{4\alpha t} $$.
 
-### Step-by-Step Worked Example (Read Slowly): Evolving a Gaussian Initial Pulse Exactly on $$ (-\infty, \infty) $$
+### Worked example: Evolving a Gaussian Initial Pulse Exactly on $$ (-\infty, \infty) $$
 
 **Problem:** Solve $$ u_t = \alpha u_{xx} $$ on $$ -\infty < x < \infty $$, $$ t > 0 $$, with Gaussian initial temperature $$ u(x, 0) = e^{-x^2 / (4\sigma^2)} $$ ($$ \sigma > 0 $$), and compute the exact time $$ t_{1/2} $$ at which the peak temperature at $$ x = 0 $$ drops to half its initial height.
 

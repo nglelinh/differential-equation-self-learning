@@ -13,7 +13,7 @@ lesson_type: required
 
 Hãy tưởng tượng bạn đang đi bộ trên một sườn núi có độ cao $F(x, y)$ sao cho độ cao không bao giờ đổi—nghĩa là bạn đang đi dọc theo một **đường đồng mức** $F(x, y) = C$. Khi lấy vi phân toàn phần $dF = F_x\,dx + F_y\,dy = 0$, ta thu được ngay một **phương trình vi phân toàn phần**! Giải phương trình toàn phần thực chất chính là bài toán ngược đầy thú vị: từ bản đồ độ dốc $(M, N)$, dựng lại địa hình $F(x, y)$ bị ẩn giấu.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Toàn phần
+## Kiến thức cần nhớ: Bốn trụ cột của Phương trình Toàn phần
 
 1. **Dạng vi phân $M(x, y)\,dx + N(x, y)\,dy = 0$**:
    Xem $x$ và $y$ bình đẳng nhau; nghiệm tổng quát là họ các đường mức $F(x, y) = C$ của một hàm thế $F$.
@@ -49,7 +49,7 @@ Trong cơ học, nhiều hệ bảo toàn có một đại lượng không đổ
 
 Thay vì tìm cách giải trực tiếp $$ y(t) $$, ta đặt câu hỏi: biểu thức $$ M(t,y)dt+N(t,y)dy $$ có phải là vi phân toàn phần của một hàm vô hướng $$ F(t,y) $$ hay không? Nếu câu trả lời là có, phương trình lập tức quy về $$ dF=0 $$, tức là $$ F(t,y)=C $$.
 
-### Khung giải thích (nên đọc chậm): Dựng hàm thế $F(x, y)$ bằng tay cho $(2xy + 3)\,dx + (x^2 - 1)\,dy = 0$
+### Giải thích: Dựng hàm thế $F(x, y)$ bằng tay cho $(2xy + 3)\,dx + (x^2 - 1)\,dy = 0$
 
 1. **Kiểm tra điều kiện toàn phần**:
    - $M(x, y) = 2xy + 3 \implies M_y = 2x$.

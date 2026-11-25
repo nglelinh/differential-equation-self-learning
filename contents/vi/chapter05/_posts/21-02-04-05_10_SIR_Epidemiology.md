@@ -12,7 +12,7 @@ lesson_type: optional
 
 Khi một loại virus mới xuất hiện trong thành phố 1 triệu dân, làm sao các nhà dịch tễ học dự báo được đỉnh dịch sẽ rơi vào tuần nào, bao nhiêu phần trăm dân số cần tiêm vaccine để đạt **miễn dịch cộng đồng**, và việc đeo khẩu trang giảm 30% tiếp xúc sẽ làm phẳng đường cong đến đâu? Câu trả lời nằm trong hệ 3 phương trình vi phân phi tuyến kinh điển của Kermack và McKendrick (1927): **Mô hình SIR**.
 
-## Bản đồ kiến thức nền: Bốn trụ cột toán học của Mô hình Dịch tễ SIR
+## Kiến thức cần nhớ: Bốn trụ cột toán học của Mô hình Dịch tễ SIR
 
 1. **Ba ngăn bảo toàn dân số ($S + I + R = N$)**:
    $S(t)$: người nhạy cảm (Susceptible); $I(t)$: người đang nhiễm bệnh (Infected); $R(t)$: người đã hồi phục/miễn dịch (Recovered). Vì $\dot{S} + \dot{I} + \dot{R} = 0$, tổng dân số $N$ là một bất biến.
@@ -39,7 +39,7 @@ Một đợt dịch không chỉ là chuỗi số liệu ca mắc theo thời gi
 
 Giá trị lớn của mô hình SIR nằm ở chỗ nó không chỉ mô tả xu hướng tăng giảm của số ca mắc mà còn làm rõ khái niệm **ngưỡng bùng phát**. Dịch không tự bùng lên chỉ vì xuất hiện ca bệnh, mà phụ thuộc vào tỷ lệ giữa tốc độ lây truyền và tốc độ rời khỏi nhóm đang nhiễm. Từ đó xuất hiện hai khái niệm trung tâm: số sinh sản cơ bản và ngưỡng miễn dịch cộng đồng.
 
-### Khung giải thích (nên đọc chậm): Tính tay $R_0$, ngưỡng miễn dịch cộng đồng và đỉnh dịch cho một đợt cúm cụ thể
+### Giải thích: Tính tay $R_0$, ngưỡng miễn dịch cộng đồng và đỉnh dịch cho một đợt cúm cụ thể
 
 Giả sử một thành phố có $N = 100.000$ người, tốc độ lây $\beta = 0{,}4\text{ ngày}^{-1}$ và thời gian khỏi bệnh trung bình $1/\gamma = 10\text{ ngày}$ ($\gamma = 0{,}1\text{ ngày}^{-1}$).
 

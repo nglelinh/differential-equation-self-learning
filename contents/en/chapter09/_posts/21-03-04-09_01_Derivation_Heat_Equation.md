@@ -14,14 +14,14 @@ Drop a glowing ember onto one spot of a cold iron bar and watch what happens: he
 
 What makes this derivation extraordinary is its universality: replace temperature by dye concentration, financial option price, or probability density of a Brownian random walker, and the *exact same PDE* reappears.
 
-## Background Knowledge Map: Conservation Laws and Diffusive Flux
+## Key ideas: Conservation Laws and Diffusive Flux
 
 1. **Integral Conservation Law (Balance on an Arbitrary Control Volume):** For any segment $$ [a, b] $$ of a 1D rod with cross-section $$ A $$, density $$ \rho $$, and specific heat $$ c $$, the rate of change of stored thermal energy $$ \frac{d}{dt}\int_a^b c\rho u(x,t)\,dx $$ equals net heat flowing in through the endpoints, $$ \phi(a,t) - \phi(b,t) $$, plus internal sources $$ \int_a^b Q(x,t)\,dx $$.
 2. **Fourier's Constitutive Law of Heat Flux:** Empirically, heat flows *down* the temperature gradient: $$ \phi(x, t) = -K_0 u_x(x, t) $$, where $$ K_0 > 0 $$ is thermal conductivity. The minus sign is the Second Law of Thermodynamics in algebraic form!
 3. **Curvature Drives Evolution (Geometric Meaning of $$ u_{xx} $$):** Combining conservation with Fourier's law yields $$ u_t = \alpha u_{xx} $$ with thermal diffusivity $$ \alpha = \frac{K_0}{c\rho} $$ (units $$ \text{m}^2/\text{s} $$). Where the temperature graph is concave down ($$ u_{xx} < 0 $$, a hot peak), $$ u_t < 0 $$ so the peak cools; where it is concave up ($$ u_{xx} > 0 $$, a cold valley), $$ u_t > 0 $$ so the valley warms!
 4. **Dimensional Scaling $$ L^2 / \alpha $$:** Because time enters as a first derivative and space as a second derivative, the equation is invariant under the parabolic scaling $$ (x, t) \mapsto (\lambda x, \lambda^2 t) $$—doubling length quadruples diffusion time.
 
-### Step-by-Step Worked Example (Read Slowly): Deriving $$ u_t = \alpha u_{xx} + q $$ and Computing Local Cooling Rate
+### Worked example: Deriving $$ u_t = \alpha u_{xx} + q $$ and Computing Local Cooling Rate
 
 **Problem:** (a) Starting from the integral balance $$ \frac{d}{dt}\int_a^b c\rho u\,dx = \phi(a,t) - \phi(b,t) + \int_a^b Q(x,t)\,dx $$ with $$ \phi = -K_0 u_x $$, derive the PDE for constant $$ c, \rho, K_0 $$. (b) An aluminum rod ($$ \alpha = 9.7 \times 10^{-5}\text{ m}^2/\text{s} $$) has instantaneous temperature profile $$ u(x, 0) = 20 + 80\sin(\pi x) $$ on $$ [0, 1]\text{ m} $$ with no internal source. Compute the exact initial cooling rate $$ u_t(0.5, 0) $$ in $$ ^\circ\text{C/s} $$ and the heat flux $$ \phi(0, 0) $$ at the left end (using $$ K_0 = 237\text{ W/(m}\cdot\text{K)} $$).
 

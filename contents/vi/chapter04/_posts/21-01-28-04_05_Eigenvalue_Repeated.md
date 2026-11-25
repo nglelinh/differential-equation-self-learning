@@ -13,7 +13,7 @@ lesson_type: required
 
 Điều gì xảy ra khi ma trận $A$ cỡ $2\times 2$ có trị riêng kép $\lambda$, nhưng khi giải $(A - \lambda I)\mathbf{v} = \mathbf{0}$ ta chỉ tìm được **duy nhất một hướng vectơ riêng**? Ta đang thiếu mất một nghiệm để tạo đủ không gian nghiệm 2 chiều! Lời giải không phải là nhân $t$ đơn thuần vào $e^{\lambda t}\mathbf{v}$ (thử thay vào sẽ thấy sai ngay!), mà là xây dựng một **vectơ riêng suy rộng (generalized eigenvector)** $\mathbf{w}$ thỏa $(A - \lambda I)\mathbf{w} = \mathbf{v}$ để tạo ra cặp nghiệm hoàn hảo $(t\mathbf{v} + \mathbf{w})e^{\lambda t}$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Trị riêng Trùng
+## Kiến thức cần nhớ: Bốn trụ cột của Phương pháp Trị riêng Trùng
 
 1. **Bội đại số (AM) vs. Bội hình học (GM)**:
    - Nếu $\text{GM} = \text{AM}$ (ma trận đủ vectơ riêng, ví dụ $A = \lambda I$): vẫn đủ $n$ nghiệm dạng $e^{\lambda t}\mathbf{v}_k$—hình học là **nút sao (star node)**!
@@ -42,7 +42,7 @@ Khi đa thức đặc trưng có nghiệm lặp, cách xử lý phụ thuộc v�
 
 Trường hợp này cho thấy đại số tuyến tính không chỉ hỗ trợ tính toán mà còn chỉ ra sự thiếu hụt phương bất biến, đòi hỏi bổ sung vector riêng suy rộng. Trên mặt phẳng pha, quỹ đạo khi đó có một phương chính kèm hiệu ứng trượt dọc theo phương đó.
 
-### Khung giải thích (nên đọc chậm): Giải hệ thiếu hụt $\mathbf{x}' = \begin{pmatrix} 3 & 1 \\ -1 & 1 \end{pmatrix}\mathbf{x}$ bằng mẹo vectơ suy rộng cực gọn
+### Giải thích: Giải hệ thiếu hụt $\mathbf{x}' = \begin{pmatrix} 3 & 1 \\ -1 & 1 \end{pmatrix}\mathbf{x}$ bằng mẹo vectơ suy rộng cực gọn
 
 1. **Tìm trị riêng**:
    $\tau = 3 + 1 = 4$, $\Delta = 3 - (-1) = 4 \implies \lambda^2 - 4\lambda + 4 = (\lambda - 2)^2 = 0 \implies \lambda = \mathbf{2}$ (bội 2).

@@ -13,14 +13,14 @@ Before the 1830s, mathematicians solved vibrating-string, cooling-rod, and buckl
 
 Later, David Hilbert and Hermann Weyl lifted Sturm–Liouville theory into abstract Hilbert spaces, giving twentieth-century quantum mechanics its exact mathematical backbone.
 
-## Background Knowledge Map: Historical Pillars of Spectral BVP Theory
+## Key ideas: Historical Pillars of Spectral BVP Theory
 
 1. **Euler's Buckling & Bernoulli's Harmonics (1744–1755):** Euler derived the first critical buckling eigenvalue $$ P_n = n^2 \pi^2 EI / L^2 $$, while Daniel Bernoulli proposed that any string vibration is a superposition of standing eigenmodes—sparking a fierce debate with d'Alembert and Euler over what functions could be expanded in sines.
 2. **George Green's Potential Essay (1828):** Working outside academia in Nottingham, Green invented the impulse-response kernel $$ G(x, s) $$ and integral identities that turned boundary value problems into integral equations, later rediscovered and championed by Lord Kelvin in 1845.
 3. **Sturm–Liouville Unification (1836–1837):** Sturm proved qualitative oscillation and comparison theorems *without solving the ODE explicitly*, while Liouville proved orthogonality and convergence of general eigenfunction expansions.
 4. **Hilbert–Schmidt Spectral Theory (1904–1910):** By inverting the Sturm–Liouville differential operator via its symmetric Green's function $$ G(x, s) $$, David Hilbert turned unbounded differential operators into compact symmetric integral operators, yielding the rigorous completeness proof used in modern PDEs and quantum physics.
 
-### Step-by-Step Worked Example (Read Slowly): Computing Euler's 1744 Critical Buckling Load
+### Worked example: Computing Euler's 1744 Critical Buckling Load
 
 **Problem:** A pinned steel column of length $$ L = 2.0\text{ m} $$ has flexural rigidity $$ EI = 4.0 \times 10^4\text{ N}\cdot\text{m}^2 $$. Its lateral deflection satisfies $$ EI\,y'' + P y = 0 $$ with $$ y(0) = y(L) = 0 $$. Compute the first two buckling loads $$ P_1 $$ and $$ P_2 $$, and see why adding a single midpoint brace quadruples the column's strength.
 

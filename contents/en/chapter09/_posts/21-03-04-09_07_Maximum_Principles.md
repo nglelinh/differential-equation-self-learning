@@ -14,14 +14,14 @@ Without computing a single Fourier integral or writing down a series solution, c
 
 Yes! That is the astonishing power of the **Parabolic Maximum Principle**: pure calculus at an interior maximum ($$ u_t \ge 0 $$ and $$ u_{xx} \le 0 $$) collides head-on with $$ u_t = \alpha u_{xx} $$, yielding instant uniqueness, continuous dependence on data (stability), and comparison bounds for linear and even nonlinear heat equations.
 
-## Background Knowledge Map: Qualitative Guarantees Without Formulas
+## Key ideas: Qualitative Guarantees Without Formulas
 
 1. **The Parabolic Boundary $$ \Gamma_T $$:** On the space-time rectangle $$ Q_T = (0, L) \times (0, T] $$, the *parabolic boundary* consists of the bottom initial segment ($$ t = 0 $$) and the two vertical sides ($$ x = 0, L $$), **excluding** the top lid ($$ t = T $$). Heat flows forward in time, so extrema must originate on $$ \Gamma_T $$.
 2. **Weak Maximum Principle & Perturbation Proof:** For $$ u_t - \alpha u_{xx} \le 0 $$, $$ \max_{\overline{Q_T}} u = \max_{\Gamma_T} u $$. To turn $$ u_t \ge 0, u_{xx} \le 0 $$ into a strict contradiction, perturb $$ v_\varepsilon(x, t) = u(x, t) - \varepsilon t $$ (so $$ v_t - \alpha v_{xx} \le -\varepsilon < 0 $$), ruling out any interior or top-lid maximum, then let $$ \varepsilon \to 0^+ $$!
 3. **Uniqueness & $$ L^\infty $$ Stability (Well-Posedness):** Applying the Maximum and Minimum Principles to the difference $$ w = u_1 - u_2 $$ immediately proves $$ \max_{\overline{Q_T}} |u_1 - u_2| \le \max_{\Gamma_T} |u_1 - u_2| $$. Thus zero boundary/initial error forces $$ u_1 \equiv u_2 $$ (uniqueness), and tiny measurement errors stay uniformly tiny forever (stability).
 4. **Energy Method Alternative ($$ L^2 $$ Stability):** Multiplying $$ w_t = \alpha w_{xx} $$ by $$ w $$ and integrating by parts gives $$ \frac{d}{dt}\left(\frac{1}{2}\int_0^L w^2\,dx\right) = -\alpha \int_0^L w_x^2\,dx \le 0 $$, providing an independent, equally short proof of uniqueness that extends easily to Neumann and Robin BCs.
 
-### Step-by-Step Worked Example (Read Slowly): A Priori Bounds and Uniqueness via the Maximum Principle
+### Worked example: A Priori Bounds and Uniqueness via the Maximum Principle
 
 **Problem:** Suppose $$ u(x, t) $$ solves $$ u_t = 3 u_{xx} $$ on $$ 0 < x < 2 $$, $$ 0 < t \le 5 $$, with $$ u(x, 0) = 20 + 15\sin(\pi x/2) $$, $$ u(0, t) = 20 - 4t $$, and $$ u(2, t) = 20 + 2t $$. Without solving the PDE, find the sharpest guaranteed upper and lower bounds on $$ u(x, t) $$ over the entire rectangle $$ [0, 2] \times [0, 5] $$, and prove the solution is unique.
 

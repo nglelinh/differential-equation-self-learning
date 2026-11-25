@@ -13,7 +13,7 @@ lesson_type: required
 
 Khi ma trận thực $A$ không có hướng thẳng nào giữ nguyên mà xoay toàn bộ mặt phẳng, phương trình đặc trưng của nó sẽ trả về một cặp **trị riêng phức liên hợp** $\lambda = \alpha \pm i\beta$! Thay vì phải tính cả hai cặp phức, bạn chỉ cần làm việc với **duy nhất một trị riêng $\lambda = \alpha + i\beta$** và một vectơ riêng phức $\mathbf{v} = \mathbf{a} + i\mathbf{b}$: tách phần thực và phần ảo của $e^{(\alpha + i\beta)t}(\mathbf{a} + i\mathbf{b})$ sẽ trao ngay cho bạn trọn bộ hai nghiệm thực độc lập!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Trị riêng Phức
+## Kiến thức cần nhớ: Bốn trụ cột của Phương pháp Trị riêng Phức
 
 1. **Cặp liên hợp tự động ($\lambda = \alpha \pm i\beta,\; \mathbf{v} = \mathbf{a} \pm i\mathbf{b}$)**:
    Do $A$ là ma trận thực, chỉ cần tìm $\mathbf{v} = \mathbf{a} + i\mathbf{b}$ cho một trị riêng $\alpha + i\beta$ (với $\beta > 0$) là đủ—không cần giải lại cho $\alpha - i\beta$!
@@ -43,7 +43,7 @@ Sinh viên cần nắm kiến thức cơ bản về số phức, công thức Eu
 
 Chỉ từ cặp trị riêng $$ \alpha\pm i\beta $$, ta xác định được ngay ba đặc tính: hệ có quay quanh gốc, tần số góc tỉ lệ với $$ \beta $$, và biên độ co lại hay giãn ra tùy dấu của $$ \alpha $$.
 
-### Khung giải thích (nên đọc chậm): Giải hệ $\mathbf{x}' = \begin{pmatrix} -1 & -2 \\ 2 & -1 \end{pmatrix}\mathbf{x}$ bằng cách tách phần thực và phần ảo
+### Giải thích: Giải hệ $\mathbf{x}' = \begin{pmatrix} -1 & -2 \\ 2 & -1 \end{pmatrix}\mathbf{x}$ bằng cách tách phần thực và phần ảo
 
 1. **Tìm trị riêng**:
    $\det(A - \lambda I) = (-1 - \lambda)^2 + 4 = 0 \implies \lambda = \mathbf{-1 \pm 2i}$ ($\alpha = -1,\; \beta = 2$).

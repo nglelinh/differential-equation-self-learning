@@ -14,14 +14,14 @@ In 1782, Adrien-Marie Legendre wanted to calculate the gravitational pull of a s
 
 Why does the eigenvalue parameter take the exact quantized form $$ \lambda = n(n+1) $$? Because $$ x = \pm 1 $$ (the North and South Poles of a sphere!) are regular singular points: for any non-integer $$ \nu $$, *every* series solution blows up logarithmically at the poles. Only when $$ \lambda = n(n+1) $$ does the infinite series truncate into a finite polynomial $$ P_n(x) $$ that stays smooth everywhere on the sphere.
 
-## Background Knowledge Map: Legendre's Equation and Spherical Symmetry
+## Key ideas: Legendre's Equation and Spherical Symmetry
 
 1. **Regular Singularities at the Poles $$ x = \pm 1 $$ (Quantization Mechanism):** Writing $$ y'' - \frac{2x}{1-x^2} y' + \frac{\lambda}{1-x^2} y = 0 $$, the origin $$ x = 0 $$ is an ordinary point with guaranteed radius $$ R = 1 $$. The singularities at $$ x = \pm 1 $$ force the infinite series to diverge at the endpoints *unless* $$ \lambda = n(n+1) $$, which kills the recurrence at index $$ n $$ and produces a polynomial.
 2. **Self-Adjoint Form and $$ L^2([-1,1]) $$ Orthogonality:** Rewriting the ODE as $$ \frac{d}{dx}\bigl[(1 - x^2) y'\bigr] + n(n+1) y = 0 $$ reveals its Sturm–Liouville structure with unit weight $$ w(x) = 1 $$. Integration by parts immediately proves $$ \int_{-1}^{1} P_m(x) P_n(x)\,dx = \frac{2}{2n+1}\delta_{mn} $$.
 3. **Rodrigues' Formula and Generating Function (Compact Engines):** Rather than re-solving recurrences every time, $$ P_n(x) = \frac{1}{2^n n!} \frac{d^n}{dx^n}\bigl[(x^2 - 1)^n\bigr] $$ and $$ (1 - 2xt + t^2)^{-1/2} = \sum_{n=0}^\infty P_n(x) t^n $$ package all orthogonality, normalization $$ P_n(1) = 1 $$, and three-term recurrence relations into two lines.
 4. **Multipole & Quantum Angular Momentum Bridge:** Expanding a potential or wavefunction in $$ P_n(\cos\theta) $$ decomposes it into monopole ($$ n=0 $$), dipole ($$ n=1 $$), quadrupole ($$ n=2 $$), and higher spherical harmonics—the foundation of electrostatics, geodesy, and atomic orbitals.
 
-### Step-by-Step Worked Example (Read Slowly): Deriving $$ P_3(x) $$ from the Recurrence and Expanding $$ f(x) = x^3 $$
+### Worked example: Deriving $$ P_3(x) $$ from the Recurrence and Expanding $$ f(x) = x^3 $$
 
 **Problem:** Derive $$ P_3(x) $$ from the ordinary-point recurrence of Legendre's equation with $$ n = 3 $$ (normalized so $$ P_3(1) = 1 $$), verify orthogonality $$ \int_{-1}^1 P_1(x) P_3(x)\,dx = 0 $$, and express $$ x^3 $$ as a linear combination of Legendre polynomials.
 

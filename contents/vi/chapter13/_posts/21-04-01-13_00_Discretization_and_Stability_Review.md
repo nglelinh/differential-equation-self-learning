@@ -10,9 +10,9 @@ categories:
 lesson_type: optional
 ---
 
-Trước khi lao vào hàng loạt công thức Euler, Runge–Kutta, sai phân hữu hạn hay phần tử hữu hạn, hãy dừng lại một nhịp để nắm vững "bộ luật giao thông" chung của mọi phương pháp số. Mọi thuật toán giải phương trình vi phân—dù đơn giản hay tối tân—đều xoay quanh đúng **ba câu hỏi sống còn**: ta xấp xỉ đạo hàm chính xác bậc mấy (*nhất quán*), sai số làm tròn có bị khuếch đại nổ tung hay không (*ổn định*), và khi bước lưới $h \to 0$ nghiệm số có thực sự tiến về nghiệm thật không (*hội tụ*)?
+Trước khi lao vào hàng loạt công thức Euler, Runge–Kutta, sai phân hữu hạn hay phần tử hữu hạn, hãy dừng lại một nhịp để nắm vững "bộ luật giao thông" chung của mọi phương pháp số. Mọi thuật toán giải phương trình vi phân—dù đơn giản hay tối tân—đều xoay quanh đúng **ba câu hỏi quan trọng**: ta xấp xỉ đạo hàm chính xác bậc mấy (*nhất quán*), sai số làm tròn có bị khuếch đại nổ tung hay không (*ổn định*), và khi bước lưới $h \to 0$ nghiệm số có thực sự tiến về nghiệm thật không (*hội tụ*)?
 
-## Bản đồ kiến thức nền: Bốn khái niệm nền tảng của Rời rạc hóa và Ổn định Số
+## Kiến thức cần nhớ: Bốn khái niệm nền tảng của Rời rạc hóa và Ổn định Số
 
 1. **Khai triển Taylor — Máy đo Bậc Sai số Cắt cụt**:
    Khai triển $u(x \pm h)$ cho biết ngay sai phân tiến $\frac{u(x+h)-u(x)}{h}$ mắc sai số $O(h)$, còn sai phân trung tâm $\frac{u(x+h)-u(x-h)}{2h}$ triệt tiêu số hạng bậc $h$ để nhảy vọt lên $O(h^2)$!
@@ -42,7 +42,7 @@ Bài học này làm rõ bước chuyển đổi đó trước khi sinh viên ti
 Sinh viên cần nắm bài toán giá trị ban đầu cho ODE, khai triển Taylor, ý nghĩa hình học của đạo hàm và thực tế rằng nhiều mô hình không có nghiệm đóng. Bài học chưa đòi hỏi kiến thức trước về lý thuyết ổn định số.
 
 
-### Khung giải thích (nên đọc chậm): So sánh trực tiếp bằng số sai phân tiến $O(h)$ và sai phân trung tâm $O(h^2)$
+### Giải thích: So sánh trực tiếp bằng số sai phân tiến $O(h)$ và sai phân trung tâm $O(h^2)$
 
 Ước lượng đạo hàm $f'(0) = 1$ của hàm $f(x) = e^x$ tại $x = 0$ với bước $h = 0{,}1$ (biết $e^{0{,}1} \approx 1{,}105171$ và $e^{-0{,}1} \approx 0{,}904837$):
 1. **Sai phân tiến (bậc 1)**:

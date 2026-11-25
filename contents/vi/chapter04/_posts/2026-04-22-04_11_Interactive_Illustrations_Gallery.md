@@ -13,7 +13,7 @@ lesson_type: optional
 
 Với hệ tuyến tính hai chiều $\mathbf{x}' = A\mathbf{x}$, toàn bộ vũ trụ quỹ đạo có thể xảy ra—nút hút, nút đẩy, điểm yên ngựa, xoáy ốc, tâm dao động—đều được đóng gói gọn gàng trong **đúng một mặt phẳng hai tham số** gọi là **mặt phẳng Vết–Định thức (Trace–Determinant Plane)**! Bộ minh họa tương tác Chương 04 cho phép bạn kéo trực tiếp một điểm $(\tau, \Delta)$ trên mặt phẳng này và xem chân dung pha lập tức biến đổi ngoạn mục trước mắt.
 
-## Bản đồ kiến thức nền: Bốn hình ảnh trực quan cốt lõi của Chương 04
+## Kiến thức cần nhớ: Bốn hình ảnh trực quan cốt lõi của Chương 04
 
 1. **Mặt phẳng Vết–Định thức ($\tau = \operatorname{tr} A,\; \Delta = \det A$)**:
    Parabol $\tau^2 - 4\Delta = 0$ phân chia thế giới nghiệm thực (dưới parabol) và thế giới xoáy ốc phức (trên parabol); trục $\Delta = 0$ phân tách điểm yên ngựa ($\Delta < 0$) khỏi nút và xoáy ốc ($\Delta > 0$).
@@ -42,7 +42,7 @@ Bài bổ sung này tập hợp toàn bộ các minh họa tương tác (JavaScr
   height="920px"
 %}
 
-### Khung giải thích (nên đọc chậm): Phân loại tức thì 3 ma trận trên mặt phẳng $(\tau, \Delta)$ mà KHÔNG cần giải phương trình bậc hai!
+### Giải thích: Phân loại tức thì 3 ma trận trên mặt phẳng $(\tau, \Delta)$ mà KHÔNG cần giải phương trình bậc hai!
 
 Nhớ $\lambda^2 - \tau\lambda + \Delta = 0$ và biệt thức $D = \tau^2 - 4\Delta$:
 1. $A_1 = \begin{pmatrix} 1 & 2 \\ 3 & 0 \end{pmatrix}$: $\tau = 1$, $\Delta = 0 - 6 = \mathbf{-6} < 0 \implies$ **Điểm yên ngựa (Saddle)**, luôn không ổn định!

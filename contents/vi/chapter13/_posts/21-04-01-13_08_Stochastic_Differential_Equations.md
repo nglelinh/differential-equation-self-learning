@@ -14,7 +14,7 @@ lesson_type: optional
 
 Một hạt phấn hoa lơ lửng trong cốc nước không bao giờ trượt theo đường cong trơn mà giật cục hỗn loạn dưới hàng tỷ cú va chạm phân tử; giá cổ phiếu trên sàn giao dịch cũng nhảy múa từng giây bởi tin tức bất ngờ. Để mô tả những hệ động lực chịu tác động của nhiễu ngẫu nhiên liên tục, ta bổ sung thêm số hạng chuyển động Brown $dW_t$ vào ODE để có **Phương trình Vi phân Ngẫu nhiên (SDE)**—nơi quy tắc đạo hàm cổ điển bị phá vỡ bởi một luật chơi kỳ diệu mang tên **Bổ đề Itô**: $(dW_t)^2 = dt$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Vi phân Ngẫu nhiên (SDE)
+## Kiến thức cần nhớ: Bốn trụ cột của Phương trình Vi phân Ngẫu nhiên (SDE)
 
 1. **Chuyển động Brown $W_t$ (Quá trình Wiener)**:
    Các số gia $W_{t+\Delta t} - W_t \sim \mathcal{N}(0, \Delta t)$ độc lập nhau, đường đi liên tục khắp nơi nhưng **không khả vi ở bất kỳ điểm nào**, và có bậc độ lớn $|\Delta W_t| \sim \sqrt{\Delta t} \gg \Delta t$!
@@ -40,7 +40,7 @@ Nhiều hệ trong tự nhiên và tài chính không tiến hóa theo quy luậ
 SDE giữ lại thành phần xu hướng (drift) tương tự ODE và bổ sung thành phần nhiễu (diffusion). Sự xuất hiện của thành phần ngẫu nhiên làm thay đổi căn bản cách hiểu về nghiệm, quy tắc vi phân và cách xây dựng lược đồ số.
 
 
-### Khung giải thích (nên đọc chậm): Tính tay 1 bước Euler–Maruyama cho Chuyển động Brown Hình học (Giá cổ phiếu)
+### Giải thích: Tính tay 1 bước Euler–Maruyama cho Chuyển động Brown Hình học (Giá cổ phiếu)
 
 Xét SDE $dS_t = \mu S_t\,dt + \sigma S_t\,dW_t$ với giá ban đầu $S_0 = 100$, lợi suất kỳ vọng $\mu = 0{,}10$, độ biến động $\sigma = 0{,}20$, bước thời gian $\Delta t = 0{,}25$ (1 quý), và mẫu ngẫu nhiên chuẩn $Z = +1{,}0$:
 1. **Tính số gia Brown**: $\Delta W = \sqrt{\Delta t}\,Z = \sqrt{0{,}25} \times 1{,}0 = \mathbf{0{,}50}$.

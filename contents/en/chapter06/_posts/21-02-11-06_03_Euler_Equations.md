@@ -14,14 +14,14 @@ Step away from uniform straight beams and look at a circular drumhead, a spheric
 
 If you rescale $$ x \mapsto \lambda x $$, the operator $$ x \frac{d}{dx} $$ stays completely unchanged! That scale invariance is the soul of the Cauchy–Euler equation, and it makes $$ x^r $$ the exact eigenfunction of scale-invariant differential operators, just as $$ e^{rt} $$ is the eigenfunction of translation-invariant ones.
 
-## Background Knowledge Map: Scale Invariance and Euler Equations
+## Key ideas: Scale Invariance and Euler Equations
 
 1. **Scale-Invariant Derivative Operator $$ \vartheta = x \frac{d}{dx} $$ (Lie Symmetry):** Under the change of variable $$ t = \ln x $$ (for $$ x > 0 $$), the chain rule gives $$ x \frac{d}{dx} = \frac{d}{dt} $$ and $$ x^2 \frac{d^2}{dx^2} = \frac{d^2}{dt^2} - \frac{d}{dt} $$. This transforms every Cauchy–Euler equation into a constant-coefficient linear ODE in $$ t $$, explaining *why* powers $$ x^r $$, logarithms $$ x^r \ln x $$, and log-oscillations $$ x^\alpha \cos(\beta \ln x) $$ appear.
 2. **The Indicial Quadratic Equation (Algebraic Spectrum):** Substituting $$ y = x^r $$ produces $$ \bigl[a r(r-1) + b r + c\bigr] x^r = 0 $$. The three root regimes—distinct real, repeated real, and complex conjugate—mirror the three regimes of constant-coefficient ODEs, only viewed through the logarithmic lens $$ t = \ln x $$.
 3. **Regular Singular Points Prototype (Bridge to Frobenius):** Writing $$ y'' + \frac{b}{ax} y' + \frac{c}{ax^2} y = 0 $$ shows that $$ x = 0 $$ is a *regular singular point*. Every more general equation with a regular singular point behaves asymptotically like a Cauchy–Euler equation as $$ x \to 0 $$, which is why Euler equations are the launchpad for the Frobenius method.
 4. **Domain Extension to $$ x < 0 $$:** Using $$ |x|^r $$ and $$ \ln|x| $$ extends solutions cleanly to $$ (-\infty, 0) $$, while $$ x = 0 $$ remains a boundary where solutions may diverge, oscillate infinitely rapidly, or stay bounded depending on $$ \operatorname{Re}(r) $$.
 
-### Step-by-Step Worked Example (Read Slowly): Solving a Repeated-Root and Complex-Root Euler Pair
+### Worked example: Solving a Repeated-Root and Complex-Root Euler Pair
 
 **Problem:** Solve the initial-value problem $$ x^2 y'' - 3x y' + 4y = 0 $$ with $$ y(1) = 2 $$, $$ y'(1) = 7 $$ for $$ x > 0 $$, and verify both the ODE and initial conditions directly.
 

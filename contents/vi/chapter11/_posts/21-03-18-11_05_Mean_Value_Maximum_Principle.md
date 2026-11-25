@@ -14,7 +14,7 @@ lesson_type: required
 
 Không cần giải ra một công thức nghiệm nào, chỉ nhìn vào bốn ký tự $\Delta u = 0$ ta đã có thể tuyên bố chắc nịch hai định luật thép: nhiệt độ tại tâm bất kỳ hình cầu nào luôn bằng **đúng trung bình cộng** nhiệt độ trên mặt cầu bao quanh nó, và điểm nóng nhất hay lạnh nhất của cả căn phòng cân bằng nhiệt **chỉ có thể nằm trên tường biên** chứ không bao giờ lơ lửng giữa phòng! Hai tính chất tưởng giản dị ấy—Tính chất Trung bình và Nguyên lý Cực đại—lại là vũ khí sắc bén nhất để chứng minh tính duy nhất và ổn định nghiệm của PDE elliptic.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Tính chất Trung bình & Nguyên lý Cực đại
+## Kiến thức cần nhớ: Bốn trụ cột của Tính chất Trung bình & Nguyên lý Cực đại
 
 1. **Tính chất Giá trị Trung bình (Mean Value Property — MVP)**:
    Với mọi hình cầu $B(x_0, r) \subset \Omega$, hàm điều hòa $u$ thỏa mãn $u(x_0) = \frac{1}{|\partial B|}\int_{\partial B(x_0, r)} u\,dS = \frac{1}{|B|}\int_{B(x_0, r)} u\,dx$. Đáng kinh ngạc hơn: tính chất này là **điều kiện cần và đủ** để một hàm liên tục là hàm điều hòa!
@@ -41,7 +41,7 @@ Sinh viên cần nắm phương trình Laplace, trực giác về trạng thái 
 Tại đây, trực giác về trạng thái cân bằng trở thành phát biểu toán học chính xác. Khi không có nguồn bên trong miền, không có cơ chế nào để đẩy giá trị nghiệm lên cực đại cục bộ hay kéo xuống cực tiểu cục bộ bên trong; mọi giá trị bên trong đều bị ràng buộc bởi lân cận và cuối cùng bởi dữ liệu trên biên.
 
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng trực tiếp cả MVP lẫn Nguyên lý Cực đại trên một đĩa đóng
+### Giải thích: Kiểm chứng trực tiếp cả MVP lẫn Nguyên lý Cực đại trên một đĩa đóng
 
 Xét hàm điều hòa $u(x, y) = x^2 - y^2 + 3$ trên đĩa đóng $\bar{D}: x^2 + y^2 \le 4$ (bán kính $R = 2$):
 1. **Kiểm tra Tính chất Trung bình trên đường tròn biên $r = 2$**:

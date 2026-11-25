@@ -14,14 +14,14 @@ Classical solvers like finite differences and finite elements solve boundary val
 
 Modern PINN theory solves this by importing two classical Chapter 07 weapons directly into neural architectures: *hard boundary-condition trial functions* (a trick dating back to Lagaris et al., 1998) and *spectral/Green's-function priors*.
 
-## Background Knowledge Map: PINNs Through the Lens of BVP Theory
+## Key ideas: PINNs Through the Lens of BVP Theory
 
 1. **Soft Penalty vs. Hard Boundary Enforcement:** A soft PINN loss $$ \mathcal{L} = \mathcal{L}_{\text{ODE}} + \lambda_{\text{bc}}\mathcal{L}_{\text{BC}} $$ can suffer from stiff, competing gradients. By writing $$ u_\theta(x) = g(x) + d(x)\,N_\theta(x) $$—where $$ g(x) $$ interpolates the boundary values and $$ d(x) $$ vanishes on $$ \partial\Omega $$—the boundary conditions are satisfied *exactly* for every weight vector $$ \theta $$.
 2. **Automatic Differentiation as Exact Operator Evaluation:** Reverse-mode autodiff computes $$ u_\theta'(x) $$ and $$ u_\theta''(x) $$ to machine precision without discretization error, turning any Sturm–Liouville residual $$ R_\theta(x) = -(p u_\theta')' + q u_\theta - f $$ into a differentiable objective.
 3. **Eigenvalue & Inverse BVP Discovery:** Unlike classical solvers that need all coefficients in advance, PINNs can treat unknown physical parameters (or eigenvalues $$ \lambda $$) as trainable scalars alongside $$ \theta $$, recovering diffusivity or stiffness fields directly from sparse noisy measurements.
 4. **Failure Modes & Diagnostics (Collocation & Stiffness):** Uniform collocation points can miss sharp boundary layers; adaptive residual-based sampling (RAR) and Fourier feature embeddings directly counteract spectral bias on high-wavenumber BVPs.
 
-### Step-by-Step Worked Example (Read Slowly): Designing a Hard-BC Trial Function and Computing Its Exact Residual
+### Worked example: Designing a Hard-BC Trial Function and Computing Its Exact Residual
 
 **Problem:** For the BVP $$ -u''(x) + u(x) = x $$ on $$ [0, 1] $$ with $$ u(0) = 1 $$ and $$ u(1) = 2 $$, construct a hard-BC trial function $$ u_\theta(x) = g(x) + x(1-x) N_\theta(x) $$, take the simplest 1-parameter linear network $$ N_\theta(x) = \theta $$ (a constant), and find the optimal $$ \theta^* $$ minimizing the collocation loss at the single interior point $$ x = \frac{1}{2} $$.
 

@@ -11,7 +11,7 @@ categories:
 
 Đầu thế kỷ 19, hàng loạt bài toán tưởng chừng không liên quan—dây đàn rung, thanh kim loại truyền nhiệt, màng trống tròn, trường hấp dẫn cầu—đều dẫn tới cùng một câu hỏi bí ẩn: *tại sao các tần số tự nhiên lại rời rạc và các hàm dao động riêng lại trực giao với nhau?* Năm 1836, hai người bạn thân Charles-François Sturm và Joseph Liouville đã khám phá ra một khuôn khổ toán học thống nhất trả lời trọn vẹn bí ẩn đó, đặt nền móng trực tiếp cho giải tích hàm và cơ học lượng tử thế kỷ 20!
 
-## Bản đồ kiến thức nền: Bốn dấu mốc lịch sử của Lý thuyết Bài toán Biên
+## Kiến thức cần nhớ: Bốn dấu mốc lịch sử của Lý thuyết Bài toán Biên
 
 1. **Cuộc tranh luận dây rung thế kỷ 18 (d'Alembert, Euler, Daniel Bernoulli)**:
    Bernoulli đề xuất mọi hình dạng dây rung đều là tổng vô hạn các sóng sin—ý tưởng bị Euler nghi ngờ nhưng sau này Fourier và Sturm–Liouville chứng minh là hoàn toàn chính xác.
@@ -33,7 +33,7 @@ Tại Paris vào khoảng những năm 1830, Jacques Sturm và Joseph Liouville 
 
 Xét ví dụ $$y'' + \lambda y = 0$$ với điều kiện biên $$y(0)=0$$ và $$y(L)=0$$. Với $$\lambda$$ tùy ý, bài toán thường chỉ có nghiệm tầm thường $$y=0$$. Chỉ khi $$\lambda = \left(\frac{n\pi}{L}\right)^2$$, hệ mới xuất hiện các chế độ riêng không tầm thường $$y_n(x)=\sin\left(\frac{n\pi x}{L}\right)$$. Ví dụ này cho thấy trọng tâm của Chương 07: bài toán biên không chỉ hỏi cách tìm nghiệm, mà còn xác định những hình dạng và tần số nào được phép tồn tại. Từ đó, trị riêng, hàm riêng và tính trực giao trở thành khái niệm trung tâm.
 
-### Khung giải thích (nên đọc chậm): Đưa một phương trình bất kỳ về dạng tự liên hợp Sturm–Liouville bằng nhân tử tích phân
+### Giải thích: Đưa một phương trình bất kỳ về dạng tự liên hợp Sturm–Liouville bằng nhân tử tích phân
 
 Xét phương trình Legendre $(1 - x^2)y'' - 2x y' + \lambda y = 0$.
 - Kiểm tra ngay: đạo hàm của $(1 - x^2)$ chính là $-2x$! Do đó phương trình đã ở sẵn dạng tự liên hợp:

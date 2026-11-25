@@ -20,7 +20,7 @@ This lesson introduces stochastic differential equations and the Euler-Maruyama 
 
 Students should know deterministic ODE methods and have some familiarity with random variables and Brownian motion at an intuitive level.
 
-## Background Knowledge Map: Calculus and Numerics Driven by Brownian Motion
+## Key ideas: Calculus and Numerics Driven by Brownian Motion
 
 Four core ideas bridge deterministic ODEs to stochastic differential equations $dX_t = \mu(X_t,t)\,dt + \sigma(X_t,t)\,dW_t$:
 
@@ -100,7 +100,7 @@ This highlights the new nature of the problem.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Itô's Lemma and One Euler–Maruyama Step for Geometric Brownian Motion
+### Worked example: Itô's Lemma and One Euler–Maruyama Step for Geometric Brownian Motion
 
 Solve the geometric Brownian motion SDE $dS_t = \mu S_t\,dt + \sigma S_t\,dW_t$ analytically using Itô's Lemma, then compare the exact value after one step against Euler–Maruyama for $S_0 = 100$, $\mu = 0.05$, $\sigma = 0.2$, $\Delta t = 0.25$, and random draw $Z_0 = +1$ (so $\Delta W_0 = \sqrt{0.25}(1) = 0.5$).
 

@@ -14,7 +14,7 @@ lesson_type: required
 
 Làm sao dạy máy tính giải phương trình Poisson $-\Delta u = f$ hay phương trình nhiệt $u_t = \alpha u_{xx}$ khi máy tính chỉ hiểu mảng số hữu hạn? **Phương pháp Sai phân Hữu hạn (Finite Difference Method — FDM)** phủ lên miền $\Omega$ một mạng lưới tọa độ bước $h$, thay mọi đạo hàm riêng bằng tổ hợp tuyến tính của vài nút lân cận (*stencil*), và biến PDE vô hạn chiều thành một **hệ phương trình đại số tuyến tính $A\mathbf{u} = \mathbf{b}$** có ma trận cực thưa!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Sai phân Hữu hạn cho PDE
+## Kiến thức cần nhớ: Bốn trụ cột của Sai phân Hữu hạn cho PDE
 
 1. **Xây dựng Stencil 3 điểm (1D) và 5 điểm (2D) cho Toán tử Laplace**:
    Thay $u_{xx} \approx \frac{u_{i-1} - 2u_i + u_{i+1}}{h^2}$ ở 1D và cộng thêm chiều $y$ cho stencil 5 điểm 2D đạt bậc chính xác $O(h^2)$.
@@ -42,7 +42,7 @@ Máy tính không xử lý trực tiếp miền liên tục vô hạn điểm m�
 Việc lựa chọn công thức sai phân không chỉ là thao tác hình thức: nó quyết định bậc chính xác, tính ổn định và khả năng bảo toàn tính chất vật lý của PDE gốc.
 
 
-### Khung giải thích (nên đọc chậm): Giải tay trọn vẹn hệ ma trận sai phân 3 điểm cho $-u'' = 2$ trên $(0, 1)$
+### Giải thích: Giải tay trọn vẹn hệ ma trận sai phân 3 điểm cho $-u'' = 2$ trên $(0, 1)$
 
 Chia đoạn $[0, 1]$ thành $3$ đoạn bằng nhau ($h = \frac{1}{3}$), có 2 nút trong $x_1 = \frac{1}{3}$, $x_2 = \frac{2}{3}$ và biên $u_0 = u_3 = 0$:
 1. **Viết phương trình sai phân $\frac{-u_{i-1} + 2u_i - u_{i+1}}{h^2} = 2$** (với $1/h^2 = 9$):

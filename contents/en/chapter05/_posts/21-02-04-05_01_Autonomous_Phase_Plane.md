@@ -12,7 +12,7 @@ lesson_type: required
 
 Step outside linear differential equations and the closed-form formulas of Chapters 1–4 vanish almost immediately: even a simple nonlinear system like a pendulum with friction or competing species has no elementary formula for $$(x(t), y(t))$$. Henri Poincaré's revolutionary insight was that we do not *need* a formula—by drawing just two curves called **nullclines** where $$x' = 0$$ and $$y' = 0$$, the entire phase plane carves up into directional regions that reveal equilibria, traps, and long-term fate at a glance.
 
-## Background Knowledge Map: Reading a Nonlinear Phase Plane Without Solving It
+## Key ideas: Reading a Nonlinear Phase Plane Without Solving It
 
 Four geometric tools unlock every planar autonomous system $$x' = f(x,y),\; y' = g(x,y)$$:
 
@@ -21,7 +21,7 @@ Four geometric tools unlock every planar autonomous system $$x' = f(x,y),\; y' =
 3. **Sign-Region Compass:** Between nullclines, neither $$f$$ nor $$g$$ can change sign, so every connected region carries a single compass direction (NE, NW, SE, or SW)—telling you immediately whether trajectories are trapped or forced toward a specific equilibrium.
 4. **No-Crossing and Positively Invariant Sets:** Because $$f, g \in C^1$$ guarantees uniqueness, trajectories never cross each other; if arrows along the entire boundary of a box point inward, no trajectory can ever escape that trapping region!
 
-### Step-by-Step Worked Example (Read Slowly): Nullcline and Equilibrium Analysis of a Nonlinear Planar System
+### Worked example: Nullcline and Equilibrium Analysis of a Nonlinear Planar System
 
 Sketch the phase-plane skeleton of the autonomous system
 $$x' = x(3 - x - y), \qquad y' = y(2 - x - 2y), \qquad x \ge 0,\; y \ge 0.$$

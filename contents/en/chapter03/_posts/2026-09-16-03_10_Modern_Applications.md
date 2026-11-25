@@ -12,7 +12,7 @@ lesson_type: optional
 
 Fourier Neural Operators (FNOs) revolutionized scientific machine learning by learning PDEs in the frequency domain, yet they carry an Achilles' heel: the Fourier transform assumes periodic signals and struggles with abrupt transients, step inputs, or decaying non-periodic responses. **Laplace Neural Operators (LNOs)** and modern **Structured State-Space Models (S4 / Mamba)** overcome this exact barrier by parameterizing learned layers directly as rational transfer functions—poles and residues in the complex $$s$$-plane!
 
-## Background Knowledge Map: Classical Laplace Theory Inside Modern AI Architectures
+## Key ideas: Classical Laplace Theory Inside Modern AI Architectures
 
 Four concepts from Chapter 03 map directly onto cutting-edge neural operators and sequence models:
 
@@ -21,7 +21,7 @@ Four concepts from Chapter 03 map directly onto cutting-edge neural operators an
 3. **Stability by Architectural Construction:** Enforcing $$\operatorname{Re}(\mu_k) < 0$$ (e.g., via $$\mu_k = -\operatorname{softplus}(\alpha_k) + i\omega_k$$) mathematically guarantees BIBO stability across arbitrarily long rollouts, preventing exploding activations.
 4. **Handling Discontinuous Forcing:** Because Laplace transforms natively encode step switches and impulses via $$e^{-cs}$$, LNOs outperform pure Fourier surrogates on impact mechanics, switched circuits, and transient heat shocks.
 
-### Step-by-Step Worked Example (Read Slowly): Evaluating a 2-Pole Learned Transfer Function on a Step Input
+### Worked example: Evaluating a 2-Pole Learned Transfer Function on a Step Input
 
 Suppose a trained 2-pole Laplace Neural Operator layer has learned a conjugate-symmetric pole–residue pair with poles $$p_{1,2} = -2 \pm 4i$$ and residues $$\beta_{1,2} = 1 \mp \frac{1}{2}i$$:
 $$H_\theta(s) = \frac{1 - \frac{1}{2}i}{s - (-2 + 4i)} + \frac{1 + \frac{1}{2}i}{s - (-2 - 4i)}.$$

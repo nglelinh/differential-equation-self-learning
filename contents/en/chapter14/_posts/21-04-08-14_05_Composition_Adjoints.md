@@ -20,7 +20,7 @@ This lesson studies composition and adjoint rules in pseudo-differential calculu
 
 Students should know symbols, pseudo-differential operator definitions, and basic operator adjoint ideas.
 
-## Background Knowledge Map: The Symbolic Algebra of Composition and Adjoints
+## Key ideas: The Symbolic Algebra of Composition and Adjoints
 
 Four structural theorems make $\Psi^*(\mathbb{R}^n) = \bigcup_m \Psi^m$ a closed $*$-algebra modulo smoothing operators:
 
@@ -100,7 +100,7 @@ This completes the basic operator algebra picture.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Verifying the Composition Formula $a \# b$ on $D_x^2 \circ x^2$
+### Worked example: Verifying the Composition Formula $a \# b$ on $D_x^2 \circ x^2$
 
 Let $A = D_x^2 = -\frac{d^2}{dx^2}$ (symbol $a(x,\xi) = \xi^2 \in S^2$) and $B = x^2$ (multiplication operator, symbol $b(x,\xi) = x^2 \in S^0$ on compact sets). Compute the symbol of $A \circ B$ using the composition formula $a \# b = \sum_{k=0}^\infty \frac{1}{k!}\partial_\xi^k a\,D_x^k b$, and cross-check by applying $-\frac{d^2}{dx^2}$ directly to $x^2 u(x)$.
 

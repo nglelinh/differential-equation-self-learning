@@ -12,7 +12,7 @@ categories:
 
 Cuối thế kỷ XVII, một thách thức nhỏ từ Jakob Bernoulli về hình dạng sợi dây xích treo tự do (catenary) và đường cong rơi nhanh nhất (brachistochrone) đã châm ngòi cho cuộc cách mạng mang tên **phương trình vi phân cấp một**. Từ những phép tách biến đầu tiên của Leibniz, thừa số tích phân của Euler cho tới định lý tồn tại–duy nhất chặt chẽ của Picard cuối thế kỷ XIX, Chương 01 tái hiện hành trình hai trăm năm biến nghệ thuật đoán nghiệm thành khoa học hệ thống.
 
-## Bản đồ kiến thức nền: Bốn cột mốc lịch sử của PTVP Cấp Một
+## Kiến thức cần nhớ: Bốn cột mốc lịch sử của PTVP Cấp Một
 
 1. **Leibniz & Anh em nhà Bernoulli (1690–1700)**:
    Phát minh thuật ngữ "tách biến" (separation of variables), giải phương trình Bernoulli $y' + P(x)y = Q(x)y^n$ bằng phép thế $u = y^{1-n}$ và biến bài toán hình học cổ điển thành PTVP.
@@ -34,7 +34,7 @@ Brussels, năm 1838. Khi đối chiếu các bảng số liệu dân số, Pierr
 
 Verhulst giải quyết vấn đề bằng một chỉnh sửa gọn gàng ở phương trình cấp một: thay luật tăng trưởng mũ $$y' = ry$$ bằng phương trình logistic $$y' = ry\left(1 - \frac{y}{K}\right)$$. Cấu trúc phương trình thể hiện trực tiếp cơ chế tự điều chỉnh: khi $$y$$ còn nhỏ so với sức chứa $$K$$, tốc độ tăng gần bằng $$ry$$; khi $$y$$ tiến gần $$K$$, nhân tử $$1 - \frac{y}{K}$$ kéo tốc độ tăng về gần $$0$$. Chẳng hạn, với $$K = 1000$$ và $$y = 900$$, tốc độ tăng chỉ còn $$0.1ry$$, thấp hơn nhiều so với tăng trưởng mũ. Phương trình vi phân cấp một hiện lên như một ngôn ngữ mô hình hóa cô đọng: chỉ từ một quy luật cục bộ đã phản ánh được hành vi bão hòa của hệ thực.
 
-### Khung giải thích (nên đọc chậm): Giải lại bài toán lịch sử của Jakob Bernoulli (1695): $y' + y = y^2$
+### Giải thích: Giải lại bài toán lịch sử của Jakob Bernoulli (1695): $y' + y = y^2$
 
 Đây là ví dụ kinh điển khiến anh em nhà Bernoulli tranh luận sôi nổi trên tạp chí *Acta Eruditorum*:
 1. **Nhận dạng**: Phương trình Bernoulli với $n = 2$. Phép thế thiên tài của Leibniz là đặt $u = y^{1-2} = y^{-1}$, suy ra $u' = -y^{-2}y'$.

@@ -12,7 +12,7 @@ lesson_type: required
 
 Suppose three coupled masses oscillate on springs between two walls: at first glance their positions $$x_1(t), x_2(t), x_3(t)$$ seem hopelessly tangled, because every mass pulls on its neighbors. Linear algebra reveals that if you rotate your coordinate system into the matrix's eigenvectors, the tangled system splits cleanly into three independent one-dimensional motions. Almost every theorem about linear ODEs—from Wronskians to matrix exponentials—is linear algebra wearing calculus clothes.
 
-## Background Knowledge Map: Linear Algebra as the Skeleton of Linear ODEs
+## Key ideas: Linear Algebra as the Skeleton of Linear ODEs
 
 Four linear-algebraic pillars organize Chapters 2 and 4 of this course:
 
@@ -21,7 +21,7 @@ Four linear-algebraic pillars organize Chapters 2 and 4 of this course:
 3. **Eigenvalues and Eigenvectors ($$A\mathbf{v} = \lambda\mathbf{v}$$):** An eigenvector is a direction preserved by the dynamics; along that line, the matrix system $$\mathbf{x}' = A\mathbf{x}$$ collapses to the scalar exponential $$c\,e^{\lambda t}\mathbf{v}$$.
 4. **Diagonalization and Generalized Eigenvectors:** When $$A = PDP^{-1}$$, powers and exponentials simplify to $$e^{At} = Pe^{Dt}P^{-1}$$; when $$A$$ is defective (missing eigenvectors), Jordan chains explain why secular terms like $$t\,e^{\lambda t}$$ appear.
 
-### Step-by-Step Worked Example (Read Slowly): Diagonalizing a $$2\times 2$$ Matrix to Predict System Evolution
+### Worked example: Diagonalizing a $$2\times 2$$ Matrix to Predict System Evolution
 
 Let $$A = \begin{pmatrix} 4 & 1 \\ 2 & 3 \end{pmatrix}$$. We will find its eigenpairs, verify $$A = PDP^{-1}$$, and compute $$A^3$$ effortlessly.
 

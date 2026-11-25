@@ -12,14 +12,14 @@ lesson_type: optional
 
 Seeing a square wave assemble itself harmonic by harmonic—watching the flat plateau tighten while the tiny Gibbs horns refuse to shrink—teaches more about Fourier convergence in ten seconds than a page of inequalities. This companion gallery brings every core concept of Chapter 08 to life: partial-sum synthesis, even/odd reflections, Parseval energy bars, and the continuous frequency limit of the Fourier transform.
 
-## Background Knowledge Map: Reading the Chapter 08 Visual Lab
+## Key ideas: Reading the Chapter 08 Visual Lab
 
 1. **Harmonic Addition & Gibbs Persistence:** As you increase $$ N $$ in the partial-sum frames, verify that smooth regions converge rapidly while the peak overshoot next to a jump stays stubbornly locked at $$ \approx 8.95\% $$ of the jump height.
 2. **Even vs. Odd Half-Range Extensions:** Toggle between sine and cosine extensions on $$ [0, L] $$ and look at the endpoints $$ x = 0 $$ and $$ x = L $$—watch how artificial jumps in the odd extension slow convergence compared to a continuous even reflection.
 3. **Spectral Decay vs. Regularity:** Compare the bar-chart heights of $$ |a_n|, |b_n| $$ across a square wave ($$ 1/n $$), a triangle wave ($$ 1/n^2 $$), and a smooth periodic bump (exponential decay).
 4. **Discrete-to-Continuous Spectrum Morphing:** In the Fourier transform frame, stretch the period $$ 2L $$ and watch the discrete vertical spectral lines pack together into a smooth continuous envelope $$ \hat{f}(\omega) $$.
 
-### Step-by-Step Worked Example (Read Slowly): Predicting the First Three Harmonics of a Triangle Wave Before Moving the Slider
+### Worked example: Predicting the First Three Harmonics of a Triangle Wave Before Moving the Slider
 
 **Problem:** For the $$ 2\pi $$-periodic triangle wave $$ f(x) = |x| $$ on $$ [-\pi, \pi] $$, we found $$ f(x) = \frac{\pi}{2} - \frac{4}{\pi}\bigl(\cos x + \frac{1}{9}\cos 3x + \frac{1}{25}\cos 5x + \cdots\bigr) $$. Compute the maximum error of the $$ 2 $$-harmonic approximation $$ S_1(x) = \frac{\pi}{2} - \frac{4}{\pi}\cos x $$ at the corner $$ x = 0 $$ and at $$ x = \frac{\pi}{2} $$.
 

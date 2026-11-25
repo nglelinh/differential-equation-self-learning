@@ -13,7 +13,7 @@ lesson_type: optional
 
 Khi bạn uống một viên thuốc, hoạt chất đi từ dạ dày vào máu, phân tán sang các mô rồi mới được gan thận thải trừ; tương tự, ô nhiễm hóa học luân chuyển giữa chuỗi hồ thông nhau hay carbon tuần hoàn giữa khí quyển và đại dương. Tất cả đều được mô tả bởi **Mô hình Ngăn (Compartment Models)**—một lớp hệ tuyến tính $\mathbf{x}' = A\mathbf{x} + \mathbf{b}$ có cấu trúc ma trận cực kỳ đẹp đảm bảo nồng độ không bao giờ âm và hệ luôn hội tụ về cân bằng bền vững!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Mô hình Ngăn
+## Kiến thức cần nhớ: Bốn trụ cột của Mô hình Ngăn
 
 1. **Nguyên lý cân bằng dòng chảy cho từng ngăn**:
    $x_i'(t) = \sum_{j \ne i} k_{ij} x_j - \left(\sum_{j \ne i} k_{ji} + k_{0i}\right)x_i + b_i(t)$: phần tử ngoài đường chéo $a_{ij} \ge 0$ (dòng chảy vào từ ngăn $j$), phần tử đường chéo $a_{ii} \le 0$ (tổng dòng chảy ra khỏi ngăn $i$).
@@ -41,7 +41,7 @@ Bên cạnh dao động và cơ học, một lớp ứng dụng rộng lớn kh�
 
 Mô hình ngăn không chỉ theo dõi "mỗi khoang chứa bao nhiêu" mà còn thể hiện "vật chất đi từ đâu sang đâu", giúp trả lời ngay các câu hỏi về bảo toàn khối lượng, thất thoát ra môi trường và trạng thái cân bằng dài hạn.
 
-### Khung giải thích (nên đọc chậm): Giải mô hình dược động học 2 ngăn (Dạ dày $x_1$ $\xrightarrow{k_1 = 2}$ Máu $x_2$ $\xrightarrow{k_2 = 1}$ Thải trừ) với liều uống $x_1(0) = 100\text{ mg},\; x_2(0) = 0$
+### Giải thích: Giải mô hình dược động học 2 ngăn (Dạ dày $x_1$ $\xrightarrow{k_1 = 2}$ Máu $x_2$ $\xrightarrow{k_2 = 1}$ Thải trừ) với liều uống $x_1(0) = 100\text{ mg},\; x_2(0) = 0$
 
 1. **Hệ phương trình tam giác**:
    $$\begin{pmatrix} x_1 \\ x_2 \end{pmatrix}' = \begin{pmatrix} -2 & 0 \\ 2 & -1 \end{pmatrix}\begin{pmatrix} x_1 \\ x_2 \end{pmatrix}.$$

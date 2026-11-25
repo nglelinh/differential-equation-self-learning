@@ -14,7 +14,7 @@ lesson_type: required
 
 Làm sao nghịch đảo một toán tử vi phân elliptic hệ số biến thiên $P = -\nabla \cdot (a(x)\nabla) + \dots$ khi ta không thể đơn giản chia cho đa thức như trường hợp hệ số hằng? Câu trả lời của đại số $\Psi$DO đẹp như một ván cờ: ta không cần tìm nghịch đảo chính xác ngay lập tức, mà xây dựng từng nấc một **nghịch đảo xấp xỉ tới sai số làm trơn** gọi là **Parametrix** $Q \in \Psi^{-m}$ sao cho $PQ = I + R_1$ và $QP = I + R_2$ với $R_1, R_2 \in \Psi^{-\infty}$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Toán tử Elliptic và Xây dựng Parametrix
+## Kiến thức cần nhớ: Bốn trụ cột của Toán tử Elliptic và Xây dựng Parametrix
 
 1. **Điều kiện Elliptic Toàn cục của Ký hiệu $p \in S^m$**:
    Tồn tại hằng số $c > 0$ và $R > 0$ sao cho $|p(x, \xi)| \ge c\langle\xi\rangle^m$ với mọi $|\xi| \ge R$. Điều kiện này đảm bảo $1/p(x, \xi)$ hoàn toàn trơn và thuộc $S^{-m}$ ở vùng tần số cao $|\xi| \ge R$!
@@ -41,7 +41,7 @@ Trong lý thuyết PDE cổ điển, toán tử elliptic được nhận diện 
 Điểm nổi bật của cách tiếp cận này là ta không cần tìm nghịch đảo chính xác; chỉ cần dựng một nghịch đảo gần đúng sao cho phần sai khác là một toán tử làm trơn. Trong lý thuyết elliptic, sai số làm trơn thường đã đủ để rút ra các kết luận giải tích quan trọng.
 
 
-### Khung giải thích (nên đọc chậm): Tính tay hai số hạng đầu tiên của Parametrix cho toán tử elliptic hệ số biến thiên
+### Giải thích: Tính tay hai số hạng đầu tiên của Parametrix cho toán tử elliptic hệ số biến thiên
 
 Xét toán tử elliptic bậc $2$ trên $\mathbb{R}$: $P = D_x^2 + x D_x + 1$, có ký hiệu $p(x, \xi) = \xi^2 + x\xi + 1$. Với $|\xi|$ lớn, ta tìm ký hiệu parametrix $q \sim q_{-2} + q_{-3} + \dots$ sao cho $p \# q \sim 1$:
 1. **Tìm số hạng chính $q_{-2} \in S^{-2}$** (khử phần bậc $0$ của $p \# q$):

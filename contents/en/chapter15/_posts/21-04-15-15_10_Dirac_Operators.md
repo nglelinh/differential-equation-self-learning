@@ -21,7 +21,7 @@ This optional lesson introduces the Dirac operator as one of the most important 
 
 Students should know the basic language of elliptic operators, principal symbols, Sobolev regularity, Hilbert spaces, and the main ideas of microlocal elliptic theory. A full course in spin geometry is not required for this lesson. When that background is missing, students can safely use the Hodge-Dirac operator $$d+d^*$$ on differential forms as the gateway model before moving to the spin Dirac operator on a spin manifold.
 
-## Background Knowledge Map: Clifford Algebras, Spinors, and Elliptic First-Order Systems
+## Key ideas: Clifford Algebras, Spinors, and Elliptic First-Order Systems
 
 Four pillars unite Dirac's quantum equation with modern geometric analysis and index theory:
 
@@ -179,7 +179,7 @@ is equal to a topological invariant, in the pure spin case the $$\widehat{A}$$-g
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Factoring the 2D Laplacian with Pauli Matrices
+### Worked example: Factoring the 2D Laplacian with Pauli Matrices
 
 Use the $2\times 2$ Pauli matrices
 $$\sigma_1 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \qquad \sigma_2 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}$$

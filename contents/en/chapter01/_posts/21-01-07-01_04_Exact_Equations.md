@@ -12,7 +12,7 @@ lesson_type: required
 
 Imagine hiking across a mountain range while keeping your altimeter glued to a fixed elevation: you trace a level contour line along which your total change in height is zero, $$d\Psi = \Psi_x\,dx + \Psi_y\,dy = 0$$. An exact differential equation is simply the reverse detective problem—you are handed the slope components $$M(x,y)\,dx + N(x,y)\,dy = 0$$ and asked to reconstruct the hidden elevation landscape $$\Psi(x,y) = C$$ whose contours are the solution curves.
 
-## Background Knowledge Map: Conservative Vector Fields and Exact 1-Forms
+## Key ideas: Conservative Vector Fields and Exact 1-Forms
 
 Four ideas from multivariable calculus and differential geometry explain exact equations completely:
 
@@ -21,7 +21,7 @@ Four ideas from multivariable calculus and differential geometry explain exact e
 3. **Path-Independent Potential Reconstruction:** Integrating $$M$$ with respect to $$x$$ determines $$\Psi(x,y)$$ up to an unknown function $$g(y)$$ (not merely a constant!), which is then pinned down uniquely by matching $$\Psi_y = N$$.
 4. **Special Integrating Factors:** When $$M_y \ne N_x$$, multiplying by a rescaling factor $$\mu(x,y)$$ can restore exactness—in particular, if $$\frac{M_y - N_x}{N}$$ depends only on $$x$$, then $$\mu(x) = \exp\!\left(\int \frac{M_y - N_x}{N}\,dx\right)$$ makes the equation exact.
 
-### Step-by-Step Worked Example (Read Slowly): Repairing a Non-Exact Equation with an Integrating Factor and Finding Its Potential
+### Worked example: Repairing a Non-Exact Equation with an Integrating Factor and Finding Its Potential
 
 Solve the differential equation
 $$(3xy + y^2)\,dx + (x^2 + xy)\,dy = 0.$$

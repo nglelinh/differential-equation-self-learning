@@ -24,7 +24,7 @@ Work through the gallery in lesson order. After each figure, return to the corre
 
 The page is also a useful bridge into Chapter 15, where the symbolic viewpoint becomes more geometric and microlocal.
 
-## Background Knowledge Map: Reading Phase-Space Plots of Symbols and Kernels
+## Key ideas: Reading Phase-Space Plots of Symbols and Kernels
 
 Keep four visual patterns in mind as you inspect the figures in this gallery:
 
@@ -42,7 +42,7 @@ Keep four visual patterns in mind as you inspect the figures in this gallery:
   height="980px"
 %}
 
-### Step-by-Step Worked Example (Read Slowly): Contrasting Differential, Parametrix, and Smoothing Symbols at High Frequency
+### Worked example: Contrasting Differential, Parametrix, and Smoothing Symbols at High Frequency
 
 Compare three representative 1D symbols at $(x, \xi) = (0, 10)$: a second-order elliptic symbol $p(x,\xi) = (1+x^2)(1+\xi^2) \in S^2$, its leading parametrix $q_0(x,\xi) = (1+x^2)^{-1}(1+\xi^2)^{-1} \in S^{-2}$, and a smoothing symbol $r(x,\xi) = e^{-x^2 - \xi^2} \in S^{-\infty}$.
 

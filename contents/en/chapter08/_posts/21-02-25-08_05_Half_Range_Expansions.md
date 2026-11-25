@@ -14,14 +14,14 @@ Real physical rods, violin strings, and acoustic pipes do not live on $$ [-L, L]
 
 The trick is pure mathematical artistry: we invent a "ghost mirror" on $$ [-L, 0] $$! Reflect $$ f(x) $$ oddly across $$ x = 0 $$ to generate a Fourier sine series; reflect $$ f(x) $$ evenly across $$ x = 0 $$ to generate a Fourier cosine series. Both series agree identically with $$ f(x) $$ on $$ (0, L) $$, yet behave completely differently at the endpoints $$ x = 0 $$ and $$ x = L $$!
 
-## Background Knowledge Map: Ghost Reflections and Boundary-Matched Bases
+## Key ideas: Ghost Reflections and Boundary-Matched Bases
 
 1. **Odd Periodic Extension (Fourier Sine Series):** Defining $$ f_{\text{odd}}(-x) = -f(x) $$ on $$ (-L, 0) $$ and repeating with period $$ 2L $$ yields $$ f(x) \sim \sum_{n=1}^\infty b_n \sin\!\left(\frac{n\pi x}{L}\right) $$ with $$ b_n = \frac{2}{L}\int_0^L f(x)\sin\!\left(\frac{n\pi x}{L}\right)dx $$. Every basis function satisfies Dirichlet BCs $$ u(0) = u(L) = 0 $$.
 2. **Even Periodic Extension (Fourier Cosine Series):** Defining $$ f_{\text{even}}(-x) = f(x) $$ on $$ (-L, 0) $$ yields $$ f(x) \sim \frac{a_0}{2} + \sum_{n=1}^\infty a_n \cos\!\left(\frac{n\pi x}{L}\right) $$ with $$ a_n = \frac{2}{L}\int_0^L f(x)\cos\!\left(\frac{n\pi x}{L}\right)dx $$. Every basis function satisfies Neumann BCs $$ u'(0) = u'(L) = 0 $$.
 3. **Why Convergence Speed Differs Between the Two:** If $$ f(0) \neq 0 $$ or $$ f(L) \neq 0 $$, the odd extension introduces artificial jumps at $$ x = 0 $$ and $$ x = L $$, forcing slow $$ O(1/n) $$ sine decay and Gibbs oscillations at the endpoints. Meanwhile, the even extension automatically glues $$ f(0^-) = f(0^+) $$ and $$ f(L^-) = f(L^+) $$ continuously, giving faster $$ O(1/n^2) $$ cosine decay!
 4. **PDE Boundary Dictates the Choice:** You do not pick sine vs. cosine arbitrarily—Dirichlet BCs force the sine series, while Neumann BCs force the cosine series.
 
-### Step-by-Step Worked Example (Read Slowly): Half-Range Sine vs. Cosine Series for $$ f(x) = 1 - x $$ on $$ [0, 1] $$
+### Worked example: Half-Range Sine vs. Cosine Series for $$ f(x) = 1 - x $$ on $$ [0, 1] $$
 
 **Problem:** Compute *both* the Fourier sine series and the Fourier cosine series of $$ f(x) = 1 - x $$ on $$ (0, 1) $$, and compare their convergence rates and values at $$ x = 0 $$.
 

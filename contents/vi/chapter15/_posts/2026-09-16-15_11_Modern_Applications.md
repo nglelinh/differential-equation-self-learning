@@ -12,7 +12,7 @@ lesson_type: optional
 
 Khi máy chụp cắt lớp CT bệnh viện chỉ quay được một góc hạn chế (ví dụ $120^\circ$ thay vì đủ $180^\circ$ để giảm liều tia X), ảnh tái tạo truyền thống luôn xuất hiện những vệt nhòe và cạnh bị "biến mất" đầy bí ẩn. Phân tích vi địa phương giải thích chính xác từng milimet **cạnh nào bị mù (invisible singularities)** theo định lý Quinto—và ngày nay, các mô hình AI tái tạo ảnh y khoa kết hợp **prior vi cục bộ** chính để khôi phục thông minh phần mặt sóng bị thiếu mà không bịa ra khối u giả!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Bài toán Ngược Học được & Prior Vi cục bộ
+## Kiến thức cần nhớ: Bốn trụ cột của Bài toán Ngược Học được & Prior Vi cục bộ
 
 1. **Biến đổi Radon như một Toán tử Tích phân Fourier (FIO)**:
    Chụp CT đo tích phân đường thẳng $Rf(\theta, s)$ của mật độ mô $f(x)$; quan hệ chính tắc của $R$ chỉ ra một cạnh ảnh ở $(x, \xi)$ chỉ được ghi nhận nếu có tia X đi **tiếp tuyến với cạnh** (tức vuông góc với pháp tuyến $\xi$)!
@@ -40,7 +40,7 @@ Ba hướng phát triển trong giai đoạn 2022–2024 minh họa rõ giao đi
 Trong mọi trường hợp trên, ánh xạ thuận ở tần số cao là một FIO hoặc hợp thành các FIO. Một nghịch đảo học được không tôn trọng quan hệ chính tắc không phải là một lý thuyết ảnh học mới; nó chỉ là một tiên nghiệm (prior) có thể phản ánh đúng hoặc sai những gì dữ liệu đo thực sự chứa.
 
 
-### Khung giải thích (nên đọc chậm): Kiểm tra nhanh bằng góc tia X xem cạnh mô nào "nhìn thấy" hay "bị mù" trong CT góc hạn chế
+### Giải thích: Kiểm tra nhanh bằng góc tia X xem cạnh mô nào "nhìn thấy" hay "bị mù" trong CT góc hạn chế
 
 Giả sử máy CT góc hạn chế chỉ chiếu tia X theo các phương tạo góc $\theta_{\text{tia}} \in [-60^\circ, +60^\circ]$ so với trục ngang $Ox$:
 1. **Điều kiện nhìn thấy vi cục bộ (Định lý Quinto)**: Một bờ cạnh có vector pháp tuyến $\xi$ chỉ hiện rõ nét nếu có ít nhất một tia X song song với bờ cạnh (tức $\theta_{\text{tia}} \perp \xi$).

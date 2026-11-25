@@ -12,7 +12,7 @@ lesson_type: optional
 
 Điều gì xảy ra khi ta đặt một bộ giải Runge–Kutta hay Euler–Maruyama *ngay bên trong* đồ thị tính toán của PyTorch/JAX để mạng nơ-ron học trực tiếp trường vector $f_\theta(y, t)$ của hệ động lực? Đó chính là cuộc cách mạng **Neural ODE, Neural SDE và Bộ giải Khả vi (Differentiable Solvers)**: thay vì lưu hàng nghìn bước trung gian làm tràn bộ nhớ GPU, ta giải ngược một **phương trình liên hợp (Adjoint ODE)** để tính gradient $\nabla_\theta \mathcal{L}$ với bộ nhớ $O(1)$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Bộ giải Khả vi & Neural SDE
+## Kiến thức cần nhớ: Bốn trụ cột của Bộ giải Khả vi & Neural SDE
 
 1. **Neural ODE ($y'(t) = f_\theta(y(t), t)$) như giới hạn liên tục của ResNet**:
    Mỗi tầng mạng phần dư $y_{k+1} = y_k + h f_{\theta_k}(y_k)$ chính là một bước Euler; cho $h \to 0$ biến mạng sâu thành một ODE liên tục với bộ giải thích nghi bước thời gian!
@@ -38,7 +38,7 @@ Một phương pháp số thực chất là ánh xạ từ trường vector và 
 Ở nhánh ngẫu nhiên, Kidger, Foster, Li và Lyons (*Neural SDEs as Infinite-Dimensional GANs*, ICML 2021; *Efficient and Accurate Gradients for Neural SDEs*, NeurIPS 2021) chỉ ra cách lan truyền ngược qua bộ giải SDE. Song và cộng sự (ICLR 2021) sử dụng SDE khuếch tán làm mô hình sinh dữ liệu. Các vấn đề giải tích số cốt lõi vẫn giữ nguyên như trong chương: sai số mạnh so với sai số yếu, độ cứng và tính ổn định của lược đồ Euler–Maruyama.
 
 
-### Khung giải thích (nên đọc chậm): Tính tay gradient bằng Phương pháp Liên hợp (Adjoint) mà không cần lưu lịch sử bước
+### Giải thích: Tính tay gradient bằng Phương pháp Liên hợp (Adjoint) mà không cần lưu lịch sử bước
 
 Xét Neural ODE cực giản $y'(t) = \theta y(t)$, $y(0) = 1$ trên $[0, 1]$ với hàm mất mát $\mathcal{L} = \frac{1}{2}(y(1) - 2)^2$, cần tính $\frac{d\mathcal{L}}{d\theta}$ tại $\theta = 0$:
 1. **Lượt xuôi (Forward)**: Tại $\theta = 0$, $y'(t) = 0 \implies y(t) \equiv 1$ trên toàn $[0, 1]$, nên $y(1) = 1$.

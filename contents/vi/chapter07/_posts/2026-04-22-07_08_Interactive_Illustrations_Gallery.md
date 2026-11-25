@@ -12,7 +12,7 @@ lesson_type: optional
 
 Khác với bài toán giá trị ban đầu (IVP) luôn có đúng một nghiệm duy nhất xuất phát từ $t = 0$, **Bài toán giá trị biên (BVP)** đặt điều kiện ở *hai đầu* $x = a$ và $x = b$—giống như bắn một mũi tên từ $a$ phải trúng chính xác hồng tâm ở $b$. Bộ minh họa tương tác Chương 07 cho bạn trực tiếp kéo tham số $\lambda$ để chứng kiến khoảnh khắc cộng hưởng khi mũi tên trúng đích (xuất hiện trị riêng và hàm riêng!), thấy các đường nút dao động tăng dần và quan sát hàm Green gãy khúc ngay tại điểm đặt lực.
 
-## Bản đồ kiến thức nền: Bốn trực giác hình học cần nắm qua Bộ Minh họa Chương 07
+## Kiến thức cần nhớ: Bốn trực giác hình học cần nắm qua Bộ Minh họa Chương 07
 
 1. **Khác biệt định tính giữa IVP và BVP**:
    BVP có thể có **duy nhất 1 nghiệm**, **vô nghiệm**, hoặc **vô số nghiệm** tùy vào việc tham số có trùng với trị riêng hay không.
@@ -42,7 +42,7 @@ Bài học bổ sung này tập hợp toàn bộ các minh họa JavaScript củ
   height="920px"
 %}
 
-### Khung giải thích (nên đọc chậm): Quan sát trực quan 3 chế độ nghiệm của BVP $y'' + \lambda y = 0,\; y(0) = 0,\; y(\pi) = B$
+### Giải thích: Quan sát trực quan 3 chế độ nghiệm của BVP $y'' + \lambda y = 0,\; y(0) = 0,\; y(\pi) = B$
 
 Hãy tự thử 3 giá trị $(\lambda, B)$ để thấy sự mong manh đặc trưng của bài toán biên:
 - **$\lambda = 2,\; B = 0$** (không phải trị riêng): $y = c_2\sin(\sqrt{2}x)$, mà $\sin(\sqrt{2}\pi) \neq 0 \implies c_2 = 0$ → **duy nhất nghiệm tầm thường $y \equiv 0$**.

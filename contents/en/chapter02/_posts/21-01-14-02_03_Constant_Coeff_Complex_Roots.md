@@ -12,7 +12,7 @@ lesson_type: required
 
 When a quadratic discriminant $$b^2 - 4ac$$ turns negative, a first-year algebra student writes "no real roots" and stops. In differential equations, negative discriminants are where the music begins: complex conjugate roots $$\alpha \pm i\beta$$ are the mathematical signature of every pendulum swing, violin tone, and AC radio wave, with $$\alpha$$ controlling the exponential envelope and $$\beta$$ setting the oscillation frequency.
 
-## Background Knowledge Map: Turning Complex Exponentials into Real Oscillations
+## Key ideas: Turning Complex Exponentials into Real Oscillations
 
 Four principles connect complex characteristic roots directly to physical waves:
 
@@ -21,7 +21,7 @@ Four principles connect complex characteristic roots directly to physical waves:
 3. **Amplitude–Phase Form:** Any linear combination $$c_1\cos(\beta t) + c_2\sin(\beta t)$$ collapses into a single shifted cosine $$R\cos(\beta t - \delta)$$ with $$R = \sqrt{c_1^2 + c_2^2}$$ and $$(\cos\delta, \sin\delta) = (c_1/R, c_2/R)$$—essential for reading peak amplitude and phase lag.
 4. **Logarithmic Decrement:** Consecutive oscillation peaks separated by one quasi-period $$T = 2\pi/\beta$$ decay by the exact constant ratio $$e^{\alpha T} = e^{2\pi\alpha/\beta}$$, allowing engineers to measure damping directly from an oscilloscope trace.
 
-### Step-by-Step Worked Example (Read Slowly): Solving an Underdamped IVP in Amplitude–Phase Form
+### Worked example: Solving an Underdamped IVP in Amplitude–Phase Form
 
 Solve
 $$y'' + 2y' + 5y = 0, \qquad y(0) = 3, \quad y'(0) = 1,$$

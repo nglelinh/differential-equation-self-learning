@@ -12,7 +12,7 @@ lesson_type: required
 
 Imagine computing the trajectory of a satellite by refining a numerical step size from $$1\text{ s}$$ to $$0.1\text{ s}$$ to $$0.01\text{ s}$$: each refinement produces a new curve, and you want a guarantee that those approximations actually converge to a genuine mathematical solution rather than drifting toward a "hole" in the number line. Real analysis is the precision architecture that turns intuitive calculus into ironclad guarantees of existence, convergence, and stability for differential equations.
 
-## Background Knowledge Map: Why Differential Equations Need Real Analysis
+## Key ideas: Why Differential Equations Need Real Analysis
 
 At the graduate level, four analytical pillars quietly power every existence theorem and approximation scheme in this course:
 
@@ -21,7 +21,7 @@ At the graduate level, four analytical pillars quietly power every existence the
 3. **Compactness and Bolzano–Weierstrass:** Closed and bounded subsets of $$\mathbb{R}^n$$ force bounded sequences to have convergent subsequences and force continuous functions to attain global maxima—crucial for bounding nonlinear vector fields on local rectangles.
 4. **Uniform Convergence of Function Sequences:** Passing a derivative or integral inside an infinite series $$\sum f_n(x)$$ fails under mere pointwise convergence; uniform convergence is the gatekeeper for power-series and Picard-iteration solutions.
 
-### Step-by-Step Worked Example (Read Slowly): Proving a Recursive Sequence Is Cauchy and Finding Its Limit
+### Worked example: Proving a Recursive Sequence Is Cauchy and Finding Its Limit
 
 Consider the iteration $$x_{n+1} = \frac{1}{2}\left(x_n + \frac{2}{x_n}\right)$$ starting from $$x_0 = 2$$ (Heron's method for $$\sqrt{2}$$), which mirrors how Picard iteration contracts toward an ODE solution:
 

@@ -14,14 +14,14 @@ Once you see how Legendre polynomials arise from a sphere and Bessel functions f
 
 Even more remarkably, all of these classical families are unified under one master roof: second-order Sturm–Liouville ODEs and Gauss's hypergeometric function $$ {}_2F_1(a, b; c; z) $$.
 
-## Background Knowledge Map: Classical Orthogonal Polynomials and Hypergeometric Unification
+## Key ideas: Classical Orthogonal Polynomials and Hypergeometric Unification
 
 1. **Weight Functions and Domain Geometry (Hilbert Space Choice):** Each family is orthogonal in a weighted inner product $$ \langle f, g \rangle_w = \int_I f(x) g(x) w(x)\,dx $$ matched to its natural domain: Hermite on $$ (-\infty, \infty) $$ with $$ w(x) = e^{-x^2} $$, Laguerre on $$ [0, \infty) $$ with $$ w(x) = e^{-x} $$, and Chebyshev on $$ [-1, 1] $$ with $$ w(x) = (1 - x^2)^{-1/2} $$.
 2. **Three-Term Recurrences and Rodrigues' Formulas (Unified Algebra):** Every classical orthogonal polynomial family satisfies a three-term recurrence $$ p_{n+1}(x) = (A_n x + B_n) p_n(x) - C_n p_{n-1}(x) $$ and a Rodrigues differentiation formula $$ p_n(x) = \frac{1}{c_n w(x)} \frac{d^n}{dx^n}[w(x) s(x)^n] $$, guaranteeing $$ n $$ simple real zeros inside the interval $$ I $$.
 3. **Minimax Optimality of Chebyshev Polynomials (Numerical Analysis Link):** Because $$ T_n(\cos\theta) = \cos(n\theta) $$ oscillates equiripply between $$ -1 $$ and $$ +1 $$, the monic polynomial $$ 2^{1-n} T_n(x) $$ has the smallest possible $$ L^\infty([-1,1]) $$ norm among all monic degree-$$ n $$ polynomials—eliminating Runge's phenomenon in interpolation and spectral PDE solvers.
 4. **Hypergeometric Master Function $$ {}_2F_1(a,b;c;z) $$ (Universal Parent):** Any second-order linear ODE with three regular singular points on the Riemann sphere can be mapped to Gauss's hypergeometric equation, making Legendre, Chebyshev, and Jacobi polynomials terminating cases of $$ {}_2F_1 $$, and Hermite/Laguerre limiting cases of the confluent hypergeometric function $$ {}_1F_1 $$.
 
-### Step-by-Step Worked Example (Read Slowly): Hermite Orthogonality & Chebyshev Minimax Verification
+### Worked example: Hermite Orthogonality & Chebyshev Minimax Verification
 
 **Problem:** (a) Use the Hermite ODE $$ y'' - 2xy' + 2ny = 0 $$ and Rodrigues' formula $$ H_n(x) = (-1)^n e^{x^2} \frac{d^n}{dx^n}(e^{-x^2}) $$ to compute $$ H_2(x) $$ and verify its orthogonality to $$ H_0(x) = 1 $$ under $$ w(x) = e^{-x^2} $$. (b) Compute $$ T_3(x) $$ from $$ T_n(\cos\theta) = \cos(n\theta) $$ and verify its Chebyshev ODE $$ (1-x^2)y'' - x y' + 9y = 0 $$.
 

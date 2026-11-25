@@ -12,7 +12,7 @@ lesson_type: optional
 
 Nonlinear dynamics is the most visual chapter in all of differential equations: a single parameter slider can make two nullclines touch and annihilate a fishery, inflate a tiny equilibrium point into a pulsating limit cycle, or split two nearly identical initial conditions onto opposite wings of the Lorenz butterfly. This gallery lets you experiment directly with every qualitative phenomenon of Chapter 05.
 
-## Background Knowledge Map: Four Visual Experiments to Run in This Gallery
+## Key ideas: Four Visual Experiments to Run in This Gallery
 
 As you interact with the simulations below, test these four theoretical predictions:
 
@@ -21,7 +21,7 @@ As you interact with the simulations below, test these four theoretical predicti
 3. **Lyapunov Level-Set Contours:** Overlay contour rings $$V(x,y) = c$$ on top of the damped pendulum phase portrait to see trajectories cross every ring strictly *inward*—visually confirming $$\dot{V} \le 0$$.
 4. **Butterfly Effect Divergence:** Launch two trajectories $$10^{-4}$$ apart on the Lorenz attractor and watch them track each other closely for several loops before suddenly snapping onto opposite wings!
 
-### Step-by-Step Worked Example (Read Slowly): Measuring the Exact Limit-Cycle Radius and Frequency of a Hopf Bifurcation
+### Worked example: Measuring the Exact Limit-Cycle Radius and Frequency of a Hopf Bifurcation
 
 Before moving the slider in the Hopf bifurcation widget, predict the exact limit cycle for
 $$x' = \mu x - y - x(x^2 + y^2), \qquad y' = x + \mu y - y(x^2 + y^2)$$

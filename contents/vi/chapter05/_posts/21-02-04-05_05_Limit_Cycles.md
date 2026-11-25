@@ -12,7 +12,7 @@ lesson_type: required
 
 Trái tim của bạn đập đều đặn khoảng 70 nhịp/phút; đồng hồ thạch anh dao động với biên độ không đổi; mạch điện tử Van der Pol tự duy trì sóng đều dù ban đầu điện áp nhỏ li ti hay quá lớn. Hệ tuyến tính không bao giờ làm được điều kỳ diệu đó (dao động tuyến tính phụ thuộc hoàn toàn vào biên độ ban đầu). Chỉ **hệ phi tuyến** mới sinh ra **Chu trình giới hạn (Limit Cycle)**—những quỹ đạo đóng cô lập tự hút hoặc tự đẩy mọi quỹ đạo lân cận!
 
-## Bản đồ kiến thức nền: Bốn công cụ phân tích Chu trình Giới hạn
+## Kiến thức cần nhớ: Bốn công cụ phân tích Chu trình Giới hạn
 
 1. **Chu trình giới hạn (Isolated Closed Orbit)**:
    Quỹ đạo tuần hoàn cô lập (không có quỹ đạo đóng nào khác sát bên nó). Chu trình ổn định hút cả quỹ đạo bên trong (bơm năng lượng) lẫn bên ngoài (tản năng lượng).
@@ -39,7 +39,7 @@ Không phải mọi hệ động lực đều hội tụ về một điểm cân
 
 Đặc trưng quan trọng nhất của chu trình giới hạn là tính cô lập. Một tâm tuyến tính cũng có vô số quỹ đạo khép kín, nhưng chúng không cô lập và rất dễ bị phá vỡ khi mô hình thay đổi nhỏ. Ngược lại, chu trình giới hạn là một quỹ đạo đóng cô lập mà các quỹ đạo lân cận bị hút vào hoặc đẩy ra, nên mang ý nghĩa động lực học bền vững hơn nhiều.
 
-### Khung giải thích (nên đọc chậm): Tìm chính xác chu trình giới hạn của hệ phi tuyến bằng tọa độ cực
+### Giải thích: Tìm chính xác chu trình giới hạn của hệ phi tuyến bằng tọa độ cực
 
 Xét hệ:
 $$\dot{x} = -y + x(1 - x^2 - y^2), \qquad \dot{y} = x + y(1 - x^2 - y^2).$$

@@ -12,7 +12,7 @@ lesson_type: optional
 
 Giải tích hàm cho PDE thường mang tiếng "trừu tượng khó chạm tới", nhưng thực chất mọi định lý lớn của Chương 12 đều mang một hình ảnh trực giác cực kỳ sắc nét: hình cầu đơn vị $L^p$ biến dạng từ hình thoi ($p=1$) qua hình tròn ($p=2$) thành hình vuông ($p=\infty$), hàm góc gãy vẫn có năng lượng $H^1$ hữu hạn còn hàm bước nhảy thì làm đạo hàm bùng nổ ra vô cực, và toán tử elliptic mài nhẵn mọi gợn gai của nguồn $f$.
 
-## Bản đồ kiến thức nền: Bốn hình ảnh trực quan cần đối chiếu trong Gallery Chương 12
+## Kiến thức cần nhớ: Bốn hình ảnh trực quan cần đối chiếu trong Gallery Chương 12
 
 1. **Hình học Hình cầu Đơn vị $L^p$ và Tính Lồi Minkowski**:
    So sánh đường biên $|x|^p + |y|^p = 1$ khi $p$ đi từ $0{,}5$ (lõm—mất bất đẳng thức tam giác) sang $1, 2, \infty$ (lồi chặt khi $1 < p < \infty$).
@@ -36,7 +36,7 @@ Nên xem bộ minh họa theo đúng thứ tự các bài học. Sau mỗi hình
 Trang này cũng hữu ích để ôn tập trước các chương tiếp theo về phương pháp số, vì các phương pháp hiện đại đều sử dụng trực tiếp ngôn ngữ toán tử, nghiệm yếu và không gian hàm.
 
 
-### Khung giải thích (nên đọc chậm): Tính tay tốc độ bùng nổ năng lượng $H^1$ khi xấp xỉ một bước nhảy
+### Giải thích: Tính tay tốc độ bùng nổ năng lượng $H^1$ khi xấp xỉ một bước nhảy
 
 Xét hàm dốc chuyển tiếp mượt từ $0$ lên $1$ trong khoảng rộng $\varepsilon > 0$:
 $$H_\varepsilon(x) = \begin{cases} 0, & x < 0, \\ x/\varepsilon, & 0 \le x \le \varepsilon, \\ 1, & x > \varepsilon. \end{cases}$$

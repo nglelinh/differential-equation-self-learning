@@ -24,7 +24,7 @@ Work through the gallery in lesson order. After each figure, return to the corre
 
 The page is also a useful review before the later chapters on numerical analysis, pseudodifferential operators, and microlocal analysis, all of which reuse the language of operators, weak formulations, and generalized objects.
 
-## Background Knowledge Map: Visual Anchors for Functional Analysis in PDEs
+## Key ideas: Visual Anchors for Functional Analysis in PDEs
 
 Use four visual lenses as you explore the diagrams in this gallery:
 
@@ -42,7 +42,7 @@ Use four visual lenses as you explore the diagrams in this gallery:
   height="980px"
 %}
 
-### Step-by-Step Worked Example (Read Slowly): Watching Strong $L^2$ Convergence Fail in $H^1$
+### Worked example: Watching Strong $L^2$ Convergence Fail in $H^1$
 
 Consider the sequence of smooth functions $v_n(x) = \frac{1}{n}\sin(nx)$ on $(0, \pi)$. Compute both $\|v_n\|_{L^2(0,\pi)}$ and $\|v_n'\|_{L^2(0,\pi)}$ to see firsthand why $v_n \to 0$ strongly in $L^2$ yet only *weakly* in $H^1$.
 

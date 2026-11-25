@@ -12,7 +12,7 @@ lesson_type: required
 
 Nếu phóng to một đường cong trơn bất kỳ dưới kính hiển vi, nó trông gần như một đoạn thẳng. Ý tưởng **tuyến tính hóa (linearization)** làm điều hệt như vậy cho hệ phương trình vi phân phi tuyến: phóng to cực gần một **điểm cân bằng** $(x^*, y^*)$ để thay thế hệ phi tuyến rắc rối bằng một hệ tuyến tính ma trận Jacobian $J(x^*, y^*)$ giải được trọn vẹn bằng đại số tuyến tính!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Điểm Cân bằng & Tuyến tính hóa
+## Kiến thức cần nhớ: Bốn trụ cột của Điểm Cân bằng & Tuyến tính hóa
 
 1. **Điểm cân bằng (Equilibrium / Fixed Point)**:
    Nghiệm đại số của hệ $f(x^*, y^*) = 0$ và $g(x^*, y^*) = 0$—nơi vận tốc triệt tiêu hoàn toàn.
@@ -39,7 +39,7 @@ Hệ phi tuyến thường rất khó giải trực tiếp. Tuy nhiên, trong nh
 
 Ý tưởng của tuyến tính hóa khá trực tiếp: khi xét đủ gần một điểm cân bằng, số hạng bậc nhất trong khai triển Taylor giữ vai trò chi phối, còn các số hạng phi tuyến bậc cao chỉ tạo ra hiệu chỉnh nhỏ. Nhờ vậy, ma trận Jacobian đóng vai trò như một bản xấp xỉ tuyến tính cục bộ của hệ phi tuyến.
 
-### Khung giải thích (nên đọc chậm): Tuyến tính hóa cầm tay chỉ việc con lắc đơn không ma sát $\dot{\theta} = \omega,\; \dot{\omega} = -\sin\theta$
+### Giải thích: Tuyến tính hóa làm từng bước con lắc đơn không ma sát $\dot{\theta} = \omega,\; \dot{\omega} = -\sin\theta$
 
 1. **Tìm điểm cân bằng**: $\omega = 0$ và $\sin\theta = 0 \implies$ hai trạng thái vật lý chính: $(\theta^*, \omega^*) = (0, 0)$ (treo thẳng xuống) và $(\pi, 0)$ (dựng ngược lên trên).
 2. **Tính ma trận Jacobian tổng quát**:

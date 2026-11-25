@@ -13,7 +13,7 @@ lesson_type: required
 
 Vật lý cổ điển đặt cược toàn bộ niềm tin vào tính **tất định (determinism)**: biết vị trí và vận tốc hôm nay thì tương lai phải được xác định duy nhất. Thế nhưng phương trình cực kỳ đơn giản $y' = 2\sqrt{\vert y\vert},\; y(0) = 0$ lại có **vô số nghiệm khác nhau** xuất phát từ cùng một điểm! **Định lý Tồn tại và Duy nhất Picard–Lindelöf** chính là bản án toán học phân định rạch ròi khi nào thế giới vận hành tất định và khi nào nghiệm có thể rẽ nhánh.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Định lý Tồn tại & Duy nhất
+## Kiến thức cần nhớ: Bốn trụ cột của Định lý Tồn tại & Duy nhất
 
 1. **Điều kiện Tồn tại (Định lý Peano)**:
    Chỉ cần $f(t, y)$ **liên tục** trong hình chữ nhật $R$ quanh $(t_0, y_0)$ là đủ đảm bảo tồn tại ít nhất một nghiệm cục bộ—nhưng **chưa đủ** để đảm bảo duy nhất!
@@ -37,7 +37,7 @@ Sinh viên cần nắm dạng phương trình cấp một $$ y'=f(t,y) $$, ý ng
 
 Định lý tồn tại và duy nhất trả lời chính xác khi nào một bài toán giá trị đầu được đặt chỉnh (well-posed)—giúp ta biết trước khi giải rằng mô hình có cơ sở toán học nhất quán.
 
-### Khung giải thích (nên đọc chậm): Tính tay 3 vòng lặp Picard cho $y' = y,\; y(0) = 1$ và soi lỗi mất tính duy nhất ở $y' = 2\sqrt{y}$
+### Giải thích: Tính tay 3 vòng lặp Picard cho $y' = y,\; y(0) = 1$ và soi lỗi mất tính duy nhất ở $y' = 2\sqrt{y}$
 
 **Phần A — Phép lặp Picard cho $y' = y,\; y(0) = 1$** ($f(t, y) = y$, Lipschitz với $L = 1$):
 - $y_0(t) = 1$

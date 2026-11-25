@@ -20,7 +20,7 @@ This lesson develops the ideas of stability, convergence, and CFL-type restricti
 
 Students should know finite-difference PDE schemes and basic numerical stability ideas from ODE methods.
 
-## Background Knowledge Map: Stability, Fourier Amplification, and the CFL Speed Limit
+## Key ideas: Stability, Fourier Amplification, and the CFL Speed Limit
 
 Four foundational principles connect discrete PDE stencils to guaranteed convergence:
 
@@ -98,7 +98,7 @@ This completes the theoretical structure.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Von Neumann Analysis of Explicit FTCS for the Heat Equation
+### Worked example: Von Neumann Analysis of Explicit FTCS for the Heat Equation
 
 Derive the exact stability threshold $r = \frac{\nu\Delta t}{(\Delta x)^2} \le \frac{1}{2}$ for the forward-time centered-space (FTCS) heat scheme $U_j^{n+1} = U_j^n + r(U_{j+1}^n - 2U_j^n + U_{j-1}^n)$, and test the worst-case sawtooth mode at $r = 0.4$ vs. $r = 0.6$.
 

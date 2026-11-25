@@ -20,7 +20,7 @@ This lesson extends pseudo-differential operators from Euclidean space to manifo
 
 Students should know basic pseudo-differential operators in Euclidean space and have some familiarity with manifolds, charts, and coordinate changes.
 
-## Background Knowledge Map: Lifting $\Psi\text{DOs}$ to Curved Manifolds
+## Key ideas: Lifting $\Psi\text{DOs}$ to Curved Manifolds
 
 Four geometric pillars make pseudo-differential operators completely coordinate-free on any smooth manifold $M$:
 
@@ -98,7 +98,7 @@ The cotangent bundle becomes the natural home of the symbol.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Checking Principal Symbol Invariance Under a Nonlinear Change of Coordinates
+### Worked example: Checking Principal Symbol Invariance Under a Nonlinear Change of Coordinates
 
 Take the 1D operator $P = -\frac{d^2}{dx^2} = D_x^2$ (symbol $p(x,\xi) = \xi^2$) and transform it under the smooth diffeomorphism $y = \kappa(x) = x^3 + x$ (note $\kappa'(x) = 3x^2 + 1 \ge 1 > 0$ everywhere). Verify explicitly that the principal symbol is invariant on $T^*\mathbb{R}$ while the lower-order symbol is not!
 

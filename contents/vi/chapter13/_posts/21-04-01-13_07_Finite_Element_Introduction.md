@@ -14,7 +14,7 @@ lesson_type: optional
 
 Phương pháp sai phân hữu hạn (FDM) tuyệt vời trên hình vuông, nhưng hãy thử phủ lưới ô vuông lên một cánh tuabin máy bay hay động mạch chủ uốn lượn—biên cong sẽ bị cắt nham nhở như bậc thang! **Phương pháp Phần tử Hữu hạn (Finite Element Method — FEM)** kết hợp trực tiếp **Dạng yếu $H^1$** của Chương 12 với nghệ thuật chia miền thành các tam giác nhỏ linh hoạt và xấp xỉ nghiệm bằng tổ hợp tuyến tính của các "hàm mũ nón" địa phương—tạo nên công cụ mô phỏng kỹ thuật quyền năng nhất thế kỷ XX–XXI!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Phần tử Hữu hạn (FEM)
+## Kiến thức cần nhớ: Bốn trụ cột của Phương pháp Phần tử Hữu hạn (FEM)
 
 1. **Từ Dạng yếu Vô hạn chiều sang Bài toán Galerkin Hữu hạn chiều**:
    Thay không gian $V = H_0^1(\Omega)$ bằng không gian con hữu hạn chiều $V_h = \operatorname{span}\{\phi_1, \dots, \phi_N\}$, yêu cầu $a(u_h, v_h) = \ell(v_h)\;\forall v_h \in V_h$ lập tức dẫn tới hệ tuyến tính $K\mathbf{c} = \mathbf{F}$ với **ma trận độ cứng** $K_{ij} = a(\phi_j, \phi_i)$ và **vector tải** $F_i = \ell(\phi_i)$.
@@ -40,7 +40,7 @@ Nếu sai phân hữu hạn đặt câu hỏi "xấp xỉ đạo hàm tại nút
 Cách tiếp cận này đặc biệt hiệu quả khi miền có hình học phức tạp (biên cong, lỗ khoét) hoặc khi mô hình vật lý được phát biểu tự nhiên qua nguyên lý năng lượng như trong cơ học đàn hồi, truyền nhiệt và cơ học vật rắn.
 
 
-### Khung giải thích (nên đọc chậm): Lắp ghép và giải tay bài toán FEM 1 phần tử cho $-u'' = 2$ trên $(0, 1)$
+### Giải thích: Lắp ghép và giải tay bài toán FEM 1 phần tử cho $-u'' = 2$ trên $(0, 1)$
 
 Giải dạng yếu $\int_0^1 u' v'\,dx = \int_0^1 2v\,dx$ với $u(0) = u(1) = 0$ chỉ dùng **1 nút trong** tại $x_1 = \frac{1}{2}$ và 1 hàm mũ nón duy nhất:
 $$\phi_1(x) = \begin{cases} 2x, & 0 \le x \le \tfrac{1}{2}, \\ 2(1 - x), & \tfrac{1}{2} \le x \le 1. \end{cases}$$

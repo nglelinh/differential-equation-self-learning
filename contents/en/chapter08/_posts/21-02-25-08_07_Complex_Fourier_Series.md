@@ -14,14 +14,14 @@ Real Fourier series work well, yet they force you to juggle three separate coeff
 
 Suddenly, shifting a signal in time just multiplies $$ c_n $$ by a phase factor $$ e^{-i n\pi x_0 / L} $$, differentiating just multiplies $$ c_n $$ by $$ i n\pi / L $$, and the gateway to the continuous Fourier Transform and the Fast Fourier Transform (FFT) swings wide open!
 
-## Background Knowledge Map: Complex Exponentials and Negative Frequencies
+## Key ideas: Complex Exponentials and Negative Frequencies
 
 1. **Euler's Unification (One Formula Replaces Three):** Substituting $$ \cos\theta = \frac{e^{i\theta} + e^{-i\theta}}{2} $$ and $$ \sin\theta = \frac{e^{i\theta} - e^{-i\theta}}{2i} $$ merges $$ a_0, a_n, b_n $$ into a single symmetric formula: $$ c_n = \frac{1}{2L}\int_{-L}^L f(x) e^{-i n\pi x / L}\,dx $$ for all $$ n \in \mathbb{Z} $$, with $$ c_0 = \frac{a_0}{2} $$, $$ c_n = \frac{a_n - i b_n}{2} $$ ($$ n > 0 $$), and $$ c_{-n} = \frac{a_n + i b_n}{2} $$.
 2. **Hermitian Symmetry for Real Signals (What Negative Frequencies Mean):** If $$ f(x) $$ is real-valued, then $$ c_{-n} = \overline{c_n} $$. Negative frequencies are not mysterious "backward time"—they are the exact complex-conjugate partner rotating in the opposite direction so the imaginary parts cancel cleanly to produce a real wave.
 3. **Hermitian Inner Product & Complex Parseval:** Using the conjugate inner product $$ \langle f, g \rangle = \frac{1}{2L}\int_{-L}^L f(x)\overline{g(x)}\,dx $$, the exponentials $$ \{e^{i n\pi x / L}\}_{n\in\mathbb{Z}} $$ are *orthonormal* (norm 1 for every $$ n $$, including $$ n = 0 $$!), yielding the spotless Parseval identity $$ \frac{1}{2L}\int_{-L}^L |f(x)|^2\,dx = \sum_{n=-\infty}^{\infty} |c_n|^2 $$.
 4. **Operational Calculus (Shifts and Derivatives Become Algebra):** Differentiating multiplies $$ c_n $$ by $$ i\omega_n $$, translating $$ f(x - a) $$ multiplies $$ c_n $$ by $$ e^{-i\omega_n a} $$, and periodic convolution $$ (f * g)(x) $$ becomes pointwise multiplication $$ 2L\,c_n(f) c_n(g) $$.
 
-### Step-by-Step Worked Example (Read Slowly): Complex Fourier Series of $$ f(x) = e^x $$ on $$ (-\pi, \pi) $$
+### Worked example: Complex Fourier Series of $$ f(x) = e^x $$ on $$ (-\pi, \pi) $$
 
 **Problem:** Compute the complex Fourier coefficients $$ c_n $$ of $$ f(x) = e^x $$ on $$ (-\pi, \pi) $$, verify Hermitian symmetry $$ c_{-n} = \overline{c_n} $$, and convert back to extract the real coefficients $$ a_n, b_n $$ without doing a single trig integral!
 

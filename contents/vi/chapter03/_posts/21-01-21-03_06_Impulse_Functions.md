@@ -12,7 +12,7 @@ lesson_type: required
 
 Điều gì xảy ra khi một chiếc búa gõ thật mạnh vào một cái chuông trong một phần nghìn giây, hay một tia sét đánh trúng mạch điện? Lực tác động đạt đỉnh khổng lồ trong khoảng thời gian gần như bằng $0$, nhưng tổng xung lượng $\int F(t)\,dt = 1$ lại hữu hạn! Để mô hình hóa cú đánh tức thời ấy, vật lý và toán học đưa ra **hàm xung Dirac $\delta(t - c)$**—không phải một hàm số thông thường mà là một **phân bố (generalized function)** kỳ diệu có biến đổi Laplace đơn giản đến bất ngờ: $\mathcal{L}\{\delta(t - c)\} = e^{-cs}$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Hàm Xung & Phân bố Dirac
+## Kiến thức cần nhớ: Bốn trụ cột của Hàm Xung & Phân bố Dirac
 
 1. **Định nghĩa giới hạn & Tính chất lọc (Sifting Property)**:
    Xem $\delta(t - c)$ là giới hạn của xung chữ nhật cao $1/\varepsilon$, rộng $\varepsilon$ (diện tích luôn bằng $1$); với mọi hàm liên tục $f$, $\int_{-\infty}^\infty f(t)\delta(t - c)\,dt = f(c)$.
@@ -36,7 +36,7 @@ Một cú gõ búa, một xung điện cực ngắn hay một cú va chạm tứ
 
 Bài học đồng thời mở ra khái niệm đáp ứng xung: trong lý thuyết hệ tuyến tính, khi biết đáp ứng của hệ trước một xung đơn vị delta, ta có thể xác định đáp ứng của hệ trước mọi đầu vào tổng quát.
 
-### Khung giải thích (nên đọc chậm): Giải hệ dao động bị búa gõ ở giây thứ $\pi$: $y'' + y = 3\delta(t - \pi),\; y(0) = 0,\; y'(0) = 0$
+### Giải thích: Giải hệ dao động bị búa gõ ở giây thứ $\pi$: $y'' + y = 3\delta(t - \pi),\; y(0) = 0,\; y'(0) = 0$
 
 1. **Biến đổi Laplace hai vế** ($\mathcal{L}\{3\delta(t - \pi)\} = 3e^{-\pi s}$):
    $$(s^2 + 1)Y(s) = 3e^{-\pi s} \implies Y(s) = 3e^{-\pi s}\cdot\frac{1}{s^2 + 1}.$$

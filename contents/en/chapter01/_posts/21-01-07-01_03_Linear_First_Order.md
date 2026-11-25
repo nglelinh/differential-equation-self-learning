@@ -12,7 +12,7 @@ lesson_type: required
 
 Consider a lake being fed by a slightly polluted stream while fresh water flows out at the same rate: the pollutant decays naturally at a rate proportional to its current amount, yet an external inflow keeps adding more. Linear first-order ODEs $$y' + p(t)y = q(t)$$ capture this exact tug-of-war between internal decay/growth and external forcing—and unlike nonlinear equations, a single unifying device, the integrating factor, solves every single one of them in closed integral form.
 
-## Background Knowledge Map: Why the Integrating Factor Always Works
+## Key ideas: Why the Integrating Factor Always Works
 
 Four structural insights elevate the integrating-factor method from a recipe into a deep principle:
 
@@ -21,7 +21,7 @@ Four structural insights elevate the integrating-factor method from a recipe int
 3. **Transient vs. Steady-State Behavior:** When $$p(t) = a > 0$$, the homogeneous piece $$C e^{-at}$$ decays exponentially to zero regardless of initial conditions (the *transient*), leaving only the long-term response driven by $$q(t)$$ (the *steady state*).
 4. **Global Existence on Coefficient Continuity:** Unlike separable nonlinear equations that can blow up spontaneously, a linear first-order IVP is guaranteed to exist on the *entire* largest open interval where $$p(t)$$ and $$q(t)$$ are continuous.
 
-### Step-by-Step Worked Example (Read Slowly): Solving a Forced Linear IVP and Identifying Transient vs. Steady State
+### Worked example: Solving a Forced Linear IVP and Identifying Transient vs. Steady State
 
 Solve the initial value problem
 $$t\,y' + 3y = 5t^2, \qquad t > 0, \qquad y(1) = 4.$$

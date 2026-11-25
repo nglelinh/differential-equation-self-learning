@@ -12,14 +12,14 @@ lesson_type: required
 
 Before you ever touch integration by parts on a Fourier coefficient, pause and look at the mirror symmetry of $$ f(x) $$ across the vertical axis. A symmetric arch ($$ f(-x) = f(x) $$) cannot contain a single sine wave, because every sine wave is antisymmetric; an antisymmetric wave ($$ f(-x) = -f(x) $$) cannot contain a single cosine wave or constant offset. Recognizing parity instantly cuts your integration workload in half—and reveals a deep algebraic decomposition that every function on $$ [-L, L] $$ obeys.
 
-## Background Knowledge Map: Parity Symmetry and Orthogonal Subspaces
+## Key ideas: Parity Symmetry and Orthogonal Subspaces
 
 1. **Direct-Sum Decomposition $$ L^2([-L, L]) = L^2_{\text{even}} \oplus L^2_{\text{odd}} $$:** Every function $$ f(x) $$ splits uniquely into an even part $$ f_e(x) = \frac{f(x) + f(-x)}{2} $$ and an odd part $$ f_o(x) = \frac{f(x) - f(-x)}{2} $$. Because $$ \int_{-L}^L f_e(x) f_o(x)\,dx = 0 $$, the even and odd subspaces are mutually orthogonal!
 2. **Even Functions Produce Pure Cosine Series:** If $$ f(-x) = f(x) $$, then $$ b_n = 0 $$ for all $$ n \ge 1 $$, and $$ a_n = \frac{2}{L}\int_0^L f(x)\cos\!\left(\frac{n\pi x}{L}\right)dx $$ for $$ n \ge 0 $$.
 3. **Odd Functions Produce Pure Sine Series:** If $$ f(-x) = -f(x) $$, then $$ a_n = 0 $$ for all $$ n \ge 0 $$, and $$ b_n = \frac{2}{L}\int_0^L f(x)\sin\!\left(\frac{n\pi x}{L}\right)dx $$ for $$ n \ge 1 $$.
 4. **Continuity Advantage of Even Extensions:** Notice that for $$ f(x) = |x| $$ on $$ [-\pi, \pi] $$, even symmetry matches $$ f(-\pi) = f(\pi) = \pi $$, eliminating the boundary jump and upgrading coefficient decay from $$ O(1/n) $$ to $$ O(1/n^2) $$!
 
-### Step-by-Step Worked Example (Read Slowly): Pure Cosine Series of $$ f(x) = |x| $$ on $$ [-\pi, \pi] $$ and Basel-Type Identity
+### Worked example: Pure Cosine Series of $$ f(x) = |x| $$ on $$ [-\pi, \pi] $$ and Basel-Type Identity
 
 **Problem:** Compute the Fourier series of $$ f(x) = |x| $$ on $$ [-\pi, \pi] $$, verify its $$ O(1/n^2) $$ decay, and evaluate at $$ x = 0 $$ to prove $$ \sum_{k=0}^\infty \frac{1}{(2k+1)^2} = \frac{\pi^2}{8} $$.
 

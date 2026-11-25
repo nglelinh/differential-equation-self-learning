@@ -13,7 +13,7 @@ lesson_type: required
 
 Tự nhiên hiếm khi nói thẳng cho ta biết vị trí của một hành tinh hay nhiệt độ của một tách cà phê tại mọi thời điểm; thay vào đó, tự nhiên chỉ tiết lộ **quy luật thay đổi** của chúng ngay tại khoảnh khắc hiện tại. Phương trình vi phân chính là ngôn ngữ dịch những quy luật thay đổi cục bộ đó thành dự đoán toàn cục theo thời gian!
 
-## Bản đồ kiến thức nền: Bốn viên gạch đầu tiên của Phương trình Vi phân
+## Kiến thức cần nhớ: Bốn viên gạch đầu tiên của Phương trình Vi phân
 
 1. **Phân loại ODE vs. PDE**:
    Phương trình vi phân thường (ODE) chỉ có **một biến độc lập** (thường là thời gian $t$); phương trình đạo hàm riêng (PDE) có từ hai biến độc lập trở lên (như vị trí $x$ và thời gian $t$).
@@ -37,7 +37,7 @@ Khi một cốc cà phê nguội dần, điều quyết định quá trình khô
 
 Phương trình vi phân là ngôn ngữ toán học trả lời câu hỏi đó. Thay vì cho trực tiếp giá trị của hàm số, nó đưa ra mối liên hệ giữa hàm số và đạo hàm của nó. Vì vậy, giải một ODE không chỉ là thao tác biến đổi ký hiệu mà là quá trình tái dựng quỹ đạo, sự tích lũy hoặc cơ chế phản hồi từ thông tin về tốc độ biến thiên.
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng nghiệm và ghim hằng số cho bài toán làm nguội Newton $T'(t) = -0{,}2(T - 20),\; T(0) = 90$
+### Giải thích: Kiểm chứng nghiệm và ghim hằng số cho bài toán làm nguội Newton $T'(t) = -0{,}2(T - 20),\; T(0) = 90$
 
 Giả sử một tách cà phê $90^\circ\text{C}$ đặt trong phòng $20^\circ\text{C}$, và ta nghi ngờ nghiệm có dạng $T(t) = 20 + C e^{-0{,}2 t}$:
 1. **Kiểm tra vế trái (đạo hàm)**: $T'(t) = -0{,}2 C e^{-0{,}2 t}$.

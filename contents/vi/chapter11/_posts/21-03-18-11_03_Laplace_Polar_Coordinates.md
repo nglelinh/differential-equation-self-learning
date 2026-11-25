@@ -14,7 +14,7 @@ lesson_type: required
 
 Trên một đĩa tròn hay hình vành khăn, hệ tọa độ Descartes $(x, y)$ trở nên vụng về vì biên cong không khớp với lưới vuông góc. Chuyển sang tọa độ cực $(r, \theta)$ làm hình học trở nên gọn gàng ngay lập tức, nhưng đổi lại xuất hiện một "người khách quen" đầy thú vị từ Chương 6: phương trình hướng kính biến thành **phương trình Cauchy–Euler** $r^2 R'' + r R' - n^2 R = 0$, kéo theo công thức tích phân Poisson tuyệt đẹp cho giá trị tại mọi điểm bên trong hình tròn!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Laplace trong Tọa độ Cực
+## Kiến thức cần nhớ: Bốn trụ cột của Phương trình Laplace trong Tọa độ Cực
 
 1. **Biến đổi Toán tử Laplace sang $(r, \theta)$**:
    $$\Delta u = u_{rr} + \frac{1}{r} u_r + \frac{1}{r^2} u_{\theta\theta} = 0.$$
@@ -44,7 +44,7 @@ Nếu giải bài toán trên đĩa tròn bằng tọa độ Descartes, công th
 Về mặt khái niệm, bài học này cho thấy việc chọn đúng hệ tọa độ không chỉ rút gọn phép tính mà còn làm nổi bật tính đối xứng của bài toán. Hình học tròn khiến nghiệm biểu diễn tự nhiên nhất theo góc và bán kính.
 
 
-### Khung giải thích (nên đọc chậm): Giải nhanh bằng tay bài toán Dirichlet trên đĩa tròn bán kính $R = 2$
+### Giải thích: Giải nhanh bằng tay bài toán Dirichlet trên đĩa tròn bán kính $R = 2$
 
 Tìm nghiệm điều hòa $\Delta u = 0$ trong đĩa $r < 2$ biết nhiệt độ trên vành tròn $r = 2$ là:
 $$u(2, \theta) = 10 + 4\cos\theta - 8\sin(2\theta).$$

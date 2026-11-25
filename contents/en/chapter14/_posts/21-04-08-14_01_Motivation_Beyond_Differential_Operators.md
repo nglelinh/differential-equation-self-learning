@@ -20,7 +20,7 @@ This lesson motivates pseudo-differential operators by explaining why classical 
 
 Students should know Fourier transforms, classical differential operators, elliptic theory, and some basic symbol intuition from earlier chapters. These ideas are reviewed in Lesson 14.00.
 
-## Background Knowledge Map: Why PDE Theory Must Leave the Differential Algebra
+## Key ideas: Why PDE Theory Must Leave the Differential Algebra
 
 Four concrete phenomena force modern analysis beyond purely local differential operators:
 
@@ -98,7 +98,7 @@ The chapter's broader purpose should already be visible.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Computing the Nonlocal Kernel of $(1 - \frac{d^2}{dx^2})^{-1}$
+### Worked example: Computing the Nonlocal Kernel of $(1 - \frac{d^2}{dx^2})^{-1}$
 
 Prove that $Q = (1 - \frac{d^2}{dx^2})^{-1}$ on $\mathbb{R}$ is not a differential operator by computing its exact convolution kernel $K(x) = \mathcal{F}^{-1}\!\left[(1+\xi^2)^{-1}\right](x)$ using contour integration.
 

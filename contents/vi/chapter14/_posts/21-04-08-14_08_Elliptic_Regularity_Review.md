@@ -14,7 +14,7 @@ lesson_type: optional
 
 Ở Chương 12, để chứng minh một nghiệm yếu của PDE elliptic hệ số biến thiên thực sự trơn $C^\infty$, ta phải xoay xở với các thương sai phân (difference quotients), hàm cắt và ước lượng năng lượng dài nhiều trang giấy. Đến Chương 14, toàn bộ chứng minh ấy bỗng thu gọn lại thành **đúng 3 dòng đại số thần kỳ** nhờ Parametrix của $\Psi$DO! Bài học này nhìn lại Định lý Tính Chính quy Elliptic từ đỉnh cao của lý thuyết toán tử giả vi phân.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Chứng minh Tính Chính quy Elliptic bằng $\Psi$DO
+## Kiến thức cần nhớ: Bốn trụ cột của Chứng minh Tính Chính quy Elliptic bằng $\Psi$DO
 
 1. **Chứng minh 3 dòng qua Parametrix $Q \in \Psi^{-m}$**:
    Từ $Pu = f \in H^s$, dựng parametrix $Q \in \Psi^{-m}$ thỏa mãn $QP = I + R$ ($R \in \Psi^{-\infty}$). Nhân trái hai vế với $Q$: $u = Qf - Ru$. Vì $Qf \in H^{s+m}$ và $Ru \in C^\infty$, lập tức suy ra $u \in H^{s+m}$!
@@ -42,7 +42,7 @@ Sinh viên nên nắm vững không gian Sobolev, tính elliptic, khái niệm p
 Đây là một trong những lý do chính khiến toán tử giả vi phân trở thành ngôn ngữ chuẩn của lý thuyết elliptic hiện đại.
 
 
-### Khung giải thích (nên đọc chậm): Theo dõi từng bậc Sobolev trong chứng minh 3 dòng cho phương trình bậc 4 (Biharmonic)
+### Giải thích: Theo dõi từng bậc Sobolev trong chứng minh 3 dòng cho phương trình bậc 4 (Biharmonic)
 
 Xét phương trình đàn hồi bản mỏng (Biharmonic) $\Delta^2 u = f$ với $f \in H^1(\mathbb{R}^2)$ và giả sử ban đầu ta chỉ biết $u$ là một phân phối trong $H^{-10}(\mathbb{R}^2)$:
 1. **Nhận diện bậc và tính elliptic**: $P = \Delta^2$ có ký hiệu chính $p_4(\xi) = |\xi|^4 > 0$ với mọi $\xi \neq 0$, nên $P \in \Psi^4$ elliptic bậc $m = 4$.

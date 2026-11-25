@@ -14,14 +14,14 @@ At first glance, sine series, Legendre polynomials, Bessel functions, and Hermit
 
 Just as the Spectral Theorem for symmetric matrices guarantees real eigenvalues and an orthogonal eigenbasis in $$ \mathbb{R}^n $$, Sturm–Liouville theory guarantees real eigenvalues, weighted orthogonality, and completeness in the infinite-dimensional Hilbert space $$ L^2_w([a, b]) $$.
 
-## Background Knowledge Map: The Sturm–Liouville Spectral Machine
+## Key ideas: The Sturm–Liouville Spectral Machine
 
 1. **Conversion to Self-Adjoint Form (Integrating Factor $$ \mu(x) $$):** Any second-order linear ODE $$ a_2(x) y'' + a_1(x) y' + (a_0(x) + \lambda \rho(x)) y = 0 $$ can be converted into $$ \bigl(p(x) y'\bigr)' + \bigl(q(x) + \lambda w(x)\bigr) y = 0 $$ by multiplying through by $$ \mu(x) = \frac{1}{a_2(x)} \exp\!\left(\int \frac{a_1(x)}{a_2(x)}\,dx\right) $$. This immediately reveals the hidden weight function $$ w(x) $$ under which eigenfunctions are orthogonal!
 2. **Lagrange's Identity & Green's Formula (Why Self-Adjointness Works):** Integrating by parts twice yields $$ \int_a^b (u L[v] - v L[u])\,dx = -\bigl[p(x)(u v' - v u')\bigr]_a^b $$. Under separated regular BCs (or singular vanishing of $$ p $$ at endpoints), the boundary bracket vanishes identically—making $$ L $$ symmetric in $$ L^2_w([a, b]) $$.
 3. **The Four Spectral Guarantees (Regular S–L Theorem):** For $$ p(x) > 0, w(x) > 0 $$ on $$ [a, b] $$: (i) all eigenvalues $$ \lambda_n $$ are real and simple; (ii) $$ \lambda_1 < \lambda_2 < \cdots \to \infty $$; (iii) eigenfunctions for $$ \lambda_m \neq \lambda_n $$ satisfy $$ \int_a^b y_m(x) y_n(x) w(x)\,dx = 0 $$; (iv) $$ y_n $$ has exactly $$ n - 1 $$ zeros inside $$ (a, b) $$ (Sturm oscillation).
 4. **Completeness in $$ L^2_w([a, b]) $$:** The normalized eigenfunctions form a complete orthonormal basis of $$ L^2_w([a, b]) $$, legitimizing every eigenfunction expansion in PDEs and quantum mechanics.
 
-### Step-by-Step Worked Example (Read Slowly): Converting Cauchy–Euler to Sturm–Liouville Form and Finding Its Exact Weight
+### Worked example: Converting Cauchy–Euler to Sturm–Liouville Form and Finding Its Exact Weight
 
 **Problem:** Convert the Cauchy–Euler eigenvalue problem $$ x^2 y'' + x y' + \lambda y = 0 $$ on $$ [1, e] $$ with $$ y(1) = y(e) = 0 $$ into Sturm–Liouville form, identify $$ p(x), q(x), w(x) $$, find the eigenvalues/eigenfunctions, and explicitly verify weighted orthogonality between $$ y_1 $$ and $$ y_2 $$.
 

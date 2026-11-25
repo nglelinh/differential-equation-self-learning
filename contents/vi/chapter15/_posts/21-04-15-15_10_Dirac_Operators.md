@@ -13,7 +13,7 @@ categories:
 
 Năm 1928, Paul Dirac đứng trước một bài toán tưởng chừng bất khả thi: tìm một phương trình lượng tử **bậc nhất theo cả thời gian lẫn không gian** sao cho bình phương của nó khớp chính xác với phương trình sóng tương đối tính Klein–Gordon $(\partial_t^2 - \Delta + m^2)\psi = 0$. Không một số thực hay số phức nào thỏa mãn $(a\partial_x + b\partial_y)^2 = \partial_x^2 + \partial_y^2$—nhưng nếu $a, b$ là các **ma trận phản giao hoán** ($ab + ba = 0$) thì điều kỳ diệu xảy ra! Phát minh ấy không chỉ tiên đoán ra **phản vật chất (positron)** và **spin electron**, mà còn trở thành toán tử elliptic trung tâm của hình học vi phân hiện đại!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Toán tử Dirac
+## Kiến thức cần nhớ: Bốn trụ cột của Toán tử Dirac
 
 1. **Ý tưởng "Lấy căn bậc hai" của Toán tử Laplace bằng Đại số Clifford**:
    Tìm các ma trận $\gamma_1, \dots, \gamma_n$ thỏa mãn quan hệ phản giao hoán $\gamma_j \gamma_k + \gamma_k \gamma_j = 2\delta_{jk} I$ (Đại số Clifford). Khi đó toán tử vi phân hệ bậc nhất $D = -i\sum_{j=1}^n \gamma_j \partial_{x_j}$ thỏa mãn đúng đẳng thức vàng $D^2 = -\Delta\, I$!
@@ -69,7 +69,7 @@ trong đó $$\Delta_H$$ là toán tử Laplace–Hodge. Khi hình học spin ph�
 Dưới góc nhìn PDE, toán tử Dirac chính là lời giải cho bài toán phân tích nhân tử toán tử bậc hai trong khi vẫn bảo toàn tính elliptic và tích hợp thêm cấu trúc hình học.
 
 
-### Khung giải thích (nên đọc chậm): Tự tay kiểm chứng $D^2 = -\Delta\,I$ bằng hai ma trận Pauli $2 \times 2$
+### Giải thích: Tự tay kiểm chứng $D^2 = -\Delta\,I$ bằng hai ma trận Pauli $2 \times 2$
 
 Xét hai ma trận Pauli $\sigma_1 = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$ và $\sigma_2 = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}$ trên $\mathbb{R}^2$. Đặt toán tử Dirac 2D là $D = -i(\sigma_1 \partial_x + \sigma_2 \partial_y)$:
 1. **Kiểm tra đại số Clifford của $\sigma_1, \sigma_2$**:

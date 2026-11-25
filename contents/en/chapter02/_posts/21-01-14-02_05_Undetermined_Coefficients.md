@@ -12,7 +12,7 @@ lesson_type: required
 
 Push a child on a swing at a random rhythm and the swing responds at your pushing frequency; push at the swing's *exact natural frequency* and the amplitude grows linearly with every cycle. The method of undetermined coefficients captures this exact physics algebraically: constant-coefficient linear operators map polynomials, exponentials, and sinusoids back into the *same finite-dimensional families*, letting us find particular solutions by solving a small system of linear algebraic equations—with one crucial resonance twist.
 
-## Background Knowledge Map: Why Guessing Works (and When to Multiply by $$t^s$$)
+## Key ideas: Why Guessing Works (and When to Multiply by $$t^s$$)
 
 Four structural rules eliminate guesswork and prevent the classic resonance trap:
 
@@ -21,7 +21,7 @@ Four structural rules eliminate guesswork and prevent the classic resonance trap
 3. **The Resonance (Modification) Rule:** If any term in your initial trial $$y_p$$ duplicates a homogeneous solution, $$L$$ will annihilate it (returning $$0$$ instead of $$g(t)$$); multiply the *entire* affected trial block by $$t^s$$, where $$s \in \{1, 2\}$$ is the smallest integer that eliminates all overlap with $$y_h$$.
 4. **Superposition of Forcing Terms:** If $$g(t) = g_1(t) + g_2(t)$$, solve $$L[y_{p1}] = g_1$$ and $$L[y_{p2}] = g_2$$ separately and add $$y_p = y_{p1} + y_{p2}$$—keeping each linear system tiny and clean.
 
-### Step-by-Step Worked Example (Read Slowly): Handling Resonance in a Forced Second-Order ODE
+### Worked example: Handling Resonance in a Forced Second-Order ODE
 
 Find the general solution of
 $$y'' - 4y' + 4y = 6e^{2t} + 4t.$$

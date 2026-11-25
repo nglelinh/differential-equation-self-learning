@@ -12,7 +12,7 @@ lesson_type: required
 
 Real engineering systems rarely experience smooth eternal sine waves: a thermostat clicks on at $$t = 2\text{ min}$$ and off at $$t = 5\text{ min}$$, or a rocket engine cuts out abruptly at burnout. Solving piecewise forcing with Chapter 2 methods means gluing separate IVPs together at every switch point; with the Heaviside unit step function $$u_c(t)$$ and the Second Shifting Theorem, a single Laplace formula handles every switch automatically.
 
-## Background Knowledge Map: Encoding Switches and Time Delays in the $$s$$-Domain
+## Key ideas: Encoding Switches and Time Delays in the $$s$$-Domain
 
 Four key principles make step-function problems systematic and error-free:
 
@@ -23,7 +23,7 @@ Four key principles make step-function problems systematic and error-free:
 3. **Physical Causality:** In the inverse transform $$u_c(t)\,f(t - c)$$, the system feels *zero* effect from the delayed switch before $$t = c$$, and at $$t = c$$ the response starts fresh from elapsed time $$\tau = t - c$$.
 4. **Continuity Across Switches:** For a second-order ODE with a jump discontinuity in $$g(t)$$, the solution $$y(t)$$ and its velocity $$y'(t)$$ remain **continuous** across $$t = c$$; only the acceleration $$y''(t)$$ jumps!
 
-### Step-by-Step Worked Example (Read Slowly): Solving a Switched-On Oscillator with a Rectangular Pulse
+### Worked example: Solving a Switched-On Oscillator with a Rectangular Pulse
 
 Solve the IVP with a delayed rectangular voltage pulse of duration $$3$$:
 $$y'' + y = u_1(t) - u_4(t), \qquad y(0) = 0, \quad y'(0) = 0.$$

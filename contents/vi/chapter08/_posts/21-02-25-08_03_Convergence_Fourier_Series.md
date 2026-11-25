@@ -14,7 +14,7 @@ lesson_type: required
 
 Tính xong công thức chuỗi Fourier mới là bước một; câu hỏi quyết định trong giải tích là: **chuỗi vô hạn đó có thực sự hội tụ về đúng $f(x)$ không, hội tụ nhanh cỡ nào, và chuyện gì xảy ra ngay tại điểm đứt đoạn?** Định lý Dirichlet và Hiện tượng Gibbs trả lời trọn vẹn mọi hành vi tinh tế đó!
 
-## Bản đồ kiến thức nền: Bốn quy luật vàng về Sự Hội tụ của Chuỗi Fourier
+## Kiến thức cần nhớ: Bốn quy luật vàng về Sự Hội tụ của Chuỗi Fourier
 
 1. **Định lý Hội tụ Từng điểm của Dirichlet**:
    Nếu $f$ trơn từng khúc trên $[-L, L]$, thì chuỗi Fourier hội tụ tại **mọi điểm $x$** về đúng trung bình cộng hai giới hạn trái–phải:
@@ -49,7 +49,7 @@ một câu hỏi tự nhiên được đặt ra: tổng vô hạn này có thự
 
 Bài học này giúp sinh viên hình thành tư duy chặt chẽ hơn về biểu diễn hàm. Không phải mọi chuỗi vô hạn đều hội tụ theo cùng một cách, và trong lý thuyết Fourier, mỗi kiểu hội tụ phản ánh một tính chất khác nhau của hàm.
 
-### Khung giải thích (nên đọc chậm): Áp dụng Định lý Dirichlet tại 3 điểm đặc biệt của hàm bậc thang
+### Giải thích: Áp dụng Định lý Dirichlet tại 3 điểm đặc biệt của hàm bậc thang
 
 Xét hàm tuần hoàn chu kỳ $2\pi$ xác định trên $(-\pi, \pi]$ bởi $f(x) = \begin{cases} 0, & -\pi < x < 0, \\ 4, & 0 \le x \le \pi. \end{cases}$
 Hãy dùng Định lý Dirichlet dự đoán **chính xác** giá trị hội tụ $S(x)$ mà không cần tính một tích phân nào:

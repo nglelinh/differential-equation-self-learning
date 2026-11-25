@@ -20,7 +20,7 @@ This lesson studies qualitative properties of harmonic functions. Students shoul
 
 Students should know Laplace's equation and the idea that harmonic functions describe source-free equilibrium.
 
-## Background Knowledge Map: Rigidity, Averaging, and Stability of Harmonic Functions
+## Key ideas: Rigidity, Averaging, and Stability of Harmonic Functions
 
 Four interlocking theorems turn the local statement $\Delta u = 0$ into global structural control:
 
@@ -98,7 +98,7 @@ This is where the theory becomes operational.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Direct Verification of the Mean Value Property and Boundary Bounds
+### Worked example: Direct Verification of the Mean Value Property and Boundary Bounds
 
 Consider $u(x,y) = x^2 - y^2 + 3x - 2$. First verify directly that its average over *any* circle of radius $R > 0$ centered at $(1,2)$ equals $u(1,2)$, and then use the Maximum Principle to find the exact extrema of $u$ on the closed unit disk $\overline{B_1}$.
 

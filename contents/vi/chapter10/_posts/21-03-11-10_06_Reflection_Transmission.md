@@ -14,7 +14,7 @@ lesson_type: required
 
 Tại sao bạn nhìn thấy bóng mình phản chiếu qua cửa kính trong khi vẫn nhìn xuyên được ra ngoài phố? Tại sao khi nối hai sợi dây có độ dày khác nhau (hoặc cáp mạng có trở kháng lệch nhau), một phần tín hiệu bị **dội ngược lại** gây nhiễu còn một phần đi tiếp? Mọi hiện tượng **Phản xạ và Truyền qua (Reflection & Transmission)** đều được quyết định chính xác bởi hai điều kiện nối liên tục tại mặt phân cách $x = 0$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phản xạ & Truyền qua Sóng 1D
+## Kiến thức cần nhớ: Bốn trụ cột của Phản xạ & Truyền qua Sóng 1D
 
 1. **Hai điều kiện nối tại điểm ghép $x = 0$ (giữa hai dây có tốc độ $c_1, c_2$)**:
    - Dây không đứt (liên tục li độ): $u(0^-, t) = u(0^+, t)$.
@@ -42,7 +42,7 @@ Trong thực tế, sóng hiếm khi truyền mãi trong một môi trường đ�
 
 Thay vì chỉ ghi nhớ công thức hệ số phản xạ, cần nắm rõ ý nghĩa vật lý: mặt phân cách là nơi điều kiện liên tục quyết định tỷ lệ năng lượng được giữ lại và năng lượng truyền sang môi trường mới.
 
-### Khung giải thích (nên đọc chậm): Tính tay biên độ phản xạ, truyền qua và kiểm chứng bảo toàn năng lượng khi $c_1 = 3,\; c_2 = 1$
+### Giải thích: Tính tay biên độ phản xạ, truyền qua và kiểm chứng bảo toàn năng lượng khi $c_1 = 3,\; c_2 = 1$
 
 Một sóng tới có biên độ $A_i = 10\text{ mm}$ truyền từ dây nhẹ ($c_1 = 3\text{ m/s}$) sang dây nặng hơn ($c_2 = 1\text{ m/s}$):
 1. **Tính hệ số $R$ và $T_{\text{tr}}$**:

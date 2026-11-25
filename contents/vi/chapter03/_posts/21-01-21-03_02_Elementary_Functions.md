@@ -12,7 +12,7 @@ lesson_type: required
 
 Bạn không bao giờ cần tính lại tích phân $\int_0^\infty e^{-st}f(t)\,dt$ từ đầu mỗi khi giải bài toán thực tế—cũng như bạn không chứng minh lại bảng cửu chương mỗi khi nhân hai số! Chỉ cần nắm chắc **6 công thức hạt giống** ($1, t^n, e^{at}, \cos\omega t, \sin\omega t, \cosh/\sinh$) kết hợp với hai quy tắc dịch chuyển và đạo hàm theo $s$, bạn có thể đọc ngay biến đổi Laplace của hàng trăm tổ hợp hàm sơ cấp trong tích tắc.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Bảng Biến đổi Hàm Sơ cấp
+## Kiến thức cần nhớ: Bốn trụ cột của Bảng Biến đổi Hàm Sơ cấp
 
 1. **Họ lũy thừa $t^n$ & Hàm Gamma**:
    $\mathcal{L}\{t^n\} = \frac{n!}{s^{n+1}}$ ($s > 0$); với số mũ thực $p > -1$, công thức tổng quát dùng hàm Gamma: $\mathcal{L}\{t^p\} = \frac{\Gamma(p+1)}{s^{p+1}}$.
@@ -36,7 +36,7 @@ Sinh viên cần nắm định nghĩa biến đổi Laplace, kỹ thuật tích 
 
 Vì vậy, bài học này hướng dẫn cách xây dựng bảng biến đổi từ định nghĩa. Khi tự suy ra được vài công thức gốc, các công thức mở rộng trở nên có hệ thống và dễ nhớ hơn.
 
-### Khung giải thích (nên đọc chậm): Tính nhanh $\mathcal{L}\{t\,e^{-2t}\cos(3t)\}$ bằng hai quy tắc liên tiếp mà KHÔNG cần tích phân!
+### Giải thích: Tính nhanh $\mathcal{L}\{t\,e^{-2t}\cos(3t)\}$ bằng hai quy tắc liên tiếp mà KHÔNG cần tích phân!
 
 1. **Xuất phát từ hàm gốc**:
    $$\mathcal{L}\{\cos(3t)\} = \frac{s}{s^2 + 9}.$$

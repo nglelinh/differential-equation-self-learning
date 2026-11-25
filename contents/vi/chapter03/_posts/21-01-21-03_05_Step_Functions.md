@@ -12,7 +12,7 @@ lesson_type: required
 
 Động cơ tên lửa cháy trong đúng 10 giây rồi tắt phụt, hay công tắc điện bật lên ở giây thứ 3 rồi ngắt ở giây thứ 7—ngoài đời thực, các ngoại lực hiếm khi trơn tru mãi mãi mà thường mang **bước nhảy gián đoạn**. Nếu giải theo Chương 02, bạn sẽ phải cắt trục thời gian thành từng đoạn rồi nối khớp thủ công cực kỳ mệt mỏi; còn với **hàm bậc thang Heaviside $u_c(t)$** và biến đổi Laplace, toàn bộ cú bật–tắt ấy được xử lý gọn trong một phương trình duy nhất!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Hàm Bậc thang & Lực Gián đoạn
+## Kiến thức cần nhớ: Bốn trụ cột của Hàm Bậc thang & Lực Gián đoạn
 
 1. **Hàm bậc thang đơn vị $u_c(t)$ & Hàm cửa sổ $u_a(t) - u_b(t)$**:
    $u_c(t) = 0$ khi $t < c$ và $= 1$ khi $t \ge c$. Hiệu $u_a(t) - u_b(t)$ bật bằng $1$ đúng trên đoạn $[a, b)$ rồi tắt về $0$—giúp viết mọi hàm từng khúc thành một biểu thức đại số duy nhất!
@@ -37,7 +37,7 @@ Trong thực tế, nhiều tín hiệu không tồn tại liên tục từ đầ
 
 Hàm bước Heaviside kết hợp với biến đổi Laplace giải quyết gọn gàng lớp bài toán này: ta viết tín hiệu gián đoạn bằng một biểu thức duy nhất và xử lý đại số trong miền $$ s $$ theo cùng quy trình đã học.
 
-### Khung giải thích (nên đọc chậm): Giải IVP có công tắc bật trễ $y' + y = u_2(t),\; y(0) = 0$
+### Giải thích: Giải IVP có công tắc bật trễ $y' + y = u_2(t),\; y(0) = 0$
 
 1. **Biến đổi Laplace hai vế** (vì $\mathcal{L}\{u_2(t)\} = \frac{e^{-2s}}{s}$):
    $$(s + 1)Y(s) = \frac{e^{-2s}}{s} \implies Y(s) = e^{-2s}\cdot\frac{1}{s(s + 1)}.$$

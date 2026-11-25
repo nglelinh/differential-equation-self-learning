@@ -12,7 +12,7 @@ lesson_type: required
 
 Mỗi khi bạn ném viên sỏi xuống mặt hồ phẳng lặng, gõ vào mặt trống tròn, hay dẫn sóng điện từ qua cáp quang hình trụ, phương trình vật lý tách biến trong tọa độ trụ đều dẫn về đúng một phương trình kinh điển: **Phương trình Bessel** $x^2 y'' + x y' + (x^2 - \nu^2) y = 0$.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình & Hàm Bessel
+## Kiến thức cần nhớ: Bốn trụ cột của Phương trình & Hàm Bessel
 
 1. **Hàm Bessel loại I ($J_\nu(x)$) & Hàm Bessel loại II ($Y_\nu(x)$)**:
    Tại điểm kỳ dị chính quy $x = 0$, phương trình chỉ số $r^2 - \nu^2 = 0$ cho $r = \pm \nu$. Nghiệm hữu hạn tại gốc $x = 0$ là $J_\nu(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m!\,\Gamma(m+\nu+1)}\left(\frac{x}{2}\right)^{2m+\nu}$, còn $Y_\nu(x)$ chứa $\ln x$ và tiến ra $-\infty$ tại $x = 0$ (nên thường bị loại trong bài toán đĩa tròn đặc!).
@@ -39,7 +39,7 @@ Khi giải các bài toán có đối xứng tròn hoặc trụ — chẳng hạ
 
 Nếu ở các chương đầu nghiệm quen thuộc là sin, cos và hàm mũ, thì ở đây ta thấy mỗi hình học đặc trưng sẽ sinh ra một họ hàm dao động riêng: với đoạn thẳng là sin và cos, còn với hình tròn và hình trụ là họ hàm Bessel.
 
-### Khung giải thích (nên đọc chậm): Tính tay giá trị $J_0(1)$ và kiểm chứng $J_0'(x) = -J_1(x)$
+### Giải thích: Tính tay giá trị $J_0(1)$ và kiểm chứng $J_0'(x) = -J_1(x)$
 
 Với bậc $\nu = 0$, chuỗi của $J_0(x)$ là:
 $$J_0(x) = \sum_{m=0}^{\infty} \frac{(-1)^m}{(m!)^2} \left(\frac{x}{2}\right)^{2m} = 1 - \frac{x^2}{4} + \frac{x^4}{64} - \frac{x^6}{2304} + \dots$$

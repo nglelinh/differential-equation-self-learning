@@ -22,7 +22,7 @@ This lesson introduces spectral theory as a way of understanding differential op
 
 Students should know Hilbert spaces, inner products, orthogonality, Sturm-Liouville problems, and Fourier series. Earlier chapters on eigenvalues of differential equations are especially helpful.
 
-## Background Knowledge Map: Diagonalizing Differential Operators in Hilbert Space
+## Key ideas: Diagonalizing Differential Operators in Hilbert Space
 
 Four foundational pillars connect finite-dimensional matrix diagonalization to PDE eigenfunctions:
 
@@ -100,7 +100,7 @@ Once eigenfunctions are known, solutions can be expanded mode by mode.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Estimating $\lambda_1$ with a One-Line Rayleigh Quotient
+### Worked example: Estimating $\lambda_1$ with a One-Line Rayleigh Quotient
 
 For the 1D Dirichlet Laplacian $-u'' = \lambda u$ on $(0,1)$ with $u(0)=u(1)=0$, the exact fundamental eigenvalue is $\lambda_1 = \pi^2 \approx 9.8696$ (eigenfunction $\sin(\pi x)$). Estimate $\lambda_1$ from above using the elementary parabola $v(x) = x(1-x) \in H_0^1(0,1)$ without solving any differential equation.
 

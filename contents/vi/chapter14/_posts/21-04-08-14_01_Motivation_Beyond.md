@@ -14,7 +14,7 @@ lesson_type: required
 
 Mọi toán tử vi phân truyền thống đều có hai "cái trần" không thể vượt qua: thứ nhất, bậc của chúng luôn phải là số nguyên không âm ($0, 1, 2, \dots$) nên không thể viết ra đạo hàm nửa bậc $(-\Delta)^{1/2}$ hay toán tử nghịch đảo $(-\Delta)^{-1}$; thứ hai, chúng hoàn toàn **địa phương** nên không thể mô tả các hiện tượng tương tác xa như sóng mặt nước hay ánh xạ Dirichlet-to-Neumann! Bài học này chỉ rõ vì sao toán học bắt buộc phải bước ra khỏi biên giới toán tử vi phân để tiến vào đại số $\Psi$DO.
 
-## Bản đồ kiến thức nền: Bốn động lực buộc ta phải vượt qua Toán tử Vi phân
+## Kiến thức cần nhớ: Bốn động lực buộc ta phải vượt qua Toán tử Vi phân
 
 1. **Nghịch đảo của Toán tử Elliptic không phải Toán tử Vi phân**:
    Nếu $P$ có bậc $m > 0$, nghịch đảo $P^{-1}$ phải có bậc $-m < 0$ (làm trơn thay vì lấy đạo hàm)—nó là một toán tử tích phân phi địa phương!
@@ -40,7 +40,7 @@ Các toán tử vi phân cổ điển đóng vai trò nền tảng trong phần 
 Ví dụ điển hình là toán tử nghịch đảo của một toán tử elliptic. Toán tử $$ (1-\Delta)^{-1} $$ không phải toán tử vi phân, nhưng lại là đối tượng trung tâm khi giải phương trình $$ (1-\Delta)u=f $$. Nói cách khác, quá trình giải PDE tự nhiên dẫn ta tới một lớp toán tử rộng hơn nhiều so với lớp toán tử ban đầu tạo nên phương trình.
 
 
-### Khung giải thích (nên đọc chậm): So sánh trực tiếp Toán tử Laplace $-\Delta$ (địa phương) và Căn bậc hai $(-\Delta)^{1/2}$ (giả vi phân)
+### Giải thích: So sánh trực tiếp Toán tử Laplace $-\Delta$ (địa phương) và Căn bậc hai $(-\Delta)^{1/2}$ (giả vi phân)
 
 Xét hàm tổng hai sóng điều hòa $u(x) = \sin(2x) + \sin(10x)$ trên $\mathbb{R}$:
 1. **Tác động của toán tử vi phân bậc 2 ($-\Delta = -\partial_x^2$, ký hiệu $\xi^2$)**:

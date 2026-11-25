@@ -12,7 +12,7 @@ lesson_type: required
 
 Trước khi giải phương trình vi phân bằng chuỗi vô hạn, bạn cần sử dụng thành thạo "bộ cờ lê đại số" của **chuỗi lũy thừa** $\sum_{n=0}^{\infty} a_n (x - x_0)^n$: tìm bán kính hội tụ để biết nghiệm có nghĩa ở đâu, lấy đạo hàm từng số hạng, và đặc biệt là kỹ thuật **dịch chỉ số (index shifting)** để cộng gộp các tổng có lũy thừa lệch nhau về cùng một mẫu $x^k$.
 
-## Bản đồ kiến thức nền: Bốn thao tác xương sống với Chuỗi Lũy thừa
+## Kiến thức cần nhớ: Bốn thao tác xương sống với Chuỗi Lũy thừa
 
 1. **Bán kính hội tụ $R$ (Tiêu chuẩn D'Alembert / Cauchy)**:
    $R = \lim_{n\to\infty} \left\vert \frac{a_n}{a_{n+1}} \right\vert$. Chuỗi hội tụ tuyệt đối khi $\vert x - x_0 \vert < R$ và phân kỳ khi $\vert x - x_0 \vert > R$.
@@ -39,7 +39,7 @@ Khi khảo sát một hàm số quanh một điểm, ta thường muốn có m�
 
 Trong chương này, thay vì tìm nghiệm dưới dạng tổ hợp các hàm sơ cấp quen thuộc như sin, cos hay hàm mũ, ta giả sử nghiệm có dạng chuỗi lũy thừa rồi dùng chính phương trình vi phân để xác định các hệ số. Vì vậy, ôn tập chuỗi lũy thừa là nền tảng trực tiếp cho toàn bộ chương.
 
-### Khung giải thích (nên đọc chậm): Thực hành dịch chỉ số và gộp 2 tổng thành 1 tổng duy nhất
+### Giải thích: Thực hành dịch chỉ số và gộp 2 tổng thành 1 tổng duy nhất
 
 Cần viết biểu thức $S(x) = \sum_{n=2}^{\infty} n(n-1) a_n x^{n-2} + \sum_{n=0}^{\infty} a_n x^n$ thành một chuỗi duy nhất theo $x^k$:
 1. **Tổng thứ nhất**: Đặt $k = n - 2 \implies n = k + 2$. Khi $n = 2$ thì $k = 0$:

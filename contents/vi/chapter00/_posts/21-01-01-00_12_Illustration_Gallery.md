@@ -13,7 +13,7 @@ lesson_type: optional
 
 Định nghĩa $\varepsilon\text{--}\delta$, hội tụ đều, hình cầu đơn vị của chuẩn $\ell^p$ hay phép chiếu trực giao sẽ mất đi một nửa sức sống nếu chỉ nằm yên trong các dòng bất đẳng thức. Bộ minh họa tương tác của Chương 00 cho phép bạn chạm tay trực tiếp vào những đối tượng giải tích nền tảng này: kéo thanh trượt $\varepsilon$ để thấy $\delta$ co lại, xoay vectơ riêng của ma trận $2\times 2$, và nhìn tận mắt sự khác biệt giữa chuẩn $\ell^1$, $\ell^2$ và $\ell^\infty$.
 
-## Bản đồ kiến thức nền: Bốn trực giác hình học cần nắm trong Bộ Minh họa Chương 00
+## Kiến thức cần nhớ: Bốn trực giác hình học cần nắm trong Bộ Minh họa Chương 00
 
 1. **Dải $\varepsilon\text{--}\delta$ & Tính liên tục đều**:
    Quan sát khi nào một độ rộng $\delta$ cố định giữ được đồ thị nằm gọn trong dải ngang $\pm\varepsilon$ trên toàn miền, và khi nào độ dốc lớn phá vỡ điều đó.
@@ -45,7 +45,7 @@ Cách tiếp cận này giúp Chương 00 trở thành khung kiến thức cốt
   height="980px"
 %}
 
-### Khung giải thích (nên đọc chậm): Tự kiểm chứng hình học quả cầu đơn vị $\ell^1, \ell^2, \ell^\infty$ tại cùng một điểm $(0{,}6,\; 0{,}8)$
+### Giải thích: Tự kiểm chứng hình học quả cầu đơn vị $\ell^1, \ell^2, \ell^\infty$ tại cùng một điểm $(0{,}6,\; 0{,}8)$
 
 Hãy đặt điểm $P = (0{,}6,\; 0{,}8)$ lên cả ba "hình tròn đơn vị" $\{ (x,y) : \|(x,y)\|_p \le 1 \}$ trong bộ minh họa:
 - **Theo chuẩn Euclid $\ell^2$**: $\sqrt{0{,}6^2 + 0{,}8^2} = \sqrt{0{,}36 + 0{,}64} = \mathbf{1{,}0}$ → điểm $P$ nằm **đúng trên biên** đường tròn đơn vị.

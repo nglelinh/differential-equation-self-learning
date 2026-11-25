@@ -12,7 +12,7 @@ lesson_type: required
 
 Imagine a snowball melting in warm air so that its volume shrinks at a rate proportional to its surface area, or a chemical reaction whose speed depends on the product of reactant concentrations. Whenever the right-hand side of $$y' = f(x,y)$$ factors cleanly into an $$x$$-part times a $$y$$-part, you can decouple the two variables onto opposite sides of the equals sign and integrate directly—the oldest and most versatile exact technique in all of differential equations.
 
-## Background Knowledge Map: What Makes Separation of Variables Rigorous
+## Key ideas: What Makes Separation of Variables Rigorous
 
 At the university level, separation of variables is more than "multiplying by $$dx$$"—four subtleties govern every problem:
 
@@ -21,7 +21,7 @@ At the university level, separation of variables is more than "multiplying by $$
 3. **Implicit vs. Explicit Solutions and Interval of Validity:** Integration often produces an implicit curve $$G(y) = H(x) + C$$; solving for $$y(x)$$ can introduce square-root branches (fixed by the initial condition) and vertical asymptotes that restrict the maximal interval of existence.
 4. **Exponential Sign Absorption:** When $$\ln\lvert y \rvert = H(x) + C_1$$, exponentiating gives $$\lvert y \rvert = e^{C_1} e^{H(x)}$$, and allowing $$C = \pm e^{C_1}$$ (plus $$C = 0$$ from the equilibrium $$y \equiv 0$$) smoothly recovers all real constants $$C \in \mathbb{R}$$.
 
-### Step-by-Step Worked Example (Read Slowly): Solving a Separable IVP with Blow-Up and Equilibrium Check
+### Worked example: Solving a Separable IVP with Blow-Up and Equilibrium Check
 
 Solve the initial value problem
 $$\frac{dy}{dx} = x\,(y^2 - 1), \qquad y(0) = 2,$$

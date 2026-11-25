@@ -12,7 +12,7 @@ lesson_type: required
 
 Isaac Newton built classical mechanics on a bold philosophical faith: if you know the exact state of a system right now, the laws of physics uniquely determine its entire future. Yet mathematically, that faith can *fail*! The innocent-looking equation $$y' = 3y^{2/3},\; y(0) = 0$$ admits infinitely many distinct futures from the exact same starting point. The Picard–Lindelöf theorem draws the razor-sharp boundary between deterministic predictability and non-uniqueness.
 
-## Background Knowledge Map: Four Pillars of Picard–Lindelöf Theory
+## Key ideas: Four Pillars of Picard–Lindelöf Theory
 
 Understanding *why* existence and uniqueness hold requires connecting four analytical concepts:
 
@@ -21,7 +21,7 @@ Understanding *why* existence and uniqueness hold requires connecting four analy
 3. **Banach Contraction Mapping Principle:** On a sufficiently small interval $$[t_0 - h, t_0 + h]$$ with $$Lh < 1$$, the Picard operator $$T$$ contracts distances in the complete space $$C([t_0-h, t_0+h])$$—guaranteeing that Picard iterates $$y_{n+1} = T(y_n)$$ converge uniformly to a unique fixed point.
 4. **Local vs. Global Existence (Maximal Intervals):** Picard–Lindelöf is strictly *local*; a smooth nonlinear ODE can still escape to infinity in finite time (e.g., $$y' = y^2$$), so solutions persist only until they leave the domain or blow up.
 
-### Step-by-Step Worked Example (Read Slowly): Computing Picard Iterates and Spotting Non-Uniqueness
+### Worked example: Computing Picard Iterates and Spotting Non-Uniqueness
 
 **Part A — Picard Iteration for $$y' = 2t(1 + y),\; y(0) = 0$$:**
 1. **Set $$y_0(t) = 0$$ and apply $$y_{n+1}(t) = \int_0^t 2s\bigl(1 + y_n(s)\bigr)\,ds$$:**

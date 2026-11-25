@@ -22,7 +22,7 @@ This optional lesson introduces elliptic theory at the microlocal level, meaning
 
 Students should already know principal symbols of differential or pseudodifferential operators, characteristic sets, wave front sets, and the basic idea of microlocal regularity from Lessons 15.01 and 15.02. Background from classical elliptic PDE is also useful, because this lesson extends the same regularity philosophy into the language of phase space.
 
-## Background Knowledge Map: Conic Inversion and Microlocal Regularity
+## Key ideas: Conic Inversion and Microlocal Regularity
 
 Four pillars localize Chapter 14's elliptic theory to individual cones in $T^*\Omega \setminus \{0\}$:
 
@@ -120,7 +120,7 @@ State clearly that elliptic regions remove singularities, while characteristic r
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Microlocal Ellipticity of the Wave Operator Off the Light Cone
+### Worked example: Microlocal Ellipticity of the Wave Operator Off the Light Cone
 
 Consider the 1D wave operator $P = \partial_t^2 - \partial_x^2$ with principal symbol $p_2(t,x;\tau,\xi) = -\tau^2 + \xi^2$. Determine $\operatorname{Ell}(P)$ and $\operatorname{Char}(P)$, test two explicit covectors $(\tau,\xi) = (3,1)$ and $(2,2)$, and verify what microlocal elliptic regularity guarantees for any solution of $Pu = 0$.
 

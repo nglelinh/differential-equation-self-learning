@@ -12,7 +12,7 @@ lesson_type: required
 
 In Chapter 2, solving an initial value problem required a three-stage relay race: find $$y_h$$, guess or integrate $$y_p$$, and finally solve a separate linear system for $$c_1, c_2$$ from $$y(0)$$ and $$y'(0)$$. The Laplace transform collapses all three stages into a *single algebraic pipeline*—baking the initial conditions directly into the transformed equation so the unique IVP solution emerges in one shot.
 
-## Background Knowledge Map: The Algebraic IVP Pipeline
+## Key ideas: The Algebraic IVP Pipeline
 
 Four operational pillars power Laplace-based IVP solving:
 
@@ -25,7 +25,7 @@ Four operational pillars power Laplace-based IVP solving:
 3. **Automatic Resonance Handling:** When the forcing $$G(s)$$ shares a pole with $$P(s)$$, the denominator simply acquires a repeated factor $$(s - r)^2$$—automatically generating $$t\,e^{rt}$$ or $$t\sin(\omega t)$$ without ever consulting a modification rule!
 4. **Nonzero Initial Time Shift ($$t_0 \ne 0$$):** If initial data are given at $$t_0 \ne 0$$, set $$\tau = t - t_0$$ and $$\tilde{y}(\tau) = y(\tau + t_0)$$ so the IVP starts cleanly at $$\tau = 0$$.
 
-### Step-by-Step Worked Example (Read Slowly): Solving a Resonant Second-Order IVP in One Algebraic Pass
+### Worked example: Solving a Resonant Second-Order IVP in One Algebraic Pass
 
 Solve the initial value problem
 $$y'' + 4y = 8\sin(2t), \qquad y(0) = 1, \quad y'(0) = 0.$$

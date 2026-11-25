@@ -12,7 +12,7 @@ lesson_type: optional
 
 Không có cách nào học giải tích số thấm nhanh bằng việc tự tay kéo thanh trượt bước lưới $h$ và nhìn điều gì xảy ra trên màn hình: đường gấp khúc Euler rời dần quỹ đạo thật, RK4 ôm sát đường cong như phép màu, lưới FTCS lập tức bốc cháy răng cưa ngay khoảnh khắc $r$ nhích từ $0{,}50$ lên $0{,}51$, còn các quỹ đạo SDE tỏa ra thành đám mây phân bố Gaussian sống động!
 
-## Bản đồ kiến thức nền: Bốn thí nghiệm trực quan nên thử ngay trong Gallery Chương 13
+## Kiến thức cần nhớ: Bốn thí nghiệm trực quan nên thử ngay trong Gallery Chương 13
 
 1. **Đường dốc Bậc Hội tụ trên Biểu đồ Log–Log**:
    Quan sát đồ thị $\log(\text{Sai số})$ theo $\log(h)$: độ dốc đường thẳng chính là bậc hội tụ $p$ ($p=1$ cho Euler, $p=2$ cho Midpoint/Heun, $p=4$ cho RK4).
@@ -36,7 +36,7 @@ Nên quay lại bộ minh họa sau khi hoàn thành từng phương pháp hoặ
 Trang này cũng phù hợp để ôn tập khi chuyển từ giải số ODE sang giải số PDE, vì nó hệ thống hóa cùng một chỗ các khái niệm nhất quán, ổn định và hội tụ.
 
 
-### Khung giải thích (nên đọc chậm): Đọc nhanh bậc hội tụ $p$ bằng quy tắc "chia đôi bước $h$"
+### Giải thích: Đọc nhanh bậc hội tụ $p$ bằng quy tắc "chia đôi bước $h$"
 
 Nếu sai số toàn cục tuân theo $E(h) \approx C h^p$, thì khi ta **chia đôi bước thời gian** ($h \to h/2$), tỷ số giảm sai số là $\frac{E(h)}{E(h/2)} \approx 2^p$:
 - **Euler ($p = 1$)**: chia đôi $h \implies$ sai số giảm **$2\times$** (giảm $h$ đi $10\times$ thì sai số giảm $10\times$).

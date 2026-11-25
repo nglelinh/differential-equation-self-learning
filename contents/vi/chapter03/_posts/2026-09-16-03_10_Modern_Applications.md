@@ -13,7 +13,7 @@ lesson_type: optional
 
 Trong khi Fourier Neural Operator (FNO) tỏa sáng với tín hiệu tuần hoàn, phần lớn hệ thống kỹ thuật ngoài đời thực lại có **đáp ứng tắt dần, tín hiệu quá độ và lực gián đoạn**—những thứ mà biến đổi Fourier khó biểu diễn gọn. **Laplace Neural Operator (LNO)** cùng các mô hình không gian trạng thái sâu hiện đại (S4, Mamba) đã đưa mặt phẳng cực–không $s$ của thế kỷ XIX vào thẳng kiến trúc học sâu để học hàm truyền và giải PDE nhanh vượt trội!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Biến đổi Laplace trong AI Khoa học
+## Kiến thức cần nhớ: Bốn trụ cột của Biến đổi Laplace trong AI Khoa học
 
 1. **Laplace Neural Operator (LNO)**:
    Phân tách nghiệm thành phần quá độ (tương ứng các cực hữu hạn $s_k$) và phần xác lập (tần số kích thích) ngay trong miền Laplace, khắc phục sai số biên của FNO trên tín hiệu không tuần hoàn.
@@ -40,7 +40,7 @@ Cao, Goswami và Karniadakis đã đề xuất Laplace neural operator (LNO) nă
 
 Song song đó, Fourier neural operator (Li và cộng sự, ICLR 2021) cùng khung lý thuyết neural operator của Kovachki và cộng sự (*JMLR* 2023) đã chứng minh hiệu quả của các nhân tử phổ trong việc học ánh xạ giữa các không gian hàm. Miền Laplace là lựa chọn bổ sung tự nhiên cho các hệ động lực nhân quả, một phía theo thời gian — đúng bối cảnh mà Chương 03 sử dụng Laplace thay vì Fourier.
 
-### Khung giải thích (nên đọc chậm): Thấy mối liên hệ trực tiếp giữa một cực học được $p = -0{,}5$ và nhân tích chập S4 $K(t) = r e^{pt}$
+### Giải thích: Thấy mối liên hệ trực tiếp giữa một cực học được $p = -0{,}5$ và nhân tích chập S4 $K(t) = r e^{pt}$
 
 Giả sử một lớp S4/LNO học được hàm truyền 1 cực $H(s) = \frac{2}{s + 0{,}5}$ (cực $p = -0{,}5 < 0$, thặng dư $r = 2$):
 1. **Nhân đáp ứng xung miền thời gian**: $K(t) = \mathcal{L}^{-1}\!\left\{\frac{2}{s+0{,}5}\right\} = \mathbf{2e^{-0{,}5 t}}$ ($t \ge 0$).

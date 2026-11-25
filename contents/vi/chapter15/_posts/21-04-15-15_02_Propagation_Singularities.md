@@ -14,7 +14,7 @@ lesson_type: required
 
 Một tia chớp lóe lên trên bầu trời và tiếng sấm sắc gọn truyền đến tai bạn sau vài giây mà không hề tan loãng thành tiếng ù mờ như sự khuếch tán nhiệt. Tại sao phương trình sóng lại **vận chuyển các điểm kỳ dị đi xa nguyên vẹn** dọc theo những quỹ đạo sắc nét? **Định lý Lan truyền Kỳ dị của Hörmander (1971)** tiết lộ câu trả lời đầy kinh ngạc: tập mặt sóng $\operatorname{WF}(u)$ của nghiệm $Pu = 0$ bị giam chặt trong tập đặc trưng $\operatorname{Char}(P)$ và **chảy theo đúng phương trình Hamilton của cơ học cổ điển**!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Định lý Lan truyền Kỳ dị
+## Kiến thức cần nhớ: Bốn trụ cột của Định lý Lan truyền Kỳ dị
 
 1. **Tập Đặc trưng $\operatorname{Char}(P) = \{(x, \xi) \in T^*M \setminus 0 : p_m(x, \xi) = 0\}$**:
    Bên ngoài $\operatorname{Char}(P)$, toán tử $P$ là elliptic vi địa phương nên nghiệm tự động trơn ($\operatorname{WF}(u) \subset \operatorname{Char}(P)$ khi $Pu \in C^\infty$). Mọi kỳ dị chỉ có thể cư trú trên mặt đặc trưng!
@@ -44,7 +44,7 @@ Một kết quả cốt lõi của giải tích vi địa phương là điểm k
 Kết quả này vừa sâu sắc về mặt lý thuyết vừa giàu ứng dụng thực tiễn, làm nền tảng cho phân tích truyền sóng, bài toán ngược, quang học hình học và chụp cắt lớp.
 
 
-### Khung giải thích (nên đọc chậm): Giải tay hệ phương trình Hamilton để tìm quỹ đạo lan truyền kỳ dị của phương trình sóng 1D
+### Giải thích: Giải tay hệ phương trình Hamilton để tìm quỹ đạo lan truyền kỳ dị của phương trình sóng 1D
 
 Xét phương trình sóng 1D $P u = (\partial_t^2 - c^2 \partial_x^2) u = 0$. Thay $\partial_t \mapsto i\tau$ và $\partial_x \mapsto i\xi$, ký hiệu chính thực là:
 $$p_2(t, x; \tau, \xi) = -\tau^2 + c^2\xi^2.$$

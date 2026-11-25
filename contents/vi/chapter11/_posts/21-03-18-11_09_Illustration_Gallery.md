@@ -12,7 +12,7 @@ lesson_type: optional
 
 Phương trình Laplace và Poisson là chương giàu trực giác hình học bậc nhất trong toàn khóa học: nhìn mặt cong yên ngựa của hàm điều hòa, ta thấy ngay vì sao cực đại không bao giờ nằm ở giữa miền; nhìn lưới đường đẳng thế và đường dòng cắt nhau vuông góc $90^\circ$, ta đọc được cả tĩnh điện học lẫn thủy động lực học trong cùng một bức tranh!
 
-## Bản đồ kiến thức nền: Bốn cấu trúc hình học cần quan sát trong Gallery Chương 11
+## Kiến thức cần nhớ: Bốn cấu trúc hình học cần quan sát trong Gallery Chương 11
 
 1. **Mặt Yên ngựa và Nguyên lý Cực đại**:
    Mọi điểm bên trong của nghiệm $\Delta u = 0$ đều không có đỉnh nhô hay hố trũng; kéo thay đổi nhiệt độ trên một cạnh biên lập tức làm toàn bộ mặt bên trong điều chỉnh mượt mà theo.
@@ -36,7 +36,7 @@ Nên xem bộ minh họa theo đúng thứ tự các bài học. Sau mỗi hình
 Đây cũng là tài liệu ôn tập hữu ích trước khi bước sang Chương 12, vì nó làm rõ những đặc trưng của PDE elliptic sẽ được diễn đạt lại bằng ngôn ngữ giải tích hàm.
 
 
-### Khung giải thích (nên đọc chậm): Tự kiểm chứng Nguyên lý Trung bình rời rạc bằng phép tính 4 điểm lân cận
+### Giải thích: Tự kiểm chứng Nguyên lý Trung bình rời rạc bằng phép tính 4 điểm lân cận
 
 Khi rời rạc hóa $\Delta u = 0$ trên lưới vuông bước $h$ bằng sai phân 5 điểm, ta có:
 $$\frac{u_{i+1,j} + u_{i-1,j} + u_{i,j+1} + u_{i,j-1} - 4u_{i,j}}{h^2} = 0 \iff u_{i,j} = \frac{u_{i+1,j} + u_{i-1,j} + u_{i,j+1} + u_{i,j-1}}{4}.$$

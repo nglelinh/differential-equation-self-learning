@@ -14,7 +14,7 @@ lesson_type: optional
 
 Khi thanh kim loại có độ dẫn nhiệt thay đổi theo vị trí $\alpha(x)$ hoặc hình dạng 2D/3D phức tạp, nghiệm chuỗi Fourier không còn viết nổi bằng tay nữa. Lúc này máy tính vào cuộc bằng **Phương pháp Sai phân Hữu hạn (Finite Difference Method)**: thay không gian liên tục bằng lưới điểm cách đều $\Delta x$, thay thời gian bằng bước $\Delta t$, và xấp xỉ đạo hàm bằng hiệu chia đơn giản—nhưng chỉ cần chọn bước thời gian $\Delta t$ hơi quá tay, nghiệm số sẽ **nổ tung thành dao động vô cùng**!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Sai phân Hữu hạn cho Phương trình Nhiệt
+## Kiến thức cần nhớ: Bốn trụ cột của Sai phân Hữu hạn cho Phương trình Nhiệt
 
 1. **Sơ đồ Hiện FTCS (Forward-Time Central-Space)**:
    $$u_j^{n+1} = u_j^n + r\,(u_{j+1}^n - 2u_j^n + u_{j-1}^n), \qquad r = \frac{\alpha \Delta t}{(\Delta x)^2}.$$
@@ -40,7 +40,7 @@ Ngay cả khi đã nắm các phương pháp giải tích, nhiều bài toán th
 
 Bài học này không chỉ dừng ở việc thay đạo hàm bằng tỉ số sai phân, mà nhấn mạnh một nguyên tắc quan trọng: một sơ đồ số đáng tin cậy phải phản ánh đúng bản chất vật lý của phương trình gốc. Với phương trình nhiệt, điều đó đòi hỏi sơ đồ phải ổn định, có tính làm mượt và không sinh ra dao động phi vật lý khi bước lưới được chọn hợp lý.
 
-### Khung giải thích (nên đọc chậm): Chạy tay 1 bước FTCS thấy tận mắt sự khác biệt giữa $r = 0{,}25$ (ổn định) và $r = 1{,}0$ (nổ dao động!)
+### Giải thích: Chạy tay 1 bước FTCS thấy tận mắt sự khác biệt giữa $r = 0{,}25$ (ổn định) và $r = 1{,}0$ (nổ dao động!)
 
 Giả sử lưới gồm 5 điểm với biên $u_0 = u_4 = 0$ và trạng thái ban đầu có 1 đỉnh nóng ở giữa: $\mathbf{u}^0 = [0,\; 0,\; 100,\; 0,\; 0]$.
 Áp dụng công thức FTCS $u_j^1 = (1 - 2r) u_j^0 + r(u_{j-1}^0 + u_{j+1}^0)$:

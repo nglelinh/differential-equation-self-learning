@@ -11,7 +11,7 @@ categories:
 
 In the 1890s, a self-taught British telegraph operator named Oliver Heaviside shocked the Royal Society by treating the derivative operator $$p = d/dt$$ as an ordinary algebraic number, solving submarine cable equations that stumped Cambridge professors. When mathematicians protested that his rules lacked proof, Heaviside famously shot back: *"Shall I refuse my dinner because I do not fully understand the process of digestion?"* It took Bromwich, Doetsch, and Laurent Schwartz fifty years to show that Heaviside's intuition was actually a profound theorem about the Laplace transform and distributions.
 
-## Background Knowledge Map: Four Historical Chapters of Operational Calculus
+## Key ideas: Four Historical Chapters of Operational Calculus
 
 Understanding the evolution of Chapter 03 explains why engineers and mathematicians still speak slightly different dialects for the same tool:
 
@@ -20,7 +20,7 @@ Understanding the evolution of Chapter 03 explains why engineers and mathematici
 3. **Bromwich Contour Inversion & Doetsch's Theory (1916–1937):** Thomas Bromwich connected Heaviside's rules to complex contour integration (the Bromwich integral), and Gustav Doetsch codified the modern Laplace transform textbook framework.
 4. **Schwartz's Theory of Distributions (1945–1950):** Laurent Schwartz placed Dirac's $$\delta(t)$$ and Heaviside's differentiated step functions on airtight functional-analytic ground as continuous linear functionals, earning the 1950 Fields Medal.
 
-### Step-by-Step Worked Example (Read Slowly): Comparing Heaviside's 1890s Operator Algebra to the Modern Laplace Transform
+### Worked example: Comparing Heaviside's 1890s Operator Algebra to the Modern Laplace Transform
 
 Consider the telegraph-style relaxation IVP $$y' + 3y = u_0(t),\; y(0) = 0$$:
 

@@ -20,7 +20,7 @@ This optional lesson uses $$L^p$$ spaces, weak derivatives, Sobolev norms, and L
 
 Students should know $$L^p$$ norms, weak derivatives, the spaces $$H^1$$ and $$H^1_0$$, the Lax–Milgram theorem, and the idea of a weak solution of a linear elliptic PDE.
 
-## Background Knowledge Map: Sobolev Analysis Inside Modern Operator Learning
+## Key ideas: Sobolev Analysis Inside Modern Operator Learning
 
 Four functional-analytic concepts directly govern the design and generalization of neural PDE surrogates:
 
@@ -74,7 +74,7 @@ A functional-analytic checklist for reading or building a learned operator:
 ## Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Quantifying $L^2$ vs. $H^1$ Spectral Truncation Error
+### Worked example: Quantifying $L^2$ vs. $H^1$ Spectral Truncation Error
 
 Suppose a target PDE solution on $[0, 2\pi]$ has Fourier cosine expansion $u(x) = \sum_{k=1}^\infty k^{-3}\cos(kx)$, and a Fourier Neural Operator retains only modes $1 \le k \le K$ ($P_K u(x) = \sum_{k=1}^K k^{-3}\cos(kx)$). Compare the exact asymptotic $L^2$ and $H^1$ truncation errors for $K = 10$.
 

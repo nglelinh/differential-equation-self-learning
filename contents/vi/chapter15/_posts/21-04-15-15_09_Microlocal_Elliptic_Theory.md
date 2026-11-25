@@ -14,7 +14,7 @@ lesson_type: optional
 
 Ở Chương 14, nếu ký hiệu chính $p_m(x, \xi)$ triệt tiêu dù chỉ theo *một* hướng $\xi$ duy nhất, ta buộc phải gán nhãn toàn bộ toán tử là "không elliptic" và bỏ cuộc! **Lý thuyết Elliptic Vi địa phương (Microlocal Elliptic Theory)** cứu vãn tình thế một cách đầy tinh tế: một toán tử hoàn toàn có thể **elliptic theo hướng này** và **không elliptic theo hướng kia** ngay tại cùng một điểm $x_0$—và tại mọi hướng elliptic, ta vẫn dựng được parametrix vi địa phương để khóa chặt kỳ dị ra khỏi vùng đó!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Lý thuyết Elliptic Vi địa phương
+## Kiến thức cần nhớ: Bốn trụ cột của Lý thuyết Elliptic Vi địa phương
 
 1. **Tập Elliptic $\operatorname{Ell}(P)$ và Tập Đặc trưng $\operatorname{Char}(P)$**:
    Điểm $(x_0, \xi_0) \in T^*M \setminus 0$ thuộc $\operatorname{Ell}(P)$ nếu $|p(x, \xi)| \ge c\langle\xi\rangle^m$ trong một lân cận nón quanh $(x_0, \xi_0)$. Phần bù $\operatorname{Char}(P) = (T^*M \setminus 0) \setminus \operatorname{Ell}(P)$ là nơi duy nhất kỳ dị được phép trú ngụ!
@@ -44,7 +44,7 @@ Nói ngắn gọn, lý thuyết elliptic vi địa phương khẳng định rằ
 Cách tiếp cận này tách bạch rõ hai chế độ khác nhau: trong vùng elliptic, kỳ dị không thể tự tồn tại mà chỉ có thể xuất phát từ vế phải; ngược lại, trên tập đặc trưng, kỳ dị có thể lan truyền tự do dọc theo các đường song đặc trưng.
 
 
-### Khung giải thích (nên đọc chậm): Xác định vùng Elliptic Vi địa phương của toán tử sóng 1D $P = \partial_t^2 - \partial_x^2$
+### Giải thích: Xác định vùng Elliptic Vi địa phương của toán tử sóng 1D $P = \partial_t^2 - \partial_x^2$
 
 Xét toán tử sóng $P = \partial_t^2 - \partial_x^2$ (không elliptic toàn cục!) với ký hiệu chính $p_2(t, x; \tau, \xi) = -\tau^2 + \xi^2$:
 1. **Kiểm tra điểm không gian pha $(t_0, x_0;\; \tau = 2,\; \xi = 1)$**:

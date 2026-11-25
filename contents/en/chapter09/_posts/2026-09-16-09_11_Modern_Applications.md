@@ -14,14 +14,14 @@ Open any modern generative AI image model—Stable Diffusion, Flux, or Imagen—
 
 The mathematical backbone of score-based generative modeling (Song et al., ICLR 2021) is the exact Fokker–Planck / reverse-time diffusion PDE: forward noise addition is heat diffusion on high-dimensional probability densities, and neural score matching learns the exact drift needed to reverse entropy!
 
-## Background Knowledge Map: From Heat Diffusion to Score-Based Generative AI
+## Key ideas: From Heat Diffusion to Score-Based Generative AI
 
 1. **Forward Diffusion as a Heat/Fokker–Planck Equation:** Adding incremental Gaussian noise $$ dx = -\frac{1}{2}\beta(t) x\,dt + \sqrt{\beta(t)}\,dW_t $$ evolves the data probability density $$ p_t(x) $$ via the Fokker–Planck PDE $$ \partial_t p_t = \nabla\cdot\!\left(\frac{1}{2}\beta(t) x p_t\right) + \frac{1}{2}\beta(t)\Delta p_t $$, smoothing any complex data distribution into a standard Gaussian.
 2. **Anderson's Reverse-Time SDE & Score Function:** Running the diffusion backward from $$ t = T $$ to $$ t = 0 $$ requires only one unknown quantity—the **Stein score** $$ s(x, t) = \nabla_x \log p_t(x) $$—which pushes noisy samples uphill toward high-probability regions of the data manifold.
 3. **Denoising Score Matching (Training Objective):** Directly computing $$ \nabla_x \log p_t(x) $$ is intractable, but Vincent (2011) proved that training a neural network $$ s_\theta(x_t, t) $$ to predict the added Gaussian noise $$ -\frac{x_t - \mu_t}{\sigma_t^2} $$ recovers the exact score function!
 4. **Probability Flow ODE (Deterministic Sampling):** Every reverse diffusion SDE shares the exact same marginal densities $$ p_t(x) $$ as a deterministic ODE $$ dx = \bigl[f(x, t) - \frac{1}{2}g(t)^2 \nabla_x \log p_t(x)\bigr]dt $$, enabling fast Runge–Kutta samplers and exact likelihood evaluation.
 
-### Step-by-Step Worked Example (Read Slowly): Computing the Exact Score Function of a 1D Diffused Two-Point Distribution
+### Worked example: Computing the Exact Score Function of a 1D Diffused Two-Point Distribution
 
 **Problem:** Suppose our "data distribution" consists of two sharp points at $$ x = -1 $$ and $$ x = +1 $$ with equal weight $$ \frac{1}{2} $$. After diffusing under the pure heat equation $$ \partial_t p = \frac{1}{2}\partial_{xx} p $$ for time $$ t > 0 $$, compute the diffused density $$ p_t(x) $$ and its exact score function $$ s(x, t) = \partial_x \log p_t(x) $$, then evaluate $$ s(0.5, t) $$ at $$ t = 0.25 $$ and $$ t = 4.0 $$.
 

@@ -12,7 +12,7 @@ lesson_type: required
 
 Flip a light switch on an RLC circuit or strike a drumhead with a mallet: the forcing jumps abruptly or hits in an instant, breaking the smooth textbook assumptions of undetermined coefficients. The Laplace transform $$\mathcal{L}\{f\}(s) = \int_0^\infty e^{-st}f(t)\,dt$$ is an algebraic portal that translates calculus in time $$t$$—derivatives, discontinuous switches, and impulses—into ordinary polynomial algebra in the frequency variable $$s$$.
 
-## Background Knowledge Map: Why the Improper Integral Exists and Behaves Cleanly
+## Key ideas: Why the Improper Integral Exists and Behaves Cleanly
 
 Four analytical pillars anchor the Laplace transform from the very first definition:
 
@@ -21,7 +21,7 @@ Four analytical pillars anchor the Laplace transform from the very first definit
 3. **Abscissa of Convergence:** Functions like $$e^{t^2}$$ outrun *every* exponential $$e^{st}$$ and therefore have no classical Laplace transform, whereas every polynomial, sinusoid, and exponential has a well-defined half-plane of convergence $$\operatorname{Re}(s) > a$$.
 4. **Decay at Infinity ($$F(s) \to 0$$ as $$s \to \infty$$):** Every classical Laplace transform of a piecewise continuous function of exponential order satisfies $$\lim_{s\to\infty} F(s) = 0$$—giving an instant sanity check to reject invalid rational functions like $$\frac{s^2+1}{s^2+4}$$.
 
-### Step-by-Step Worked Example (Read Slowly): Computing a Piecewise Laplace Transform Directly from the Definition
+### Worked example: Computing a Piecewise Laplace Transform Directly from the Definition
 
 Compute $$\mathcal{L}\{f\}(s)$$ directly from the improper integral for the piecewise function
 $$f(t) = \begin{cases} t, & 0 \le t < 2, \\ 3, & t \ge 2. \end{cases}$$

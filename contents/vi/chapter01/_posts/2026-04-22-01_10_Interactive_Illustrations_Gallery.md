@@ -13,7 +13,7 @@ lesson_type: optional
 
 Một phương trình vi phân cấp một $y' = f(t, y)$ không cần phải đợi tìm ra công thức nghiệm mới "lên tiếng". Ngay khi bạn vẽ trường hướng (slope field) trên mặt phẳng $(t, y)$, các đường cong tích phân tự động hiện lên như những dòng chảy của sông suối—và bộ minh họa tương tác Chương 01 giúp bạn thả những "chiếc lá điều kiện đầu" $(t_0, y_0)$ trực tiếp vào dòng chảy ấy để xem số phận của chúng!
 
-## Bản đồ kiến thức nền: Bốn hiện tượng cần quan sát trong Bộ Minh họa Chương 01
+## Kiến thức cần nhớ: Bốn hiện tượng cần quan sát trong Bộ Minh họa Chương 01
 
 1. **Trường hướng (Direction Field) & Đường cong tích phân**:
    Mỗi đoạn gạch ngắn tại $(t, y)$ có hệ số góc đúng bằng $f(t, y)$; nghiệm $y(t)$ đơn giản là đường cong tiếp xúc mượt mà với mọi đoạn gạch nó đi qua.
@@ -42,7 +42,7 @@ Bài học bổ sung này tập hợp toàn bộ các minh họa tương tác b�
   height="920px"
 %}
 
-### Khung giải thích (nên đọc chậm): Đọc trường hướng bằng tay cho $y' = y - t$ dọc hai đường đẳng khuynh (isoclines)
+### Giải thích: Đọc trường hướng bằng tay cho $y' = y - t$ dọc hai đường đẳng khuynh (isoclines)
 
 Thay vì vẽ ngẫu nhiên từng điểm, hãy tìm các đường mà độ dốc $y' = m$ không đổi:
 1. **Đường đẳng khuynh độ dốc $m = 0$**: $y - t = 0 \implies y = t$. Dọc đường chéo $y = t$, mọi gạch trường hướng đều **nằm ngang**.

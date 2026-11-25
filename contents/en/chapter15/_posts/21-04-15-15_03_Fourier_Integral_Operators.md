@@ -22,7 +22,7 @@ This lesson introduces Fourier integral operators as the natural class of operat
 
 Students should know pseudodifferential operators, wave front sets, and the idea that propagation of singularities requires more than frequency-local filtering. Some intuition from oscillatory phases and Hamilton-Jacobi ideas is also useful.
 
-## Background Knowledge Map: Oscillatory Integrals, Phase Functions, and Canonical Relations
+## Key ideas: Oscillatory Integrals, Phase Functions, and Canonical Relations
 
 Four geometric pillars govern Fourier Integral Operators $(Au)(x) = (2\pi)^{-n}\iint e^{i\phi(x,y,\xi)} a(x,y,\xi) u(y)\,dy\,d\xi$:
 
@@ -107,7 +107,7 @@ Many solution operators for hyperbolic PDE can be represented microlocally by FI
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Computing the Canonical Relation of the 1D Half-Wave Propagator
+### Worked example: Computing the Canonical Relation of the 1D Half-Wave Propagator
 
 Consider the exact solution operator $U(t) = e^{it|D_x|}$ of the 1D half-wave equation $(D_t - |D_x|)u = 0$ on $\mathbb{R}$, written as an FIO:
 $$(U(t)f)(x) = \frac{1}{2\pi}\iint_{\mathbb{R}^2} e^{i\big((x-y)\xi + t|\xi|\big)} f(y)\,dy\,d\xi.$$

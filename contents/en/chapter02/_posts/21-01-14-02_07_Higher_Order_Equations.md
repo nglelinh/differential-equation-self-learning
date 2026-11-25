@@ -12,7 +12,7 @@ lesson_type: required
 
 Design a cantilever bridge beam bending under a heavy truck: Euler–Bernoulli beam theory is not a second-order equation, it is a *fourth-order* ODE $$EI\,y^{(4)} = q(x)$$, requiring four boundary or initial conditions (deflection, slope, bending moment, and shear). Remarkably, almost every structural theorem from second-order linear ODEs scales cleanly to arbitrary order $$n$$—with polynomial multiplicity factors $$t^k$$ handling repeated roots of any degree.
 
-## Background Knowledge Map: Scaling Linear ODE Theory from Order 2 to Order $$n$$
+## Key ideas: Scaling Linear ODE Theory from Order 2 to Order $$n$$
 
 Four generalizations extend Chapter 02 seamlessly to $$y^{(n)} + a_{n-1}(t)y^{(n-1)} + \dots + a_0(t)y = g(t)$$:
 
@@ -21,7 +21,7 @@ Four generalizations extend Chapter 02 seamlessly to $$y^{(n)} + a_{n-1}(t)y^{(n
 3. **Higher-Multiplicity Basis Rule:** A real root $$r$$ of multiplicity $$m$$ contributes $$m$$ independent solutions $$\{e^{rt}, t e^{rt}, \dots, t^{m-1} e^{rt}\}$$; a complex conjugate pair $$\alpha \pm i\beta$$ of multiplicity $$k$$ contributes $$2k$$ real solutions $$\{t^j e^{\alpha t}\cos\beta t,\; t^j e^{\alpha t}\sin\beta t\}_{j=0}^{k-1}$$.
 4. **Cauchy–Euler (Equidimensional) Equations:** Variable-coefficient equations of the form $$a_n t^n y^{(n)} + \dots + a_1 t y' + a_0 y = 0$$ ($$t > 0$$) turn into constant-coefficient ODEs under $$t = e^x$$ (or trial $$y = t^r$$), with repeated roots multiplying by $$\ln t$$ instead of $$t$$.
 
-### Step-by-Step Worked Example (Read Slowly): Solving a Fourth-Order Equation with Repeated Complex Roots
+### Worked example: Solving a Fourth-Order Equation with Repeated Complex Roots
 
 Find the general solution of the fourth-order constant-coefficient ODE
 $$y^{(4)} + 8y'' + 16y = 0,$$

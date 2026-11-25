@@ -14,7 +14,7 @@ Imagine touching an infinitely thin, infinitely hot needle to a cold wire at pos
 
 That bell curve is the **fundamental solution** (or free-space Green's function) of the heat equation. Once you know how a single point of heat spreads, linearity plus **Duhamel's Principle** lets you solve *any* initial-value problem, *any* half-line boundary problem (via the method of images), and *any* forced heat equation $$ u_t - \alpha u_{xx} = F(x, t) $$!
 
-## Background Knowledge Map: The Heat Kernel, Images, and Duhamel's Principle
+## Key ideas: The Heat Kernel, Images, and Duhamel's Principle
 
 1. **Fundamental Solution $$ \Phi(x, t) $$ as an Approximate Identity:** For $$ t > 0 $$, $$ \Phi(x, t) > 0 $$, $$ \Phi_t = \alpha \Phi_{xx} $$, and $$ \int_{-\infty}^\infty \Phi(x, t)\,dx = 1 $$. As $$ t \to 0^+ $$, all its mass concentrates at $$ x = 0 $$, realizing $$ \delta(x) $$ in the sense of distributions.
 2. **Method of Images for the Half-Line $$ x > 0 $$:** To enforce $$ u(0, t) = 0 $$ (Dirichlet) on $$ x > 0 $$, place an opposite "cold image" at $$ -y $$, yielding $$ G_D(x, y, t) = \Phi(x - y, t) - \Phi(x + y, t) $$. To enforce $$ u_x(0, t) = 0 $$ (Neumann), place an identical "warm image" at $$ -y $$, yielding $$ G_N(x, y, t) = \Phi(x - y, t) + \Phi(x + y, t) $$.
@@ -22,7 +22,7 @@ That bell curve is the **fundamental solution** (or free-space Green's function)
    $$ u_{\text{forced}}(x, t) = \int_0^t \int_{-\infty}^{\infty} G(x, y, t - \tau) F(y, \tau)\,dy\,d\tau. $$
 4. **Probabilistic Interpretation (Brownian Motion):** $$ \Phi(x - y, t) $$ is literally the transition probability density of a 1D Brownian particle starting at $$ y $$ and reaching $$ x $$ after time $$ t $$ with diffusion constant $$ D = \alpha $$!
 
-### Step-by-Step Worked Example (Read Slowly): Method of Images on the Half-Line $$ x > 0 $$ with $$ u(0, t) = 0 $$
+### Worked example: Method of Images on the Half-Line $$ x > 0 $$ with $$ u(0, t) = 0 $$
 
 **Problem:** Construct the Dirichlet Green's function $$ G_D(x, y, t) $$ for $$ u_t = \alpha u_{xx} $$ on $$ x > 0 $$ with $$ u(0, t) = 0 $$, verify the boundary condition and PDE, and use it to solve for constant initial temperature $$ u(x, 0) = T_0 $$ ($$ x > 0 $$).
 

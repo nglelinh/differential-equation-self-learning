@@ -12,7 +12,7 @@ lesson_type: required
 
 Trong vật lý và kỹ thuật, không phải lúc nào ta cũng biết cả vị trí lẫn vận tốc tại thời điểm đầu ($t = 0$). Khi tính độ võng của một cây cầu bắc qua sông hay nhiệt độ ổn định của thanh kim loại nối giữa hai bể nhiệt, điều kiện được cho ở **hai đầu không gian** $x = a$ và $x = b$. Đó là **Bài toán Giá trị Biên Hai điểm (Two-Point BVP)**—nơi sự tồn tại và duy nhất nghiệm trở nên tinh tế hơn hẳn bài toán giá trị ban đầu!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Bài toán Biên Hai điểm
+## Kiến thức cần nhớ: Bốn trụ cột của Bài toán Biên Hai điểm
 
 1. **Ba loại điều kiện biên kinh điển**:
    - **Dirichlet**: ấn định giá trị hàm $u(a) = A$ (nhiệt độ cố định / đầu dây buộc chặt).
@@ -41,7 +41,7 @@ Sinh viên nên nắm vững phương trình vi phân tuyến tính cấp hai, b
 
 Đặc điểm cốt lõi của BVP là nghiệm mang tính toàn cục: ta không thể giải tuần tự từ đầu trái rồi mặc nhiên khớp đầu phải, mà nghiệm phải thỏa mãn đồng thời phương trình vi phân và các ràng buộc ở cả hai đầu biên. Chính đặc điểm này mở đường sang các khái niệm trị riêng, hàm riêng và hàm Green.
 
-### Khung giải thích (nên đọc chậm): Giải cầm tay chỉ việc bài toán độ võng dầm $y'' = -12x,\; y(0) = 0,\; y(1) = 0$
+### Giải thích: Giải làm từng bước bài toán độ võng dầm $y'' = -12x,\; y(0) = 0,\; y(1) = 0$
 
 1. **Tích phân hai lần liên tiếp**:
    $$y'(x) = -6x^2 + C_1 \implies y(x) = -2x^3 + C_1 x + C_2.$$

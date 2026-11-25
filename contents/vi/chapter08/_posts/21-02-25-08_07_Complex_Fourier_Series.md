@@ -14,7 +14,7 @@ lesson_type: required
 
 Ghi nhớ cùng lúc ba công thức tách rời cho $a_0, a_n, b_n$ cùng các công thức tích lượng giác rườm rà sẽ trở nên hoàn toàn thừa thãi ngay khi bạn dùng **Công thức Euler** $e^{i\theta} = \cos\theta + i\sin\theta$. **Chuỗi Fourier Phức** hợp nhất toàn bộ $a_0, a_n, b_n$ vào **một công thức duy nhất siêu gọn**—và là cây cầu trực tiếp dẫn sang Biến đổi Fourier và FFT!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Chuỗi Fourier Phức
+## Kiến thức cần nhớ: Bốn trụ cột của Chuỗi Fourier Phức
 
 1. **Một công thức duy nhất cho mọi $n \in \mathbb{Z}$ (từ $-\infty$ đến $+\infty$)**:
    $$f(x) \sim \sum_{n=-\infty}^{\infty} c_n e^{i n\pi x / L}, \qquad c_n = \frac{1}{2L}\int_{-L}^{L} f(x)\, e^{-i n\pi x / L}\,dx.$$
@@ -37,7 +37,7 @@ Sinh viên cần nắm chuỗi Fourier dạng thực và công thức Euler $$ e
 
 Ở dạng thực, chuỗi Fourier tách thành hai họ mode là sin và cos. Cách viết này rõ ràng về mặt hình học nhưng đôi khi dài dòng khi thao tác đại số. Dạng phức hợp nhất toàn bộ cấu trúc đó vào một biểu thức duy nhất theo các hàm mũ phức $$ e^{inx} $$. Cách biểu diễn này vừa rút gọn công thức vừa làm nổi bật bản chất phổ của chuỗi Fourier: mỗi chỉ số nguyên $$ n $$ ứng với một tần số, còn hệ số $$ c_n $$ là biên độ phức của tần số đó.
 
-### Khung giải thích (nên đọc chậm): Tính tay Chuỗi Fourier Phức của $f(x) = e^{x}$ trên $(-\pi, \pi)$ chỉ bằng 1 tích phân
+### Giải thích: Tính tay Chuỗi Fourier Phức của $f(x) = e^{x}$ trên $(-\pi, \pi)$ chỉ bằng 1 tích phân
 
 Với $L = \pi$, thay trực tiếp $f(x) = e^x$ vào công thức $c_n$ (không cần tách $a_n, b_n$!):
 $$c_n = \frac{1}{2\pi}\int_{-\pi}^{\pi} e^{x} e^{-inx}\,dx = \frac{1}{2\pi}\int_{-\pi}^{\pi} e^{(1 - in)x}\,dx = \frac{1}{2\pi}\left[\frac{e^{(1-in)x}}{1 - in}\right]_{-\pi}^{\pi}.$$

@@ -14,7 +14,7 @@ lesson_type: required
 
 Khác với phương trình nhiệt phải viết dưới dạng chuỗi vô hạn hay tích phân Gaussian, phương trình sóng 1D trên toàn trục thực $\mathbb{R}$ sở hữu một công thức nghiệm **đóng, sơ cấp và trong suốt tuyệt đối**: **Công thức d'Alembert**. Chỉ bằng một phép đổi biến tọa độ đặc trưng $\xi = x - ct,\; \eta = x + ct$, phương trình sóng rút gọn thành $u_{\xi\eta} = 0$ và giải xong trong đúng 3 dòng!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Nghiệm d'Alembert & Đường Đặc trưng
+## Kiến thức cần nhớ: Bốn trụ cột của Nghiệm d'Alembert & Đường Đặc trưng
 
 1. **Tọa độ đặc trưng ($\xi = x - ct,\; \eta = x + ct$)**:
    Biến $u_{tt} - c^2 u_{xx} = 0$ thành $-4c^2 u_{\xi\eta} = 0 \implies u(x, t) = F(x - ct) + G(x + ct)$.
@@ -39,7 +39,7 @@ Nếu phương trình nhiệt mô tả quá trình làm mượt dữ liệu, th�
 
 Công thức d'Alembert cho thấy cấu trúc nghiệm một cách trực tiếp mà không cần chuỗi vô hạn hay phân tích phổ: chỉ cần chuyển sang hệ tọa độ đặc trưng thích hợp, bản chất hình học của nghiệm sẽ hiện ra rõ ràng.
 
-### Khung giải thích (nên đọc chậm): Tính tay vị trí hai xung tách đôi bằng công thức d'Alembert
+### Giải thích: Tính tay vị trí hai xung tách đôi bằng công thức d'Alembert
 
 Cho dây vô hạn ($c = 2\text{ m/s}$) thả nhẹ không vận tốc đầu ($g(x) \equiv 0$) từ một xung tam giác có đỉnh cao $2\text{ cm}$ tại gốc: $f(x) = \max(0,\; 2 - 2\vert x \vert)$ (khác 0 trên $[-1, 1]$).
 Áp dụng công thức d'Alembert: $u(x, t) = \frac{1}{2}f(x - 2t) + \frac{1}{2}f(x + 2t)$.

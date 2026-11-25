@@ -13,7 +13,7 @@ lesson_type: required
 
 Viết từng dòng $x_1' = a_{11}x_1 + a_{12}x_2 + \dots$ không chỉ dài dòng mà còn che lấp hoàn toàn cấu trúc hình học của hệ. Khi đưa vào ngôn ngữ **ma trận và ma trận cơ bản (fundamental matrix) $\Phi(t)$**, toàn bộ lý thuyết không gian nghiệm $n$ chiều, nguyên lý chồng chất, định thức Wronskian và công thức nghiệm cho mọi điều kiện đầu $\mathbf{x}(t) = \Phi(t)\Phi(t_0)^{-1}\mathbf{x}_0$ lập tức hiện ra trong suốt như pha lê!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Ma trận & Hệ Tuyến tính
+## Kiến thức cần nhớ: Bốn trụ cột của Ma trận & Hệ Tuyến tính
 
 1. **Nguyên lý Chồng chất cho Hệ thuần nhất $\mathbf{x}' = A(t)\mathbf{x}$**:
    Tập nghiệm tạo thành không gian vectơ đúng $n$ chiều; nếu $\mathbf{x}^{(1)}, \dots, \mathbf{x}^{(n)}$ là $n$ nghiệm độc lập tuyến tính thì mọi nghiệm đều viết được dưới dạng $\mathbf{x}(t) = \Phi(t)\mathbf{c}$.
@@ -40,7 +40,7 @@ Viết một hệ phương trình thành một đẳng thức ma trận duy nh�
 
 Từ đây, thay vì nhìn hệ như một danh sách phương trình rời rạc, ta nhìn hệ như một thực thể tuyến tính thống nhất với toán tử tiến hóa là ma trận $$ A $$.
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng Ma trận cơ bản, định lý Liouville và giải nhanh IVP bằng $\Phi(t)\Phi(0)^{-1}\mathbf{x}_0$
+### Giải thích: Kiểm chứng Ma trận cơ bản, định lý Liouville và giải nhanh IVP bằng $\Phi(t)\Phi(0)^{-1}\mathbf{x}_0$
 
 Cho hệ $\mathbf{x}' = \begin{pmatrix} 1 & 0 \\ 0 & -2 \end{pmatrix}\mathbf{x}$ với hai nghiệm cột $\mathbf{x}^{(1)} = \begin{pmatrix} e^t \\ 0 \end{pmatrix}$, $\mathbf{x}^{(2)} = \begin{pmatrix} 0 \\ e^{-2t} \end{pmatrix}$:
 1. **Lập ma trận cơ bản $\Phi(t)$**:

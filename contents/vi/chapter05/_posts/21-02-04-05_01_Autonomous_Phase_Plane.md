@@ -12,7 +12,7 @@ lesson_type: required
 
 Hầu hết các phương trình vi phân phi tuyến trong tự nhiên—từ con lắc biên độ lớn đến hệ sinh thái—đều **không có nghiệm công thức sơ cấp**. Thay vì cố viết $x(t)$ dưới dạng biểu thức tường minh, Henri Poincaré đã mở ra một góc nhìn thiên tài: vẽ trực tiếp quỹ đạo chuyển động $(x(t), y(t))$ trên **mặt phẳng pha (phase plane)** để đọc trọn vẹn số phận của hệ chỉ bằng hình học!
 
-## Bản đồ kiến thức nền: Bốn viên gạch của Hệ Tự trị & Mặt phẳng Pha
+## Kiến thức cần nhớ: Bốn viên gạch của Hệ Tự trị & Mặt phẳng Pha
 
 1. **Hệ tự trị (Autonomous System)**:
    Hệ $\dot{x} = f(x, y),\; \dot{y} = g(x, y)$ không chứa biến thời gian $t$ tường minh ở vế phải; quy luật vận tốc tại mỗi điểm $(x, y)$ là bất biến theo thời gian.
@@ -74,7 +74,7 @@ Hãy hình dung việc quan sát một con cá voi bơi trong đại dương. N�
 
 **Hệ tự trị** là điểm khởi đầu phù hợp cho hướng tiếp cận này. Do vế phải không phụ thuộc tường minh vào thời gian, hình học quỹ đạo chỉ phụ thuộc vào vị trí trong không gian trạng thái. Thay vì khảo sát từng biến riêng lẻ theo thời gian, ta quan sát trực tiếp chuyển động của cả hệ trên mặt phẳng pha.
 
-### Khung giải thích (nên đọc chậm): Vẽ bằng tay Nullclines và xác định hướng quỹ đạo cho hệ con lắc tuyến tính $\dot{x} = y,\; \dot{y} = -x$
+### Giải thích: Vẽ bằng tay Nullclines và xác định hướng quỹ đạo cho hệ con lắc tuyến tính $\dot{x} = y,\; \dot{y} = -x$
 
 1. **Tìm Nullclines**:
    - $x$-nullcline: $\dot{x} = y = 0$ (trục hoành $Ox$). Tại $x > 0, y = 0$ ta có $\dot{y} = -x < 0$ (mũi tên đi thẳng **xuống**); tại $x < 0, y = 0$ ta có $\dot{y} > 0$ (đi **lên**).

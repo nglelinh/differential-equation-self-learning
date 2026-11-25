@@ -12,7 +12,7 @@ lesson_type: optional
 
 Mạng tích chập CNN truyền thống chỉ nhìn thấy các điểm ảnh lân cận trong cửa sổ $3 \times 3$—và nếu huấn luyện trên lưới $64 \times 64$ thì khi đổi sang lưới $256 \times 256$, mạng vỡ hoàn toàn. **Fourier Neural Operator (FNO)** (Li et al., 2021) đã tạo nên cuộc cách mạng trong AI mô phỏng vật lý bằng đúng một định lý Chương 8: **tích chập toàn cục trong không gian chính là phép nhân từng điểm trong miền tần số Fourier**!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Fourier Neural Operator (FNO)
+## Kiến thức cần nhớ: Bốn trụ cột của Fourier Neural Operator (FNO)
 
 1. **Định lý Tích chập Fourier ($\mathcal{F}\{K * v\} = \mathcal{F}\{K\} \cdot \mathcal{F}\{v\}$)**:
    Mỗi lớp Fourier trong FNO chạy FFT đưa tín hiệu sang miền tần số, **nhân tuyến tính** trên $k_{\max}$ tần số thấp nhất (bộ lọc toàn cục!), rồi chạy Inverse FFT (iFFT) quay về miền không gian—tốn chỉ $O(N\log N)$!
@@ -39,7 +39,7 @@ Công trình trên *JMLR* năm 2023 của Kovachki và cộng sự chứng minh 
 
 Kiến thức của Chương 08 giúp đọc hiểu trực tiếp các công trình này. Một lớp FNO thực chất là sự kết hợp giữa khai triển Fourier cắt cụt, biểu tượng phổ học được và phép biến đổi phi tuyến cục bộ.
 
-### Khung giải thích (nên đọc chậm): Tính tay tốc độ của 1 lớp FNO so với tích chập toàn cục trực tiếp trên lưới 1D cỡ $N = 1.024$
+### Giải thích: Tính tay tốc độ của 1 lớp FNO so với tích chập toàn cục trực tiếp trên lưới 1D cỡ $N = 1.024$
 
 - **Tích chập toàn cục trực tiếp trong miền không gian** (mọi điểm tương tác với mọi điểm): $N^2 = 1.024^2 = \mathbf{1.048.576}$ phép nhân!
 - **Một lớp FNO với $k_{\max} = 16$ mode tần số**:

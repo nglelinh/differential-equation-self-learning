@@ -12,7 +12,7 @@ lesson_type: optional
 
 Kỹ sư hàng không hay kỹ sư âm thanh thiết kế một bộ lọc phức tạp như thế nào mà không bị chìm nghỉm trong rừng phương trình vi phân ghép nối? Họ đóng gói toàn bộ tính chất nội tại của hệ thống vào một phân thức duy nhất gọi là **Hàm truyền (Transfer Function)** $H(s) = \frac{Y(s)}{U(s)}$! Khi đã có $H(s)$, mọi hệ nối tiếp chỉ là phép nhân $H_1(s)H_2(s)$, hệ song song là phép cộng, còn vòng điều khiển phản hồi âm gọn đẹp thành $\frac{H}{1 + HK}$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Hàm Truyền & Phân tích Hệ thống
+## Kiến thức cần nhớ: Bốn trụ cột của Hàm Truyền & Phân tích Hệ thống
 
 1. **Định nghĩa Hàm truyền $H(s) = \frac{Y(s)}{U(s)}$ (với điều kiện đầu bằng $0$)**:
    $H(s)$ là biến đổi Laplace của đáp ứng xung $h(t)$, chỉ phụ thuộc vào cấu tạo bên trong của hệ ($m, c, k$ hay $R, L, C$), hoàn toàn độc lập với tín hiệu đầu vào $u(t)$.
@@ -36,7 +36,7 @@ Khi một hệ vật lý phải chịu nhiều tín hiệu đầu vào khác nha
 
 Với điều kiện đầu bằng 0, một hệ LTI được mô tả hoàn toàn bởi tỉ số giữa ảnh Laplace của đầu ra và đầu vào. Từ biểu thức duy nhất này, ta có thể khảo sát tính ổn định, đáp ứng xung, đặc tính lọc tần số và hành vi dài hạn của hệ.
 
-### Khung giải thích (nên đọc chậm): Dùng bộ điều khiển phản hồi tỷ lệ $K$ để "cứu" một hệ bất ổn $H(s) = \frac{1}{s - 2}$ thành hệ ổn định!
+### Giải thích: Dùng bộ điều khiển phản hồi tỷ lệ $K$ để "cứu" một hệ bất ổn $H(s) = \frac{1}{s - 2}$ thành hệ ổn định!
 
 1. **Hệ vòng hở (Open-loop)**:
    $H(s) = \frac{1}{s - 2}$ ứng với PTVP $y' - 2y = u(t)$. Cực nằm tại $s = +2 > 0$ (nửa phải) $\implies$ **bất ổn** (đáp ứng xung $e^{2t} \to \infty$)!

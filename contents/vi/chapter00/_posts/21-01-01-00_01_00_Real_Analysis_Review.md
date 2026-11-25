@@ -13,14 +13,14 @@ lesson_type: required
 
 Tại sao ta có thể yên tâm rằng phương trình vi phân $y' = f(t, y)$ thực sự có một nghiệm liên tục thay vì "rơi vào lỗ hổng" trên trục số? Câu trả lời nằm ở tính **đầy đủ (completeness)** của tập số thực $\mathbb{R}$—tính chất tinh tế ngăn không cho một dãy xấp xỉ hội tụ tiến tới một điểm... không tồn tại!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Giải tích Thực cho PTVP
+## Kiến thức cần nhớ: Bốn trụ cột của Giải tích Thực cho PTVP
 
 1. **Tiên đề Cận trên đúng (Supremum) & Tính đầy đủ của $\mathbb{R}$**:
    Mọi tập con khác rỗng bị chặn trên trong $\mathbb{R}$ đều có $\sup$, và mọi dãy Cauchy trong $\mathbb{R}$ đều hội tụ về một số thực—nền móng cho phép lặp Picard và phương pháp Euler.
 2. **Dãy số & Tiêu chuẩn hội tụ**:
    Định lý hội tụ đơn điệu, định lý kẹp và định lý Bolzano–Weierstrass cho phép trích dãy con hội tụ từ các họ nghiệm xấp xỉ bị chặn.
 3. **Hội tụ điểm vs. Hội tụ đều của dãy hàm**:
-   Hội tụ đều bảo toàn tính liên tục và cho phép đưa giới hạn vào trong dấu tích phân $\lim \int f_n = \int \lim f_n$, điều kiện sống còn khi giải PTVP bằng chuỗi lũy thừa và lặp tích phân.
+   Hội tụ đều bảo toàn tính liên tục và cho phép đưa giới hạn vào trong dấu tích phân $\lim \int f_n = \int \lim f_n$, điều kiện quan trọng khi giải PTVP bằng chuỗi lũy thừa và lặp tích phân.
 4. **Tính Compact (Định lý Heine–Borel)**:
    Trên đoạn đóng bị chặn $[a, b]$, mọi hàm liên tục đều đạt giá trị lớn nhất, nhỏ nhất—giúp chặn trên $\vert f(t, y) \vert \le M$ trong mọi chứng minh định lý tồn tại nghiệm.
 
@@ -35,7 +35,7 @@ Khi khảo sát một phương trình vi phân, câu hỏi đầu tiên không c
 
 Chẳng hạn, xét bài toán mô hình hóa phân bố nhiệt độ trên một thanh kim loại. Nếu hàm nhiệt độ bị gián đoạn tại một điểm, mô hình sẽ không phù hợp về mặt vật lý; nếu giá trị hàm tăng không bị chặn khi tiến tới một điểm, ta không thể dự đoán trạng thái của hệ. Giải tích thực cung cấp các điều kiện và định lý cần thiết để đảm bảo mô hình toán học có hành vi hợp lý.
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng dãy lặp Newton $x_{n+1} = \frac{1}{2}\left(x_n + \frac{2}{x_n}\right)$ là dãy Cauchy nhưng "lọt hố" trong $\mathbb{Q}$
+### Giải thích: Kiểm chứng dãy lặp Newton $x_{n+1} = \frac{1}{2}\left(x_n + \frac{2}{x_n}\right)$ là dãy Cauchy nhưng "lọt hố" trong $\mathbb{Q}$
 
 Xuất phát từ $x_0 = 1 \in \mathbb{Q}$:
 1. **Tính tay 4 số hạng đầu**:

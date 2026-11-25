@@ -22,7 +22,7 @@ This lesson introduces the regularity phenomenon for elliptic equations: good da
 
 Students should know weak solutions, Sobolev spaces, Poisson's equation, and the basic idea of higher weak derivatives. They should also remember that the existence of a weak solution is only the first step. The next question is how smooth that solution actually is.
 
-## Background Knowledge Map: How Elliptic Operators Manufacture Smoothness
+## Key ideas: How Elliptic Operators Manufacture Smoothness
 
 Understanding elliptic regularity means mastering four interconnected mechanisms:
 
@@ -111,7 +111,7 @@ Regularity is what justifies moving from weak formulations back toward more clas
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Seeing the Exact Two-Derivative Gain in Fourier Space
+### Worked example: Seeing the Exact Two-Derivative Gain in Fourier Space
 
 Consider the periodic elliptic PDE $-u'' + u = f$ on $[0, 2\pi]$, where $f \in L^2_{\text{per}}(0,2\pi)$ has Fourier series $f(x) = \sum_{k \in \mathbb{Z}} c_k e^{ikx}$. Prove directly that $u \in H^2_{\text{per}}(0,2\pi)$ with the exact regularity bound $\|u\|_{H^2} \le \|f\|_{L^2}$, and test it on a rough forcing $f$.
 

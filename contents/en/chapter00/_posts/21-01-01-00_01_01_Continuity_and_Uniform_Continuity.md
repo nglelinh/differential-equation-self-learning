@@ -12,7 +12,7 @@ lesson_type: required
 
 Suppose two engineers discretize a temperature profile on a metal rod: near the center the curve is gentle, while near one end it spikes almost vertically. Pointwise continuity promises that at any *single* point you can zoom in far enough to make the function look flat—but uniform continuity promises that a *single* grid spacing $$\delta$$ works simultaneously across the entire domain. That distinction separates local intuition from global error bounds in differential equations.
 
-## Background Knowledge Map: The Hierarchy of Regularity
+## Key ideas: The Hierarchy of Regularity
 
 When analyzing differential equations, continuity is not a single binary property—it is a ladder of progressively stronger controls:
 
@@ -21,7 +21,7 @@ When analyzing differential equations, continuity is not a single binary propert
 3. **Heine–Cantor Compactness Principle:** Every continuous function on a closed, bounded interval $$[a,b]$$ is automatically uniformly continuous—which is why local ODE theorems work on compact rectangles $$[t_0-a, t_0+a] \times [y_0-b, y_0+b]$$.
 4. **Lipschitz Continuity:** Stronger still than uniform continuity, $$\lvert f(x) - f(y) \rvert \le L\lvert x - y \rvert$$ bounds the maximum secant slope everywhere and is the exact condition guaranteeing unique solutions in Picard–Lindelöf.
 
-### Step-by-Step Worked Example (Read Slowly): Separating Pointwise, Uniform, and Lipschitz Continuity
+### Worked example: Separating Pointwise, Uniform, and Lipschitz Continuity
 
 Compare $$f(x) = x^2$$ on $$\mathbb{R}$$ versus $$f(x) = x^2$$ on $$[0, 3]$$, and contrast with $$g(x) = \sqrt{x}$$ on $$[0, 1]$$:
 

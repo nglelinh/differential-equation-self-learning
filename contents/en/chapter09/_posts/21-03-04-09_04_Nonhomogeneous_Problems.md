@@ -14,14 +14,14 @@ Real engineering rods rarely sit in zero-degree ice baths with no heaters attach
 
 The rescue is a clean two-step superposition: first peel off a known reference profile $$ w(x, t) $$ (such as the steady state $$ u_{\text{ss}}(x) $$) to homogenize the boundary conditions, then expand the remaining transient $$ v(x, t) $$ in the spatial eigenbasis—converting the nonhomogeneous PDE into a decoupled family of first-order linear ODEs!
 
-## Background Knowledge Map: Homogenization and Eigenfunction Expansion
+## Key ideas: Homogenization and Eigenfunction Expansion
 
 1. **Steady-State Extraction (Time-Independent BCs & Sources):** When $$ Q = Q(x) $$ and BCs are constant in time, solve the 1D ODE $$ \alpha u_{\text{ss}}''(x) + Q(x) = 0 $$ with the given nonhomogeneous BCs. Setting $$ v(x, t) = u(x, t) - u_{\text{ss}}(x) $$ produces a *purely homogeneous* heat problem for $$ v $$!
 2. **Time-Dependent Boundary Lifting:** If $$ u(0, t) = g_1(t) $$ and $$ u(L, t) = g_2(t) $$ vary in time, subtract the linear bridge $$ w(x, t) = g_1(t) + \frac{x}{L}\bigl[g_2(t) - g_1(t)\bigr] $$. This homogenizes the BCs of $$ v = u - w $$ while shifting $$ -w_t $$ into the interior source term.
 3. **Modal Expansion of Driven Transients (Duhamel's Principle in Disguise):** Expanding $$ v(x, t) = \sum c_n(t) \phi_n(x) $$ and the effective source $$ \tilde{Q}(x, t) = \sum q_n(t) \phi_n(x) $$ turns $$ v_t = \alpha v_{xx} + \tilde{Q} $$ into first-order linear ODEs $$ c_n'(t) + \alpha \lambda_n c_n(t) = q_n(t) $$, solved immediately by integrating factor $$ e^{\alpha \lambda_n t} $$.
 4. **Physical Separation of Steady Equilibrium vs. Transient Memory:** The steady state remembers only the ongoing boundary temperatures and heaters; the transient remembers only the initial discrepancy $$ f(x) - u_{\text{ss}}(x) $$ and fades away exponentially.
 
-### Step-by-Step Worked Example (Read Slowly): Solving a Heated Rod with Nonzero Endpoint Temperatures
+### Worked example: Solving a Heated Rod with Nonzero Endpoint Temperatures
 
 **Problem:** Solve $$ u_t = u_{xx} + 2 $$ on $$ 0 < x < 1 $$, $$ t > 0 $$, with $$ u(0, t) = 1 $$, $$ u(1, t) = 3 $$, and $$ u(x, 0) = 1 + 3x - x^2 + 4\sin(\pi x) $$.
 

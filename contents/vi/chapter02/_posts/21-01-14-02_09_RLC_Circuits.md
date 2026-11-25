@@ -12,7 +12,7 @@ lesson_type: required
 
 Mỗi khi bạn xoay núm dò đài radio hoặc khi điện thoại lọc lấy đúng băng tần Wi-Fi giữa hàng trăm tín hiệu nhiễu trong không khí, bên trong thiết bị là một **mạch điện RLC** đang thực hiện phép cộng hưởng tần số! Kỳ diệu hơn nữa, phương trình Kirchhoff của mạch RLC giống hệt từng ký tự với phương trình lò xo–vật nặng—biến mọi trực giác cơ học của bạn thành hiểu biết sâu sắc về kỹ thuật điện tử.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Mạch điện RLC nối tiếp
+## Kiến thức cần nhớ: Bốn trụ cột của Mạch điện RLC nối tiếp
 
 1. **Định luật điện áp Kirchhoff ($L q'' + R q' + \frac{1}{C} q = E(t)$)**:
    Tổng độ sụt áp qua cuộn cảm ($L i'$), điện trở ($R i$) và tụ điện ($q/C$) bằng sức điện động nguồn $E(t)$, với dòng điện $i(t) = q'(t)$.
@@ -36,7 +36,7 @@ Mạch RLC nối tiếp là ví dụ rõ nét về tính thống nhất của to
 
 Trong mạch RLC, điện cảm đóng vai trò quán tính, điện trở đóng vai trò tiêu tán năng lượng (lực cản), còn tụ điện tạo cơ chế hồi phục. Nhờ sự tương ứng này, các chế độ quá tắt dần, tắt dần tới hạn, dưới tắt dần và cộng hưởng điện học đều có thể phân tích bằng chính công cụ của dao động cơ học.
 
-### Khung giải thích (nên đọc chậm): Tính tần số cộng hưởng và biên độ dòng xác lập cho mạch RLC ($L = 0{,}5\text{ H},\; R = 10\,\Omega,\; C = 2\times 10^{-3}\text{ F},\; E(t) = 20\cos(\omega t)$)
+### Giải thích: Tính tần số cộng hưởng và biên độ dòng xác lập cho mạch RLC ($L = 0{,}5\text{ H},\; R = 10\,\Omega,\; C = 2\times 10^{-3}\text{ F},\; E(t) = 20\cos(\omega t)$)
 
 1. **Tính tần số góc cộng hưởng $\omega_0$**:
    $$\omega_0 = \frac{1}{\sqrt{LC}} = \frac{1}{\sqrt{0{,}5 \times 2\times 10^{-3}}} = \frac{1}{\sqrt{10^{-3}}} \approx \mathbf{31{,}62\text{ rad/s}} \quad (f_0 \approx 5{,}03\text{ Hz}).$$

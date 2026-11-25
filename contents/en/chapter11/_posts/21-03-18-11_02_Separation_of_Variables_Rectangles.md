@@ -20,7 +20,7 @@ This lesson solves Laplace's equation in rectangular domains using separation of
 
 Students should know Laplace's equation, separation of variables from earlier PDE chapters, and the role of Fourier-type expansions on intervals.
 
-## Background Knowledge Map: Anatomy of Rectangular Separation
+## Key ideas: Anatomy of Rectangular Separation
 
 Solving $\Delta u = 0$ on a rectangle $[0,a]\times[0,b]$ weaves together four foundational ideas:
 
@@ -102,7 +102,7 @@ Students should connect the separated modes to the final equilibrium profile.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Exact Two-Mode Equilibrium on $[0,\pi]\times[0,1]$
+### Worked example: Exact Two-Mode Equilibrium on $[0,\pi]\times[0,1]$
 
 Solve $\Delta u = 0$ on the rectangle $(0,\pi)\times(0,1)$ subject to $u(0,y) = u(\pi,y) = u(x,0) = 0$ and the top boundary condition $u(x,1) = \sin(x) + 3\sin(2x)$, then compute the exact temperature at the geometric center $(\pi/2, 1/2)$.
 

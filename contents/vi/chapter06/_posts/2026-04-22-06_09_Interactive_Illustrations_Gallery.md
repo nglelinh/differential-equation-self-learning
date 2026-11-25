@@ -12,7 +12,7 @@ lesson_type: optional
 
 Nghiệm chuỗi lũy thừa, hàm Bessel hay đa thức Legendre thường tạo cảm giác khô khan nếu chỉ nhìn những tổng $\sum a_n x^n$ dày đặc trên giấy. Nhưng ngay khi bạn kéo thanh trượt thay đổi số hạng cắt cụt $N$ hay bậc $n$ trên đồ thị tương tác, toàn bộ bức tranh lập tức bừng sáng: bạn tận mắt thấy chuỗi hội tụ dần trong bán kính $R$, thấy màng trống tròn rung theo nghiệm không của hàm Bessel $J_0$, và thấy đa thức Legendre dao động trực giao trên $[-1, 1]$.
 
-## Bản đồ kiến thức nền: Bốn hiện tượng hình học cần quan sát trong Bộ Minh họa Chương 06
+## Kiến thức cần nhớ: Bốn hiện tượng hình học cần quan sát trong Bộ Minh họa Chương 06
 
 1. **Bán kính hội tụ $R$ của chuỗi lũy thừa**:
    Bên trong $\vert x - x_0 \vert < R$, tổng riêng $S_N(x)$ ôm sát nghiệm thật khi $N$ tăng; vừa bước qua biên $\vert x - x_0 \vert > R$, đường cong bung vọt ra vô cùng!
@@ -42,7 +42,7 @@ Bài học bổ sung này tập hợp toàn bộ các minh họa JavaScript củ
   height="920px"
 %}
 
-### Khung giải thích (nên đọc chậm): Tự kiểm tra bán kính hội tụ $R = 1$ của chuỗi hình học $\frac{1}{1 - x} = \sum_{n=0}^{\infty} x^n$ ngay trên thanh trượt
+### Giải thích: Tự kiểm tra bán kính hội tụ $R = 1$ của chuỗi hình học $\frac{1}{1 - x} = \sum_{n=0}^{\infty} x^n$ ngay trên thanh trượt
 
 Hãy thử 2 giá trị $x$ đối lập nhau khi tăng số hạng $N = 2, 5, 10$:
 - **Tại $x = 0{,}5$ (nằm trong $\vert x \vert < 1$)**: Nghiệm thật là $\frac{1}{1 - 0{,}5} = 2{,}000$.

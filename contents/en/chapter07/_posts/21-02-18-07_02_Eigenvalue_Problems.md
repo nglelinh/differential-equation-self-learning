@@ -14,14 +14,14 @@ Push down slowly on the top of a thin plastic ruler. At first it stays perfectly
 
 Those special values are the **eigenvalues**, and the corresponding arches are the **eigenfunctions**. Just as matrix eigenvalues diagonalize finite-dimensional systems, differential eigenvalues unlock the natural resonant frequencies, buckling loads, and quantum energy levels of continuous physical systems.
 
-## Background Knowledge Map: Differential Eigenvalue Problems
+## Key ideas: Differential Eigenvalue Problems
 
 1. **Matrix vs. Differential Operator Analogy (Functional Analysis):** Writing $$ L[y] = -y'' $$, the problem $$ L[y] = \lambda y $$ with homogeneous BCs is the infinite-dimensional analogue of $$ A\mathbf{v} = \lambda \mathbf{v} $$. Crucially, the *boundary conditions are part of the operator's domain*: changing Dirichlet to Neumann changes the spectrum completely.
 2. **Exhaustive Sign Analysis ($$ \lambda < 0, \lambda = 0, \lambda > 0 $$):** Because the characteristic roots of $$ y'' + \lambda y = 0 $$ change character across $$ \lambda = 0 $$ (hyperbolic exponentials for $$ \lambda < 0 $$, linear polynomials for $$ \lambda = 0 $$, trigonometric oscillations for $$ \lambda > 0 $$), every eigenvalue problem must be checked cleanly across all three regimes.
 3. **Rayleigh Quotient Sign Check (Energy Intuition):** Multiplying $$ -y'' = \lambda y $$ by $$ y $$ and integrating by parts gives $$ \lambda = \frac{-[y y']_a^b + \int_a^b (y')^2\,dx}{\int_a^b y^2\,dx} $$. For Dirichlet or Neumann BCs, the boundary term vanishes, proving immediately that $$ \lambda \ge 0 $$ (and $$ \lambda > 0 $$ for Dirichlet)—zero guesswork!
 4. **Discrete Spectrum and Nodal Counting:** As $$ n $$ increases, eigenvalues grow quadratically ($$ \lambda_n \sim (n\pi/L)^2 $$) and the $$ n $$-th eigenfunction has increasingly many interior zeros, forming the natural harmonic ladder of the domain.
 
-### Step-by-Step Worked Example (Read Slowly): Complete Spectrum of the Mixed Dirichlet–Neumann Problem
+### Worked example: Complete Spectrum of the Mixed Dirichlet–Neumann Problem
 
 **Problem:** Find all eigenvalues $$ \lambda $$ and eigenfunctions $$ y(x) $$ of $$ y'' + \lambda y = 0 $$ on $$ [0, L] $$ subject to $$ y(0) = 0 $$ and $$ y'(L) = 0 $$, checking all three regimes $$ \lambda < 0 $$, $$ \lambda = 0 $$, and $$ \lambda > 0 $$.
 

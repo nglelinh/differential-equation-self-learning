@@ -14,7 +14,7 @@ lesson_type: optional
 
 Kết thúc một hành trình dài từ phương trình vi phân cấp 1 đến tận phân tích vi địa phương, câu hỏi tự nhiên nhất sẽ là: *các nhà toán học PDE hàng đầu thế giới hôm nay đang giải quyết những bài toán mở nào?* Từ giải thưởng Thiên niên kỷ một triệu đô la về phương trình Navier–Stokes 3D, sự hình thành lỗ đen trong Thuyết Tương đối Rộng, đến giao thoa bùng nổ giữa Lý thuyết PDE với Học sâu Khoa học (SciML), bức tranh nghiên cứu hiện đại đang sôi động hơn bao giờ hết!
 
-## Bản đồ kiến thức nền: Bốn mũi nhọn nghiên cứu sôi động nhất của PDE Hiện đại
+## Kiến thức cần nhớ: Bốn mũi nhọn nghiên cứu sôi động nhất của PDE Hiện đại
 
 1. **PDE Phi tuyến Sóng/Tán sắc & Tính Đều Toàn cục vs. Bùng nổ (Blow-up)**:
    Hiểu cơ chế hình thành kỳ dị hữu hạn thời gian trong phương trình Euler/Navier–Stokes 3D (bài toán Thiên niên kỷ Clay), phương trình Schrödinger phi tuyến (NLS) và ổn định phi tuyến của lỗ đen Kerr trong phương trình Einstein!
@@ -40,7 +40,7 @@ Sinh viên nên nắm các chủ đề chính của chương: tập mặt sóng,
 Giải tích vi địa phương không đứng tách biệt mà giao thoa trực tiếp với hình học vi phân, vật lý lượng tử, khoa học ảnh y sinh, địa vật lý và phương pháp số cao tần.
 
 
-### Khung giải thích (nên đọc chậm): Tính nhanh giới hạn phân giải nhiễu xạ (Rayleigh) trong siêu âm y khoa—động lực của chụp ảnh siêu phân giải hiện đại
+### Giải thích: Tính nhanh giới hạn phân giải nhiễu xạ (Rayleigh) trong siêu âm y khoa—động lực của chụp ảnh siêu phân giải hiện đại
 
 Trong các bài toán ngược sóng hiện đại, giới hạn nhiễu xạ cơ bản cho biết sóng có bước sóng $\lambda = c/f$ chỉ phân giải được chi tiết kích thước cỡ $d_{\min} \approx \frac{\lambda}{2}$. Xét siêu âm y khoa trong mô mềm ($c \approx 1.540\text{ m/s}$):
 1. **Đầu dò tiêu chuẩn $f = 5\text{ MHz}$ ($5 \times 10^6\text{ Hz}$)**:

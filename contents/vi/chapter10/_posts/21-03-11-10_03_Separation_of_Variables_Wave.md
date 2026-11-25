@@ -14,7 +14,7 @@ lesson_type: required
 
 Khi sợi dây có chiều dài hữu hạn $[0, L]$ bị kẹp chặt hai đầu, sóng chạy tới biên sẽ phản xạ qua lại liên tục. Lúc này **Phương pháp Tách biến** cho bức tranh trong sáng hơn hẳn d'Alembert: thay vì theo dõi vô số lần phản xạ, ta phân rã dao động thành chồng chất các **mode sóng đứng (normal modes)** $\sin(n\pi x/L)$ dao động điều hòa với hai bộ hệ số Fourier $A_n$ (từ vị trí đầu $f(x)$) và $B_n$ (từ vận tốc đầu $g(x)$)!
 
-## Bản đồ kiến thức nền: Bốn bước Tách biến cho Phương trình Sóng hữu hạn
+## Kiến thức cần nhớ: Bốn bước Tách biến cho Phương trình Sóng hữu hạn
 
 1. **Nghiệm tổng quát trên $[0, L]$ với biên cố định $u(0, t) = u(L, t) = 0$**:
    $$u(x, t) = \sum_{n=1}^{\infty}\left[A_n\cos\!\left(\frac{n\pi c t}{L}\right) + B_n\sin\!\left(\frac{n\pi c t}{L}\right)\right]\sin\!\left(\frac{n\pi x}{L}\right).$$
@@ -40,7 +40,7 @@ Trên toàn trục thực, nghiệm d'Alembert mô tả các sóng chạy tự d
 
 Như vậy, hình học miền và điều kiện biên chuyển bài toán truyền sóng thành một bài toán phổ. Âm thanh phát ra từ một sợi dây đàn chính là sự chồng chất của các mode sóng dừng này.
 
-### Khung giải thích (nên đọc chậm): Giải cầm tay bài toán dây đàn bị búa piano gõ (có vận tốc đầu $g(x)$, vị trí đầu $f(x) \equiv 0$)
+### Giải thích: Giải cầm tay bài toán dây đàn bị búa piano gõ (có vận tốc đầu $g(x)$, vị trí đầu $f(x) \equiv 0$)
 
 Cho $u_{tt} = 9 u_{xx}$ ($c = 3$) trên $[0, \pi]$ với $u(0, t) = u(\pi, t) = 0$, $u(x, 0) = 0$ và vận tốc đầu $u_t(x, 0) = 6\sin x + 12\sin(2x)$.
 1. Vì $f(x) \equiv 0 \implies$ mọi **$A_n = 0$**.

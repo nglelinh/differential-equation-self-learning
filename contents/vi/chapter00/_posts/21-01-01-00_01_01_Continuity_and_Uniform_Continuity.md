@@ -13,7 +13,7 @@ lesson_type: required
 
 Cùng là hai hàm liên tục hoàn hảo trên $(0, 1)$, tại sao hàm $f(x) = x^2$ lại "ngoan ngoãn" để xấp xỉ số, còn $g(x) = 1/x$ lại khiến mọi lưới chia đều bước $h$ đều thất bại thảm hại khi tiến gần $0$? Ranh giới mỏng manh nhưng quyết định đó chính là **tính liên tục đều (uniform continuity)** và phiên bản mạnh hơn nữa của nó trong phương trình vi phân: **điều kiện Lipschitz**.
 
-## Bản đồ kiến thức nền: Bốn cấp độ "độ mượt" của hàm số
+## Kiến thức cần nhớ: Bốn cấp độ "độ mượt" của hàm số
 
 1. **Liên tục tại từng điểm (Pointwise Continuity)**:
    Độ rộng $\delta$ phụ thuộc vào **cả $\varepsilon$ lẫn vị trí $x_0$**; hàm có thể dốc đứng dần khi tiến ra biên miền mở.
@@ -35,7 +35,7 @@ Sinh viên cần nắm vững định nghĩa giới hạn và tính liên tục 
 
 Xét hàm $$ f(x) = x^2 $$ trên $$ \mathbb{R} $$. Đồ thị của hàm càng dốc khi $$ \lvert x \rvert $$ càng lớn: ở gần gốc tọa độ, đồ thị khá thoải, nhưng càng ra xa gốc, chỉ một bước dịch chuyển rất nhỏ theo phương ngang cũng làm giá trị hàm thay đổi lớn theo phương đứng. Do đó, với cùng một sai số $$ \varepsilon $$ cho trước, không tồn tại một giá trị $$ \delta $$ duy nhất dùng được tại mọi điểm $$ x \in \mathbb{R} $$. Đó chính là hiện tượng không liên tục đều.
 
-### Khung giải thích (nên đọc chậm): So sánh trực tiếp $\delta$ của $f(x) = x^2$ trên $[0, 1]$ và $g(x) = \frac{1}{x}$ trên $(0, 1)$ với $\varepsilon = 0{,}1$
+### Giải thích: So sánh trực tiếp $\delta$ của $f(x) = x^2$ trên $[0, 1]$ và $g(x) = \frac{1}{x}$ trên $(0, 1)$ với $\varepsilon = 0{,}1$
 
 1. **Với $f(x) = x^2$ trên $[0, 1]$ (Liên tục đều & Lipschitz)**:
    $$\vert x^2 - y^2\vert = \vert x + y\vert\,\vert x - y\vert \le 2\vert x - y\vert.$$

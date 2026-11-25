@@ -12,7 +12,7 @@ lesson_type: required
 
 Biến đổi Laplace bảo toàn phép cộng, nhưng **tuyệt đối không** bảo toàn phép nhân thông thường: $\mathcal{L}\{f \cdot g\} \ne F(s)G(s)$! Vậy phép toán nào trong miền thời gian tương ứng với phép nhân $F(s)G(s)$ trong miền Laplace? Câu trả lời là một phép toán trung tâm của toàn bộ giải tích, xử lý tín hiệu và mạng nơ-ron tích chập (CNN): **phép Tích chập (Convolution)** $(f * g)(t) = \int_0^t f(\tau)g(t - \tau)\,d\tau$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Định lý Tích chập
+## Kiến thức cần nhớ: Bốn trụ cột của Định lý Tích chập
 
 1. **Định nghĩa & Ý nghĩa vật lý ("Bộ nhớ của hệ")**:
    $(f * g)(t) = \int_0^t f(\tau)g(t - \tau)\,d\tau$ cộng dồn ảnh hưởng của mọi ngoại lực $g(\tau)$ trong quá khứ ($0 \le \tau \le t$), mỗi lực được nhân trọng số bởi đáp ứng xung $f(t - \tau)$ sau khoảng thời gian trôi qua $t - \tau$.
@@ -36,7 +36,7 @@ Nếu biết một hệ phản ứng ra sao trước một xung tức thời, li
 
 Với tích chập, biến đổi Laplace vượt ra khỏi vai trò công cụ giải từng phương trình riêng lẻ để trở thành ngôn ngữ thống nhất cho đầu vào, đầu ra, đáp ứng xung và bộ nhớ của hệ thống.
 
-### Khung giải thích (nên đọc chậm): Tính $\mathcal{L}^{-1}\!\left\{\frac{1}{s(s^2 + 1)}\right\}$ bằng Định lý Tích chập và đối chiếu với tách phân thức
+### Giải thích: Tính $\mathcal{L}^{-1}\!\left\{\frac{1}{s(s^2 + 1)}\right\}$ bằng Định lý Tích chập và đối chiếu với tách phân thức
 
 Chọn $F(s) = \frac{1}{s} \leftrightarrow f(t) = 1$ và $G(s) = \frac{1}{s^2 + 1} \leftrightarrow g(t) = \sin t$:
 1. **Áp dụng Định lý Tích chập**:

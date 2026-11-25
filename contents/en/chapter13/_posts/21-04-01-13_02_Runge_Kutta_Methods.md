@@ -20,7 +20,7 @@ This lesson introduces Runge-Kutta methods as higher-accuracy one-step schemes. 
 
 Students should know Euler's method, local linearization, and the idea of truncation error.
 
-## Background Knowledge Map: Inside Runge–Kutta Stage Design
+## Key ideas: Inside Runge–Kutta Stage Design
 
 Four pillars explain how Runge–Kutta (RK) methods achieve dramatic accuracy while remaining single-step:
 
@@ -100,7 +100,7 @@ Students should understand the practical tradeoff.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Executing One Complete Classical RK4 Step by Hand
+### Worked example: Executing One Complete Classical RK4 Step by Hand
 
 Take a single large step $h = 0.5$ of classical 4th-order Runge–Kutta (RK4) on $y' = y$, $y(0) = 1$, and compare the result against the exact value $e^{0.5} \approx 1.6487213$.
 

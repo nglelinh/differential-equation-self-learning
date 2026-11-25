@@ -14,7 +14,7 @@ lesson_type: optional
 
 Mọi bài toán thuận từ Chương 1 đến Chương 14 đều đi theo chiều xuôi: biết vật liệu bên trong, dự đoán kết quả đo bên ngoài. **Bài toán Ngược (Inverse Problems)** lật ngược toàn bộ câu hỏi: bác sĩ chỉ đo tia X hay dòng điện **trên mặt da**, nhà địa chất chỉ nghe sóng rung **trên mặt đất**, vậy có thể suy ngược ra chính xác hình ảnh cơ quan nội tạng hay túi dầu nằm sâu bên trong không? Câu hỏi tưởng giản dị ấy lại ẩn chứa thách thức lớn nhất của toán ứng dụng: **tính đặt không chỉnh (ill-posedness)** theo nghĩa Hadamard!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Bài toán Ngược trong PDE
+## Kiến thức cần nhớ: Bốn trụ cột của Bài toán Ngược trong PDE
 
 1. **Ba câu hỏi cốt lõi: Tính Duy nhất, Ổn định và Tái tạo (Reconstruction)**:
    Một bài toán đặt chỉnh theo Hadamard cần tồn tại, duy nhất và ổn định. Bài toán ngược thường vi phạm nặng nề điều kiện thứ ba: nhiễu đo $10^{-4}$ trên dữ liệu có thể thổi phồng thành sai số khổng lồ trong nghiệm phục hồi!
@@ -42,7 +42,7 @@ Trong bài toán thuận, ta biết phương trình, hệ số và nguồn, từ
 Thách thức lớn nhất của bài toán ngược là tính không ổn định: một nhiễu rất nhỏ trong dữ liệu đo có thể dẫn tới sai lệch lớn trong kết quả tái tạo. Vì thế, đây là điểm giao thoa thực tiễn giữa giải tích PDE, thống kê và tính toán khoa học.
 
 
-### Khung giải thích (nên đọc chậm): Tận mắt thấy sự khuếch đại nhiễu khủng khiếp trong bài toán ngược truyền nhiệt
+### Giải thích: Tận mắt thấy sự khuếch đại nhiễu khủng khiếp trong bài toán ngược truyền nhiệt
 
 Xét bài toán ngược của phương trình nhiệt 1D $u_t = u_{xx}$ trên $(0, \pi)$ với $u(0,t)=u(\pi,t)=0$: ta đo được nhiệt độ $u(x, T)$ tại $T = 0{,}1\text{ s}$ và muốn suy ngược lại nhiệt độ ban đầu $u_0(x) = u(x, 0)$!
 1. **Chiều thuận (làm trơn mũ)**: Mỗi mode $\sin(nx)$ bị suy giảm bởi thừa số $e^{-n^2 T}$:

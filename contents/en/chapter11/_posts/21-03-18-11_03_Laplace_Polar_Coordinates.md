@@ -20,7 +20,7 @@ This lesson solves Laplace's equation on circular domains using polar coordinate
 
 Students should know Laplace's equation, the basics of polar coordinates, and separation of variables in rectangular domains.
 
-## Background Knowledge Map: Circular Symmetry and Polar Potential Theory
+## Key ideas: Circular Symmetry and Polar Potential Theory
 
 Mastering Laplace's equation on disks, annuli, and wedges relies on four structural pillars:
 
@@ -102,7 +102,7 @@ Students should connect the formulas back to disks and annuli.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Solving the Disk Dirichlet Problem and Verifying Directly
+### Worked example: Solving the Disk Dirichlet Problem and Verifying Directly
 
 Find the bounded harmonic function $u(r,\theta)$ on the disk $r < 2$ satisfying the boundary condition $u(2,\theta) = 4 + 6\cos(2\theta) - 2\sin(3\theta)$, and verify directly that the resulting formula satisfies the polar Laplace equation.
 

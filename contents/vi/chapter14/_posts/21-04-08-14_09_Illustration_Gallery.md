@@ -12,7 +12,7 @@ lesson_type: optional
 
 Toán tử Giả vi phân nghe có vẻ thuần túy trừu tượng, nhưng trên không gian pha $(x, \xi)$ nó lại mang một ngôn ngữ hình học cực kỳ sống động: nhìn vào bề mặt ký hiệu $p(x, \xi)$, ta thấy ngay mặt nón đặc trưng nơi tính elliptic sụp đổ, thấy tốc độ suy giảm của nhân parametrix $q(x, \xi)$, và thấy nhân Schwartz $K_P(x, y)$ chỉ mang kỳ dị dọc đúng đường chéo $x = y$ còn ngoài đường chéo thì phẳng mượt như lụa!
 
-## Bản đồ kiến thức nền: Bốn bức tranh trực quan cần khám phá trong Gallery Chương 14
+## Kiến thức cần nhớ: Bốn bức tranh trực quan cần khám phá trong Gallery Chương 14
 
 1. **Bề mặt Ký hiệu $p(x, \xi)$ — Elliptic vs. Hyperbolic**:
    So sánh bát paraboloid dương chặt của $-\Delta$ ($|\xi|^2 > 0$) với mặt yên ngựa có đường cắt $0$ của toán tử sóng ($\xi_1^2 - \xi_2^2 = 0$).
@@ -36,7 +36,7 @@ Nên xem lần lượt các minh họa theo đúng thứ tự bài học. Sau m�
 Trang này cũng tạo cầu nối tự nhiên sang Chương 15, nơi góc nhìn ký hiệu được phát triển sâu hơn theo hướng hình học và vi địa phương.
 
 
-### Khung giải thích (nên đọc chậm): So sánh bằng số tốc độ suy giảm của ký hiệu bậc $-2$ và ký hiệu làm trơn $S^{-\infty}$
+### Giải thích: So sánh bằng số tốc độ suy giảm của ký hiệu bậc $-2$ và ký hiệu làm trơn $S^{-\infty}$
 
 Hãy đánh giá hai ký hiệu tại hai mốc tần số $|\xi| = 10$ và $|\xi| = 100$:
 1. **Ký hiệu Parametrix bậc $-2$**: $q(\xi) = (1 + |\xi|^2)^{-1} \in S^{-2}$:

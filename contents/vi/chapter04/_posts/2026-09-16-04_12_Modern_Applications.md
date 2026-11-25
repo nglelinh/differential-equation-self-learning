@@ -13,7 +13,7 @@ lesson_type: optional
 
 Dữ liệu y tế trong phòng hồi sức tích cực, cảm biến rung trên tuabin gió hay chuỗi quỹ đạo tài chính thường có hàng chục biến đo không đều theo thời gian và bị thiếu dữ liệu. Các mô hình **Latent ODE**, **Koopman Operator (DMD)** và **State-Space Models (S4/Mamba)** hiện đại giải quyết bài toán này bằng chính ngôn ngữ của Chương 04: chiếu thế giới phức tạp vào một không gian ẩn $\mathbf{z}(t) \in \mathbb{R}^d$ nơi động lực vận hành theo một hệ phương trình vi phân gọn gàng $\mathbf{z}' = A\mathbf{z} + B\mathbf{u}$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Hệ PTVP trong AI & Khoa học Dữ liệu
+## Kiến thức cần nhớ: Bốn trụ cột của Hệ PTVP trong AI & Khoa học Dữ liệu
 
 1. **Latent ODE (Rubanova et al.)**:
    Mã hóa chuỗi thời gian lấy mẫu bất quy tắc thành trạng thái ẩn ban đầu $\mathbf{z}_0$, tiến hóa liên tục qua $\dot{\mathbf{z}} = f_\theta(\mathbf{z}, t)$, rồi giải mã tại bất kỳ thời điểm $t$ nào để dự báo hoặc điền khuyết.
@@ -38,7 +38,7 @@ Hệ ODE là ngôn ngữ tự nhiên cho các đại lượng tương tác như 
 
 Khảo sát năm 2022 của Kidger ([arXiv:2202.02435](https://arxiv.org/abs/2202.02435)) cùng bài báo về Neural CDE (Kidger, Morrill, Foster và Lyons, ICLR 2021) mở rộng hướng tiếp cận từ hệ ẩn tự trị sang hệ chịu dẫn dắt bởi một đường tín hiệu đầu vào. Cộng đồng học máy khoa học (SciML) xoay quanh các thư viện như Diffrax và DiffEqFlux xem hệ phương trình cơ chế và hệ nơ-ron là các thành phần có thể kết hợp hoặc thay thế lẫn nhau. Hàm mũ ma trận của Chương 04 chính là nghiệm giải tích đúng trong trường hợp tuyến tính, nên đóng vai trò công cụ kiểm chứng đầu tiên cho các mô hình này.
 
-### Khung giải thích (nên đọc chậm): Thấy tận mắt cách tham số hóa phản đối xứng $A = \begin{pmatrix} -d_1 & -\omega \\ \omega & -d_2 \end{pmatrix}$ đảm bảo hệ tuyến tính học được luôn ổn định!
+### Giải thích: Thấy tận mắt cách tham số hóa phản đối xứng $A = \begin{pmatrix} -d_1 & -\omega \\ \omega & -d_2 \end{pmatrix}$ đảm bảo hệ tuyến tính học được luôn ổn định!
 
 Trong nhiều mạng Neural State-Space, thay vì học ma trận $A$ tự do dễ bị mất ổn định, người ta chọn $d_1, d_2 > 0$:
 1. **Thử với $d_1 = 0{,}2,\; d_2 = 0{,}2,\; \omega = 2$**:

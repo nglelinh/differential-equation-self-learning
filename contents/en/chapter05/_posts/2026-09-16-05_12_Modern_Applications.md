@@ -12,7 +12,7 @@ lesson_type: optional
 
 Autonomous drones, bipedal robots, and power-grid inverters all obey high-dimensional nonlinear ODEs where hand-crafting a Lyapunov function $$V(\mathbf{x})$$ is virtually impossible—yet shipping an unverified black-box controller risks catastrophic instability. **Neural Lyapunov Functions** bridge this exact gap: a neural network *learns* a candidate bowl $$V_\theta(\mathbf{x})$$ from data, and a formal mathematical verifier (like an SMT solver or interval arithmetic) certifies $$\dot{V}_\theta(\mathbf{x}) < 0$$ across an entire verified Region of Attraction (RoA)!
 
-## Background Knowledge Map: Lyapunov Stability Inside Safe AI & Control
+## Key ideas: Lyapunov Stability Inside Safe AI & Control
 
 Four Chapter 05 concepts directly power certified neural control and verification:
 
@@ -23,7 +23,7 @@ Four Chapter 05 concepts directly power certified neural control and verificatio
 3. **Counterexample-Guided Verification (CEGIS Loop):** Sampling alone can miss a narrow unstable ridge; a formal verifier (e.g., dReal / Z3 / $$\alpha,\beta$$-CROWN) searches the domain for any counterexample where $$\dot{V}_\theta(\mathbf{x}) \ge 0$$, feeds it back into the training set, and repeats until **zero** counterexamples remain!
 4. **Certifying the Region of Attraction (Sublevel Set $$\Omega_c$$):** Once $$\dot{V}_\theta(\mathbf{x}) < 0$$ is verified on a domain $$D$$, the largest sublevel set $$\Omega_c = \{\mathbf{x} : V_\theta(\mathbf{x}) \le c\} \subset D$$ is a mathematically guaranteed **safe operating envelope** from which the robot is 100% certified to recover!
 
-### Step-by-Step Worked Example (Read Slowly): Computing Lyapunov Risk and Certifying a Sublevel Safe Set
+### Worked example: Computing Lyapunov Risk and Certifying a Sublevel Safe Set
 
 Consider the nonlinear scalar-controlled system (inverted-pendulum angle $$x$$ with saturation-like cubic nonlinearity)
 $$x' = f(x) = -2x + x^3$$

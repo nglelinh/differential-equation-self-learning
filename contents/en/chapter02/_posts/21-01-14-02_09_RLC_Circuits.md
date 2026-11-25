@@ -12,7 +12,7 @@ lesson_type: required
 
 Every time you tune an AM radio to a single broadcast station while rejecting dozens of neighboring frequencies, you are exploiting a series RLC circuit operating at electrical resonance. Remarkably, Kirchhoff's voltage law $$L q'' + R q' + \frac{1}{C} q = E(t)$$ is mathematically identical to a mechanical mass–spring–damper—meaning inductance plays the role of inertia, resistance plays the role of friction, and inverse capacitance plays the role of spring stiffness.
 
-## Background Knowledge Map: The Electrical–Mechanical Dictionary and Impedance
+## Key ideas: The Electrical–Mechanical Dictionary and Impedance
 
 Four principles connect second-order ODEs directly to circuit analysis:
 
@@ -22,7 +22,7 @@ Four principles connect second-order ODEs directly to circuit analysis:
    $$Z(i\omega) = R + i\left(\omega L - \frac{1}{\omega C}\right), \qquad \lvert Z(i\omega)\rvert = \sqrt{R^2 + \left(\omega L - \frac{1}{\omega C}\right)^2}.$$
 4. **Sharp Resonance and Quality Factor ($$Q$$):** Impedance hits its minimum $$\lvert Z \rvert = R$$ (maximum current $$I_{\max} = E_0/R$$) at the exact resonant frequency $$\omega_0 = \frac{1}{\sqrt{LC}}$$, where inductive reactance $$\omega_0 L$$ cancels capacitive reactance $$1/(\omega_0 C)$$; the sharpness of tuning is measured by $$Q = \frac{1}{R}\sqrt{\frac{L}{C}}$$.
 
-### Step-by-Step Worked Example (Read Slowly): Designing and Solving a Series RLC Circuit Driven at Resonance
+### Worked example: Designing and Solving a Series RLC Circuit Driven at Resonance
 
 A series RLC circuit has $$L = 0.5\text{ H}$$, $$R = 10\;\Omega$$, $$C = 0.02\text{ F}$$, and AC voltage source $$E(t) = 100\cos(10t)\text{ V}$$. Find the natural resonant frequency, the steady-state current $$I_p(t)$$, and the steady-state charge $$q_p(t)$$.
 

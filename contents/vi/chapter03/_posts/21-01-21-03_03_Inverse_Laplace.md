@@ -12,7 +12,7 @@ lesson_type: required
 
 Giải phương trình đại số trong miền Laplace thường chỉ mất ba mươi giây—thử thách thực sự nằm ở chặng đường quay về miền thời gian: từ một phân thức hữu tỷ $F(s)$ tìm lại hàm gốc $f(t) = \mathcal{L}^{-1}\{F(s)\}$! May mắn thay, **Định lý Lerch** đảm bảo hàm gốc liên tục là duy nhất, còn bộ ba kỹ thuật **tách phân thức hữu tỷ (partial fractions)**, **bình phương đủ** và **quy tắc che Heaviside** sẽ biến mọi phân thức phức tạp thành tổng các mảnh quen thuộc trong bảng.
 
-## Bản đồ kiến thức nền: Bốn kỹ thuật cốt lõi của Biến đổi Laplace Ngược
+## Kiến thức cần nhớ: Bốn kỹ thuật cốt lõi của Biến đổi Laplace Ngược
 
 1. **Tính duy nhất (Định lý Lerch) & Tính tuyến tính**:
    Nếu hai hàm liên tục trên $[0, \infty)$ có cùng biến đổi Laplace thì chúng trùng nhau ở mọi nơi; ta luôn tách $F(s)$ thành tổng các phân thức đơn giản rồi tra ngược từng số hạng.
@@ -40,7 +40,7 @@ Miền Laplace thuận lợi cho việc biến đổi đại số, nhưng các �
 
 Thay vì dùng trực tiếp công thức tích phân phức Bromwich, khóa học sử dụng phương pháp thực dụng cho các bài toán phổ biến: phân tích phân thức hữu tỉ thành tổng các phân thức đơn rồi tra ngược theo bảng biến đổi cơ bản.
 
-### Khung giải thích (nên đọc chậm): Tìm $\mathcal{L}^{-1}\!\left\{\frac{3s + 5}{(s - 1)(s^2 + 2s + 5)}\right\}$ từng bước rõ ràng
+### Giải thích: Tìm $\mathcal{L}^{-1}\!\left\{\frac{3s + 5}{(s - 1)(s^2 + 2s + 5)}\right\}$ từng bước rõ ràng
 
 1. **Phân tích mẫu và tách phân thức**:
    Lưu ý $s^2 + 2s + 5 = (s + 1)^2 + 2^2$ (vô nghiệm thực). Đặt:

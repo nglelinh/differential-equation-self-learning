@@ -12,7 +12,7 @@ lesson_type: optional
 
 A $$2\times 2$$ matrix is just four numbers in brackets, yet those four numbers sculpt an entire vector field across the plane: stretching one axis, squashing another, or twisting every point into a logarithmic vortex. This interactive gallery lets you tweak matrix entries and watch eigenvectors snap together, vanish into complex spirals, or transform two coupled masses into pure synchronous modes.
 
-## Background Knowledge Map: Four Geometric Signatures to Spot in the Gallery
+## Key ideas: Four Geometric Signatures to Spot in the Gallery
 
 Connect every interactive slider below to its underlying Chapter 04 theorem:
 
@@ -21,7 +21,7 @@ Connect every interactive slider below to its underlying Chapter 04 theorem:
 3. **Matrix Exponential Deformation:** Tracking a unit circle of initial conditions $$\{\mathbf{x}_0 : \|\mathbf{x}_0\| = 1\}$$ under $$e^{At}$$ turns the circle into a rotating, stretching ellipse whose area grows at the exact Liouville rate $$e^{\operatorname{tr}(A)t}$$.
 4. **Normal-Mode Superposition:** Toggling individual mode amplitudes in the coupled-oscillator widget shows immediately how adding just two pure cosines produces complex beating patterns.
 
-### Step-by-Step Worked Example (Read Slowly): Predicting an Ellipse's Area and Axes Under $$e^{At}$$
+### Worked example: Predicting an Ellipse's Area and Axes Under $$e^{At}$$
 
 Let $$A = \begin{pmatrix} -1 & 3 \\ 0 & -2 \end{pmatrix}$$ act on the unit disk $$D_0 = \{\mathbf{x} \in \mathbb{R}^2 : \|\mathbf{x}\| \le 1\}$$ (initial area $$\pi$$) from $$t = 0$$ to $$t = 1$$.
 

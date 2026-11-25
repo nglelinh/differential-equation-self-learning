@@ -20,7 +20,7 @@ This lesson introduces parametrices for elliptic operators. Students should unde
 
 Students should know principal symbols, ellipticity from classical PDE, and the symbolic calculus of composition.
 
-## Background Knowledge Map: Ellipticity and Iterative Parametrix Construction
+## Key ideas: Ellipticity and Iterative Parametrix Construction
 
 Four clean steps turn high-frequency invertibility into an explicit parametrix $Q \in \Psi^{-m}$:
 
@@ -98,7 +98,7 @@ This is the crucial analytic consequence.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Computing the First Two Terms of a Parametrix
+### Worked example: Computing the First Two Terms of a Parametrix
 
 Construct the leading term $q_0 \in S^{-2}$ and first correction $q_1 \in S^{-3}$ of a left parametrix $Q$ for the variable-coefficient 1D elliptic operator
 $$P = D_x^2 + i x D_x + 1, \qquad p(x,\xi) = \xi^2 + i x \xi + 1 \in S^2,$$

@@ -13,7 +13,7 @@ lesson_type: required
 
 Trong thực tế kỹ thuật, hệ mạch điện nhiều nhánh hay chuỗi ngăn chứa hóa chất luôn chịu nguồn bơm, điện áp xoay chiều hoặc nhiễu ngoại lai $\mathbf{g}(t)$ tác động liên tục—dẫn đến **hệ không thuần nhất** $\mathbf{x}' = A\mathbf{x} + \mathbf{g}(t)$. Điều tuyệt vời là ta có tới **ba vũ khí sắc bén** để giải quyết hệ này: **Chéo hóa tách biến** (đưa về $n$ phương trình cấp một độc lập), **Biến thiên hằng số vectơ** (công thức Duhamel vạn năng), và **Hệ số bất định vectơ**!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Hệ Tuyến tính Không thuần nhất
+## Kiến thức cần nhớ: Bốn trụ cột của Hệ Tuyến tính Không thuần nhất
 
 1. **Cấu trúc nghiệm tổng quát ($\mathbf{x}(t) = \Phi(t)\mathbf{c} + \mathbf{x}_p(t)$)**:
    Mọi nghiệm là tổng của nghiệm thuần nhất $\mathbf{x}_h$ và một nghiệm riêng $\mathbf{x}_p$.
@@ -44,7 +44,7 @@ Nghiệm của hệ không chỉ phụ thuộc vào các thành phần tự do m
 
 Cấu trúc của hệ thuần nhất vẫn đóng vai trò nền tảng: ta mở rộng phương pháp biến thiên hằng số sang dạng vector hoặc biểu diễn trực tiếp nghiệm bằng công thức tích phân qua ma trận mũ.
 
-### Khung giải thích (nên đọc chậm): Giải hệ không thuần nhất $\mathbf{x}' = \begin{pmatrix} 1 & 0 \\ 0 & -2 \end{pmatrix}\mathbf{x} + \begin{pmatrix} e^t \\ 4 \end{pmatrix}$ với $\mathbf{x}(0) = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$ bằng Công thức Duhamel
+### Giải thích: Giải hệ không thuần nhất $\mathbf{x}' = \begin{pmatrix} 1 & 0 \\ 0 & -2 \end{pmatrix}\mathbf{x} + \begin{pmatrix} e^t \\ 4 \end{pmatrix}$ với $\mathbf{x}(0) = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$ bằng Công thức Duhamel
 
 1. **Ma trận mũ**: $e^{At} = \begin{pmatrix} e^t & 0 \\ 0 & e^{-2t} \end{pmatrix} \implies e^{A(t-s)} = \begin{pmatrix} e^{t-s} & 0 \\ 0 & e^{-2(t-s)} \end{pmatrix}$.
 2. **Tính tích phân Duhamel $\int_0^t e^{A(t-s)}\mathbf{g}(s)\,ds$**:

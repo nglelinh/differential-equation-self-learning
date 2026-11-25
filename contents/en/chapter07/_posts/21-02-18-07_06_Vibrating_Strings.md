@@ -14,14 +14,14 @@ Pluck a guitar string near the bridge and it rings bright and metallic; pluck th
 
 Here we watch the spatial eigenvalue problem of Chapter 07 lock together with harmonic time oscillation to solve the 1D wave equation on a finite string.
 
-## Background Knowledge Map: Standing Waves and Spectral Superposition
+## Key ideas: Standing Waves and Spectral Superposition
 
 1. **Separation of Variables (Decoupling Space and Time):** Inserting $$ u(x, t) = X(x) T(t) $$ into $$ u_{tt} = c^2 u_{xx} $$ splits the PDE into a spatial Sturm–Liouville BVP $$ X'' + \lambda X = 0 $$ (whose eigenvalues $$ \lambda_n = (n\pi/L)^2 $$ depend only on geometry and BCs) and a temporal oscillator $$ T'' + c^2 \lambda T = 0 $$ (giving angular frequencies $$ \omega_n = c\sqrt{\lambda_n} = \frac{n\pi c}{L} $$).
 2. **Harmonic Overtone Series (Why Strings Sound Musical):** For a uniform clamped string, $$ \omega_n = n \omega_1 $$ are exact integer multiples of the fundamental frequency $$ \omega_1 = \frac{\pi}{L}\sqrt{T/\rho} $$. That arithmetic perfection is what makes stringed instruments sound pitched and consonant.
 3. **Initial Displacement vs. Initial Velocity (Cosine vs. Sine Time Phases):** Each normal mode carries two amplitudes: $$ A_n \cos(\omega_n t) $$ encodes the initial shape $$ f(x) = u(x, 0) $$, while $$ B_n \sin(\omega_n t) $$ encodes the initial velocity $$ g(x) = u_t(x, 0) $$ (e.g., a piano hammer strike).
 4. **Modal Energy Conservation:** By orthogonality of $$ \{\sin(n\pi x / L)\} $$, the total mechanical energy $$ E = \frac{1}{2}\int_0^L (\rho u_t^2 + T u_x^2)\,dx $$ splits cleanly into a sum of independent mode energies $$ \sum_{n=1}^\infty E_n $$, with zero energy leaking between modes in an ideal linear string.
 
-### Step-by-Step Worked Example (Read Slowly): Center-Plucked String and the Vanishing of Even Harmonics
+### Worked example: Center-Plucked String and the Vanishing of Even Harmonics
 
 **Problem:** A string of length $$ L $$ with wave speed $$ c $$ is pulled up to height $$ h $$ at its midpoint $$ x = L/2 $$ (forming a symmetric triangle) and released from rest ($$ u_t(x, 0) = 0 $$). Compute the Fourier sine coefficients $$ A_n $$, prove every even harmonic vanishes, and evaluate the energy fraction carried by the fundamental mode $$ n = 1 $$.
 

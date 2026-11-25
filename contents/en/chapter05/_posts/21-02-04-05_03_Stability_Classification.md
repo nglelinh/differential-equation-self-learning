@@ -12,7 +12,7 @@ lesson_type: required
 
 Saying an equilibrium is "stable" can mean two very different things in practice: a frictionless pendulum stays near the bottom forever without ever stopping there (**Lyapunov stable**), whereas a damped pendulum actually settles back to rest at the bottom (**asymptotically stable**). In nonlinear dynamics, mastering the exact hierarchy of stability definitions—and knowing which linear classifications survive nonlinear perturbation—prevents costly false conclusions.
 
-## Background Knowledge Map: The Exact Stability Hierarchy and Structural Robustness
+## Key ideas: The Exact Stability Hierarchy and Structural Robustness
 
 Four precise distinctions separate rigorous stability analysis from hand-waving:
 
@@ -23,7 +23,7 @@ Four precise distinctions separate rigorous stability analysis from hand-waving:
    - **Fragile (Borderline):** Linear centers ($$\tau = 0, \Delta > 0$$), degenerate nodes ($$\tau^2 = 4\Delta$$), and non-isolated equilibria ($$\Delta = 0$$) can switch stability or type when nonlinear terms are included!
 4. **Polar-Coordinate Stability Test for Centers:** For borderline centers $$x' = -y + P(x,y),\; y' = x + Q(x,y)$$, computing $$r r' = x x' + y y'$$ immediately exposes whether nonlinear terms push trajectories inward ($$r' < 0$$) or outward ($$r' > 0$$).
 
-### Step-by-Step Worked Example (Read Slowly): Two Nonlinear Systems with Identical Linear Centers—Opposite Stabilities!
+### Worked example: Two Nonlinear Systems with Identical Linear Centers—Opposite Stabilities!
 
 Compare the two systems near the equilibrium $$(0, 0)$$:
 $$\text{(A)}\quad \begin{cases} x' = -y - x(x^2 + y^2) \\ y' = x - y(x^2 + y^2) \end{cases} \qquad\text{vs.}\qquad \text{(B)}\quad \begin{cases} x' = -y + x(x^2 + y^2) \\ y' = x + y(x^2 + y^2). \end{cases}$$

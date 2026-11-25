@@ -13,7 +13,7 @@ lesson_type: required
 
 Mỗi phương trình vi phân $y' = f(t, y)$ thực chất là một phương trình tích phân $y(t) = y_0 + \int_{t_0}^t f(s, y(s))\,ds$ được viết gọn lại. Nhưng khi bước sang biến đổi Laplace (tích phân suy rộng đến $\infty$), hàm gián đoạn bậc thang, hay đổi thứ tự lấy giới hạn và tích phân, hiểu sâu lý thuyết tích phân sẽ giúp bạn tránh mọi cái bẫy phân kỳ và nắm chắc quyền sử dụng công thức Leibniz.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Lý thuyết Tích phân cho PTVP
+## Kiến thức cần nhớ: Bốn trụ cột của Lý thuyết Tích phân cho PTVP
 
 1. **Định lý Cơ bản của Giải tích (FTC) & Quy tắc Leibniz**:
    Cho phép tính đạo hàm của hàm chứa tham số trong tích phân $\frac{d}{dt}\int_{a(t)}^{b(t)} F(t, s)\,ds$—công cụ trực tiếp để kiểm chứng công thức biến thiên hằng số và tích chập.
@@ -35,7 +35,7 @@ Trong phương trình vi phân, tích phân không chỉ là phép tính kỹ th
 
 Hãy hình dung nước chảy vào một bình chứa với lưu lượng tại mỗi thời điểm là $$ f(t) $$. Thể tích nước tích tụ trong bình đến thời điểm $$ t $$ chính là tích phân của $$ f $$ từ lúc bắt đầu đến $$ t $$. Hiểu theo cách này, tích phân là phép cộng dồn liên tục mọi biến thiên theo thời gian.
 
-### Khung giải thích (nên đọc chậm): Áp dụng quy tắc Leibniz để chứng minh $y(t) = \int_0^t \sin(t - s)\,g(s)\,ds$ giải đúng PTVP $y'' + y = g(t)$
+### Giải thích: Áp dụng quy tắc Leibniz để chứng minh $y(t) = \int_0^t \sin(t - s)\,g(s)\,ds$ giải đúng PTVP $y'' + y = g(t)$
 
 Nhớ quy tắc Leibniz: $\frac{d}{dt}\int_0^t K(t, s)\,ds = K(t, t) + \int_0^t \frac{\partial K}{\partial t}(t, s)\,ds$.
 1. **Đạo hàm cấp một $y'(t)$** với $K(t, s) = \sin(t - s)\,g(s)$:

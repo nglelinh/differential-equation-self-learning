@@ -14,7 +14,7 @@ lesson_type: required
 
 Một sợi dây đàn bị gảy kéo căng thành hình tam giác nhọn tại giữa dây: rõ ràng nó là trạng thái vật lý hoàn toàn hợp lệ, nhưng tại đỉnh tam giác, đạo hàm cổ điển $u'(x)$ **không tồn tại**! Làm sao giải phương trình sóng hay phương trình đàn hồi cho những hình dạng có góc gãy như thế? Sergei Sobolev đã nghĩ ra một cú xoay chuyển tuyệt diệu: thay vì lấy giới hạn tỷ số sai phân tại từng điểm, hãy **đẩy phép đạo hàm sang một hàm thử trơn vô hạn $\varphi$** thông qua công thức tích phân từng phần!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Đạo hàm Yếu (Weak Derivative)
+## Kiến thức cần nhớ: Bốn trụ cột của Đạo hàm Yếu (Weak Derivative)
 
 1. **Công thức Tích phân Từng phần làm Định nghĩa**:
    Hàm $v \in L^1_{\text{loc}}(\Omega)$ là đạo hàm yếu bậc $\alpha$ của $u$ nếu với mọi hàm thử $\varphi \in C_c^\infty(\Omega)$:
@@ -42,7 +42,7 @@ Trong nhiều bài toán thực tế, nghiệm không trơn mà có thể xuất
 Đạo hàm yếu khắc phục hạn chế đó bằng cách không tính trực tiếp độ dốc tại từng điểm mà khảo sát cách hàm tương tác với mọi hàm thử trơn. Thông qua tích phân từng phần, phép lấy đạo hàm được chuyển sang hàm thử; nếu đẳng thức tích phân vẫn đúng với mọi hàm thử, ta xác định được đạo hàm theo nghĩa rộng hơn.
 
 
-### Khung giải thích (nên đọc chậm): Tính từng bước đạo hàm yếu của hàm giá trị tuyệt đối $u(x) = |x|$ trên $(-1, 1)$
+### Giải thích: Tính từng bước đạo hàm yếu của hàm giá trị tuyệt đối $u(x) = |x|$ trên $(-1, 1)$
 
 Xét $u(x) = |x|$ trên $\Omega = (-1, 1)$ và lấy một hàm thử bất kỳ $\varphi \in C_c^\infty(-1, 1)$ (nên $\varphi(-1) = \varphi(1) = 0$):
 1. **Tách tích phân tại điểm gãy $x = 0$**:

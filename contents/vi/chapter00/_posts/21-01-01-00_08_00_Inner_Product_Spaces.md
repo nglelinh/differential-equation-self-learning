@@ -13,7 +13,7 @@ lesson_type: optional
 
 Trong không gian định chuẩn, ta đo được độ dài nhưng chưa có khái niệm "góc vuông". Chỉ khi trang bị thêm **tích vô hướng $\langle f, g\rangle$**, toàn bộ hình học Euclid—định lý Pythagoras, phép chiếu vuông góc và trực giao hóa Gram–Schmidt—mới bừng sáng trong không gian hàm vô hạn chiều, mở thẳng cánh cửa tới chuỗi Fourier, đa thức Legendre và lý thuyết Sturm–Liouville!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Không gian Tích vô hướng & Hilbert
+## Kiến thức cần nhớ: Bốn trụ cột của Không gian Tích vô hướng & Hilbert
 
 1. **Tích vô hướng $\langle u, v\rangle$ & Bất đẳng thức Cauchy–Schwarz**:
    Trên $L^2([a, b])$, tích vô hướng là $\langle f, g\rangle = \int_a^b f(x)\overline{g(x)}\,dx$; bất đẳng thức $\vert\langle f, g\rangle\vert \le \|f\|\,\|g\|$ đảm bảo khái niệm "góc giữa hai hàm số" luôn hợp lệ.
@@ -42,7 +42,7 @@ Không gian định chuẩn cho phép đo độ lớn, nhưng chưa cung cấp k
 
 Trong ODE và PDE, khái niệm trực giao là chìa khóa của chuỗi Fourier, bài toán Sturm–Liouville, khai triển theo hàm riêng (eigenfunctions) và phương pháp bình phương tối thiểu. Bài học này đóng vai trò cầu nối từ hình học tuyến tính sơ cấp sang giải tích hàm và lý thuyết phổ.
 
-### Khung giải thích (nên đọc chậm): Trực giao hóa Gram–Schmidt cho $\{1, x, x^2\}$ trên $[-1, 1]$ để tự sinh ra đa thức Legendre!
+### Giải thích: Trực giao hóa Gram–Schmidt cho $\{1, x, x^2\}$ trên $[-1, 1]$ để tự sinh ra đa thức Legendre!
 
 Với tích vô hướng $\langle f, g\rangle = \int_{-1}^1 f(x)g(x)\,dx$:
 1. **Chọn $p_0(x) = 1$**: $\|p_0\|^2 = \int_{-1}^1 1\,dx = 2$.

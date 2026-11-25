@@ -14,7 +14,7 @@ lesson_type: required
 
 Trong các bài toán thực tế như thanh dẫn nhiệt hay dây đàn dài $L$, hàm nhiệt độ ban đầu $f(x)$ chỉ được cho trên **nửa khoảng $[0, L]$** chứ không hề định nghĩa ở $x < 0$! Vậy ta phải chọn chuỗi nào? Câu trả lời hoàn toàn do **điều kiện biên** quyết định: mở rộng lẻ sang $[-L, 0)$ tạo ra **Chuỗi Sin nửa khoảng** (khớp biên Dirichlet $u(0)=u(L)=0$), còn mở rộng chẵn tạo ra **Chuỗi Cosin nửa khoảng** (khớp biên Neumann $u_x(0)=u_x(L)=0$)!
 
-## Bản đồ kiến thức nền: Bốn nguyên tắc của Khai triển Nửa Khoảng trên $[0, L]$
+## Kiến thức cần nhớ: Bốn nguyên tắc của Khai triển Nửa Khoảng trên $[0, L]$
 
 1. **Mở rộng Lẻ (Odd Extension) → Chuỗi Sin Fourier**:
    Đặt $f_{\text{odd}}(-x) = -f(x)$ trên $(-L, 0)$. Chỉ có hệ số $b_n = \frac{2}{L}\int_0^L f(x)\sin\!\left(\frac{n\pi x}{L}\right)dx$. Tự động triệt tiêu tại $x = 0$ và $x = L$.
@@ -39,7 +39,7 @@ Nhiều bài toán vật lý không được phát biểu trên đoạn đối x
 
 Cách làm này thể hiện rõ tính linh hoạt của phương pháp Fourier: dữ liệu gốc trên $$ [0,L] $$ không thay đổi, nhưng cách mở rộng phần ngoài miền gốc sẽ quyết định lớp mode xuất hiện trong khai triển. Đây chính là điểm giao nhau giữa điều kiện biên và phép mở rộng hàm.
 
-### Khung giải thích (nên đọc chậm): So sánh trực tiếp Chuỗi Sin và Chuỗi Cosin nửa khoảng cho cùng một hàm $f(x) = 1$ trên $(0, L)$
+### Giải thích: So sánh trực tiếp Chuỗi Sin và Chuỗi Cosin nửa khoảng cho cùng một hàm $f(x) = 1$ trên $(0, L)$
 
 1. **Khai triển Cosin nửa khoảng** (mở rộng chẵn → hàm hằng $f_{\text{even}}(x) \equiv 1$ trên $[-L, L]$):
    - $a_0 = \frac{2}{L}\int_0^L 1\,dx = 2 \implies \frac{a_0}{2} = 1$; mọi $a_n = \frac{2}{L}\int_0^L \cos\left(\frac{n\pi x}{L}\right)dx = 0$!

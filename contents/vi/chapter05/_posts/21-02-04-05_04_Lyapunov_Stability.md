@@ -12,7 +12,7 @@ lesson_type: required
 
 Điều gì xảy ra khi tuyến tính hóa bó tay—chẳng hạn trị riêng bằng $0$ hoặc thuần ảo, hoặc bạn muốn chứng minh ổn định trên một **miền lớn** chứ không chỉ trong lân cận vô cùng bé? Aleksandr Lyapunov (1892) đã đưa ra một ý tưởng trực quan tuyệt đẹp lấy cảm hứng từ vật lý: nếu tìm được một "hàm năng lượng tổng quát" $V(\mathbf{x})$ có đáy duy nhất tại điểm cân bằng và **luôn giảm dần** theo thời gian dọc theo mọi quỹ đạo, thì hệ chắc chắn phải lăn xuống đáy và đứng yên!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Lý thuyết Ổn định Lyapunov
+## Kiến thức cần nhớ: Bốn trụ cột của Lý thuyết Ổn định Lyapunov
 
 1. **Ba bậc ổn định (Lyapunov, Tiệm cận, Toàn cục)**:
    - **Ổn định Lyapunov**: Khởi đầu đủ gần gốc thì mãi mãi ở gần gốc ($\forall \varepsilon > 0, \exists \delta > 0$).
@@ -41,7 +41,7 @@ Nhiều hệ phi tuyến quan trọng không thể giải được bằng công 
 
 Ý tưởng cốt lõi là tìm một "thước đo độ lệch khỏi vị trí cân bằng" mà hệ không thể làm tăng lên. Nếu thước đo này giảm nghiêm ngặt theo thời gian, ta suy ra hệ bị kéo dần về điểm cân bằng. Cách tiếp cận này vừa có ý nghĩa hình học và vật lý rõ ràng, vừa có tính ứng dụng cao.
 
-### Khung giải thích (nên đọc chậm): Chứng minh ổn định tiệm cận cho hệ phi tuyến $\dot{x} = -x^3 + y,\; \dot{y} = -x - y^3$ nơi tuyến tính hóa bó tay
+### Giải thích: Chứng minh ổn định tiệm cận cho hệ phi tuyến $\dot{x} = -x^3 + y,\; \dot{y} = -x - y^3$ nơi tuyến tính hóa bó tay
 
 Kiểm tra nhanh tuyến tính hóa tại $(0, 0)$: $J(0,0) = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$ có trị riêng $\lambda = \pm i$ (non-hyperbolic → tuyến tính hóa **bó tay**!).
 

@@ -14,7 +14,7 @@ lesson_type: required
 
 Đã có lớp ký hiệu $S^m$, bước tiếp theo là biến mỗi hàm $p(x, \xi) \in S^m$ thành một toán tử tuyến tính $P = \operatorname{Op}(p)$ tác động lên hàm số và phân phối—nhưng có một rắc rối kỹ thuật tinh tế: khi bậc $m \ge 0$, tích phân $\int e^{ix\cdot\xi} p(x, \xi)\widehat{u}(\xi)\,d\xi$ và nhân phân phối $K(x, y) = \int e^{i(x-y)\cdot\xi} p(x, \xi)\,d\xi$ không hội tụ tuyệt đối theo nghĩa Lebesgue! Cách vượt qua rắc rối này—**Tích phân Dao động (Oscillatory Integrals)**—chính là trái tim của định nghĩa Toán tử Giả vi phân.
 
-## Bản đồ kiến thức nền: Bốn trụ cột trong Định nghĩa Toán tử Giả vi phân $\Psi^m$
+## Kiến thức cần nhớ: Bốn trụ cột trong Định nghĩa Toán tử Giả vi phân $\Psi^m$
 
 1. **Tác động trên Không gian Schwartz $\mathcal{S}(\mathbb{R}^n)$ và Mở rộng sang $\mathcal{S}'$**:
    Với $u \in \mathcal{S}(\mathbb{R}^n)$, $\widehat{u}$ tắt siêu nhanh nên $(Pu)(x) = (2\pi)^{-n}\int e^{ix\cdot\xi} p(x, \xi)\widehat{u}(\xi)\,d\xi$ hội tụ tuyệt đối và ánh xạ liên tục $\mathcal{S} \to \mathcal{S}$; bằng phép đối ngẫu, $P$ mở rộng tự nhiên lên phân phối ôn hòa $\mathcal{S}'$!
@@ -40,7 +40,7 @@ Sau khi có ngôn ngữ ký hiệu, câu hỏi trọng tâm đặt ra là: từ 
 Đây là bước chuyển từ mô tả sang cơ chế tác động: ký hiệu không còn chỉ là nhãn đại số mà trực tiếp sinh ra toán tử thông qua phép lượng tử hóa.
 
 
-### Khung giải thích (nên đọc chậm): Tính tay tác động của một $\Psi$DO hệ số biến thiên bậc $-2$ lên sóng phẳng
+### Giải thích: Tính tay tác động của một $\Psi$DO hệ số biến thiên bậc $-2$ lên sóng phẳng
 
 Xét toán tử giả vi phân $P = \operatorname{Op}(p)$ với ký hiệu $p(x, \xi) = \frac{x}{1 + \xi^2} \in S^{-2}(\mathbb{R})$ (trên miền bị chặn theo $x$). Hãy tính $(Pu)(x)$ cho $u(x) = e^{2ix}$:
 1. **Biến đổi Fourier của $u$**: Trong $\mathcal{S}'(\mathbb{R})$, $\widehat{u}(\xi) = 2\pi\,\delta(\xi - 2)$.

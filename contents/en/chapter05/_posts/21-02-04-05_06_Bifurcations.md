@@ -12,7 +12,7 @@ lesson_type: required
 
 Slowly load weight onto the top of a plastic ruler standing vertically on a desk: for a long time it barely budges, staying perfectly straight—until one tiny extra gram crosses a critical threshold and the ruler suddenly buckles violently to the left or right! A **bifurcation** is that exact qualitative tipping point where smoothly tuning a parameter $$\mu$$ causes equilibria to be born out of thin air, swap stability, split in two, or erupt into a self-sustained limit cycle.
 
-## Background Knowledge Map: The Four Canonical Local Bifurcations
+## Key ideas: The Four Canonical Local Bifurcations
 
 Recognizing these four normal forms lets you classify almost every tipping point in science and engineering:
 
@@ -21,7 +21,7 @@ Recognizing these four normal forms lets you classify almost every tipping point
 3. **Pitchfork Bifurcation ($$x' = \mu x \mp x^3$$):** Occurs in systems with $$\pm x$$ reflection symmetry (like buckling beams or magnets). In a **supercritical** pitchfork ($$-x^3$$), a stable center splits gently into two symmetric stable branches; in a **subcritical** pitchfork ($$+x^3$$), instability triggers sudden catastrophic jumps and hysteresis.
 4. **Hopf Bifurcation (2D Oscillatory Birth):** When a complex conjugate eigenvalue pair $$\alpha(\mu) \pm i\beta(\mu)$$ crosses the imaginary axis with $$\alpha(0) = 0,\; \beta(0) \ne 0,\; \alpha'(0) \ne 0$$, a stable equilibrium loses stability and gives birth to a **limit cycle** of amplitude $$O(\sqrt{\mu})$$!
 
-### Step-by-Step Worked Example (Read Slowly): Computing the Exact Saddle-Node Tipping Point of a Harvested Fishery
+### Worked example: Computing the Exact Saddle-Node Tipping Point of a Harvested Fishery
 
 Consider a logistic fishery harvested at constant rate $$h \ge 0$$:
 $$y' = y(6 - y) - h.$$

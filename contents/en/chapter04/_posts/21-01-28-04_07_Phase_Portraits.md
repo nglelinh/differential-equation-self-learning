@@ -12,7 +12,7 @@ lesson_type: required
 
 Suppose someone hands you a $$2\times 2$$ matrix $$A$$ and asks: *Does this system spiral into equilibrium, shoot off to infinity along a saddle, or orbit forever?* You do not even need to compute the eigenvalues! Just two instant numbers—the **trace** $$\tau = \operatorname{tr}(A)$$ and the **determinant** $$\Delta = \det(A)$$—locate the system on a single 2D map (the trace–determinant plane) that classifies every possible linear phase portrait in the universe.
 
-## Background Knowledge Map: Navigating the Trace–Determinant Plane
+## Key ideas: Navigating the Trace–Determinant Plane
 
 Four geometric boundaries divide the $$(\tau, \Delta)$$ plane into every linear dynamical regime:
 
@@ -24,7 +24,7 @@ Four geometric boundaries divide the $$(\tau, \Delta)$$ plane into every linear 
 3. **Asymptotic Stability Quadrant:** A $$2\times 2$$ linear system is asymptotically stable ($$\mathbf{x}(t) \to \mathbf{0}$$ for all initial states) **if and only if** $$\tau < 0$$ AND $$\Delta > 0$$ (strictly the second quadrant of the $$(\tau,\Delta)$$ plane!).
 4. **Degenerate Case ($$\Delta = 0$$):** At least one eigenvalue is $$0$$, producing an entire line of equilibrium points rather than an isolated equilibrium at the origin.
 
-### Step-by-Step Worked Example (Read Slowly): Tracking a One-Parameter Bifurcation Across the $$(\tau, \Delta)$$ Plane
+### Worked example: Tracking a One-Parameter Bifurcation Across the $$(\tau, \Delta)$$ Plane
 
 Consider the parameter-dependent system $$\mathbf{x}' = A_\mu \mathbf{x}$$ where
 $$A_\mu = \begin{pmatrix} \mu & 1 \\ -4 & \mu \end{pmatrix}, \qquad \mu \in \mathbb{R},$$

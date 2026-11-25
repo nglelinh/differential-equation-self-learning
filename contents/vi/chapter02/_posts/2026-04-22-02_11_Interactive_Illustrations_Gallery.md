@@ -13,7 +13,7 @@ lesson_type: optional
 
 Với phương trình cấp hai, chỉ cần xoay nhẹ hệ số cản $c$ hay tần số cưỡng bức $\omega$, đồ thị nghiệm lập tức biến hình ngoạn mục: từ tắt dần chậm chạp sang dao động tắt dần, rồi bất ngờ tạo ra hiệu ứng **phách (beats)** hay **cộng hưởng (resonance)** làm biên độ vọt lên vô hạn! Bộ minh họa tương tác Chương 02 biến những công thức đặc trưng thành phòng thí nghiệm cơ–điện sống động ngay trên màn hình của bạn.
 
-## Bản đồ kiến thức nền: Bốn hiện tượng cần khám phá trong Bộ Minh họa Chương 02
+## Kiến thức cần nhớ: Bốn hiện tượng cần khám phá trong Bộ Minh họa Chương 02
 
 1. **Chuyển pha theo biệt thức $\Delta = c^2 - 4mk$**:
    Kéo thanh trượt $c$ để chứng kiến hệ lò xo chuyển mượt qua 3 chế độ: tắt dần yếu ($\Delta < 0$), tắt dần tới hạn ($\Delta = 0$, hồi vị nhanh nhất không vượt lố) và tắt dần mạnh ($\Delta > 0$).
@@ -42,7 +42,7 @@ Bài bổ sung này tập hợp toàn bộ các minh họa tương tác (JavaScr
   height="920px"
 %}
 
-### Khung giải thích (nên đọc chậm): Tính nhanh ngưỡng tắt dần tới hạn $c_{\text{crit}}$ cho hệ lò xo $m = 1\text{ kg},\; k = 9\text{ N/m}$ trước khi kéo thanh trượt
+### Giải thích: Tính nhanh ngưỡng tắt dần tới hạn $c_{\text{crit}}$ cho hệ lò xo $m = 1\text{ kg},\; k = 9\text{ N/m}$ trước khi kéo thanh trượt
 
 Phương trình dao động tự do: $y'' + c\,y' + 9y = 0 \implies r^2 + c\,r + 9 = 0$.
 - **Biệt thức**: $\Delta = c^2 - 4(1)(9) = c^2 - 36$.

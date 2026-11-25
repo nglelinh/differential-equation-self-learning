@@ -14,7 +14,7 @@ lesson_type: required
 
 Toán tử Giả vi phân ($\Psi$DO) ở Chương 14 có một điểm yếu chí mạng khi gặp phương trình sóng: vì pha của nó cố định là $(x - y)\cdot\xi$, mọi $\Psi$DO đều **giữ nguyên vị trí kỳ dị** ($\operatorname{WF}(Pu) \subset \operatorname{WF}(u)$), nên nó **không bao giờ có thể biểu diễn toán tử tiến hóa sóng** $e^{it\sqrt{-\Delta}}$ vốn dịch chuyển xung sóng từ $y$ sang $x = y \pm ct$! Để giải quyết bài toán này, Lars Hörmander thay pha tuyến tính $(x - y)\cdot\xi$ bằng một **hàm pha tổng quát $\Phi(x, y, \theta)$**—khai sinh **Toán tử Tích phân Fourier (FIO)**!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Toán tử Tích phân Fourier (FIO)
+## Kiến thức cần nhớ: Bốn trụ cột của Toán tử Tích phân Fourier (FIO)
 
 1. **Cấu trúc Tổng quát $(Au)(x) = \iint e^{i\Phi(x, y, \theta)} a(x, y, \theta) u(y)\,dy\,d\theta$**:
    Khi $\Phi(x, y, \theta) = (x - y)\cdot\theta$, ta quay về đúng $\Psi$DO. Khi $\Phi$ tổng quát hơn (thuần nhất bậc $1$ theo $\theta$ và không suy biến), FIO có thể **dịch chuyển, xoay và hội tụ các tập mặt sóng** trong không gian pha!
@@ -40,7 +40,7 @@ Toán tử giả vi phân rất hiệu quả nhưng về bản chất vẫn hàn
 Nếu ΨDO là ngôn ngữ của việc “điều chỉnh biên độ theo tần số tại chỗ”, thì FIO là ngôn ngữ của việc “vận chuyển và biến dạng mặt sóng”.
 
 
-### Khung giải thích (nên đọc chậm): Dùng điều kiện Pha dừng đọc ngay quan hệ chính tắc của FIO truyền sóng 1D
+### Giải thích: Dùng điều kiện Pha dừng đọc ngay quan hệ chính tắc của FIO truyền sóng 1D
 
 Xét toán tử tiến hóa nhánh sóng chạy sang phải $(U(t)u)(x) = \frac{1}{2\pi}\iint e^{i[(x - y)\xi - ct\xi]} u(y)\,dy\,d\xi$ (với $\xi > 0$). Hàm pha là:
 $$\Phi(x, y, \xi) = (x - y - ct)\xi.$$

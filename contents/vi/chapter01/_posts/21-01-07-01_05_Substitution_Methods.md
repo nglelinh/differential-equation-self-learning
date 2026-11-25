@@ -13,7 +13,7 @@ lesson_type: required
 
 Nhiều phương trình vi phân thoạt nhìn trông vừa không tách biến, vừa không tuyến tính, lại chẳng toàn phần—nhưng chỉ cần một phép đổi góc nhìn thông minh (phép thế biến), toàn bộ cấu trúc rắc rối lập tức sụp đổ thành bài toán quen thuộc! Trong toán học, **phép thế (substitution)** chính là nghệ thuật khai thác **đối xứng ẩn** của phương trình—như đối xứng co giãn ở phương trình đẳng cấp hay đối xứng lũy thừa ở phương trình Bernoulli.
 
-## Bản đồ kiến thức nền: Bốn họ Phép thế kinh điển cho PTVP Cấp Một
+## Kiến thức cần nhớ: Bốn họ Phép thế kinh điển cho PTVP Cấp Một
 
 1. **Phương trình đẳng cấp $y' = F(y/x)$ (Đối xứng co giãn)**:
    Đặt $v = y/x \implies y = vx,\; y' = v + xv'$; phương trình lập tức tách biến được giữa $v$ và $x$.
@@ -37,7 +37,7 @@ Trong toán học ứng dụng, hình thức ban đầu của một phương tr�
 
 Vì vậy, phương pháp thế rèn luyện tư duy nhận diện cấu trúc: thay vì vội biến đổi rời rạc, ta đặt câu hỏi phương trình đang lặp lại tổ hợp, tỉ số hay lũy thừa nào để chọn phép đổi biến hợp lý.
 
-### Khung giải thích (nên đọc chậm): Giải phương trình đẳng cấp $\frac{dy}{dx} = \frac{x + y}{x}$ ($x > 0$) qua phép thế $v = y/x$
+### Giải thích: Giải phương trình đẳng cấp $\frac{dy}{dx} = \frac{x + y}{x}$ ($x > 0$) qua phép thế $v = y/x$
 
 1. **Nhận diện cấu trúc $y/x$**:
    $$\frac{dy}{dx} = 1 + \frac{y}{x}.$$

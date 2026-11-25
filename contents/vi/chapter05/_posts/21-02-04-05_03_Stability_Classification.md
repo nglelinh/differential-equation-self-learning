@@ -12,7 +12,7 @@ lesson_type: required
 
 Chỉ cần biết hai con số duy nhất của ma trận $2 \times 2$—**vết (trace) $\tau = \operatorname{tr}(J)$** và **định thức (determinant) $\Delta = \det(J)$**—bạn có thể phân loại ngay lập tức điểm cân bằng thuộc loại nào trong toàn bộ "vườn thú" động lực học: nút hút, nút đẩy, điểm yên ngựa, xoáy hút, xoáy đẩy hay tâm!
 
-## Bản đồ kiến thức nền: Bốn vùng trên Mặt phẳng Vết – Định thức $(\tau, \Delta)$
+## Kiến thức cần nhớ: Bốn vùng trên Mặt phẳng Vết – Định thức $(\tau, \Delta)$
 
 1. **Phương trình đặc trưng theo $\tau$ và $\Delta$**:
    $\lambda^2 - \tau\lambda + \Delta = 0 \implies \lambda_{1,2} = \frac{\tau \pm \sqrt{\tau^2 - 4\Delta}}{2}$, với $\lambda_1 + \lambda_2 = \tau$ và $\lambda_1 \lambda_2 = \Delta$.
@@ -39,7 +39,7 @@ Trong ngôn ngữ đời thường, từ "ổn định" thường được dùng
 
 Bài học này giúp sinh viên chuyển từ cách hiểu cảm tính sang phân tích chính xác tính ổn định thông qua phổ trị riêng của ma trận Jacobian và hình dạng chân dung pha.
 
-### Khung giải thích (nên đọc chậm): Phân loại nhanh 3 ma trận $2 \times 2$ chỉ bằng $(\tau, \Delta)$ không cần giải nghiệm phức tạp
+### Giải thích: Phân loại nhanh 3 ma trận $2 \times 2$ chỉ bằng $(\tau, \Delta)$ không cần giải nghiệm phức tạp
 
 | Ma trận $A$ | Vết $\tau = a+d$ | Định thức $\Delta = ad-bc$ | Biệt thức $\tau^2 - 4\Delta$ | Phân loại & Độ ổn định |
 | :--- | :---: | :---: | :---: | :--- |

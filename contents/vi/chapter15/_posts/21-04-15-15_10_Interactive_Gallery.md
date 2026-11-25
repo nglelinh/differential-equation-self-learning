@@ -12,7 +12,7 @@ lesson_type: optional
 
 Khép lại cả bộ giáo trình 15 chương, Gallery tương tác của Chương 15 đưa bạn vào buồng lái của **không gian pha $(x, \xi)$**: tại đây, bạn tận mắt nhìn thấy tập mặt sóng của một bờ cạnh chỉ sáng lên dọc theo hướng pháp tuyến, tia lưỡng đặc trưng lướt trên nón ánh sáng, hàm đếm bậc thang $N(\lambda)$ bám sát đường thẳng Weyl, và cả cơ chế mờ cạnh trong chụp cắt lớp CT góc hạn chế!
 
-## Bản đồ kiến thức nền: Bốn trải nghiệm tương tác đắt giá trong Gallery Chương 15
+## Kiến thức cần nhớ: Bốn trải nghiệm tương tác đắt giá trong Gallery Chương 15
 
 1. **Bản đồ Không gian Pha & Tập Mặt sóng $\operatorname{WF}(u)$**:
    Di chuyển cửa sổ cắt $\phi$ quanh một cạnh ảnh hoặc góc nhọn để xem biến đổi Fourier cục bộ chỉ bùng sáng dọc theo đúng các hướng $\xi$ vuông góc với bờ cạnh.
@@ -36,7 +36,7 @@ Nên sử dụng bộ minh họa theo cách đối chiếu song song với bài 
 Trang này cũng tạo cầu nối giữa bài giảng sau đại học và tài liệu nghiên cứu, nơi góc nhìn hình học trên không gian pha thường được mặc định là đã quen thuộc.
 
 
-### Khung giải thích (nên đọc chậm): Đọc tọa độ không gian pha $(x_0, \xi_0)$ của một gói sóng Gaussian trên đồ thị tương tác
+### Giải thích: Đọc tọa độ không gian pha $(x_0, \xi_0)$ của một gói sóng Gaussian trên đồ thị tương tác
 
 Xét một gói sóng dao động nhanh 1D:
 $$u(x) = e^{-50(x - 1)^2}\,e^{i\cdot 20 x}.$$

@@ -12,7 +12,7 @@ lesson_type: required
 
 In 1838, Belgian mathematician Pierre-François Verhulst realized that Thomas Malthus's exponential growth model $$P' = rP$$ predicts an impossible world where bacteria outmass the Earth within days. By subtracting a single crowding term, he created the logistic equation—a model so universal it describes fisheries, tumor growth, and technology adoption. Paired with conservation-of-mass mixing tanks, these two models show how translating physical balance laws into first-order ODEs yields sharp quantitative predictions.
 
-## Background Knowledge Map: From Conservation Laws to First-Order Models
+## Key ideas: From Conservation Laws to First-Order Models
 
 Four modeling principles turn real-world word problems into accurate differential equations:
 
@@ -21,7 +21,7 @@ Four modeling principles turn real-world word problems into accurate differentia
 3. **Carrying Capacity and Inflection Point (Logistic Model):** In $$P' = rP(1 - P/K)$$, growth is steepest not at $$P = K$$ but at $$P = K/2$$ (where $$P'' = 0$$), which defines the maximum sustainable harvest rate in ecology.
 4. **Asymptotic Equilibrium Limits:** Taking $$t \to \infty$$ in both mixing tanks and logistic populations reveals whether the system approaches a stable equilibrium concentration or carrying capacity independent of initial conditions.
 
-### Step-by-Step Worked Example (Read Slowly): A Variable-Volume Brine Mixing Tank
+### Worked example: A Variable-Volume Brine Mixing Tank
 
 A tank initially holds $$100\text{ L}$$ of pure water. Brine containing $$0.5\text{ kg/L}$$ of salt enters at $$4\text{ L/min}$$, while the well-stirred mixture leaves at $$2\text{ L/min}$$. Find the salt mass $$Q(t)$$ (in kg) at $$t = 50\text{ min}$$.
 

@@ -12,7 +12,7 @@ lesson_type: required
 
 Just as a single scalar second-order homogeneous ODE has a 2-dimensional vector space of solutions, an $$n\times n$$ linear system $$\mathbf{x}' = A(t)\mathbf{x}$$ has an $$n$$-dimensional solution space—and stacking $$n$$ linearly independent solution vectors side by side produces a single invertible **fundamental matrix** $$\Psi(t)$$ that encodes *every* possible trajectory of the system at once.
 
-## Background Knowledge Map: Fundamental Matrices and Liouville's Volume Law
+## Key ideas: Fundamental Matrices and Liouville's Volume Law
 
 Four matrix-calculus pillars organize all linear systems theory:
 
@@ -24,7 +24,7 @@ Four matrix-calculus pillars organize all linear systems theory:
    $$\mathbf{x}(t) = \Psi(t)\,\Psi(t_0)^{-1}\,\mathbf{x}_0.$$
 4. **Canonical Fundamental Matrix $$\Phi(t)$$:** Setting $$\Phi(t) = \Psi(t)\Psi(t_0)^{-1}$$ produces the unique fundamental matrix with $$\Phi(t_0) = I$$—which for constant $$A$$ is literally the matrix exponential $$e^{A(t-t_0)}$$.
 
-### Step-by-Step Worked Example (Read Slowly): Verifying a Fundamental Matrix, Liouville's Formula, and Solving an IVP
+### Worked example: Verifying a Fundamental Matrix, Liouville's Formula, and Solving an IVP
 
 Consider $$\mathbf{x}' = A\mathbf{x}$$ with $$A = \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}$$ and candidate fundamental matrix
 $$\Psi(t) = \begin{pmatrix} e^{3t} & e^{-t} \\ e^{3t} & -e^{-t} \end{pmatrix}, \qquad \mathbf{x}(0) = \begin{pmatrix} 4 \\ 2 \end{pmatrix}.$$

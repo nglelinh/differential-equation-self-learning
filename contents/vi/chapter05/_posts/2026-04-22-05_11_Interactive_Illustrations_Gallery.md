@@ -13,7 +13,7 @@ lesson_type: optional
 
 Động lực học phi tuyến là thế giới của những cú nhảy bất ngờ: chỉ cần xoay nhẹ một tham số điều khiển, một điểm cân bằng ổn định bỗng biến mất, một **chu trình giới hạn (limit cycle)** tự bừng nở như nhịp tim đập, hay quỹ đạo của hệ Lorenz đột ngột bước vào **hỗn loạn (chaos)** nhạy cảm đến từng chữ số thập phân! Bộ minh họa tương tác Chương 05 biến toàn bộ những hiện tượng hình học kỳ diệu đó thành một phòng thí nghiệm trực quan sống động.
 
-## Bản đồ kiến thức nền: Bốn hiện tượng phi tuyến cốt lõi trong Bộ Minh họa Chương 05
+## Kiến thức cần nhớ: Bốn hiện tượng phi tuyến cốt lõi trong Bộ Minh họa Chương 05
 
 1. **Tuyến tính hóa cục bộ vs. Bức tranh toàn cục (Con lắc phi tuyến)**:
    Gần điểm cân bằng $(0, 0)$, con lắc phi tuyến giống hệt tâm tuyến tính; nhưng nhìn toàn cục, nó xuất hiện đường **separatrix** nối các điểm yên ngựa $(\pm\pi, 0)$ phân tách dao động lắc qua lại với chuyển động quay tròn!
@@ -42,7 +42,7 @@ Bài học bổ sung này tập hợp toàn bộ các minh họa JavaScript củ
   height="920px"
 %}
 
-### Khung giải thích (nên đọc chậm): Quan sát rẽ nhánh Hopf sinh chu trình giới hạn ngay bằng tay trên hệ cực $\dot{r} = r(\mu - r^2),\; \dot{\theta} = 1$
+### Giải thích: Quan sát rẽ nhánh Hopf sinh chu trình giới hạn ngay bằng tay trên hệ cực $\dot{r} = r(\mu - r^2),\; \dot{\theta} = 1$
 
 Đây là mô hình chuẩn mực nhất trong bộ minh họa rẽ nhánh Hopf:
 1. **Khi $\mu = -1 < 0$**:

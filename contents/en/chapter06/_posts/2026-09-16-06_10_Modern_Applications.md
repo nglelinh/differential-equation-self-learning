@@ -14,14 +14,14 @@ Ask a standard deep neural network to solve a differential equation with sharp o
 
 Today's most reliable Physics-Informed Neural Networks (PINNs) and Neural Operators (DeepONet, Spectral Neural Operators) do not replace Chapter 06; they *embed* Chapter 06 inside modern architectures, letting neural networks learn only the expansion coefficients in a well-conditioned classical basis.
 
-## Background Knowledge Map: Classical Spectral Bases in Modern SciML
+## Key ideas: Classical Spectral Bases in Modern SciML
 
 1. **Spectral Bias vs. Orthogonal Basis Conditioning:** In a standard MLP, high-frequency features have tiny Neural Tangent Kernel (NTK) eigenvalues, causing slow convergence. Expanding $$ u_N(x) = \sum_{n=0}^N c_n \phi_n(x) $$ in Chebyshev or Legendre polynomials preconditions the optimization landscape so high-order modes train cleanly.
 2. **Exponential (Spectral) Convergence for Analytic Solutions:** When the true ODE/PDE solution is analytic on $$ [-1, 1] $$, Chebyshev/Legendre coefficients decay geometrically ($$ |c_n| \le C \rho^{-n} $$ for some $$ \rho > 1 $$), achieving machine precision with far fewer degrees of freedom than finite differences or raw MLPs.
 3. **Branch–Trunk Factorization (DeepONet as Learned Generalized Series):** DeepONet approximates an operator $$ \mathcal{G}(a)(x) \approx \sum_{k=1}^p b_k(a)\,t_k(x) $$, directly mirroring a truncated series solution where branch outputs $$ b_k(a) $$ play the role of generalized coefficients and trunk outputs $$ t_k(x) $$ play the role of learned basis functions.
 4. **Exact Boundary & Singularity Enforcement:** Multiplying a spectral/neural ansatz by distance functions or Frobenius factors $$ x^r $$ bakes boundary conditions and regular singular behavior into the architecture by construction, eliminating stiff penalty terms from the loss function.
 
-### Step-by-Step Worked Example (Read Slowly): Chebyshev Galerkin Spectral Residual vs. Monomial Basis Conditioning
+### Worked example: Chebyshev Galerkin Spectral Residual vs. Monomial Basis Conditioning
 
 **Problem:** Approximate the solution of the BVP $$ -u''(x) + u(x) = 1 $$ on $$ [-1, 1] $$ with $$ u(\pm 1) = 0 $$ using a 1-mode Chebyshev basis function $$ \phi_0(x) = T_0(x) - T_2(x) = 2(1 - x^2) $$ via Galerkin projection, and compare the midpoint value $$ u_1(0) $$ to the exact solution $$ u(x) = 1 - \frac{\cosh x}{\cosh 1} $$.
 

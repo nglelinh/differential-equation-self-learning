@@ -12,7 +12,7 @@ lesson_type: required
 
 Why do automobile engineers tune a car's shock absorbers to sit right near *critical damping*, and why did the Millennium Footbridge in London sway violently on opening day when pedestrians walked in step? Every mass–spring–damper system obeys $$mu'' + \gamma u' + ku = F_0\cos(\omega t)$$, and a single dimensionless number—the damping ratio $$\zeta$$—predicts whether the structure settles smoothly, rings like a bell, or tears itself apart at resonance.
 
-## Background Knowledge Map: Four Regimes of Mechanical Oscillation
+## Key ideas: Four Regimes of Mechanical Oscillation
 
 Four physical concepts translate Chapter 02 algebra directly into mechanical engineering:
 
@@ -23,7 +23,7 @@ Four physical concepts translate Chapter 02 algebra directly into mechanical eng
    Even at $$\omega = \omega_0$$, damping keeps amplitude finite ($$R(\omega_0) = F_0/(\gamma\omega_0)$$).
 4. **Practical Resonance Peak:** Maximizing $$R(\omega)$$ shows that the peak response occurs slightly below $$\omega_0$$ at $$\omega_{\max} = \sqrt{\omega_0^2 - \frac{\gamma^2}{2m^2}}$$ (whenever $$\gamma^2 < 2mk$$), and disappears entirely for heavy damping.
 
-### Step-by-Step Worked Example (Read Slowly): Computing Damping Regime, Steady-State Amplitude, and Peak Resonance
+### Worked example: Computing Damping Regime, Steady-State Amplitude, and Peak Resonance
 
 A $$2\text{ kg}$$ mass hangs on a spring with stiffness $$k = 32\text{ N/m}$$ and damper $$\gamma = 4\text{ N}\cdot\text{s/m}$$, driven by a periodic force $$F(t) = 20\cos(4t)\text{ N}$$.
 

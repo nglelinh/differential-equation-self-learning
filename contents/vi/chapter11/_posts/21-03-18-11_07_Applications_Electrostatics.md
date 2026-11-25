@@ -14,7 +14,7 @@ lesson_type: required
 
 Mỗi chiếc tụ điện trên bo mạch chủ, lồng Faraday chống sét cho máy bay hay ống cáp đồng trục dẫn tín hiệu Internet đều được thiết kế bằng chính những công cụ bạn vừa học trong Chương 11. Khi điện tích đứng yên, trường tĩnh điện $\mathbf{E}$ hoàn toàn không xoáy ($\nabla \times \mathbf{E} = \mathbf{0}$), nên mọi thông tin của trường vector 3 chiều thu gọn vào một hàm thế vô hướng duy nhất $\varphi$ thỏa mãn phương trình Poisson $-\Delta \varphi = \rho / \varepsilon_0$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột kết nối PDE Elliptic với Tĩnh điện học
+## Kiến thức cần nhớ: Bốn trụ cột kết nối PDE Elliptic với Tĩnh điện học
 
 1. **Từ Định luật Gauss đến Phương trình Poisson & Laplace**:
    Kết hợp $\mathbf{E} = -\nabla \varphi$ với $\nabla \cdot \mathbf{E} = \rho / \varepsilon_0$ cho ra $-\Delta \varphi = \rho / \varepsilon_0$ (Poisson) trong vùng có điện tích và $\Delta \varphi = 0$ (Laplace) trong không gian điện môi trống.
@@ -40,7 +40,7 @@ Trong tĩnh điện học, ta không quan sát trực tiếp điện trường b
 Bài học này cho thấy PDE không chỉ là công cụ giải tích mà còn là ngôn ngữ mô tả trực tiếp trường vật lý: điện thế, điện trường, năng lượng và điều kiện biên của vật dẫn đều liên kết trong cùng một cấu trúc toán học.
 
 
-### Khung giải thích (nên đọc chậm): Tính tay phân bố điện thế và cường độ điện trường trong cáp đồng trục
+### Giải thích: Tính tay phân bố điện thế và cường độ điện trường trong cáp đồng trục
 
 Xét một đoạn cáp đồng trục dài có lõi trong bán kính $a = 1\text{ cm}$ giữ ở hiệu điện thế $V(a) = 100\text{ V}$ và vỏ ngoài nối đất bán kính $b = e \approx 2{,}718\text{ cm}$ với $V(b) = 0\text{ V}$:
 1. **Giải phương trình Laplace đối xứng trụ** $\frac{1}{r}\frac{d}{dr}(r V'(r)) = 0$:

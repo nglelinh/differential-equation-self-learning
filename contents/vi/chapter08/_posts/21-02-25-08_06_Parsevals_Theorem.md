@@ -14,7 +14,7 @@ lesson_type: required
 
 Trong không gian Euclid 3 chiều, định lý Pythagoras nói rằng bình phương độ dài vectơ bằng tổng bình phương ba tọa độ trực giao: $\|\mathbf{v}\|^2 = v_x^2 + v_y^2 + v_z^2$. **Định lý Parseval** chính là **Định lý Pythagoras trong không gian hàm vô hạn chiều**: tổng năng lượng trung bình của tín hiệu trong miền thời gian bằng **đúng** tổng năng lượng các thành phần tần số trong miền Fourier!
 
-## Bản đồ kiến thức nền: Bốn ý nghĩa sâu sắc của Định lý Parseval
+## Kiến thức cần nhớ: Bốn ý nghĩa sâu sắc của Định lý Parseval
 
 1. **Đẳng thức Bảo toàn Năng lượng trên $[-L, L]$**:
    $$\frac{1}{L}\int_{-L}^{L} [f(x)]^2\,dx = \frac{a_0^2}{2} + \sum_{n=1}^{\infty}(a_n^2 + b_n^2).$$
@@ -40,7 +40,7 @@ Khi phân tách một hàm thành các mode Fourier, một câu hỏi tự nhiê
 
 Từ góc độ ứng dụng, kết quả này cho thấy chuỗi Fourier không chỉ là một cách viết lại hàm, mà là một phép phân rã bảo toàn năng lượng. Trong cơ học, truyền nhiệt, truyền sóng và xử lý tín hiệu, đây là nguyên lý nền tảng.
 
-### Khung giải thích (nên đọc chậm): Chứng minh Bài toán Basel $\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}$ chỉ trong 3 dòng bằng Parseval
+### Giải thích: Chứng minh Bài toán Basel $\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}$ chỉ trong 3 dòng bằng Parseval
 
 Ta đã biết ở bài 08-02: với $f(x) = x$ trên $(-\pi, \pi)$ ($L = \pi$), ta có $a_0 = a_n = 0$ và $b_n = \frac{2(-1)^{n+1}}{n}$.
 1. **Tính vế trái của Parseval (Năng lượng miền không gian)**:

@@ -11,7 +11,7 @@ categories:
 
 Cuối thế kỷ XIX, giải tích cổ điển rơi vào một cuộc khủng hoảng chấn động: Karl Weierstrass chỉ ra rằng Nguyên lý Dirichlet mà Riemann và các nhà vật lý tin dùng suốt hàng thập kỷ hóa ra **có thể không có nghiệm trơn nào cả**! Chính vết nứt lịch sử ấy đã buộc Hilbert, Lebesgue, Sobolev và Laurent Schwartz phải tái thiết toàn bộ khái niệm "hàm số" và "đạo hàm"—mở ra kỷ nguyên Giải tích Hàm hiện đại cho PDE ở Chương 12.
 
-## Bản đồ kiến thức nền: Bốn cột mốc lịch sử khai sinh Giải tích Hàm cho PDE
+## Kiến thức cần nhớ: Bốn cột mốc lịch sử khai sinh Giải tích Hàm cho PDE
 
 1. **Lebesgue (1902) & Riesz–Fischer (1907) — Tích phân mới và Sự đầy đủ của $L^p$**:
    Tích phân Riemann bị "thủng lỗ" khi lấy giới hạn dãy hàm; tích phân Lebesgue lấp kín mọi lỗ hổng ấy để tạo ra các không gian Banach/Hilbert đầy đủ $L^p$.
@@ -34,7 +34,7 @@ Tại Moscow vào giữa thập niên 1930, Sergei Sobolev đối mặt với nh
 Sobolev đã đề xuất một cách tiếp cận mới: thay vì hỏi hàm có đạo hàm cổ điển tại từng điểm hay không, hãy xem đạo hàm có thể được hiểu thông qua tích phân với các hàm thử trơn hay không. Chẳng hạn, hàm $$u(x)=|x|$$ không có đạo hàm cổ điển tại $$x=0$$, nhưng theo nghĩa yếu nó vẫn mang đầy đủ thông tin đạo hàm để tham gia vào PDE. Từ bước ngoặt đó, không gian $$L^p$$, không gian Sobolev, nghiệm yếu và lý thuyết phân bố dần gắn kết với nhau. Chương 12 vì thế không phải là bước rẽ sang toán trừu tượng tách rời PDE, mà là sự mở rộng chính khái niệm nghiệm để các bài toán vật lý được xử lý chặt chẽ.
 
 
-### Khung giải thích (nên đọc chậm): Phản ví dụ kinh điển của Weierstrass phơi bày "lỗ hổng" của không gian $C^1$
+### Giải thích: Phản ví dụ kinh điển của Weierstrass phơi bày "lỗ hổng" của không gian $C^1$
 
 Xét bài toán cực tiểu hóa phiếm hàm năng lượng sau trên các hàm khả vi liên tục $u \in C^1([-1, 1])$ thỏa mãn $u(-1) = -1$ và $u(1) = 1$:
 $$I(u) = \int_{-1}^{1} x^2 \big(u'(x)\big)^2\,dx \ge 0.$$

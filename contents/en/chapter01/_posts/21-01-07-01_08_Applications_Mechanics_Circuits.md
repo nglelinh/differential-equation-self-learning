@@ -12,7 +12,7 @@ lesson_type: required
 
 At first glance, a skydiver falling through air resistance and an electrical current building up inside a laptop power-supply inductor seem to belong to completely different worlds. Yet when you write down Newton's second law $$m v' + b v = mg$$ beside Kirchhoff's voltage law $$L I' + R I = E$$, you discover they are the *exact same differential equation* with different letters. Recognizing that structural isomorphism lets you transfer physical intuition effortlessly between mechanics and electronics.
 
-## Background Knowledge Map: Universal First-Order Relaxation Dynamics
+## Key ideas: Universal First-Order Relaxation Dynamics
 
 Four physical principles unify first-order mechanical and electrical models:
 
@@ -21,7 +21,7 @@ Four physical principles unify first-order mechanical and electrical models:
 3. **Characteristic Time Constant ($$\tau$$):** Every linear first-order relaxation process has an intrinsic timescale—$$\tau = m/b$$ (mechanics), $$\tau = RC$$ (capacitive), or $$\tau = L/R$$ (inductive)—after $$1\tau$$, the system covers $$1 - e^{-1} \approx 63.2\%$$ of the gap to steady state; after $$5\tau$$, it is $$99.3\%$$ settled.
 4. **Energy Dissipation vs. Storage:** Drag converts mechanical energy into heat, just as resistance $$R$$ dissipates electrical energy at rate $$I^2 R$$ while $$L$$ or $$C$$ stores it.
 
-### Step-by-Step Worked Example (Read Slowly): Charging an RL Circuit and Computing Its Settling Time
+### Worked example: Charging an RL Circuit and Computing Its Settling Time
 
 An RL circuit with inductance $$L = 2\text{ H}$$, resistance $$R = 10\;\Omega$$, and constant battery voltage $$E = 30\text{ V}$$ starts with zero current $$I(0) = 0$$. Find $$I(t)$$, the steady-state current, and the exact time to reach $$90\%$$ of steady state.
 

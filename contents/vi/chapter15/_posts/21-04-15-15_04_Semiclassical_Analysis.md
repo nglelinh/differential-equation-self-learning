@@ -14,7 +14,7 @@ lesson_type: optional
 
 Làm sao một thế giới cơ học lượng tử đầy sóng xác suất, nhiễu xạ và bất định lại chuyển hóa êm ái thành thế giới cơ học cổ điển của Newton với các quỹ đạo hành tinh sắc nét khi hằng số Planck $h \to 0$? **Giải tích Bán cổ điển (Semiclassical Analysis)** đặt tham số nhỏ $h \in (0, 1]$ ngay trước mọi đạo hàm ($h D_x = -ih\partial_x$), biến ký hiệu $\Psi$DO thành hàm Hamilton cổ điển $H(x, \xi) = |\xi|^2 + V(x)$ và cho phép ta quan sát trực tiếp **ranh giới giữa Sóng và Hạt**!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Giải tích Bán cổ điển
+## Kiến thức cần nhớ: Bốn trụ cột của Giải tích Bán cổ điển
 
 1. **Lượng tử hóa Bán cổ điển $\operatorname{Op}_h(a)$**:
    Thay $D_x$ bằng $h D_x = -ih\partial_x$: $(Op_h(a) u)(x) = (2\pi h)^{-n}\iint e^{\frac{i}{h}(x-y)\cdot\xi} a(x, \xi) u(y)\,dy\,d\xi$. Khi $h \to 0$, tham số $1/h$ đóng vai trò tương đương tần số lớn $|\xi| \to \infty$ trong phân tích vi địa phương!
@@ -42,7 +42,7 @@ Giải tích bán cổ điển nghiên cứu hành vi của nghiệm PDE khi m�
 Ưu điểm lớn của lý thuyết này là quy tụ nhiều câu hỏi tưởng như tách biệt — sự định xứ của nghiệm, quỹ đạo cổ điển và phân bố phổ năng lượng cao — vào cùng một ngôn ngữ thống nhất.
 
 
-### Khung giải thích (nên đọc chậm): Rút ra phương trình năng lượng cổ điển từ phương trình Schrödinger bán cổ điển bằng phép tính WKB 2 dòng
+### Giải thích: Rút ra phương trình năng lượng cổ điển từ phương trình Schrödinger bán cổ điển bằng phép tính WKB 2 dòng
 
 Xét dao động tử điều hòa lượng tử bán cổ điển $P_h u = \big(-h^2\partial_x^2 + x^2\big)u = E u$ với thử nghiệm WKB $u_h(x) = e^{iS(x)/h}$:
 1. **Tính đạo hàm bậc nhất và bậc hai**:

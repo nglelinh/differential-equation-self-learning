@@ -12,7 +12,7 @@ categories:
 
 Suốt gần hai thế kỷ kể từ Newton và Leibniz, các nhà toán học đã giải thành công vô số phương trình vi phân mô tả quỹ đạo hành tinh và dao động dây đàn, nhưng lại đứng trên một nền móng đầy vết nứt: "vô cùng bé" là gì, và khi nào một chuỗi vô hạn thực sự hội tụ về nghiệm đúng? Chính cuộc khủng hoảng nền tảng thế kỷ XIX đã thôi thúc Cauchy, Weierstrass, Hilbert và Banach dựng nên toàn bộ bộ khung giải tích hiện đại để lý thuyết phương trình vi phân đứng vững như đá tảng.
 
-## Bản đồ kiến thức nền: Bốn cột mốc dựng nền móng cho Phương trình Vi phân
+## Kiến thức cần nhớ: Bốn cột mốc dựng nền móng cho Phương trình Vi phân
 
 1. **Giải tích hình học & Vô cùng bé (Thế kỷ XVII–XVIII)**:
    Newton, Leibniz và Euler coi đạo hàm là tỷ số các đại lượng vô cùng bé, mở đường cho cơ học cổ điển nhưng dễ vấp nghịch lý khi gặp hàm không trơn hoặc chuỗi phân kỳ.
@@ -34,7 +34,7 @@ Paris, năm 1821, tại giảng đường của École Polytechnique, Augustin-L
 
 Vì thế, công việc của ông không chỉ là giảng lại kỹ thuật tính toán mà là đặt ra tiêu chuẩn chính xác cho giới hạn, tính liên tục và sự biến thiên. Khi khẳng định dãy $$1, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \dots$$ tiến về $$0$$, khẳng định đó cần một định nghĩa rõ ràng thay vì cảm nhận định tính. Khi xét thương sai phân $$\frac{(1+h)^2-1}{h} = 2 + h$$ và cho $$h \to 0$$ để thu được đạo hàm của $$x^2$$ tại $$x=1$$ bằng $$2$$, ông cho thấy lý do giới hạn, tính liên tục và phép xấp xỉ nghiêm ngặt phải được phát biểu minh bạch. Từ nhu cầu đó, toàn bộ ngôn ngữ hiện đại về chuẩn, không gian, ma trận và số phức từng bước trở thành phần không thể tách rời của giải tích.
 
-### Khung giải thích (nên đọc chậm): Thấy tận mắt vì sao ngôn ngữ $\varepsilon\text{--}\delta$ và hội tụ đều cứu vãn phép lấy đạo hàm dưới dấu giới hạn
+### Giải thích: Thấy tận mắt vì sao ngôn ngữ $\varepsilon\text{--}\delta$ và hội tụ đều cứu vãn phép lấy đạo hàm dưới dấu giới hạn
 
 Xét dãy hàm trơn $f_n(x) = \frac{\sin(nx)}{n}$ trên $\mathbb{R}$ khi $n \to \infty$:
 1. **Giới hạn của chính dãy hàm**: Với mọi $x \in \mathbb{R}$, $\left\vert f_n(x) - 0 \right\vert \le \frac{1}{n} \to 0$. Vậy $f_n \to f \equiv 0$ **hội tụ đều** trên toàn $\mathbb{R}$, và $f'(x) \equiv 0$.

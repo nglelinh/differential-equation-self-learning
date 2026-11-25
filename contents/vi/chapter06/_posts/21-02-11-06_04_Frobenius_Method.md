@@ -12,7 +12,7 @@ lesson_type: required
 
 Khi $x = 0$ là điểm kỳ dị (hệ số của $y''$ triệt tiêu), chuỗi Taylor thông thường $\sum a_n x^n$ có thể bị thiếu mất một hoặc cả hai nghiệm độc lập tuyến tính (vì nghiệm thật chứa $\sqrt{x}$, $1/x$, hoặc $\ln x$). **Phương pháp Frobenius** sửa chữa điều đó bằng một thay đổi thiên tài: nhân thêm thừa số lũy thừa $x^r$ vào trước chuỗi lũy thừa, $y(x) = x^r \sum_{n=0}^{\infty} a_n x^n$ ($a_0 \neq 0$)!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Frobenius
+## Kiến thức cần nhớ: Bốn trụ cột của Phương pháp Frobenius
 
 1. **Điểm kỳ dị chính quy (Regular Singular Point)**:
    Với $y'' + p(x)y' + q(x)y = 0$, điểm $x_0 = 0$ là kỳ dị chính quy nếu $x p(x)$ và $x^2 q(x)$ đều giải tích tại $0$ (độ kỳ dị không vượt quá $1/x$ ở $p$ và $1/x^2$ ở $q$).
@@ -39,7 +39,7 @@ Khi các hệ số của phương trình vi phân không giải tích tại đi�
 
 Phương pháp Frobenius giải quyết tình huống này bằng cách nhân thêm một lũy thừa $$ x^r $$ (với số mũ $$ r $$ chưa biết) vào trước chuỗi lũy thừa thông thường. Chính phương trình vi phân sẽ xác định giá trị $$ r $$ thông qua phương trình chỉ số. Phần lớn các họ hàm đặc biệt cổ điển trong vật lý toán đều xuất phát từ khuôn khổ này.
 
-### Khung giải thích (nên đọc chậm): Tìm nghiệm chỉ số và 3 hệ số đầu bằng Phương pháp Frobenius cho $2x y'' + y' + y = 0$
+### Giải thích: Tìm nghiệm chỉ số và 3 hệ số đầu bằng Phương pháp Frobenius cho $2x y'' + y' + y = 0$
 
 1. **Kiểm tra điểm kỳ dị chính quy tại $x = 0$**:
    Viết về dạng chuẩn $y'' + \frac{1}{2x} y' + \frac{1}{2x} y = 0 \implies x p(x) = \frac{1}{2}$ ($p_0 = \frac{1}{2}$), $x^2 q(x) = \frac{x}{2}$ ($q_0 = 0$). Cả hai đều giải tích → **điểm kỳ dị chính quy**!

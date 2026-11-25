@@ -12,7 +12,7 @@ lesson_type: optional
 
 Chuỗi Fourier là một trong những khái niệm trực quan đẹp nhất toàn bộ toán học ứng dụng: bạn thực sự có thể *nhìn thấy* các đường sin cộng chồng lên nhau từng bậc một để tạc nên một hình vuông sắc cạnh hay một răng cưa nhọn hoắt! Bộ minh họa Chương 08 giúp bạn quan sát trực tiếp tốc độ hội tụ, hiện tượng Gibbs, phổ biên độ và tác động của tính chẵn/lẻ.
 
-## Bản đồ kiến thức nền: Bốn điều cần quan sát kỹ trong Gallery Chương 08
+## Kiến thức cần nhớ: Bốn điều cần quan sát kỹ trong Gallery Chương 08
 
 1. **Tổng riêng $S_N(x)$ tiến sát $f(x)$**: So sánh độ mượt của $S_5, S_{15}, S_{50}$ giữa hàm liên tục (sóng tam giác) và hàm gián đoạn (sóng vuông).
 2. **Đỉnh Gibbs $8{,}95\%$ không biến mất**: Tăng $N$ từ 10 lên 200 sẽ thấy tai thỏ Gibbs chỉ dạt sát vào vách nhảy chứ chiều cao không hề giảm!
@@ -31,7 +31,7 @@ Nên xem bộ minh họa theo đúng thứ tự các bài học trong chương. 
 
 Trang này cũng thuận tiện để ôn tập trước khi chuyển sang phương trình nhiệt, phương trình sóng và các phương pháp biến đổi, vì các chương tiếp theo sử dụng lại phần lớn trực giác hình học xây dựng từ Chương 08.
 
-### Khung giải thích (nên đọc chậm): Đọc nhanh chất lượng xấp xỉ Fourier chỉ bằng 2 con số trên đồ thị tương tác
+### Giải thích: Đọc nhanh chất lượng xấp xỉ Fourier chỉ bằng 2 con số trên đồ thị tương tác
 
 Khi kéo thanh trượt số hạng $N$ trong bộ minh họa sóng vuông $f(x) = \pm 1$:
 - Tại $N = 1$: biên độ đỉnh là $\frac{4}{\pi} \approx 1{,}273$ (sai số cực đại $27{,}3\%$).

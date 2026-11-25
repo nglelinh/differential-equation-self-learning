@@ -11,7 +11,7 @@ categories:
 
 Nếu Chương 9 thuộc về lửa và sự tiêu tán, thì Chương 10 thuộc về **âm thanh, ánh sáng và sự truyền tin**: **Phương trình Sóng** $u_{tt} = c^2 u_{xx}$ là phương trình đạo hàm riêng **đầu tiên trong lịch sử nhân loại** được viết ra và giải thành công bởi Jean le Rond d'Alembert năm 1747! Cuộc tranh luận kịch tính suốt 50 năm sau đó giữa d'Alembert, Euler và Daniel Bernoulli về sợi dây đàn rung đã đặt nền móng cho toàn bộ lý thuyết PDE, giải tích Fourier và cả phương trình Maxwell về sóng điện từ!
 
-## Bản đồ kiến thức nền: Bốn cột mốc lịch sử vĩ đại của Phương trình Sóng
+## Kiến thức cần nhớ: Bốn cột mốc lịch sử vĩ đại của Phương trình Sóng
 
 1. **d'Alembert (1747) — Nghiệm sóng chạy $F(x - ct) + G(x + ct)$**:
    Chứng minh mọi sóng 1D đơn giản là chồng chất của một sóng chạy sang phải và một sóng chạy sang trái với cùng vận tốc hữu hạn $c$.
@@ -33,7 +33,7 @@ Năm 1747 tại Paris, Jean le Rond d'Alembert khảo sát một sợi dây đà
 
 Từ đó ra đời công thức nổi tiếng $$u(x,t)=F(x-ct)+G(x+ct)$$. Chỉ trong một dòng, biểu thức này diễn đạt trọn vẹn cơ chế vật lý: một xung ban đầu tách thành hai thành phần, một truyền sang phải và một truyền sang trái với tốc độ $$c$$. Chẳng hạn, một xung hẹp ban đầu trên dây không biến mất ngay mà dịch chuyển dọc theo dây. Phát hiện này đánh dấu bước ngoặt của Chương 10: PDE bắt đầu mô tả quá trình truyền tin, phản xạ và tốc độ lan truyền hữu hạn.
 
-### Khung giải thích (nên đọc chậm): Cầu nối 1 dòng giữa Sóng đứng (Bernoulli) và Sóng chạy (d'Alembert)
+### Giải thích: Cầu nối 1 dòng giữa Sóng đứng (Bernoulli) và Sóng chạy (d'Alembert)
 
 Tại sao một sóng đứng $\sin(kx)\cos(kct)$ lại chính là tổng của hai sóng chạy ngược chiều? Chỉ cần dùng đúng công thức tích thành tổng lớp 10:
 $$\sin(kx)\cos(kct) = \mathbf{\frac{1}{2}\sin\big(k(x - ct)\big) + \frac{1}{2}\sin\big(k(x + ct)\big)}!$$

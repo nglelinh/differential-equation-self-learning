@@ -14,14 +14,14 @@ In December 1807, Joseph Fourier stood before the Institut de France and made a 
 
 That single audacious idea revolutionized mathematics, forced nineteenth-century analysts to invent the modern definition of a function and the Riemann/Lebesgue integrals, and today powers everything from MP3 audio compression and MRI scanners to PDE solvers.
 
-## Background Knowledge Map: Periodic Geometry and Trigonometric Series
+## Key ideas: Periodic Geometry and Trigonometric Series
 
 1. **Periodicity and Fundamental Period $$ T = 2L $$:** A function satisfies $$ f(x + T) = f(x) $$ for all $$ x $$. Any integer multiple of $$ T $$ is also a period, and integrating a $$ T $$-periodic function over *any* interval of length $$ T $$ (such as $$ [-L, L] $$ or $$ [0, 2L] $$) yields the exact same value—a translation symmetry we exploit constantly.
 2. **Harmonic Basis $$ \{1, \cos(n\pi x/L), \sin(n\pi x/L)\} $$:** Each integer $$ n \ge 1 $$ adds a wave that completes exactly $$ n $$ full cycles on $$ [-L, L] $$. Because every term shares the period $$ 2L $$, any convergent linear combination automatically inherits periodicity $$ 2L $$.
 3. **Orthogonality in $$ L^2([-L, L]) $$ (The Engine of Decomposition):** On $$ [-L, L] $$, distinct basis functions have zero inner product: $$ \int_{-L}^L \cos\!\left(\frac{m\pi x}{L}\right)\cos\!\left(\frac{n\pi x}{L}\right) dx = L\delta_{mn} $$, $$ \int_{-L}^L \sin\!\left(\frac{m\pi x}{L}\right)\sin\!\left(\frac{n\pi x}{L}\right) dx = L\delta_{mn} $$, and every cosine is orthogonal to every sine.
 4. **DC Offset $$ \frac{a_0}{2} $$ (Average Value):** The constant term $$ \frac{a_0}{2} = \frac{1}{2L}\int_{-L}^L f(x)\,dx $$ captures the vertical mean of the signal, while the oscillating modes sculpt all deviations around that mean.
 
-### Step-by-Step Worked Example (Read Slowly): Verifying Orthogonality and Finding the Fundamental Period of a Composite Signal
+### Worked example: Verifying Orthogonality and Finding the Fundamental Period of a Composite Signal
 
 **Problem:** (a) Find the fundamental period $$ T $$ of $$ f(x) = 3\cos(2x) - 5\sin(3x) $$. (b) Explicitly verify the orthogonality integral $$ \int_{-\pi}^{\pi} \cos(2x)\cos(3x)\,dx = 0 $$ and compute the squared norm $$ \int_{-\pi}^{\pi} \sin^2(3x)\,dx $$.
 

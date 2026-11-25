@@ -20,7 +20,7 @@ This optional lesson places Laplace and Poisson equations, mean-value properties
 
 Students should know Laplace’s equation, Poisson sources, the mean-value property, the maximum principle, and the idea of a Green’s function on a disk or a rectangle.
 
-## Background Knowledge Map: Operator Learning for Elliptic PDEs
+## Key ideas: Operator Learning for Elliptic PDEs
 
 Bridging classical potential theory with modern scientific machine learning rests on four pillars:
 
@@ -70,7 +70,7 @@ PINNs remain useful for a single irregular domain or for inverse source identifi
 ## Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): An Exact Spectral Multiplier Layer for a 1D Periodic Elliptic PDE
+### Worked example: An Exact Spectral Multiplier Layer for a 1D Periodic Elliptic PDE
 
 To see why Fourier Neural Operators naturally represent elliptic solution maps, solve the 1D periodic Helmholtz–Poisson equation $-u''(x) + u(x) = f(x)$ on $[0, 2\pi]$ for $f(x) = 5\cos(x) + 10\sin(3x)$ using a single diagonal spectral multiplier, and verify the result.
 

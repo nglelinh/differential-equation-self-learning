@@ -12,7 +12,7 @@ lesson_type: optional
 
 Làm sao các nhà địa chất biết bên dưới lớp đất đá sâu 5 km có túi dầu, mỏ địa nhiệt hay đứt gãy động đất mà không thể đào cả thành phố lên? Họ tạo một xung chấn nhỏ trên mặt đất, ghi lại tiếng vang bằng hàng nghìn cảm biến (*geophones*), rồi giải bài toán ngược **Full Waveform Inversion (FWI)** trên phương trình sóng $u_{tt} = c(x, z)^2 \nabla^2 u$—và ngày nay kết hợp với **mạng nơ-ron lan truyền sóng** để dựng bản đồ lòng đất nhanh gấp hàng chục lần!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Ảnh Địa chấn & Lan truyền Sóng Nơ-ron
+## Kiến thức cần nhớ: Bốn trụ cột của Ảnh Địa chấn & Lan truyền Sóng Nơ-ron
 
 1. **Bài toán Thuận (Forward Modeling) vs. Bài toán Ngược (Inversion / FWI)**:
    Bài toán thuận biết vận tốc đá $c(x, z)$ và mô phỏng sóng $u(x, z, t)$. Bài toán ngược chỉ đo được $u$ trên mặt đất $z = 0$ và phải khôi phục lại bản đồ ẩn $c(x, z)$ sâu hàng km bên dưới!
@@ -39,7 +39,7 @@ Rasht-Behesht, de Hoop và cộng sự đã minh họa việc dùng PINN cho bà
 
 Đẳng thức năng lượng và định lý miền phụ thuộc của chương đóng vai trò các phép kiểm chứng đầu vào cho mọi mô hình loại này.
 
-### Khung giải thích (nên đọc chậm): Tính tay độ sâu lớp đá phản xạ từ thời gian dội sóng địa chấn
+### Giải thích: Tính tay độ sâu lớp đá phản xạ từ thời gian dội sóng địa chấn
 
 Giả sử lớp đất mặt có vận tốc sóng $c_1 = 2.000\text{ m/s}$. Một nguồn nổ ở bề mặt phát xung tại $t = 0$, và cảm biến đặt ngay sát nguồn thu được tiếng vang phản xạ đầu tiên ở $t = 1{,}6\text{ giây}$:
 - Tổng quãng đường sóng đi xuống tới mặt phân cách rồi dội ngược lên là $2d = c_1 \cdot t$.

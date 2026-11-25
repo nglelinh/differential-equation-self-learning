@@ -13,7 +13,7 @@ lesson_type: optional
 
 Nếu bạn huấn luyện một mạng nơ-ron thông thường để dự đoán chuyển động con lắc, chỉ sau vài chục chu kỳ, năng lượng dự đoán sẽ tự phình to hoặc tắt lịm—vì mạng không biết gì về định luật bảo toàn năng lượng! **Hamiltonian Neural Networks (HNN)** và **Lagrangian Neural Networks (LNN)** khắc phục triệt để điều này bằng cách nhúng thẳng cấu trúc phương trình vi phân cấp hai bảo toàn năng lượng vào kiến trúc mạng nơ-ron.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Mạng nơ-ron Cấp Hai & Bảo toàn Vật lý
+## Kiến thức cần nhớ: Bốn trụ cột của Mạng nơ-ron Cấp Hai & Bảo toàn Vật lý
 
 1. **Hamiltonian Neural Networks (HNN)**:
    Thay vì học trực tiếp $(\dot{q}, \dot{p})$, mạng học một hàm vô hướng duy nhất—năng lượng $H_\theta(q, p)$—rồi suy ra động lực qua phương trình Hamilton $\dot{q} = \frac{\partial H_\theta}{\partial p},\; \dot{p} = -\frac{\partial H_\theta}{\partial q}$, bảo toàn $H_\theta$ chính xác theo cấu trúc!
@@ -40,7 +40,7 @@ Greydanus, Dzamba và Yosinski đã đề xuất mạng nơ-ron Hamiltonian (Ham
 
 Tất cả các hướng nghiên cứu trên đều cho thấy một cách nhìn hiện đại đối với Chương 02: cấu trúc tuyến tính cấp hai, năng lượng và tính độc lập tuyến tính của các chế độ dao động không chỉ là công cụ giải tích mà còn là định hướng thiết kế kiến trúc mô hình.
 
-### Khung giải thích (nên đọc chậm): So sánh độ trôi năng lượng của Euler cổ điển vs. Symplectic Euler cho dao động tử $q'' + q = 0$ ($H = \frac{1}{2}(q^2 + p^2)$)
+### Giải thích: So sánh độ trôi năng lượng của Euler cổ điển vs. Symplectic Euler cho dao động tử $q'' + q = 0$ ($H = \frac{1}{2}(q^2 + p^2)$)
 
 Xuất phát từ $(q_0, p_0) = (1, 0)$ (năng lượng ban đầu $H_0 = 0{,}5$) với bước thời gian $h = 0{,}5$:
 1. **Euler hiện (không bảo toàn năng lượng)**:

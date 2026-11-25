@@ -12,7 +12,7 @@ lesson_type: required
 
 Hàm số nào có đạo hàm tỷ lệ với chính nó? Chỉ có hàm mũ $e^{rt}$! Chính phép thử giản dị ấy của Euler đã biến phương trình vi phân cấp hai hệ số hằng $ay'' + by' + cy = 0$ thành một phương trình bậc hai quen thuộc từ trung học $ar^2 + br + c = 0$. Khi biệt thức $\Delta \ge 0$, bài học này giải mã trọn vẹn hai kịch bản nghiệm thực phân biệt và nghiệm thực kép—từ mạch tiêu tán năng lượng đến bộ giảm xóc tắt dần tới hạn.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Hệ số Hằng Nghiệm Thực
+## Kiến thức cần nhớ: Bốn trụ cột của Hệ số Hằng Nghiệm Thực
 
 1. **Phương trình đặc trưng $ar^2 + br + c = 0$**:
    Thay $y = e^{rt}$ vào $ay'' + by' + cy = 0$ cho $e^{rt}(ar^2 + br + c) = 0$; vì $e^{rt} > 0$, toàn bộ bài toán vi phân quy về tìm nghiệm đa thức bậc hai.
@@ -38,7 +38,7 @@ ta có cơ sở để thử nghiệm dạng $$ y=e^{rt} $$. Nhờ cách đặt n
 
 Quan trọng hơn bản thân công thức là cách đọc ý nghĩa động học của nghiệm. Hai nghiệm thực phân biệt tạo ra hai thành phần nghiệm độc lập với hai tốc độ tăng hoặc suy giảm khác nhau. Nghiệm kép cho thấy hai thành phần bị trùng nhau và cần bổ sung thêm nghiệm dạng $$ te^{rt} $$. Do đó, bài học này vừa cung cấp kỹ thuật giải vừa làm rõ cấu trúc không gian nghiệm.
 
-### Khung giải thích (nên đọc chậm): Giải đối chiếu cả hai trường hợp $\Delta > 0$ và $\Delta = 0$ với cùng điều kiện đầu $y(0) = 1,\; y'(0) = 0$
+### Giải thích: Giải đối chiếu cả hai trường hợp $\Delta > 0$ và $\Delta = 0$ với cùng điều kiện đầu $y(0) = 1,\; y'(0) = 0$
 
 **Trường hợp 1 ($\Delta > 0$)**: $y'' + 5y' + 6y = 0$.
 - Đặc trưng: $r^2 + 5r + 6 = (r + 2)(r + 3) = 0 \implies r_1 = -2,\; r_2 = -3$.

@@ -17,7 +17,7 @@ This lesson traces the historical rise of microlocal analysis from geometric opt
 ## Prerequisites
 Students should know the main concepts of Chapter 15, including wave front sets, propagation of singularities, Fourier integral operators, semiclassical analysis, spectral asymptotics, inverse problems, quantum connections, and microlocal elliptic theory.
 
-## Background Knowledge Map: Four Historical Turning Points of Microlocal Analysis
+## Key ideas: Four Historical Turning Points of Microlocal Analysis
 
 Tracing modern PDE theory from 1957 to today highlights four watershed breakthroughs:
 
@@ -59,7 +59,7 @@ Chapter 15 is historically remarkable because it does not merely extend PDE tech
 
 It also gives students a glimpse of living mathematics. Many of the chapter's methods remain central in current research, from quantum chaos to medical imaging to scattering theory.
 
-### Step-by-Step Worked Example (Read Slowly): Computing the Solvability Bracket on the Mizohata Operator
+### Worked example: Computing the Solvability Bracket on the Mizohata Operator
 
 The 2D Mizohata operator $L = \partial_t + i t \partial_x$ on $\mathbb{R}^2$ is the cleanest miniature cousin of Hans Lewy's unsolvable PDE. Compute its principal symbol $p(t,x;\tau,\xi)$ and the Hörmander–Nirenberg–Trèves Poisson bracket $\{\operatorname{Re} p, \operatorname{Im} p\}$ along its characteristic set $\{t = 0, \tau = 0\}$, and see why it creates asymmetric exponential behavior in $\xi$.
 

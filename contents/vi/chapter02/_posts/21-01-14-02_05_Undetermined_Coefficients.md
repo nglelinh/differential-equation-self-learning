@@ -12,7 +12,7 @@ lesson_type: required
 
 Trong thế giới thực, một cây cầu chịu gió thổi tuần hoàn hay một mạch điện cắm vào nguồn xoay chiều $g(t)$ đều là **phương trình không thuần nhất** $ay'' + by' + cy = g(t)$. Nếu vế phải $g(t)$ thuộc "câu lạc bộ khép kín dưới phép đạo hàm"—gồm đa thức, hàm mũ, $\sin/\cos$ và tích của chúng—thì **phương pháp Hệ số bất định** cho phép ta đoán chính xác hình dáng của nghiệm riêng $y_p$ rồi giải một hệ đại số tuyến tính nhỏ để tìm hệ số!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Hệ số Bất định
+## Kiến thức cần nhớ: Bốn trụ cột của Phương pháp Hệ số Bất định
 
 1. **Phạm vi áp dụng (Lớp hàm đóng dưới đạo hàm)**:
    Chỉ áp dụng khi phương trình có **hệ số hằng** và vế phải $g(t)$ là tổ hợp của $t^m$, $e^{\alpha t}$, $\cos(\beta t)$, $\sin(\beta t)$ (không dùng được cho $\tan t$, $\ln t$ hay $1/t$).
@@ -36,7 +36,7 @@ Khi vế phải của phương trình khác 0, ta cần tìm một nghiệm riê
 
 Điểm cần lưu ý của phương pháp là không thể chỉ sao chép y nguyên biểu thức vế phải. Nếu dạng nghiệm thử trùng với một thành phần của nghiệm thuần nhất, ta phải nhân thêm $$ t $$ (hoặc $$ t^2 $$) để đảm bảo tính độc lập tuyến tính. Đây chính là biểu hiện đại số của hiện tượng cộng hưởng.
 
-### Khung giải thích (nên đọc chậm): Giải $y'' - 3y' + 2y = 4e^{2t}$ để thấy rõ quy tắc nhân $t$ khi xảy ra trùng nghiệm
+### Giải thích: Giải $y'' - 3y' + 2y = 4e^{2t}$ để thấy rõ quy tắc nhân $t$ khi xảy ra trùng nghiệm
 
 1. **Giải phương trình thuần nhất trước** (BẮT BUỘC làm trước khi đoán $y_p$!):
    $r^2 - 3r + 2 = (r - 1)(r - 2) = 0 \implies y_h(t) = c_1 e^t + c_2 e^{2t}$.

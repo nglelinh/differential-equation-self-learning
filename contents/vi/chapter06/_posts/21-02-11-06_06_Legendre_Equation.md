@@ -12,7 +12,7 @@ lesson_type: required
 
 Nếu hàm Bessel thống trị hình học trụ, thì **Phương trình Legendre** $(1 - x^2)y'' - 2x y' + \ell(\ell + 1) y = 0$ thống trị mọi bài toán có **đối xứng cầu**—từ trường hấp dẫn Trái Đất, bức xạ phông vi sóng vũ trụ (CMB) cho đến các vân đạo nguyên tử $s, p, d, f$ trong cơ học lượng tử!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Đa thức Legendre $P_n(x)$
+## Kiến thức cần nhớ: Bốn trụ cột của Đa thức Legendre $P_n(x)$
 
 1. **Cắt cụt chuỗi thành Đa thức khi $\ell = n \in \mathbb{N}$**:
    Điểm $x = 0$ là điểm thường, nhưng $x = \pm 1$ là điểm kỳ dị chính quy! Để nghiệm **hữu hạn tại hai cực $x = \pm 1$** ($\cos\theta = \pm 1$), chuỗi vô hạn buộc phải cắt cụt—điều này xảy ra **khi và chỉ khi** hằng số $\lambda = n(n + 1)$ với $n = 0, 1, 2, \dots$, tạo ra **Đa thức Legendre $P_n(x)$**!
@@ -39,7 +39,7 @@ Nếu hàm Bessel xuất hiện trong các bài toán có đối xứng trụ, t
 
 Từ một phương trình vi phân cấp hai, ta thu được một họ đa thức có đầy đủ cấu trúc trực giao trên đoạn $$ [-1,1] $$ — nơi giải tích vi phân, đại số trực giao và hình học vật lý kết nối chặt chẽ với nhau.
 
-### Khung giải thích (nên đọc chậm): Tính tay $P_3(x)$ bằng hệ thức Bonnet và kiểm chứng trực giao $\int_{-1}^1 P_2(x) P_3(x)\,dx = 0$
+### Giải thích: Tính tay $P_3(x)$ bằng hệ thức Bonnet và kiểm chứng trực giao $\int_{-1}^1 P_2(x) P_3(x)\,dx = 0$
 
 Biết $P_0(x) = 1$, $P_1(x) = x$, $P_2(x) = \frac{1}{2}(3x^2 - 1)$.
 1. **Dùng hệ thức Bonnet với $n = 2$**:

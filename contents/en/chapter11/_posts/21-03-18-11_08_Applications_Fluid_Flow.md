@@ -20,7 +20,7 @@ This lesson applies harmonic and potential-theoretic ideas to ideal fluid flow. 
 
 Students should know Laplace's equation, the idea of a potential function, and the physical meaning of source-free equilibrium fields.
 
-## Background Knowledge Map: Potential Flow, Complex Potentials, and Aerodynamic Paradoxes
+## Key ideas: Potential Flow, Complex Potentials, and Aerodynamic Paradoxes
 
 Ideal fluid mechanics connects directly to harmonic analysis through four pillars:
 
@@ -98,7 +98,7 @@ Obstacles and channel walls should be understood as boundary conditions on the p
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Uniform Potential Flow Past a Circular Cylinder
+### Worked example: Uniform Potential Flow Past a Circular Cylinder
 
 Analyze the 2D steady potential flow of speed $U$ past a circular cylinder of radius $a$ given by $\phi(r,\theta) = U\left(r + \frac{a^2}{r}\right)\cos\theta$. Verify harmonicity, check the no-penetration boundary condition, find the stagnation points and peak surface speed, and compute the surface pressure coefficient.
 

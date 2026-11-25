@@ -14,7 +14,7 @@ Toss a stone into a canal and watch the ripple hit a concrete wall—it bounces 
 
 Everything boils down to two simple continuity rules at the junction $$ x = 0 $$—and one magic number called the **characteristic impedance** $$ Z = \rho c $$!
 
-## Background Knowledge Map: Boundaries, Interfaces, and Impedance Matching
+## Key ideas: Boundaries, Interfaces, and Impedance Matching
 
 1. **Method of Images on the Half-Line (Fixed vs. Free Reflection):**
    - *Fixed wall ($$ u(0, t) = 0 $$):* Extend initial data **oddly** across $$ x = 0 $$. An incoming crest hits the wall and reflects **inverted** as a trough!
@@ -25,7 +25,7 @@ Everything boils down to two simple continuity rules at the junction $$ x = 0 $$
    Notice $$ 1 + R = T_{\text{tr}} $$, and if $$ Z_2 > Z_1 $$ (entering a heavier medium), $$ R < 0 $$ (phase inversion)!
 4. **Energy Flux Conservation ($$ |R|^2 + \frac{Z_2}{Z_1}|T_{\text{tr}}|^2 = 1 $$):** Even when $$ T_{\text{tr}} > 1 $$ (entering a lighter rope!), energy is never created—the transmitted power fraction $$ \frac{Z_2}{Z_1} T_{\text{tr}}^2 $$ plus reflected power fraction $$ R^2 $$ always sums to *exact* $$ 1 $$!
 
-### Step-by-Step Worked Example (Read Slowly): Pulse Crossing from a Light Rope to a Heavy Rope (Energy Balance Check)
+### Worked example: Pulse Crossing from a Light Rope to a Heavy Rope (Energy Balance Check)
 
 **Problem:** A uniform tension $$ T $$ joins a light rope ($$ x < 0 $$, wave speed $$ c_1 = 30\text{ m/s} $$) to a heavier rope ($$ x > 0 $$, wave speed $$ c_2 = 10\text{ m/s} $$). An incident pulse of amplitude $$ A_i = 1.0\text{ cm} $$ travels rightward from $$ x < 0 $$. Compute the reflected amplitude $$ A_r $$, the transmitted amplitude $$ A_t $$, and verify that reflected + transmitted power equals 100% of incident power.
 

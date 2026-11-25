@@ -14,7 +14,7 @@ Near the center of a vibrating circular drum or the nucleus of a hydrogen atom, 
 
 That single modification unlocks almost every special function of nineteenth- and twentieth-century mathematical physics—Bessel, Laguerre, hypergeometric, and confluent hypergeometric functions all emerge from the Frobenius machine.
 
-## Background Knowledge Map: Regular Singular Points and the Frobenius Engine
+## Key ideas: Regular Singular Points and the Frobenius Engine
 
 1. **Regular vs. Irregular Singular Points (Growth Rate Control):** In $$ y'' + P(x)y' + Q(x)y = 0 $$, a singular point $$ x_0 $$ is *regular* if $$ (x - x_0)P(x) $$ and $$ (x - x_0)^2 Q(x) $$ are both analytic at $$ x_0 $$. Intuitively, the singularities are no worse than a Cauchy–Euler equation, keeping solutions tame enough to be represented by generalized power series rather than essential singularities like $$ e^{-1/x} $$.
 2. **The Indicial Equation $$ I(r) = r(r-1) + p_0 r + q_0 = 0 $$ (Leading Asymptotics):** Letting $$ p_0 = \lim_{x\to 0} x P(x) $$ and $$ q_0 = \lim_{x\to 0} x^2 Q(x) $$, the lowest power of $$ x $$ in the Frobenius substitution forces $$ I(r) a_0 = 0 $$. Since $$ a_0 \neq 0 $$, the roots $$ r_1, r_2 $$ (ordered with $$ \operatorname{Re}(r_1) \ge \operatorname{Re}(r_2) $$) dictate the exact leading behavior $$ y \sim x^r $$ near $$ x = 0 $$.
@@ -24,7 +24,7 @@ That single modification unlocks almost every special function of nineteenth- an
    - *Case 3 ($$ r_1 - r_2 \in \mathbb{Z}_{>0} $$):* The recurrence for $$ r_2 $$ hits division by $$ I(r_2 + N) = I(r_1) = 0 $$, which may require a $$ C y_1(x)\ln x $$ term (or occasionally decouples cleanly with $$ C = 0 $$).
 4. **Guaranteed Convergence Radius (Fuchs–Frobenius Theorem):** Any Frobenius series converges on $$ 0 < |x - x_0| < R $$, where $$ R $$ is at least the distance from $$ x_0 $$ to the nearest *other* complex singularity of $$ (x-x_0)P(x) $$ or $$ (x-x_0)^2 Q(x) $$.
 
-### Step-by-Step Worked Example (Read Slowly): Frobenius Solution of $$ 2x^2 y'' - x y' + (1 + x) y = 0 $$
+### Worked example: Frobenius Solution of $$ 2x^2 y'' - x y' + (1 + x) y = 0 $$
 
 **Problem:** Classify $$ x = 0 $$, solve the indicial equation, derive the recurrence relation, and compute the first three terms of both linearly independent Frobenius solutions around $$ x = 0 $$.
 

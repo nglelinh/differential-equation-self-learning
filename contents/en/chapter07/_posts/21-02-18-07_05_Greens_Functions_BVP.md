@@ -14,14 +14,14 @@ Press a single fingertip onto a taut string at position $$ s $$, and the string 
 
 That tent shape $$ G(x, s) $$ is the **Green's function**—named after the self-taught Nottingham miller George Green, who introduced it in an 1828 essay printed at his own expense. Mathematically, $$ G(x, s) $$ is the exact integral kernel of the inverse differential operator $$ L^{-1} $$, turning differential equations into explicit integration formulas.
 
-## Background Knowledge Map: Green's Functions as Continuous Inverse Matrices
+## Key ideas: Green's Functions as Continuous Inverse Matrices
 
 1. **Distributional Definition $$ L_x[G(x,s)] = \delta(x - s) $$ (Impulse Response):** Just as column $$ j $$ of $$ A^{-1} $$ solves $$ A \mathbf{g}_j = \mathbf{e}_j $$, the function $$ x \mapsto G(x, s) $$ solves the homogeneous equation $$ L_x[G] = 0 $$ everywhere except at $$ x = s $$, while satisfying both homogeneous boundary conditions.
 2. **Continuity and Jump Condition (The Kink at $$ x = s $$):** Integrating $$ -\frac{d}{dx}(p(x) G_x) + q(x) G = \delta(x - s) $$ across an infinitesimal window $$ [s - \varepsilon, s + \varepsilon] $$ forces two stitching rules: (i) $$ G(x, s) $$ is continuous at $$ x = s $$, and (ii) its derivative jumps by $$ G_x(s^+, s) - G_x(s^-, s) = -\frac{1}{p(s)} $$ (or $$ +\frac{1}{p(s)} $$ depending on sign convention for $$ L $$).
 3. **Reciprocity Symmetry $$ G(x, s) = G(s, x) $$ (Self-Adjointness):** For any self-adjoint Sturm–Liouville operator, the deflection at $$ x $$ caused by a unit load at $$ s $$ equals the deflection at $$ s $$ caused by a unit load at $$ x $$—Maxwell's reciprocity theorem in mechanics and the symmetry of $$ A^{-1} $$ in linear algebra.
 4. **Bilinear Spectral Expansion (Bridge to Eigenfunctions):** Expanding $$ G(x, s) $$ in orthonormal eigenfunctions yields $$ G(x, s) = \sum_{n=1}^{\infty} \frac{\phi_n(x)\phi_n(s)}{\lambda_n} $$, unifying Lesson 07-04 and Lesson 07-05 into two views of the exact same inverse operator!
 
-### Step-by-Step Worked Example (Read Slowly): Constructing $$ G(x, s) $$ for $$ -y'' = f(x) $$ on $$ [0, L] $$ and Verifying on $$ f(x) = 1 $$
+### Worked example: Constructing $$ G(x, s) $$ for $$ -y'' = f(x) $$ on $$ [0, L] $$ and Verifying on $$ f(x) = 1 $$
 
 **Problem:** Construct the Green's function for $$ -y'' = f(x) $$ on $$ [0, L] $$ with $$ y(0) = y(L) = 0 $$, then use $$ y(x) = \int_0^L G(x, s) f(s)\,ds $$ to solve $$ -y'' = 1 $$ and verify directly.
 

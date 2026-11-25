@@ -13,7 +13,7 @@ lesson_type: required
 
 Với phương trình vô hướng $x' = ax$, nghiệm đẹp nhất đời là $x(t) = e^{at}x_0$. Khi nâng lên hệ nhiều chiều $\mathbf{x}' = A\mathbf{x}$, ta có thể viết hệt như vậy: **$\mathbf{x}(t) = e^{At}\mathbf{x}_0$**, trong đó **Ma trận mũ** được định nghĩa bằng chuỗi lũy thừa $e^{At} = I + At + \frac{t^2}{2!}A^2 + \dots$! Điều tinh tế cần cảnh giác: khác với số thực, $e^{(A+B)t} = e^{At}e^{Bt}$ **chỉ đúng khi $AB = BA$**—một chi tiết nhỏ nhưng cực kỳ quan trọng trong vật lý lượng tử và robot học!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Ma trận Mũ $e^{At}$
+## Kiến thức cần nhớ: Bốn trụ cột của Ma trận Mũ $e^{At}$
 
 1. **Định nghĩa chuỗi & Tính hội tụ tuyệt đối**:
    $e^{At} = \sum_{k=0}^\infty \frac{t^k}{k!}A^k$ hội tụ trên toàn $\mathbb{R}$ với mọi ma trận vuông $A$, thỏa $\frac{d}{dt}e^{At} = A e^{At}$ và $e^{A\cdot 0} = I$—là ma trận cơ bản chuẩn hóa tại $t = 0$.
@@ -43,7 +43,7 @@ Trong ODE một ẩn, hàm mũ $$ e^{at} $$ là nghiệm cơ bản vì đạo h�
 
 Giá trị lớn nhất của ma trận mũ là tính thống nhất: trị riêng thực phân biệt, trị riêng phức, trị riêng lặp và vector riêng suy rộng đều có thể xem là các phương pháp khác nhau để tính hoặc diễn giải cùng một đối tượng $$ e^{At} $$.
 
-### Khung giải thích (nên đọc chậm): Tính $e^{At}$ cho ma trận Jordan $A = \begin{pmatrix} 2 & 3 \\ 0 & 2 \end{pmatrix}$ bằng hai cách độc lập để kiểm chứng!
+### Giải thích: Tính $e^{At}$ cho ma trận Jordan $A = \begin{pmatrix} 2 & 3 \\ 0 & 2 \end{pmatrix}$ bằng hai cách độc lập để kiểm chứng!
 
 **Cách 1 — Tách giao hoán $A = 2I + N$** với $N = \begin{pmatrix} 0 & 3 \\ 0 & 0 \end{pmatrix}$:
 - Kiểm tra tính lũy linh: $N^2 = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} = 0$, nên mọi $N^k = 0$ ($k \ge 2$)!

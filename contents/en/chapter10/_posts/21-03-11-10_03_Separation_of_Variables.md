@@ -14,14 +14,14 @@ On an infinite string, d'Alembert's traveling waves glide away forever without e
 
 Remarkably, separation of variables and d'Alembert's traveling-wave picture are two sides of the exact same coin: every standing wave $$ \sin(k_n x)\cos(\omega_n t) $$ is literally the sum of two opposite traveling waves $$ \frac{1}{2}\sin(k_n(x - ct)) + \frac{1}{2}\sin(k_n(x + ct)) $$!
 
-## Background Knowledge Map: Standing Waves, Boundary Conditions, and Normal Modes
+## Key ideas: Standing Waves, Boundary Conditions, and Normal Modes
 
 1. **Temporal Oscillator vs. Parabolic Decay:** Separating $$ u_{tt} = c^2 u_{xx} $$ gives $$ X'' + \lambda X = 0 $$ and $$ T'' + c^2\lambda T = 0 $$. Unlike the heat equation's decaying exponential $$ e^{-\alpha\lambda t} $$, here $$ T_n(t) = A_n \cos(c\sqrt{\lambda_n} t) + B_n \sin(c\sqrt{\lambda_n} t) $$ oscillates forever with conserved amplitude!
 2. **Two Initial Conditions Require Two Fourier Series:** Because the wave equation is second-order in time, $$ u(x, 0) = f(x) $$ fixes the cosine coefficients $$ A_n $$, while $$ u_t(x, 0) = g(x) $$ fixes the sine coefficients $$ B_n $$ (note the crucial $$ \frac{1}{c\sqrt{\lambda_n}} $$ factor when differentiating $$ \sin(c\sqrt{\lambda_n} t) $$!).
 3. **Dirichlet vs. Neumann Standing Modes:** Fixed ends ($$ u(0,t)=u(L,t)=0 $$) produce $$ \sin(n\pi x/L) $$ with $$ \omega_n = n\pi c/L $$; free/sliding ends ($$ u_x(0,t)=u_x(L,t)=0 $$) include the rigid-body zero mode $$ \lambda_0 = 0 \implies A_0 + B_0 t $$ (uniform translation/drift!).
 4. **Trigonometric Equivalence to Odd-Periodic d'Alembert:** Using $$ \sin A \cos B = \frac{1}{2}[\sin(A - B) + \sin(A + B)] $$ converts the Fourier sine standing-wave series directly into d'Alembert's formula applied to the odd $$ 2L $$-periodic extensions of $$ f $$ and $$ g $$.
 
-### Step-by-Step Worked Example (Read Slowly): Solving a Struck String with Both Initial Shape and Velocity
+### Worked example: Solving a Struck String with Both Initial Shape and Velocity
 
 **Problem:** Solve $$ u_{tt} = 9 u_{xx} $$ on $$ 0 < x < \pi $$, $$ t > 0 $$, with $$ u(0, t) = u(\pi, t) = 0 $$, $$ u(x, 0) = 2\sin(x) $$, and $$ u_t(x, 0) = 6\sin(2x) $$, and verify $$ u(x, t) $$ at $$ x = \frac{\pi}{4}, t = \frac{\pi}{12} $$.
 

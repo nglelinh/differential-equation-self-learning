@@ -14,7 +14,7 @@ lesson_type: required
 
 Với phương trình nhiệt (Chương 9), ta chứng minh tính duy nhất nghiệm bằng Nguyên lý Cực đại. Nhưng phương trình sóng **không** thỏa Nguyên lý Cực đại (hai sóng nhỏ gặp nhau có thể cộng hưởng tạo đỉnh cao gấp đôi!). Thay vào đó, vũ khí sắc bén nhất cho phương trình sóng là **Phương pháp Năng lượng (Energy Method)**: chứng minh tổng động năng + thế năng không đổi (hoặc không tăng) theo thời gian!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Năng lượng cho Phương trình Sóng
+## Kiến thức cần nhớ: Bốn trụ cột của Phương pháp Năng lượng cho Phương trình Sóng
 
 1. **Hàm Năng lượng của Sóng 1D**:
    $$E(t) = \frac{1}{2}\int_0^L \big(u_t^2 + c^2 u_x^2\big)\,dx \ge 0$$
@@ -42,7 +42,7 @@ Sinh viên cần nắm phương trình sóng, kỹ thuật tích phân từng ph
 
 Khác với phương trình nhiệt vốn làm tiêu tán năng lượng theo thời gian, phương trình sóng thuần nhất chuyển hóa qua lại giữa động năng và thế năng đàn hồi mà không làm thất thoát tổng năng lượng. Chính định luật bảo toàn này mang lại phép chứng minh tính duy nhất ngắn gọn và chặt chẽ.
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng trực tiếp bảo toàn năng lượng $E(t) = \text{hằng số}$ trên 1 sóng đứng $u(x, t) = A\cos(\omega t)\sin(kx)$
+### Giải thích: Kiểm chứng trực tiếp bảo toàn năng lượng $E(t) = \text{hằng số}$ trên 1 sóng đứng $u(x, t) = A\cos(\omega t)\sin(kx)$
 
 Với $L = \pi$, $k = 1$, $\omega = c$ (tức $u(x, t) = A\cos(ct)\sin x$):
 1. Tính các đạo hàm: $u_t = -Ac\sin(ct)\sin x$, $u_x = A\cos(ct)\cos x$.

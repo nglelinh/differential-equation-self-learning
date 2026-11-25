@@ -11,7 +11,7 @@ categories:
 
 Khi các nhà toán học thế kỷ 18–19 giải bài toán dao động màng trống tròn, trường hấp dẫn của hành tinh hình cầu hay nguyên tử hydro lượng tử, họ liên tục đụng phải những phương trình vi phân hệ số biến thiên mà không một tổ hợp hàm sơ cấp ($\sin, \cos, e^x, \ln x$) nào biểu diễn nổi. Thay vì bỏ cuộc, Euler, Legendre, Bessel và Frobenius đã mở rộng chính "bảng chữ cái" của giải tích bằng **nghiệm chuỗi lũy thừa** và đặt tên cho các **Hàm đặc biệt (Special Functions)**.
 
-## Bản đồ kiến thức nền: Bốn cột mốc lịch sử định hình Chương 06
+## Kiến thức cần nhớ: Bốn cột mốc lịch sử định hình Chương 06
 
 1. **Newton & Euler — Chuỗi vô hạn như công cụ giải PTVP**:
    Coi nghiệm $y(x) = \sum a_n x^n$ như một đa thức bậc vô hạn giúp biến phương trình vi phân thành một **hệ thức truy hồi đại số** cho các hệ số $a_n$.
@@ -33,7 +33,7 @@ Tại Königsberg vào đầu thế kỷ XIX, Friedrich Bessel đối mặt vớ
 
 Lối thoát là xây dựng nghiệm từng hệ số một. Với phương trình dạng $$x^2 y'' + x y' + x^2 y = 0$$, khi giả sử $$y = a_0 + a_1x + a_2x^2 + \cdots$$ rồi thay vào phương trình, các hệ số bị ràng buộc bởi một hệ thức truy hồi có cấu trúc chặt chẽ. Từ đó xuất hiện một họ hàm mới, về sau mang tên hàm Bessel. Ví dụ này thể hiện tư tưởng cốt lõi của Chương 06: phương trình vi phân không chỉ được giải bằng các hàm sẵn có, mà còn tự sinh ra những lớp hàm mới.
 
-### Khung giải thích (nên đọc chậm): Khai triển cầm tay chỉ việc đa thức Legendre $P_0, P_1, P_2$ từ công thức sinh thế năng hấp dẫn
+### Giải thích: Khai triển làm từng bước đa thức Legendre $P_0, P_1, P_2$ từ công thức sinh thế năng hấp dẫn
 
 Xét hàm sinh thế năng của hai điện tích đặt cách nhau góc $\theta$ ($x = \cos\theta$, tỷ số khoảng cách $t < 1$):
 $$\frac{1}{\sqrt{1 - 2xt + t^2}} = \sum_{n=0}^{\infty} P_n(x)\, t^n.$$

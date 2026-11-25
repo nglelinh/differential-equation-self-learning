@@ -22,7 +22,7 @@ This optional lesson introduces spectral asymptotics, especially Weyl's law, as 
 
 Students should know eigenvalue problems, the Laplacian, Hilbert spaces, and the semiclassical intuition that large eigenvalues correspond to high frequency. Chapter 12 on spectral theory provides useful background.
 
-## Background Knowledge Map: Counting Eigenvalues via Phase-Space Volume
+## Key ideas: Counting Eigenvalues via Phase-Space Volume
 
 Four pillars connect the spectrum $0 < \lambda_1 \le \lambda_2 \le \dots$ of $-\Delta$ on a bounded domain $\Omega \subset \mathbb{R}^d$ to its geometry:
 
@@ -96,7 +96,7 @@ High-energy spectral data is naturally interpreted through phase-space geometry.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Testing One-Term and Two-Term Weyl Laws on the Square $[0,\pi]^2$
+### Worked example: Testing One-Term and Two-Term Weyl Laws on the Square $[0,\pi]^2$
 
 For the Dirichlet Laplacian $-\Delta$ on $\Omega = (0,\pi)^2$, the exact eigenvalues are $\lambda_{m,n} = m^2 + n^2$ for integers $m, n \ge 1$. Count $N(25)$ exactly by hand and compare with both the one-term and two-term Weyl formulas!
 

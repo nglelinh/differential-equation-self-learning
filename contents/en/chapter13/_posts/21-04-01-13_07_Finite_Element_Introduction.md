@@ -20,7 +20,7 @@ This lesson introduces the finite element method as a mesh-based variational dis
 
 Students should know weak formulations from Chapter 12 and basic numerical PDE discretization ideas.
 
-## Background Knowledge Map: From Weak Formulations to Galerkin Finite Elements
+## Key ideas: From Weak Formulations to Galerkin Finite Elements
 
 Four foundational pillars link Sobolev spaces directly to industrial-strength engineering software:
 
@@ -98,7 +98,7 @@ This clarifies why finite elements are so valuable.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Assembling and Solving a 1D $P_1$ Finite Element System
+### Worked example: Assembling and Solving a 1D $P_1$ Finite Element System
 
 Solve $-u''(x) = 1$ on $(0,1)$ with $u(0) = u(1) = 0$ (exact solution $u(x) = \frac{1}{2}x(1-x)$) using $P_1$ linear hat functions on 3 uniform elements of length $h = 1/3$ (interior nodes $x_1 = 1/3$, $x_2 = 2/3$).
 

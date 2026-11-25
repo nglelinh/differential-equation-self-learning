@@ -12,7 +12,7 @@ lesson_type: required
 
 Pluck a guitar string or watch a skyscraper sway in a gust of wind: knowing only *where* the object is right now is no longer enough to predict its next move—you also need its initial *velocity*. Because Newton's second law $$F = ma = m y''$$ ties force to acceleration, second-order linear ODEs are the native language of vibration, waves, and circuits, and their solution sets inherit the clean vector-space geometry of linear algebra.
 
-## Background Knowledge Map: The Linear Operator Architecture of Second-Order ODEs
+## Key ideas: The Linear Operator Architecture of Second-Order ODEs
 
 Four foundational theorems govern every second-order linear equation $$L[y] := y'' + p(t)y' + q(t)y = g(t)$$:
 
@@ -21,7 +21,7 @@ Four foundational theorems govern every second-order linear equation $$L[y] := y
 3. **Global Existence and Uniqueness:** Whenever $$p(t), q(t), g(t)$$ are continuous on an open interval $$I$$ containing $$t_0$$, the IVP $$L[y] = g(t),\; y(t_0) = y_0,\; y'(t_0) = v_0$$ has a **unique** solution defined on the *entire* interval $$I$$—no spontaneous nonlinear blow-up!
 4. **Independence via the Wronskian:** Two solutions $$y_1, y_2$$ span the solution space if and only if $$W(y_1, y_2)(t_0) = y_1(t_0)y_2'(t_0) - y_1'(t_0)y_2(t_0) \ne 0$$ at a single point $$t_0 \in I$$.
 
-### Step-by-Step Worked Example (Read Slowly): Verifying a Fundamental Set and Determining Maximal Interval of Existence
+### Worked example: Verifying a Fundamental Set and Determining Maximal Interval of Existence
 
 Consider the variable-coefficient IVP
 $$(t - 2)y'' + 3y' - \frac{y}{t} = \ln(t + 1), \qquad y(1) = 4, \quad y'(1) = -1.$$

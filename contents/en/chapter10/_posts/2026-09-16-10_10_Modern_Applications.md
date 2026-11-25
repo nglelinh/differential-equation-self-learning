@@ -14,14 +14,14 @@ How do geophysicists map subterranean oil reservoirs, earthquake fault zones, or
 
 Traditional finite-difference wave simulations must run millions of times during FWI optimization. Today, neural wave surrogates (FNOs, wave-informed PINNs, and adjoint-state differentiable solvers) accelerate forward wave propagation by orders of magnitude—yet they succeed *only* when they respect the exact hyperbolic physics of Chapter 10: CFL causality, frequency continuation (avoiding cycle skipping), and absorbing boundary layers!
 
-## Background Knowledge Map: Wave Physics Meets Modern Neural Imaging
+## Key ideas: Wave Physics Meets Modern Neural Imaging
 
 1. **Cycle Skipping & Multi-Scale Frequency Continuation:** Because seismic waveforms oscillate, comparing a predicted sine wave shifted by more than half a wavelength against data traps gradient descent in false local minima (*cycle skipping*). Both classical FWI and neural solvers overcome this by inverting low frequencies first, then progressively unlocking higher frequencies.
 2. **Causal Training for Hyperbolic PINNs:** Unlike elliptic/parabolic PDEs, hyperbolic wave PINNs fail catastrophically if trained uniformly over all time $$ [0, T] $$ at once—the network cheats by driving $$ u \approx 0 $$ at late times. Causal weighting (Wang et al., 2022) enforces low residual at early times $$ t $$ before unlocking later times, honoring the wave light cone!
 3. **Adjoint-State Method & Automatic Differentiation:** Computing the gradient of seismic misfit with respect to millions of subsurface wave-speed pixels $$ c(x) $$ requires only *one* forward wave simulation and *one* backward-in-time adjoint wave simulation—identical mathematically to reverse-mode backpropagation through time!
 4. **Absorbing Boundaries (PML) & Neural Operators:** Simulating an unbounded Earth on a finite box requires Perfectly Matched Layers (PML) to prevent artificial wall echoes; Fourier/Neural operators trained across families of velocity models $$ c(x) \mapsto u(x, t) $$ amortize wave-solving cost across thousands of inverse iterations.
 
-### Step-by-Step Worked Example (Read Slowly): Diagnosing Cycle Skipping and Computing the Travel-Time Sensitivity of $$ c(x) $$
+### Worked example: Diagnosing Cycle Skipping and Computing the Travel-Time Sensitivity of $$ c(x) $$
 
 **Problem:** A 1D seismic pulse of frequency $$ f = 10\text{ Hz} $$ travels from a surface source $$ x = 0 $$ to a reflector at depth $$ L = 1000\text{ m} $$ and back (total path $$ 2L = 2000\text{ m} $$). The true rock wave speed is $$ c_{\text{true}} = 2000\text{ m/s} $$, while our initial guess is $$ c_0 = 2500\text{ m/s} $$. Compute the travel-time error $$ \Delta t $$, check whether $$ |\Delta t| $$ exceeds the half-period cycle-skipping limit $$ \frac{1}{2f} $$, and find the maximum safe starting frequency $$ f_{\text{safe}} $$!
 

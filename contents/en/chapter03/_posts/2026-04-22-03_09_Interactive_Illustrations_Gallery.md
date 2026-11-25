@@ -12,7 +12,7 @@ lesson_type: optional
 
 In the time domain, a damped wave, a rectangular switch, and a sharp hammer strike look completely unrelated; in the complex $$s$$-plane, they sit side by side as simple poles and exponential phase factors. This interactive gallery bridges both worlds visually so you can drag a pole across the imaginary axis and watch stability flip in real time, or slide two signals past each other to see convolution build an output curve point by point.
 
-## Background Knowledge Map: Four Visual Bridges Between Time and the $$s$$-Plane
+## Key ideas: Four Visual Bridges Between Time and the $$s$$-Plane
 
 Look for these four visual correspondences as you manipulate the interactive widgets below:
 
@@ -21,7 +21,7 @@ Look for these four visual correspondences as you manipulate the interactive wid
 3. **Flip-and-Slide Convolution Geometry:** Watching $$g(\tau)$$ reflect to $$g(t - \tau)$$ and slide across $$f(\tau)$$ reveals why convolving two rectangular pulses produces a smooth triangle (one degree smoother!).
 4. **Pole–Zero Geometry of Frequency Response:** Evaluating $$\lvert H(i\omega)\rvert$$ as $$i\omega$$ marches up the imaginary axis equals the product of distances to zeros divided by the product of distances to poles—explaining resonance peaks geometrically!
 
-### Step-by-Step Worked Example (Read Slowly): Computing the Exact "Flip-and-Slide" Convolution of Two Unit Boxcars
+### Worked example: Computing the Exact "Flip-and-Slide" Convolution of Two Unit Boxcars
 
 Let $$f(t) = g(t) = u_0(t) - u_1(t)$$ (a unit pulse equal to $$1$$ on $$[0,1]$$ and $$0$$ elsewhere). Compute $$(f * g)(t)$$ analytically to match the sliding-overlap animation:
 

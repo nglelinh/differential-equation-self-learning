@@ -13,7 +13,7 @@ lesson_type: optional
 
 Đằng sau những mô hình Học máy Khoa học (Scientific Machine Learning) gây tiếng vang những năm 2020—như mạng nơ-ron tích hợp vật lý (PINN) hay Neural Operator—không phải là phép màu hộp đen, mà chính là các công cụ kinh điển của Chương 00: đạo hàm riêng, tích vô hướng $L^2$, chuẩn Sobolev và đạo hàm tự động (Autodiff). Khi bạn hiểu nền tảng giải tích và đại số tuyến tính ở mức độ hình học, bạn sẽ nhìn xuyên qua mọi kiến trúc AI vật lý hiện đại.
 
-## Bản đồ kiến thức nền: Bốn trụ cột toán học của Học máy Khoa học hiện đại
+## Kiến thức cần nhớ: Bốn trụ cột toán học của Học máy Khoa học hiện đại
 
 1. **Giải tích đa biến & Đạo hàm tự động (Automatic Differentiation)**:
    Quy tắc dây chuyền (chain rule) áp dụng trên đồ thị tính toán cho phép tính chính xác đạo hàm riêng $\partial_t u_\theta, \partial_{xx} u_\theta$ đến sai số máy $10^{-16}$ mà không cần sai phân hữu hạn.
@@ -38,7 +38,7 @@ Các công cụ cổ điển trong Chương 00 ban đầu được xây dựng �
 
 Hai câu hỏi cụ thể minh họa rõ mối liên hệ này. Thứ nhất, nếu một mạng dư (residual network) là một hệ động lực rời rạc, điều gì xảy ra khi bước rời rạc tiến về $$ 0 $$ và kiến trúc mạng trở thành một trường vector liên tục? Thứ hai, nếu một PDE xác định ánh xạ từ dữ liệu đầu vào $$a$$ sang nghiệm $$u$$, liệu ta có thể học ánh xạ đó như một toán tử giữa các không gian Banach thay vì chỉ như một vector giá trị tại các nút lưới? Cả hai câu hỏi đều đòi hỏi trực tiếp ngôn ngữ của chương này: điều kiện Lipschitz, ma trận Jacobi, tính đầy đủ và các chuẩn độc lập với phép rời rạc hóa lưới.
 
-### Khung giải thích (nên đọc chậm): Tính tay hàm mất mát PINN cho phương trình tăng trưởng $u'(t) = u(t),\; u(0) = 1$
+### Giải thích: Tính tay hàm mất mát PINN cho phương trình tăng trưởng $u'(t) = u(t),\; u(0) = 1$
 
 Giả sử ta dùng một mô hình đơn giản có 2 tham số $u_\theta(t) = a + b\,t$ trên đoạn $[0, 1]$ với 2 điểm kiểm tra nội bộ $t_1 = 0{,}5,\; t_2 = 1{,}0$ (biết nghiệm đúng là $e^t$):
 1. **Phần dư điều kiện đầu**: $r_{\text{IC}} = u_\theta(0) - 1 = a - 1$.

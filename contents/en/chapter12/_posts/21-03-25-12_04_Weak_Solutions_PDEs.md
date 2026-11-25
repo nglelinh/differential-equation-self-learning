@@ -22,7 +22,7 @@ This lesson explains how a classical PDE is rewritten in weak form, why weak sol
 
 Students should know weak derivatives, the spaces $$ H^1 $$ and $$ H^1_0 $$, integration by parts, and the basic meaning of homogeneous Dirichlet boundary conditions. It is important to emphasize that weak form does not throw away the PDE. It rewrites the same balance law in a more stable framework.
 
-## Background Knowledge Map: From Strong PDEs to Variational Weak Formulations
+## Key ideas: From Strong PDEs to Variational Weak Formulations
 
 Reformulating a boundary-value problem in weak form rests on four conceptual pillars:
 
@@ -117,7 +117,7 @@ The weak form only works if the solution and test functions live in a space wher
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Solving a Discontinuous-Load BVP Weakly
+### Worked example: Solving a Discontinuous-Load BVP Weakly
 
 Find the unique weak solution $u \in H_0^1(0,1)$ of $-u'' = f(x)$ on $(0,1)$ with $u(0) = u(1) = 0$, where $f(x) = 0$ on $(0,1/2)$ and $f(x) = 1$ on $(1/2,1)$. Verify explicitly that $u$ satisfies the weak formulation $\int_0^1 u'v'\,dx = \int_{1/2}^1 v\,dx$ for all $v \in H_0^1(0,1)$ despite failing to be $C^2$.
 

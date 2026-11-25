@@ -20,7 +20,7 @@ This lesson gives the basic definition of pseudo-differential operators. Student
 
 Students should know Fourier transforms, symbols, and the idea of oscillatory representation from the previous lessons.
 
-## Background Knowledge Map: Defining $\Psi\text{DOs}$, Pseudolocality, and Sobolev Boundedness
+## Key ideas: Defining $\Psi\text{DOs}$, Pseudolocality, and Sobolev Boundedness
 
 Four core properties establish $\Psi^m(\mathbb{R}^n)$ as a rock-solid class of linear operators:
 
@@ -98,7 +98,7 @@ This helps anchor the generalization.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Evaluating the Fractional Laplacian $(-\Delta)^{1/2}$ as a $\Psi\text{DO}$
+### Worked example: Evaluating the Fractional Laplacian $(-\Delta)^{1/2}$ as a $\Psi\text{DO}$
 
 Consider the first-order pseudo-differential operator $(-\Delta)^{1/2}$ on $\mathbb{R}$ with symbol $p(\xi) = |\xi|$ (smoothed near $\xi = 0$ if strict $S^1$ membership is required, though exact on nonzero frequencies). Apply $(-\Delta)^{1/2}$ to $u(x) = \cos(3x) + 2\sin(5x)$, and verify that applying it twice reproduces $-u''(x)$.
 

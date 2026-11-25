@@ -20,7 +20,7 @@ This lesson introduces Euler's method as the first numerical scheme for ordinary
 
 Students should know first-order ODEs, slope fields, and the geometric meaning of a derivative as local linear approximation. These ideas are reviewed in Lesson 13.00.
 
-## Background Knowledge Map: Geometry and Error Structure of Euler's Method
+## Key ideas: Geometry and Error Structure of Euler's Method
 
 Understanding Euler's method deeply prepares you for every modern Runge–Kutta and implicit integrator:
 
@@ -104,7 +104,7 @@ Students should see immediately that computation is not only about producing num
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Halving the Step Size to Verify $O(h)$ Convergence
+### Worked example: Halving the Step Size to Verify $O(h)$ Convergence
 
 Approximate $y(1) = e \approx 2.71828$ for the IVP $y' = y$, $y(0) = 1$ using forward Euler with $h = 0.25$ ($N = 4$) and then with $h = 0.125$ ($N = 8$), and check the error ratio.
 

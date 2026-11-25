@@ -14,7 +14,7 @@ lesson_type: required
 
 Nhược điểm chí mạng của phương pháp Euler là nó mù quáng tin vào độ dốc tại đầu đoạn $[t_n, t_n + h]$ trong khi đường cong nghiệm đang uốn lượn liên tục. Vậy nếu ta thử bước ra giữa đoạn, thăm dò độ dốc tại đó, sửa lại ước lượng một lần nữa, rồi lấy **trung bình có trọng số** của 4 độ dốc thăm dò thì sao? Bạn vừa phát minh lại **Runge–Kutta bậc 4 (RK4)**—cỗ máy giải ODE kinh điển thống trị khoa học kỹ thuật suốt hơn một thế kỷ!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Họ Phương pháp Runge–Kutta
+## Kiến thức cần nhớ: Bốn trụ cột của Họ Phương pháp Runge–Kutta
 
 1. **Ý tưởng Lấy mẫu Đa điểm Nội bộ (Stages $k_1, \dots, k_s$)**:
    Thay vì tính đạo hàm bậc cao $y'', y''', y^{(4)}$ phức tạp, RK chỉ gọi hàm $f(t, y)$ nhiều lần trong cùng một bước $[t_n, t_n + h]$ rồi ghép trọng số sao cho khớp chuỗi Taylor tới bậc $p$.
@@ -40,7 +40,7 @@ Nếu phương pháp Euler chỉ dựa vào hướng đi tại điểm xuất ph
 Chỉ bằng cách lấy một vài mẫu độ dốc có chọn lọc trong mỗi bước, Runge–Kutta nâng cao bậc chính xác đáng kể mà không cần tính đạo hàm bậc cao của $$ f $$. Nhờ ưu điểm này, họ Runge–Kutta trở thành công cụ tiêu chuẩn cho nhiều bài toán ODE không cứng.
 
 
-### Khung giải thích (nên đọc chậm): Thực hành tay trọn vẹn 1 bước RK4 và đối chiếu độ chính xác đến $10^{-6}$
+### Giải thích: Thực hành tay trọn vẹn 1 bước RK4 và đối chiếu độ chính xác đến $10^{-6}$
 
 Giải $y' = y + t$, $y(0) = 1$ tại $t_1 = 0{,}2$ với $h = 0{,}2$ (nghiệm giải tích $y(t) = 2e^t - t - 1$, nên $y(0{,}2) \approx \mathbf{1{,}2428055}$):
 1. **Tính 4 độ dốc thăm dò**:

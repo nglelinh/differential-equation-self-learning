@@ -12,7 +12,7 @@ lesson_type: required
 
 Place two species of paramecia in the same nutrient-rich petri dish: each thrives alone up to its own carrying capacity, yet together they compete for the same food. Will one drive the other completely extinct (**Gause's Competitive Exclusion Principle**), can both coexist peacefully, or does the winner depend entirely on who got a head start? A single visual comparison of two straight nullcline lines answers all three ecological questions cleanly.
 
-## Background Knowledge Map: The Four Nullcline Geometries of Competition
+## Key ideas: The Four Nullcline Geometries of Competition
 
 For the competitive Lotka–Volterra system $$x' = r_1 x\bigl(1 - \frac{x + \alpha_{12} y}{K_1}\bigr),\; y' = r_2 y\bigl(1 - \frac{y + \alpha_{21} x}{K_2}\bigr)$$, comparing the two interior nullclines $$L_x: x + \alpha_{12}y = K_1$$ and $$L_y: \alpha_{21}x + y = K_2$$ yields exactly **four** mutually exclusive outcomes:
 
@@ -21,7 +21,7 @@ For the competitive Lotka–Volterra system $$x' = r_1 x\bigl(1 - \frac{x + \alp
 3. **Stable Coexistence (Weak Interspecific Competition, $$\alpha_{12}\alpha_{21} < 1$$):** The nullclines cross with $$K_1 < K_2/\alpha_{21}$$ and $$K_2 < K_1/\alpha_{12}$$; each species inhibits *itself* more strongly than it inhibits its rival, making the interior equilibrium $$(x^*, y^*)$$ a **globally attracting stable node**!
 4. **Bistability / Founder Control (Strong Interspecific Competition, $$\alpha_{12}\alpha_{21} > 1$$):** The nullclines cross in the opposite orientation; $$(x^*, y^*)$$ is a **saddle** whose stable manifold (separatrix) divides the first quadrant into two competing basins—one ending at $$(K_1, 0)$$ and the other at $$(0, K_2)$$!
 
-### Step-by-Step Worked Example (Read Slowly): Classifying Stable Coexistence vs. Bistability by Jacobian and Nullclines
+### Worked example: Classifying Stable Coexistence vs. Bistability by Jacobian and Nullclines
 
 Analyze the competing-species model
 $$x' = x(3 - x - 2y), \qquad y' = y(2 - x - y), \qquad x \ge 0,\; y \ge 0.$$

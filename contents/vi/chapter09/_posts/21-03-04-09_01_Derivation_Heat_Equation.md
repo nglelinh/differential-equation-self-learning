@@ -14,7 +14,7 @@ lesson_type: required
 
 Phương trình nhiệt $u_t = \alpha u_{xx}$ không rơi từ trên trời xuống—nó là kết quả trực tiếp của đúng **hai định luật vật lý sơ cấp**: định luật **Bảo toàn Năng lượng** trên một lát cắt vô cùng mỏng $[x, x+\Delta x]$ và **Định luật Fourier về Dẫn nhiệt** (nhiệt luôn chảy từ nơi nóng sang nơi lạnh tỷ lệ với độ dốc nhiệt độ).
 
-## Bản đồ kiến thức nền: Bốn bước suy diễn Phương trình Nhiệt từ Nguyên lý Đầu tiên
+## Kiến thức cần nhớ: Bốn bước suy diễn Phương trình Nhiệt từ Nguyên lý Đầu tiên
 
 1. **Nhiệt năng trong phần tử thanh $[x, x + \Delta x]$**:
    $E = c \rho A\, u(x, t)\, \Delta x$ ($c$: nhiệt dung riêng, $\rho$: khối lượng riêng, $A$: tiết diện thanh).
@@ -40,7 +40,7 @@ Trong nhiều tài liệu, phương trình nhiệt thường được viết nga
 
 Ý tưởng cốt lõi bắt nguồn từ cân bằng vật lý: nhiệt lượng trong một phần vật thể chỉ thay đổi khi có dòng nhiệt truyền qua biên hoặc có nguồn nhiệt sinh ra bên trong. Khi mật độ dòng nhiệt tỉ lệ với độ dốc nhiệt độ, phương trình cân bằng năng lượng tự động dẫn đến đạo hàm bậc hai theo không gian — dấu hiệu toán học đặc trưng của quá trình khuếch tán.
 
-### Khung giải thích (nên đọc chậm): Kiểm tra dấu của $u_t = \alpha u_{xx}$ bằng hình học độ cong tại đỉnh nóng và đáy lạnh
+### Giải thích: Kiểm tra dấu của $u_t = \alpha u_{xx}$ bằng hình học độ cong tại đỉnh nóng và đáy lạnh
 
 Không cần giải phương trình, bạn vẫn đọc ngay được xu hướng nhiệt độ tại mọi điểm chỉ bằng đạo hàm bậc hai $u_{xx}$ (độ cong của đồ thị $u$ theo $x$):
 - **Tại đỉnh nóng** (ví dụ $u(x) = 100 - (x - 5)^2$ quanh $x = 5$): đồ thị úp xuống (lõm dưới) $\implies u_{xx} = -2 < 0 \implies u_t = \alpha(-2) < 0$: **đỉnh nóng lập tức nguội đi**!

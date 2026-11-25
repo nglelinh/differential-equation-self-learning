@@ -13,7 +13,7 @@ lesson_type: required
 
 Nhiệt chảy từ nơi nóng sang nơi lạnh, chất lỏng xoáy quanh trụ cầu, còn điện trường tỏa ra từ điện tích—mọi định luật bảo toàn của vật lý đều được viết bằng ngôn ngữ của **giải tích vectơ**. Nắm vững bộ ba toán tử $\nabla$ (Gradient, Divergence, Curl) cùng hai định lý Gauss và Stokes chính là chiếc cầu trực tiếp biến định luật bảo toàn vật lý thành phương trình đạo hàm riêng (PDE) ở các chương cuối.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Giải tích Vectơ
+## Kiến thức cần nhớ: Bốn trụ cột của Giải tích Vectơ
 
 1. **Bộ ba toán tử vi phân ($\nabla f$, $\nabla \cdot \mathbf{F}$, $\nabla \times \mathbf{F}$)**:
    Gradient đo độ dốc cực đại của trường vô hướng; Divergence đo mật độ "nguồn phát / hút" cục bộ của dòng chảy; Curl đo độ xoáy cục bộ quanh từng điểm.
@@ -35,7 +35,7 @@ Trong nhiều bài toán thực tế, ta không chỉ xét hàm một biến mà
 
 Hãy hình dung một dòng sông. Gradient của độ cao mặt nước cho biết hướng dốc lớn nhất (nước chảy từ cao xuống thấp theo hướng ngược gradient); divergence của trường vận tốc cho biết tại một điểm có nguồn chảy ra hay bể hút vào; còn curl của trường vận tốc cho biết dòng chảy tại đó có xoáy hay không. Ba phép toán này mô tả đầy đủ các đặc trưng cục bộ của một trường trong không gian.
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng định lý Phân kỳ Gauss bằng tay cho trường xuyên tâm $\mathbf{F}(x, y, z) = (x, y, z)$ trên hình cầu bán kính $R = 2$
+### Giải thích: Kiểm chứng định lý Phân kỳ Gauss bằng tay cho trường xuyên tâm $\mathbf{F}(x, y, z) = (x, y, z)$ trên hình cầu bán kính $R = 2$
 
 1. **Vế trái (Tích phân thể tích của Divergence)**:
    $$\nabla \cdot \mathbf{F} = \frac{\partial x}{\partial x} + \frac{\partial y}{\partial y} + \frac{\partial z}{\partial z} = 1 + 1 + 1 = 3.$$

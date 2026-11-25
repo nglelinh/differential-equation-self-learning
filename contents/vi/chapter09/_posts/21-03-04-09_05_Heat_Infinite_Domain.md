@@ -14,7 +14,7 @@ lesson_type: required
 
 Điều gì xảy ra nếu thanh kim loại dài vô hạn trên cả trục thực $(-\infty, +\infty)$? Không còn biên hai đầu để tạo ra các tần số rời rạc $n\pi/L$ nữa—thay vào Chuỗi Fourier, ta dùng **Biến đổi Fourier** và thu được một công thức nghiệm tích phân tuyệt đẹp: **Tích chập giữa nhiệt độ ban đầu $f(x)$ với Nhân Nhiệt Gaussian (Heat Kernel)**!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Nhiệt trên $\mathbb{R}$
+## Kiến thức cần nhớ: Bốn trụ cột của Phương trình Nhiệt trên $\mathbb{R}$
 
 1. **Giải nhanh trong miền tần số Fourier**:
    Áp dụng $\mathcal{F}_x$ vào $u_t = \alpha u_{xx}$ cho $\hat{u}_t(\omega, t) = -\alpha \omega^2 \hat{u}(\omega, t) \implies \hat{u}(\omega, t) = \hat{f}(\omega)\, e^{-\alpha\omega^2 t}$.
@@ -41,7 +41,7 @@ Trên đoạn hữu hạn, điều kiện biên tạo ra một dãy mode riêng 
 
 Ý tưởng cốt lõi vẫn không đổi: nghiệm vẫn được phân rã thành các mode điều hòa, chỉ khác là chỉ số tần số giờ đây biến thiên liên tục. Đây là bước chuyển quan trọng từ chuỗi Fourier sang biến đổi Fourier trong lý thuyết PDE.
 
-### Khung giải thích (nên đọc chậm): Tính tay nghiệm bằng hàm sai số $\operatorname{erf}$ khi nửa thanh phải nóng $100^\circ\text{C}$ và nửa trái $0^\circ\text{C}$
+### Giải thích: Tính tay nghiệm bằng hàm sai số $\operatorname{erf}$ khi nửa thanh phải nóng $100^\circ\text{C}$ và nửa trái $0^\circ\text{C}$
 
 Cho $u_t = \alpha u_{xx}$ trên $\mathbb{R}$ với $f(y) = 100$ khi $y > 0$ và $f(y) = 0$ khi $y < 0$.
 1. Thay vào công thức tích chập (chỉ tích phân trên $y \in (0, +\infty)$):

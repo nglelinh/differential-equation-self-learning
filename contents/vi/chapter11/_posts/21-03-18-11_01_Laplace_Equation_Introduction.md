@@ -14,7 +14,7 @@ lesson_type: required
 
 Hãy nhúng một khung dây thép uốn cong bất kỳ vào chậu nước xà phòng rồi nhấc lên: màng xà phòng căng mịn hiện ra trong nháy mắt không có một đỉnh nhọn hay hố lõm nào bên trong. Ở trạng thái cân bằng, mọi điểm trên màng chỉ làm đúng một việc đơn giản: **trung bình hóa độ cao của các điểm lân cận quanh nó**. Khi viết sự cân bằng ấy thành ngôn ngữ vi phân, ta thu được **Phương trình Laplace** $\Delta u = u_{xx} + u_{yy} = 0$—trái tim của thế giới PDE elliptic!
 
-## Bản đồ kiến thức nền: Bốn trực giác cốt lõi để làm chủ Phương trình Laplace
+## Kiến thức cần nhớ: Bốn trực giác cốt lõi để làm chủ Phương trình Laplace
 
 1. **Ý nghĩa hình học của Toán tử Laplace $\Delta u$**:
    Đạo hàm bậc hai $u_{xx}$ đo độ cong theo trục $x$, còn $u_{yy}$ đo độ cong theo trục $y$. Điều kiện $u_{xx} + u_{yy} = 0$ buộc mọi điểm bên trong phải có dạng **yên ngựa** (cong lên theo hướng này bao nhiêu thì phải cong xuống theo hướng vuông góc bấy nhiêu).
@@ -40,7 +40,7 @@ Với phương trình nhiệt, ta khảo sát hệ tiến hóa theo thời gian 
 Đáng chú ý là cùng một phương trình $$ \Delta u=0 $$ lại xuất hiện trong nhiều lĩnh vực khác nhau: điện thế trong vùng không có điện tích, nhiệt độ ổn định khi không có nguồn nhiệt và thế vận tốc của dòng chảy không nén được, không xoáy. Bài học này giúp sinh viên nhận thấy sự thống nhất đó ngay từ đầu.
 
 
-### Khung giải thích (nên đọc chậm): Kiểm tra bằng tay hàm nào là hàm điều hòa và hình dáng mặt yên ngựa
+### Giải thích: Kiểm tra bằng tay hàm nào là hàm điều hòa và hình dáng mặt yên ngựa
 
 So sánh hai đa thức bậc hai rất giống nhau trên mặt phẳng $\mathbb{R}^2$:
 1. **Hàm thứ nhất $u(x, y) = x^2 - y^2$**:

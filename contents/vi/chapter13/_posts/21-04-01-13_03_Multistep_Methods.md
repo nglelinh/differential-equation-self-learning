@@ -14,7 +14,7 @@ lesson_type: required
 
 Phương pháp RK4 rất chính xác, nhưng ở mỗi bước nó phải đánh giá hàm vế phải $f(t, y)$ tới **4 lần** rồi ném bỏ toàn bộ kết quả sau khi bước sang $t_{n+1}$—một sự lãng phí lớn khi $f$ là một mô phỏng vật lý thiên văn hay khí quyển cực kỳ tốn CPU! **Phương pháp Đa bước Tuyến tính (Linear Multistep Methods)** như Adams–Bashforth, Adams–Moulton và BDF giải quyết bài toán ấy đầy thông minh: tận dụng lại lịch sử các giá trị $f_{n}, f_{n-1}, \dots, f_{n-k+1}$ đã tính sẵn để đạt bậc chính xác cao mà chỉ cần **đúng 1 lần gọi hàm $f$ mỗi bước**!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Đa bước (LMM)
+## Kiến thức cần nhớ: Bốn trụ cột của Phương pháp Đa bước (LMM)
 
 1. **Họ Adams (Nội suy đa thức cho vế phải $f$)**:
    - *Adams–Bashforth (Hiện)*: nội suy $f$ qua các điểm quá khứ $t_n, t_{n-1}, \dots$ để ngoại suy sang $[t_n, t_{n+1}]$.
@@ -47,7 +47,7 @@ Trong khi Runge–Kutta lấy nhiều mẫu độ dốc bên trong một bước
 Chiến lược này đặc biệt có lợi trong các mô phỏng dài hạn có hàm vế phải $$ f $$ tốn kém về mặt tính toán, vì số lần đánh giá $$ f $$ trên mỗi bước giảm đi đáng kể.
 
 
-### Khung giải thích (nên đọc chậm): Tính tay 1 bước Adams–Bashforth bậc 2 (AB2) chỉ với 1 lần gọi hàm
+### Giải thích: Tính tay 1 bước Adams–Bashforth bậc 2 (AB2) chỉ với 1 lần gọi hàm
 
 Giải $y' = -y$, $y(0) = 1$ với $h = 0{,}1$ bằng công thức AB2: $y_{n+1} = y_n + \frac{h}{2}(3f_n - f_{n-1})$:
 1. **Khởi động**: Ta có $y_0 = 1 \implies f_0 = -1$. Dùng giá trị khởi động chính xác $y_1 = e^{-0{,}1} \approx 0{,}904837 \implies f_1 = -0{,}904837$.
@@ -292,7 +292,7 @@ Tập trung vào ý tưởng tái sử dụng độ dốc cũ, nhu cầu khởi 
 
 ### 2. Trực giác bổ sung và các kết nối
 
-Runge–Kutta lấy nhiều mẫu bên trong một bước, còn phương pháp đa bước lấy ít mẫu hơn nhưng tận dụng nhiều bước trước đó. Không nên xem phương pháp đa bước chỉ là "công thức dài hơn": điều kiện ổn định bậc không (zero-stability) là yếu tố sống còn quyết định sự hội tụ.
+Runge–Kutta lấy nhiều mẫu bên trong một bước, còn phương pháp đa bước lấy ít mẫu hơn nhưng tận dụng nhiều bước trước đó. Không nên xem phương pháp đa bước chỉ là "công thức dài hơn": điều kiện ổn định bậc không (zero-stability) là yếu tố quan trọng quyết định sự hội tụ.
 
 ### 3. Trực quan hóa bằng Python
 

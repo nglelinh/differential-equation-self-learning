@@ -12,7 +12,7 @@ lesson_type: optional
 
 If you train a standard black-box neural network to predict the motion of a frictionless pendulum or orbiting planet from trajectory data, something frustrating happens: over long rollouts, the predicted orbit spirals artificially inward or outward because the network violates conservation of energy. **Hamiltonian Neural Networks (HNNs)** and **Second-Order Neural ODEs** fix this by baking Chapter 02's second-order mechanics and symplectic geometry directly into the neural architecture.
 
-## Background Knowledge Map: Classical Second-Order Mechanics Inside Modern SciML
+## Key ideas: Classical Second-Order Mechanics Inside Modern SciML
 
 Four structural ideas connect Chapter 02 directly to physics-informed deep learning:
 
@@ -21,7 +21,7 @@ Four structural ideas connect Chapter 02 directly to physics-informed deep learn
 3. **Symplectic Integration vs. Standard Euler:** Even with an exact Hamiltonian, explicit Euler artificially pumps energy into an oscillator at rate $$O(\Delta t)$$, whereas symplectic (Leapfrog/Verlet) integrators preserve a shadow Hamiltonian for millions of steps.
 4. **Lagrangian Neural Networks (LNNs):** When canonical momenta $$p$$ are unavailable and only generalized coordinates $$(q, \dot{q})$$ are observed, LNNs learn $$\mathcal{L}_\theta(q, \dot{q})$$ and recover accelerations via the Euler–Lagrange equation.
 
-### Step-by-Step Worked Example (Read Slowly): Quantifying Energy Drift of Explicit Euler vs. Symplectic Euler on a Harmonic Oscillator
+### Worked example: Quantifying Energy Drift of Explicit Euler vs. Symplectic Euler on a Harmonic Oscillator
 
 Compare one step of step size $$h = 0.2$$ on the unit harmonic oscillator $$q'' + q = 0$$ (written $$\dot{q} = p,\; \dot{p} = -q$$, exact energy $$H(q,p) = \frac{1}{2}(q^2 + p^2)$$) starting from $$(q_0, p_0) = (1, 0)$$ (so $$H_0 = 0.5000$$):
 

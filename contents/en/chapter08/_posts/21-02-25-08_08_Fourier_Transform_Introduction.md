@@ -14,14 +14,14 @@ What happens to a Fourier series when a signal is no longer periodic—like a si
 
 This limit is one of the most consequential bridges in all of mathematics: it converts differentiation on the whole real line into multiplication by $$ i\omega $$, turning PDEs on infinite domains into one-line algebraic equations.
 
-## Background Knowledge Map: From Discrete Harmonics to Continuous Spectra
+## Key ideas: From Discrete Harmonics to Continuous Spectra
 
 1. **The $$ L \to \infty $$ Riemann-Sum Limit:** Setting $$ \omega_n = \frac{n\pi}{L} $$ and $$ \Delta\omega = \frac{\pi}{L} $$, the complex Fourier series $$ \sum c_n e^{i\omega_n x} $$ becomes $$ \frac{1}{2\pi}\int_{-\infty}^\infty \hat{f}(\omega) e^{i\omega x}\,d\omega $$, where $$ \hat{f}(\omega) = \int_{-\infty}^\infty f(x) e^{-i\omega x}\,dx $$ (watch normalization conventions—some texts use $$ \frac{1}{\sqrt{2\pi}} $$ symmetrically).
 2. **Differentiation & Convolution Theorems (PDE Superpower):** For functions decaying at infinity, $$ \widehat{f'}(\omega) = i\omega \hat{f}(\omega) $$ and $$ \widehat{f''}(\omega) = -\omega^2 \hat{f}(\omega) $$. Meanwhile, convolution $$ (f * g)(x) = \int_{-\infty}^\infty f(y)g(x-y)\,dy $$ transforms into pointwise multiplication $$ \widehat{f * g}(\omega) = \hat{f}(\omega)\hat{g}(\omega) $$.
 3. **Plancherel's Theorem (Continuous Energy Conservation):** The Fourier transform is an isometry on $$ L^2(\mathbb{R}) $$: $$ \int_{-\infty}^\infty |f(x)|^2\,dx = \frac{1}{2\pi}\int_{-\infty}^\infty |\hat{f}(\omega)|^2\,d\omega $$.
 4. **Time–Frequency Uncertainty Principle:** Scaling $$ f(ax) $$ scales its transform to $$ \frac{1}{|a|}\hat{f}(\omega/a) $$. Squeezing a pulse narrowly in space/time inevitably spreads its spectrum wide in frequency—a pure Fourier law that underlies both radar resolution and Heisenberg's uncertainty principle in quantum mechanics.
 
-### Step-by-Step Worked Example (Read Slowly): Fourier Transform of the Two-Sided Exponential $$ e^{-a|x|} $$ and Plancherel Check
+### Worked example: Fourier Transform of the Two-Sided Exponential $$ e^{-a|x|} $$ and Plancherel Check
 
 **Problem:** Compute the Fourier transform $$ \hat{f}(\omega) = \int_{-\infty}^\infty e^{-a|x|} e^{-i\omega x}\,dx $$ for $$ a > 0 $$, check its scaling behavior as $$ a $$ doubles, and verify Plancherel's identity explicitly.
 

@@ -12,7 +12,7 @@ lesson_type: required
 
 Tại sao một sợi dây đàn guitar chiều dài $L$ chỉ phát ra đúng những nốt nhạc rời rạc (âm cơ bản và các họa âm bậc $2, 3, \dots$) chứ không rung ở bất kỳ tần số nào tùy thích? Tại sao một cây cột mảnh chỉ bị oằn gãy đột ngột ở đúng những mức tải trọng tới hạn nhất định (tải trọng Euler)? Câu trả lời toán học chung cho mọi hiện tượng cộng hưởng và lượng tử hóa trong tự nhiên chính là **Bài toán Trị riêng (Eigenvalue Problem)** cho toán tử vi phân!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Bài toán Trị riêng Vi phân
+## Kiến thức cần nhớ: Bốn trụ cột của Bài toán Trị riêng Vi phân
 
 1. **Nghiệm không tầm thường ($y \not\equiv 0$)**:
    Với bài toán biên thuần nhất $y'' + \lambda y = 0$, $y \equiv 0$ luôn là nghiệm tầm thường. Giá trị $\lambda$ làm xuất hiện nghiệm **khác không** gọi là **trị riêng (eigenvalue)**, và nghiệm tương ứng gọi là **hàm riêng (eigenfunction)**.
@@ -39,7 +39,7 @@ Trong một BVP thông thường, phương trình và điều kiện biên đư�
 
 Cấu trúc này hoàn toàn song song với đại số tuyến tính: thay vì tìm $$ \lambda $$ để phương trình ma trận $$ A\mathbf{v}=\lambda \mathbf{v} $$ có vector riêng khác 0, ở đây ta tìm các giá trị $$ \lambda $$ để toán tử vi phân có nghiệm khác không thỏa điều kiện biên. Các nghiệm đó là **hàm riêng**, và trong vật lý chúng tương ứng với các chế độ dao động tự nhiên hoặc trạng thái dừng.
 
-### Khung giải thích (nên đọc chậm): Giải đầy đủ 3 trường hợp dấu của $\lambda$ cho $y'' + \lambda y = 0,\; y(0) = 0,\; y'(L) = 0$ (biên hỗn hợp Dirichlet–Neumann)
+### Giải thích: Giải đầy đủ 3 trường hợp dấu của $\lambda$ cho $y'' + \lambda y = 0,\; y(0) = 0,\; y'(L) = 0$ (biên hỗn hợp Dirichlet–Neumann)
 
 1. **Trường hợp 1 ($\lambda = -\mu^2 < 0$, $\mu > 0$)**:
    $y = c_1 \cosh(\mu x) + c_2 \sinh(\mu x)$. Từ $y(0) = c_1 = 0 \implies y = c_2\sinh(\mu x) \implies y'(L) = c_2 \mu \cosh(\mu L) = 0$. Vì $\cosh(\mu L) \ge 1 > 0 \implies c_2 = 0$ (chỉ có nghiệm tầm thường → **loại**).

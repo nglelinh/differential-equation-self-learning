@@ -12,7 +12,7 @@ lesson_type: required
 
 Hang two identical pendulums from a slightly flexible curtain rod and pull only the left one back: at first the left pendulum swings wildly while the right sits still, then mysteriously the left pendulum slows to a complete stop as all its energy transfers to the right one—and then back again! Coupled linear oscillators explain this hypnotic energy sloshing as the interference of just two **normal modes**, where every mass moves in perfect synchrony at a single pure frequency.
 
-## Background Knowledge Map: Normal Modes, Symmetric Matrices, and Energy Transfer
+## Key ideas: Normal Modes, Symmetric Matrices, and Energy Transfer
 
 Four physical and linear-algebraic insights make coupled oscillator problems crystal clear:
 
@@ -21,7 +21,7 @@ Four physical and linear-algebraic insights make coupled oscillator problems cry
 3. **In-Phase vs. Out-of-Phase Modes:** For two symmetric masses connected by a coupling spring $$k_c$$, the lower frequency $$\omega_1$$ corresponds to the **symmetric (in-phase)** mode $$(1, 1)^\top$$ (where the middle spring never stretches!), while the higher frequency $$\omega_2$$ corresponds to the **antisymmetric (out-of-phase)** mode $$(1, -1)^\top$$ (where the middle spring compresses twice as hard!).
 4. **Beating and Periodic Energy Exchange:** Superposing two closely spaced normal frequencies $$\omega_1 \approx \omega_2$$ (weak coupling $$k_c \ll k$$) produces slow beats at frequency $$\frac{\omega_2 - \omega_1}{2}$$, transferring 100% of the kinetic energy back and forth between the two masses!
 
-### Step-by-Step Worked Example (Read Slowly): Computing Normal Modes and Exact Energy-Transfer Time for Two Coupled Masses
+### Worked example: Computing Normal Modes and Exact Energy-Transfer Time for Two Coupled Masses
 
 Two equal unit masses ($$m_1 = m_2 = 1$$) are anchored to walls by outer springs $$k = 4$$ and joined to each other by a weak coupling spring $$k_c = 1$$. At $$t = 0$$, we displace only the first mass: $$x_1(0) = 2,\; x_2(0) = 0,\; x_1'(0) = x_2'(0) = 0$$.
 

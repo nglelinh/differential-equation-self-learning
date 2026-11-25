@@ -12,7 +12,7 @@ lesson_type: optional
 
 Khác với phương trình nhiệt nơi mọi hình dạng ban đầu đều tan chảy thành đường cong mượt, thế giới của phương trình sóng trong Chương 10 sống động như một phòng thí nghiệm nhạc cụ và quang học: xung tam giác tách đôi giữ nguyên góc nhọn, sóng gặp đầu cố định lật ngược pha rồi dội về, còn môi trường tán sắc lại kéo giãn một gói sóng thành cầu vồng các tần số chạy nhanh chậm khác nhau.
 
-## Bản đồ kiến thức nền: Bốn hiện tượng cốt lõi cần quan sát trong Gallery Chương 10
+## Kiến thức cần nhớ: Bốn hiện tượng cốt lõi cần quan sát trong Gallery Chương 10
 
 1. **Tách xung d'Alembert và Nón đặc trưng**:
    Một nhiễu động cục bộ ban đầu không lan tức thì toàn không gian mà tách thành hai nửa chạy theo đúng hai tia $x \pm ct = \text{const}$, tạo thành nón ảnh hưởng có biên sắc nét.
@@ -36,7 +36,7 @@ Nên xem bộ minh họa theo đúng thứ tự các bài học trong chương. 
 Đây cũng là tài liệu ôn tập hữu ích trước khi chuyển sang Chương 11, giúp làm rõ những đặc trưng riêng của bài toán sóng lan truyền so với các bài toán elliptic.
 
 
-### Khung giải thích (nên đọc chậm): Theo dõi bằng tay đường đi của một xung sóng phản xạ trên dây cố định
+### Giải thích: Theo dõi bằng tay đường đi của một xung sóng phản xạ trên dây cố định
 
 Xét sợi dây $x \ge 0$ cố định tại $x = 0$ ($u(0, t) = 0$) với tốc độ sóng $c = 2\text{ m/s}$. Tại $t = 0$, ta thả từ trạng thái nghỉ ($u_t = 0$) một xung tam giác hẹp cao $h = 1$ có đỉnh tại $x_0 = 3\text{ m}$:
 1. **Tại $t = 1\text{ s}$**: Xung tách đôi thành hai xung cao $\mathbf{0{,}5}$, một đỉnh dịch sang phải tới $x = 3 + 2(1) = \mathbf{5\text{ m}}$, một đỉnh dịch sang trái tới $x = 3 - 2(1) = \mathbf{1\text{ m}}$.

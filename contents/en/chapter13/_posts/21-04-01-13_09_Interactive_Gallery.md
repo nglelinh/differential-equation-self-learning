@@ -24,7 +24,7 @@ A good workflow is to revisit the gallery after reading a theorem or method from
 
 The page is also useful as a review sheet before students move from ODE solvers to PDE discretization, since it keeps the language of consistency, convergence, and stability in one place.
 
-## Background Knowledge Map: What to Watch in Numerical Simulation Widgets
+## Key ideas: What to Watch in Numerical Simulation Widgets
 
 Keep four diagnostic signatures in mind as you manipulate the interactive controls:
 
@@ -42,7 +42,7 @@ Keep four diagnostic signatures in mind as you manipulate the interactive contro
   height="980px"
 %}
 
-### Step-by-Step Worked Example (Read Slowly): Testing Energy Conservation on the Imaginary Axis ($z = i\omega h$)
+### Worked example: Testing Energy Conservation on the Imaginary Axis ($z = i\omega h$)
 
 Before experimenting with the oscillator widget, test three classic integrators on the undamped rotation $y' = i\omega y$ (whose exact solution $|y(t)| = |y_0|$ conserves energy forever) by computing $|R(i\theta)|$ where $\theta = \omega h > 0$.
 

@@ -14,7 +14,7 @@ lesson_type: required
 
 Định lý Lax–Milgram mới chỉ hứa hẹn rằng nghiệm yếu $u$ nằm trong $H^1(\Omega)$—một không gian vẫn chứa đầy những hàm gãy khúc không có đạo hàm bậc hai! Vậy làm sao ta biết khi nguồn $f$ trơn thì nghiệm $u$ thực sự là nghiệm cổ điển $C^2$, thậm chí trơn vô hạn $C^\infty$? Câu trả lời nằm ở phép màu của **Tính Trơn Elliptic (Elliptic Regularity)**: toán tử elliptic bậc hai luôn **tặng thêm đúng 2 bậc đạo hàm** cho nghiệm so với vế phải $f$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Lý thuyết Tính Trơn Elliptic
+## Kiến thức cần nhớ: Bốn trụ cột của Lý thuyết Tính Trơn Elliptic
 
 1. **Quy tắc "Tăng 2 bậc đạo hàm" ($f \in H^k \implies u \in H^{k+2}$)**:
    Với toán tử elliptic đều bậc hai có hệ số trơn và miền có biên trơn, nếu $f \in L^2$ thì $u \in H^2$; nếu $f \in H^k$ thì $u \in H^{k+2}$—và nếu $f \in C^\infty$ thì $u \in C^\infty$!
@@ -38,7 +38,7 @@ Sinh viên cần nắm khái niệm nghiệm yếu, không gian Sobolev, bài to
 Khi dữ liệu đầu vào đủ tốt, phương trình elliptic có xu hướng cải thiện độ trơn của nghiệm. Dù ban đầu ta chỉ chứng minh được nghiệm yếu thuộc $$ H^1 $$, các kết quả về tính chính quy cho phép suy ra nghiệm thực chất thuộc $$ H^2 $$, hoặc cao hơn nữa nếu nguồn và biên trơn hơn. Nói cách khác, toán tử elliptic không chỉ đảm bảo tồn tại nghiệm mà còn nâng bậc độ trơn của nghiệm so với dữ liệu nguồn.
 
 
-### Khung giải thích (nên đọc chậm): Tận mắt thấy nghiệm tăng đúng 2 bậc trơn từ một nguồn $f$ gián đoạn!
+### Giải thích: Tận mắt thấy nghiệm tăng đúng 2 bậc trơn từ một nguồn $f$ gián đoạn!
 
 Xét phương trình 1D $-u''(x) = f(x)$ trên $(0, 1)$ với nguồn bậc thang **gián đoạn** $f(x) = 0$ trên $(0, \tfrac{1}{2})$ và $f(x) = 1$ trên $(\tfrac{1}{2}, 1)$ (rõ ràng $f \in L^2(0,1)$ nhưng $f \notin C^0([0,1])$):
 1. **Tích phân lần 1 (tìm $u'$)**: $u'(x)$ là hằng số $C_1$ trên $(0, \tfrac{1}{2})$ và bằng $C_1 - (x - \tfrac{1}{2})$ trên $(\tfrac{1}{2}, 1)$. Nhận xét: $u'$ **liên tục** tại $x = \tfrac{1}{2}$ (chỉ có góc gãy, tức $u' \in H^1$)!

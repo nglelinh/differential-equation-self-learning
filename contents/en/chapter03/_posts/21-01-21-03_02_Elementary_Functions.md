@@ -12,7 +12,7 @@ lesson_type: required
 
 You would never recompute $$\frac{d}{dx}(x^5 e^{3x})$$ from the limit definition of the derivative once you know the product rule—and you should never recompute elementary Laplace transforms from scratch once you master a small dictionary plus two operational rules. With just five building blocks and the First Shifting Theorem, you can transform damped waves, resonant polynomials, and exponential envelopes in seconds.
 
-## Background Knowledge Map: Building a High-Speed Transform Dictionary
+## Key ideas: Building a High-Speed Transform Dictionary
 
 Four structural rules generate almost the entire standard Laplace transform table:
 
@@ -21,7 +21,7 @@ Four structural rules generate almost the entire standard Laplace transform tabl
 3. **First Shifting Theorem ($$s$-Shift):** Multiplying $$f(t)$$ by an exponential envelope $$e^{at}$$ simply shifts the transform argument: $$\mathcal{L}\{e^{at}f(t)\}(s) = F(s - a)$$ for $$s > a + \sigma_0$$.
 4. **Multiplication by $$t^n$$ (Frequency Differentiation):** Differentiating under the integral sign gives $$\mathcal{L}\{t^n f(t)\} = (-1)^n \frac{d^n}{ds^n}F(s)$$, instantly producing transforms of secular resonance terms like $$t\sin(\omega t)$$.
 
-### Step-by-Step Worked Example (Read Slowly): Combining Shifting and Differentiation for $$\mathcal{L}\{t\,e^{-3t}\sin(2t)\}$$
+### Worked example: Combining Shifting and Differentiation for $$\mathcal{L}\{t\,e^{-3t}\sin(2t)\}$$
 
 Compute $$\mathcal{L}\bigl\{t\,e^{-3t}\sin(2t)\bigr\}$$ without evaluating a single integral.
 

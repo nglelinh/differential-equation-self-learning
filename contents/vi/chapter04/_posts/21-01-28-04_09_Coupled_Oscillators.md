@@ -13,7 +13,7 @@ lesson_type: required
 
 Gắn hai con lắc với nhau bằng một lò xo nhỏ rồi kéo lệch một bên: bạn sẽ chứng kiến màn "chuyền năng lượng" mê hoặc khi con lắc thứ nhất dừng hẳn lại để truyền toàn bộ dao động sang con lắc thứ hai, rồi lại nhận ngược về! Bí mật đằng sau chuyển động tưởng như rối rắm ấy—từ phân tử $\text{CO}_2$ đến hệ thống treo ô tô 4 bánh—nằm ở các **chế độ chuẩn (normal modes)** và **tần số riêng $\omega_k$** của ma trận độ cứng!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Dao động Liên kết
+## Kiến thức cần nhớ: Bốn trụ cột của Dao động Liên kết
 
 1. **Hệ cấp hai dạng ma trận ($M\mathbf{x}'' = -K\mathbf{x}$ hay $\mathbf{x}'' = A\mathbf{x}$)**:
    Thay vì hạ bậc sang hệ $4\times 4$ cồng kềnh, thử trực tiếp $\mathbf{x}(t) = \mathbf{v}\cos(\omega t)$ biến ngay bài toán thành **bài toán trị riêng $2\times 2$**: $A\mathbf{v} = -\omega^2 \mathbf{v}$!
@@ -40,7 +40,7 @@ Khi hai vật dao động được nối với nhau bằng lò xo, chuyển đ�
 
 Trong ứng dụng này, mọi khái niệm đại số tuyến tính đều mang ý nghĩa vật lý cụ thể: trị riêng xác định tần số dao động riêng, vector riêng mô tả hình dạng dao động của cả hệ, tổ hợp tuyến tính tái hiện chuyển động thực tế, và khi hai tần số riêng gần nhau ta quan sát được hiện tượng phách.
 
-### Khung giải thích (nên đọc chậm): Tìm 2 tần số chuẩn và chế độ chuẩn của hệ hai vật $m_1 = m_2 = 1$ nối 3 lò xo đều có $k = 1$
+### Giải thích: Tìm 2 tần số chuẩn và chế độ chuẩn của hệ hai vật $m_1 = m_2 = 1$ nối 3 lò xo đều có $k = 1$
 
 Cân bằng lực Hooke cho hai độ lệch $x_1, x_2$:
 - $x_1'' = -x_1 + (x_2 - x_1) = -2x_1 + x_2$

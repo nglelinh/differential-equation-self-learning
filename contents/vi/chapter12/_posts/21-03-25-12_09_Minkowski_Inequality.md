@@ -12,9 +12,9 @@ lesson_type: optional
 
 ![Bất đẳng thức Minkowski và hình học $$ L^p $$]({{ site.imgurl }}/chapter_img/chapter12/09_minkowski_inequality.svg )
 
-Trong mặt phẳng Euclid, ta thuộc lòng rằng tổng độ dài hai cạnh tam giác luôn lớn hơn hoặc bằng cạnh thứ ba. Khi bước vào thế giới vô hạn chiều của các không gian hàm $L^p(\Omega)$, câu hỏi sống còn lập tức xuất hiện: liệu đại lượng $\|f\|_{L^p} = (\int |f|^p\,dx)^{1/p}$ có còn tuân theo bất đẳng thức tam giác để thực sự là một **khoảng cách hình học** hợp lệ hay không? **Bất đẳng thức Minkowski** trả lời "CÓ" cho mọi $1 \le p \le \infty$—và phiên bản tích phân của nó còn là vũ khí bí mật để ước lượng nghiệm PDE qua phép tích chập!
+Trong mặt phẳng Euclid, ta thuộc lòng rằng tổng độ dài hai cạnh tam giác luôn lớn hơn hoặc bằng cạnh thứ ba. Khi bước vào thế giới vô hạn chiều của các không gian hàm $L^p(\Omega)$, câu hỏi quan trọng lập tức xuất hiện: liệu đại lượng $\|f\|_{L^p} = (\int |f|^p\,dx)^{1/p}$ có còn tuân theo bất đẳng thức tam giác để thực sự là một **khoảng cách hình học** hợp lệ hay không? **Bất đẳng thức Minkowski** trả lời "CÓ" cho mọi $1 \le p \le \infty$—và phiên bản tích phân của nó còn là vũ khí bí mật để ước lượng nghiệm PDE qua phép tích chập!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Bất đẳng thức Minkowski
+## Kiến thức cần nhớ: Bốn trụ cột của Bất đẳng thức Minkowski
 
 1. **Bất đẳng thức Tam giác cho $L^p$ ($1 \le p \le \infty$)**:
    $\|f + g\|_{L^p} \le \|f\|_{L^p} + \|g\|_{L^p}$. Đây là viên gạch biến $L^p$ thành không gian định chuẩn (và chứng minh hình cầu đơn vị $\{\|f\|_{L^p} \le 1\}$ là tập lồi!).
@@ -48,7 +48,7 @@ tính chất tam giác không còn hiển nhiên. Bất đẳng thức Minkowski
 Không chỉ hợp thức hóa cấu trúc chuẩn, bất đẳng thức Minkowski còn mang ý nghĩa hình học rõ ràng: trong không gian $$ L^p $$, việc cộng hai hàm không làm độ lớn tích lũy vượt quá tổng độ lớn riêng lẻ của từng hàm. Đây là nguyên lý thường xuyên dùng khi tách nghiệm thành nhiều thành phần, tách tín hiệu và nhiễu, hoặc chặn sai số trong các phép xấp xỉ.
 
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng số trực tiếp Bất đẳng thức Minkowski trên $[0, 1]$ với $p = 2$
+### Giải thích: Kiểm chứng số trực tiếp Bất đẳng thức Minkowski trên $[0, 1]$ với $p = 2$
 
 Chọn hai hàm đơn giản $f(x) = 1$ và $g(x) = x$ trên $\Omega = [0, 1]$:
 1. **Tính vế phải $\|f\|_{L^2} + \|g\|_{L^2}$**:

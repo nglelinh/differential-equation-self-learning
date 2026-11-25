@@ -14,7 +14,7 @@ lesson_type: optional
 
 Năm 1911, Hermann Weyl chứng minh một định lý khiến giới vật lý và toán học kinh ngạc: nếu bạn chỉ được nghe toàn bộ danh sách các tần số dao động riêng $\lambda_1 \le \lambda_2 \le \dots$ của một mặt trống phẳng $\Omega$ mà **không hề nhìn thấy hình dạng của nó**, bạn vẫn có thể tính chính xác **diện tích** của cái trống! Công thức đếm $N(\lambda) \sim \frac{\operatorname{Area}(\Omega)}{4\pi}\lambda$—**Định luật Weyl**—là viên ngọc mở đầu cho **Tiệm cận Phổ (Spectral Asymptotics)**, nơi giải tích vi địa phương đọc ra hình học của không gian từ âm thanh của nó!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Tiệm cận Phổ & Định luật Weyl
+## Kiến thức cần nhớ: Bốn trụ cột của Tiệm cận Phổ & Định luật Weyl
 
 1. **Hàm Đếm Giá trị riêng $N(\lambda) = \#\{k : \lambda_k \le \lambda\}$ và Thể tích Không gian Pha**:
    Theo nguyên lý bán cổ điển, mỗi trạng thái lượng tử chiếm đúng một ô thể tích $(2\pi)^n$ trong không gian pha $T^*\Omega$. Do đó số giá trị riêng $\le \lambda$ của $-\Delta$ tiệm cận bằng thể tích vùng $\{(x, \xi) \in T^*\Omega : |\xi|^2 \le \lambda\}$ chia cho $(2\pi)^n$:
@@ -41,7 +41,7 @@ Khi xét từng trị riêng riêng lẻ, phổ toán tử có vẻ như một d
 Điểm đáng chú ý là phổ không chỉ mô tả các tần số dao động mà còn mã hóa thông tin về hình học miền, metric và thể tích không gian pha, đặt bài toán phổ vào giao điểm của PDE, hình học và vật lý.
 
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng số trực tiếp Định luật Weyl (2 số hạng) trên hình vuông $[0, \pi]^2$
+### Giải thích: Kiểm chứng số trực tiếp Định luật Weyl (2 số hạng) trên hình vuông $[0, \pi]^2$
 
 Xét bài toán Dirichlet $-\Delta u = \lambda u$ trên hình vuông $\Omega = [0, \pi]^2$ (Diện tích $= \pi^2$, Chu vi $= 4\pi$). Các giá trị riêng chính xác là $\lambda_{m, n} = m^2 + n^2$ với $m, n \in \mathbb{Z}_{\ge 1}$. Hãy đếm $N(100)$ (số cặp nguyên dương thỏa mãn $m^2 + n^2 \le 100$):
 1. **Đếm tay chính xác**:

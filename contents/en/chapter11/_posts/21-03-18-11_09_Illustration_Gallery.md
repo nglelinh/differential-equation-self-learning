@@ -24,7 +24,7 @@ Work through the gallery in lesson order. After each figure, return to the corre
 
 The lesson also serves as a good review before Chapter 12, because it clarifies what aspects of elliptic PDEs will later be reformulated in functional-analytic language.
 
-## Background Knowledge Map: Reading the Visual Signatures of Elliptic PDEs
+## Key ideas: Reading the Visual Signatures of Elliptic PDEs
 
 Every diagram in this chapter encodes a deep analytical theorem; four visual principles help you decode them immediately:
 
@@ -42,7 +42,7 @@ Every diagram in this chapter encodes a deep analytical theorem; four visual pri
   height="980px"
 %}
 
-### Step-by-Step Worked Example (Read Slowly): Quantifying Visual Harmonic Smoothing on the Unit Disk
+### Worked example: Quantifying Visual Harmonic Smoothing on the Unit Disk
 
 When you look at the gallery plots of harmonic functions on a disk, boundary ripples seem to vanish almost instantly toward the center. Let us put an exact number on that visual phenomenon by comparing a low-frequency boundary wave $f_1(\theta) = \cos(\theta)$ against a high-frequency ripple $f_{10}(\theta) = \cos(10\theta)$ on the unit disk $r \le 1$.
 

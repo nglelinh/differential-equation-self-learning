@@ -14,7 +14,7 @@ lesson_type: required
 
 Đứng trước một phương trình đạo hàm riêng $u_t = \alpha u_{xx}$ nơi hai biến $x$ và $t$ quyện chặt vào nhau, **Phương pháp Tách biến (Separation of Variables)** của Fourier thực hiện một nước đi táo bạo: thử tìm các nghiệm cơ sở có dạng tích $u(x, t) = X(x)T(t)$, tách một PDE khó thành **hai ODE dễ giải**, rồi cộng chồng chất vô hạn chúng lại bằng Chuỗi Fourier để khớp điều kiện ban đầu!
 
-## Bản đồ kiến thức nền: Bốn bước chuẩn mực của Phương pháp Tách biến
+## Kiến thức cần nhớ: Bốn bước chuẩn mực của Phương pháp Tách biến
 
 1. **Tách hằng số phân ly $-\lambda$**:
    Thế $u = X(x)T(t)$ vào $u_t = \alpha u_{xx}$ và chia cho $\alpha X T$:
@@ -40,7 +40,7 @@ Phương pháp tách biến là một kỹ thuật nền tảng của lý thuy�
 
 Với phương trình nhiệt, kết quả thu được mang ý nghĩa vật lý rõ nét: mỗi mode không gian đại diện cho một dạng phân bố nhiệt cơ bản, còn thừa số thời gian quyết định tốc độ tắt dần của mode đó. Các mode tần số cao tắt nhanh hơn, còn các mode tần số thấp tồn tại lâu hơn — đây là cách diễn đạt định lượng cho hiệu ứng làm mượt của quá trình khuếch tán.
 
-### Khung giải thích (nên đọc chậm): Giải trọn vẹn bài toán thanh nhiệt $u_t = 2 u_{xx}$ trên $[0, \pi]$ với $u(0,t)=u(\pi,t)=0$ và $u(x,0) = 1$
+### Giải thích: Giải trọn vẹn bài toán thanh nhiệt $u_t = 2 u_{xx}$ trên $[0, \pi]$ với $u(0,t)=u(\pi,t)=0$ và $u(x,0) = 1$
 
 1. **Tách biến với $L = \pi, \alpha = 2$**:
    Biên Dirichlet $X(0) = X(\pi) = 0 \implies \lambda_n = n^2,\; X_n(x) = \sin(nx)$ và $T_n(t) = e^{-2n^2 t}$.

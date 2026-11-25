@@ -20,7 +20,7 @@ This lesson introduces the Fourier-transform viewpoint behind symbol calculus. S
 
 Students should know Fourier transforms, multipliers, and the motivational ideas from Lesson 14-01.
 
-## Background Knowledge Map: Quantization and Phase-Space Dictionaries
+## Key ideas: Quantization and Phase-Space Dictionaries
 
 Four pillars anchor the Fourier-transform quantization $a(x,D)$ of symbols into operators:
 
@@ -98,7 +98,7 @@ This gives direction to the next lessons.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Ordering Ambiguity and Exact Left Symbol of a Symmetrized Operator
+### Worked example: Ordering Ambiguity and Exact Left Symbol of a Symmetrized Operator
 
 Find the exact Kohn–Nirenberg (left) symbol $a(x,\xi)$ of the formally self-adjoint 1D differential operator
 $$P u(x) = x D_x u(x) + D_x(x u(x)), \qquad \text{where } D_x = -i\frac{d}{dx},$$

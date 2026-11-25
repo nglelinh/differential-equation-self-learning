@@ -12,7 +12,7 @@ lesson_type: required
 
 Ở Chương 02, để giải một bài toán giá trị đầu không thuần nhất, bạn phải đi qua 4 chặng dài: giải thuần nhất $y_h$, tìm nghiệm riêng $y_p$, ghép $y = y_h + y_p$, rồi giải hệ phương trình tìm $c_1, c_2$. Với **Biến đổi Laplace**, tất cả 4 chặng đó sáp nhập thành **một đường ống duy nhất**: biến đổi sang miền $s$ (điều kiện đầu tự động cài sẵn) $\to$ rút $Y(s)$ bằng đại số $\to$ biến đổi ngược ra thẳng nghiệm cuối cùng!
 
-## Bản đồ kiến thức nền: Bốn bước của Đường ống Giải IVP bằng Laplace
+## Kiến thức cần nhớ: Bốn bước của Đường ống Giải IVP bằng Laplace
 
 1. **Bước 1 — Biến đổi toàn bộ PTVP sang miền $s$**:
    Thay $\mathcal{L}\{y'\} = sY - y(0)$ và $\mathcal{L}\{y''\} = s^2 Y - s y(0) - y'(0)$; toàn bộ phép vi phân biến mất!
@@ -38,7 +38,7 @@ Kỹ năng phân tích phân thức đơn là yêu cầu bắt buộc cho bài h
 
 Như vậy, biến đổi Laplace chuyển toàn bộ bài toán vi phân kèm điều kiện đầu thành một phương trình đại số theo $$ Y(s) $$, rồi quay lại miền thời gian bằng biến đổi ngược.
 
-### Khung giải thích (nên đọc chậm): Giải trọn gói IVP $y'' + 4y = 8t,\; y(0) = 1,\; y'(0) = 2$ qua đường ống Laplace
+### Giải thích: Giải trọn gói IVP $y'' + 4y = 8t,\; y(0) = 1,\; y'(0) = 2$ qua đường ống Laplace
 
 1. **Biến đổi hai vế** ($\mathcal{L}\{8t\} = \frac{8}{s^2}$):
    $$\big[s^2 Y(s) - s(1) - 2\big] + 4Y(s) = \frac{8}{s^2} \implies (s^2 + 4)Y(s) = s + 2 + \frac{8}{s^2}.$$

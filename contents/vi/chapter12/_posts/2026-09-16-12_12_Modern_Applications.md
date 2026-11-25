@@ -12,7 +12,7 @@ lesson_type: optional
 
 Một mạng nơ-ron huấn luyện bằng sai số $L^2$ có thể dự đoán trường nhiệt độ sai lệch chưa tới $1\%$ về giá trị, nhưng khi kỹ sư lấy đạo hàm để tính **dòng nhiệt** $-k\nabla u$ hay **ứng suất cơ học**, kết quả lại rung lắc hỗn loạn và sai hàng trăm phần trăm! Giải pháp của học máy khoa học hiện đại (Sobolev Training & Neural Operators trong $H^s$) quay trở về đúng trực giác cốt lõi của Chương 12: muốn xấp xỉ vật lý trung thực, ta phải đo sai số trong **chuẩn Sobolev $H^1$** chứ không chỉ chuẩn $L^2$!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Học Toán tử trong Không gian Sobolev
+## Kiến thức cần nhớ: Bốn trụ cột của Học Toán tử trong Không gian Sobolev
 
 1. **Chuẩn $H^s$ kiểm soát đồng thời giá trị và đạo hàm**:
    Sai số trong $L^2$ mù trước các dao động nhỏ biên độ nhưng tần số cao; chuẩn Sobolev $\|e\|_{H^1}^2 = \|e\|_{L^2}^2 + \|\nabla e\|_{L^2}^2$ trừng phạt ngay lập tức mọi nhiễu răng cưa phá hủy gradient vật lý.
@@ -40,7 +40,7 @@ Lanthaler, Mishra và Karniadakis (*Error estimates for DeepONets*, *Transaction
 Chương 12 chính là nền tảng mà các công trình đó sử dụng. Khái niệm đạo hàm yếu cho thấy một mô hình có thể hội tụ trong $$L^2$$ nhưng gradient vẫn sai lệch hoàn toàn. Định lý Lax–Milgram khẳng định toán tử nghiệm thực bị chặn từ $$H^{-1}$$ vào $$H^1_0$$; do đó một toán tử học được chỉ bị chặn trên không gian vector nút $$\ell^2$$ thực chất đang trả lời một câu hỏi khác.
 
 
-### Khung giải thích (nên đọc chậm): Một nhiễu nhỏ $1\%$ trong $L^2$ có thể phá nát đạo hàm trong $H^1$ như thế nào?
+### Giải thích: Một nhiễu nhỏ $1\%$ trong $L^2$ có thể phá nát đạo hàm trong $H^1$ như thế nào?
 
 Giả sử sai số dự đoán của mạng nơ-ron trên $[0, 2\pi]$ là một gợn sóng biên độ rất nhỏ $e(x) = 0{,}01\sin(100x)$:
 1. **Đo bằng chuẩn $L^2$**:

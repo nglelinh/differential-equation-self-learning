@@ -17,7 +17,7 @@ This lesson traces the rise of functional analysis as the language of modern PDE
 ## Prerequisites
 Students should know the main concepts of Chapter 12, including $$ L^p $$ spaces, weak derivatives, Sobolev spaces, weak solutions, distributions, spectral ideas, and key inequalities.
 
-## Background Knowledge Map: The Historical Forging of Modern PDE Analysis
+## Key ideas: The Historical Forging of Modern PDE Analysis
 
 Four landmark milestones explain why PDE theory migrated from classical calculus into functional analysis:
 
@@ -59,7 +59,7 @@ Chapter 12 is the chapter where PDE becomes recognizably modern. It teaches that
 
 Historically, this chapter also cures a common misunderstanding: weak solutions are not second-class solutions. They are often the natural level at which the mathematics and the physics first make sense together.
 
-### Step-by-Step Worked Example (Read Slowly): Reproducing Weierstrass's 1870 Counterexample
+### Worked example: Reproducing Weierstrass's 1870 Counterexample
 
 Verify Weierstrass's celebrated counterexample showing that the nonnegative variational functional
 $$J[u] = \int_{-1}^1 x^2 \big(u'(x)\big)^2\,dx$$

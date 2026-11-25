@@ -13,7 +13,7 @@ lesson_type: required
 
 Đa số phương trình trong kỹ thuật—từ mạch điện RC chịu nguồn xoay chiều đến bể muối đang xả và bơm đồng thời—đều không tách biến được vì có thêm một "lực cưỡng bức" $q(t)$ tác động bên ngoài. May mắn thay, **phương trình tuyến tính cấp một** $y' + p(t)y = q(t)$ sở hữu một chiếc chìa khóa vạn năng mang tên **thừa số tích phân** $\mu(t) = e^{\int p(t)\,dt}$, giúp giải đóng mọi bài toán chỉ bằng hai phép tích phân!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương trình Tuyến tính Cấp Một
+## Kiến thức cần nhớ: Bốn trụ cột của Phương trình Tuyến tính Cấp Một
 
 1. **Dạng chuẩn tắc $y' + p(t)y = q(t)$**:
    Luôn chia hai vế cho hệ số của $y'$ để đưa về hệ số $1$ trước khi tính thừa số tích phân—sai lầm phổ biến nhất là quên chuẩn hóa!
@@ -37,7 +37,7 @@ Trong nhiều hệ thực tế, tốc độ biến thiên của đại lượng 
 
 Thay vì ghi nhớ công thức nhân tử tích phân một cách máy móc, bài học tập trung giải thích ý tưởng cốt lõi: tìm hệ số nhân để gom vế trái thành đạo hàm của một tích, từ đó lấy tích phân trực tiếp để tìm nghiệm.
 
-### Khung giải thích (nên đọc chậm): Giải từng bước $t y' + 2y = 4t^2$ với $y(1) = 2$ ($t > 0$)
+### Giải thích: Giải từng bước $t y' + 2y = 4t^2$ với $y(1) = 2$ ($t > 0$)
 
 1. **Đưa về dạng chuẩn tắc** (chia hai vế cho $t > 0$):
    $$y' + \frac{2}{t}y = 4t \implies p(t) = \frac{2}{t},\quad q(t) = 4t.$$

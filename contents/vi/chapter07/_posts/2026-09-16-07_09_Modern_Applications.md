@@ -12,7 +12,7 @@ lesson_type: optional
 
 Khi giải bài toán biên trên các hình học 3D phức tạp (cánh tuabin, mạch máu tim) hoặc khi ta có sẵn một ít dữ liệu đo đạc thực nghiệm nhưng chưa biết chính xác hệ số vật lý, chia lưới phần tử hữu hạn (FEM) trở nên cực kỳ tốn công. **Mạng nơ-ron tích hợp vật lý (PINN — Physics-Informed Neural Networks)** mở ra một hướng tiếp cận đột phá: biểu diễn nghiệm $u_\theta(x)$ bằng một mạng nơ-ron trơn, dùng **đạo hàm tự động (Autodiff)** để tính $u_\theta', u_\theta''$ chính xác, và đưa thẳng phần dư PTVP cùng điều kiện biên vào hàm mất mát!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của PINN cho Bài toán Biên
+## Kiến thức cần nhớ: Bốn trụ cột của PINN cho Bài toán Biên
 
 1. **Đạo hàm tự động (Automatic Differentiation) thay cho sai phân lưới**:
    Không cần chia lưới xấp xỉ đạo hàm: PyTorch/JAX tính chính xác $\frac{\partial^2 u_\theta}{\partial x^2}$ bằng quy tắc dây chuyền trên đồ thị tính toán của mạng nơ-ron.
@@ -39,7 +39,7 @@ Raissi, Perdikaris và Karniadakis (2019) đã đặt nền móng cho khuôn kh�
 
 Song song với đó, nhánh biến phân — tiêu biểu là phương pháp Deep Ritz của E và Yu (2018) cùng các mở rộng sau này — cực tiểu hóa phiếm hàm năng lượng thay vì phần dư dạng mạnh, gần gũi hơn với dạng yếu trong lý thuyết Sturm–Liouville. Ở chiều ngược lại, quan điểm hàm Green cho thấy khi toán tử đã khả nghịch, việc học trực tiếp toán tử nghịch đảo (DeepONet, toán tử nơ-ron) sẽ giải quyết bài toán ở cấp độ toàn bộ lớp BVP thay vì từng nghiệm đơn lẻ.
 
-### Khung giải thích (nên đọc chậm): Tính tay hàm mất mát PINN cho BVP $-u''(x) = 2,\; u(0) = 0,\; u(1) = 0$
+### Giải thích: Tính tay hàm mất mát PINN cho BVP $-u''(x) = 2,\; u(0) = 0,\; u(1) = 0$
 
 Nghiệm chính xác của bài toán là $u^*(x) = x(1 - x) = x - x^2$ (vì $-(x - x^2)'' = 2$).
 Giả sử một mạng siêu nhỏ (1 tham số học $w$) có kiến trúc áp biên cứng: $\hat{u}_w(x) = w \cdot x(1 - x)$.

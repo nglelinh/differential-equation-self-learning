@@ -11,7 +11,7 @@ categories:
 
 In 1695, Jacob Bernoulli published a public challenge in *Acta Eruditorum* daring the leading mathematicians of Europe to solve the nonlinear equation $$y' + p(x)y = q(x)y^n$$. Within months, Gottfried Wilhelm Leibniz and Johann Bernoulli fired back with rival substitutions that sparked both a bitter sibling feud and the birth of systematic ODE theory. Every method in Chapter 01 was forged in real scientific rivalries over hanging chains, brachistochrone curves, and planetary motion.
 
-## Background Knowledge Map: Four Historical Milestones Behind Chapter 01
+## Key ideas: Four Historical Milestones Behind Chapter 01
 
 Tracing the timeline of first-order ODEs shows how practical geometry matured into modern analysis:
 
@@ -20,7 +20,7 @@ Tracing the timeline of first-order ODEs shows how practical geometry matured in
 3. **Euler's Systematization and Integrating Factors (1730s–1760s):** Leonhard Euler unified exact differentials, integrating factors, and the first numerical stepping scheme (Euler's method), turning scattered tricks into a textbook discipline.
 4. **Cauchy, Lipschitz, and Picard's Rigor (1820s–1890s):** Realizing that most ODEs have *no* elementary closed-form formula, nineteenth-century analysts shifted from "how do we integrate this?" to "does a unique solution exist?"—culminating in Picard's 1890 method of successive approximations.
 
-### Step-by-Step Worked Example (Read Slowly): Solving Leibniz's 1690s "Inverse Tangent" Problem (The Tractrix)
+### Worked example: Solving Leibniz's 1690s "Inverse Tangent" Problem (The Tractrix)
 
 A classic seventeenth-century challenge asked: what curve in the first quadrant has the property that the segment of its tangent line from the point of tangency $$(x, y)$$ to the $$x$$-axis always has constant length $$a$$?
 

@@ -12,7 +12,7 @@ lesson_type: required
 
 Undetermined coefficients is fast, yet the moment a forcing term becomes $$\sec t$$, $$\ln t$$, or $$e^{-t^2}$$—or the left-hand side has variable coefficients—the guessing table breaks down completely. Joseph-Louis Lagrange solved this once and for all in 1774: replace the constants $$c_1, c_2$$ in the homogeneous solution $$c_1 y_1 + c_2 y_2$$ with varying functions $$u_1(t), u_2(t)$$, and out drops a universal integral formula that works for *every* continuous forcing function $$g(t)$$.
 
-## Background Knowledge Map: Lagrange's Universal Formula and Its Green's-Function Soul
+## Key ideas: Lagrange's Universal Formula and Its Green's-Function Soul
 
 Four key ideas make variation of parameters transparent rather than a formula to memorize blindly:
 
@@ -25,7 +25,7 @@ Four key ideas make variation of parameters transparent rather than a formula to
    the exact continuous superposition of unit-impulse responses!
 4. **Zero-Integration-Constant Convention:** When integrating $$u_1'$$ and $$u_2'$$, set integration constants to $$0$$ because any constant shift in $$u_1, u_2$$ merely adds a piece of $$y_h$$.
 
-### Step-by-Step Worked Example (Read Slowly): Solving a Non-UC Forced Oscillator with $$\sec t$$
+### Worked example: Solving a Non-UC Forced Oscillator with $$\sec t$$
 
 Find the general solution of
 $$y'' + y = \sec t, \qquad t \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right).$$

@@ -12,7 +12,7 @@ lesson_type: required
 
 Bước từ phương trình cấp một sang **phương trình tuyến tính cấp hai** $y'' + p(t)y' + q(t)y = g(t)$ là bước nhảy vọt từ chuyển động đơn điệu sang thế giới phong phú của **dao động, sóng và cộng hưởng**. Điểm tựa vững chắc nhất của cả chương là một sự thật đại số đẹp đẽ: toàn bộ vô số nghiệm của phương trình thuần nhất đều được sinh ra từ chỉ **hai nghiệm cơ sở độc lập tuyến tính**.
 
-## Bản đồ kiến thức nền: Bốn trụ cột Tổng quan PTVP Tuyến tính Cấp Hai
+## Kiến thức cần nhớ: Bốn trụ cột Tổng quan PTVP Tuyến tính Cấp Hai
 
 1. **Nguyên lý Chồng chất (Superposition Principle)**:
    Nếu $y_1, y_2$ là nghiệm của phương trình thuần nhất $L[y] = 0$, thì mọi tổ hợp tuyến tính $c_1 y_1 + c_2 y_2$ cũng là nghiệm—điều hoàn toàn **sai** với phương trình phi tuyến!
@@ -36,7 +36,7 @@ Phương trình cấp một thường mô tả các hệ mà tốc độ thay đ
 
 Điểm trọng tâm của bài học mở đầu này là xây dựng trực giác về cấu trúc nghiệm. Với phương trình tuyến tính cấp hai thuần nhất, tập nghiệm tạo thành một không gian hai chiều, nên hai điều kiện đầu thường đủ để xác định duy nhất một nghiệm. Khi vế phải bằng 0, nghiệm phản ánh động học tự nhiên của hệ; khi vế phải khác 0, nghiệm là sự kết hợp giữa động học tự nhiên và đáp ứng trước ngoại lực.
 
-### Khung giải thích (nên đọc chậm): Ghim duy nhất nghiệm cho IVP $y'' - y = 0$ biết hai nghiệm cơ sở $y_1 = e^t,\; y_2 = e^{-t}$ và $y(0) = 3,\; y'(0) = -1$
+### Giải thích: Ghim duy nhất nghiệm cho IVP $y'' - y = 0$ biết hai nghiệm cơ sở $y_1 = e^t,\; y_2 = e^{-t}$ và $y(0) = 3,\; y'(0) = -1$
 
 1. **Kiểm tra độc lập tuyến tính bằng Wronskian tại $t = 0$**:
    $$W(e^t, e^{-t})(0) = \begin{vmatrix} 1 & 1 \\ 1 & -1 \end{vmatrix} = -1 - 1 = \mathbf{-2} \ne 0.$$

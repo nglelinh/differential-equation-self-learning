@@ -12,7 +12,7 @@ lesson_type: required
 
 When a real $$2\times 2$$ matrix has no real eigenvectors, no straight-line invariant highways exist in the plane—instead, the matrix continuously *rotates* vectors while stretching or shrinking them. Complex conjugate eigenvalues $$\lambda = \alpha \pm i\beta$$ turn those rotations into exact spirals and closed ellipses, and you only ever need to compute *one* complex eigenvector to harvest *both* real basis solutions!
 
-## Background Knowledge Map: Extracting Real Spirals from One Complex Eigenpair
+## Key ideas: Extracting Real Spirals from One Complex Eigenpair
 
 Four insights make complex-eigenvalue systems fast and geometrically transparent:
 
@@ -22,7 +22,7 @@ Four insights make complex-eigenvalue systems fast and geometrically transparent
 3. **Instant Rotation Direction Test (No Guessing!):** Never guess whether a spiral turns clockwise or counterclockwise from $$\beta$$—simply plug the test point $$\mathbf{x} = (1, 0)^\top$$ into $$\mathbf{x}' = A\mathbf{x} = (a_{11}, a_{21})^\top$$! If $$a_{21} > 0$$, the arrow on the positive $$x_1$$-axis points up (**counterclockwise**); if $$a_{21} < 0$$, it points down (**clockwise**).
 4. **Real Canonical Form:** Setting $$P = [\mathbf{a}\;\; \mathbf{b}]$$ transforms $$A$$ into $$P^{-1}AP = \begin{pmatrix} \alpha & \beta \\ -\beta & \alpha \end{pmatrix}$$ (a pure scaled rotation matrix!).
 
-### Step-by-Step Worked Example (Read Slowly): Solving a Spiral Sink IVP and Determining Its Rotation Sense
+### Worked example: Solving a Spiral Sink IVP and Determining Its Rotation Sense
 
 Solve the initial value problem
 $$\mathbf{x}' = \begin{pmatrix} -1 & -2 \\ 2 & -1 \end{pmatrix}\mathbf{x}, \qquad \mathbf{x}(0) = \begin{pmatrix} 3 \\ 1 \end{pmatrix}.$$

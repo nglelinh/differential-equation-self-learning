@@ -12,7 +12,7 @@ lesson_type: required
 
 Khác với dây đàn rung giữ nguyên năng lượng và dao động mãi mãi, nhiệt năng trong một thanh kim loại luôn tự san phẳng mọi chênh lệch cho đến khi đạt trạng thái cân bằng. Dùng đúng một bộ hàm riêng Sturm–Liouville như bài dây rung, nhưng đạo hàm bậc nhất theo thời gian $u_t = \alpha u_{xx}$ thay đổi hoàn toàn định mệnh của nghiệm: mọi dao động biến thành **suy giảm hàm mũ cực nhanh**!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Bài toán Dẫn nhiệt 1D
+## Kiến thức cần nhớ: Bốn trụ cột của Bài toán Dẫn nhiệt 1D
 
 1. **Phương trình nhiệt 1D ($u_t = \alpha u_{xx}$)**:
    $\alpha = \frac{k}{\rho c_p} > 0$ là hệ số khuếch tán nhiệt; vùng có độ cong âm ($u_{xx} < 0$, đỉnh nóng) sẽ giảm nhiệt ($u_t < 0$) và vùng lõm lạnh ($u_{xx} > 0$) sẽ ấm lên.
@@ -40,7 +40,7 @@ Khi nhắc đến dẫn nhiệt, ta thường nghĩ ngay đến một quá trìn
 
 Bài học này cho thấy BVP mô tả trực tiếp một hiện tượng vật lý quen thuộc, đồng thời làm bước đệm cho chương phương trình nhiệt sau này, nơi trạng thái dừng đóng vai trò nghiệm nền của quá trình tiến hóa theo thời gian.
 
-### Khung giải thích (nên đọc chậm): Tính tay thời gian tắt dần của mode $n = 1$ so với mode $n = 3$ trên thanh dài $L = \pi$ ($\alpha = 1$)
+### Giải thích: Tính tay thời gian tắt dần của mode $n = 1$ so với mode $n = 3$ trên thanh dài $L = \pi$ ($\alpha = 1$)
 
 Giả sử thanh có nhiệt độ ban đầu $u(x, 0) = 100\sin x + 100\sin(3x)$ với hai đầu giữ ở $0^\circ\text{C}$.
 1. **Viết ngay nghiệm chính xác**:

@@ -12,7 +12,7 @@ lesson_type: required
 
 Strike a stationary billiard ball with a cue stick or hit a circuit with a microsecond lightning spike: the force is huge, lasts almost zero time, yet delivers a crisp, finite total impulse $$I = \int F(t)\,dt$$ that instantaneously kicks the velocity from $$0$$ to $$I/m$$. No ordinary function can be zero everywhere except one point and still integrate to $$1$$—so physics and mathematics invented the **Dirac delta distribution** $$\delta(t - c)$$, whose Laplace transform is the simplest exponential imaginable: $$e^{-cs}$$.
 
-## Background Knowledge Map: Understanding the Dirac Delta Rigorously
+## Key ideas: Understanding the Dirac Delta Rigorously
 
 Four insights turn the "infinitely tall spike" metaphor into rock-solid graduate mathematics:
 
@@ -21,7 +21,7 @@ Four insights turn the "infinitely tall spike" metaphor into rock-solid graduate
 3. **Physical Signature (Velocity Jump, Continuous Position):** In $$m y'' + \gamma y' + k y = I_0\,\delta(t - c)$$, integrating across $$[c - \varepsilon, c + \varepsilon]$$ shows $$y(t)$$ stays **continuous** at $$t = c$$ while its derivative jumps instantaneously by $$\Delta y'(c) = y'(c^+) - y'(c^-) = \frac{I_0}{m}$$!
 4. **Green's Function / Impulse Response:** Solving $$L[h] = \delta(t)$$ with zero initial conditions produces the system's **impulse response** $$h(t)$$, which completely characterizes the linear system for *all* possible inputs via convolution.
 
-### Step-by-Step Worked Example (Read Slowly): Hammering a Damped Oscillator at $$t = \pi$$
+### Worked example: Hammering a Damped Oscillator at $$t = \pi$$
 
 A damped oscillator starts at rest and receives an impulse of magnitude $$6$$ at $$t = \pi$$:
 $$y'' + 2y' + 5y = 6\,\delta(t - \pi), \qquad y(0) = 0, \quad y'(0) = 0.$$

@@ -12,7 +12,7 @@ lesson_type: required
 
 Hãy tưởng tượng bạn đặt một cây thước nhựa thẳng đứng rồi ấn nhẹ từ trên xuống: ban đầu thước vẫn đứng thẳng; tăng lực thêm chút nữa vẫn thẳng; nhưng ngay khi lực vượt qua một **ngưỡng tới hạn**, thước đột ngột cong vồng sang trái hoặc sang phải! Hiện tượng thay đổi đột ngột về **số lượng hoặc tính ổn định của điểm cân bằng/chu trình giới hạn** khi tham số $\mu$ biến thiên liên tục gọi là **Phân nhánh (Bifurcation)**.
 
-## Bản đồ kiến thức nền: Bốn dạng Phân nhánh kinh điển nhất
+## Kiến thức cần nhớ: Bốn dạng Phân nhánh kinh điển nhất
 
 1. **Phân nhánh Yên – Nút (Saddle-Node: $\dot{x} = \mu - x^2$)**:
    Cơ chế "sinh ra từ hư vô": khi $\mu < 0$ không có điểm cân bằng; tại $\mu = 0$ xuất hiện 1 điểm; khi $\mu > 0$ tách thành 2 điểm (1 ổn định, 1 bất ổn).
@@ -39,7 +39,7 @@ Một hệ động lực không chỉ phụ thuộc vào điều kiện đầu m
 
 Lý thuyết phân nhánh cung cấp ngôn ngữ toán học để phân tích các giá trị ngưỡng, sự chuyển trạng thái và cơ chế mất ổn định. Thay vì chỉ hỏi hệ đang vận hành ra sao ở một bộ tham số cố định, ta còn đánh giá xem cấu trúc động học của hệ có biến đổi định tính khi điều kiện môi trường thay đổi hay không.
 
-### Khung giải thích (nên đọc chậm): Khảo sát bằng tay Phân nhánh Chạc ba siêu tới hạn $\dot{x} = \mu x - x^3$
+### Giải thích: Khảo sát bằng tay Phân nhánh Chạc ba siêu tới hạn $\dot{x} = \mu x - x^3$
 
 1. **Giải tìm mọi điểm cân bằng**: $\mu x - x^3 = x(\mu - x^2) = 0$.
    - Với $\mu \le 0$: chỉ có duy nhất nghiệm thực $x^* = 0$.

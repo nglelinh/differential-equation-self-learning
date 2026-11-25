@@ -14,7 +14,7 @@ lesson_type: required
 
 Biết một tín hiệu phân tích được thành tổng các sóng sin/cosin là một chuyện; làm sao đo chính xác biên độ $a_n, b_n$ của từng tần số lại là chuyện khác. Nhờ tính trực giao của hệ lượng giác, ta có bộ **Công thức Euler–Fourier** cực kỳ trong sáng: muốn đo lượng tần số thứ $n$ chứa trong $f(x)$, chỉ cần nhân $f(x)$ với đúng sóng $\cos(n\pi x/L)$ hoặc $\sin(n\pi x/L)$ rồi lấy tích phân trung bình trên một chu kỳ!
 
-## Bản đồ kiến thức nền: Bốn kỹ năng tính Hệ số Fourier không sai dấu
+## Kiến thức cần nhớ: Bốn kỹ năng tính Hệ số Fourier không sai dấu
 
 1. **Bộ công thức Euler–Fourier trên $[-L, L]$**:
    $$a_0 = \frac{1}{L}\int_{-L}^{L} f(x)\,dx, \quad a_n = \frac{1}{L}\int_{-L}^{L} f(x)\cos\!\left(\frac{n\pi x}{L}\right)dx, \quad b_n = \frac{1}{L}\int_{-L}^{L} f(x)\sin\!\left(\frac{n\pi x}{L}\right)dx.$$
@@ -39,7 +39,7 @@ Việc viết chuỗi Fourier sẽ không mang lại nhiều giá trị thực h
 
 Khi nắm chắc cơ chế này, sinh viên sẽ không phải học thuộc lòng các công thức tích phân một cách máy móc, mà hiểu chúng là hệ quả trực tiếp của tính trực giao. Nhờ vậy, các bài toán Fourier tiếp theo sẽ trở nên dễ tiếp cận hơn nhiều.
 
-### Khung giải thích (nên đọc chậm): Tính tay đầy đủ các hệ số Fourier của sóng răng cưa $f(x) = x$ trên $(-\pi, \pi)$
+### Giải thích: Tính tay đầy đủ các hệ số Fourier của sóng răng cưa $f(x) = x$ trên $(-\pi, \pi)$
 
 1. **Nhận xét tính chẵn/lẻ trước khi tích phân**: $f(x) = x$ là hàm **lẻ** trên đoạn đối xứng $(-\pi, \pi)$ ⇒ lập tức có **$a_0 = 0$** và **$a_n = 0$ với mọi $n \ge 1$**!
 2. **Tính $b_n$ bằng tích phân từng phần** ($u = x \implies du = dx$; $dv = \sin(nx)\,dx \implies v = -\frac{\cos(nx)}{n}$):

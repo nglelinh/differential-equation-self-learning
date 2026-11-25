@@ -20,7 +20,7 @@ This optional lesson reads Fourier neural operators, spectral neural operators, 
 
 Students should know Fourier multipliers, symbol classes, composition of ΨDOs, and the idea of an elliptic parametrix. The preparatory review on multipliers is the intended warm-up.
 
-## Background Knowledge Map: Neural Operators as Learned Symbols $a(x,\xi)$
+## Key ideas: Neural Operators as Learned Symbols $a(x,\xi)$
 
 Four connections tie Chapter 14's symbol calculus directly to state-of-the-art operator learning:
 
@@ -70,7 +70,7 @@ Geo-FNO and convolutional neural operators are attempts to restore $$x$$-depende
 ## Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): How a Spatially Varying Learned Symbol Mixes Frequencies
+### Worked example: How a Spatially Varying Learned Symbol Mixes Frequencies
 
 Consider a rank-2 factorized pseudo-differential layer $a(x,\xi) = c_1(x)m_1(\xi) + c_2(x)m_2(\xi)$ on $\mathbb{R}$ with spatial gates $c_1(x) = 1$, $c_2(x) = \cos(x)$ and learned spectral multipliers $m_1(\xi) = (1+\xi^2)^{-1}$, $m_2(\xi) = (1+\xi^2)^{-2}$. Apply $a(x,D)$ to the single pure mode $u(x) = \cos(2x)$ and observe the new frequencies created.
 

@@ -22,7 +22,7 @@ This optional lesson introduces inverse problems as a natural application area o
 
 Students should know propagation of singularities, basic elliptic or wave equations, and the practical reality that measured data is noisy. It is also helpful to remember that in a forward problem the model is known, while in an inverse problem the hidden structure itself must be recovered.
 
-## Background Knowledge Map: Uniqueness, Ill-Posedness, and Regularization in Inverse Problems
+## Key ideas: Uniqueness, Ill-Posedness, and Regularization in Inverse Problems
 
 Four pillars define the mathematical theory of PDE inverse problems:
 
@@ -117,7 +117,7 @@ Propagation and wave front ideas explain what the data can really detect.
 ## Worked Examples
 
 
-### Step-by-Step Worked Example (Read Slowly): Hadamard's Classic Instability Example for Boundary Recovery
+### Worked example: Hadamard's Classic Instability Example for Boundary Recovery
 
 Consider recovering an interior harmonic field $u(x,y)$ on the strip $y > 0$ from noisy Cauchy data on the boundary $y = 0$: $\Delta u = 0$, $u(x,0) = 0$, $\partial_y u(x,0) = g_n(x) = \frac{1}{n}\sin(nx)$. Quantify how a tiny boundary perturbation explodes at height $y = 1$ for $n = 10$.
 

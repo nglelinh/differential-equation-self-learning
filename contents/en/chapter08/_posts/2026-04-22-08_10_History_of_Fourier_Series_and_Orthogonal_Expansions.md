@@ -11,14 +11,14 @@ categories:
 
 Few debates in mathematical history were as fiercely contested—or as extraordinarily productive—as the century-long argument over trigonometric series. It began in 1747 with d'Alembert, Euler, and Daniel Bernoulli arguing over a plucked violin string, exploded in 1807 when Joseph Fourier presented his heat-conduction memoir to skeptical referees (Lagrange, Laplace, Legendre), and ultimately forced Peter Gustav Lejeune Dirichlet, Bernhard Riemann, Georg Cantor, and Henri Lebesgue to rebuild the entire foundation of real analysis, set theory, and measure theory!
 
-## Background Knowledge Map: Four Historical Revolutions Sparked by Fourier
+## Key ideas: Four Historical Revolutions Sparked by Fourier
 
 1. **The Vibrating String Debate (1747–1755):** D'Alembert insisted solutions must be single analytic formulas; Euler allowed piecewise-drawn curves; Daniel Bernoulli claimed every motion was a sum of sine modes—a claim nobody could yet prove because Euler's orthogonality formula for coefficients had not been generalized to arbitrary shapes.
 2. **Fourier's 1807/1822 Heat Memoir:** In *Théorie analytique de la chaleur*, Fourier boldly expanded discontinuous temperature profiles in trigonometric series to solve heat diffusion, shifting focus from "formulas" to "arbitrary functions."
 3. **Dirichlet's Rigorous Convergence Proof (1829):** Dirichlet invented the modern input–output definition of a function specifically to state and prove the first rigorous convergence theorem for piecewise monotonic functions via the Dirichlet kernel $$ D_N(t) = \frac{\sin((N + 1/2)t)}{2\sin(t/2)} $$.
 4. **Riemann, Cantor, and Lebesgue (1854–1904):** Trying to classify which functions have convergent Fourier series led Riemann to define the Riemann integral, Cantor to invent transfinite set theory (studying uniqueness sets of trigonometric series!), and Lebesgue to build $$ L^2 $$ measure theory—where the Riesz–Fischer theorem finally made Fourier analysis completely airtight.
 
-### Step-by-Step Worked Example (Read Slowly): Evaluating Dirichlet's 1829 Kernel Identity
+### Worked example: Evaluating Dirichlet's 1829 Kernel Identity
 
 **Problem:** Verify Dirichlet's landmark trigonometric sum $$ D_N(t) = \frac{1}{2} + \sum_{n=1}^{N} \cos(nt) = \frac{\sin\!\left(\left(N + \frac{1}{2}\right)t\right)}{2\sin(t/2)} $$ for $$ t \notin 2\pi\mathbb{Z} $$, and check both its value at $$ N = 2, t = \frac{\pi}{2} $$ and its total integral $$ \frac{1}{\pi}\int_{-\pi}^{\pi} D_N(t)\,dt = 1 $$.
 

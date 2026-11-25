@@ -12,7 +12,7 @@ lesson_type: optional
 
 Đa thức Legendre, hàm Chebyshev hay hàm Bessel không phải là di vật bảo tàng thế kỷ 19. Trong điện toán khoa học và AI vật lý hiện đại (2020–2026), chúng chính là **cơ sở phổ (spectral basis)** giúp đạt độ chính xác 15 chữ số chỉ với vài chục bậc tự do—và là xương sống của các mô hình **Học toán tử (Operator Learning / DeepONet / Neural Spectral Methods)** dự báo thời tiết và khí động học nhanh hơn mô phỏng truyền thống hàng nghìn lần!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Phương pháp Phổ & Học Toán tử hiện đại
+## Kiến thức cần nhớ: Bốn trụ cột của Phương pháp Phổ & Học Toán tử hiện đại
 
 1. **Hội tụ phổ (Spectral Convergence)**:
    Trong khi sai phân hữu hạn bậc 2 giảm sai số theo lũy thừa $O(N^{-2})$, khai triển theo đa thức trực giao (Legendre/Chebyshev) cho hàm trơn giảm sai số theo **hàm mũ $O(e^{-\alpha N})$**!
@@ -37,7 +37,7 @@ Nghiệm chuỗi thực chất là phép khai triển hàm ẩn trong một cơ 
 
 Ở nhánh PINN, Wang, Sankaran, Wang và Perdikaris tổng hợp các hướng dẫn thực hành về kiến trúc và phổ trong bài viết “An expert’s guide to training physics-informed neural networks” ([arXiv:2308.08468](https://arxiv.org/abs/2308.08468), 2023). Hao và cộng sự (*PINNacle*, NeurIPS 2024; [arXiv:2306.08827](https://arxiv.org/abs/2306.08827)) cũng cho thấy thiên kiến phổ, cấu trúc đa thang và hình học miền vẫn là những thách thức hàng đầu trên hơn hai mươi bài toán PDE chuẩn. Đây chính là lý do chương này dành nhiều thời lượng cho hàm đặc biệt: chúng là những hệ cơ sở chéo hóa sẵn các toán tử vi phân quan trọng.
 
-### Khung giải thích (nên đọc chậm): So sánh tốc độ hội tụ giữa Sai phân hữu hạn $O(N^{-2})$ và Cơ sở Phổ $O(e^{-N})$ bằng con số
+### Giải thích: So sánh tốc độ hội tụ giữa Sai phân hữu hạn $O(N^{-2})$ và Cơ sở Phổ $O(e^{-N})$ bằng con số
 
 Giả sử bạn cần xấp xỉ nghiệm trơn của một PTVP với sai số mục tiêu $\varepsilon = 10^{-8}$:
 - **Sai phân hữu hạn bậc 2** (sai số $\approx 1/N^2$): Cần $1/N^2 \le 10^{-8} \implies N \ge \mathbf{10.000\text{ điểm lưới}}$!

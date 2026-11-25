@@ -11,7 +11,7 @@ categories:
 
 Long before Arthur Cayley even invented the word "matrix" in 1858, Leonhard Euler and Joseph-Louis Lagrange were already solving coupled differential equations of planetary perturbations and vibrating strings—implicitly discovering eigenvalues, orthogonal modes, and secular instabilities by sheer algebraic persistence! Watching how linear systems and matrix theory grew up together explains why Chapter 04 feels like a seamless marriage of calculus and linear algebra.
 
-## Background Knowledge Map: Four Historical Turning Points in Linear Systems
+## Key ideas: Four Historical Turning Points in Linear Systems
 
 Tracing Chapter 04's timeline reveals how physical crises forced algebraic breakthroughs:
 
@@ -20,7 +20,7 @@ Tracing Chapter 04's timeline reveals how physical crises forced algebraic break
 3. **Weierstrass & Jordan Canonical Form (1868–1870):** Karl Weierstrass (via elementary divisors) and Camille Jordan completely resolved the mysterious defective repeated-eigenvalue case, proving that *every* square matrix over $$\mathbb{C}$$ decomposes into clean Jordan blocks.
 4. **Peano's Matrix Exponential (1888):** Giuseppe Peano introduced the convergent series $$e^{At} = \sum \frac{t^k}{k!}A^k$$ and the Peano–Baker series for time-varying systems $$\mathbf{x}' = A(t)\mathbf{x}$$, launching modern state-space control theory.
 
-### Step-by-Step Worked Example (Read Slowly): Using Cayley–Hamilton (1858) to Compute $$e^{At}$$ for Any $$2\times 2$$ Matrix
+### Worked example: Using Cayley–Hamilton (1858) to Compute $$e^{At}$$ for Any $$2\times 2$$ Matrix
 
 In 1858, Cayley proved that every matrix satisfies its own characteristic polynomial: for a $$2\times 2$$ matrix, $$A^2 = \tau A - \Delta I$$. That means *every* higher power $$A^3, A^4, \dots$$ collapses to a linear combination of $$I$$ and $$A$$, so $$e^{At} = \alpha_0(t)I + \alpha_1(t)A$$!
 

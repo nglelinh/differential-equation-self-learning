@@ -12,7 +12,7 @@ lesson_type: optional
 
 Mỗi khi kỹ sư hàng không đổi hình dạng cánh máy bay hay kỹ sư chip thay đổi bố trí điện cực, họ lại phải chạy lại bộ giải phần tử hữu hạn (FEM) cho phương trình elliptic $-\nabla \cdot (a(x)\nabla u) = f$ từ đầu—tốn hàng giờ cho hàng nghìn cấu hình. **Toán tử Nơ-ron (Neural Operators)** như FNO và DeepONet đảo ngược cuộc chơi: thay vì học một nghiệm $u(x)$ đơn lẻ, mạng học thẳng **ánh xạ lời giải $\mathcal{G}: (a, f) \mapsto u$** giữa hai không gian hàm vô hạn chiều, dự đoán nghiệm mới chỉ trong vài mili-giây!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Học Toán tử cho Phương trình Elliptic
+## Kiến thức cần nhớ: Bốn trụ cột của Học Toán tử cho Phương trình Elliptic
 
 1. **Ánh xạ Hàm–sang–Hàm và Toán tử Green học được**:
    Với bài toán elliptic tuyến tính $-\Delta u = f$, nghiệm là phép tích phân $u(x) = \int_\Omega G(x, y) f(y)\,dy$. Các kiến trúc Neural Operator (GNO, FNO) mô phỏng trực tiếp cấu trúc toán tử tích phân phi địa phương này qua nhiều tầng phi tuyến.
@@ -40,7 +40,7 @@ Bài toán dòng Darcy — $$-\nabla\cdot(a\nabla u)=f$$ với độ thấm $$a$
 Tĩnh điện và dòng chảy không nén được, không xoáy — vốn đã xét trong chương — thực chất dùng cùng một toán tử dưới các ký hiệu khác nhau. Sinh viên đã biết cách viết hàm Green trên đĩa tròn tức là đã hiểu đối tượng toán học mà các mô hình mạng này đang cố gắng xấp xỉ.
 
 
-### Khung giải thích (nên đọc chậm): Tại sao FNO cắt bỏ tần số cao vẫn xấp xỉ cực tốt nghiệm phương trình Poisson?
+### Giải thích: Tại sao FNO cắt bỏ tần số cao vẫn xấp xỉ cực tốt nghiệm phương trình Poisson?
 
 Xét phương trình Poisson tuần hoàn $-\Delta u = f$ trên miền $[0, 2\pi]^2$. Trong miền Fourier, đạo hàm trở thành phép nhân đại số:
 $$|k|^2 \hat{u}(k) = \hat{f}(k) \implies \hat{u}(k) = \frac{\hat{f}(k)}{k_1^2 + k_2^2}.$$

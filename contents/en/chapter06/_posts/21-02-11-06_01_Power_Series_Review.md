@@ -14,14 +14,14 @@ Imagine trying to predict the orbit of a comet or the deflection of a flexible b
 
 Before we feed power series into second-order ODEs, we have to know when an infinite polynomial actually represents a well-behaved function, where its convergence breaks down, and how to re-index sums cleanly so like powers of $$ x - x_0 $$ line up without losing a single term.
 
-## Background Knowledge Map: Analytic Power Series
+## Key ideas: Analytic Power Series
 
 1. **Absolute Convergence and the Disk of Analyticity (Complex Analysis Intuition):** On the real line, a power series $$ \sum a_n(x-x_0)^n $$ converges on an interval $$ (x_0 - R, x_0 + R) $$, where $$ R $$ is the radius of convergence. Why does $$ \frac{1}{1+x^2} $$ have $$ R = 1 $$ even though it is infinitely smooth for all real $$ x $$? Because in the complex plane $$ \mathbb{C} $$, it has poles at $$ z = \pm i $$ at distance $$ 1 $$ from the origin. Complex singularities cast real shadows that set the exact horizon of every series solution.
 2. **Term-by-Term Differentiation and Integration (Uniform Convergence):** On any closed subinterval $$ [x_0 - r, x_0 + r] $$ with $$ r < R $$, a power series converges uniformly. By Weierstrass's theorem, this guarantees you may differentiate and integrate term by term without changing the radius of convergence $$ R $$—the exact license needed to substitute $$ y(x) = \sum a_n x^n $$ into an ODE.
 3. **Identity Principle for Power Series (Algebraic Uniqueness):** If $$ \sum_{n=0}^\infty c_n (x - x_0)^n = 0 $$ on any open interval around $$ x_0 $$, then $$ c_n = 0 $$ for every $$ n \ge 0 $$. This turns a differential equation into an infinite system of algebraic recurrence relations for the coefficients $$ a_n $$.
 4. **Index Shifting (Bookkeeping Symmetry):** Differentiating shifts powers from $$ x^n $$ to $$ x^{n-1} $$ or $$ x^{n-2} $$. Replacing the dummy index (e.g., setting $$ k = n - 2 $$) aligns every sum to the same power $$ x^k $$ so coefficients can be collected cleanly.
 
-### Step-by-Step Worked Example (Read Slowly): Radius of Convergence and Index-Shifted Differential Identity
+### Worked example: Radius of Convergence and Index-Shifted Differential Identity
 
 **Problem:** Find the radius of convergence $$ R $$ of $$ f(x) = \sum_{n=0}^{\infty} \frac{n+1}{3^n} x^n $$, compute $$ f'(x) $$ term by term, and rewrite $$ (1 - x) f'(x) $$ as a single power series in $$ x^k $$ to verify its closed form at $$ x = 0 $$ and $$ x = \frac{1}{2} $$.
 

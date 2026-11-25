@@ -12,7 +12,7 @@ lesson_type: optional
 
 Làm sao các mô hình AI như Stable Diffusion, Midjourney hay Sora có thể biến một bức ảnh toàn nhiễu trắng ngẫu nhiên thành một bức tranh sắc nét như thật? Bí mật nằm ở đúng **Phương trình Nhiệt / Khuếch tán** Chương 9 chạy theo **hai chiều thời gian**: chiều xuôi làm nhòa dữ liệu ảnh thành nhiễu Gaussian thuần túy (phương trình Fokker–Planck), còn chiều ngược dùng mạng nơ-ron học **hàm điểm số (Score Function $\nabla_x \log p_t(x)$)** để đảo ngược quá trình khuếch tán!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Mô hình Khuếch tán & Score-Based AI
+## Kiến thức cần nhớ: Bốn trụ cột của Mô hình Khuếch tán & Score-Based AI
 
 1. **Quá trình Khuếch tán Xuôi (Forward SDE / Heat Smoothing)**:
    Thêm dần nhiễu Gaussian qua $T$ bước $d\mathbf{x} = \mathbf{f}(\mathbf{x}, t)\,dt + g(t)\,d\mathbf{W}_t$; mật độ xác suất $p_t(\mathbf{x})$ tiến hóa theo phương trình Fokker–Planck (tổng quát hóa của phương trình nhiệt) về phân phối chuẩn $\mathcal{N}(\mathbf{0}, I)$.
@@ -39,7 +39,7 @@ Trong mảng học máy khoa học (SciML), PINN, DeepONet và Fourier neural op
 
 Trong mảng mô hình sinh, Song, Sohl-Dickstein, Kingma, Kumar, Ermon và Poole (*Score-Based Generative Modeling through Stochastic Differential Equations*, ICLR 2021; [arXiv:2011.13456](https://arxiv.org/abs/2011.13456)) lấy một phân bố dữ liệu, cho tiến hóa theo một SDE khuếch tán có mật độ xác suất thỏa mãn phương trình Fokker–Planck, rồi đảo ngược SDE theo thời gian để sinh mẫu mới. Quá trình thuận chính là một dòng khuếch tán trên hàm mật độ. Do đó, việc hiểu nhân nhiệt và nguyên lý cực đại không chỉ mang tính ví von, mà giải thích trực tiếp vì sao quá trình đảo ngược có thể đặt chỉnh sau khi học hàm score $$\nabla\log p_t$$.
 
-### Khung giải thích (nên đọc chậm): Tính tay Score Function $\nabla_x \log p_t(x)$ của một hạt khuếch tán Gaussian 1D
+### Giải thích: Tính tay Score Function $\nabla_x \log p_t(x)$ của một hạt khuếch tán Gaussian 1D
 
 Giả sử dữ liệu gốc chỉ là 1 điểm duy nhất tại $x_0 = 5$. Sau thời gian khuếch tán $t$ (với phương sai nhiễu $\sigma_t^2 = 2t$), phân phối nhiễu tại thời điểm $t$ chính là nhân nhiệt Gaussian:
 $$p_t(x) = \frac{1}{\sqrt{2\pi \sigma_t^2}} \exp\!\left(-\frac{(x - 5)^2}{2\sigma_t^2}\right).$$

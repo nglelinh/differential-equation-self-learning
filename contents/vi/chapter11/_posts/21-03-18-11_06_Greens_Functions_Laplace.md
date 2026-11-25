@@ -14,7 +14,7 @@ lesson_type: required
 
 Làm sao giải bài toán Dirichlet $-\Delta u = f$ với dữ liệu biên $u|_{\partial\Omega} = g$ một lần duy nhất cho *mọi* hàm $f$ và $g$ bất kỳ? George Green đã đưa ra một ý tưởng thiên tài: đặt một **điện tích điểm đơn vị** tại $y$ bên trong một vỏ kim loại nối đất ($G = 0$ trên $\partial\Omega$) và đo điện thế $G(x, y)$ nó sinh ra. Một khi biết được "phản ứng đơn vị" $G(x, y)$ ấy, mọi nghiệm phức tạp đến đâu cũng chỉ còn là phép xếp chồng tích phân!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Hàm Green cho Phương trình Laplace
+## Kiến thức cần nhớ: Bốn trụ cột của Hàm Green cho Phương trình Laplace
 
 1. **Định nghĩa vật lý và cấu trúc $G(x, y) = \Phi(x - y) - h_y(x)$**:
    Hàm Green thỏa mãn $-\Delta_x G(x, y) = \delta(x - y)$ trong $\Omega$ và $G(x, y) = 0$ trên $\partial\Omega$. Ta tách nó thành phần kỳ dị tự do $\Phi(x - y)$ trừ đi một hàm điều hòa trơn $h_y(x)$ đóng vai trò "bộ hiệu chỉnh biên".
@@ -42,7 +42,7 @@ Từ nghiệm cơ bản của toán tử Laplace trong toàn không gian, ta bi�
 Hàm Green không chỉ là một công thức giải bài toán, mà còn thể hiện cách nhìn toàn bộ miền như một hệ phản ứng trước xung điểm: biên không còn là điều kiện phụ tách rời mà được mã hóa trực tiếp vào nhân đáp ứng.
 
 
-### Khung giải thích (nên đọc chậm): Dựng và kiểm chứng bằng tay Hàm Green nửa mặt phẳng trên $y > 0$
+### Giải thích: Dựng và kiểm chứng bằng tay Hàm Green nửa mặt phẳng trên $y > 0$
 
 Đặt một nguồn điểm đơn vị tại $\mathbf{x}_0 = (0, 1)$ trong nửa mặt phẳng trên $\mathbb{R}^2_+ = \{(x, y) : y > 0\}$. Để triệt tiêu thế dọc trục hoành $y = 0$, ta đặt một **nguồn ảnh âm** đối xứng qua trục $x$ tại $\mathbf{x}_0^* = (0, -1)$:
 1. **Viết biểu thức Hàm Green 2D** (dùng $\Phi(r) = -\frac{1}{2\pi}\ln r$):

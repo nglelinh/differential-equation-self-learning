@@ -14,7 +14,7 @@ lesson_type: required
 
 Cùng một thanh kim loại, cùng một nhiệt độ ban đầu $f(x)$, nhưng chỉ cần bạn bọc bông cách nhiệt hai đầu thanh (biên Neumann) thay vì nhúng chúng vào nước đá $0^\circ\text{C}$ (biên Dirichlet), số phận dài hạn của thanh thay đổi hoàn toàn! Bài học này hệ thống hóa tác động của cả bốn loại **điều kiện biên thuần nhất**: Dirichlet, Neumann, Hỗn hợp và Tuần hoàn (vòng nhẫn).
 
-## Bản đồ kiến thức nền: Bốn chế độ Biên Thuần nhất của Phương trình Nhiệt
+## Kiến thức cần nhớ: Bốn chế độ Biên Thuần nhất của Phương trình Nhiệt
 
 1. **Biên Dirichlet ($u(0,t)=u(L,t)=0$)**:
    Cơ sở $\sin(n\pi x/L)$, $\lambda_n = (n\pi/L)^2 > 0$. Mọi mode đều tắt về $0 \implies \lim_{t\to\infty} u(x,t) = 0$.
@@ -39,7 +39,7 @@ Khi giải phương trình nhiệt, người học thường chú ý nhiều đ�
 
 Cùng một phương trình $$ u_t=\alpha^2u_{xx} $$, chỉ cần thay đổi điều kiện biên là không gian mode đã thay đổi theo. Nói cách khác, điều kiện biên là một bộ phận cấu thành của hệ vật lý chứ không phải dữ kiện phụ kèm theo đề bài.
 
-### Khung giải thích (nên đọc chậm): Giải bài toán thanh cách nhiệt hai đầu (Neumann) $u_t = u_{xx}$ trên $[0, \pi]$ với $u(x, 0) = 10 + 6\cos(2x)$
+### Giải thích: Giải bài toán thanh cách nhiệt hai đầu (Neumann) $u_t = u_{xx}$ trên $[0, \pi]$ với $u(x, 0) = 10 + 6\cos(2x)$
 
 1. **Cơ sở hàm riêng Neumann trên $[0, \pi]$**: $1$ ($\lambda_0 = 0$) và $\cos(nx)$ ($\lambda_n = n^2$).
 2. **Nghiệm tổng quát**: $u(x, t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} a_n \cos(nx) e^{-n^2 t}$.

@@ -14,7 +14,7 @@ lesson_type: optional
 
 Tại sao phương pháp tách biến ở các chương trước luôn "may mắn" tìm ra một họ hàm riêng $\{\sin(n\pi x/L)\}$ vừa trực giao, vừa đầy đủ để khai triển **mọi** hàm $L^2$ trên miền hình chữ nhật, hình tròn hay bất kỳ hình dạng méo mó nào? Bí mật nằm ở **Lý thuyết Phổ của Toán tử Compact Tự liên hợp**: nghịch đảo $T = (-\Delta)^{-1}$ là một toán tử compact đối xứng trên $L^2(\Omega)$, nên định lý phổ vô hạn chiều đảm bảo tồn tại một cơ sở trực chuẩn đầy đủ các hàm riêng—y hệt định lý chéo hóa ma trận đối xứng trong Đại số Tuyến tính!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Lý thuyết Phổ cho Toán tử PDE
+## Kiến thức cần nhớ: Bốn trụ cột của Lý thuyết Phổ cho Toán tử PDE
 
 1. **Từ Toán tử Không bị chặn $(-\Delta)$ sang Toán tử Compact $T = (-\Delta)^{-1}$**:
    Toán tử vi phân $-\Delta$ không bị chặn trên $L^2$, nhưng nhờ Lax–Milgram kết hợp Nhúng Compact Rellich–Kondrachov ($H_0^1(\Omega) \Subset L^2(\Omega)$), toán tử giải $T: f \mapsto u$ là toán tử **tuyến tính, compact và tự liên hợp** trên $L^2(\Omega)$!
@@ -38,7 +38,7 @@ Sinh viên cần nắm không gian Hilbert, tích vô hướng, tính trực gia
 Khi một hệ dao động hoặc khuếch tán được phân tách thành các mode cơ bản, mỗi mode tiến hóa theo quy luật đơn giản hơn rất nhiều. Lý thuyết phổ hệ thống hóa ý tưởng này: thay vì xem toán tử như một khối phức tạp, ta phân rã nó theo các phương riêng mà trên đó tác động của toán tử chỉ quy về phép nhân với một hằng số.
 
 
-### Khung giải thích (nên đọc chậm): Đối chiếu trực tiếp phổ của $-\Delta$ và nghịch đảo compact $T = (-\Delta)^{-1}$ trên $(0, \pi)$
+### Giải thích: Đối chiếu trực tiếp phổ của $-\Delta$ và nghịch đảo compact $T = (-\Delta)^{-1}$ trên $(0, \pi)$
 
 Xét bài toán giá trị riêng $-u'' = \lambda u$ trên $\Omega = (0, \pi)$ với $u(0) = u(\pi) = 0$:
 1. **Dãy giá trị riêng và hàm riêng chuẩn hóa**:

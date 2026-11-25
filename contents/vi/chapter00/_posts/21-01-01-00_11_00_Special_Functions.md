@@ -13,7 +13,7 @@ lesson_type: optional
 
 Hầu hết các phương trình vi phân trong vật lý thực tế—từ dao động mặt trống tròn đến xác suất chuẩn và biến đổi Laplace của lũy thừa phân số—đều vượt ra ngoài kho hàm sơ cấp quen thuộc ($\sin, \cos, e^x, \ln x$). Thay vì bó tay, toán học mở rộng kho từ vựng bằng **các hàm đặc biệt** như Gamma $\Gamma(z)$, Beta $B(x, y)$, hàm lỗi $\operatorname{erf}(x)$ và hàm Bessel—những "hàm sơ cấp thế hệ mới" với tính chất đại số và giải tích cực kỳ đẹp mắt.
 
-## Bản đồ kiến thức nền: Bốn họ Hàm đặc biệt cốt lõi cho PTVP
+## Kiến thức cần nhớ: Bốn họ Hàm đặc biệt cốt lõi cho PTVP
 
 1. **Hàm Gamma $\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}\,dt$**:
    Mở rộng giai thừa sang số thực và số phức thông qua hệ thức truy hồi $\Gamma(z+1) = z\Gamma(z)$ và giá trị vàng $\Gamma(1/2) = \sqrt{\pi}$—thiết yếu cho biến đổi Laplace của $t^p$ và hàm Bessel.
@@ -38,7 +38,7 @@ Sinh viên cần nắm vững chuỗi lũy thừa và bán kính hội tụ, ph�
 
 Chẳng hạn, khi gảy một dây đàn guitar một chiều, các mode dao động tự nhiên là các hàm sin. Nhưng khi gõ lên một màng trống tròn cố định ở vành biên, các mode dao động theo phương bán kính lại được mô tả bởi các hàm Bessel. Tương tự, khi khảo sát trường thế hoặc sóng trên mặt cầu (như thế hấp dẫn hay sóng điện từ quanh Trái Đất), các đa thức Legendre xuất hiện một cách tự nhiên. Hàm đặc biệt chính là ngôn ngữ toán học phù hợp với các bài toán có tính đối xứng hình học.
 
-### Khung giải thích (nên đọc chậm): Tính tay $\Gamma\left(\frac{5}{2}\right)$ và $B\left(\frac{1}{2}, \frac{3}{2}\right)$ chỉ từ một hằng số duy nhất $\Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}$
+### Giải thích: Tính tay $\Gamma\left(\frac{5}{2}\right)$ và $B\left(\frac{1}{2}, \frac{3}{2}\right)$ chỉ từ một hằng số duy nhất $\Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}$
 
 1. **Tính $\Gamma\left(\frac{5}{2}\right)$ bằng hệ thức $\Gamma(z+1) = z\Gamma(z)$**:
    $$\Gamma\left(\frac{5}{2}\right) = \frac{3}{2}\Gamma\left(\frac{3}{2}\right) = \frac{3}{2}\cdot\frac{1}{2}\Gamma\left(\frac{1}{2}\right) = \mathbf{\frac{3\sqrt{\pi}}{4}} \approx 1{,}3293.$$

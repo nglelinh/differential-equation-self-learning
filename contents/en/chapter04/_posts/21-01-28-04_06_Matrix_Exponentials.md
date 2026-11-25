@@ -12,7 +12,7 @@ lesson_type: required
 
 For a scalar equation $$x' = ax$$, the solution is effortlessly $$x(t) = e^{at}x_0$$. Remarkably, for an $$n\times n$$ linear system $$\mathbf{x}' = A\mathbf{x}$$, the exact same formula holds—$$\mathbf{x}(t) = e^{At}\mathbf{x}_0$$—where the **matrix exponential** $$e^{At} := \sum_{k=0}^\infty \frac{t^k}{k!}A^k$$ is a convergent matrix power series that unifies distinct, complex, and defective eigenvalues into a single universal flow operator!
 
-## Background Knowledge Map: Four Ways to Compute and Use $$e^{At}$$
+## Key ideas: Four Ways to Compute and Use $$e^{At}$$
 
 Mastering the matrix exponential turns every constant-coefficient linear system into a one-line formula:
 
@@ -25,7 +25,7 @@ Mastering the matrix exponential turns every constant-coefficient linear system 
    - **Laplace Transform Formula:** $$e^{At} = \mathcal{L}^{-1}\bigl\{(sI - A)^{-1}\bigr\}$$—works for *every* matrix without finding eigenvectors!
 4. **Canonical Variation of Parameters:** Using $$e^{At}$$, any forced constant-coefficient IVP $$\mathbf{x}' = A\mathbf{x} + \mathbf{g}(t)$$ has the compact Duhamel solution $$\mathbf{x}(t) = e^{At}\mathbf{x}_0 + \int_0^t e^{A(t-s)}\mathbf{g}(s)\,ds$$.
 
-### Step-by-Step Worked Example (Read Slowly): Computing $$e^{At}$$ for a $$3\times 3$$ Non-Diagonalizable Matrix in Three Lines
+### Worked example: Computing $$e^{At}$$ for a $$3\times 3$$ Non-Diagonalizable Matrix in Three Lines
 
 Compute $$e^{At}$$ for the $$3\times 3$$ upper-triangular matrix
 $$A = \begin{pmatrix} 2 & 1 & 3 \\ 0 & 2 & 4 \\ 0 & 0 & 2 \end{pmatrix}.$$
