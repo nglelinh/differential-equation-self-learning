@@ -12,7 +12,7 @@ lesson_type: optional
 
 > **Storytelling Hook:** An operator like the wave equation $\partial_t^2 - \partial_x^2$ fails to be elliptic, so classical elliptic regularity walks away empty-handed. Yet at almost every direction $(\tau,\xi)$ in phase space—everywhere *off* the light cone $|\tau| = |\xi|$—the wave symbol $-\tau^2 + \xi^2$ is completely nonzero! **Microlocal elliptic theory** rescues elliptic regularity cone by cone, proving that even hyperbolic equations smooth out every non-characteristic direction.
 
-![Microlocal elliptic theory]({{ site.imgurl }}/chapter_img/chapter15/09_microlocal_elliptic_theory.svg )
+![Microlocal elliptic theory]({{ site.imgurl }}/chapter_img/chapter15/09_microlocal_elliptic_theory.svg)
 
 ## Objectives
 

@@ -14,6 +14,8 @@ Nhìn vào công thức của một tầng mạng Fourier Neural Operator (FNO):
 
 ## Kiến thức cần nhớ: Bốn trụ cột nối Toán tử Giả vi phân với Neural Operators
 
+![Toán tử Giả vi phân (PDO) trong Xử lý Ảnh & Tomographic]({{ site.imgurl }}/chapter_img/modern_apps/ma_14_pdo_imaging.svg)
+
 1. **Tầng FNO như Toán tử Giả vi phân Hệ số Hằng**:
    Phép toán $\mathcal{F}^{-1}\big(R(\xi)\widehat{u}(\xi)\big)$ chính là $\operatorname{Op}(R)$ với ký hiệu chỉ phụ thuộc $\xi$. Cắt cụt tần số cao $|\xi| \le k_{\max}$ hoạt động như một toán tử làm trơn thuộc $\Psi^{-\infty}$!
 2. **Ký hiệu Phụ thuộc Không gian $p(x, \xi)$ và Kiến trúc Đa thang**:

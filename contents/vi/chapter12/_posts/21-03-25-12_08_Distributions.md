@@ -10,7 +10,7 @@ categories:
 lesson_type: optional
 ---
 
-![Phân phối như nguồn kỳ dị và đạo hàm của hàm bước]({{ site.imgurl }}/chapter_img/chapter12/08_distributions.svg )
+![Phân phối như nguồn kỳ dị và đạo hàm của hàm bước]({{ site.imgurl }}/chapter_img/chapter12/08_distributions.svg)
 
 Khi Paul Dirac giới thiệu "hàm" $\delta(x)$ bằng $0$ ở mọi nơi trừ $x = 0$ nhưng tích phân lại bằng $1$, các nhà toán học truyền thống lắc đầu vì không một hàm thực thụ nào làm nổi điều đó. Thế nhưng các nhà vật lý vẫn dùng nó tính toán chính xác tuyệt đối! Phải đến năm 1945, Laurent Schwartz mới giải oan ngoạn mục cho Dirac: $\delta_0$ không phải một hàm gán giá trị tại từng điểm, mà là một **phiếm hàm tuyến tính liên tục tác động lên các hàm thử trơn**—khai sinh **Lý thuyết Phân phối (Distributions)**, nơi *mọi* hàm khả tích đều khả vi vô hạn lần!
 

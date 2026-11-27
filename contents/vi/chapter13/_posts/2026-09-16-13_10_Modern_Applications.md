@@ -14,6 +14,8 @@ lesson_type: optional
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Bộ giải Khả vi & Neural SDE
 
+![Phương trình Vi phân Ngẫu nhiên (SDE) & Tài chính Định lượng]({{ site.imgurl }}/chapter_img/modern_apps/ma_13_sde_score.svg)
+
 1. **Neural ODE ($y'(t) = f_\theta(y(t), t)$) như giới hạn liên tục của ResNet**:
    Mỗi tầng mạng phần dư $y_{k+1} = y_k + h f_{\theta_k}(y_k)$ chính là một bước Euler; cho $h \to 0$ biến mạng sâu thành một ODE liên tục với bộ giải thích nghi bước thời gian!
 2. **Hai chiến lược tính Gradient: Discretize-then-Optimize vs. Optimize-then-Discretize**:

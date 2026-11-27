@@ -12,7 +12,7 @@ lesson_type: required
 
 > **Storytelling Hook:** Pluck a guitar string at its midpoint and release it: at the instant of release, the string forms a sharp triangular tent with a corner right in the middle. Classical calculus throws up its hands—no derivative exists at the tip! Yet the string has finite elastic tension and obeys the wave equation effortlessly. **Weak derivatives** resolve this paradox by shifting differentiation onto infinitely smooth test functions via integration by parts.
 
-![Weak derivatives understood through integration by parts]({{ site.imgurl }}/chapter_img/chapter12/02_weak_derivatives.svg )
+![Weak derivatives understood through integration by parts]({{ site.imgurl }}/chapter_img/chapter12/02_weak_derivatives.svg)
 
 ## Objectives
 

@@ -10,7 +10,7 @@ categories:
 lesson_type: optional
 ---
 
-![Bài toán ngược: tái dựng tham số từ dữ liệu quan sát]({{ site.imgurl }}/chapter_img/chapter15/06_inverse_problems.svg )
+![Bài toán ngược: tái dựng tham số từ dữ liệu quan sát]({{ site.imgurl }}/chapter_img/chapter15/06_inverse_problems.svg)
 
 Mọi bài toán thuận từ Chương 1 đến Chương 14 đều đi theo chiều xuôi: biết vật liệu bên trong, dự đoán kết quả đo bên ngoài. **Bài toán Ngược (Inverse Problems)** lật ngược toàn bộ câu hỏi: bác sĩ chỉ đo tia X hay dòng điện **trên mặt da**, nhà địa chất chỉ nghe sóng rung **trên mặt đất**, vậy có thể suy ngược ra chính xác hình ảnh cơ quan nội tạng hay túi dầu nằm sâu bên trong không? Câu hỏi tưởng giản dị ấy lại ẩn chứa thách thức lớn nhất của toán ứng dụng: **tính đặt không chỉnh (ill-posedness)** theo nghĩa Hadamard!
 

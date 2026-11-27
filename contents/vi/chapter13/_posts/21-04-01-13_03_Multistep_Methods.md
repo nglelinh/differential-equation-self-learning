@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Trực giác về phương pháp đa bước và predictor-corrector]({{ site.imgurl }}/chapter_img/chapter13/03_multistep_methods.svg )
+![Trực giác về phương pháp đa bước và predictor-corrector]({{ site.imgurl }}/chapter_img/chapter13/03_multistep_methods.svg)
 
 Phương pháp RK4 rất chính xác, nhưng ở mỗi bước nó phải đánh giá hàm vế phải $f(t, y)$ tới **4 lần** rồi ném bỏ toàn bộ kết quả sau khi bước sang $t_{n+1}$—một sự lãng phí lớn khi $f$ là một mô phỏng vật lý thiên văn hay khí quyển cực kỳ tốn CPU! **Phương pháp Đa bước Tuyến tính (Linear Multistep Methods)** như Adams–Bashforth, Adams–Moulton và BDF giải quyết bài toán ấy đầy thông minh: tận dụng lại lịch sử các giá trị $f_{n}, f_{n-1}, \dots, f_{n-k+1}$ đã tính sẵn để đạt bậc chính xác cao mà chỉ cần **đúng 1 lần gọi hàm $f$ mỗi bước**!
 

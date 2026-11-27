@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Elliptic regularity: dữ liệu trơn kéo theo nghiệm trơn hơn]({{ site.imgurl }}/chapter_img/chapter12/06_elliptic_regularity.svg )
+![Elliptic regularity: dữ liệu trơn kéo theo nghiệm trơn hơn]({{ site.imgurl }}/chapter_img/chapter12/06_elliptic_regularity.svg)
 
 Định lý Lax–Milgram mới chỉ hứa hẹn rằng nghiệm yếu $u$ nằm trong $H^1(\Omega)$—một không gian vẫn chứa đầy những hàm gãy khúc không có đạo hàm bậc hai! Vậy làm sao ta biết khi nguồn $f$ trơn thì nghiệm $u$ thực sự là nghiệm cổ điển $C^2$, thậm chí trơn vô hạn $C^\infty$? Câu trả lời nằm ở phép màu của **Tính Trơn Elliptic (Elliptic Regularity)**: toán tử elliptic bậc hai luôn **tặng thêm đúng 2 bậc đạo hàm** cho nghiệm so với vế phải $f$!
 

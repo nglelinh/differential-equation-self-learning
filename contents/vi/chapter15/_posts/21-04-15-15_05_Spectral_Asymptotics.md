@@ -10,7 +10,7 @@ categories:
 lesson_type: optional
 ---
 
-![Asymptotics của phổ và đếm eigenvalue]({{ site.imgurl }}/chapter_img/chapter15/05_spectral_asymptotics.svg )
+![Asymptotics của phổ và đếm eigenvalue]({{ site.imgurl }}/chapter_img/chapter15/05_spectral_asymptotics.svg)
 
 Năm 1911, Hermann Weyl chứng minh một định lý khiến giới vật lý và toán học kinh ngạc: nếu bạn chỉ được nghe toàn bộ danh sách các tần số dao động riêng $\lambda_1 \le \lambda_2 \le \dots$ của một mặt trống phẳng $\Omega$ mà **không hề nhìn thấy hình dạng của nó**, bạn vẫn có thể tính chính xác **diện tích** của cái trống! Công thức đếm $N(\lambda) \sim \frac{\operatorname{Area}(\Omega)}{4\pi}\lambda$—**Định luật Weyl**—là viên ngọc mở đầu cho **Tiệm cận Phổ (Spectral Asymptotics)**, nơi giải tích vi địa phương đọc ra hình học của không gian từ âm thanh của nó!
 
@@ -321,3 +321,9 @@ $$ N(\lambda)\sim \frac{\sqrt{\lambda}}{\pi}. $$
 - Nên xem trước: [Maciej Zworski - Microlocal methods for operators with analytic coefficients III](https://www.youtube.com/watch?v=9MbKr2z9fxs) — Erwin Schrödinger International Institute for Mathematics and Physics (ESI), tiếng Anh. Các phương pháp vi địa phương áp dụng cho các bài toán phổ.
 - [Lecture 22: The Spectral Theorem for a Compact Self-Adjoint Operator](https://www.youtube.com/watch?v=-sfaHVFWBU8) — MIT OpenCourseWare, tiếng Anh. Định lý phổ cho toán tử compact tự liên hợp — cấu trúc trị riêng mà tiệm cận phổ tinh chỉnh.
 - [Lecture 20: Compact Operators and the Spectrum of a Bounded Linear Operator on a Hilbert Space](https://www.youtube.com/watch?v=SFDMFbzCsH0) — MIT OpenCourseWare, tiếng Anh. Giới thiệu phổ của toán tử bị chặn, đối tượng mà tiệm cận phổ khảo sát.
+
+## Khai triển Tiệm cận Nhân Nhiệt (Heat Kernel) và Hàm Zeta Phổ
+
+Từ *CMSA Lecture Notes* (Daniel Freed): Với toán tử elliptic tự liên hợp cấp hai không âm $$\Delta$$ tác động lên phân thớ vectơ $$E \to X$$ (đa tạp Riemann đóng chiều $$n$$), toán tử truyền nhiệt $$H_t = e^{-t\Delta}$$ ($$t > 0$$) có nhân mượt $$h_t(x, y)$$. Khi $$t \to 0^+$$, trên đường chéo $$x = y$$ tồn tại **khai triển tiệm cận Minakshisundaram–Pleijel / Seeley**:
+$$h_t(x, x) \sim t^{-n/2} \sum_{k=0}^\infty A_k(x)\, t^k,$$
+trong đó các hệ số $$A_k(x)$$ là bất biến địa phương của mêtric và độ cong! Khai triển này liên kết trực tiếp với hàm zeta phổ $$\zeta_\Delta(s) = \operatorname{Tr}(\Delta^{-s})$$ qua biến đổi Mellin, cho phép tính thể tích, tổng độ cong vô hướng và chỉ số tôpô từ phổ của phương trình vi phân.

@@ -14,6 +14,8 @@ Làm sao các mô hình AI như Stable Diffusion, Midjourney hay Sora có thể 
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Mô hình Khuếch tán & Score-Based AI
 
+![Phương trình Truyền nhiệt & Mô hình Khuếch tán (Diffusion Models)]({{ site.imgurl }}/chapter_img/modern_apps/ma_09_heat_diffusion_ai.svg)
+
 1. **Quá trình Khuếch tán Xuôi (Forward SDE / Heat Smoothing)**:
    Thêm dần nhiễu Gaussian qua $T$ bước $d\mathbf{x} = \mathbf{f}(\mathbf{x}, t)\,dt + g(t)\,d\mathbf{W}_t$; mật độ xác suất $p_t(\mathbf{x})$ tiến hóa theo phương trình Fokker–Planck (tổng quát hóa của phương trình nhiệt) về phân phối chuẩn $\mathcal{N}(\mathbf{0}, I)$.
 2. **Phương trình Đảo ngược Thời gian (Anderson, 1982)**:

@@ -12,7 +12,7 @@ lesson_type: required
 
 > **Storytelling Hook:** Two very different singularities—a point needle-poke $\delta_{(0,0)}$ and a straight knife-edge jump $H(x)$—both look singular at the origin $(0,0)$. Yet when you hit them with a wave equation, the needle-poke bursts outward in all directions while the knife-edge marches strictly perpendicular to its blade. Lars Hörmander's **wave front set** $\operatorname{WF}(u) \subset T^*\Omega \setminus \{0\}$ captures that exact directional DNA.
 
-![Wave front set as a description of the location and direction of singularities]({{ site.imgurl }}/chapter_img/chapter15/01_wave_front_sets.svg )
+![Wave front set as a description of the location and direction of singularities]({{ site.imgurl }}/chapter_img/chapter15/01_wave_front_sets.svg)
 
 ## Objectives
 

@@ -15,6 +15,8 @@ Mỗi phương trình vi phân $y' = f(t, y)$ thực chất là một phương t
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Lý thuyết Tích phân cho PTVP
 
+![Lý thuyết Tích phân]({{ site.imgurl }}/chapter_img/chapter00/09_00_integration_theory.svg)
+
 1. **Định lý Cơ bản của Giải tích (FTC) & Quy tắc Leibniz**:
    Cho phép tính đạo hàm của hàm chứa tham số trong tích phân $\frac{d}{dt}\int_{a(t)}^{b(t)} F(t, s)\,ds$—công cụ trực tiếp để kiểm chứng công thức biến thiên hằng số và tích chập.
 2. **Tích phân suy rộng ($\int_0^\infty f(t)\,dt$) & Tiêu chuẩn so sánh**:

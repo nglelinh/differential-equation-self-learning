@@ -15,6 +15,8 @@ Tại sao ta có thể yên tâm rằng phương trình vi phân $y' = f(t, y)$ 
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Giải tích Thực cho PTVP
 
+![Ôn tập Giải tích Thực]({{ site.imgurl }}/chapter_img/chapter00/01_00_real_analysis_review.svg)
+
 1. **Tiên đề Cận trên đúng (Supremum) & Tính đầy đủ của $\mathbb{R}$**:
    Mọi tập con khác rỗng bị chặn trên trong $\mathbb{R}$ đều có $\sup$, và mọi dãy Cauchy trong $\mathbb{R}$ đều hội tụ về một số thực—nền móng cho phép lặp Picard và phương pháp Euler.
 2. **Dãy số & Tiêu chuẩn hội tụ**:

@@ -12,7 +12,7 @@ lesson_type: required
 
 > **Storytelling Hook:** Lax–Milgram hands you a weak solution $u \in H^1(\Omega)$—a function guaranteed to have only one weak derivative in $L^2$. At first glance, that seems miles away from a classical $C^2$ or $C^\infty$ solution. Yet for elliptic equations, a remarkable miracle occurs: every extra derivative you feed into the right-hand side $f$ buys *two* extra derivatives on $u$, bootstrapping a rough weak solution all the way to $C^\infty$.
 
-![Elliptic regularity: smoother data often gives smoother solutions]({{ site.imgurl }}/chapter_img/chapter12/06_elliptic_regularity.svg )
+![Elliptic regularity: smoother data often gives smoother solutions]({{ site.imgurl }}/chapter_img/chapter12/06_elliptic_regularity.svg)
 
 ## Objectives
 

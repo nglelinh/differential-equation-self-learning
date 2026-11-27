@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Trực giác về phương trình cứng và miền ổn định của phương pháp số]({{ site.imgurl }}/chapter_img/chapter13/04_stiff_equations.svg )
+![Trực giác về phương trình cứng và miền ổn định của phương pháp số]({{ site.imgurl }}/chapter_img/chapter13/04_stiff_equations.svg)
 
 Hãy hình dung một phản ứng hóa học có hai quá trình xảy ra đồng thời: một chất trung gian phân hủy sạch trong $10^{-6}$ giây, còn sản phẩm chính biến đổi chậm rãi suốt $10$ giây. Sau vài micro-giây đầu tiên, đường cong nghiệm trông phẳng lì và êm đềm—vậy mà nếu bạn chạy RK4 với bước $h = 0{,}01$ giây, nghiệm số lập tức nổ tung ra `NaN`! Chào mừng đến với thế giới **Phương trình Cứng (Stiff Equations)**—nơi **ổn định**, chứ không phải độ chính xác, mới là kẻ bóp nghẹt bước thời gian của mọi phương pháp hiện!
 

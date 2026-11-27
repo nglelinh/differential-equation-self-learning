@@ -10,7 +10,7 @@ categories:
 lesson_type: optional
 ---
 
-![Schrödinger equation và góc nhìn lượng tử của phổ]({{ site.imgurl }}/chapter_img/chapter15/07_quantum_mechanics.svg )
+![Schrödinger equation và góc nhìn lượng tử của phổ]({{ site.imgurl }}/chapter_img/chapter15/07_quantum_mechanics.svg)
 
 Nhiều người bất ngờ khi biết rằng hàng loạt khái niệm trụ cột của giải tích hiện đại—không gian Hilbert, toán tử tự liên hợp, lý thuyết phổ, ký hiệu $\Psi$DO và giải tích bán cổ điển—đều trưởng thành song hành cùng **Cơ học Lượng tử**! Phương trình Schrödinger $i\hbar \partial_t \psi = \hat{H}\psi$ không chỉ là một PDE vật lý, mà là tấm gương phản chiếu sâu sắc nhất toàn bộ lý thuyết toán tử ta đã xây dựng suốt khóa học.
 

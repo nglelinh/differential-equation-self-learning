@@ -12,7 +12,7 @@ lesson_type: required
 
 > **Storytelling Hook:** Pseudo-differential operators are strictly **pseudolocal**—they can never move a singularity from point $y$ to point $x \neq y$. That makes them powerless to represent wave propagators $e^{it\sqrt{-\Delta}}$, which physically transport singularities across space! Replacing the flat phase $(x-y)\cdot\xi$ by a general nonlinear phase function $\phi(x,y,\xi)$ unlocks **Fourier Integral Operators (FIOs)**, the exact language of wave evolution and caustics.
 
-![Fourier integral operators and the transformation of wave fronts]({{ site.imgurl }}/chapter_img/chapter15/03_fourier_integral_operators.svg )
+![Fourier integral operators and the transformation of wave fronts]({{ site.imgurl }}/chapter_img/chapter15/03_fourier_integral_operators.svg)
 
 ## Objectives
 

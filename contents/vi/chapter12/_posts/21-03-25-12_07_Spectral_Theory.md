@@ -10,7 +10,7 @@ categories:
 lesson_type: optional
 ---
 
-![Phổ của toán tử elliptic và các mode riêng cơ bản]({{ site.imgurl }}/chapter_img/chapter12/07_spectral_theory.svg )
+![Phổ của toán tử elliptic và các mode riêng cơ bản]({{ site.imgurl }}/chapter_img/chapter12/07_spectral_theory.svg)
 
 Tại sao phương pháp tách biến ở các chương trước luôn "may mắn" tìm ra một họ hàm riêng $\{\sin(n\pi x/L)\}$ vừa trực giao, vừa đầy đủ để khai triển **mọi** hàm $L^2$ trên miền hình chữ nhật, hình tròn hay bất kỳ hình dạng méo mó nào? Bí mật nằm ở **Lý thuyết Phổ của Toán tử Compact Tự liên hợp**: nghịch đảo $T = (-\Delta)^{-1}$ là một toán tử compact đối xứng trên $L^2(\Omega)$, nên định lý phổ vô hạn chiều đảm bảo tồn tại một cơ sở trực chuẩn đầy đủ các hàm riêng—y hệt định lý chéo hóa ma trận đối xứng trong Đại số Tuyến tính!
 

@@ -10,7 +10,7 @@ categories:
 lesson_type: optional
 ---
 
-![Lý thuyết Sobolev: nhúng, compact và trace]({{ site.imgurl }}/chapter_img/chapter12/10_sobolev_theory.svg )
+![Lý thuyết Sobolev: nhúng, compact và trace]({{ site.imgurl }}/chapter_img/chapter12/10_sobolev_theory.svg)
 
 Một hàm nằm trong không gian Sobolev $W^{1,p}(\Omega)$ có bị chặn hay liên tục hay không? Câu trả lời hóa ra phụ thuộc kịch tính vào **cuộc đua giữa số bậc tích phân $p$ và số chiều không gian $n$**! Trong 1 chiều ($n = 1$), mọi hàm $H^1$ đều liên tục; nhưng sang 2 chiều và 3 chiều, một hàm $H^1$ có thể tiến ra vô cực tại một điểm (như $\ln|\ln r|$ ở 2D)! **Lý thuyết Nhúng Sobolev** (Gagliardo–Nirenberg–Sobolev, Morrey và Rellich–Kondrachov) lập nên bản đồ chính xác cho cuộc đua kỳ thú ấy.
 

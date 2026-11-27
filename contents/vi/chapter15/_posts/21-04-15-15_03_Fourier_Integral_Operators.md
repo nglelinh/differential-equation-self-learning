@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Fourier integral operators và biến đổi mặt sóng]({{ site.imgurl }}/chapter_img/chapter15/03_fourier_integral_operators.svg )
+![Fourier integral operators và biến đổi mặt sóng]({{ site.imgurl }}/chapter_img/chapter15/03_fourier_integral_operators.svg)
 
 Toán tử Giả vi phân ($\Psi$DO) ở Chương 14 có một điểm yếu chí mạng khi gặp phương trình sóng: vì pha của nó cố định là $(x - y)\cdot\xi$, mọi $\Psi$DO đều **giữ nguyên vị trí kỳ dị** ($\operatorname{WF}(Pu) \subset \operatorname{WF}(u)$), nên nó **không bao giờ có thể biểu diễn toán tử tiến hóa sóng** $e^{it\sqrt{-\Delta}}$ vốn dịch chuyển xung sóng từ $y$ sang $x = y \pm ct$! Để giải quyết bài toán này, Lars Hörmander thay pha tuyến tính $(x - y)\cdot\xi$ bằng một **hàm pha tổng quát $\Phi(x, y, \theta)$**—khai sinh **Toán tử Tích phân Fourier (FIO)**!
 

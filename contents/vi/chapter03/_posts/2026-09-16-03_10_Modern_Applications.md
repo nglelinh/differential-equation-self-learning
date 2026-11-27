@@ -15,6 +15,8 @@ Trong khi Fourier Neural Operator (FNO) tỏa sáng với tín hiệu tuần ho�
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Biến đổi Laplace trong AI Khoa học
 
+![Biến đổi Laplace & Mô hình Không gian Trạng thái (S4 / Mamba)]({{ site.imgurl }}/chapter_img/modern_apps/ma_03_laplace_s4.svg)
+
 1. **Laplace Neural Operator (LNO)**:
    Phân tách nghiệm thành phần quá độ (tương ứng các cực hữu hạn $s_k$) và phần xác lập (tần số kích thích) ngay trong miền Laplace, khắc phục sai số biên của FNO trên tín hiệu không tuần hoàn.
 2. **Học Hàm truyền & Nhận dạng hệ thống (Neural Transfer Functions)**:

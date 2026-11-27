@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Định nghĩa toán tử giả vi phân từ symbol]({{ site.imgurl }}/chapter_img/chapter14/04_pdo_definition.svg )
+![Định nghĩa toán tử giả vi phân từ symbol]({{ site.imgurl }}/chapter_img/chapter14/04_pdo_definition.svg)
 
 Đã có lớp ký hiệu $S^m$, bước tiếp theo là biến mỗi hàm $p(x, \xi) \in S^m$ thành một toán tử tuyến tính $P = \operatorname{Op}(p)$ tác động lên hàm số và phân phối—nhưng có một rắc rối kỹ thuật tinh tế: khi bậc $m \ge 0$, tích phân $\int e^{ix\cdot\xi} p(x, \xi)\widehat{u}(\xi)\,d\xi$ và nhân phân phối $K(x, y) = \int e^{i(x-y)\cdot\xi} p(x, \xi)\,d\xi$ không hội tụ tuyệt đối theo nghĩa Lebesgue! Cách vượt qua rắc rối này—**Tích phân Dao động (Oscillatory Integrals)**—chính là trái tim của định nghĩa Toán tử Giả vi phân.
 

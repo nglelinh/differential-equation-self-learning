@@ -15,6 +15,8 @@ Dữ liệu y tế trong phòng hồi sức tích cực, cảm biến rung trên
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Hệ PTVP trong AI & Khoa học Dữ liệu
 
+![Hệ Phương trình Vi phân trong Sinh học Hệ thống & Khống chế]({{ site.imgurl }}/chapter_img/modern_apps/ma_04_systems_ecology.svg)
+
 1. **Latent ODE (Rubanova et al.)**:
    Mã hóa chuỗi thời gian lấy mẫu bất quy tắc thành trạng thái ẩn ban đầu $\mathbf{z}_0$, tiến hóa liên tục qua $\dot{\mathbf{z}} = f_\theta(\mathbf{z}, t)$, rồi giải mã tại bất kỳ thời điểm $t$ nào để dự báo hoặc điền khuyết.
 2. **Phân rã chế độ động lực (DMD) & Toán tử Koopman**:

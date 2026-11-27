@@ -15,6 +15,8 @@ Cùng là hai hàm liên tục hoàn hảo trên $(0, 1)$, tại sao hàm $f(x) 
 
 ## Kiến thức cần nhớ: Bốn cấp độ "độ mượt" của hàm số
 
+![Liên tục và Liên tục Đều]({{ site.imgurl }}/chapter_img/chapter00/01_01_continuity_and_uniform_continuity.svg)
+
 1. **Liên tục tại từng điểm (Pointwise Continuity)**:
    Độ rộng $\delta$ phụ thuộc vào **cả $\varepsilon$ lẫn vị trí $x_0$**; hàm có thể dốc đứng dần khi tiến ra biên miền mở.
 2. **Liên tục đều (Uniform Continuity)**:

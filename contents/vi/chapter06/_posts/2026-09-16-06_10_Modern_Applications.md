@@ -14,6 +14,8 @@ lesson_type: optional
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Phương pháp Phổ & Học Toán tử hiện đại
 
+![Hàm Đặc biệt (Bessel / Legendre) trong Vật lý Tính toán]({{ site.imgurl }}/chapter_img/modern_apps/ma_06_special_functions_ai.svg)
+
 1. **Hội tụ phổ (Spectral Convergence)**:
    Trong khi sai phân hữu hạn bậc 2 giảm sai số theo lũy thừa $O(N^{-2})$, khai triển theo đa thức trực giao (Legendre/Chebyshev) cho hàm trơn giảm sai số theo **hàm mũ $O(e^{-\alpha N})$**!
 2. **Chiếu Galerkin & Điểm nút Gauss–Lobatto**:

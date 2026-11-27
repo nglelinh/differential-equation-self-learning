@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Trực giác về coercivity trong định lý Lax-Milgram]({{ site.imgurl }}/chapter_img/chapter12/05_lax_milgram_theorem.svg )
+![Trực giác về coercivity trong định lý Lax-Milgram]({{ site.imgurl }}/chapter_img/chapter12/05_lax_milgram_theorem.svg)
 
 Khi phương trình elliptic có thêm số hạng đối lưu $\mathbf{b} \cdot \nabla u$ (như dòng chất lỏng vừa khuếch tán vừa cuốn nhiệt đi theo gió), dạng song tuyến tính $a(u, v)$ **không còn đối xứng** ($a(u, v) \neq a(v, u)$), nên ta không thể xem nó là tích vô hướng để dùng Định lý Biểu diễn Riesz hay cực tiểu hóa năng lượng được nữa! **Định lý Lax–Milgram (1954)** chính là chiếc chìa khóa vạn năng bẻ khóa cả trường hợp không đối xứng: chỉ cần kiểm tra đúng **ba điều kiện**—liên tục của $a$, cưỡng bức của $a$, và liên tục của $\ell$—là có ngay tồn tại, duy nhất và ổn định nghiệm!
 

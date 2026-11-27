@@ -11,7 +11,7 @@ categories:
 
 > **Storytelling Hook:** In 1928, Paul Dirac wanted a relativistic wave equation for the electron that was *first-order* in both space and time—which meant finding an algebraic "square root" of the Laplacian $\Delta = \partial_x^2 + \partial_y^2 + \partial_z^2$. Ordinary numbers cannot satisfy $(\alpha\partial_x + \beta\partial_y)^2 = \partial_x^2 + \partial_y^2$ because cross terms never cancel; Dirac discovered that **anticommuting matrices** (Clifford algebras) make the cross terms vanish identically, predicting antimatter and electron spin in a single stroke.
 
-![Dirac operators as a bridge between physics, geometry, and topology]({{ site.imgurl }}/chapter_img/chapter15/10_dirac_operators.svg )
+![Dirac operators as a bridge between physics, geometry, and topology]({{ site.imgurl }}/chapter_img/chapter15/10_dirac_operators.svg)
 
 ## Objectives
 

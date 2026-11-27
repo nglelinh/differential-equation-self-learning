@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Trực giác về ổn định, hội tụ và điều kiện CFL]({{ site.imgurl }}/chapter_img/chapter13/06_stability_convergence_cfl.svg )
+![Trực giác về ổn định, hội tụ và điều kiện CFL]({{ site.imgurl }}/chapter_img/chapter13/06_stability_convergence_cfl.svg)
 
 Một sơ đồ sai phân trông hoàn hảo trên giấy, nhất quán bậc hai hẳn hoi, nhưng khi bấm chạy thì chỉ sau 15 bước thời gian toàn bộ màn hình biến thành răng cưa dao động $10^{30}$! Vì sao? Vì **Nhất quán một mình không bao giờ đủ cho Hội tụ**! Định lý Tương đương Lax–Richtmyer và điều kiện CFL là bộ đôi định luật tối cao giải mã trọn vẹn bí ẩn quan trọng này của mô phỏng PDE.
 

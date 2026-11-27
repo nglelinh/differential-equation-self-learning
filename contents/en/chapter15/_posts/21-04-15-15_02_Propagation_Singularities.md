@@ -12,7 +12,7 @@ lesson_type: required
 
 > **Storytelling Hook:** Clap your hands in a dark cavern: the sharp acoustic crack does not smear out randomly across space—it races along classical light rays (geodesics), reflecting off walls at equal angles. **Hörmander's Propagation of Singularities Theorem** explains why: for any PDE of real principal type, singularities in $\operatorname{WF}(u)$ are forced to ride the Hamiltonian flow of the principal symbol $p_m(x,\xi)$.
 
-![Propagation of singularities along PDE characteristics]({{ site.imgurl }}/chapter_img/chapter15/02_propagation_singularities.svg )
+![Propagation of singularities along PDE characteristics]({{ site.imgurl }}/chapter_img/chapter15/02_propagation_singularities.svg)
 
 ## Objectives
 

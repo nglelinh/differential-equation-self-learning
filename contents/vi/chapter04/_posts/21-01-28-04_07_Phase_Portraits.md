@@ -276,3 +276,12 @@ Vì $$ \Delta=-2<0 $$, gốc là điểm yên ngựa với trục $$ x_1 $$ là 
 
 - Boyce & DiPrima, Chương 7: trình bày hệ thống phân loại hệ tuyến tính phẳng.
 - Strogatz, *Nonlinear Dynamics and Chaos*: giàu trực giác hình học về chân dung pha và phân loại điểm cân bằng.
+
+### Video ngắn: Mặt phẳng Pha & Phân loại Điểm cân bằng
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#10121a;" src="{{ site.baseurl }}/public/videos/reels/ode-phase-portrait_vi.mp4"></video>
+</div>
+
+Video dài khoảng 26 giây (có thuyết minh tiếng Việt): nhận diện nút hút, điểm yên ngựa và xoáy hút trực tiếp từ dấu trị riêng λ₁, λ₂.
+

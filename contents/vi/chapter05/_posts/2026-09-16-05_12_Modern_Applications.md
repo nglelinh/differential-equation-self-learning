@@ -14,6 +14,8 @@ Hơn một thế kỷ qua, phương pháp trực tiếp của Lyapunov là chu�
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Chứng chỉ Lyapunov Nơ-ron
 
+![Động lực Phi tuyến, Rẽ nhánh & Dự báo Hỗn loạn (Reservoir)]({{ site.imgurl }}/chapter_img/modern_apps/ma_05_chaos_bifurcation.svg)
+
 1. **Điều kiện Lyapunov toàn cục/địa phương**:
    $V(\mathbf{0}) = 0$, $V(\mathbf{x}) > 0$ ($\mathbf{x} \neq \mathbf{0}$) và đạo hàm dọc quỹ đạo $\dot{V}(\mathbf{x}) = \nabla V(\mathbf{x}) \cdot \mathbf{f}(\mathbf{x}) < 0$ trên miền hấp dẫn $\mathcal{D}$.
 2. **Hàm mất mát Lyapunov (Lyapunov Risk)**:

@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Trực giác của phương pháp Euler tiến và Euler lùi]({{ site.imgurl }}/chapter_img/chapter13/01_eulers_method.svg )
+![Trực giác của phương pháp Euler tiến và Euler lùi]({{ site.imgurl }}/chapter_img/chapter13/01_eulers_method.svg)
 
 Nếu bạn đang lái xe trong sương mù dày đặc và chỉ thấy độ dốc mặt đường ngay dưới bánh xe hiện tại, chiến lược đơn giản nhất là giữ nguyên hướng lái ấy đi thẳng một quãng ngắn $h$, rồi dừng lại đo độ dốc mới và lặp lại. Đó chính là **Phương pháp Euler (1768)**: $y_{n+1} = y_n + h f(t_n, y_n)$—thuật toán giải ODE lâu đời nhất, dễ hiểu nhất, và cũng là phòng thí nghiệm hoàn hảo nhất để tận mắt thấy hiện tượng mất ổn định số!
 

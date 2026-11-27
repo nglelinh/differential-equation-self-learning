@@ -14,6 +14,8 @@ Một mạng nơ-ron huấn luyện bằng sai số $L^2$ có thể dự đoán 
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Học Toán tử trong Không gian Sobolev
 
+![Không gian Sobolev & Hội tụ của Mạng Nơ-ron Vật lý]({{ site.imgurl }}/chapter_img/modern_apps/ma_12_sobolev_pinn.svg)
+
 1. **Chuẩn $H^s$ kiểm soát đồng thời giá trị và đạo hàm**:
    Sai số trong $L^2$ mù trước các dao động nhỏ biên độ nhưng tần số cao; chuẩn Sobolev $\|e\|_{H^1}^2 = \|e\|_{L^2}^2 + \|\nabla e\|_{L^2}^2$ trừng phạt ngay lập tức mọi nhiễu răng cưa phá hủy gradient vật lý.
 2. **Ánh xạ liên tục giữa các không gian Sobolev**:

@@ -12,7 +12,7 @@ lesson_type: optional
 
 > **Storytelling Hook:** In 1911, physicist Hendrik Lorentz posed a haunting question during a Göttingen lecture: does the high-frequency distribution of resonant tones inside an arbitrarily shaped room depend on the room's intricate geometry, or *only* on its total volume? Just months later, Hermann Weyl proved his celebrated **Weyl Law**, launching the modern field of spectral geometry and Mark Kac's famous question: *"Can one hear the shape of a drum?"*
 
-![Spectral asymptotics and eigenvalue counting]({{ site.imgurl }}/chapter_img/chapter15/05_spectral_asymptotics.svg )
+![Spectral asymptotics and eigenvalue counting]({{ site.imgurl }}/chapter_img/chapter15/05_spectral_asymptotics.svg)
 
 ## Objectives
 

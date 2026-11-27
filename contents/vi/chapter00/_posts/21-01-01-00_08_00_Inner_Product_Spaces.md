@@ -15,6 +15,8 @@ Trong không gian định chuẩn, ta đo được độ dài nhưng chưa có k
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Không gian Tích vô hướng & Hilbert
 
+![Không gian Tích vô hướng]({{ site.imgurl }}/chapter_img/chapter00/08_00_inner_product_spaces.svg)
+
 1. **Tích vô hướng $\langle u, v\rangle$ & Bất đẳng thức Cauchy–Schwarz**:
    Trên $L^2([a, b])$, tích vô hướng là $\langle f, g\rangle = \int_a^b f(x)\overline{g(x)}\,dx$; bất đẳng thức $\vert\langle f, g\rangle\vert \le \|f\|\,\|g\|$ đảm bảo khái niệm "góc giữa hai hàm số" luôn hợp lệ.
 2. **Tính trực giao ($\langle f, g\rangle = 0$) & Hệ trực chuẩn**:

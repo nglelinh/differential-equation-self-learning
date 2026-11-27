@@ -12,7 +12,7 @@ lesson_type: optional
 
 > **Storytelling Hook:** Suppose a weak solution $u$ on $\mathbb{R}^n$ has finite gradient energy $\int |\nabla u|^p\,dx < \infty$. Does that force $u$ to be bounded, or continuous, or at least integrable to a higher power $q > p$? **Sobolev Theory** answers with breathtaking precision: everything is governed by a cosmic tug-of-war between differentiability $k$, integrability $p$, and spatial dimension $n$.
 
-![Sobolev theory: embeddings, compactness, and traces]({{ site.imgurl }}/chapter_img/chapter12/10_sobolev_theory.svg )
+![Sobolev theory: embeddings, compactness, and traces]({{ site.imgurl }}/chapter_img/chapter12/10_sobolev_theory.svg)
 
 ## Objectives
 

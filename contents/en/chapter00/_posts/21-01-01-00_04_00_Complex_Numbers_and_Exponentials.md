@@ -14,6 +14,8 @@ Why do trigonometric waves $$\cos(\omega t)$$ and $$\sin(\omega t)$$ suddenly em
 
 ## Key ideas: Complex Analysis as the Engine of Oscillation
 
+![Số phức và Hàm mũ Phức]({{ site.imgurl }}/chapter_img/chapter00/04_00_complex_numbers_and_exponentials.svg)
+
 Four complex-variable ideas simplify differential equations dramatically:
 
 1. **Polar Form and Geometric Multiplication:** Writing $$z = r e^{i\theta}$$ turns multiplication into scaling moduli ($$r_1 r_2$$) and adding angles ($$\theta_1 + \theta_2$$), making phase shifts and frequency response transparent.

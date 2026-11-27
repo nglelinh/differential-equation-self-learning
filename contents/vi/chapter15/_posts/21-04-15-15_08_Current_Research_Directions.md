@@ -10,7 +10,7 @@ categories:
 lesson_type: optional
 ---
 
-![Các hướng nghiên cứu hiện đại sau microlocal analysis]({{ site.imgurl }}/chapter_img/chapter15/08_current_research_directions.svg )
+![Các hướng nghiên cứu hiện đại sau microlocal analysis]({{ site.imgurl }}/chapter_img/chapter15/08_current_research_directions.svg)
 
 Kết thúc một hành trình dài từ phương trình vi phân cấp 1 đến tận phân tích vi địa phương, câu hỏi tự nhiên nhất sẽ là: *các nhà toán học PDE hàng đầu thế giới hôm nay đang giải quyết những bài toán mở nào?* Từ giải thưởng Thiên niên kỷ một triệu đô la về phương trình Navier–Stokes 3D, sự hình thành lỗ đen trong Thuyết Tương đối Rộng, đến giao thoa bùng nổ giữa Lý thuyết PDE với Học sâu Khoa học (SciML), bức tranh nghiên cứu hiện đại đang sôi động hơn bao giờ hết!
 

@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Động lực vượt qua toán tử vi phân cổ điển]({{ site.imgurl }}/chapter_img/chapter14/01_motivation_beyond.svg )
+![Động lực vượt qua toán tử vi phân cổ điển]({{ site.imgurl }}/chapter_img/chapter14/01_motivation_beyond.svg)
 
 Mọi toán tử vi phân truyền thống đều có hai "cái trần" không thể vượt qua: thứ nhất, bậc của chúng luôn phải là số nguyên không âm ($0, 1, 2, \dots$) nên không thể viết ra đạo hàm nửa bậc $(-\Delta)^{1/2}$ hay toán tử nghịch đảo $(-\Delta)^{-1}$; thứ hai, chúng hoàn toàn **địa phương** nên không thể mô tả các hiện tượng tương tác xa như sóng mặt nước hay ánh xạ Dirichlet-to-Neumann! Bài học này chỉ rõ vì sao toán học bắt buộc phải bước ra khỏi biên giới toán tử vi phân để tiến vào đại số $\Psi$DO.
 

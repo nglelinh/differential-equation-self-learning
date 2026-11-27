@@ -14,6 +14,8 @@ Mỗi khi kỹ sư hàng không đổi hình dạng cánh máy bay hay kỹ sư 
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Học Toán tử cho Phương trình Elliptic
 
+![Phương trình Laplace/Poisson trong Đồ họa & Xử lý Hình học]({{ site.imgurl }}/chapter_img/modern_apps/ma_11_laplace_geometry.svg)
+
 1. **Ánh xạ Hàm–sang–Hàm và Toán tử Green học được**:
    Với bài toán elliptic tuyến tính $-\Delta u = f$, nghiệm là phép tích phân $u(x) = \int_\Omega G(x, y) f(y)\,dy$. Các kiến trúc Neural Operator (GNO, FNO) mô phỏng trực tiếp cấu trúc toán tử tích phân phi địa phương này qua nhiều tầng phi tuyến.
 2. **Lọc Phổ Fourier (Fourier Neural Operator — FNO)**:

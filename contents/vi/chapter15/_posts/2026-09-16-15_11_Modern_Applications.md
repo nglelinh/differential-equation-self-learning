@@ -14,6 +14,8 @@ Khi máy chụp cắt lớp CT bệnh viện chỉ quay được một góc hạ
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Bài toán Ngược Học được & Prior Vi cục bộ
 
+![Giải tích Vi địa phương, Tán xạ & Hệ lượng tử]({{ site.imgurl }}/chapter_img/modern_apps/ma_15_microlocal_quantum.svg)
+
 1. **Biến đổi Radon như một Toán tử Tích phân Fourier (FIO)**:
    Chụp CT đo tích phân đường thẳng $Rf(\theta, s)$ của mật độ mô $f(x)$; quan hệ chính tắc của $R$ chỉ ra một cạnh ảnh ở $(x, \xi)$ chỉ được ghi nhận nếu có tia X đi **tiếp tuyến với cạnh** (tức vuông góc với pháp tuyến $\xi$)!
 2. **Phân loại Kỳ dị Nhìn thấy (Visible) vs. Bị mù (Invisible)**:

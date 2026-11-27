@@ -10,7 +10,7 @@ categories:
 lesson_type: optional
 ---
 
-![Elliptic regularity nhìn qua parametrix và symbol calculus]({{ site.imgurl }}/chapter_img/chapter14/08_elliptic_regularity_review.svg )
+![Elliptic regularity nhìn qua parametrix và symbol calculus]({{ site.imgurl }}/chapter_img/chapter14/08_elliptic_regularity_review.svg)
 
 Ở Chương 12, để chứng minh một nghiệm yếu của PDE elliptic hệ số biến thiên thực sự trơn $C^\infty$, ta phải xoay xở với các thương sai phân (difference quotients), hàm cắt và ước lượng năng lượng dài nhiều trang giấy. Đến Chương 14, toàn bộ chứng minh ấy bỗng thu gọn lại thành **đúng 3 dòng đại số thần kỳ** nhờ Parametrix của $\Psi$DO! Bài học này nhìn lại Định lý Tính Chính quy Elliptic từ đỉnh cao của lý thuyết toán tử giả vi phân.
 

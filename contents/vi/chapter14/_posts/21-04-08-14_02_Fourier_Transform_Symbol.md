@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Fourier transform như cầu nối từ đạo hàm sang symbol]({{ site.imgurl }}/chapter_img/chapter14/02_fourier_transform_symbol.svg )
+![Fourier transform như cầu nối từ đạo hàm sang symbol]({{ site.imgurl }}/chapter_img/chapter14/02_fourier_transform_symbol.svg)
 
 Một toán tử vi phân hệ số biến thiên như $P = a(x)(-\partial_x^2) + b(x)(-i\partial_x) + c(x)$ vừa nhân với hàm theo vị trí $x$, vừa lấy đạo hàm tương ứng với tần số $\xi$. Làm sao biểu diễn nó qua Biến đổi Fourier khi $a(x)$ không còn là hằng số để kéo ra ngoài dấu tích phân? Bí quyết vô cùng thanh lịch: viết $u(x)$ thành tổng sóng phẳng $e^{ix\xi}\widehat{u}(\xi)$ trước, rồi để $P$ tác động trực tiếp lên $e^{ix\xi}$—hệ số hiện ra chính là **ký hiệu toàn phần $p(x, \xi)$**!
 

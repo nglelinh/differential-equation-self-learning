@@ -14,6 +14,8 @@ Làm sao các nhà địa chất biết bên dưới lớp đất đá sâu 5 km
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Ảnh Địa chấn & Lan truyền Sóng Nơ-ron
 
+![Phương trình Sóng trong Địa chấn, Âm học & PINN]({{ site.imgurl }}/chapter_img/modern_apps/ma_10_wave_pinn.svg)
+
 1. **Bài toán Thuận (Forward Modeling) vs. Bài toán Ngược (Inversion / FWI)**:
    Bài toán thuận biết vận tốc đá $c(x, z)$ và mô phỏng sóng $u(x, z, t)$. Bài toán ngược chỉ đo được $u$ trên mặt đất $z = 0$ và phải khôi phục lại bản đồ ẩn $c(x, z)$ sâu hàng km bên dưới!
 2. **Phương pháp Trạng thái Liên hợp (Adjoint-State Method)**:

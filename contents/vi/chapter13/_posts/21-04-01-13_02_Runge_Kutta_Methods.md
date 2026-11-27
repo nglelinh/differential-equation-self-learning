@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Trực giác của Runge-Kutta bậc bốn]({{ site.imgurl }}/chapter_img/chapter13/02_runge_kutta_methods.svg )
+![Trực giác của Runge-Kutta bậc bốn]({{ site.imgurl }}/chapter_img/chapter13/02_runge_kutta_methods.svg)
 
 Nhược điểm chí mạng của phương pháp Euler là nó mù quáng tin vào độ dốc tại đầu đoạn $[t_n, t_n + h]$ trong khi đường cong nghiệm đang uốn lượn liên tục. Vậy nếu ta thử bước ra giữa đoạn, thăm dò độ dốc tại đó, sửa lại ước lượng một lần nữa, rồi lấy **trung bình có trọng số** của 4 độ dốc thăm dò thì sao? Bạn vừa phát minh lại **Runge–Kutta bậc 4 (RK4)**—cỗ máy giải ODE kinh điển thống trị khoa học kỹ thuật suốt hơn một thế kỷ!
 

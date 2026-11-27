@@ -247,3 +247,12 @@ $$
 - Boyce & DiPrima — *Elementary Differential Equations*: trình bày rõ ý nghĩa động học của nghiệm phức.
 - Zill — *Differential Equations with Boundary-Value Problems*: nhiều bài tập chuyển đổi giữa nghiệm phức và nghiệm thực.
 - Ross — *Differential Equations*: ngắn gọn và rõ ràng khi đọc $$ \alpha $$, $$ \beta $$ từ nghiệm đặc trưng.
+
+### Video ngắn: Ba kịch bản Phương trình Đặc trưng Cấp 2
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#10121a;" src="{{ site.baseurl }}/public/videos/reels/ode-characteristic-roots_vi.mp4"></video>
+</div>
+
+Video dài khoảng 19 giây (có thuyết minh tiếng Việt): nghiệm thực phân biệt, nghiệm kép và nghiệm phức α ± iβ sinh dao động điều hòa.
+

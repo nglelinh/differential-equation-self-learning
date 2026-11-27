@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Các lớp symbol và kiểm soát tăng trưởng theo tần số]({{ site.imgurl }}/chapter_img/chapter14/03_symbol_classes.svg )
+![Các lớp symbol và kiểm soát tăng trưởng theo tần số]({{ site.imgurl }}/chapter_img/chapter14/03_symbol_classes.svg)
 
 Nếu ta cho phép $p(x, \xi)$ là một hàm tùy ý thì tích phân Fourier $\int e^{ix\xi} p(x, \xi)\widehat{u}(\xi)\,d\xi$ có thể phân kỳ, và hợp thành hai toán tử sẽ mất sạch cấu trúc đại số! Lars Hörmander đã tìm ra đúng "điều kiện tăng trưởng vàng" để mọi phép tính vi tích phân, hợp thành và đánh giá Sobolev chạy mượt như nhung: **lớp ký hiệu $S^m(\mathbb{R}^n \times \mathbb{R}^n)$**—nơi mỗi lần lấy đạo hàm theo $\xi$, bậc tăng trưởng phải **rơi xuống đúng 1 nấc**!
 

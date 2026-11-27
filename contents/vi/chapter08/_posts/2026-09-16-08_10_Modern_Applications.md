@@ -14,6 +14,8 @@ Mạng tích chập CNN truyền thống chỉ nhìn thấy các điểm ảnh l
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Fourier Neural Operator (FNO)
 
+![Chuỗi Fourier & Toán tử Nơ-ron Fourier (FNO)]({{ site.imgurl }}/chapter_img/modern_apps/ma_08_fourier_fno.svg)
+
 1. **Định lý Tích chập Fourier ($\mathcal{F}\{K * v\} = \mathcal{F}\{K\} \cdot \mathcal{F}\{v\}$)**:
    Mỗi lớp Fourier trong FNO chạy FFT đưa tín hiệu sang miền tần số, **nhân tuyến tính** trên $k_{\max}$ tần số thấp nhất (bộ lọc toàn cục!), rồi chạy Inverse FFT (iFFT) quay về miền không gian—tốn chỉ $O(N\log N)$!
 2. **Bất biến độ phân giải (Zero-Shot Super-Resolution)**:

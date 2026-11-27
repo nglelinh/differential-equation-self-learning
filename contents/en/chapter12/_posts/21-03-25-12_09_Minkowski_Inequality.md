@@ -12,7 +12,7 @@ lesson_type: optional
 
 > **Storytelling Hook:** Why can you draw circles, measure distances, and talk about convergence in $L^p$ for $p \ge 1$, yet the entire geometric edifice collapses if $p = 1/2$? Everything hinges on a single inequality—**Minkowski's inequality**—which guarantees that the straight line is still the shortest path in infinite-dimensional function spaces.
 
-![Minkowski inequality and $$ L^p $$ geometry]({{ site.imgurl }}/chapter_img/chapter12/09_minkowski_inequality.svg )
+![Minkowski inequality and $$ L^p $$ geometry]({{ site.imgurl }}/chapter_img/chapter12/09_minkowski_inequality.svg)
 
 ## Objectives
 

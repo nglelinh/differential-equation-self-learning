@@ -12,7 +12,7 @@ lesson_type: optional
 
 > **Storytelling Hook:** Classical linear PDE theory is largely mapped out—so where do today's Fields Medalists and active researchers push the frontier? Into the wild territory where nonlinearity meets dispersion, geometry, and randomness: dispersive Strichartz estimates, black-hole stability in general relativity, Navier–Stokes regularity, and microlocal analysis on singular spaces.
 
-![Modern research directions after microlocal analysis]({{ site.imgurl }}/chapter_img/chapter15/08_current_research_directions.svg )
+![Modern research directions after microlocal analysis]({{ site.imgurl }}/chapter_img/chapter15/08_current_research_directions.svg)
 
 ## Objectives
 

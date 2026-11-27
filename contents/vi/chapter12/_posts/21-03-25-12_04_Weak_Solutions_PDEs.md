@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Dạng yếu của PDE qua hàm thử và tích phân từng phần]({{ site.imgurl }}/chapter_img/chapter12/04_weak_solutions_pdes.svg )
+![Dạng yếu của PDE qua hàm thử và tích phân từng phần]({{ site.imgurl }}/chapter_img/chapter12/04_weak_solutions_pdes.svg)
 
 Một tấm vật liệu ghép từ hai lớp đồng và sắt có hệ số dẫn nhiệt $a(x)$ nhảy bậc đột ngột tại mối nối: nghiệm nhiệt độ $u(x)$ bị gãy khúc đạo hàm ngay tại mối nối nên **không thể có đạo hàm bậc hai $u''$ theo nghĩa cổ điển**! Thế nhưng nhiệt độ ngoài đời thực vẫn tồn tại một cách hiển nhiên. **Công thức Nghiệm Yếu (Weak Formulation)** giải cứu hoàn toàn tình thế: nhân PDE với hàm thử $v$, tích phân từng phần một lần để chia đều gánh nặng đạo hàm bậc hai thành **hai đạo hàm bậc nhất** $\nabla u \cdot \nabla v$!
 

@@ -12,7 +12,7 @@ lesson_type: required
 
 > **Storytelling Hook:** Knowing a vibrating membrane has small $L^2$ displacement does not prevent it from hiding microscopic, infinitely jagged oscillations with infinite elastic energy. **Sobolev spaces** $W^{k,p}(\Omega)$ solve this by measuring both a function and its weak derivatives together in one complete norm—creating the exact natural home for PDE solutions.
 
-![The intuition behind Sobolev spaces and weak gradients]({{ site.imgurl }}/chapter_img/chapter12/03_sobolev_spaces.svg )
+![The intuition behind Sobolev spaces and weak gradients]({{ site.imgurl }}/chapter_img/chapter12/03_sobolev_spaces.svg)
 
 ## Objectives
 

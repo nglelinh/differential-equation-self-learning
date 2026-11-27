@@ -15,6 +15,8 @@ Nếu bạn từng ngạc nhiên khi thấy không gian nghiệm của phương 
 
 ## Kiến thức cần nhớ: Bốn trụ cột Đại số Tuyến tính trong PTVP
 
+![Đại số Tuyến tính Cốt lõi]({{ site.imgurl }}/chapter_img/chapter00/03_00_linear_algebra_essentials.svg)
+
 1. **Không gian vectơ, Độc lập tuyến tính & Cơ sở**:
    Tập nghiệm của PTVP tuyến tính thuần nhất cấp $n$ là một không gian vectơ $n$ chiều; tìm nghiệm tổng quát thực chất là tìm một **cơ sở gồm $n$ nghiệm độc lập tuyến tính**.
 2. **Ánh xạ tuyến tính, Hạt nhân (Kernel) & Nguyên lý chồng chất**:

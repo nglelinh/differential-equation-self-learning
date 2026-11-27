@@ -10,7 +10,7 @@ categories:
 lesson_type: optional
 ---
 
-![Lưới phần tử hữu hạn và các hàm cơ sở cục bộ]({{ site.imgurl }}/chapter_img/chapter13/07_finite_element_introduction.svg )
+![Lưới phần tử hữu hạn và các hàm cơ sở cục bộ]({{ site.imgurl }}/chapter_img/chapter13/07_finite_element_introduction.svg)
 
 Phương pháp sai phân hữu hạn (FDM) tuyệt vời trên hình vuông, nhưng hãy thử phủ lưới ô vuông lên một cánh tuabin máy bay hay động mạch chủ uốn lượn—biên cong sẽ bị cắt nham nhở như bậc thang! **Phương pháp Phần tử Hữu hạn (Finite Element Method — FEM)** kết hợp trực tiếp **Dạng yếu $H^1$** của Chương 12 với nghệ thuật chia miền thành các tam giác nhỏ linh hoạt và xấp xỉ nghiệm bằng tổ hợp tuyến tính của các "hàm mũ nón" địa phương—tạo nên công cụ mô phỏng kỹ thuật quyền năng nhất thế kỷ XX–XXI!
 

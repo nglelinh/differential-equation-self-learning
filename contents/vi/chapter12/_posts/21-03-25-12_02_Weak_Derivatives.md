@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Đạo hàm yếu được hiểu qua tích phân từng phần]({{ site.imgurl }}/chapter_img/chapter12/02_weak_derivatives.svg )
+![Đạo hàm yếu được hiểu qua tích phân từng phần]({{ site.imgurl }}/chapter_img/chapter12/02_weak_derivatives.svg)
 
 Một sợi dây đàn bị gảy kéo căng thành hình tam giác nhọn tại giữa dây: rõ ràng nó là trạng thái vật lý hoàn toàn hợp lệ, nhưng tại đỉnh tam giác, đạo hàm cổ điển $u'(x)$ **không tồn tại**! Làm sao giải phương trình sóng hay phương trình đàn hồi cho những hình dạng có góc gãy như thế? Sergei Sobolev đã nghĩ ra một cú xoay chuyển tuyệt diệu: thay vì lấy giới hạn tỷ số sai phân tại từng điểm, hãy **đẩy phép đạo hàm sang một hàm thử trơn vô hạn $\varphi$** thông qua công thức tích phân từng phần!
 

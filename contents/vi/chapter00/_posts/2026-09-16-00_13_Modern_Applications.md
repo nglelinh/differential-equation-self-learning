@@ -15,6 +15,8 @@ lesson_type: optional
 
 ## Kiến thức cần nhớ: Bốn trụ cột toán học của Học máy Khoa học hiện đại
 
+![Nền tảng Giải tích – Đại số trong PINNs & Neural Operators]({{ site.imgurl }}/chapter_img/modern_apps/ma_00_foundations.svg)
+
 1. **Giải tích đa biến & Đạo hàm tự động (Automatic Differentiation)**:
    Quy tắc dây chuyền (chain rule) áp dụng trên đồ thị tính toán cho phép tính chính xác đạo hàm riêng $\partial_t u_\theta, \partial_{xx} u_\theta$ đến sai số máy $10^{-16}$ mà không cần sai phân hữu hạn.
 2. **Không gian chuẩn & Hàm mất mát vật lý (Physics-Informed Loss)**:

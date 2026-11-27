@@ -15,6 +15,8 @@ Nếu bạn huấn luyện một mạng nơ-ron thông thường để dự đo�
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Mạng nơ-ron Cấp Hai & Bảo toàn Vật lý
 
+![ODE Bậc 2 & Động lực Học sâu (Momentum / Hamiltonian NN)]({{ site.imgurl }}/chapter_img/modern_apps/ma_02_second_order_flow.svg)
+
 1. **Hamiltonian Neural Networks (HNN)**:
    Thay vì học trực tiếp $(\dot{q}, \dot{p})$, mạng học một hàm vô hướng duy nhất—năng lượng $H_\theta(q, p)$—rồi suy ra động lực qua phương trình Hamilton $\dot{q} = \frac{\partial H_\theta}{\partial p},\; \dot{p} = -\frac{\partial H_\theta}{\partial q}$, bảo toàn $H_\theta$ chính xác theo cấu trúc!
 2. **Lagrangian Neural Networks (LNN)**:

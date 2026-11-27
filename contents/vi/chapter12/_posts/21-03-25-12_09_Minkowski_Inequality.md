@@ -10,7 +10,7 @@ categories:
 lesson_type: optional
 ---
 
-![Bất đẳng thức Minkowski và hình học $$ L^p $$]({{ site.imgurl }}/chapter_img/chapter12/09_minkowski_inequality.svg )
+![Bất đẳng thức Minkowski và hình học $$ L^p $$]({{ site.imgurl }}/chapter_img/chapter12/09_minkowski_inequality.svg)
 
 Trong mặt phẳng Euclid, ta thuộc lòng rằng tổng độ dài hai cạnh tam giác luôn lớn hơn hoặc bằng cạnh thứ ba. Khi bước vào thế giới vô hạn chiều của các không gian hàm $L^p(\Omega)$, câu hỏi quan trọng lập tức xuất hiện: liệu đại lượng $\|f\|_{L^p} = (\int |f|^p\,dx)^{1/p}$ có còn tuân theo bất đẳng thức tam giác để thực sự là một **khoảng cách hình học** hợp lệ hay không? **Bất đẳng thức Minkowski** trả lời "CÓ" cho mọi $1 \le p \le \infty$—và phiên bản tích phân của nó còn là vũ khí bí mật để ước lượng nghiệm PDE qua phép tích chập!
 

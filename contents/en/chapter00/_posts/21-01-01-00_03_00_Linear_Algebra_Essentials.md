@@ -14,6 +14,8 @@ Suppose three coupled masses oscillate on springs between two walls: at first gl
 
 ## Key ideas: Linear Algebra as the Skeleton of Linear ODEs
 
+![Đại số Tuyến tính Cốt lõi]({{ site.imgurl }}/chapter_img/chapter00/03_00_linear_algebra_essentials.svg)
+
 Four linear-algebraic pillars organize Chapters 2 and 4 of this course:
 
 1. **Vector Spaces and Superposition:** The solution set of an $$n$$th-order homogeneous linear ODE $$L[y] = 0$$ (or a system $$\mathbf{x}' = A\mathbf{x}$$) is an $$n$$-dimensional vector space; finding $$n$$ linearly independent solutions completely characterizes *every* possible motion.

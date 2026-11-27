@@ -15,6 +15,8 @@ Một lò xo rung lên xuống hoàn toàn thực trong phòng thí nghiệm, v�
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Số phức & Hàm mũ phức
 
+![Số phức và Hàm mũ Phức]({{ site.imgurl }}/chapter_img/chapter00/04_00_complex_numbers_and_exponentials.svg)
+
 1. **Dạng đại số & Dạng cực ($z = a + bi = r e^{i\theta}$)**:
    Phép cộng là tịnh tiến vectơ trên mặt phẳng Argand, còn phép nhân $z_1 z_2 = r_1 r_2 e^{i(\theta_1 + \theta_2)}$ là **co giãn theo môđun $r$ kết hợp quay theo góc pha $\theta$**.
 2. **Công thức Euler ($e^{i\theta} = \cos\theta + i\sin\theta$)**:

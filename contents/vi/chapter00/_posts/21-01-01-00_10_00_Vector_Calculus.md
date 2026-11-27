@@ -15,6 +15,8 @@ Nhiệt chảy từ nơi nóng sang nơi lạnh, chất lỏng xoáy quanh trụ
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Giải tích Vectơ
 
+![Giải tích Vectơ]({{ site.imgurl }}/chapter_img/chapter00/10_00_vector_calculus.svg)
+
 1. **Bộ ba toán tử vi phân ($\nabla f$, $\nabla \cdot \mathbf{F}$, $\nabla \times \mathbf{F}$)**:
    Gradient đo độ dốc cực đại của trường vô hướng; Divergence đo mật độ "nguồn phát / hút" cục bộ của dòng chảy; Curl đo độ xoáy cục bộ quanh từng điểm.
 2. **Toán tử Laplace ($\Delta u = \nabla \cdot (\nabla u) = u_{xx} + u_{yy} + u_{zz}$)**:

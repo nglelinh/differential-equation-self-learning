@@ -340,3 +340,12 @@ Số hạng $$ 80 $$ là nhiệt độ cân bằng dài hạn, còn $$ -58e^{-0.
 - Boyce & DiPrima — *Elementary Differential Equations*: giải thích rõ phương pháp nhân tử tích phân và các mô hình ứng dụng cơ bản.
 - Zill — *Differential Equations with Boundary-Value Problems*: nhiều bài tập tốt về dạng chuẩn và bài toán giá trị đầu.
 - Ross — *Differential Equations*: hữu ích để rèn cách trình bày ngắn gọn và so sánh các dạng nghiệm.
+
+### Video ngắn: Thừa số Tích phân cho ODE Tuyến tính Bậc 1
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#10121a;" src="{{ site.baseurl }}/public/videos/reels/ode-separable-linear_vi.mp4"></video>
+</div>
+
+Video dài khoảng 19 giây (có thuyết minh tiếng Việt): cách nhân thừa số tích phân μ(x) = exp(∫P(x)dx) để gộp vế trái thành đạo hàm một tích.
+

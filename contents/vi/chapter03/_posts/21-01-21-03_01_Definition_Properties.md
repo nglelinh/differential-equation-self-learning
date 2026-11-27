@@ -235,3 +235,12 @@ Tốc độ tăng trưởng của tín hiệu quyết định trực tiếp mi�
 - Boyce & DiPrima — *Elementary Differential Equations*: phần mở đầu về biến đổi Laplace trình bày dễ tiếp cận.
 - Zill — *Differential Equations with Boundary-Value Problems*: nhiều ví dụ cơ bản rèn luyện tính từ định nghĩa và xét hội tụ.
 - Ross — *Differential Equations*: ngắn gọn, phù hợp để ôn các tính chất đầu chương.
+
+### Video ngắn: Biến đổi Laplace & Đạo hàm sang Đại số
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#10121a;" src="{{ site.baseurl }}/public/videos/reels/ode-laplace-heat_vi.mp4"></video>
+</div>
+
+Video dài khoảng 19 giây (có thuyết minh tiếng Việt): cách biến đổi Laplace biến đạo hàm y'(t), y''(t) thành đa thức theo s kèm điều kiện đầu.
+

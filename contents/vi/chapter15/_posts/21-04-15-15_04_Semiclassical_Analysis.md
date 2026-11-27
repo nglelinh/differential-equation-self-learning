@@ -10,7 +10,7 @@ categories:
 lesson_type: optional
 ---
 
-![Trực giác semiclassical khi tham số nhỏ tiến về 0]({{ site.imgurl }}/chapter_img/chapter15/04_semiclassical_analysis.svg )
+![Trực giác semiclassical khi tham số nhỏ tiến về 0]({{ site.imgurl }}/chapter_img/chapter15/04_semiclassical_analysis.svg)
 
 Làm sao một thế giới cơ học lượng tử đầy sóng xác suất, nhiễu xạ và bất định lại chuyển hóa êm ái thành thế giới cơ học cổ điển của Newton với các quỹ đạo hành tinh sắc nét khi hằng số Planck $h \to 0$? **Giải tích Bán cổ điển (Semiclassical Analysis)** đặt tham số nhỏ $h \in (0, 1]$ ngay trước mọi đạo hàm ($h D_x = -ih\partial_x$), biến ký hiệu $\Psi$DO thành hàm Hamilton cổ điển $H(x, \xi) = |\xi|^2 + V(x)$ và cho phép ta quan sát trực tiếp **ranh giới giữa Sóng và Hạt**!
 

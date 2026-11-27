@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Lan truyền singularity dọc theo đặc tuyến của PDE]({{ site.imgurl }}/chapter_img/chapter15/02_propagation_singularities.svg )
+![Lan truyền singularity dọc theo đặc tuyến của PDE]({{ site.imgurl }}/chapter_img/chapter15/02_propagation_singularities.svg)
 
 Một tia chớp lóe lên trên bầu trời và tiếng sấm sắc gọn truyền đến tai bạn sau vài giây mà không hề tan loãng thành tiếng ù mờ như sự khuếch tán nhiệt. Tại sao phương trình sóng lại **vận chuyển các điểm kỳ dị đi xa nguyên vẹn** dọc theo những quỹ đạo sắc nét? **Định lý Lan truyền Kỳ dị của Hörmander (1971)** tiết lộ câu trả lời đầy kinh ngạc: tập mặt sóng $\operatorname{WF}(u)$ của nghiệm $Pu = 0$ bị giam chặt trong tập đặc trưng $\operatorname{Char}(P)$ và **chảy theo đúng phương trình Hamilton của cơ học cổ điển**!
 

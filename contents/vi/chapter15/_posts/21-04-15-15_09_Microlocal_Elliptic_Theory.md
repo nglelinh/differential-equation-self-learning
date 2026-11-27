@@ -10,7 +10,7 @@ categories:
 lesson_type: optional
 ---
 
-![Lý thuyết elliptic vi địa phương]({{ site.imgurl }}/chapter_img/chapter15/09_microlocal_elliptic_theory.svg )
+![Lý thuyết elliptic vi địa phương]({{ site.imgurl }}/chapter_img/chapter15/09_microlocal_elliptic_theory.svg)
 
 Ở Chương 14, nếu ký hiệu chính $p_m(x, \xi)$ triệt tiêu dù chỉ theo *một* hướng $\xi$ duy nhất, ta buộc phải gán nhãn toàn bộ toán tử là "không elliptic" và bỏ cuộc! **Lý thuyết Elliptic Vi địa phương (Microlocal Elliptic Theory)** cứu vãn tình thế một cách đầy tinh tế: một toán tử hoàn toàn có thể **elliptic theo hướng này** và **không elliptic theo hướng kia** ngay tại cùng một điểm $x_0$—và tại mọi hướng elliptic, ta vẫn dựng được parametrix vi địa phương để khóa chặt kỳ dị ra khỏi vùng đó!
 

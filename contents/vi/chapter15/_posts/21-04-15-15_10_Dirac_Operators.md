@@ -9,7 +9,7 @@ categories:
 - chapter15
 ---
 
-![Toan tu Dirac va cac cau noi giua vat ly, hinh hoc, va topology]({{ site.imgurl }}/chapter_img/chapter15/10_dirac_operators.svg )
+![Toan tu Dirac va cac cau noi giua vat ly, hinh hoc, va topology]({{ site.imgurl }}/chapter_img/chapter15/10_dirac_operators.svg)
 
 Năm 1928, Paul Dirac đứng trước một bài toán tưởng chừng bất khả thi: tìm một phương trình lượng tử **bậc nhất theo cả thời gian lẫn không gian** sao cho bình phương của nó khớp chính xác với phương trình sóng tương đối tính Klein–Gordon $(\partial_t^2 - \Delta + m^2)\psi = 0$. Không một số thực hay số phức nào thỏa mãn $(a\partial_x + b\partial_y)^2 = \partial_x^2 + \partial_y^2$—nhưng nếu $a, b$ là các **ma trận phản giao hoán** ($ab + ba = 0$) thì điều kỳ diệu xảy ra! Phát minh ấy không chỉ tiên đoán ra **phản vật chất (positron)** và **spin electron**, mà còn trở thành toán tử elliptic trung tâm của hình học vi phân hiện đại!
 
@@ -393,3 +393,7 @@ Tìm kiếm: `Dirac operator intuition`, `Lichnerowicz formula visualization`, `
 
 - L. Hörmander, *The Analysis of Linear Partial Differential Operators III*: tính elliptic, ký hiệu chính và tính chính quy cho các hệ bậc nhất kiểu Dirac.
 - M. Taylor, *Pseudodifferential Operators and Nonlinear PDE*: ký hiệu của toán tử bậc nhất trên phân thớ và parametrix elliptic, đủ để tiếp cận $$D$$ như một hệ elliptic.
+
+## Điều kiện Biên Toàn cục Atiyah–Patodi–Singer (APS)
+
+Khi đa tạp $$X$$ có biên $$Y = \partial X$$, gần biên ta viết toán tử Dirac dưới dạng trụ $$D_X = \sigma(dt)\left(\frac{\partial}{\partial t} + D_Y\right)$$, trong đó $$A_Y = \sigma(dt)^{-1} D_Y$$ là toán tử Dirac tự liên hợp trên biên $$Y$$ với phân rã phổ $$\bigoplus_{\lambda \in \operatorname{spec}(A_Y)} E_\lambda$$. Khác với điều kiện biên địa phương kiểu Dirichlet/Neumann, bài toán biên elliptic cho toán tử Dirac đòi hỏi **điều kiện biên toàn cục Atiyah–Patodi–Singer (APS)**: triệt tiêu các mode ứng với trị riêng $$\lambda \ge 0$$ trên biên $$Y$$, tạo nên bài toán Fredholm gắn liền với bất biến $\eta(0)$ đo độ bất đối xứng phổ.

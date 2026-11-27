@@ -12,7 +12,7 @@ lesson_type: optional
 
 > **Storytelling Hook:** A forward PDE problem asks: given the rock layers beneath the Earth's crust, how do seismic waves travel to surface sensors? An **inverse problem** flips the arrow backward: listening *only* to surface echoes or boundary electrical currents, can you reconstruct the hidden interior? The catch is that forward operators smooth away fine details—so inverting them magnifies microscopic measurement noise exponentially unless you regularize.
 
-![Inverse problems: reconstructing hidden parameters from measured data]({{ site.imgurl }}/chapter_img/chapter15/06_inverse_problems.svg )
+![Inverse problems: reconstructing hidden parameters from measured data]({{ site.imgurl }}/chapter_img/chapter15/06_inverse_problems.svg)
 
 ## Objectives
 

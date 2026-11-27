@@ -12,7 +12,7 @@ lesson_type: optional
 
 > **Storytelling Hook:** For decades, physicists happily wrote down the Dirac delta "function"—zero everywhere except at the origin, where it is infinitely tall with area $1$—and differentiated it at will, while mathematicians protested that no such function exists. In the late 1940s, Laurent Schwartz vindicated physics with a single brilliant shift in perspective: stop asking for a distribution's value at a point, and define it instead by how it averages smooth test functions.
 
-![Distributions as singular sources and derivatives of step functions]({{ site.imgurl }}/chapter_img/chapter12/08_distributions.svg )
+![Distributions as singular sources and derivatives of step functions]({{ site.imgurl }}/chapter_img/chapter12/08_distributions.svg)
 
 ## Objectives
 

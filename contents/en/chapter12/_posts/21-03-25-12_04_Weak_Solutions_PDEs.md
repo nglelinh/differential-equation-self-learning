@@ -12,7 +12,7 @@ lesson_type: required
 
 > **Storytelling Hook:** Load a steel beam with a sudden step-change in weight, and classical PDE theory stalls immediately: if the forcing $f$ has a jump discontinuity, then $u''$ must jump too, so no twice-differentiable $C^2$ solution can exist. Yet the beam still bends smoothly to a unique equilibrium! **Weak solutions** shift the PDE from pointwise equality to integral energy balance, unlocking existence for discontinuous loads, composite materials, and finite-element meshes.
 
-![A weak PDE formulation through test functions and integration by parts]({{ site.imgurl }}/chapter_img/chapter12/04_weak_solutions_pdes.svg )
+![A weak PDE formulation through test functions and integration by parts]({{ site.imgurl }}/chapter_img/chapter12/04_weak_solutions_pdes.svg)
 
 ## Objectives
 

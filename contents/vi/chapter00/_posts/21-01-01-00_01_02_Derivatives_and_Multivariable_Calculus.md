@@ -15,6 +15,8 @@ Trong không gian một chiều, đạo hàm chỉ là độ dốc của một �
 
 ## Kiến thức cần nhớ: Bốn công cụ cốt lõi của Giải tích Đa biến
 
+![Đạo hàm và Giải tích Nhiều biến]({{ site.imgurl }}/chapter_img/chapter00/01_02_derivatives_and_multivariable_calculus.svg)
+
 1. **Đạo hàm riêng & Gradient ($\nabla f$)**:
    Đạo hàm riêng đo tốc độ biến thiên dọc từng trục tọa độ; vectơ $\nabla f$ chỉ hướng tăng nhanh nhất của hàm vô hướng và vuông góc với mọi đường mức $f(x, y) = C$.
 2. **Vi phân toàn phần & Xấp xỉ tuyến tính ($df = \nabla f \cdot d\mathbf{x}$)**:

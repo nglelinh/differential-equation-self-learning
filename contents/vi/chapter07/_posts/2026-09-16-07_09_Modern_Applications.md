@@ -14,6 +14,8 @@ Khi giải bài toán biên trên các hình học 3D phức tạp (cánh tuabin
 
 ## Kiến thức cần nhớ: Bốn trụ cột của PINN cho Bài toán Biên
 
+![Bài toán Giá trị Biên Sturm–Liouville & Phổ Đồ thị]({{ site.imgurl }}/chapter_img/modern_apps/ma_07_sturm_liouville_gnn.svg)
+
 1. **Đạo hàm tự động (Automatic Differentiation) thay cho sai phân lưới**:
    Không cần chia lưới xấp xỉ đạo hàm: PyTorch/JAX tính chính xác $\frac{\partial^2 u_\theta}{\partial x^2}$ bằng quy tắc dây chuyền trên đồ thị tính toán của mạng nơ-ron.
 2. **Hàm mất mát vật lý tổng hợp ($\mathcal{L} = \mathcal{L}_{\text{PDE}} + \lambda_{\text{BC}} \mathcal{L}_{\text{BC}}$)**:

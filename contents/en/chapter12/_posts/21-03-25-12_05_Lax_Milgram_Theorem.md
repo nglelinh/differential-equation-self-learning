@@ -12,7 +12,7 @@ lesson_type: required
 
 > **Storytelling Hook:** Symmetric diffusion equations can be solved by minimizing an energy functional—like a marble rolling to the bottom of a bowl. Add a wind current ($b \cdot \nabla u$) to the PDE, and the symmetry shatters: there is no longer any energy bowl to minimize! The **Lax–Milgram Theorem** rescues existence and uniqueness for non-symmetric elliptic PDEs by replacing energy minimization with a pure Hilbert-space fixed-point geometry.
 
-![The intuition of coercivity in the Lax-Milgram theorem]({{ site.imgurl }}/chapter_img/chapter12/05_lax_milgram_theorem.svg )
+![The intuition of coercivity in the Lax-Milgram theorem]({{ site.imgurl }}/chapter_img/chapter12/05_lax_milgram_theorem.svg)
 
 ## Objectives
 

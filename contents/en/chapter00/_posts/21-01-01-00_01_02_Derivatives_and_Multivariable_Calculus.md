@@ -14,6 +14,8 @@ Picture a weather balloon drifting through a three-dimensional wind field while 
 
 ## Key ideas: Multivariable Tools You Will Use in Every Chapter
 
+![Đạo hàm và Giải tích Nhiều biến]({{ site.imgurl }}/chapter_img/chapter00/01_02_derivatives_and_multivariable_calculus.svg)
+
 Four concepts from multivariable calculus reappear constantly from Chapter 1 through Chapter 5:
 
 1. **Total Differential and Fréchet Derivative:** Differentiability of $$\mathbf{F}: \mathbb{R}^n \to \mathbb{R}^m$$ means $$\mathbf{F}(\mathbf{x} + \mathbf{h}) = \mathbf{F}(\mathbf{x}) + D\mathbf{F}(\mathbf{x})\mathbf{h} + o(\|\mathbf{h}\|)$$, where the Jacobian matrix $$D\mathbf{F}(\mathbf{x})$$ is the best linear approximation to a nonlinear system near an equilibrium.

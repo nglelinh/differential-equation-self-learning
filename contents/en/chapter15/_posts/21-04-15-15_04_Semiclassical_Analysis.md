@@ -12,7 +12,7 @@ lesson_type: optional
 
 > **Storytelling Hook:** As Planck's constant $h \to 0$ (or equivalently, as the frequency of light approaches infinity), quantum wavefunctions stop behaving like diffuse clouds and concentrate tightly along Newton's classical particle trajectories. **Semiclassical analysis** turns that physical correspondence principle into a razor-sharp $h$-dependent pseudo-differential calculus.
 
-![Semiclassical intuition when a small parameter tends to zero]({{ site.imgurl }}/chapter_img/chapter15/04_semiclassical_analysis.svg )
+![Semiclassical intuition when a small parameter tends to zero]({{ site.imgurl }}/chapter_img/chapter15/04_semiclassical_analysis.svg)
 
 ## Objectives
 

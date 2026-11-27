@@ -15,6 +15,8 @@ Năm 2018, một bài báo đạt giải Best Paper tại NeurIPS đã làm ch�
 
 ## Kiến thức cần nhớ: Bốn trụ cột của Neural ODE & Mạng độ sâu liên tục
 
+![Phương trình Vi phân Bậc 1 & Neural ODEs (Chen et al.)]({{ site.imgurl }}/chapter_img/modern_apps/ma_01_neural_odes.svg)
+
 1. **ResNet là bước Euler của PTVP cấp một**:
    Công thức cập nhật lớp $\mathbf{h}_{k+1} = \mathbf{h}_k + \Delta t\, f_\theta(\mathbf{h}_k, t_k)$ khi cho $\Delta t \to 0$ hội tụ trực tiếp về $\frac{d\mathbf{h}}{dt} = f_\theta(\mathbf{h}(t), t)$.
 2. **Phương pháp Liên hợp (Adjoint Sensitivity Method)**:

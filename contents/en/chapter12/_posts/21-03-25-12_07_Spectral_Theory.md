@@ -12,7 +12,7 @@ lesson_type: optional
 
 > **Storytelling Hook:** Strike a circular drumhead and it rings at a discrete ladder of pure pitches—never a continuous smear of frequencies. Why does an infinite-dimensional differential operator behave like a finite symmetric matrix with real eigenvalues and an orthonormal eigenbasis? **Spectral theory** reveals the hidden compactness of the inverse operator $(-\Delta)^{-1}$, turning elliptic PDEs into infinite-dimensional linear algebra.
 
-![The spectrum of an elliptic operator and its basic eigenmodes]({{ site.imgurl }}/chapter_img/chapter12/07_spectral_theory.svg )
+![The spectrum of an elliptic operator and its basic eigenmodes]({{ site.imgurl }}/chapter_img/chapter12/07_spectral_theory.svg)
 
 ## Objectives
 

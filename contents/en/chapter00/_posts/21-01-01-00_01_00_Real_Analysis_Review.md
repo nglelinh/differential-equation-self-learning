@@ -14,6 +14,8 @@ Imagine computing the trajectory of a satellite by refining a numerical step siz
 
 ## Key ideas: Why Differential Equations Need Real Analysis
 
+![Ôn tập Giải tích Thực]({{ site.imgurl }}/chapter_img/chapter00/01_00_real_analysis_review.svg)
+
 At the graduate level, four analytical pillars quietly power every existence theorem and approximation scheme in this course:
 
 1. **Limits and $$\varepsilon$$–$$\delta$$ Precision:** Local behavior of derivatives and slope fields depends on controlling output error $$\lvert f(x) - L \rvert < \varepsilon$$ via input tolerances $$\lvert x - a \rvert < \delta$$—the exact mechanism behind continuous dependence on initial data.

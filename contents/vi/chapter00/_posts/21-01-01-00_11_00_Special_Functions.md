@@ -15,6 +15,8 @@ Hầu hết các phương trình vi phân trong vật lý thực tế—từ dao
 
 ## Kiến thức cần nhớ: Bốn họ Hàm đặc biệt cốt lõi cho PTVP
 
+![Các Hàm Đặc biệt]({{ site.imgurl }}/chapter_img/chapter00/11_00_special_functions.svg)
+
 1. **Hàm Gamma $\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}\,dt$**:
    Mở rộng giai thừa sang số thực và số phức thông qua hệ thức truy hồi $\Gamma(z+1) = z\Gamma(z)$ và giá trị vàng $\Gamma(1/2) = \sqrt{\pi}$—thiết yếu cho biến đổi Laplace của $t^p$ và hàm Bessel.
 2. **Hàm Beta $B(x, y) = \int_0^1 t^{x-1}(1-t)^{y-1}\,dt = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}$**:

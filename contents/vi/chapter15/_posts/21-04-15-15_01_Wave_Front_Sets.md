@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Wave front set như mô tả vị trí và hướng của singularity]({{ site.imgurl }}/chapter_img/chapter15/01_wave_front_sets.svg )
+![Wave front set như mô tả vị trí và hướng của singularity]({{ site.imgurl }}/chapter_img/chapter15/01_wave_front_sets.svg)
 
 Hãy tưởng tượng bạn đứng trên một cánh đồng phẳng có một rãnh nứt kéo dài theo hướng Bắc–Nam. Nếu bạn đi dọc theo hướng Bắc–Nam, mặt đất phẳng lì trơn tru; nhưng nếu bạn bước ngang hướng Đông–Tây băng qua rãnh, bạn lập tức vấp phải bước nhảy! **Tập Mặt sóng $\operatorname{WF}(u)$ (Wave Front Set)** của Lars Hörmander nắm bắt chính xác trực giác ấy: nó không chỉ đánh dấu vị trí rãnh nứt $x$, mà còn chỉ rõ **hướng tần số $\xi$ nào bị vấp kỳ dị**—một bước nâng cấp vĩ đại biến không gian vị trí thành không gian pha $T^*\mathbb{R}^n \setminus 0$!
 

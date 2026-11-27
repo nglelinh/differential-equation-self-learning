@@ -14,6 +14,8 @@ Suppose two engineers discretize a temperature profile on a metal rod: near the 
 
 ## Key ideas: The Hierarchy of Regularity
 
+![Liên tục và Liên tục Đều]({{ site.imgurl }}/chapter_img/chapter00/01_01_continuity_and_uniform_continuity.svg)
+
 When analyzing differential equations, continuity is not a single binary property—it is a ladder of progressively stronger controls:
 
 1. **Pointwise Continuity:** For each fixed $$x_0$$ and $$\varepsilon > 0$$, the tolerance $$\delta = \delta(\varepsilon, x_0)$$ may shrink dangerously as $$x_0$$ approaches a boundary or infinity.

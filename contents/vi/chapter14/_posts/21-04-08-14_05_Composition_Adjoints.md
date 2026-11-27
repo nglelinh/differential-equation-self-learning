@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Symbol calculus cho composition và adjoint của ΨDO]({{ site.imgurl }}/chapter_img/chapter14/05_composition_adjoints.svg )
+![Symbol calculus cho composition và adjoint của ΨDO]({{ site.imgurl }}/chapter_img/chapter14/05_composition_adjoints.svg)
 
 Sức mạnh thực sự của Toán tử Giả vi phân không nằm ở từng toán tử đơn lẻ, mà ở chỗ chúng tạo thành một **đại số có phép nhân và phép lấy liên hợp khép kín**: hợp thành của $P \in \Psi^{m_1}$ với $Q \in \Psi^{m_2}$ lại là một $\Psi$DO thuộc $\Psi^{m_1 + m_2}$, và ký hiệu của nó—thay vì chỉ là tích $p\cdot q$—được cho bởi chuỗi tiệm cận Kohn–Nirenberg kỳ diệu, trong đó số hạng hiệu chỉnh bậc nhất chính là **ngoặc Poisson** của cơ học cổ điển!
 

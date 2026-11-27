@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Lưới sai phân cho PDE và xấp xỉ đạo hàm cục bộ]({{ site.imgurl }}/chapter_img/chapter13/05_finite_differences_pdes.svg )
+![Lưới sai phân cho PDE và xấp xỉ đạo hàm cục bộ]({{ site.imgurl }}/chapter_img/chapter13/05_finite_differences_pdes.svg)
 
 Làm sao dạy máy tính giải phương trình Poisson $-\Delta u = f$ hay phương trình nhiệt $u_t = \alpha u_{xx}$ khi máy tính chỉ hiểu mảng số hữu hạn? **Phương pháp Sai phân Hữu hạn (Finite Difference Method — FDM)** phủ lên miền $\Omega$ một mạng lưới tọa độ bước $h$, thay mọi đạo hàm riêng bằng tổ hợp tuyến tính của vài nút lân cận (*stencil*), và biến PDE vô hạn chiều thành một **hệ phương trình đại số tuyến tính $A\mathbf{u} = \mathbf{b}$** có ma trận cực thưa!
 

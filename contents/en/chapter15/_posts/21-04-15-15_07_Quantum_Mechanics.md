@@ -12,7 +12,7 @@ lesson_type: optional
 
 > **Storytelling Hook:** Why doesn't a hydrogen atom's electron spiral into the positively charged nucleus in a billionth of a second, as classical electrodynamics predicts? Because in quantum mechanics, squeezing a wavefunction $\psi(x)$ into a tiny ball around the origin forces its Fourier transform $\hat{\psi}(\xi)$ to explode outward—raising its kinetic energy $\int |\nabla\psi|^2\,dx$ faster than the Coulomb potential $-1/|x|$ can drop. Quantum stability is literally a PDE uncertainty inequality.
 
-![The Schrodinger equation and the quantum meaning of spectral ideas]({{ site.imgurl }}/chapter_img/chapter15/07_quantum_mechanics.svg )
+![The Schrodinger equation and the quantum meaning of spectral ideas]({{ site.imgurl }}/chapter_img/chapter15/07_quantum_mechanics.svg)
 
 ## Objectives
 

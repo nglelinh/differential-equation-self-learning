@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Elliptic operator và parametrix xấp xỉ nghịch đảo]({{ site.imgurl }}/chapter_img/chapter14/06_elliptic_operators_parametrices.svg )
+![Elliptic operator và parametrix xấp xỉ nghịch đảo]({{ site.imgurl }}/chapter_img/chapter14/06_elliptic_operators_parametrices.svg)
 
 Làm sao nghịch đảo một toán tử vi phân elliptic hệ số biến thiên $P = -\nabla \cdot (a(x)\nabla) + \dots$ khi ta không thể đơn giản chia cho đa thức như trường hợp hệ số hằng? Câu trả lời của đại số $\Psi$DO đẹp như một ván cờ: ta không cần tìm nghịch đảo chính xác ngay lập tức, mà xây dựng từng nấc một **nghịch đảo xấp xỉ tới sai số làm trơn** gọi là **Parametrix** $Q \in \Psi^{-m}$ sao cho $PQ = I + R_1$ và $QP = I + R_2$ với $R_1, R_2 \in \Psi^{-\infty}$!
 
@@ -328,3 +328,7 @@ là ví dụ đơn giản nhất của một parametrix elliptic.
 - Nên xem trước: [Index Theory Lecture 8: Algebra of pseudodifferential operators](https://www.youtube.com/watch?v=uUCQHWHqLCU) — Masoud Khalkhali, tiếng Anh. Trình bày tính elliptic trong đại số giả vi phân và việc xây dựng parametrix.
 - [Andras Vasy - Microlocal analysis and wave propagation (Part 1)](https://www.youtube.com/watch?v=P9uB6J2trvM) — Institut Fourier, tiếng Anh. Bài giảng mở đầu về giải tích vi địa phương của András Vasy, bao gồm các ước lượng elliptic.
 - [Sketch of Elliptic regularity](https://www.youtube.com/watch?v=wecQr1yruVY) — Calculus is pictures., tiếng Anh. Minh họa hệ quả về tính chính quy của parametrix elliptic.
+
+## Góc nhìn Hình học Vi phân (CMSA Notes): Toán tử Elliptic, Toeplitz và Chỉ số Fredholm
+
+Theo bài giảng *CMSA* của Daniel Freed (Harvard), một toán tử vi phân elliptic cấp $$m$$ giữa hai phân thớ vectơ $$P: C^\infty(X, E_0) \to C^\infty(X, E_1)$$ có tính chất **Fredholm** trên đa tạp đóng $$X$$ (hạt nhân và đối hạt nhân đều hữu hạn chiều). Một nguyên mẫu kinh điển trên đĩa đơn vị $$\Omega \subset \mathbb{C}$$ với biên $$S^1 = \partial\Omega$$ là **Toán tử Toeplitz** $$T_f = \pi \circ M_f \circ i$$ (nén phép nhân bởi hàm trơn không triệt tiêu $$f: S^1 \to \mathbb{C}^*$$ lên không gian Hardy các hàm chỉnh hình $$L^2$$). Định lý **Fritz Noether (1920)** khẳng định $$T_f$$ là toán tử Fredholm và chỉ số của nó bằng âm của số vòng quay (*winding number*): $$\operatorname{ind}(T_f) = -\operatorname{wind}(f)$$, tiền thân trực tiếp của Định lý Chỉ số Atiyah–Singer và công thức Atiyah–Bott.

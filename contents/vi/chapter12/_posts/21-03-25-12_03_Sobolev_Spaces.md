@@ -10,7 +10,7 @@ categories:
 lesson_type: required
 ---
 
-![Trực giác về Sobolev space và gradient yếu]({{ site.imgurl }}/chapter_img/chapter12/03_sobolev_spaces.svg )
+![Trực giác về Sobolev space và gradient yếu]({{ site.imgurl }}/chapter_img/chapter12/03_sobolev_spaces.svg)
 
 Không gian $L^2(\Omega)$ đủ rộng và đầy đủ nhưng lại không hề kiểm soát đạo hàm; không gian $C^1(\bar{\Omega})$ kiểm soát được đạo hàm nhưng lại bị "thủng" khi lấy giới hạn (như phản ví dụ Weierstrass đã chỉ ra). **Không gian Sobolev $W^{k,p}(\Omega)$**—và đặc biệt là không gian Hilbert $H^1(\Omega) = W^{1,2}(\Omega)$—là giao điểm hoàn hảo của cả hai thế giới: vừa đo được cả hàm lẫn các đạo hàm yếu tới bậc $k$, vừa **đầy đủ tuyệt đối**!
 
